@@ -384,7 +384,7 @@ type BindingPolicyObjectDimension struct {
 type BindingPolicyObjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略分组Id
+	// 策略组id，如传入PolicyId则该字段可传入任意值
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 必填。固定值"monitor"
@@ -395,6 +395,9 @@ type BindingPolicyObjectRequest struct {
 
 	// 需要绑定的对象维度信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitempty" name:"Dimensions" list`
+
+	// 告警策略ID，使用此字段时GroupId可传入任意值
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 func (r *BindingPolicyObjectRequest) ToJsonString() string {
@@ -716,6 +719,7 @@ type CreateServiceDiscoveryRequest struct {
 	// 服务发现类型，取值如下：
 	// <li> 1 = ServiceMonitor</li>
 	// <li> 2 = PodMonitor</li>
+	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 服务发现配置信息
@@ -891,6 +895,7 @@ type DeleteServiceDiscoveryRequest struct {
 	// 服务发现类型，取值如下：
 	// <li> 1 = ServiceMonitor</li>
 	// <li> 2 = PodMonitor</li>
+	// <li> 3 = PodMonitor</li>
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 服务发现配置信息
@@ -3803,8 +3808,11 @@ type UnBindingAllPolicyObjectRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组id
+	// 策略组id，如传入PolicyId则该字段可传入任意值
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 告警策略ID，使用此字段时GroupId可传入任意值
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 func (r *UnBindingAllPolicyObjectRequest) ToJsonString() string {
@@ -3840,7 +3848,7 @@ type UnBindingPolicyObjectRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组id
+	// 策略组id，如传入PolicyId则该字段可传入任意值
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
@@ -3848,6 +3856,9 @@ type UnBindingPolicyObjectRequest struct {
 
 	// 实例分组id, 如果按实例分组删除的话UniqueId参数是无效的
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+
+	// 告警策略ID，使用此字段时GroupId可传入任意值
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 func (r *UnBindingPolicyObjectRequest) ToJsonString() string {
@@ -3893,6 +3904,7 @@ type UpdateServiceDiscoveryRequest struct {
 	// 服务发现类型，取值如下：
 	// <li> 1 = ServiceMonitor</li>
 	// <li> 2 = PodMonitor</li>
+	// <li> 3 = JobMonitor</li>
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 服务发现配置信息

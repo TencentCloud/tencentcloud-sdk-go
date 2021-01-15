@@ -243,6 +243,31 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     return
 }
 
+func NewDownloadBotRecordRequest() (request *DownloadBotRecordRequest) {
+    request = &DownloadBotRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "DownloadBotRecord")
+    return
+}
+
+func NewDownloadBotRecordResponse() (response *DownloadBotRecordResponse) {
+    response = &DownloadBotRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 下载任务录音与文本，第二天12点后可使用此接口获取对应的录音与文本
+func (c *Client) DownloadBotRecord(request *DownloadBotRecordRequest) (response *DownloadBotRecordResponse, err error) {
+    if request == nil {
+        request = NewDownloadBotRecordRequest()
+    }
+    response = NewDownloadBotRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
     request = &DownloadDialogueTextRequest{
         BaseRequest: &tchttp.BaseRequest{},

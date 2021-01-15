@@ -978,6 +978,83 @@ func (r *StartOnlineRecordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type StartWhiteboardPushRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要推流白板的房间号，取值范围: (1, 4294967295)
+	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 用于白板推流服务进房进行推流的用户ID，
+	// 该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
+	PushUserId *string `json:"PushUserId,omitempty" name:"PushUserId"`
+
+	// 与PushUserId对应的签名
+	PushUserSig *string `json:"PushUserSig,omitempty" name:"PushUserSig"`
+
+	// 白板参数，例如白板宽高、背景颜色等
+	Whiteboard *Whiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
+
+	// 自动停止推流超时时间，单位秒，取值范围[300, 259200], 默认值为1800秒。
+	// 
+	// 当白板超过设定时间没有操作的时候，白板推流服务会自动停止白板推流。
+	AutoStopTimeout *int64 `json:"AutoStopTimeout,omitempty" name:"AutoStopTimeout"`
+
+	// 对主白板推流任务进行操作时，是否同时同步操作备份任务
+	AutoManageBackup *bool `json:"AutoManageBackup,omitempty" name:"AutoManageBackup"`
+
+	// 备份白板推流相关参数。
+	// 
+	// 指定了备份参数的情况下，白板推流服务会在房间内新增一路白板画面视频流，即同一个房间内会有两路白板画面推流。
+	Backup *WhiteboardPushBackupParam `json:"Backup,omitempty" name:"Backup"`
+
+	// 在实时音视频云端录制模式选择为 `指定用户录制` 模式的时候是否自动录制白板推流。
+	// 
+	// 默认在实时音视频的云端录制模式选择为 `指定用户录制` 模式的情况下，不会自动进行白板推流录制，如果希望进行白板推流录制，请将此参数设置为true。
+	// 
+	// 如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
+	AutoRecord *bool `json:"AutoRecord,omitempty" name:"AutoRecord"`
+
+	// 内部参数，不需要关注此参数
+	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
+}
+
+func (r *StartWhiteboardPushRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartWhiteboardPushRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartWhiteboardPushResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 推流任务Id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 备份任务结果参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Backup *string `json:"Backup,omitempty" name:"Backup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartWhiteboardPushResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartWhiteboardPushResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StopOnlineRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -1012,6 +1089,47 @@ func (r *StopOnlineRecordResponse) ToJsonString() string {
 }
 
 func (r *StopOnlineRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopWhiteboardPushRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要停止的白板推流任务 Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopWhiteboardPushRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopWhiteboardPushRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopWhiteboardPushResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份任务相关参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Backup *string `json:"Backup,omitempty" name:"Backup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopWhiteboardPushResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopWhiteboardPushResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1122,4 +1240,14 @@ type Whiteboard struct {
 
 	// 白板初始化参数，透传到白板 SDK
 	InitParam *string `json:"InitParam,omitempty" name:"InitParam"`
+}
+
+type WhiteboardPushBackupParam struct {
+
+	// 用于白板推流服务进房的用户ID，
+	// 该ID必须是一个单独的未在SDK中使用的ID，白板推流服务将使用这个用户ID进入房间进行白板推流，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常推流。
+	PushUserId *string `json:"PushUserId,omitempty" name:"PushUserId"`
+
+	// 与PushUserId对应的签名
+	PushUserSig *string `json:"PushUserSig,omitempty" name:"PushUserSig"`
 }

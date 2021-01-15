@@ -421,7 +421,7 @@ type DescribeResourceTagsRequest struct {
 	// 资源前缀
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 
-	// 资源唯一标识
+	// 资源唯一标识。只输入ResourceId进行查询可能会查询较慢，或者无法匹配到结果，建议在输入ResourceId的同时也输入ServiceType、ResourcePrefix和ResourceRegion（不区分地域的资源可忽略该参数）
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍

@@ -856,13 +856,13 @@ type EnglishOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -891,6 +891,9 @@ type EnglishOCRResponse struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
 		TextDetections []*TextDetectionEn `json:"TextDetections,omitempty" name:"TextDetections" list`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1302,7 +1305,7 @@ type GeneralAccurateOCRResponse struct {
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
 		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
 
-		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1504,13 +1507,13 @@ type GeneralHandwritingOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1538,6 +1541,9 @@ type GeneralHandwritingOCRResponse struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
 		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections" list`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3103,6 +3109,9 @@ type RecognizeTableOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 语言，zh：中英文（默认）jap：日文
+	TableLanguage *string `json:"TableLanguage,omitempty" name:"TableLanguage"`
 }
 
 func (r *RecognizeTableOCRRequest) ToJsonString() string {
@@ -3126,6 +3135,10 @@ type RecognizeTableOCRResponse struct {
 
 		// 图片为PDF时，返回PDF的总页数，默认为0
 		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+		// 图片旋转角度（角度制），文本的水平
+	// 方向为 0°；顺时针为正，逆时针为负
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3573,6 +3586,17 @@ type TableDetectInfo struct {
 	// 表格标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles" list`
+
+	// 图像中的文本块类型，0 为非表格文本，
+	// 1 为有线表格，2 为无线表格
+	// （接口暂不支持日文无线表格识别，若传入日文无线表格，返回0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 表格主体四个顶点坐标（依次为左上角，
+	// 右上角，右下角，左下角）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableCoordPoint []*Coord `json:"TableCoordPoint,omitempty" name:"TableCoordPoint" list`
 }
 
 type TableOCRRequest struct {
@@ -4301,13 +4325,13 @@ type VatInvoiceOCRRequest struct {
 
 	// 图片/PDF的 Base64 值。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
-	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 3M。文件下载时间不超过 3 秒。
+	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
 	// 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
-	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 3M。文件下载时间不超过 3 秒。
+	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 7M。文件下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -4340,6 +4364,9 @@ type VatInvoiceOCRResponse struct {
 
 		// 图片为PDF时，返回PDF的总页数，默认为0
 		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1144,6 +1144,32 @@ func (c *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (respo
     return
 }
 
+func NewSignByAsymmetricKeyRequest() (request *SignByAsymmetricKeyRequest) {
+    request = &SignByAsymmetricKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "SignByAsymmetricKey")
+    return
+}
+
+func NewSignByAsymmetricKeyResponse() (response *SignByAsymmetricKeyResponse) {
+    response = &SignByAsymmetricKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 非对称密钥签名。
+// 注意：只有成功创建了KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2 的密钥才可以使用签名功能
+func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {
+    if request == nil {
+        request = NewSignByAsymmetricKeyRequest()
+    }
+    response = NewSignByAsymmetricKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindCloudResourceRequest() (request *UnbindCloudResourceRequest) {
     request = &UnbindCloudResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1215,6 +1241,31 @@ func (c *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest) (res
         request = NewUpdateKeyDescriptionRequest()
     }
     response = NewUpdateKeyDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyByAsymmetricKeyRequest() (request *VerifyByAsymmetricKeyRequest) {
+    request = &VerifyByAsymmetricKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kms", APIVersion, "VerifyByAsymmetricKey")
+    return
+}
+
+func NewVerifyByAsymmetricKeyResponse() (response *VerifyByAsymmetricKeyResponse) {
+    response = &VerifyByAsymmetricKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用非对称密钥验签
+func (c *Client) VerifyByAsymmetricKey(request *VerifyByAsymmetricKeyRequest) (response *VerifyByAsymmetricKeyResponse, err error) {
+    if request == nil {
+        request = NewVerifyByAsymmetricKeyRequest()
+    }
+    response = NewVerifyByAsymmetricKeyResponse()
     err = c.Send(request, response)
     return
 }

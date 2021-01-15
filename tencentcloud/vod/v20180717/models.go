@@ -1539,10 +1539,16 @@ type AnimatedGraphicTaskInput struct {
 	// 视频转动图模板 ID
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 动图在视频中的开始时间，单位为秒。
+	// 动图在视频中的起始时间偏移，单位为秒。
+	// <li>不填或填0，表示从视频的起始位置开始；</li>
+	// <li>当数值大于0时（假设为 n），表示从视频的第 n 秒位置开始；</li>
+	// <li>当数值小于0时（假设为 -n），表示从视频结束 n 秒前的位置开始。</li>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
-	// 动图在视频中的结束时间，单位为秒。
+	// 动图在视频中的终止时间偏移，单位为秒。
+	// <li>不填或填0，表示持续到视频的末尾终止；</li>
+	// <li>当数值大于0时（假设为 n），表示持续到视频第 n 秒时终止；</li>
+	// <li>当数值小于0时（假设为 -n），表示持续到视频结束 n 秒前终止。</li>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
@@ -6415,6 +6421,12 @@ type ImageWatermarkInput struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
 	// 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type ImageWatermarkInputForUpdate struct {
@@ -6431,6 +6443,12 @@ type ImageWatermarkInputForUpdate struct {
 	// <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type ImageWatermarkTemplate struct {
@@ -6448,6 +6466,12 @@ type ImageWatermarkTemplate struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；</li>
 	// 0px：表示 Height 按照 Width 对视频宽度的比例缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type LiveRealTimeClipRequest struct {

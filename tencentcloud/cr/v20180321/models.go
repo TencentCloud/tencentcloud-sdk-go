@@ -549,6 +549,52 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadBotRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作：DownloadRecord
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 业务日期
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+}
+
+func (r *DownloadBotRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadBotRecordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadBotRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录音地址。请求后30分钟内有效
+		RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
+
+		// 文本地址。请求后30分钟内有效
+		TextCosUrl *string `json:"TextCosUrl,omitempty" name:"TextCosUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadBotRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadBotRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadDialogueTextRequest struct {
 	*tchttp.BaseRequest
 

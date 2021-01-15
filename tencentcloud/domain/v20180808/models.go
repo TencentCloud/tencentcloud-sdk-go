@@ -28,6 +28,11 @@ type BatchModifyDomainInfoRequest struct {
 
 	// 模板ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// true： 开启60天内禁止转移注册商锁定
+	// false：关闭60天内禁止转移注册商锁定
+	// 默认 true
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
 }
 
 func (r *BatchModifyDomainInfoRequest) ToJsonString() string {
@@ -520,6 +525,10 @@ type DescribeDomainBaseInfoResponse struct {
 		// 域名信息
 		DomainInfo *DomainBaseInfo `json:"DomainInfo,omitempty" name:"DomainInfo"`
 
+		// 用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -784,6 +793,13 @@ type DomainBaseInfo struct {
 
 	// 域名绑定的ns
 	NameServer []*string `json:"NameServer,omitempty" name:"NameServer" list`
+
+	// true：开启锁定
+	// false：关闭锁定
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
+
+	// 锁定结束时间
+	LockEndTime *string `json:"LockEndTime,omitempty" name:"LockEndTime"`
 }
 
 type DomainBatchDetailSet struct {
@@ -1116,6 +1132,11 @@ type TransferInDomainBatchRequest struct {
 	// 0 表示关闭，不自动续费（默认值）
 	// 1 表示开启，将自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// true： 开启60天内禁止转移注册商锁定
+	// false：关闭60天内禁止转移注册商锁定
+	// 默认 true
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
 }
 
 func (r *TransferInDomainBatchRequest) ToJsonString() string {

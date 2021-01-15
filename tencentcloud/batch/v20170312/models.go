@@ -473,6 +473,10 @@ type DataDisk struct {
 	// 该参数目前仅用于 `RunInstances` 接口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+
+	// 云硬盘性能，单位：MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
 type DeleteComputeEnvRequest struct {

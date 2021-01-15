@@ -573,7 +573,7 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
 //         </tr>
 //         <tr>
 //           <td>自动旋转纠正</td>
-//           <td>支持旋转识别，不支持角度返回</td>
+//           <td>支持旋转识别，返回角度信息</td>
 //           <td>支持旋转识别，返回角度信息</td>
 //           <td>支持旋转识别，返回角度信息</td>
 //         </tr>
@@ -1361,7 +1361,7 @@ func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
     return
 }
 
-// 本接口支持图片/ PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持对0度至180度旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
+// 本接口支持中英文图片/ PDF内常规表格、无线表格、多表格的检测和识别，支持日文有线表格识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
 func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response *RecognizeTableOCRResponse, err error) {
     if request == nil {
         request = NewRecognizeTableOCRRequest()

@@ -468,6 +468,31 @@ func (c *Client) StartOnlineRecord(request *StartOnlineRecordRequest) (response 
     return
 }
 
+func NewStartWhiteboardPushRequest() (request *StartWhiteboardPushRequest) {
+    request = &StartWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "StartWhiteboardPush")
+    return
+}
+
+func NewStartWhiteboardPushResponse() (response *StartWhiteboardPushResponse) {
+    response = &StartWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发起一个白板推流任务
+func (c *Client) StartWhiteboardPush(request *StartWhiteboardPushRequest) (response *StartWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewStartWhiteboardPushRequest()
+    }
+    response = NewStartWhiteboardPushResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopOnlineRecordRequest() (request *StopOnlineRecordRequest) {
     request = &StopOnlineRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -489,6 +514,31 @@ func (c *Client) StopOnlineRecord(request *StopOnlineRecordRequest) (response *S
         request = NewStopOnlineRecordRequest()
     }
     response = NewStopOnlineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopWhiteboardPushRequest() (request *StopWhiteboardPushRequest) {
+    request = &StopWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "StopWhiteboardPush")
+    return
+}
+
+func NewStopWhiteboardPushResponse() (response *StopWhiteboardPushResponse) {
+    response = &StopWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 停止白板推流任务
+func (c *Client) StopWhiteboardPush(request *StopWhiteboardPushRequest) (response *StopWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewStopWhiteboardPushRequest()
+    }
+    response = NewStopWhiteboardPushResponse()
     err = c.Send(request, response)
     return
 }

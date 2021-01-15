@@ -4096,6 +4096,22 @@ type ModifySecurityRuleRequest struct {
 
 	// 安全策略ID
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 安全规则动作
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 规则关联地址，格式需要满足CIDR网络地址规范
+	SourceCidr *string `json:"SourceCidr,omitempty" name:"SourceCidr"`
+
+	// 协议类型
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口范围，支持以下格式
+	// 单个端口: 80
+	// 多个端口: 80,443
+	// 连续端口: 3306-20000
+	// 所有端口: ALL
+	DestPortRange *string `json:"DestPortRange,omitempty" name:"DestPortRange"`
 }
 
 func (r *ModifySecurityRuleRequest) ToJsonString() string {
