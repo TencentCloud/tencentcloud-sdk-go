@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCloseAsyncRecognitionTaskRequest() (request *CloseAsyncRecognitionTaskRequest) {
+    request = &CloseAsyncRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asr", APIVersion, "CloseAsyncRecognitionTask")
+    return
+}
+
+func NewCloseAsyncRecognitionTaskResponse() (response *CloseAsyncRecognitionTaskResponse) {
+    response = &CloseAsyncRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于关闭语音流异步识别任务。
+func (c *Client) CloseAsyncRecognitionTask(request *CloseAsyncRecognitionTaskRequest) (response *CloseAsyncRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewCloseAsyncRecognitionTaskRequest()
+    }
+    response = NewCloseAsyncRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAsrVocabRequest() (request *CreateAsrVocabRequest) {
     request = &CreateAsrVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},

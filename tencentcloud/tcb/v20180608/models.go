@@ -175,6 +175,37 @@ type CloudBaseRunNfsVolumeSource struct {
 	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
 
+type CloudBaseRunSideSpec struct {
+
+	// 容器镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerImage *string `json:"ContainerImage,omitempty" name:"ContainerImage"`
+
+	// 容器端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 容器的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// kv的json字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvVar *string `json:"EnvVar,omitempty" name:"EnvVar"`
+
+	// InitialDelaySeconds 延迟多长时间启动健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// CPU大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存大小（单位：M）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
+}
+
 type CloudBaseRunVolumeMount struct {
 
 	// 资源名
@@ -574,6 +605,12 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 服务路劲
 	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
+
+	// 镜像复用的key
+	ImageReuseKey *string `json:"ImageReuseKey,omitempty" name:"ImageReuseKey"`
+
+	// 容器的描述文件
+	SidecarSpecs []*CloudBaseRunSideSpec `json:"SidecarSpecs,omitempty" name:"SidecarSpecs" list`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {

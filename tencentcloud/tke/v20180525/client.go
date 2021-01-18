@@ -668,6 +668,31 @@ func (c *Client) DeletePrometheusTemplateSync(request *DeletePrometheusTemplateS
     return
 }
 
+func NewDescribeAvailableClusterVersionRequest() (request *DescribeAvailableClusterVersionRequest) {
+    request = &DescribeAvailableClusterVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeAvailableClusterVersion")
+    return
+}
+
+func NewDescribeAvailableClusterVersionResponse() (response *DescribeAvailableClusterVersionResponse) {
+    response = &DescribeAvailableClusterVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取集群可以升级的所有版本
+func (c *Client) DescribeAvailableClusterVersion(request *DescribeAvailableClusterVersionRequest) (response *DescribeAvailableClusterVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableClusterVersionRequest()
+    }
+    response = NewDescribeAvailableClusterVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterAsGroupOptionRequest() (request *DescribeClusterAsGroupOptionRequest) {
     request = &DescribeClusterAsGroupOptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1243,6 +1268,31 @@ func (c *Client) DescribeRouteTableConflicts(request *DescribeRouteTableConflict
     return
 }
 
+func NewGetUpgradeInstanceProgressRequest() (request *GetUpgradeInstanceProgressRequest) {
+    request = &GetUpgradeInstanceProgressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "GetUpgradeInstanceProgress")
+    return
+}
+
+func NewGetUpgradeInstanceProgressResponse() (response *GetUpgradeInstanceProgressResponse) {
+    response = &GetUpgradeInstanceProgressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获得节点升级当前的进度 
+func (c *Client) GetUpgradeInstanceProgress(request *GetUpgradeInstanceProgressRequest) (response *GetUpgradeInstanceProgressResponse, err error) {
+    if request == nil {
+        request = NewGetUpgradeInstanceProgressRequest()
+    }
+    response = NewGetUpgradeInstanceProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterAsGroupAttributeRequest() (request *ModifyClusterAsGroupAttributeRequest) {
     request = &ModifyClusterAsGroupAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1464,6 +1514,31 @@ func (c *Client) SyncPrometheusTemplate(request *SyncPrometheusTemplateRequest) 
         request = NewSyncPrometheusTemplateRequest()
     }
     response = NewSyncPrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateClusterVersionRequest() (request *UpdateClusterVersionRequest) {
+    request = &UpdateClusterVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateClusterVersion")
+    return
+}
+
+func NewUpdateClusterVersionResponse() (response *UpdateClusterVersionResponse) {
+    response = &UpdateClusterVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 升级集群 Master 组件到指定版本
+func (c *Client) UpdateClusterVersion(request *UpdateClusterVersionRequest) (response *UpdateClusterVersionResponse, err error) {
+    if request == nil {
+        request = NewUpdateClusterVersionRequest()
+    }
+    response = NewUpdateClusterVersionResponse()
     err = c.Send(request, response)
     return
 }

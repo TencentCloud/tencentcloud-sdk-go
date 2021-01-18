@@ -393,6 +393,31 @@ func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response 
     return
 }
 
+func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequest) {
+    request = &DescribeUnbindClientListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeUnbindClientList")
+    return
+}
+
+func NewDescribeUnbindClientListResponse() (response *DescribeUnbindClientListResponse) {
+    response = &DescribeUnbindClientListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 代理商名下客户解绑记录查询接口
+func (c *Client) DescribeUnbindClientList(request *DescribeUnbindClientListRequest) (response *DescribeUnbindClientListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnbindClientListRequest()
+    }
+    response = NewDescribeUnbindClientListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClientRemarkRequest() (request *ModifyClientRemarkRequest) {
     request = &ModifyClientRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

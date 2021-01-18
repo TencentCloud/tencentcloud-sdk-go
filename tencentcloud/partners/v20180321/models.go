@@ -1003,6 +1003,64 @@ func (r *DescribeSalesmansResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUnbindClientListRequest struct {
+	*tchttp.BaseRequest
+
+	// 解绑状态：0:所有,1:审核中,2已解绑
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 解绑账号ID
+	UnbindUin *string `json:"UnbindUin,omitempty" name:"UnbindUin"`
+
+	// 解绑申请时间范围起始点
+	ApplyTimeStart *string `json:"ApplyTimeStart,omitempty" name:"ApplyTimeStart"`
+
+	// 解绑申请时间范围终止点
+	ApplyTimeEnd *string `json:"ApplyTimeEnd,omitempty" name:"ApplyTimeEnd"`
+
+	// 对申请时间的升序降序，值：asc，desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeUnbindClientListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnbindClientListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnbindClientListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的解绑客户数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 符合条件的解绑客户列表
+		UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnbindClientListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnbindClientListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyClientRemarkRequest struct {
 	*tchttp.BaseRequest
 
@@ -1102,4 +1160,24 @@ func (r *RemovePayRelationForClientResponse) ToJsonString() string {
 
 func (r *RemovePayRelationForClientResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindClientElem struct {
+
+	// 解绑账号ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 解绑/撤销时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionTime *string `json:"ActionTime,omitempty" name:"ActionTime"`
 }

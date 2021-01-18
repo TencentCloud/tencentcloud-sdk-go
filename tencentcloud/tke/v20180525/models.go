@@ -547,6 +547,15 @@ type ClusterNetworkSettings struct {
 	Cni *bool `json:"Cni,omitempty" name:"Cni"`
 }
 
+type ClusterVersion struct {
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群主版本号列表，例如1.18.4
+	Versions []*string `json:"Versions,omitempty" name:"Versions" list`
+}
+
 type CreateClusterAsGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1453,6 +1462,51 @@ func (r *DeletePrometheusTemplateSyncResponse) ToJsonString() string {
 }
 
 func (r *DeletePrometheusTemplateSyncResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAvailableClusterVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群 Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群 Id 列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+}
+
+func (r *DescribeAvailableClusterVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAvailableClusterVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAvailableClusterVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可升级的集群版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Versions []*string `json:"Versions,omitempty" name:"Versions" list`
+
+		// 集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Clusters []*ClusterVersion `json:"Clusters,omitempty" name:"Clusters" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAvailableClusterVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAvailableClusterVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2608,6 +2662,67 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
+type GetUpgradeInstanceProgressRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 最多获取多少个节点的进度
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 从第几个节点开始获取进度
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *GetUpgradeInstanceProgressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeInstanceProgressRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUpgradeInstanceProgressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 升级节点总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 已升级节点总数
+		Done *int64 `json:"Done,omitempty" name:"Done"`
+
+		// 升级任务生命周期
+	// process 运行中
+	// paused 已停止
+	// pauing 正在停止
+	// done  已完成
+	// timeout 已超时
+	// aborted 已取消
+		LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+		// 各节点升级进度详情
+		Instances []*InstanceUpgradeProgressItem `json:"Instances,omitempty" name:"Instances" list`
+
+		// 集群当前状态
+		ClusterStatus *InstanceUpgradeClusterStatus `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUpgradeInstanceProgressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUpgradeInstanceProgressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ImageInstance struct {
 
 	// 镜像别名
@@ -2713,6 +2828,78 @@ type InstanceExtraArgs struct {
 	// kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kubelet []*string `json:"Kubelet,omitempty" name:"Kubelet" list`
+}
+
+type InstanceUpgradeClusterStatus struct {
+
+	// pod总数
+	PodTotal *int64 `json:"PodTotal,omitempty" name:"PodTotal"`
+
+	// NotReady pod总数
+	NotReadyPod *int64 `json:"NotReadyPod,omitempty" name:"NotReadyPod"`
+}
+
+type InstanceUpgradePreCheckResult struct {
+
+	// 检查是否通过
+	CheckPass *bool `json:"CheckPass,omitempty" name:"CheckPass"`
+
+	// 检查项数组
+	Items []*InstanceUpgradePreCheckResultItem `json:"Items,omitempty" name:"Items" list`
+
+	// 本节点独立pod列表
+	SinglePods []*string `json:"SinglePods,omitempty" name:"SinglePods" list`
+}
+
+type InstanceUpgradePreCheckResultItem struct {
+
+	// 工作负载的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 工作负载类型
+	WorkLoadKind *string `json:"WorkLoadKind,omitempty" name:"WorkLoadKind"`
+
+	// 工作负载名称
+	WorkLoadName *string `json:"WorkLoadName,omitempty" name:"WorkLoadName"`
+
+	// 驱逐节点前工作负载running的pod数目
+	Before *uint64 `json:"Before,omitempty" name:"Before"`
+
+	// 驱逐节点后工作负载running的pod数目
+	After *uint64 `json:"After,omitempty" name:"After"`
+
+	// 工作负载在本节点上的pod列表
+	Pods []*string `json:"Pods,omitempty" name:"Pods" list`
+}
+
+type InstanceUpgradeProgressItem struct {
+
+	// 节点instanceID
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 任务生命周期
+	// process 运行中
+	// paused 已停止
+	// pauing 正在停止
+	// done  已完成
+	// timeout 已超时
+	// aborted 已取消
+	// pending 还未开始
+	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+	// 升级开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartAt *string `json:"StartAt,omitempty" name:"StartAt"`
+
+	// 升级结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndAt *string `json:"EndAt,omitempty" name:"EndAt"`
+
+	// 升级前检查结果
+	CheckResult *InstanceUpgradePreCheckResult `json:"CheckResult,omitempty" name:"CheckResult"`
+
+	// 升级步骤详情
+	Detail []*TaskStepInfo `json:"Detail,omitempty" name:"Detail" list`
 }
 
 type Label struct {
@@ -3676,6 +3863,74 @@ type Taint struct {
 
 	// Effect
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
+}
+
+type TaskStepInfo struct {
+
+	// 步骤名称
+	Step *string `json:"Step,omitempty" name:"Step"`
+
+	// 生命周期
+	// pending : 步骤未开始
+	// running: 步骤执行中
+	// success: 步骤成功完成
+	// failed: 步骤失败
+	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+	// 步骤开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartAt *string `json:"StartAt,omitempty" name:"StartAt"`
+
+	// 步骤结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndAt *string `json:"EndAt,omitempty" name:"EndAt"`
+
+	// 若步骤生命周期为failed,则此字段显示错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMsg *string `json:"FailedMsg,omitempty" name:"FailedMsg"`
+}
+
+type UpdateClusterVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群 Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要升级到的版本
+	DstVersion *string `json:"DstVersion,omitempty" name:"DstVersion"`
+
+	// 可容忍的最大不可用pod数目
+	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitempty" name:"MaxNotReadyPercent"`
+
+	// 是否跳过预检查阶段
+	SkipPreCheck *bool `json:"SkipPreCheck,omitempty" name:"SkipPreCheck"`
+}
+
+func (r *UpdateClusterVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateClusterVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateClusterVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateClusterVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateClusterVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeAbleInstancesItem struct {

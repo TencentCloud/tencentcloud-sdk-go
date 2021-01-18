@@ -36,6 +36,40 @@ type AsyncRecognitionTasks struct {
 	Tasks []*AsyncRecognitionTaskInfo `json:"Tasks,omitempty" name:"Tasks" list`
 }
 
+type CloseAsyncRecognitionTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 语音流异步识别任务的唯一标识，在创建任务时会返回
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *CloseAsyncRecognitionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloseAsyncRecognitionTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CloseAsyncRecognitionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloseAsyncRecognitionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloseAsyncRecognitionTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAsrVocabRequest struct {
 	*tchttp.BaseRequest
 

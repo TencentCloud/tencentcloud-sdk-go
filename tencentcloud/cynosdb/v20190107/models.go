@@ -161,6 +161,15 @@ type BackupFileInfo struct {
 	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
 }
 
+type BillingResourceInfo struct {
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
 type ClusterInstanceDetail struct {
 
 	// 实例ID
@@ -1313,6 +1322,43 @@ func (r *DescribeProjectSecurityGroupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesByDealNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 计费订单id
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
+func (r *DescribeResourcesByDealNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByDealNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesByDealNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 计费资源id信息数组
+		BillingResourceInfos []*BillingResourceInfo `json:"BillingResourceInfos,omitempty" name:"BillingResourceInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesByDealNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesByDealNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

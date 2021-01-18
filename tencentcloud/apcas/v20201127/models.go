@@ -239,13 +239,13 @@ func (r *PredictRatingResponse) FromJsonString(s string) error {
 type QueryCallDetailsRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求类型:1,人群特征洞察统计 2购车意向预测统计
+	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 开始时间戳（毫秒）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳(毫秒）
+	// 结束时间戳（毫秒）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 页数
@@ -288,13 +288,13 @@ func (r *QueryCallDetailsResponse) FromJsonString(s string) error {
 type QueryCallStatRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求类型:1,人群特征洞察统计 2购车意向预测统计
+	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 开始时间戳（毫秒）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳(毫秒）
+	// 结束时间戳（毫秒）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 

@@ -393,6 +393,31 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     return
 }
 
+func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNameRequest) {
+    request = &DescribeResourcesByDealNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcesByDealName")
+    return
+}
+
+func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDealNameResponse) {
+    response = &DescribeResourcesByDealNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据计费订单id查询资源列表
+func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNameRequest) (response *DescribeResourcesByDealNameResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesByDealNameRequest()
+    }
+    response = NewDescribeResourcesByDealNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRollbackTimeRangeRequest() (request *DescribeRollbackTimeRangeRequest) {
     request = &DescribeRollbackTimeRangeRequest{
         BaseRequest: &tchttp.BaseRequest{},

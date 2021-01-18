@@ -1331,6 +1331,9 @@ type DescribeBackupsRequest struct {
 
 	// 按照备份ID筛选，不填则不筛选此项
 	BackupId *uint64 `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 按照备份的库名称筛选，不填则不筛选此项
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
