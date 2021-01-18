@@ -18,11 +18,13 @@
 
 推荐使用语言自带的工具安装 SDK ：
 
-    go get github.com/tencentcloud/tencentcloud-sdk-go@latest
+    go get -v github.com/tencentcloud/tencentcloud-sdk-go@latest
 
 推荐使用腾讯云镜像加速下载：
 
     export GOPROXY=https://mirrors.tencent.com/go/
+
+注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。
 
 ## 通过源码安装
 
