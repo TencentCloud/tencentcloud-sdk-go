@@ -98,6 +98,12 @@ type AutoRewriteRequest struct {
 
 	// HTTPS:443监听器下需要重定向的域名，若不填，对HTTPS:443监听器下的所有域名都设置重定向。
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+
+	// 重定向状态码，可取值301,302,307
+	RewriteCodes []*int64 `json:"RewriteCodes,omitempty" name:"RewriteCodes" list`
+
+	// 重定向是否携带匹配的url
+	TakeUrls []*bool `json:"TakeUrls,omitempty" name:"TakeUrls" list`
 }
 
 func (r *AutoRewriteRequest) ToJsonString() string {
@@ -3808,6 +3814,15 @@ type RewriteLocationMap struct {
 
 	// 重定向至的目标转发规则ID
 	TargetLocationId *string `json:"TargetLocationId,omitempty" name:"TargetLocationId"`
+
+	// 重定向状态码，可取值301,302,307
+	RewriteCode *int64 `json:"RewriteCode,omitempty" name:"RewriteCode"`
+
+	// 重定向是否携带匹配的url，配置RewriteCode时必填
+	TakeUrl *bool `json:"TakeUrl,omitempty" name:"TakeUrl"`
+
+	// 源转发的域名，必须是SourceLocationId对应的域名，配置RewriteCode时必填
+	SourceDomain *string `json:"SourceDomain,omitempty" name:"SourceDomain"`
 }
 
 type RewriteTarget struct {
@@ -3821,6 +3836,18 @@ type RewriteTarget struct {
 	// 注意：此字段可能返回 null，表示无重定向。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetLocationId *string `json:"TargetLocationId,omitempty" name:"TargetLocationId"`
+
+	// 重定向状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteCode *int64 `json:"RewriteCode,omitempty" name:"RewriteCode"`
+
+	// 重定向是否携带匹配的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TakeUrl *bool `json:"TakeUrl,omitempty" name:"TakeUrl"`
+
+	// 重定向类型，Manual: 手动重定向，Auto:  自动重定向
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteType *string `json:"RewriteType,omitempty" name:"RewriteType"`
 }
 
 type RsWeightRule struct {

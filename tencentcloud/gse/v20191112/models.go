@@ -43,6 +43,10 @@ type Alias struct {
 
 	// 上次修改此数据对象的时间
 	LastUpdatedTime *string `json:"LastUpdatedTime,omitempty" name:"LastUpdatedTime"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type Asset struct {
@@ -85,6 +89,10 @@ type Asset struct {
 
 	// 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
 	SharingStatus *string `json:"SharingStatus,omitempty" name:"SharingStatus"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type AssetCredentials struct {
@@ -221,6 +229,9 @@ type CopyFleetRequest struct {
 
 	// 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
 	SelectedCcnType *string `json:"SelectedCcnType,omitempty" name:"SelectedCcnType"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CopyFleetRequest) ToJsonString() string {
@@ -268,6 +279,9 @@ type CreateAliasRequest struct {
 
 	// 别名的可读说明，长度不小于1字符不超过1024字符
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateAliasRequest) ToJsonString() string {
@@ -320,6 +334,9 @@ type CreateAssetRequest struct {
 
 	// 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateAssetRequest) ToJsonString() string {
@@ -457,6 +474,9 @@ type CreateFleetRequest struct {
 
 	// 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
 	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateFleetRequest) ToJsonString() string {
@@ -504,6 +524,9 @@ type CreateGameServerSessionQueueRequest struct {
 
 	// 超时时间（单位秒，默认值为600秒）
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateGameServerSessionQueueRequest) ToJsonString() string {
@@ -2139,6 +2162,10 @@ type FleetAttributes struct {
 	// 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingStatus *string `json:"BillingStatus,omitempty" name:"BillingStatus"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type FleetCapacity struct {
@@ -2422,6 +2449,10 @@ type GameServerSessionQueue struct {
 
 	// 超时时间
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type GameServerSessionQueueDestination struct {
@@ -3591,6 +3622,15 @@ func (r *StopGameServerSessionPlacementResponse) ToJsonString() string {
 
 func (r *StopGameServerSessionPlacementResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键，最大长度127字节
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值，最大长度255字节
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TargetConfiguration struct {

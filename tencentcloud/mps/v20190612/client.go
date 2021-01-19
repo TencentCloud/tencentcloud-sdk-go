@@ -1655,6 +1655,31 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
     return
 }
 
+func NewRecognizeMediaForZhiXueRequest() (request *RecognizeMediaForZhiXueRequest) {
+    request = &RecognizeMediaForZhiXueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mps", APIVersion, "RecognizeMediaForZhiXue")
+    return
+}
+
+func NewRecognizeMediaForZhiXueResponse() (response *RecognizeMediaForZhiXueResponse) {
+    response = &RecognizeMediaForZhiXueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
+func (c *Client) RecognizeMediaForZhiXue(request *RecognizeMediaForZhiXueRequest) (response *RecognizeMediaForZhiXueResponse, err error) {
+    if request == nil {
+        request = NewRecognizeMediaForZhiXueRequest()
+    }
+    response = NewRecognizeMediaForZhiXueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetWorkflowRequest() (request *ResetWorkflowRequest) {
     request = &ResetWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},

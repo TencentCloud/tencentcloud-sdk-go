@@ -113,7 +113,7 @@ type AudioStreamInfo struct {
 
 type AudioTrackItem struct {
 
-	// 音频素材来源类型，取值有：
+	// 音频媒体来源类型，取值有：
 	// <ul>
 	// <li>VOD ：素材来源于云点播文件 ；</li>
 	// <li>CME ：视频来源于制作云媒体文件 ；</li>
@@ -121,18 +121,18 @@ type AudioTrackItem struct {
 	// </ul>
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 音频片段的媒体素材来源，可以是：
+	// 音频片段的媒体来源，可以是：
 	// <ul>
-	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 ID ；</li>
-	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID；</li>
+	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 FileId ，会默认将该 FileId 导入到项目中 ；</li>
+	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
 	// <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
 	// </ul>
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
-	// 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
+	// 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。
 	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
 
-	// 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
+	// 音频片段的时长，单位为秒。默认和媒体本身长度一致，表示截取全部媒体。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 }
 
@@ -162,22 +162,22 @@ type Authorizer struct {
 
 type CMEExportInfo struct {
 
-	// 导出的归属者。
+	// 导出媒体归属，个人或团队。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
-	// 导出的素材名称，不得超过30个字符。
+	// 导出的媒体名称，不得超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 导出的素材信息，不得超过50个字符。
+	// 导出的媒体信息，不得超过50个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 导出的素材分类路径，长度不能超过15字符。
+	// 导出的媒体分类路径，长度不能超过15字符。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 导出的素材标签，单个标签不得超过10个字符。
+	// 导出的媒体标签，单个标签不得超过10个字符。
 	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
 
-	// 第三方平台发布信息列表。
+	// 第三方平台发布信息列表。暂未正式对外，请勿使用。
 	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
 }
 
@@ -241,17 +241,17 @@ type CreateLinkRequest struct {
 
 	// 链接类型，取值有:
 	// <li>CLASS: 分类链接；</li>
-	// <li> MATERIAL：素材链接。</li>
+	// <li> MATERIAL：媒体文件链接。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 链接名称，不能超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 链接归属实体。
+	// 链接归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 目标资源Id。取值：
-	// <li>当 Type 为 MATERIAL 时填素材 ID；</li>
+	// <li>当 Type 为 MATERIAL 时填媒体 ID；</li>
 	// <li>当 Type 为 CLASS 时填写分类路径。</li>
 	DestinationId *string `json:"DestinationId,omitempty" name:"DestinationId"`
 
@@ -278,7 +278,7 @@ type CreateLinkResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 新建链接的素材 Id。
+		// 新建链接的媒体 Id。
 		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -310,13 +310,14 @@ type CreateProjectRequest struct {
 	// 项目名称，不可超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 项目归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
 	// 画布宽高比，取值有：
 	// <li>16:9；</li>
 	// <li>9:16。</li>
+	// 该字段即将废弃，当项目类型为 VIDEO_EDIT 时，请在 VideoEditProjectInput 信息中填写该值；当项目类型为 VIDEO_SEGMENTATION 时，请在VideoSegmentationProjectInput 中填写该值。其他项目类型可不填。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
-
-	// 归属者。
-	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 项目描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -1313,7 +1314,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
 	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验导出操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1429,15 +1430,18 @@ type ExportVideoEditProjectRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 导出目标。
-	// <li>CME：云剪，即导出为云剪素材；</li>
+	// <li>CME：云剪，即导出为云剪媒体；</li>
 	// <li>VOD：云点播，即导出为云点播媒资。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
-	// 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
+	// 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
 	// 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
 	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ExportVideoEditProjectRequest) ToJsonString() string {
@@ -1699,10 +1703,10 @@ type ImportMaterialResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 素材 Id。
+		// 媒体 Id。
 		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-		// 素材预处理任务 ID，如果未指定发起预处理任务则为空。
+		// 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
 		PreProcessTaskId *string `json:"PreProcessTaskId,omitempty" name:"PreProcessTaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1734,7 +1738,7 @@ type ImportMediaToProjectRequest struct {
 	// 注意：如果不填默认为云点播文件。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 云点播媒资文件Id，当 SourceType 取值 VOD 或者缺省的时候必填。
+	// 云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 
 	// 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
@@ -1747,6 +1751,9 @@ type ImportMediaToProjectRequest struct {
 	// <li>10：进行编辑预处理。</li>
 	// 注意：如果填0则不进行处理。
 	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验项目和媒体文件访问权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ImportMediaToProjectRequest) ToJsonString() string {
@@ -1762,10 +1769,10 @@ type ImportMediaToProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 素材 Id。
+		// 媒体 Id。
 		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-		// 素材预处理任务 ID，如果未指定发起预处理任务则为空。
+		// 媒体预处理任务 ID，如果未指定发起预处理任务则为空。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2335,7 +2342,7 @@ type PenguinMediaPlatformPublishInfo struct {
 	// 视频标签。
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 
-	// 视频分类，详见企鹅号官网视频分类。
+	// 视频分类，详见[企鹅号官网](https://open.om.qq.com/resources/resourcesCenter)视频分类。
 	Category *int64 `json:"Category,omitempty" name:"Category"`
 }
 
@@ -2553,25 +2560,25 @@ type SwitcherPgmOutputConfig struct {
 	// <li>10003：分辨率为480 P。</li>
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 导播台输出宽。
+	// 导播台输出宽，单位：像素。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
-	// 导播台输出高。
+	// 导播台输出高，单位：像素。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
-	// 导播台输出帧率。
+	// 导播台输出帧率，单位：帧/秒
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 导播台输出码率。
+	// 导播台输出码率， 单位：bit/s。
 	BitRate *uint64 `json:"BitRate,omitempty" name:"BitRate"`
 }
 
 type SwitcherProjectInput struct {
 
-	// 导播台停止时间。
+	// 导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。
 	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
 
-	// 导播台主监输出配置信息。
+	// 导播台主监输出配置信息。若不填，默认输出 720P。
 	PgmOutputConfig *SwitcherPgmOutputConfig `json:"PgmOutputConfig,omitempty" name:"PgmOutputConfig"`
 }
 
@@ -2670,16 +2677,16 @@ type VODExportInfo struct {
 	// 导出的媒资分类 Id。
 	ClassId *uint64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 第三方平台发布信息列表。
+	// 第三方平台发布信息列表。暂未正式对外，请勿使用。
 	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
 }
 
 type VideoEditProjectInput struct {
 
-	// 视频编辑模板 ID ，通过模板导入项目时填写。
+	// 视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。
 	VideoEditTemplateId *string `json:"VideoEditTemplateId,omitempty" name:"VideoEditTemplateId"`
 
-	// 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+	// 输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
 	// 注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
 	InitTracks []*MediaTrack `json:"InitTracks,omitempty" name:"InitTracks" list`
 }
@@ -2760,26 +2767,26 @@ type VideoStreamInfo struct {
 
 type VideoTrackItem struct {
 
-	// 视频素材来源类型，取值有：
+	// 视频媒体来源类型，取值有：
 	// <ul>
-	// <li>VOD ：素材来源于云点播文件 。</li>
+	// <li>VOD ：媒体来源于云点播文件 。</li>
 	// <li>CME ：视频来源制作云媒体文件。</li>
 	// <li>EXTERNAL ：视频来源于媒资绑定。</li>
 	// </ul>
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 视频片段的媒体素材来源，取值为：
+	// 视频片段的媒体文件来源，取值为：
 	// <ul>
-	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 ID；</li>
-	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID；</li>
+	// <li>当 SourceType 为 VOD 时，为云点播的媒体文件 FileId ，会默认将该 FileId 导入到项目中；</li>
+	// <li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
 	// <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
 	// </ul>
 	SourceMedia *string `json:"SourceMedia,omitempty" name:"SourceMedia"`
 
-	// 视频片段取自素材文件的起始时间，单位为秒。默认为0。
+	// 视频片段取自媒体文件的起始时间，单位为秒。默认为0。
 	SourceMediaStartTime *float64 `json:"SourceMediaStartTime,omitempty" name:"SourceMediaStartTime"`
 
-	// 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
+	// 视频片段时长，单位为秒。默认取视频媒体文件本身长度，表示截取全部媒体文件。如果源文件是图片，Duration需要大于0。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
@@ -2802,7 +2809,7 @@ type VideoTrackItem struct {
 	// 视频片段的高度。支持 %、px 两种格式：
 	// <li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；</li>
 	// <li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素；</li>
-	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height；</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
 	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Height *string `json:"Height,omitempty" name:"Height"`
@@ -2810,7 +2817,7 @@ type VideoTrackItem struct {
 	// 视频片段的宽度。支持 %、px 两种格式：
 	// <li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%；</li>
 	// <li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素；</li>
-	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height；</li>
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取视频媒体文件本身的 Width、Height；</li>
 	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Width *string `json:"Width,omitempty" name:"Width"`

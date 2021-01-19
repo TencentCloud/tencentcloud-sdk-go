@@ -87,6 +87,14 @@ type AIRecognitionTemplateItem struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ActionConfigInfo struct {
+
+	// 动作识别任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type AdaptiveDynamicStreamingInfoItem struct {
 
 	// 转自适应码流规格。
@@ -3973,6 +3981,14 @@ func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExpressionConfigInfo struct {
+
+	// 表情识别任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type FaceConfigureInfo struct {
 
 	// 人脸识别任务开关，可选值：
@@ -6707,6 +6723,49 @@ type RawWatermarkParameter struct {
 
 	// 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
 	ImageTemplate *RawImageWatermarkInput `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
+}
+
+type RecognizeMediaForZhiXueRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入媒体文件存储信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 表情识别参数配置。默认开启。
+	ExpressionConfig *ExpressionConfigInfo `json:"ExpressionConfig,omitempty" name:"ExpressionConfig"`
+
+	// 动作识别参数配置。默认开启。
+	ActionConfig *ActionConfigInfo `json:"ActionConfig,omitempty" name:"ActionConfig"`
+}
+
+func (r *RecognizeMediaForZhiXueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeMediaForZhiXueRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeMediaForZhiXueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 ID，可以通过该 ID 查询任务状态和结果。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeMediaForZhiXueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RecognizeMediaForZhiXueResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetWorkflowRequest struct {

@@ -2780,6 +2780,31 @@ func (c *Client) StopRollback(request *StopRollbackRequest) (response *StopRollb
     return
 }
 
+func NewSwitchDBInstanceMasterSlaveRequest() (request *SwitchDBInstanceMasterSlaveRequest) {
+    request = &SwitchDBInstanceMasterSlaveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "SwitchDBInstanceMasterSlave")
+    return
+}
+
+func NewSwitchDBInstanceMasterSlaveResponse() (response *SwitchDBInstanceMasterSlaveResponse) {
+    response = &SwitchDBInstanceMasterSlaveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口 (SwitchDBInstanceMasterSlave) 支持用户主动切换实例主从角色。
+func (c *Client) SwitchDBInstanceMasterSlave(request *SwitchDBInstanceMasterSlaveRequest) (response *SwitchDBInstanceMasterSlaveResponse, err error) {
+    if request == nil {
+        request = NewSwitchDBInstanceMasterSlaveRequest()
+    }
+    response = NewSwitchDBInstanceMasterSlaveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchForUpgradeRequest() (request *SwitchForUpgradeRequest) {
     request = &SwitchForUpgradeRequest{
         BaseRequest: &tchttp.BaseRequest{},

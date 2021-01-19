@@ -1437,7 +1437,7 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 	// 用户侧BGP，Asn，AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
 
-	// 用户侧网段地址
+	// 用户侧过滤网段地址
 	RouteFilterPrefixes *RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
 
 	// 腾讯侧互联IP
@@ -1470,6 +1470,9 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 	// 0：停用IPv6
 	// 1: 启用IPv6
 	IPv6Enable *int64 `json:"IPv6Enable,omitempty" name:"IPv6Enable"`
+
+	// 去往用户侧的路由信息
+	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitempty" name:"CustomerIDCRoutes" list`
 }
 
 func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
