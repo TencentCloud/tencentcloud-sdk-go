@@ -1,179 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 正版图库直通车(ape) 版本：2020-05-13
-
-### 第 2 次发布
-
-发布时间：2021-01-19 08:00:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeImages](https://cloud.tencent.com/document/api/1181/49687)
-
-	* 新增入参：LayeredGalleryIds
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 54 次发布
-
-发布时间：2021-01-19 08:03:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SwitchDBInstanceMasterSlave](https://cloud.tencent.com/document/api/236/52171)
-
-
-
 ## 负载均衡(clb) 版本：2018-03-17
 
-### 第 41 次发布
+### 第 42 次发布
 
-发布时间：2021-01-19 08:04:00
+发布时间：2021-01-20 08:03:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [AutoRewrite](https://cloud.tencent.com/document/api/214/34901)
-
-	* 新增入参：RewriteCodes, TakeUrls
-
 
 修改数据结构：
 
-* [RewriteLocationMap](https://cloud.tencent.com/document/api/214/30694#RewriteLocationMap)
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
 
-	* 新增成员：RewriteCode, TakeUrl, SourceDomain
+	* 新增成员：NfvInfo
 
-* [RewriteTarget](https://cloud.tencent.com/document/api/214/30694#RewriteTarget)
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
 
-	* 新增成员：RewriteCode, TakeUrl, RewriteType
-
-
+	* 新增成员：SecurityGroup, LoadBalancerPassToTarget
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
 
 ### 第 20 次发布
 
-发布时间：2021-01-19 08:01:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
-
-	* <font color="#dd0000">**修改入参**：</font>AspectRatio
-
-* [ExportVideoEditProject](https://cloud.tencent.com/document/api/1156/40353)
-
-	* 新增入参：Operator
-
-* [ImportMediaToProject](https://cloud.tencent.com/document/api/1156/40352)
-
-	* 新增入参：Operator
-
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 15 次发布
-
-发布时间：2021-01-19 08:04:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
-
-	* 新增入参：CustomerIDCRoutes
-
-
-
-
-## 游戏服务器引擎(gse) 版本：2019-11-12
-
-### 第 15 次发布
-
-发布时间：2021-01-19 08:01:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CopyFleet](https://cloud.tencent.com/document/api/1165/50917)
-
-	* 新增入参：Tags
-
-* [CreateAlias](https://cloud.tencent.com/document/api/1165/48755)
-
-	* 新增入参：Tags
-
-* [CreateAsset](https://cloud.tencent.com/document/api/1165/48731)
-
-	* 新增入参：Tags
-
-* [CreateFleet](https://cloud.tencent.com/document/api/1165/48938)
-
-	* 新增入参：Tags
-
-* [CreateGameServerSessionQueue](https://cloud.tencent.com/document/api/1165/48937)
-
-	* 新增入参：Tags
-
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/1165/42074#Tag)
-
-修改数据结构：
-
-* [Alias](https://cloud.tencent.com/document/api/1165/42074#Alias)
-
-	* 新增成员：Tags
-
-* [Asset](https://cloud.tencent.com/document/api/1165/42074#Asset)
-
-	* 新增成员：Tags
-
-* [FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)
-
-	* 新增成员：Tags
-
-* [GameServerSessionQueue](https://cloud.tencent.com/document/api/1165/42074#GameServerSessionQueue)
-
-	* 新增成员：Tags
-
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 29 次发布
-
-发布时间：2021-01-19 08:06:50
+发布时间：2021-01-20 08:09:15
 
 本次发布包含了以下内容：
 
@@ -181,49 +35,191 @@
 
 新增接口：
 
-* [RecognizeMediaForZhiXue](https://cloud.tencent.com/document/api/862/52172)
-
-新增数据结构：
-
-* [ActionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ActionConfigInfo)
-* [ExpressionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ExpressionConfigInfo)
+* [CheckInstanceName](https://cloud.tencent.com/document/api/1141/52212)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 分布式消息队列(tdmq) 版本：2020-02-17
 
-### 第 32 次发布
+### 第 3 次发布
 
-发布时间：2021-01-19 08:08:07
+发布时间：2021-01-19 15:48:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1179/52193)
+* [DeleteCluster](https://cloud.tencent.com/document/api/1179/52185)
+* [DescribeBindClusters](https://cloud.tencent.com/document/api/1179/52191)
+* [DescribeBindVpcs](https://cloud.tencent.com/document/api/1179/52187)
+* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1179/52184)
+* [DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)
+* [ModifyCluster](https://cloud.tencent.com/document/api/1179/52189)
+
 修改接口：
 
-* [DescribeQuotaData](https://cloud.tencent.com/document/api/876/42145)
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
 
-	* 新增出参：SubValue
+	* 新增入参：ClusterId
+
+	* 新增出参：NamespaceId
+
+* [CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)
+
+	* 新增入参：ClusterId, AutoCreatePolicyTopic
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：ClusterId
+
+* [DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)
+
+	* 新增入参：ClusterId
+
+* [DeleteSubscriptions](https://cloud.tencent.com/document/api/1179/46074)
+
+	* 新增入参：ClusterId, EnvironmentId
+
+* [DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)
+
+	* 新增入参：ClusterId, EnvironmentId
+
+* [DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)
+
+	* 新增入参：ClusterId
+
+* [DescribeEnvironmentRoles](https://cloud.tencent.com/document/api/1179/49051)
+
+	* 新增入参：ClusterId, RoleName
+
+	* <font color="#dd0000">**修改入参**：</font>EnvironmentId
+
+* [DescribeProducers](https://cloud.tencent.com/document/api/1179/46073)
+
+	* 新增入参：ClusterId
+
+* [DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)
+
+	* 新增入参：ClusterId
+
+* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
+
+	* 新增入参：ClusterId
+
+* [ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：NamespaceId
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
+
+	* 新增入参：ClusterId
+
+* [ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)
+
+	* 新增入参：ClusterId
+
+
+新增数据结构：
+
+* [BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster)
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+* [Tag](https://cloud.tencent.com/document/api/1179/46089#Tag)
+* [VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord)
+
+修改数据结构：
+
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+
+	* 新增成员：NamespaceId, NamespaceName
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 41 次发布
+
+发布时间：2021-01-20 08:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePathRewrites](https://cloud.tencent.com/document/api/649/52211)
+* [DeletePathRewrites](https://cloud.tencent.com/document/api/649/52210)
+* [DescribePathRewrite](https://cloud.tencent.com/document/api/649/52209)
+* [DescribePathRewrites](https://cloud.tencent.com/document/api/649/52208)
+* [ModifyPathRewrite](https://cloud.tencent.com/document/api/649/52207)
+
+修改接口：
+
+* [AddClusterInstances](https://cloud.tencent.com/document/api/649/41225)
+
+	* 新增入参：InstanceAdvancedSettings, SecurityGroupIds
+
+* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
+
+	* 新增入参：ProgramId
+
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+
+	* 新增入参：MaxNodePodNum, MaxClusterServiceNum, ProgramId
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：ProgramId
+
+
+新增数据结构：
+
+* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings)
+* [PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite)
+* [PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject)
+* [PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage)
+
+修改数据结构：
+
+* [AddInstanceResult](https://cloud.tencent.com/document/api/649/36099#AddInstanceResult)
+
+	* 新增成员：FailedReasons
+
+* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
+
+	* 新增成员：Description
+
+* [ApplicationForPage](https://cloud.tencent.com/document/api/649/36099#ApplicationForPage)
+
+	* 新增成员：ApplicationRemarkName
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 76 次发布
+### 第 77 次发布
 
-发布时间：2021-01-19 08:08:57
+发布时间：2021-01-20 08:07:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [VpnConnection](https://cloud.tencent.com/document/api/215/15824#VpnConnection)
+* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
 
-	* 新增成员：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp, HealthCheckStatus
+	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
+
+* [ModifyVpnConnectionAttribute](https://cloud.tencent.com/document/api/215/17508)
+
+	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
 
 
 
@@ -6153,7 +6149,7 @@
 
 新增接口：
 
-* [[SwitchDBInstanceMasterSlave](https://cloud.tencent.com/document/api/236/52171)](https://cloud.tencent.com/document/api/#/#)
+* [SwitchDBInstanceMasterSlave](https://cloud.tencent.com/document/api/236/52171)
 
 ### 第 53 次发布
 
@@ -9417,6 +9413,25 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 42 次发布
+
+发布时间：2021-01-20 08:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：NfvInfo
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：SecurityGroup, LoadBalancerPassToTarget
+
 
 ### 第 41 次发布
 
@@ -20031,7 +20046,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/1165/42074#Tag)](https://cloud.tencent.com/document/api/1165/42074#[Tag](https://cloud.tencent.com/document/api/1165/42074#Tag))
+* [Tag](https://cloud.tencent.com/document/api/1165/42074#Tag)
 
 修改数据结构：
 
@@ -26264,12 +26279,12 @@
 
 新增接口：
 
-* [[RecognizeMediaForZhiXue](https://cloud.tencent.com/document/api/862/52172)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeMediaForZhiXue](https://cloud.tencent.com/document/api/862/52172)
 
 新增数据结构：
 
-* [[ActionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ActionConfigInfo)](https://cloud.tencent.com/document/api/862/37615#[ActionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ActionConfigInfo))
-* [[ExpressionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ExpressionConfigInfo)](https://cloud.tencent.com/document/api/862/37615#[ExpressionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ExpressionConfigInfo))
+* [ActionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ActionConfigInfo)
+* [ExpressionConfigInfo](https://cloud.tencent.com/document/api/862/37615#ExpressionConfigInfo)
 
 ### 第 28 次发布
 
@@ -34141,6 +34156,18 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 20 次发布
+
+发布时间：2021-01-20 08:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckInstanceName](https://cloud.tencent.com/document/api/1141/52212)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 19 次发布
 
 发布时间：2021-01-07 08:10:20
@@ -34546,6 +34573,103 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 3 次发布
+
+发布时间：2021-01-19 15:48:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCluster](https://cloud.tencent.com/document/api/1179/52193)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCluster](https://cloud.tencent.com/document/api/1179/52185)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBindClusters](https://cloud.tencent.com/document/api/1179/52191)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBindVpcs](https://cloud.tencent.com/document/api/1179/52187)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterDetail](https://cloud.tencent.com/document/api/1179/52184)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCluster](https://cloud.tencent.com/document/api/1179/52189)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：NamespaceId
+
+* [CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)
+
+	* 新增入参：ClusterId, AutoCreatePolicyTopic
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：ClusterId
+
+* [DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)
+
+	* 新增入参：ClusterId
+
+* [DeleteSubscriptions](https://cloud.tencent.com/document/api/1179/46074)
+
+	* 新增入参：ClusterId, EnvironmentId
+
+* [DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)
+
+	* 新增入参：ClusterId, EnvironmentId
+
+* [DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)
+
+	* 新增入参：ClusterId
+
+* [DescribeEnvironmentRoles](https://cloud.tencent.com/document/api/1179/49051)
+
+	* 新增入参：ClusterId, RoleName
+
+	* <font color="#dd0000">**修改入参**：</font>EnvironmentId
+
+* [DescribeProducers](https://cloud.tencent.com/document/api/1179/46073)
+
+	* 新增入参：ClusterId
+
+* [DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)
+
+	* 新增入参：ClusterId
+
+* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
+
+	* 新增入参：ClusterId
+
+* [ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：NamespaceId
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
+
+	* 新增入参：ClusterId
+
+* [ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)
+
+	* 新增入参：ClusterId
+
+
+新增数据结构：
+
+* [[BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster)](https://cloud.tencent.com/document/api/1179/46089#[BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster))
+* [[Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)](https://cloud.tencent.com/document/api/1179/46089#[Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster))
+* [[Tag](https://cloud.tencent.com/document/api/1179/46089#Tag)](https://cloud.tencent.com/document/api/1179/46089#[Tag](https://cloud.tencent.com/document/api/1179/46089#Tag))
+* [[VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord)](https://cloud.tencent.com/document/api/1179/46089#[VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord))
+
+修改数据结构：
+
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+
+	* 新增成员：NamespaceId, NamespaceName
+
 
 ### 第 2 次发布
 
@@ -37364,6 +37488,63 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 41 次发布
+
+发布时间：2021-01-20 08:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePathRewrites](https://cloud.tencent.com/document/api/649/52211)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePathRewrites](https://cloud.tencent.com/document/api/649/52210)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePathRewrite](https://cloud.tencent.com/document/api/649/52209)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePathRewrites](https://cloud.tencent.com/document/api/649/52208)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPathRewrite](https://cloud.tencent.com/document/api/649/52207)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [AddClusterInstances](https://cloud.tencent.com/document/api/649/41225)
+
+	* 新增入参：InstanceAdvancedSettings, SecurityGroupIds
+
+* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
+
+	* 新增入参：ProgramId
+
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+
+	* 新增入参：MaxNodePodNum, MaxClusterServiceNum, ProgramId
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：ProgramId
+
+
+新增数据结构：
+
+* [[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings)](https://cloud.tencent.com/document/api/649/36099#[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings))
+* [[PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite)](https://cloud.tencent.com/document/api/649/36099#[PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite))
+* [[PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject)](https://cloud.tencent.com/document/api/649/36099#[PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject))
+* [[PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage)](https://cloud.tencent.com/document/api/649/36099#[PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage))
+
+修改数据结构：
+
+* [AddInstanceResult](https://cloud.tencent.com/document/api/649/36099#AddInstanceResult)
+
+	* 新增成员：FailedReasons
+
+* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
+
+	* 新增成员：Description
+
+* [ApplicationForPage](https://cloud.tencent.com/document/api/649/36099#ApplicationForPage)
+
+	* 新增成员：ApplicationRemarkName
+
 
 ### 第 40 次发布
 
@@ -40903,6 +41084,25 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 77 次发布
+
+发布时间：2021-01-20 08:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+
+	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
+
+* [ModifyVpnConnectionAttribute](https://cloud.tencent.com/document/api/215/17508)
+
+	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
+
 
 ### 第 76 次发布
 

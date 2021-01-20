@@ -2881,6 +2881,10 @@ type LoadBalancer struct {
 	// 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+
+	// CLB是否为NFV，空：不是，l7nfv：七层是NFV。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NfvInfo *string `json:"NfvInfo,omitempty" name:"NfvInfo"`
 }
 
 type LoadBalancerDetail struct {
@@ -3004,6 +3008,14 @@ type LoadBalancerDetail struct {
 	// 0：表示未被隔离，1：表示被隔离。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isolation *uint64 `json:"Isolation,omitempty" name:"Isolation"`
+
+	// 负载均衡绑定的安全组列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+
+	// 负载均衡安全组上移特性是否开启标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerPassToTarget *uint64 `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 }
 
 type LoadBalancerHealth struct {

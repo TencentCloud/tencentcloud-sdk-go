@@ -137,6 +137,43 @@ func (r *BatchDeleteRepositoryPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckInstanceNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 待创建的实例名称
+	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
+}
+
+func (r *CheckInstanceNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckInstanceNameRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckInstanceNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检查结果，true为合法，false为非法
+		IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckInstanceNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CheckInstanceNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
 

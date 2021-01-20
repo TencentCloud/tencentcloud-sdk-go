@@ -493,6 +493,31 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
     return
 }
 
+func NewCreatePathRewritesRequest() (request *CreatePathRewritesRequest) {
+    request = &CreatePathRewritesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreatePathRewrites")
+    return
+}
+
+func NewCreatePathRewritesResponse() (response *CreatePathRewritesResponse) {
+    response = &CreatePathRewritesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建路径重写
+func (c *Client) CreatePathRewrites(request *CreatePathRewritesRequest) (response *CreatePathRewritesResponse, err error) {
+    if request == nil {
+        request = NewCreatePathRewritesRequest()
+    }
+    response = NewCreatePathRewritesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
     request = &CreatePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -839,6 +864,31 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
         request = NewDeleteNamespaceRequest()
     }
     response = NewDeleteNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePathRewritesRequest() (request *DeletePathRewritesRequest) {
+    request = &DeletePathRewritesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeletePathRewrites")
+    return
+}
+
+func NewDeletePathRewritesResponse() (response *DeletePathRewritesResponse) {
+    response = &DeletePathRewritesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除路径重写
+func (c *Client) DeletePathRewrites(request *DeletePathRewritesRequest) (response *DeletePathRewritesResponse, err error) {
+    if request == nil {
+        request = NewDeletePathRewritesRequest()
+    }
+    response = NewDeletePathRewritesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1945,6 +1995,56 @@ func (c *Client) DescribeMsApiList(request *DescribeMsApiListRequest) (response 
     return
 }
 
+func NewDescribePathRewriteRequest() (request *DescribePathRewriteRequest) {
+    request = &DescribePathRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePathRewrite")
+    return
+}
+
+func NewDescribePathRewriteResponse() (response *DescribePathRewriteResponse) {
+    response = &DescribePathRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询路径重写
+func (c *Client) DescribePathRewrite(request *DescribePathRewriteRequest) (response *DescribePathRewriteResponse, err error) {
+    if request == nil {
+        request = NewDescribePathRewriteRequest()
+    }
+    response = NewDescribePathRewriteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePathRewritesRequest() (request *DescribePathRewritesRequest) {
+    request = &DescribePathRewritesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePathRewrites")
+    return
+}
+
+func NewDescribePathRewritesResponse() (response *DescribePathRewritesResponse) {
+    response = &DescribePathRewritesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询路径重写列表
+func (c *Client) DescribePathRewrites(request *DescribePathRewritesRequest) (response *DescribePathRewritesResponse, err error) {
+    if request == nil {
+        request = NewDescribePathRewritesRequest()
+    }
+    response = NewDescribePathRewritesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePkgsRequest() (request *DescribePkgsRequest) {
     request = &DescribePkgsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2717,6 +2817,31 @@ func (c *Client) ModifyMicroservice(request *ModifyMicroserviceRequest) (respons
         request = NewModifyMicroserviceRequest()
     }
     response = NewModifyMicroserviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPathRewriteRequest() (request *ModifyPathRewriteRequest) {
+    request = &ModifyPathRewriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyPathRewrite")
+    return
+}
+
+func NewModifyPathRewriteResponse() (response *ModifyPathRewriteResponse) {
+    response = &ModifyPathRewriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改路径重写
+func (c *Client) ModifyPathRewrite(request *ModifyPathRewriteRequest) (response *ModifyPathRewriteResponse, err error) {
+    if request == nil {
+        request = NewModifyPathRewriteRequest()
+    }
+    response = NewModifyPathRewriteResponse()
     err = c.Send(request, response)
     return
 }

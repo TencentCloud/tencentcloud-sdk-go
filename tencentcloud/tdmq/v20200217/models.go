@@ -20,6 +20,55 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BindCluster struct {
+
+	// 物理集群的名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
+type Cluster struct {
+
+	// 集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 说明信息。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 接入点数量
+	EndPointNum *int64 `json:"EndPointNum,omitempty" name:"EndPointNum"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群是否健康，1表示健康，0表示异常
+	Healthy *int64 `json:"Healthy,omitempty" name:"Healthy"`
+
+	// 集群健康信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthyInfo *string `json:"HealthyInfo,omitempty" name:"HealthyInfo"`
+
+	// 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 最大命名空间数量
+	MaxNamespaceNum *int64 `json:"MaxNamespaceNum,omitempty" name:"MaxNamespaceNum"`
+
+	// 最大Topic数量
+	MaxTopicNum *int64 `json:"MaxTopicNum,omitempty" name:"MaxTopicNum"`
+
+	// 最大QPS
+	MaxQps *int64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 消息保留时间
+	MessageRetentionTime *int64 `json:"MessageRetentionTime,omitempty" name:"MessageRetentionTime"`
+
+	// 最大存储容量
+	MaxStorageCapacity *int64 `json:"MaxStorageCapacity,omitempty" name:"MaxStorageCapacity"`
+}
+
 type Connection struct {
 
 	// 生产者地址。
@@ -95,6 +144,52 @@ type ConsumersSchedule struct {
 	MsgRateExpired *string `json:"MsgRateExpired,omitempty" name:"MsgRateExpired"`
 }
 
+type CreateClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
+	BindClusterId *uint64 `json:"BindClusterId,omitempty" name:"BindClusterId"`
+
+	// 说明，128个字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 集群的标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *CreateClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateEnvironmentRequest struct {
 	*tchttp.BaseRequest
 
@@ -106,6 +201,9 @@ type CreateEnvironmentRequest struct {
 
 	// 说明，128个字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -121,7 +219,7 @@ type CreateEnvironmentResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 环境（命名空间）名称。
+		// 命名空间名称。
 		EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
 		// 未消费消息过期时间，单位：秒。
@@ -130,6 +228,9 @@ type CreateEnvironmentResponse struct {
 		// 说明，128个字符以内。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+		// 命名空间ID
+		NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -162,6 +263,12 @@ type CreateSubscriptionRequest struct {
 
 	// 备注，128个字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
+	AutoCreatePolicyTopic *bool `json:"AutoCreatePolicyTopic,omitempty" name:"AutoCreatePolicyTopic"`
 }
 
 func (r *CreateSubscriptionRequest) ToJsonString() string {
@@ -216,6 +323,9 @@ type CreateTopicRequest struct {
 
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -267,11 +377,51 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群Id，传入需要删除的集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群的ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 
 	// 环境（命名空间）数组，每次最多删除20个。
 	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds" list`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DeleteEnvironmentsRequest) ToJsonString() string {
@@ -309,6 +459,12 @@ type DeleteSubscriptionsRequest struct {
 
 	// 订阅关系集合，每次最多删除20个。
 	SubscriptionTopicSets []*SubscriptionTopic `json:"SubscriptionTopicSets,omitempty" name:"SubscriptionTopicSets" list`
+
+	// pulsar集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
 func (r *DeleteSubscriptionsRequest) ToJsonString() string {
@@ -346,6 +502,12 @@ type DeleteTopicsRequest struct {
 
 	// 主题集合，每次最多删除20个。
 	TopicSets []*TopicRecord `json:"TopicSets,omitempty" name:"TopicSets" list`
+
+	// pulsar集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
 func (r *DeleteTopicsRequest) ToJsonString() string {
@@ -378,11 +540,177 @@ func (r *DeleteTopicsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBindClustersRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeBindClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindClustersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 专享集群的数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 专享集群的列表
+		ClusterSet []*BindCluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBindClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindClustersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindVpcsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeBindVpcsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindVpcsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindVpcsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// Vpc集合。
+		VpcSets []*VpcBindRecord `json:"VpcSets,omitempty" name:"VpcSets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBindVpcsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBindVpcsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群的详细信息
+		ClusterSet *Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClustersRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始下标，不填默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认为10，最大值为20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClustersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群列表数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群信息列表
+		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClustersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvironmentAttributesRequest struct {
 	*tchttp.BaseRequest
 
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeEnvironmentAttributesRequest) ToJsonString() string {
@@ -447,6 +775,12 @@ type DescribeEnvironmentRolesRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
 func (r *DescribeEnvironmentRolesRequest) ToJsonString() string {
@@ -545,6 +879,9 @@ type DescribeProducersRequest struct {
 
 	// 生产者名称，模糊匹配。
 	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeProducersRequest) ToJsonString() string {
@@ -600,6 +937,9 @@ type DescribeSubscriptionsRequest struct {
 
 	// 数据过滤条件。
 	Filters []*FilterSubscription `json:"Filters,omitempty" name:"Filters" list`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeSubscriptionsRequest) ToJsonString() string {
@@ -658,6 +998,9 @@ type DescribeTopicsRequest struct {
 	// 4：死信队列；
 	// 5：事务消息。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeTopicsRequest) ToJsonString() string {
@@ -695,7 +1038,7 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 
 type Environment struct {
 
-	// 环境（命名空间）名称
+	// 命名空间名称
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
 	// 说明
@@ -709,6 +1052,12 @@ type Environment struct {
 
 	// 最近修改时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 }
 
 type EnvironmentRole struct {
@@ -744,6 +1093,49 @@ type FilterSubscription struct {
 	ConsumerHasExpired *bool `json:"ConsumerHasExpired,omitempty" name:"ConsumerHasExpired"`
 }
 
+type ModifyClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群Id，需要更新的集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 更新后的集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 说明信息。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群的ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyEnvironmentAttributesRequest struct {
 	*tchttp.BaseRequest
 
@@ -755,6 +1147,9 @@ type ModifyEnvironmentAttributesRequest struct {
 
 	// 备注，字符串最长不超过128。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ModifyEnvironmentAttributesRequest) ToJsonString() string {
@@ -770,7 +1165,7 @@ type ModifyEnvironmentAttributesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 环境（命名空间）名称。
+		// 命名空间名称。
 		EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
 		// 未消费消息过期时间，单位：秒。
@@ -779,6 +1174,10 @@ type ModifyEnvironmentAttributesResponse struct {
 		// 备注，字符串最长不超过128。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+		// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -808,6 +1207,9 @@ type ModifyTopicRequest struct {
 
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -929,6 +1331,9 @@ type ResetMsgSubOffsetByTimestampRequest struct {
 
 	// 时间戳，精确到毫秒。
 	ToTimestamp *uint64 `json:"ToTimestamp,omitempty" name:"ToTimestamp"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ResetMsgSubOffsetByTimestampRequest) ToJsonString() string {
@@ -1043,6 +1448,15 @@ type SubscriptionTopic struct {
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 }
 
+type Tag struct {
+
+	// 标签的key的值
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签的Value的值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type Topic struct {
 
 	// 最后一次间隔内发布消息的平均byte大小。
@@ -1135,4 +1549,26 @@ type TopicRecord struct {
 
 	// 主题名称。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
+type VpcBindRecord struct {
+
+	// 租户Vpc Id
+	UniqueVpcId *string `json:"UniqueVpcId,omitempty" name:"UniqueVpcId"`
+
+	// 租户Vpc子网Id
+	UniqueSubnetId *string `json:"UniqueSubnetId,omitempty" name:"UniqueSubnetId"`
+
+	// 路由Id
+	RouterId *string `json:"RouterId,omitempty" name:"RouterId"`
+
+	// Vpc的Id
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// Vpc的Port
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 说明，128个字符以内
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }

@@ -93,6 +93,31 @@ func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPer
     return
 }
 
+func NewCheckInstanceNameRequest() (request *CheckInstanceNameRequest) {
+    request = &CheckInstanceNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CheckInstanceName")
+    return
+}
+
+func NewCheckInstanceNameResponse() (response *CheckInstanceNameResponse) {
+    response = &CheckInstanceNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 检查待创建的实例名称是否符合规范
+func (c *Client) CheckInstanceName(request *CheckInstanceNameRequest) (response *CheckInstanceNameResponse, err error) {
+    if request == nil {
+        request = NewCheckInstanceNameRequest()
+    }
+    response = NewCheckInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationTriggerPersonalRequest() (request *CreateApplicationTriggerPersonalRequest) {
     request = &CreateApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

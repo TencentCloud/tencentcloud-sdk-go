@@ -1623,7 +1623,7 @@ func (r *CreateAssistantCidrResponse) FromJsonString(s string) error {
 type CreateBandwidthPackageRequest struct {
 	*tchttp.BaseRequest
 
-	// 带宽包类型，包括'BGP'，'SINGLEISP'，'ANYCAST'
+	// 带宽包类型，包括'HIGH_QUALITY_BGP', 'BGP'，'SINGLEISP'，'ANYCAST'
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
 	// 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
@@ -1635,7 +1635,7 @@ type CreateBandwidthPackageRequest struct {
 	// 带宽包数量(传统账户类型只能填1)
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitempty" name:"BandwidthPackageCount"`
 
-	// 带宽包限速大小。单位：Mbps，-1表示不限速。
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
@@ -2840,7 +2840,7 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 type CreateVpnConnectionRequest struct {
 	*tchttp.BaseRequest
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// VPN网关实例ID。
@@ -2866,6 +2866,15 @@ type CreateVpnConnectionRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 是否支持隧道内健康检查
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
+
+	// 健康检查本端地址
+	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
+
+	// 健康检查对端地址
+	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -5517,7 +5526,7 @@ func (r *DescribeIp6TranslatorsResponse) FromJsonString(s string) error {
 type DescribeIpGeolocationDatabaseUrlRequest struct {
 	*tchttp.BaseRequest
 
-	// IP地理位置库协议类型，目前支持"ipv4"和"ipv6"。
+	// IP地理位置库协议类型，目前仅支持"ipv4"。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -9821,6 +9830,15 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// IPSec配置，腾讯云提供IPSec安全会话设置。
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
+
+	// 是否启用通道健康检查
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
+
+	// 本端通道探测ip
+	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
+
+	// 对端通道探测ip
+	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {

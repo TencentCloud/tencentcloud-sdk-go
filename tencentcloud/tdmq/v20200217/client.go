@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateClusterRequest() (request *CreateClusterRequest) {
+    request = &CreateClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateCluster")
+    return
+}
+
+func NewCreateClusterResponse() (response *CreateClusterResponse) {
+    response = &CreateClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建用户的集群
+func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterRequest()
+    }
+    response = NewCreateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
     request = &CreateEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +143,31 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     return
 }
 
+func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
+    request = &DeleteClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCluster")
+    return
+}
+
+func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
+    response = &DeleteClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除集群
+func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterRequest()
+    }
+    response = NewDeleteClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEnvironmentsRequest() (request *DeleteEnvironmentsRequest) {
     request = &DeleteEnvironmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +239,106 @@ func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTop
         request = NewDeleteTopicsRequest()
     }
     response = NewDeleteTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBindClustersRequest() (request *DescribeBindClustersRequest) {
+    request = &DescribeBindClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeBindClusters")
+    return
+}
+
+func NewDescribeBindClustersResponse() (response *DescribeBindClustersResponse) {
+    response = &DescribeBindClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户绑定的专享集群列表
+func (c *Client) DescribeBindClusters(request *DescribeBindClustersRequest) (response *DescribeBindClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindClustersRequest()
+    }
+    response = NewDescribeBindClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBindVpcsRequest() (request *DescribeBindVpcsRequest) {
+    request = &DescribeBindVpcsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeBindVpcs")
+    return
+}
+
+func NewDescribeBindVpcsResponse() (response *DescribeBindVpcsResponse) {
+    response = &DescribeBindVpcsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取租户VPC绑定关系
+func (c *Client) DescribeBindVpcs(request *DescribeBindVpcsRequest) (response *DescribeBindVpcsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindVpcsRequest()
+    }
+    response = NewDescribeBindVpcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
+    request = &DescribeClusterDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeClusterDetail")
+    return
+}
+
+func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse) {
+    response = &DescribeClusterDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取集群的详细信息
+func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterDetailRequest()
+    }
+    response = NewDescribeClusterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
+    request = &DescribeClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeClusters")
+    return
+}
+
+func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
+    response = &DescribeClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取集群列表
+func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    response = NewDescribeClustersResponse()
     err = c.Send(request, response)
     return
 }
@@ -339,6 +489,31 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
         request = NewDescribeTopicsRequest()
     }
     response = NewDescribeTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterRequest() (request *ModifyClusterRequest) {
+    request = &ModifyClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCluster")
+    return
+}
+
+func NewModifyClusterResponse() (response *ModifyClusterResponse) {
+    response = &ModifyClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新集群信息
+func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterRequest()
+    }
+    response = NewModifyClusterResponse()
     err = c.Send(request, response)
     return
 }

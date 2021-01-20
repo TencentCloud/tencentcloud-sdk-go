@@ -52,6 +52,12 @@ type AddClusterInstancesRequest struct {
 
 	// 镜像特征ID列表
 	FeatureIdList []*string `json:"FeatureIdList,omitempty" name:"FeatureIdList" list`
+
+	// 实例额外需要设置参数信息
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 部署组ID
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *AddClusterInstancesRequest) ToJsonString() string {
@@ -98,6 +104,10 @@ type AddInstanceResult struct {
 	// 添加集群超时的节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
+
+	// 失败的节点的失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReasons []*string `json:"FailedReasons,omitempty" name:"FailedReasons" list`
 }
 
 type AddInstancesRequest struct {
@@ -284,6 +294,10 @@ type ApiDetailResponse struct {
 	// API 状态 0:离线 1:在线，默认0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// API 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type ApiGroupInfo struct {
@@ -525,6 +539,10 @@ type ApplicationForPage struct {
 	// Apigateway的serviceId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApigatewayServiceId *string `json:"ApigatewayServiceId,omitempty" name:"ApigatewayServiceId"`
+
+	// 应用备注名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationRemarkName *string `json:"ApplicationRemarkName,omitempty" name:"ApplicationRemarkName"`
 }
 
 type BindApiGroupRequest struct {
@@ -1369,6 +1387,9 @@ type CreateApplicationRequest struct {
 
 	// 应用runtime类型
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitempty" name:"ApplicationRuntimeType"`
+
+	// 需要绑定的数据集ID
+	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -1431,6 +1452,15 @@ type CreateClusterRequest struct {
 
 	// 集群版本
 	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+
+	// 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。
+	MaxNodePodNum *uint64 `json:"MaxNodePodNum,omitempty" name:"MaxNodePodNum"`
+
+	// 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
+	MaxClusterServiceNum *uint64 `json:"MaxClusterServiceNum,omitempty" name:"MaxClusterServiceNum"`
+
+	// 需要绑定的数据集ID
+	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1880,6 +1910,9 @@ type CreateNamespaceRequest struct {
 
 	// 是否开启高可用
 	IsHaEnable *string `json:"IsHaEnable,omitempty" name:"IsHaEnable"`
+
+	// 需要绑定的数据集ID
+	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -1910,6 +1943,43 @@ func (r *CreateNamespaceResponse) ToJsonString() string {
 }
 
 func (r *CreateNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePathRewritesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路径重写列表
+	PathRewrites *PathRewriteCreateObject `json:"PathRewrites,omitempty" name:"PathRewrites"`
+}
+
+func (r *CreatePathRewritesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePathRewritesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePathRewritesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true/false
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePathRewritesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePathRewritesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2547,6 +2617,43 @@ func (r *DeleteNamespaceResponse) ToJsonString() string {
 }
 
 func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePathRewritesRequest struct {
+	*tchttp.BaseRequest
+
+	// 路径重写规则IDs
+	PathRewriteIds []*string `json:"PathRewriteIds,omitempty" name:"PathRewriteIds" list`
+}
+
+func (r *DeletePathRewritesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePathRewritesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePathRewritesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true/false
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePathRewritesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePathRewritesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4651,6 +4758,89 @@ func (r *DescribeMsApiListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePathRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 路径重写规则ID
+	PathRewriteId *string `json:"PathRewriteId,omitempty" name:"PathRewriteId"`
+}
+
+func (r *DescribePathRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePathRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePathRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路径重写规则对象
+		Result *PathRewrite `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePathRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePathRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePathRewritesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关部署组ID
+	GatewayGroupId *string `json:"GatewayGroupId,omitempty" name:"GatewayGroupId"`
+
+	// 根据正则表达式或替换的内容模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 每页数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePathRewritesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePathRewritesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePathRewritesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路径重写翻页对象
+		Result *PathRewritePage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePathRewritesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePathRewritesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePkgsRequest struct {
 	*tchttp.BaseRequest
 
@@ -6377,6 +6567,18 @@ type Instance struct {
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
+type InstanceAdvancedSettings struct {
+
+	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
+	// 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
+
+	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DockerGraphPath *string `json:"DockerGraphPath,omitempty" name:"DockerGraphPath"`
+}
+
 type LaneGroup struct {
 
 	// 部署组ID
@@ -6828,6 +7030,55 @@ func (r *ModifyMicroserviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPathRewriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 路径重写规则ID
+	PathRewriteId *string `json:"PathRewriteId,omitempty" name:"PathRewriteId"`
+
+	// 正则表达式
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
+
+	// 替换的内容
+	Replacement *string `json:"Replacement,omitempty" name:"Replacement"`
+
+	// 是否屏蔽映射后路径，Y: 是 N: 否
+	Blocked *string `json:"Blocked,omitempty" name:"Blocked"`
+
+	// 规则顺序，越小优先级越高
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *ModifyPathRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPathRewriteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPathRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true/false
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPathRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPathRewriteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -7219,6 +7470,54 @@ type OverviewBasicResourceUsage struct {
 	// 已注册实例数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsulInstanceCount *int64 `json:"ConsulInstanceCount,omitempty" name:"ConsulInstanceCount"`
+}
+
+type PathRewrite struct {
+
+	// 路径重写规则ID
+	PathRewriteId *string `json:"PathRewriteId,omitempty" name:"PathRewriteId"`
+
+	// 网关部署组ID
+	GatewayGroupId *string `json:"GatewayGroupId,omitempty" name:"GatewayGroupId"`
+
+	// 正则表达式
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
+
+	// 替换的内容
+	Replacement *string `json:"Replacement,omitempty" name:"Replacement"`
+
+	// 是否屏蔽映射后路径，Y: 是 N: 否
+	Blocked *string `json:"Blocked,omitempty" name:"Blocked"`
+
+	// 规则顺序，越小优先级越高
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+type PathRewriteCreateObject struct {
+
+	// 网关部署组ID
+	GatewayGroupId *string `json:"GatewayGroupId,omitempty" name:"GatewayGroupId"`
+
+	// 正则表达式
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
+
+	// 替换的内容
+	Replacement *string `json:"Replacement,omitempty" name:"Replacement"`
+
+	// 是否屏蔽映射后路径，Y: 是 N: 否
+	Blocked *string `json:"Blocked,omitempty" name:"Blocked"`
+
+	// 规则顺序，越小优先级越高
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+type PathRewritePage struct {
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 路径重写规则列表
+	Content []*PathRewrite `json:"Content,omitempty" name:"Content" list`
 }
 
 type PkgBind struct {
