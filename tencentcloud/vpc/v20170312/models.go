@@ -7751,6 +7751,9 @@ type FlowLog struct {
 
 	// 流日志创建时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type GatewayFlowMonitorDetail struct {

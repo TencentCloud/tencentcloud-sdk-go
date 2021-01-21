@@ -655,6 +655,9 @@ type DCDBShardInfo struct {
 
 	// CPU核数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 分片ShardKey的范围（总共64个哈希值），例如： 0-31，32-63
+	Range *string `json:"Range,omitempty" name:"Range"`
 }
 
 type Database struct {

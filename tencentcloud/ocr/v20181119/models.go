@@ -4290,6 +4290,33 @@ type VatInvoice struct {
 	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
 }
 
+type VatInvoiceGoodsInfo struct {
+
+	// 项目名称
+	Item *string `json:"Item,omitempty" name:"Item"`
+
+	// 规格型号
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 单位
+	MeasurementDimension *string `json:"MeasurementDimension,omitempty" name:"MeasurementDimension"`
+
+	// 价格
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 金额
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 税率(如6%、免税)
+	TaxScheme *string `json:"TaxScheme,omitempty" name:"TaxScheme"`
+
+	// 税额
+	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
+}
+
 type VatInvoiceItem struct {
 
 	// 行号
@@ -4380,6 +4407,21 @@ func (r *VatInvoiceOCRResponse) ToJsonString() string {
 
 func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceUserInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 纳税人识别号
+	TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+	// 地 址、电 话
+	AddrTel *string `json:"AddrTel,omitempty" name:"AddrTel"`
+
+	// 开户行及账号
+	FinancialAccount *string `json:"FinancialAccount,omitempty" name:"FinancialAccount"`
 }
 
 type VatInvoiceVerifyRequest struct {
@@ -4900,6 +4942,97 @@ func (r *VerifyBizLicenseResponse) ToJsonString() string {
 }
 
 func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyOfdVatInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// OFD文件的 Url 地址。
+	OfdFileUrl *string `json:"OfdFileUrl,omitempty" name:"OfdFileUrl"`
+
+	// OFD文件的 Base64 值。
+	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+	OfdFileBase64 *string `json:"OfdFileBase64,omitempty" name:"OfdFileBase64"`
+}
+
+func (r *VerifyOfdVatInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyOfdVatInvoiceOCRRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyOfdVatInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票类型
+	// 026:增值税电子普通发票
+	// 028:增值税电子专用发票
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 发票代码
+		InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+		// 发票号码
+		InvoiceNumber *string `json:"InvoiceNumber,omitempty" name:"InvoiceNumber"`
+
+		// 开票日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 验证码
+		InvoiceCheckCode *string `json:"InvoiceCheckCode,omitempty" name:"InvoiceCheckCode"`
+
+		// 机器编号
+		MachineNumber *string `json:"MachineNumber,omitempty" name:"MachineNumber"`
+
+		// 密码区
+		TaxControlCode *string `json:"TaxControlCode,omitempty" name:"TaxControlCode"`
+
+		// 购买方
+		Buyer *VatInvoiceUserInfo `json:"Buyer,omitempty" name:"Buyer"`
+
+		// 销售方
+		Seller *VatInvoiceUserInfo `json:"Seller,omitempty" name:"Seller"`
+
+		// 价税合计
+		TaxInclusiveTotalAmount *string `json:"TaxInclusiveTotalAmount,omitempty" name:"TaxInclusiveTotalAmount"`
+
+		// 开票人
+		InvoiceClerk *string `json:"InvoiceClerk,omitempty" name:"InvoiceClerk"`
+
+		// 收款人
+		Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+		// 复核人
+		Checker *string `json:"Checker,omitempty" name:"Checker"`
+
+		// 税额
+		TaxTotalAmount *string `json:"TaxTotalAmount,omitempty" name:"TaxTotalAmount"`
+
+		// 不含税金额
+		TaxExclusiveTotalAmount *string `json:"TaxExclusiveTotalAmount,omitempty" name:"TaxExclusiveTotalAmount"`
+
+		// 备注
+		Note *string `json:"Note,omitempty" name:"Note"`
+
+		// 货物或服务清单
+		GoodsInfos []*VatInvoiceGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyOfdVatInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyOfdVatInvoiceOCRResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

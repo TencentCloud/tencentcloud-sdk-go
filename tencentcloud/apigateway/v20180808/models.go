@@ -310,6 +310,18 @@ type ApiInfo struct {
 	// API已发布的环境信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Environments []*string `json:"Environments,omitempty" name:"Environments" list`
+
+	// 是否开启Base64编码，只有后端为scf时才会生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+
+	// 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
+
+	// Header触发规则，总规则数量不超过10。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules" list`
 }
 
 type ApiKey struct {
@@ -437,6 +449,22 @@ type ApisStatus struct {
 
 	// API 接口列表。
 	ApiIdStatusSet []*DesApisStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet" list`
+}
+
+type Base64EncodedTriggerRule struct {
+
+	// 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 进行编码触发的header的可选值数组, 数组元素的字符串最大长度为40，元素可以包括数字，英文字母以及特殊字符，特殊字符的可选值为： `.`    `+`    `*`   `-`   `/`  `_` 
+	// 
+	// 例如 [
+	//     "application/x-vpeg005",
+	//     "application/xhtml+xml",
+	//     "application/vnd.ms-project",
+	//     "application/vnd.rn-rn_music_package"
+	// ] 等都是合法的。
+	Value []*string `json:"Value,omitempty" name:"Value" list`
 }
 
 type BindEnvironmentRequest struct {
@@ -838,6 +866,9 @@ type CreateApiRequest struct {
 
 	// 用户类型。
 	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 是否打开Base64编码，只有后端是scf时才会生效。
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
 }
 
 func (r *CreateApiRequest) ToJsonString() string {
@@ -3147,6 +3178,15 @@ type ModifyApiRequest struct {
 
 	// 用户自定义错误码配置。
 	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes" list`
+
+	// 是否开启Base64编码，只有后端为scf时才会生效。
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+
+	// 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
+
+	// Header触发规则，总规则数不能超过10。
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules" list`
 }
 
 func (r *ModifyApiRequest) ToJsonString() string {

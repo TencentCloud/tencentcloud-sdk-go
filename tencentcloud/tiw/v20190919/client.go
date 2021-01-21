@@ -243,6 +243,56 @@ func (c *Client) DescribeVideoGenerationTaskCallback(request *DescribeVideoGener
     return
 }
 
+func NewDescribeWhiteboardPushRequest() (request *DescribeWhiteboardPushRequest) {
+    request = &DescribeWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPush")
+    return
+}
+
+func NewDescribeWhiteboardPushResponse() (response *DescribeWhiteboardPushResponse) {
+    response = &DescribeWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询推流任务状态与结果
+func (c *Client) DescribeWhiteboardPush(request *DescribeWhiteboardPushRequest) (response *DescribeWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardPushRequest()
+    }
+    response = NewDescribeWhiteboardPushResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteboardPushCallbackRequest() (request *DescribeWhiteboardPushCallbackRequest) {
+    request = &DescribeWhiteboardPushCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPushCallback")
+    return
+}
+
+func NewDescribeWhiteboardPushCallbackResponse() (response *DescribeWhiteboardPushCallbackResponse) {
+    response = &DescribeWhiteboardPushCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询白板推流回调地址
+func (c *Client) DescribeWhiteboardPushCallback(request *DescribeWhiteboardPushCallbackRequest) (response *DescribeWhiteboardPushCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardPushCallbackRequest()
+    }
+    response = NewDescribeWhiteboardPushCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPauseOnlineRecordRequest() (request *PauseOnlineRecordRequest) {
     request = &PauseOnlineRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +489,56 @@ func (c *Client) SetVideoGenerationTaskCallbackKey(request *SetVideoGenerationTa
         request = NewSetVideoGenerationTaskCallbackKeyRequest()
     }
     response = NewSetVideoGenerationTaskCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWhiteboardPushCallbackRequest() (request *SetWhiteboardPushCallbackRequest) {
+    request = &SetWhiteboardPushCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallback")
+    return
+}
+
+func NewSetWhiteboardPushCallbackResponse() (response *SetWhiteboardPushCallbackResponse) {
+    response = &SetWhiteboardPushCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置白板推流回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+func (c *Client) SetWhiteboardPushCallback(request *SetWhiteboardPushCallbackRequest) (response *SetWhiteboardPushCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetWhiteboardPushCallbackRequest()
+    }
+    response = NewSetWhiteboardPushCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWhiteboardPushCallbackKeyRequest() (request *SetWhiteboardPushCallbackKeyRequest) {
+    request = &SetWhiteboardPushCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallbackKey")
+    return
+}
+
+func NewSetWhiteboardPushCallbackKeyResponse() (response *SetWhiteboardPushCallbackKeyResponse) {
+    response = &SetWhiteboardPushCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置白板推流回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+func (c *Client) SetWhiteboardPushCallbackKey(request *SetWhiteboardPushCallbackKeyRequest) (response *SetWhiteboardPushCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetWhiteboardPushCallbackKeyRequest()
+    }
+    response = NewSetWhiteboardPushCallbackKeyResponse()
     err = c.Send(request, response)
     return
 }

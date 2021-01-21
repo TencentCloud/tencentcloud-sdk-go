@@ -1,10 +1,44 @@
 # 本版本更新包含以下内容：
 
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 9 次发布
+
+发布时间：2021-01-21 08:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* 新增入参：IsBase64Encoded
+
+* [ModifyApi](https://cloud.tencent.com/document/api/628/45238)
+
+	* 新增入参：IsBase64Encoded, IsBase64Trigger, Base64EncodedTriggerRules
+
+
+新增数据结构：
+
+* [Base64EncodedTriggerRule](https://cloud.tencent.com/document/api/628/45244#Base64EncodedTriggerRule)
+
+修改数据结构：
+
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
+
+	* 新增成员：IsBase64Encoded, IsBase64Trigger, Base64EncodedTriggerRules
+
+
+
+
 ## 负载均衡(clb) 版本：2018-03-17
 
-### 第 42 次发布
+### 第 43 次发布
 
-发布时间：2021-01-20 08:03:09
+发布时间：2021-01-21 08:03:10
 
 本次发布包含了以下内容：
 
@@ -12,22 +46,37 @@
 
 修改数据结构：
 
-* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
 
-	* 新增成员：NfvInfo
-
-* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
-
-	* 新增成员：SecurityGroup, LoadBalancerPassToTarget
+	* 新增成员：Toa
 
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 20 次发布
+### 第 17 次发布
 
-发布时间：2021-01-20 08:09:15
+发布时间：2021-01-21 08:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DCDBShardInfo](https://cloud.tencent.com/document/api/557/16142#DCDBShardInfo)
+
+	* 新增成员：Range
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 43 次发布
+
+发布时间：2021-01-21 08:05:58
 
 本次发布包含了以下内容：
 
@@ -35,15 +84,39 @@
 
 新增接口：
 
-* [CheckInstanceName](https://cloud.tencent.com/document/api/1141/52212)
+* [VerifyOfdVatInvoiceOCR](https://cloud.tencent.com/document/api/866/52296)
+
+新增数据结构：
+
+* [VatInvoiceGoodsInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceGoodsInfo)
+* [VatInvoiceUserInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceUserInfo)
 
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2021-01-19 15:48:57
+发布时间：2021-01-21 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)
+
+	* 新增入参：ClusterId
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 13 次发布
+
+发布时间：2021-01-21 08:08:33
 
 本次发布包含了以下内容：
 
@@ -51,175 +124,73 @@
 
 新增接口：
 
-* [CreateCluster](https://cloud.tencent.com/document/api/1179/52193)
-* [DeleteCluster](https://cloud.tencent.com/document/api/1179/52185)
-* [DescribeBindClusters](https://cloud.tencent.com/document/api/1179/52191)
-* [DescribeBindVpcs](https://cloud.tencent.com/document/api/1179/52187)
-* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1179/52184)
-* [DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)
-* [ModifyCluster](https://cloud.tencent.com/document/api/1179/52189)
+* [DescribeWhiteboardPush](https://cloud.tencent.com/document/api/1137/52300)
+* [DescribeWhiteboardPushCallback](https://cloud.tencent.com/document/api/1137/52299)
+* [SetWhiteboardPushCallback](https://cloud.tencent.com/document/api/1137/52298)
+* [SetWhiteboardPushCallbackKey](https://cloud.tencent.com/document/api/1137/52297)
 
 修改接口：
 
-* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
 
-	* 新增入参：ClusterId
+	* 新增入参：ExtraData
 
-	* 新增出参：NamespaceId
+* [CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)
 
-* [CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)
+	* 新增入参：ExtraData
 
-	* 新增入参：ClusterId, AutoCreatePolicyTopic
+* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
 
-* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
-
-	* 新增入参：ClusterId
-
-* [DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)
-
-	* 新增入参：ClusterId
-
-* [DeleteSubscriptions](https://cloud.tencent.com/document/api/1179/46074)
-
-	* 新增入参：ClusterId, EnvironmentId
-
-* [DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)
-
-	* 新增入参：ClusterId, EnvironmentId
-
-* [DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)
-
-	* 新增入参：ClusterId
-
-* [DescribeEnvironmentRoles](https://cloud.tencent.com/document/api/1179/49051)
-
-	* 新增入参：ClusterId, RoleName
-
-	* <font color="#dd0000">**修改入参**：</font>EnvironmentId
-
-* [DescribeProducers](https://cloud.tencent.com/document/api/1179/46073)
-
-	* 新增入参：ClusterId
-
-* [DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)
-
-	* 新增入参：ClusterId
-
-* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
-
-	* 新增入参：ClusterId
-
-* [ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)
-
-	* 新增入参：ClusterId
-
-	* 新增出参：NamespaceId
-
-* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
-
-	* 新增入参：ClusterId
-
-* [ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)
-
-	* 新增入参：ClusterId
-
-
-新增数据结构：
-
-* [BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster)
-* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
-* [Tag](https://cloud.tencent.com/document/api/1179/46089#Tag)
-* [VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord)
-
-修改数据结构：
-
-* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
-
-	* 新增成员：NamespaceId, NamespaceName
+	* 新增入参：ExtraData
 
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 41 次发布
+### 第 38 次发布
 
-发布时间：2021-01-20 08:07:07
+发布时间：2021-01-21 08:07:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [CreatePathRewrites](https://cloud.tencent.com/document/api/649/52211)
-* [DeletePathRewrites](https://cloud.tencent.com/document/api/649/52210)
-* [DescribePathRewrite](https://cloud.tencent.com/document/api/649/52209)
-* [DescribePathRewrites](https://cloud.tencent.com/document/api/649/52208)
-* [ModifyPathRewrite](https://cloud.tencent.com/document/api/649/52207)
-
 修改接口：
 
-* [AddClusterInstances](https://cloud.tencent.com/document/api/649/41225)
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
 
-	* 新增入参：InstanceAdvancedSettings, SecurityGroupIds
+	* 新增入参：SkipValidateOptions
 
-* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
+* [CreateClusterInstances](https://cloud.tencent.com/document/api/457/36707)
 
-	* 新增入参：ProgramId
+	* 新增入参：SkipValidateOptions
 
-* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
-
-	* 新增入参：MaxNodePodNum, MaxClusterServiceNum, ProgramId
-
-* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
-
-	* 新增入参：ProgramId
-
-
-新增数据结构：
-
-* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings)
-* [PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite)
-* [PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject)
-* [PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage)
 
 修改数据结构：
 
-* [AddInstanceResult](https://cloud.tencent.com/document/api/649/36099#AddInstanceResult)
+* [PrometheusAlertRuleDetail](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRuleDetail)
 
-	* 新增成员：FailedReasons
-
-* [ApiDetailResponse](https://cloud.tencent.com/document/api/649/36099#ApiDetailResponse)
-
-	* 新增成员：Description
-
-* [ApplicationForPage](https://cloud.tencent.com/document/api/649/36099#ApplicationForPage)
-
-	* 新增成员：ApplicationRemarkName
+	* 新增成员：Interval
 
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 77 次发布
+### 第 78 次发布
 
-发布时间：2021-01-20 08:07:38
+发布时间：2021-01-21 08:07:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+* [FlowLog](https://cloud.tencent.com/document/api/215/15824#FlowLog)
 
-	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
-
-* [ModifyVpnConnectionAttribute](https://cloud.tencent.com/document/api/215/17508)
-
-	* 新增入参：EnableHealthCheck, HealthCheckLocalIp, HealthCheckRemoteIp
+	* 新增成员：TagSet
 
 
 
@@ -839,6 +810,36 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 9 次发布
+
+发布时间：2021-01-21 08:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* 新增入参：IsBase64Encoded
+
+* [ModifyApi](https://cloud.tencent.com/document/api/628/45238)
+
+	* 新增入参：IsBase64Encoded, IsBase64Trigger, Base64EncodedTriggerRules
+
+
+新增数据结构：
+
+* [[Base64EncodedTriggerRule](https://cloud.tencent.com/document/api/628/45244#Base64EncodedTriggerRule)](https://cloud.tencent.com/document/api/628/45244#[Base64EncodedTriggerRule](https://cloud.tencent.com/document/api/628/45244#Base64EncodedTriggerRule))
+
+修改数据结构：
+
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
+
+	* 新增成员：IsBase64Encoded, IsBase64Trigger, Base64EncodedTriggerRules
+
 
 ### 第 8 次发布
 
@@ -9414,6 +9415,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 43 次发布
+
+发布时间：2021-01-21 08:03:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* 新增成员：Toa
+
+
 ### 第 42 次发布
 
 发布时间：2021-01-20 08:03:09
@@ -15314,6 +15330,21 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 17 次发布
+
+发布时间：2021-01-21 08:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DCDBShardInfo](https://cloud.tencent.com/document/api/557/16142#DCDBShardInfo)
+
+	* 新增成员：Range
+
 
 ### 第 16 次发布
 
@@ -27924,6 +27955,23 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 43 次发布
+
+发布时间：2021-01-21 08:05:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[VerifyOfdVatInvoiceOCR](https://cloud.tencent.com/document/api/866/52296)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VatInvoiceGoodsInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceGoodsInfo)](https://cloud.tencent.com/document/api/866/33527#[VatInvoiceGoodsInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceGoodsInfo))
+* [[VatInvoiceUserInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceUserInfo)](https://cloud.tencent.com/document/api/866/33527#[VatInvoiceUserInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceUserInfo))
+
 ### 第 42 次发布
 
 发布时间：2021-01-15 08:06:09
@@ -34166,7 +34214,7 @@
 
 新增接口：
 
-* [[CheckInstanceName](https://cloud.tencent.com/document/api/1141/52212)](https://cloud.tencent.com/document/api/#/#)
+* [CheckInstanceName](https://cloud.tencent.com/document/api/1141/52212)
 
 ### 第 19 次发布
 
@@ -34574,6 +34622,21 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 4 次发布
+
+发布时间：2021-01-21 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)
+
+	* 新增入参：ClusterId
+
+
 ### 第 3 次发布
 
 发布时间：2021-01-19 15:48:57
@@ -34584,13 +34647,13 @@
 
 新增接口：
 
-* [[CreateCluster](https://cloud.tencent.com/document/api/1179/52193)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCluster](https://cloud.tencent.com/document/api/1179/52185)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBindClusters](https://cloud.tencent.com/document/api/1179/52191)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBindVpcs](https://cloud.tencent.com/document/api/1179/52187)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterDetail](https://cloud.tencent.com/document/api/1179/52184)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCluster](https://cloud.tencent.com/document/api/1179/52189)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCluster](https://cloud.tencent.com/document/api/1179/52193)
+* [DeleteCluster](https://cloud.tencent.com/document/api/1179/52185)
+* [DescribeBindClusters](https://cloud.tencent.com/document/api/1179/52191)
+* [DescribeBindVpcs](https://cloud.tencent.com/document/api/1179/52187)
+* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1179/52184)
+* [DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)
+* [ModifyCluster](https://cloud.tencent.com/document/api/1179/52189)
 
 修改接口：
 
@@ -34659,10 +34722,10 @@
 
 新增数据结构：
 
-* [[BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster)](https://cloud.tencent.com/document/api/1179/46089#[BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster))
-* [[Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)](https://cloud.tencent.com/document/api/1179/46089#[Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster))
-* [[Tag](https://cloud.tencent.com/document/api/1179/46089#Tag)](https://cloud.tencent.com/document/api/1179/46089#[Tag](https://cloud.tencent.com/document/api/1179/46089#Tag))
-* [[VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord)](https://cloud.tencent.com/document/api/1179/46089#[VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord))
+* [BindCluster](https://cloud.tencent.com/document/api/1179/46089#BindCluster)
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+* [Tag](https://cloud.tencent.com/document/api/1179/46089#Tag)
+* [VpcBindRecord](https://cloud.tencent.com/document/api/1179/46089#VpcBindRecord)
 
 修改数据结构：
 
@@ -35781,6 +35844,36 @@
 
 ## 互动白板(tiw) 版本：2019-09-19
 
+### 第 13 次发布
+
+发布时间：2021-01-21 08:08:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeWhiteboardPush](https://cloud.tencent.com/document/api/1137/52300)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWhiteboardPushCallback](https://cloud.tencent.com/document/api/1137/52299)](https://cloud.tencent.com/document/api/#/#)
+* [[SetWhiteboardPushCallback](https://cloud.tencent.com/document/api/1137/52298)](https://cloud.tencent.com/document/api/#/#)
+* [[SetWhiteboardPushCallbackKey](https://cloud.tencent.com/document/api/1137/52297)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
+
+	* 新增入参：ExtraData
+
+* [CreateVideoGenerationTask](https://cloud.tencent.com/document/api/1137/48571)
+
+	* 新增入参：ExtraData
+
+* [StartOnlineRecord](https://cloud.tencent.com/document/api/1137/40063)
+
+	* 新增入参：ExtraData
+
+
 ### 第 12 次发布
 
 发布时间：2021-01-15 08:08:46
@@ -36032,6 +36125,32 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 38 次发布
+
+发布时间：2021-01-21 08:07:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增入参：SkipValidateOptions
+
+* [CreateClusterInstances](https://cloud.tencent.com/document/api/457/36707)
+
+	* 新增入参：SkipValidateOptions
+
+
+修改数据结构：
+
+* [PrometheusAlertRuleDetail](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRuleDetail)
+
+	* 新增成员：Interval
+
 
 ### 第 37 次发布
 
@@ -37499,11 +37618,11 @@
 
 新增接口：
 
-* [[CreatePathRewrites](https://cloud.tencent.com/document/api/649/52211)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePathRewrites](https://cloud.tencent.com/document/api/649/52210)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePathRewrite](https://cloud.tencent.com/document/api/649/52209)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePathRewrites](https://cloud.tencent.com/document/api/649/52208)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPathRewrite](https://cloud.tencent.com/document/api/649/52207)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePathRewrites](https://cloud.tencent.com/document/api/649/52211)
+* [DeletePathRewrites](https://cloud.tencent.com/document/api/649/52210)
+* [DescribePathRewrite](https://cloud.tencent.com/document/api/649/52209)
+* [DescribePathRewrites](https://cloud.tencent.com/document/api/649/52208)
+* [ModifyPathRewrite](https://cloud.tencent.com/document/api/649/52207)
 
 修改接口：
 
@@ -37526,10 +37645,10 @@
 
 新增数据结构：
 
-* [[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings)](https://cloud.tencent.com/document/api/649/36099#[InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings))
-* [[PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite)](https://cloud.tencent.com/document/api/649/36099#[PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite))
-* [[PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject)](https://cloud.tencent.com/document/api/649/36099#[PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject))
-* [[PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage)](https://cloud.tencent.com/document/api/649/36099#[PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage))
+* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/649/36099#InstanceAdvancedSettings)
+* [PathRewrite](https://cloud.tencent.com/document/api/649/36099#PathRewrite)
+* [PathRewriteCreateObject](https://cloud.tencent.com/document/api/649/36099#PathRewriteCreateObject)
+* [PathRewritePage](https://cloud.tencent.com/document/api/649/36099#PathRewritePage)
 
 修改数据结构：
 
@@ -41084,6 +41203,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 78 次发布
+
+发布时间：2021-01-21 08:07:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowLog](https://cloud.tencent.com/document/api/215/15824#FlowLog)
+
+	* 新增成员：TagSet
+
 
 ### 第 77 次发布
 

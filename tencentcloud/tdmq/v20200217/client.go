@@ -83,7 +83,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
     return
 }
 
-// 用于在用户账户下创建消息队列 Tdmq环境（命名空间）
+// 用于在用户账户下创建消息队列 Tdmq 命名空间
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -183,7 +183,7 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
     return
 }
 
-// 批量删除租户下的环境
+// 批量删除租户下的命名空间
 func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
@@ -358,7 +358,7 @@ func NewDescribeEnvironmentAttributesResponse() (response *DescribeEnvironmentAt
     return
 }
 
-// 获取指定环境的属性
+// 获取指定命名空间的属性
 func (c *Client) DescribeEnvironmentAttributes(request *DescribeEnvironmentAttributesRequest) (response *DescribeEnvironmentAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentAttributesRequest()
@@ -383,7 +383,7 @@ func NewDescribeEnvironmentRolesResponse() (response *DescribeEnvironmentRolesRe
     return
 }
 
-// 获取环境角色列表
+// 获取命名空间角色列表
 func (c *Client) DescribeEnvironmentRoles(request *DescribeEnvironmentRolesRequest) (response *DescribeEnvironmentRolesResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentRolesRequest()
@@ -408,7 +408,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
     return
 }
 
-// 获取租户下环境列表
+// 获取租户下命名空间列表
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
@@ -533,7 +533,7 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
     return
 }
 
-// 修改指定环境的属性值
+// 修改指定命名空间的属性值
 func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttributesRequest) (response *ModifyEnvironmentAttributesResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()

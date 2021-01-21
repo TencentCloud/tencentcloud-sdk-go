@@ -65,6 +65,9 @@ type CreateTranscodeRequest struct {
 	// zip： 生成`.zip`压缩包
 	// tar.gz： 生成`.tar.gz`压缩包
 	CompressFileType *string `json:"CompressFileType,omitempty" name:"CompressFileType"`
+
+	// 内部参数
+	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
 func (r *CreateTranscodeRequest) ToJsonString() string {
@@ -125,6 +128,9 @@ type CreateVideoGenerationTaskRequest struct {
 	// 
 	// 此参数与开始录制接口提供的RecordControl参数互斥，在本接口与开始录制接口都提供了RecordControl参数时，优先使用本接口指定的RecordControl参数进行视频生成控制，否则使用开始录制接口提供的RecordControl参数进行视频拼生成控制。
 	RecordControl *RecordControl `json:"RecordControl,omitempty" name:"RecordControl"`
+
+	// 内部参数
+	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
 func (r *CreateVideoGenerationTaskRequest) ToJsonString() string {
@@ -511,6 +517,123 @@ func (r *DescribeVideoGenerationTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWhiteboardPushCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeWhiteboardPushCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteboardPushCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteboardPushCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白板推流事件回调地址，如果未设置回调地址，该字段为空字符串
+		Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+		// 白板推流回调鉴权密钥
+		CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteboardPushCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteboardPushCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteboardPushRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 白板推流任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeWhiteboardPushRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteboardPushRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWhiteboardPushResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 推流结束原因，
+	// - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止推流
+	// - USER_CALL: 主动调用了停止推流接口
+	// - EXCEPTION: 推流异常结束
+		FinishReason *string `json:"FinishReason,omitempty" name:"FinishReason"`
+
+		// 需要查询结果的白板推流任务Id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 推流任务状态
+	// - PREPARED: 表示推流正在准备中（进房/启动推流服务等操作）
+	// - PUSHING: 表示推流已开始
+	// - STOPPED: 表示推流已停止
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 房间号
+		RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+		// 白板的群组 Id
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 推流用户Id
+		PushUserId *string `json:"PushUserId,omitempty" name:"PushUserId"`
+
+		// 实际开始推流时间，Unix 时间戳，单位秒
+		PushStartTime *int64 `json:"PushStartTime,omitempty" name:"PushStartTime"`
+
+		// 实际停止推流时间，Unix 时间戳，单位秒
+		PushStopTime *int64 `json:"PushStopTime,omitempty" name:"PushStopTime"`
+
+		// 推流过程中出现异常的次数
+		ExceptionCnt *int64 `json:"ExceptionCnt,omitempty" name:"ExceptionCnt"`
+
+		// 白板推流首帧对应的IM时间戳，可用于录制回放时IM聊天消息与白板推流视频进行同步对时。
+		IMSyncTime *int64 `json:"IMSyncTime,omitempty" name:"IMSyncTime"`
+
+		// 备份推流任务结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Backup *string `json:"Backup,omitempty" name:"Backup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWhiteboardPushResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWhiteboardPushResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type LayoutParams struct {
 
 	// 流画面宽，取值范围[2,3000]
@@ -894,6 +1017,80 @@ func (r *SetVideoGenerationTaskCallbackResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SetWhiteboardPushCallbackKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置白板推流回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥。回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetWhiteboardPushCallbackKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetWhiteboardPushCallbackKeyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetWhiteboardPushCallbackKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetWhiteboardPushCallbackKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetWhiteboardPushCallbackKeyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetWhiteboardPushCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 白板推流任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头。回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *SetWhiteboardPushCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetWhiteboardPushCallbackRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetWhiteboardPushCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetWhiteboardPushCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetWhiteboardPushCallbackResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type StartOnlineRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -946,6 +1143,9 @@ type StartOnlineRecordRequest struct {
 	// 
 	// 在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
 	ChatGroupId *string `json:"ChatGroupId,omitempty" name:"ChatGroupId"`
+
+	// 内部参数
+	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
 func (r *StartOnlineRecordRequest) ToJsonString() string {

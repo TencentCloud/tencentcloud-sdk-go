@@ -72,14 +72,17 @@ type AddExistedInstancesRequest struct {
 	// 节点登录信息（目前仅支持使用Password或者单个KeyIds）
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
-	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
-
 	// 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
+	// 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
 	// 节点池选项
 	NodePool *NodePoolOption `json:"NodePool,omitempty" name:"NodePool"`
+
+	// 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitempty" name:"SkipValidateOptions" list`
 }
 
 func (r *AddExistedInstancesRequest) ToJsonString() string {
@@ -699,6 +702,9 @@ type CreateClusterInstancesRequest struct {
 
 	// 实例额外需要设置参数信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitempty" name:"SkipValidateOptions" list`
 }
 
 func (r *CreateClusterInstancesRequest) ToJsonString() string {
@@ -3385,6 +3391,10 @@ type PrometheusAlertRuleDetail struct {
 	// 如果该告警来至模板下发，则TemplateId为模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 计算周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
 type PrometheusConfigItem struct {
