@@ -1243,7 +1243,7 @@ type UploadDataFileRequest struct {
 	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
-	File *binary `json:"File,omitempty" name:"File"`
+	File *string `json:"File,omitempty" name:"File"`
 
 	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
