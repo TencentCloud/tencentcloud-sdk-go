@@ -368,6 +368,31 @@ func (c *Client) CreateClusterRouteTable(request *CreateClusterRouteTableRequest
     return
 }
 
+func NewCreateEKSClusterRequest() (request *CreateEKSClusterRequest) {
+    request = &CreateEKSClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateEKSCluster")
+    return
+}
+
+func NewCreateEKSClusterResponse() (response *CreateEKSClusterResponse) {
+    response = &CreateEKSClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建弹性集群
+func (c *Client) CreateEKSCluster(request *CreateEKSClusterRequest) (response *CreateEKSClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateEKSClusterRequest()
+    }
+    response = NewCreateEKSClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusDashboardRequest() (request *CreatePrometheusDashboardRequest) {
     request = &CreatePrometheusDashboardRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +639,31 @@ func (c *Client) DeleteClusterRouteTable(request *DeleteClusterRouteTableRequest
         request = NewDeleteClusterRouteTableRequest()
     }
     response = NewDeleteClusterRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEKSClusterRequest() (request *DeleteEKSClusterRequest) {
+    request = &DeleteEKSClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteEKSCluster")
+    return
+}
+
+func NewDeleteEKSClusterResponse() (response *DeleteEKSClusterResponse) {
+    response = &DeleteEKSClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除弹性集群(yunapiv3)
+func (c *Client) DeleteEKSCluster(request *DeleteEKSClusterRequest) (response *DeleteEKSClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteEKSClusterRequest()
+    }
+    response = NewDeleteEKSClusterResponse()
     err = c.Send(request, response)
     return
 }
@@ -989,6 +1039,56 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
         request = NewDescribeClustersRequest()
     }
     response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEKSClusterCredentialRequest() (request *DescribeEKSClusterCredentialRequest) {
+    request = &DescribeEKSClusterCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSClusterCredential")
+    return
+}
+
+func NewDescribeEKSClusterCredentialResponse() (response *DescribeEKSClusterCredentialResponse) {
+    response = &DescribeEKSClusterCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取弹性容器集群的接入认证信息
+func (c *Client) DescribeEKSClusterCredential(request *DescribeEKSClusterCredentialRequest) (response *DescribeEKSClusterCredentialResponse, err error) {
+    if request == nil {
+        request = NewDescribeEKSClusterCredentialRequest()
+    }
+    response = NewDescribeEKSClusterCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEKSClustersRequest() (request *DescribeEKSClustersRequest) {
+    request = &DescribeEKSClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSClusters")
+    return
+}
+
+func NewDescribeEKSClustersResponse() (response *DescribeEKSClustersResponse) {
+    response = &DescribeEKSClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询弹性集群列表
+func (c *Client) DescribeEKSClusters(request *DescribeEKSClustersRequest) (response *DescribeEKSClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeEKSClustersRequest()
+    }
+    response = NewDescribeEKSClustersResponse()
     err = c.Send(request, response)
     return
 }
@@ -1539,6 +1639,31 @@ func (c *Client) UpdateClusterVersion(request *UpdateClusterVersionRequest) (res
         request = NewUpdateClusterVersionRequest()
     }
     response = NewUpdateClusterVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateEKSClusterRequest() (request *UpdateEKSClusterRequest) {
+    request = &UpdateEKSClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateEKSCluster")
+    return
+}
+
+func NewUpdateEKSClusterResponse() (response *UpdateEKSClusterResponse) {
+    response = &UpdateEKSClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改弹性集群名称等属性 
+func (c *Client) UpdateEKSCluster(request *UpdateEKSClusterRequest) (response *UpdateEKSClusterResponse, err error) {
+    if request == nil {
+        request = NewUpdateEKSClusterRequest()
+    }
+    response = NewUpdateEKSClusterResponse()
     err = c.Send(request, response)
     return
 }

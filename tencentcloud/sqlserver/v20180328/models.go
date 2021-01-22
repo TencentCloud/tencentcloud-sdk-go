@@ -399,6 +399,9 @@ type CreateBasicDBInstancesRequest struct {
 
 	// 可维护时间窗配置，持续时间，单位：小时
 	Span *int64 `json:"Span,omitempty" name:"Span"`
+
+	// 新建实例绑定的标签集合
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateBasicDBInstancesRequest) ToJsonString() string {
@@ -490,6 +493,9 @@ type CreateDBInstancesRequest struct {
 
 	// 是否跨可用区部署，默认值为false
 	MultiZones *bool `json:"MultiZones,omitempty" name:"MultiZones"`
+
+	// 新建实例绑定的标签集合
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -725,6 +731,9 @@ type CreateReadOnlyDBInstancesRequest struct {
 
 	// 代金券ID数组，目前单个订单只能使用一张
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 新建实例绑定的标签集合
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 func (r *CreateReadOnlyDBInstancesRequest) ToJsonString() string {
@@ -909,6 +918,10 @@ type DBInstance struct {
 	// 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HAFlag *string `json:"HAFlag,omitempty" name:"HAFlag"`
+
+	// 实例绑定的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
 type DBPrivilege struct {
@@ -1447,6 +1460,24 @@ type DescribeDBInstancesRequest struct {
 
 	// 实例所属子网的唯一字符串ID，格式如： subnet-xxx，传空字符串(“”)则按照基础网络筛选。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例内网地址列表，格式如：172.1.0.12
+	VipSet []*string `json:"VipSet,omitempty" name:"VipSet" list`
+
+	// 实例名称列表，模糊查询
+	InstanceNameSet []*string `json:"InstanceNameSet,omitempty" name:"InstanceNameSet" list`
+
+	// 实例版本代号列表，格式如：2008R2，2012SP3等
+	VersionSet []*string `json:"VersionSet,omitempty" name:"VersionSet" list`
+
+	// 实例可用区，格式如：ap-guangzhou-2
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例标签列表
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+
+	// 模糊查询关键字，支持实例id、实例名、内网ip
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -2880,6 +2911,52 @@ func (r *ModifyDBInstanceNameResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDBInstanceNetworkRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 新VPC网络Id
+	NewVpcId *string `json:"NewVpcId,omitempty" name:"NewVpcId"`
+
+	// 新子网Id
+	NewSubnetId *string `json:"NewSubnetId,omitempty" name:"NewSubnetId"`
+
+	// 原vip保留时长，单位小时，默认为0，代表立即回收，最大为168小时
+	OldIpRetainTime *int64 `json:"OldIpRetainTime,omitempty" name:"OldIpRetainTime"`
+}
+
+func (r *ModifyDBInstanceNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDBInstanceNetworkRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例转网流程id，可通过[DescribeFlowStatus](https://cloud.tencent.com/document/product/238/19967)接口查询流程状态
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDBInstanceNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDBInstanceNetworkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstanceProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -3736,6 +3813,15 @@ func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceTag struct {
+
+	// 标签key
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签value
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type RestartDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -4170,6 +4256,15 @@ type UpgradeDBInstanceRequest struct {
 
 	// 实例升级后的CPU核心数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构
+	HAType *string `json:"HAType,omitempty" name:"HAType"`
+
+	// 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为夸可用区
+	MultiZones *string `json:"MultiZones,omitempty" name:"MultiZones"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {

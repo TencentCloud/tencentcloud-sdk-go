@@ -722,6 +722,24 @@ type GroupInfo struct {
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitempty" name:"CreationTimestamp"`
 }
 
+type ImageRect struct {
+
+	// 左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 左上角纵坐标。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人体宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 人体高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 分割选项名称。
+	Label *string `json:"Label,omitempty" name:"Label"`
+}
+
 type KeyPointInfo struct {
 
 	// 代表不同位置的人体关键点信息，返回值为以下集合中的一个 [头部,颈部,右肩,右肘,右腕,左肩,左肘,左腕,右髋,右膝,右踝,左髋,左膝,左踝]
@@ -970,6 +988,10 @@ type SegmentCustomizedPortraitPicResponse struct {
 
 		// 指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
 		MaskImage *string `json:"MaskImage,omitempty" name:"MaskImage"`
+
+		// 坐标信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageRects []*ImageRect `json:"ImageRects,omitempty" name:"ImageRects" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

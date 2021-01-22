@@ -511,6 +511,15 @@ type ClusterCIDRSettings struct {
 	ClaimExpiredSeconds *int64 `json:"ClaimExpiredSeconds,omitempty" name:"ClaimExpiredSeconds"`
 }
 
+type ClusterCredential struct {
+
+	// CA 根证书
+	CACert *string `json:"CACert,omitempty" name:"CACert"`
+
+	// 认证用的Token
+	Token *string `json:"Token,omitempty" name:"Token"`
+}
+
 type ClusterExtraArgs struct {
 
 	// kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
@@ -524,6 +533,15 @@ type ClusterExtraArgs struct {
 	// kube-scheduler自定义参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KubeScheduler []*string `json:"KubeScheduler,omitempty" name:"KubeScheduler" list`
+}
+
+type ClusterInternalLB struct {
+
+	// 是否开启内网访问LB
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 内网访问LB关联的子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type ClusterNetworkSettings struct {
@@ -548,6 +566,18 @@ type ClusterNetworkSettings struct {
 
 	// 网络插件是否启用CNI(默认开启)
 	Cni *bool `json:"Cni,omitempty" name:"Cni"`
+}
+
+type ClusterPublicLB struct {
+
+	// 是否开启公网访问LB
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 允许访问的来源CIDR列表
+	AllowFromCidrs []*string `json:"AllowFromCidrs,omitempty" name:"AllowFromCidrs" list`
+
+	// 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+	SecurityPolicies []*string `json:"SecurityPolicies,omitempty" name:"SecurityPolicies" list`
 }
 
 type ClusterVersion struct {
@@ -979,6 +1009,67 @@ func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateEKSClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// k8s版本号。可为1.14.4, 1.12.8。
+	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
+
+	// vpc 的Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 子网Id 列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 集群描述信息
+	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+
+	// Serivce 所在子网Id
+	ServiceSubnetId *string `json:"ServiceSubnetId,omitempty" name:"ServiceSubnetId"`
+
+	// 集群自定义的Dns服务器信息
+	DnsServers []*DnsServerConf `json:"DnsServers,omitempty" name:"DnsServers" list`
+
+	// 扩展参数。须是map[string]string 的json 格式。
+	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+
+	// 是否在用户集群内开启Dns。默认为true
+	EnableVpcCoreDNS *bool `json:"EnableVpcCoreDNS,omitempty" name:"EnableVpcCoreDNS"`
+}
+
+func (r *CreateEKSClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEKSClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEKSClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 弹性集群Id
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateEKSClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateEKSClusterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePrometheusDashboardRequest struct {
 	*tchttp.BaseRequest
 
@@ -1397,6 +1488,40 @@ func (r *DeleteClusterRouteTableResponse) ToJsonString() string {
 }
 
 func (r *DeleteClusterRouteTableResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEKSClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteEKSClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteEKSClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEKSClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteEKSClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteEKSClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2049,6 +2174,102 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEKSClusterCredentialRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeEKSClusterCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEKSClusterCredentialRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEKSClusterCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群的接入地址信息
+		Addresses []*IPAddress `json:"Addresses,omitempty" name:"Addresses" list`
+
+		// 集群的认证信息
+		Credential *ClusterCredential `json:"Credential,omitempty" name:"Credential"`
+
+		// 集群的公网访问信息
+		PublicLB *ClusterPublicLB `json:"PublicLB,omitempty" name:"PublicLB"`
+
+		// 集群的内网访问信息
+		InternalLB *ClusterInternalLB `json:"InternalLB,omitempty" name:"InternalLB"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEKSClusterCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEKSClusterCredentialResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEKSClustersRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID列表(为空时，
+	// 表示获取账号下所有集群)
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeEKSClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEKSClustersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEKSClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群总个数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群信息列表
+		Clusters []*EksCluster `json:"Clusters,omitempty" name:"Clusters" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEKSClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEKSClustersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeExistedInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2549,6 +2770,54 @@ func (r *DescribeRouteTableConflictsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DnsServerConf struct {
+
+	// 域名。空字符串表示所有域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// dns 服务器地址列表。地址格式 ip:port
+	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers" list`
+}
+
+type EksCluster struct {
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// k8s 版本号
+	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
+
+	// 集群状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 集群描述信息
+	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+
+	// 集群创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// Service 子网Id
+	ServiceSubnetId *string `json:"ServiceSubnetId,omitempty" name:"ServiceSubnetId"`
+
+	// 集群的自定义dns 服务器信息
+	DnsServers []*DnsServerConf `json:"DnsServers,omitempty" name:"DnsServers" list`
+
+	// 将来删除集群时是否要删除cbs。默认为 FALSE
+	NeedDeleteCbs *bool `json:"NeedDeleteCbs,omitempty" name:"NeedDeleteCbs"`
+
+	// 是否在用户集群内开启Dns。默认为TRUE
+	EnableVpcCoreDNS *bool `json:"EnableVpcCoreDNS,omitempty" name:"EnableVpcCoreDNS"`
+}
+
 type EnhancedService struct {
 
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
@@ -2727,6 +2996,18 @@ func (r *GetUpgradeInstanceProgressResponse) ToJsonString() string {
 
 func (r *GetUpgradeInstanceProgressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type IPAddress struct {
+
+	// Ip 地址的类型。可为 advertise, public 等
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Ip 地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 网络端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
 }
 
 type ImageInstance struct {
@@ -3940,6 +4221,67 @@ func (r *UpdateClusterVersionResponse) ToJsonString() string {
 }
 
 func (r *UpdateClusterVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateEKSClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 弹性集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 弹性集群描述信息
+	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+
+	// 子网Id 列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 弹性容器集群公网访问LB信息
+	PublicLB *ClusterPublicLB `json:"PublicLB,omitempty" name:"PublicLB"`
+
+	// 弹性容器集群内网访问LB信息
+	InternalLB *ClusterInternalLB `json:"InternalLB,omitempty" name:"InternalLB"`
+
+	// Service 子网Id
+	ServiceSubnetId *string `json:"ServiceSubnetId,omitempty" name:"ServiceSubnetId"`
+
+	// 集群自定义的dns 服务器信息
+	DnsServers []*DnsServerConf `json:"DnsServers,omitempty" name:"DnsServers" list`
+
+	// 是否清空自定义dns 服务器设置。为1 表示 是。其他表示 否。
+	ClearDnsServer *string `json:"ClearDnsServer,omitempty" name:"ClearDnsServer"`
+
+	// 将来删除集群时是否要删除cbs。默认为 FALSE
+	NeedDeleteCbs *bool `json:"NeedDeleteCbs,omitempty" name:"NeedDeleteCbs"`
+}
+
+func (r *UpdateEKSClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateEKSClusterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateEKSClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateEKSClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateEKSClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

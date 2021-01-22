@@ -1243,6 +1243,31 @@ func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (res
     return
 }
 
+func NewModifyDBInstanceNetworkRequest() (request *ModifyDBInstanceNetworkRequest) {
+    request = &ModifyDBInstanceNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstanceNetwork")
+    return
+}
+
+func NewModifyDBInstanceNetworkResponse() (response *ModifyDBInstanceNetworkResponse) {
+    response = &ModifyDBInstanceNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDBInstanceNetwork）用于修改运行中实例的网络，仅支持从VPC网络到VPC网络的转换
+func (c *Client) ModifyDBInstanceNetwork(request *ModifyDBInstanceNetworkRequest) (response *ModifyDBInstanceNetworkResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceNetworkRequest()
+    }
+    response = NewModifyDBInstanceNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceProjectRequest() (request *ModifyDBInstanceProjectRequest) {
     request = &ModifyDBInstanceProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
