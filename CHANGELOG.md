@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 6 次发布
+### 第 38 次发布
 
-发布时间：2021-01-22 08:00:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SegmentCustomizedPortraitPic](https://cloud.tencent.com/document/api/1208/47022)
-
-	* 新增出参：ImageRects
-
-
-新增数据结构：
-
-* [ImageRect](https://cloud.tencent.com/document/api/1208/42985#ImageRect)
-
-
-
-## 云 HDFS(chdfs) 版本：2020-11-12
-
-### 第 2 次发布
-
-发布时间：2021-01-22 08:03:07
+发布时间：2021-01-25 08:00:54
 
 本次发布包含了以下内容：
 
@@ -35,89 +12,38 @@
 
 新增接口：
 
-* [CreateAccessRules](https://cloud.tencent.com/document/api/1105/52339)
-* [CreateLifeCycleRules](https://cloud.tencent.com/document/api/1105/52336)
-* [CreateRestoreTasks](https://cloud.tencent.com/document/api/1105/52345)
-* [DeleteAccessGroup](https://cloud.tencent.com/document/api/1105/52340)
-* [DeleteAccessRules](https://cloud.tencent.com/document/api/1105/52338)
-* [DeleteFileSystem](https://cloud.tencent.com/document/api/1105/52341)
-* [DeleteLifeCycleRules](https://cloud.tencent.com/document/api/1105/52335)
-* [DeleteMountPoint](https://cloud.tencent.com/document/api/1105/52342)
-* [DescribeLifeCycleRules](https://cloud.tencent.com/document/api/1105/52334)
-* [DescribeResourceTags](https://cloud.tencent.com/document/api/1105/52346)
-* [DescribeRestoreTasks](https://cloud.tencent.com/document/api/1105/52344)
-* [ModifyAccessRules](https://cloud.tencent.com/document/api/1105/52337)
-* [ModifyLifeCycleRules](https://cloud.tencent.com/document/api/1105/52333)
-
-新增数据结构：
-
-* [LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)
-* [RestoreTask](https://cloud.tencent.com/document/api/1105/51158#RestoreTask)
-* [Transition](https://cloud.tencent.com/document/api/1105/51158#Transition)
-
-
-
-## 云 HDFS(chdfs) 版本：2019-07-18
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 19 次发布
-
-发布时间：2021-01-22 08:06:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyDBInstanceNetwork](https://cloud.tencent.com/document/api/238/52347)
+* [SetLoadBalancerSecurityGroups](https://cloud.tencent.com/document/api/1108/52408)
+* [SetSecurityGroupForLoadbalancers](https://cloud.tencent.com/document/api/1108/52407)
 
 修改接口：
 
-* [CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/1108/48465)
 
-	* 新增入参：ResourceTags
+	* 新增入参：SecurityGroups
 
-* [CreateDBInstances](https://cloud.tencent.com/document/api/238/19973)
+* [DescribeLoadBalancers](https://cloud.tencent.com/document/api/1108/48459)
 
-	* 新增入参：ResourceTags
+	* 新增入参：SecurityGroup
 
-* [CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)
+* [ModifyLoadBalancerAttributes](https://cloud.tencent.com/document/api/1108/48455)
 
-	* 新增入参：ResourceTags
+	* 新增入参：LoadBalancerPassToTarget
 
-* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
-
-	* 新增入参：VipSet, InstanceNameSet, VersionSet, Zone, TagKeys, SearchKey
-
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
-
-	* 新增入参：DBVersion, HAType, MultiZones
-
-	* <font color="#dd0000">**修改入参**：</font>Memory, Storage
-
-
-新增数据结构：
-
-* [ResourceTag](https://cloud.tencent.com/document/api/238/19976#ResourceTag)
 
 修改数据结构：
 
-* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+* [LoadBalancer](https://cloud.tencent.com/document/api/1108/42574#LoadBalancer)
 
-	* 新增成员：ResourceTags
-
-
+	* 新增成员：SecureGroups, LoadBalancerPassToTarget
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 39 次发布
 
-发布时间：2021-01-22 08:06:57
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 9 次发布
+
+发布时间：2021-01-25 08:04:43
 
 本次发布包含了以下内容：
 
@@ -125,20 +51,108 @@
 
 新增接口：
 
-* [CreateEKSCluster](https://cloud.tencent.com/document/api/457/52353)
-* [DeleteEKSCluster](https://cloud.tencent.com/document/api/457/52352)
-* [DescribeEKSClusterCredential](https://cloud.tencent.com/document/api/457/52351)
-* [DescribeEKSClusters](https://cloud.tencent.com/document/api/457/52350)
-* [UpdateEKSCluster](https://cloud.tencent.com/document/api/457/52349)
+* [DescribeApplicationData](https://cloud.tencent.com/document/api/607/52409)
 
 新增数据结构：
 
-* [ClusterCredential](https://cloud.tencent.com/document/api/457/31866#ClusterCredential)
-* [ClusterInternalLB](https://cloud.tencent.com/document/api/457/31866#ClusterInternalLB)
-* [ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB)
-* [DnsServerConf](https://cloud.tencent.com/document/api/457/31866#DnsServerConf)
-* [EksCluster](https://cloud.tencent.com/document/api/457/31866#EksCluster)
-* [IPAddress](https://cloud.tencent.com/document/api/457/31866#IPAddress)
+* [ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics)
+* [StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem)
+
+
+
+## 流计算服务(oceanus) 版本：2019-04-22
+
+### 第 2 次发布
+
+发布时间：2021-01-25 08:00:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：ClusterStatus
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 44 次发布
+
+发布时间：2021-01-22 11:47:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QuestionBlockObj](https://cloud.tencent.com/document/api/866/33527#QuestionBlockObj)
+
+	* 新增成员：QuestionBboxCoord
+
+* [QuestionObj](https://cloud.tencent.com/document/api/866/33527#QuestionObj)
+
+	* 新增成员：QuestionImageCoords
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 5 次发布
+
+发布时间：2021-01-25 08:01:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+
+	* 新增出参：Tags
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [Tags](https://cloud.tencent.com/document/api/400/41679#Tags)
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：Tags
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 33 次发布
+
+发布时间：2021-01-25 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSmsQuotas](https://cloud.tencent.com/document/api/876/52410)
+
+新增数据结构：
+
+* [SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota)
 
 
 
@@ -2984,7 +2998,7 @@
 
 新增数据结构：
 
-* [[ImageRect](https://cloud.tencent.com/document/api/1208/42985#ImageRect)](https://cloud.tencent.com/document/api/1208/42985#[ImageRect](https://cloud.tencent.com/document/api/1208/42985#ImageRect))
+* [ImageRect](https://cloud.tencent.com/document/api/1208/42985#ImageRect)
 
 ### 第 5 次发布
 
@@ -9046,25 +9060,25 @@
 
 新增接口：
 
-* [[CreateAccessRules](https://cloud.tencent.com/document/api/1105/52339)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateLifeCycleRules](https://cloud.tencent.com/document/api/1105/52336)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRestoreTasks](https://cloud.tencent.com/document/api/1105/52345)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAccessGroup](https://cloud.tencent.com/document/api/1105/52340)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAccessRules](https://cloud.tencent.com/document/api/1105/52338)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteFileSystem](https://cloud.tencent.com/document/api/1105/52341)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLifeCycleRules](https://cloud.tencent.com/document/api/1105/52335)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMountPoint](https://cloud.tencent.com/document/api/1105/52342)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLifeCycleRules](https://cloud.tencent.com/document/api/1105/52334)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResourceTags](https://cloud.tencent.com/document/api/1105/52346)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRestoreTasks](https://cloud.tencent.com/document/api/1105/52344)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAccessRules](https://cloud.tencent.com/document/api/1105/52337)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLifeCycleRules](https://cloud.tencent.com/document/api/1105/52333)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAccessRules](https://cloud.tencent.com/document/api/1105/52339)
+* [CreateLifeCycleRules](https://cloud.tencent.com/document/api/1105/52336)
+* [CreateRestoreTasks](https://cloud.tencent.com/document/api/1105/52345)
+* [DeleteAccessGroup](https://cloud.tencent.com/document/api/1105/52340)
+* [DeleteAccessRules](https://cloud.tencent.com/document/api/1105/52338)
+* [DeleteFileSystem](https://cloud.tencent.com/document/api/1105/52341)
+* [DeleteLifeCycleRules](https://cloud.tencent.com/document/api/1105/52335)
+* [DeleteMountPoint](https://cloud.tencent.com/document/api/1105/52342)
+* [DescribeLifeCycleRules](https://cloud.tencent.com/document/api/1105/52334)
+* [DescribeResourceTags](https://cloud.tencent.com/document/api/1105/52346)
+* [DescribeRestoreTasks](https://cloud.tencent.com/document/api/1105/52344)
+* [ModifyAccessRules](https://cloud.tencent.com/document/api/1105/52337)
+* [ModifyLifeCycleRules](https://cloud.tencent.com/document/api/1105/52333)
 
 新增数据结构：
 
-* [[LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)](https://cloud.tencent.com/document/api/1105/51158#[LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule))
-* [[RestoreTask](https://cloud.tencent.com/document/api/1105/51158#RestoreTask)](https://cloud.tencent.com/document/api/1105/51158#[RestoreTask](https://cloud.tencent.com/document/api/1105/51158#RestoreTask))
-* [[Transition](https://cloud.tencent.com/document/api/1105/51158#Transition)](https://cloud.tencent.com/document/api/1105/51158#[Transition](https://cloud.tencent.com/document/api/1105/51158#Transition))
+* [LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)
+* [RestoreTask](https://cloud.tencent.com/document/api/1105/51158#RestoreTask)
+* [Transition](https://cloud.tencent.com/document/api/1105/51158#Transition)
 
 ### 第 1 次发布
 
@@ -16681,6 +16695,41 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 38 次发布
+
+发布时间：2021-01-25 08:00:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SetLoadBalancerSecurityGroups](https://cloud.tencent.com/document/api/1108/52408)](https://cloud.tencent.com/document/api/#/#)
+* [[SetSecurityGroupForLoadbalancers](https://cloud.tencent.com/document/api/1108/52407)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/1108/48465)
+
+	* 新增入参：SecurityGroups
+
+* [DescribeLoadBalancers](https://cloud.tencent.com/document/api/1108/48459)
+
+	* 新增入参：SecurityGroup
+
+* [ModifyLoadBalancerAttributes](https://cloud.tencent.com/document/api/1108/48455)
+
+	* 新增入参：LoadBalancerPassToTarget
+
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/1108/42574#LoadBalancer)
+
+	* 新增成员：SecureGroups, LoadBalancerPassToTarget
+
+
 ### 第 37 次发布
 
 发布时间：2020-12-29 08:00:50
@@ -19585,6 +19634,23 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 9 次发布
+
+发布时间：2021-01-25 08:04:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeApplicationData](https://cloud.tencent.com/document/api/607/52409)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics)](https://cloud.tencent.com/document/api/607/35375#[ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics))
+* [[StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem))
 
 ### 第 8 次发布
 
@@ -27914,6 +27980,21 @@
 
 ## 流计算服务(oceanus) 版本：2019-04-22
 
+### 第 2 次发布
+
+发布时间：2021-01-25 08:00:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：ClusterStatus
+
+
 ### 第 1 次发布
 
 发布时间：2021-01-14 14:22:54
@@ -27950,6 +28031,25 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 44 次发布
+
+发布时间：2021-01-22 11:47:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QuestionBlockObj](https://cloud.tencent.com/document/api/866/33527#QuestionBlockObj)
+
+	* 新增成员：QuestionBboxCoord
+
+* [QuestionObj](https://cloud.tencent.com/document/api/866/33527#QuestionObj)
+
+	* 新增成员：QuestionImageCoords
+
 
 ### 第 43 次发布
 
@@ -31410,7 +31510,7 @@
 
 新增接口：
 
-* [[ModifyDBInstanceNetwork](https://cloud.tencent.com/document/api/238/52347)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyDBInstanceNetwork](https://cloud.tencent.com/document/api/238/52347)
 
 修改接口：
 
@@ -31439,7 +31539,7 @@
 
 新增数据结构：
 
-* [[ResourceTag](https://cloud.tencent.com/document/api/238/19976#ResourceTag)](https://cloud.tencent.com/document/api/238/19976#[ResourceTag](https://cloud.tencent.com/document/api/238/19976#ResourceTag))
+* [ResourceTag](https://cloud.tencent.com/document/api/238/19976#ResourceTag)
 
 修改数据结构：
 
@@ -31988,6 +32088,36 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 5 次发布
+
+发布时间：2021-01-25 08:01:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+
+	* 新增出参：Tags
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [[Tags](https://cloud.tencent.com/document/api/400/41679#Tags)](https://cloud.tencent.com/document/api/400/41679#[Tags](https://cloud.tencent.com/document/api/400/41679#Tags))
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：Tags
+
 
 ### 第 4 次发布
 
@@ -33328,6 +33458,22 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 33 次发布
+
+发布时间：2021-01-25 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSmsQuotas](https://cloud.tencent.com/document/api/876/52410)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota)](https://cloud.tencent.com/document/api/876/34822#[SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota))
 
 ### 第 32 次发布
 
@@ -36180,20 +36326,20 @@
 
 新增接口：
 
-* [[CreateEKSCluster](https://cloud.tencent.com/document/api/457/52353)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEKSCluster](https://cloud.tencent.com/document/api/457/52352)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEKSClusterCredential](https://cloud.tencent.com/document/api/457/52351)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEKSClusters](https://cloud.tencent.com/document/api/457/52350)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateEKSCluster](https://cloud.tencent.com/document/api/457/52349)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEKSCluster](https://cloud.tencent.com/document/api/457/52353)
+* [DeleteEKSCluster](https://cloud.tencent.com/document/api/457/52352)
+* [DescribeEKSClusterCredential](https://cloud.tencent.com/document/api/457/52351)
+* [DescribeEKSClusters](https://cloud.tencent.com/document/api/457/52350)
+* [UpdateEKSCluster](https://cloud.tencent.com/document/api/457/52349)
 
 新增数据结构：
 
-* [[ClusterCredential](https://cloud.tencent.com/document/api/457/31866#ClusterCredential)](https://cloud.tencent.com/document/api/457/31866#[ClusterCredential](https://cloud.tencent.com/document/api/457/31866#ClusterCredential))
-* [[ClusterInternalLB](https://cloud.tencent.com/document/api/457/31866#ClusterInternalLB)](https://cloud.tencent.com/document/api/457/31866#[ClusterInternalLB](https://cloud.tencent.com/document/api/457/31866#ClusterInternalLB))
-* [[ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB)](https://cloud.tencent.com/document/api/457/31866#[ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB))
-* [[DnsServerConf](https://cloud.tencent.com/document/api/457/31866#DnsServerConf)](https://cloud.tencent.com/document/api/457/31866#[DnsServerConf](https://cloud.tencent.com/document/api/457/31866#DnsServerConf))
-* [[EksCluster](https://cloud.tencent.com/document/api/457/31866#EksCluster)](https://cloud.tencent.com/document/api/457/31866#[EksCluster](https://cloud.tencent.com/document/api/457/31866#EksCluster))
-* [[IPAddress](https://cloud.tencent.com/document/api/457/31866#IPAddress)](https://cloud.tencent.com/document/api/457/31866#[IPAddress](https://cloud.tencent.com/document/api/457/31866#IPAddress))
+* [ClusterCredential](https://cloud.tencent.com/document/api/457/31866#ClusterCredential)
+* [ClusterInternalLB](https://cloud.tencent.com/document/api/457/31866#ClusterInternalLB)
+* [ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB)
+* [DnsServerConf](https://cloud.tencent.com/document/api/457/31866#DnsServerConf)
+* [EksCluster](https://cloud.tencent.com/document/api/457/31866#EksCluster)
+* [IPAddress](https://cloud.tencent.com/document/api/457/31866#IPAddress)
 
 ### 第 38 次发布
 

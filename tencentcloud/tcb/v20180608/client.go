@@ -743,6 +743,34 @@ func (c *Client) DescribeQuotaData(request *DescribeQuotaDataRequest) (response 
     return
 }
 
+func NewDescribeSmsQuotasRequest() (request *DescribeSmsQuotasRequest) {
+    request = &DescribeSmsQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeSmsQuotas")
+    return
+}
+
+func NewDescribeSmsQuotasResponse() (response *DescribeSmsQuotasResponse) {
+    response = &DescribeSmsQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询后付费短信资源量
+// 1 有免费包的返回SmsFreeQuota结构所有字段
+// 2 没有免费包，有付费包，付费返回复用SmsFreeQuota结构，其中只有 TodayUsedQuota 字段有效
+// 3 都没有返回为空数组
+func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response *DescribeSmsQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsQuotasRequest()
+    }
+    response = NewDescribeSmsQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
     request = &DestroyEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},

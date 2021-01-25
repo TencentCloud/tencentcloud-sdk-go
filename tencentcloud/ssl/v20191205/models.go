@@ -267,6 +267,10 @@ type Certificates struct {
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type CheckCertificateChainRequest struct {
@@ -624,6 +628,10 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
 
+		// 关联标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -834,6 +842,10 @@ type DescribeCertificateResponse struct {
 		// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
+
+		// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1454,6 +1466,15 @@ type SubmittedData struct {
 	// 验证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+type Tags struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UploadCertificateRequest struct {

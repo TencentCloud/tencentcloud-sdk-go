@@ -171,7 +171,7 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 // 本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果。
 // <br>• 支持中文普通话、英语、粤语、日语和上海话方言
 // <br>• 支持通用、音视频领域
-// <br>• 支持wav、mp3、m4a、flv、mp4格式
+// <br>• 支持wav、mp3、m4a、flv、mp4、wma、3gp、amr、aac、ogg-opus、flac格式
 // <br>• 支持语音 URL 和本地语音文件两种请求方式
 // <br>• 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
 // <br>• 本地语音文件不能大于5MB

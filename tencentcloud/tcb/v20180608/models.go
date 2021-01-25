@@ -603,7 +603,7 @@ type CreateCloudBaseRunServerVersionRequest struct {
 	// 操作备注
 	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
 
-	// 服务路劲
+	// 服务路径
 	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
 
 	// 镜像复用的key
@@ -1864,6 +1864,44 @@ func (r *DescribeQuotaDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSmsQuotasRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeSmsQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsQuotasRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSmsQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 短信免费量信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SmsFreeQuotaList []*SmsFreeQuota `json:"SmsFreeQuotaList,omitempty" name:"SmsFreeQuotaList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSmsQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSmsQuotasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DestroyEnvRequest struct {
 	*tchttp.BaseRequest
 
@@ -2532,6 +2570,29 @@ func (r *ReinstateEnvResponse) ToJsonString() string {
 
 func (r *ReinstateEnvResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SmsFreeQuota struct {
+
+	// 免费量总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuota *uint64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 共计已使用总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalUsedQuota *uint64 `json:"TotalUsedQuota,omitempty" name:"TotalUsedQuota"`
+
+	// 免费周期起点，0000-00-00 00:00:00 形式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleStart *string `json:"CycleStart,omitempty" name:"CycleStart"`
+
+	// 免费周期终点，0000-00-00 00:00:00 形式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleEnd *string `json:"CycleEnd,omitempty" name:"CycleEnd"`
+
+	// 今天已使用总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TodayUsedQuota *uint64 `json:"TodayUsedQuota,omitempty" name:"TodayUsedQuota"`
 }
 
 type StaticStorageInfo struct {

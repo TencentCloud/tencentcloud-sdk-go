@@ -486,6 +486,10 @@ type JobV1 struct {
 	// 作业所在集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerType *int64 `json:"SchedulerType,omitempty" name:"SchedulerType"`
+
+	// 作业所在集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 }
 
 type Property struct {

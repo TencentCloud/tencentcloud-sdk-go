@@ -38,6 +38,48 @@ type AppStatisticsItem struct {
 	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
+type ApplicationDataStatistics struct {
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// Dau统计项数目
+	DauDataNum *uint64 `json:"DauDataNum,omitempty" name:"DauDataNum"`
+
+	// 大陆地区Dau统计数据，单位人
+	DauDataMainland []*StatisticsItem `json:"DauDataMainland,omitempty" name:"DauDataMainland" list`
+
+	// 海外地区Dau统计数据，单位人
+	DauDataOversea []*StatisticsItem `json:"DauDataOversea,omitempty" name:"DauDataOversea" list`
+
+	// 大陆和海外地区Dau统计数据汇总，单位人
+	DauDataSum []*StatisticsItem `json:"DauDataSum,omitempty" name:"DauDataSum" list`
+
+	// 实时语音时长统计项数目
+	DurationDataNum *uint64 `json:"DurationDataNum,omitempty" name:"DurationDataNum"`
+
+	// 大陆地区实时语音时长统计数据，单位分钟
+	DurationDataMainland []*StatisticsItem `json:"DurationDataMainland,omitempty" name:"DurationDataMainland" list`
+
+	// 海外地区实时语音时长统计数据，单位分钟
+	DurationDataOversea []*StatisticsItem `json:"DurationDataOversea,omitempty" name:"DurationDataOversea" list`
+
+	// 大陆和海外地区实时语音时长统计数据汇总，单位分钟
+	DurationDataSum []*StatisticsItem `json:"DurationDataSum,omitempty" name:"DurationDataSum" list`
+
+	// Pcu统计项数目
+	PcuDataNum *uint64 `json:"PcuDataNum,omitempty" name:"PcuDataNum"`
+
+	// 大陆地区Pcu统计数据，单位人
+	PcuDataMainland []*StatisticsItem `json:"PcuDataMainland,omitempty" name:"PcuDataMainland" list`
+
+	// 海外地区Pcu统计数据，单位人
+	PcuDataOversea []*StatisticsItem `json:"PcuDataOversea,omitempty" name:"PcuDataOversea" list`
+
+	// 大陆和海外地区Pcu统计数据汇总，单位人
+	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum" list`
+}
+
 type CreateAppRequest struct {
 	*tchttp.BaseRequest
 
@@ -154,6 +196,49 @@ func (r *DescribeAppStatisticsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAppStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 数据开始时间，格式为 年-月-日，如: 2018-07-13
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 数据结束时间，格式为 年-月-日，如: 2018-07-13
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
+func (r *DescribeApplicationDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApplicationDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用统计数据
+		Data *ApplicationDataStatistics `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApplicationDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeApplicationDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -583,6 +668,15 @@ type ScanVoiceResult struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type StatisticsItem struct {
+
+	// 日期，格式为年-月-日，如2018-07-13
+	StatDate *string `json:"StatDate,omitempty" name:"StatDate"`
+
+	// 统计值
+	Data *uint64 `json:"Data,omitempty" name:"Data"`
 }
 
 type Tag struct {

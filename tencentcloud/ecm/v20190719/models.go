@@ -754,7 +754,7 @@ func (r *CreateListenerResponse) FromJsonString(s string) error {
 type CreateLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 
-	// 区域。
+	// ECM区域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
 	// 负载均衡实例的网络类型。目前只支持传入OPEN，表示公网属性。
@@ -778,6 +778,9 @@ type CreateLoadBalancerRequest struct {
 
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+
+	// 安全组。
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -2419,6 +2422,9 @@ type DescribeLoadBalancersRequest struct {
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 	// tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 安全组。
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 func (r *DescribeLoadBalancersRequest) ToJsonString() string {
@@ -4230,6 +4236,14 @@ type LoadBalancer struct {
 	// 负载均衡实例的网络属性。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAttributes *LoadBalancerInternetAccessible `json:"NetworkAttributes,omitempty" name:"NetworkAttributes"`
+
+	// 安全组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecureGroups []*string `json:"SecureGroups,omitempty" name:"SecureGroups" list`
+
+	// 后端机器是否放通来自ELB的流量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 }
 
 type LoadBalancerHealth struct {
@@ -4689,6 +4703,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 网络计费及带宽相关参数
 	InternetChargeInfo *LoadBalancerInternetAccessible `json:"InternetChargeInfo,omitempty" name:"InternetChargeInfo"`
+
+	// Target是否放通来自ELB的流量。开启放通（true）：只验证ELB上的安全组；不开启放通（false）：需同时验证ELB和后端实例上的安全组。
+	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {
@@ -6480,6 +6497,84 @@ type ServiceTemplateSpecification struct {
 
 	// 协议端口组ID，例如：eppmg-f5n1f8da。
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+type SetLoadBalancerSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例 ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 安全组ID构成的数组，一个负载均衡实例最多可绑定5个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
+}
+
+func (r *SetLoadBalancerSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetLoadBalancerSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetLoadBalancerSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetLoadBalancerSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetSecurityGroupForLoadbalancersRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡实例ID数组
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+
+	// 安全组ID，如 esg-12345678
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
+
+	// ADD 绑定安全组；
+	// DEL 解绑安全组
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+}
+
+func (r *SetSecurityGroupForLoadbalancersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetSecurityGroupForLoadbalancersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetSecurityGroupForLoadbalancersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetSecurityGroupForLoadbalancersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetSecurityGroupForLoadbalancersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SimpleModule struct {

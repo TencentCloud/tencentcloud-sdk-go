@@ -5826,14 +5826,14 @@ func (r *DescribeNetDetectsResponse) FromJsonString(s string) error {
 type DescribeNetworkAclsRequest struct {
 	*tchttp.BaseRequest
 
-	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
-	NetworkAclIds []*string `json:"NetworkAclIds,omitempty" name:"NetworkAclIds" list`
-
 	// 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
 	// <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
 	// <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+	NetworkAclIds []*string `json:"NetworkAclIds,omitempty" name:"NetworkAclIds" list`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`

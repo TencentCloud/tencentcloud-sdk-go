@@ -2870,6 +2870,56 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
     return
 }
 
+func NewSetLoadBalancerSecurityGroupsRequest() (request *SetLoadBalancerSecurityGroupsRequest) {
+    request = &SetLoadBalancerSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "SetLoadBalancerSecurityGroups")
+    return
+}
+
+func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecurityGroupsResponse) {
+    response = &SetLoadBalancerSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置负载均衡实例的安全组。
+func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityGroupsRequest) (response *SetLoadBalancerSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewSetLoadBalancerSecurityGroupsRequest()
+    }
+    response = NewSetLoadBalancerSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetSecurityGroupForLoadbalancersRequest() (request *SetSecurityGroupForLoadbalancersRequest) {
+    request = &SetSecurityGroupForLoadbalancersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "SetSecurityGroupForLoadbalancers")
+    return
+}
+
+func NewSetSecurityGroupForLoadbalancersResponse() (response *SetSecurityGroupForLoadbalancersResponse) {
+    response = &SetSecurityGroupForLoadbalancersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 绑定或解绑一个安全组到多个负载均衡实例。
+func (c *Client) SetSecurityGroupForLoadbalancers(request *SetSecurityGroupForLoadbalancersRequest) (response *SetSecurityGroupForLoadbalancersResponse, err error) {
+    if request == nil {
+        request = NewSetSecurityGroupForLoadbalancersRequest()
+    }
+    response = NewSetSecurityGroupForLoadbalancersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartInstancesRequest() (request *StartInstancesRequest) {
     request = &StartInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
