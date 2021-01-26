@@ -575,6 +575,31 @@ func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliases
     return
 }
 
+func NewListAsyncEventsRequest() (request *ListAsyncEventsRequest) {
+    request = &ListAsyncEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "ListAsyncEvents")
+    return
+}
+
+func NewListAsyncEventsResponse() (response *ListAsyncEventsResponse) {
+    response = &ListAsyncEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取函数异步事件列表
+func (c *Client) ListAsyncEvents(request *ListAsyncEventsRequest) (response *ListAsyncEventsResponse, err error) {
+    if request == nil {
+        request = NewListAsyncEventsRequest()
+    }
+    response = NewListAsyncEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListFunctionsRequest() (request *ListFunctionsRequest) {
     request = &ListFunctionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -846,6 +871,31 @@ func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigReq
         request = NewPutTotalConcurrencyConfigRequest()
     }
     response = NewPutTotalConcurrencyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateAsyncEventRequest() (request *TerminateAsyncEventRequest) {
+    request = &TerminateAsyncEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "TerminateAsyncEvent")
+    return
+}
+
+func NewTerminateAsyncEventResponse() (response *TerminateAsyncEventResponse) {
+    response = &TerminateAsyncEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 终止正在运行中的函数异步事件
+func (c *Client) TerminateAsyncEvent(request *TerminateAsyncEventRequest) (response *TerminateAsyncEventResponse, err error) {
+    if request == nil {
+        request = NewTerminateAsyncEventRequest()
+    }
+    response = NewTerminateAsyncEventResponse()
     err = c.Send(request, response)
     return
 }

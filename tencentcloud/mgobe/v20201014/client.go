@@ -93,6 +93,56 @@ func (c *Client) ChangeRoomPlayerStatus(request *ChangeRoomPlayerStatusRequest) 
     return
 }
 
+func NewDescribePlayerRequest() (request *DescribePlayerRequest) {
+    request = &DescribePlayerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "DescribePlayer")
+    return
+}
+
+func NewDescribePlayerResponse() (response *DescribePlayerResponse) {
+    response = &DescribePlayerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询玩家信息。支持两种用法，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+func (c *Client) DescribePlayer(request *DescribePlayerRequest) (response *DescribePlayerResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayerRequest()
+    }
+    response = NewDescribePlayerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
+    request = &DescribeRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mgobe", APIVersion, "DescribeRoom")
+    return
+}
+
+func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
+    response = &DescribeRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询房间信息。支持两种用法，当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，玩家Id可不传，按照房间Id查询房间信息。
+func (c *Client) DescribeRoom(request *DescribeRoomRequest) (response *DescribeRoomResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomRequest()
+    }
+    response = NewDescribeRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},

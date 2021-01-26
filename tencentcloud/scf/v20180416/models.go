@@ -54,6 +54,27 @@ type Alias struct {
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
+type AsyncEvent struct {
+
+	// 调用请求id
+	InvokeRequestId *string `json:"InvokeRequestId,omitempty" name:"InvokeRequestId"`
+
+	// 调用类型
+	InvokeType *string `json:"InvokeType,omitempty" name:"InvokeType"`
+
+	// 函数版本
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 事件状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 调用结束时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type CfsConfig struct {
 
 	// 文件系统信息列表
@@ -1526,6 +1547,79 @@ func (r *ListAliasesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListAsyncEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 过滤条件，函数版本
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 过滤条件，调用类型列表
+	InvokeType []*string `json:"InvokeType,omitempty" name:"InvokeType" list`
+
+	// 过滤条件，事件状态列表
+	Status []*string `json:"Status,omitempty" name:"Status" list`
+
+	// 过滤条件，开始执行时间左闭右开区间
+	StartTimeInterval *TimeInterval `json:"StartTimeInterval,omitempty" name:"StartTimeInterval"`
+
+	// 过滤条件，结束执行时间左闭右开区间
+	EndTimeInterval *TimeInterval `json:"EndTimeInterval,omitempty" name:"EndTimeInterval"`
+
+	// 可选值 ASC 和 DESC，默认 DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选值 StartTime 和 EndTime，默认值 StartTime
+	Orderby *string `json:"Orderby,omitempty" name:"Orderby"`
+
+	// 数据偏移量，默认值为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数据长度，默认值为 20，最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，事件调用请求id
+	InvokeRequestId *string `json:"InvokeRequestId,omitempty" name:"InvokeRequestId"`
+}
+
+func (r *ListAsyncEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAsyncEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAsyncEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 满足过滤条件的事件总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 异步事件列表
+		EventList []*AsyncEvent `json:"EventList,omitempty" name:"EventList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAsyncEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAsyncEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ListFunctionsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2195,6 +2289,55 @@ type Tag struct {
 
 	// 标签的value
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TerminateAsyncEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 终止的调用请求id
+	InvokeRequestId *string `json:"InvokeRequestId,omitempty" name:"InvokeRequestId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *TerminateAsyncEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateAsyncEventRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateAsyncEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateAsyncEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TerminateAsyncEventResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TimeInterval struct {
+
+	// 起始时间（包括在内），格式"%Y-%m-%d %H:%M:%S"
+	Start *string `json:"Start,omitempty" name:"Start"`
+
+	// 结束时间（不包括在内），格式"%Y-%m-%d %H:%M:%S"
+	End *string `json:"End,omitempty" name:"End"`
 }
 
 type Trigger struct {

@@ -106,6 +106,92 @@ func (r *ChangeRoomPlayerStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePlayerRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 玩家OpenId。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+}
+
+func (r *DescribePlayerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePlayerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 玩家信息。
+		Player *Player `json:"Player,omitempty" name:"Player"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePlayerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePlayerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoomRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+
+	// 房间Id。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoomRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 房间信息。
+		Room *Room `json:"Room,omitempty" name:"Room"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoomResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DismissRoomRequest struct {
 	*tchttp.BaseRequest
 

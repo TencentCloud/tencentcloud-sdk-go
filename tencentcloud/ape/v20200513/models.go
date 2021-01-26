@@ -340,6 +340,9 @@ type ImageItem struct {
 
 	// 图片供应商
 	Vendor *string `json:"Vendor,omitempty" name:"Vendor"`
+
+	// 图片关键词
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
 }
 
 type ImageMarshal struct {

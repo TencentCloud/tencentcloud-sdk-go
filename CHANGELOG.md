@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## 正版图库直通车(ape) 版本：2020-05-13
 
-### 第 38 次发布
+### 第 3 次发布
 
-发布时间：2021-01-25 08:00:54
+发布时间：2021-01-26 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
+
+	* 新增成员：Keywords
+
+
+
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 10 次发布
+
+发布时间：2021-01-26 08:11:01
 
 本次发布包含了以下内容：
 
@@ -12,38 +31,88 @@
 
 新增接口：
 
-* [SetLoadBalancerSecurityGroups](https://cloud.tencent.com/document/api/1108/52408)
-* [SetSecurityGroupForLoadbalancers](https://cloud.tencent.com/document/api/1108/52407)
+* [DescribePlugins](https://cloud.tencent.com/document/api/628/52505)
+
+新增数据结构：
+
+* [Plugin](https://cloud.tencent.com/document/api/628/45244#Plugin)
+* [PluginSummary](https://cloud.tencent.com/document/api/628/45244#PluginSummary)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 4 次发布
+
+发布时间：2021-01-26 08:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExportMachines](https://cloud.tencent.com/document/api/296/52507)
+* [DescribeMachineList](https://cloud.tencent.com/document/api/296/52506)
+* [DescribeMalwareInfo](https://cloud.tencent.com/document/api/296/52511)
+* [DescribeScanMalwareSchedule](https://cloud.tencent.com/document/api/296/52510)
+* [ExportTasks](https://cloud.tencent.com/document/api/296/52508)
+* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/1108/48465)
+* [DeleteNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19843)
 
-	* 新增入参：SecurityGroups
+	* 新增入参：DelType, Ip
 
-* [DescribeLoadBalancers](https://cloud.tencent.com/document/api/1108/48459)
+	* <font color="#dd0000">**修改入参**：</font>Ids
 
-	* 新增入参：SecurityGroup
+* [DescribeMachines](https://cloud.tencent.com/document/api/296/19850)
 
-* [ModifyLoadBalancerAttributes](https://cloud.tencent.com/document/api/1108/48455)
+	* 新增入参：ProjectIds
 
-	* 新增入参：LoadBalancerPassToTarget
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
 
+	* 新增入参：Filters
+
+* [ExportMaliciousRequests](https://cloud.tencent.com/document/api/296/31287)
+
+	* 新增入参：Filters
+
+* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
+
+	* 新增出参：TaskId
+
+* [ExportPrivilegeEvents](https://cloud.tencent.com/document/api/296/39580)
+
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
+
+新增数据结构：
+
+* [AssetFilters](https://cloud.tencent.com/document/api/296/19867#AssetFilters)
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
 
 修改数据结构：
 
-* [LoadBalancer](https://cloud.tencent.com/document/api/1108/42574#LoadBalancer)
+* [Filters](https://cloud.tencent.com/document/api/296/19867#Filters)
 
-	* 新增成员：SecureGroups, LoadBalancerPassToTarget
+	* 新增成员：ExactMatch
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：ProjectId
 
 
 
 
-## 游戏多媒体引擎(gme) 版本：2018-07-11
+## 游戏联机对战引擎(mgobe) 版本：2020-10-14
 
-### 第 9 次发布
+### 第 3 次发布
 
-发布时间：2021-01-25 08:04:43
+发布时间：2021-01-26 08:00:28
 
 本次发布包含了以下内容：
 
@@ -51,62 +120,59 @@
 
 新增接口：
 
-* [DescribeApplicationData](https://cloud.tencent.com/document/api/607/52409)
+* [DescribePlayer](https://cloud.tencent.com/document/api/1038/52498)
+* [DescribeRoom](https://cloud.tencent.com/document/api/1038/52497)
+
+
+
+## 游戏联机对战引擎(mgobe) 版本：2019-09-29
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 25 次发布
+
+发布时间：2021-01-26 08:07:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListAsyncEvents](https://cloud.tencent.com/document/api/583/52501)
+* [TerminateAsyncEvent](https://cloud.tencent.com/document/api/583/52500)
 
 新增数据结构：
 
-* [ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics)
-* [StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem)
+* [AsyncEvent](https://cloud.tencent.com/document/api/583/17244#AsyncEvent)
+* [TimeInterval](https://cloud.tencent.com/document/api/583/17244#TimeInterval)
 
 
 
-## 流计算服务(oceanus) 版本：2019-04-22
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
-### 第 2 次发布
+### 第 10 次发布
 
-发布时间：2021-01-25 08:00:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
-
-	* 新增成员：ClusterStatus
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 44 次发布
-
-发布时间：2021-01-22 11:47:16
+发布时间：2021-01-26 08:07:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [QuestionBlockObj](https://cloud.tencent.com/document/api/866/33527#QuestionBlockObj)
-
-	* 新增成员：QuestionBboxCoord
-
-* [QuestionObj](https://cloud.tencent.com/document/api/866/33527#QuestionObj)
-
-	* 新增成员：QuestionImageCoords
+* [DisableRestProxy](https://cloud.tencent.com/document/api/596/52503)
+* [EnableRestProxy](https://cloud.tencent.com/document/api/596/52502)
 
 
 
+## 容器服务(tke) 版本：2018-05-25
 
-## 证书(ssl) 版本：2019-12-05
+### 第 40 次发布
 
-### 第 5 次发布
-
-发布时间：2021-01-25 08:01:44
+发布时间：2021-01-26 08:08:22
 
 本次发布包含了以下内容：
 
@@ -114,45 +180,10 @@
 
 修改接口：
 
-* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
 
-	* 新增出参：Tags
+	* 新增入参：NodePoolOs, OsCustomizeType
 
-* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
-
-	* 新增出参：Tags
-
-
-新增数据结构：
-
-* [Tags](https://cloud.tencent.com/document/api/400/41679#Tags)
-
-修改数据结构：
-
-* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
-
-	* 新增成员：Tags
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 33 次发布
-
-发布时间：2021-01-25 08:07:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSmsQuotas](https://cloud.tencent.com/document/api/876/52410)
-
-新增数据结构：
-
-* [SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota)
 
 
 
@@ -729,6 +760,21 @@
 
 ## 正版图库直通车(ape) 版本：2020-05-13
 
+### 第 3 次发布
+
+发布时间：2021-01-26 08:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
+
+	* 新增成员：Keywords
+
+
 ### 第 2 次发布
 
 发布时间：2021-01-19 08:00:18
@@ -771,6 +817,23 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 10 次发布
+
+发布时间：2021-01-26 08:11:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePlugins](https://cloud.tencent.com/document/api/628/52505)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Plugin](https://cloud.tencent.com/document/api/628/45244#Plugin)](https://cloud.tencent.com/document/api/628/45244#[Plugin](https://cloud.tencent.com/document/api/628/45244#Plugin))
+* [[PluginSummary](https://cloud.tencent.com/document/api/628/45244#PluginSummary)](https://cloud.tencent.com/document/api/628/45244#[PluginSummary](https://cloud.tencent.com/document/api/628/45244#PluginSummary))
 
 ### 第 9 次发布
 
@@ -13777,6 +13840,70 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 4 次发布
+
+发布时间：2021-01-26 08:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeExportMachines](https://cloud.tencent.com/document/api/296/52507)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMachineList](https://cloud.tencent.com/document/api/296/52506)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMalwareInfo](https://cloud.tencent.com/document/api/296/52511)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScanMalwareSchedule](https://cloud.tencent.com/document/api/296/52510)](https://cloud.tencent.com/document/api/#/#)
+* [[ExportTasks](https://cloud.tencent.com/document/api/296/52508)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DeleteNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19843)
+
+	* 新增入参：DelType, Ip
+
+	* <font color="#dd0000">**修改入参**：</font>Ids
+
+* [DescribeMachines](https://cloud.tencent.com/document/api/296/19850)
+
+	* 新增入参：ProjectIds
+
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+
+	* 新增入参：Filters
+
+* [ExportMaliciousRequests](https://cloud.tencent.com/document/api/296/31287)
+
+	* 新增入参：Filters
+
+* [ExportMalwares](https://cloud.tencent.com/document/api/296/39582)
+
+	* 新增出参：TaskId
+
+* [ExportPrivilegeEvents](https://cloud.tencent.com/document/api/296/39580)
+
+	* 新增入参：Filters
+
+	* 新增出参：TaskId
+
+
+新增数据结构：
+
+* [[AssetFilters](https://cloud.tencent.com/document/api/296/19867#AssetFilters)](https://cloud.tencent.com/document/api/296/19867#[AssetFilters](https://cloud.tencent.com/document/api/296/19867#AssetFilters))
+* [[MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)](https://cloud.tencent.com/document/api/296/19867#[MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo))
+
+修改数据结构：
+
+* [Filters](https://cloud.tencent.com/document/api/296/19867#Filters)
+
+	* 新增成员：ExactMatch
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：ProjectId
+
+
 ### 第 3 次发布
 
 发布时间：2020-12-09 08:09:21
@@ -14718,7 +14845,7 @@
 * [DescribeInsurePacks](https://cloud.tencent.com/document/api/1021/39457)
 * [DescribeIpBlockList](https://cloud.tencent.com/document/api/1021/39451)
 * [DescribeL4HealthConfig](https://cloud.tencent.com/document/api/1021/39489)
-* [DescribeL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/39488)
+* [DescribeL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/50713)
 * [DescribeL7HealthConfig](https://cloud.tencent.com/document/api/1021/39487)
 * [DescribePackIndex](https://cloud.tencent.com/document/api/1021/39456)
 * [DescribePcap](https://cloud.tencent.com/document/api/1021/39463)
@@ -16705,8 +16832,8 @@
 
 新增接口：
 
-* [[SetLoadBalancerSecurityGroups](https://cloud.tencent.com/document/api/1108/52408)](https://cloud.tencent.com/document/api/#/#)
-* [[SetSecurityGroupForLoadbalancers](https://cloud.tencent.com/document/api/1108/52407)](https://cloud.tencent.com/document/api/#/#)
+* [SetLoadBalancerSecurityGroups](https://cloud.tencent.com/document/api/1108/52408)
+* [SetSecurityGroupForLoadbalancers](https://cloud.tencent.com/document/api/1108/52407)
 
 修改接口：
 
@@ -19645,12 +19772,12 @@
 
 新增接口：
 
-* [[DescribeApplicationData](https://cloud.tencent.com/document/api/607/52409)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApplicationData](https://cloud.tencent.com/document/api/607/52409)
 
 新增数据结构：
 
-* [[ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics)](https://cloud.tencent.com/document/api/607/35375#[ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics))
-* [[StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem))
+* [ApplicationDataStatistics](https://cloud.tencent.com/document/api/607/35375#ApplicationDataStatistics)
+* [StatisticsItem](https://cloud.tencent.com/document/api/607/35375#StatisticsItem)
 
 ### 第 8 次发布
 
@@ -25586,6 +25713,19 @@
 
 ## 游戏联机对战引擎(mgobe) 版本：2020-10-14
 
+### 第 3 次发布
+
+发布时间：2021-01-26 08:00:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePlayer](https://cloud.tencent.com/document/api/1038/52498)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRoom](https://cloud.tencent.com/document/api/1038/52497)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 2 次发布
 
 发布时间：2021-01-14 08:00:25
@@ -30267,6 +30407,24 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 25 次发布
+
+发布时间：2021-01-26 08:07:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListAsyncEvents](https://cloud.tencent.com/document/api/583/52501)](https://cloud.tencent.com/document/api/#/#)
+* [[TerminateAsyncEvent](https://cloud.tencent.com/document/api/583/52500)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AsyncEvent](https://cloud.tencent.com/document/api/583/17244#AsyncEvent)](https://cloud.tencent.com/document/api/583/17244#[AsyncEvent](https://cloud.tencent.com/document/api/583/17244#AsyncEvent))
+* [[TimeInterval](https://cloud.tencent.com/document/api/583/17244#TimeInterval)](https://cloud.tencent.com/document/api/583/17244#[TimeInterval](https://cloud.tencent.com/document/api/583/17244#TimeInterval))
+
 ### 第 24 次发布
 
 发布时间：2020-12-31 08:06:16
@@ -32110,7 +32268,7 @@
 
 新增数据结构：
 
-* [[Tags](https://cloud.tencent.com/document/api/400/41679#Tags)](https://cloud.tencent.com/document/api/400/41679#[Tags](https://cloud.tencent.com/document/api/400/41679#Tags))
+* [Tags](https://cloud.tencent.com/document/api/400/41679#Tags)
 
 修改数据结构：
 
@@ -33047,6 +33205,19 @@
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
+### 第 10 次发布
+
+发布时间：2021-01-26 08:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DisableRestProxy](https://cloud.tencent.com/document/api/596/52503)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableRestProxy](https://cloud.tencent.com/document/api/596/52502)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 9 次发布
 
 发布时间：2020-12-08 08:07:21
@@ -33469,11 +33640,11 @@
 
 新增接口：
 
-* [[DescribeSmsQuotas](https://cloud.tencent.com/document/api/876/52410)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSmsQuotas](https://cloud.tencent.com/document/api/876/52410)
 
 新增数据结构：
 
-* [[SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota)](https://cloud.tencent.com/document/api/876/34822#[SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota))
+* [SmsFreeQuota](https://cloud.tencent.com/document/api/876/34822#SmsFreeQuota)
 
 ### 第 32 次发布
 
@@ -36315,6 +36486,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 40 次发布
+
+发布时间：2021-01-26 08:08:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
+
+	* 新增入参：NodePoolOs, OsCustomizeType
+
 
 ### 第 39 次发布
 

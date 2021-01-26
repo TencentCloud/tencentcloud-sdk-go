@@ -705,6 +705,31 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
     return
 }
 
+func NewDescribePluginsRequest() (request *DescribePluginsRequest) {
+    request = &DescribePluginsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribePlugins")
+    return
+}
+
+func NewDescribePluginsResponse() (response *DescribePluginsResponse) {
+    response = &DescribePluginsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 展示插件列表和详情，支持分页，支持按照插件类型查询，支持按照插件ID批量查询，支持按照插件名称查询。
+func (c *Client) DescribePlugins(request *DescribePluginsRequest) (response *DescribePluginsResponse, err error) {
+    if request == nil {
+        request = NewDescribePluginsRequest()
+    }
+    response = NewDescribePluginsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceRequest() (request *DescribeServiceRequest) {
     request = &DescribeServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

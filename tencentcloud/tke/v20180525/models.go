@@ -833,6 +833,12 @@ type CreateClusterNodePoolRequest struct {
 
 	// Taints互斥
 	Taints []*Taint `json:"Taints,omitempty" name:"Taints" list`
+
+	// 节点池os
+	NodePoolOs *string `json:"NodePoolOs,omitempty" name:"NodePoolOs"`
+
+	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 }
 
 func (r *CreateClusterNodePoolRequest) ToJsonString() string {

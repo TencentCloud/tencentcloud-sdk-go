@@ -1971,6 +1971,58 @@ func (r *DescribeLogSearchResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePluginsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的插件列表。
+	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds" list`
+
+	// 要查询的插件名称。
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 要查询的插件类型。
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。预留字段，目前不支持过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribePluginsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePluginsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 插件详情。
+		Result *PluginSummary `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePluginsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePluginsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeServiceEnvironmentListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3477,6 +3529,40 @@ type PathMapping struct {
 
 	// 发布环境，可选值为“test”、 ”prepub“、”release“。
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type Plugin struct {
+
+	// 插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 插件名称。
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 插件类型。
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 插件定义语句。
+	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+
+	// 插件描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 插件创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
+type PluginSummary struct {
+
+	// 插件个数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 插件详情。
+	PluginSet []*Plugin `json:"PluginSet,omitempty" name:"PluginSet" list`
 }
 
 type ReleaseService struct {

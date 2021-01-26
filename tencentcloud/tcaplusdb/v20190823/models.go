@@ -1154,6 +1154,86 @@ func (r *DescribeUinInWhitelistResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableRestProxyRequest struct {
+	*tchttp.BaseRequest
+
+	// 对应appid
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DisableRestProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRestProxyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableRestProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+		RestProxyStatus *uint64 `json:"RestProxyStatus,omitempty" name:"RestProxyStatus"`
+
+		// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableRestProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableRestProxyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRestProxyRequest struct {
+	*tchttp.BaseRequest
+
+	// 对应于appid
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *EnableRestProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRestProxyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableRestProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+		RestProxyStatus *uint64 `json:"RestProxyStatus,omitempty" name:"RestProxyStatus"`
+
+		// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableRestProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableRestProxyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ErrorInfo struct {
 
 	// 错误码

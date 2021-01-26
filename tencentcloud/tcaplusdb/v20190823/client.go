@@ -618,6 +618,56 @@ func (c *Client) DescribeUinInWhitelist(request *DescribeUinInWhitelistRequest) 
     return
 }
 
+func NewDisableRestProxyRequest() (request *DisableRestProxyRequest) {
+    request = &DisableRestProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DisableRestProxy")
+    return
+}
+
+func NewDisableRestProxyResponse() (response *DisableRestProxyResponse) {
+    response = &DisableRestProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 当restful api为关闭状态时，可以通过此接口关闭restful api
+func (c *Client) DisableRestProxy(request *DisableRestProxyRequest) (response *DisableRestProxyResponse, err error) {
+    if request == nil {
+        request = NewDisableRestProxyRequest()
+    }
+    response = NewDisableRestProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableRestProxyRequest() (request *EnableRestProxyRequest) {
+    request = &EnableRestProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "EnableRestProxy")
+    return
+}
+
+func NewEnableRestProxyResponse() (response *EnableRestProxyResponse) {
+    response = &EnableRestProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 当restful api为关闭状态时，可以通过此接口开启restful apu
+func (c *Client) EnableRestProxy(request *EnableRestProxyRequest) (response *EnableRestProxyResponse, err error) {
+    if request == nil {
+        request = NewEnableRestProxyRequest()
+    }
+    response = NewEnableRestProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterMachineRequest() (request *ModifyClusterMachineRequest) {
     request = &ModifyClusterMachineRequest{
         BaseRequest: &tchttp.BaseRequest{},

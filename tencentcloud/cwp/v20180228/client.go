@@ -918,6 +918,31 @@ func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (respons
     return
 }
 
+func NewDescribeExportMachinesRequest() (request *DescribeExportMachinesRequest) {
+    request = &DescribeExportMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeExportMachines")
+    return
+}
+
+func NewDescribeExportMachinesResponse() (response *DescribeExportMachinesResponse) {
+    response = &DescribeExportMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeExportMachines) 用于导出区域主机列表。
+func (c *Client) DescribeExportMachines(request *DescribeExportMachinesRequest) (response *DescribeExportMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportMachinesRequest()
+    }
+    response = NewDescribeExportMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsRequest) {
     request = &DescribeHistoryAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1018,6 +1043,31 @@ func (c *Client) DescribeMachineInfo(request *DescribeMachineInfoRequest) (respo
     return
 }
 
+func NewDescribeMachineListRequest() (request *DescribeMachineListRequest) {
+    request = &DescribeMachineListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineList")
+    return
+}
+
+func NewDescribeMachineListResponse() (response *DescribeMachineListResponse) {
+    response = &DescribeMachineListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DescribeMachineList) 用于网页防篡改获取区域主机列表。
+func (c *Client) DescribeMachineList(request *DescribeMachineListRequest) (response *DescribeMachineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineListRequest()
+    }
+    response = NewDescribeMachineListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1064,6 +1114,31 @@ func (c *Client) DescribeMaliciousRequests(request *DescribeMaliciousRequestsReq
         request = NewDescribeMaliciousRequestsRequest()
     }
     response = NewDescribeMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMalwareInfoRequest() (request *DescribeMalwareInfoRequest) {
+    request = &DescribeMalwareInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareInfo")
+    return
+}
+
+func NewDescribeMalwareInfoResponse() (response *DescribeMalwareInfoResponse) {
+    response = &DescribeMalwareInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看恶意文件详情
+func (c *Client) DescribeMalwareInfo(request *DescribeMalwareInfoRequest) (response *DescribeMalwareInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMalwareInfoRequest()
+    }
+    response = NewDescribeMalwareInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -1414,6 +1489,31 @@ func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesReq
         request = NewDescribeReverseShellRulesRequest()
     }
     response = NewDescribeReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareScheduleRequest) {
+    request = &DescribeScanMalwareScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanMalwareSchedule")
+    return
+}
+
+func NewDescribeScanMalwareScheduleResponse() (response *DescribeScanMalwareScheduleResponse) {
+    response = &DescribeScanMalwareScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询木马扫描进度
+func (c *Client) DescribeScanMalwareSchedule(request *DescribeScanMalwareScheduleRequest) (response *DescribeScanMalwareScheduleResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanMalwareScheduleRequest()
+    }
+    response = NewDescribeScanMalwareScheduleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2093,6 +2193,31 @@ func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsReque
     return
 }
 
+func NewExportTasksRequest() (request *ExportTasksRequest) {
+    request = &ExportTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportTasks")
+    return
+}
+
+func NewExportTasksResponse() (response *ExportTasksResponse) {
+    response = &ExportTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于异步导出数据量大的日志文件
+func (c *Client) ExportTasks(request *ExportTasksRequest) (response *ExportTasksResponse, err error) {
+    if request == nil {
+        request = NewExportTasksRequest()
+    }
+    response = NewExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2239,6 +2364,31 @@ func (c *Client) ModifyLoginWhiteList(request *ModifyLoginWhiteListRequest) (res
         request = NewModifyLoginWhiteListRequest()
     }
     response = NewModifyLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingScanSettingsRequest) {
+    request = &ModifyMalwareTimingScanSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyMalwareTimingScanSettings")
+    return
+}
+
+func NewModifyMalwareTimingScanSettingsResponse() (response *ModifyMalwareTimingScanSettingsResponse) {
+    response = &ModifyMalwareTimingScanSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 定时扫描设置
+func (c *Client) ModifyMalwareTimingScanSettings(request *ModifyMalwareTimingScanSettingsRequest) (response *ModifyMalwareTimingScanSettingsResponse, err error) {
+    if request == nil {
+        request = NewModifyMalwareTimingScanSettingsRequest()
+    }
+    response = NewModifyMalwareTimingScanSettingsResponse()
     err = c.Send(request, response)
     return
 }

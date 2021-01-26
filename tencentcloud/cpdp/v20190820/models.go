@@ -1712,7 +1712,7 @@ type CreateInvoiceRequest struct {
 	// 门店编码
 	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
 
-	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	// 开票渠道。0：APP渠道，1：线下渠道，2：小程序渠道。不填默认为APP渠道
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
