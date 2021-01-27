@@ -315,6 +315,9 @@ type DescribeMatchCodesRequest struct {
 
 	// 每页数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索的字符串
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
 func (r *DescribeMatchCodesRequest) ToJsonString() string {
@@ -647,7 +650,7 @@ type MTicket struct {
 	// 匹配Code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
-	// 请求TicketId
+	// 匹配票据 ID
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 
@@ -662,7 +665,7 @@ type MatchAttribute struct {
 	// 数字属性值 默认 0.0
 	NumberValue *float64 `json:"NumberValue,omitempty" name:"NumberValue"`
 
-	// 字符串属性值 长度 1024 默认 ""
+	// 字符串属性值 长度 128 默认 ""
 	StringValue *string `json:"StringValue,omitempty" name:"StringValue"`
 
 	// list 属性值
@@ -776,7 +779,7 @@ type MatchInfo struct {
 
 type MatchTicket struct {
 
-	// MatchTicketId 长度 128 [a-zA-Z0-9-\.]*
+	// 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 匹配 Code
