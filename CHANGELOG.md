@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 游戏玩家匹配(gpm) 版本：2020-08-20
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 3 次发布
+### 第 26 次发布
 
-发布时间：2021-01-26 15:39:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeMatchCodes](https://cloud.tencent.com/document/api/1294/49483)
-
-	* 新增入参：MatchCode
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 19 次发布
-
-发布时间：2021-01-27 08:05:09
+发布时间：2021-01-28 08:02:42
 
 本次发布包含了以下内容：
 
@@ -31,18 +12,18 @@
 
 修改数据结构：
 
-* [ProjectEntryEx](https://cloud.tencent.com/document/api/1081/34988#ProjectEntryEx)
+* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
 
-	* 新增成员：InstanceId
-
-
+	* <font color="#dd0000">**修改成员**：</font>UnitPrice, UnitPriceDiscount
 
 
-## 全栈式风控引擎(rce) 版本：2020-11-03
 
-### 第 1 次发布
 
-发布时间：2021-01-27 08:10:11
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 8 次发布
+
+发布时间：2021-01-28 08:00:34
 
 本次发布包含了以下内容：
 
@@ -50,38 +31,99 @@
 
 新增接口：
 
-* [ManageMarketingRisk](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSeatUserList](https://cloud.tencent.com/document/api/679/52561)
+
+修改接口：
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* 新增入参：PageSize, PageNumber
+
 
 新增数据结构：
 
-* [AccountInfo](https://cloud.tencent.com/document/api/#/##AccountInfo)
-* [InputDetails](https://cloud.tencent.com/document/api/#/##InputDetails)
-* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##InputManageMarketingRisk)
-* [OnlineScamInfo](https://cloud.tencent.com/document/api/#/##OnlineScamInfo)
-* [OtherAccountInfo](https://cloud.tencent.com/document/api/#/##OtherAccountInfo)
-* [OutputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRisk)
-* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRiskValue)
-* [QQAccountInfo](https://cloud.tencent.com/document/api/#/##QQAccountInfo)
-* [SponsorInfo](https://cloud.tencent.com/document/api/#/##SponsorInfo)
-* [WeChatAccountInfo](https://cloud.tencent.com/document/api/#/##WeChatAccountInfo)
+* [IVRKeyPressedElement](https://cloud.tencent.com/document/api/679/47715#IVRKeyPressedElement)
+* [ServeParticipant](https://cloud.tencent.com/document/api/679/47715#ServeParticipant)
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：IVRDuration, RingTimestamp, AcceptTimestamp, EndedTimestamp, IVRKeyPressed, HungUpSide, ServeParticipants, SkillGroupId, EndStatusString, StartTimestamp, QueuedTimestamp, PostIVRKeyPressed, QueuedSkillGroupId
 
 
 
-## 语音消息(vms) 版本：2020-09-02
 
-### 第 2 次发布
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-发布时间：2021-01-27 08:00:09
+### 第 55 次发布
+
+发布时间：2021-01-28 08:02:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [SendTtsVoice](https://cloud.tencent.com/document/api/1128/51558)
+* [SwitchDrInstanceToMaster](https://cloud.tencent.com/document/api/236/52562)
 
-	* <font color="#dd0000">**修改入参**：</font>TemplateParamSet
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 16 次发布
+
+发布时间：2021-01-28 08:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Coordinate](https://cloud.tencent.com/document/api/216/18418#Coordinate)
+
+修改数据结构：
+
+* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
+
+	* 新增成员：Coordinate, City
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 20 次发布
+
+发布时间：2021-01-28 08:06:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloneDB](https://cloud.tencent.com/document/api/238/52563)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 42 次发布
+
+发布时间：2021-01-28 08:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+
+	* 新增成员：HealthCheckSettings
 
 
 
@@ -5416,6 +5458,21 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 26 次发布
+
+发布时间：2021-01-28 08:02:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>UnitPrice, UnitPriceDiscount
+
+
 ### 第 25 次发布
 
 发布时间：2021-01-18 08:02:47
@@ -5959,6 +6016,37 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 8 次发布
+
+发布时间：2021-01-28 08:00:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSeatUserList](https://cloud.tencent.com/document/api/679/52561)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* 新增入参：PageSize, PageNumber
+
+
+新增数据结构：
+
+* [[IVRKeyPressedElement](https://cloud.tencent.com/document/api/679/47715#IVRKeyPressedElement)](https://cloud.tencent.com/document/api/679/47715#[IVRKeyPressedElement](https://cloud.tencent.com/document/api/679/47715#IVRKeyPressedElement))
+* [[ServeParticipant](https://cloud.tencent.com/document/api/679/47715#ServeParticipant)](https://cloud.tencent.com/document/api/679/47715#[ServeParticipant](https://cloud.tencent.com/document/api/679/47715#ServeParticipant))
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：IVRDuration, RingTimestamp, AcceptTimestamp, EndedTimestamp, IVRKeyPressed, HungUpSide, ServeParticipants, SkillGroupId, EndStatusString, StartTimestamp, QueuedTimestamp, PostIVRKeyPressed, QueuedSkillGroupId
+
+
 ### 第 7 次发布
 
 发布时间：2020-12-17 08:00:22
@@ -6081,6 +6169,18 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 55 次发布
+
+发布时间：2021-01-28 08:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SwitchDrInstanceToMaster](https://cloud.tencent.com/document/api/236/52562)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 54 次发布
 
@@ -15062,6 +15162,25 @@
 
 
 ## 专线接入(dc) 版本：2018-04-10
+
+### 第 16 次发布
+
+发布时间：2021-01-28 08:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Coordinate](https://cloud.tencent.com/document/api/216/18418#Coordinate)](https://cloud.tencent.com/document/api/216/18418#[Coordinate](https://cloud.tencent.com/document/api/216/18418#Coordinate))
+
+修改数据结构：
+
+* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
+
+	* 新增成员：Coordinate, City
+
 
 ### 第 15 次发布
 
@@ -29694,20 +29813,20 @@
 
 新增接口：
 
-* [[ManageMarketingRisk](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [ManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52565)
 
 新增数据结构：
 
-* [[AccountInfo](https://cloud.tencent.com/document/api/#/##AccountInfo)](https://cloud.tencent.com/document/api/#/##[AccountInfo](https://cloud.tencent.com/document/api/#/##AccountInfo))
-* [[InputDetails](https://cloud.tencent.com/document/api/#/##InputDetails)](https://cloud.tencent.com/document/api/#/##[InputDetails](https://cloud.tencent.com/document/api/#/##InputDetails))
-* [[InputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##InputManageMarketingRisk)](https://cloud.tencent.com/document/api/#/##[InputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##InputManageMarketingRisk))
-* [[OnlineScamInfo](https://cloud.tencent.com/document/api/#/##OnlineScamInfo)](https://cloud.tencent.com/document/api/#/##[OnlineScamInfo](https://cloud.tencent.com/document/api/#/##OnlineScamInfo))
-* [[OtherAccountInfo](https://cloud.tencent.com/document/api/#/##OtherAccountInfo)](https://cloud.tencent.com/document/api/#/##[OtherAccountInfo](https://cloud.tencent.com/document/api/#/##OtherAccountInfo))
-* [[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRisk)](https://cloud.tencent.com/document/api/#/##[OutputManageMarketingRisk](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRisk))
-* [[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRiskValue)](https://cloud.tencent.com/document/api/#/##[OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/#/##OutputManageMarketingRiskValue))
-* [[QQAccountInfo](https://cloud.tencent.com/document/api/#/##QQAccountInfo)](https://cloud.tencent.com/document/api/#/##[QQAccountInfo](https://cloud.tencent.com/document/api/#/##QQAccountInfo))
-* [[SponsorInfo](https://cloud.tencent.com/document/api/#/##SponsorInfo)](https://cloud.tencent.com/document/api/#/##[SponsorInfo](https://cloud.tencent.com/document/api/#/##SponsorInfo))
-* [[WeChatAccountInfo](https://cloud.tencent.com/document/api/#/##WeChatAccountInfo)](https://cloud.tencent.com/document/api/#/##[WeChatAccountInfo](https://cloud.tencent.com/document/api/#/##WeChatAccountInfo))
+* [AccountInfo](https://cloud.tencent.com/document/api/1343/52566#AccountInfo)
+* [InputDetails](https://cloud.tencent.com/document/api/1343/52566#InputDetails)
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputManageMarketingRisk)
+* [OnlineScamInfo](https://cloud.tencent.com/document/api/1343/52566#OnlineScamInfo)
+* [OtherAccountInfo](https://cloud.tencent.com/document/api/1343/52566#OtherAccountInfo)
+* [OutputManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#OutputManageMarketingRisk)
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputManageMarketingRiskValue)
+* [QQAccountInfo](https://cloud.tencent.com/document/api/1343/52566#QQAccountInfo)
+* [SponsorInfo](https://cloud.tencent.com/document/api/1343/52566#SponsorInfo)
+* [WeChatAccountInfo](https://cloud.tencent.com/document/api/1343/52566#WeChatAccountInfo)
 
 
 
@@ -31616,6 +31735,18 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 20 次发布
+
+发布时间：2021-01-28 08:06:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloneDB](https://cloud.tencent.com/document/api/238/52563)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 19 次发布
 
@@ -37967,6 +38098,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 42 次发布
+
+发布时间：2021-01-28 08:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+
+	* 新增成员：HealthCheckSettings
+
 
 ### 第 41 次发布
 

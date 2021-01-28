@@ -68,6 +68,31 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewCloneDBRequest() (request *CloneDBRequest) {
+    request = &CloneDBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CloneDB")
+    return
+}
+
+func NewCloneDBResponse() (response *CloneDBResponse) {
+    response = &CloneDBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CloneDB）用于克隆数据库，只支持克隆到本实例，克隆时必须指定新库名称。
+func (c *Client) CloneDB(request *CloneDBRequest) (response *CloneDBResponse, err error) {
+    if request == nil {
+        request = NewCloneDBRequest()
+    }
+    response = NewCloneDBResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCompleteExpansionRequest() (request *CompleteExpansionRequest) {
     request = &CompleteExpansionRequest{
         BaseRequest: &tchttp.BaseRequest{},

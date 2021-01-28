@@ -77,6 +77,14 @@ type AccessPoint struct {
 	// 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType" list`
+
+	// 接入点经纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coordinate *Coordinate `json:"Coordinate,omitempty" name:"Coordinate"`
+
+	// 接入点所在城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
 }
 
 type ApplyInternetAddressRequest struct {
@@ -152,6 +160,15 @@ type BgpPeer struct {
 
 	// 用户侧BGP密钥
 	AuthKey *string `json:"AuthKey,omitempty" name:"AuthKey"`
+}
+
+type Coordinate struct {
+
+	// 纬度
+	Lat *float64 `json:"Lat,omitempty" name:"Lat"`
+
+	// 经度
+	Lng *float64 `json:"Lng,omitempty" name:"Lng"`
 }
 
 type CreateDirectConnectRequest struct {

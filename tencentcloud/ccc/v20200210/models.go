@@ -262,6 +262,52 @@ func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSeatUserListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSeatUserListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSeatUserListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSeatUserListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 此实例的坐席用户总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 坐席用户信息列表
+		SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSeatUserListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTelCallInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -320,17 +366,23 @@ type DescribeTelCdrRequest struct {
 	// 结束时间戳，Unix 时间戳
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 
-	// 返回记录条数，上限 100
+	// 返回数据条数，上限（deprecated）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移（deprecated）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 实例 ID
+	// 实例 ID（deprecated）
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 应用ID。
+	// 应用 ID
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 func (r *DescribeTelCdrRequest) ToJsonString() string {
@@ -388,6 +440,17 @@ type IMCdrInfo struct {
 
 	// 服务时间戳
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
+type IVRKeyPressedElement struct {
+
+	// 按键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 按键关联的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type Message struct {
@@ -455,7 +518,7 @@ type SeatUserInfo struct {
 	// 坐席邮箱
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
 
-	// 坐席电话号码
+	// 坐席电话号码（带0086前缀）
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 坐席昵称
@@ -471,6 +534,73 @@ type SeatUserInfo struct {
 	// 工号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
+}
+
+type ServeParticipant struct {
+
+	// 坐席邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 坐席电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 振铃时间戳，Unix 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RingTimestamp *int64 `json:"RingTimestamp,omitempty" name:"RingTimestamp"`
+
+	// 接听时间戳，Unix 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitempty" name:"AcceptTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndedTimestamp *int64 `json:"EndedTimestamp,omitempty" name:"EndedTimestamp"`
+
+	// 录音 ID，能够索引到坐席侧的录音
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 转接来源坐席信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferFrom *string `json:"TransferFrom,omitempty" name:"TransferFrom"`
+
+	// 转接去向坐席信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferTo *string `json:"TransferTo,omitempty" name:"TransferTo"`
+
+	// 转接去向参与者类型，取值与 Type 一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferToType *string `json:"TransferToType,omitempty" name:"TransferToType"`
+
+	// 技能组 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 结束状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndStatusString *string `json:"EndStatusString,omitempty" name:"EndStatusString"`
+
+	// 录音 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordURL *string `json:"RecordURL,omitempty" name:"RecordURL"`
+
+	// 参与者序号，从 0 开始
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sequence *int64 `json:"Sequence,omitempty" name:"Sequence"`
+
+	// 开始时间戳，Unix 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 技能组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
 }
 
 type TelCdrInfo struct {
@@ -499,9 +629,68 @@ type TelCdrInfo struct {
 	// 结束状态 0 未知 1 正常通话 2 未接通
 	EndStatus *int64 `json:"EndStatus,omitempty" name:"EndStatus"`
 
-	// 技能组
+	// 技能组名称
 	SkillGroup *string `json:"SkillGroup,omitempty" name:"SkillGroup"`
 
 	// 主叫归属地
 	CallerLocation *string `json:"CallerLocation,omitempty" name:"CallerLocation"`
+
+	// IVR 阶段耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IVRDuration *int64 `json:"IVRDuration,omitempty" name:"IVRDuration"`
+
+	// 振铃时间戳，UNIX 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RingTimestamp *int64 `json:"RingTimestamp,omitempty" name:"RingTimestamp"`
+
+	// 接听时间戳，UNIX 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitempty" name:"AcceptTimestamp"`
+
+	// 结束时间戳，UNIX 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndedTimestamp *int64 `json:"EndedTimestamp,omitempty" name:"EndedTimestamp"`
+
+	// IVR 按键信息 ，e.g. ["1","2","3"]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IVRKeyPressed []*string `json:"IVRKeyPressed,omitempty" name:"IVRKeyPressed" list`
+
+	// 挂机方 seat 坐席 user 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HungUpSide *string `json:"HungUpSide,omitempty" name:"HungUpSide"`
+
+	// 服务参与者列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitempty" name:"ServeParticipants" list`
+
+	// 技能组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// ok 正常结束 
+	// unconnected	未接通
+	// seatGiveUp	坐席未接
+	// seatForward	坐席转接
+	// ivrGiveUp	IVR期间用户放弃
+	// waitingGiveUp	会话排队期间用户放弃
+	// ringingGiveUp	会话振铃期间用户放弃
+	// error	系统错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndStatusString *string `json:"EndStatusString,omitempty" name:"EndStatusString"`
+
+	// 会话开始时间戳，UNIX 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 进入排队时间，Unix 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueuedTimestamp *int64 `json:"QueuedTimestamp,omitempty" name:"QueuedTimestamp"`
+
+	// 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitempty" name:"PostIVRKeyPressed" list`
+
+	// 排队技能组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitempty" name:"QueuedSkillGroupId"`
 }

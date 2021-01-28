@@ -6539,6 +6539,43 @@ func (r *SwitchDBInstanceMasterSlaveResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SwitchDrInstanceToMasterRequest struct {
+	*tchttp.BaseRequest
+
+	// 灾备实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *SwitchDrInstanceToMasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchDrInstanceToMasterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchDrInstanceToMasterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchDrInstanceToMasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchDrInstanceToMasterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SwitchForUpgradeRequest struct {
 	*tchttp.BaseRequest
 

@@ -180,6 +180,46 @@ type Backup struct {
 	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 }
 
+type CloneDBRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如mssql-j8kv137v
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按照ReNameRestoreDatabase中的库进行克隆，并重命名，新库名称必须指定
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
+}
+
+func (r *CloneDBRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneDBRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneDBResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloneDBResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CloneDBResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CompleteExpansionRequest struct {
 	*tchttp.BaseRequest
 
@@ -3689,7 +3729,7 @@ type RenameRestoreDatabase struct {
 	// 在用于离线迁移任务时可不填。
 	OldName *string `json:"OldName,omitempty" name:"OldName"`
 
-	// 库的新名字，如果不填则按照系统默认方式命名恢复的库。在用于离线迁移任务时，不填则按照OldName命名，OldName和NewName不能同时不填。
+	// 库的新名字，在用于离线迁移时，不填则按照OldName命名，OldName和NewName不能同时不填。在用于克隆数据库时，OldName和NewName都必须填写，且不能重复
 	NewName *string `json:"NewName,omitempty" name:"NewName"`
 }
 

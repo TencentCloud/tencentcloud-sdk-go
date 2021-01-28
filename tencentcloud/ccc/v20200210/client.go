@@ -168,6 +168,31 @@ func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessio
     return
 }
 
+func NewDescribeSeatUserListRequest() (request *DescribeSeatUserListRequest) {
+    request = &DescribeSeatUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeSeatUserList")
+    return
+}
+
+func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) {
+    response = &DescribeSeatUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取坐席用户列表
+func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSeatUserListRequest()
+    }
+    response = NewDescribeSeatUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
     request = &DescribeTelCallInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

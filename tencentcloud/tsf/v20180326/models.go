@@ -1124,6 +1124,10 @@ type ContainerGroupDetail struct {
 	// kubernetes滚动更新策略的MaxUnavailable参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUnavailable *string `json:"MaxUnavailable,omitempty" name:"MaxUnavailable"`
+
+	// 部署组健康检查设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
 }
 
 type ContinueRunFailedTaskBatchRequest struct {

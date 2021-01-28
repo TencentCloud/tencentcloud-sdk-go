@@ -2805,6 +2805,31 @@ func (c *Client) SwitchDBInstanceMasterSlave(request *SwitchDBInstanceMasterSlav
     return
 }
 
+func NewSwitchDrInstanceToMasterRequest() (request *SwitchDrInstanceToMasterRequest) {
+    request = &SwitchDrInstanceToMasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "SwitchDrInstanceToMaster")
+    return
+}
+
+func NewSwitchDrInstanceToMasterResponse() (response *SwitchDrInstanceToMasterResponse) {
+    response = &SwitchDrInstanceToMasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(SwitchDrInstanceToMaster)用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
+func (c *Client) SwitchDrInstanceToMaster(request *SwitchDrInstanceToMasterRequest) (response *SwitchDrInstanceToMasterResponse, err error) {
+    if request == nil {
+        request = NewSwitchDrInstanceToMasterRequest()
+    }
+    response = NewSwitchDrInstanceToMasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchForUpgradeRequest() (request *SwitchForUpgradeRequest) {
     request = &SwitchForUpgradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
