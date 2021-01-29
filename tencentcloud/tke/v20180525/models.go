@@ -1044,6 +1044,9 @@ type CreateEKSClusterRequest struct {
 
 	// 是否在用户集群内开启Dns。默认为true
 	EnableVpcCoreDNS *bool `json:"EnableVpcCoreDNS,omitempty" name:"EnableVpcCoreDNS"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
 }
 
 func (r *CreateEKSClusterRequest) ToJsonString() string {
@@ -2822,6 +2825,10 @@ type EksCluster struct {
 
 	// 是否在用户集群内开启Dns。默认为TRUE
 	EnableVpcCoreDNS *bool `json:"EnableVpcCoreDNS,omitempty" name:"EnableVpcCoreDNS"`
+
+	// 标签描述列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
 }
 
 type EnhancedService struct {
@@ -3075,7 +3082,7 @@ type Instance struct {
 
 type InstanceAdvancedSettings struct {
 
-	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
+	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
 	// 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
@@ -3095,7 +3102,7 @@ type InstanceAdvancedSettings struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*Label `json:"Labels,omitempty" name:"Labels" list`
 
-	// 多盘数据盘挂载信息，同时请确保购买CVM的参数传递了购买多个数据盘的信息，如添加节点CreateClusterInstances API的RunInstancesPara下的DataDisks也设置了购买多个数据盘, 具体可以参考CreateClusterInstances接口的，添加集群节点(多块数据盘)样例
+	// 多盘数据盘挂载信息，同时请确保购买CVM的参数传递了购买多个数据盘的信息，如添加节点CreateClusterInstances API的RunInstancesPara下的DataDisks也设置了购买多个数据盘, 具体可以参考CreateClusterInstances接口的，添加集群节点(多块数据盘)样例；注意：此参数在调用接口AddExistedInstances时不起作用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
 

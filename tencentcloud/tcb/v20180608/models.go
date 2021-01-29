@@ -130,6 +130,94 @@ type CloudBaseEsInfo struct {
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
+type CloudBaseProjectVersion struct {
+
+	// 项目名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// SAM json
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sam *string `json:"Sam,omitempty" name:"Sam"`
+
+	// 来源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *CodeSource `json:"Source,omitempty" name:"Source"`
+
+	// 创建时间, unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间 ,unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 项目状态, 枚举值: 
+	//         "creatingEnv"-创建环境中
+	// 	"createEnvFail"-创建环境失败
+	// 	"building"-构建中
+	// 	"buildFail"-构建失败
+	// 	"deploying"-部署中
+	// 	 "deployFail"-部署失败
+	// 	 "success"-部署成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 环境变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters" list`
+
+	// 项目类型, 枚举值:
+	// "framework-oneclick" 控制台一键部署
+	// "framework-local-oneclick" cli本地一键部署
+	// "qci-extension-cicd" 内网coding ci cd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// ci的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CIId *string `json:"CIId,omitempty" name:"CIId"`
+
+	// cd的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CDId *string `json:"CDId,omitempty" name:"CDId"`
+
+	// 环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionNum *int64 `json:"VersionNum,omitempty" name:"VersionNum"`
+
+	// 错误原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// rc.json内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RcJson *string `json:"RcJson,omitempty" name:"RcJson"`
+
+	// 插件配置内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddonConfig *string `json:"AddonConfig,omitempty" name:"AddonConfig"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 网络配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConfig *string `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
+
+	// 扩展id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 错误类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailType *string `json:"FailType,omitempty" name:"FailType"`
+}
+
 type CloudBaseRunImageInfo struct {
 
 	// 镜像仓库名称
@@ -386,6 +474,37 @@ type CloudRunServiceSimpleVersionSnapshot struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type CodeSource struct {
+
+	// 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 工作目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkDir *string `json:"WorkDir,omitempty" name:"WorkDir"`
+
+	// code包名, type为coding的时候需要填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodingPackageName *string `json:"CodingPackageName,omitempty" name:"CodingPackageName"`
+
+	// coding版本名, type为coding的时候需要填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodingPackageVersion *string `json:"CodingPackageVersion,omitempty" name:"CodingPackageVersion"`
+
+	// 源码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawCode *string `json:"RawCode,omitempty" name:"RawCode"`
+}
+
 type CommonServiceAPIRequest struct {
 	*tchttp.BaseRequest
 
@@ -423,6 +542,74 @@ func (r *CommonServiceAPIResponse) ToJsonString() string {
 }
 
 func (r *CommonServiceAPIResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAndDeployCloudBaseProjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 项目名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源
+	Source *CodeSource `json:"Source,omitempty" name:"Source"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 项目类型, 枚举值为: framework-oneclick,qci-extension-cicd
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 环境变量
+	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters" list`
+
+	// 环境别名
+	EnvAlias *string `json:"EnvAlias,omitempty" name:"EnvAlias"`
+
+	// rc.json的内容
+	RcJson *string `json:"RcJson,omitempty" name:"RcJson"`
+
+	// 插件配置内容
+	AddonConfig *string `json:"AddonConfig,omitempty" name:"AddonConfig"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 网络配置
+	NetworkConfig *string `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
+
+	// 免费额度的"basic", 不使用的用""
+	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+}
+
+func (r *CreateAndDeployCloudBaseProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAndDeployCloudBaseProjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAndDeployCloudBaseProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 环境Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAndDeployCloudBaseProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAndDeployCloudBaseProjectResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -981,6 +1168,63 @@ func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
 }
 
 func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseProjectLatestVersionListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 个数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 环境id, 非必填
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 项目名称, 非必填
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 项目类型: framework-oneclick,qci-extension-cicd
+	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+}
+
+func (r *DescribeCloudBaseProjectLatestVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseProjectLatestVersionListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseProjectLatestVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 项目列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProjectList []*CloudBaseProjectVersion `json:"ProjectList,omitempty" name:"ProjectList" list`
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseProjectLatestVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseProjectLatestVersionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

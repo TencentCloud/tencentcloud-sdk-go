@@ -199,6 +199,89 @@ func (r *BlockByNumberHandlerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelDetailForUser struct {
+
+	// 通道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 当前组织加入通道的节点列表
+	PeerList []*PeerDetailForUser `json:"PeerList,omitempty" name:"PeerList" list`
+}
+
+type ClusterDetailForUser struct {
+
+	// 网络ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 组织列表
+	GroupList []*GroupDetailForUser `json:"GroupList,omitempty" name:"GroupList" list`
+
+	// 网络名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
+type CreateChaincodeAndInstallForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：chaincode_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：chaincode_create_and_install_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+
+	// 智能合约名称，格式说明：以小写字母开头，由2-12位数字或小写字母组成
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+
+	// 智能合约版本，格式说明：由1-12位数字、小写字母、特殊符号(“.”)组成，如v1.0
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" name:"ChaincodeVersion"`
+
+	// 智能合约代码文件类型，支持类型：
+	// 1. "go"：.go合约文件
+	// 2. "gozip"：go合约工程zip包，要求压缩目录为代码根目录
+	// 3. "javazip"：java合约工程zip包，要求压缩目录为代码根目录
+	// 4. "nodezip"：nodejs合约工程zip包，要求压缩目录为代码根目录
+	ChaincodeFileType *string `json:"ChaincodeFileType,omitempty" name:"ChaincodeFileType"`
+
+	// 合约内容，合约文件或压缩包内容的base64编码，大小要求小于等于5M
+	Chaincode *string `json:"Chaincode,omitempty" name:"Chaincode"`
+}
+
+func (r *CreateChaincodeAndInstallForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateChaincodeAndInstallForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateChaincodeAndInstallForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateChaincodeAndInstallForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateChaincodeAndInstallForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeployDynamicContractHandlerRequest struct {
 	*tchttp.BaseRequest
 
@@ -501,6 +584,299 @@ func (r *GetBlockTransactionListForUserResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetChaincodeCompileLogForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：chaincode_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：chaincode_compile_log_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属智能合约名称
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+
+	// 业务所属智能合约版本
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" name:"ChaincodeVersion"`
+
+	// 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+
+	// 返回数据项数，本接口默认取值：10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回数据起始偏移，本接口默认取值：0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *GetChaincodeCompileLogForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeCompileLogForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChaincodeCompileLogForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志总行数，上限2000条日志
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志列表
+		CompileLogList []*LogDetailForUser `json:"CompileLogList,omitempty" name:"CompileLogList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetChaincodeCompileLogForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeCompileLogForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChaincodeInitializeResultForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：chaincode_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：chaincode_init_result_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属通道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 业务所属合约名称
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+
+	// 业务所属智能合约版本
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" name:"ChaincodeVersion"`
+
+	// 实例化任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *GetChaincodeInitializeResultForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeInitializeResultForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChaincodeInitializeResultForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例化结果：0，实例化中；1，实例化成功；2，实例化失败
+		InitResult *uint64 `json:"InitResult,omitempty" name:"InitResult"`
+
+		// 实例化信息
+		InitMessage *string `json:"InitMessage,omitempty" name:"InitMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetChaincodeInitializeResultForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeInitializeResultForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChaincodeLogForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：chaincode_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：chaincode_log_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属智能合约名称
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+
+	// 业务所属智能合约版本
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" name:"ChaincodeVersion"`
+
+	// 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+
+	// 日志开始时间，如"2020-11-24 19:49:25"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 返回日志行数的最大值，系统设定该参数最大为1000，且一行日志的最大字节数是500，即最大返回50万个字节数的日志数据
+	RowNum *int64 `json:"RowNum,omitempty" name:"RowNum"`
+}
+
+func (r *GetChaincodeLogForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeLogForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChaincodeLogForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回日志总行数，不会超过入参的RowNum
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志列表
+		ChaincodeLogList []*LogDetailForUser `json:"ChaincodeLogList,omitempty" name:"ChaincodeLogList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetChaincodeLogForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChaincodeLogForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChannelListForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：channel_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：channel_list_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 返回数据项数，本接口默认取值：10，上限取值：20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回数据起始偏移，本接口默认取值：0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *GetChannelListForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChannelListForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetChannelListForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 通道总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 通道列表
+		ChannelList []*ChannelDetailForUser `json:"ChannelList,omitempty" name:"ChannelList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetChannelListForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetChannelListForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterListForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：cluster_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：cluster_list_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 返回数据项数，本接口默认取值：10，上限取值：20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回数据起始偏移，本接口默认取值：0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *GetClusterListForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetClusterListForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterListForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 网络总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 网络列表
+		ClusterList []*ClusterDetailForUser `json:"ClusterList,omitempty" name:"ClusterList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetClusterListForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetClusterListForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetClusterSummaryRequest struct {
 	*tchttp.BaseRequest
 
@@ -723,6 +1099,64 @@ func (r *GetLatesdTransactionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetPeerLogForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：peer_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：peer_log_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+
+	// 日志开始时间，如"2020-11-24 19:49:25"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 返回日志行数的最大值，系统设定该参数最大为1000，且一行日志的最大字节数是500，即最大返回50万个字节数的日志数据
+	RowNum *int64 `json:"RowNum,omitempty" name:"RowNum"`
+}
+
+func (r *GetPeerLogForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPeerLogForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPeerLogForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回日志总行数，不会超过入参的RowNum
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志列表
+		PeerLogList []*LogDetailForUser `json:"PeerLogList,omitempty" name:"PeerLogList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPeerLogForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetPeerLogForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetTransByHashHandlerRequest struct {
 	*tchttp.BaseRequest
 
@@ -918,6 +1352,76 @@ func (r *GetTransactionDetailForUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GroupDetailForUser struct {
+
+	// 组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 组织MSP Identity
+	GroupMSPId *string `json:"GroupMSPId,omitempty" name:"GroupMSPId"`
+}
+
+type InitializeChaincodeForUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，本接口取值：chaincode_mng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，本接口取值：chaincode_init_for_user
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 调用合约的组织名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 业务所属智能合约名称
+	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+
+	// 业务所属智能合约版本
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" name:"ChaincodeVersion"`
+
+	// 业务所属通道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 合约实例化节点名称，可以在通道详情中获取该通道上的节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+
+	// 实例化的函数参数列表
+	Args []*string `json:"Args,omitempty" name:"Args" list`
+}
+
+func (r *InitializeChaincodeForUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InitializeChaincodeForUserRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InitializeChaincodeForUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例化任务ID，用于查询实例化结果
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InitializeChaincodeForUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InitializeChaincodeForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 
@@ -983,6 +1487,21 @@ func (r *InvokeResponse) ToJsonString() string {
 
 func (r *InvokeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type LogDetailForUser struct {
+
+	// 日志行号
+	LineNumber *uint64 `json:"LineNumber,omitempty" name:"LineNumber"`
+
+	// 日志详情
+	LogMessage *string `json:"LogMessage,omitempty" name:"LogMessage"`
+}
+
+type PeerDetailForUser struct {
+
+	// 节点名称
+	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 }
 
 type PeerSet struct {

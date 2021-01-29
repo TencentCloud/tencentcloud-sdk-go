@@ -1144,7 +1144,12 @@ type StartOnlineRecordRequest struct {
 	// 在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
 	ChatGroupId *string `json:"ChatGroupId,omitempty" name:"ChatGroupId"`
 
-	// 内部参数
+	// 自动停止录制超时时间，单位秒，取值范围[300, 86400], 默认值为300秒。
+	// 
+	// 当超过设定时间房间内没有音视频上行且没有白板操作的时候，录制服务会自动停止当前录制任务。
+	AutoStopTimeout *int64 `json:"AutoStopTimeout,omitempty" name:"AutoStopTimeout"`
+
+	// 内部参数，可忽略
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 

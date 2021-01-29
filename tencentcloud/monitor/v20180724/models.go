@@ -260,6 +260,10 @@ type AlarmPolicy struct {
 	// 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInstances []*TagInstance `json:"TagInstances,omitempty" name:"TagInstances" list`
 }
 
 type AlarmPolicyCondition struct {
@@ -1405,6 +1409,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 启停，1：启用   0：停止
 	Enable []*int64 `json:"Enable,omitempty" name:"Enable" list`
+
+	// 是否未配置通知规则，1：未配置，0：配置
+	NotBindingNoticeRule *int64 `json:"NotBindingNoticeRule,omitempty" name:"NotBindingNoticeRule"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -2636,6 +2643,10 @@ type DescribeProductEventListEvents struct {
 	// 策略信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupInfo []*DescribeProductEventListEventsGroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo" list`
+
+	// 显示名称ViewName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
 }
 
 type DescribeProductEventListEventsDimensions struct {
@@ -3785,6 +3796,37 @@ func (r *SetDefaultAlarmPolicyResponse) ToJsonString() string {
 
 func (r *SetDefaultAlarmPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type TagInstance struct {
+
+	// 标签Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 实例个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceSum *int64 `json:"InstanceSum,omitempty" name:"InstanceSum"`
+
+	// 产品类型，如：cvm
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 绑定状态，2：绑定成功，1：绑定中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindingStatus *int64 `json:"BindingStatus,omitempty" name:"BindingStatus"`
+
+	// 标签状态，2：标签存在，1：标签不存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagStatus *int64 `json:"TagStatus,omitempty" name:"TagStatus"`
 }
 
 type URLNotice struct {

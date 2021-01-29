@@ -119,7 +119,7 @@ type CfsInsInfo struct {
 
 type Code struct {
 
-	// 对象存储桶名称
+	// 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
 	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
 
 	// 对象存储对象路径

@@ -1097,6 +1097,31 @@ func (c *Client) CreateNatGatewayDestinationIpPortTranslationNatRule(request *Cr
     return
 }
 
+func NewCreateNatGatewaySourceIpTranslationNatRuleRequest() (request *CreateNatGatewaySourceIpTranslationNatRuleRequest) {
+    request = &CreateNatGatewaySourceIpTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNatGatewaySourceIpTranslationNatRule")
+    return
+}
+
+func NewCreateNatGatewaySourceIpTranslationNatRuleResponse() (response *CreateNatGatewaySourceIpTranslationNatRuleResponse) {
+    response = &CreateNatGatewaySourceIpTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateNatGatewaySourceIpTranslationNatRule)用于创建NAT网关SNAT规则
+func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGatewaySourceIpTranslationNatRuleRequest) (response *CreateNatGatewaySourceIpTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateNatGatewaySourceIpTranslationNatRuleRequest()
+    }
+    response = NewCreateNatGatewaySourceIpTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetDetectRequest() (request *CreateNetDetectRequest) {
     request = &CreateNetDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1880,6 +1905,31 @@ func (c *Client) DeleteNatGatewayDestinationIpPortTranslationNatRule(request *De
         request = NewDeleteNatGatewayDestinationIpPortTranslationNatRuleRequest()
     }
     response = NewDeleteNatGatewayDestinationIpPortTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNatGatewaySourceIpTranslationNatRuleRequest() (request *DeleteNatGatewaySourceIpTranslationNatRuleRequest) {
+    request = &DeleteNatGatewaySourceIpTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatGatewaySourceIpTranslationNatRule")
+    return
+}
+
+func NewDeleteNatGatewaySourceIpTranslationNatRuleResponse() (response *DeleteNatGatewaySourceIpTranslationNatRuleResponse) {
+    response = &DeleteNatGatewaySourceIpTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteNatGatewaySourceIpTranslationNatRule）用于删除NAT网关端口SNAT转发规则。
+func (c *Client) DeleteNatGatewaySourceIpTranslationNatRule(request *DeleteNatGatewaySourceIpTranslationNatRuleRequest) (response *DeleteNatGatewaySourceIpTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteNatGatewaySourceIpTranslationNatRuleRequest()
+    }
+    response = NewDeleteNatGatewaySourceIpTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -3019,6 +3069,31 @@ func (c *Client) DescribeNatGatewayDestinationIpPortTranslationNatRules(request 
         request = NewDescribeNatGatewayDestinationIpPortTranslationNatRulesRequest()
     }
     response = NewDescribeNatGatewayDestinationIpPortTranslationNatRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNatGatewaySourceIpTranslationNatRulesRequest() (request *DescribeNatGatewaySourceIpTranslationNatRulesRequest) {
+    request = &DescribeNatGatewaySourceIpTranslationNatRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGatewaySourceIpTranslationNatRules")
+    return
+}
+
+func NewDescribeNatGatewaySourceIpTranslationNatRulesResponse() (response *DescribeNatGatewaySourceIpTranslationNatRulesResponse) {
+    response = &DescribeNatGatewaySourceIpTranslationNatRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeNatGatewaySourceIpTranslationNatRules）用于查询NAT网关SNAT转发规则对象数组。
+func (c *Client) DescribeNatGatewaySourceIpTranslationNatRules(request *DescribeNatGatewaySourceIpTranslationNatRulesRequest) (response *DescribeNatGatewaySourceIpTranslationNatRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatGatewaySourceIpTranslationNatRulesRequest()
+    }
+    response = NewDescribeNatGatewaySourceIpTranslationNatRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4918,6 +4993,31 @@ func (c *Client) ModifyNatGatewayDestinationIpPortTranslationNatRule(request *Mo
     return
 }
 
+func NewModifyNatGatewaySourceIpTranslationNatRuleRequest() (request *ModifyNatGatewaySourceIpTranslationNatRuleRequest) {
+    request = &ModifyNatGatewaySourceIpTranslationNatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatGatewaySourceIpTranslationNatRule")
+    return
+}
+
+func NewModifyNatGatewaySourceIpTranslationNatRuleResponse() (response *ModifyNatGatewaySourceIpTranslationNatRuleResponse) {
+    response = &ModifyNatGatewaySourceIpTranslationNatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyNatGatewaySourceIpTranslationNatRule）用于修改NAT网关SNAT转发规则。
+func (c *Client) ModifyNatGatewaySourceIpTranslationNatRule(request *ModifyNatGatewaySourceIpTranslationNatRuleRequest) (response *ModifyNatGatewaySourceIpTranslationNatRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyNatGatewaySourceIpTranslationNatRuleRequest()
+    }
+    response = NewModifyNatGatewaySourceIpTranslationNatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNetDetectRequest() (request *ModifyNetDetectRequest) {
     request = &ModifyNetDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5306,6 +5406,31 @@ func (c *Client) ModifyVpnGatewayCcnRoutes(request *ModifyVpnGatewayCcnRoutesReq
         request = NewModifyVpnGatewayCcnRoutesRequest()
     }
     response = NewModifyVpnGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewNotifyRoutesRequest() (request *NotifyRoutesRequest) {
+    request = &NotifyRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "NotifyRoutes")
+    return
+}
+
+func NewNotifyRoutesResponse() (response *NotifyRoutesResponse) {
+    response = &NotifyRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 路由表列表页操作增加“发布到云联网”，用于发布路由到云联网。
+func (c *Client) NotifyRoutes(request *NotifyRoutesRequest) (response *NotifyRoutesResponse, err error) {
+    if request == nil {
+        request = NewNotifyRoutesRequest()
+    }
+    response = NewNotifyRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5867,6 +5992,31 @@ func (c *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddressesR
         request = NewUnassignPrivateIpAddressesRequest()
     }
     response = NewUnassignPrivateIpAddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewWithdrawNotifyRoutesRequest() (request *WithdrawNotifyRoutesRequest) {
+    request = &WithdrawNotifyRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "WithdrawNotifyRoutes")
+    return
+}
+
+func NewWithdrawNotifyRoutesResponse() (response *WithdrawNotifyRoutesResponse) {
+    response = &WithdrawNotifyRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 路由表列表页操作增加“从云联网撤销”，用于撤销已发布到云联网的路由。
+func (c *Client) WithdrawNotifyRoutes(request *WithdrawNotifyRoutesRequest) (response *WithdrawNotifyRoutesResponse, err error) {
+    if request == nil {
+        request = NewWithdrawNotifyRoutesRequest()
+    }
+    response = NewWithdrawNotifyRoutesResponse()
     err = c.Send(request, response)
     return
 }

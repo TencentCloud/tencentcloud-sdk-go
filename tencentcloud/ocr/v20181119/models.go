@@ -95,6 +95,24 @@ type ArithmeticOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用于选择是否支持横屏拍摄。打开则支持横屏拍摄图片角度判断，角度信息在返回参数的angle中，默认值为true
+	SupportHorizontalImage *bool `json:"SupportHorizontalImage,omitempty" name:"SupportHorizontalImage"`
+
+	// 是否拒绝非速算图，打开则拒绝非速算图(注：非速算图是指风景人物等明显不是速算图片的图片)，默认值为false
+	RejectNonArithmeticPic *bool `json:"RejectNonArithmeticPic,omitempty" name:"RejectNonArithmeticPic"`
+
+	// 是否展开耦合算式中的竖式计算，默认值为false
+	EnableDispRelatedVertical *bool `json:"EnableDispRelatedVertical,omitempty" name:"EnableDispRelatedVertical"`
+
+	// 是否展示竖式算式的中间结果和格式控制字符，默认值为false
+	EnableDispMidResult *bool `json:"EnableDispMidResult,omitempty" name:"EnableDispMidResult"`
+
+	// 是否开启pdf识别，默认值为true
+	EnablePdfRecognize *bool `json:"EnablePdfRecognize,omitempty" name:"EnablePdfRecognize"`
+
+	// pdf页码，从0开始，默认为0
+	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
 }
 
 func (r *ArithmeticOCRRequest) ToJsonString() string {
@@ -112,6 +130,9 @@ type ArithmeticOCRResponse struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
 		TextDetections []*TextArithmetic `json:"TextDetections,omitempty" name:"TextDetections" list`
+
+		// 图片横屏的角度(90度或270度)
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3747,7 +3768,7 @@ type TextArithmetic struct {
 	// 识别出的文本行内容
 	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
 
-	// 算式运算结果
+	// 算式运算结果，true-正确   false-错误或非法参数
 	Result *bool `json:"Result,omitempty" name:"Result"`
 
 	// 保留字段，暂不支持
@@ -3776,6 +3797,9 @@ type TextArithmetic struct {
 	// ‘10’: 脱式计算
 	// ‘11’: 解方程
 	ExpressionType *string `json:"ExpressionType,omitempty" name:"ExpressionType"`
+
+	// 错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如1<10<7）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
+	Answer *string `json:"Answer,omitempty" name:"Answer"`
 }
 
 type TextDetectRequest struct {

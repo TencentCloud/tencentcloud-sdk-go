@@ -93,6 +93,31 @@ func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (res
     return
 }
 
+func NewCreateChaincodeAndInstallForUserRequest() (request *CreateChaincodeAndInstallForUserRequest) {
+    request = &CreateChaincodeAndInstallForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "CreateChaincodeAndInstallForUser")
+    return
+}
+
+func NewCreateChaincodeAndInstallForUserResponse() (response *CreateChaincodeAndInstallForUserResponse) {
+    response = &CreateChaincodeAndInstallForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建并安装合约
+func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndInstallForUserRequest) (response *CreateChaincodeAndInstallForUserResponse, err error) {
+    if request == nil {
+        request = NewCreateChaincodeAndInstallForUserRequest()
+    }
+    response = NewCreateChaincodeAndInstallForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeployDynamicContractHandlerRequest() (request *DeployDynamicContractHandlerRequest) {
     request = &DeployDynamicContractHandlerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -218,6 +243,131 @@ func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionList
     return
 }
 
+func NewGetChaincodeCompileLogForUserRequest() (request *GetChaincodeCompileLogForUserRequest) {
+    request = &GetChaincodeCompileLogForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeCompileLogForUser")
+    return
+}
+
+func NewGetChaincodeCompileLogForUserResponse() (response *GetChaincodeCompileLogForUserResponse) {
+    response = &GetChaincodeCompileLogForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取合约编译日志
+func (c *Client) GetChaincodeCompileLogForUser(request *GetChaincodeCompileLogForUserRequest) (response *GetChaincodeCompileLogForUserResponse, err error) {
+    if request == nil {
+        request = NewGetChaincodeCompileLogForUserRequest()
+    }
+    response = NewGetChaincodeCompileLogForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetChaincodeInitializeResultForUserRequest() (request *GetChaincodeInitializeResultForUserRequest) {
+    request = &GetChaincodeInitializeResultForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeInitializeResultForUser")
+    return
+}
+
+func NewGetChaincodeInitializeResultForUserResponse() (response *GetChaincodeInitializeResultForUserResponse) {
+    response = &GetChaincodeInitializeResultForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 实例化结果查询
+func (c *Client) GetChaincodeInitializeResultForUser(request *GetChaincodeInitializeResultForUserRequest) (response *GetChaincodeInitializeResultForUserResponse, err error) {
+    if request == nil {
+        request = NewGetChaincodeInitializeResultForUserRequest()
+    }
+    response = NewGetChaincodeInitializeResultForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetChaincodeLogForUserRequest() (request *GetChaincodeLogForUserRequest) {
+    request = &GetChaincodeLogForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeLogForUser")
+    return
+}
+
+func NewGetChaincodeLogForUserResponse() (response *GetChaincodeLogForUserResponse) {
+    response = &GetChaincodeLogForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取合约容器日志
+func (c *Client) GetChaincodeLogForUser(request *GetChaincodeLogForUserRequest) (response *GetChaincodeLogForUserResponse, err error) {
+    if request == nil {
+        request = NewGetChaincodeLogForUserRequest()
+    }
+    response = NewGetChaincodeLogForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetChannelListForUserRequest() (request *GetChannelListForUserRequest) {
+    request = &GetChannelListForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetChannelListForUser")
+    return
+}
+
+func NewGetChannelListForUserResponse() (response *GetChannelListForUserResponse) {
+    response = &GetChannelListForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取通道列表
+func (c *Client) GetChannelListForUser(request *GetChannelListForUserRequest) (response *GetChannelListForUserResponse, err error) {
+    if request == nil {
+        request = NewGetChannelListForUserRequest()
+    }
+    response = NewGetChannelListForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetClusterListForUserRequest() (request *GetClusterListForUserRequest) {
+    request = &GetClusterListForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterListForUser")
+    return
+}
+
+func NewGetClusterListForUserResponse() (response *GetClusterListForUserResponse) {
+    response = &GetClusterListForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
+func (c *Client) GetClusterListForUser(request *GetClusterListForUserRequest) (response *GetClusterListForUserResponse, err error) {
+    if request == nil {
+        request = NewGetClusterListForUserRequest()
+    }
+    response = NewGetClusterListForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
     request = &GetClusterSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +443,31 @@ func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListReque
     return
 }
 
+func NewGetPeerLogForUserRequest() (request *GetPeerLogForUserRequest) {
+    request = &GetPeerLogForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetPeerLogForUser")
+    return
+}
+
+func NewGetPeerLogForUserResponse() (response *GetPeerLogForUserResponse) {
+    response = &GetPeerLogForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取节点日志
+func (c *Client) GetPeerLogForUser(request *GetPeerLogForUserRequest) (response *GetPeerLogForUserResponse, err error) {
+    if request == nil {
+        request = NewGetPeerLogForUserRequest()
+    }
+    response = NewGetPeerLogForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTransByHashHandlerRequest() (request *GetTransByHashHandlerRequest) {
     request = &GetTransByHashHandlerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +539,31 @@ func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUse
         request = NewGetTransactionDetailForUserRequest()
     }
     response = NewGetTransactionDetailForUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInitializeChaincodeForUserRequest() (request *InitializeChaincodeForUserRequest) {
+    request = &InitializeChaincodeForUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "InitializeChaincodeForUser")
+    return
+}
+
+func NewInitializeChaincodeForUserResponse() (response *InitializeChaincodeForUserResponse) {
+    response = &InitializeChaincodeForUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 实例化合约
+func (c *Client) InitializeChaincodeForUser(request *InitializeChaincodeForUserRequest) (response *InitializeChaincodeForUserResponse, err error) {
+    if request == nil {
+        request = NewInitializeChaincodeForUserRequest()
+    }
+    response = NewInitializeChaincodeForUserResponse()
     err = c.Send(request, response)
     return
 }

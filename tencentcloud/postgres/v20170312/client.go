@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddDBInstanceToReadOnlyGroupRequest() (request *AddDBInstanceToReadOnlyGroupRequest) {
+    request = &AddDBInstanceToReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "AddDBInstanceToReadOnlyGroup")
+    return
+}
+
+func NewAddDBInstanceToReadOnlyGroupResponse() (response *AddDBInstanceToReadOnlyGroupResponse) {
+    response = &AddDBInstanceToReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（AddDBInstanceToReadOnlyGroup）用于添加只读实例到只读组
+func (c *Client) AddDBInstanceToReadOnlyGroup(request *AddDBInstanceToReadOnlyGroupRequest) (response *AddDBInstanceToReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewAddDBInstanceToReadOnlyGroupRequest()
+    }
+    response = NewAddDBInstanceToReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
     request = &CloseDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +143,56 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
     return
 }
 
+func NewCreateReadOnlyDBInstanceRequest() (request *CreateReadOnlyDBInstanceRequest) {
+    request = &CreateReadOnlyDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyDBInstance")
+    return
+}
+
+func NewCreateReadOnlyDBInstanceResponse() (response *CreateReadOnlyDBInstanceResponse) {
+    response = &CreateReadOnlyDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(CreateReadOnlyDBInstance)用于创建只读实例
+func (c *Client) CreateReadOnlyDBInstance(request *CreateReadOnlyDBInstanceRequest) (response *CreateReadOnlyDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateReadOnlyDBInstanceRequest()
+    }
+    response = NewCreateReadOnlyDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateReadOnlyGroupRequest() (request *CreateReadOnlyGroupRequest) {
+    request = &CreateReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyGroup")
+    return
+}
+
+func NewCreateReadOnlyGroupResponse() (response *CreateReadOnlyGroupResponse) {
+    response = &CreateReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateReadOnlyGroup）用于创建只读组
+func (c *Client) CreateReadOnlyGroup(request *CreateReadOnlyGroupRequest) (response *CreateReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateReadOnlyGroupRequest()
+    }
+    response = NewCreateReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServerlessDBInstanceRequest() (request *CreateServerlessDBInstanceRequest) {
     request = &CreateServerlessDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +214,31 @@ func (c *Client) CreateServerlessDBInstance(request *CreateServerlessDBInstanceR
         request = NewCreateServerlessDBInstanceRequest()
     }
     response = NewCreateServerlessDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReadOnlyGroupRequest() (request *DeleteReadOnlyGroupRequest) {
+    request = &DeleteReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteReadOnlyGroup")
+    return
+}
+
+func NewDeleteReadOnlyGroupResponse() (response *DeleteReadOnlyGroupResponse) {
+    response = &DeleteReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DeleteReadOnlyGroup)用于删除指定的只读组
+func (c *Client) DeleteReadOnlyGroup(request *DeleteReadOnlyGroupRequest) (response *DeleteReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteReadOnlyGroupRequest()
+    }
+    response = NewDeleteReadOnlyGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -418,6 +518,31 @@ func (c *Client) DescribeProductConfig(request *DescribeProductConfigRequest) (r
     return
 }
 
+func NewDescribeReadOnlyGroupsRequest() (request *DescribeReadOnlyGroupsRequest) {
+    request = &DescribeReadOnlyGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeReadOnlyGroups")
+    return
+}
+
+func NewDescribeReadOnlyGroupsResponse() (response *DescribeReadOnlyGroupsResponse) {
+    response = &DescribeReadOnlyGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeReadOnlyGroups)用于查询用户输入指定实例的只读组
+func (c *Client) DescribeReadOnlyGroups(request *DescribeReadOnlyGroupsRequest) (response *DescribeReadOnlyGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReadOnlyGroupsRequest()
+    }
+    response = NewDescribeReadOnlyGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -508,7 +633,7 @@ func NewDestroyDBInstanceResponse() (response *DestroyDBInstanceResponse) {
     return
 }
 
-// 本接口 (DestroyDBInstance) 用于销毁指定DBInstanceId对应的实例。
+// 本接口 (DestroyDBInstance) 用于销毁指定DBInstanceId对应的实例。当前仅适用于按量计费实例。
 func (c *Client) DestroyDBInstance(request *DestroyDBInstanceRequest) (response *DestroyDBInstanceResponse, err error) {
     if request == nil {
         request = NewDestroyDBInstanceRequest()
@@ -668,6 +793,31 @@ func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (res
     return
 }
 
+func NewModifyDBInstanceReadOnlyGroupRequest() (request *ModifyDBInstanceReadOnlyGroupRequest) {
+    request = &ModifyDBInstanceReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceReadOnlyGroup")
+    return
+}
+
+func NewModifyDBInstanceReadOnlyGroupResponse() (response *ModifyDBInstanceReadOnlyGroupResponse) {
+    response = &ModifyDBInstanceReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifyDBInstanceReadOnlyGroup）用于修改实例所属的只读组
+func (c *Client) ModifyDBInstanceReadOnlyGroup(request *ModifyDBInstanceReadOnlyGroupRequest) (response *ModifyDBInstanceReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceReadOnlyGroupRequest()
+    }
+    response = NewModifyDBInstanceReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstancesProjectRequest() (request *ModifyDBInstancesProjectRequest) {
     request = &ModifyDBInstancesProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +839,31 @@ func (c *Client) ModifyDBInstancesProject(request *ModifyDBInstancesProjectReque
         request = NewModifyDBInstancesProjectRequest()
     }
     response = NewModifyDBInstancesProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReadOnlyGroupConfigRequest() (request *ModifyReadOnlyGroupConfigRequest) {
+    request = &ModifyReadOnlyGroupConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyReadOnlyGroupConfig")
+    return
+}
+
+func NewModifyReadOnlyGroupConfigResponse() (response *ModifyReadOnlyGroupConfigResponse) {
+    response = &ModifyReadOnlyGroupConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyReadOnlyGroupConfig)用于更新只读组配置信息
+func (c *Client) ModifyReadOnlyGroupConfig(request *ModifyReadOnlyGroupConfigRequest) (response *ModifyReadOnlyGroupConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyReadOnlyGroupConfigRequest()
+    }
+    response = NewModifyReadOnlyGroupConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -739,6 +914,56 @@ func (c *Client) OpenServerlessDBExtranetAccess(request *OpenServerlessDBExtrane
         request = NewOpenServerlessDBExtranetAccessRequest()
     }
     response = NewOpenServerlessDBExtranetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRebalanceReadOnlyGroupRequest() (request *RebalanceReadOnlyGroupRequest) {
+    request = &RebalanceReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "RebalanceReadOnlyGroup")
+    return
+}
+
+func NewRebalanceReadOnlyGroupResponse() (response *RebalanceReadOnlyGroupResponse) {
+    response = &RebalanceReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(RebalanceReadOnlyGroup)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
+func (c *Client) RebalanceReadOnlyGroup(request *RebalanceReadOnlyGroupRequest) (response *RebalanceReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewRebalanceReadOnlyGroupRequest()
+    }
+    response = NewRebalanceReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveDBInstanceFromReadOnlyGroupRequest() (request *RemoveDBInstanceFromReadOnlyGroupRequest) {
+    request = &RemoveDBInstanceFromReadOnlyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "RemoveDBInstanceFromReadOnlyGroup")
+    return
+}
+
+func NewRemoveDBInstanceFromReadOnlyGroupResponse() (response *RemoveDBInstanceFromReadOnlyGroupResponse) {
+    response = &RemoveDBInstanceFromReadOnlyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（RemoveDBInstanceFromReadOnlyGroup）用户将只读实例从只读组中移除
+func (c *Client) RemoveDBInstanceFromReadOnlyGroup(request *RemoveDBInstanceFromReadOnlyGroupRequest) (response *RemoveDBInstanceFromReadOnlyGroupResponse, err error) {
+    if request == nil {
+        request = NewRemoveDBInstanceFromReadOnlyGroupRequest()
+    }
+    response = NewRemoveDBInstanceFromReadOnlyGroupResponse()
     err = c.Send(request, response)
     return
 }

@@ -93,6 +93,31 @@ func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *C
     return
 }
 
+func NewCreateAndDeployCloudBaseProjectRequest() (request *CreateAndDeployCloudBaseProjectRequest) {
+    request = &CreateAndDeployCloudBaseProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateAndDeployCloudBaseProject")
+    return
+}
+
+func NewCreateAndDeployCloudBaseProjectResponse() (response *CreateAndDeployCloudBaseProjectResponse) {
+    response = &CreateAndDeployCloudBaseProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建云开发项目
+func (c *Client) CreateAndDeployCloudBaseProject(request *CreateAndDeployCloudBaseProjectRequest) (response *CreateAndDeployCloudBaseProjectResponse, err error) {
+    if request == nil {
+        request = NewCreateAndDeployCloudBaseProjectRequest()
+    }
+    response = NewCreateAndDeployCloudBaseProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAuthDomainRequest() (request *CreateAuthDomainRequest) {
     request = &CreateAuthDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +364,31 @@ func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildSe
         request = NewDescribeCloudBaseBuildServiceRequest()
     }
     response = NewDescribeCloudBaseBuildServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseProjectLatestVersionListRequest() (request *DescribeCloudBaseProjectLatestVersionListRequest) {
+    request = &DescribeCloudBaseProjectLatestVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseProjectLatestVersionList")
+    return
+}
+
+func NewDescribeCloudBaseProjectLatestVersionListResponse() (response *DescribeCloudBaseProjectLatestVersionListResponse) {
+    response = &DescribeCloudBaseProjectLatestVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取云开发项目列表
+func (c *Client) DescribeCloudBaseProjectLatestVersionList(request *DescribeCloudBaseProjectLatestVersionListRequest) (response *DescribeCloudBaseProjectLatestVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseProjectLatestVersionListRequest()
+    }
+    response = NewDescribeCloudBaseProjectLatestVersionListResponse()
     err = c.Send(request, response)
     return
 }
