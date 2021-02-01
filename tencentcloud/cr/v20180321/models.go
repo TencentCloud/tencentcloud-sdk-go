@@ -20,6 +20,46 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApplyBlackListDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名，AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名，ApplyBlackListData
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 黑名单列表
+	BlackList []*BlackListData `json:"BlackList,omitempty" name:"BlackList" list`
+}
+
+func (r *ApplyBlackListDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyBlackListDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyBlackListDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyBlackListDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyBlackListDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ApplyBlackListRequest struct {
 	*tchttp.BaseRequest
 
@@ -118,6 +158,34 @@ func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BlackListData struct {
+
+	// 黑名单类型，01代表手机号码。
+	BlackType *string `json:"BlackType,omitempty" name:"BlackType"`
+
+	// 操作类型，A为新增，D为删除。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperType *string `json:"OperType,omitempty" name:"OperType"`
+
+	// 黑名单值，BlackType为01时，填写11位手机号码。
+	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+
+	// 备注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlackDescription *string `json:"BlackDescription,omitempty" name:"BlackDescription"`
+
+	// 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlackValidDate *string `json:"BlackValidDate,omitempty" name:"BlackValidDate"`
+
+	// 黑名单加入日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlackAddDate *string `json:"BlackAddDate,omitempty" name:"BlackAddDate"`
+
+	// 0-生效 1-失效
+	BlackStatus *string `json:"BlackStatus,omitempty" name:"BlackStatus"`
+}
+
 type BotFileData struct {
 
 	// 文件类型 A 拨打结果 T 记录详情
@@ -151,6 +219,28 @@ type BotInfo struct {
 	BotStatus *string `json:"BotStatus,omitempty" name:"BotStatus"`
 }
 
+type CallInfo struct {
+
+	// 业务日期
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 成功总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型 I：呼叫文件 R：停拨文件
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 作业唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallId *string `json:"CallId,omitempty" name:"CallId"`
+}
+
 type CallTimeDict struct {
 
 	// 周一
@@ -177,11 +267,111 @@ type CallTimeDict struct {
 
 type CallTimeInfo struct {
 
-	// 产品开始拨打时间，HHmmss格式
+	// 产品开始拨打时间，HHmmss格式,默认090000
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 产品结束拨打时间，HHmmss格式
+	// 产品结束拨打时间，HHmmss格式.默认200000
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type ChangeBotCallStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：ChangeBotCallStatus
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 作业变更状态
+	// SUSPEND：暂停；EXECUTE：恢复；
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 作业唯一标识
+	CallId *string `json:"CallId,omitempty" name:"CallId"`
+
+	// 业务日期
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *ChangeBotCallStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChangeBotCallStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ChangeBotCallStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChangeBotCallStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChangeBotCallStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ChangeBotTaskStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：ChangeBotTaskStatus
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 作业变更状态
+	// SUSPEND：暂停；EXECUTE：恢复；
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+}
+
+func (r *ChangeBotTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChangeBotTaskStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ChangeBotTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChangeBotTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ChangeBotTaskStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateBotTaskRequest struct {
@@ -199,20 +389,20 @@ type CreateBotTaskRequest struct {
 	// 对话流ID
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 产品拨打时间集合
-	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
-
-	// 是否禁止拨打
+	// 是否禁止拨打，默认Y
 	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
-
-	// 禁止拨打起始时间
-	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
-
-	// 禁止拨打结束时间
-	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
 
 	// 拨打线路集合
 	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+
+	// 产品拨打时间集合
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+
+	// 禁止拨打起始时间。默认130000
+	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+
+	// 禁止拨打结束时间。默认140000
+	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
 
 	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
 	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
@@ -231,6 +421,15 @@ type CreateBotTaskRequest struct {
 
 	// 未接通引用短信模板ID
 	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+
+	// 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打
+	CallType *string `json:"CallType,omitempty" name:"CallType"`
+
+	// 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd
+	CallStartDate *string `json:"CallStartDate,omitempty" name:"CallStartDate"`
+
+	// 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd
+	CallEndDate *string `json:"CallEndDate,omitempty" name:"CallEndDate"`
 }
 
 func (r *CreateBotTaskRequest) ToJsonString() string {
@@ -245,6 +444,9 @@ func (r *CreateBotTaskRequest) FromJsonString(s string) error {
 type CreateBotTaskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 机器人任务Id
+		BotId *string `json:"BotId,omitempty" name:"BotId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -873,6 +1075,59 @@ func (r *QueryBotListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryCallListRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：QueryCallList
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 业务日期
+	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+
+	// 任务ID，二者必填一个
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 任务名称，二者必填一个
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 通过API或平台上传的文件完整名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+func (r *QueryCallListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryCallListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCallListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务作业状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CallList []*CallInfo `json:"CallList,omitempty" name:"CallList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCallListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryCallListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryInstantDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -1062,6 +1317,9 @@ type RecordInfo struct {
 
 	// 对话日志。JSON格式
 	DialogueLog *string `json:"DialogueLog,omitempty" name:"DialogueLog"`
+
+	// 录音文件名
+	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
 type SingleBlackApply struct {
@@ -1127,6 +1385,82 @@ type SmsTemplate struct {
 
 	// 短信模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+}
+
+type UpdateBotTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块名。默认值（固定）：AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名。默认值（固定）：UpdateTask
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 任务名称
+	BotName *string `json:"BotName,omitempty" name:"BotName"`
+
+	// 任务ID
+	BotId *string `json:"BotId,omitempty" name:"BotId"`
+
+	// 产品拨打时间集合
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+
+	// 是否禁止拨打，默认Y
+	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+
+	// 禁止拨打起始时间。默认130000
+	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+
+	// 禁止拨打结束时间。默认140000
+	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+
+	// 拨打线路集合
+	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+
+	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+
+	// 继续拨打次数
+	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+
+	// 拨打间隔
+	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+
+	// 未接通引用短信签名ID
+	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+
+	// 未接通引用短信模板ID
+	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+}
+
+func (r *UpdateBotTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateBotTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBotTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateBotTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateBotTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadBotDataRequest struct {

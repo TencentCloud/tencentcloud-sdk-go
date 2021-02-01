@@ -2805,7 +2805,7 @@ type EksCluster struct {
 	// k8s 版本号
 	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
 
-	// 集群状态
+	// 集群状态(running运行中，initializing 初始化中，failed异常)
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 集群描述信息

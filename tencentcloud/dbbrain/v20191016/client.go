@@ -93,6 +93,56 @@ func (c *Client) CreateMailProfile(request *CreateMailProfileRequest) (response 
     return
 }
 
+func NewCreateSecurityAuditLogExportTaskRequest() (request *CreateSecurityAuditLogExportTaskRequest) {
+    request = &CreateSecurityAuditLogExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateSecurityAuditLogExportTask")
+    return
+}
+
+func NewCreateSecurityAuditLogExportTaskResponse() (response *CreateSecurityAuditLogExportTaskResponse) {
+    response = &CreateSecurityAuditLogExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建安全审计日志导出任务。
+func (c *Client) CreateSecurityAuditLogExportTask(request *CreateSecurityAuditLogExportTaskRequest) (response *CreateSecurityAuditLogExportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityAuditLogExportTaskRequest()
+    }
+    response = NewCreateSecurityAuditLogExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAuditLogExportTasksRequest) {
+    request = &DeleteSecurityAuditLogExportTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteSecurityAuditLogExportTasks")
+    return
+}
+
+func NewDeleteSecurityAuditLogExportTasksResponse() (response *DeleteSecurityAuditLogExportTasksResponse) {
+    response = &DeleteSecurityAuditLogExportTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除安全审计日志导出任务。
+func (c *Client) DeleteSecurityAuditLogExportTasks(request *DeleteSecurityAuditLogExportTasksRequest) (response *DeleteSecurityAuditLogExportTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityAuditLogExportTasksRequest()
+    }
+    response = NewDeleteSecurityAuditLogExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllUserContactRequest() (request *DescribeAllUserContactRequest) {
     request = &DescribeAllUserContactRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +264,56 @@ func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (r
         request = NewDescribeDBSpaceStatusRequest()
     }
     response = NewDescribeDBSpaceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurityAuditLogDownloadUrlsRequest) {
+    request = &DescribeSecurityAuditLogDownloadUrlsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSecurityAuditLogDownloadUrls")
+    return
+}
+
+func NewDescribeSecurityAuditLogDownloadUrlsResponse() (response *DescribeSecurityAuditLogDownloadUrlsResponse) {
+    response = &DescribeSecurityAuditLogDownloadUrlsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
+func (c *Client) DescribeSecurityAuditLogDownloadUrls(request *DescribeSecurityAuditLogDownloadUrlsRequest) (response *DescribeSecurityAuditLogDownloadUrlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
+    }
+    response = NewDescribeSecurityAuditLogDownloadUrlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityAuditLogExportTasksRequest() (request *DescribeSecurityAuditLogExportTasksRequest) {
+    request = &DescribeSecurityAuditLogExportTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSecurityAuditLogExportTasks")
+    return
+}
+
+func NewDescribeSecurityAuditLogExportTasksResponse() (response *DescribeSecurityAuditLogExportTasksResponse) {
+    response = &DescribeSecurityAuditLogExportTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询安全审计日志导出任务列表。
+func (c *Client) DescribeSecurityAuditLogExportTasks(request *DescribeSecurityAuditLogExportTasksRequest) (response *DescribeSecurityAuditLogExportTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityAuditLogExportTasksRequest()
+    }
+    response = NewDescribeSecurityAuditLogExportTasksResponse()
     err = c.Send(request, response)
     return
 }

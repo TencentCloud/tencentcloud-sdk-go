@@ -492,6 +492,7 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
 // <br>•   当音频文件通过请求中body内容上传时，请求大小不能超过3MB。
 // <br>•   请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 // <br>•   签名方法参考 [公共参数](https://cloud.tencent.com/document/api/1093/35640) 中签名方法v3。
+// <br>•   默认接口请求频率限制：25次/秒，如您有提高请求频率限制的需求，请提[工单](https://console.cloud.tencent.com/workorder/category)进行咨询。
 func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (response *SentenceRecognitionResponse, err error) {
     if request == nil {
         request = NewSentenceRecognitionRequest()

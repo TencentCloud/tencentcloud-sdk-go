@@ -1606,6 +1606,56 @@ func (c *Client) UpdateAsset(request *UpdateAssetRequest) (response *UpdateAsset
     return
 }
 
+func NewUpdateBucketAccelerateOptRequest() (request *UpdateBucketAccelerateOptRequest) {
+    request = &UpdateBucketAccelerateOptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "UpdateBucketAccelerateOpt")
+    return
+}
+
+func NewUpdateBucketAccelerateOptResponse() (response *UpdateBucketAccelerateOptResponse) {
+    response = &UpdateBucketAccelerateOptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateBucketAccelerateOpt）用于开启cos全球加速。
+func (c *Client) UpdateBucketAccelerateOpt(request *UpdateBucketAccelerateOptRequest) (response *UpdateBucketAccelerateOptResponse, err error) {
+    if request == nil {
+        request = NewUpdateBucketAccelerateOptRequest()
+    }
+    response = NewUpdateBucketAccelerateOptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateBucketCORSOptRequest() (request *UpdateBucketCORSOptRequest) {
+    request = &UpdateBucketCORSOptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "UpdateBucketCORSOpt")
+    return
+}
+
+func NewUpdateBucketCORSOptResponse() (response *UpdateBucketCORSOptResponse) {
+    response = &UpdateBucketCORSOptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateBucketCORSOpt）用于设置cos跨域访问。
+func (c *Client) UpdateBucketCORSOpt(request *UpdateBucketCORSOptRequest) (response *UpdateBucketCORSOptResponse, err error) {
+    if request == nil {
+        request = NewUpdateBucketCORSOptRequest()
+    }
+    response = NewUpdateBucketCORSOptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateFleetAttributesRequest() (request *UpdateFleetAttributesRequest) {
     request = &UpdateFleetAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},

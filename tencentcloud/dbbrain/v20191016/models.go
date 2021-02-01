@@ -137,6 +137,95 @@ func (r *CreateMailProfileResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSecurityAuditLogExportTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全审计组Id。
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+
+	// 导出日志开始时间，例如2020-12-28 00:00:00。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 导出日志结束时间，例如2020-12-28 01:00:00。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
+	DangerLevels []*int64 `json:"DangerLevels,omitempty" name:"DangerLevels" list`
+}
+
+func (r *CreateSecurityAuditLogExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityAuditLogExportTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityAuditLogExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志导出任务Id。
+		AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSecurityAuditLogExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityAuditLogExportTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityAuditLogExportTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全审计组Id。
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+
+	// 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds" list`
+
+	// 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DeleteSecurityAuditLogExportTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityAuditLogExportTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityAuditLogExportTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityAuditLogExportTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityAuditLogExportTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAllUserContactRequest struct {
 	*tchttp.BaseRequest
 
@@ -394,6 +483,101 @@ func (r *DescribeDBSpaceStatusResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBSpaceStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityAuditLogDownloadUrlsRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全审计组Id。
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+
+	// 异步任务Id。
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeSecurityAuditLogDownloadUrlsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityAuditLogDownloadUrlsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityAuditLogDownloadUrlsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
+		Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityAuditLogDownloadUrlsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityAuditLogDownloadUrlsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityAuditLogExportTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全审计组Id。
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 日志导出任务Id列表。
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds" list`
+
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSecurityAuditLogExportTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityAuditLogExportTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityAuditLogExportTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全审计日志导出任务列表。
+		Tasks []*SecLogExportTaskInfo `json:"Tasks,omitempty" name:"Tasks" list`
+
+		// 安全审计日志导出任务总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityAuditLogExportTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityAuditLogExportTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -786,6 +970,45 @@ type SchemaItem struct {
 
 	// 数据库名称
 	Schema *string `json:"Schema,omitempty" name:"Schema"`
+}
+
+type SecLogExportTaskInfo struct {
+
+	// 异步任务Id。
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 任务开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务状态。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务执行进度。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 导出日志开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogStartTime *string `json:"LogStartTime,omitempty" name:"LogStartTime"`
+
+	// 导出日志结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogEndTime *string `json:"LogEndTime,omitempty" name:"LogEndTime"`
+
+	// 日志文件总大小，单位KB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+	// 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DangerLevels []*uint64 `json:"DangerLevels,omitempty" name:"DangerLevels" list`
 }
 
 type SlowLogTopSqlItem struct {

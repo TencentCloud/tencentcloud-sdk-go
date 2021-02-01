@@ -68,6 +68,31 @@ func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *Apply
     return
 }
 
+func NewApplyBlackListDataRequest() (request *ApplyBlackListDataRequest) {
+    request = &ApplyBlackListDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "ApplyBlackListData")
+    return
+}
+
+func NewApplyBlackListDataResponse() (response *ApplyBlackListDataResponse) {
+    response = &ApplyBlackListDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提交机器人黑名单申请
+func (c *Client) ApplyBlackListData(request *ApplyBlackListDataRequest) (response *ApplyBlackListDataResponse, err error) {
+    if request == nil {
+        request = NewApplyBlackListDataRequest()
+    }
+    response = NewApplyBlackListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
     request = &ApplyCreditAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +114,56 @@ func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *A
         request = NewApplyCreditAuditRequest()
     }
     response = NewApplyCreditAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChangeBotCallStatusRequest() (request *ChangeBotCallStatusRequest) {
+    request = &ChangeBotCallStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "ChangeBotCallStatus")
+    return
+}
+
+func NewChangeBotCallStatusResponse() (response *ChangeBotCallStatusResponse) {
+    response = &ChangeBotCallStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新机器人任务作业状态
+func (c *Client) ChangeBotCallStatus(request *ChangeBotCallStatusRequest) (response *ChangeBotCallStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeBotCallStatusRequest()
+    }
+    response = NewChangeBotCallStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChangeBotTaskStatusRequest() (request *ChangeBotTaskStatusRequest) {
+    request = &ChangeBotTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "ChangeBotTaskStatus")
+    return
+}
+
+func NewChangeBotTaskStatusResponse() (response *ChangeBotTaskStatusResponse) {
+    response = &ChangeBotTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新机器人任务状态
+func (c *Client) ChangeBotTaskStatus(request *ChangeBotTaskStatusRequest) (response *ChangeBotTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeBotTaskStatusRequest()
+    }
+    response = NewChangeBotTaskStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -394,6 +469,31 @@ func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotL
     return
 }
 
+func NewQueryCallListRequest() (request *QueryCallListRequest) {
+    request = &QueryCallListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryCallList")
+    return
+}
+
+func NewQueryCallListResponse() (response *QueryCallListResponse) {
+    response = &QueryCallListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 机器人任务查询
+func (c *Client) QueryCallList(request *QueryCallListRequest) (response *QueryCallListResponse, err error) {
+    if request == nil {
+        request = NewQueryCallListRequest()
+    }
+    response = NewQueryCallListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
     request = &QueryInstantDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -465,6 +565,31 @@ func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *Que
         request = NewQueryRecordListRequest()
     }
     response = NewQueryRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateBotTaskRequest() (request *UpdateBotTaskRequest) {
+    request = &UpdateBotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "UpdateBotTask")
+    return
+}
+
+func NewUpdateBotTaskResponse() (response *UpdateBotTaskResponse) {
+    response = &UpdateBotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新机器人任务
+func (c *Client) UpdateBotTask(request *UpdateBotTaskRequest) (response *UpdateBotTaskResponse, err error) {
+    if request == nil {
+        request = NewUpdateBotTaskRequest()
+    }
+    response = NewUpdateBotTaskResponse()
     err = c.Send(request, response)
     return
 }

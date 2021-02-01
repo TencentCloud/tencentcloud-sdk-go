@@ -1100,7 +1100,7 @@ type StartOnlineRecordRequest struct {
 	// 需要录制的房间号，取值范围: (1, 4294967295)
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用于录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
+	// 用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
 	// 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
 	RecordUserId *string `json:"RecordUserId,omitempty" name:"RecordUserId"`
 
@@ -1192,8 +1192,7 @@ type StartWhiteboardPushRequest struct {
 	// 需要推流白板的房间号，取值范围: (1, 4294967295)
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用于白板推流服务进房进行推流的用户ID，
-	// 该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
+	// 用于白板推流服务进房进行推流的用户ID，最大长度不能大于60个字节，该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
 	PushUserId *string `json:"PushUserId,omitempty" name:"PushUserId"`
 
 	// 与PushUserId对应的签名

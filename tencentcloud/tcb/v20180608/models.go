@@ -79,6 +79,17 @@ func (r *CheckTcbServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CloudBaseCapabilities struct {
+
+	// 启用安全能力项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Add []*string `json:"Add,omitempty" name:"Add" list`
+
+	// 禁用安全能力向列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Drop []*string `json:"Drop,omitempty" name:"Drop" list`
+}
+
 type CloudBaseCodeRepoDetail struct {
 
 	// repo的名字
@@ -261,6 +272,12 @@ type CloudBaseRunNfsVolumeSource struct {
 
 	// 是否只读
 	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// secret名称
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 临时目录
+	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
 }
 
 type CloudBaseRunSideSpec struct {
@@ -292,6 +309,10 @@ type CloudBaseRunSideSpec struct {
 	// 内存大小（单位：M）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 安全特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Security *CloudBaseSecurityContext `json:"Security,omitempty" name:"Security"`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -353,6 +374,13 @@ type CloudBaseRunVpcSubnet struct {
 	// 名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CloudBaseSecurityContext struct {
+
+	// 安全特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Capabilities *CloudBaseCapabilities `json:"Capabilities,omitempty" name:"Capabilities"`
 }
 
 type CloudRunServiceSimpleVersionSnapshot struct {
@@ -798,6 +826,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 容器的描述文件
 	SidecarSpecs []*CloudBaseRunSideSpec `json:"SidecarSpecs,omitempty" name:"SidecarSpecs" list`
+
+	// 安全特性
+	Security *CloudBaseSecurityContext `json:"Security,omitempty" name:"Security"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1130,6 +1161,9 @@ type DescribeCloudBaseBuildServiceRequest struct {
 
 	// build类型,枚举值有: cloudbaserun, framework-ci
 	CIBusiness *string `json:"CIBusiness,omitempty" name:"CIBusiness"`
+
+	// 服务版本
+	ServiceVersion *string `json:"ServiceVersion,omitempty" name:"ServiceVersion"`
 }
 
 func (r *DescribeCloudBaseBuildServiceRequest) ToJsonString() string {
@@ -1148,7 +1182,7 @@ type DescribeCloudBaseBuildServiceResponse struct {
 		// 上传url
 		UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
 
-		// heder
+		// 上传heder
 		UploadHeaders []*KVPair `json:"UploadHeaders,omitempty" name:"UploadHeaders" list`
 
 		// 包名
@@ -1156,6 +1190,14 @@ type DescribeCloudBaseBuildServiceResponse struct {
 
 		// 包版本
 		PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+		// 下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 下载Httpheader
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DownloadHeaders []*KVPair `json:"DownloadHeaders,omitempty" name:"DownloadHeaders" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
