@@ -58,7 +58,7 @@ func NewAddLoginWhiteListResponse() (response *AddLoginWhiteListResponse) {
     return
 }
 
-// 本接口（AddLoginWhiteList）用于添加白名单规则
+// 本接口用于新增异地登录白名单规则。
 func (c *Client) AddLoginWhiteList(request *AddLoginWhiteListRequest) (response *AddLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewAddLoginWhiteListRequest()
@@ -333,7 +333,7 @@ func NewDeleteLoginWhiteListResponse() (response *DeleteLoginWhiteListResponse) 
     return
 }
 
-// 删除白名单规则
+// 本接口用于删除异地登录白名单规则。
 func (c *Client) DeleteLoginWhiteList(request *DeleteLoginWhiteListRequest) (response *DeleteLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewDeleteLoginWhiteListRequest()
@@ -2358,7 +2358,7 @@ func NewModifyLoginWhiteListResponse() (response *ModifyLoginWhiteListResponse) 
     return
 }
 
-// 编辑白名单规则
+// 本接口用于编辑异地登录白名单规则。
 func (c *Client) ModifyLoginWhiteList(request *ModifyLoginWhiteListRequest) (response *ModifyLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewModifyLoginWhiteListRequest()

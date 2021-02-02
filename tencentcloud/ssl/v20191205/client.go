@@ -218,6 +218,31 @@ func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response 
     return
 }
 
+func NewDeleteManagerRequest() (request *DeleteManagerRequest) {
+    request = &DeleteManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DeleteManager")
+    return
+}
+
+func NewDeleteManagerResponse() (response *DeleteManagerResponse) {
+    response = &DeleteManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除管理人
+func (c *Client) DeleteManager(request *DeleteManagerRequest) (response *DeleteManagerResponse, err error) {
+    if request == nil {
+        request = NewDeleteManagerRequest()
+    }
+    response = NewDeleteManagerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertificateRequest() (request *DescribeCertificateRequest) {
     request = &DescribeCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +339,56 @@ func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (res
         request = NewDescribeCertificatesRequest()
     }
     response = NewDescribeCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeManagerDetailRequest() (request *DescribeManagerDetailRequest) {
+    request = &DescribeManagerDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagerDetail")
+    return
+}
+
+func NewDescribeManagerDetailResponse() (response *DescribeManagerDetailResponse) {
+    response = &DescribeManagerDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询管理人详情
+func (c *Client) DescribeManagerDetail(request *DescribeManagerDetailRequest) (response *DescribeManagerDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeManagerDetailRequest()
+    }
+    response = NewDescribeManagerDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeManagersRequest() (request *DescribeManagersRequest) {
+    request = &DescribeManagersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagers")
+    return
+}
+
+func NewDescribeManagersResponse() (response *DescribeManagersResponse) {
+    response = &DescribeManagersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询管理人列表
+func (c *Client) DescribeManagers(request *DescribeManagersRequest) (response *DescribeManagersResponse, err error) {
+    if request == nil {
+        request = NewDescribeManagersRequest()
+    }
+    response = NewDescribeManagersResponse()
     err = c.Send(request, response)
     return
 }
@@ -443,6 +518,31 @@ func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response 
     return
 }
 
+func NewSubmitAuditManagerRequest() (request *SubmitAuditManagerRequest) {
+    request = &SubmitAuditManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "SubmitAuditManager")
+    return
+}
+
+func NewSubmitAuditManagerResponse() (response *SubmitAuditManagerResponse) {
+    response = &SubmitAuditManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新提交审核管理人
+func (c *Client) SubmitAuditManager(request *SubmitAuditManagerRequest) (response *SubmitAuditManagerResponse, err error) {
+    if request == nil {
+        request = NewSubmitAuditManagerRequest()
+    }
+    response = NewSubmitAuditManagerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitCertificateInformationRequest() (request *SubmitCertificateInformationRequest) {
     request = &SubmitCertificateInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -539,6 +639,31 @@ func (c *Client) UploadRevokeLetter(request *UploadRevokeLetterRequest) (respons
         request = NewUploadRevokeLetterRequest()
     }
     response = NewUploadRevokeLetterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyManagerRequest() (request *VerifyManagerRequest) {
+    request = &VerifyManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "VerifyManager")
+    return
+}
+
+func NewVerifyManagerResponse() (response *VerifyManagerResponse) {
+    response = &VerifyManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重新核验管理人
+func (c *Client) VerifyManager(request *VerifyManagerRequest) (response *VerifyManagerResponse, err error) {
+    if request == nil {
+        request = NewVerifyManagerRequest()
+    }
+    response = NewVerifyManagerResponse()
     err = c.Send(request, response)
     return
 }

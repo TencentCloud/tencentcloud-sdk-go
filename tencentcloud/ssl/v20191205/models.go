@@ -356,6 +356,30 @@ func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CompanyInfo struct {
+
+	// 公司名称
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 公司所在国家
+	CompanyCountry *string `json:"CompanyCountry,omitempty" name:"CompanyCountry"`
+
+	// 公司所在省份
+	CompanyProvince *string `json:"CompanyProvince,omitempty" name:"CompanyProvince"`
+
+	// 公司所在城市
+	CompanyCity *string `json:"CompanyCity,omitempty" name:"CompanyCity"`
+
+	// 公司所在详细地址
+	CompanyAddress *string `json:"CompanyAddress,omitempty" name:"CompanyAddress"`
+
+	// 公司电话
+	CompanyPhone *string `json:"CompanyPhone,omitempty" name:"CompanyPhone"`
+}
+
 type CompleteCertificateRequest struct {
 	*tchttp.BaseRequest
 
@@ -473,6 +497,43 @@ func (r *DeleteCertificateResponse) ToJsonString() string {
 }
 
 func (r *DeleteCertificateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *DeleteManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteManagerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteManagerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -924,6 +985,164 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeManagerDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeManagerDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagerDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagerDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 管理人姓名
+		ManagerFirstName *string `json:"ManagerFirstName,omitempty" name:"ManagerFirstName"`
+
+		// 管理人邮箱
+		ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+		// 联系人姓名
+		ContactFirstName *string `json:"ContactFirstName,omitempty" name:"ContactFirstName"`
+
+		// 管理人姓名
+		ManagerLastName *string `json:"ManagerLastName,omitempty" name:"ManagerLastName"`
+
+		// 联系人职位
+		ContactPosition *string `json:"ContactPosition,omitempty" name:"ContactPosition"`
+
+		// 管理人职位
+		ManagerPosition *string `json:"ManagerPosition,omitempty" name:"ManagerPosition"`
+
+		// 核验通过时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VerifyTime *string `json:"VerifyTime,omitempty" name:"VerifyTime"`
+
+		// 创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 核验过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 联系人姓名
+		ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
+
+		// 管理人电话
+		ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+
+		// 联系人电话
+		ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
+
+		// 联系人邮箱
+		ContactMail *string `json:"ContactMail,omitempty" name:"ContactMail"`
+
+		// 管理人所属部门
+		ManagerDepartment *string `json:"ManagerDepartment,omitempty" name:"ManagerDepartment"`
+
+		// 管理人所属公司信息
+		CompanyInfo *CompanyInfo `json:"CompanyInfo,omitempty" name:"CompanyInfo"`
+
+		// 管理人公司ID
+		CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeManagerDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagerDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagersRequest struct {
+	*tchttp.BaseRequest
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 管理人姓名
+	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
+
+	// 模糊查询管理人邮箱
+	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+	// 根据管理人状态进行筛选，取值有
+	// 'none' 未提交审核
+	// 'audit', 亚信审核中
+	// 'CAaudit' CA审核中
+	// 'ok' 已审核
+	// 'invalid'  审核失败
+	// 'expiring'  即将过期
+	// 'expired' 已过期
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribeManagersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagersRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 公司管理人列表
+		Managers []*ManagerInfo `json:"Managers,omitempty" name:"Managers" list`
+
+		// 公司管理人总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeManagersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadCertificateRequest struct {
 	*tchttp.BaseRequest
 
@@ -1018,6 +1237,55 @@ type DvAuths struct {
 	// DV 认证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
+}
+
+type ManagerInfo struct {
+
+	// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 管理人姓名
+	ManagerFirstName *string `json:"ManagerFirstName,omitempty" name:"ManagerFirstName"`
+
+	// 管理人姓名
+	ManagerLastName *string `json:"ManagerLastName,omitempty" name:"ManagerLastName"`
+
+	// 管理人职位
+	ManagerPosition *string `json:"ManagerPosition,omitempty" name:"ManagerPosition"`
+
+	// 管理人电话
+	ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+
+	// 管理人邮箱
+	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+	// 管理人所属部门
+	ManagerDepartment *string `json:"ManagerDepartment,omitempty" name:"ManagerDepartment"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 管理人域名数量
+	DomainCount *int64 `json:"DomainCount,omitempty" name:"DomainCount"`
+
+	// 管理人证书数量
+	CertCount *int64 `json:"CertCount,omitempty" name:"CertCount"`
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 审核有效到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 最近一次提交审核时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubmitAuditTime *string `json:"SubmitAuditTime,omitempty" name:"SubmitAuditTime"`
+
+	// 审核通过时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyTime *string `json:"VerifyTime,omitempty" name:"VerifyTime"`
 }
 
 type ModifyCertificateAliasRequest struct {
@@ -1251,6 +1519,43 @@ type RevokeDomainValidateAuths struct {
 	// DV 认证域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitempty" name:"DomainValidateAuthDomain"`
+}
+
+type SubmitAuditManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *SubmitAuditManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitAuditManagerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitAuditManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitAuditManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SubmitAuditManagerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCertificateInformationRequest struct {
@@ -1494,6 +1799,9 @@ type UploadCertificateRequest struct {
 
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
+	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -1609,5 +1917,42 @@ func (r *UploadRevokeLetterResponse) ToJsonString() string {
 }
 
 func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *VerifyManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyManagerRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *VerifyManagerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }

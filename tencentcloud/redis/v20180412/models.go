@@ -2753,6 +2753,22 @@ type InstanceSet struct {
 	// 监控版本: 1m-分钟粒度监控，5s-5秒粒度监控
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorVersion *string `json:"MonitorVersion,omitempty" name:"MonitorVersion"`
+
+	// 客户端最大连接数可设置的最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientLimitMin *int64 `json:"ClientLimitMin,omitempty" name:"ClientLimitMin"`
+
+	// 客户端最大连接数可设置的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientLimitMax *int64 `json:"ClientLimitMax,omitempty" name:"ClientLimitMax"`
+
+	// 实例的节点详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet" list`
+
+	// 实例所在的地域信息，比如ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type InstanceSlowlogDetail struct {

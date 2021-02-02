@@ -1044,6 +1044,9 @@ type DescribeDevicesRequest struct {
 
 	// 需要过滤的设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备是否启用，0禁用状态1启用状态，默认不区分
+	EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {

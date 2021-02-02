@@ -383,6 +383,31 @@ func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (respo
     return
 }
 
+func NewDeleteTimerScalingPolicyRequest() (request *DeleteTimerScalingPolicyRequest) {
+    request = &DeleteTimerScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DeleteTimerScalingPolicy")
+    return
+}
+
+func NewDeleteTimerScalingPolicyResponse() (response *DeleteTimerScalingPolicyResponse) {
+    response = &DeleteTimerScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteTimerScalingPolicy）用于删除fleet下的定时器。
+func (c *Client) DeleteTimerScalingPolicy(request *DeleteTimerScalingPolicyRequest) (response *DeleteTimerScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteTimerScalingPolicyRequest()
+    }
+    response = NewDeleteTimerScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAliasRequest() (request *DescribeAliasRequest) {
     request = &DescribeAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -983,6 +1008,31 @@ func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest
     return
 }
 
+func NewDescribeTimerScalingPoliciesRequest() (request *DescribeTimerScalingPoliciesRequest) {
+    request = &DescribeTimerScalingPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeTimerScalingPolicies")
+    return
+}
+
+func NewDescribeTimerScalingPoliciesResponse() (response *DescribeTimerScalingPoliciesResponse) {
+    response = &DescribeTimerScalingPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
+func (c *Client) DescribeTimerScalingPolicies(request *DescribeTimerScalingPoliciesRequest) (response *DescribeTimerScalingPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimerScalingPoliciesRequest()
+    }
+    response = NewDescribeTimerScalingPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserQuotaRequest() (request *DescribeUserQuotaRequest) {
     request = &DescribeUserQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1381,6 +1431,33 @@ func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *P
     return
 }
 
+func NewPutTimerScalingPolicyRequest() (request *PutTimerScalingPolicyRequest) {
+    request = &PutTimerScalingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "PutTimerScalingPolicy")
+    return
+}
+
+func NewPutTimerScalingPolicyResponse() (response *PutTimerScalingPolicyResponse) {
+    response = &PutTimerScalingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（PutTimerScalingPolicy）用于给fleet创建或更新定时器。
+// 
+// 填写字段timer_id，表示更新；不填字段timer_id表示新增。
+func (c *Client) PutTimerScalingPolicy(request *PutTimerScalingPolicyRequest) (response *PutTimerScalingPolicyResponse, err error) {
+    if request == nil {
+        request = NewPutTimerScalingPolicyRequest()
+    }
+    response = NewPutTimerScalingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResolveAliasRequest() (request *ResolveAliasRequest) {
     request = &ResolveAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1427,6 +1504,33 @@ func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsReque
         request = NewSearchGameServerSessionsRequest()
     }
     response = NewSearchGameServerSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetServerReservedRequest() (request *SetServerReservedRequest) {
+    request = &SetServerReservedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "SetServerReserved")
+    return
+}
+
+func NewSetServerReservedResponse() (response *SetServerReservedResponse) {
+    response = &SetServerReservedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（SetServerReserved）用于将异常的实例标记为保留，用于问题排查。
+// 
+// 字段ReserveValue：0默认值，不保留；1 保留
+func (c *Client) SetServerReserved(request *SetServerReservedRequest) (response *SetServerReservedResponse, err error) {
+    if request == nil {
+        request = NewSetServerReservedRequest()
+    }
+    response = NewSetServerReservedResponse()
     err = c.Send(request, response)
     return
 }

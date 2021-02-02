@@ -232,6 +232,15 @@ type CopyFleetRequest struct {
 
 	// 标签列表，最大长度50组
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+
+	// 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
+	SelectedTimerType *string `json:"SelectedTimerType,omitempty" name:"SelectedTimerType"`
 }
 
 func (r *CopyFleetRequest) ToJsonString() string {
@@ -477,6 +486,12 @@ type CreateFleetRequest struct {
 
 	// 标签列表，最大长度50组
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
 }
 
 func (r *CreateFleetRequest) ToJsonString() string {
@@ -800,6 +815,46 @@ func (r *DeleteScalingPolicyResponse) ToJsonString() string {
 }
 
 func (r *DeleteScalingPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimerScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 定时器ID, 进行encode
+	TimerId *string `json:"TimerId,omitempty" name:"TimerId"`
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 定时器名称
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+}
+
+func (r *DeleteTimerScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTimerScalingPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimerScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTimerScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTimerScalingPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1916,6 +1971,63 @@ func (r *DescribeScalingPoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTimerScalingPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 定时器名称
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+
+	// 定时器开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 定时器结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTimerScalingPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTimerScalingPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimerScalingPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 定时器扩缩容策略配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimerScalingPolicies []*TimerScalingPolicy `json:"TimerScalingPolicies,omitempty" name:"TimerScalingPolicies" list`
+
+		// 定时器总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimerScalingPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTimerScalingPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserQuotaRequest struct {
 	*tchttp.BaseRequest
 
@@ -2033,6 +2145,15 @@ func (r *DetachCcnInstancesResponse) ToJsonString() string {
 
 func (r *DetachCcnInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type DiskInfo struct {
+
+	// 磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
 type Event struct {
@@ -2166,6 +2287,14 @@ type FleetAttributes struct {
 	// 标签列表，最大长度50组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
 }
 
 type FleetCapacity struct {
@@ -2705,6 +2834,14 @@ type Instance struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 实例是否保留, 1-保留，0-不保留,默认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveValue *int64 `json:"ReserveValue,omitempty" name:"ReserveValue"`
 }
 
 type InstanceAccess struct {
@@ -3157,6 +3294,40 @@ func (r *PutScalingPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PutTimerScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 定时器策略消息
+	TimerScalingPolicy *TimerScalingPolicy `json:"TimerScalingPolicy,omitempty" name:"TimerScalingPolicy"`
+}
+
+func (r *PutTimerScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutTimerScalingPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutTimerScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutTimerScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutTimerScalingPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QuotaResource struct {
 
 	// 资源类型，1生成包、2服务部署、3别名、4游戏服务器队列、5实例
@@ -3407,6 +3578,46 @@ type ServerProcesse struct {
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 }
 
+type SetServerReservedRequest struct {
+	*tchttp.BaseRequest
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例是否保留, 1-保留，0-不保留,默认
+	ReserveValue *int64 `json:"ReserveValue,omitempty" name:"ReserveValue"`
+}
+
+func (r *SetServerReservedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetServerReservedRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetServerReservedResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetServerReservedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetServerReservedResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SetServerWeightRequest struct {
 	*tchttp.BaseRequest
 
@@ -3638,6 +3849,98 @@ type TargetConfiguration struct {
 	// 预留存率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetValue *uint64 `json:"TargetValue,omitempty" name:"TargetValue"`
+}
+
+type TimerConfiguration struct {
+
+	// 定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerType *int64 `json:"TimerType,omitempty" name:"TimerType"`
+
+	// 定时器取值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerValue *TimerValue `json:"TimerValue,omitempty" name:"TimerValue"`
+
+	// 定时器开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 定时器结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type TimerFleetCapacity struct {
+
+	// 扩缩容配置服务器舰队ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 期望实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredInstances *int64 `json:"DesiredInstances,omitempty" name:"DesiredInstances"`
+
+	// 最小实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 最大实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 伸缩容间隔，单位：分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingInterval *int64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+
+	// 扩缩容类型（手动1，自动2、未定义0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingType *int64 `json:"ScalingType,omitempty" name:"ScalingType"`
+
+	// 基于目标的扩展策略的设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConfiguration *TargetConfiguration `json:"TargetConfiguration,omitempty" name:"TargetConfiguration"`
+}
+
+type TimerScalingPolicy struct {
+
+	// 定时器ID，进行encode，填写时更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerId *string `json:"TimerId,omitempty" name:"TimerId"`
+
+	// 定时器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+
+	// 定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerStatus *int64 `json:"TimerStatus,omitempty" name:"TimerStatus"`
+
+	// 定时器弹性伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerFleetCapacity *TimerFleetCapacity `json:"TimerFleetCapacity,omitempty" name:"TimerFleetCapacity"`
+
+	// 重复周期配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerConfiguration *TimerConfiguration `json:"TimerConfiguration,omitempty" name:"TimerConfiguration"`
+}
+
+type TimerValue struct {
+
+	// 每X天，执行一次(重复周期-按天/单次)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Day *int64 `json:"Day,omitempty" name:"Day"`
+
+	// 每月从第x天，执行一次(重复周期-按月)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromDay *int64 `json:"FromDay,omitempty" name:"FromDay"`
+
+	// 每月到第x天，执行一次(重复周期-按月)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToDay *int64 `json:"ToDay,omitempty" name:"ToDay"`
+
+	// 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeekDays []*int64 `json:"WeekDays,omitempty" name:"WeekDays" list`
 }
 
 type UpdateAliasRequest struct {
