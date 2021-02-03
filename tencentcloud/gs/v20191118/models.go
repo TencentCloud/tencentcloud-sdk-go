@@ -111,6 +111,49 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesCountRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏ID
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 实例分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeInstancesCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesCountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesCountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 客户的实例总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 客户的实例运行数
+		Running *uint64 `json:"Running,omitempty" name:"Running"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstancesCountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type SaveGameArchiveRequest struct {
 	*tchttp.BaseRequest
 

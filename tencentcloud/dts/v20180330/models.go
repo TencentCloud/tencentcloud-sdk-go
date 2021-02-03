@@ -772,6 +772,9 @@ type DescribeSubscribesRequest struct {
 
 	// 标签过滤条件
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+
+	// 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
+	SubscribeVersion *string `json:"SubscribeVersion,omitempty" name:"SubscribeVersion"`
 }
 
 func (r *DescribeSubscribesRequest) ToJsonString() string {
@@ -1712,6 +1715,10 @@ type SubscribeInfo struct {
 	// 自动续费标识。0-不自动续费，1-自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeVersion *string `json:"SubscribeVersion,omitempty" name:"SubscribeVersion"`
 }
 
 type SubscribeObject struct {

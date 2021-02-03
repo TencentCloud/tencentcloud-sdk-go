@@ -68,6 +68,31 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     return
 }
 
+func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest) {
+    request = &DescribeInstancesCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeInstancesCount")
+    return
+}
+
+func NewDescribeInstancesCountResponse() (response *DescribeInstancesCountResponse) {
+    response = &DescribeInstancesCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例总数和运行数
+func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) (response *DescribeInstancesCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesCountRequest()
+    }
+    response = NewDescribeInstancesCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
     request = &SaveGameArchiveRequest{
         BaseRequest: &tchttp.BaseRequest{},

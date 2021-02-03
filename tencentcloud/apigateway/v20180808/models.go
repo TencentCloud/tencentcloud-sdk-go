@@ -451,6 +451,35 @@ type ApisStatus struct {
 	ApiIdStatusSet []*DesApisStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet" list`
 }
 
+type AttachedApiInfo struct {
+
+	// API所在服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// API所在服务名称。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// API所在服务描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+
+	// API ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// API名称。
+	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+
+	// API描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+
+	// 插件绑定API的环境。
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 插件和API绑定时间。
+	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+}
+
 type Base64EncodedTriggerRule struct {
 
 	// 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。
@@ -3554,6 +3583,14 @@ type Plugin struct {
 
 	// 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 插件绑定的API总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedApiTotalCount *int64 `json:"AttachedApiTotalCount,omitempty" name:"AttachedApiTotalCount"`
+
+	// 插件绑定的API信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis" list`
 }
 
 type PluginSummary struct {

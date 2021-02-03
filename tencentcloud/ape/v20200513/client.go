@@ -93,6 +93,31 @@ func (c *Client) BatchDescribeOrderImage(request *BatchDescribeOrderImageRequest
     return
 }
 
+func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsRequest) {
+    request = &CreateOrderAndDownloadsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndDownloads")
+    return
+}
+
+func NewCreateOrderAndDownloadsResponse() (response *CreateOrderAndDownloadsResponse) {
+    response = &CreateOrderAndDownloadsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 核销图片，获取原图URL地址
+func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {
+    if request == nil {
+        request = NewCreateOrderAndDownloadsRequest()
+    }
+    response = NewCreateOrderAndDownloadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrderAndPayRequest() (request *CreateOrderAndPayRequest) {
     request = &CreateOrderAndPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) DescribeAuthUsers(request *DescribeAuthUsersRequest) (response 
         request = NewDescribeAuthUsersRequest()
     }
     response = NewDescribeAuthUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
+    request = &DescribeDownloadInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ape", APIVersion, "DescribeDownloadInfos")
+    return
+}
+
+func NewDescribeDownloadInfosResponse() (response *DescribeDownloadInfosResponse) {
+    response = &DescribeDownloadInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户图片下载记录
+func (c *Client) DescribeDownloadInfos(request *DescribeDownloadInfosRequest) (response *DescribeDownloadInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeDownloadInfosRequest()
+    }
+    response = NewDescribeDownloadInfosResponse()
     err = c.Send(request, response)
     return
 }

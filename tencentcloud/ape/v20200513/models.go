@@ -112,6 +112,47 @@ func (r *BatchDescribeOrderImageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateOrderAndDownloadsRequest struct {
+	*tchttp.BaseRequest
+
+	// ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
+	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos" list`
+}
+
+func (r *CreateOrderAndDownloadsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateOrderAndDownloadsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOrderAndDownloadsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功核销后可以获取图片基本信息和原图地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos" list`
+
+		// 可下载图片数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateOrderAndDownloadsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateOrderAndDownloadsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateOrderAndPayRequest struct {
 	*tchttp.BaseRequest
 
@@ -202,6 +243,59 @@ func (r *DescribeAuthUsersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDownloadInfosRequest struct {
+	*tchttp.BaseRequest
+
+	// 默认10
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 开始时间晚于指定时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间早于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 无效值，过滤结果为空
+	ImageIds []*int64 `json:"ImageIds,omitempty" name:"ImageIds" list`
+}
+
+func (r *DescribeDownloadInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDownloadInfosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDownloadInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 核销下载记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos" list`
+
+		// 总记录数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDownloadInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDownloadInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageRequest struct {
 	*tchttp.BaseRequest
 
@@ -242,6 +336,27 @@ type DescribeImageResponse struct {
 
 		// 图片售卖组合信息
 		Marshals []*ImageMarshal `json:"Marshals,omitempty" name:"Marshals" list`
+
+		// 宽
+		Width *int64 `json:"Width,omitempty" name:"Width"`
+
+		// 高
+		Height *int64 `json:"Height,omitempty" name:"Height"`
+
+		// 图片格式 jpg/eps/psd/...
+		ImageFormat *string `json:"ImageFormat,omitempty" name:"ImageFormat"`
+
+		// 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
+		ImageSenseType *string `json:"ImageSenseType,omitempty" name:"ImageSenseType"`
+
+		// 关键词，多关键词用空格分隔
+		Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+		// 分层图库id
+		LayeredGalleryId *int64 `json:"LayeredGalleryId,omitempty" name:"LayeredGalleryId"`
+
+		// 构图方式：horizontal:横图、vertical:竖图、square:方图
+		Orientation *string `json:"Orientation,omitempty" name:"Orientation"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -321,6 +436,48 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadInfo struct {
+
+	// 图片基础信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 图片原图URL
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片缩略图URL
+	ImageThumbUrl *string `json:"ImageThumbUrl,omitempty" name:"ImageThumbUrl"`
+
+	// 订单Id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 订单创建时间
+	OrderCreateTime *string `json:"OrderCreateTime,omitempty" name:"OrderCreateTime"`
+
+	// 下载Id
+	DownloadId *string `json:"DownloadId,omitempty" name:"DownloadId"`
+
+	// 下载时间
+	DownloadTime *string `json:"DownloadTime,omitempty" name:"DownloadTime"`
+
+	// 图片购买类型，单张/会员
+	ConsumeType *int64 `json:"ConsumeType,omitempty" name:"ConsumeType"`
+
+	// 是否首次下载
+	FirstDownload *bool `json:"FirstDownload,omitempty" name:"FirstDownload"`
+}
+
+type ImageInfo struct {
+
+	// 图片Id
+	ImageId *int64 `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 授权场景Id
+	LicenseScopeId *int64 `json:"LicenseScopeId,omitempty" name:"LicenseScopeId"`
+
+	// 尺寸名称Id
+	DimensionsNameId *int64 `json:"DimensionsNameId,omitempty" name:"DimensionsNameId"`
+}
+
 type ImageItem struct {
 
 	// 图片ID
@@ -343,6 +500,12 @@ type ImageItem struct {
 
 	// 图片关键词
 	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 宽
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
 type ImageMarshal struct {
@@ -370,4 +533,13 @@ type ImageMarshal struct {
 
 	// 是否支持VIP购买
 	IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
+
+	// 授权范围id
+	LicenseScopeId *int64 `json:"LicenseScopeId,omitempty" name:"LicenseScopeId"`
+
+	// 尺寸
+	DimensionsName *string `json:"DimensionsName,omitempty" name:"DimensionsName"`
+
+	// 尺寸id
+	DimensionsNameId *int64 `json:"DimensionsNameId,omitempty" name:"DimensionsNameId"`
 }

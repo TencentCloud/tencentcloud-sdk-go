@@ -49,6 +49,9 @@ type CreateJobConfigRequest struct {
 
 	// 作业使用的 COS 存储桶名
 	COSBucket *string `json:"COSBucket,omitempty" name:"COSBucket"`
+
+	// 是否采集作业日志
+	LogCollect *bool `json:"LogCollect,omitempty" name:"LogCollect"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {

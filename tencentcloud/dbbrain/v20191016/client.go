@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddUserContactRequest() (request *AddUserContactRequest) {
+    request = &AddUserContactRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "AddUserContact")
+    return
+}
+
+func NewAddUserContactResponse() (response *AddUserContactResponse) {
+    response = &AddUserContactResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。Region统一选择广州。
+func (c *Client) AddUserContact(request *AddUserContactRequest) (response *AddUserContactResponse, err error) {
+    if request == nil {
+        request = NewAddUserContactRequest()
+    }
+    response = NewAddUserContactResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest) {
     request = &CreateDBDiagReportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -83,12 +108,37 @@ func NewCreateMailProfileResponse() (response *CreateMailProfileResponse) {
     return
 }
 
-// 创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成邮件配置）。
+// 创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
 func (c *Client) CreateMailProfile(request *CreateMailProfileRequest) (response *CreateMailProfileResponse, err error) {
     if request == nil {
         request = NewCreateMailProfileRequest()
     }
     response = NewCreateMailProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSchedulerMailProfileRequest() (request *CreateSchedulerMailProfileRequest) {
+    request = &CreateSchedulerMailProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateSchedulerMailProfile")
+    return
+}
+
+func NewCreateSchedulerMailProfileResponse() (response *CreateSchedulerMailProfileResponse) {
+    response = &CreateSchedulerMailProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
+func (c *Client) CreateSchedulerMailProfile(request *CreateSchedulerMailProfileRequest) (response *CreateSchedulerMailProfileResponse, err error) {
+    if request == nil {
+        request = NewCreateSchedulerMailProfileRequest()
+    }
+    response = NewCreateSchedulerMailProfileResponse()
     err = c.Send(request, response)
     return
 }
@@ -264,6 +314,81 @@ func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (r
         request = NewDescribeDBSpaceStatusRequest()
     }
     response = NewDescribeDBSpaceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiagDBInstancesRequest() (request *DescribeDiagDBInstancesRequest) {
+    request = &DescribeDiagDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDiagDBInstances")
+    return
+}
+
+func NewDescribeDiagDBInstancesResponse() (response *DescribeDiagDBInstancesResponse) {
+    response = &DescribeDiagDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例信息列表。Region统一选择广州。
+func (c *Client) DescribeDiagDBInstances(request *DescribeDiagDBInstancesRequest) (response *DescribeDiagDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiagDBInstancesRequest()
+    }
+    response = NewDescribeDiagDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHealthScoreRequest() (request *DescribeHealthScoreRequest) {
+    request = &DescribeHealthScoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeHealthScore")
+    return
+}
+
+func NewDescribeHealthScoreResponse() (response *DescribeHealthScoreResponse) {
+    response = &DescribeHealthScoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
+func (c *Client) DescribeHealthScore(request *DescribeHealthScoreRequest) (response *DescribeHealthScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthScoreRequest()
+    }
+    response = NewDescribeHealthScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMailProfileRequest() (request *DescribeMailProfileRequest) {
+    request = &DescribeMailProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeMailProfile")
+    return
+}
+
+func NewDescribeMailProfileResponse() (response *DescribeMailProfileResponse) {
+    response = &DescribeMailProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。Region统一选择广州。
+func (c *Client) DescribeMailProfile(request *DescribeMailProfileRequest) (response *DescribeMailProfileResponse, err error) {
+    if request == nil {
+        request = NewDescribeMailProfileRequest()
+    }
+    response = NewDescribeMailProfileResponse()
     err = c.Send(request, response)
     return
 }

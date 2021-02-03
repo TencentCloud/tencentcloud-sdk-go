@@ -20,6 +20,49 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddUserContactRequest struct {
+	*tchttp.BaseRequest
+
+	// 联系人姓名，大小写字母+数字+下划线，最小 2 位最大 60 位的长度， 不能以"_"开头，且联系人名保持唯一。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 邮箱地址，大小写字母、数字及下划线组成， 不能以"_"开头。
+	ContactInfo *string `json:"ContactInfo,omitempty" name:"ContactInfo"`
+
+	// 服务产品类型，固定值："mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *AddUserContactRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddUserContactRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUserContactResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 添加成功的联系人id。
+		Id *int64 `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddUserContactResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddUserContactResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ContactItem struct {
 
 	// 联系人id。
@@ -106,7 +149,7 @@ type CreateMailProfileRequest struct {
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入。
+	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入，只能为一个实例。
 	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds" list`
 }
 
@@ -134,6 +177,52 @@ func (r *CreateMailProfileResponse) ToJsonString() string {
 }
 
 func (r *CreateMailProfileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSchedulerMailProfileRequest struct {
+	*tchttp.BaseRequest
+
+	// 取值范围1-7，分别代表周一至周日。
+	WeekConfiguration []*int64 `json:"WeekConfiguration,omitempty" name:"WeekConfiguration" list`
+
+	// 邮件配置内容。
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+
+	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+
+	// 配置订阅的实例ID。
+	BindInstanceId *string `json:"BindInstanceId,omitempty" name:"BindInstanceId"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CreateSchedulerMailProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSchedulerMailProfileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSchedulerMailProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSchedulerMailProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSchedulerMailProfileResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -486,6 +575,164 @@ func (r *DescribeDBSpaceStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDiagDBInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否是DBbrain支持的实例，固定传 true。
+	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 分页参数，偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数，分页值。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据实例名称条件查询。
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
+
+	// 根据实例ID条件查询。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 根据地域条件查询。
+	Regions []*string `json:"Regions,omitempty" name:"Regions" list`
+}
+
+func (r *DescribeDiagDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiagDBInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiagDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
+		DbScanStatus *int64 `json:"DbScanStatus,omitempty" name:"DbScanStatus"`
+
+		// 实例相关信息。
+		Items []*InstanceInfo `json:"Items,omitempty" name:"Items" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDiagDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDiagDBInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHealthScoreRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要获取健康得分的实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 获取健康得分的时间。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeHealthScoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHealthScoreRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHealthScoreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 健康得分以及异常扣分项。
+		Data *HealthScoreInfo `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHealthScoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHealthScoreResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMailProfileRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单位，最大支持50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
+	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+}
+
+func (r *DescribeMailProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMailProfileRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMailProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 邮件配置详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProfileList []*UserProfile `json:"ProfileList,omitempty" name:"ProfileList" list`
+
+		// 邮件模版总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMailProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMailProfileResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityAuditLogDownloadUrlsRequest struct {
 	*tchttp.BaseRequest
 
@@ -834,6 +1081,36 @@ type DiagHistoryEventItem struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type EventInfo struct {
+
+	// 事件 ID 。
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 诊断类型。
+	DiagType *string `json:"DiagType,omitempty" name:"DiagType"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 概要。
+	Outline *string `json:"Outline,omitempty" name:"Outline"`
+
+	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
+
+	// 扣分。
+	ScoreLost *int64 `json:"ScoreLost,omitempty" name:"ScoreLost"`
+
+	// 保留字段。
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 告警数目。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type GroupItem struct {
 
 	// 组id。
@@ -846,10 +1123,127 @@ type GroupItem struct {
 	MemberCount *int64 `json:"MemberCount,omitempty" name:"MemberCount"`
 }
 
+type HealthScoreInfo struct {
+
+	// 异常详情。
+	IssueTypes []*IssueTypeInfo `json:"IssueTypes,omitempty" name:"IssueTypes" list`
+
+	// 异常事件总数。
+	EventsTotalCount *int64 `json:"EventsTotalCount,omitempty" name:"EventsTotalCount"`
+
+	// 健康得分。
+	HealthScore *int64 `json:"HealthScore,omitempty" name:"HealthScore"`
+
+	// 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
+	HealthLevel *string `json:"HealthLevel,omitempty" name:"HealthLevel"`
+}
+
 type InstanceConfs struct {
 
 	// 数据库巡检开关, Yes/No。
 	DailyInspection *string `json:"DailyInspection,omitempty" name:"DailyInspection"`
+
+	// 实例概览开关，Yes/No。
+	OverviewDisplay *string `json:"OverviewDisplay,omitempty" name:"OverviewDisplay"`
+}
+
+type InstanceInfo struct {
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例所属地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 健康得分。
+	HealthScore *int64 `json:"HealthScore,omitempty" name:"HealthScore"`
+
+	// 所属产品。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 异常事件数量。
+	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 实例类型：1:MASTER；2:DR，3：RO，4:SDR。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 核心数。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存，单位MB。
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 硬盘存储，单位GB。
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// 数据库版本。
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 内网地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 内网端口。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 接入来源。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 分组ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组组名。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 子网统一ID。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// cdb类型。
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// cdb实例初始化标志：0：未初始化；1：已初始化。
+	InitFlag *int64 `json:"InitFlag,omitempty" name:"InitFlag"`
+
+	// 任务状态。
+	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 私有网络统一ID。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 实例巡检/概览的状态。
+	InstanceConf *InstanceConfs `json:"InstanceConf,omitempty" name:"InstanceConf"`
+
+	// 资源到期时间。
+	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
+
+	// 是否是DBbrain支持的实例。
+	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
+
+	// 实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
+	SecAuditStatus *string `json:"SecAuditStatus,omitempty" name:"SecAuditStatus"`
+
+	// 实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
+	AuditPolicyStatus *string `json:"AuditPolicyStatus,omitempty" name:"AuditPolicyStatus"`
+
+	// 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
+	AuditRunningStatus *string `json:"AuditRunningStatus,omitempty" name:"AuditRunningStatus"`
+}
+
+type IssueTypeInfo struct {
+
+	// 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
+	IssueType *string `json:"IssueType,omitempty" name:"IssueType"`
+
+	// 异常事件。
+	Events []*EventInfo `json:"Events,omitempty" name:"Events" list`
+
+	// 异常事件总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type MailConfiguration struct {
@@ -857,7 +1251,7 @@ type MailConfiguration struct {
 	// 是否开启邮件发送: 0, 否; 1, 是。
 	SendMail *int64 `json:"SendMail,omitempty" name:"SendMail"`
 
-	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。
+	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模版，配置需要发送巡检邮件的地域；订阅的邮件发送模版，配置当前订阅实例的所属地域。
 	Region []*string `json:"Region,omitempty" name:"Region" list`
 
 	// 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
@@ -1129,4 +1523,26 @@ type TimeSlice struct {
 
 	// 统计开始时间
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
+type UserProfile struct {
+
+	// 配置的id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfileId *string `json:"ProfileId,omitempty" name:"ProfileId"`
+
+	// 配置类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+
+	// 配置级别，"User"或"Instance"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
+
+	// 配置名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+
+	// 配置详情。
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
 }
