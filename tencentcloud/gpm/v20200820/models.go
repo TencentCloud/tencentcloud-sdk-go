@@ -35,7 +35,7 @@ type CancelMatchingRequest struct {
 	// 匹配 Code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
-	// 要取消的匹配请求 Id
+	// 要取消的匹配匹配票据 ID
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 
@@ -461,7 +461,7 @@ func (r *DescribeMatchesResponse) FromJsonString(s string) error {
 type DescribeMatchingProgressRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求 id 列表, 列表长度 128。
+	// 匹配票据 ID列表, 列表长度 12。
 	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds" list`
 }
 
@@ -478,7 +478,7 @@ type DescribeMatchingProgressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 请求结果列表
+		// 匹配票据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MatchTickets []*MatchTicket `json:"MatchTickets,omitempty" name:"MatchTickets" list`
 
@@ -1138,7 +1138,7 @@ type StartMatchingRequest struct {
 	// 玩家信息 最多 200 条。
 	Players []*Player `json:"Players,omitempty" name:"Players" list`
 
-	// 请求 Id 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
+	// 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 
@@ -1158,7 +1158,7 @@ type StartMatchingResponse struct {
 		// 错误码。
 		ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
-		// 请求 id 长度 128。
+		// 匹配票据 ID长度 128。
 		MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -313,6 +313,10 @@ type CloudBaseRunSideSpec struct {
 	// 安全特性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Security *CloudBaseSecurityContext `json:"Security,omitempty" name:"Security"`
+
+	// 挂载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos" list`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -500,6 +504,25 @@ type CloudRunServiceSimpleVersionSnapshot struct {
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type CloudRunServiceVolume struct {
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// NFS的挂载方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NFS *CloudBaseRunNfsVolumeSource `json:"NFS,omitempty" name:"NFS"`
+
+	// secret名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 是否开启临时目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
 }
 
 type CodeSource struct {
@@ -829,6 +852,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 安全特性
 	Security *CloudBaseSecurityContext `json:"Security,omitempty" name:"Security"`
+
+	// 服务磁盘挂载
+	ServiceVolumes []*CloudRunServiceVolume `json:"ServiceVolumes,omitempty" name:"ServiceVolumes" list`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {

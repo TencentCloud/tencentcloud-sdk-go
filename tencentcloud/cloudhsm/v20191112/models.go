@@ -312,7 +312,7 @@ type DescribeVsmAttributesResponse struct {
 		// 资源名称
 		ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-		// 资源状态
+		// 资源状态，1表示资源为正常，2表示资源处于隔离状态
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 资源IP
@@ -327,13 +327,13 @@ type DescribeVsmAttributesResponse struct {
 		// 资源所属HSM的规格
 		Model *string `json:"Model,omitempty" name:"Model"`
 
-		// 资源类型
+		// 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
 		VsmType *int64 `json:"VsmType,omitempty" name:"VsmType"`
 
-		// 地域Id
+		// 地域Id，返回腾讯云地域代码，如广州为1，北京为8
 		RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
-		// 区域Id
+		// 区域Id，返回腾讯云每个地域的可用区代码
 		ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 		// 过期时间
@@ -459,7 +459,7 @@ type InquiryPriceBuyVsmRequest struct {
 	// 商品的时间大小
 	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 商品的时间单位
+	// 商品的时间单位，m表示月，y表示年
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币类型，默认为CNY
@@ -482,7 +482,7 @@ type InquiryPriceBuyVsmResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 总金额
+		// 原始总金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
 
@@ -498,7 +498,7 @@ type InquiryPriceBuyVsmResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-		// 原始总金额
+		// 应付总金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
 

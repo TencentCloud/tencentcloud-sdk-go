@@ -1,73 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版图库直通车(ape) 版本：2020-05-13
+## 智能保险助手(cii) 版本：2020-12-10
 
-### 第 4 次发布
+### 第 1 次发布
 
-发布时间：2021-02-03 08:00:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateOrderAndDownloads](https://cloud.tencent.com/document/api/1181/52716)
-* [DescribeDownloadInfos](https://cloud.tencent.com/document/api/1181/52715)
-
-修改接口：
-
-* [DescribeImage](https://cloud.tencent.com/document/api/1181/49688)
-
-	* 新增出参：Width, Height, ImageFormat, ImageSenseType, Keywords, LayeredGalleryId, Orientation
-
-
-新增数据结构：
-
-* [DownloadInfo](https://cloud.tencent.com/document/api/1181/49689#DownloadInfo)
-* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
-
-修改数据结构：
-
-* [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
-
-	* 新增成员：Width, Height
-
-* [ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal)
-
-	* 新增成员：LicenseScopeId, DimensionsName, DimensionsNameId
-
-
-
-
-## API网关(apigateway) 版本：2018-08-08
-
-### 第 11 次发布
-
-发布时间：2021-02-03 08:09:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AttachedApiInfo](https://cloud.tencent.com/document/api/628/45244#AttachedApiInfo)
-
-修改数据结构：
-
-* [Plugin](https://cloud.tencent.com/document/api/628/45244#Plugin)
-
-	* 新增成员：AttachedApiTotalCount, AttachedApis
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-### 第 10 次发布
-
-发布时间：2021-02-03 08:04:05
+发布时间：2021-02-04 08:50:26
 
 本次发布包含了以下内容：
 
@@ -75,34 +12,41 @@
 
 新增接口：
 
-* [AddUserContact](https://cloud.tencent.com/document/api/1130/52723)
-* [CreateSchedulerMailProfile](https://cloud.tencent.com/document/api/1130/52722)
-* [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/52719)
-* [DescribeHealthScore](https://cloud.tencent.com/document/api/1130/52718)
-* [DescribeMailProfile](https://cloud.tencent.com/document/api/1130/52721)
+* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/52757)
+* [DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/52754)
+* [DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/52756)
 
 新增数据结构：
 
-* [EventInfo](https://cloud.tencent.com/document/api/1130/39561#EventInfo)
-* [HealthScoreInfo](https://cloud.tencent.com/document/api/1130/39561#HealthScoreInfo)
-* [InstanceInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceInfo)
-* [IssueTypeInfo](https://cloud.tencent.com/document/api/1130/39561#IssueTypeInfo)
-* [UserProfile](https://cloud.tencent.com/document/api/1130/39561#UserProfile)
+* [CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData)
+* [ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject)
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 39 次发布
+
+发布时间：2021-02-04 08:02:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [InstanceConfs](https://cloud.tencent.com/document/api/1130/39561#InstanceConfs)
+* [InstanceTypeConfig](https://cloud.tencent.com/document/api/1108/42574#InstanceTypeConfig)
 
-	* 新增成员：OverviewDisplay
-
-
+	* 新增成员：Vgpu, GpuModelName
 
 
-## 数据传输服务(dts) 版本：2018-03-30
 
-### 第 11 次发布
 
-发布时间：2021-02-03 08:04:31
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 36 次发布
+
+发布时间：2021-02-04 08:32:28
 
 本次发布包含了以下内容：
 
@@ -110,25 +54,29 @@
 
 修改接口：
 
-* [DescribeSubscribes](https://cloud.tencent.com/document/api/571/42715)
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
 
-	* 新增入参：SubscribeVersion
+	* 新增入参：ServiceVolumes
 
+
+新增数据结构：
+
+* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
 
 修改数据结构：
 
-* [SubscribeInfo](https://cloud.tencent.com/document/api/571/18131#SubscribeInfo)
+* [CloudBaseRunSideSpec](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunSideSpec)
 
-	* 新增成员：SubscribeVersion
-
-
+	* 新增成员：VolumeMountInfos
 
 
-## 云游戏解决方案(gs) 版本：2019-11-18
 
-### 第 15 次发布
 
-发布时间：2021-02-03 08:01:53
+## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
+
+### 第 1 次发布
+
+发布时间：2021-02-04 08:50:31
 
 本次发布包含了以下内容：
 
@@ -136,52 +84,11 @@
 
 新增接口：
 
-* [DescribeInstancesCount](https://cloud.tencent.com/document/api/1162/52717)
+* [DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)
 
+新增数据结构：
 
-
-## 数学作业批改(hcm) 版本：2018-11-06
-
-### 第 8 次发布
-
-发布时间：2021-02-03 08:05:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
-
-	* 新增入参：RejectVagueArithmetic
-
-
-修改数据结构：
-
-* [Item](https://cloud.tencent.com/document/api/1004/30617#Item)
-
-	* 新增成员：QuestionId
-
-
-
-
-## 流计算服务(oceanus) 版本：2019-04-22
-
-### 第 3 次发布
-
-发布时间：2021-02-03 08:00:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
-
-	* 新增入参：LogCollect
-
+* [AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)
 
 
 
@@ -804,8 +711,8 @@
 
 新增接口：
 
-* [[CreateOrderAndDownloads](https://cloud.tencent.com/document/api/1181/52716)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDownloadInfos](https://cloud.tencent.com/document/api/1181/52715)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOrderAndDownloads](https://cloud.tencent.com/document/api/1181/52716)
+* [DescribeDownloadInfos](https://cloud.tencent.com/document/api/1181/52715)
 
 修改接口：
 
@@ -816,8 +723,8 @@
 
 新增数据结构：
 
-* [[DownloadInfo](https://cloud.tencent.com/document/api/1181/49689#DownloadInfo)](https://cloud.tencent.com/document/api/1181/49689#[DownloadInfo](https://cloud.tencent.com/document/api/1181/49689#DownloadInfo))
-* [[ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)](https://cloud.tencent.com/document/api/1181/49689#[ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo))
+* [DownloadInfo](https://cloud.tencent.com/document/api/1181/49689#DownloadInfo)
+* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
 
 修改数据结构：
 
@@ -898,7 +805,7 @@
 
 新增数据结构：
 
-* [[AttachedApiInfo](https://cloud.tencent.com/document/api/628/45244#AttachedApiInfo)](https://cloud.tencent.com/document/api/628/45244#[AttachedApiInfo](https://cloud.tencent.com/document/api/628/45244#AttachedApiInfo))
+* [AttachedApiInfo](https://cloud.tencent.com/document/api/628/45244#AttachedApiInfo)
 
 修改数据结构：
 
@@ -9328,6 +9235,30 @@
 
 
 
+## 智能保险助手(cii) 版本：2020-12-10
+
+### 第 1 次发布
+
+发布时间：2021-02-04 08:50:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateStructureTask](https://cloud.tencent.com/document/api/1368/52757)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/52754)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/52756)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData)](https://cloud.tencent.com/document/api/1368/52758#[CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData))
+* [[ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject)](https://cloud.tencent.com/document/api/1368/52758#[ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject))
+
+
+
+
 ## (cim) 版本：2019-03-18
 
 ### 第 1 次发布
@@ -15137,19 +15068,19 @@
 
 新增接口：
 
-* [[AddUserContact](https://cloud.tencent.com/document/api/1130/52723)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSchedulerMailProfile](https://cloud.tencent.com/document/api/1130/52722)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/52719)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHealthScore](https://cloud.tencent.com/document/api/1130/52718)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMailProfile](https://cloud.tencent.com/document/api/1130/52721)](https://cloud.tencent.com/document/api/#/#)
+* [AddUserContact](https://cloud.tencent.com/document/api/1130/52723)
+* [CreateSchedulerMailProfile](https://cloud.tencent.com/document/api/1130/52722)
+* [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/52719)
+* [DescribeHealthScore](https://cloud.tencent.com/document/api/1130/52718)
+* [DescribeMailProfile](https://cloud.tencent.com/document/api/1130/52721)
 
 新增数据结构：
 
-* [[EventInfo](https://cloud.tencent.com/document/api/1130/39561#EventInfo)](https://cloud.tencent.com/document/api/1130/39561#[EventInfo](https://cloud.tencent.com/document/api/1130/39561#EventInfo))
-* [[HealthScoreInfo](https://cloud.tencent.com/document/api/1130/39561#HealthScoreInfo)](https://cloud.tencent.com/document/api/1130/39561#[HealthScoreInfo](https://cloud.tencent.com/document/api/1130/39561#HealthScoreInfo))
-* [[InstanceInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceInfo)](https://cloud.tencent.com/document/api/1130/39561#[InstanceInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceInfo))
-* [[IssueTypeInfo](https://cloud.tencent.com/document/api/1130/39561#IssueTypeInfo)](https://cloud.tencent.com/document/api/1130/39561#[IssueTypeInfo](https://cloud.tencent.com/document/api/1130/39561#IssueTypeInfo))
-* [[UserProfile](https://cloud.tencent.com/document/api/1130/39561#UserProfile)](https://cloud.tencent.com/document/api/1130/39561#[UserProfile](https://cloud.tencent.com/document/api/1130/39561#UserProfile))
+* [EventInfo](https://cloud.tencent.com/document/api/1130/39561#EventInfo)
+* [HealthScoreInfo](https://cloud.tencent.com/document/api/1130/39561#HealthScoreInfo)
+* [InstanceInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceInfo)
+* [IssueTypeInfo](https://cloud.tencent.com/document/api/1130/39561#IssueTypeInfo)
+* [UserProfile](https://cloud.tencent.com/document/api/1130/39561#UserProfile)
 
 修改数据结构：
 
@@ -17106,6 +17037,21 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 39 次发布
+
+发布时间：2021-02-04 08:02:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeConfig](https://cloud.tencent.com/document/api/1108/42574#InstanceTypeConfig)
+
+	* 新增成员：Vgpu, GpuModelName
+
 
 ### 第 38 次发布
 
@@ -20310,7 +20256,7 @@
 
 新增接口：
 
-* [[DescribeInstancesCount](https://cloud.tencent.com/document/api/1162/52717)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstancesCount](https://cloud.tencent.com/document/api/1162/52717)
 
 ### 第 14 次发布
 
@@ -34362,6 +34308,32 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 36 次发布
+
+发布时间：2021-02-04 08:32:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：ServiceVolumes
+
+
+新增数据结构：
+
+* [[CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)](https://cloud.tencent.com/document/api/876/34822#[CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume))
+
+修改数据结构：
+
+* [CloudBaseRunSideSpec](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunSideSpec)
+
+	* 新增成员：VolumeMountInfos
+
+
 ### 第 35 次发布
 
 发布时间：2021-02-01 08:06:58
@@ -40039,6 +40011,27 @@
 * [TsfPageVmGroup](https://cloud.tencent.com/document/api/649/36099#TsfPageVmGroup)
 * [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
 * [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
+
+
+
+
+## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
+
+### 第 1 次发布
+
+发布时间：2021-02-04 08:50:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)](https://cloud.tencent.com/document/api/#/##[AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell))
 
 
 

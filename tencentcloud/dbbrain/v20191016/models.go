@@ -318,7 +318,7 @@ func (r *DeleteSecurityAuditLogExportTasksResponse) FromJsonString(s string) err
 type DescribeAllUserContactRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，固定值：mysql。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 联系人名数组，支持模糊搜索。
@@ -362,7 +362,7 @@ func (r *DescribeAllUserContactResponse) FromJsonString(s string) error {
 type DescribeAllUserGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+	// 服务产品类型，固定值：mysql。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 联系组名称数组，支持模糊搜索。
