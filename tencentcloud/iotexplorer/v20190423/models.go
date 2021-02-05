@@ -234,6 +234,64 @@ func (r *CreateDeviceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLoRaFrequencyRequest struct {
+	*tchttp.BaseRequest
+
+	// 频点配置名称
+	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
+
+	// 数据上行信道
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+
+	// 数据下行RX1信道
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+
+	// 数据下行RX2信道
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+
+	// 入网上行信道
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+
+	// 入网下行RX1信道
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+
+	// 入网下行RX2信道
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+
+	// 频点配置描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateLoRaFrequencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoRaFrequencyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLoRaFrequencyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// LoRa频点信息
+		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLoRaFrequencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLoRaFrequencyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateLoRaGatewayRequest struct {
 	*tchttp.BaseRequest
 
@@ -472,6 +530,40 @@ func (r *DeleteDeviceResponse) ToJsonString() string {
 }
 
 func (r *DeleteDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoRaFrequencyRequest struct {
+	*tchttp.BaseRequest
+
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+}
+
+func (r *DeleteLoRaFrequencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoRaFrequencyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoRaFrequencyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLoRaFrequencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoRaFrequencyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -762,6 +854,44 @@ func (r *DescribeDeviceResponse) ToJsonString() string {
 }
 
 func (r *DescribeDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoRaFrequencyRequest struct {
+	*tchttp.BaseRequest
+
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+}
+
+func (r *DescribeLoRaFrequencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoRaFrequencyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLoRaFrequencyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回详情项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLoRaFrequencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLoRaFrequencyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1406,6 +1536,39 @@ func (r *ListEventHistoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LoRaFrequencyEntry struct {
+
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+
+	// 频点名称
+	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
+
+	// 频点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 数据上行信道
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+
+	// 数据下行信道RX1
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+
+	// 数据下行信道RX2
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+
+	// 入网上行信道
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+
+	// 入网下行RX1信道
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+
+	// 入网下行RX2信道
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type LoRaGatewayItem struct {
 
 	// LoRa 网关Id
@@ -1455,6 +1618,67 @@ type LoRaGatewayLocation struct {
 
 	// 精度
 	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+}
+
+type ModifyLoRaFrequencyRequest struct {
+	*tchttp.BaseRequest
+
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+
+	// 频点名称
+	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
+
+	// 频点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 数据上行信道
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+
+	// 数据下行信道RX1
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+
+	// 数据下行信道RX2
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+
+	// 入网上行信道
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+
+	// 入网下行信道RX1
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+
+	// 入网下行信道RX2
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+}
+
+func (r *ModifyLoRaFrequencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoRaFrequencyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLoRaFrequencyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 频点信息
+		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLoRaFrequencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLoRaFrequencyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoRaGatewayRequest struct {

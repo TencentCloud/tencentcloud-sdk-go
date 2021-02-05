@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 智能保险助手(cii) 版本：2020-12-10
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 1 次发布
+### 第 40 次发布
 
-发布时间：2021-02-04 08:50:26
+发布时间：2021-02-05 08:00:58
 
 本次发布包含了以下内容：
 
@@ -12,71 +12,26 @@
 
 新增接口：
 
-* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/52757)
-* [DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/52754)
-* [DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/52756)
-
-新增数据结构：
-
-* [CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData)
-* [ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject)
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 39 次发布
-
-发布时间：2021-02-04 08:02:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceTypeConfig](https://cloud.tencent.com/document/api/1108/42574#InstanceTypeConfig)
-
-	* 新增成员：Vgpu, GpuModelName
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 36 次发布
-
-发布时间：2021-02-04 08:32:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [ModifyPrivateIpAddressesAttribute](https://cloud.tencent.com/document/api/1108/52868)
 
 修改接口：
 
-* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+* [AllocateAddresses](https://cloud.tencent.com/document/api/1108/43589)
 
-	* 新增入参：ServiceVolumes
+	* 新增入参：InstanceId, NetworkInterfaceId, PrivateIpAddress
 
+* [TerminateInstances](https://cloud.tencent.com/document/api/1108/42559)
 
-新增数据结构：
-
-* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
-
-修改数据结构：
-
-* [CloudBaseRunSideSpec](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunSideSpec)
-
-	* 新增成员：VolumeMountInfos
+	* 新增入参：AssociatedResourceDestroy
 
 
 
 
-## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 1 次发布
+### 第 20 次发布
 
-发布时间：2021-02-04 08:50:31
+发布时间：2021-02-05 08:05:15
 
 本次发布包含了以下内容：
 
@@ -84,11 +39,14 @@
 
 新增接口：
 
-* [DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)
+* [CreateLoRaFrequency](https://cloud.tencent.com/document/api/1081/52872)
+* [DeleteLoRaFrequency](https://cloud.tencent.com/document/api/1081/52871)
+* [DescribeLoRaFrequency](https://cloud.tencent.com/document/api/1081/52870)
+* [ModifyLoRaFrequency](https://cloud.tencent.com/document/api/1081/52869)
 
 新增数据结构：
 
-* [AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)
+* [LoRaFrequencyEntry](https://cloud.tencent.com/document/api/1081/34988#LoRaFrequencyEntry)
 
 
 
@@ -9247,14 +9205,14 @@
 
 新增接口：
 
-* [[CreateStructureTask](https://cloud.tencent.com/document/api/1368/52757)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/52754)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/52756)](https://cloud.tencent.com/document/api/#/#)
+* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/52757)
+* [DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/52754)
+* [DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/52756)
 
 新增数据结构：
 
-* [[CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData)](https://cloud.tencent.com/document/api/1368/52758#[CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData))
-* [[ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject)](https://cloud.tencent.com/document/api/1368/52758#[ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject))
+* [CompareMetricsData](https://cloud.tencent.com/document/api/1368/52758#CompareMetricsData)
+* [ResultObject](https://cloud.tencent.com/document/api/1368/52758#ResultObject)
 
 
 
@@ -14701,11 +14659,11 @@
 
 新增接口：
 
-* [CreateNewL4Rules](https://cloud.tencent.com/document/api/1021/39496)
+* [CreateNewL4Rules](https://cloud.tencent.com/document/api/1021/52792)
 * [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/43847)
-* [DeleteNewL4Rules](https://cloud.tencent.com/document/api/1021/39491)
-* [DeleteNewL7Rules](https://cloud.tencent.com/document/api/1021/39490)
-* [DescribeNewL4Rules](https://cloud.tencent.com/document/api/1021/39484)
+* [DeleteNewL4Rules](https://cloud.tencent.com/document/api/1021/52787)
+* [DeleteNewL7Rules](https://cloud.tencent.com/document/api/1021/52785)
+* [DescribeNewL4Rules](https://cloud.tencent.com/document/api/1021/52752)
 * [DescribeNewL4RulesErrHealth](https://cloud.tencent.com/document/api/1021/39488)
 * [DescribeNewL7RulesErrHealth](https://cloud.tencent.com/document/api/1021/43846)
 * [DescribleNewL7Rules](https://cloud.tencent.com/document/api/1021/43845)
@@ -17037,6 +16995,29 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 40 次发布
+
+发布时间：2021-02-05 08:00:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyPrivateIpAddressesAttribute](https://cloud.tencent.com/document/api/1108/52868)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/1108/43589)
+
+	* 新增入参：InstanceId, NetworkInterfaceId, PrivateIpAddress
+
+* [TerminateInstances](https://cloud.tencent.com/document/api/1108/42559)
+
+	* 新增入参：AssociatedResourceDestroy
+
 
 ### 第 39 次发布
 
@@ -22970,6 +22951,25 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 20 次发布
+
+发布时间：2021-02-05 08:05:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLoRaFrequency](https://cloud.tencent.com/document/api/1081/52872)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLoRaFrequency](https://cloud.tencent.com/document/api/1081/52871)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLoRaFrequency](https://cloud.tencent.com/document/api/1081/52870)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLoRaFrequency](https://cloud.tencent.com/document/api/1081/52869)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LoRaFrequencyEntry](https://cloud.tencent.com/document/api/1081/34988#LoRaFrequencyEntry)](https://cloud.tencent.com/document/api/1081/34988#[LoRaFrequencyEntry](https://cloud.tencent.com/document/api/1081/34988#LoRaFrequencyEntry))
 
 ### 第 19 次发布
 
@@ -34325,7 +34325,7 @@
 
 新增数据结构：
 
-* [[CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)](https://cloud.tencent.com/document/api/876/34822#[CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume))
+* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
 
 修改数据结构：
 
@@ -40027,11 +40027,11 @@
 
 新增接口：
 
-* [[DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [[AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)](https://cloud.tencent.com/document/api/#/##[AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell))
+* [AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)
 
 
 

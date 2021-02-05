@@ -467,7 +467,7 @@ func NewDescribeApiResponse() (response *DescribeApiResponse) {
     return
 }
 
-// 本接口（DescribeApi）用于查询用户部署于 API 网关的 API 接口的详细信息。​
+// 本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。​
 func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApiResponse, err error) {
     if request == nil {
         request = NewDescribeApiRequest()

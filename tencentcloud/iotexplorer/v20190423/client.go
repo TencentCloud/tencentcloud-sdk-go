@@ -143,6 +143,31 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     return
 }
 
+func NewCreateLoRaFrequencyRequest() (request *CreateLoRaFrequencyRequest) {
+    request = &CreateLoRaFrequencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaFrequency")
+    return
+}
+
+func NewCreateLoRaFrequencyResponse() (response *CreateLoRaFrequencyResponse) {
+    response = &CreateLoRaFrequencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建 LoRa 自定义频点
+func (c *Client) CreateLoRaFrequency(request *CreateLoRaFrequencyRequest) (response *CreateLoRaFrequencyResponse, err error) {
+    if request == nil {
+        request = NewCreateLoRaFrequencyRequest()
+    }
+    response = NewCreateLoRaFrequencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLoRaGatewayRequest() (request *CreateLoRaGatewayRequest) {
     request = &CreateLoRaGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +289,31 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
         request = NewDeleteDeviceRequest()
     }
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLoRaFrequencyRequest() (request *DeleteLoRaFrequencyRequest) {
+    request = &DeleteLoRaFrequencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaFrequency")
+    return
+}
+
+func NewDeleteLoRaFrequencyResponse() (response *DeleteLoRaFrequencyResponse) {
+    response = &DeleteLoRaFrequencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供删除LoRa自定义频点的能力
+func (c *Client) DeleteLoRaFrequency(request *DeleteLoRaFrequencyRequest) (response *DeleteLoRaFrequencyResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoRaFrequencyRequest()
+    }
+    response = NewDeleteLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
 }
@@ -439,6 +489,31 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
         request = NewDescribeDeviceDataHistoryRequest()
     }
     response = NewDescribeDeviceDataHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
+    request = &DescribeLoRaFrequencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeLoRaFrequency")
+    return
+}
+
+func NewDescribeLoRaFrequencyResponse() (response *DescribeLoRaFrequencyResponse) {
+    response = &DescribeLoRaFrequencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 提供查询LoRa自定义频点详情的能力
+func (c *Client) DescribeLoRaFrequency(request *DescribeLoRaFrequencyRequest) (response *DescribeLoRaFrequencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoRaFrequencyRequest()
+    }
+    response = NewDescribeLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
 }
@@ -739,6 +814,31 @@ func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *L
         request = NewListEventHistoryRequest()
     }
     response = NewListEventHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoRaFrequencyRequest() (request *ModifyLoRaFrequencyRequest) {
+    request = &ModifyLoRaFrequencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaFrequency")
+    return
+}
+
+func NewModifyLoRaFrequencyResponse() (response *ModifyLoRaFrequencyResponse) {
+    response = &ModifyLoRaFrequencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改LoRa自定义频点
+func (c *Client) ModifyLoRaFrequency(request *ModifyLoRaFrequencyRequest) (response *ModifyLoRaFrequencyResponse, err error) {
+    if request == nil {
+        request = NewModifyLoRaFrequencyRequest()
+    }
+    response = NewModifyLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
 }

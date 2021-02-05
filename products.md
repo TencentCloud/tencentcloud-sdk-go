@@ -8,9 +8,9 @@
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-02-01 08:00:37 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-01-18 08:00:04 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-02-03 08:00:23 |
-| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-02-03 08:09:18 |
+| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-02-05 08:09:13 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-02-02 08:02:15 |
-| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-01-29 22:00:48 |
+| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-02-05 08:00:29 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-01-07 08:00:11 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-01-07 08:00:11 |
 | batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2021-02-01 08:01:58 |
@@ -36,7 +36,7 @@
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-02-04 08:50:26 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
-| ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-02-04 08:45:08 |
+| ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-02-05 08:08:48 |
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2021-01-21 08:03:10 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product) | 2020-09-09 08:03:42 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-02-04 08:46:11 |
@@ -59,7 +59,7 @@
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-02-03 08:04:31 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-01-07 08:04:40 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-01-14 08:01:15 |
-| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-02-04 08:02:38 |
+| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-02-05 08:00:58 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-01-21 08:04:03 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-01-07 08:04:44 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-01-07 08:04:49 |
@@ -80,7 +80,7 @@
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-02-01 10:50:49 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-01-07 08:05:22 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-02-02 08:05:53 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-01-27 08:05:09 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-02-05 08:05:15 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-01-07 08:05:49 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-01-14 08:01:21 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-01-15 08:04:59 |

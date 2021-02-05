@@ -2392,6 +2392,31 @@ func (c *Client) ModifyModuleSecurityGroups(request *ModifyModuleSecurityGroupsR
     return
 }
 
+func NewModifyPrivateIpAddressesAttributeRequest() (request *ModifyPrivateIpAddressesAttributeRequest) {
+    request = &ModifyPrivateIpAddressesAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyPrivateIpAddressesAttribute")
+    return
+}
+
+func NewModifyPrivateIpAddressesAttributeResponse() (response *ModifyPrivateIpAddressesAttributeResponse) {
+    response = &ModifyPrivateIpAddressesAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于修改弹性网卡内网IP属性。
+func (c *Client) ModifyPrivateIpAddressesAttribute(request *ModifyPrivateIpAddressesAttributeRequest) (response *ModifyPrivateIpAddressesAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyPrivateIpAddressesAttributeRequest()
+    }
+    response = NewModifyPrivateIpAddressesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRouteTableAttributeRequest() (request *ModifyRouteTableAttributeRequest) {
     request = &ModifyRouteTableAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
