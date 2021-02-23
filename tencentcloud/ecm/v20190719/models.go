@@ -1874,9 +1874,13 @@ type DescribeConfigResponse struct {
 		// 网络带宽硬盘大小的范围信息。
 		NetworkStorageRange *NetworkStorageRange `json:"NetworkStorageRange,omitempty" name:"NetworkStorageRange"`
 
-		// 镜像操作系统白名单
+		// 镜像操作系统白名单。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageWhiteSet []*string `json:"ImageWhiteSet,omitempty" name:"ImageWhiteSet" list`
+
+		// 网络限额信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceNetworkLimitConfigs []*InstanceNetworkLimitConfig `json:"InstanceNetworkLimitConfigs,omitempty" name:"InstanceNetworkLimitConfigs" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4021,6 +4025,21 @@ type InstanceNetworkInfo struct {
 
 	// 主网卡属性。true为主网卡，false为辅助网卡。
 	Primary *bool `json:"Primary,omitempty" name:"Primary"`
+}
+
+type InstanceNetworkLimitConfig struct {
+
+	// cpu核数
+	CpuNum *int64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// 网卡数量限制
+	NetworkInterfaceLimit *int64 `json:"NetworkInterfaceLimit,omitempty" name:"NetworkInterfaceLimit"`
+
+	// 每张网卡内网ip数量限制
+	InnerIpPerNetworkInterface *int64 `json:"InnerIpPerNetworkInterface,omitempty" name:"InnerIpPerNetworkInterface"`
+
+	// 每个实例的外网ip限制
+	PublicIpPerInstance *int64 `json:"PublicIpPerInstance,omitempty" name:"PublicIpPerInstance"`
 }
 
 type InstanceOperator struct {

@@ -85,6 +85,10 @@ type AccessPoint struct {
 	// 接入点所在城市
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitempty" name:"City"`
+
+	// 接入点地域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type ApplyInternetAddressRequest struct {

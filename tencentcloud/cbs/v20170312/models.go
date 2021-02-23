@@ -994,7 +994,7 @@ type Disk struct {
 	// 云盘拥有的快照总容量，单位为MB。
 	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
 
-	// 云盘因欠费销毁或者期销毁时， 是否使用快照备份数据的标识。True， 销毁时创建快照进行数据备份。False 表示直接销毁，不进行数据备份。
+	// 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
 	BackupDisk *bool `json:"BackupDisk,omitempty" name:"BackupDisk"`
 
 	// 云硬盘额外性能值，单位MB/s。

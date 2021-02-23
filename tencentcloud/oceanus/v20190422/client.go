@@ -168,6 +168,31 @@ func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response 
     return
 }
 
+func NewDescribeJobConfigsRequest() (request *DescribeJobConfigsRequest) {
+    request = &DescribeJobConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobConfigs")
+    return
+}
+
+func NewDescribeJobConfigsResponse() (response *DescribeJobConfigsResponse) {
+    response = &DescribeJobConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询作业配置列表，一次最多查询100个
+func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (response *DescribeJobConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobConfigsRequest()
+    }
+    response = NewDescribeJobConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
     request = &DescribeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -274,6 +274,61 @@ func (r *DeleteTableConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeJobConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业Id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 作业配置版本
+	JobConfigVersions []*uint64 `json:"JobConfigVersions,omitempty" name:"JobConfigVersions" list`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// true 表示只展示草稿
+	OnlyDraft *bool `json:"OnlyDraft,omitempty" name:"OnlyDraft"`
+}
+
+func (r *DescribeJobConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeJobConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJobConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总的配置版本数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 作业配置列表
+		JobConfigSet []*JobConfig `json:"JobConfigSet,omitempty" name:"JobConfigSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeJobConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeJobConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeJobsRequest struct {
 	*tchttp.BaseRequest
 
@@ -382,6 +437,58 @@ type Filter struct {
 
 	// 字段的过滤值
 	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
+type JobConfig struct {
+
+	// 作业Id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 主类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntrypointClass *string `json:"EntrypointClass,omitempty" name:"EntrypointClass"`
+
+	// 主类入参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramArgs *string `json:"ProgramArgs,omitempty" name:"ProgramArgs"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 作业配置创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 作业配置的版本号
+	Version *int64 `json:"Version,omitempty" name:"Version"`
+
+	// 作业默认并行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultParallelism *uint64 `json:"DefaultParallelism,omitempty" name:"DefaultParallelism"`
+
+	// 系统参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+
+	// 引用资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRefDetails []*ResourceRefDetail `json:"ResourceRefDetails,omitempty" name:"ResourceRefDetails" list`
+
+	// 创建者uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 作业配置上次启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 作业绑定的存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	COSBucket *string `json:"COSBucket,omitempty" name:"COSBucket"`
+
+	// 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogCollect *int64 `json:"LogCollect,omitempty" name:"LogCollect"`
 }
 
 type JobV1 struct {
@@ -536,6 +643,24 @@ type ResourceRef struct {
 
 	// 引用资源类型，例如主资源设置为1，代表main class所在的jar包
 	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+type ResourceRefDetail struct {
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源版本，-1表示使用最新版本
+	Version *int64 `json:"Version,omitempty" name:"Version"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 1: 主资源
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 1: 系统内置资源
+	SystemProvide *int64 `json:"SystemProvide,omitempty" name:"SystemProvide"`
 }
 
 type RunJobDescription struct {

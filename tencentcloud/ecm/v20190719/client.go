@@ -135,11 +135,8 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 
 // 将弹性公网IP（简称 EIP）绑定到实例或弹性网卡的指定内网 IP 上。
 // 将 EIP 绑定到实例（ECM）上，其本质是将 EIP 绑定到实例上主网卡的主内网 IP 上。
-// 将 EIP 绑定到主网卡的主内网IP上，绑定过程会把其上绑定的普通公网 IP 自动解绑并释放。
-// 将 EIP 绑定到指定网卡的内网 IP上（非主网卡的主内网IP），则必须先解绑该 EIP，才能再绑定新的。
-// 将 EIP 绑定到NAT网关，请使用接口EipBindNatGateway
-// EIP 如果欠费或被封堵，则不能被绑定。
-// 只有状态为 UNBIND 的 EIP 才能够被绑定。
+// 将 EIP 绑定到指定网卡的内网 IP上，内网IP已经绑定了EIP或普通公网IP，则反馈失败。必须先解绑该 EIP，才能再绑定新的。
+// 只有状态为 UNBIND 的 EIP 才能够绑定内网IP。
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
     if request == nil {
         request = NewAssociateAddressRequest()

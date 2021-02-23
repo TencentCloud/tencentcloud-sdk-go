@@ -206,7 +206,7 @@ func (r *CreateSecurityGroupApiRulesResponse) FromJsonString(s string) error {
 type DeleteAcRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 删除规则对应的id值 669872
+	// 删除规则对应的id值, 对应获取规则列表接口的Id 值
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// 方向，0：出站，1：入站
@@ -215,7 +215,7 @@ type DeleteAcRuleRequest struct {
 	// EdgeId值两个vpc间的边id
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
-	// NAT地域
+	// NAT地域， 如ap-shanghai/ap-guangzhou/ap-chongqing等
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 

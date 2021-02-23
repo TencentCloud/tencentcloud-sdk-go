@@ -1194,20 +1194,20 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// 模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
+	// 是否保留视频，0：否，1：是。默认1。
+	NeedVideo *int64 `json:"NeedVideo,omitempty" name:"NeedVideo"`
+
 	// 宽，默认0。
 	// 范围[0-3000]
 	// 数值必须是2的倍数，0是原始宽度
 	Width *int64 `json:"Width,omitempty" name:"Width"`
-
-	// 是否保留视频，0：否，1：是。默认1。
-	NeedVideo *int64 `json:"NeedVideo,omitempty" name:"NeedVideo"`
 
 	// 是否保留音频，0：否，1：是。默认1。
 	NeedAudio *int64 `json:"NeedAudio,omitempty" name:"NeedAudio"`
 
 	// 高，默认0。
 	// 范围[0-3000]
-	// 数值必须是2的倍数，0是原始宽度
+	// 数值必须是2的倍数，0是原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 帧率，默认0。
