@@ -2513,6 +2513,10 @@ type InstanceIntegerParam struct {
 
 	// 参数状态, 1: 修改中， 2：修改完成
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 参数单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
 }
 
 type InstanceMultiParam struct {
@@ -2787,6 +2791,9 @@ type InstanceSlowlogDetail struct {
 
 	// 执行时间
 	ExecuteTime *string `json:"ExecuteTime,omitempty" name:"ExecuteTime"`
+
+	// 节点ID
+	Node *string `json:"Node,omitempty" name:"Node"`
 }
 
 type InstanceTagInfo struct {

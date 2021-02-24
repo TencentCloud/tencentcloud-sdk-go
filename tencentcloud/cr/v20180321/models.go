@@ -1035,6 +1035,65 @@ type ProductQueryInfo struct {
 	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
 }
 
+type QueryBlackListDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块:AiApi
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作:QueryBlackListData
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始日期
+	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+
+	// 结束日期
+	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+
+	// 电话号码、手机
+	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+}
+
+func (r *QueryBlackListDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBlackListDataRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBlackListDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 黑名单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*BlackListData `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBlackListDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBlackListDataResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryBotListRequest struct {
 	*tchttp.BaseRequest
 

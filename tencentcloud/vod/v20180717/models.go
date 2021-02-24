@@ -2102,6 +2102,10 @@ type ComposeMediaTask struct {
 	// 制作媒体文件任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ComposeMediaTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 原始视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 
 type ComposeMediaTaskInput struct {
@@ -5881,6 +5885,9 @@ type EditMediaTask struct {
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 原始视频的元信息。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 
 type EditMediaTaskInput struct {
@@ -9652,6 +9659,9 @@ type PullUploadTask struct {
 	// 转拉完成后生成的媒体文件基础信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
+
+	// 原始视频的元信息。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 转拉上传完成后生成的播放地址。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`

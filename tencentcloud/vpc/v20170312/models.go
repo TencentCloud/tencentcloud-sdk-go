@@ -6434,6 +6434,7 @@ type DescribeSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
 
 		// 符合条件的实例数量。

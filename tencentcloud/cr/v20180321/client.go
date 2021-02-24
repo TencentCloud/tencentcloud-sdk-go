@@ -444,6 +444,31 @@ func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportB
     return
 }
 
+func NewQueryBlackListDataRequest() (request *QueryBlackListDataRequest) {
+    request = &QueryBlackListDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cr", APIVersion, "QueryBlackListData")
+    return
+}
+
+func NewQueryBlackListDataResponse() (response *QueryBlackListDataResponse) {
+    response = &QueryBlackListDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看黑名单数据列表
+func (c *Client) QueryBlackListData(request *QueryBlackListDataRequest) (response *QueryBlackListDataResponse, err error) {
+    if request == nil {
+        request = NewQueryBlackListDataRequest()
+    }
+    response = NewQueryBlackListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryBotListRequest() (request *QueryBotListRequest) {
     request = &QueryBotListRequest{
         BaseRequest: &tchttp.BaseRequest{},
