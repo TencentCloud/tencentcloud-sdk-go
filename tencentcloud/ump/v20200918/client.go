@@ -69,6 +69,31 @@ func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (respons
     return
 }
 
+func NewCreateCameraStateRequest() (request *CreateCameraStateRequest) {
+    request = &CreateCameraStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ump", APIVersion, "CreateCameraState")
+    return
+}
+
+func NewCreateCameraStateResponse() (response *CreateCameraStateResponse) {
+    response = &CreateCameraStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上报当前场内所有相机的当前状态
+func (c *Client) CreateCameraState(request *CreateCameraStateRequest) (response *CreateCameraStateResponse, err error) {
+    if request == nil {
+        request = NewCreateCameraStateRequest()
+    }
+    response = NewCreateCameraStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCaptureRequest() (request *CreateCaptureRequest) {
     request = &CreateCaptureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -367,6 +392,56 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
         request = NewDescribeZonesRequest()
     }
     response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMultiBizConfigRequest() (request *ModifyMultiBizConfigRequest) {
+    request = &ModifyMultiBizConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ump", APIVersion, "ModifyMultiBizConfig")
+    return
+}
+
+func NewModifyMultiBizConfigResponse() (response *ModifyMultiBizConfigResponse) {
+    response = &ModifyMultiBizConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 集团广场的多经点位配置更新
+func (c *Client) ModifyMultiBizConfig(request *ModifyMultiBizConfigRequest) (response *ModifyMultiBizConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyMultiBizConfigRequest()
+    }
+    response = NewModifyMultiBizConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportServiceRegisterRequest() (request *ReportServiceRegisterRequest) {
+    request = &ReportServiceRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ump", APIVersion, "ReportServiceRegister")
+    return
+}
+
+func NewReportServiceRegisterResponse() (response *ReportServiceRegisterResponse) {
+    response = &ReportServiceRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上报服务注册自身的服务地址作为回调地址, 用于信息回传。
+func (c *Client) ReportServiceRegister(request *ReportServiceRegisterRequest) (response *ReportServiceRegisterResponse, err error) {
+    if request == nil {
+        request = NewReportServiceRegisterRequest()
+    }
+    response = NewReportServiceRegisterResponse()
     err = c.Send(request, response)
     return
 }

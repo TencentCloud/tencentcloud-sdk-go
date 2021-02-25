@@ -368,6 +368,12 @@ type ClusterAdvancedSettings struct {
 
 	// 运行时版本
 	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
+
+	// 是否开节点podCIDR大小的自定义模式
+	EnableCustomizedPodCIDR *bool `json:"EnableCustomizedPodCIDR,omitempty" name:"EnableCustomizedPodCIDR"`
+
+	// 自定义模式下的基础pod数量
+	BasePodNumber *int64 `json:"BasePodNumber,omitempty" name:"BasePodNumber"`
 }
 
 type ClusterAsGroup struct {

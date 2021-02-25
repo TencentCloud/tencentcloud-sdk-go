@@ -1876,6 +1876,72 @@ func (r *DescribeExportMachinesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGeneralStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 云主机类型。
+	// <li>CVM：表示虚拟主机</li>
+	// <li>BM:  表示黑石物理机</li>
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 机器所属地域。如：ap-guangzhou，ap-shanghai
+	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
+}
+
+func (r *DescribeGeneralStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGeneralStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGeneralStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云主机总数
+		MachinesAll *uint64 `json:"MachinesAll,omitempty" name:"MachinesAll"`
+
+		// 云主机没有安装主机安全客户端的总数
+		MachinesUninstalled *uint64 `json:"MachinesUninstalled,omitempty" name:"MachinesUninstalled"`
+
+		// 主机安全客户端总数的总数
+		AgentsAll *uint64 `json:"AgentsAll,omitempty" name:"AgentsAll"`
+
+		// 主机安全客户端在线的总数
+		AgentsOnline *uint64 `json:"AgentsOnline,omitempty" name:"AgentsOnline"`
+
+		// 主机安全客户端离线的总数
+		AgentsOffline *uint64 `json:"AgentsOffline,omitempty" name:"AgentsOffline"`
+
+		// 主机安全客户端专业版的总数
+		AgentsPro *uint64 `json:"AgentsPro,omitempty" name:"AgentsPro"`
+
+		// 主机安全客户端基础版的总数
+		AgentsBasic *uint64 `json:"AgentsBasic,omitempty" name:"AgentsBasic"`
+
+		// 7天内到期的预付费专业版总数
+		AgentsProExpireWithInSevenDays *uint64 `json:"AgentsProExpireWithInSevenDays,omitempty" name:"AgentsProExpireWithInSevenDays"`
+
+		// 风险主机总数
+		RiskMachine *uint64 `json:"RiskMachine,omitempty" name:"RiskMachine"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGeneralStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGeneralStatResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeHistoryAccountsRequest struct {
 	*tchttp.BaseRequest
 

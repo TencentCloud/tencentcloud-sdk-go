@@ -943,6 +943,31 @@ func (c *Client) DescribeExportMachines(request *DescribeExportMachinesRequest) 
     return
 }
 
+func NewDescribeGeneralStatRequest() (request *DescribeGeneralStatRequest) {
+    request = &DescribeGeneralStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeGeneralStat")
+    return
+}
+
+func NewDescribeGeneralStatResponse() (response *DescribeGeneralStatResponse) {
+    response = &DescribeGeneralStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取主机安全相关统计
+func (c *Client) DescribeGeneralStat(request *DescribeGeneralStatRequest) (response *DescribeGeneralStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeGeneralStatRequest()
+    }
+    response = NewDescribeGeneralStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsRequest) {
     request = &DescribeHistoryAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},

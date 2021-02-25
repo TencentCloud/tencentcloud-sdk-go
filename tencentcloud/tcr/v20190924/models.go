@@ -375,6 +375,50 @@ func (r *CreateInstanceTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInternalEndpointDnsRequest struct {
+	*tchttp.BaseRequest
+
+	// tcr实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// tcr内网访问链路ip
+	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
+
+	// true：use instance name as subdomain
+	// false: use instancename+"-vpc" as subdomain
+	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+}
+
+func (r *CreateInternalEndpointDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInternalEndpointDnsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInternalEndpointDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInternalEndpointDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInternalEndpointDnsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNamespacePersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -862,6 +906,50 @@ func (r *DeleteInstanceTokenResponse) ToJsonString() string {
 }
 
 func (r *DeleteInstanceTokenResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInternalEndpointDnsRequest struct {
+	*tchttp.BaseRequest
+
+	// tcr实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// tcr内网访问链路ip
+	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
+
+	// true：use instance name as subdomain
+	// false: use instancename+"-vpc" as subdomain
+	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+}
+
+func (r *DeleteInternalEndpointDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInternalEndpointDnsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInternalEndpointDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteInternalEndpointDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteInternalEndpointDnsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1603,6 +1691,44 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternalEndpointDnsStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// vpc列表
+	VpcSet []*VpcAndDomainInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+}
+
+func (r *DescribeInternalEndpointDnsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternalEndpointDnsStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInternalEndpointDnsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// vpc私有域名解析状态列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitempty" name:"VpcSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInternalEndpointDnsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInternalEndpointDnsStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3365,6 +3491,37 @@ func (r *ValidateRepositoryExistPersonalResponse) ToJsonString() string {
 
 func (r *ValidateRepositoryExistPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type VpcAndDomainInfo struct {
+
+	// tcr实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// tcr内网访问链路ip
+	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
+
+	// true：use instance name as subdomain
+	// false: use instancename+"-vpc" as subdomain
+	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+}
+
+type VpcPrivateDomainStatus struct {
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// unique vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type WebhookTarget struct {

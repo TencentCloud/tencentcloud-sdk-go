@@ -1175,6 +1175,31 @@ func (c *Client) DescribeStorageService(request *DescribeStorageServiceRequest) 
     return
 }
 
+func NewDescribeStreamRequest() (request *DescribeStreamRequest) {
+    request = &DescribeStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStream")
+    return
+}
+
+func NewDescribeStreamResponse() (response *DescribeStreamResponse) {
+    response = &DescribeStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 请求设备直播流地址
+func (c *Client) DescribeStream(request *DescribeStreamRequest) (response *DescribeStreamResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamRequest()
+    }
+    response = NewDescribeStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
     request = &DescribeTraceIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},

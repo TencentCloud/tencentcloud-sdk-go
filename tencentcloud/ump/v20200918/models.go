@@ -91,6 +91,22 @@ type CameraConfig struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
+type CameraState struct {
+
+	// 相机ID
+	CameraId *uint64 `json:"CameraId,omitempty" name:"CameraId"`
+
+	// 相机状态:
+	// 10: 初始化
+	// 11: 未知状态
+	// 12: 网络异常
+	// 13: 未授权
+	// 14: 相机App异常
+	// 15: 相机取流异常
+	// 16: 状态正常
+	State *uint64 `json:"State,omitempty" name:"State"`
+}
+
 type CameraZones struct {
 
 	// 摄像头ID
@@ -108,8 +124,15 @@ type CameraZones struct {
 	CameraIp *string `json:"CameraIp,omitempty" name:"CameraIp"`
 
 	// 摄像头状态:
-	// 0: 异常
-	// 1: 正常
+	// 0: 异常 (不再使用)
+	// 1: 正常 (不再使用)
+	// 10: 初始化
+	// 11: 未知状态 (因服务内部错误产生)
+	// 12: 网络异常
+	// 13: 未授权
+	// 14: 相机App异常
+	// 15: 相机取流异常
+	// 16: 正常
 	CameraState *int64 `json:"CameraState,omitempty" name:"CameraState"`
 
 	// 点位列表
@@ -120,6 +143,10 @@ type CameraZones struct {
 	// 200W(1920*1080)
 	// 400W(2560*1440)
 	Pixel *string `json:"Pixel,omitempty" name:"Pixel"`
+
+	// 相机Rtsp地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTSP *string `json:"RTSP,omitempty" name:"RTSP"`
 }
 
 type Config struct {
@@ -239,6 +266,46 @@ func (r *CreateCameraAlertsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCameraStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 集团编码
+	GroupCode *string `json:"GroupCode,omitempty" name:"GroupCode"`
+
+	// 广场ID
+	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
+
+	// 场内所有相机的状态值
+	CameraStates []*CameraState `json:"CameraStates,omitempty" name:"CameraStates" list`
+}
+
+func (r *CreateCameraStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCameraStateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCameraStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCameraStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCameraStateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateCaptureRequest struct {
 	*tchttp.BaseRequest
 
@@ -303,6 +370,9 @@ type CreateMultiBizAlertRequest struct {
 
 	// 图片base64字符串
 	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 告警列表
+	Warnings []*MultiBizWarning `json:"Warnings,omitempty" name:"Warnings" list`
 }
 
 func (r *CreateMultiBizAlertRequest) ToJsonString() string {
@@ -790,6 +860,82 @@ type DiskInfo struct {
 	Usage *float64 `json:"Usage,omitempty" name:"Usage"`
 }
 
+type ModifyMultiBizConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 集团编码
+	GroupCode *string `json:"GroupCode,omitempty" name:"GroupCode"`
+
+	// 广场ID
+	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
+
+	// 点位ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 摄像头ID
+	CameraId *uint64 `json:"CameraId,omitempty" name:"CameraId"`
+
+	// 监控区域
+	MonitoringAreas []*Polygon `json:"MonitoringAreas,omitempty" name:"MonitoringAreas" list`
+}
+
+func (r *ModifyMultiBizConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMultiBizConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMultiBizConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMultiBizConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMultiBizConfigResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MultiBizWarning struct {
+
+	// 编号
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 监控区域
+	MonitoringArea []*Point `json:"MonitoringArea,omitempty" name:"MonitoringArea" list`
+
+	// 告警列表
+	WarningInfos []*MultiBizWarningInfo `json:"WarningInfos,omitempty" name:"WarningInfos" list`
+}
+
+type MultiBizWarningInfo struct {
+
+	// 告警类型：
+	// 0: 无变化
+	// 1: 侵占
+	// 2: 消失
+	WarningType *int64 `json:"WarningType,omitempty" name:"WarningType"`
+
+	// 告警侵占或消失面积
+	WarningAreaSize *float64 `json:"WarningAreaSize,omitempty" name:"WarningAreaSize"`
+
+	// 告警侵占或消失坐标
+	WarningLocation *Point `json:"WarningLocation,omitempty" name:"WarningLocation"`
+
+	// 告警侵占或消失轮廓
+	WarningAreaContour []*Point `json:"WarningAreaContour,omitempty" name:"WarningAreaContour" list`
+}
+
 type Point struct {
 
 	// X坐标
@@ -824,6 +970,55 @@ type ProgramStateItem struct {
 	// 2: 异常上报
 	// 注：此处异常上报是指本次上报由于场内服务内部原因导致上报数据不可信等。此时离线个数重置为1，在线个数重置为0
 	State *int64 `json:"State,omitempty" name:"State"`
+}
+
+type ReportServiceRegisterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集团编码
+	GroupCode *string `json:"GroupCode,omitempty" name:"GroupCode"`
+
+	// 广场ID
+	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
+
+	// 服务上报当前的服务能力信息
+	ServiceRegisterInfos []*ServiceRegisterInfo `json:"ServiceRegisterInfos,omitempty" name:"ServiceRegisterInfos" list`
+
+	// 服务内网Ip
+	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
+
+	// 上报服务所在服务器的唯一ID
+	ServerNodeId *string `json:"ServerNodeId,omitempty" name:"ServerNodeId"`
+
+	// 上报时间戳, 单位毫秒
+	ReportTime *int64 `json:"ReportTime,omitempty" name:"ReportTime"`
+}
+
+func (r *ReportServiceRegisterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReportServiceRegisterRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ReportServiceRegisterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReportServiceRegisterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ReportServiceRegisterResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchImageRequest struct {
@@ -900,6 +1095,18 @@ type ServerStateItem struct {
 
 	// 硬盘监控信息列表
 	DiskInfos []*DiskInfo `json:"DiskInfos,omitempty" name:"DiskInfos" list`
+}
+
+type ServiceRegisterInfo struct {
+
+	// 当前服务的回调地址
+	CgiUrl *string `json:"CgiUrl,omitempty" name:"CgiUrl"`
+
+	// 当前服务类型:
+	// 1: 多经服务
+	// 2: 相机误报警确认
+	// 3: 底图更新
+	ServiceType *uint64 `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
 type Task struct {

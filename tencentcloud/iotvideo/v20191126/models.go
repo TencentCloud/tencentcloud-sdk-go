@@ -779,6 +779,29 @@ func (r *CreateUsrTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type Data struct {
+
+	// 直播协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 流媒体播放地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	URI *string `json:"URI,omitempty" name:"URI"`
+
+	// 流媒体地址过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 视频编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoCodec *string `json:"VideoCodec,omitempty" name:"VideoCodec"`
+
+	// 音频编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioCodec *string `json:"AudioCodec,omitempty" name:"AudioCodec"`
+}
+
 type DeleteAppUsrRequest struct {
 	*tchttp.BaseRequest
 
@@ -2054,6 +2077,56 @@ func (r *DescribeStorageServiceResponse) ToJsonString() string {
 }
 
 func (r *DescribeStorageServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备TID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 终端用户ID
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+	// 直播协议, 可选值：RTSP、RTMP、HLS、HLS-fmp4
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 音视频流地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 设备访问token，访问用户未绑定的设备时，需提供该参数
+	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+}
+
+func (r *DescribeStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回参数结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *Data `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStreamResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

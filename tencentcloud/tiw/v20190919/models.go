@@ -1223,6 +1223,9 @@ type StartWhiteboardPushRequest struct {
 
 	// 内部参数，不需要关注此参数
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
+
+	// TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
+	PrivateMapKey *string `json:"PrivateMapKey,omitempty" name:"PrivateMapKey"`
 }
 
 func (r *StartWhiteboardPushRequest) ToJsonString() string {
