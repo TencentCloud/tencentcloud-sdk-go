@@ -831,8 +831,11 @@ type CreateCloneInstanceRequest struct {
 	// 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
 	BackupZone *string `json:"BackupZone,omitempty" name:"BackupZone"`
 
-	// 克隆实例类型。支持值包括： "HA" - 高可用版实例， "EXCLUSIVE" - 独享型实例。 不指定则默认为高可用版。
+	// 克隆实例类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例。 不指定则默认为通用型。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -926,7 +929,7 @@ type CreateDBInstanceHourRequest struct {
 	// 实例硬盘大小，单位：GB，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的硬盘范围。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
-	// MySQL 版本，值包括：5.5、5.6 和 5.7，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
+	// MySQL 版本，值包括：5.5、5.6 、5.7 、8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
@@ -992,7 +995,7 @@ type CreateDBInstanceHourRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 参数模板id。
@@ -1000,6 +1003,12 @@ type CreateDBInstanceHourRequest struct {
 
 	// 告警策略id数组。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList" list`
+
+	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
+
+	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1116,7 +1125,7 @@ type CreateDBInstanceRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
+	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 参数模板id。
@@ -1124,6 +1133,12 @@ type CreateDBInstanceRequest struct {
 
 	// 告警策略id数组。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList" list`
+
+	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
+
+	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2837,8 +2852,14 @@ type DescribeDBPriceRequest struct {
 	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	ProtectMode *int64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
-	// 部署策略，取值范围：HA-高可用版
+	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要询价三节点实例， 请将该值设置为3。其余主实例该值默认为2。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
+
+	// 询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 func (r *DescribeDBPriceRequest) ToJsonString() string {
@@ -4382,8 +4403,11 @@ type InquiryPriceUpgradeInstancesRequest struct {
 	// 数据复制方式，支持值包括：0 - 异步复制，1 - 半同步复制，2 - 强同步复制，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
 	ProtectMode *uint64 `json:"ProtectMode,omitempty" name:"ProtectMode"`
 
-	// 部署策略，取值范围：HA-高可用版
+	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要询价三节点实例， 请将该值设置为3。其余主实例该值默认为2。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
 }
 
 func (r *InquiryPriceUpgradeInstancesRequest) ToJsonString() string {
@@ -5978,7 +6002,7 @@ type RoInstanceInfo struct {
 	// RO实例规格描述，目前可取值 CUSTOM
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
-	// RO实例数据库引擎版本，可能返回值：5.1、5.5、5.6和5.7
+	// RO实例数据库引擎版本，可能返回值：5.1、5.5、5.6、5.7、8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// RO实例到期时间，时间格式：yyyy-mm-dd hh:mm:ss，如实例为按量计费模式，则此字段值为0000-00-00 00:00:00

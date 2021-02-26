@@ -341,7 +341,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 // 
 // 1. 首先请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口查询可创建的实例规格信息，然后请使用 [查询数据库价格](https://cloud.tencent.com/document/api/236/18566) 接口查询可创建实例的售卖价格；
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
-// 3. 支持创建 MySQL 5.5 、 MySQL 5.6 、 MySQL 5.7 版本；
+// 3. 支持创建 MySQL 5.5 、 MySQL 5.6 、 MySQL 5.7 、 MySQL 8.0 版本；
 // 4. 支持创建主实例、只读实例、灾备实例；
 // 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
@@ -374,7 +374,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 // 
 // 1. 首先请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口查询可创建的实例规格信息，然后请使用 [查询数据库价格](https://cloud.tencent.com/document/api/236/18566) 接口查询可创建实例的售卖价格；
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
-// 3. 支持创建 MySQL 5.5、MySQL 5.6 和 MySQL 5.7 版本；
+// 3. 支持创建 MySQL 5.5、MySQL 5.6 、MySQL 5.7 和 MySQL 8.0 版本；
 // 4. 支持创建主实例、灾备实例和只读实例；
 // 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {

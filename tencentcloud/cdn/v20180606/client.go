@@ -393,7 +393,7 @@ func NewDescribeCdnOriginIpResponse() (response *DescribeCdnOriginIpResponse) {
     return
 }
 
-// 本接口（DescribeCdnOriginIp）用于查询 CDN 回源节点的IP信息。（注：使用此接口需开启对应白名单）
+// 本接口（DescribeCdnOriginIp）用于查询 CDN 回源节点的IP信息。（注：此接口即将下线，不再进行维护，请通过DescribeIpStatus 接口进行查询）
 func (c *Client) DescribeCdnOriginIp(request *DescribeCdnOriginIpRequest) (response *DescribeCdnOriginIpResponse, err error) {
     if request == nil {
         request = NewDescribeCdnOriginIpRequest()

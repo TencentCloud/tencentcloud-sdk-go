@@ -1193,6 +1193,31 @@ func (c *Client) DescribePrometheusAgents(request *DescribePrometheusAgentsReque
     return
 }
 
+func NewDescribePrometheusAlertHistoryRequest() (request *DescribePrometheusAlertHistoryRequest) {
+    request = &DescribePrometheusAlertHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAlertHistory")
+    return
+}
+
+func NewDescribePrometheusAlertHistoryResponse() (response *DescribePrometheusAlertHistoryResponse) {
+    response = &DescribePrometheusAlertHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取告警历史
+func (c *Client) DescribePrometheusAlertHistory(request *DescribePrometheusAlertHistoryRequest) (response *DescribePrometheusAlertHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAlertHistoryRequest()
+    }
+    response = NewDescribePrometheusAlertHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusAlertRuleRequest() (request *DescribePrometheusAlertRuleRequest) {
     request = &DescribePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

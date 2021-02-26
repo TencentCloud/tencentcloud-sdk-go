@@ -1,135 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 批量计算(batch) 版本：2017-03-12
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 36 次发布
+### 第 56 次发布
 
-发布时间：2021-02-24 08:01:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DataDisk](https://cloud.tencent.com/document/api/599/15912#DataDisk)
-
-	* 新增成员：CdcId
-
-* [SystemDisk](https://cloud.tencent.com/document/api/599/15912#SystemDisk)
-
-	* 新增成员：CdcId
-
-
-
-
-## 金融联络机器人(cr) 版本：2018-03-21
-
-### 第 17 次发布
-
-发布时间：2021-02-24 08:03:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryBlackListData](https://cloud.tencent.com/document/api/656/53039)
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 57 次发布
-
-发布时间：2021-02-24 08:03:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DataDisk](https://cloud.tencent.com/document/api/213/15753#DataDisk)
-
-	* 新增成员：CdcId
-
-* [SystemDisk](https://cloud.tencent.com/document/api/213/15753#SystemDisk)
-
-	* 新增成员：CdcId
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 5 次发布
-
-发布时间：2021-02-25 08:09:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-### 第 21 次发布
-
-发布时间：2021-02-24 20:40:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeStream](https://cloud.tencent.com/document/api/1131/53079)
-
-新增数据结构：
-
-* [Data](https://cloud.tencent.com/document/api/1131/42400#Data)
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 29 次发布
-
-发布时间：2021-02-24 08:06:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceIntegerParam](https://cloud.tencent.com/document/api/239/20022#InstanceIntegerParam)
-
-	* 新增成员：Unit
-
-* [InstanceSlowlogDetail](https://cloud.tencent.com/document/api/239/20022#InstanceSlowlogDetail)
-
-	* 新增成员：Node
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 37 次发布
-
-发布时间：2021-02-24 08:06:59
+发布时间：2021-02-26 08:02:40
 
 本次发布包含了以下内容：
 
@@ -137,41 +12,34 @@
 
 修改接口：
 
-* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
 
-	* 新增出参：OutDate
+	* 新增入参：InstanceNodes
 
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
 
+	* 新增入参：InstanceNodes, Cpu
 
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+	* 新增入参：InstanceNodes, Cpu
 
-### 第 21 次发布
+* [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566)
 
-发布时间：2021-02-25 08:09:08
+	* 新增入参：InstanceNodes, Cpu
 
-本次发布包含了以下内容：
+* [InquiryPriceUpgradeInstances](https://cloud.tencent.com/document/api/236/32665)
 
-改善已有的文档。
-
-新增接口：
-
-* [CreateInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53131)
-* [DeleteInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53130)
-* [DescribeInternalEndpointDnsStatus](https://cloud.tencent.com/document/api/1141/53129)
-
-新增数据结构：
-
-* [VpcAndDomainInfo](https://cloud.tencent.com/document/api/1141/41603#VpcAndDomainInfo)
-* [VpcPrivateDomainStatus](https://cloud.tencent.com/document/api/1141/41603#VpcPrivateDomainStatus)
+	* 新增入参：InstanceNodes
 
 
 
-## 互动白板(tiw) 版本：2019-09-19
 
-### 第 15 次发布
+## 负载均衡(clb) 版本：2018-03-17
 
-发布时间：2021-02-25 08:08:57
+### 第 44 次发布
+
+发布时间：2021-02-26 08:03:27
 
 本次发布包含了以下内容：
 
@@ -179,37 +47,55 @@
 
 修改接口：
 
-* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
 
-	* 新增入参：PrivateMapKey
+	* 新增入参：EndPort
 
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 21 次发布
+
+发布时间：2021-02-26 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBackupMigration](https://cloud.tencent.com/document/api/238/53193)
+* [CreateIncrementalMigration](https://cloud.tencent.com/document/api/238/53192)
+* [DeleteBackupMigration](https://cloud.tencent.com/document/api/238/53191)
+* [DeleteIncrementalMigration](https://cloud.tencent.com/document/api/238/53190)
+* [DescribeBackupCommand](https://cloud.tencent.com/document/api/238/53189)
+* [DescribeBackupMigration](https://cloud.tencent.com/document/api/238/53188)
+* [DescribeBackupUploadSize](https://cloud.tencent.com/document/api/238/53187)
+* [DescribeIncrementalMigration](https://cloud.tencent.com/document/api/238/53186)
+* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
+* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
+* [ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)
+* [ModifyIncrementalMigration](https://cloud.tencent.com/document/api/238/53182)
+* [StartBackupMigration](https://cloud.tencent.com/document/api/238/53181)
+* [StartIncrementalMigration](https://cloud.tencent.com/document/api/238/53180)
+
+新增数据结构：
+
+* [CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile)
+* [Migration](https://cloud.tencent.com/document/api/238/19976#Migration)
+* [MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction)
+* [MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail)
+* [MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 42 次发布
+### 第 43 次发布
 
-发布时间：2021-02-25 08:07:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
-
-	* 新增成员：EnableCustomizedPodCIDR, BasePodNumber
-
-
-
-
-## 客流数字化平台(ump) 版本：2020-09-18
-
-### 第 3 次发布
-
-发布时间：2021-02-25 08:00:15
+发布时间：2021-02-26 08:07:42
 
 本次发布包含了以下内容：
 
@@ -217,57 +103,11 @@
 
 新增接口：
 
-* [CreateCameraState](https://cloud.tencent.com/document/api/1320/53127)
-* [ModifyMultiBizConfig](https://cloud.tencent.com/document/api/1320/53126)
-* [ReportServiceRegister](https://cloud.tencent.com/document/api/1320/53125)
-
-修改接口：
-
-* [CreateMultiBizAlert](https://cloud.tencent.com/document/api/1320/50569)
-
-	* 新增入参：Warnings
-
+* [DescribePrometheusAlertHistory](https://cloud.tencent.com/document/api/457/53194)
 
 新增数据结构：
 
-* [CameraState](https://cloud.tencent.com/document/api/1320/50571#CameraState)
-* [MultiBizWarning](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarning)
-* [MultiBizWarningInfo](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarningInfo)
-* [ServiceRegisterInfo](https://cloud.tencent.com/document/api/1320/50571#ServiceRegisterInfo)
-
-修改数据结构：
-
-* [CameraZones](https://cloud.tencent.com/document/api/1320/50571#CameraZones)
-
-	* 新增成员：RTSP
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 72 次发布
-
-发布时间：2021-02-24 08:08:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
-
-	* 新增成员：MetaData
-
-* [EditMediaTask](https://cloud.tencent.com/document/api/266/31773#EditMediaTask)
-
-	* 新增成员：MetaData
-
-* [PullUploadTask](https://cloud.tencent.com/document/api/266/31773#PullUploadTask)
-
-	* 新增成员：MetaData
-
+* [PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem)
 
 
 
@@ -6423,6 +6263,37 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 56 次发布
+
+发布时间：2021-02-26 08:02:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+
+	* 新增入参：InstanceNodes
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：InstanceNodes, Cpu
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：InstanceNodes, Cpu
+
+* [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566)
+
+	* 新增入参：InstanceNodes, Cpu
+
+* [InquiryPriceUpgradeInstances](https://cloud.tencent.com/document/api/236/32665)
+
+	* 新增入参：InstanceNodes
+
+
 ### 第 55 次发布
 
 发布时间：2021-01-28 08:02:49
@@ -9799,6 +9670,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 44 次发布
+
+发布时间：2021-02-26 08:03:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：EndPort
+
+
 ### 第 43 次发布
 
 发布时间：2021-01-21 08:03:10
@@ -12745,7 +12631,7 @@
 
 新增接口：
 
-* [[QueryBlackListData](https://cloud.tencent.com/document/api/656/53039)](https://cloud.tencent.com/document/api/#/#)
+* [QueryBlackListData](https://cloud.tencent.com/document/api/656/53039)
 
 ### 第 16 次发布
 
@@ -14239,7 +14125,7 @@
 
 新增接口：
 
-* [[DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)
 
 ### 第 4 次发布
 
@@ -23825,11 +23711,11 @@
 
 新增接口：
 
-* [[DescribeStream](https://cloud.tencent.com/document/api/1131/53079)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeStream](https://cloud.tencent.com/document/api/1131/53079)
 
 新增数据结构：
 
-* [[Data](https://cloud.tencent.com/document/api/1131/42400#Data)](https://cloud.tencent.com/document/api/1131/42400#[Data](https://cloud.tencent.com/document/api/1131/42400#Data))
+* [Data](https://cloud.tencent.com/document/api/1131/42400#Data)
 
 ### 第 20 次发布
 
@@ -32689,6 +32575,39 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 21 次发布
+
+发布时间：2021-02-26 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBackupMigration](https://cloud.tencent.com/document/api/238/53193)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateIncrementalMigration](https://cloud.tencent.com/document/api/238/53192)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteBackupMigration](https://cloud.tencent.com/document/api/238/53191)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteIncrementalMigration](https://cloud.tencent.com/document/api/238/53190)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupCommand](https://cloud.tencent.com/document/api/238/53189)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupMigration](https://cloud.tencent.com/document/api/238/53188)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupUploadSize](https://cloud.tencent.com/document/api/238/53187)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIncrementalMigration](https://cloud.tencent.com/document/api/238/53186)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyIncrementalMigration](https://cloud.tencent.com/document/api/238/53182)](https://cloud.tencent.com/document/api/#/#)
+* [[StartBackupMigration](https://cloud.tencent.com/document/api/238/53181)](https://cloud.tencent.com/document/api/#/#)
+* [[StartIncrementalMigration](https://cloud.tencent.com/document/api/238/53180)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile)](https://cloud.tencent.com/document/api/238/19976#[CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile))
+* [[Migration](https://cloud.tencent.com/document/api/238/19976#Migration)](https://cloud.tencent.com/document/api/238/19976#[Migration](https://cloud.tencent.com/document/api/238/19976#Migration))
+* [[MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction)](https://cloud.tencent.com/document/api/238/19976#[MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction))
+* [[MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail)](https://cloud.tencent.com/document/api/238/19976#[MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail))
+* [[MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep)](https://cloud.tencent.com/document/api/238/19976#[MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep))
+
 ### 第 20 次发布
 
 发布时间：2021-01-28 08:06:47
@@ -35807,14 +35726,14 @@
 
 新增接口：
 
-* [[CreateInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53131)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53130)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInternalEndpointDnsStatus](https://cloud.tencent.com/document/api/1141/53129)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53131)
+* [DeleteInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53130)
+* [DescribeInternalEndpointDnsStatus](https://cloud.tencent.com/document/api/1141/53129)
 
 新增数据结构：
 
-* [[VpcAndDomainInfo](https://cloud.tencent.com/document/api/1141/41603#VpcAndDomainInfo)](https://cloud.tencent.com/document/api/1141/41603#[VpcAndDomainInfo](https://cloud.tencent.com/document/api/1141/41603#VpcAndDomainInfo))
-* [[VpcPrivateDomainStatus](https://cloud.tencent.com/document/api/1141/41603#VpcPrivateDomainStatus)](https://cloud.tencent.com/document/api/1141/41603#[VpcPrivateDomainStatus](https://cloud.tencent.com/document/api/1141/41603#VpcPrivateDomainStatus))
+* [VpcAndDomainInfo](https://cloud.tencent.com/document/api/1141/41603#VpcAndDomainInfo)
+* [VpcPrivateDomainStatus](https://cloud.tencent.com/document/api/1141/41603#VpcPrivateDomainStatus)
 
 ### 第 20 次发布
 
@@ -37767,6 +37686,22 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 43 次发布
+
+发布时间：2021-02-26 08:07:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePrometheusAlertHistory](https://cloud.tencent.com/document/api/457/53194)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem)](https://cloud.tencent.com/document/api/457/31866#[PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem))
 
 ### 第 42 次发布
 
@@ -40617,9 +40552,9 @@
 
 新增接口：
 
-* [[CreateCameraState](https://cloud.tencent.com/document/api/1320/53127)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMultiBizConfig](https://cloud.tencent.com/document/api/1320/53126)](https://cloud.tencent.com/document/api/#/#)
-* [[ReportServiceRegister](https://cloud.tencent.com/document/api/1320/53125)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCameraState](https://cloud.tencent.com/document/api/1320/53127)
+* [ModifyMultiBizConfig](https://cloud.tencent.com/document/api/1320/53126)
+* [ReportServiceRegister](https://cloud.tencent.com/document/api/1320/53125)
 
 修改接口：
 
@@ -40630,10 +40565,10 @@
 
 新增数据结构：
 
-* [[CameraState](https://cloud.tencent.com/document/api/1320/50571#CameraState)](https://cloud.tencent.com/document/api/1320/50571#[CameraState](https://cloud.tencent.com/document/api/1320/50571#CameraState))
-* [[MultiBizWarning](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarning)](https://cloud.tencent.com/document/api/1320/50571#[MultiBizWarning](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarning))
-* [[MultiBizWarningInfo](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarningInfo)](https://cloud.tencent.com/document/api/1320/50571#[MultiBizWarningInfo](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarningInfo))
-* [[ServiceRegisterInfo](https://cloud.tencent.com/document/api/1320/50571#ServiceRegisterInfo)](https://cloud.tencent.com/document/api/1320/50571#[ServiceRegisterInfo](https://cloud.tencent.com/document/api/1320/50571#ServiceRegisterInfo))
+* [CameraState](https://cloud.tencent.com/document/api/1320/50571#CameraState)
+* [MultiBizWarning](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarning)
+* [MultiBizWarningInfo](https://cloud.tencent.com/document/api/1320/50571#MultiBizWarningInfo)
+* [ServiceRegisterInfo](https://cloud.tencent.com/document/api/1320/50571#ServiceRegisterInfo)
 
 修改数据结构：
 

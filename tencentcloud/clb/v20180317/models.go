@@ -706,6 +706,9 @@ type CreateListenerRequest struct {
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
+
+	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
+	EndPort *uint64 `json:"EndPort,omitempty" name:"EndPort"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {

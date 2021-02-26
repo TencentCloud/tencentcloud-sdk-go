@@ -294,6 +294,15 @@ func (r *CompleteMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CosUploadBackupFile struct {
+
+	// 备份名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 备份大小
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+}
+
 type CreateAccountRequest struct {
 	*tchttp.BaseRequest
 
@@ -331,6 +340,55 @@ func (r *CreateAccountResponse) ToJsonString() string {
 }
 
 func (r *CreateAccountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 迁移任务恢复类型，FULL-全量备份恢复，FULL_LOG-全量备份+事务日志恢复，FULL_DIFF-全量备份+差异备份恢复
+	RecoveryType *string `json:"RecoveryType,omitempty" name:"RecoveryType"`
+
+	// 备份上传类型，COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，需要用户上传。
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 任务名称
+	MigrationName *string `json:"MigrationName,omitempty" name:"MigrationName"`
+
+	// UploadType是COS_URL时这里填URL，COS_UPLOAD这里填备份文件的名字。只支持1个备份文件，但1个备份文件内可包含多个库
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+}
+
+func (r *CreateBackupMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBackupMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份导入任务ID
+		BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBackupMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBackupMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -608,6 +666,52 @@ func (r *CreateDBResponse) ToJsonString() string {
 }
 
 func (r *CreateDBResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateIncrementalMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量备份文件，全量备份任务UploadType是COS_URL时这里填URL，是COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+
+	// 是否需要恢复，NO-不需要，YES-需要，默认不需要
+	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
+}
+
+func (r *CreateIncrementalMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateIncrementalMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateIncrementalMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增量备份导入任务ID
+		IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateIncrementalMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateIncrementalMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1088,6 +1192,43 @@ func (r *DeleteAccountResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteBackupMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 目标实例ID，由DescribeBackupMigration接口返回
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由DescribeBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+}
+
+func (r *DeleteBackupMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBackupMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBackupMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteBackupMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBackupMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1159,6 +1300,46 @@ func (r *DeleteDBResponse) ToJsonString() string {
 }
 
 func (r *DeleteDBResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIncrementalMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量备份导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+}
+
+func (r *DeleteIncrementalMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteIncrementalMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIncrementalMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteIncrementalMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteIncrementalMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1352,6 +1533,165 @@ func (r *DescribeBackupByFlowIdResponse) ToJsonString() string {
 }
 
 func (r *DescribeBackupByFlowIdResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupCommandRequest struct {
+	*tchttp.BaseRequest
+
+	// 备份文件类型，FULL-全量备份，FULL_LOG-全量备份需要日志增量，FULL_DIFF-全量备份需要差异增量，LOG-日志备份，DIFF-差异备份
+	BackupFileType *string `json:"BackupFileType,omitempty" name:"BackupFileType"`
+
+	// 数据库名称
+	DataBaseName *string `json:"DataBaseName,omitempty" name:"DataBaseName"`
+
+	// 是否需要恢复，NO-不需要，YES-需要
+	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
+
+	// 备份文件保存的路径；如果不填则默认在D:\\
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+}
+
+func (r *DescribeBackupCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupCommandRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建备份命令
+		Command *string `json:"Command,omitempty" name:"Command"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupCommandResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 导入任务名称
+	MigrationName *string `json:"MigrationName,omitempty" name:"MigrationName"`
+
+	// 备份文件名称
+	BackupFileName *string `json:"BackupFileName,omitempty" name:"BackupFileName"`
+
+	// 导入任务状态集合
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet" list`
+
+	// 导入任务恢复类型，FULL,FULL_LOG,FULL_DIFF
+	RecoveryType *string `json:"RecoveryType,omitempty" name:"RecoveryType"`
+
+	// COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 分页，页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页，页数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，name,createTime,startTime,endTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，desc,asc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeBackupMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 迁移任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 迁移任务集合
+		BackupMigrationSet []*Migration `json:"BackupMigrationSet,omitempty" name:"BackupMigrationSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupUploadSizeRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+}
+
+func (r *DescribeBackupUploadSizeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupUploadSizeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupUploadSizeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已上传的备份的信息
+		CosUploadBackupFileSet []*CosUploadBackupFile `json:"CosUploadBackupFileSet,omitempty" name:"CosUploadBackupFileSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupUploadSizeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBackupUploadSizeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1670,6 +2010,70 @@ func (r *DescribeFlowStatusResponse) ToJsonString() string {
 }
 
 func (r *DescribeFlowStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIncrementalMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份文件名称
+	BackupFileName *string `json:"BackupFileName,omitempty" name:"BackupFileName"`
+
+	// 导入任务状态集合
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet" list`
+
+	// 分页，页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页，页数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，name,createTime,startTime,endTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，desc,asc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 增量备份导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+}
+
+func (r *DescribeIncrementalMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIncrementalMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIncrementalMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增量导入任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 增量导入任务集合
+		IncrementalMigrationSet []*Migration `json:"IncrementalMigrationSet,omitempty" name:"IncrementalMigrationSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIncrementalMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeIncrementalMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2392,6 +2796,131 @@ func (r *DescribeSlowlogsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUploadBackupInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+}
+
+func (r *DescribeUploadBackupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadBackupInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadBackupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储桶名称
+		BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+		// 存储桶地域信息
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 存储路径
+		Path *string `json:"Path,omitempty" name:"Path"`
+
+		// 临时密钥ID
+		TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
+
+		// 临时密钥Key
+		TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+
+		// 临时密钥Token
+		XCosSecurityToken *string `json:"XCosSecurityToken,omitempty" name:"XCosSecurityToken"`
+
+		// 临时密钥开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 临时密钥到期时间
+		ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUploadBackupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadBackupInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadIncrementalInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+}
+
+func (r *DescribeUploadIncrementalInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadIncrementalInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUploadIncrementalInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 存储桶名称
+		BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+		// 存储桶地域信息
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 存储路径
+		Path *string `json:"Path,omitempty" name:"Path"`
+
+		// 临时密钥ID
+		TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
+
+		// 临时密钥Key
+		TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+
+		// 临时密钥Token
+		XCosSecurityToken *string `json:"XCosSecurityToken,omitempty" name:"XCosSecurityToken"`
+
+		// 临时密钥开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 临时密钥到期时间
+		ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUploadIncrementalInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUploadIncrementalInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2748,6 +3277,99 @@ type MigrateTask struct {
 	MigrateDetail *MigrateDetail `json:"MigrateDetail,omitempty" name:"MigrateDetail"`
 }
 
+type Migration struct {
+
+	// 备份导入任务ID 或 增量导入任务ID
+	MigrationId *string `json:"MigrationId,omitempty" name:"MigrationId"`
+
+	// 备份导入名称，增量导入任务该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrationName *string `json:"MigrationName,omitempty" name:"MigrationName"`
+
+	// 应用ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 迁移目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 迁移任务恢复类型
+	RecoveryType *string `json:"RecoveryType,omitempty" name:"RecoveryType"`
+
+	// 备份用户上传类型，COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 备份文件列表，UploadType确定，COS_URL则保存URL，COS_UPLOAD则保存备份名称
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+
+	// 迁移任务状态，
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 迁移任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 迁移任务开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 迁移任务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 说明信息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 迁移细节
+	Detail *MigrationDetail `json:"Detail,omitempty" name:"Detail"`
+
+	// 当前状态允许的操作
+	Action *MigrationAction `json:"Action,omitempty" name:"Action"`
+
+	// 是否是最终恢复，全量导入任务该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
+}
+
+type MigrationAction struct {
+
+	// 支持的所有操作，值包括：view(查看任务) ，modify(修改任务)， start(启动任务)，incremental(创建增量任务)，delete(删除任务)，upload(获取上传权限)。
+	AllAction []*string `json:"AllAction,omitempty" name:"AllAction" list`
+
+	// 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
+	AllowedAction []*string `json:"AllowedAction,omitempty" name:"AllowedAction" list`
+}
+
+type MigrationDetail struct {
+
+	// 总步骤数
+	StepAll *int64 `json:"StepAll,omitempty" name:"StepAll"`
+
+	// 当前步骤
+	StepNow *int64 `json:"StepNow,omitempty" name:"StepNow"`
+
+	// 总进度,如："30"表示30%
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 步骤信息，null表示还未开始迁移
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepInfo []*MigrationStep `json:"StepInfo,omitempty" name:"StepInfo" list`
+}
+
+type MigrationStep struct {
+
+	// 步骤序列
+	StepNo *int64 `json:"StepNo,omitempty" name:"StepNo"`
+
+	// 步骤展现名称
+	StepName *string `json:"StepName,omitempty" name:"StepName"`
+
+	// 英文ID标识
+	StepId *string `json:"StepId,omitempty" name:"StepId"`
+
+	// 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type ModifyAccountPrivilegeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2822,6 +3444,58 @@ func (r *ModifyAccountRemarkResponse) ToJsonString() string {
 }
 
 func (r *ModifyAccountRemarkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBackupMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 任务名称
+	MigrationName *string `json:"MigrationName,omitempty" name:"MigrationName"`
+
+	// 迁移任务恢复类型，FULL,FULL_LOG,FULL_DIFF
+	RecoveryType *string `json:"RecoveryType,omitempty" name:"RecoveryType"`
+
+	// COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+}
+
+func (r *ModifyBackupMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBackupMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBackupMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份导入任务ID
+		BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBackupMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBackupMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3188,6 +3862,55 @@ func (r *ModifyDBRemarkResponse) ToJsonString() string {
 }
 
 func (r *ModifyDBRemarkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIncrementalMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+
+	// 是否需要恢复，NO-不需要，YES-需要
+	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
+
+	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+}
+
+func (r *ModifyIncrementalMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIncrementalMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyIncrementalMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增量备份导入任务ID
+		IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyIncrementalMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyIncrementalMigrationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4154,6 +4877,89 @@ type SpecInfo struct {
 
 	// 跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
 	MultiZonesStatus *string `json:"MultiZonesStatus,omitempty" name:"MultiZonesStatus"`
+}
+
+type StartBackupMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+}
+
+func (r *StartBackupMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartBackupMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartBackupMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID
+		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartBackupMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartBackupMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartIncrementalMigrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 导入目标实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份导入任务ID，由CreateBackupMigration接口返回
+	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
+
+	// 增量备份导入任务ID
+	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
+}
+
+func (r *StartIncrementalMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartIncrementalMigrationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StartIncrementalMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID
+		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartIncrementalMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StartIncrementalMigrationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type StartMigrationCheckRequest struct {

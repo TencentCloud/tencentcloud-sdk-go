@@ -2468,6 +2468,64 @@ func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrometheusAlertHistoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 告警名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// label集合
+	Labels *string `json:"Labels,omitempty" name:"Labels"`
+
+	// 分片
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分片
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrometheusAlertHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAlertHistoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusAlertHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 告警历史
+		Items []*PrometheusAlertHistoryItem `json:"Items,omitempty" name:"Items" list`
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusAlertHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrometheusAlertHistoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePrometheusAlertRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -3647,6 +3705,18 @@ type PrometheusAgentOverview struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
+type PrometheusAlertHistoryItem struct {
+
+	// 告警名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 告警开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 告警内容
+	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type PrometheusAlertRule struct {
