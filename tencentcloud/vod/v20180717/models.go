@@ -9857,37 +9857,6 @@ type SampleSnapshotTemplate struct {
 type SearchMediaRequest struct {
 	*tchttp.BaseRequest
 
-	// 标签集合，匹配集合中任意元素。
-	// <li>单个标签长度限制：8个字符。</li>
-	// <li>数组长度限制：10。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
-
-	// 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
-	// <li>数组长度限制：10。</li>
-	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds" list`
-
-	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
-	// <li>数组长度限制：10。</li>
-	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds" list`
-
-	// 直播录制文件的唯一标识。匹配集合中的任意元素。
-	// <li>数组长度限制：10。</li>
-	Vids []*string `json:"Vids,omitempty" name:"Vids" list`
-
-	// 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
-	// <li>数组长度限制：10。</li>
-	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes" list`
-
-	// 文件类型。匹配集合中的任意元素：
-	// <li>Video: 视频文件</li>
-	// <li>Audio: 音频文件</li>
-	// <li>Image: 图片文件</li>
-	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
-
-	// 匹配创建时间在此时间段内的文件。
-	// <li>包含所指定的头尾时间点。</li>
-	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
-
 	// 文件 ID 集合，匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	// <li>单个 ID 长度限制：40个字符。</li>
@@ -9903,10 +9872,41 @@ type SearchMediaRequest struct {
 	// <li>数组长度限制：10。</li>
 	NamePrefixes []*string `json:"NamePrefixes,omitempty" name:"NamePrefixes" list`
 
-	// 文件描述集合，匹配集合中的任意元素。
+	// 文件描述集合，模糊匹配媒体文件的描述，匹配度越高，排序越优先。
 	// <li>单个描述长度限制：100个字符。</li>
 	// <li>数组长度限制：10。</li>
 	Descriptions []*string `json:"Descriptions,omitempty" name:"Descriptions" list`
+
+	// 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
+	// <li>数组长度限制：10。</li>
+	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds" list`
+
+	// 标签集合，匹配集合中任意元素。
+	// <li>单个标签长度限制：8个字符。</li>
+	// <li>数组长度限制：10。</li>
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 文件类型。匹配集合中的任意元素：
+	// <li>Video: 视频文件</li>
+	// <li>Audio: 音频文件</li>
+	// <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
+
+	// 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+	// <li>数组长度限制：10。</li>
+	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes" list`
+
+	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
+	// <li>数组长度限制：10。</li>
+	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds" list`
+
+	// 直播录制文件的唯一标识。匹配集合中的任意元素。
+	// <li>数组长度限制：10。</li>
+	Vids []*string `json:"Vids,omitempty" name:"Vids" list`
+
+	// 匹配创建时间在此时间段内的文件。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 排序方式。
 	// <li>Sort.Field 可选 CreateTime 。</li>
@@ -9937,6 +9937,14 @@ type SearchMediaRequest struct {
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
+	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
+	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// （不推荐：应使用 SourceTypes 替代）
+	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
 	// （不推荐：应使用 StreamIds 替代）
 	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
@@ -9944,10 +9952,6 @@ type SearchMediaRequest struct {
 	// （不推荐：应使用 Vids 替代）
 	// 直播录制文件的唯一标识。
 	Vid *string `json:"Vid,omitempty" name:"Vid"`
-
-	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
-	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
-	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// （不推荐：应使用 CreateTime 替代）
 	// 创建时间的开始时间。
@@ -9962,10 +9966,6 @@ type SearchMediaRequest struct {
 	// <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// （不推荐：应使用 SourceTypes 替代）
-	// 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 func (r *SearchMediaRequest) ToJsonString() string {
@@ -9986,7 +9986,6 @@ type SearchMediaResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 媒体文件信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

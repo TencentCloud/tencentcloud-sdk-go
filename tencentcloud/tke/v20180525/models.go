@@ -539,6 +539,10 @@ type ClusterExtraArgs struct {
 	// kube-scheduler自定义参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KubeScheduler []*string `json:"KubeScheduler,omitempty" name:"KubeScheduler" list`
+
+	// etcd自定义参数，只支持独立集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Etcd []*string `json:"Etcd,omitempty" name:"Etcd" list`
 }
 
 type ClusterInternalLB struct {

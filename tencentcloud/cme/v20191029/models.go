@@ -313,10 +313,8 @@ type CreateProjectRequest struct {
 	// 项目归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
-	// 画布宽高比，取值有：
-	// <li>16:9；</li>
-	// <li>9:16。</li>
-	// 该字段即将废弃，当项目类型为 VIDEO_EDIT 时，请在 VideoEditProjectInput 信息中填写该值；当项目类型为 VIDEO_SEGMENTATION 时，请在VideoSegmentationProjectInput 中填写该值。其他项目类型可不填。
+	// 画布宽高比。
+	// 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
 	// 项目描述信息。
@@ -2683,6 +2681,13 @@ type VODExportInfo struct {
 
 type VideoEditProjectInput struct {
 
+	// 画布宽高比，取值有：
+	// <li>16:9；</li>
+	// <li>9:16；</li>
+	// <li>2:1。</li>
+	// 默认值 16:9 。
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
+
 	// 视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。
 	VideoEditTemplateId *string `json:"VideoEditTemplateId,omitempty" name:"VideoEditTemplateId"`
 
@@ -2736,6 +2741,13 @@ type VideoMaterial struct {
 }
 
 type VideoSegmentationProjectInput struct {
+
+	// 画布宽高比，取值有：
+	// <li>16:9；</li>
+	// <li>9:16；</li>
+	// <li>2:1。</li>
+	// 默认值 16:9 。
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
 	// 视频拆条处理模型，不填则默认为手工分割视频。取值 ：
 	// <li>AI.GameHighlights.PUBG：和平精英集锦 ;</li>

@@ -343,11 +343,13 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-		// 图片结果
+		// 视频中截帧审核的结果。
+	// 数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
 
-		// 音频结果
+		// 视频中音频审核的结果。
+	// 数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
 

@@ -2,112 +2,104 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 56 次发布
+### 第 57 次发布
 
-发布时间：2021-02-26 08:02:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
-
-	* 新增入参：InstanceNodes
-
-* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
-
-	* 新增入参：InstanceNodes, Cpu
-
-* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
-
-	* 新增入参：InstanceNodes, Cpu
-
-* [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566)
-
-	* 新增入参：InstanceNodes, Cpu
-
-* [InquiryPriceUpgradeInstances](https://cloud.tencent.com/document/api/236/32665)
-
-	* 新增入参：InstanceNodes
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 44 次发布
-
-发布时间：2021-02-26 08:03:27
+发布时间：2021-03-01 08:02:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
 
-	* 新增入参：EndPort
-
-
+	* 新增成员：InstanceNodes
 
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+
+## 腾讯云剪(cme) 版本：2019-10-29
 
 ### 第 21 次发布
 
-发布时间：2021-02-26 08:06:55
+发布时间：2021-03-01 08:01:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateBackupMigration](https://cloud.tencent.com/document/api/238/53193)
-* [CreateIncrementalMigration](https://cloud.tencent.com/document/api/238/53192)
-* [DeleteBackupMigration](https://cloud.tencent.com/document/api/238/53191)
-* [DeleteIncrementalMigration](https://cloud.tencent.com/document/api/238/53190)
-* [DescribeBackupCommand](https://cloud.tencent.com/document/api/238/53189)
-* [DescribeBackupMigration](https://cloud.tencent.com/document/api/238/53188)
-* [DescribeBackupUploadSize](https://cloud.tencent.com/document/api/238/53187)
-* [DescribeIncrementalMigration](https://cloud.tencent.com/document/api/238/53186)
-* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
-* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
-* [ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)
-* [ModifyIncrementalMigration](https://cloud.tencent.com/document/api/238/53182)
-* [StartBackupMigration](https://cloud.tencent.com/document/api/238/53181)
-* [StartIncrementalMigration](https://cloud.tencent.com/document/api/238/53180)
+* [VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)
+
+	* 新增成员：AspectRatio
+
+* [VideoSegmentationProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoSegmentationProjectInput)
+
+	* 新增成员：AspectRatio
+
+
+
+
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 6 次发布
+
+发布时间：2021-03-01 08:00:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile)
-* [Migration](https://cloud.tencent.com/document/api/238/19976#Migration)
-* [MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction)
-* [MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail)
-* [MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep)
+* [HiddenMarkInfo](https://cloud.tencent.com/document/api/1186/42824#HiddenMarkInfo)
+
+修改数据结构：
+
+* [VideoInfo](https://cloud.tencent.com/document/api/1186/42824#VideoInfo)
+
+	* 新增成员：HiddenMarkInfo
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 9 次发布
+
+发布时间：2021-03-01 08:00:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：CreatedTime, BlueprintName, SupportAutomationTools
+
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 43 次发布
+### 第 44 次发布
 
-发布时间：2021-02-26 08:07:42
+发布时间：2021-03-01 08:07:46
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribePrometheusAlertHistory](https://cloud.tencent.com/document/api/457/53194)
+* [ClusterExtraArgs](https://cloud.tencent.com/document/api/457/31866#ClusterExtraArgs)
 
-新增数据结构：
+	* 新增成员：Etcd
 
-* [PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem)
 
 
 
@@ -6263,6 +6255,21 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 57 次发布
+
+发布时间：2021-03-01 08:02:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：InstanceNodes
+
+
 ### 第 56 次发布
 
 发布时间：2021-02-26 08:02:40
@@ -10865,6 +10872,25 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 21 次发布
+
+发布时间：2021-03-01 08:01:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoEditProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectInput)
+
+	* 新增成员：AspectRatio
+
+* [VideoSegmentationProjectInput](https://cloud.tencent.com/document/api/1156/40360#VideoSegmentationProjectInput)
+
+	* 新增成员：AspectRatio
+
 
 ### 第 20 次发布
 
@@ -22079,6 +22105,25 @@
 
 ## 智能编辑(ie) 版本：2020-03-04
 
+### 第 6 次发布
+
+发布时间：2021-03-01 08:00:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[HiddenMarkInfo](https://cloud.tencent.com/document/api/1186/42824#HiddenMarkInfo)](https://cloud.tencent.com/document/api/1186/42824#[HiddenMarkInfo](https://cloud.tencent.com/document/api/1186/42824#HiddenMarkInfo))
+
+修改数据结构：
+
+* [VideoInfo](https://cloud.tencent.com/document/api/1186/42824#VideoInfo)
+
+	* 新增成员：HiddenMarkInfo
+
+
 ### 第 5 次发布
 
 发布时间：2021-01-07 08:00:44
@@ -24517,6 +24562,21 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 9 次发布
+
+发布时间：2021-03-01 08:00:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：CreatedTime, BlueprintName, SupportAutomationTools
+
 
 ### 第 8 次发布
 
@@ -32585,28 +32645,28 @@
 
 新增接口：
 
-* [[CreateBackupMigration](https://cloud.tencent.com/document/api/238/53193)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateIncrementalMigration](https://cloud.tencent.com/document/api/238/53192)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBackupMigration](https://cloud.tencent.com/document/api/238/53191)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteIncrementalMigration](https://cloud.tencent.com/document/api/238/53190)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBackupCommand](https://cloud.tencent.com/document/api/238/53189)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBackupMigration](https://cloud.tencent.com/document/api/238/53188)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBackupUploadSize](https://cloud.tencent.com/document/api/238/53187)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIncrementalMigration](https://cloud.tencent.com/document/api/238/53186)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIncrementalMigration](https://cloud.tencent.com/document/api/238/53182)](https://cloud.tencent.com/document/api/#/#)
-* [[StartBackupMigration](https://cloud.tencent.com/document/api/238/53181)](https://cloud.tencent.com/document/api/#/#)
-* [[StartIncrementalMigration](https://cloud.tencent.com/document/api/238/53180)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBackupMigration](https://cloud.tencent.com/document/api/238/53193)
+* [CreateIncrementalMigration](https://cloud.tencent.com/document/api/238/53192)
+* [DeleteBackupMigration](https://cloud.tencent.com/document/api/238/53191)
+* [DeleteIncrementalMigration](https://cloud.tencent.com/document/api/238/53190)
+* [DescribeBackupCommand](https://cloud.tencent.com/document/api/238/53189)
+* [DescribeBackupMigration](https://cloud.tencent.com/document/api/238/53188)
+* [DescribeBackupUploadSize](https://cloud.tencent.com/document/api/238/53187)
+* [DescribeIncrementalMigration](https://cloud.tencent.com/document/api/238/53186)
+* [DescribeUploadBackupInfo](https://cloud.tencent.com/document/api/238/53185)
+* [DescribeUploadIncrementalInfo](https://cloud.tencent.com/document/api/238/53184)
+* [ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)
+* [ModifyIncrementalMigration](https://cloud.tencent.com/document/api/238/53182)
+* [StartBackupMigration](https://cloud.tencent.com/document/api/238/53181)
+* [StartIncrementalMigration](https://cloud.tencent.com/document/api/238/53180)
 
 新增数据结构：
 
-* [[CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile)](https://cloud.tencent.com/document/api/238/19976#[CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile))
-* [[Migration](https://cloud.tencent.com/document/api/238/19976#Migration)](https://cloud.tencent.com/document/api/238/19976#[Migration](https://cloud.tencent.com/document/api/238/19976#Migration))
-* [[MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction)](https://cloud.tencent.com/document/api/238/19976#[MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction))
-* [[MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail)](https://cloud.tencent.com/document/api/238/19976#[MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail))
-* [[MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep)](https://cloud.tencent.com/document/api/238/19976#[MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep))
+* [CosUploadBackupFile](https://cloud.tencent.com/document/api/238/19976#CosUploadBackupFile)
+* [Migration](https://cloud.tencent.com/document/api/238/19976#Migration)
+* [MigrationAction](https://cloud.tencent.com/document/api/238/19976#MigrationAction)
+* [MigrationDetail](https://cloud.tencent.com/document/api/238/19976#MigrationDetail)
+* [MigrationStep](https://cloud.tencent.com/document/api/238/19976#MigrationStep)
 
 ### 第 20 次发布
 
@@ -37687,6 +37747,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 44 次发布
+
+发布时间：2021-03-01 08:07:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterExtraArgs](https://cloud.tencent.com/document/api/457/31866#ClusterExtraArgs)
+
+	* 新增成员：Etcd
+
+
 ### 第 43 次发布
 
 发布时间：2021-02-26 08:07:42
@@ -37697,11 +37772,11 @@
 
 新增接口：
 
-* [[DescribePrometheusAlertHistory](https://cloud.tencent.com/document/api/457/53194)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrometheusAlertHistory](https://cloud.tencent.com/document/api/457/53194)
 
 新增数据结构：
 
-* [[PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem)](https://cloud.tencent.com/document/api/457/31866#[PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem))
+* [PrometheusAlertHistoryItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertHistoryItem)
 
 ### 第 42 次发布
 
@@ -40484,11 +40559,11 @@
 
 新增接口：
 
-* [DescribeAgentShell](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAgentShell](https://cloud.tencent.com/document/api/1311/53236)
 
 新增数据结构：
 
-* [AgentShell](https://cloud.tencent.com/document/api/#/##AgentShell)
+* [AgentShell](https://cloud.tencent.com/document/api/1311/53237#AgentShell)
 
 
 

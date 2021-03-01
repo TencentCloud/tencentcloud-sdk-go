@@ -2611,9 +2611,15 @@ type DescribeReportDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询起始时间：yyyy-MM-dd
+	// 当报表类型为daily，起始时间和结束时间必须为同一天
+	// 当报表类型为weekly，起始时间须为周一，结束时间须为同一周的周日
+	// 当报表类型为monthly，起始时间须为自然月第一天，即1号，结束时间须为该自然月最后一天
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间：yyyy-MM-dd
+	// 当报表类型为daily，起始时间和结束时间必须为同一天
+	// 当报表类型为weekly，起始时间须为周一，结束时间须为同一周的周日
+	// 当报表类型为monthly，起始时间须为自然月第一天，即1号，结束时间须为该自然月最后一天
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 报表类型

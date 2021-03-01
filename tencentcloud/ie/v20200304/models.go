@@ -739,6 +739,21 @@ type FrameTagResult struct {
 	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems" list`
 }
 
+type HiddenMarkInfo struct {
+
+	// 数字水印路径,，如果不从Cos拉取水印，则必填
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 数字水印频率，可选值：[1,256]，默认值为30
+	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+
+	// 数字水印强度，可选值：[32,128]，默认值为64
+	Strength *int64 `json:"Strength,omitempty" name:"Strength"`
+
+	// 数字水印的Cos 信息，从Cos上拉取图片水印时必填。
+	CosInfo *CosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
+}
+
 type HighlightsEditingInfo struct {
 
 	// 是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
@@ -1735,6 +1750,9 @@ type VideoInfo struct {
 
 	// 画质增强参数信息。
 	VideoEnhance *VideoEnhance `json:"VideoEnhance,omitempty" name:"VideoEnhance"`
+
+	// 数字水印参数信息。
+	HiddenMarkInfo *HiddenMarkInfo `json:"HiddenMarkInfo,omitempty" name:"HiddenMarkInfo"`
 }
 
 type VideoInfoResultItem struct {

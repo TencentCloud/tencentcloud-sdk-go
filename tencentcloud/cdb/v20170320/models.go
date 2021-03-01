@@ -4575,6 +4575,10 @@ type InstanceInfo struct {
 	// 可用区 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
 }
 
 type InstanceRebootTime struct {
