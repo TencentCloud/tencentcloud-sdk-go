@@ -308,6 +308,110 @@ func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSkillGroupInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 技能组ID，查询单个技能组时使用
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 查询修改时间大于等于ModifiedTime的技能组时使用
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
+func (r *DescribeSkillGroupInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSkillGroupInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSkillGroupInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 技能组总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 技能组信息列表
+		SkillGroupList []*SkillGroupInfoItem `json:"SkillGroupList,omitempty" name:"SkillGroupList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSkillGroupInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSkillGroupInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStaffInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 坐席账号，查询单个坐席时使用
+	StaffMail *string `json:"StaffMail,omitempty" name:"StaffMail"`
+
+	// 查询修改时间大于等于ModifiedTime的坐席时使用
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
+func (r *DescribeStaffInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStaffInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 坐席用户总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 坐席用户信息列表
+		StaffList []*StaffInfo `json:"StaffList,omitempty" name:"StaffList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStaffInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTelCallInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -601,6 +705,79 @@ type ServeParticipant struct {
 	// 技能组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+}
+
+type SkillGroupInfoItem struct {
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 类型：IM、TEL、ALL（全媒体）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 会话分配策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutePolicy *string `json:"RoutePolicy,omitempty" name:"RoutePolicy"`
+
+	// 会话分配是否优先上次服务坐席
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsingLastSeat *int64 `json:"UsingLastSeat,omitempty" name:"UsingLastSeat"`
+
+	// 单客服最大并发数（电话类型默认1）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+
+	// 最后修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitempty" name:"LastModifyTimestamp"`
+}
+
+type SkillGroupItem struct {
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 类型：IM、TEL、ALL（全媒体）
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type StaffInfo struct {
+
+	// 坐席名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 坐席邮箱
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 坐席电话号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 坐席昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nick *string `json:"Nick,omitempty" name:"Nick"`
+
+	// 坐席工号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
+
+	// 所属技能组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitempty" name:"SkillGroupList" list`
+
+	// 最后修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitempty" name:"LastModifyTimestamp"`
 }
 
 type TelCdrInfo struct {

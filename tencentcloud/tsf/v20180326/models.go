@@ -2225,7 +2225,7 @@ type CreateTaskRequest struct {
 	// 判断任务成功的操作符
 	SuccessOperator *string `json:"SuccessOperator,omitempty" name:"SuccessOperator"`
 
-	// 判断任务成功率的阈值，如99.99
+	// 判断任务成功率的阈值，如100
 	SuccessRatio *string `json:"SuccessRatio,omitempty" name:"SuccessRatio"`
 
 	// 高级设置

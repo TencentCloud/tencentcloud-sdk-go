@@ -193,6 +193,56 @@ func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (res
     return
 }
 
+func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoListRequest) {
+    request = &DescribeSkillGroupInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeSkillGroupInfoList")
+    return
+}
+
+func NewDescribeSkillGroupInfoListResponse() (response *DescribeSkillGroupInfoListResponse) {
+    response = &DescribeSkillGroupInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取技能组信息列表
+func (c *Client) DescribeSkillGroupInfoList(request *DescribeSkillGroupInfoListRequest) (response *DescribeSkillGroupInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillGroupInfoListRequest()
+    }
+    response = NewDescribeSkillGroupInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStaffInfoListRequest() (request *DescribeStaffInfoListRequest) {
+    request = &DescribeStaffInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffInfoList")
+    return
+}
+
+func NewDescribeStaffInfoListResponse() (response *DescribeStaffInfoListResponse) {
+    response = &DescribeStaffInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取坐席信息列表
+func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (response *DescribeStaffInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaffInfoListRequest()
+    }
+    response = NewDescribeStaffInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
     request = &DescribeTelCallInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

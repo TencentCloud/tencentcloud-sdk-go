@@ -2744,6 +2744,9 @@ type DescribePeakNetworkOverviewRequest struct {
 	// 
 	// region和area只应填写一个。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 统计周期，单位秒。取值60/300。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
 func (r *DescribePeakNetworkOverviewRequest) ToJsonString() string {
@@ -5672,6 +5675,9 @@ type PeakNetwork struct {
 
 	// 出带宽数据。
 	PeakOutNetwork *string `json:"PeakOutNetwork,omitempty" name:"PeakOutNetwork"`
+
+	// 计费带宽。单位bps
+	ChargeNetwork *string `json:"ChargeNetwork,omitempty" name:"ChargeNetwork"`
 }
 
 type PeakNetworkRegionInfo struct {

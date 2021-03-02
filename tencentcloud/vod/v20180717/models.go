@@ -3430,6 +3430,21 @@ func (r *CreateWordSamplesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DailyPlayStatInfo struct {
+
+	// 播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 媒体文件ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 播放次数。
+	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+
+	// 播放流量，单位：字节。
+	Traffic *uint64 `json:"Traffic,omitempty" name:"Traffic"`
+}
+
 type DeleteAIAnalysisTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -4586,6 +4601,100 @@ func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
 }
 
 func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDailyMediaPlayStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件 ID 。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeDailyMediaPlayStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyMediaPlayStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDailyMediaPlayStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 播放统计数据。
+		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDailyMediaPlayStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyMediaPlayStatResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDailyMostPlayedStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 域名。查询该域名播放 Top100 的媒体文件的统计数据。默认查询所有域名的播放统计数据。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// Top 数据的统计指标，取值有：
+	// <li>Traffic：播放流量，按播放流量统计 Top100 的数据。</li>
+	// <li>PlayTimes：播放次数，按播放次数统计播放 Top100 的数据。</li>
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeDailyMostPlayedStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyMostPlayedStatRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDailyMostPlayedStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 媒体文件播放统计信息。
+		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDailyMostPlayedStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDailyMostPlayedStatResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

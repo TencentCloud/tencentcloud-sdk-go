@@ -1246,6 +1246,62 @@ func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTe
     return
 }
 
+func NewDescribeDailyMediaPlayStatRequest() (request *DescribeDailyMediaPlayStatRequest) {
+    request = &DescribeDailyMediaPlayStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeDailyMediaPlayStat")
+    return
+}
+
+func NewDescribeDailyMediaPlayStatResponse() (response *DescribeDailyMediaPlayStatResponse) {
+    response = &DescribeDailyMediaPlayStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询指定日期范围内每天的播放统计数据。
+// * 可以查询最近30天的播放统计数据。
+func (c *Client) DescribeDailyMediaPlayStat(request *DescribeDailyMediaPlayStatRequest) (response *DescribeDailyMediaPlayStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeDailyMediaPlayStatRequest()
+    }
+    response = NewDescribeDailyMediaPlayStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDailyMostPlayedStatRequest() (request *DescribeDailyMostPlayedStatRequest) {
+    request = &DescribeDailyMostPlayedStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeDailyMostPlayedStat")
+    return
+}
+
+func NewDescribeDailyMostPlayedStatResponse() (response *DescribeDailyMostPlayedStatResponse) {
+    response = &DescribeDailyMostPlayedStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询每日播放Top100 的媒体文件的播放统计数据。
+// * 可以查询最近30天的播放统计数据。
+// * 可以按播放次数或者播放流量查询。
+// * 播放次数统计说明：
+//     1. HLS 文件：访问 M3U8 文件时统计播放次数；访问 TS 文件不统计播放次数。
+//     2. 其它文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
+func (c *Client) DescribeDailyMostPlayedStat(request *DescribeDailyMostPlayedStatRequest) (response *DescribeDailyMostPlayedStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeDailyMostPlayedStatRequest()
+    }
+    response = NewDescribeDailyMostPlayedStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDailyPlayStatFileListRequest() (request *DescribeDailyPlayStatFileListRequest) {
     request = &DescribeDailyPlayStatFileListRequest{
         BaseRequest: &tchttp.BaseRequest{},

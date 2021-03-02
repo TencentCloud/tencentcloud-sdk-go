@@ -113,6 +113,9 @@ type AssociateSecurityGroupsRequest struct {
 
 	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitempty" name:"ForReadonlyInstance"`
 }
 
 func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
@@ -1009,6 +1012,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1139,6 +1145,9 @@ type CreateDBInstanceRequest struct {
 
 	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -2900,6 +2909,9 @@ type DescribeDBSecurityGroupsRequest struct {
 
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitempty" name:"ForReadonlyInstance"`
 }
 
 func (r *DescribeDBSecurityGroupsRequest) ToJsonString() string {
@@ -4210,6 +4222,9 @@ type DisassociateSecurityGroupsRequest struct {
 
 	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitempty" name:"ForReadonlyInstance"`
 }
 
 func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
@@ -4337,6 +4352,9 @@ type Inbound struct {
 
 	// 规则限定的方向，进站规则为 INPUT
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
+
+	// 规则描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 type InitDBInstancesRequest struct {
@@ -5103,6 +5121,9 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 
 	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitempty" name:"ForReadonlyInstance"`
 }
 
 func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
@@ -5641,6 +5662,9 @@ type Outbound struct {
 
 	// 规则限定的方向，进站规则为 OUTPUT
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
+
+	// 规则描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 type ParamInfo struct {

@@ -929,8 +929,7 @@ type IpStatus struct {
 
 type Origin struct {
 
-	// 主源站列表，默认格式为 ["ip1:port1", "ip2:port2"]。
-	// 支持在源站列表中配置权重，配置IP源站权重格式为 ["ip1:port1:weight1", "ip2:port2:weight2"]。
+	// 主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
 	Origins []*string `json:"Origins,omitempty" name:"Origins" list`
 
 	// 主源站类型，支持domain，ip，分别表示域名源站，ip源站。
@@ -943,6 +942,7 @@ type Origin struct {
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
 	// 回源协议类型，支持http，follow，https，分别表示强制http回源，协议跟随回源，https回源。
+	// 不传入的情况下默认为http回源.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 
