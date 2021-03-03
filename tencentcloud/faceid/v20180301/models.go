@@ -688,6 +688,18 @@ type DetectInfoVideoData struct {
 	LivenessVideo *string `json:"LivenessVideo,omitempty" name:"LivenessVideo"`
 }
 
+type Encryption struct {
+
+	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
+	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
+	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList" list`
+
+	// 有加密需求的用户，传入CBC加密的初始向量
+	Iv *string `json:"Iv,omitempty" name:"Iv"`
+}
+
 type GetActionSequenceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1549,6 +1561,9 @@ type MinorsVerificationRequest struct {
 
 	// 姓名。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *MinorsVerificationRequest) ToJsonString() string {

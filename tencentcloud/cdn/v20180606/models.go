@@ -164,6 +164,9 @@ type AddCdnDomainRequest struct {
 
 	// 离线缓存
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
+
+	// QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -3153,6 +3156,14 @@ type DetailDomain struct {
 	// 合并回源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
+
+	// POST上传配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostMaxSize *PostSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
+
+	// Quic配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 }
 
 type DiagnoseData struct {
@@ -4785,6 +4796,17 @@ type PathRule struct {
 	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders" list`
 }
 
+type PostSize struct {
+
+	// 是调整POST请求限制，平台默认为32MB。
+	// 关闭：off，
+	// 开启：on。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 最大限制，取值在1MB和200MB之间。
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+}
+
 type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
 
@@ -5011,6 +5033,12 @@ type QueryStringKey struct {
 	// 使用/排除的url参数数组，';' 分割
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type Quic struct {
+
+	// 是否启动Quic配置
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type Quota struct {
@@ -6178,6 +6206,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 合并回源
 	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
+
+	// QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {

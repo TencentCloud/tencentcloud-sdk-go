@@ -768,6 +768,31 @@ func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (respons
     return
 }
 
+func NewDescribeAttackVulTypeListRequest() (request *DescribeAttackVulTypeListRequest) {
+    request = &DescribeAttackVulTypeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackVulTypeList")
+    return
+}
+
+func NewDescribeAttackVulTypeListResponse() (response *DescribeAttackVulTypeListResponse) {
+    response = &DescribeAttackVulTypeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取网络攻击威胁类型列表
+func (c *Client) DescribeAttackVulTypeList(request *DescribeAttackVulTypeListRequest) (response *DescribeAttackVulTypeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackVulTypeListRequest()
+    }
+    response = NewDescribeAttackVulTypeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
     request = &DescribeBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

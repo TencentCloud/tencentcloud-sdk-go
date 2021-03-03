@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 应用与服务编排工作流(asw) 版本：2020-07-22
 
-### 第 9 次发布
+### 第 4 次发布
 
-发布时间：2021-03-02 08:00:36
+发布时间：2021-03-03 08:00:19
 
 本次发布包含了以下内容：
 
@@ -12,22 +12,19 @@
 
 新增接口：
 
-* [DescribeSkillGroupInfoList](https://cloud.tencent.com/document/api/679/53310)
-* [DescribeStaffInfoList](https://cloud.tencent.com/document/api/679/53309)
+* [DescribeExecutionHistory](https://cloud.tencent.com/document/api/1272/53356)
 
 新增数据结构：
 
-* [SkillGroupInfoItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupInfoItem)
-* [SkillGroupItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupItem)
-* [StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo)
+* [ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent)
 
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 58 次发布
+### 第 63 次发布
 
-发布时间：2021-03-02 08:03:14
+发布时间：2021-03-03 08:03:10
 
 本次发布包含了以下内容：
 
@@ -35,49 +32,57 @@
 
 修改接口：
 
-* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/236/15852)
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
 
-	* 新增入参：ForReadonlyInstance
+	* 新增入参：Quic
 
-* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
 
-	* 新增入参：AutoSyncFlag
+	* 新增入参：Quic
 
-* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
 
-	* 新增入参：AutoSyncFlag
+新增数据结构：
 
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854)
-
-	* 新增入参：ForReadonlyInstance
-
-* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/236/15851)
-
-	* 新增入参：ForReadonlyInstance
-
-* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/236/15853)
-
-	* 新增入参：ForReadonlyInstance
-
+* [PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize)
+* [Quic](https://cloud.tencent.com/document/api/228/30987#Quic)
 
 修改数据结构：
 
-* [Inbound](https://cloud.tencent.com/document/api/236/15878#Inbound)
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
 
-	* 新增成员：Desc
+	* 新增成员：PostMaxSize, Quic
 
-* [Outbound](https://cloud.tencent.com/document/api/236/15878#Outbound)
 
-	* 新增成员：Desc
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 6 次发布
+
+发布时间：2021-03-03 08:09:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAttackVulTypeList](https://cloud.tencent.com/document/api/296/53358)
+
+修改接口：
+
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+
+	* 新增入参：Uuid, Quuid
 
 
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 42 次发布
+### 第 43 次发布
 
-发布时间：2021-03-02 08:00:59
+发布时间：2021-03-03 08:00:59
 
 本次发布包含了以下内容：
 
@@ -85,44 +90,72 @@
 
 修改接口：
 
-* [DescribePeakNetworkOverview](https://cloud.tencent.com/document/api/1108/42569)
+* [DescribeConfig](https://cloud.tencent.com/document/api/1108/42572)
 
-	* 新增入参：Period
+	* 新增出参：ImageLimits
 
 
-修改数据结构：
+新增数据结构：
 
-* [PeakNetwork](https://cloud.tencent.com/document/api/1108/42574#PeakNetwork)
-
-	* 新增成员：ChargeNetwork
+* [ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig)
 
 
 
+## 人脸核身(faceid) 版本：2018-03-01
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+### 第 21 次发布
 
-### 第 43 次发布
-
-发布时间：2021-03-02 08:08:56
+发布时间：2021-03-03 08:04:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [TaskRule](https://cloud.tencent.com/document/api/649/36099#TaskRule)
+* [MinorsVerification](https://cloud.tencent.com/document/api/1007/39766)
 
-	* <font color="#dd0000">**修改成员**：</font>RepeatInterval
-
-
+	* 新增入参：Encryption
 
 
-## 云点播(vod) 版本：2018-07-17
+新增数据结构：
 
-### 第 73 次发布
+* [Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)
 
-发布时间：2021-03-02 08:10:00
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 9 次发布
+
+发布时间：2021-03-03 08:05:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowLogPatterns](https://cloud.tencent.com/document/api/240/43597)
+
+	* 新增入参：Format
+
+* [DescribeSlowLogs](https://cloud.tencent.com/document/api/240/43596)
+
+	* 新增入参：Format
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 22 次发布
+
+发布时间：2021-03-03 08:06:52
 
 本次发布包含了以下内容：
 
@@ -130,12 +163,7 @@
 
 新增接口：
 
-* [DescribeDailyMediaPlayStat](https://cloud.tencent.com/document/api/266/53312)
-* [DescribeDailyMostPlayedStat](https://cloud.tencent.com/document/api/266/53311)
-
-新增数据结构：
-
-* [DailyPlayStatInfo](https://cloud.tencent.com/document/api/266/31773#DailyPlayStatInfo)
+* [DescribeDBCharsets](https://cloud.tencent.com/document/api/238/53357)
 
 
 
@@ -2206,6 +2234,22 @@
 
 
 ## 应用与服务编排工作流(asw) 版本：2020-07-22
+
+### 第 4 次发布
+
+发布时间：2021-03-03 08:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeExecutionHistory](https://cloud.tencent.com/document/api/1272/53356)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent)](https://cloud.tencent.com/document/api/1272/49976#[ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent))
 
 ### 第 3 次发布
 
@@ -6147,14 +6191,14 @@
 
 新增接口：
 
-* [[DescribeSkillGroupInfoList](https://cloud.tencent.com/document/api/679/53310)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStaffInfoList](https://cloud.tencent.com/document/api/679/53309)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSkillGroupInfoList](https://cloud.tencent.com/document/api/679/53310)
+* [DescribeStaffInfoList](https://cloud.tencent.com/document/api/679/53309)
 
 新增数据结构：
 
-* [[SkillGroupInfoItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupInfoItem)](https://cloud.tencent.com/document/api/679/47715#[SkillGroupInfoItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupInfoItem))
-* [[SkillGroupItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupItem)](https://cloud.tencent.com/document/api/679/47715#[SkillGroupItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupItem))
-* [[StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo)](https://cloud.tencent.com/document/api/679/47715#[StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo))
+* [SkillGroupInfoItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupInfoItem)
+* [SkillGroupItem](https://cloud.tencent.com/document/api/679/47715#SkillGroupItem)
+* [StaffInfo](https://cloud.tencent.com/document/api/679/47715#StaffInfo)
 
 ### 第 8 次发布
 
@@ -7540,6 +7584,37 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 63 次发布
+
+发布时间：2021-03-03 08:03:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：Quic
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：Quic
+
+
+新增数据结构：
+
+* [[PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize)](https://cloud.tencent.com/document/api/228/30987#[PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize))
+* [[Quic](https://cloud.tencent.com/document/api/228/30987#Quic)](https://cloud.tencent.com/document/api/228/30987#[Quic](https://cloud.tencent.com/document/api/228/30987#Quic))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：PostMaxSize, Quic
+
 
 ### 第 62 次发布
 
@@ -14242,6 +14317,25 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 6 次发布
+
+发布时间：2021-03-03 08:09:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAttackVulTypeList](https://cloud.tencent.com/document/api/296/53358)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
+
+	* 新增入参：Uuid, Quuid
+
+
 ### 第 5 次发布
 
 发布时间：2021-02-25 08:09:56
@@ -17342,6 +17436,25 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 43 次发布
+
+发布时间：2021-03-03 08:00:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeConfig](https://cloud.tencent.com/document/api/1108/42572)
+
+	* 新增出参：ImageLimits
+
+
+新增数据结构：
+
+* [[ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig)](https://cloud.tencent.com/document/api/1108/42574#[ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig))
+
 ### 第 42 次发布
 
 发布时间：2021-03-02 08:00:59
@@ -19315,6 +19428,25 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 21 次发布
+
+发布时间：2021-03-03 08:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MinorsVerification](https://cloud.tencent.com/document/api/1007/39766)
+
+	* 新增入参：Encryption
+
+
+新增数据结构：
+
+* [[Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)](https://cloud.tencent.com/document/api/1007/41958#[Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption))
 
 ### 第 20 次发布
 
@@ -26782,6 +26914,25 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 9 次发布
+
+发布时间：2021-03-03 08:05:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowLogPatterns](https://cloud.tencent.com/document/api/240/43597)
+
+	* 新增入参：Format
+
+* [DescribeSlowLogs](https://cloud.tencent.com/document/api/240/43596)
+
+	* 新增入参：Format
+
+
 ### 第 8 次发布
 
 发布时间：2020-09-16 08:04:22
@@ -32757,6 +32908,18 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 22 次发布
+
+发布时间：2021-03-03 08:06:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBCharsets](https://cloud.tencent.com/document/api/238/53357)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 21 次发布
 
@@ -41000,12 +41163,12 @@
 
 新增接口：
 
-* [[DescribeDailyMediaPlayStat](https://cloud.tencent.com/document/api/266/53312)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDailyMostPlayedStat](https://cloud.tencent.com/document/api/266/53311)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDailyMediaPlayStat](https://cloud.tencent.com/document/api/266/53312)
+* [DescribeDailyMostPlayedStat](https://cloud.tencent.com/document/api/266/53311)
 
 新增数据结构：
 
-* [[DailyPlayStatInfo](https://cloud.tencent.com/document/api/266/31773#DailyPlayStatInfo)](https://cloud.tencent.com/document/api/266/31773#[DailyPlayStatInfo](https://cloud.tencent.com/document/api/266/31773#DailyPlayStatInfo))
+* [DailyPlayStatInfo](https://cloud.tencent.com/document/api/266/31773#DailyPlayStatInfo)
 
 ### 第 72 次发布
 

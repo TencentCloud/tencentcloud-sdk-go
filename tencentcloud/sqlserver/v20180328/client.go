@@ -743,6 +743,31 @@ func (c *Client) DescribeCrossRegionZone(request *DescribeCrossRegionZoneRequest
     return
 }
 
+func NewDescribeDBCharsetsRequest() (request *DescribeDBCharsetsRequest) {
+    request = &DescribeDBCharsetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBCharsets")
+    return
+}
+
+func NewDescribeDBCharsetsResponse() (response *DescribeDBCharsetsResponse) {
+    response = &DescribeDBCharsetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDBCharsets）用于查询实例支持的数据库字符集。
+func (c *Client) DescribeDBCharsets(request *DescribeDBCharsetsRequest) (response *DescribeDBCharsetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBCharsetsRequest()
+    }
+    response = NewDescribeDBCharsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

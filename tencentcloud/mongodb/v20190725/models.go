@@ -790,6 +790,9 @@ type DescribeSlowLogPatternsRequest struct {
 
 	// 分页大小，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *DescribeSlowLogPatternsRequest) ToJsonString() string {
@@ -845,6 +848,9 @@ type DescribeSlowLogsRequest struct {
 
 	// 分页大小，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *DescribeSlowLogsRequest) ToJsonString() string {

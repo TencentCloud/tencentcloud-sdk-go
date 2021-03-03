@@ -1473,8 +1473,12 @@ type DescribeAttackLogsRequest struct {
 
 	// 过滤条件。
 	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
-	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
+	// <li>VulType - String 威胁类型 - 是否必填: 否</li>
+	// <li>SrcIp - String 攻击源IP - 是否必填: 否</li>
+	// <li>DstIp - String 攻击目标IP - 是否必填: 否</li>
+	// <li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
+	// <li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 主机安全客户端ID
@@ -1515,6 +1519,40 @@ func (r *DescribeAttackLogsResponse) ToJsonString() string {
 }
 
 func (r *DescribeAttackLogsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackVulTypeListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAttackVulTypeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackVulTypeListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAttackVulTypeListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 威胁类型列表
+		List []*string `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAttackVulTypeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAttackVulTypeListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4055,8 +4093,21 @@ func (r *EditTagsResponse) FromJsonString(s string) error {
 type ExportAttackLogsRequest struct {
 	*tchttp.BaseRequest
 
-	// 过滤参数
+	// 过滤条件。
+	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
+	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
+	// <li>VulType - String 威胁类型 - 是否必填: 否</li>
+	// <li>SrcIp - String 攻击源IP - 是否必填: 否</li>
+	// <li>DstIp - String 攻击目标IP - 是否必填: 否</li>
+	// <li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
+	// <li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+
+	// 主机安全客户端ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 云主机机器ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *ExportAttackLogsRequest) ToJsonString() string {

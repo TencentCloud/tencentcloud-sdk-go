@@ -1802,6 +1802,43 @@ func (r *DescribeCrossRegionZoneResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBCharsetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如mssql-j8kv137v
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBCharsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBCharsetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBCharsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据库字符集列表
+		DatabaseCharsets []*string `json:"DatabaseCharsets,omitempty" name:"DatabaseCharsets" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBCharsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDBCharsetsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 

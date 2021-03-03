@@ -93,6 +93,31 @@ func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response 
     return
 }
 
+func NewDescribeExecutionHistoryRequest() (request *DescribeExecutionHistoryRequest) {
+    request = &DescribeExecutionHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asw", APIVersion, "DescribeExecutionHistory")
+    return
+}
+
+func NewDescribeExecutionHistoryResponse() (response *DescribeExecutionHistoryResponse) {
+    response = &DescribeExecutionHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
+func (c *Client) DescribeExecutionHistory(request *DescribeExecutionHistoryRequest) (response *DescribeExecutionHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecutionHistoryRequest()
+    }
+    response = NewDescribeExecutionHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExecutionsRequest() (request *DescribeExecutionsRequest) {
     request = &DescribeExecutionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

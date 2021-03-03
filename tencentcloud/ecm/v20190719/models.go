@@ -1882,6 +1882,10 @@ type DescribeConfigResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InstanceNetworkLimitConfigs []*InstanceNetworkLimitConfig `json:"InstanceNetworkLimitConfigs,omitempty" name:"InstanceNetworkLimitConfigs" list`
 
+		// 镜像限额信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageLimits *ImageLimitConfig `json:"ImageLimits,omitempty" name:"ImageLimits"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3734,6 +3738,12 @@ type Image struct {
 
 	// 中间态和失败时候的任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type ImageLimitConfig struct {
+
+	// 支持的最大镜像大小，包括可导入的自定义镜像大小，中心云镜像大小，单位为GB。
+	MaxImageSize *int64 `json:"MaxImageSize,omitempty" name:"MaxImageSize"`
 }
 
 type ImageOsList struct {

@@ -183,7 +183,7 @@ func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) 
     return
 }
 
-// 获取坐席用户列表
+// 获取坐席用户列表（废弃）
 func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
     if request == nil {
         request = NewDescribeSeatUserListRequest()

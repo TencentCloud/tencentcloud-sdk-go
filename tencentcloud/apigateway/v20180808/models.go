@@ -962,7 +962,7 @@ type CreateIPStrategyRequest struct {
 	// 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
 	StrategyType *string `json:"StrategyType,omitempty" name:"StrategyType"`
 
-	// 策略详情。
+	// 策略详情，多个ip 使用\n 分隔符分开。
 	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
 }
 

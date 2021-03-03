@@ -78,6 +78,43 @@ func (r *CreateFlowServiceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeExecutionHistoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+}
+
+func (r *DescribeExecutionHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExecutionHistoryRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExecutionHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 执行的事件列表
+		Events []*ExecutionEvent `json:"Events,omitempty" name:"Events" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExecutionHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExecutionHistoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeExecutionRequest struct {
 	*tchttp.BaseRequest
 
@@ -293,6 +330,34 @@ func (r *DescribeFlowServicesResponse) ToJsonString() string {
 
 func (r *DescribeFlowServicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ExecutionEvent struct {
+
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+
+	// 自增序号
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 事件类型
+	EventCategory *string `json:"EventCategory,omitempty" name:"EventCategory"`
+
+	// 步骤节点名称
+	StepName *string `json:"StepName,omitempty" name:"StepName"`
+
+	// 该步骤引用的资源名
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 该事件发生时间，毫秒
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 事件内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exception *string `json:"Exception,omitempty" name:"Exception"`
 }
 
 type Filter struct {
