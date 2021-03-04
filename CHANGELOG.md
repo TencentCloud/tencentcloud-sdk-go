@@ -1,172 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 应用与服务编排工作流(asw) 版本：2020-07-22
-
-### 第 4 次发布
-
-发布时间：2021-03-03 08:00:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeExecutionHistory](https://cloud.tencent.com/document/api/1272/53356)
-
-新增数据结构：
-
-* [ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 63 次发布
-
-发布时间：2021-03-03 08:03:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
-
-	* 新增入参：Quic
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：Quic
-
-
-新增数据结构：
-
-* [PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize)
-* [Quic](https://cloud.tencent.com/document/api/228/30987#Quic)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：PostMaxSize, Quic
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 6 次发布
-
-发布时间：2021-03-03 08:09:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAttackVulTypeList](https://cloud.tencent.com/document/api/296/53358)
-
-修改接口：
-
-* [ExportAttackLogs](https://cloud.tencent.com/document/api/296/39572)
-
-	* 新增入参：Uuid, Quuid
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 43 次发布
-
-发布时间：2021-03-03 08:00:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeConfig](https://cloud.tencent.com/document/api/1108/42572)
-
-	* 新增出参：ImageLimits
-
-
-新增数据结构：
-
-* [ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig)
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 21 次发布
-
-发布时间：2021-03-03 08:04:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [MinorsVerification](https://cloud.tencent.com/document/api/1007/39766)
-
-	* 新增入参：Encryption
-
-
-新增数据结构：
-
-* [Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 9 次发布
-
-发布时间：2021-03-03 08:05:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSlowLogPatterns](https://cloud.tencent.com/document/api/240/43597)
-
-	* 新增入参：Format
-
-* [DescribeSlowLogs](https://cloud.tencent.com/document/api/240/43596)
-
-	* 新增入参：Format
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 22 次发布
-
-发布时间：2021-03-03 08:06:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDBCharsets](https://cloud.tencent.com/document/api/238/53357)
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -2245,11 +2078,11 @@
 
 新增接口：
 
-* [[DescribeExecutionHistory](https://cloud.tencent.com/document/api/1272/53356)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeExecutionHistory](https://cloud.tencent.com/document/api/1272/53356)
 
 新增数据结构：
 
-* [[ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent)](https://cloud.tencent.com/document/api/1272/49976#[ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent))
+* [ExecutionEvent](https://cloud.tencent.com/document/api/1272/49976#ExecutionEvent)
 
 ### 第 3 次发布
 
@@ -7606,8 +7439,8 @@
 
 新增数据结构：
 
-* [[PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize)](https://cloud.tencent.com/document/api/228/30987#[PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize))
-* [[Quic](https://cloud.tencent.com/document/api/228/30987#Quic)](https://cloud.tencent.com/document/api/228/30987#[Quic](https://cloud.tencent.com/document/api/228/30987#Quic))
+* [PostSize](https://cloud.tencent.com/document/api/228/30987#PostSize)
+* [Quic](https://cloud.tencent.com/document/api/228/30987#Quic)
 
 修改数据结构：
 
@@ -14327,7 +14160,7 @@
 
 新增接口：
 
-* [[DescribeAttackVulTypeList](https://cloud.tencent.com/document/api/296/53358)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAttackVulTypeList](https://cloud.tencent.com/document/api/296/53358)
 
 修改接口：
 
@@ -17453,7 +17286,7 @@
 
 新增数据结构：
 
-* [[ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig)](https://cloud.tencent.com/document/api/1108/42574#[ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig))
+* [ImageLimitConfig](https://cloud.tencent.com/document/api/1108/42574#ImageLimitConfig)
 
 ### 第 42 次发布
 
@@ -19446,7 +19279,7 @@
 
 新增数据结构：
 
-* [[Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)](https://cloud.tencent.com/document/api/1007/41958#[Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption))
+* [Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)
 
 ### 第 20 次发布
 
@@ -32919,7 +32752,7 @@
 
 新增接口：
 
-* [[DescribeDBCharsets](https://cloud.tencent.com/document/api/238/53357)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBCharsets](https://cloud.tencent.com/document/api/238/53357)
 
 ### 第 21 次发布
 
