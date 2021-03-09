@@ -350,6 +350,31 @@ func (c *Client) DeleteTrigger(request *DeleteTriggerRequest) (response *DeleteT
     return
 }
 
+func NewGetAccountRequest() (request *GetAccountRequest) {
+    request = &GetAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetAccount")
+    return
+}
+
+func NewGetAccountResponse() (response *GetAccountResponse) {
+    response = &GetAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取账户信息
+func (c *Client) GetAccount(request *GetAccountRequest) (response *GetAccountResponse, err error) {
+    if request == nil {
+        request = NewGetAccountRequest()
+    }
+    response = NewGetAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAliasRequest() (request *GetAliasRequest) {
     request = &GetAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,5 +1,154 @@
 # 本版本更新包含以下内容：
 
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 15 次发布
+
+发布时间：2021-03-09 08:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：ForceUpdate
+
+
+
+
+## 图片内容检测(ims) 版本：2020-12-29
+
+
+
+## 图片内容检测(ims) 版本：2020-07-13
+
+### 第 4 次发布
+
+发布时间：2021-03-09 08:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/49657#OcrTextDetail)
+
+	* 新增成员：Rate
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 26 次发布
+
+发布时间：2021-03-09 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetAccount](https://cloud.tencent.com/document/api/583/53437)
+
+新增数据结构：
+
+* [LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo)
+* [NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit)
+* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
+* [TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount)
+* [UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 38 次发布
+
+发布时间：2021-03-09 08:08:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 5 次发布
+
+发布时间：2021-03-09 08:11:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)
+* [SendMessages](https://cloud.tencent.com/document/api/1179/53440)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 44 次发布
+
+发布时间：2021-03-09 08:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/649/53439)
+
+修改接口：
+
+* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
+
+	* <font color="#dd0000">**修改入参**：</font>ShardArguments
+
+
+新增数据结构：
+
+* [TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 74 次发布
+
+发布时间：2021-03-09 08:09:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LiveRealTimeClip](https://cloud.tencent.com/document/api/266/32587)
+
+	* 新增出参：SegmentSet
+
+
+新增数据结构：
+
+* [LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo)
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -18812,6 +18961,21 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 15 次发布
+
+发布时间：2021-03-09 08:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：ForceUpdate
+
+
 ### 第 14 次发布
 
 发布时间：2020-12-28 08:04:02
@@ -22408,6 +22572,21 @@
 
 
 ## 图片内容检测(ims) 版本：2020-07-13
+
+### 第 4 次发布
+
+发布时间：2021-03-09 08:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/49657#OcrTextDetail)
+
+	* 新增成员：Rate
+
 
 ### 第 3 次发布
 
@@ -31491,6 +31670,26 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 26 次发布
+
+发布时间：2021-03-09 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetAccount](https://cloud.tencent.com/document/api/583/53437)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo)](https://cloud.tencent.com/document/api/583/17244#[LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo))
+* [[NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit)](https://cloud.tencent.com/document/api/583/17244#[NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit))
+* [[NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)](https://cloud.tencent.com/document/api/583/17244#[NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage))
+* [[TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount)](https://cloud.tencent.com/document/api/583/17244#[TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount))
+* [[UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo)](https://cloud.tencent.com/document/api/583/17244#[UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo))
+
 ### 第 25 次发布
 
 发布时间：2021-01-26 08:07:28
@@ -34864,6 +35063,18 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 38 次发布
+
+发布时间：2021-03-09 08:08:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 37 次发布
 
 发布时间：2021-02-24 08:06:59
@@ -36331,6 +36542,19 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 5 次发布
+
+发布时间：2021-03-09 08:11:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)](https://cloud.tencent.com/document/api/#/#)
+* [[SendMessages](https://cloud.tencent.com/document/api/1179/53440)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 4 次发布
 
@@ -39471,6 +39695,29 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 44 次发布
+
+发布时间：2021-03-09 08:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTaskDetail](https://cloud.tencent.com/document/api/649/53439)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
+
+	* <font color="#dd0000">**修改入参**：</font>ShardArguments
+
+
+新增数据结构：
+
+* [[TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord)](https://cloud.tencent.com/document/api/649/36099#[TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord))
+
 ### 第 43 次发布
 
 发布时间：2021-03-02 08:08:56
@@ -40985,6 +41232,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 74 次发布
+
+发布时间：2021-03-09 08:09:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LiveRealTimeClip](https://cloud.tencent.com/document/api/266/32587)
+
+	* 新增出参：SegmentSet
+
+
+新增数据结构：
+
+* [[LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo)](https://cloud.tencent.com/document/api/266/31773#[LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo))
 
 ### 第 73 次发布
 

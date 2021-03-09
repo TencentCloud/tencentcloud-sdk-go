@@ -5627,6 +5627,46 @@ func (r *DescribeSimpleNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务历史ID
+	TaskLogId *string `json:"TaskLogId,omitempty" name:"TaskLogId"`
+}
+
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务详情
+		Result *TaskRecord `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskLastStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -7114,7 +7154,7 @@ type ModifyTaskRequest struct {
 	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
 
 	// 分片参数
-	ShardArguments *ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments"`
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
 
 	// 高级设置
 	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
@@ -8243,7 +8283,7 @@ type ServiceSetting struct {
 
 type ShardArgument struct {
 
-	// 分片参数 KEY，整形
+	// 分片参数 KEY，整形, 范围 [1,1000]
 	ShardKey *uint64 `json:"ShardKey,omitempty" name:"ShardKey"`
 
 	// 分片参数 VALUE
@@ -8752,6 +8792,80 @@ type TaskLastExecuteStatus struct {
 	// 批次历史ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchLogId *string `json:"BatchLogId,omitempty" name:"BatchLogId"`
+}
+
+type TaskRecord struct {
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 执行类型
+	ExecuteType *string `json:"ExecuteType,omitempty" name:"ExecuteType"`
+
+	// 任务内容，长度限制65535字节
+	TaskContent *string `json:"TaskContent,omitempty" name:"TaskContent"`
+
+	// 分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 超时时间
+	TimeOut *int64 `json:"TimeOut,omitempty" name:"TimeOut"`
+
+	// 重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryCount *int64 `json:"RetryCount,omitempty" name:"RetryCount"`
+
+	// 重试间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryInterval *int64 `json:"RetryInterval,omitempty" name:"RetryInterval"`
+
+	// 触发规则
+	TaskRule *TaskRule `json:"TaskRule,omitempty" name:"TaskRule"`
+
+	// 是否启用任务,ENABLED/DISABLED
+	TaskState *string `json:"TaskState,omitempty" name:"TaskState"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 判断任务成功的操作符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessOperator *string `json:"SuccessOperator,omitempty" name:"SuccessOperator"`
+
+	// 判断任务成功的阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessRatio *int64 `json:"SuccessRatio,omitempty" name:"SuccessRatio"`
+
+	// 分片数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
+
+	// 高级设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
+
+	// 分片参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
+
+	// 所属工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BelongFlowIds []*string `json:"BelongFlowIds,omitempty" name:"BelongFlowIds" list`
+
+	// 任务历史ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskLogId *string `json:"TaskLogId,omitempty" name:"TaskLogId"`
+
+	// 触发类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 任务参数，长度限制10000个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskArgument *string `json:"TaskArgument,omitempty" name:"TaskArgument"`
 }
 
 type TaskRule struct {

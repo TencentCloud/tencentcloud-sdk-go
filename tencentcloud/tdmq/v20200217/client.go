@@ -592,3 +592,53 @@ func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimest
     err = c.Send(request, response)
     return
 }
+
+func NewSendBatchMessagesRequest() (request *SendBatchMessagesRequest) {
+    request = &SendBatchMessagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "SendBatchMessages")
+    return
+}
+
+func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
+    response = &SendBatchMessagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量发送消息
+func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response *SendBatchMessagesResponse, err error) {
+    if request == nil {
+        request = NewSendBatchMessagesRequest()
+    }
+    response = NewSendBatchMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendMessagesRequest() (request *SendMessagesRequest) {
+    request = &SendMessagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "SendMessages")
+    return
+}
+
+func NewSendMessagesResponse() (response *SendMessagesResponse) {
+    response = &SendMessagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发送单条消息
+func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessagesResponse, err error) {
+    if request == nil {
+        request = NewSendMessagesRequest()
+    }
+    response = NewSendMessagesResponse()
+    err = c.Send(request, response)
+    return
+}

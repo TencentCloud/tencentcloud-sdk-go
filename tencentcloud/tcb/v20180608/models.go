@@ -1567,6 +1567,159 @@ func (r *DescribeCloudBaseRunServerVersionResponse) FromJsonString(s string) err
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloudBaseRunVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+func (r *DescribeCloudBaseRunVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本名称
+		VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+		// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+		// Dockefile的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DockerfilePath *string `json:"DockerfilePath,omitempty" name:"DockerfilePath"`
+
+		// DockerBuild的目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+
+		// 副本最小值
+		MinNum *int64 `json:"MinNum,omitempty" name:"MinNum"`
+
+		// 副本最大值
+		MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+
+		// 策略类型
+		PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+		// 策略阈值
+		PolicyThreshold *float64 `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+
+		// 环境变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+		// 创建时间
+		CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+		// 更新时间
+		UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+		// 版本的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionIP *string `json:"VersionIP,omitempty" name:"VersionIP"`
+
+		// 版本的端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionPort *int64 `json:"VersionPort,omitempty" name:"VersionPort"`
+
+		// 版本状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 代码包的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+		// 代码版本的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+		// 枚举（package/repository/image)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+		// Repo的类型(coding/gitlab/github/coding)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+		// 地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Repo *string `json:"Repo,omitempty" name:"Repo"`
+
+		// 分支
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+		// 服务名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+		// 是否对于外网开放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+		// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 子网实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+		// 日志采集路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+		// 监听端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+		// 延迟多长时间开始健康检查（单位s）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+		// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+		// CPU 大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CpuSize *float64 `json:"CpuSize,omitempty" name:"CpuSize"`
+
+		// MEM 大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MemSize *float64 `json:"MemSize,omitempty" name:"MemSize"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseRunVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCloudBaseRunVersionSnapshotRequest struct {
 	*tchttp.BaseRequest
 

@@ -819,7 +819,7 @@ type CreateCloneInstanceRequest struct {
 	// 实例标签信息。
 	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 
-	// 实例Cpu核数，需要不低于克隆源实例。
+	// 实例Cpu核数，需要不低于克隆源实例，默认和源实例相同。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
@@ -2409,10 +2409,10 @@ type DescribeCloneListRequest struct {
 	// 查询指定源实例的克隆任务列表。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页查询时的偏移量。
+	// 分页查询时的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询时的每页条目数。
+	// 分页查询时的每页条目数，默认值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

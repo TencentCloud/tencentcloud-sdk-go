@@ -378,7 +378,9 @@ type BindingPolicyObjectDimension struct {
 	// 地域ID
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 维度信息
+	// 实例的维度信息，格式为
+	// {"unInstanceId":"ins-00jvv9mo"}。不同云产品的维度信息不同，详见
+	// [产品策略类型和命名空间](https://cloud.tencent.com/document/product/248/50397)
 	Dimensions *string `json:"Dimensions,omitempty" name:"Dimensions"`
 
 	// 事件维度信息
@@ -2706,13 +2708,13 @@ type DescribeProductEventListRequest struct {
 	// 事件名称过滤，比如"guest_reboot"表示机器重启
 	EventName []*string `json:"EventName,omitempty" name:"EventName" list`
 
-	// 影响对象，比如ins-19708ino
+	// 影响对象，比如"ins-19708ino"
 	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId" list`
 
 	// 维度过滤，比如外网IP:10.0.0.1
 	Dimensions []*DescribeProductEventListDimensions `json:"Dimensions,omitempty" name:"Dimensions" list`
 
-	// 地域过滤，比如gz
+	// 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
 
 	// 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件

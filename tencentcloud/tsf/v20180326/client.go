@@ -2445,6 +2445,31 @@ func (c *Client) DescribeSimpleNamespaces(request *DescribeSimpleNamespacesReque
     return
 }
 
+func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
+    request = &DescribeTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskDetail")
+    return
+}
+
+func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
+    response = &DescribeTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询任务详情
+func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailRequest()
+    }
+    response = NewDescribeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskLastStatusRequest() (request *DescribeTaskLastStatusRequest) {
     request = &DescribeTaskLastStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

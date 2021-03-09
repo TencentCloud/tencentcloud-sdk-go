@@ -507,6 +507,9 @@ type OcrTextDetail struct {
 
 	// OCR位置
 	Location *Location `json:"Location,omitempty" name:"Location"`
+
+	// OCR文本识别置信度
+	Rate *uint64 `json:"Rate,omitempty" name:"Rate"`
 }
 
 type Overview struct {

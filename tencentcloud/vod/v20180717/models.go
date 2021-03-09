@@ -6590,6 +6590,15 @@ type ImageWatermarkTemplate struct {
 	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
+type LiveRealTimeClipMediaSegmentInfo struct {
+
+	// 片段的起始时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 片段的结束时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type LiveRealTimeClipRequest struct {
 	*tchttp.BaseRequest
 
@@ -6614,7 +6623,7 @@ type LiveRealTimeClipRequest struct {
 	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitempty" name:"MetaDataRequired"`
 
-	// 即时剪辑使用的域名，必须在直播侧开通时移。
+	// 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 系统保留字段，请勿填写。
@@ -6649,6 +6658,9 @@ type LiveRealTimeClipResponse struct {
 		// 剪辑后的视频元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+		// <span id="p_segmentset">剪辑后的视频片段信息。</span>
+		SegmentSet []*LiveRealTimeClipMediaSegmentInfo `json:"SegmentSet,omitempty" name:"SegmentSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

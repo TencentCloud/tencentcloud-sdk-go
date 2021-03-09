@@ -1370,6 +1370,129 @@ func (r *ResetMsgSubOffsetByTimestampResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SendBatchMessagesRequest struct {
+	*tchttp.BaseRequest
+
+	// Topic name
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 需要发送消息的内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// String 类型的 token，用来校验客户端和服务端之间的连接
+	StringToken *string `json:"StringToken,omitempty" name:"StringToken"`
+
+	// producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成
+	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+
+	// 单位：s。消息发送的超时时间。默认值为：30s
+	SendTimeout *int64 `json:"SendTimeout,omitempty" name:"SendTimeout"`
+
+	// 内存中允许缓存的生产消息的最大数量，默认值：1000条
+	MaxPendingMessages *int64 `json:"MaxPendingMessages,omitempty" name:"MaxPendingMessages"`
+
+	// 每一个batch中消息的最大数量，默认值：1000条/batch
+	BatchingMaxMessages *int64 `json:"BatchingMaxMessages,omitempty" name:"BatchingMaxMessages"`
+
+	// 每一个batch最大等待的时间，超过这个时间，不管是否达到指定的batch中消息的数量和大小，都会将该batch发送出去，默认：10ms
+	BatchingMaxPublishDelay *int64 `json:"BatchingMaxPublishDelay,omitempty" name:"BatchingMaxPublishDelay"`
+
+	// 每一个batch中最大允许的消息的大小，默认：128KB
+	BatchingMaxBytes *int64 `json:"BatchingMaxBytes,omitempty" name:"BatchingMaxBytes"`
+}
+
+func (r *SendBatchMessagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendBatchMessagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendBatchMessagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 消息的唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+		// 错误消息，返回为 ""，代表没有错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendBatchMessagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendBatchMessagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendMessagesRequest struct {
+	*tchttp.BaseRequest
+
+	// Token 是用来做鉴权使用的
+	StringToken *string `json:"StringToken,omitempty" name:"StringToken"`
+
+	// 消息要发送的topic的名字
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 要发送的消息的内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成
+	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+
+	// 设置消息发送的超时时间，默认为30s
+	SendTimeout *int64 `json:"SendTimeout,omitempty" name:"SendTimeout"`
+
+	// 内存中缓存的最大的生产消息的数量，默认为1000条
+	MaxPendingMessages *int64 `json:"MaxPendingMessages,omitempty" name:"MaxPendingMessages"`
+}
+
+func (r *SendMessagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendMessagesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SendMessagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 消息的messageID, 是全局唯一的，用来标识消息的元数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+		// 返回的错误消息，如果返回为 “”，说明没有错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendMessagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SendMessagesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Subscription struct {
 
 	// 主题名称。

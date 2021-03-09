@@ -896,6 +896,43 @@ type FunctionVersion struct {
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 }
 
+type GetAccountRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 命名空间已使用的信息
+		AccountUsage *UsageInfo `json:"AccountUsage,omitempty" name:"AccountUsage"`
+
+		// 命名空间限制的信息
+		AccountLimit *LimitsInfo `json:"AccountLimit,omitempty" name:"AccountLimit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetAliasRequest struct {
 	*tchttp.BaseRequest
 
@@ -1496,6 +1533,15 @@ type LayerVersionSimple struct {
 	LayerVersion *int64 `json:"LayerVersion,omitempty" name:"LayerVersion"`
 }
 
+type LimitsInfo struct {
+
+	// 命名空间个数限制
+	NamespacesCount *int64 `json:"NamespacesCount,omitempty" name:"NamespacesCount"`
+
+	// 命名空间限制信息
+	Namespace []*NamespaceLimit `json:"Namespace,omitempty" name:"Namespace" list`
+}
+
 type ListAliasesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1988,6 +2034,52 @@ type Namespace struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type NamespaceLimit struct {
+
+	// 函数总数
+	FunctionsCount *int64 `json:"FunctionsCount,omitempty" name:"FunctionsCount"`
+
+	// Trigger信息
+	Trigger *TriggerCount `json:"Trigger,omitempty" name:"Trigger"`
+
+	// Namespace名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 并发量
+	ConcurrentExecutions *int64 `json:"ConcurrentExecutions,omitempty" name:"ConcurrentExecutions"`
+
+	// Timeout限制
+	TimeoutLimit *int64 `json:"TimeoutLimit,omitempty" name:"TimeoutLimit"`
+
+	// 测试事件限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TestModelLimit *int64 `json:"TestModelLimit,omitempty" name:"TestModelLimit"`
+
+	// 初始化超时限制
+	InitTimeoutLimit *int64 `json:"InitTimeoutLimit,omitempty" name:"InitTimeoutLimit"`
+
+	// 异步重试次数限制
+	RetryNumLimit *int64 `json:"RetryNumLimit,omitempty" name:"RetryNumLimit"`
+
+	// 异步重试消息保留时间下限
+	MinMsgTTL *int64 `json:"MinMsgTTL,omitempty" name:"MinMsgTTL"`
+
+	// 异步重试消息保留时间上限
+	MaxMsgTTL *int64 `json:"MaxMsgTTL,omitempty" name:"MaxMsgTTL"`
+}
+
+type NamespaceUsage struct {
+
+	// 函数数组
+	Functions []*string `json:"Functions,omitempty" name:"Functions" list`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 命名空间函数个数
+	FunctionsCount *int64 `json:"FunctionsCount,omitempty" name:"FunctionsCount"`
+}
+
 type PublicNetConfigIn struct {
 
 	// 是否开启公网访问能力取值['DISABLE','ENABLE']
@@ -2381,6 +2473,42 @@ type Trigger struct {
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
+type TriggerCount struct {
+
+	// Cos触发器数量
+	Cos *int64 `json:"Cos,omitempty" name:"Cos"`
+
+	// Timer触发器数量
+	Timer *int64 `json:"Timer,omitempty" name:"Timer"`
+
+	// Cmq触发器数量
+	Cmq *int64 `json:"Cmq,omitempty" name:"Cmq"`
+
+	// 触发器总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// Ckafka触发器数量
+	Ckafka *int64 `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// Apigw触发器数量
+	Apigw *int64 `json:"Apigw,omitempty" name:"Apigw"`
+
+	// Cls触发器数量
+	Cls *int64 `json:"Cls,omitempty" name:"Cls"`
+
+	// Clb触发器数量
+	Clb *int64 `json:"Clb,omitempty" name:"Clb"`
+
+	// Mps触发器数量
+	Mps *int64 `json:"Mps,omitempty" name:"Mps"`
+
+	// Cm触发器数量
+	Cm *int64 `json:"Cm,omitempty" name:"Cm"`
+
+	// Vod触发器数量
+	Vod *int64 `json:"Vod,omitempty" name:"Vod"`
+}
+
 type TriggerInfo struct {
 
 	// 使能开关
@@ -2654,6 +2782,24 @@ func (r *UpdateNamespaceResponse) ToJsonString() string {
 
 func (r *UpdateNamespaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UsageInfo struct {
+
+	// 命名空间个数
+	NamespacesCount *int64 `json:"NamespacesCount,omitempty" name:"NamespacesCount"`
+
+	// 命名空间详情
+	Namespace []*NamespaceUsage `json:"Namespace,omitempty" name:"Namespace" list`
+
+	// 当前地域用户并发内存配额上限
+	TotalConcurrencyMem *int64 `json:"TotalConcurrencyMem,omitempty" name:"TotalConcurrencyMem"`
+
+	// 当前地域用户已配置并发内存额度
+	TotalAllocatedConcurrencyMem *int64 `json:"TotalAllocatedConcurrencyMem,omitempty" name:"TotalAllocatedConcurrencyMem"`
+
+	// 用户实际配置的账号并发配额
+	UserConcurrencyMemLimit *int64 `json:"UserConcurrencyMemLimit,omitempty" name:"UserConcurrencyMemLimit"`
 }
 
 type Variable struct {
