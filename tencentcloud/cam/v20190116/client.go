@@ -643,6 +643,31 @@ func (c *Client) DescribeSafeAuthFlagColl(request *DescribeSafeAuthFlagCollReque
     return
 }
 
+func NewDescribeSubAccountsRequest() (request *DescribeSubAccountsRequest) {
+    request = &DescribeSubAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeSubAccounts")
+    return
+}
+
+func NewDescribeSubAccountsResponse() (response *DescribeSubAccountsResponse) {
+    response = &DescribeSubAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过子用户UIN列表查询子用户
+func (c *Client) DescribeSubAccounts(request *DescribeSubAccountsRequest) (response *DescribeSubAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubAccountsRequest()
+    }
+    response = NewDescribeSubAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachGroupPolicyRequest() (request *DetachGroupPolicyRequest) {
     request = &DetachGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -343,7 +343,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
 // 3. 支持创建 MySQL 5.5 、 MySQL 5.6 、 MySQL 5.7 、 MySQL 8.0 版本；
 // 4. 支持创建主实例、只读实例、灾备实例；
-// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
+// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（不支持基础版实例）；
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -376,7 +376,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
 // 3. 支持创建 MySQL 5.5、MySQL 5.6 、MySQL 5.7 和 MySQL 8.0 版本；
 // 4. 支持创建主实例、灾备实例和只读实例；
-// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
+// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（暂不支持基础版实例）；
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceHourRequest()

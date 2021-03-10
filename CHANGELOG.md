@@ -1,33 +1,76 @@
 # 本版本更新包含以下内容：
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 15 次发布
+### 第 29 次发布
 
-发布时间：2021-03-09 08:04:52
+发布时间：2021-03-10 08:03:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeSubAccounts](https://cloud.tencent.com/document/api/598/53486)
+
+新增数据结构：
+
+* [SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 64 次发布
+
+发布时间：2021-03-10 08:04:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateScdnFailedLogTask](https://cloud.tencent.com/document/api/228/53487)
+
 修改接口：
 
-* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
 
-	* 新增入参：ForceUpdate
+	* 新增入参：Source, Area
 
+* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
 
-
-
-## 图片内容检测(ims) 版本：2020-12-29
-
+	* 新增入参：Source, Area
 
 
-## 图片内容检测(ims) 版本：2020-07-13
+新增数据结构：
 
-### 第 4 次发布
+* [WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus)
 
-发布时间：2021-03-09 08:00:19
+修改数据结构：
+
+* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
+
+	* 新增成员：Area
+
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
+
+	* 新增成员：Area
+
+* [ScdnWafConfig](https://cloud.tencent.com/document/api/228/30987#ScdnWafConfig)
+
+	* 新增成员：Level, SubRuleSwitch
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 23 次发布
+
+发布时间：2021-03-10 08:08:58
 
 本次发布包含了以下内容：
 
@@ -35,102 +78,18 @@
 
 修改数据结构：
 
-* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/49657#OcrTextDetail)
+* [DBCreateInfo](https://cloud.tencent.com/document/api/238/19976#DBCreateInfo)
 
-	* 新增成员：Rate
-
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 26 次发布
-
-发布时间：2021-03-09 08:07:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetAccount](https://cloud.tencent.com/document/api/583/53437)
-
-新增数据结构：
-
-* [LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo)
-* [NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit)
-* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
-* [TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount)
-* [UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo)
+	* <font color="#dd0000">**修改成员**：</font>Charset, Accounts, Remark
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 38 次发布
+## 私有网络(vpc) 版本：2017-03-12
 
-发布时间：2021-03-09 08:08:00
+### 第 81 次发布
 
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 5 次发布
-
-发布时间：2021-03-09 08:11:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)
-* [SendMessages](https://cloud.tencent.com/document/api/1179/53440)
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 44 次发布
-
-发布时间：2021-03-09 08:08:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/649/53439)
-
-修改接口：
-
-* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
-
-	* <font color="#dd0000">**修改入参**：</font>ShardArguments
-
-
-新增数据结构：
-
-* [TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 74 次发布
-
-发布时间：2021-03-09 08:09:47
+发布时间：2021-03-10 08:10:37
 
 本次发布包含了以下内容：
 
@@ -138,14 +97,10 @@
 
 修改接口：
 
-* [LiveRealTimeClip](https://cloud.tencent.com/document/api/266/32587)
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
 
-	* 新增出参：SegmentSet
+	* 新增入参：AddressName
 
-
-新增数据结构：
-
-* [LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo)
 
 
 
@@ -4790,6 +4745,22 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 29 次发布
+
+发布时间：2021-03-10 08:03:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSubAccounts](https://cloud.tencent.com/document/api/598/53486)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser)](https://cloud.tencent.com/document/api/598/33167#[SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser))
+
 ### 第 28 次发布
 
 发布时间：2021-01-06 21:25:23
@@ -7566,6 +7537,48 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 64 次发布
+
+发布时间：2021-03-10 08:04:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateScdnFailedLogTask](https://cloud.tencent.com/document/api/228/53487)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
+
+	* 新增入参：Source, Area
+
+* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
+
+	* 新增入参：Source, Area
+
+
+新增数据结构：
+
+* [[WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus)](https://cloud.tencent.com/document/api/228/30987#[WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus))
+
+修改数据结构：
+
+* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
+
+	* 新增成员：Area
+
+* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
+
+	* 新增成员：Area
+
+* [ScdnWafConfig](https://cloud.tencent.com/document/api/228/30987#ScdnWafConfig)
+
+	* 新增成员：Level, SubRuleSwitch
+
 
 ### 第 63 次发布
 
@@ -31680,15 +31693,15 @@
 
 新增接口：
 
-* [[GetAccount](https://cloud.tencent.com/document/api/583/53437)](https://cloud.tencent.com/document/api/#/#)
+* [GetAccount](https://cloud.tencent.com/document/api/583/53437)
 
 新增数据结构：
 
-* [[LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo)](https://cloud.tencent.com/document/api/583/17244#[LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo))
-* [[NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit)](https://cloud.tencent.com/document/api/583/17244#[NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit))
-* [[NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)](https://cloud.tencent.com/document/api/583/17244#[NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage))
-* [[TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount)](https://cloud.tencent.com/document/api/583/17244#[TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount))
-* [[UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo)](https://cloud.tencent.com/document/api/583/17244#[UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo))
+* [LimitsInfo](https://cloud.tencent.com/document/api/583/17244#LimitsInfo)
+* [NamespaceLimit](https://cloud.tencent.com/document/api/583/17244#NamespaceLimit)
+* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
+* [TriggerCount](https://cloud.tencent.com/document/api/583/17244#TriggerCount)
+* [UsageInfo](https://cloud.tencent.com/document/api/583/17244#UsageInfo)
 
 ### 第 25 次发布
 
@@ -32940,6 +32953,21 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 23 次发布
+
+发布时间：2021-03-10 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBCreateInfo](https://cloud.tencent.com/document/api/238/19976#DBCreateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Charset, Accounts, Remark
+
 
 ### 第 22 次发布
 
@@ -35073,7 +35101,7 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)
 
 ### 第 37 次发布
 
@@ -36553,8 +36581,8 @@
 
 新增接口：
 
-* [[SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)](https://cloud.tencent.com/document/api/#/#)
-* [[SendMessages](https://cloud.tencent.com/document/api/1179/53440)](https://cloud.tencent.com/document/api/#/#)
+* [SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)
+* [SendMessages](https://cloud.tencent.com/document/api/1179/53440)
 
 ### 第 4 次发布
 
@@ -39705,7 +39733,7 @@
 
 新增接口：
 
-* [[DescribeTaskDetail](https://cloud.tencent.com/document/api/649/53439)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/649/53439)
 
 修改接口：
 
@@ -39716,7 +39744,7 @@
 
 新增数据结构：
 
-* [[TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord)](https://cloud.tencent.com/document/api/649/36099#[TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord))
+* [TaskRecord](https://cloud.tencent.com/document/api/649/36099#TaskRecord)
 
 ### 第 43 次发布
 
@@ -41250,7 +41278,7 @@
 
 新增数据结构：
 
-* [[LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo)](https://cloud.tencent.com/document/api/266/31773#[LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo))
+* [LiveRealTimeClipMediaSegmentInfo](https://cloud.tencent.com/document/api/266/31773#LiveRealTimeClipMediaSegmentInfo)
 
 ### 第 73 次发布
 
@@ -43473,6 +43501,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 81 次发布
+
+发布时间：2021-03-10 08:10:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：AddressName
+
 
 ### 第 80 次发布
 

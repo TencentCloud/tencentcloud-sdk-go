@@ -8268,7 +8268,7 @@ type ServerlessGroupPage struct {
 
 type ServiceSetting struct {
 
-	// 0:公网 1:集群内访问 2：NodePort
+	// 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
 

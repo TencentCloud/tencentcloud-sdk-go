@@ -1183,6 +1183,47 @@ func (r *CreateEdgePackTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateScdnFailedLogTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 重试失败任务的taskID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 地域：mainland或overseas
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *CreateScdnFailedLogTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateScdnFailedLogTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScdnFailedLogTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建结果, 
+	// "0" -> 创建成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateScdnFailedLogTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateScdnFailedLogTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScdnLogTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -1242,6 +1283,12 @@ type CreateScdnLogTaskRequest struct {
 
 	// 查询条件
 	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
+
+	// 来源产品 cdn ecdn
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 地域：mainland 或 overseas
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *CreateScdnLogTaskRequest) ToJsonString() string {
@@ -4162,6 +4209,12 @@ func (r *ListScdnDomainsResponse) FromJsonString(s string) error {
 
 type ListScdnLogTasksRequest struct {
 	*tchttp.BaseRequest
+
+	// 产品来源 cdn/ecdn
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 地域：mainland 或 overseas 为空表示查询所有地域
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *ListScdnLogTasksRequest) ToJsonString() string {
@@ -5415,6 +5468,10 @@ type ScdnDomain struct {
 
 	// Bot 状态默认为‘/’，取值 close | open
 	Bot *string `json:"Bot,omitempty" name:"Bot"`
+
+	// 域名加速区域，取值global | mainland |  overseas
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type ScdnErrorPage struct {
@@ -5502,6 +5559,10 @@ type ScdnLogTaskDetail struct {
 	// 查询条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
+
+	// mainland或overseas
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type ScdnTopData struct {
@@ -5567,6 +5628,14 @@ type ScdnWafConfig struct {
 	// 类型拦截规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*ScdnWafRule `json:"Rules,omitempty" name:"Rules" list`
+
+	// waf规则等级，可取100|200|300
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// waf子规则开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubRuleSwitch []*WafSubRuleStatus `json:"SubRuleSwitch,omitempty" name:"SubRuleSwitch" list`
 }
 
 type ScdnWafRule struct {
@@ -6520,6 +6589,15 @@ type ViolationUrl struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type WafSubRuleStatus struct {
+
+	// 子规则状态，on|off
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 规则id列表
+	SubIds []*int64 `json:"SubIds,omitempty" name:"SubIds" list`
 }
 
 type WebpAdapter struct {

@@ -143,6 +143,31 @@ func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (respons
     return
 }
 
+func NewCreateScdnFailedLogTaskRequest() (request *CreateScdnFailedLogTaskRequest) {
+    request = &CreateScdnFailedLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateScdnFailedLogTask")
+    return
+}
+
+func NewCreateScdnFailedLogTaskResponse() (response *CreateScdnFailedLogTaskResponse) {
+    response = &CreateScdnFailedLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
+func (c *Client) CreateScdnFailedLogTask(request *CreateScdnFailedLogTaskRequest) (response *CreateScdnFailedLogTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateScdnFailedLogTaskRequest()
+    }
+    response = NewCreateScdnFailedLogTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScdnLogTaskRequest() (request *CreateScdnLogTaskRequest) {
     request = &CreateScdnLogTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

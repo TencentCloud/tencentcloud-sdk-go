@@ -1102,6 +1102,43 @@ func (r *DescribeSafeAuthFlagResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSubAccountsRequest struct {
+	*tchttp.BaseRequest
+
+	// 子用户UIN列表，最多支持50个UIN
+	FilterSubAccountUin []*uint64 `json:"FilterSubAccountUin,omitempty" name:"FilterSubAccountUin" list`
+}
+
+func (r *DescribeSubAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubAccountsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子用户列表
+		SubAccounts []*SubAccountUser `json:"SubAccounts,omitempty" name:"SubAccounts" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSubAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSubAccountsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DetachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -2697,6 +2734,28 @@ type SubAccountInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type SubAccountUser struct {
+
+	// 子用户用户 ID
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子用户 UID
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 子用户备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户类型(1:主账号;2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 type UpdateAssumeRolePolicyRequest struct {

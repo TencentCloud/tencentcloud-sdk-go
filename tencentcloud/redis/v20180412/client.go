@@ -258,7 +258,7 @@ func NewDescribeCommonDBInstancesResponse() (response *DescribeCommonDBInstances
     return
 }
 
-// 查询Redis实例列表信息
+// 查询Redis实例列表信息。该接口已废弃。
 func (c *Client) DescribeCommonDBInstances(request *DescribeCommonDBInstancesRequest) (response *DescribeCommonDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeCommonDBInstancesRequest()

@@ -915,7 +915,7 @@ type DBCreateInfo struct {
 	// 数据库名
 	DBName *string `json:"DBName,omitempty" name:"DBName"`
 
-	// 字符集。可选值包括：Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, Chinese_PRC_BIN, Chinese_Taiwan_Stroke_CI_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS。不填默认为Chinese_PRC_CI_AS
+	// 字符集。可通过接口DescribeDBCharsets查到支持的字符集，不填默认为Chinese_PRC_CI_AS。
 	Charset *string `json:"Charset,omitempty" name:"Charset"`
 
 	// 数据库账号权限信息
@@ -3341,7 +3341,7 @@ type Migration struct {
 	// 备份文件列表，UploadType确定，COS_URL则保存URL，COS_UPLOAD则保存备份名称
 	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
 
-	// 迁移任务状态，
+	// 迁移任务状态，2-创建完成，7-全量导入中，8-等待增量，9-导入成功，10-导入失败，12-增量导入中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 迁移任务创建时间
