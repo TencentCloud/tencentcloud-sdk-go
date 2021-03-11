@@ -30,7 +30,7 @@
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-03-10 08:03:56 |
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-03-10 08:04:14 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-01-07 08:03:25 |
-| cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-02-04 08:14:25 |
+| cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-03-11 08:03:14 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-02-23 08:10:44 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2021-02-22 08:03:09 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-02-04 08:50:26 |
@@ -59,7 +59,7 @@
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-02-03 08:04:31 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-01-07 08:04:40 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-03-02 08:01:27 |
-| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-03-09 08:00:53 |
+| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-03-11 08:00:57 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-01-21 08:04:03 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-03-09 08:04:52 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-01-07 08:04:49 |
@@ -80,7 +80,7 @@
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-02-01 10:50:49 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-01-07 08:05:22 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-02-02 08:05:53 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-03-02 08:06:16 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-03-11 08:05:04 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-01-07 08:05:49 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-02-23 08:01:19 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-02-26 08:05:21 |
@@ -148,7 +148,7 @@
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-03-10 08:10:02 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-03-01 08:10:24 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-02-26 08:08:15 |
-| ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-02-25 08:00:15 |
+| ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-03-11 08:00:14 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2021-03-01 08:00:10 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2021-01-27 08:00:09 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2021-03-09 08:09:47 |

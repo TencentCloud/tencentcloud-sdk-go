@@ -1971,6 +1971,10 @@ type ProductModelDefinition struct {
 	// 产品所属分类的模型快照（产品创建时刻的）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryModel *string `json:"CategoryModel,omitempty" name:"CategoryModel"`
+
+	// 产品的连接类型的模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetTypeModel *string `json:"NetTypeModel,omitempty" name:"NetTypeModel"`
 }
 
 type ProjectEntry struct {

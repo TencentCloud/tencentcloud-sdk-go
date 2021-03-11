@@ -1,76 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 29 次发布
+### 第 21 次发布
 
-发布时间：2021-03-10 08:03:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSubAccounts](https://cloud.tencent.com/document/api/598/53486)
-
-新增数据结构：
-
-* [SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 64 次发布
-
-发布时间：2021-03-10 08:04:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateScdnFailedLogTask](https://cloud.tencent.com/document/api/228/53487)
-
-修改接口：
-
-* [CreateScdnLogTask](https://cloud.tencent.com/document/api/228/47941)
-
-	* 新增入参：Source, Area
-
-* [ListScdnLogTasks](https://cloud.tencent.com/document/api/228/49012)
-
-	* 新增入参：Source, Area
-
-
-新增数据结构：
-
-* [WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus)
-
-修改数据结构：
-
-* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
-
-	* 新增成员：Area
-
-* [ScdnLogTaskDetail](https://cloud.tencent.com/document/api/228/30987#ScdnLogTaskDetail)
-
-	* 新增成员：Area
-
-* [ScdnWafConfig](https://cloud.tencent.com/document/api/228/30987#ScdnWafConfig)
-
-	* 新增成员：Level, SubRuleSwitch
-
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 23 次发布
-
-发布时间：2021-03-10 08:08:58
+发布时间：2021-03-11 08:05:04
 
 本次发布包含了以下内容：
 
@@ -78,28 +12,9 @@
 
 修改数据结构：
 
-* [DBCreateInfo](https://cloud.tencent.com/document/api/238/19976#DBCreateInfo)
+* [ProductModelDefinition](https://cloud.tencent.com/document/api/1081/34988#ProductModelDefinition)
 
-	* <font color="#dd0000">**修改成员**：</font>Charset, Accounts, Remark
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 81 次发布
-
-发布时间：2021-03-10 08:10:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
-
-	* 新增入参：AddressName
+	* 新增成员：NetTypeModel
 
 
 
@@ -4755,11 +4670,11 @@
 
 新增接口：
 
-* [[DescribeSubAccounts](https://cloud.tencent.com/document/api/598/53486)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSubAccounts](https://cloud.tencent.com/document/api/598/53486)
 
 新增数据结构：
 
-* [[SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser)](https://cloud.tencent.com/document/api/598/33167#[SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser))
+* [SubAccountUser](https://cloud.tencent.com/document/api/598/33167#SubAccountUser)
 
 ### 第 28 次发布
 
@@ -7548,7 +7463,7 @@
 
 新增接口：
 
-* [[CreateScdnFailedLogTask](https://cloud.tencent.com/document/api/228/53487)](https://cloud.tencent.com/document/api/#/#)
+* [CreateScdnFailedLogTask](https://cloud.tencent.com/document/api/228/53487)
 
 修改接口：
 
@@ -7563,7 +7478,7 @@
 
 新增数据结构：
 
-* [[WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus)](https://cloud.tencent.com/document/api/228/30987#[WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus))
+* [WafSubRuleStatus](https://cloud.tencent.com/document/api/228/30987#WafSubRuleStatus)
 
 修改数据结构：
 
@@ -23514,6 +23429,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 21 次发布
+
+发布时间：2021-03-11 08:05:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductModelDefinition](https://cloud.tencent.com/document/api/1081/34988#ProductModelDefinition)
+
+	* 新增成员：NetTypeModel
+
 
 ### 第 20 次发布
 
