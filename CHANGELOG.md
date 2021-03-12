@@ -1,24 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 21 次发布
-
-发布时间：2021-03-11 08:05:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ProductModelDefinition](https://cloud.tencent.com/document/api/1081/34988#ProductModelDefinition)
-
-	* 新增成员：NetTypeModel
-
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24

@@ -145,7 +145,7 @@
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-01-28 08:00:40 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-01-07 08:08:32 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-02-24 08:08:36 |
-| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-03-10 08:10:02 |
+| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-03-12 08:07:16 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-03-01 08:10:24 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-02-26 08:08:15 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-03-11 08:00:14 |
