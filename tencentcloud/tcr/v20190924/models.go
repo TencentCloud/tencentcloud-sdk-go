@@ -2399,6 +2399,46 @@ type Limit struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+type ManageExternalEndpointRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 操作（Create/Delete）
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *ManageExternalEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageExternalEndpointRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageExternalEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageExternalEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageExternalEndpointResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ManageImageLifecycleGlobalPersonalRequest struct {
 	*tchttp.BaseRequest
 

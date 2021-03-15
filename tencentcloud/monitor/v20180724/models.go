@@ -99,6 +99,28 @@ type AlarmHistory struct {
 
 	// 策略是否存在 0=不存在 1=存在
 	PolicyExists *int64 `json:"PolicyExists,omitempty" name:"PolicyExists"`
+
+	// 指标信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricsInfo []*AlarmHistoryMetric `json:"MetricsInfo,omitempty" name:"MetricsInfo" list`
+}
+
+type AlarmHistoryMetric struct {
+
+	// 云产品监控类型查询数据使用的命名空间
+	QceNamespace *string `json:"QceNamespace,omitempty" name:"QceNamespace"`
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计周期
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 触发告警的数值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 指标的展示名
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type AlarmNotice struct {

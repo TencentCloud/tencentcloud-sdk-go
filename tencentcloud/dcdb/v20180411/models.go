@@ -1980,6 +1980,49 @@ func (r *InitDCDBInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type KillSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 会话ID列表
+	SessionId []*int64 `json:"SessionId,omitempty" name:"SessionId" list`
+
+	// 分片ID
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+}
+
+func (r *KillSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KillSessionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type KillSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *KillSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *KillSessionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type LogFileInfo struct {
 
 	// Log最后修改时间

@@ -922,6 +922,31 @@ func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *Ini
     return
 }
 
+func NewKillSessionRequest() (request *KillSessionRequest) {
+    request = &KillSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "KillSession")
+    return
+}
+
+func NewKillSessionResponse() (response *KillSessionResponse) {
+    response = &KillSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（KillSession）用于杀死指定会话。
+func (c *Client) KillSession(request *KillSessionRequest) (response *KillSessionResponse, err error) {
+    if request == nil {
+        request = NewKillSessionRequest()
+    }
+    response = NewKillSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequest) {
     request = &ModifyAccountDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},

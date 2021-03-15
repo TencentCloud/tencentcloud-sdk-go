@@ -1368,6 +1368,31 @@ func (c *Client) DuplicateImagePersonal(request *DuplicateImagePersonalRequest) 
     return
 }
 
+func NewManageExternalEndpointRequest() (request *ManageExternalEndpointRequest) {
+    request = &ManageExternalEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ManageExternalEndpoint")
+    return
+}
+
+func NewManageExternalEndpointResponse() (response *ManageExternalEndpointResponse) {
+    response = &ManageExternalEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 管理实例公网访问
+func (c *Client) ManageExternalEndpoint(request *ManageExternalEndpointRequest) (response *ManageExternalEndpointResponse, err error) {
+    if request == nil {
+        request = NewManageExternalEndpointRequest()
+    }
+    response = NewManageExternalEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManageImageLifecycleGlobalPersonalRequest() (request *ManageImageLifecycleGlobalPersonalRequest) {
     request = &ManageImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

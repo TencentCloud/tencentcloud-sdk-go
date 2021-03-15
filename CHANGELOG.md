@@ -1,5 +1,76 @@
 # 本版本更新包含以下内容：
 
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 18 次发布
+
+发布时间：2021-03-15 08:03:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [KillSession](https://cloud.tencent.com/document/api/557/53595)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 15 次发布
+
+发布时间：2021-03-15 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [KillSession](https://cloud.tencent.com/document/api/237/53596)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 22 次发布
+
+发布时间：2021-03-15 08:05:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlarmHistoryMetric](https://cloud.tencent.com/document/api/248/30354#AlarmHistoryMetric)
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：MetricsInfo
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 22 次发布
+
+发布时间：2021-03-15 08:08:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ManageExternalEndpoint](https://cloud.tencent.com/document/api/1141/53597)
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -15951,6 +16022,18 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 18 次发布
+
+发布时间：2021-03-15 08:03:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[KillSession](https://cloud.tencent.com/document/api/557/53595)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 17 次发布
 
 发布时间：2021-01-21 08:03:45
@@ -26195,6 +26278,18 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 15 次发布
+
+发布时间：2021-03-15 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[KillSession](https://cloud.tencent.com/document/api/237/53596)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 14 次发布
 
 发布时间：2021-01-07 08:06:13
@@ -27040,6 +27135,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 22 次发布
+
+发布时间：2021-03-15 08:05:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AlarmHistoryMetric](https://cloud.tencent.com/document/api/248/30354#AlarmHistoryMetric)](https://cloud.tencent.com/document/api/248/30354#[AlarmHistoryMetric](https://cloud.tencent.com/document/api/248/30354#AlarmHistoryMetric))
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：MetricsInfo
+
 
 ### 第 21 次发布
 
@@ -36044,6 +36158,18 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 22 次发布
+
+发布时间：2021-03-15 08:08:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ManageExternalEndpoint](https://cloud.tencent.com/document/api/1141/53597)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 21 次发布
 
