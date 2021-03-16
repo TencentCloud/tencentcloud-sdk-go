@@ -2312,6 +2312,9 @@ type DescribeExistedInstancesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据多个实例IP进行过滤
+	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses" list`
 }
 
 func (r *DescribeExistedInstancesRequest) ToJsonString() string {
@@ -3721,6 +3724,22 @@ type PrometheusAlertHistoryItem struct {
 
 	// 告警内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 告警状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 触发的规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleItem *string `json:"RuleItem,omitempty" name:"RuleItem"`
+
+	// 告警渠道的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 告警渠道的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 type PrometheusAlertRule struct {

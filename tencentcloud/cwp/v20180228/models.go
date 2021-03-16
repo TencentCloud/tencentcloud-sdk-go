@@ -3099,6 +3099,57 @@ func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRiskDnsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Url - String - 是否必填：否 - Url筛选</li>
+	// <li>Status - String - 是否必填：否 - 状态筛选0:待处理；2:信任；3:不信任</li>
+	// <li>MergeBeginTime - String - 是否必填：否 - 最近访问开始时间</li>
+	// <li>MergeEndTime - String - 是否必填：否 - 最近访问结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeRiskDnsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRiskDnsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRiskDnsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRiskDnsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRiskDnsListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScanMalwareScheduleRequest struct {
 	*tchttp.BaseRequest
 }
@@ -3366,6 +3417,15 @@ type DescribeTagsRequest struct {
 
 	// 机器所属地域。如：ap-guangzhou，ap-shanghai
 	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 查询关键字(机器名称/机器IP </li>
+	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装 | SHUTDOWN 已关机）</li>
+	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeTagsRequest) ToJsonString() string {
@@ -3912,10 +3972,10 @@ type EditBashRuleRequest struct {
 	// 规则ID(新增时不填)
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+	// 客户端ID(IsGlobal为0时，Uuid或Hostip必填一个)
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+	// 主机IP(IsGlobal为0时，Uuid或Hostip必填一个)
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
 
 	// 是否全局规则(默认否)
@@ -6056,6 +6116,64 @@ func (r *UntrustMalwaresResponse) ToJsonString() string {
 }
 
 func (r *UntrustMalwaresResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBaselineStrategyRequest struct {
+	*tchttp.BaseRequest
+
+	// 策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 策略名称
+	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+
+	// 检测周期
+	ScanCycle *uint64 `json:"ScanCycle,omitempty" name:"ScanCycle"`
+
+	// 定期检测时间，该时间下发扫描
+	ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
+
+	// 该策略下选择的基线id数组
+	CategoryIds []*string `json:"CategoryIds,omitempty" name:"CategoryIds" list`
+
+	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 主机地域
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 主机id数组
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+}
+
+func (r *UpdateBaselineStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateBaselineStrategyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBaselineStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateBaselineStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateBaselineStrategyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

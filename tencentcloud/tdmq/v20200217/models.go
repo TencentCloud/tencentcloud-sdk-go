@@ -307,7 +307,7 @@ type CreateTopicRequest struct {
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过32个字符。
+	// 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。

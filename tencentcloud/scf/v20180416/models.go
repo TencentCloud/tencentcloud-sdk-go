@@ -75,6 +75,15 @@ type AsyncEvent struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+type AsyncTriggerConfig struct {
+
+	// 用户错误的异步重试重试配置
+	RetryConfig []*RetryConfig `json:"RetryConfig,omitempty" name:"RetryConfig" list`
+
+	// 消息保留时间
+	MsgTTL *int64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
+}
+
 type CfsConfig struct {
 
 	// 文件系统信息列表
@@ -1037,6 +1046,49 @@ func (r *GetFunctionAddressResponse) ToJsonString() string {
 }
 
 func (r *GetFunctionAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFunctionEventInvokeConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数版本，默认为$LATEST
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+}
+
+func (r *GetFunctionEventInvokeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFunctionEventInvokeConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFunctionEventInvokeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步重试配置信息
+		AsyncTriggerConfig *AsyncTriggerConfig `json:"AsyncTriggerConfig,omitempty" name:"AsyncTriggerConfig"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFunctionEventInvokeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFunctionEventInvokeConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2358,6 +2410,12 @@ type Result struct {
 	InvokeResult *int64 `json:"InvokeResult,omitempty" name:"InvokeResult"`
 }
 
+type RetryConfig struct {
+
+	// 重试次数
+	RetryNum *int64 `json:"RetryNum,omitempty" name:"RetryNum"`
+}
+
 type RoutingConfig struct {
 
 	// 随机权重路由附加版本
@@ -2744,6 +2802,46 @@ func (r *UpdateFunctionConfigurationResponse) ToJsonString() string {
 }
 
 func (r *UpdateFunctionConfigurationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateFunctionEventInvokeConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步重试配置信息
+	AsyncTriggerConfig *AsyncTriggerConfig `json:"AsyncTriggerConfig,omitempty" name:"AsyncTriggerConfig"`
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数所属命名空间，默认为default
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *UpdateFunctionEventInvokeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateFunctionEventInvokeConfigRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateFunctionEventInvokeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateFunctionEventInvokeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateFunctionEventInvokeConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

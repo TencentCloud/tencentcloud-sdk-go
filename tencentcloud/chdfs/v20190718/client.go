@@ -58,6 +58,8 @@ func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 创建权限组。
 func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response *CreateAccessGroupResponse, err error) {
     if request == nil {
@@ -83,6 +85,8 @@ func NewCreateAccessRulesResponse() (response *CreateAccessRulesResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量创建权限规则，权限规则ID和创建时间无需填写。
 func (c *Client) CreateAccessRules(request *CreateAccessRulesRequest) (response *CreateAccessRulesResponse, err error) {
     if request == nil {
@@ -108,6 +112,8 @@ func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 创建文件系统（异步）。
 func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
     if request == nil {
@@ -133,6 +139,8 @@ func NewCreateLifeCycleRulesResponse() (response *CreateLifeCycleRulesResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
 func (c *Client) CreateLifeCycleRules(request *CreateLifeCycleRulesRequest) (response *CreateLifeCycleRulesResponse, err error) {
     if request == nil {
@@ -158,6 +166,8 @@ func NewCreateMountPointResponse() (response *CreateMountPointResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 创建文件系统挂载点，仅限于创建成功的文件系统。
 func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *CreateMountPointResponse, err error) {
     if request == nil {
@@ -183,6 +193,8 @@ func NewCreateRestoreTasksResponse() (response *CreateRestoreTasksResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量创建回热任务，回热任务ID、状态和创建时间无需填写。
 func (c *Client) CreateRestoreTasks(request *CreateRestoreTasksRequest) (response *CreateRestoreTasksResponse, err error) {
     if request == nil {
@@ -208,6 +220,8 @@ func NewDeleteAccessGroupResponse() (response *DeleteAccessGroupResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 删除权限组。
 func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (response *DeleteAccessGroupResponse, err error) {
     if request == nil {
@@ -233,6 +247,8 @@ func NewDeleteAccessRulesResponse() (response *DeleteAccessRulesResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量删除权限规则。
 func (c *Client) DeleteAccessRules(request *DeleteAccessRulesRequest) (response *DeleteAccessRulesResponse, err error) {
     if request == nil {
@@ -258,6 +274,8 @@ func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 删除文件系统，不允许删除非空文件系统。
 func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
     if request == nil {
@@ -283,6 +301,8 @@ func NewDeleteLifeCycleRulesResponse() (response *DeleteLifeCycleRulesResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量删除生命周期规则。
 func (c *Client) DeleteLifeCycleRules(request *DeleteLifeCycleRulesRequest) (response *DeleteLifeCycleRulesResponse, err error) {
     if request == nil {
@@ -308,6 +328,8 @@ func NewDeleteMountPointResponse() (response *DeleteMountPointResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 删除挂载点。
 func (c *Client) DeleteMountPoint(request *DeleteMountPointRequest) (response *DeleteMountPointResponse, err error) {
     if request == nil {
@@ -333,6 +355,8 @@ func NewDescribeAccessGroupsResponse() (response *DescribeAccessGroupsResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 查看权限组列表。
 func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) (response *DescribeAccessGroupsResponse, err error) {
     if request == nil {
@@ -358,6 +382,8 @@ func NewDescribeAccessRulesResponse() (response *DescribeAccessRulesResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 通过权限组ID查看权限规则列表。
 func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
     if request == nil {
@@ -383,6 +409,8 @@ func NewDescribeFileSystemResponse() (response *DescribeFileSystemResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 查看文件系统详细信息。
 func (c *Client) DescribeFileSystem(request *DescribeFileSystemRequest) (response *DescribeFileSystemResponse, err error) {
     if request == nil {
@@ -408,6 +436,8 @@ func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 查看文件系统列表。
 func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
     if request == nil {
@@ -433,6 +463,8 @@ func NewDescribeLifeCycleRulesResponse() (response *DescribeLifeCycleRulesRespon
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 通过文件系统ID查看生命周期规则列表。
 func (c *Client) DescribeLifeCycleRules(request *DescribeLifeCycleRulesRequest) (response *DescribeLifeCycleRulesResponse, err error) {
     if request == nil {
@@ -458,6 +490,8 @@ func NewDescribeMountPointResponse() (response *DescribeMountPointResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 查看挂载点详细信息。
 func (c *Client) DescribeMountPoint(request *DescribeMountPointRequest) (response *DescribeMountPointResponse, err error) {
     if request == nil {
@@ -483,6 +517,8 @@ func NewDescribeMountPointsResponse() (response *DescribeMountPointsResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 通过文件系统ID或者权限组ID查看挂载点列表。
 func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (response *DescribeMountPointsResponse, err error) {
     if request == nil {
@@ -508,6 +544,8 @@ func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 通过文件系统ID查看资源标签列表。
 func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
     if request == nil {
@@ -533,6 +571,8 @@ func NewDescribeRestoreTasksResponse() (response *DescribeRestoreTasksResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 通过文件系统ID查看回热任务列表。
 func (c *Client) DescribeRestoreTasks(request *DescribeRestoreTasksRequest) (response *DescribeRestoreTasksResponse, err error) {
     if request == nil {
@@ -558,6 +598,8 @@ func NewModifyAccessGroupResponse() (response *ModifyAccessGroupResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 修改权限组属性。
 func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (response *ModifyAccessGroupResponse, err error) {
     if request == nil {
@@ -583,6 +625,8 @@ func NewModifyAccessRulesResponse() (response *ModifyAccessRulesResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
 func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response *ModifyAccessRulesResponse, err error) {
     if request == nil {
@@ -608,6 +652,8 @@ func NewModifyFileSystemResponse() (response *ModifyFileSystemResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 修改文件系统属性，仅限于创建成功的文件系统。
 func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *ModifyFileSystemResponse, err error) {
     if request == nil {
@@ -633,6 +679,8 @@ func NewModifyLifeCycleRulesResponse() (response *ModifyLifeCycleRulesResponse) 
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
 func (c *Client) ModifyLifeCycleRules(request *ModifyLifeCycleRulesRequest) (response *ModifyLifeCycleRulesResponse, err error) {
     if request == nil {
@@ -658,6 +706,8 @@ func NewModifyMountPointResponse() (response *ModifyMountPointResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 修改挂载点属性。
 func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *ModifyMountPointResponse, err error) {
     if request == nil {
@@ -683,6 +733,8 @@ func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
     return
 }
 
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+// 
 // 修改资源标签列表，全量覆盖。
 func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
     if request == nil {

@@ -424,7 +424,13 @@ type Invocation struct {
 	// 命令ID。
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
 
-	// 执行活动状态。
+	// 执行任务状态。取值范围：
+	// <li> PENDING：等待下发 
+	// <li> RUNNING：命令运行中
+	// <li> SUCCESS：命令成功
+	// <li> FAILED：命令失败
+	// <li> TIMEOUT：命令超时
+	// <li> PARTIAL_FAILED：命令部分失败
 	InvocationStatus *string `json:"InvocationStatus,omitempty" name:"InvocationStatus"`
 
 	// 执行任务信息列表。

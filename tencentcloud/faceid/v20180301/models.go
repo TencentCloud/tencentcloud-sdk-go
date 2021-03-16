@@ -100,6 +100,9 @@ type BankCard4EVerificationRequest struct {
 	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 	// 目前默认为0：身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *BankCard4EVerificationRequest) ToJsonString() string {
@@ -171,6 +174,9 @@ type BankCardVerificationRequest struct {
 	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 	// 目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *BankCardVerificationRequest) ToJsonString() string {
@@ -457,6 +463,9 @@ type DetectAuthRequest struct {
 	// 用于人脸比对的照片，图片的Base64值；
 	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {

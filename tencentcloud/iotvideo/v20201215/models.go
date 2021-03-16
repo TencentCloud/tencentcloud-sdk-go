@@ -107,6 +107,39 @@ func (r *CheckForwardAuthResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CloudStorageEvent struct {
+
+	// 事件起始时间（Unix 时间戳，秒级
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 事件结束时间（Unix 时间戳，秒级
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 事件缩略图
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
+
+	// 事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+type CloudStorageTimeData struct {
+
+	// 云存时间轴信息列表
+	TimeList []*CloudStorageTimeInfo `json:"TimeList,omitempty" name:"TimeList" list`
+
+	// 播放地址
+	VideoURL *string `json:"VideoURL,omitempty" name:"VideoURL"`
+}
+
+type CloudStorageTimeInfo struct {
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type CreateBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -147,6 +180,46 @@ func (r *CreateBatchResponse) ToJsonString() string {
 }
 
 func (r *CreateBatchResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudStorageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 云存套餐ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+}
+
+func (r *CreateCloudStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudStorageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCloudStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateCloudStorageResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -554,6 +627,245 @@ func (r *DescribeCategoryResponse) ToJsonString() string {
 }
 
 func (r *DescribeCategoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageDateRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeCloudStorageDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageDateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageDateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云存日期数组，["2021-01-05","2021-01-06"]
+		Data []*string `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageDateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 请求上下文, 用作查询游标
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 单次获取的历史数据项目的最大数量, 缺省10
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+func (r *DescribeCloudStorageEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云存事件列表
+		Events []*CloudStorageEvent `json:"Events,omitempty" name:"Events" list`
+
+		// 请求上下文, 用作查询游标
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 拉取结果是否已经结束
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 拉取结果数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeCloudStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云存开启状态，1为开启，0为未开启或已过期
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 云存类型，1为全时云存，2为事件云存
+		Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+		// 云存套餐过期时间
+		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 云存回看时长
+		ShiftDuration *uint64 `json:"ShiftDuration,omitempty" name:"ShiftDuration"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageThumbnailRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 缩略图文件名
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
+}
+
+func (r *DescribeCloudStorageThumbnailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageThumbnailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageThumbnailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 缩略图访问地址
+		ThumbnailURL *string `json:"ThumbnailURL,omitempty" name:"ThumbnailURL"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageThumbnailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageThumbnailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 云存日期，例如"2020-01-05"
+	Date *string `json:"Date,omitempty" name:"Date"`
+}
+
+func (r *DescribeCloudStorageTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageTimeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 接口返回数据
+		Data *CloudStorageTimeData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudStorageTimeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

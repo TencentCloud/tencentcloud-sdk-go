@@ -1543,6 +1543,31 @@ func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesReq
     return
 }
 
+func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
+    request = &DescribeRiskDnsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRiskDnsList")
+    return
+}
+
+func NewDescribeRiskDnsListResponse() (response *DescribeRiskDnsListResponse) {
+    response = &DescribeRiskDnsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 入侵检测，获取恶意请求列表
+func (c *Client) DescribeRiskDnsList(request *DescribeRiskDnsListRequest) (response *DescribeRiskDnsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskDnsListRequest()
+    }
+    response = NewDescribeRiskDnsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareScheduleRequest) {
     request = &DescribeScanMalwareScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2764,6 +2789,31 @@ func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *Unt
         request = NewUntrustMalwaresRequest()
     }
     response = NewUntrustMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateBaselineStrategyRequest() (request *UpdateBaselineStrategyRequest) {
+    request = &UpdateBaselineStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "UpdateBaselineStrategy")
+    return
+}
+
+func NewUpdateBaselineStrategyResponse() (response *UpdateBaselineStrategyResponse) {
+    response = &UpdateBaselineStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据基线策略id更新策略信息
+func (c *Client) UpdateBaselineStrategy(request *UpdateBaselineStrategyRequest) (response *UpdateBaselineStrategyResponse, err error) {
+    if request == nil {
+        request = NewUpdateBaselineStrategyRequest()
+    }
+    response = NewUpdateBaselineStrategyResponse()
     err = c.Send(request, response)
     return
 }

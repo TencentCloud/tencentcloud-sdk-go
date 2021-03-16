@@ -768,6 +768,31 @@ func (c *Client) DescribeApplicationTriggerPersonal(request *DescribeApplication
     return
 }
 
+func NewDescribeExternalEndpointStatusRequest() (request *DescribeExternalEndpointStatusRequest) {
+    request = &DescribeExternalEndpointStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeExternalEndpointStatus")
+    return
+}
+
+func NewDescribeExternalEndpointStatusResponse() (response *DescribeExternalEndpointStatusResponse) {
+    response = &DescribeExternalEndpointStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例公网访问入口状态
+func (c *Client) DescribeExternalEndpointStatus(request *DescribeExternalEndpointStatusRequest) (response *DescribeExternalEndpointStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalEndpointStatusRequest()
+    }
+    response = NewDescribeExternalEndpointStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFavorRepositoryPersonalRequest() (request *DescribeFavorRepositoryPersonalRequest) {
     request = &DescribeFavorRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

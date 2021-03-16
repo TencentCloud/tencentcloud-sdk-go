@@ -906,4 +906,8 @@ type TelCdrInfo struct {
 	// 排队技能组Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitempty" name:"QueuedSkillGroupId"`
+
+	// 会话 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }

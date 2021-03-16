@@ -93,6 +93,31 @@ func (c *Client) CreateBatch(request *CreateBatchRequest) (response *CreateBatch
     return
 }
 
+func NewCreateCloudStorageRequest() (request *CreateCloudStorageRequest) {
+    request = &CreateCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateCloudStorage")
+    return
+}
+
+func NewCreateCloudStorageResponse() (response *CreateCloudStorageResponse) {
+    response = &CreateCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开通云存服务
+func (c *Client) CreateCloudStorage(request *CreateCloudStorageRequest) (response *CreateCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudStorageRequest()
+    }
+    response = NewCreateCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateForwardRuleRequest() (request *CreateForwardRuleRequest) {
     request = &CreateForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +314,131 @@ func (c *Client) DescribeCategory(request *DescribeCategoryRequest) (response *D
         request = NewDescribeCategoryRequest()
     }
     response = NewDescribeCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageRequest() (request *DescribeCloudStorageRequest) {
+    request = &DescribeCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorage")
+    return
+}
+
+func NewDescribeCloudStorageResponse() (response *DescribeCloudStorageResponse) {
+    response = &DescribeCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取设备云存服务详情
+func (c *Client) DescribeCloudStorage(request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageRequest()
+    }
+    response = NewDescribeCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageDateRequest() (request *DescribeCloudStorageDateRequest) {
+    request = &DescribeCloudStorageDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageDate")
+    return
+}
+
+func NewDescribeCloudStorageDateResponse() (response *DescribeCloudStorageDateResponse) {
+    response = &DescribeCloudStorageDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取具有云存的日期
+func (c *Client) DescribeCloudStorageDate(request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageDateRequest()
+    }
+    response = NewDescribeCloudStorageDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageEventsRequest() (request *DescribeCloudStorageEventsRequest) {
+    request = &DescribeCloudStorageEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageEvents")
+    return
+}
+
+func NewDescribeCloudStorageEventsResponse() (response *DescribeCloudStorageEventsResponse) {
+    response = &DescribeCloudStorageEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取云存事件列表
+func (c *Client) DescribeCloudStorageEvents(request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageEventsRequest()
+    }
+    response = NewDescribeCloudStorageEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageThumbnailRequest() (request *DescribeCloudStorageThumbnailRequest) {
+    request = &DescribeCloudStorageThumbnailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageThumbnail")
+    return
+}
+
+func NewDescribeCloudStorageThumbnailResponse() (response *DescribeCloudStorageThumbnailResponse) {
+    response = &DescribeCloudStorageThumbnailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取云存事件缩略图
+func (c *Client) DescribeCloudStorageThumbnail(request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageThumbnailRequest()
+    }
+    response = NewDescribeCloudStorageThumbnailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequest) {
+    request = &DescribeCloudStorageTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageTime")
+    return
+}
+
+func NewDescribeCloudStorageTimeResponse() (response *DescribeCloudStorageTimeResponse) {
+    response = &DescribeCloudStorageTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取某一天云存时间轴
+func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageTimeRequest()
+    }
+    response = NewDescribeCloudStorageTimeResponse()
     err = c.Send(request, response)
     return
 }
