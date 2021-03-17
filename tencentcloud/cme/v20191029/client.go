@@ -237,7 +237,7 @@ func NewDeleteMaterialResponse() (response *DeleteMaterialResponse) {
     return
 }
 
-// 根据素材 Id 删除素材。
+// 根据媒体 Id 删除媒体。
 func (c *Client) DeleteMaterial(request *DeleteMaterialRequest) (response *DeleteMaterialResponse, err error) {
     if request == nil {
         request = NewDeleteMaterialRequest()
@@ -414,7 +414,7 @@ func NewDescribeMaterialsResponse() (response *DescribeMaterialsResponse) {
     return
 }
 
-// 根据素材 Id 批量获取素材详情。
+// 根据媒体 Id 批量获取媒体详情。
 func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response *DescribeMaterialsResponse, err error) {
     if request == nil {
         request = NewDescribeMaterialsRequest()
@@ -516,7 +516,7 @@ func NewDescribeSharedSpaceResponse() (response *DescribeSharedSpaceResponse) {
     return
 }
 
-// 获取共享空间。当实体A对实体B授权某资源以后，实体B的共享空间就会增加实体A。
+// 获取共享空间。当个人或团队A对个人或团队B授权某资源以后，个人或团队B的共享空间就会增加个人或团队A。
 func (c *Client) DescribeSharedSpace(request *DescribeSharedSpaceRequest) (response *DescribeSharedSpaceResponse, err error) {
     if request == nil {
         request = NewDescribeSharedSpaceRequest()
@@ -718,7 +718,7 @@ func NewFlattenListMediaResponse() (response *FlattenListMediaResponse) {
     return
 }
 
-// 平铺分类路径下及其子分类下的所有素材。
+// 平铺分类路径下及其子分类下的所有媒体基础信息。
 func (c *Client) FlattenListMedia(request *FlattenListMediaRequest) (response *FlattenListMediaResponse, err error) {
     if request == nil {
         request = NewFlattenListMediaRequest()
@@ -770,7 +770,7 @@ func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizati
     return
 }
 
-// 资源所属实体对目标实体授予目标资源的相应权限。
+// 资源归属者对目标个人或团队授予目标资源的相应权限。
 func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationRequest) (response *GrantResourceAuthorizationResponse, err error) {
     if request == nil {
         request = NewGrantResourceAuthorizationRequest()
@@ -845,7 +845,7 @@ func NewListMediaResponse() (response *ListMediaResponse) {
     return
 }
 
-//  浏览当前分类路径下的资源，包括素材和子分类。
+//  浏览当前分类路径下的资源，包括媒体文件和子分类，返回媒资基础信息和分类信息。
 func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaResponse, err error) {
     if request == nil {
         request = NewListMediaRequest()
@@ -870,7 +870,7 @@ func NewModifyMaterialResponse() (response *ModifyMaterialResponse) {
     return
 }
 
-// 修改素材信息，支持修改素材名称、分类路径、标签等信息。
+// 修改媒体信息，支持修改媒体名称、分类路径、标签等信息。
 func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {
     if request == nil {
         request = NewModifyMaterialRequest()
@@ -972,12 +972,44 @@ func NewMoveClassResponse() (response *MoveClassResponse) {
 }
 
 // 移动某一个分类到另外一个分类下，也可用于分类重命名。
-// <li>如果 SourceClassPath = /素材/视频/NBA，DestinationClassPath = /素材/视频/篮球，当 DestinationClassPath 不存在时候，操作结果为重命名 ClassPath，如果 DestinationClassPath 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA。</li>
+// 如果 SourceClassPath = /素材/视频/NBA，DestinationClassPath = /素材/视频/篮球
+// <li>当 DestinationClassPath 不存在时候，操作结果为重命名 ClassPath；</li>
+// <li>当 DestinationClassPath 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA</li>
 func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassResponse, err error) {
     if request == nil {
         request = NewMoveClassRequest()
     }
     response = NewMoveClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMoveResourceRequest() (request *MoveResourceRequest) {
+    request = &MoveResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "MoveResource")
+    return
+}
+
+func NewMoveResourceResponse() (response *MoveResourceResponse) {
+    response = &MoveResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 移动资源，支持跨个人或团队移动媒体以及分类。如果填写了Operator，则需要校验用户对媒体和分类资源的访问以及写权限。
+// <li>当原始资源为媒体时，该接口效果为将该媒体移动到目标分类下面；</li>
+// <li>当原始资源为分类时，该接口效果为将原始分类移动到目标分类或者是重命名。</li>
+//  如果 SourceResource.Resource.Id = /素材/视频/NBA，DestinationResource.Resource.Id= /素材/视频/篮球 
+// <li>当 DestinationResource.Resource.Id 不存在时候且原始资源与目标资源归属相同，操作结果为重命名原始分类；</li>
+// <li>当 DestinationResource.Resource.Id 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA</li>
+func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResourceResponse, err error) {
+    if request == nil {
+        request = NewMoveResourceRequest()
+    }
+    response = NewMoveResourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1022,7 +1054,7 @@ func NewSearchMaterialResponse() (response *SearchMaterialResponse) {
     return
 }
 
-// 根据检索条件搜索素材，返回素材的基本信息。
+// 根据检索条件搜索媒体，返回媒体的基本信息。
 func (c *Client) SearchMaterial(request *SearchMaterialRequest) (response *SearchMaterialResponse, err error) {
     if request == nil {
         request = NewSearchMaterialRequest()

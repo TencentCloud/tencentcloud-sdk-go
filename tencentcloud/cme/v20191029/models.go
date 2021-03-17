@@ -202,7 +202,7 @@ type CreateClassRequest struct {
 	// 分类路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -498,10 +498,10 @@ type DeleteMaterialRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 素材 Id。
+	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -540,6 +540,9 @@ type DeleteProjectRequest struct {
 
 	// 项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验对项目删除操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DeleteProjectRequest) ToJsonString() string {
@@ -790,7 +793,7 @@ type DescribeMaterialsRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 素材 ID 列表，N 从 0 开始取值，最大 19。
+	// 媒体 ID 列表，N 从 0 开始取值，最大 19。
 	MaterialIds []*string `json:"MaterialIds,omitempty" name:"MaterialIds" list`
 
 	// 列表排序，支持下列排序字段：
@@ -798,7 +801,7 @@ type DescribeMaterialsRequest struct {
 	// <li>UpdateTime：更新时间。</li>
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验媒体的访问权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -815,7 +818,7 @@ type DescribeMaterialsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 素材列表信息。
+		// 媒体列表信息。
 		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -893,7 +896,10 @@ type DescribeProjectsRequest struct {
 	// 画布宽高比集合。
 	AspectRatioSet []*string `json:"AspectRatioSet,omitempty" name:"AspectRatioSet" list`
 
-	// 项目类别集合。
+	// 项目类别，取值有：
+	// <li>VIDEO_EDIT：视频编辑。</li>
+	// <li>SWITCHER：导播台。</li>
+	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
 
 	// 列表排序，支持下列排序字段：
@@ -909,6 +915,9 @@ type DescribeProjectsRequest struct {
 
 	// 分页返回的记录条数，默认值：10。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验项目访问权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeProjectsRequest) ToJsonString() string {
@@ -1000,7 +1009,7 @@ type DescribeSharedSpaceRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 被授权目标实体。
+	// 被授权目标,，个人或团队。
 	Authorizee *Entity `json:"Authorizee,omitempty" name:"Authorizee"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
@@ -1049,6 +1058,9 @@ type DescribeTaskDetailRequest struct {
 
 	// 任务 Id。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeTaskDetailRequest) ToJsonString() string {
@@ -1130,6 +1142,9 @@ type DescribeTasksRequest struct {
 
 	// 分页返回的记录条数，默认值：10。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeTasksRequest) ToJsonString() string {
@@ -1174,7 +1189,7 @@ type DescribeTeamMembersRequest struct {
 	// 团队 ID。
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
-	// 成员 ID 列表，限指定30个指定成员。
+	// 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
 	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds" list`
 
 	// 分页偏移量，默认值：0
@@ -1226,7 +1241,7 @@ type DescribeTeamsRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 团队 ID 列表，限30个。
+	// 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
 	TeamIds []*string `json:"TeamIds,omitempty" name:"TeamIds" list`
 
 	// 分页偏移量，默认值：0。
@@ -1487,10 +1502,10 @@ type FlattenListMediaRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 素材分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的素材信息。
+	// 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材路径的归属者。
+	// 媒体分类的归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 分页偏移量，默认值：0。
@@ -1499,7 +1514,7 @@ type FlattenListMediaRequest struct {
 	// 返回记录条数，默认值：10，最大值：50。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1519,7 +1534,7 @@ type FlattenListMediaResponse struct {
 		// 符合条件的记录总数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 该分类路径下及其子分类下的所有素材。
+		// 该分类路径下及其子分类下的所有媒体基础信息列表。
 		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1585,17 +1600,17 @@ type GrantResourceAuthorizationRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 资源所属实体。
+	// 资源归属者，个人或者团队。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 被授权资源。
 	Resources []*Resource `json:"Resources,omitempty" name:"Resources" list`
 
-	// 被授权目标实体。
+	// 被授权目标，个人或者团队。
 	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees" list`
 
 	// 详细授权值。 取值有：
-	// <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+	// <li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
 	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 	// <li>W：可修改、删除媒资。</li>
@@ -1865,10 +1880,10 @@ type ListMediaRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 素材分类路径，例如填写"/a/b"，则代表浏览该分类路径下的素材和子分类信息。
+	// 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材和分类的归属者。
+	// 媒体和分类的归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 分页偏移量，默认值：0。
@@ -1877,7 +1892,7 @@ type ListMediaRequest struct {
 	// 返回记录条数，默认值：10，最大值：50。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验对媒体的访问权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1894,10 +1909,10 @@ type ListMediaResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 符合条件的素材记录总数。
+		// 符合条件的媒体记录总数。
 		MaterialTotalCount *int64 `json:"MaterialTotalCount,omitempty" name:"MaterialTotalCount"`
 
-		// 浏览分类路径下的素材列表信息。
+		// 浏览分类路径下的媒体列表信息。
 		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
 
 		// 浏览分类路径下的一级子类。
@@ -1939,55 +1954,71 @@ type LoginStatusInfo struct {
 
 type MaterialBasicInfo struct {
 
-	// 素材 Id。
+	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 素材类型，取值为：音频（AUDIO）、视频（VIDEO）、图片（IMAGE）、链接（LINK）、字幕 （SUBTITLE）、转场（TRANSITION）、滤镜（FILTER）、文本文字（TEXT）、图文动效（TEXT_IMAGE）。
+	// 媒体类型，取值为：
+	// <li> AUDIO :音频;</li>
+	// <li> VIDEO :视频;</li>
+	// <li> IMAGE :图片;</li>
+	// <li> LINK  :链接.</li>
+	// <li> OTHER : 其他.</li>
 	MaterialType *string `json:"MaterialType,omitempty" name:"MaterialType"`
 
-	// 素材归属实体。
+	// 媒体归属实体。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
-	// 素材名称。
+	// 媒体名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 素材文件的创建时间，使用 ISO 日期格式。
+	// 媒体文件的创建时间，使用 ISO 日期格式。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 素材文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
+	// 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 素材的分类目录路径。
+	// 媒体的分类路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
-	// 素材绑定的标签信息列表 。
+	// 预置标签列表。
+	PresetTagSet []*PresetTagInfo `json:"PresetTagSet,omitempty" name:"PresetTagSet" list`
+
+	// 人工标签列表。
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// 媒体文件的预览图。
+	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
+
+	// 媒体绑定的标签信息列表 。
+	// 该字段已废弃。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet" list`
-
-	// 素材媒体文件的预览图。
-	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 }
 
 type MaterialInfo struct {
 
-	// 素材基本信息。
+	// 媒体基本信息。
 	BasicInfo *MaterialBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
 
-	// 视频素材信息。
+	// 视频媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoMaterial *VideoMaterial `json:"VideoMaterial,omitempty" name:"VideoMaterial"`
 
-	// 音频素材信息。
+	// 音频媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioMaterial *AudioMaterial `json:"AudioMaterial,omitempty" name:"AudioMaterial"`
 
-	// 图片素材信息。
+	// 图片媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageMaterial *ImageMaterial `json:"ImageMaterial,omitempty" name:"ImageMaterial"`
 
-	// 链接素材信息。
+	// 链接媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinkMaterial *LinkMaterial `json:"LinkMaterial,omitempty" name:"LinkMaterial"`
+
+	// 其他类型媒体信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherMaterial *OtherMaterial `json:"OtherMaterial,omitempty" name:"OtherMaterial"`
 }
 
 type MaterialStatus struct {
@@ -2098,16 +2129,16 @@ type ModifyMaterialRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 素材 Id。
+	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 素材归属。
+	// 媒体或分类路径归属。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
-	// 素材名称，不能超过30个字符。
+	// 媒体名称，不能超过30个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 素材分类路径，例如填写"/a/b"，则代表该素材存储的路径为"/a/b"。
+	// 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
@@ -2158,7 +2189,7 @@ type ModifyProjectRequest struct {
 	// <li>9:16。</li>
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
-	// 归属者。
+	// 项目归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 }
 
@@ -2329,6 +2360,58 @@ func (r *MoveClassResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type MoveResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
+	SourceResource *ResourceInfo `json:"SourceResource,omitempty" name:"SourceResource"`
+
+	// 目标信息，包含分类及归属，仅支持移动资源到分类。
+	DestinationResource *ResourceInfo `json:"DestinationResource,omitempty" name:"DestinationResource"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验资源访问以及写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *MoveResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MoveResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type MoveResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MoveResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *MoveResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type OtherMaterial struct {
+
+	// 素材媒体文件的播放 URL 地址。
+	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
+
+	// 云点播媒资 FileId。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
+}
+
 type PenguinMediaPlatformPublishInfo struct {
 
 	// 视频发布标题。
@@ -2363,6 +2446,18 @@ type PlatformInfo struct {
 
 	// 更新时间，格式按照 ISO 8601 标准表示。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type PresetTagInfo struct {
+
+	// 标签 Id 。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 标签名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 父级预设 Id。
+	ParentTagId *string `json:"ParentTagId,omitempty" name:"ParentTagId"`
 }
 
 type ProjectInfo struct {
@@ -2401,6 +2496,16 @@ type Resource struct {
 
 	// 资源 Id，当 Type 为 MATERIAL 时，取值为素材 Id；当 Type 为 CLASS 时，取值为分类路径 ClassPath。
 	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type ResourceInfo struct {
+
+	// 媒资和分类资源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
+
+	// 资源归属，个人或团队。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 }
 
 type RevokeResourceAuthorizationRequest struct {
@@ -2465,22 +2570,22 @@ type SearchMaterialRequest struct {
 	// 指定搜索空间，数组长度不得超过5。
 	SearchScopes []*SearchScope `json:"SearchScopes,omitempty" name:"SearchScopes" list`
 
-	// 素材类型，取值：
+	// 媒体类型，取值：
 	// <li>AUDIO：音频；</li>
 	// <li>VIDEO：视频 ；</li>
 	// <li>IMAGE：图片。</li>
 	MaterialTypes []*string `json:"MaterialTypes,omitempty" name:"MaterialTypes" list`
 
-	// 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
+	// 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 
-	// 按素材时长检索，单位s。
+	// 按媒体时长检索，单位s。
 	DurationRange *IntegerRange `json:"DurationRange,omitempty" name:"DurationRange"`
 
-	// 按照素材创建时间检索。
+	// 按照媒体创建时间检索。
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" name:"CreateTimeRange"`
 
 	// 按标签检索，填入检索的标签名。
@@ -2495,7 +2600,7 @@ type SearchMaterialRequest struct {
 	// 返回记录条数，默认值：50。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	// 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2515,7 +2620,7 @@ type SearchMaterialResponse struct {
 		// 符合记录总条数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 素材信息，仅返回基础信息。
+		// 媒体信息，仅返回基础信息。
 		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

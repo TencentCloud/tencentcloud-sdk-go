@@ -55,6 +55,107 @@ type ActionHistory struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type BatchUpdateFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件新版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件原版本号，根据文件列表升级固件不需要填写此参数
+	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitempty" name:"FirmwareOriVersion"`
+
+	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitempty" name:"UpgradeMethod"`
+
+	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 设备列表的文件md5值
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 设备列表的文件大小值
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 需要升级的设备名称列表
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+}
+
+func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchUpdateFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchUpdateFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchUpdateFirmwareResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelDeviceFirmwareTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件升级任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *CancelDeviceFirmwareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelDeviceFirmwareTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelDeviceFirmwareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelDeviceFirmwareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelDeviceFirmwareTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckForwardAuthRequest struct {
 	*tchttp.BaseRequest
 
@@ -381,6 +482,46 @@ func (r *CreateProductResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTaskFileUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *CreateTaskFileUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskFileUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskFileUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务文件上传链接
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 任务文件名
+		FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTaskFileUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTaskFileUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 
@@ -415,6 +556,43 @@ func (r *DeleteDeviceResponse) ToJsonString() string {
 }
 
 func (r *DeleteDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *DeleteFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFirmwareRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteFirmwareResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1280,6 +1458,339 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *DescribeFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件版本号
+		Version *string `json:"Version,omitempty" name:"Version"`
+
+		// 产品ID
+		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+		// 固件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 固件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 固件Md5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Md5sum *string `json:"Md5sum,omitempty" name:"Md5sum"`
+
+		// 固件上传的秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Createtime *uint64 `json:"Createtime,omitempty" name:"Createtime"`
+
+		// 产品名称
+		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 筛选条件
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询的数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeFirmwareTaskDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskDevicesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件升级任务的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 固件升级任务的设备列表
+		Devices []*DeviceUpdateStatus `json:"Devices,omitempty" name:"Devices" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareTaskDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskDevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskDistributionRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件升级任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeFirmwareTaskDistributionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskDistributionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskDistributionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件升级任务状态分布信息
+		StatusInfos []*StatusStatistic `json:"StatusInfos,omitempty" name:"StatusInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareTaskDistributionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskDistributionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeFirmwareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 固件任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 固件任务创建时间，单位:秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 固件任务升级类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Type *int64 `json:"Type,omitempty" name:"Type"`
+
+		// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+		// 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
+
+		// 产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+		// 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalVersion *string `json:"OriginalVersion,omitempty" name:"OriginalVersion"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *DescribeFirmwareTaskStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTaskStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 升级成功的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessTotal *uint64 `json:"SuccessTotal,omitempty" name:"SuccessTotal"`
+
+		// 升级失败的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailureTotal *uint64 `json:"FailureTotal,omitempty" name:"FailureTotal"`
+
+		// 正在升级的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpgradingTotal *uint64 `json:"UpgradingTotal,omitempty" name:"UpgradingTotal"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareTaskStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTaskStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回查询结果条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeFirmwareTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirmwareTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件升级任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+
+		// 固件升级任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirmwareTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFirmwareTasksResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeForwardRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -1518,6 +2029,82 @@ type DeviceInfo struct {
 	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
+type DeviceUpdateStatus struct {
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 最后处理时间
+	LastProcessTime *uint64 `json:"LastProcessTime,omitempty" name:"LastProcessTime"`
+
+	// 状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 错误消息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 返回码
+	Retcode *int64 `json:"Retcode,omitempty" name:"Retcode"`
+
+	// 目标更新版本
+	DstVersion *string `json:"DstVersion,omitempty" name:"DstVersion"`
+
+	// 下载中状态时的下载进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 原版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriVersion *string `json:"OriVersion,omitempty" name:"OriVersion"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type EditFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号。
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件名称。
+	FirmwareName *string `json:"FirmwareName,omitempty" name:"FirmwareName"`
+
+	// 固件描述。
+	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+}
+
+func (r *EditFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditFirmwareRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EditFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EditFirmwareResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type EventHistoryItem struct {
 
 	// 事件的时间戳
@@ -1543,6 +2130,126 @@ type EventHistoryItem struct {
 	// 事件的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+type FirmwareInfo struct {
+
+	// 固件版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 固件MD5值
+	Md5sum *string `json:"Md5sum,omitempty" name:"Md5sum"`
+
+	// 固件创建时间
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 固件名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 固件描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+type FirmwareTaskInfo struct {
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type GetAllFirmwareVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+}
+
+func (r *GetAllFirmwareVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAllFirmwareVersionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAllFirmwareVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无
+		Version []*string `json:"Version,omitempty" name:"Version" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAllFirmwareVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAllFirmwareVersionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFirmwareURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *GetFirmwareURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFirmwareURLRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFirmwareURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件URL
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFirmwareURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetFirmwareURLResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type ImportModelDefinitionRequest struct {
@@ -1579,6 +2286,55 @@ func (r *ImportModelDefinitionResponse) ToJsonString() string {
 }
 
 func (r *ImportModelDefinitionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListFirmwaresRequest struct {
+	*tchttp.BaseRequest
+
+	// 获取的页数
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *ListFirmwaresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListFirmwaresRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListFirmwaresResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 固件列表
+		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListFirmwaresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListFirmwaresResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1828,6 +2584,58 @@ type ProductTemplate struct {
 	IconUrlGrid *string `json:"IconUrlGrid,omitempty" name:"IconUrlGrid"`
 }
 
+type RetryDeviceFirmwareTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件升级任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *RetryDeviceFirmwareTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RetryDeviceFirmwareTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type RetryDeviceFirmwareTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RetryDeviceFirmwareTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *RetryDeviceFirmwareTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchKeyword struct {
+
+	// 搜索条件的Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 搜索条件的值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type SetForwardAuthRequest struct {
 	*tchttp.BaseRequest
 
@@ -1880,6 +2688,66 @@ func (r *SetForwardAuthResponse) ToJsonString() string {
 }
 
 func (r *SetForwardAuthResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StatusStatistic struct {
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 统计总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+type UploadFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件的MD5值
+	Md5sum *string `json:"Md5sum,omitempty" name:"Md5sum"`
+
+	// 固件的大小
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 固件名称
+	FirmwareName *string `json:"FirmwareName,omitempty" name:"FirmwareName"`
+
+	// 固件描述
+	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+}
+
+func (r *UploadFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadFirmwareRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadFirmwareResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

@@ -282,6 +282,58 @@ func (r *CreateChaincodeAndInstallForUserResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeployDynamicBcosContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 合约编译后的ABI，可在合约详情获取
+	AbiInfo *string `json:"AbiInfo,omitempty" name:"AbiInfo"`
+
+	// 合约编译得到的字节码，hex编码，可在合约详情获取
+	ByteCodeBin *string `json:"ByteCodeBin,omitempty" name:"ByteCodeBin"`
+
+	// 签名用户编号，可在私钥管理页面获取
+	SignUserId *string `json:"SignUserId,omitempty" name:"SignUserId"`
+
+	// 构造函数入参，Json数组，多个参数以逗号分隔（参数为数组时同理），如：["str1",["arr1","arr2"]]
+	ConstructorParams *string `json:"ConstructorParams,omitempty" name:"ConstructorParams"`
+}
+
+func (r *DeployDynamicBcosContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployDynamicBcosContractRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployDynamicBcosContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 部署成功返回的合约地址
+		ContractAddress *string `json:"ContractAddress,omitempty" name:"ContractAddress"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeployDynamicBcosContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeployDynamicBcosContractResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeployDynamicContractHandlerRequest struct {
 	*tchttp.BaseRequest
 
@@ -399,6 +451,202 @@ type EndorserGroup struct {
 
 	// 背书节点列表
 	EndorserPeerList []*string `json:"EndorserPeerList,omitempty" name:"EndorserPeerList" list`
+}
+
+type GetBcosBlockByNumberRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+}
+
+func (r *GetBcosBlockByNumberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosBlockByNumberRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosBlockByNumberResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回区块json字符串
+		BlockJson *string `json:"BlockJson,omitempty" name:"BlockJson"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBcosBlockByNumberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosBlockByNumberResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosBlockListRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 当前页数，默认为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+
+	// 区块哈希，可以从InvokeBcosTrans接口的返回值中解析获取
+	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
+}
+
+func (r *GetBcosBlockListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosBlockListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosBlockListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回数据列表
+		List []*BcosBlockObj `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBcosBlockListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosBlockListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosTransByHashRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 交易哈希值，可以从InvokeBcosTrans接口的返回值中解析获取
+	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
+}
+
+func (r *GetBcosTransByHashRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosTransByHashRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosTransByHashResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易信息json字符串
+		TransactionJson *string `json:"TransactionJson,omitempty" name:"TransactionJson"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBcosTransByHashResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosTransByHashResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosTransListRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 当前页数，默认是1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
+
+	// 交易哈希，可以从InvokeBcosTrans接口的返回值中解析获取
+	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
+}
+
+func (r *GetBcosTransListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosTransListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBcosTransListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回数据列表
+		List []*BcosTransInfo `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBcosTransListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetBcosTransListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type GetBlockListHandlerRequest struct {
@@ -1419,6 +1667,61 @@ func (r *InitializeChaincodeForUserResponse) ToJsonString() string {
 }
 
 func (r *InitializeChaincodeForUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InvokeBcosTransRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组编号，可在群组列表中获取
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 合约地址，可在合约详情获取
+	ContractAddress *string `json:"ContractAddress,omitempty" name:"ContractAddress"`
+
+	// 合约Abi的json数组格式的字符串，可在合约详情获取
+	AbiInfo *string `json:"AbiInfo,omitempty" name:"AbiInfo"`
+
+	// 合约方法名
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 签名用户编号，可在私钥管理页面获取
+	SignUserId *string `json:"SignUserId,omitempty" name:"SignUserId"`
+
+	// 合约方法入参，json格式字符串
+	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+}
+
+func (r *InvokeBcosTransRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InvokeBcosTransRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InvokeBcosTransResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果json字符串
+		TransactionRsp *string `json:"TransactionRsp,omitempty" name:"TransactionRsp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InvokeBcosTransResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InvokeBcosTransResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

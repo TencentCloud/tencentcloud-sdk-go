@@ -118,6 +118,31 @@ func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndIns
     return
 }
 
+func NewDeployDynamicBcosContractRequest() (request *DeployDynamicBcosContractRequest) {
+    request = &DeployDynamicBcosContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "DeployDynamicBcosContract")
+    return
+}
+
+func NewDeployDynamicBcosContractResponse() (response *DeployDynamicBcosContractResponse) {
+    response = &DeployDynamicBcosContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 动态部署并发布Bcos合约
+func (c *Client) DeployDynamicBcosContract(request *DeployDynamicBcosContractRequest) (response *DeployDynamicBcosContractResponse, err error) {
+    if request == nil {
+        request = NewDeployDynamicBcosContractRequest()
+    }
+    response = NewDeployDynamicBcosContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeployDynamicContractHandlerRequest() (request *DeployDynamicContractHandlerRequest) {
     request = &DeployDynamicContractHandlerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +189,106 @@ func (c *Client) DownloadUserCert(request *DownloadUserCertRequest) (response *D
         request = NewDownloadUserCertRequest()
     }
     response = NewDownloadUserCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBcosBlockByNumberRequest() (request *GetBcosBlockByNumberRequest) {
+    request = &GetBcosBlockByNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockByNumber")
+    return
+}
+
+func NewGetBcosBlockByNumberResponse() (response *GetBcosBlockByNumberResponse) {
+    response = &GetBcosBlockByNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用块高查询Bcos区块信息
+func (c *Client) GetBcosBlockByNumber(request *GetBcosBlockByNumberRequest) (response *GetBcosBlockByNumberResponse, err error) {
+    if request == nil {
+        request = NewGetBcosBlockByNumberRequest()
+    }
+    response = NewGetBcosBlockByNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBcosBlockListRequest() (request *GetBcosBlockListRequest) {
+    request = &GetBcosBlockListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockList")
+    return
+}
+
+func NewGetBcosBlockListResponse() (response *GetBcosBlockListResponse) {
+    response = &GetBcosBlockListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos分页查询当前群组下的区块列表
+func (c *Client) GetBcosBlockList(request *GetBcosBlockListRequest) (response *GetBcosBlockListResponse, err error) {
+    if request == nil {
+        request = NewGetBcosBlockListRequest()
+    }
+    response = NewGetBcosBlockListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBcosTransByHashRequest() (request *GetBcosTransByHashRequest) {
+    request = &GetBcosTransByHashRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransByHash")
+    return
+}
+
+func NewGetBcosTransByHashResponse() (response *GetBcosTransByHashResponse) {
+    response = &GetBcosTransByHashResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos根据交易哈希查看交易详细信息
+func (c *Client) GetBcosTransByHash(request *GetBcosTransByHashRequest) (response *GetBcosTransByHashResponse, err error) {
+    if request == nil {
+        request = NewGetBcosTransByHashRequest()
+    }
+    response = NewGetBcosTransByHashResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBcosTransListRequest() (request *GetBcosTransListRequest) {
+    request = &GetBcosTransListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransList")
+    return
+}
+
+func NewGetBcosTransListResponse() (response *GetBcosTransListResponse) {
+    response = &GetBcosTransListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Bcos分页查询当前群组的交易信息列表
+func (c *Client) GetBcosTransList(request *GetBcosTransListRequest) (response *GetBcosTransListResponse, err error) {
+    if request == nil {
+        request = NewGetBcosTransListRequest()
+    }
+    response = NewGetBcosTransListResponse()
     err = c.Send(request, response)
     return
 }
@@ -589,6 +714,31 @@ func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err e
         request = NewInvokeRequest()
     }
     response = NewInvokeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeBcosTransRequest() (request *InvokeBcosTransRequest) {
+    request = &InvokeBcosTransRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "InvokeBcosTrans")
+    return
+}
+
+func NewInvokeBcosTransResponse() (response *InvokeBcosTransResponse) {
+    response = &InvokeBcosTransResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 执行Bcos交易，支持动态部署的合约
+func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *InvokeBcosTransResponse, err error) {
+    if request == nil {
+        request = NewInvokeBcosTransRequest()
+    }
+    response = NewInvokeBcosTransResponse()
     err = c.Send(request, response)
     return
 }

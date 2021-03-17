@@ -93,6 +93,31 @@ func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (res
     return
 }
 
+func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
+    request = &DescribeInstanceRenewNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeInstanceRenewNodes")
+    return
+}
+
+func NewDescribeInstanceRenewNodesResponse() (response *DescribeInstanceRenewNodesResponse) {
+    response = &DescribeInstanceRenewNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 预付费集群隔离后续费资源查询
+func (c *Client) DescribeInstanceRenewNodes(request *DescribeInstanceRenewNodesRequest) (response *DescribeInstanceRenewNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceRenewNodesRequest()
+    }
+    response = NewDescribeInstanceRenewNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +164,31 @@ func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *Des
         request = NewDescribeJobFlowRequest()
     }
     response = NewDescribeJobFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRenewEmrRequest() (request *InquirePriceRenewEmrRequest) {
+    request = &InquirePriceRenewEmrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "InquirePriceRenewEmr")
+    return
+}
+
+func NewInquirePriceRenewEmrResponse() (response *InquirePriceRenewEmrResponse) {
+    response = &InquirePriceRenewEmrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 集群续费询价。
+func (c *Client) InquirePriceRenewEmr(request *InquirePriceRenewEmrRequest) (response *InquirePriceRenewEmrResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewEmrRequest()
+    }
+    response = NewInquirePriceRenewEmrResponse()
     err = c.Send(request, response)
     return
 }

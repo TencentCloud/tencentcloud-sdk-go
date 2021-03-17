@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
+    request = &BatchUpdateFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "BatchUpdateFirmware")
+    return
+}
+
+func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
+    response = &BatchUpdateFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
+    if request == nil {
+        request = NewBatchUpdateFirmwareRequest()
+    }
+    response = NewBatchUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequest) {
+    request = &CancelDeviceFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CancelDeviceFirmwareTask")
+    return
+}
+
+func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskResponse) {
+    response = &CancelDeviceFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于取消设备升级任务
+func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelDeviceFirmwareTaskRequest()
+    }
+    response = NewCancelDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckForwardAuthRequest() (request *CheckForwardAuthRequest) {
     request = &CheckForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -168,6 +218,31 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
     return
 }
 
+func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
+    request = &CreateTaskFileUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateTaskFileUrl")
+    return
+}
+
+func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
+    response = &CreateTaskFileUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFileUrlRequest()
+    }
+    response = NewCreateTaskFileUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +264,31 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
         request = NewDeleteDeviceRequest()
     }
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFirmwareRequest() (request *DeleteFirmwareRequest) {
+    request = &DeleteFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteFirmware")
+    return
+}
+
+func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
+    response = &DeleteFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteFirmware）用于删除固件 
+func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirmwareRequest()
+    }
+    response = NewDeleteFirmwareResponse()
     err = c.Send(request, response)
     return
 }
@@ -618,6 +718,156 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     return
 }
 
+func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
+    request = &DescribeFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmware")
+    return
+}
+
+func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
+    response = &DescribeFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFirmware）用于查询固件信息
+func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareRequest()
+    }
+    response = NewDescribeFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
+    request = &DescribeFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTask")
+    return
+}
+
+func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) {
+    response = &DescribeFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口查询固件升级任务详情
+func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskRequest()
+    }
+    response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevicesRequest) {
+    request = &DescribeFirmwareTaskDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskDevices")
+    return
+}
+
+func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDevicesResponse) {
+    response = &DescribeFirmwareTaskDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询固件升级任务的设备列表
+func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDevicesRequest()
+    }
+    response = NewDescribeFirmwareTaskDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTaskDistributionRequest) {
+    request = &DescribeFirmwareTaskDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskDistribution")
+    return
+}
+
+func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTaskDistributionResponse) {
+    response = &DescribeFirmwareTaskDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询固件升级任务状态分布
+func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDistributionRequest()
+    }
+    response = NewDescribeFirmwareTaskDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskStatisticsRequest) {
+    request = &DescribeFirmwareTaskStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskStatistics")
+    return
+}
+
+func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTaskStatisticsResponse) {
+    response = &DescribeFirmwareTaskStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询固件升级任务统计信息
+func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskStatisticsRequest()
+    }
+    response = NewDescribeFirmwareTaskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
+    request = &DescribeFirmwareTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTasks")
+    return
+}
+
+func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse) {
+    response = &DescribeFirmwareTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于查询固件升级任务列表
+func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTasksRequest()
+    }
+    response = NewDescribeFirmwareTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeForwardRuleRequest() (request *DescribeForwardRuleRequest) {
     request = &DescribeForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -718,6 +968,81 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
     return
 }
 
+func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
+    request = &EditFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "EditFirmware")
+    return
+}
+
+func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
+    response = &EditFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于编辑固件信息
+func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
+    if request == nil {
+        request = NewEditFirmwareRequest()
+    }
+    response = NewEditFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAllFirmwareVersionRequest() (request *GetAllFirmwareVersionRequest) {
+    request = &GetAllFirmwareVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "GetAllFirmwareVersion")
+    return
+}
+
+func NewGetAllFirmwareVersionResponse() (response *GetAllFirmwareVersionResponse) {
+    response = &GetAllFirmwareVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表 
+func (c *Client) GetAllFirmwareVersion(request *GetAllFirmwareVersionRequest) (response *GetAllFirmwareVersionResponse, err error) {
+    if request == nil {
+        request = NewGetAllFirmwareVersionRequest()
+    }
+    response = NewGetAllFirmwareVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFirmwareURLRequest() (request *GetFirmwareURLRequest) {
+    request = &GetFirmwareURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "GetFirmwareURL")
+    return
+}
+
+func NewGetFirmwareURLResponse() (response *GetFirmwareURLResponse) {
+    response = &GetFirmwareURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetFirmwareURL）用于获取固件存储的URL 
+func (c *Client) GetFirmwareURL(request *GetFirmwareURLRequest) (response *GetFirmwareURLResponse, err error) {
+    if request == nil {
+        request = NewGetFirmwareURLRequest()
+    }
+    response = NewGetFirmwareURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportModelDefinitionRequest() (request *ImportModelDefinitionRequest) {
     request = &ImportModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +1064,31 @@ func (c *Client) ImportModelDefinition(request *ImportModelDefinitionRequest) (r
         request = NewImportModelDefinitionRequest()
     }
     response = NewImportModelDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
+    request = &ListFirmwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ListFirmwares")
+    return
+}
+
+func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
+    response = &ListFirmwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ListFirmwares）用于获取固件列表 
+func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
+    if request == nil {
+        request = NewListFirmwaresRequest()
+    }
+    response = NewListFirmwaresResponse()
     err = c.Send(request, response)
     return
 }
@@ -843,6 +1193,31 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
     return
 }
 
+func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskRequest) {
+    request = &RetryDeviceFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "RetryDeviceFirmwareTask")
+    return
+}
+
+func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResponse) {
+    response = &RetryDeviceFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于重试设备升级任务
+func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewRetryDeviceFirmwareTaskRequest()
+    }
+    response = NewRetryDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetForwardAuthRequest() (request *SetForwardAuthRequest) {
     request = &SetForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -864,6 +1239,31 @@ func (c *Client) SetForwardAuth(request *SetForwardAuthRequest) (response *SetFo
         request = NewSetForwardAuthRequest()
     }
     response = NewSetForwardAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
+    request = &UploadFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "UploadFirmware")
+    return
+}
+
+func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
+    response = &UploadFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UploadFirmware）用于上传设备固件信息 
+func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
+    if request == nil {
+        request = NewUploadFirmwareRequest()
+    }
+    response = NewUploadFirmwareResponse()
     err = c.Send(request, response)
     return
 }

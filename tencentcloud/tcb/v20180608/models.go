@@ -2141,6 +2141,43 @@ func (r *DescribeEnvsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeExtensionUploadInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 待上传的文件
+	ExtensionFiles []*ExtensionFile `json:"ExtensionFiles,omitempty" name:"ExtensionFiles" list`
+}
+
+func (r *DescribeExtensionUploadInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExtensionUploadInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExtensionUploadInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 待上传文件的信息数组
+		FilesData []*ExtensionFileInfo `json:"FilesData,omitempty" name:"FilesData" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExtensionUploadInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeExtensionUploadInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeExtraPkgBillingInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -2686,6 +2723,33 @@ func (r *EstablishCloudBaseRunServerResponse) ToJsonString() string {
 
 func (r *EstablishCloudBaseRunServerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtensionFile struct {
+
+	// 文件类型。枚举值
+	// <li>FUNCTION：函数代码</li>
+	// <li>STATIC：静态托管代码</li>
+	// <li>SMS：短信文件</li>
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件名，长度不超过24
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+type ExtensionFileInfo struct {
+
+	// 模板里使用的地址
+	CodeUri *string `json:"CodeUri,omitempty" name:"CodeUri"`
+
+	// 上传文件的临时地址，含签名
+	UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+	// 自定义密钥。如果为空，则表示不需要加密
+	CustomKey *string `json:"CustomKey,omitempty" name:"CustomKey"`
+
+	// 文件大小限制，单位M，客户端上传前需要主动检查文件大小，超过限制的文件会被删除。
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
 type FreequotaInfo struct {

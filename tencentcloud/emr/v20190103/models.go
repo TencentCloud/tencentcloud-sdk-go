@@ -537,6 +537,51 @@ func (r *DescribeClusterNodesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceRenewNodesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID,实例ID形如: emr-xxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceRenewNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceRenewNodesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceRenewNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询到的节点总数
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 节点详细信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodeList []*RenewInstancesInfo `json:"NodeList,omitempty" name:"NodeList" list`
+
+		// 用户所有的标签键列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MetaInfo []*string `json:"MetaInfo,omitempty" name:"MetaInfo" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceRenewNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceRenewNodesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -765,6 +810,74 @@ type HostVolumeContext struct {
 	// Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumePath *string `json:"VolumePath,omitempty" name:"VolumePath"`
+}
+
+type InquirePriceRenewEmrRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 待续费集群ID列表。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 实例计费模式。此处只支持取值为1，表示包年包月。
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例续费的时间单位。取值范围：
+	// <li>m：表示月份。</li>
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 货币种类。取值范围：
+	// <li>CNY：表示人民币。</li>
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+}
+
+func (r *InquirePriceRenewEmrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceRenewEmrRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceRenewEmrResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 原价，单位为元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+		// 折扣价，单位为元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+		// 实例续费的时间单位。取值范围：
+	// <li>m：表示月份。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+		// 实例续费的时长。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceRenewEmrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InquirePriceRenewEmrResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type InquiryPriceCreateInstanceRequest struct {
@@ -1598,6 +1711,37 @@ type PriceResource struct {
 	// 本地盘的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskNum *int64 `json:"LocalDiskNum,omitempty" name:"LocalDiskNum"`
+}
+
+type RenewInstancesInfo struct {
+
+	// 节点资源ID
+	EmrResourceId *string `json:"EmrResourceId,omitempty" name:"EmrResourceId"`
+
+	// 节点类型。0:common节点；1:master节点
+	// ；2:core节点；3:task节点
+	Flag *int64 `json:"Flag,omitempty" name:"Flag"`
+
+	// 内网IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 节点内存描述
+	MemDesc *string `json:"MemDesc,omitempty" name:"MemDesc"`
+
+	// 节点核数
+	CpuNum *int64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// 硬盘大小
+	DiskSize *string `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 节点规格
+	Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+	// 磁盘类型
+	StorageType *int64 `json:"StorageType,omitempty" name:"StorageType"`
 }
 
 type Resource struct {

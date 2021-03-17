@@ -1618,6 +1618,31 @@ func (c *Client) RemoveNodeFromNodePool(request *RemoveNodeFromNodePoolRequest) 
     return
 }
 
+func NewSetNodePoolNodeProtectionRequest() (request *SetNodePoolNodeProtectionRequest) {
+    request = &SetNodePoolNodeProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "SetNodePoolNodeProtection")
+    return
+}
+
+func NewSetNodePoolNodeProtectionResponse() (response *SetNodePoolNodeProtectionResponse) {
+    response = &SetNodePoolNodeProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 仅能设置节点池中处于伸缩组的节点
+func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionRequest) (response *SetNodePoolNodeProtectionResponse, err error) {
+    if request == nil {
+        request = NewSetNodePoolNodeProtectionRequest()
+    }
+    response = NewSetNodePoolNodeProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncPrometheusTemplateRequest() (request *SyncPrometheusTemplateRequest) {
     request = &SyncPrometheusTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

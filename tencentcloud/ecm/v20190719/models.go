@@ -1886,6 +1886,9 @@ type DescribeConfigResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageLimits *ImageLimitConfig `json:"ImageLimits,omitempty" name:"ImageLimits"`
 
+		// 默认是否IP直通，用于模块创建，虚机购买等具有直通参数场景时的默认参数。
+		DefaultIPDirect *bool `json:"DefaultIPDirect,omitempty" name:"DefaultIPDirect"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

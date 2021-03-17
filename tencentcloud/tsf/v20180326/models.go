@@ -543,6 +543,10 @@ type ApplicationForPage struct {
 	// 应用备注名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationRemarkName *string `json:"ApplicationRemarkName,omitempty" name:"ApplicationRemarkName"`
+
+	// 服务配置信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList" list`
 }
 
 type BindApiGroupRequest struct {
@@ -1394,6 +1398,9 @@ type CreateApplicationRequest struct {
 
 	// 需要绑定的数据集ID
 	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
+
+	// 服务配置信息列表
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList" list`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -3015,6 +3022,12 @@ type DeployGroupRequest struct {
 
 	// 滚动发布每个批次的时间间隔
 	DeployWaitTime *uint64 `json:"DeployWaitTime,omitempty" name:"DeployWaitTime"`
+
+	// 启动脚本 base64编码
+	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
+
+	// 停止脚本 base64编码
+	StopScript *string `json:"StopScript,omitempty" name:"StopScript"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -4871,6 +4884,9 @@ type DescribePkgsRequest struct {
 
 	// 程序包仓库id
 	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
+
+	// 程序包类型数组支持（fatjar jar war tar.gz zip）
+	PackageTypeList []*string `json:"PackageTypeList,omitempty" name:"PackageTypeList" list`
 }
 
 func (r *DescribePkgsRequest) ToJsonString() string {
@@ -5949,7 +5965,7 @@ type Env struct {
 	// 环境变量名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 服务端口
+	// 环境变量值
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -6282,6 +6298,13 @@ type GroupUseStatisticsEntity struct {
 	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
 }
 
+type HealthCheckConfig struct {
+
+	// 健康检查路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
 type HealthCheckSetting struct {
 
 	// 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
@@ -6609,6 +6632,10 @@ type Instance struct {
 	// 健康检查原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// agent版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
 }
 
 type InstanceAdvancedSettings struct {
@@ -7636,6 +7663,15 @@ type PkgList struct {
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 }
 
+type Ports struct {
+
+	// 服务端口
+	TargetPort *uint64 `json:"TargetPort,omitempty" name:"TargetPort"`
+
+	// 端口协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
 type PropertyField struct {
 
 	// 属性名称
@@ -8264,6 +8300,19 @@ type ServerlessGroupPage struct {
 	// 列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*ServerlessGroup `json:"Content,omitempty" name:"Content" list`
+}
+
+type ServiceConfig struct {
+
+	// 服务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 端口信息列表
+	Ports []*Ports `json:"Ports,omitempty" name:"Ports" list`
+
+	// 健康检查配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheck *HealthCheckConfig `json:"HealthCheck,omitempty" name:"HealthCheck"`
 }
 
 type ServiceSetting struct {
@@ -9514,6 +9563,18 @@ type VmGroup struct {
 	// 健康检查配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 程序包类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 启动脚本 base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
+
+	// 停止脚本 base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopScript *string `json:"StopScript,omitempty" name:"StopScript"`
 }
 
 type VmGroupSimple struct {

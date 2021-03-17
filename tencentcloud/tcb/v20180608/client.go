@@ -718,6 +718,31 @@ func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeE
     return
 }
 
+func NewDescribeExtensionUploadInfoRequest() (request *DescribeExtensionUploadInfoRequest) {
+    request = &DescribeExtensionUploadInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeExtensionUploadInfo")
+    return
+}
+
+func NewDescribeExtensionUploadInfoResponse() (response *DescribeExtensionUploadInfoResponse) {
+    response = &DescribeExtensionUploadInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 描述扩展上传文件信息
+func (c *Client) DescribeExtensionUploadInfo(request *DescribeExtensionUploadInfoRequest) (response *DescribeExtensionUploadInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtensionUploadInfoRequest()
+    }
+    response = NewDescribeExtensionUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExtraPkgBillingInfoRequest() (request *DescribeExtraPkgBillingInfoRequest) {
     request = &DescribeExtraPkgBillingInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
