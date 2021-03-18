@@ -23,7 +23,7 @@ import (
 type AssociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 绑定的关系数组
+	// 绑定的关系数组。
 	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations" list`
 }
 
@@ -96,13 +96,13 @@ type AutoRewriteRequest struct {
 	// HTTPS:443监听器的ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// HTTPS:443监听器下需要重定向的域名，若不填，对HTTPS:443监听器下的所有域名都设置重定向。
+	// HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
-	// 重定向状态码，可取值301,302,307
+	// 重定向状态码，可取值301,302,307。
 	RewriteCodes []*int64 `json:"RewriteCodes,omitempty" name:"RewriteCodes" list`
 
-	// 重定向是否携带匹配的url
+	// 重定向是否携带匹配的URL。
 	TakeUrls []*bool `json:"TakeUrls,omitempty" name:"TakeUrls" list`
 }
 
@@ -180,10 +180,10 @@ type BasicTargetGroupInfo struct {
 type BatchDeregisterTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡ID
+	// 负载均衡ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 解绑目标
+	// 解绑目标。
 	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets" list`
 }
 
@@ -200,7 +200,7 @@ type BatchDeregisterTargetsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 解绑失败的监听器ID
+		// 解绑失败的监听器ID。
 		FailListenerIdSet []*string `json:"FailListenerIdSet,omitempty" name:"FailListenerIdSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -220,10 +220,10 @@ func (r *BatchDeregisterTargetsResponse) FromJsonString(s string) error {
 type BatchModifyTargetWeightRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 要批量修改权重的列表
+	// 要批量修改权重的列表。
 	ModifyList []*RsWeightRule `json:"ModifyList,omitempty" name:"ModifyList" list`
 }
 
@@ -257,10 +257,10 @@ func (r *BatchModifyTargetWeightResponse) FromJsonString(s string) error {
 type BatchRegisterTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡ID
+	// 负载均衡ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 绑定目标
+	// 绑定目标。
 	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets" list`
 }
 
@@ -670,19 +670,19 @@ func (r *CreateClsLogSetResponse) FromJsonString(s string) error {
 type CreateListenerRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器
+	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
 	Ports []*int64 `json:"Ports,omitempty" name:"Ports" list`
 
-	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）
+	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
+	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。
 	ListenerNames []*string `json:"ListenerNames,omitempty" name:"ListenerNames" list`
 
-	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器
+	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
@@ -704,7 +704,7 @@ type CreateListenerRequest struct {
 	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
 
-	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
@@ -724,7 +724,7 @@ type CreateListenerResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建的监听器的唯一标识数组
+		// 创建的监听器的唯一标识数组。
 		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -844,10 +844,10 @@ func (r *CreateLoadBalancerResponse) FromJsonString(s string) error {
 type CreateLoadBalancerSnatIpsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡唯一性Id，如lb-12345678
+	// 负载均衡唯一性ID，例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 添加SnatIp信息，可指定Ip申请，或者指定子网自动申请
+	// 添加SnatIp信息，可指定IP申请，或者指定子网自动申请。
 	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
 }
 
@@ -881,13 +881,13 @@ func (r *CreateLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 监听器 ID
+	// 监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 新建转发规则的信息
+	// 新建转发规则的信息。
 	Rules []*RuleInput `json:"Rules,omitempty" name:"Rules" list`
 }
 
@@ -904,7 +904,7 @@ type CreateRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建的转发规则的唯一标识数组
+		// 创建的转发规则的唯一标识数组。
 		LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -970,10 +970,10 @@ func (r *CreateTargetGroupResponse) FromJsonString(s string) error {
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 
-	// 日志主题的名字
+	// 日志主题的名称。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 主题分区 partition个数，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+	// 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
 	PartitionCount *uint64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
 }
 
@@ -990,7 +990,7 @@ type CreateTopicResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 日志主题的 ID
+		// 日志主题的 ID。
 		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1010,10 +1010,10 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 type DeleteListenerRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 要删除的监听器 ID
+	// 要删除的监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 }
 
@@ -1047,10 +1047,10 @@ func (r *DeleteListenerResponse) FromJsonString(s string) error {
 type DeleteLoadBalancerListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
+	// 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
 }
 
@@ -1084,7 +1084,7 @@ func (r *DeleteLoadBalancerListenersResponse) FromJsonString(s string) error {
 type DeleteLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 
-	// 要删除的负载均衡实例 ID数组，数组大小最大支持20
+	// 要删除的负载均衡实例 ID数组，数组大小最大支持20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
 }
 
@@ -1118,10 +1118,10 @@ func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
 type DeleteLoadBalancerSnatIpsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡唯一Id，如lb-12345678
+	// 负载均衡唯一ID，例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 删除SnatIp地址数组
+	// 删除SnatIp地址数组。
 	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
 }
 
@@ -1155,16 +1155,16 @@ func (r *DeleteLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 type DeleteRewriteRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 源监听器ID
+	// 源监听器ID。
 	SourceListenerId *string `json:"SourceListenerId,omitempty" name:"SourceListenerId"`
 
-	// 目标监听器ID
+	// 目标监听器ID。
 	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
 
-	// 转发规则之间的重定向关系
+	// 转发规则之间的重定向关系。
 	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
 }
 
@@ -1198,19 +1198,19 @@ func (r *DeleteRewriteResponse) FromJsonString(s string) error {
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要删除的转发规则的ID组成的数组
+	// 要删除的转发规则的ID组成的数组。
 	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
 
-	// 要删除的转发规则的域名，已提供LocationIds参数时本参数不生效
+	// 要删除的转发规则的域名，已提供LocationIds参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效
+	// 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名。
@@ -1247,7 +1247,7 @@ func (r *DeleteRuleResponse) FromJsonString(s string) error {
 type DeleteTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组的ID数组
+	// 目标组的ID数组。
 	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
 }
 
@@ -1281,10 +1281,10 @@ func (r *DeleteTargetGroupsResponse) FromJsonString(s string) error {
 type DeregisterTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组ID
+	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
-	// 待解绑的服务器信息
+	// 待解绑的服务器信息。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
 }
 
@@ -1318,10 +1318,10 @@ func (r *DeregisterTargetGroupInstancesResponse) FromJsonString(s string) error 
 type DeregisterTargetsFromClassicalLBRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 后端服务的实例ID列表
+	// 后端服务的实例ID列表。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
@@ -1355,22 +1355,22 @@ func (r *DeregisterTargetsFromClassicalLBResponse) FromJsonString(s string) erro
 type DeregisterTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID，格式如 lb-12345678
+	// 负载均衡实例 ID，格式如 lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 监听器 ID，格式如 lbl-12345678
+	// 监听器 ID，格式如 lbl-12345678。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要解绑的后端服务列表，数组长度最大支持20
+	// 要解绑的后端服务列表，数组长度最大支持20。
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
-	// 转发规则的ID，格式如 loc-12345678，当从七层转发规则解绑机器时，必须提供此参数或Domain+Url两者之一
+	// 转发规则的ID，格式如 loc-12345678，当从七层转发规则解绑机器时，必须提供此参数或Domain+URL两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 目标规则的域名，提供LocationId参数时本参数不生效
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 目标规则的URL，提供LocationId参数时本参数不生效
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -1490,7 +1490,7 @@ func (r *DescribeBlockIPTaskResponse) FromJsonString(s string) error {
 type DescribeClassicalLBByInstanceIdRequest struct {
 	*tchttp.BaseRequest
 
-	// 后端实例ID列表
+	// 后端实例ID列表。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
@@ -1507,7 +1507,7 @@ type DescribeClassicalLBByInstanceIdResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 负载均衡相关信息列表
+		// 负载均衡相关信息列表。
 		LoadBalancerInfoList []*ClassicalLoadBalancerInfo `json:"LoadBalancerInfoList,omitempty" name:"LoadBalancerInfoList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1527,10 +1527,10 @@ func (r *DescribeClassicalLBByInstanceIdResponse) FromJsonString(s string) error
 type DescribeClassicalLBHealthStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 }
 
@@ -1547,7 +1547,7 @@ type DescribeClassicalLBHealthStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 后端健康状态列表
+		// 后端健康状态列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		HealthList []*ClassicalHealth `json:"HealthList,omitempty" name:"HealthList" list`
 
@@ -1568,19 +1568,19 @@ func (r *DescribeClassicalLBHealthStatusResponse) FromJsonString(s string) error
 type DescribeClassicalLBListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID列表
+	// 负载均衡监听器ID列表。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
 
-	// 负载均衡监听的协议, 'TCP', 'UDP', 'HTTP', 'HTTPS'
+	// 负载均衡监听的协议：'TCP', 'UDP', 'HTTP', 'HTTPS'。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 负载均衡监听端口， 范围[1-65535]
+	// 负载均衡监听端口，范围为[1-65535]。
 	ListenerPort *int64 `json:"ListenerPort,omitempty" name:"ListenerPort"`
 
-	// 监听器的状态，0 表示创建中，1 表示运行中
+	// 监听器的状态，0：创建中，1：运行中。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -1597,7 +1597,7 @@ type DescribeClassicalLBListenersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 监听器列表
+		// 监听器列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Listeners []*ClassicalListener `json:"Listeners,omitempty" name:"Listeners" list`
 
@@ -1618,7 +1618,7 @@ func (r *DescribeClassicalLBListenersResponse) FromJsonString(s string) error {
 type DescribeClassicalLBTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 }
 
@@ -1635,7 +1635,7 @@ type DescribeClassicalLBTargetsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 后端服务列表
+		// 后端服务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Targets []*ClassicalTarget `json:"Targets,omitempty" name:"Targets" list`
 
@@ -1690,10 +1690,10 @@ func (r *DescribeClsLogSetResponse) FromJsonString(s string) error {
 type DescribeClusterResourcesRequest struct {
 	*tchttp.BaseRequest
 
-	// 返回集群中资源列表数目，默认20，最大值100
+	// 返回集群中资源列表数目，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回集群中资源列表起始偏移量，默认0
+	// 返回集群中资源列表起始偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询集群中资源列表条件，详细的过滤条件如下：
@@ -1717,10 +1717,10 @@ type DescribeClusterResourcesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 集群中资源列表
+		// 集群中资源列表。
 		ClusterResourceSet []*ClusterResource `json:"ClusterResourceSet,omitempty" name:"ClusterResourceSet" list`
 
-		// 集群中资源总数
+		// 集群中资源总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1740,10 +1740,10 @@ func (r *DescribeClusterResourcesResponse) FromJsonString(s string) error {
 type DescribeExclusiveClustersRequest struct {
 	*tchttp.BaseRequest
 
-	// 返回集群列表数目，默认20，最大值100
+	// 返回集群列表数目，默认值为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回集群列表起始偏移量，默认0
+	// 返回集群列表起始偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询集群列表条件，详细的过滤条件如下：
@@ -1772,10 +1772,10 @@ type DescribeExclusiveClustersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 集群列表
+		// 集群列表。
 		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
 
-		// 集群总数目
+		// 集群总数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1795,16 +1795,16 @@ func (r *DescribeExclusiveClustersResponse) FromJsonString(s string) error {
 type DescribeListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 要查询的负载均衡监听器 ID数组
+	// 要查询的负载均衡监听器ID数组。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
 
-	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL
+	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 要查询的监听器的端口
+	// 要查询的监听器的端口。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
@@ -1821,10 +1821,10 @@ type DescribeListenersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 监听器列表
+		// 监听器列表。
 		Listeners []*Listener `json:"Listeners,omitempty" name:"Listeners" list`
 
-		// 总的监听器个数
+		// 总的监听器个数（根据端口、协议、监听器ID过滤后）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -1899,7 +1899,7 @@ type DescribeLoadBalancerTrafficResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 按出带宽从高到低排序后的负载均衡信息
+		// 按出带宽从高到低排序后的负载均衡信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LoadBalancerTraffic []*LoadBalancerTraffic `json:"LoadBalancerTraffic,omitempty" name:"LoadBalancerTraffic" list`
 
@@ -1923,7 +1923,7 @@ type DescribeLoadBalancersDetailRequest struct {
 	// 返回负载均衡列表数目，默认20，最大值100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回负载均衡列表起始偏移量，默认0
+	// 返回负载均衡列表起始偏移量，默认0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 选择返回的Fields列表，默认添加LoadBalancerId和LoadBalancerName。
@@ -2118,13 +2118,13 @@ func (r *DescribeQuotaResponse) FromJsonString(s string) error {
 type DescribeRewriteRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID数组
+	// 负载均衡监听器ID数组。
 	SourceListenerIds []*string `json:"SourceListenerIds,omitempty" name:"SourceListenerIds" list`
 
-	// 负载均衡转发规则的ID数组
+	// 负载均衡转发规则的ID数组。
 	SourceLocationIds []*string `json:"SourceLocationIds,omitempty" name:"SourceLocationIds" list`
 }
 
@@ -2141,7 +2141,7 @@ type DescribeRewriteResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 重定向转发规则构成的数组，若无重定向规则，则返回空数组
+		// 重定向转发规则构成的数组，若无重定向规则，则返回空数组。
 		RewriteSet []*RuleOutput `json:"RewriteSet,omitempty" name:"RewriteSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2210,16 +2210,16 @@ func (r *DescribeTargetGroupInstancesResponse) FromJsonString(s string) error {
 type DescribeTargetGroupListRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组ID数组
+	// 目标组ID数组。
 	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
 
-	// 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID，
+	// 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 显示的偏移起始量
+	// 显示的偏移起始量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 显示条数限制，默认为20
+	// 显示条数限制，默认为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -2236,10 +2236,10 @@ type DescribeTargetGroupListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 显示的结果数量
+		// 显示的结果数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 显示的目标组信息集合
+		// 显示的目标组信息集合。
 		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2259,16 +2259,16 @@ func (r *DescribeTargetGroupListResponse) FromJsonString(s string) error {
 type DescribeTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组ID，与Filters互斥
+	// 目标组ID，与Filters互斥。
 	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
 
-	// 显示条数限制，默认为20
+	// 显示条数限制，默认为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 显示的偏移起始量
+	// 显示的偏移起始量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName
+	// 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -2285,10 +2285,10 @@ type DescribeTargetGroupsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 显示的结果数量
+		// 显示的结果数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 显示的目标组信息集合
+		// 显示的目标组信息集合。
 		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2308,7 +2308,7 @@ func (r *DescribeTargetGroupsResponse) FromJsonString(s string) error {
 type DescribeTargetHealthRequest struct {
 	*tchttp.BaseRequest
 
-	// 要查询的负载均衡实例 ID列表
+	// 要查询的负载均衡实例ID列表。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
 }
 
@@ -2325,7 +2325,7 @@ type DescribeTargetHealthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 负载均衡实例列表
+		// 负载均衡实例列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitempty" name:"LoadBalancers" list`
 
@@ -2346,16 +2346,16 @@ func (r *DescribeTargetHealthResponse) FromJsonString(s string) error {
 type DescribeTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 监听器 ID列表
+	// 监听器ID列表。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
 
-	// 监听器协议类型
+	// 监听器协议类型。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 监听器端口
+	// 监听器端口。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
@@ -2372,7 +2372,7 @@ type DescribeTargetsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 监听器后端绑定的机器信息
+		// 监听器后端绑定的机器信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Listeners []*ListenerBackend `json:"Listeners,omitempty" name:"Listeners" list`
 
@@ -2393,7 +2393,7 @@ func (r *DescribeTargetsResponse) FromJsonString(s string) error {
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求ID，即接口返回的 RequestId 参数
+	// 请求ID，即接口返回的 RequestId 参数。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -2430,7 +2430,7 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 type DisassociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待解绑的规则关系数组
+	// 待解绑的规则关系数组。
 	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations" list`
 }
 
@@ -3060,16 +3060,16 @@ type LoadBalancerTraffic struct {
 type ManualRewriteRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 源监听器ID
+	// 源监听器 ID。
 	SourceListenerId *string `json:"SourceListenerId,omitempty" name:"SourceListenerId"`
 
-	// 目标监听器ID
+	// 目标监听器 ID。
 	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
 
-	// 转发规则之间的重定向关系
+	// 转发规则之间的重定向关系。
 	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
 }
 
@@ -3161,16 +3161,16 @@ func (r *ModifyBlockIPListResponse) FromJsonString(s string) error {
 type ModifyDomainAttributesRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 域名（必须是已经创建的转发规则下的域名）
+	// 域名（必须是已经创建的转发规则下的域名）。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 要修改的新域名
+	// 要修改的新域名。
 	NewDomain *string `json:"NewDomain,omitempty" name:"NewDomain"`
 
 	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
@@ -3259,32 +3259,32 @@ func (r *ModifyDomainResponse) FromJsonString(s string) error {
 type ModifyListenerRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 新的监听器名称
+	// 新的监听器名称。
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
-	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器
+	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器
+	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI
+	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 
-	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 }
 
@@ -3371,35 +3371,35 @@ func (r *ModifyLoadBalancerAttributesResponse) FromJsonString(s string) error {
 type ModifyRuleRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 要修改的转发规则的 ID。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 转发规则的新的转发路径，如不需修改Url，则不需提供此参数
+	// 转发规则的新的转发路径，如不需修改Url，则不需提供此参数。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 健康检查信息
+	// 健康检查信息。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
 	// 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
 	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 会话保持时间
+	// 会话保持时间。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
 
-	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC
+	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、TRPC。
 	ForwardType *string `json:"ForwardType,omitempty" name:"ForwardType"`
 
-	// TRPC被调服务器路由，ForwardType为TRPC时必填
+	// TRPC被调服务器路由，ForwardType为TRPC时必填。
 	TrpcCallee *string `json:"TrpcCallee,omitempty" name:"TrpcCallee"`
 
-	// TRPC调用服务接口，ForwardType为TRPC时必填
+	// TRPC调用服务接口，ForwardType为TRPC时必填。
 	TrpcFunc *string `json:"TrpcFunc,omitempty" name:"TrpcFunc"`
 }
 
@@ -3433,13 +3433,13 @@ func (r *ModifyRuleResponse) FromJsonString(s string) error {
 type ModifyTargetGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组的ID
+	// 目标组的ID。
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
-	// 目标组的新名称
+	// 目标组的新名称。
 	TargetGroupName *string `json:"TargetGroupName,omitempty" name:"TargetGroupName"`
 
-	// 目标组的新默认端口
+	// 目标组的新默认端口。
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 }
 
@@ -3473,10 +3473,10 @@ func (r *ModifyTargetGroupAttributeResponse) FromJsonString(s string) error {
 type ModifyTargetGroupInstancesPortRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组ID
+	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
-	// 待修改端口的服务器数组
+	// 待修改端口的服务器数组。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
 }
 
@@ -3510,10 +3510,10 @@ func (r *ModifyTargetGroupInstancesPortResponse) FromJsonString(s string) error 
 type ModifyTargetGroupInstancesWeightRequest struct {
 	*tchttp.BaseRequest
 
-	// 目标组ID
+	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
-	// 待修改权重的服务器数组
+	// 待修改权重的服务器数组。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
 }
 
@@ -3547,25 +3547,25 @@ func (r *ModifyTargetGroupInstancesWeightResponse) FromJsonString(s string) erro
 type ModifyTargetPortRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要修改端口的后端服务列表
+	// 要修改端口的后端服务列表。
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
-	// 后端服务绑定到监听器或转发规则的新端口
+	// 后端服务绑定到监听器或转发规则的新端口。
 	NewPort *int64 `json:"NewPort,omitempty" name:"NewPort"`
 
-	// 转发规则的ID，当后端服务绑定到七层转发规则时，必须提供此参数或Domain+Url两者之一
+	// 转发规则的ID，当后端服务绑定到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 目标规则的域名，提供LocationId参数时本参数不生效
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 目标规则的URL，提供LocationId参数时本参数不生效
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -3599,22 +3599,22 @@ func (r *ModifyTargetPortResponse) FromJsonString(s string) error {
 type ModifyTargetWeightRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一
+	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 目标规则的域名，提供LocationId参数时本参数不生效
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 目标规则的URL，提供LocationId参数时本参数不生效
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 要修改权重的后端服务列表
+	// 要修改权重的后端服务列表。
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
 	// 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
@@ -3706,22 +3706,22 @@ func (r *RegisterTargetGroupInstancesResponse) FromJsonString(s string) error {
 type RegisterTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 待绑定的后端服务列表，数组长度最大支持20
+	// 待绑定的后端服务列表，数组长度最大支持20。
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
-	// 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一
+	// 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 目标转发规则的域名，提供LocationId参数时本参数不生效
+	// 目标转发规则的域名，提供LocationId参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 目标转发规则的URL，提供LocationId参数时本参数不生效
+	// 目标转发规则的URL，提供LocationId参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -3755,10 +3755,10 @@ func (r *RegisterTargetsResponse) FromJsonString(s string) error {
 type RegisterTargetsWithClassicalLBRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 后端服务信息
+	// 后端服务信息。
 	Targets []*ClassicalTargetInfo `json:"Targets,omitempty" name:"Targets" list`
 }
 

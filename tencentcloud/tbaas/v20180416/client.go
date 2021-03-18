@@ -83,6 +83,8 @@ func NewBlockByNumberHandlerResponse() (response *BlockByNumberHandlerResponse) 
     return
 }
 
+// 版本升级
+// 
 // Bcos根据块高查询区块信息
 func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (response *BlockByNumberHandlerResponse, err error) {
     if request == nil {
@@ -158,6 +160,8 @@ func NewDeployDynamicContractHandlerResponse() (response *DeployDynamicContractH
     return
 }
 
+// 版本升级
+// 
 // 动态部署合约
 func (c *Client) DeployDynamicContractHandler(request *DeployDynamicContractHandlerRequest) (response *DeployDynamicContractHandlerResponse, err error) {
     if request == nil {
@@ -333,6 +337,8 @@ func NewGetBlockListHandlerResponse() (response *GetBlockListHandlerResponse) {
     return
 }
 
+// 版本升级
+// 
 // Bcos分页查询当前群组下的区块列表
 func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (response *GetBlockListHandlerResponse, err error) {
     if request == nil {
@@ -608,6 +614,8 @@ func NewGetTransByHashHandlerResponse() (response *GetTransByHashHandlerResponse
     return
 }
 
+// 版本升级
+// 
 // Bcos根据交易哈希查看交易详细信息
 func (c *Client) GetTransByHashHandler(request *GetTransByHashHandlerRequest) (response *GetTransByHashHandlerResponse, err error) {
     if request == nil {
@@ -633,6 +641,8 @@ func NewGetTransListHandlerResponse() (response *GetTransListHandlerResponse) {
     return
 }
 
+// 版本升级
+// 
 // Bcos分页查询当前群组的交易信息列表
 func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (response *GetTransListHandlerResponse, err error) {
     if request == nil {
@@ -783,6 +793,8 @@ func NewSendTransactionHandlerResponse() (response *SendTransactionHandlerRespon
     return
 }
 
+// 版本升级
+// 
 // Bcos发送交易
 func (c *Client) SendTransactionHandler(request *SendTransactionHandlerRequest) (response *SendTransactionHandlerResponse, err error) {
     if request == nil {
@@ -833,6 +845,8 @@ func NewTransByDynamicContractHandlerResponse() (response *TransByDynamicContrac
     return
 }
 
+// 版本升级
+// 
 // 根据动态部署的合约发送交易
 func (c *Client) TransByDynamicContractHandler(request *TransByDynamicContractHandlerRequest) (response *TransByDynamicContractHandlerResponse, err error) {
     if request == nil {

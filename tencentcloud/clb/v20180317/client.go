@@ -186,7 +186,7 @@ func NewCreateClsLogSetResponse() (response *CreateClsLogSetResponse) {
     return
 }
 
-// 创建clb专有日志集，此日志集用于存储clb的日志。
+// 创建CLB专有日志集，此日志集用于存储CLB的日志。
 func (c *Client) CreateClsLogSet(request *CreateClsLogSetRequest) (response *CreateClsLogSetResponse, err error) {
     if request == nil {
         request = NewCreateClsLogSetRequest()
@@ -264,7 +264,7 @@ func NewCreateLoadBalancerSnatIpsResponse() (response *CreateLoadBalancerSnatIps
     return
 }
 
-// 针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启
+// 针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启。
 func (c *Client) CreateLoadBalancerSnatIps(request *CreateLoadBalancerSnatIpsRequest) (response *CreateLoadBalancerSnatIpsResponse, err error) {
     if request == nil {
         request = NewCreateLoadBalancerSnatIpsRequest()
@@ -340,7 +340,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
     return
 }
 
-// 创建主题，默认开启全文索引和键值索引。如果不存在clb专有日志集，则创建失败。
+// 创建主题，默认开启全文索引和键值索引。如果不存在CLB专有日志集，则创建失败。
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
         request = NewCreateTopicRequest()
@@ -443,7 +443,7 @@ func NewDeleteLoadBalancerSnatIpsResponse() (response *DeleteLoadBalancerSnatIps
     return
 }
 
-// 对于SnatPro的负载均衡，这个接口用于删除SnatIp
+// 这个接口用于删除SnatPro的负载均衡的SnatIp。
 func (c *Client) DeleteLoadBalancerSnatIps(request *DeleteLoadBalancerSnatIpsRequest) (response *DeleteLoadBalancerSnatIpsResponse, err error) {
     if request == nil {
         request = NewDeleteLoadBalancerSnatIpsRequest()
@@ -545,7 +545,7 @@ func NewDeregisterTargetGroupInstancesResponse() (response *DeregisterTargetGrou
     return
 }
 
-// 将服务器从目标组中解绑。
+// 从目标组中解绑服务器。
 // 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 func (c *Client) DeregisterTargetGroupInstances(request *DeregisterTargetGroupInstancesRequest) (response *DeregisterTargetGroupInstancesResponse, err error) {
     if request == nil {
@@ -597,8 +597,7 @@ func NewDeregisterTargetsFromClassicalLBResponse() (response *DeregisterTargetsF
     return
 }
 
-// DeregisterTargetsFromClassicalLB 接口用于解绑负载均衡后端服务。
-// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// DeregisterTargetsFromClassicalLB 接口用于解绑负载均衡后端服务。本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 func (c *Client) DeregisterTargetsFromClassicalLB(request *DeregisterTargetsFromClassicalLBRequest) (response *DeregisterTargetsFromClassicalLBResponse, err error) {
     if request == nil {
         request = NewDeregisterTargetsFromClassicalLBRequest()
@@ -673,7 +672,7 @@ func NewDescribeClassicalLBByInstanceIdResponse() (response *DescribeClassicalLB
     return
 }
 
-// DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表
+// DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表。
 func (c *Client) DescribeClassicalLBByInstanceId(request *DescribeClassicalLBByInstanceIdRequest) (response *DescribeClassicalLBByInstanceIdResponse, err error) {
     if request == nil {
         request = NewDescribeClassicalLBByInstanceIdRequest()
@@ -748,7 +747,7 @@ func NewDescribeClassicalLBTargetsResponse() (response *DescribeClassicalLBTarge
     return
 }
 
-// DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务
+// DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务。
 func (c *Client) DescribeClassicalLBTargets(request *DescribeClassicalLBTargetsRequest) (response *DescribeClassicalLBTargetsResponse, err error) {
     if request == nil {
         request = NewDescribeClassicalLBTargetsRequest()
@@ -773,7 +772,7 @@ func NewDescribeClsLogSetResponse() (response *DescribeClsLogSetResponse) {
     return
 }
 
-// 获取用户的clb专有日志集
+// 获取用户的CLB专有日志集。
 func (c *Client) DescribeClsLogSet(request *DescribeClsLogSetRequest) (response *DescribeClsLogSetResponse, err error) {
     if request == nil {
         request = NewDescribeClsLogSetRequest()
@@ -798,7 +797,7 @@ func NewDescribeClusterResourcesResponse() (response *DescribeClusterResourcesRe
     return
 }
 
-// 查询独占集群中资源列表，支持按集群ID、vip、负载均衡ID、是否闲置为过滤条件检索
+// 查询独占集群中的资源列表，支持按集群ID、VIP、负载均衡ID、是否闲置为过滤条件检索。
 func (c *Client) DescribeClusterResources(request *DescribeClusterResourcesRequest) (response *DescribeClusterResourcesResponse, err error) {
     if request == nil {
         request = NewDescribeClusterResourcesRequest()
@@ -898,7 +897,7 @@ func NewDescribeLoadBalancerTrafficResponse() (response *DescribeLoadBalancerTra
     return
 }
 
-// 查询账号下高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
+// 查询账号下的高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
 func (c *Client) DescribeLoadBalancerTraffic(request *DescribeLoadBalancerTrafficRequest) (response *DescribeLoadBalancerTrafficResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancerTrafficRequest()
@@ -1561,8 +1560,7 @@ func NewRegisterTargetsWithClassicalLBResponse() (response *RegisterTargetsWithC
     return
 }
 
-// RegisterTargetsWithClassicalLB 接口用于绑定后端服务到传统型负载均衡。
-// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// RegisterTargetsWithClassicalLB 接口用于绑定后端服务到传统型负载均衡。本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 func (c *Client) RegisterTargetsWithClassicalLB(request *RegisterTargetsWithClassicalLBRequest) (response *RegisterTargetsWithClassicalLBResponse, err error) {
     if request == nil {
         request = NewRegisterTargetsWithClassicalLBRequest()

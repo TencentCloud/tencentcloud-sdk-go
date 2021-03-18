@@ -333,16 +333,10 @@ type DescribeEcdnDomainStatisticsRequest struct {
 	// 起止时间不超过90天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计指标名称。flux：流量，单位为 byte
+	// 统计指标名称:
+	// flux：流量，单位为 byte
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
-	// delay：响应时间，单位为ms
-	// static_request ： 静态请求数，单位为 次
-	// static_flux：静态流量，单位为 byte
-	// static_bandwidth ： 静态带宽，单位为 bps
-	// dynamic_request：动态请求数，单位为 次
-	// dynamic_flux：动态流量，单位为 byte
-	// dynamic_bandwidth：动态带宽，单位为 bps
 	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
 
 	// 指定查询域名列表
@@ -357,6 +351,13 @@ type DescribeEcdnDomainStatisticsRequest struct {
 
 	// 列表分页记录条数，默认1000，最大3000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeEcdnDomainStatisticsRequest) ToJsonString() string {
@@ -405,17 +406,10 @@ type DescribeEcdnStatisticsRequest struct {
 	// flux：流量，单位为 byte
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
-	// delay：响应时间，单位为ms
 	// 2xx：返回 2xx 状态码汇总或者 2 开头状态码数据，单位为 个
 	// 3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
 	// 4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
 	// 5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
-	// static_request ： 静态请求数，单位为 次
-	// static_flux：静态流量，单位为 byte
-	// static_bandwidth ： 静态带宽，单位为 bps
-	// dynamic_request：动态请求数，单位为 次
-	// dynamic_flux：动态流量，单位为 byte
-	// dynamic_bandwidth：动态带宽，单位为 bps
 	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
 
 	// 时间粒度，支持以下几种模式：
@@ -433,6 +427,13 @@ type DescribeEcdnStatisticsRequest struct {
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
 	Projects []*int64 `json:"Projects,omitempty" name:"Projects" list`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeEcdnStatisticsRequest) ToJsonString() string {

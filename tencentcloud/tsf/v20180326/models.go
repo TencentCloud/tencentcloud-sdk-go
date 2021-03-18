@@ -3481,6 +3481,9 @@ type DescribeApplicationsRequest struct {
 
 	// 应用资源类型数组
 	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
+
+	// IdList
+	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList" list`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -4696,6 +4699,9 @@ type DescribeMicroservicesRequest struct {
 
 	// 状态过滤，online、offline、single_online
 	Status []*string `json:"Status,omitempty" name:"Status" list`
+
+	// IdList
+	MicroserviceIdList []*string `json:"MicroserviceIdList,omitempty" name:"MicroserviceIdList" list`
 }
 
 func (r *DescribeMicroservicesRequest) ToJsonString() string {
@@ -4930,6 +4936,9 @@ type DescribePodInstancesRequest struct {
 
 	// 分页个数，默认为20， 取值应为1~50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤字段
+	PodNameList []*string `json:"PodNameList,omitempty" name:"PodNameList" list`
 }
 
 func (r *DescribePodInstancesRequest) ToJsonString() string {

@@ -213,7 +213,6 @@ func NewDescribeEcdnStatisticsResponse() (response *DescribeEcdnStatisticsRespon
 // + 流量（单位为 byte）
 // + 带宽（单位为 bps）
 // + 请求数（单位为 次）
-// + 响应时间（单位为ms）
 // + 状态码 2xx 汇总及各 2 开头状态码明细（单位为 个）
 // + 状态码 3xx 汇总及各 3 开头状态码明细（单位为 个）
 // + 状态码 4xx 汇总及各 4 开头状态码明细（单位为 个）
