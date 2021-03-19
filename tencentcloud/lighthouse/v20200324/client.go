@@ -60,9 +60,15 @@ func NewCreateFirewallRulesResponse() (response *CreateFirewallRulesResponse) {
 
 // 本接口（CreateFirewallRules）用于在实例上添加防火墙规则。
 // 
-// * Protocol 字段支持输入 TCP，UDP，或 ALL。
 // 
+// * FirewallVersion 为防火墙版本号，用户每次更新防火墙规则版本会自动加1，防止您更新的规则已过期，不填不考虑冲突。
+// 
+// 在 FirewallRules 参数中：
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+// * CidrBlock 字段允许输入符合 cidr 格式标准的任意字符串。租户之间网络隔离规则优先于防火墙中的内网规则。
+// * Action 字段只允许输入 ACCEPT 或 DROP。
+// * FirewallRuleDescription 字段长度不得超过 64。
 func (c *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (response *CreateFirewallRulesResponse, err error) {
     if request == nil {
         request = NewCreateFirewallRulesRequest()
@@ -89,9 +95,14 @@ func NewDeleteFirewallRulesResponse() (response *DeleteFirewallRulesResponse) {
 
 // 本接口（DeleteFirewallRules）用于删除实例的防火墙规则。
 // 
-// * Protocol 字段支持输入 TCP，UDP，或 ALL。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接删除指定的规则。
 // 
+// 在 FirewallRules 参数中：
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+// * CidrBlock 字段允许输入符合 cidr 格式标准的任意字符串。租户之间网络隔离规则优先于防火墙中的内网规则。
+// * Action 字段只允许输入 ACCEPT 或 DROP。
+// * FirewallRuleDescription 字段长度不得超过 64。
 func (c *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (response *DeleteFirewallRulesResponse, err error) {
     if request == nil {
         request = NewDeleteFirewallRulesRequest()

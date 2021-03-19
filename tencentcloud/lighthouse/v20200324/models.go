@@ -65,6 +65,9 @@ type Blueprint struct {
 
 	// 镜像是否支持自动化助手。
 	SupportAutomationTools *bool `json:"SupportAutomationTools,omitempty" name:"SupportAutomationTools"`
+
+	// 镜像所需内存大小, 单位: GB
+	RequiredMemorySize *int64 `json:"RequiredMemorySize,omitempty" name:"RequiredMemorySize"`
 }
 
 type Bundle struct {
@@ -127,6 +130,9 @@ type CreateFirewallRulesRequest struct {
 
 	// 防火墙规则列表。
 	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+
+	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
 }
 
 func (r *CreateFirewallRulesRequest) ToJsonString() string {
@@ -164,6 +170,9 @@ type DeleteFirewallRulesRequest struct {
 
 	// 防火墙规则列表。
 	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+
+	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
 }
 
 func (r *DeleteFirewallRulesRequest) ToJsonString() string {
@@ -343,6 +352,9 @@ type DescribeFirewallRulesResponse struct {
 		// 防火墙规则详细信息列表。
 		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet" list`
 
+		// 防火墙版本号。
+		FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -473,23 +485,41 @@ type Filter struct {
 
 type FirewallRule struct {
 
-	// 协议，取值：TCP，UDP，ALL。
+	// 协议，取值：TCP，UDP，ICMP，ALL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
 	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 取值：ACCEPT，DROP。默认为 ACCEPT。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 防火墙规则描述。
+	FirewallRuleDescription *string `json:"FirewallRuleDescription,omitempty" name:"FirewallRuleDescription"`
 }
 
 type FirewallRuleInfo struct {
 
-	// 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，ALL。
+	// 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
-	// 协议，取值：TCP，UDP，ALL。
+	// 协议，取值：TCP，UDP，ICMP，ALL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
 	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 取值：ACCEPT，DROP。默认为 ACCEPT。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 防火墙规则描述。
+	FirewallRuleDescription *string `json:"FirewallRuleDescription,omitempty" name:"FirewallRuleDescription"`
 }
 
 type Instance struct {

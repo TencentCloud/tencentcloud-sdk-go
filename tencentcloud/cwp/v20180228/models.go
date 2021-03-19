@@ -2281,6 +2281,40 @@ func (r *DescribeMachineListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMachineOsListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeMachineOsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineOsListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMachineOsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作系统列表
+		List []*OsName `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMachineOsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineOsListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMachinesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2300,8 +2334,10 @@ type DescribeMachinesRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
+	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
@@ -4770,7 +4806,7 @@ type Machine struct {
 	// 主机状态。
 	// <li>OFFLINE: 离线  </li>
 	// <li>ONLINE: 在线</li>
-	// <li>MACHINE_STOPPED: 已关机</li>
+	// <li>SHUTDOWN: 已关机</li>
 	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 
 	// 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
@@ -4830,6 +4866,9 @@ type Machine struct {
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否有资产扫描接口，0无，1有
+	HasAssetScan *uint64 `json:"HasAssetScan,omitempty" name:"HasAssetScan"`
 }
 
 type MachineTag struct {
@@ -5397,6 +5436,15 @@ func (r *OpenProVersionResponse) ToJsonString() string {
 
 func (r *OpenProVersionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type OsName struct {
+
+	// 系统名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 操作系统类型枚举值
+	MachineOSType *uint64 `json:"MachineOSType,omitempty" name:"MachineOSType"`
 }
 
 type Place struct {

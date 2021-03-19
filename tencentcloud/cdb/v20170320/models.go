@@ -1290,7 +1290,7 @@ type CreateRoInstanceIpRequest struct {
 	// 子网描述符，例如：subnet-1typ0s7d。
 	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 
-	// vpc描述符，例如：vpc-xxx,如果传了该字段则UniqSubnetId必传
+	// vpc描述符，例如：vpc-a23yt67j,如果传了该字段则UniqSubnetId必传
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 

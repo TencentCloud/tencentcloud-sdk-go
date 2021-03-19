@@ -11358,6 +11358,9 @@ type Route struct {
 	// 路由策略是否发布到云联网。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishedToVbc *bool `json:"PublishedToVbc,omitempty" name:"PublishedToVbc"`
+
+	// 路由策略创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type RouteConflict struct {

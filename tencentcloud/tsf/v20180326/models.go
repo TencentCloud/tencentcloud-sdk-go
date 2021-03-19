@@ -4643,6 +4643,9 @@ type DescribeMicroserviceRequest struct {
 
 	// 分页个数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可选，根据部署组ID进行过滤
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 }
 
 func (r *DescribeMicroserviceRequest) ToJsonString() string {

@@ -4338,4 +4338,12 @@ type ZoneInfo struct {
 	// 可用区名称，如：广州一区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 可用区所属地域，如：ap-guangzhou
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneRegion *string `json:"ZoneRegion,omitempty" name:"ZoneRegion"`
+
+	// 可用区是否是LocalZone可用区，如：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
 }

@@ -1118,6 +1118,31 @@ func (c *Client) DescribeMachineList(request *DescribeMachineListRequest) (respo
     return
 }
 
+func NewDescribeMachineOsListRequest() (request *DescribeMachineOsListRequest) {
+    request = &DescribeMachineOsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineOsList")
+    return
+}
+
+func NewDescribeMachineOsListResponse() (response *DescribeMachineOsListResponse) {
+    response = &DescribeMachineOsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询可筛选操作系统列表.
+func (c *Client) DescribeMachineOsList(request *DescribeMachineOsListRequest) (response *DescribeMachineOsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineOsListRequest()
+    }
+    response = NewDescribeMachineOsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},

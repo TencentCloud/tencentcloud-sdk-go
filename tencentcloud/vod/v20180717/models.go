@@ -1889,6 +1889,12 @@ type CdnLogInfo struct {
 
 	// 日志下载链接，24小时内下载有效。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 日志起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -4517,6 +4523,12 @@ type DescribeCdnLogsRequest struct {
 	// 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// 分页拉取的最大返回结果数。默认值：100；最大值：1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页拉取的起始偏移量。默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -4534,13 +4546,17 @@ type DescribeCdnLogsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 国内CDN节点的日志下载列表。
+		// 日志下载链接总数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitempty" name:"DomesticCdnLogs" list`
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitempty" name:"OverseaCdnLogs" list`
+
+		// 国内CDN节点的日志下载列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitempty" name:"DomesticCdnLogs" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

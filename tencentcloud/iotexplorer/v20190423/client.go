@@ -493,6 +493,31 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
     return
 }
 
+func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
+    request = &DescribeFirmwareTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareTask")
+    return
+}
+
+func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) {
+    response = &DescribeFirmwareTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询固件升级任务列表
+func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskRequest()
+    }
+    response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
     request = &DescribeLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -818,6 +843,31 @@ func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *L
     return
 }
 
+func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
+    request = &ListFirmwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListFirmwares")
+    return
+}
+
+func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
+    response = &ListFirmwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ListFirmwares）用于获取固件列表 
+func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
+    if request == nil {
+        request = NewListFirmwaresRequest()
+    }
+    response = NewListFirmwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLoRaFrequencyRequest() (request *ModifyLoRaFrequencyRequest) {
     request = &ModifyLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1064,6 +1114,56 @@ func (c *Client) SearchTopicRule(request *SearchTopicRuleRequest) (response *Sea
         request = NewSearchTopicRuleRequest()
     }
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFirmwareRequest() (request *UpdateFirmwareRequest) {
+    request = &UpdateFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateFirmware")
+    return
+}
+
+func NewUpdateFirmwareResponse() (response *UpdateFirmwareResponse) {
+    response = &UpdateFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UpdateFirmware）用于对指定设备发起固件升级请求 
+func (c *Client) UpdateFirmware(request *UpdateFirmwareRequest) (response *UpdateFirmwareResponse, err error) {
+    if request == nil {
+        request = NewUpdateFirmwareRequest()
+    }
+    response = NewUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
+    request = &UploadFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UploadFirmware")
+    return
+}
+
+func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
+    response = &UploadFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（UploadFirmware）用于上传设备固件至平台
+func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
+    if request == nil {
+        request = NewUploadFirmwareRequest()
+    }
+    response = NewUploadFirmwareResponse()
     err = c.Send(request, response)
     return
 }
