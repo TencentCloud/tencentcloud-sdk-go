@@ -579,6 +579,49 @@ func (r *CreateRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSecurityPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 192.168.0.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateSecurityPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSecurityPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSecurityPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSecurityPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -1095,6 +1138,49 @@ func (r *DeleteRepositoryResponse) ToJsonString() string {
 }
 
 func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 白名单Id
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 白名单版本
+	PolicyVersion *string `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+}
+
+func (r *DeleteSecurityPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSecurityPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSecurityPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2180,6 +2266,44 @@ func (r *DescribeRepositoryPersonalResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+func (r *DescribeSecurityPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityPoliciesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例安全策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SecurityPolicySet []*SecurityPolicy `json:"SecurityPolicySet,omitempty" name:"SecurityPolicySet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSecurityPoliciesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserQuotaPersonalRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2830,6 +2954,52 @@ func (r *ModifyRepositoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySecurityPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// PolicyId
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 192.168.0.0/24 白名单Ip
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifySecurityPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityPolicyRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例Id
+		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySecurityPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyUserPasswordPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -3199,6 +3369,21 @@ type SearchUserRepositoryResp struct {
 
 	// PrivilegeFiltered
 	PrivilegeFiltered *bool `json:"PrivilegeFiltered,omitempty" name:"PrivilegeFiltered"`
+}
+
+type SecurityPolicy struct {
+
+	// 策略索引
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 192.168.1.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 安全策略的版本
+	PolicyVersion *string `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
 }
 
 type Tag struct {

@@ -1296,6 +1296,9 @@ type CreateApiGroupRequest struct {
 
 	// 分组类型,默认ms。 ms： 微服务分组； external:外部Api分组
 	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
 }
 
 func (r *CreateApiGroupRequest) ToJsonString() string {
@@ -2272,6 +2275,53 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则项列表
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+}
+
+func (r *CreateUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateUnitRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteApiGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2861,6 +2911,85 @@ func (r *DeleteTaskResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteUnitNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 单元化命名空间ID数组
+	UnitNamespaceList []*string `json:"UnitNamespaceList,omitempty" name:"UnitNamespaceList" list`
+}
+
+func (r *DeleteUnitNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUnitNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUnitNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUnitNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUnitNamespacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteUnitRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeployContainerGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -3222,6 +3351,9 @@ type DescribeApiGroupsRequest struct {
 
 	// 排序类型：0(ASC)或1(DESC)
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
 }
 
 func (r *DescribeApiGroupsRequest) ToJsonString() string {
@@ -4035,6 +4167,44 @@ func (r *DescribeDownloadInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeDownloadInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnabledUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+}
+
+func (r *DescribeEnabledUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnabledUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnabledUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单元化规则对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *UnitRule `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnabledUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEnabledUnitRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5732,6 +5902,141 @@ func (r *DescribeTaskLastStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUnitNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 根据命名空间名或ID模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 翻页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUnitNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnitNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单元化命名空间对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageUnitNamespace `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnitNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitNamespacesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 单元化规则ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单元化规则对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *UnitRule `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnitRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 根据规则名或备注内容模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 启用状态, disabled: 未发布， enabled: 发布
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 翻页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUnitRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnitRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*TsfPageUnitRule `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnitRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUnitRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUploadInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -5784,6 +6089,50 @@ func (r *DescribeUploadInfoResponse) ToJsonString() string {
 }
 
 func (r *DescribeUploadInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUsableUnitNamespacesRequest struct {
+	*tchttp.BaseRequest
+
+	// 根据命名空间名或ID模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 翻页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUsableUnitNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUsableUnitNamespacesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUsableUnitNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单元化命名空间对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageUnitNamespace `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUsableUnitNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUsableUnitNamespacesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5858,6 +6207,82 @@ func (r *DisableTaskResponse) ToJsonString() string {
 }
 
 func (r *DisableTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUnitRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DisableUnitRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableUnitRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUnitRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，成功失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableUnitRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableUnitRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DisableUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisableUnitRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5969,6 +6394,82 @@ func (r *EnableTaskResponse) ToJsonString() string {
 }
 
 func (r *EnableTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableUnitRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关实体ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *EnableUnitRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableUnitRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableUnitRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，成功失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableUnitRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableUnitRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *EnableUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableUnitRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9128,6 +9629,24 @@ type TsfPageSimpleGroup struct {
 	Content []*SimpleGroup `json:"Content,omitempty" name:"Content" list`
 }
 
+type TsfPageUnitNamespace struct {
+
+	// 记录总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 记录实体列表
+	Content []*UnitNamespace `json:"Content,omitempty" name:"Content" list`
+}
+
+type TsfPageUnitRule struct {
+
+	// 记录总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 记录实体列表
+	Content []*UnitRule `json:"Content,omitempty" name:"Content" list`
+}
+
 type TsfPageVmGroup struct {
 
 	// 虚拟机部署组总数目
@@ -9174,6 +9693,103 @@ func (r *UnbindApiGroupResponse) ToJsonString() string {
 
 func (r *UnbindApiGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type UnitNamespace struct {
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间Name
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 单元化命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type UnitRule struct {
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 网关实体ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 使用状态：enabled/disabled
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+}
+
+type UnitRuleItem struct {
+
+	// 逻辑关系：AND/OR
+	Relationship *string `json:"Relationship,omitempty" name:"Relationship"`
+
+	// 目的地命名空间ID
+	DestNamespaceId *string `json:"DestNamespaceId,omitempty" name:"DestNamespaceId"`
+
+	// 目的地命名空间名称
+	DestNamespaceName *string `json:"DestNamespaceName,omitempty" name:"DestNamespaceName"`
+
+	// 规则项名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 单元化规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitRuleId *string `json:"UnitRuleId,omitempty" name:"UnitRuleId"`
+
+	// 规则顺序，越小优先级越高：默认为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitRuleTagList []*UnitRuleTag `json:"UnitRuleTagList,omitempty" name:"UnitRuleTagList" list`
+}
+
+type UnitRuleTag struct {
+
+	// 标签类型 : U(用户标签)
+	TagType *string `json:"TagType,omitempty" name:"TagType"`
+
+	// 标签名
+	TagField *string `json:"TagField,omitempty" name:"TagField"`
+
+	// 操作符:IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX
+	TagOperator *string `json:"TagOperator,omitempty" name:"TagOperator"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+
+	// 单元化规则项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitRuleItemId *string `json:"UnitRuleItemId,omitempty" name:"UnitRuleItemId"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type UpdateApiGroupRequest struct {
@@ -9308,6 +9924,49 @@ func (r *UpdateApiRateLimitRulesResponse) ToJsonString() string {
 }
 
 func (r *UpdateApiRateLimitRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateApiTimeoutsRequest struct {
+	*tchttp.BaseRequest
+
+	// API ID 列表
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+
+	// 开启/禁用，enabled/disabled
+	UsableStatus *string `json:"UsableStatus,omitempty" name:"UsableStatus"`
+
+	// 超时时间，单位毫秒，开启API超时时，必填
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+}
+
+func (r *UpdateApiTimeoutsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateApiTimeoutsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateApiTimeoutsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateApiTimeoutsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateApiTimeoutsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9447,6 +10106,53 @@ func (r *UpdateRepositoryResponse) ToJsonString() string {
 }
 
 func (r *UpdateRepositoryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateUnitRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则项列表
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+}
+
+func (r *UpdateUnitRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateUnitRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateUnitRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateUnitRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateUnitRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

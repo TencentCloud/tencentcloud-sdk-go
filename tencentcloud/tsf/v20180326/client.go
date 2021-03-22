@@ -643,6 +643,31 @@ func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *Creat
     return
 }
 
+func NewCreateUnitRuleRequest() (request *CreateUnitRuleRequest) {
+    request = &CreateUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateUnitRule")
+    return
+}
+
+func NewCreateUnitRuleResponse() (response *CreateUnitRuleResponse) {
+    response = &CreateUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建单元化规则
+func (c *Client) CreateUnitRule(request *CreateUnitRuleRequest) (response *CreateUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateUnitRuleRequest()
+    }
+    response = NewCreateUnitRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApiGroupRequest() (request *DeleteApiGroupRequest) {
     request = &DeleteApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1015,6 +1040,56 @@ func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskRes
         request = NewDeleteTaskRequest()
     }
     response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUnitNamespacesRequest() (request *DeleteUnitNamespacesRequest) {
+    request = &DeleteUnitNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteUnitNamespaces")
+    return
+}
+
+func NewDeleteUnitNamespacesResponse() (response *DeleteUnitNamespacesResponse) {
+    response = &DeleteUnitNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除单元化命名空间
+func (c *Client) DeleteUnitNamespaces(request *DeleteUnitNamespacesRequest) (response *DeleteUnitNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDeleteUnitNamespacesRequest()
+    }
+    response = NewDeleteUnitNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUnitRuleRequest() (request *DeleteUnitRuleRequest) {
+    request = &DeleteUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteUnitRule")
+    return
+}
+
+func NewDeleteUnitRuleResponse() (response *DeleteUnitRuleResponse) {
+    response = &DeleteUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除单元化规则
+func (c *Client) DeleteUnitRule(request *DeleteUnitRuleRequest) (response *DeleteUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteUnitRuleRequest()
+    }
+    response = NewDeleteUnitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1591,6 +1666,31 @@ func (c *Client) DescribeDownloadInfo(request *DescribeDownloadInfoRequest) (res
         request = NewDescribeDownloadInfoRequest()
     }
     response = NewDescribeDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnabledUnitRuleRequest() (request *DescribeEnabledUnitRuleRequest) {
+    request = &DescribeEnabledUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeEnabledUnitRule")
+    return
+}
+
+func NewDescribeEnabledUnitRuleResponse() (response *DescribeEnabledUnitRuleResponse) {
+    response = &DescribeEnabledUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询生效的单元化规则
+func (c *Client) DescribeEnabledUnitRule(request *DescribeEnabledUnitRuleRequest) (response *DescribeEnabledUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnabledUnitRuleRequest()
+    }
+    response = NewDescribeEnabledUnitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2495,6 +2595,81 @@ func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) 
     return
 }
 
+func NewDescribeUnitNamespacesRequest() (request *DescribeUnitNamespacesRequest) {
+    request = &DescribeUnitNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitNamespaces")
+    return
+}
+
+func NewDescribeUnitNamespacesResponse() (response *DescribeUnitNamespacesResponse) {
+    response = &DescribeUnitNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询单元化命名空间列表
+func (c *Client) DescribeUnitNamespaces(request *DescribeUnitNamespacesRequest) (response *DescribeUnitNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnitNamespacesRequest()
+    }
+    response = NewDescribeUnitNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnitRuleRequest() (request *DescribeUnitRuleRequest) {
+    request = &DescribeUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitRule")
+    return
+}
+
+func NewDescribeUnitRuleResponse() (response *DescribeUnitRuleResponse) {
+    response = &DescribeUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询单元化规则详情
+func (c *Client) DescribeUnitRule(request *DescribeUnitRuleRequest) (response *DescribeUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnitRuleRequest()
+    }
+    response = NewDescribeUnitRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnitRulesRequest() (request *DescribeUnitRulesRequest) {
+    request = &DescribeUnitRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitRules")
+    return
+}
+
+func NewDescribeUnitRulesResponse() (response *DescribeUnitRulesResponse) {
+    response = &DescribeUnitRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询单元化规则列表
+func (c *Client) DescribeUnitRules(request *DescribeUnitRulesRequest) (response *DescribeUnitRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnitRulesRequest()
+    }
+    response = NewDescribeUnitRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadInfoRequest() (request *DescribeUploadInfoRequest) {
     request = &DescribeUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2517,6 +2692,31 @@ func (c *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (respons
         request = NewDescribeUploadInfoRequest()
     }
     response = NewDescribeUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUsableUnitNamespacesRequest() (request *DescribeUsableUnitNamespacesRequest) {
+    request = &DescribeUsableUnitNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUsableUnitNamespaces")
+    return
+}
+
+func NewDescribeUsableUnitNamespacesResponse() (response *DescribeUsableUnitNamespacesResponse) {
+    response = &DescribeUsableUnitNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询可用于被导入的命名空间列表
+func (c *Client) DescribeUsableUnitNamespaces(request *DescribeUsableUnitNamespacesRequest) (response *DescribeUsableUnitNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsableUnitNamespacesRequest()
+    }
+    response = NewDescribeUsableUnitNamespacesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2567,6 +2767,56 @@ func (c *Client) DisableTaskFlow(request *DisableTaskFlowRequest) (response *Dis
         request = NewDisableTaskFlowRequest()
     }
     response = NewDisableTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableUnitRouteRequest() (request *DisableUnitRouteRequest) {
+    request = &DisableUnitRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisableUnitRoute")
+    return
+}
+
+func NewDisableUnitRouteResponse() (response *DisableUnitRouteResponse) {
+    response = &DisableUnitRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 禁用单元化路由
+func (c *Client) DisableUnitRoute(request *DisableUnitRouteRequest) (response *DisableUnitRouteResponse, err error) {
+    if request == nil {
+        request = NewDisableUnitRouteRequest()
+    }
+    response = NewDisableUnitRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableUnitRuleRequest() (request *DisableUnitRuleRequest) {
+    request = &DisableUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisableUnitRule")
+    return
+}
+
+func NewDisableUnitRuleResponse() (response *DisableUnitRuleResponse) {
+    response = &DisableUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 禁用单元化规则
+func (c *Client) DisableUnitRule(request *DisableUnitRuleRequest) (response *DisableUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewDisableUnitRuleRequest()
+    }
+    response = NewDisableUnitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2642,6 +2892,56 @@ func (c *Client) EnableTaskFlow(request *EnableTaskFlowRequest) (response *Enabl
         request = NewEnableTaskFlowRequest()
     }
     response = NewEnableTaskFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableUnitRouteRequest() (request *EnableUnitRouteRequest) {
+    request = &EnableUnitRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "EnableUnitRoute")
+    return
+}
+
+func NewEnableUnitRouteResponse() (response *EnableUnitRouteResponse) {
+    response = &EnableUnitRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用单元化路由
+func (c *Client) EnableUnitRoute(request *EnableUnitRouteRequest) (response *EnableUnitRouteResponse, err error) {
+    if request == nil {
+        request = NewEnableUnitRouteRequest()
+    }
+    response = NewEnableUnitRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableUnitRuleRequest() (request *EnableUnitRuleRequest) {
+    request = &EnableUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "EnableUnitRule")
+    return
+}
+
+func NewEnableUnitRuleResponse() (response *EnableUnitRuleResponse) {
+    response = &EnableUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 启用单元化规则
+func (c *Client) EnableUnitRule(request *EnableUnitRuleRequest) (response *EnableUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewEnableUnitRuleRequest()
+    }
+    response = NewEnableUnitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -3522,6 +3822,31 @@ func (c *Client) UpdateApiRateLimitRules(request *UpdateApiRateLimitRulesRequest
     return
 }
 
+func NewUpdateApiTimeoutsRequest() (request *UpdateApiTimeoutsRequest) {
+    request = &UpdateApiTimeoutsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiTimeouts")
+    return
+}
+
+func NewUpdateApiTimeoutsResponse() (response *UpdateApiTimeoutsResponse) {
+    response = &UpdateApiTimeoutsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量更新API超时
+func (c *Client) UpdateApiTimeouts(request *UpdateApiTimeoutsRequest) (response *UpdateApiTimeoutsResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiTimeoutsRequest()
+    }
+    response = NewUpdateApiTimeoutsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateGatewayApiRequest() (request *UpdateGatewayApiRequest) {
     request = &UpdateGatewayApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3593,6 +3918,31 @@ func (c *Client) UpdateRepository(request *UpdateRepositoryRequest) (response *U
         request = NewUpdateRepositoryRequest()
     }
     response = NewUpdateRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUnitRuleRequest() (request *UpdateUnitRuleRequest) {
+    request = &UpdateUnitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateUnitRule")
+    return
+}
+
+func NewUpdateUnitRuleResponse() (response *UpdateUnitRuleResponse) {
+    response = &UpdateUnitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新单元化规则
+func (c *Client) UpdateUnitRule(request *UpdateUnitRuleRequest) (response *UpdateUnitRuleResponse, err error) {
+    if request == nil {
+        request = NewUpdateUnitRuleRequest()
+    }
+    response = NewUpdateUnitRuleResponse()
     err = c.Send(request, response)
     return
 }

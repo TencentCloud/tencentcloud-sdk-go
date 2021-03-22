@@ -149,7 +149,7 @@ type CreateMailProfileRequest struct {
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入，只能为一个实例。
+	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
 	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds" list`
 }
 

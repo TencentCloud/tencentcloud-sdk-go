@@ -343,6 +343,31 @@ func (c *Client) CreateRepositoryPersonal(request *CreateRepositoryPersonalReque
     return
 }
 
+func NewCreateSecurityPolicyRequest() (request *CreateSecurityPolicyRequest) {
+    request = &CreateSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateSecurityPolicy")
+    return
+}
+
+func NewCreateSecurityPolicyResponse() (response *CreateSecurityPolicyResponse) {
+    response = &CreateSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建实例公网访问白名单策略
+func (c *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (response *CreateSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityPolicyRequest()
+    }
+    response = NewCreateSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserPersonalRequest() (request *CreateUserPersonalRequest) {
     request = &CreateUserPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +714,31 @@ func (c *Client) DeleteRepositoryPersonal(request *DeleteRepositoryPersonalReque
         request = NewDeleteRepositoryPersonalRequest()
     }
     response = NewDeleteRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityPolicyRequest() (request *DeleteSecurityPolicyRequest) {
+    request = &DeleteSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteSecurityPolicy")
+    return
+}
+
+func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) {
+    response = &DeleteSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除实例公网访问白名单策略
+func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityPolicyRequest()
+    }
+    response = NewDeleteSecurityPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1293,6 +1343,31 @@ func (c *Client) DescribeRepositoryPersonal(request *DescribeRepositoryPersonalR
     return
 }
 
+func NewDescribeSecurityPoliciesRequest() (request *DescribeSecurityPoliciesRequest) {
+    request = &DescribeSecurityPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeSecurityPolicies")
+    return
+}
+
+func NewDescribeSecurityPoliciesResponse() (response *DescribeSecurityPoliciesResponse) {
+    response = &DescribeSecurityPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例公网访问白名单策略
+func (c *Client) DescribeSecurityPolicies(request *DescribeSecurityPoliciesRequest) (response *DescribeSecurityPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPoliciesRequest()
+    }
+    response = NewDescribeSecurityPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserQuotaPersonalRequest() (request *DescribeUserQuotaPersonalRequest) {
     request = &DescribeUserQuotaPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1614,6 +1689,31 @@ func (c *Client) ModifyRepositoryInfoPersonal(request *ModifyRepositoryInfoPerso
         request = NewModifyRepositoryInfoPersonalRequest()
     }
     response = NewModifyRepositoryInfoPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySecurityPolicyRequest() (request *ModifySecurityPolicyRequest) {
+    request = &ModifySecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifySecurityPolicy")
+    return
+}
+
+func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) {
+    response = &ModifySecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新实例公网访问白名单
+func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityPolicyRequest()
+    }
+    response = NewModifySecurityPolicyResponse()
     err = c.Send(request, response)
     return
 }

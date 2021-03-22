@@ -293,7 +293,9 @@ type CreateCloudStorageRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 云存套餐ID
+	// 云存套餐ID：
+	// yc1m3d：全时3天存储月套餐。
+	// ye1m3d：事件3天存储套餐。
 	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 }
 

@@ -653,6 +653,31 @@ func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackD
     return
 }
 
+func NewExportVideoByTemplateRequest() (request *ExportVideoByTemplateRequest) {
+    request = &ExportVideoByTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByTemplate")
+    return
+}
+
+func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse) {
+    response = &ExportVideoByTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 使用视频编辑模板直接导出视频。
+func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
+    if request == nil {
+        request = NewExportVideoByTemplateRequest()
+    }
+    response = NewExportVideoByTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportVideoByVideoSegmentationDataRequest() (request *ExportVideoByVideoSegmentationDataRequest) {
     request = &ExportVideoByVideoSegmentationDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

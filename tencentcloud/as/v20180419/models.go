@@ -508,6 +508,11 @@ type CreateLaunchConfigurationRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 云盘类型选择策略，默认取值 ORIGINAL，取值范围：
+	// <br><li>ORIGINAL：使用设置的云盘类型
+	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
+	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -2299,6 +2304,11 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
 	// 本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
+
+	// 云盘类型选择策略，取值范围：
+	// <br><li>ORIGINAL：使用设置的云盘类型。
+	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型。
+	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -2958,6 +2968,11 @@ type UpgradeLaunchConfigurationRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 云盘类型选择策略，取值范围：
+	// <br><li>ORIGINAL：使用设置的云盘类型
+	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
+	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
 func (r *UpgradeLaunchConfigurationRequest) ToJsonString() string {

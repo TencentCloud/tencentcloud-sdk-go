@@ -1737,6 +1737,9 @@ type DescribeInstancesExtendRequest struct {
 
 	// 结果返回最大数量，最小值0，最大值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// CVM实例公网IP
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 }
 
 func (r *DescribeInstancesExtendRequest) ToJsonString() string {
@@ -1788,6 +1791,9 @@ type DescribeInstancesRequest struct {
 
 	// 返回结果偏移，最小值0
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// CVM实例公网IP
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {

@@ -6206,9 +6206,6 @@ func (r *DescribeRouteConflictsResponse) FromJsonString(s string) error {
 type DescribeRouteTablesRequest struct {
 	*tchttp.BaseRequest
 
-	// 路由表实例ID，例如：rtb-azd4dt1c。
-	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds" list`
-
 	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// <li>route-table-id - String - （过滤条件）路由表实例ID。</li>
 	// <li>route-table-name - String - （过滤条件）路由表名称。</li>
@@ -6216,7 +6213,11 @@ type DescribeRouteTablesRequest struct {
 	// <li>association.main - String - （过滤条件）是否主路由表。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
+	// <li>is-need-router-info - String - （过滤条件）是否需要获取路由策略信息，默认不获取，减少耗时，当控制台需要拉取路由策略信息时，改为true，返回具体的路由策略，。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 路由表实例ID，例如：rtb-azd4dt1c。
+	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds" list`
 
 	// 偏移量。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`

@@ -1361,6 +1361,69 @@ func (r *ExportVideoByEditorTrackDataResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportVideoByTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频编辑模板  Id。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标，可取值为：
+	// <li>CME：云剪，即导出为云剪媒体；</li>
+	// <li>VOD：云点播，即导出为云点播媒资。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 需要替换的素材信息。
+	SlotReplacements []*SlotReplacementInfo `json:"SlotReplacements,omitempty" name:"SlotReplacements" list`
+
+	// 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ExportVideoByTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByTemplateRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportVideoByTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出任务 Id。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportVideoByTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportVideoByTemplateResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportVideoByVideoSegmentationDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -2091,6 +2154,15 @@ type MediaMetaData struct {
 	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitempty" name:"AudioStreamInfoSet" list`
 }
 
+type MediaReplacementInfo struct {
+
+	// 素材 ID。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 替换媒体选取的开始时间，单位为秒，默认为 0。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+}
+
 type MediaTrack struct {
 
 	// 轨道类型，取值有：
@@ -2644,6 +2716,22 @@ type SearchScope struct {
 
 	// 按分类路径检索。 不填则默认按根分类路径检索。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+}
+
+type SlotReplacementInfo struct {
+
+	// 卡槽 Id。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 替换类型，可取值有：
+	// <li> AUDIO :音频;</li>
+	// <li> VIDEO :视频;</li>
+	// <li> IMAGE :图片。</li>
+	// 注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。
+	ReplacementType *string `json:"ReplacementType,omitempty" name:"ReplacementType"`
+
+	// 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
+	MediaReplacementInfo *MediaReplacementInfo `json:"MediaReplacementInfo,omitempty" name:"MediaReplacementInfo"`
 }
 
 type SortBy struct {
