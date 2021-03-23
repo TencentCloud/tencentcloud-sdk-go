@@ -253,6 +253,9 @@ type CreateRecordPlanRequest struct {
 	// 时间模板ID
 	TimeTemplateId *string `json:"TimeTemplateId,omitempty" name:"TimeTemplateId"`
 
+	// 触发录制的事件类别 1:全部
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
 	// 该录制计划绑定的设备列表
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices" list`
 }
@@ -1692,8 +1695,16 @@ type UpdateRecordPlanRequest struct {
 	// 时间模板ID
 	TimeTemplateId *string `json:"TimeTemplateId,omitempty" name:"TimeTemplateId"`
 
+	// 触发录制的事件 1：全部
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
 	// 录制设备列表
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices" list`
+
+	// 是否更新绑定此录制计划的设备列表
+	// 0 - 不更新
+	// 1 - 更新，如果Devices参数为空则清空设备列表，Devices不为空则全量更新设备列表
+	IsModifyDevices *int64 `json:"IsModifyDevices,omitempty" name:"IsModifyDevices"`
 }
 
 func (r *UpdateRecordPlanRequest) ToJsonString() string {

@@ -274,6 +274,31 @@ func (c *Client) ModifyCommand(request *ModifyCommandRequest) (response *ModifyC
     return
 }
 
+func NewPreviewReplacedCommandContentRequest() (request *PreviewReplacedCommandContentRequest) {
+    request = &PreviewReplacedCommandContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "PreviewReplacedCommandContent")
+    return
+}
+
+func NewPreviewReplacedCommandContentResponse() (response *PreviewReplacedCommandContentResponse) {
+    response = &PreviewReplacedCommandContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口用于预览自定义参数替换后的命令内容。不会触发真实执行。
+func (c *Client) PreviewReplacedCommandContent(request *PreviewReplacedCommandContentRequest) (response *PreviewReplacedCommandContentResponse, err error) {
+    if request == nil {
+        request = NewPreviewReplacedCommandContentRequest()
+    }
+    response = NewPreviewReplacedCommandContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunCommandRequest() (request *RunCommandRequest) {
     request = &RunCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},

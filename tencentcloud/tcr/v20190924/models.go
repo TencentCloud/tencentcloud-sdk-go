@@ -287,7 +287,7 @@ type CreateInstanceRequest struct {
 	// 云标签描述
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 
-	// 实例计费类型，0表示按量计费，1表示预付费，当前版本只支持后付费，默认为按量计费
+	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
 }
 

@@ -586,6 +586,43 @@ func (r *BindApiGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BindPluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 分组/API绑定插件列表
+	PluginInstanceList []*GatewayPluginBoundParam `json:"PluginInstanceList,omitempty" name:"PluginInstanceList" list`
+}
+
+func (r *BindPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindPluginRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BindPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，成功失败
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BindPluginResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ChangeApiUsableStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -4619,6 +4656,58 @@ func (r *DescribeGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGroupsWithPluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 插件ID
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 绑定/未绑定: true / false
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 翻页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页记录数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+}
+
+func (r *DescribeGroupsWithPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGroupsWithPluginRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupsWithPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API分组信息列表
+		Result *TsfPageApiGroupInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupsWithPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeGroupsWithPluginResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageRepositoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -5095,6 +5184,58 @@ func (r *DescribePkgsResponse) ToJsonString() string {
 }
 
 func (r *DescribePkgsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 分组或者API的ID
+	ScopeValue *string `json:"ScopeValue,omitempty" name:"ScopeValue"`
+
+	// 绑定: true; 未绑定: false
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 翻页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页展示的条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 插件类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
+func (r *DescribePluginInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePluginInstancesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 插件信息列表
+		Result *TsfPageGatewayPlugin `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePluginInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePluginInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6674,6 +6815,49 @@ type GatewayGroupIds struct {
 
 	// 分组id
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+type GatewayPlugin struct {
+
+	// 网关插件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 插件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 插件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 插件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 发布状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type GatewayPluginBoundParam struct {
+
+	// 插件id
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 插件绑定到的对象类型:group/api
+	ScopeType *string `json:"ScopeType,omitempty" name:"ScopeType"`
+
+	// 插件绑定到的对象主键值，例如分组的ID/API的ID
+	ScopeValue *string `json:"ScopeValue,omitempty" name:"ScopeValue"`
 }
 
 type GatewayVo struct {
@@ -9561,6 +9745,17 @@ type TsfPageGatewayDeployGroup struct {
 
 	// 记录实体列表
 	Content []*GatewayDeployGroup `json:"Content,omitempty" name:"Content" list`
+}
+
+type TsfPageGatewayPlugin struct {
+
+	// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 记录实体列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*GatewayPlugin `json:"Content,omitempty" name:"Content" list`
 }
 
 type TsfPageInstance struct {

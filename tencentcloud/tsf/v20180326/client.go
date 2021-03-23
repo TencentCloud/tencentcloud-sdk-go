@@ -118,6 +118,31 @@ func (c *Client) BindApiGroup(request *BindApiGroupRequest) (response *BindApiGr
     return
 }
 
+func NewBindPluginRequest() (request *BindPluginRequest) {
+    request = &BindPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "BindPlugin")
+    return
+}
+
+func NewBindPluginResponse() (response *BindPluginResponse) {
+    response = &BindPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 插件与网关分组/API批量绑定
+func (c *Client) BindPlugin(request *BindPluginRequest) (response *BindPluginResponse, err error) {
+    if request == nil {
+        request = NewBindPluginRequest()
+    }
+    response = NewBindPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChangeApiUsableStatusRequest() (request *ChangeApiUsableStatusRequest) {
     request = &ChangeApiUsableStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1920,6 +1945,31 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
     return
 }
 
+func NewDescribeGroupsWithPluginRequest() (request *DescribeGroupsWithPluginRequest) {
+    request = &DescribeGroupsWithPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupsWithPlugin")
+    return
+}
+
+func NewDescribeGroupsWithPluginResponse() (response *DescribeGroupsWithPluginResponse) {
+    response = &DescribeGroupsWithPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某个插件下绑定或未绑定的API分组
+func (c *Client) DescribeGroupsWithPlugin(request *DescribeGroupsWithPluginRequest) (response *DescribeGroupsWithPluginResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupsWithPluginRequest()
+    }
+    response = NewDescribeGroupsWithPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageRepositoryRequest() (request *DescribeImageRepositoryRequest) {
     request = &DescribeImageRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2166,6 +2216,31 @@ func (c *Client) DescribePkgs(request *DescribePkgsRequest) (response *DescribeP
         request = NewDescribePkgsRequest()
     }
     response = NewDescribePkgsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePluginInstancesRequest() (request *DescribePluginInstancesRequest) {
+    request = &DescribePluginInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePluginInstances")
+    return
+}
+
+func NewDescribePluginInstancesResponse() (response *DescribePluginInstancesResponse) {
+    response = &DescribePluginInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 分页查询网关分组/API绑定（或未绑定）的插件列表
+func (c *Client) DescribePluginInstances(request *DescribePluginInstancesRequest) (response *DescribePluginInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePluginInstancesRequest()
+    }
+    response = NewDescribePluginInstancesResponse()
     err = c.Send(request, response)
     return
 }

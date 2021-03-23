@@ -807,6 +807,10 @@ type CreateLoadBalancerRequest struct {
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
 
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 DescribeMasterZones 接口查询一个地域的主/备可用区的列表。
+	SlaveZoneId *string `json:"SlaveZoneId,omitempty" name:"SlaveZoneId"`
+
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitempty" name:"EipAddressId"`
 }
@@ -4255,6 +4259,10 @@ type TargetGroupBackend struct {
 	// 弹性网卡唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniId *string `json:"EniId,omitempty" name:"EniId"`
+
+	// 后端服务的可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type TargetGroupInfo struct {
