@@ -4222,7 +4222,7 @@ type DescribeResourceListRequest struct {
 	// 资源名称搜索，可选，当不为空字符串时表示按名称搜索资源；
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// IP搜索列表，可选，当不为空时表示安装IP搜索资源；
+	// IP搜索列表，可选，当不为空时表示按照IP搜索资源；
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 
 	// 资源状态搜索列表，可选，取值为[0（运行中）, 1（清洗中）, 2（封堵中）]，当填空数组时不进行状态搜索；
@@ -4274,7 +4274,6 @@ type DescribeResourceListResponse struct {
 	// "Key": "Type" 此字段弃用
 	// "Key": "ElasticLimit" 表示资源实例的弹性防护值
 	// "Key": "DDoSAI" 表示资源实例的DDoS AI防护开关
-	// "Key": "Bandwidth" 表示资源实例的保底防护值
 	// "Key": "OverloadCount" 表示资源实例受到超过弹性防护值的次数
 	// "Key": "Status" 表示资源实例的状态(idle:运行中, attacking:攻击中, blocking:封堵中, isolate:隔离中)
 	// "Key": "Lbid" 此字段弃用
@@ -4291,6 +4290,10 @@ type DescribeResourceListResponse struct {
 	// "Key": "DefendStatus" 表示资源实例的DDoS防护状态(防护开启或临时关闭)
 	// "Key": "UndefendExpire" 表示资源实例的DDoS防护临时关闭结束时间
 	// "Key": "Tgw" 表示资源实例是否是新资源
+	// "Key": "Bandwidth" 表示资源实例的保底防护值，只针对高防包和高防IP
+	// "Key": "DdosMax" 表示资源实例的保底防护值，只针对高防IP专业版
+	// "Key": "GFBandwidth" 表示资源实例的保底业务带宽，只针对高防IP
+	// "Key": "ServiceBandwidth" 表示资源实例的保底业务带宽，只针对高防IP专业版
 		ServicePacks []*KeyValueRecord `json:"ServicePacks,omitempty" name:"ServicePacks" list`
 
 		// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）

@@ -376,7 +376,7 @@ type DescribeScriptsRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 按字段爱旭，支持如下字段类型，update-time
+	// 按字段排序，支持如下字段类型，update-time
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
 	// 排序方式，desc表示正序，asc表示反序

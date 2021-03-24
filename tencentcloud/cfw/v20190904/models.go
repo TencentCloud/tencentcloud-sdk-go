@@ -166,7 +166,7 @@ type CreateSecurityGroupApiRulesRequest struct {
 	// 方向，0：出站，1：入站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
-	// 0：后插，1：前插，2：中插
+	// 插入类型，0：后插，1：前插，2：中插
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 腾讯云地域的英文简写
@@ -373,7 +373,7 @@ type DeleteSecurityGroupRuleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 状态值
+		// 状态值，0：成功，非0：失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 返回多余的信息
@@ -673,13 +673,13 @@ type DescribeSecurityGroupListRequest struct {
 	// 搜索值
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 
-	// 每页条数
+	// 每页条数，默认为10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移值
+	// 偏移值，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// '': 全部，'0'：筛选停用规则，'1'：筛选启用规则
+	// 状态，'': 全部，'0'：筛选停用规则，'1'：筛选启用规则
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 0: 不过滤，1：过滤掉正常规则，保留下发异常规则
@@ -1125,7 +1125,7 @@ type ModifySecurityGroupAllRuleStatusRequest struct {
 	// Edge ID值
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
-	// NAT地域
+	// NAT地域, 腾讯云地域的英文简写
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 

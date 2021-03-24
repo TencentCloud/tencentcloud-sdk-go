@@ -6178,13 +6178,13 @@ type SecurityGroup struct {
 
 type SellConfig struct {
 
-	// 设备类型
+	// 设备类型（废弃）
 	Device *string `json:"Device,omitempty" name:"Device"`
 
-	// 售卖规格描述
+	// 售卖规格描述（废弃）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 实例类型
+	// 实例类型（废弃）
 	CdbType *string `json:"CdbType,omitempty" name:"CdbType"`
 
 	// 内存大小，单位为MB
@@ -6214,11 +6214,19 @@ type SellConfig struct {
 	// 应用场景描述
 	Info *string `json:"Info,omitempty" name:"Info"`
 
-	// 状态值
+	// 状态值，0 表示该规格对外售卖
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 标签值
+	// 标签值（废弃）
 	Tag *int64 `json:"Tag,omitempty" name:"Tag"`
+
+	// 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 实例类型描述，可能的取值范围有：通用型， 独享型， 基础型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceTypeName *string `json:"DeviceTypeName,omitempty" name:"DeviceTypeName"`
 }
 
 type SellType struct {

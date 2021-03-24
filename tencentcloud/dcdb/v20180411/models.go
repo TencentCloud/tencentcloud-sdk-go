@@ -984,6 +984,14 @@ type DescribeDBSecurityGroupsResponse struct {
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
 
+		// 实例VIP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VIP *string `json:"VIP,omitempty" name:"VIP"`
+
+		// 实例端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VPort *int64 `json:"VPort,omitempty" name:"VPort"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1023,6 +1031,9 @@ type DescribeDBSyncModeResponse struct {
 
 		// 是否有修改流程在执行中：1 是， 0 否。
 		IsModifying *int64 `json:"IsModifying,omitempty" name:"IsModifying"`
+
+		// 当前复制方式，0 异步，1 同步
+		CurrentSyncMode *int64 `json:"CurrentSyncMode,omitempty" name:"CurrentSyncMode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

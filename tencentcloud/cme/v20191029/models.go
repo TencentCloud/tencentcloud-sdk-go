@@ -1318,7 +1318,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// <li>VOD：云点播，即导出为云点播媒资。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
-	// 在线编辑轨道数据。
+	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
 	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
 
 	// 导出的云剪素材信息。指定 ExportDestination = CME 时有效。

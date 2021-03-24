@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 46 次发布
+### 第 59 次发布
 
-发布时间：2021-03-23 08:04:04
+发布时间：2021-03-24 08:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SellConfig](https://cloud.tencent.com/document/api/236/15878#SellConfig)
+
+	* 新增成员：DeviceType, DeviceTypeName
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 19 次发布
+
+发布时间：2021-03-24 08:04:31
 
 本次发布包含了以下内容：
 
@@ -12,76 +31,75 @@
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
 
-	* 新增入参：SlaveZoneId
+	* 新增出参：VIP, VPort
+
+* [DescribeDBSyncMode](https://cloud.tencent.com/document/api/557/19991)
+
+	* 新增出参：CurrentSyncMode
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 23 次发布
+
+发布时间：2021-03-24 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MobileNetworkTimeVerification](https://cloud.tencent.com/document/api/1007/40546)
+
+	* 新增入参：Encryption
+
+* [MobileStatus](https://cloud.tencent.com/document/api/1007/40545)
+
+	* 新增入参：Encryption
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 17 次发布
+
+发布时间：2021-03-24 08:05:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
+
+	* 新增入参：FailoverSwitch
+
+* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
+
+	* 新增入参：FailoverSwitch
 
 
 修改数据结构：
 
-* [TargetGroupBackend](https://cloud.tencent.com/document/api/214/30694#TargetGroupBackend)
+* [RealServerBindSetReq](https://cloud.tencent.com/document/api/608/37023#RealServerBindSetReq)
 
-	* 新增成员：ZoneId
-
-
-
-
-## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
-
-### 第 2 次发布
-
-发布时间：2021-03-23 08:00:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRecordPlan](https://cloud.tencent.com/document/api/1361/53742)
-
-	* 新增入参：EventId
-
-* [UpdateRecordPlan](https://cloud.tencent.com/document/api/1361/53731)
-
-	* 新增入参：EventId, IsModifyDevices
+	* 新增成员：RealServerFailoverRole
 
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-### 第 46 次发布
+### 第 4 次发布
 
-发布时间：2021-03-23 08:07:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GeneralFastOCR](https://cloud.tencent.com/document/api/866/33525)
-
-	* 新增入参：IsPdf, PdfPageNumber
-
-	* 新增出参：PdfPageSize
-
-
-修改数据结构：
-
-* [FlightInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#FlightInvoiceInfo)
-
-	* 新增成员：Row
-
-
-
-
-## 腾讯云自动化助手(tat) 版本：2020-10-28
-
-### 第 2 次发布
-
-发布时间：2021-03-23 08:12:09
+发布时间：2021-03-24 08:01:29
 
 本次发布包含了以下内容：
 
@@ -89,61 +107,69 @@
 
 新增接口：
 
-* [PreviewReplacedCommandContent](https://cloud.tencent.com/document/api/1340/53938)
-
-修改接口：
-
-* [CreateCommand](https://cloud.tencent.com/document/api/1340/52684)
-
-	* 新增入参：EnableParameter, DefaultParameters
-
-* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
-
-	* 新增入参：Parameters
-
-* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
-
-	* 新增入参：DefaultParameters
-
-* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
-
-	* 新增入参：EnableParameter, DefaultParameters, Parameters
-
-
-修改数据结构：
-
-* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
-
-	* 新增成员：EnableParameter, DefaultParameters
-
-* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
-
-	* 新增成员：Parameters, DefaultParameters
+* [ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)
+* [TransferCloudStorage](https://cloud.tencent.com/document/api/1131/53957)
 
 
 
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 49 次发布
 
-发布时间：2021-03-23 08:09:03
+## 云直播(live) 版本：2018-08-01
+
+### 第 58 次发布
+
+发布时间：2021-03-24 08:05:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [BindPlugin](https://cloud.tencent.com/document/api/649/53937)
-* [DescribeGroupsWithPlugin](https://cloud.tencent.com/document/api/649/53936)
-* [DescribePluginInstances](https://cloud.tencent.com/document/api/649/53935)
+* [DescribeAllStreamPlayInfoList](https://cloud.tencent.com/document/api/267/43743)
 
-新增数据结构：
+	* 新增入参：PlayDomains
 
-* [GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)
-* [GatewayPluginBoundParam](https://cloud.tencent.com/document/api/649/36099#GatewayPluginBoundParam)
-* [TsfPageGatewayPlugin](https://cloud.tencent.com/document/api/649/36099#TsfPageGatewayPlugin)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 16 次发布
+
+发布时间：2021-03-24 08:06:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
+
+	* 新增出参：VIP, VPort
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 76 次发布
+
+发布时间：2021-03-24 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
+
+	* 新增成员：SessionContext, SessionId
+
 
 
 
@@ -6402,6 +6428,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 59 次发布
+
+发布时间：2021-03-24 08:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SellConfig](https://cloud.tencent.com/document/api/236/15878#SellConfig)
+
+	* 新增成员：DeviceType, DeviceTypeName
+
 
 ### 第 58 次发布
 
@@ -16300,6 +16341,25 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 19 次发布
+
+发布时间：2021-03-24 08:04:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
+
+	* 新增出参：VIP, VPort
+
+* [DescribeDBSyncMode](https://cloud.tencent.com/document/api/557/19991)
+
+	* 新增出参：CurrentSyncMode
+
+
 ### 第 18 次发布
 
 发布时间：2021-03-15 08:03:59
@@ -19798,6 +19858,25 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 23 次发布
+
+发布时间：2021-03-24 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MobileNetworkTimeVerification](https://cloud.tencent.com/document/api/1007/40546)
+
+	* 新增入参：Encryption
+
+* [MobileStatus](https://cloud.tencent.com/document/api/1007/40545)
+
+	* 新增入参：Encryption
+
+
 ### 第 22 次发布
 
 发布时间：2021-03-16 08:05:37
@@ -20357,6 +20436,32 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 17 次发布
+
+发布时间：2021-03-24 08:05:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
+
+	* 新增入参：FailoverSwitch
+
+* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
+
+	* 新增入参：FailoverSwitch
+
+
+修改数据结构：
+
+* [RealServerBindSetReq](https://cloud.tencent.com/document/api/608/37023#RealServerBindSetReq)
+
+	* 新增成员：RealServerFailoverRole
+
 
 ### 第 16 次发布
 
@@ -24897,6 +25002,19 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
+### 第 4 次发布
+
+发布时间：2021-03-24 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)](https://cloud.tencent.com/document/api/#/#)
+* [[TransferCloudStorage](https://cloud.tencent.com/document/api/1131/53957)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 3 次发布
 
 发布时间：2021-03-17 08:01:23
@@ -25619,6 +25737,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 58 次发布
+
+发布时间：2021-03-24 08:05:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAllStreamPlayInfoList](https://cloud.tencent.com/document/api/267/43743)
+
+	* 新增入参：PlayDomains
+
 
 ### 第 57 次发布
 
@@ -26900,6 +27033,21 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 16 次发布
+
+发布时间：2021-03-24 08:06:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
+
+	* 新增出参：VIP, VPort
+
 
 ### 第 15 次发布
 
@@ -34964,7 +35112,7 @@
 
 新增接口：
 
-* [[PreviewReplacedCommandContent](https://cloud.tencent.com/document/api/1340/53938)](https://cloud.tencent.com/document/api/#/#)
+* [PreviewReplacedCommandContent](https://cloud.tencent.com/document/api/1340/53938)
 
 修改接口：
 
@@ -40621,15 +40769,15 @@
 
 新增接口：
 
-* [[BindPlugin](https://cloud.tencent.com/document/api/649/53937)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGroupsWithPlugin](https://cloud.tencent.com/document/api/649/53936)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePluginInstances](https://cloud.tencent.com/document/api/649/53935)](https://cloud.tencent.com/document/api/#/#)
+* [BindPlugin](https://cloud.tencent.com/document/api/649/53937)
+* [DescribeGroupsWithPlugin](https://cloud.tencent.com/document/api/649/53936)
+* [DescribePluginInstances](https://cloud.tencent.com/document/api/649/53935)
 
 新增数据结构：
 
-* [[GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)](https://cloud.tencent.com/document/api/649/36099#[GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin))
-* [[GatewayPluginBoundParam](https://cloud.tencent.com/document/api/649/36099#GatewayPluginBoundParam)](https://cloud.tencent.com/document/api/649/36099#[GatewayPluginBoundParam](https://cloud.tencent.com/document/api/649/36099#GatewayPluginBoundParam))
-* [[TsfPageGatewayPlugin](https://cloud.tencent.com/document/api/649/36099#TsfPageGatewayPlugin)](https://cloud.tencent.com/document/api/649/36099#[TsfPageGatewayPlugin](https://cloud.tencent.com/document/api/649/36099#TsfPageGatewayPlugin))
+* [GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)
+* [GatewayPluginBoundParam](https://cloud.tencent.com/document/api/649/36099#GatewayPluginBoundParam)
+* [TsfPageGatewayPlugin](https://cloud.tencent.com/document/api/649/36099#TsfPageGatewayPlugin)
 
 ### 第 48 次发布
 
@@ -42295,6 +42443,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 76 次发布
+
+发布时间：2021-03-24 08:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
+
+	* 新增成员：SessionContext, SessionId
+
 
 ### 第 75 次发布
 

@@ -2586,6 +2586,43 @@ type ProductTemplate struct {
 	IconUrlGrid *string `json:"IconUrlGrid,omitempty" name:"IconUrlGrid"`
 }
 
+type ResetCloudStorageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *ResetCloudStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetCloudStorageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetCloudStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetCloudStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetCloudStorageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RetryDeviceFirmwareTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -2702,6 +2739,46 @@ type StatusStatistic struct {
 	// 统计总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+type TransferCloudStorageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 已开通云存的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 未开通云存的设备名称
+	ToDeviceName *string `json:"ToDeviceName,omitempty" name:"ToDeviceName"`
+}
+
+func (r *TransferCloudStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferCloudStorageRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferCloudStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransferCloudStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TransferCloudStorageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadFirmwareRequest struct {

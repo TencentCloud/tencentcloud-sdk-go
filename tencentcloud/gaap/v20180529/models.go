@@ -1118,6 +1118,9 @@ type CreateTCPListenersRequest struct {
 
 	// 监听器获取客户端 IP 的方式，0表示 TOA, 1表示Proxy Protocol
 	ClientIPMethod *int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
 }
 
 func (r *CreateTCPListenersRequest) ToJsonString() string {
@@ -4167,6 +4170,9 @@ type ModifyTCPListenerAttributeRequest struct {
 
 	// 是否开启健康检查，1开启，0关闭。
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *uint64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
 }
 
 func (r *ModifyTCPListenerAttributeRequest) ToJsonString() string {
@@ -4664,6 +4670,9 @@ type RealServerBindSetReq struct {
 
 	// 源站权重
 	RealServerWeight *uint64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
+
+	// 源站主备角色：master主，slave备，该参数必须在监听器打开了源站主备模式，且监听器类型为TCP监听器
+	RealServerFailoverRole *string `json:"RealServerFailoverRole,omitempty" name:"RealServerFailoverRole"`
 }
 
 type RealServerStatus struct {

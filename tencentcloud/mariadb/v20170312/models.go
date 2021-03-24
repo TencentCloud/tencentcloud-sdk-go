@@ -1295,7 +1295,7 @@ type DescribeDBSecurityGroupsRequest struct {
 	// 数据库引擎名称，本接口取值：mariadb。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1314,6 +1314,14 @@ type DescribeDBSecurityGroupsResponse struct {
 
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+
+		// 实例VIP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VIP *string `json:"VIP,omitempty" name:"VIP"`
+
+		// 实例端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VPort *int64 `json:"VPort,omitempty" name:"VPort"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

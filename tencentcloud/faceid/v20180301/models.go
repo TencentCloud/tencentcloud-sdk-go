@@ -1632,6 +1632,9 @@ type MobileNetworkTimeVerificationRequest struct {
 
 	// 手机号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *MobileNetworkTimeVerificationRequest) ToJsonString() string {
@@ -1683,6 +1686,9 @@ type MobileStatusRequest struct {
 
 	// 手机号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *MobileStatusRequest) ToJsonString() string {

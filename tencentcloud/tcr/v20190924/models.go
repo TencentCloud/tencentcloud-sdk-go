@@ -387,8 +387,9 @@ type CreateInternalEndpointDnsRequest struct {
 	// tcr内网访问链路ip
 	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
 
-	// true：use instance name as subdomain
-	// false: use instancename+"-vpc" as subdomain
+	// true：为默认域名，公网域名一致
+	// false: 使用vpc域名
+	// 默认为vpc域名
 	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
 }
 

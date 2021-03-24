@@ -1193,6 +1193,31 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
     return
 }
 
+func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
+    request = &ResetCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ResetCloudStorage")
+    return
+}
+
+func NewResetCloudStorageResponse() (response *ResetCloudStorageResponse) {
+    response = &ResetCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置云存服务
+func (c *Client) ResetCloudStorage(request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageRequest()
+    }
+    response = NewResetCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskRequest) {
     request = &RetryDeviceFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1239,6 +1264,31 @@ func (c *Client) SetForwardAuth(request *SetForwardAuthRequest) (response *SetFo
         request = NewSetForwardAuthRequest()
     }
     response = NewSetForwardAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferCloudStorageRequest() (request *TransferCloudStorageRequest) {
+    request = &TransferCloudStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "TransferCloudStorage")
+    return
+}
+
+func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) {
+    response = &TransferCloudStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 转移云存服务
+func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewTransferCloudStorageRequest()
+    }
+    response = NewTransferCloudStorageResponse()
     err = c.Send(request, response)
     return
 }

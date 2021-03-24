@@ -5182,10 +5182,10 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 	// 检测模式 0 全盘检测  1快速检测
 	CheckPattern *uint64 `json:"CheckPattern,omitempty" name:"CheckPattern"`
 
-	// 检测周期 开始时间
+	// 检测周期 开始时间，如：02:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 检测周期 超时结束时间
+	// 检测周期 超时结束时间，如：04:00:00
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 是否全部服务器 1 全部 2 自选
