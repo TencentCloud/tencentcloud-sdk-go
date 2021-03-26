@@ -1496,6 +1496,33 @@ func (c *Client) DescribePersonSamples(request *DescribePersonSamplesRequest) (r
     return
 }
 
+func NewDescribePrepaidProductsRequest() (request *DescribePrepaidProductsRequest) {
+    request = &DescribePrepaidProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribePrepaidProducts")
+    return
+}
+
+func NewDescribePrepaidProductsResponse() (response *DescribePrepaidProductsResponse) {
+    response = &DescribePrepaidProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口可以查询用户已经购买的预付费商品的信息，包括：
+//     1. 商品的类型、生效和失效日期。
+//     2. 商品中每种资源的额度和剩余额度。
+func (c *Client) DescribePrepaidProducts(request *DescribePrepaidProductsRequest) (response *DescribePrepaidProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrepaidProductsRequest()
+    }
+    response = NewDescribePrepaidProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProcedureTemplatesRequest() (request *DescribeProcedureTemplatesRequest) {
     request = &DescribeProcedureTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

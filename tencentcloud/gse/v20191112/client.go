@@ -633,6 +633,31 @@ func (c *Client) DescribeFleetPortSettings(request *DescribeFleetPortSettingsReq
     return
 }
 
+func NewDescribeFleetRelatedResourcesRequest() (request *DescribeFleetRelatedResourcesRequest) {
+    request = &DescribeFleetRelatedResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetRelatedResources")
+    return
+}
+
+func NewDescribeFleetRelatedResourcesResponse() (response *DescribeFleetRelatedResourcesResponse) {
+    response = &DescribeFleetRelatedResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
+func (c *Client) DescribeFleetRelatedResources(request *DescribeFleetRelatedResourcesRequest) (response *DescribeFleetRelatedResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFleetRelatedResourcesRequest()
+    }
+    response = NewDescribeFleetRelatedResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFleetStatisticDetailsRequest() (request *DescribeFleetStatisticDetailsRequest) {
     request = &DescribeFleetStatisticDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1104,6 +1129,31 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
         request = NewDetachCcnInstancesRequest()
     }
     response = NewDetachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGameServerInstanceLogUrlRequest() (request *GetGameServerInstanceLogUrlRequest) {
+    request = &GetGameServerInstanceLogUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "GetGameServerInstanceLogUrl")
+    return
+}
+
+func NewGetGameServerInstanceLogUrlResponse() (response *GetGameServerInstanceLogUrlResponse) {
+    response = &GetGameServerInstanceLogUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于获取游戏服务器实例的日志URL。
+func (c *Client) GetGameServerInstanceLogUrl(request *GetGameServerInstanceLogUrlRequest) (response *GetGameServerInstanceLogUrlResponse, err error) {
+    if request == nil {
+        request = NewGetGameServerInstanceLogUrlRequest()
+    }
+    response = NewGetGameServerInstanceLogUrlResponse()
     err = c.Send(request, response)
     return
 }

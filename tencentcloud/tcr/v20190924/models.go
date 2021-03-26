@@ -1641,7 +1641,7 @@ type DescribeImagesRequest struct {
 	// 镜像仓库名称
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 
-	// 指定镜像版本(Tag)，不填默认返回仓库内全部容器镜像
+	// 指定镜像版本进行查找，当前为模糊搜索
 	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
 
 	// 每页个数，用于分页，默认20
@@ -2691,6 +2691,49 @@ func (r *ManageInternalEndpointResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ManageReplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 复制源实例ID
+	SourceRegistryId *string `json:"SourceRegistryId,omitempty" name:"SourceRegistryId"`
+
+	// 复制目标实例ID
+	DestinationRegistryId *string `json:"DestinationRegistryId,omitempty" name:"DestinationRegistryId"`
+
+	// 同步规则
+	Rule *ReplicationRule `json:"Rule,omitempty" name:"Rule"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ManageReplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageReplicationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ManageReplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ManageReplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ManageReplicationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -3235,6 +3278,15 @@ func (r *RenewInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ReplicationFilter struct {
+
+	// 类型（name、tag和resource）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 默认为空
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ReplicationRegistry struct {
 
 	// 主实例ID
@@ -3254,6 +3306,21 @@ type ReplicationRegistry struct {
 
 	// 创建时间
 	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+}
+
+type ReplicationRule struct {
+
+	// 同步规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 目标命名空间
+	DestNamespace *string `json:"DestNamespace,omitempty" name:"DestNamespace"`
+
+	// 是否覆盖
+	Override *bool `json:"Override,omitempty" name:"Override"`
+
+	// 同步过滤条件
+	Filters []*ReplicationFilter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 type RepoInfo struct {

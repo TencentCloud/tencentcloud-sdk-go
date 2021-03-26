@@ -5080,6 +5080,40 @@ func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrepaidProductsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribePrepaidProductsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrepaidProductsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrepaidProductsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 购买的预付费商品实例列表。
+		ProductInstanceSet []*ProductInstance `json:"ProductInstanceSet,omitempty" name:"ProductInstanceSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrepaidProductsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePrepaidProductsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProcedureTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -9586,6 +9620,72 @@ func (r *ProcessMediaResponse) ToJsonString() string {
 
 func (r *ProcessMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type ProductInstance struct {
+
+	// 预付费商品实例类型，取值有：
+	// <li>StarterPackage：点播新手包。</li>
+	// <li>MiniProgramPlugin：点播小程序插件。</li>
+	// <li>ResourcePackage：点播资源包。</li>
+	ProductType *string `json:"ProductType,omitempty" name:"ProductType"`
+
+	// 资源包实例起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 资源包实例过期日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。
+	ProductInstanceId *string `json:"ProductInstanceId,omitempty" name:"ProductInstanceId"`
+
+	// 系统最近一次扣除资源包的日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	LastConsumeDate *string `json:"LastConsumeDate,omitempty" name:"LastConsumeDate"`
+
+	// 资源包绑定 License 状态，取值有：
+	// <li>0：未绑定。</li>
+	// <li>1：已绑定。</li>
+	BindStatus *int64 `json:"BindStatus,omitempty" name:"BindStatus"`
+
+	// 预付费资源包实例中包含的资源包列表。
+	ProductInstanceResourceSet []*ProductInstanceRecource `json:"ProductInstanceResourceSet,omitempty" name:"ProductInstanceResourceSet" list`
+
+	// 资源包实例的状态，取值有：
+	// <li>Effective：生效，可用于计费抵扣。</li>
+	// <li>Isolated：隔离，不可用于计费抵扣。</li>
+	ProductInstanceStatus *string `json:"ProductInstanceStatus,omitempty" name:"ProductInstanceStatus"`
+
+	// 资源包实例的可退还状态，取值有：
+	// <li>FullRefund：可全额退款。</li>
+	// <li>Denied：不可退款。</li>
+	RefundStatus *string `json:"RefundStatus,omitempty" name:"RefundStatus"`
+}
+
+type ProductInstanceRecource struct {
+
+	// 资源类型。
+	// <li>Storage：存储资源包。</li>
+	// <li>Traffic：流量资源包。</li>
+	// <li>Transcode：普通转码资源包。</li>
+	// <li>TESHD：极速高清转码资源包。</li>
+	// <li>Review：视频审核转码资源包。</li>
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源包额度。
+	// <li>视频存储资源包，单位为字节。</li>
+	// <li>视频转码资源包，单位为秒。</li>
+	// <li>视频审核资源包，单位为秒。</li>
+	// <li>视频极速高清资源包，单位为秒。</li>
+	// <li>视频加速资源包，单位为字节。</li>
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 资源包余量。
+	// <li>视频存储资源包，单位为字节。</li>
+	// <li>视频转码资源包，单位为秒。</li>
+	// <li>视频审核资源包，单位为秒。</li>
+	// <li>视频极速高清资源包，单位为秒。</li>
+	// <li>视频加速资源包，单位为字节。</li>
+	Left *int64 `json:"Left,omitempty" name:"Left"`
 }
 
 type ProhibitedAsrReviewTemplateInfo struct {

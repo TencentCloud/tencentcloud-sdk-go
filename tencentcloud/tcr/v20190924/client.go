@@ -1543,6 +1543,31 @@ func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) 
     return
 }
 
+func NewManageReplicationRequest() (request *ManageReplicationRequest) {
+    request = &ManageReplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ManageReplication")
+    return
+}
+
+func NewManageReplicationResponse() (response *ManageReplicationResponse) {
+    response = &ManageReplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 管理实例同步
+func (c *Client) ManageReplication(request *ManageReplicationRequest) (response *ManageReplicationResponse, err error) {
+    if request == nil {
+        request = NewManageReplicationRequest()
+    }
+    response = NewManageReplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationTriggerPersonalRequest() (request *ModifyApplicationTriggerPersonalRequest) {
     request = &ModifyApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -697,6 +697,15 @@ type DetectInfoVideoData struct {
 	LivenessVideo *string `json:"LivenessVideo,omitempty" name:"LivenessVideo"`
 }
 
+type EidInfo struct {
+
+	// 商户方 appeIDcode 的数字证书
+	EidCode *string `json:"EidCode,omitempty" name:"EidCode"`
+
+	// eID 中心针对商户方EidCode的电子签名
+	EidSign *string `json:"EidSign,omitempty" name:"EidSign"`
+}
+
 type Encryption struct {
 
 	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
@@ -903,6 +912,127 @@ func (r *GetDetectInfoResponse) ToJsonString() string {
 }
 
 func (r *GetDetectInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEidResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 人脸核身流程的标识，调用DetectAuth接口时生成。
+	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
+	// 如 13表示拉取文本类、最佳截图信息。
+	// 默认值：0
+	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
+
+	// 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
+	BestFramesCount *uint64 `json:"BestFramesCount,omitempty" name:"BestFramesCount"`
+}
+
+func (r *GetEidResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetEidResultRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEidResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文本类信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Text *DetectInfoText `json:"Text,omitempty" name:"Text"`
+
+		// 身份证照片信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IdCardData *DetectInfoIdCardData `json:"IdCardData,omitempty" name:"IdCardData"`
+
+		// 最佳帧信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BestFrame *DetectInfoBestFrame `json:"BestFrame,omitempty" name:"BestFrame"`
+
+		// Eid信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EidInfo *EidInfo `json:"EidInfo,omitempty" name:"EidInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetEidResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetEidResultResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEidTokenConfig struct {
+
+	// 姓名身份证输入方式。
+	// 1：传身份证正反面OCR   
+	// 2：传身份证正面OCR  
+	// 3：用户手动输入  
+	// 4：客户后台传入  
+	// 默认1
+	// 注：使用OCR时仅支持用户修改结果中的姓名
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+}
+
+type GetEidTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// EID商户id
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 身份标识（未使用OCR服务时，必须传入）。
+	// 规则：a-zA-Z0-9组合。最长长度32位。
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 透传字段，在获取验证结果时返回。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 小程序模式配置，包括如何传入姓名身份证的配置。
+	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
+}
+
+func (r *GetEidTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetEidTokenRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEidTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 一次核身流程的标识，有效时间为7,200秒；
+	// 完成核身后，可用该标识获取验证结果信息。
+		EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetEidTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetEidTokenResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

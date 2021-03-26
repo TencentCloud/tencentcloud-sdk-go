@@ -109,7 +109,7 @@ type CreateScriptRequest struct {
 	// base64编码后的sql语句
 	SQLStatement *string `json:"SQLStatement,omitempty" name:"SQLStatement"`
 
-	// 脚本描述,
+	// 脚本描述， 不能超过50个字符
 	ScriptDesc *string `json:"ScriptDesc,omitempty" name:"ScriptDesc"`
 
 	// 数据库名称
@@ -531,13 +531,13 @@ type DescribeTasksRequest struct {
 	// 排序字段，支持如下字段类型，create-time
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

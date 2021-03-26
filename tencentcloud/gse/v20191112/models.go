@@ -162,6 +162,15 @@ func (r *AttachCcnInstancesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CcnInfo struct {
+
+	// 云联网所属账号
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 云联网id
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+}
+
 type CcnInstanceSets struct {
 
 	// 云联网账号 Uin
@@ -227,7 +236,7 @@ type CopyFleetRequest struct {
 	// 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
 	SelectedScalingType *string `json:"SelectedScalingType,omitempty" name:"SelectedScalingType"`
 
-	// 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
+	// 是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
 	SelectedCcnType *string `json:"SelectedCcnType,omitempty" name:"SelectedCcnType"`
 
 	// 标签列表，最大长度50组
@@ -241,6 +250,9 @@ type CopyFleetRequest struct {
 
 	// 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
 	SelectedTimerType *string `json:"SelectedTimerType,omitempty" name:"SelectedTimerType"`
+
+	// 云联网信息，包含对应的账号信息及所属id
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
 }
 
 func (r *CopyFleetRequest) ToJsonString() string {
@@ -492,6 +504,9 @@ type CreateFleetRequest struct {
 
 	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
 	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+
+	// 云联网信息，包含对应的账号信息及所属id
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
 }
 
 func (r *CreateFleetRequest) ToJsonString() string {
@@ -1242,6 +1257,44 @@ func (r *DescribeFleetPortSettingsResponse) ToJsonString() string {
 }
 
 func (r *DescribeFleetPortSettingsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetRelatedResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器舰队 Id
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+}
+
+func (r *DescribeFleetRelatedResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetRelatedResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetRelatedResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 与服务器舰队关联的资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Resources []*FleetRelatedResource `json:"Resources,omitempty" name:"Resources" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetRelatedResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeFleetRelatedResourcesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2301,6 +2354,10 @@ type FleetAttributes struct {
 	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 云联网相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedCcnInfos []*RelatedCcnInfo `json:"RelatedCcnInfos,omitempty" name:"RelatedCcnInfos" list`
 }
 
 type FleetCapacity struct {
@@ -2320,6 +2377,23 @@ type FleetCapacity struct {
 	// 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalingInterval *uint64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+}
+
+type FleetRelatedResource struct {
+
+	// 资源类型。
+	// - ALIAS：别名
+	// - QUEUE：队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 资源ID，目前仅支持别名ID和队列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源所在区域，如ap-shanghai、na-siliconvalley等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 }
 
 type FleetStatisticDetail struct {
@@ -2599,6 +2673,62 @@ type GameServerSessionQueueDestination struct {
 	// 服务部署组目的的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FleetStatus *string `json:"FleetStatus,omitempty" name:"FleetStatus"`
+}
+
+type GetGameServerInstanceLogUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例IP
+	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次条数
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+}
+
+func (r *GetGameServerInstanceLogUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetGameServerInstanceLogUrlRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetGameServerInstanceLogUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PresignedUrls []*string `json:"PresignedUrls,omitempty" name:"PresignedUrls" list`
+
+		// 总条数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 是否还有没拉取完的
+		HasNext *bool `json:"HasNext,omitempty" name:"HasNext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetGameServerInstanceLogUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetGameServerInstanceLogUrlResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGameServerSessionLogUrlRequest struct {
@@ -3351,6 +3481,18 @@ type QuotaResource struct {
 	// 额外信息，可能为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+}
+
+type RelatedCcnInfo struct {
+
+	// 云联网所属账号
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 关联云联网状态
+	AttachType *string `json:"AttachType,omitempty" name:"AttachType"`
 }
 
 type ResolveAliasRequest struct {

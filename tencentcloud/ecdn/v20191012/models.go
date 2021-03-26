@@ -1289,7 +1289,9 @@ func (r *UpdateDomainConfigResponse) FromJsonString(s string) error {
 
 type WebSocket struct {
 
-	// WebSocket配置开关，on或off。
+	// WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+	// 
+	// * WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 设置超时时间，单位为秒，最大超时时间65秒。

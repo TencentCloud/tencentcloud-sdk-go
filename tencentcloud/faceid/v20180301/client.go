@@ -293,6 +293,56 @@ func (c *Client) GetDetectInfoEnhanced(request *GetDetectInfoEnhancedRequest) (r
     return
 }
 
+func NewGetEidResultRequest() (request *GetEidResultRequest) {
+    request = &GetEidResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetEidResult")
+    return
+}
+
+func NewGetEidResultResponse() (response *GetEidResultResponse) {
+    response = &GetEidResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 完成验证后，用EidToken调用本接口获取结果信息，EidToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+func (c *Client) GetEidResult(request *GetEidResultRequest) (response *GetEidResultResponse, err error) {
+    if request == nil {
+        request = NewGetEidResultRequest()
+    }
+    response = NewGetEidResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetEidTokenRequest() (request *GetEidTokenRequest) {
+    request = &GetEidTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetEidToken")
+    return
+}
+
+func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
+    response = &GetEidTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 每次调用人脸核身小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+func (c *Client) GetEidToken(request *GetEidTokenRequest) (response *GetEidTokenResponse, err error) {
+    if request == nil {
+        request = NewGetEidTokenRequest()
+    }
+    response = NewGetEidTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFaceIdResultRequest() (request *GetFaceIdResultRequest) {
     request = &GetFaceIdResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

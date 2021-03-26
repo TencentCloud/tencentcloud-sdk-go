@@ -1,105 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 59 次发布
+### 第 25 次发布
 
-发布时间：2021-03-24 08:03:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SellConfig](https://cloud.tencent.com/document/api/236/15878#SellConfig)
-
-	* 新增成员：DeviceType, DeviceTypeName
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 19 次发布
-
-发布时间：2021-03-24 08:04:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
-
-	* 新增出参：VIP, VPort
-
-* [DescribeDBSyncMode](https://cloud.tencent.com/document/api/557/19991)
-
-	* 新增出参：CurrentSyncMode
-
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 23 次发布
-
-发布时间：2021-03-24 08:04:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [MobileNetworkTimeVerification](https://cloud.tencent.com/document/api/1007/40546)
-
-	* 新增入参：Encryption
-
-* [MobileStatus](https://cloud.tencent.com/document/api/1007/40545)
-
-	* 新增入参：Encryption
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 17 次发布
-
-发布时间：2021-03-24 08:05:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
-
-	* 新增入参：FailoverSwitch
-
-* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
-
-	* 新增入参：FailoverSwitch
-
-
-修改数据结构：
-
-* [RealServerBindSetReq](https://cloud.tencent.com/document/api/608/37023#RealServerBindSetReq)
-
-	* 新增成员：RealServerFailoverRole
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-### 第 4 次发布
-
-发布时间：2021-03-24 08:01:29
+发布时间：2021-03-26 08:09:08
 
 本次发布包含了以下内容：
 
@@ -107,69 +12,12 @@
 
 新增接口：
 
-* [ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)
-* [TransferCloudStorage](https://cloud.tencent.com/document/api/1131/53957)
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
 
+新增数据结构：
 
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 58 次发布
-
-发布时间：2021-03-24 08:05:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAllStreamPlayInfoList](https://cloud.tencent.com/document/api/267/43743)
-
-	* 新增入参：PlayDomains
-
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 16 次发布
-
-发布时间：2021-03-24 08:06:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
-
-	* 新增出参：VIP, VPort
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 76 次发布
-
-发布时间：2021-03-24 08:08:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
-
-	* 新增成员：SessionContext, SessionId
-
+* [ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter)
+* [ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule)
 
 
 
@@ -19858,6 +19706,24 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 24 次发布
+
+发布时间：2021-03-25 08:04:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
+* [GetEidToken](https://cloud.tencent.com/document/api/1007/54089)
+
+新增数据结构：
+
+* [EidInfo](https://cloud.tencent.com/document/api/1007/41958#EidInfo)
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
+
 ### 第 23 次发布
 
 发布时间：2021-03-24 08:04:57
@@ -21487,6 +21353,43 @@
 
 
 ## 游戏服务器引擎(gse) 版本：2019-11-12
+
+### 第 19 次发布
+
+发布时间：2021-03-25 08:01:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFleetRelatedResources](https://cloud.tencent.com/document/api/1165/54086)
+* [GetGameServerInstanceLogUrl](https://cloud.tencent.com/document/api/1165/54088)
+
+修改接口：
+
+* [CopyFleet](https://cloud.tencent.com/document/api/1165/50917)
+
+	* 新增入参：CcnInfos
+
+* [CreateFleet](https://cloud.tencent.com/document/api/1165/48938)
+
+	* 新增入参：CcnInfos
+
+
+新增数据结构：
+
+* [CcnInfo](https://cloud.tencent.com/document/api/1165/42074#CcnInfo)
+* [FleetRelatedResource](https://cloud.tencent.com/document/api/1165/42074#FleetRelatedResource)
+* [RelatedCcnInfo](https://cloud.tencent.com/document/api/1165/42074#RelatedCcnInfo)
+
+修改数据结构：
+
+* [FleetAttributes](https://cloud.tencent.com/document/api/1165/42074#FleetAttributes)
+
+	* 新增成员：RelatedCcnInfos
+
 
 ### 第 18 次发布
 
@@ -25012,8 +24915,8 @@
 
 新增接口：
 
-* [[ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)](https://cloud.tencent.com/document/api/#/#)
-* [[TransferCloudStorage](https://cloud.tencent.com/document/api/1131/53957)](https://cloud.tencent.com/document/api/#/#)
+* [ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)
+* [TransferCloudStorage](https://cloud.tencent.com/document/api/1131/53957)
 
 ### 第 3 次发布
 
@@ -37063,6 +36966,23 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 25 次发布
+
+发布时间：2021-03-26 08:09:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ManageReplication](https://cloud.tencent.com/document/api/1141/54138)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter))
+* [[ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule))
+
 ### 第 24 次发布
 
 发布时间：2021-03-22 08:09:47
@@ -42443,6 +42363,23 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 77 次发布
+
+发布时间：2021-03-25 08:08:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePrepaidProducts](https://cloud.tencent.com/document/api/266/54091)
+
+新增数据结构：
+
+* [ProductInstance](https://cloud.tencent.com/document/api/266/31773#ProductInstance)
+* [ProductInstanceRecource](https://cloud.tencent.com/document/api/266/31773#ProductInstanceRecource)
 
 ### 第 76 次发布
 
