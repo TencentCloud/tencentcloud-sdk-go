@@ -93,6 +93,31 @@ func (c *Client) CreateBackupDBInstance(request *CreateBackupDBInstanceRequest) 
     return
 }
 
+func NewCreateBackupDownloadTaskRequest() (request *CreateBackupDownloadTaskRequest) {
+    request = &CreateBackupDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateBackupDownloadTask")
+    return
+}
+
+func NewCreateBackupDownloadTaskResponse() (response *CreateBackupDownloadTaskResponse) {
+    response = &CreateBackupDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用来创建某个备份文件的下载任务
+func (c *Client) CreateBackupDownloadTask(request *CreateBackupDownloadTaskRequest) (response *CreateBackupDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupDownloadTaskRequest()
+    }
+    response = NewCreateBackupDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
     request = &CreateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +214,31 @@ func (c *Client) DescribeBackupAccess(request *DescribeBackupAccessRequest) (res
         request = NewDescribeBackupAccessRequest()
     }
     response = NewDescribeBackupAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupDownloadTaskRequest() (request *DescribeBackupDownloadTaskRequest) {
+    request = &DescribeBackupDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeBackupDownloadTask")
+    return
+}
+
+func NewDescribeBackupDownloadTaskResponse() (response *DescribeBackupDownloadTaskResponse) {
+    response = &DescribeBackupDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询备份下载任务信息
+func (c *Client) DescribeBackupDownloadTask(request *DescribeBackupDownloadTaskRequest) (response *DescribeBackupDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadTaskRequest()
+    }
+    response = NewDescribeBackupDownloadTaskResponse()
     err = c.Send(request, response)
     return
 }

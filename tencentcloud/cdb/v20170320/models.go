@@ -1357,6 +1357,15 @@ type DatabasePrivilege struct {
 	Database *string `json:"Database,omitempty" name:"Database"`
 }
 
+type DatabasesWithCharacterLists struct {
+
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 字符集类型
+	CharacterSet *string `json:"CharacterSet,omitempty" name:"CharacterSet"`
+}
+
 type DeleteAccountsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1843,6 +1852,9 @@ type DescribeAuditConfigResponse struct {
 
 		// 审计日志存储类型。目前支持的值包括："storage" - 存储型。
 		LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+		// 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
+		IsClosing *string `json:"IsClosing,omitempty" name:"IsClosing"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2568,10 +2580,15 @@ type DescribeDBInstanceConfigResponse struct {
 		Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 		// 备库的配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		SlaveConfig *SlaveConfig `json:"SlaveConfig,omitempty" name:"SlaveConfig"`
 
 		// 强同步实例第二备库的配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		BackupConfig *BackupConfig `json:"BackupConfig,omitempty" name:"BackupConfig"`
+
+		// 是否切换备库。
+		Switched *bool `json:"Switched,omitempty" name:"Switched"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3114,6 +3131,9 @@ type DescribeDatabasesResponse struct {
 		// 返回的实例信息。
 		Items []*string `json:"Items,omitempty" name:"Items" list`
 
+		// 数据库名以及字符集
+		DatabaseList []*DatabasesWithCharacterLists `json:"DatabaseList,omitempty" name:"DatabaseList" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3438,7 +3458,7 @@ type DescribeParamTemplateInfoResponse struct {
 		// 参数模板名称。
 		Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 参数模板描述
+		// 参数模板对应实例版本
 		EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 		// 参数模板中的参数数量
@@ -3446,6 +3466,9 @@ type DescribeParamTemplateInfoResponse struct {
 
 		// 参数详情
 		Items []*ParameterDetail `json:"Items,omitempty" name:"Items" list`
+
+		// 参数模板描述
+		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3520,6 +3543,9 @@ type DescribeProjectSecurityGroupsResponse struct {
 
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+
+		// 安全组规则数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -265,7 +265,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     return
 }
 
-// 该接口根据传入的参数创建命名空间。
+// 该接口根据传入的参数删除命名空间。
 func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
     if request == nil {
         request = NewDeleteNamespaceRequest()

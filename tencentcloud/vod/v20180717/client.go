@@ -1334,6 +1334,32 @@ func (c *Client) DescribeDailyPlayStatFileList(request *DescribeDailyPlayStatFil
     return
 }
 
+func NewDescribeDrmDataKeyRequest() (request *DescribeDrmDataKeyRequest) {
+    request = &DescribeDrmDataKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeDrmDataKey")
+    return
+}
+
+func NewDescribeDrmDataKeyResponse() (response *DescribeDrmDataKeyResponse) {
+    response = &DescribeDrmDataKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中[DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643)的升级版本。
+// 如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
+func (c *Client) DescribeDrmDataKey(request *DescribeDrmDataKeyRequest) (response *DescribeDrmDataKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDrmDataKeyRequest()
+    }
+    response = NewDescribeDrmDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventsStateRequest() (request *DescribeEventsStateRequest) {
     request = &DescribeEventsStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1805,6 +1831,31 @@ func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesR
         request = NewDescribeTranscodeTemplatesRequest()
     }
     response = NewDescribeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVodDomainsRequest() (request *DescribeVodDomainsRequest) {
+    request = &DescribeVodDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeVodDomains")
+    return
+}
+
+func NewDescribeVodDomainsResponse() (response *DescribeVodDomainsResponse) {
+    response = &DescribeVodDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询点播域名信息列表。
+func (c *Client) DescribeVodDomains(request *DescribeVodDomainsRequest) (response *DescribeVodDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVodDomainsRequest()
+    }
+    response = NewDescribeVodDomainsResponse()
     err = c.Send(request, response)
     return
 }

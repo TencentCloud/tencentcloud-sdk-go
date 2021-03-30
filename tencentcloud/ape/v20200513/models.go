@@ -476,6 +476,9 @@ type ImageInfo struct {
 
 	// 尺寸名称Id
 	DimensionsNameId *int64 `json:"DimensionsNameId,omitempty" name:"DimensionsNameId"`
+
+	// 平台用户标识
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type ImageItem struct {

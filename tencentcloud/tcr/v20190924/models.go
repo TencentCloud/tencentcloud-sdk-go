@@ -494,6 +494,46 @@ func (r *CreateNamespaceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateReplicationInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 复制实例地域ID
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+}
+
+func (r *CreateReplicationInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateReplicationInstanceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReplicationInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 企业版复制实例Id
+		ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateReplicationInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateReplicationInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -2705,6 +2745,9 @@ type ManageReplicationRequest struct {
 
 	// 规则描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 目标实例的地域ID，如广州是1
+	DestinationRegionId *uint64 `json:"DestinationRegionId,omitempty" name:"DestinationRegionId"`
 }
 
 func (r *ManageReplicationRequest) ToJsonString() string {

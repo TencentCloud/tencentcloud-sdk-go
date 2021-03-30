@@ -26,11 +26,11 @@ type AllDeviceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 设备类型
+	// 设备类型；2：IPC
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
-	// 设备状态
+	// 设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -54,7 +54,7 @@ type AllDeviceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCode *string `json:"DeviceCode,omitempty" name:"DeviceCode"`
 
-	// 是否存在录像
+	// 是否存在录像,，0:不存在；1：存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitempty" name:"IsRecord"`
 }
@@ -174,7 +174,7 @@ type CreateDeviceGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 响应结果
+		// 响应结果，“OK”为成功，其他为失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -296,7 +296,7 @@ type CreateTimeTemplateRequest struct {
 	// 时间模板名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 是否为每周全时录制，即7*24h录制
+	// 是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
 	IsAllWeek *int64 `json:"IsAllWeek,omitempty" name:"IsAllWeek"`
 
 	// 当IsAllWeek为0时必选，用于描述模板的各个时间片段
@@ -429,7 +429,7 @@ type DeleteRecordPlanResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果，OK：成功，其他：失败
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -466,7 +466,7 @@ type DeleteTimeTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果，OK：成功，其他：失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -487,7 +487,7 @@ func (r *DeleteTimeTemplateResponse) FromJsonString(s string) error {
 type DescribeAllDeviceListRequest struct {
 	*tchttp.BaseRequest
 
-	// 偏移量
+	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 限制，默认200
@@ -706,7 +706,7 @@ func (r *DescribeGroupByIdResponse) FromJsonString(s string) error {
 type DescribeGroupByPathRequest struct {
 	*tchttp.BaseRequest
 
-	// 分组路径
+	// 分组路径，格式为/aaa(/bbb/ccc)
 	GroupPath *string `json:"GroupPath,omitempty" name:"GroupPath"`
 }
 
@@ -747,7 +747,7 @@ type DescribeGroupDevicesRequest struct {
 	// 分组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 偏移量
+	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 限制值，默认200
@@ -971,7 +971,7 @@ type DescribeSubGroupsRequest struct {
 	// 分组名称，根据名称模糊匹配子分组时为必填
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 偏移量
+	// 偏移量，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 限制数，默认200
@@ -1047,10 +1047,10 @@ type GetRecordDatesByDevRequest struct {
 	// 设备唯一标识
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 偏移量
+	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制量
+	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1282,13 +1282,13 @@ type GetVideoListByConRequest struct {
 	// 设备唯一标识
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 偏移量
+	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制量
+	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 0：查询指定日期的录像；1：查询最近一天的录像
+	// 0：查询指定日期的录像；1：查询最近一天的录像；默认0
 	LatestDay *int64 `json:"LatestDay,omitempty" name:"LatestDay"`
 
 	// 指定某天。取值【YYYY-MM-DD】
@@ -1459,7 +1459,7 @@ type ModifyDeviceDataResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果,“OK”表示成功，其他表示失败。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1665,7 +1665,7 @@ type UpdateDevicePassWordResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果，“OK”表示成功，其他表示失败。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1746,7 +1746,8 @@ type UpdateTimeTemplateRequest struct {
 	// 时间模板名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 是否全时录制，即7*24小时录制
+	// 是否全时录制，即7*24小时录制。
+	// 0：非全时录制；1：全时录制。默认1
 	IsAllWeek *int64 `json:"IsAllWeek,omitempty" name:"IsAllWeek"`
 
 	// 录制时间片段
@@ -1766,7 +1767,7 @@ type UpdateTimeTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果，“OK”表示成功，其他表示失败。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1,23 +1,84 @@
 # 本版本更新包含以下内容：
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 25 次发布
+### 第 60 次发布
 
-发布时间：2021-03-26 08:09:08
+发布时间：2021-03-30 08:03:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+
+	* 新增出参：IsClosing
+
+* [DescribeDBInstanceConfig](https://cloud.tencent.com/document/api/236/17491)
+
+	* 新增出参：Switched
+
+* [DescribeDatabases](https://cloud.tencent.com/document/api/236/17493)
+
+	* 新增出参：DatabaseList
+
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
+
+	* 新增出参：Description
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850)
+
+	* 新增出参：TotalCount
+
 
 新增数据结构：
 
-* [ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter)
-* [ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule)
+* [DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 27 次发布
+
+发布时间：2021-03-30 08:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+
+	* 新增入参：DestinationRegionId
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 79 次发布
+
+发布时间：2021-03-30 08:10:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo)
+* [MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem)
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+
+	* 新增成员：SubtitleInfo
+
 
 
 
@@ -629,6 +690,21 @@
 
 
 ## 正版图库直通车(ape) 版本：2020-05-13
+
+### 第 5 次发布
+
+发布时间：2021-03-29 08:00:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
+
+	* 新增成员：UserId
+
 
 ### 第 4 次发布
 
@@ -6276,6 +6352,41 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 60 次发布
+
+发布时间：2021-03-30 08:03:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+
+	* 新增出参：IsClosing
+
+* [DescribeDBInstanceConfig](https://cloud.tencent.com/document/api/236/17491)
+
+	* 新增出参：Switched
+
+* [DescribeDatabases](https://cloud.tencent.com/document/api/236/17493)
+
+	* 新增出参：DatabaseList
+
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
+
+	* 新增出参：Description
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850)
+
+	* 新增出参：TotalCount
+
+
+新增数据结构：
+
+* [[DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists)](https://cloud.tencent.com/document/api/236/15878#[DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists))
 
 ### 第 59 次发布
 
@@ -27619,6 +27730,25 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 10 次发布
+
+发布时间：2021-03-29 08:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBackupDownloadTask](https://cloud.tencent.com/document/api/240/54175)
+* [DescribeBackupDownloadTask](https://cloud.tencent.com/document/api/240/54174)
+
+新增数据结构：
+
+* [BackupDownloadTask](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTask)
+* [BackupDownloadTaskStatus](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTaskStatus)
+* [ReplicaSetInfo](https://cloud.tencent.com/document/api/240/38576#ReplicaSetInfo)
+
 ### 第 9 次发布
 
 发布时间：2021-03-03 08:05:46
@@ -36966,6 +37096,33 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 27 次发布
+
+发布时间：2021-03-30 08:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+
+	* 新增入参：DestinationRegionId
+
+
+### 第 26 次发布
+
+发布时间：2021-03-29 08:09:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
+
 ### 第 25 次发布
 
 发布时间：2021-03-26 08:09:08
@@ -36976,12 +37133,12 @@
 
 新增接口：
 
-* [[ManageReplication](https://cloud.tencent.com/document/api/1141/54138)](https://cloud.tencent.com/document/api/#/#)
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
 
 新增数据结构：
 
-* [[ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter))
-* [[ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule))
+* [ReplicationFilter](https://cloud.tencent.com/document/api/1141/41603#ReplicationFilter)
+* [ReplicationRule](https://cloud.tencent.com/document/api/1141/41603#ReplicationRule)
 
 ### 第 24 次发布
 
@@ -42363,6 +42520,55 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 79 次发布
+
+发布时间：2021-03-30 08:10:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo)](https://cloud.tencent.com/document/api/266/31773#[MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo))
+* [[MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem)](https://cloud.tencent.com/document/api/266/31773#[MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem))
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+
+	* 新增成员：SubtitleInfo
+
+
+### 第 78 次发布
+
+发布时间：2021-03-29 08:08:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDrmDataKey](https://cloud.tencent.com/document/api/266/54177)
+* [DescribeVodDomains](https://cloud.tencent.com/document/api/266/54176)
+
+新增数据结构：
+
+* [AccelerateAreaInfo](https://cloud.tencent.com/document/api/266/31773#AccelerateAreaInfo)
+* [DomainDetailInfo](https://cloud.tencent.com/document/api/266/31773#DomainDetailInfo)
+* [DomainHTTPSConfig](https://cloud.tencent.com/document/api/266/31773#DomainHTTPSConfig)
+* [RefererAuthPolicy](https://cloud.tencent.com/document/api/266/31773#RefererAuthPolicy)
+* [SimpleAesEdkPair](https://cloud.tencent.com/document/api/266/31773#SimpleAesEdkPair)
+* [UrlSignatureAuthPolicy](https://cloud.tencent.com/document/api/266/31773#UrlSignatureAuthPolicy)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：SubtitleSet
+
 
 ### 第 77 次发布
 

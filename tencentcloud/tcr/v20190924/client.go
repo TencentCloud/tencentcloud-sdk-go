@@ -293,6 +293,31 @@ func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest
     return
 }
 
+func NewCreateReplicationInstanceRequest() (request *CreateReplicationInstanceRequest) {
+    request = &CreateReplicationInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateReplicationInstance")
+    return
+}
+
+func NewCreateReplicationInstanceResponse() (response *CreateReplicationInstanceResponse) {
+    response = &CreateReplicationInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建从实例
+func (c *Client) CreateReplicationInstance(request *CreateReplicationInstanceRequest) (response *CreateReplicationInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateReplicationInstanceRequest()
+    }
+    response = NewCreateReplicationInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
     request = &CreateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
