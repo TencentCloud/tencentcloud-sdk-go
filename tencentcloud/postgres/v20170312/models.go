@@ -211,6 +211,9 @@ type CreateDBInstancesRequest struct {
 
 	// 实例需要绑定的Tag信息，默认为空
 	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
+
+	// 安全组id
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -308,6 +311,9 @@ type CreateReadOnlyDBInstanceRequest struct {
 
 	// 实例需要绑定的Tag信息，默认为空
 	TagList *Tag `json:"TagList,omitempty" name:"TagList"`
+
+	// 安全组id
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *CreateReadOnlyDBInstanceRequest) ToJsonString() string {
@@ -378,6 +384,9 @@ type CreateReadOnlyGroupRequest struct {
 
 	// 延迟剔除最小保留实例数
 	MinDelayEliminateReserve *uint64 `json:"MinDelayEliminateReserve,omitempty" name:"MinDelayEliminateReserve"`
+
+	// 安全组id
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 
 func (r *CreateReadOnlyGroupRequest) ToJsonString() string {
@@ -606,6 +615,10 @@ type DBInstance struct {
 	// 只读实例在只读组中的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusInReadonlyGroup *string `json:"StatusInReadonlyGroup,omitempty" name:"StatusInReadonlyGroup"`
+
+	// 下线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
 }
 
 type DBInstanceNetInfo struct {

@@ -243,6 +243,31 @@ func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (res
     return
 }
 
+func NewDescribeAgentDealsByCacheRequest() (request *DescribeAgentDealsByCacheRequest) {
+    request = &DescribeAgentDealsByCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsByCache")
+    return
+}
+
+func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCacheResponse) {
+    response = &DescribeAgentDealsByCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheRequest) (response *DescribeAgentDealsByCacheResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentDealsByCacheRequest()
+    }
+    response = NewDescribeAgentDealsByCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheRequest) {
     request = &DescribeAgentDealsCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -258,7 +283,7 @@ func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResp
     return
 }
 
-// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
 func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest) (response *DescribeAgentDealsCacheResponse, err error) {
     if request == nil {
         request = NewDescribeAgentDealsCacheRequest()

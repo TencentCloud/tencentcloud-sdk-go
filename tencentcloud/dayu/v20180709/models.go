@@ -2007,6 +2007,64 @@ func (r *DescribeBasicDeviceThresholdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBizHttpStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计周期，可取值300，1800，3600， 21600，86400，单位秒
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计方式，仅支持sum
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo" list`
+
+	// 特定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeBizHttpStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizHttpStatusRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBizHttpStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务流量http状态码统计数据
+		HttpStatusMap *HttpStatusMap `json:"HttpStatusMap,omitempty" name:"HttpStatusMap"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBizHttpStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeBizHttpStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBizTrendRequest struct {
 	*tchttp.BaseRequest
 
@@ -4823,6 +4881,39 @@ func (r *DescribleRegionCountResponse) ToJsonString() string {
 
 func (r *DescribleRegionCountResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type HttpStatusMap struct {
+
+	// http2xx状态码
+	Http2xx []*float64 `json:"Http2xx,omitempty" name:"Http2xx" list`
+
+	// http3xx状态码
+	Http3xx []*float64 `json:"Http3xx,omitempty" name:"Http3xx" list`
+
+	// http404状态码
+	Http404 []*float64 `json:"Http404,omitempty" name:"Http404" list`
+
+	// http4xx状态码
+	Http4xx []*float64 `json:"Http4xx,omitempty" name:"Http4xx" list`
+
+	// http5xx状态码
+	Http5xx []*float64 `json:"Http5xx,omitempty" name:"Http5xx" list`
+
+	// http2xx回源状态码
+	SourceHttp2xx []*float64 `json:"SourceHttp2xx,omitempty" name:"SourceHttp2xx" list`
+
+	// http3xx回源状态码
+	SourceHttp3xx []*float64 `json:"SourceHttp3xx,omitempty" name:"SourceHttp3xx" list`
+
+	// http404回源状态码
+	SourceHttp404 []*float64 `json:"SourceHttp404,omitempty" name:"SourceHttp404" list`
+
+	// http4xx回源状态码
+	SourceHttp4xx []*float64 `json:"SourceHttp4xx,omitempty" name:"SourceHttp4xx" list`
+
+	// http5xx回源状态码
+	SourceHttp5xx []*float64 `json:"SourceHttp5xx,omitempty" name:"SourceHttp5xx" list`
 }
 
 type IpBlackWhite struct {

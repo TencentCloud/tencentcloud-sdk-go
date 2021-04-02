@@ -393,6 +393,31 @@ func (c *Client) DescribeCloudBaseProjectLatestVersionList(request *DescribeClou
     return
 }
 
+func NewDescribeCloudBaseProjectVersionListRequest() (request *DescribeCloudBaseProjectVersionListRequest) {
+    request = &DescribeCloudBaseProjectVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseProjectVersionList")
+    return
+}
+
+func NewDescribeCloudBaseProjectVersionListResponse() (response *DescribeCloudBaseProjectVersionListResponse) {
+    response = &DescribeCloudBaseProjectVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 云项目部署列表
+func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseProjectVersionListRequest) (response *DescribeCloudBaseProjectVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseProjectVersionListRequest()
+    }
+    response = NewDescribeCloudBaseProjectVersionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunResourceRequest() (request *DescribeCloudBaseRunResourceRequest) {
     request = &DescribeCloudBaseRunResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

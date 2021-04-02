@@ -32,43 +32,43 @@ type CreateSessionRequest struct {
 	// 游戏ID
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
-	// 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing、ap-chengdu、ap-chongqing、ap-nanjing等
+	// 【已废弃】只在TrylockWorker时生效
 	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 
 	// 游戏参数
 	GameParas *string `json:"GameParas,omitempty" name:"GameParas"`
 
-	// 分辨率,，可设置为1080p或720p
+	// 分辨率,，可设置为1080p或720p或1920x1080格式
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 
 	// 背景图url，格式为png或jpeg，宽高1920*1080
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 【废弃】资源池编号
+	// 【已废弃】
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
-	// 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
+	// 单位Mbps，固定码率，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
-	// 单位Mbps，动态调整最大码率
+	// 单位Mbps，动态调整最大码率，有一定浮动范围
 	MaxBitrate *uint64 `json:"MaxBitrate,omitempty" name:"MaxBitrate"`
 
-	// 单位Mbps，动态调整最小码率
+	// 单位Mbps，动态调整最小码率，有一定浮动范围
 	MinBitrate *uint64 `json:"MinBitrate,omitempty" name:"MinBitrate"`
 
 	// 帧率，可设置为30、45、60、90、120、144
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 游戏用户IP，用于就近调度，例如125.127.178.228
+	// 【已废弃】只在TrylockWorker时生效
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
-	// 优化项，便于客户灰度开启新的优化项，默认为0
+	// 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
 	Optimization *uint64 `json:"Optimization,omitempty" name:"Optimization"`
 
-	// 【多人云游】游戏主机用户ID
+	// 【互动云游】游戏主机用户ID
 	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
 
-	// 【多人云游】角色；Player表示玩家；Viewer表示观察者
+	// 【互动云游】角色；Player表示玩家；Viewer表示观察者
 	Role *string `json:"Role,omitempty" name:"Role"`
 
 	// 游戏相关参数
@@ -91,10 +91,10 @@ type CreateSessionResponse struct {
 		// 服务端session信息，返回给JSSDK
 		ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
 
-		// 【多人游戏】角色编号；比如1、2、3、4
+		// 【已废弃】
 		RoleNumber *string `json:"RoleNumber,omitempty" name:"RoleNumber"`
 
-		// 【多人云游】角色；Player表示玩家；Viewer表示观察者
+		// 【互动云游】角色；Player表示玩家；Viewer表示观察者
 		Role *string `json:"Role,omitempty" name:"Role"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

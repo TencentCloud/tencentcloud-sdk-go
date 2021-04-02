@@ -190,11 +190,11 @@ type FaceMorphOutput struct {
 
 type FaceRect struct {
 
-	// 人脸框左上角横坐标。
-	X *int64 `json:"X,omitempty" name:"X"`
-
 	// 人脸框左上角纵坐标。
 	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人脸框左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
 
 	// 人脸框宽度。
 	Width *int64 `json:"Width,omitempty" name:"Width"`

@@ -1,83 +1,120 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 应用与服务编排工作流(asw) 版本：2020-07-22
 
-### 第 60 次发布
+### 第 5 次发布
 
-发布时间：2021-03-30 08:03:14
+发布时间：2021-04-02 08:00:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [StopExecution](https://cloud.tencent.com/document/api/1272/54300)
 
 修改接口：
 
-* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+* [CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)
 
-	* 新增出参：IsClosing
+	* 新增入参：EnableCLS, Input
 
-* [DescribeDBInstanceConfig](https://cloud.tencent.com/document/api/236/17491)
+* [DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)
 
-	* 新增出参：Switched
+	* 新增出参：EnableCLS, CLSUrl, FlowInput
 
-* [DescribeDatabases](https://cloud.tencent.com/document/api/236/17493)
+* [ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)
 
-	* 新增出参：DatabaseList
-
-* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
-
-	* 新增出参：Description
-
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/236/15850)
-
-	* 新增出参：TotalCount
-
-
-新增数据结构：
-
-* [DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists)
+	* 新增入参：EnableCLS
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 27 次发布
+## DDoS 高防包(dayu) 版本：2018-07-09
 
-发布时间：2021-03-30 08:10:59
+### 第 20 次发布
+
+发布时间：2021-04-02 08:03:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/54301)
 
-	* 新增入参：DestinationRegionId
+新增数据结构：
+
+* [HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap)
 
 
 
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-## 云点播(vod) 版本：2018-07-17
+### 第 19 次发布
 
-### 第 79 次发布
-
-发布时间：2021-03-30 08:10:17
+发布时间：2021-04-02 08:04:37
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo)
-* [MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem)
 
 修改数据结构：
 
-* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
 
-	* 新增成员：SubtitleInfo
+	* 新增成员：IsDynamicSpec, DynamicPodSpec
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 59 次发布
+
+发布时间：2021-04-02 08:05:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PushQualityData](https://cloud.tencent.com/document/api/267/20474#PushQualityData)
+
+	* 新增成员：StreamParam
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 42 次发布
+
+发布时间：2021-04-02 08:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudBaseProjectVersionList](https://cloud.tencent.com/document/api/876/54302)
+
+修改接口：
+
+* [CreateAndDeployCloudBaseProject](https://cloud.tencent.com/document/api/876/52616)
+
+	* 新增入参：AutoDeployOnCodeChange, RepoUrl
+
+
+修改数据结构：
+
+* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
+
+	* 新增成员：Branch
 
 
 
@@ -1117,6 +1154,25 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 32 次发布
+
+发布时间：2021-04-01 08:02:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ClearLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/54255)
+
+修改接口：
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：SystemDisk, DataDisks
+
 
 ### 第 31 次发布
 
@@ -2187,6 +2243,33 @@
 
 
 ## 应用与服务编排工作流(asw) 版本：2020-07-22
+
+### 第 5 次发布
+
+发布时间：2021-04-02 08:00:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[StopExecution](https://cloud.tencent.com/document/api/1272/54300)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)
+
+	* 新增入参：EnableCLS, Input
+
+* [DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)
+
+	* 新增出参：EnableCLS, CLSUrl, FlowInput
+
+* [ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)
+
+	* 新增入参：EnableCLS
+
 
 ### 第 4 次发布
 
@@ -3845,6 +3928,21 @@
 
 
 ## 黑石物理服务器1.0(bm) 版本：2018-04-23
+
+### 第 16 次发布
+
+发布时间：2021-04-01 08:02:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCustomImage](https://cloud.tencent.com/document/api/386/32938)
+
+	* 新增出参：ImageId
+
 
 ### 第 15 次发布
 
@@ -6386,7 +6484,7 @@
 
 新增数据结构：
 
-* [[DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists)](https://cloud.tencent.com/document/api/236/15878#[DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists))
+* [DatabasesWithCharacterLists](https://cloud.tencent.com/document/api/236/15878#DatabasesWithCharacterLists)
 
 ### 第 59 次发布
 
@@ -9316,6 +9414,25 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 3 次发布
+
+发布时间：2021-04-01 08:10:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCfwEips](https://cloud.tencent.com/document/api/1132/54259)
+* [ExpandCfwVertical](https://cloud.tencent.com/document/api/1132/54258)
+* [SetNatFwDnatRule](https://cloud.tencent.com/document/api/1132/54257)
+
+新增数据结构：
+
+* [CfwNatDnatRule](https://cloud.tencent.com/document/api/1132/49071#CfwNatDnatRule)
+* [NatFwEipsInfo](https://cloud.tencent.com/document/api/1132/49071#NatFwEipsInfo)
 
 ### 第 2 次发布
 
@@ -15236,6 +15353,22 @@
 
 ## DDoS 高防包(dayu) 版本：2018-07-09
 
+### 第 20 次发布
+
+发布时间：2021-04-02 08:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/54301)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap)](https://cloud.tencent.com/document/api/1021/39225#[HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap))
+
 ### 第 19 次发布
 
 发布时间：2020-10-19 08:02:57
@@ -18845,6 +18978,48 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 19 次发布
+
+发布时间：2021-04-02 08:04:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：IsDynamicSpec, DynamicPodSpec
+
+
+### 第 18 次发布
+
+发布时间：2021-04-01 08:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：PodParameter, MasterCount
+
+
+新增数据结构：
+
+* [DynamicPodSpec](https://cloud.tencent.com/document/api/589/33981#DynamicPodSpec)
+* [PodParameter](https://cloud.tencent.com/document/api/589/33981#PodParameter)
+
+修改数据结构：
+
+* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
+
+	* 新增成员：IsDynamicSpec, DynamicPodSpec
+
+
 ### 第 17 次发布
 
 发布时间：2021-03-17 08:05:12
@@ -19816,6 +19991,27 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 25 次发布
+
+发布时间：2021-04-01 08:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增入参：IsEncrypt
+
+	* 新增出参：Encryption
+
+* [IdCardOCRVerification](https://cloud.tencent.com/document/api/1007/37980)
+
+	* 新增入参：Encryption
+
 
 ### 第 24 次发布
 
@@ -22890,6 +23086,25 @@
 
 ## 智能编辑(ie) 版本：2020-03-04
 
+### 第 7 次发布
+
+发布时间：2021-04-01 08:00:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AudioInfo](https://cloud.tencent.com/document/api/1186/42824#AudioInfo)
+
+	* 新增成员：EnableMuteAudio
+
+* [MuxInfo](https://cloud.tencent.com/document/api/1186/42824#MuxInfo)
+
+	* 新增成员：FlvFlags
+
+
 ### 第 6 次发布
 
 发布时间：2021-03-01 08:00:57
@@ -25751,6 +25966,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 59 次发布
+
+发布时间：2021-04-02 08:05:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PushQualityData](https://cloud.tencent.com/document/api/267/20474#PushQualityData)
+
+	* 新增成员：StreamParam
+
 
 ### 第 58 次发布
 
@@ -30158,6 +30388,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 47 次发布
+
+发布时间：2021-04-01 08:06:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [HmtResidentPermitOCR](https://cloud.tencent.com/document/api/866/43106)
+
+	* 新增出参：VisaNum, PassNo
+
+
 ### 第 46 次发布
 
 发布时间：2021-03-23 08:07:17
@@ -31166,6 +31411,23 @@
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
 
+### 第 19 次发布
+
+发布时间：2021-04-01 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAgentDealsByCache](https://cloud.tencent.com/document/api/563/54256)
+
+新增数据结构：
+
+* [AgentDealNewElem](https://cloud.tencent.com/document/api/563/16047#AgentDealNewElem)
+* [DealGoodsPriceNewElem](https://cloud.tencent.com/document/api/563/16047#DealGoodsPriceNewElem)
+
 ### 第 18 次发布
 
 发布时间：2021-01-18 08:06:08
@@ -31499,6 +31761,36 @@
 
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 13 次发布
+
+发布时间：2021-03-31 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/409/16771)
+
+	* 新增入参：SecurityGroupIds
+
+* [CreateReadOnlyDBInstance](https://cloud.tencent.com/document/api/409/52602)
+
+	* 新增入参：SecurityGroupIds
+
+* [CreateReadOnlyGroup](https://cloud.tencent.com/document/api/409/52601)
+
+	* 新增入参：SecurityGroupIds
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：OfflineTime
+
 
 ### 第 12 次发布
 
@@ -36020,6 +36312,47 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 42 次发布
+
+发布时间：2021-04-02 08:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseProjectVersionList](https://cloud.tencent.com/document/api/876/54302)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateAndDeployCloudBaseProject](https://cloud.tencent.com/document/api/876/52616)
+
+	* 新增入参：AutoDeployOnCodeChange, RepoUrl
+
+
+修改数据结构：
+
+* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
+
+	* 新增成员：Branch
+
+
+### 第 41 次发布
+
+发布时间：2021-03-31 08:07:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
+
+	* 新增成员：RepoUrl, AutoDeployOnCodeChange
+
 
 ### 第 40 次发布
 
@@ -42521,6 +42854,35 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 80 次发布
+
+发布时间：2021-03-31 08:08:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AttachMediaSubtitles](https://cloud.tencent.com/document/api/266/54235)
+
+修改接口：
+
+* [ModifyMediaInfo](https://cloud.tencent.com/document/api/266/31762)
+
+	* 新增入参：AddSubtitles, DeleteSubtitleIds, ClearSubtitles
+
+	* 新增出参：AddedSubtitleSet
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：StorageRegions
+
+
+新增数据结构：
+
+* [MediaSubtitleInput](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInput)
+
 ### 第 79 次发布
 
 发布时间：2021-03-30 08:10:17
@@ -42531,8 +42893,8 @@
 
 新增数据结构：
 
-* [[MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo)](https://cloud.tencent.com/document/api/266/31773#[MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo))
-* [[MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem)](https://cloud.tencent.com/document/api/266/31773#[MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem))
+* [MediaSubtitleInfo](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleInfo)
+* [MediaSubtitleItem](https://cloud.tencent.com/document/api/266/31773#MediaSubtitleItem)
 
 修改数据结构：
 

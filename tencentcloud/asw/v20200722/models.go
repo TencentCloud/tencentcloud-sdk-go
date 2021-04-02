@@ -43,6 +43,12 @@ type CreateFlowServiceRequest struct {
 
 	// 备注
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否开启CLS日志投递功能
+	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
+
+	// 该状态机的默认输入
+	Input *string `json:"Input,omitempty" name:"Input"`
 }
 
 func (r *CreateFlowServiceRequest) ToJsonString() string {
@@ -272,6 +278,18 @@ type DescribeFlowServiceDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
 
+		// 是否开启日志CLS服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
+
+		// CLS日志查看地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CLSUrl *string `json:"CLSUrl,omitempty" name:"CLSUrl"`
+
+		// 工作流提示输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowInput *string `json:"FlowInput,omitempty" name:"FlowInput"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -395,6 +413,9 @@ type ModifyFlowServiceRequest struct {
 
 	// 状态机备注
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否允许日志投递
+	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
 }
 
 func (r *ModifyFlowServiceRequest) ToJsonString() string {
@@ -515,4 +536,38 @@ type StateMachine struct {
 
 	// 备注
 	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type StopExecutionRequest struct {
+	*tchttp.BaseRequest
+
+	// 执行名称
+	ExecutionQrn *string `json:"ExecutionQrn,omitempty" name:"ExecutionQrn"`
+}
+
+func (r *StopExecutionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopExecutionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type StopExecutionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopExecutionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *StopExecutionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }

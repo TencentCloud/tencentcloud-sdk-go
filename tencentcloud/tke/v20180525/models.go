@@ -3299,7 +3299,7 @@ type LoginSettings struct {
 
 type ManuallyAdded struct {
 
-	// 加入中节的点数量
+	// 加入中的节点数量
 	Joining *int64 `json:"Joining,omitempty" name:"Joining"`
 
 	// 初始化中的节点数量

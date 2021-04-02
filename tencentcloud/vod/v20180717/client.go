@@ -70,6 +70,31 @@ func (c *Client) ApplyUpload(request *ApplyUploadRequest) (response *ApplyUpload
     return
 }
 
+func NewAttachMediaSubtitlesRequest() (request *AttachMediaSubtitlesRequest) {
+    request = &AttachMediaSubtitlesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "AttachMediaSubtitles")
+    return
+}
+
+func NewAttachMediaSubtitlesResponse() (response *AttachMediaSubtitlesResponse) {
+    response = &AttachMediaSubtitlesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 关联媒资字幕，将指定的字幕关联到转自适应码流模板号对应的媒体输出文件中（或解除关联）。
+func (c *Client) AttachMediaSubtitles(request *AttachMediaSubtitlesRequest) (response *AttachMediaSubtitlesResponse, err error) {
+    if request == nil {
+        request = NewAttachMediaSubtitlesRequest()
+    }
+    response = NewAttachMediaSubtitlesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitUploadRequest() (request *CommitUploadRequest) {
     request = &CommitUploadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2265,7 +2290,7 @@ func NewModifyMediaInfoResponse() (response *ModifyMediaInfoResponse) {
     return
 }
 
-// 修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面等。
+// 修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面、字幕信息等。
 func (c *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (response *ModifyMediaInfoResponse, err error) {
     if request == nil {
         request = NewModifyMediaInfoRequest()

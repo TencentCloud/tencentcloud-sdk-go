@@ -231,6 +231,44 @@ type AutoScalingNotification struct {
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitempty" name:"AutoScalingNotificationId"`
 }
 
+type ClearLaunchConfigurationAttributesRequest struct {
+	*tchttp.BaseRequest
+
+	// 启动配置ID。
+	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+	// 是否清空数据盘信息，非必填，默认为 false。
+	// 填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
+	ClearDataDisks *bool `json:"ClearDataDisks,omitempty" name:"ClearDataDisks"`
+}
+
+func (r *ClearLaunchConfigurationAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ClearLaunchConfigurationAttributesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ClearLaunchConfigurationAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ClearLaunchConfigurationAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ClearLaunchConfigurationAttributesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CompleteLifecycleActionRequest struct {
 	*tchttp.BaseRequest
 
@@ -2309,6 +2347,12 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型。
 	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型。
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// 实例系统盘配置信息。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 实例数据盘配置信息。最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {

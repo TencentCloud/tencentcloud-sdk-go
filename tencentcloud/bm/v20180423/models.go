@@ -296,6 +296,9 @@ type CreateCustomImageResponse struct {
 		// 黑石异步任务ID
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
+		// 镜像ID
+		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

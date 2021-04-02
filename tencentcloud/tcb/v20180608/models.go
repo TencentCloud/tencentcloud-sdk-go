@@ -227,6 +227,14 @@ type CloudBaseProjectVersion struct {
 	// 错误类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailType *string `json:"FailType,omitempty" name:"FailType"`
+
+	// 私有仓库地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoUrl *string `json:"RepoUrl,omitempty" name:"RepoUrl"`
+
+	// 是否私有仓库代码变更触发自动部署
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoDeployOnCodeChange *bool `json:"AutoDeployOnCodeChange,omitempty" name:"AutoDeployOnCodeChange"`
 }
 
 type CloudBaseRunImageInfo struct {
@@ -554,6 +562,10 @@ type CodeSource struct {
 	// 源码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawCode *string `json:"RawCode,omitempty" name:"RawCode"`
+
+	// 代码分支
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
 }
 
 type CommonServiceAPIRequest struct {
@@ -631,6 +643,12 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 
 	// 免费额度的"basic", 不使用的用""
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 是否代码变更触发自动部署
+	AutoDeployOnCodeChange *bool `json:"AutoDeployOnCodeChange,omitempty" name:"AutoDeployOnCodeChange"`
+
+	// 私有仓库地址
+	RepoUrl *string `json:"RepoUrl,omitempty" name:"RepoUrl"`
 }
 
 func (r *CreateAndDeployCloudBaseProjectRequest) ToJsonString() string {
@@ -1301,6 +1319,63 @@ func (r *DescribeCloudBaseProjectLatestVersionListResponse) ToJsonString() strin
 }
 
 func (r *DescribeCloudBaseProjectLatestVersionListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseProjectVersionListRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 第几页,从0开始
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 终止时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeCloudBaseProjectVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseProjectVersionListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseProjectVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProjectVersions []*CloudBaseProjectVersion `json:"ProjectVersions,omitempty" name:"ProjectVersions" list`
+
+		// 总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseProjectVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCloudBaseProjectVersionListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

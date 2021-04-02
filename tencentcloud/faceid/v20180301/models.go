@@ -777,6 +777,9 @@ type GetDetectInfoEnhancedRequest struct {
 
 	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
 	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitempty" name:"IsNeedIdCardAvatar"`
+
+	// 是否需要对返回中的敏感信息进行加密。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
 }
 
 func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
@@ -807,6 +810,10 @@ type GetDetectInfoEnhancedResponse struct {
 		// 视频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VideoData *DetectInfoVideoData `json:"VideoData,omitempty" name:"VideoData"`
+
+		// 敏感数据加密信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1302,6 +1309,9 @@ type IdCardOCRVerificationRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *IdCardOCRVerificationRequest) ToJsonString() string {

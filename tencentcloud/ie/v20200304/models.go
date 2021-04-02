@@ -54,6 +54,12 @@ type AudioInfo struct {
 
 	// 音频降噪信息
 	Denoise *Denoise `json:"Denoise,omitempty" name:"Denoise"`
+
+	// 开启添加静音，可选项：
+	// 0：不开启，
+	// 1：开启，
+	// 默认不开启
+	EnableMuteAudio *int64 `json:"EnableMuteAudio,omitempty" name:"EnableMuteAudio"`
 }
 
 type AudioInfoResultItem struct {
@@ -1061,6 +1067,9 @@ type MuxInfo struct {
 
 	// 删除流，可选项：video,audio。
 	DeleteStream *string `json:"DeleteStream,omitempty" name:"DeleteStream"`
+
+	// Flv 参数，目前支持add_keyframe_index
+	FlvFlags *string `json:"FlvFlags,omitempty" name:"FlvFlags"`
 }
 
 type OpeningEndingEditingInfo struct {

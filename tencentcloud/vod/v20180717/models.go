@@ -1757,6 +1757,51 @@ type AsrWordsConfigureInfoForUpdate struct {
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
 }
 
+type AttachMediaSubtitlesRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件唯一标识。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 操作。取值如下：
+	// <li>Attach：关联字幕。</li>
+	// <li>Detach：解除关联字幕。</li>
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// [转自适应码流模板号](https://cloud.tencent.com/document/product/266/34071#zsy)。
+	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
+
+	// 字幕的唯一标识。
+	SubtitleIds []*string `json:"SubtitleIds,omitempty" name:"SubtitleIds" list`
+}
+
+func (r *AttachMediaSubtitlesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachMediaSubtitlesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachMediaSubtitlesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachMediaSubtitlesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AttachMediaSubtitlesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type AudioTemplateInfo struct {
 
 	// 音频流的编码格式。
@@ -7773,6 +7818,29 @@ type MediaSubtitleInfo struct {
 	SubtitleSet []*MediaSubtitleItem `json:"SubtitleSet,omitempty" name:"SubtitleSet" list`
 }
 
+type MediaSubtitleInput struct {
+
+	// 字幕名字，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字幕语言。常见的取值如下：
+	// <li>cn：中文</li>
+	// <li>ja：日文</li>
+	// <li>en-US：英文</li>
+	// 其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
+	Language *string `json:"Language,omitempty" name:"Language"`
+
+	// 字幕格式。取值范围如下：
+	// <li>vtt</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 字幕内容，进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒资文件中现有字幕的唯一标识重复。
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
 type MediaSubtitleItem struct {
 
 	// 字幕的唯一标识。
@@ -8400,6 +8468,16 @@ type ModifyMediaInfoRequest struct {
 	// 同一个请求里，ClearTags 与 AddTags 不能同时出现。
 	ClearTags *int64 `json:"ClearTags,omitempty" name:"ClearTags"`
 
+	// 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+	AddSubtitles []*MediaSubtitleInput `json:"AddSubtitles,omitempty" name:"AddSubtitles" list`
+
+	// 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+	DeleteSubtitleIds []*string `json:"DeleteSubtitleIds,omitempty" name:"DeleteSubtitleIds" list`
+
+	// 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
+	// 同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
+	ClearSubtitles *int64 `json:"ClearSubtitles,omitempty" name:"ClearSubtitles"`
+
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
@@ -8420,6 +8498,9 @@ type ModifyMediaInfoResponse struct {
 		// 新的视频封面 URL。
 	// * 注意：仅当请求携带 CoverData 时此返回值有效。 *
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+
+		// 新增的字幕信息。
+		AddedSubtitleSet []*MediaSubtitleItem `json:"AddedSubtitleSet,omitempty" name:"AddedSubtitleSet" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10376,6 +10457,11 @@ type SearchMediaRequest struct {
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
 	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+
+	// 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+	// <li>单个存储地区长度限制：20个字符。</li>
+	// <li>数组长度限制：20。</li>
+	StorageRegions []*string `json:"StorageRegions,omitempty" name:"StorageRegions" list`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`

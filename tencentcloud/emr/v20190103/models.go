@@ -726,6 +726,21 @@ type DiskSpec struct {
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
+type DynamicPodSpec struct {
+
+	// 需求最小cpu核数
+	RequestCpu *float64 `json:"RequestCpu,omitempty" name:"RequestCpu"`
+
+	// 需求最大cpu核数
+	LimitCpu *float64 `json:"LimitCpu,omitempty" name:"LimitCpu"`
+
+	// 需求最小memory，单位MB
+	RequestMemory *float64 `json:"RequestMemory,omitempty" name:"RequestMemory"`
+
+	// 需求最大memory，单位MB
+	LimitMemory *float64 `json:"LimitMemory,omitempty" name:"LimitMemory"`
+}
+
 type EmrProductConfigOutter struct {
 
 	// 软件信息
@@ -1512,6 +1527,14 @@ type NodeHardwareInfo struct {
 	// 资源类型, host/pod
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
+
+	// 是否浮动规格，1是，0否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDynamicSpec *int64 `json:"IsDynamicSpec,omitempty" name:"IsDynamicSpec"`
+
+	// 浮动规格值json字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DynamicPodSpec *string `json:"DynamicPodSpec,omitempty" name:"DynamicPodSpec"`
 }
 
 type OutterResource struct {
@@ -1577,6 +1600,18 @@ type Placement struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
+type PodParameter struct {
+
+	// TKE或EKS集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 自定义权限
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 自定义参数
+	Parameter *string `json:"Parameter,omitempty" name:"Parameter"`
+}
+
 type PodSpec struct {
 
 	// 外部资源提供者的标识符，例如"cls-a1cd23fa"。
@@ -1602,6 +1637,13 @@ type PodSpec struct {
 
 	// Pod节点数据目录挂载信息。
 	PodVolumes []*PodVolume `json:"PodVolumes,omitempty" name:"PodVolumes" list`
+
+	// 是否浮动规格，1是，0否
+	IsDynamicSpec *uint64 `json:"IsDynamicSpec,omitempty" name:"IsDynamicSpec"`
+
+	// 浮动规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DynamicPodSpec *DynamicPodSpec `json:"DynamicPodSpec,omitempty" name:"DynamicPodSpec"`
 }
 
 type PodVolume struct {
@@ -1944,6 +1986,12 @@ type ScaleOutInstanceRequest struct {
 
 	// 规则扩容指定 yarn node label
 	YarnNodeLabel *string `json:"YarnNodeLabel,omitempty" name:"YarnNodeLabel"`
+
+	// POD自定义权限和自定义参数
+	PodParameter *PodParameter `json:"PodParameter,omitempty" name:"PodParameter"`
+
+	// 扩容的Master节点的数量。
+	MasterCount *uint64 `json:"MasterCount,omitempty" name:"MasterCount"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {

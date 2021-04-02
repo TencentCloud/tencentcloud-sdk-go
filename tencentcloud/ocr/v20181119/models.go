@@ -1750,6 +1750,12 @@ type HmtResidentPermitOCRResponse struct {
 		// 签发机关
 		Authority *string `json:"Authority,omitempty" name:"Authority"`
 
+		// 签发次数
+		VisaNum *string `json:"VisaNum,omitempty" name:"VisaNum"`
+
+		// 通行证号码
+		PassNo *string `json:"PassNo,omitempty" name:"PassNo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

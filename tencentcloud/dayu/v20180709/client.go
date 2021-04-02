@@ -843,6 +843,31 @@ func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresh
     return
 }
 
+func NewDescribeBizHttpStatusRequest() (request *DescribeBizHttpStatusRequest) {
+    request = &DescribeBizHttpStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dayu", APIVersion, "DescribeBizHttpStatus")
+    return
+}
+
+func NewDescribeBizHttpStatusResponse() (response *DescribeBizHttpStatusResponse) {
+    response = &DescribeBizHttpStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取业务流量状态码统计
+func (c *Client) DescribeBizHttpStatus(request *DescribeBizHttpStatusRequest) (response *DescribeBizHttpStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBizHttpStatusRequest()
+    }
+    response = NewDescribeBizHttpStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBizTrendRequest() (request *DescribeBizTrendRequest) {
     request = &DescribeBizTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},

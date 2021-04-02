@@ -95,6 +95,27 @@ type AssociatedInstanceInfo struct {
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitempty" name:"SecurityGroupCount"`
 }
 
+type CfwNatDnatRule struct {
+
+	// 网络协议，可选值：TCP、UDP。
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 弹性IP。
+	PublicIpAddress *string `json:"PublicIpAddress,omitempty" name:"PublicIpAddress"`
+
+	// 公网端口。
+	PublicPort *int64 `json:"PublicPort,omitempty" name:"PublicPort"`
+
+	// 内网地址。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+
+	// 内网端口。
+	PrivatePort *int64 `json:"PrivatePort,omitempty" name:"PrivatePort"`
+
+	// NAT防火墙转发规则描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateAcRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -531,6 +552,49 @@ func (r *DescribeAssociatedInstanceListResponse) FromJsonString(s string) error 
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCfwEipsRequest struct {
+	*tchttp.BaseRequest
+
+	// 0：cfw新增模式，1：cfw接入模式
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// 防火墙实例id
+	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
+}
+
+func (r *DescribeCfwEipsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCfwEipsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCfwEipsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回值信息
+		NatFwEipList []*NatFwEipsInfo `json:"NatFwEipList,omitempty" name:"NatFwEipList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCfwEipsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCfwEipsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNatRuleOverviewRequest struct {
 	*tchttp.BaseRequest
 
@@ -924,6 +988,46 @@ func (r *DescribeVpcRuleOverviewResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ExpandCfwVerticalRequest struct {
+	*tchttp.BaseRequest
+
+	// nat：nat防火墙，ew：东西向防火墙
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
+
+	// 带宽值
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 防火墙实例id
+	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
+}
+
+func (r *ExpandCfwVerticalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExpandCfwVerticalRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExpandCfwVerticalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExpandCfwVerticalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAcRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -1254,6 +1358,20 @@ func (r *ModifyTableStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type NatFwEipsInfo struct {
+
+	// 弹性公网ip
+	Eip *string `json:"Eip,omitempty" name:"Eip"`
+
+	// 所属的Nat网关Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// Nat网关名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatGatewayName *string `json:"NatGatewayName,omitempty" name:"NatGatewayName"`
+}
+
 type RuleInfoData struct {
 
 	// 执行顺序
@@ -1454,6 +1572,55 @@ type SequenceData struct {
 
 	// 修改后执行顺序
 	NewOrderIndex *uint64 `json:"NewOrderIndex,omitempty" name:"NewOrderIndex"`
+}
+
+type SetNatFwDnatRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 0：cfw新增模式，1：cfw接入模式。
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 操作类型，可选值：add，del，modify。
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 防火墙实例id。
+	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
+
+	// 添加或删除操作的Dnat规则列表。
+	AddOrDelDnatRules []*CfwNatDnatRule `json:"AddOrDelDnatRules,omitempty" name:"AddOrDelDnatRules" list`
+
+	// 修改操作的原始Dnat规则
+	OriginDnat *CfwNatDnatRule `json:"OriginDnat,omitempty" name:"OriginDnat"`
+
+	// 修改操作的新的Dnat规则
+	NewDnat *CfwNatDnatRule `json:"NewDnat,omitempty" name:"NewDnat"`
+}
+
+func (r *SetNatFwDnatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetNatFwDnatRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetNatFwDnatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetNatFwDnatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetNatFwDnatRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type SwitchListsData struct {

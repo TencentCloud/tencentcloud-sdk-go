@@ -242,3 +242,28 @@ func (c *Client) StartExecution(request *StartExecutionRequest) (response *Start
     err = c.Send(request, response)
     return
 }
+
+func NewStopExecutionRequest() (request *StopExecutionRequest) {
+    request = &StopExecutionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("asw", APIVersion, "StopExecution")
+    return
+}
+
+func NewStopExecutionResponse() (response *StopExecutionResponse) {
+    response = &StopExecutionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 终止某个状态机
+func (c *Client) StopExecution(request *StopExecutionRequest) (response *StopExecutionResponse, err error) {
+    if request == nil {
+        request = NewStopExecutionRequest()
+    }
+    response = NewStopExecutionResponse()
+    err = c.Send(request, response)
+    return
+}

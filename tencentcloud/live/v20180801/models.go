@@ -6138,6 +6138,9 @@ type PushQualityData struct {
 
 	// metadata 中的帧率。
 	MateFps *uint64 `json:"MateFps,omitempty" name:"MateFps"`
+
+	// 推流参数
+	StreamParam *string `json:"StreamParam,omitempty" name:"StreamParam"`
 }
 
 type RecordParam struct {

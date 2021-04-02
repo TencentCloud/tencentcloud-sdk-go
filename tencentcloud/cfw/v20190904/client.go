@@ -243,6 +243,31 @@ func (c *Client) DescribeAssociatedInstanceList(request *DescribeAssociatedInsta
     return
 }
 
+func NewDescribeCfwEipsRequest() (request *DescribeCfwEipsRequest) {
+    request = &DescribeCfwEipsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwEips")
+    return
+}
+
+func NewDescribeCfwEipsResponse() (response *DescribeCfwEipsResponse) {
+    response = &DescribeCfwEipsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询防火墙弹性公网ip
+func (c *Client) DescribeCfwEips(request *DescribeCfwEipsRequest) (response *DescribeCfwEipsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwEipsRequest()
+    }
+    response = NewDescribeCfwEipsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatRuleOverviewRequest() (request *DescribeNatRuleOverviewRequest) {
     request = &DescribeNatRuleOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -414,6 +439,31 @@ func (c *Client) DescribeVpcRuleOverview(request *DescribeVpcRuleOverviewRequest
         request = NewDescribeVpcRuleOverviewRequest()
     }
     response = NewDescribeVpcRuleOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExpandCfwVerticalRequest() (request *ExpandCfwVerticalRequest) {
+    request = &ExpandCfwVerticalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "ExpandCfwVertical")
+    return
+}
+
+func NewExpandCfwVerticalResponse() (response *ExpandCfwVerticalResponse) {
+    response = &ExpandCfwVerticalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 防火墙垂直扩容
+func (c *Client) ExpandCfwVertical(request *ExpandCfwVerticalRequest) (response *ExpandCfwVerticalResponse, err error) {
+    if request == nil {
+        request = NewExpandCfwVerticalRequest()
+    }
+    response = NewExpandCfwVerticalResponse()
     err = c.Send(request, response)
     return
 }
@@ -614,6 +664,31 @@ func (c *Client) RunSyncAsset(request *RunSyncAssetRequest) (response *RunSyncAs
         request = NewRunSyncAssetRequest()
     }
     response = NewRunSyncAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetNatFwDnatRuleRequest() (request *SetNatFwDnatRuleRequest) {
+    request = &SetNatFwDnatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "SetNatFwDnatRule")
+    return
+}
+
+func NewSetNatFwDnatRuleResponse() (response *SetNatFwDnatRuleResponse) {
+    response = &SetNatFwDnatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 配置防火墙Dnat规则
+func (c *Client) SetNatFwDnatRule(request *SetNatFwDnatRuleRequest) (response *SetNatFwDnatRuleResponse, err error) {
+    if request == nil {
+        request = NewSetNatFwDnatRuleRequest()
+    }
+    response = NewSetNatFwDnatRuleResponse()
     err = c.Send(request, response)
     return
 }
