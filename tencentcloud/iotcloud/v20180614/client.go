@@ -518,6 +518,56 @@ func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest
     return
 }
 
+func NewDescribeDeviceResourceRequest() (request *DescribeDeviceResourceRequest) {
+    request = &DescribeDeviceResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResource")
+    return
+}
+
+func NewDescribeDeviceResourceResponse() (response *DescribeDeviceResourceResponse) {
+    response = &DescribeDeviceResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDeviceResource）用于查询设备资源详情。 
+func (c *Client) DescribeDeviceResource(request *DescribeDeviceResourceRequest) (response *DescribeDeviceResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceResourceRequest()
+    }
+    response = NewDescribeDeviceResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceResourcesRequest() (request *DescribeDeviceResourcesRequest) {
+    request = &DescribeDeviceResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResources")
+    return
+}
+
+func NewDescribeDeviceResourcesResponse() (response *DescribeDeviceResourcesResponse) {
+    response = &DescribeDeviceResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDeviceResources）用于查询设备资源列表。 
+func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest) (response *DescribeDeviceResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceResourcesRequest()
+    }
+    response = NewDescribeDeviceResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceShadowRequest() (request *DescribeDeviceShadowRequest) {
     request = &DescribeDeviceShadowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -793,6 +843,56 @@ func (c *Client) DescribeMultiDevices(request *DescribeMultiDevicesRequest) (res
     return
 }
 
+func NewDescribeProductResourceRequest() (request *DescribeProductResourceRequest) {
+    request = &DescribeProductResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResource")
+    return
+}
+
+func NewDescribeProductResourceResponse() (response *DescribeProductResourceResponse) {
+    response = &DescribeProductResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProductResource）用于查询产品资源详情。 
+func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest) (response *DescribeProductResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductResourceRequest()
+    }
+    response = NewDescribeProductResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProductResourcesRequest() (request *DescribeProductResourcesRequest) {
+    request = &DescribeProductResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResources")
+    return
+}
+
+func NewDescribeProductResourcesResponse() (response *DescribeProductResourcesResponse) {
+    response = &DescribeProductResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeProductResources）用于查询产品资源列表。 
+func (c *Client) DescribeProductResources(request *DescribeProductResourcesRequest) (response *DescribeProductResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductResourcesRequest()
+    }
+    response = NewDescribeProductResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductTaskRequest() (request *DescribeProductTaskRequest) {
     request = &DescribeProductTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -864,6 +964,56 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
         request = NewDescribeProductsRequest()
     }
     response = NewDescribeProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePushResourceTaskStatisticsRequest() (request *DescribePushResourceTaskStatisticsRequest) {
+    request = &DescribePushResourceTaskStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePushResourceTaskStatistics")
+    return
+}
+
+func NewDescribePushResourceTaskStatisticsResponse() (response *DescribePushResourceTaskStatisticsResponse) {
+    response = &DescribePushResourceTaskStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询推送资源任务统计信息
+func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourceTaskStatisticsRequest) (response *DescribePushResourceTaskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribePushResourceTaskStatisticsRequest()
+    }
+    response = NewDescribePushResourceTaskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceTasksRequest() (request *DescribeResourceTasksRequest) {
+    request = &DescribeResourceTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeResourceTasks")
+    return
+}
+
+func NewDescribeResourceTasksResponse() (response *DescribeResourceTasksResponse) {
+    response = &DescribeResourceTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询资源推送任务列表
+func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (response *DescribeResourceTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTasksRequest()
+    }
+    response = NewDescribeResourceTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -989,6 +1139,31 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
         request = NewEnableTopicRuleRequest()
     }
     response = NewEnableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUserResourceInfoRequest() (request *GetUserResourceInfoRequest) {
+    request = &GetUserResourceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "GetUserResourceInfo")
+    return
+}
+
+func NewGetUserResourceInfoResponse() (response *GetUserResourceInfoResponse) {
+    response = &GetUserResourceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetUserResourceInfo）用于查询用户资源使用信息。
+func (c *Client) GetUserResourceInfo(request *GetUserResourceInfoRequest) (response *GetUserResourceInfoResponse, err error) {
+    if request == nil {
+        request = NewGetUserResourceInfoRequest()
+    }
+    response = NewGetUserResourceInfoResponse()
     err = c.Send(request, response)
     return
 }

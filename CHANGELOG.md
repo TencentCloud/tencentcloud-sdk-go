@@ -1,99 +1,46 @@
 # 本版本更新包含以下内容：
 
-## 应用与服务编排工作流(asw) 版本：2020-07-22
+## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 5 次发布
+### 第 24 次发布
 
-发布时间：2021-04-02 08:00:26
+发布时间：2021-04-05 08:02:04
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [StopExecution](https://cloud.tencent.com/document/api/1272/54300)
 
 修改接口：
 
-* [CreateFlowService](https://cloud.tencent.com/document/api/1272/49737)
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
 
-	* 新增入参：EnableCLS, Input
+	* 新增入参：StreamConnectProjectInput
 
-* [DescribeFlowServiceDetail](https://cloud.tencent.com/document/api/1272/49736)
-
-	* 新增出参：EnableCLS, CLSUrl, FlowInput
-
-* [ModifyFlowService](https://cloud.tencent.com/document/api/1272/49735)
-
-	* 新增入参：EnableCLS
-
-
-
-
-## DDoS 高防包(dayu) 版本：2018-07-09
-
-### 第 20 次发布
-
-发布时间：2021-04-02 08:03:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/54301)
 
 新增数据结构：
 
-* [HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap)
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 19 次发布
-
-发布时间：2021-04-02 08:04:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo)
+* [MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem)
+* [RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo)
+* [StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput)
+* [StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput)
+* [StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo)
+* [VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo)
 
 修改数据结构：
 
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+* [MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)
 
-	* 新增成员：IsDynamicSpec, DynamicPodSpec
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 59 次发布
-
-发布时间：2021-04-02 08:05:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PushQualityData](https://cloud.tencent.com/document/api/267/20474#PushQualityData)
-
-	* 新增成员：StreamParam
+	* 新增成员：TransitionItem
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 物联网通信(iotcloud) 版本：2018-06-14
 
-### 第 42 次发布
+### 第 20 次发布
 
-发布时间：2021-04-02 08:07:38
+发布时间：2021-04-05 08:05:16
 
 本次发布包含了以下内容：
 
@@ -101,21 +48,18 @@
 
 新增接口：
 
-* [DescribeCloudBaseProjectVersionList](https://cloud.tencent.com/document/api/876/54302)
+* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)
+* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)
+* [DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)
+* [DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)
+* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)
+* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)
+* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)
 
-修改接口：
+新增数据结构：
 
-* [CreateAndDeployCloudBaseProject](https://cloud.tencent.com/document/api/876/52616)
-
-	* 新增入参：AutoDeployOnCodeChange, RepoUrl
-
-
-修改数据结构：
-
-* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
-
-	* 新增成员：Branch
-
+* [DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo)
+* [ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo)
 
 
 
@@ -2254,7 +2198,7 @@
 
 新增接口：
 
-* [[StopExecution](https://cloud.tencent.com/document/api/1272/54300)](https://cloud.tencent.com/document/api/#/#)
+* [StopExecution](https://cloud.tencent.com/document/api/1272/54300)
 
 修改接口：
 
@@ -11294,6 +11238,38 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 24 次发布
+
+发布时间：2021-04-05 08:02:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增入参：StreamConnectProjectInput
+
+
+新增数据结构：
+
+* [[LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo))
+* [[MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem)](https://cloud.tencent.com/document/api/1156/40360#[MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem))
+* [[RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo))
+* [[StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput))
+* [[StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput))
+* [[StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo))
+* [[VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo))
+
+修改数据结构：
+
+* [MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)
+
+	* 新增成员：TransitionItem
+
+
 ### 第 23 次发布
 
 发布时间：2021-03-22 08:02:05
@@ -15363,11 +15339,11 @@
 
 新增接口：
 
-* [[DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/54301)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/54301)
 
 新增数据结构：
 
-* [[HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap)](https://cloud.tencent.com/document/api/1021/39225#[HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap))
+* [HttpStatusMap](https://cloud.tencent.com/document/api/1021/39225#HttpStatusMap)
 
 ### 第 19 次发布
 
@@ -23761,6 +23737,29 @@
 
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 20 次发布
+
+发布时间：2021-04-05 08:05:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)](https://cloud.tencent.com/document/api/#/#)
+* [[GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo)](https://cloud.tencent.com/document/api/634/19497#[DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo))
+* [[ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo)](https://cloud.tencent.com/document/api/634/19497#[ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo))
 
 ### 第 19 次发布
 
@@ -36323,7 +36322,7 @@
 
 新增接口：
 
-* [[DescribeCloudBaseProjectVersionList](https://cloud.tencent.com/document/api/876/54302)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseProjectVersionList](https://cloud.tencent.com/document/api/876/54302)
 
 修改接口：
 

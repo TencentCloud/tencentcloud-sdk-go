@@ -305,6 +305,7 @@ type CreateProjectRequest struct {
 	// <li>VIDEO_EDIT：视频编辑。</li>
 	// <li>SWITCHER：导播台。</li>
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
+	// <li>STREAM_CONNECT：云转推。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目名称，不可超过30个字符。
@@ -331,6 +332,9 @@ type CreateProjectRequest struct {
 
 	// 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
 	VideoSegmentationProjectInput *VideoSegmentationProjectInput `json:"VideoSegmentationProjectInput,omitempty" name:"VideoSegmentationProjectInput"`
+
+	// 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
+	StreamConnectProjectInput *StreamConnectProjectInput `json:"StreamConnectProjectInput,omitempty" name:"StreamConnectProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -900,6 +904,7 @@ type DescribeProjectsRequest struct {
 	// <li>VIDEO_EDIT：视频编辑。</li>
 	// <li>SWITCHER：导播台。</li>
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
+	// <li>STREAM_CONNECT：云转推。</li>
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
 
 	// 列表排序，支持下列排序字段：
@@ -1995,6 +2000,12 @@ func (r *ListMediaResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type LivePullInputInfo struct {
+
+	// 直播拉流地址。
+	InputUrl *string `json:"InputUrl,omitempty" name:"InputUrl"`
+}
+
 type LiveStreamClipProjectInput struct {
 
 	// 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
@@ -2167,7 +2178,7 @@ type MediaTrack struct {
 
 	// 轨道类型，取值有：
 	// <ul>
-	// <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+	// <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
 	// <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
 	// </ul>
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -2179,9 +2190,10 @@ type MediaTrack struct {
 type MediaTrackItem struct {
 
 	// 片段类型。取值有：
-	// <li>Video：视频片段。</li>
-	// <li>Audio：音频片段。</li>
-	// <li>Empty：空白片段。</li>
+	// <li>Video：视频片段；</li>
+	// <li>Audio：音频片段；</li>
+	// <li>Empty：空白片段；</li>
+	// <li>Transition：转场。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频片段，当 Type = Video 时有效。
@@ -2193,6 +2205,18 @@ type MediaTrackItem struct {
 	// 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
 	// <li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
 	EmptyItem *EmptyTrackItem `json:"EmptyItem,omitempty" name:"EmptyItem"`
+
+	// 转场，当 Type = Transition 时有效。
+	TransitionItem *MediaTransitionItem `json:"TransitionItem,omitempty" name:"TransitionItem"`
+}
+
+type MediaTransitionItem struct {
+
+	// 转场 Id 。暂只支持一个转场。
+	TransitionId *string `json:"TransitionId,omitempty" name:"TransitionId"`
+
+	// 转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type ModifyMaterialRequest struct {
@@ -2543,7 +2567,12 @@ type ProjectInfo struct {
 	// 画布宽高比。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
-	// 项目类别。
+	// 项目类别，取值：
+	// 项目类别，取值有：
+	// <li>VIDEO_EDIT：视频编辑。</li>
+	// <li>SWITCHER：导播台。</li>
+	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
+	// <li>STREAM_CONNECT：云转推。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 归属者。
@@ -2631,6 +2660,15 @@ func (r *RevokeResourceAuthorizationResponse) ToJsonString() string {
 
 func (r *RevokeResourceAuthorizationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type RtmpPushInputInfo struct {
+
+	// 直播推流地址有效期，单位：秒 。
+	ExpiredSecond *uint64 `json:"ExpiredSecond,omitempty" name:"ExpiredSecond"`
+
+	// 直播推流地址，入参不填默认由云剪生成。
+	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
 }
 
 type SearchMaterialRequest struct {
@@ -2741,6 +2779,56 @@ type SortBy struct {
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type StreamConnectOutput struct {
+
+	// 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 云转推输出源名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 云转推输出源类型，取值：
+	// <li>URL ：URL类型</li>
+	// 不填默认为URL类型。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 云转推推流地址。
+	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
+}
+
+type StreamConnectProjectInput struct {
+
+	// 云转推主输入源信息。
+	MainInput *StreamInputInfo `json:"MainInput,omitempty" name:"MainInput"`
+
+	// 云转推备输入源信息。
+	BackupInput *StreamInputInfo `json:"BackupInput,omitempty" name:"BackupInput"`
+
+	// 云转推输出源信息。
+	Outputs []*StreamConnectOutput `json:"Outputs,omitempty" name:"Outputs" list`
+}
+
+type StreamInputInfo struct {
+
+	// 流输入类型，取值：
+	// <li>VodPull ： 点播拉流；</li>
+	// <li>LivePull ：直播拉流；</li>
+	// <li>RtmpPush ： 直播推流。</li>
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 点播拉流信息，当 InputType = VodPull 时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VodPullInputInfo *VodPullInputInfo `json:"VodPullInputInfo,omitempty" name:"VodPullInputInfo"`
+
+	// 直播拉流信息，当 InputType = LivePull  时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivePullInputInfo *LivePullInputInfo `json:"LivePullInputInfo,omitempty" name:"LivePullInputInfo"`
+
+	// 直播推流信息，当 InputType = RtmpPush 时必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RtmpPushInputInfo *RtmpPushInputInfo `json:"RtmpPushInputInfo,omitempty" name:"RtmpPushInputInfo"`
 }
 
 type SwitcherPgmOutputConfig struct {
@@ -3026,6 +3114,19 @@ type VideoTrackItem struct {
 	// <li>当 Width 为空，Height 非空，则 Width 按比例缩放；</li>
 	// <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
 	Width *string `json:"Width,omitempty" name:"Width"`
+}
+
+type VodPullInputInfo struct {
+
+	// 点播输入拉流 URL 。
+	InputUrls []*string `json:"InputUrls,omitempty" name:"InputUrls" list`
+
+	// 播放次数，取值有：
+	// <li>-1 : 循环播放，直到转推结束；</li>
+	// <li>0 : 不循环；</li>
+	// <li>大于0 : 具体循环次数，次数和时间以先结束的为准。</li>
+	// 默认不循环。
+	LoopTimes *int64 `json:"LoopTimes,omitempty" name:"LoopTimes"`
 }
 
 type WeiboPublishInfo struct {

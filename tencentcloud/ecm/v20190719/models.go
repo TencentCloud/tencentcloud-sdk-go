@@ -2000,10 +2000,10 @@ type DescribeHaVipsRequest struct {
 	// subnet-id - String - HAVIP所在子网ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 偏移量。
+	// 偏移量，默认值是0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量。
+	// 返回数量，默认值是20，最大是100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// Ecm 区域，不填代表全部区域。

@@ -888,6 +888,105 @@ func (r *DescribeDeviceRequest) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 具体的设备资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeDeviceResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备资源详情
+		Result *DeviceResourceInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，Offset从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，数值范围 10-250
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 需要过滤的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资源搜索开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 资源搜索结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeDeviceResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*DeviceResourceInfo `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDeviceResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
@@ -1562,6 +1661,97 @@ func (r *DescribeMultiDevicesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProductResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查看资源列表的产品 ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 需要过滤的资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeProductResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductResourceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ProductResourceInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductResourceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，Offset从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，数值范围 10-250
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 需要查看资源列表的产品 ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 需要过滤的资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeProductResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 资源详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*ProductResourceInfo `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeProductResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProductTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -1688,6 +1878,109 @@ func (r *DescribeProductsResponse) ToJsonString() string {
 }
 
 func (r *DescribeProductsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushResourceTaskStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribePushResourceTaskStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushResourceTaskStatisticsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushResourceTaskStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 推送成功的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessTotal *uint64 `json:"SuccessTotal,omitempty" name:"SuccessTotal"`
+
+		// 推送失败的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailureTotal *uint64 `json:"FailureTotal,omitempty" name:"FailureTotal"`
+
+		// 正在推送的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpgradingTotal *uint64 `json:"UpgradingTotal,omitempty" name:"UpgradingTotal"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePushResourceTaskStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePushResourceTaskStatisticsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回查询结果条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeResourceTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTasksRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+
+		// 资源任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceTasksResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1919,6 +2212,36 @@ type DeviceProperty struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
+type DeviceResourceInfo struct {
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 产品名
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源文件md5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 资源文件大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 资源更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备资源上传状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 设备资源上传百分比
+	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
+}
+
 type DeviceTag struct {
 
 	// 属性名称
@@ -2098,6 +2421,43 @@ type FirmwareTaskInfo struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type GetUserResourceInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetUserResourceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUserResourceInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUserResourceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已使用的资源字节数
+		UsedSize *uint64 `json:"UsedSize,omitempty" name:"UsedSize"`
+
+		// 可以使用资源的总大小
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUserResourceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetUserResourceInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiDevicesInfo struct {
 
 	// 设备名
@@ -2181,6 +2541,31 @@ type ProductProperties struct {
 
 	// RegisterType为2时，设备动态创建的限制数量
 	RegisterLimit *uint64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+}
+
+type ProductResourceInfo struct {
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 产品名
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源文件md5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 资源文件大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 资源文件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 资源创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ProductTaskInfo struct {
