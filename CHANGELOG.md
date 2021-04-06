@@ -1,68 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 24 次发布
-
-发布时间：2021-04-05 08:02:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
-
-	* 新增入参：StreamConnectProjectInput
-
-
-新增数据结构：
-
-* [LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo)
-* [MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem)
-* [RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo)
-* [StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput)
-* [StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput)
-* [StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo)
-* [VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo)
-
-修改数据结构：
-
-* [MediaTrackItem](https://cloud.tencent.com/document/api/1156/40360#MediaTrackItem)
-
-	* 新增成员：TransitionItem
-
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-### 第 20 次发布
-
-发布时间：2021-04-05 08:05:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)
-* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)
-* [DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)
-* [DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)
-* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)
-* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)
-* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)
-
-新增数据结构：
-
-* [DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo)
-* [ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo)
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -11255,13 +11192,13 @@
 
 新增数据结构：
 
-* [[LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo))
-* [[MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem)](https://cloud.tencent.com/document/api/1156/40360#[MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem))
-* [[RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo))
-* [[StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput))
-* [[StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput))
-* [[StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo))
-* [[VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo))
+* [LivePullInputInfo](https://cloud.tencent.com/document/api/1156/40360#LivePullInputInfo)
+* [MediaTransitionItem](https://cloud.tencent.com/document/api/1156/40360#MediaTransitionItem)
+* [RtmpPushInputInfo](https://cloud.tencent.com/document/api/1156/40360#RtmpPushInputInfo)
+* [StreamConnectOutput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutput)
+* [StreamConnectProjectInput](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInput)
+* [StreamInputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamInputInfo)
+* [VodPullInputInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputInfo)
 
 修改数据结构：
 
@@ -23748,18 +23685,18 @@
 
 新增接口：
 
-* [[DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)
+* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)
+* [DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)
+* [DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)
+* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)
+* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)
+* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)
 
 新增数据结构：
 
-* [[DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo)](https://cloud.tencent.com/document/api/634/19497#[DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo))
-* [[ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo)](https://cloud.tencent.com/document/api/634/19497#[ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo))
+* [DeviceResourceInfo](https://cloud.tencent.com/document/api/634/19497#DeviceResourceInfo)
+* [ProductResourceInfo](https://cloud.tencent.com/document/api/634/19497#ProductResourceInfo)
 
 ### 第 19 次发布
 
