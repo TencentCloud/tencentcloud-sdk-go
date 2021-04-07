@@ -4315,7 +4315,7 @@ type LoadBalancerHealth struct {
 
 type LoadBalancerInternetAccessible struct {
 
-	// 最大出带宽，单位Mbps。
+	// 最大出带宽，单位Mbps。默认值10
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 

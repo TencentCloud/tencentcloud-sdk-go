@@ -2090,6 +2090,10 @@ type MaterialInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinkMaterial *LinkMaterial `json:"LinkMaterial,omitempty" name:"LinkMaterial"`
 
+	// 模板媒体信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoEditTemplateMaterial *VideoEditTemplateMaterial `json:"VideoEditTemplateMaterial,omitempty" name:"VideoEditTemplateMaterial"`
+
 	// 其他类型媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherMaterial *OtherMaterial `json:"OtherMaterial,omitempty" name:"OtherMaterial"`
@@ -2756,6 +2760,24 @@ type SearchScope struct {
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 }
 
+type SlotInfo struct {
+
+	// 卡槽 Id。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 素材类型，同素材素材，可取值有：
+	// <li> AUDIO :音频;</li>
+	// <li> VIDEO :视频;</li>
+	// <li> IMAGE :图片。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 默认素材 Id。
+	DefaultMaterialId *string `json:"DefaultMaterialId,omitempty" name:"DefaultMaterialId"`
+
+	// 素材时长，单位秒。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type SlotReplacementInfo struct {
 
 	// 卡槽 Id。
@@ -2991,6 +3013,15 @@ type VideoEditProjectOutput struct {
 	// 元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+}
+
+type VideoEditTemplateMaterial struct {
+
+	// 视频编辑模板宽高比。
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
+
+	// 卡槽信息。
+	SlotSet []*SlotInfo `json:"SlotSet,omitempty" name:"SlotSet" list`
 }
 
 type VideoMaterial struct {

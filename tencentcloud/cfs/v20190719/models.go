@@ -991,7 +991,7 @@ type UpdateCfsFileSystemSizeLimitRequest struct {
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitempty" name:"FsLimit"`
 
-	// 文件系统ID
+	// 文件系统ID，目前仅支持标准型文件系统。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 

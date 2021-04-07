@@ -1362,6 +1362,9 @@ type ModifyDirectConnectAttributeRequest struct {
 
 	// 物理专线申请者补签用户使用协议
 	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
+
+	// 物理专线带宽
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 }
 
 func (r *ModifyDirectConnectAttributeRequest) ToJsonString() string {

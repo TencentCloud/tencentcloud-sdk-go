@@ -1,5 +1,114 @@
 # 本版本更新包含以下内容：
 
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 11 次发布
+
+发布时间：2021-04-07 08:00:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTelSession](https://cloud.tencent.com/document/api/679/54343)
+
+新增数据结构：
+
+* [PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)
+
+
+
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 25 次发布
+
+发布时间：2021-04-07 08:02:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo)
+* [VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)
+
+修改数据结构：
+
+* [MaterialInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialInfo)
+
+	* 新增成员：VideoEditTemplateMaterial
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 18 次发布
+
+发布时间：2021-04-07 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+
+	* 新增入参：Bandwidth
+
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 11 次发布
+
+发布时间：2021-04-07 08:07:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSnapshots](https://cloud.tencent.com/document/api/596/54350)
+* [DeleteSnapshots](https://cloud.tencent.com/document/api/596/54349)
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
+* [ImportSnapshots](https://cloud.tencent.com/document/api/596/54347)
+* [ModifySnapshots](https://cloud.tencent.com/document/api/596/54346)
+
+新增数据结构：
+
+* [KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile)
+* [SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo)
+* [SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew)
+* [SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 47 次发布
+
+发布时间：2021-04-07 08:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：DesiredPodNum, UserScript
+
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -6144,6 +6253,22 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 11 次发布
+
+发布时间：2021-04-07 08:00:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTelSession](https://cloud.tencent.com/document/api/679/54343)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)](https://cloud.tencent.com/document/api/679/47715#[PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession))
+
 ### 第 10 次发布
 
 发布时间：2021-03-16 08:00:43
@@ -11175,6 +11300,26 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 25 次发布
+
+发布时间：2021-04-07 08:02:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo)](https://cloud.tencent.com/document/api/1156/40360#[SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo))
+* [[VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)](https://cloud.tencent.com/document/api/1156/40360#[VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial))
+
+修改数据结构：
+
+* [MaterialInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialInfo)
+
+	* 新增成员：VideoEditTemplateMaterial
+
+
 ### 第 24 次发布
 
 发布时间：2021-04-05 08:02:04
@@ -16007,6 +16152,21 @@
 
 
 ## 专线接入(dc) 版本：2018-04-10
+
+### 第 18 次发布
+
+发布时间：2021-04-07 08:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+
+	* 新增入参：Bandwidth
+
 
 ### 第 17 次发布
 
@@ -35824,6 +35984,29 @@
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
+### 第 11 次发布
+
+发布时间：2021-04-07 08:07:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSnapshots](https://cloud.tencent.com/document/api/596/54350)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSnapshots](https://cloud.tencent.com/document/api/596/54349)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)](https://cloud.tencent.com/document/api/#/#)
+* [[ImportSnapshots](https://cloud.tencent.com/document/api/596/54347)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySnapshots](https://cloud.tencent.com/document/api/596/54346)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile)](https://cloud.tencent.com/document/api/596/39686#[KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile))
+* [[SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo)](https://cloud.tencent.com/document/api/596/39686#[SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo))
+* [[SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew)](https://cloud.tencent.com/document/api/596/39686#[SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew))
+* [[SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult)](https://cloud.tencent.com/document/api/596/39686#[SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult))
+
 ### 第 10 次发布
 
 发布时间：2021-01-26 08:07:59
@@ -39450,6 +39633,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 47 次发布
+
+发布时间：2021-04-07 08:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：DesiredPodNum, UserScript
+
 
 ### 第 46 次发布
 

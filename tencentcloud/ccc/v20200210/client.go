@@ -292,3 +292,28 @@ func (c *Client) DescribeTelCdr(request *DescribeTelCdrRequest) (response *Descr
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
+    request = &DescribeTelSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelSession")
+    return
+}
+
+func NewDescribeTelSessionResponse() (response *DescribeTelSessionResponse) {
+    response = &DescribeTelSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取 PSTN 会话信息
+func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (response *DescribeTelSessionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelSessionRequest()
+    }
+    response = NewDescribeTelSessionResponse()
+    err = c.Send(request, response)
+    return
+}

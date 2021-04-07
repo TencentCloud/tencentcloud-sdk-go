@@ -300,6 +300,49 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 快照列表
+	SelectedTables []*SnapshotInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *CreateSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量创建的快照数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 批量创建的快照结果列表
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateSnapshotsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTableGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -472,6 +515,49 @@ func (r *DeleteIdlFilesResponse) ToJsonString() string {
 }
 
 func (r *DeleteIdlFilesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 删除的快照列表
+	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *DeleteSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量删除的快照数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 批量删除的快照结果
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -818,6 +904,55 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 }
 
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 所属表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+}
+
+func (r *DescribeSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 快照结果列表
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1317,6 +1452,77 @@ type IdlFileInfoWithoutContent struct {
 	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
 }
 
+type ImportSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属的集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 用于导入的快照信息
+	Snapshots *SnapshotInfo `json:"Snapshots,omitempty" name:"Snapshots"`
+
+	// 是否导入部分记录，TRUE表示导入部分记录，FALSE表示全表导入
+	ImportSpecialKey *string `json:"ImportSpecialKey,omitempty" name:"ImportSpecialKey"`
+
+	// 是否导入到当前表，TRUE表示导入到当前表，FALSE表示导入到新表
+	ImportOriginTable *string `json:"ImportOriginTable,omitempty" name:"ImportOriginTable"`
+
+	// 部分记录的key文件
+	KeyFile *KeyFile `json:"KeyFile,omitempty" name:"KeyFile"`
+
+	// 如果导入到新表，此为新表所属的表格组id
+	NewTableGroupId *string `json:"NewTableGroupId,omitempty" name:"NewTableGroupId"`
+
+	// 如果导入到新表，此为新表的表名，系统会以该名称自动创建一张结构相同的空表
+	NewTableName *string `json:"NewTableName,omitempty" name:"NewTableName"`
+}
+
+func (r *ImportSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ImportSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImportSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ImportSnapshotsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type KeyFile struct {
+
+	// key文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// key文件扩展名
+	FileExtType *string `json:"FileExtType,omitempty" name:"FileExtType"`
+
+	// key文件内容
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// key文件大小
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+}
+
 type MachineInfo struct {
 
 	// 机器类型
@@ -1496,6 +1702,49 @@ func (r *ModifyClusterTagsResponse) ToJsonString() string {
 }
 
 func (r *ModifyClusterTagsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 快照列表
+	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+}
+
+func (r *ModifySnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量创建的快照数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 批量创建的快照结果列表
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2134,6 +2383,82 @@ func (r *SetTableIndexResponse) ToJsonString() string {
 
 func (r *SetTableIndexResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type SnapshotInfo struct {
+
+	// 所属表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照时间点
+	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
+
+	// 快照过期时间点
+	SnapshotDeadTime *string `json:"SnapshotDeadTime,omitempty" name:"SnapshotDeadTime"`
+}
+
+type SnapshotInfoNew struct {
+
+	// 所属表格组ID
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照过期时间点
+	SnapshotDeadTime *string `json:"SnapshotDeadTime,omitempty" name:"SnapshotDeadTime"`
+}
+
+type SnapshotResult struct {
+
+	// 表格所属表格组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 任务ID，对于创建单任务的接口有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+
+	// 快照名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照的时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
+
+	// 快照的过期时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotDeadTime *string `json:"SnapshotDeadTime,omitempty" name:"SnapshotDeadTime"`
+
+	// 快照创建时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotCreateTime *string `json:"SnapshotCreateTime,omitempty" name:"SnapshotCreateTime"`
+
+	// 快照大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
+
+	// 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotStatus *uint64 `json:"SnapshotStatus,omitempty" name:"SnapshotStatus"`
 }
 
 type TableGroupInfo struct {

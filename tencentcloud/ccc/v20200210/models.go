@@ -522,6 +522,46 @@ func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTelSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeTelSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTelSessionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTelSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 会话信息
+		Session *PSTNSession `json:"Session,omitempty" name:"Session"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTelSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type IMCdrInfo struct {
 
 	// 服务记录ID
@@ -576,6 +616,52 @@ type MessageBody struct {
 
 	// 消息列表
 	Messages []*Message `json:"Messages,omitempty" name:"Messages" list`
+}
+
+type PSTNSession struct {
+
+	// 会话 ID
+	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`
+
+	// 会话临时房间 ID
+	RoomID *string `json:"RoomID,omitempty" name:"RoomID"`
+
+	// 主叫
+	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 被叫
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 开始时间，Unix 时间戳
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 振铃时间，Unix 时间戳
+	RingTimestamp *int64 `json:"RingTimestamp,omitempty" name:"RingTimestamp"`
+
+	// 接听时间，Unix 时间戳
+	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitempty" name:"AcceptTimestamp"`
+
+	// 坐席邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 坐席工号
+	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
+
+	// 会话状态
+	// ringing 振铃中
+	// seatJoining  等待坐席接听
+	// inProgress 进行中
+	// finished 已完成
+	SessionStatus *string `json:"SessionStatus,omitempty" name:"SessionStatus"`
+
+	// 会话呼叫方向， 0 呼入 | 1 - 呼出
+	Direction *int64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 转外线使用的号码（转外线主叫）
+	OutBoundCaller *string `json:"OutBoundCaller,omitempty" name:"OutBoundCaller"`
+
+	// 转外线被叫
+	OutBoundCallee *string `json:"OutBoundCallee,omitempty" name:"OutBoundCallee"`
 }
 
 type PSTNSessionInfo struct {
