@@ -43,6 +43,59 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyInstanceSnapshotRequest() (request *ApplyInstanceSnapshotRequest) {
+    request = &ApplyInstanceSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ApplyInstanceSnapshot")
+    return
+}
+
+func NewApplyInstanceSnapshotResponse() (response *ApplyInstanceSnapshotResponse) {
+    response = &ApplyInstanceSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ApplyInstanceSnapshot）用于回滚指定实例的系统盘快照。
+// <li>仅支持回滚到原系统盘。</li>
+// <li>用于回滚的快照必须处于 NORMAL 状态。快照状态可以通 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。</li>
+// <li>回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 DescribeInstances 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。</li>
+func (c *Client) ApplyInstanceSnapshot(request *ApplyInstanceSnapshotRequest) (response *ApplyInstanceSnapshotResponse, err error) {
+    if request == nil {
+        request = NewApplyInstanceSnapshotRequest()
+    }
+    response = NewApplyInstanceSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBlueprintRequest() (request *CreateBlueprintRequest) {
+    request = &CreateBlueprintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateBlueprint")
+    return
+}
+
+func NewCreateBlueprintResponse() (response *CreateBlueprintResponse) {
+    response = &CreateBlueprintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateBlueprint) 用于创建镜像。
+func (c *Client) CreateBlueprint(request *CreateBlueprintRequest) (response *CreateBlueprintResponse, err error) {
+    if request == nil {
+        request = NewCreateBlueprintRequest()
+    }
+    response = NewCreateBlueprintResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFirewallRulesRequest() (request *CreateFirewallRulesRequest) {
     request = &CreateFirewallRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -78,6 +131,56 @@ func (c *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (respo
     return
 }
 
+func NewCreateInstanceSnapshotRequest() (request *CreateInstanceSnapshotRequest) {
+    request = &CreateInstanceSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateInstanceSnapshot")
+    return
+}
+
+func NewCreateInstanceSnapshotResponse() (response *CreateInstanceSnapshotResponse) {
+    response = &CreateInstanceSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（CreateInstanceSnapshot）用于创建指定实例的系统盘快照。
+func (c *Client) CreateInstanceSnapshot(request *CreateInstanceSnapshotRequest) (response *CreateInstanceSnapshotResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceSnapshotRequest()
+    }
+    response = NewCreateInstanceSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBlueprintsRequest() (request *DeleteBlueprintsRequest) {
+    request = &DeleteBlueprintsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteBlueprints")
+    return
+}
+
+func NewDeleteBlueprintsResponse() (response *DeleteBlueprintsResponse) {
+    response = &DeleteBlueprintsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (DeleteBlueprints) 用于删除镜像。
+func (c *Client) DeleteBlueprints(request *DeleteBlueprintsRequest) (response *DeleteBlueprintsResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlueprintsRequest()
+    }
+    response = NewDeleteBlueprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFirewallRulesRequest() (request *DeleteFirewallRulesRequest) {
     request = &DeleteFirewallRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +211,32 @@ func (c *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (respo
         request = NewDeleteFirewallRulesRequest()
     }
     response = NewDeleteFirewallRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
+    request = &DeleteSnapshotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteSnapshots")
+    return
+}
+
+func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
+    response = &DeleteSnapshotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DeleteSnapshots）用于删除快照。
+// 快照必须处于 NORMAL 状态，快照状态可以通过 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。
+func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *DeleteSnapshotsResponse, err error) {
+    if request == nil {
+        request = NewDeleteSnapshotsRequest()
+    }
+    response = NewDeleteSnapshotsResponse()
     err = c.Send(request, response)
     return
 }
@@ -238,6 +367,82 @@ func (c *Client) DescribeInstancesTrafficPackages(request *DescribeInstancesTraf
         request = NewDescribeInstancesTrafficPackagesRequest()
     }
     response = NewDescribeInstancesTrafficPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
+    request = &DescribeSnapshotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeSnapshots")
+    return
+}
+
+func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
+    response = &DescribeSnapshotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeSnapshots）用于查询快照的详细信息。
+func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotsRequest()
+    }
+    response = NewDescribeSnapshotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBlueprintAttributeRequest() (request *ModifyBlueprintAttributeRequest) {
+    request = &ModifyBlueprintAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyBlueprintAttribute")
+    return
+}
+
+func NewModifyBlueprintAttributeResponse() (response *ModifyBlueprintAttributeResponse) {
+    response = &ModifyBlueprintAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (ModifyBlueprintAttribute) 用于修改镜像属性。
+func (c *Client) ModifyBlueprintAttribute(request *ModifyBlueprintAttributeRequest) (response *ModifyBlueprintAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyBlueprintAttributeRequest()
+    }
+    response = NewModifyBlueprintAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySnapshotAttributeRequest() (request *ModifySnapshotAttributeRequest) {
+    request = &ModifySnapshotAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifySnapshotAttribute")
+    return
+}
+
+func NewModifySnapshotAttributeResponse() (response *ModifySnapshotAttributeResponse) {
+    response = &ModifySnapshotAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（ModifySnapshotAttribute）用于修改指定快照的属性。
+// <li>“快照名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。</li>
+func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (response *ModifySnapshotAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySnapshotAttributeRequest()
+    }
+    response = NewModifySnapshotAttributeResponse()
     err = c.Send(request, response)
     return
 }

@@ -2000,8 +2000,11 @@ type KillSessionRequest struct {
 	// 会话ID列表
 	SessionId []*int64 `json:"SessionId,omitempty" name:"SessionId" list`
 
-	// 分片ID
+	// 分片ID，与ShardSerialId设置一个
 	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+
+	// 分片序列ID，与ShardId设置一个
+	ShardSerialId *string `json:"ShardSerialId,omitempty" name:"ShardSerialId"`
 }
 
 func (r *KillSessionRequest) ToJsonString() string {

@@ -20,6 +20,43 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApplyInstanceSnapshotRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 快照 ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
+func (r *ApplyInstanceSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyInstanceSnapshotRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyInstanceSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyInstanceSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyInstanceSnapshotResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Blueprint struct {
 
 	// 镜像 ID  ，是 Blueprint 的唯一标识。
@@ -123,6 +160,49 @@ type Bundle struct {
 	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitempty" name:"BundleDisplayLabel"`
 }
 
+type CreateBlueprintRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像名称。最大长度60。
+	BlueprintName *string `json:"BlueprintName,omitempty" name:"BlueprintName"`
+
+	// 镜像描述。最大长度60。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 需要制作镜像的实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *CreateBlueprintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBlueprintRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBlueprintResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义镜像ID。
+		BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBlueprintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateBlueprintResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -163,6 +243,80 @@ func (r *CreateFirewallRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInstanceSnapshotRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要创建快照的实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 快照名称，最长为 60 个字符。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+}
+
+func (r *CreateInstanceSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstanceSnapshotRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照 ID。
+		SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInstanceSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInstanceSnapshotResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBlueprintsRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像ID列表。镜像ID，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds" list`
+}
+
+func (r *DeleteBlueprintsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBlueprintsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBlueprintsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteBlueprintsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteBlueprintsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteFirewallRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -200,6 +354,40 @@ func (r *DeleteFirewallRulesResponse) ToJsonString() string {
 }
 
 func (r *DeleteFirewallRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的快照 ID 列表，可通过 DescribeSnapshots 查询。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+}
+
+func (r *DeleteSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -475,6 +663,69 @@ func (r *DescribeInstancesTrafficPackagesResponse) FromJsonString(s string) erro
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSnapshotsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询快照的 ID 列表。
+	// 参数不支持同时指定 SnapshotIds 和 Filters。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+
+	// 过滤器列表。
+	// <li>snapshot-id</li>按照【快照 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>disk-id</li>按照【磁盘 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>snapshot-name</li>按照【快照名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>instance-id</li>按照【实例 ID 】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照的数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 快照的详情列表。
+		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -657,6 +908,83 @@ type LoginSettings struct {
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
 }
 
+type ModifyBlueprintAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
+
+	// 设置新的镜像名称。最大长度60。
+	BlueprintName *string `json:"BlueprintName,omitempty" name:"BlueprintName"`
+
+	// 设置新的镜像描述。最大长度60。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyBlueprintAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBlueprintAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBlueprintAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBlueprintAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyBlueprintAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 快照 ID, 可通过 DescribeSnapshots 查询。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 新的快照名称，最长为 60 个字符。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+}
+
+func (r *ModifySnapshotAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySnapshotAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifySnapshotAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Price struct {
 
 	// 实例价格。
@@ -732,6 +1060,53 @@ func (r *ResetInstanceResponse) ToJsonString() string {
 
 func (r *ResetInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type Snapshot struct {
+
+	// 快照 ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 创建此快照的磁盘类型。取值：<li>SYSTEM_DISK：系统盘</li>
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 创建此快照的磁盘 ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 创建此快照的磁盘大小，单位 GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 快照名称，用户自定义的快照别名。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照的状态。取值范围：
+	// <li>NORMAL：正常 </li>
+	// <li>CREATING：创建中</li>
+	// <li>ROLLBACKING：回滚中。</li>
+	SnapshotState *string `json:"SnapshotState,omitempty" name:"SnapshotState"`
+
+	// 创建或回滚快照进度百分比，成功后此字段取值为 100。
+	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 快照的最新操作，只有创建、回滚快照时记录。
+	// 取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperation *string `json:"LatestOperation,omitempty" name:"LatestOperation"`
+
+	// 快照的最新操作状态，只有创建、回滚快照时记录。
+	// 取值范围：
+	// <li>SUCCESS：表示操作成功</li>
+	// <li>OPERATING：表示操作执行中</li>
+	// <li>FAILED：表示操作失败</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationState *string `json:"LatestOperationState,omitempty" name:"LatestOperationState"`
+
+	// 快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitempty" name:"LatestOperationRequestId"`
+
+	// 快照的创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type StartInstancesRequest struct {

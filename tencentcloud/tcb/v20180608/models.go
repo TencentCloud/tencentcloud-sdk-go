@@ -1161,6 +1161,43 @@ func (r *DeleteEndUserResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteWxGatewayRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
+}
+
+func (r *DeleteWxGatewayRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWxGatewayRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWxGatewayRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWxGatewayRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteWxGatewayRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAuthDomainsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2797,6 +2834,52 @@ func (r *EstablishCloudBaseRunServerResponse) ToJsonString() string {
 }
 
 func (r *EstablishCloudBaseRunServerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EstablishWxGatewayRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 服务名称
+	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
+
+	// 服务地址
+	GatewayRouteAddr *string `json:"GatewayRouteAddr,omitempty" name:"GatewayRouteAddr"`
+
+	// 协议类型 http/https
+	GatewayRouteProtocol *string `json:"GatewayRouteProtocol,omitempty" name:"GatewayRouteProtocol"`
+
+	// 服务描述
+	GatewayRouteDesc *string `json:"GatewayRouteDesc,omitempty" name:"GatewayRouteDesc"`
+}
+
+func (r *EstablishWxGatewayRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstablishWxGatewayRouteRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EstablishWxGatewayRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EstablishWxGatewayRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EstablishWxGatewayRouteResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

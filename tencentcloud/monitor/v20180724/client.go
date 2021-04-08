@@ -537,7 +537,7 @@ func NewDescribeBaseMetricsResponse() (response *DescribeBaseMetricsResponse) {
     return
 }
 
-// 获取基础指标详情
+// 获取基础指标属性
 func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (response *DescribeBaseMetricsResponse, err error) {
     if request == nil {
         request = NewDescribeBaseMetricsRequest()

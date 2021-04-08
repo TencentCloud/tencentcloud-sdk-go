@@ -218,6 +218,31 @@ func (c *Client) DeleteAcl(request *DeleteAclRequest) (response *DeleteAclRespon
     return
 }
 
+func NewDeleteAclRuleRequest() (request *DeleteAclRuleRequest) {
+    request = &DeleteAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "DeleteAclRule")
+    return
+}
+
+func NewDeleteAclRuleResponse() (response *DeleteAclRuleResponse) {
+    response = &DeleteAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除ACL规则
+func (c *Client) DeleteAclRule(request *DeleteAclRuleRequest) (response *DeleteAclRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteAclRuleRequest()
+    }
+    response = NewDeleteAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},

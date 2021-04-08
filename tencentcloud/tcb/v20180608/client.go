@@ -318,6 +318,31 @@ func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteE
     return
 }
 
+func NewDeleteWxGatewayRouteRequest() (request *DeleteWxGatewayRouteRequest) {
+    request = &DeleteWxGatewayRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteWxGatewayRoute")
+    return
+}
+
+func NewDeleteWxGatewayRouteResponse() (response *DeleteWxGatewayRouteResponse) {
+    response = &DeleteWxGatewayRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除安全网关路由
+func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (response *DeleteWxGatewayRouteResponse, err error) {
+    if request == nil {
+        request = NewDeleteWxGatewayRouteRequest()
+    }
+    response = NewDeleteWxGatewayRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
     request = &DescribeAuthDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -967,6 +992,31 @@ func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServe
         request = NewEstablishCloudBaseRunServerRequest()
     }
     response = NewEstablishCloudBaseRunServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEstablishWxGatewayRouteRequest() (request *EstablishWxGatewayRouteRequest) {
+    request = &EstablishWxGatewayRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "EstablishWxGatewayRoute")
+    return
+}
+
+func NewEstablishWxGatewayRouteResponse() (response *EstablishWxGatewayRouteResponse) {
+    response = &EstablishWxGatewayRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建或修改安全网关路由
+func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest) (response *EstablishWxGatewayRouteResponse, err error) {
+    if request == nil {
+        request = NewEstablishWxGatewayRouteRequest()
+    }
+    response = NewEstablishWxGatewayRouteResponse()
     err = c.Send(request, response)
     return
 }

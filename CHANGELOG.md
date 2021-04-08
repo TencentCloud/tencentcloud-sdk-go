@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 11 次发布
+### 第 12 次发布
 
-发布时间：2021-04-07 08:00:41
+发布时间：2021-04-08 08:09:09
 
 本次发布包含了以下内容：
 
@@ -12,43 +12,22 @@
 
 新增接口：
 
-* [DescribeTelSession](https://cloud.tencent.com/document/api/679/54343)
+* [DeleteAclRule](https://cloud.tencent.com/document/api/597/54394)
 
-新增数据结构：
+修改接口：
 
-* [PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)
+* [CreateAcl](https://cloud.tencent.com/document/api/597/40860)
 
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 25 次发布
-
-发布时间：2021-04-07 08:02:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo)
-* [VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)
-
-修改数据结构：
-
-* [MaterialInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialInfo)
-
-	* 新增成员：VideoEditTemplateMaterial
+	* <font color="#dd0000">**修改入参**：</font>ResourceName
 
 
 
 
-## 专线接入(dc) 版本：2018-04-10
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 18 次发布
+### 第 20 次发布
 
-发布时间：2021-04-07 08:04:13
+发布时间：2021-04-08 08:04:19
 
 本次发布包含了以下内容：
 
@@ -56,18 +35,37 @@
 
 修改接口：
 
-* [ModifyDirectConnectAttribute](https://cloud.tencent.com/document/api/216/34825)
+* [KillSession](https://cloud.tencent.com/document/api/557/53595)
 
-	* 新增入参：Bandwidth
-
-
+	* 新增入参：ShardSerialId
 
 
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 45 次发布
+
+发布时间：2021-04-08 08:01:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：InstanceChargeType
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
 ### 第 11 次发布
 
-发布时间：2021-04-07 08:07:13
+发布时间：2021-04-08 08:00:44
 
 本次发布包含了以下内容：
 
@@ -75,37 +73,56 @@
 
 新增接口：
 
-* [CreateSnapshots](https://cloud.tencent.com/document/api/596/54350)
-* [DeleteSnapshots](https://cloud.tencent.com/document/api/596/54349)
-* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
-* [ImportSnapshots](https://cloud.tencent.com/document/api/596/54347)
-* [ModifySnapshots](https://cloud.tencent.com/document/api/596/54346)
+* [ApplyInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54391)
+* [CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)
+* [CreateInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54390)
+* [DeleteBlueprints](https://cloud.tencent.com/document/api/1207/54384)
+* [DeleteSnapshots](https://cloud.tencent.com/document/api/1207/54389)
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/1207/54388)
+* [ModifyBlueprintAttribute](https://cloud.tencent.com/document/api/1207/54383)
+* [ModifySnapshotAttribute](https://cloud.tencent.com/document/api/1207/54387)
 
 新增数据结构：
 
-* [KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile)
-* [SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo)
-* [SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew)
-* [SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult)
+* [Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 47 次发布
+### 第 43 次发布
 
-发布时间：2021-04-07 08:07:35
+发布时间：2021-04-08 08:07:28
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+* [DeleteWxGatewayRoute](https://cloud.tencent.com/document/api/876/54393)
+* [EstablishWxGatewayRoute](https://cloud.tencent.com/document/api/876/54392)
 
-	* 新增成员：DesiredPodNum, UserScript
 
+
+## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
+
+### 第 1 次发布
+
+发布时间：2021-04-08 08:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeComponentAlertObject](https://cloud.tencent.com/document/api/#/#)
+* [DescribeServiceAlertObject](https://cloud.tencent.com/document/api/#/#)
+
+
+
+## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
 
 
 
@@ -6263,11 +6280,11 @@
 
 新增接口：
 
-* [[DescribeTelSession](https://cloud.tencent.com/document/api/679/54343)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTelSession](https://cloud.tencent.com/document/api/679/54343)
 
 新增数据结构：
 
-* [[PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)](https://cloud.tencent.com/document/api/679/47715#[PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession))
+* [PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)
 
 ### 第 10 次发布
 
@@ -9778,6 +9795,25 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 12 次发布
+
+发布时间：2021-04-08 08:09:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteAclRule](https://cloud.tencent.com/document/api/597/54394)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateAcl](https://cloud.tencent.com/document/api/597/40860)
+
+	* <font color="#dd0000">**修改入参**：</font>ResourceName
+
+
 ### 第 11 次发布
 
 发布时间：2021-02-23 08:09:39
@@ -11310,8 +11346,8 @@
 
 新增数据结构：
 
-* [[SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo)](https://cloud.tencent.com/document/api/1156/40360#[SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo))
-* [[VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)](https://cloud.tencent.com/document/api/1156/40360#[VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial))
+* [SlotInfo](https://cloud.tencent.com/document/api/1156/40360#SlotInfo)
+* [VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)
 
 修改数据结构：
 
@@ -16506,6 +16542,21 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 20 次发布
+
+发布时间：2021-04-08 08:04:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [KillSession](https://cloud.tencent.com/document/api/557/53595)
+
+	* 新增入参：ShardSerialId
+
+
 ### 第 19 次发布
 
 发布时间：2021-03-24 08:04:31
@@ -17982,6 +18033,21 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 45 次发布
+
+发布时间：2021-04-08 08:01:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：InstanceChargeType
+
 
 ### 第 44 次发布
 
@@ -25864,6 +25930,29 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 11 次发布
+
+发布时间：2021-04-08 08:00:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54391)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54390)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteBlueprints](https://cloud.tencent.com/document/api/1207/54384)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSnapshots](https://cloud.tencent.com/document/api/1207/54389)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshots](https://cloud.tencent.com/document/api/1207/54388)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyBlueprintAttribute](https://cloud.tencent.com/document/api/1207/54383)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySnapshotAttribute](https://cloud.tencent.com/document/api/1207/54387)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot)](https://cloud.tencent.com/document/api/1207/47576#[Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot))
 
 ### 第 10 次发布
 
@@ -35994,18 +36083,18 @@
 
 新增接口：
 
-* [[CreateSnapshots](https://cloud.tencent.com/document/api/596/54350)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSnapshots](https://cloud.tencent.com/document/api/596/54349)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)](https://cloud.tencent.com/document/api/#/#)
-* [[ImportSnapshots](https://cloud.tencent.com/document/api/596/54347)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySnapshots](https://cloud.tencent.com/document/api/596/54346)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSnapshots](https://cloud.tencent.com/document/api/596/54350)
+* [DeleteSnapshots](https://cloud.tencent.com/document/api/596/54349)
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
+* [ImportSnapshots](https://cloud.tencent.com/document/api/596/54347)
+* [ModifySnapshots](https://cloud.tencent.com/document/api/596/54346)
 
 新增数据结构：
 
-* [[KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile)](https://cloud.tencent.com/document/api/596/39686#[KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile))
-* [[SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo)](https://cloud.tencent.com/document/api/596/39686#[SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo))
-* [[SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew)](https://cloud.tencent.com/document/api/596/39686#[SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew))
-* [[SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult)](https://cloud.tencent.com/document/api/596/39686#[SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult))
+* [KeyFile](https://cloud.tencent.com/document/api/596/39686#KeyFile)
+* [SnapshotInfo](https://cloud.tencent.com/document/api/596/39686#SnapshotInfo)
+* [SnapshotInfoNew](https://cloud.tencent.com/document/api/596/39686#SnapshotInfoNew)
+* [SnapshotResult](https://cloud.tencent.com/document/api/596/39686#SnapshotResult)
 
 ### 第 10 次发布
 
@@ -36431,6 +36520,19 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 43 次发布
+
+发布时间：2021-04-08 08:07:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteWxGatewayRoute](https://cloud.tencent.com/document/api/876/54393)](https://cloud.tencent.com/document/api/#/#)
+* [[EstablishWxGatewayRoute](https://cloud.tencent.com/document/api/876/54392)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 42 次发布
 
@@ -42700,6 +42802,23 @@
 新增数据结构：
 
 * [AgentShell](https://cloud.tencent.com/document/api/1311/53237#AgentShell)
+
+
+
+## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
+
+### 第 1 次发布
+
+发布时间：2021-04-08 08:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeComponentAlertObject](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeServiceAlertObject](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
 
 
 
