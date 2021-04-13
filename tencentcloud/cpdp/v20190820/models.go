@@ -1771,6 +1771,167 @@ type CreateInvoiceResultData struct {
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
 }
 
+type CreateInvoiceResultV2 struct {
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+}
+
+type CreateInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID。0：高灯，1：票易通
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 抬头类型：1：个人/政府事业单位；2：企业
+	TitleType *int64 `json:"TitleType,omitempty" name:"TitleType"`
+
+	// 购方名称
+	BuyerTitle *string `json:"BuyerTitle,omitempty" name:"BuyerTitle"`
+
+	// 业务开票号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 含税总金额（单位为分）
+	AmountHasTax *int64 `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 总税额（单位为分）
+	TaxAmount *int64 `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 不含税总金额（单位为分）。InvoicePlatformId 为1时，传默认值-1
+	AmountWithoutTax *int64 `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 销方纳税人识别号
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+
+	// 销方名称。（不填默认读取商户注册时输入的信息）
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 销方地址。（不填默认读取商户注册时输入的信息）
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 销方电话。（不填默认读取商户注册时输入的信息）
+	SellerPhone *string `json:"SellerPhone,omitempty" name:"SellerPhone"`
+
+	// 销方银行名称。（不填默认读取商户注册时输入的信息）
+	SellerBankName *string `json:"SellerBankName,omitempty" name:"SellerBankName"`
+
+	// 销方银行账号。（不填默认读取商户注册时输入的信息）
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购方纳税人识别号（购方票面信息）,若抬头类型为2时，必传
+	BuyerTaxpayerNum *string `json:"BuyerTaxpayerNum,omitempty" name:"BuyerTaxpayerNum"`
+
+	// 购方地址。开具专用发票时必填
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 购方银行名称。开具专用发票时必填
+	BuyerBankName *string `json:"BuyerBankName,omitempty" name:"BuyerBankName"`
+
+	// 购方银行账号。开具专用发票时必填
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 购方电话。开具专用发票时必填
+	BuyerPhone *string `json:"BuyerPhone,omitempty" name:"BuyerPhone"`
+
+	// 收票人邮箱。若填入，会收到发票推送邮件
+	BuyerEmail *string `json:"BuyerEmail,omitempty" name:"BuyerEmail"`
+
+	// 收票人手机号。若填入，会收到发票推送短信
+	TakerPhone *string `json:"TakerPhone,omitempty" name:"TakerPhone"`
+
+	// 开票类型：
+	// 1：增值税专用发票；
+	// 2：增值税普通发票；
+	// 3：增值税电子发票；
+	// 4：增值税卷式发票；
+	// 5：区块链电子发票。
+	// 若该字段不填，或值不为1-5，则认为开具”增值税电子发票”
+	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+	// 发票结果回传地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 开票人姓名。（不填默认读取商户注册时输入的信息）
+	Drawer *string `json:"Drawer,omitempty" name:"Drawer"`
+
+	// 收款人姓名。（不填默认读取商户注册时输入的信息）
+	Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+	// 复核人姓名。（不填默认读取商户注册时输入的信息）
+	Checker *string `json:"Checker,omitempty" name:"Checker"`
+
+	// 税盘号
+	TerminalCode *string `json:"TerminalCode,omitempty" name:"TerminalCode"`
+
+	// 征收方式。开具差额征税发票时必填2。开具普通征税发票时为空
+	LevyMethod *string `json:"LevyMethod,omitempty" name:"LevyMethod"`
+
+	// 差额征税扣除额（单位为分）
+	Deduction *int64 `json:"Deduction,omitempty" name:"Deduction"`
+
+	// 备注（票面信息）
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 项目商品明细
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items" list`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 撤销部分商品。0-不撤销，1-撤销
+	UndoPart *int64 `json:"UndoPart,omitempty" name:"UndoPart"`
+
+	// 订单下单时间（格式 YYYYMMDD）
+	OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+	// 订单级别折扣（单位为分）
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 门店编码
+	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
+
+	// 开票渠道。0：APP渠道，1：线下渠道，2：小程序渠道。不填默认为APP渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+}
+
+func (r *CreateInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInvoiceV2Request) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票开具结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateInvoiceResultV2 `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateInvoiceV2Response) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMerchantRequest struct {
 	*tchttp.BaseRequest
 
@@ -1987,6 +2148,65 @@ type CreateRedInvoiceResultData struct {
 
 	// 业务开票号
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+}
+
+type CreateRedInvoiceResultV2 struct {
+
+	// 红票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+}
+
+type CreateRedInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+}
+
+func (r *CreateRedInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRedInvoiceV2Request) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRedInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 红冲结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateRedInvoiceResultV2 `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRedInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateRedInvoiceV2Response) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSinglePayRequest struct {
@@ -4275,6 +4495,67 @@ type QueryInvoiceResultData struct {
 
 	// pdf地址
 	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
+}
+
+type QueryInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发票种类：
+	// 0：蓝票
+	// 1：红票【该字段默认为0， 如果需要查询红票信息，本字段必须传1，否则可能查询不到需要的发票信息】。
+	IsRed *int64 `json:"IsRed,omitempty" name:"IsRed"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+
+	// 当渠道为线下渠道时，必填
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+}
+
+func (r *QueryInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceV2Request) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryInvoiceResultData `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryInvoiceV2Response) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryItem struct {

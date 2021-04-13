@@ -635,6 +635,9 @@ type CreateClsLogSetRequest struct {
 
 	// 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
 	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+
+	// 日志集类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+	LogsetType *string `json:"LogsetType,omitempty" name:"LogsetType"`
 }
 
 func (r *CreateClsLogSetRequest) ToJsonString() string {
@@ -979,6 +982,9 @@ type CreateTopicRequest struct {
 
 	// 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
 	PartitionCount *uint64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
+
+	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+	TopicType *string `json:"TopicType,omitempty" name:"TopicType"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -1676,6 +1682,9 @@ type DescribeClsLogSetResponse struct {
 
 		// 日志集的 ID。
 		LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+		// 健康检查日志集的 ID。
+		HealthLogsetId *string `json:"HealthLogsetId,omitempty" name:"HealthLogsetId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2896,6 +2905,14 @@ type LoadBalancer struct {
 	// CLB是否为NFV，空：不是，l7nfv：七层是NFV。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NfvInfo *string `json:"NfvInfo,omitempty" name:"NfvInfo"`
+
+	// 负载均衡日志服务(CLS)的健康检查日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthLogSetId *string `json:"HealthLogSetId,omitempty" name:"HealthLogSetId"`
+
+	// 负载均衡日志服务(CLS)的健康检查日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthLogTopicId *string `json:"HealthLogTopicId,omitempty" name:"HealthLogTopicId"`
 }
 
 type LoadBalancerDetail struct {
@@ -4050,14 +4067,17 @@ type RuleTargets struct {
 type SetLoadBalancerClsLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 日志服务(CLS)的日志集ID
+	// 日志服务(CLS)的日志集ID。
 	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
 
-	// 日志服务(CLS)的日志主题ID
+	// 日志服务(CLS)的日志主题ID。
 	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+
+	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
 }
 
 func (r *SetLoadBalancerClsLogRequest) ToJsonString() string {

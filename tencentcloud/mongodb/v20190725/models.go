@@ -270,7 +270,7 @@ type CreateDBInstanceHourRequest struct {
 	// 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例密码，不设置该参数则需要在创建完成后通过设置密码接口初始化实例密码。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 项目ID，不设置为默认项目
@@ -364,7 +364,7 @@ type CreateDBInstanceRequest struct {
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 查询子网列表
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例密码，不设置该参数则需要在创建完成后通过设置密码接口初始化实例密码。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 实例标签信息
@@ -570,10 +570,10 @@ type DescribeBackupDownloadTaskRequest struct {
 	// 备份文件名，用来过滤指定文件的下载任务
 	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 
-	// 指定要查询任务的时间范围，StartTime指定开始时间
+	// 指定要查询任务的时间范围，StartTime指定开始时间，不填默认不限制开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 指定要查询任务的时间范围，StartTime指定结束时间
+	// 指定要查询任务的时间范围，EndTime指定结束时间，不填默认不限制结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 此次查询返回的条数，取值范围为1-100，默认为20
@@ -588,7 +588,7 @@ type DescribeBackupDownloadTaskRequest struct {
 	// 排序方式，取值为asc，desc两种，默认desc
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
-	// 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+	// 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试。不填默认返回所有类型
 	Status []*int64 `json:"Status,omitempty" name:"Status" list`
 }
 
@@ -1723,7 +1723,7 @@ type SpecItem struct {
 	// 规格有效标志，取值：0-停止售卖，1-开放售卖
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 规格有效标志，取值：0-停止售卖，1-开放售卖
+	// 计算资源规格，单位为CPU核心数
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 内存规格，单位为MB

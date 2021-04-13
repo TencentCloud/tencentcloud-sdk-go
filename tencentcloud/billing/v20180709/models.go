@@ -808,6 +808,42 @@ type DescribeAccountBalanceResponse struct {
 		// 云账户信息中的”展示可用余额”字段，单位为"分"
 		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
 
+		// 查询的用户Uin
+		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+		// 当前真实可用余额
+		RealBalance *float64 `json:"RealBalance,omitempty" name:"RealBalance"`
+
+		// 现金账户余额
+		CashAccountBalance *float64 `json:"CashAccountBalance,omitempty" name:"CashAccountBalance"`
+
+		// 收益转入账户余额
+		IncomeIntoAccountBalance *float64 `json:"IncomeIntoAccountBalance,omitempty" name:"IncomeIntoAccountBalance"`
+
+		// 赠送账户余额
+		PresentAccountBalance *float64 `json:"PresentAccountBalance,omitempty" name:"PresentAccountBalance"`
+
+		// 冻结金额
+		FreezeAmount *float64 `json:"FreezeAmount,omitempty" name:"FreezeAmount"`
+
+		// 欠费金额
+		OweAmount *float64 `json:"OweAmount,omitempty" name:"OweAmount"`
+
+		// 是否允许欠费消费
+		IsAllowArrears *bool `json:"IsAllowArrears,omitempty" name:"IsAllowArrears"`
+
+		// 是否限制信用额度
+		IsCreditLimited *bool `json:"IsCreditLimited,omitempty" name:"IsCreditLimited"`
+
+		// 信用额度
+		CreditAmount *float64 `json:"CreditAmount,omitempty" name:"CreditAmount"`
+
+		// 可用信用额度
+		CreditBalance *float64 `json:"CreditBalance,omitempty" name:"CreditBalance"`
+
+		// 真实可用信用额度
+		RealCreditBalance *float64 `json:"RealCreditBalance,omitempty" name:"RealCreditBalance"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

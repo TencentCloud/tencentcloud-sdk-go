@@ -1325,6 +1325,31 @@ func (c *Client) DisableOtaVersion(request *DisableOtaVersionRequest) (response 
     return
 }
 
+func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
+    request = &ModifyDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDevice")
+    return
+}
+
+func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
+    response = &ModifyDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改设备信息
+func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceRequest()
+    }
+    response = NewModifyDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceActionRequest() (request *ModifyDeviceActionRequest) {
     request = &ModifyDeviceActionRequest{
         BaseRequest: &tchttp.BaseRequest{},

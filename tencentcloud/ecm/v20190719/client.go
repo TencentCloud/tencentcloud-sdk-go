@@ -1361,6 +1361,31 @@ func (c *Client) DescribeModuleDetail(request *DescribeModuleDetailRequest) (res
     return
 }
 
+func NewDescribeMonthPeakNetworkRequest() (request *DescribeMonthPeakNetworkRequest) {
+    request = &DescribeMonthPeakNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeMonthPeakNetwork")
+    return
+}
+
+func NewDescribeMonthPeakNetworkResponse() (response *DescribeMonthPeakNetworkResponse) {
+    response = &DescribeMonthPeakNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取客户节点上的出入带宽月峰和计费带宽信息
+func (c *Client) DescribeMonthPeakNetwork(request *DescribeMonthPeakNetworkRequest) (response *DescribeMonthPeakNetworkResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonthPeakNetworkRequest()
+    }
+    response = NewDescribeMonthPeakNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
     request = &DescribeNetworkInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},

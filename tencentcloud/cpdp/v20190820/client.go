@@ -476,6 +476,31 @@ func (c *Client) CreateInvoice(request *CreateInvoiceRequest) (response *CreateI
     return
 }
 
+func NewCreateInvoiceV2Request() (request *CreateInvoiceV2Request) {
+    request = &CreateInvoiceV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoiceV2")
+    return
+}
+
+func NewCreateInvoiceV2Response() (response *CreateInvoiceV2Response) {
+    response = &CreateInvoiceV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票开具V2
+func (c *Client) CreateInvoiceV2(request *CreateInvoiceV2Request) (response *CreateInvoiceV2Response, err error) {
+    if request == nil {
+        request = NewCreateInvoiceV2Request()
+    }
+    response = NewCreateInvoiceV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
     request = &CreateMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -522,6 +547,31 @@ func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *C
         request = NewCreateRedInvoiceRequest()
     }
     response = NewCreateRedInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRedInvoiceV2Request() (request *CreateRedInvoiceV2Request) {
+    request = &CreateRedInvoiceV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoiceV2")
+    return
+}
+
+func NewCreateRedInvoiceV2Response() (response *CreateRedInvoiceV2Response) {
+    response = &CreateRedInvoiceV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票红冲V2
+func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (response *CreateRedInvoiceV2Response, err error) {
+    if request == nil {
+        request = NewCreateRedInvoiceV2Request()
+    }
+    response = NewCreateRedInvoiceV2Response()
     err = c.Send(request, response)
     return
 }
@@ -1222,6 +1272,31 @@ func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvo
         request = NewQueryInvoiceRequest()
     }
     response = NewQueryInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryInvoiceV2Request() (request *QueryInvoiceV2Request) {
+    request = &QueryInvoiceV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoiceV2")
+    return
+}
+
+func NewQueryInvoiceV2Response() (response *QueryInvoiceV2Response) {
+    response = &QueryInvoiceV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智慧零售-发票查询V2
+func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *QueryInvoiceV2Response, err error) {
+    if request == nil {
+        request = NewQueryInvoiceV2Request()
+    }
+    response = NewQueryInvoiceV2Response()
     err = c.Send(request, response)
     return
 }

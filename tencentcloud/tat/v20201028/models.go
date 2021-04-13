@@ -74,6 +74,12 @@ type Command struct {
 
 	// 自定义参数的默认取值。
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
+
+	// 命令的结构化描述。公共命令有值，用户命令为空字符串。
+	FormattedDescription *string `json:"FormattedDescription,omitempty" name:"FormattedDescription"`
+
+	// 命令创建者。TAT 代表公共命令，USER 代表个人命令。
+	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
 }
 
 type CommandDocument struct {
@@ -244,7 +250,7 @@ type DescribeCommandsRequest struct {
 	// 命令ID列表，每次请求的上限为100。参数不支持同时指定 `CommandIds` 和 `Filters` 。
 	CommandIds []*string `json:"CommandIds,omitempty" name:"CommandIds" list`
 
-	// 过滤条件。<br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。<br> <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
+	// 过滤条件。<br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。<br> <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。<br> <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。

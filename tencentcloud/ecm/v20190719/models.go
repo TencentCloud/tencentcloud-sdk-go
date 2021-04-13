@@ -2588,6 +2588,47 @@ func (r *DescribeModuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMonthPeakNetworkRequest struct {
+	*tchttp.BaseRequest
+
+	// 月份时间(xxxx-xx) 如2021-03,默认取当前时间的上一个月份
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeMonthPeakNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMonthPeakNetworkRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMonthPeakNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MonthNetWorkData []*MonthNetwork `json:"MonthNetWorkData,omitempty" name:"MonthNetWorkData" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMonthPeakNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMonthPeakNetworkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5460,6 +5501,48 @@ type ModuleItem struct {
 
 	// 模块信息
 	Module *Module `json:"Module,omitempty" name:"Module"`
+}
+
+type MonthNetwork struct {
+
+	// 节点zone信息
+	ZoneInfo *ZoneInfo `json:"ZoneInfo,omitempty" name:"ZoneInfo"`
+
+	// 带宽月份 示例"202103"
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 带宽包id 格式如"bwp-xxxxxxxx"
+	BandwidthPkgId *string `json:"BandwidthPkgId,omitempty" name:"BandwidthPkgId"`
+
+	// 运营商简称 取值范围"CUCC;CTCC;CMCC"
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 入网带宽包峰值,取值范围0.0-xxx.xxx
+	TrafficMaxIn *float64 `json:"TrafficMaxIn,omitempty" name:"TrafficMaxIn"`
+
+	// 出网带宽包峰值,取值范围0.0-xxx.xxx
+	TrafficMaxOut *float64 `json:"TrafficMaxOut,omitempty" name:"TrafficMaxOut"`
+
+	// 计费带宽,取值范围0.0-xxx.xxx
+	FeeTraffic *float64 `json:"FeeTraffic,omitempty" name:"FeeTraffic"`
+
+	// 月计费带宽起始时间 格式"yyyy-mm-dd HH:mm:ss"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 月计费带宽结束时间 格式"yyyy-mm-dd HH:mm:ss"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 月计费带宽实际有效天数 整形必须大于等于0
+	EffectiveDays *int64 `json:"EffectiveDays,omitempty" name:"EffectiveDays"`
+
+	// 指定月份的实际天数 实例 30
+	MonthDays *int64 `json:"MonthDays,omitempty" name:"MonthDays"`
+
+	// 有效天占比 保留小数点后四位0.2134
+	EffectiveDaysRate *float64 `json:"EffectiveDaysRate,omitempty" name:"EffectiveDaysRate"`
+
+	// 计费带宽包类型 实例"Address","LoadBalance","AddressIpv6"
+	BandwidthPkgType *string `json:"BandwidthPkgType,omitempty" name:"BandwidthPkgType"`
 }
 
 type NetworkInterface struct {

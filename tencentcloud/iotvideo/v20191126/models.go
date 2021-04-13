@@ -2567,6 +2567,46 @@ func (r *ModifyDevicePropertyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备ID
+	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 用户ID
+	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+
+	// 设备昵称
+	Nick *string `json:"Nick,omitempty" name:"Nick"`
+}
+
+func (r *ModifyDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyDeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyProductRequest struct {
 	*tchttp.BaseRequest
 

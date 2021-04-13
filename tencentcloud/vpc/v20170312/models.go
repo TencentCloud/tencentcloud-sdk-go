@@ -1111,6 +1111,9 @@ type CcnAttachedInstance struct {
 
 	// 关联实例所属的大地域，如: CHINA_MAINLAND
 	InstanceArea *string `json:"InstanceArea,omitempty" name:"InstanceArea"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type CcnBandwidthInfo struct {
@@ -1154,6 +1157,9 @@ type CcnInstance struct {
 	// <li>`BMVPC`：黑石私有网络</li>
 	// <li>`VPNGW`：VPNGW类型</li>
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type CcnRegionBandwidthLimit struct {
@@ -2149,6 +2155,49 @@ func (r *CreateIp6TranslatorsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLocalGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 本地网关名称
+	LocalGatewayName *string `json:"LocalGatewayName,omitempty" name:"LocalGatewayName"`
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// CDC实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+}
+
+func (r *CreateLocalGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLocalGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLocalGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本地网关信息
+		LocalGateway *LocalGateway `json:"LocalGateway,omitempty" name:"LocalGateway"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLocalGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateLocalGatewayResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -2762,6 +2811,9 @@ type CreateSubnetRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// CDC实例ID。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -2805,6 +2857,9 @@ type CreateSubnetsRequest struct {
 
 	// 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 需要增加到的CDC实例ID。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 func (r *CreateSubnetsRequest) ToJsonString() string {
@@ -3575,6 +3630,46 @@ func (r *DeleteIp6TranslatorsResponse) ToJsonString() string {
 }
 
 func (r *DeleteIp6TranslatorsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLocalGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 本地网关实例ID
+	LocalGatewayId *string `json:"LocalGatewayId,omitempty" name:"LocalGatewayId"`
+
+	// CDC实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *DeleteLocalGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLocalGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLocalGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLocalGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLocalGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5697,6 +5792,53 @@ func (r *DescribeIpGeolocationInfosResponse) ToJsonString() string {
 }
 
 func (r *DescribeIpGeolocationInfosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLocalGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询条件：
+	// vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤，名称支持模糊搜索，local-gateway-id：按照本地网关实例ID过滤，cdc-id：按照cdc实例ID过滤查询。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLocalGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLocalGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLocalGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本地网关信息集合
+		LocalGatewaySet []*LocalGateway `json:"LocalGatewaySet,omitempty" name:"LocalGatewaySet" list`
+
+		// 本地网关总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLocalGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeLocalGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8530,6 +8672,27 @@ type ItemPrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
+type LocalGateway struct {
+
+	// CDC实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 本地网关实例ID
+	UniqLocalGwId *string `json:"UniqLocalGwId,omitempty" name:"UniqLocalGwId"`
+
+	// 本地网关名称
+	LocalGatewayName *string `json:"LocalGatewayName,omitempty" name:"LocalGatewayName"`
+
+	// 本地网关IP地址
+	LocalGwIp *string `json:"LocalGwIp,omitempty" name:"LocalGwIp"`
+
+	// 本地网关创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type MigrateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -8900,6 +9063,43 @@ func (r *ModifyBandwidthPackageAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyBandwidthPackageAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnAttachedInstancesAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// CCN实例ID。形如：ccn-f49l6u0z。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 关联网络实例列表
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+}
+
+func (r *ModifyCcnAttachedInstancesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnAttachedInstancesAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcnAttachedInstancesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCcnAttachedInstancesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyCcnAttachedInstancesAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9377,6 +9577,49 @@ func (r *ModifyIpv6AddressesAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyIpv6AddressesAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLocalGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 本地网关名称
+	LocalGatewayName *string `json:"LocalGatewayName,omitempty" name:"LocalGatewayName"`
+
+	// CDC实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// 本地网关实例ID
+	LocalGatewayId *string `json:"LocalGatewayId,omitempty" name:"LocalGatewayId"`
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *ModifyLocalGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLocalGatewayRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLocalGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLocalGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyLocalGatewayResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10432,6 +10675,10 @@ type NetworkInterface struct {
 	// 网卡绑定的子机类型：cvm，eks。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 网卡所关联的CDC实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 type NetworkInterfaceAttachment struct {
@@ -10924,6 +11171,12 @@ type ReplaceRoutesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 原路由策略信息。
+		OldRouteSet []*Route `json:"OldRouteSet,omitempty" name:"OldRouteSet" list`
+
+		// 修改后的路由策略信息。
+		NewRouteSet []*Route `json:"NewRouteSet,omitempty" name:"NewRouteSet" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -11324,7 +11577,8 @@ type Route struct {
 	// NAT：NAT网关; 
 	// NORMAL_CVM：普通云服务器；
 	// EIP：云服务器的公网IP；
-	// CCN：云联网。
+	// CCN：云联网；
+	// LOCAL_GATEWAY：本地网关。
 	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
 
 	// 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
@@ -11701,6 +11955,14 @@ type Subnet struct {
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+
+	// CDC实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// 是否是CDC所属子网。0:否 1:是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCdcSubnet *int64 `json:"IsCdcSubnet,omitempty" name:"IsCdcSubnet"`
 }
 
 type SubnetInput struct {

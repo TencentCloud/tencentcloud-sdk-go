@@ -138,8 +138,8 @@ type InputManageMarketingRisk struct {
 	// Android battery_power String 否 电池电量
 	// Android language String 否 语言
 	// Android package_name String 否 软件包名
-	// Android app_version String 否 app 版本号
-	// Android app_name String 否 app 显示名称
+	// Android App_version String 否 App 版本号
+	// Android App_name String 否 App 显示名称
 	// Android is_debug String 否 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
 	// Android is_root String 否 是否越狱；0 为正常，1 为越狱；其他值无效
 	// Android is_proxy String 否 是否启动代理；0 为未开启，1 为开启；其他值无效
@@ -162,9 +162,9 @@ type InputManageMarketingRisk struct {
 	// IOS battery_power String 否 电池电量
 	// IOS resolution_w String 否 屏幕分辨率宽，保留整数
 	// IOS resolution_h String 否 屏幕分辨率高，保留整数
-	// IOS package_name String 否 app 包名
-	// IOS app_version String 否 app 版本号
-	// IOS app_name String 否 app 显示名称
+	// IOS package_name String 否 App 包名
+	// IOS App_version String 否 App 版本号
+	// IOS App_name String 否 App 显示名称
 	// IOS is_debug String 否 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
 	// IOS is_root String 否 是否越狱；0 为正常，1 为越狱；其他值无效
 	// IOS is_proxy String 否 是否启动代理；0 为未开启，1 为开启；其他值无效

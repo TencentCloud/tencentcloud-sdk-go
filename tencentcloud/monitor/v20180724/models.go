@@ -85,7 +85,7 @@ type AlarmHistory struct {
 	// 告警渠道列表 SMS=短信 EMAIL=邮件 CALL=电话 WECHAT=微信
 	NoticeWays []*string `json:"NoticeWays,omitempty" name:"NoticeWays" list`
 
-	// 兼容告警1.0策略组 Id
+	// 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
 	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
 
 	// 告警类型
@@ -319,11 +319,11 @@ type AlarmPolicyFilter struct {
 
 type AlarmPolicyRule struct {
 
-	// 指标名
+	// 指标名或事件名，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 秒数 统计周期
+	// 秒数 统计周期，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -345,14 +345,15 @@ type AlarmPolicyRule struct {
 	// cycle_decrease=环比下降
 	// cycle_wave=环比波动
 	// re=正则匹配
+	// 支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
-	// 阈值
+	// 阈值，支持的范围可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 周期数 持续通知周期 1=持续1个周期 2=持续2个周期...
+	// 周期数 持续通知周期 1=持续1个周期 2=持续2个周期...，支持的值可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinuePeriod *int64 `json:"ContinuePeriod,omitempty" name:"ContinuePeriod"`
 
@@ -376,7 +377,7 @@ type AlarmPolicyRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 
-	// 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值
+	// 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 }
@@ -412,7 +413,7 @@ type BindingPolicyObjectDimension struct {
 type BindingPolicyObjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 策略组id，如传入PolicyId则该字段可传入任意值
+	// 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 必填。固定值"monitor"
@@ -424,7 +425,7 @@ type BindingPolicyObjectRequest struct {
 	// 需要绑定的对象维度信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitempty" name:"Dimensions" list`
 
-	// 告警策略ID，使用此字段时GroupId可传入任意值
+	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
@@ -561,7 +562,7 @@ type CreateAlarmPolicyRequest struct {
 	// 监控类型 MT_QCE=云产品监控
 	MonitorType *string `json:"MonitorType,omitempty" name:"MonitorType"`
 
-	// 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+	// 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得，例如 cvm_device
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 备注，不超过100字符，仅支持中英文、数字、下划线、-
@@ -570,16 +571,19 @@ type CreateAlarmPolicyRequest struct {
 	// 是否启用 0=停用 1=启用，可不传 默认为1
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 
-	// 项目 Id -1=无项目 0=默认项目，可不传 默认为-1
+	// 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 指标触发条件
+	// 触发条件模板 Id ，可不传
+	ConditionTemplateId *int64 `json:"ConditionTemplateId,omitempty" name:"ConditionTemplateId"`
+
+	// 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
 	Condition *AlarmPolicyCondition `json:"Condition,omitempty" name:"Condition"`
 
-	// 事件触发条件
+	// 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitempty" name:"EventCondition"`
 
-	// 通知规则 Id 列表，由 DescribeAlarmNotices 获得
+	// 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds" list`
 
 	// 触发任务列表
@@ -602,7 +606,7 @@ type CreateAlarmPolicyResponse struct {
 		// 告警策略 ID
 		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
-		// 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+		// 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
 		OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3262,6 +3266,9 @@ type ModifyAlarmPolicyConditionRequest struct {
 	// 告警策略 ID
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
+	// 触发条件模板 Id，可不传
+	ConditionTemplateId *int64 `json:"ConditionTemplateId,omitempty" name:"ConditionTemplateId"`
+
 	// 指标触发条件
 	Condition *AlarmPolicyCondition `json:"Condition,omitempty" name:"Condition"`
 
@@ -3887,10 +3894,10 @@ type UnBindingAllPolicyObjectRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组id，如传入PolicyId则该字段可传入任意值
+	// 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 告警策略ID，使用此字段时GroupId可传入任意值
+	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
@@ -3927,16 +3934,16 @@ type UnBindingPolicyObjectRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组id，如传入PolicyId则该字段可传入任意值
+	// 策略组id，如传入 PolicyId 则该字段被忽略可传入任意值如 0
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
 	UniqueId []*string `json:"UniqueId,omitempty" name:"UniqueId" list`
 
-	// 实例分组id, 如果按实例分组删除的话UniqueId参数是无效的
+	// 实例分组id，如果按实例分组删除的话UniqueId参数是无效的
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
 
-	// 告警策略ID，使用此字段时GroupId可传入任意值
+	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 

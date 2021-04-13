@@ -2242,10 +2242,10 @@ type CreateTaskRequest struct {
 	// 任务内容，长度限制65536个字节
 	TaskContent *string `json:"TaskContent,omitempty" name:"TaskContent"`
 
-	// 执行类型，UNICAST/BROADCAST
+	// 执行类型，unicast/broadcast
 	ExecuteType *string `json:"ExecuteType,omitempty" name:"ExecuteType"`
 
-	// 任务类型
+	// 任务类型,java
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务超时时间， 时间单位 ms

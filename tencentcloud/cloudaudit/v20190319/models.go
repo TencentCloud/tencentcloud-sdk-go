@@ -22,26 +22,23 @@ import (
 
 type AttributeKeyDetail struct {
 
-	// 中文标签
-	Label *string `json:"Label,omitempty" name:"Label"`
-
 	// 输入框类型
 	LabelType *string `json:"LabelType,omitempty" name:"LabelType"`
-
-	// 展示排序
-	Order *int64 `json:"Order,omitempty" name:"Order"`
 
 	// 初始化展示
 	Starter *string `json:"Starter,omitempty" name:"Starter"`
 
+	// 展示排序
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+
 	// AttributeKey值
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 中文标签
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type AuditSummary struct {
-
-	// 跟踪集名称
-	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 
 	// 跟踪集状态，1：开启，0：关闭
 	AuditStatus *int64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
@@ -49,17 +46,20 @@ type AuditSummary struct {
 	// COS存储桶名称
 	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
 
+	// 跟踪集名称
+	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
+
 	// 日志前缀
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
 }
 
 type CmqRegionInfo struct {
 
-	// cmq地域
-	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
-
 	// 地域描述
 	CmqRegionName *string `json:"CmqRegionName,omitempty" name:"CmqRegionName"`
+
+	// cmq地域
+	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
 }
 
 type CosRegionInfo struct {
@@ -74,11 +74,14 @@ type CosRegionInfo struct {
 type CreateAuditRequest struct {
 	*tchttp.BaseRequest
 
+	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
+	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
+
+	// 管理事件的读写属性。1：只读，2：只写，3：全部。
+	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
+
 	// 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
-
-	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
 
 	// cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
 	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
@@ -86,32 +89,29 @@ type CreateAuditRequest struct {
 	// 是否创建新的cos存储桶。1：是，0：否。
 	IsCreateNewBucket *int64 `json:"IsCreateNewBucket,omitempty" name:"IsCreateNewBucket"`
 
-	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
-	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
-
-	// 管理事件的读写属性。1：只读，2：只写，3：全部。
-	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
-
-	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-	CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
-
-	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
-
-	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
-
-	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
 
 	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
+	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+	CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
+
 	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
 	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
 
+	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
+
 	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
+
+	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 }
 
 func (r *CreateAuditRequest) ToJsonString() string {
@@ -201,32 +201,26 @@ type DescribeAuditResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 跟踪集名称。
-		AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
+		// 是否开启cmq消息通知。1：是，0：否。
+		IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
+
+		// 管理事件读写属性，1：只读，2：只写，3：全部
+		ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
+
+		// CMK的全局唯一标识符。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
 		// 跟踪集状态，1：开启，0：停止。
 		AuditStatus *int64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
 
-		// 队列名称。
-		CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
-
-		// 队列所在地域。
-		CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
-
-		// cos存储桶名称。
-		CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+		// 跟踪集名称。
+		AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 
 		// cos存储桶所在地域。
 		CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
 
-		// 是否开启cmq消息通知。1：是，0：否。
-		IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
-
-		// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-		IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
-
-		// CMK的全局唯一标识符。
-		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+		// 队列名称。
+		CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
 
 		// CMK别名。
 		KmsAlias *string `json:"KmsAlias,omitempty" name:"KmsAlias"`
@@ -234,11 +228,17 @@ type DescribeAuditResponse struct {
 		// kms地域。
 		KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
 
+		// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+		IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+		// cos存储桶名称。
+		CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+		// 队列所在地域。
+		CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
+
 		// 日志前缀。
 		LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
-
-		// 管理事件读写属性，1：只读，2：只写，3：全部
-		ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -254,37 +254,91 @@ func (r *DescribeAuditResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间戳（单位秒，不超过当前时间 90 天）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳（单位秒，查询时间跨度小于 30 天）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查看更多日志的凭证
+	NextToken *uint64 `json:"NextToken,omitempty" name:"NextToken"`
+
+	// 返回日志的最大条数（最大 50 条）
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+
+	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码）
+	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
+}
+
+func (r *DescribeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEventsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志集合是否结束
+		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+		// 查看更多日志的凭证
+		NextToken *uint64 `json:"NextToken,omitempty" name:"NextToken"`
+
+		// 日志集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Events []*Event `json:"Events,omitempty" name:"Events" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeEventsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Event struct {
-
-	// 资源对
-	Resources *Resource `json:"Resources,omitempty" name:"Resources"`
-
-	// 主账号ID
-	AccountID *int64 `json:"AccountID,omitempty" name:"AccountID"`
-
-	// 日志详情
-	CloudAuditEvent *string `json:"CloudAuditEvent,omitempty" name:"CloudAuditEvent"`
-
-	// 鉴权错误码
-	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
 
 	// 日志ID
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
-	// 事件名称
-	EventName *string `json:"EventName,omitempty" name:"EventName"`
-
-	// 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
-	EventNameCn *string `json:"EventNameCn,omitempty" name:"EventNameCn"`
-
-	// 事件地域
-	EventRegion *string `json:"EventRegion,omitempty" name:"EventRegion"`
-
-	// 请求来源
-	EventSource *string `json:"EventSource,omitempty" name:"EventSource"`
+	// 用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
 
 	// 事件时间
 	EventTime *string `json:"EventTime,omitempty" name:"EventTime"`
+
+	// 日志详情
+	CloudAuditEvent *string `json:"CloudAuditEvent,omitempty" name:"CloudAuditEvent"`
+
+	// 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+	ResourceTypeCn *string `json:"ResourceTypeCn,omitempty" name:"ResourceTypeCn"`
+
+	// 鉴权错误码
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 事件名称
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+
+	// 请求来源
+	EventSource *string `json:"EventSource,omitempty" name:"EventSource"`
 
 	// 请求ID
 	RequestID *string `json:"RequestID,omitempty" name:"RequestID"`
@@ -292,17 +346,21 @@ type Event struct {
 	// 资源地域
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 
-	// 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
-	ResourceTypeCn *string `json:"ResourceTypeCn,omitempty" name:"ResourceTypeCn"`
-
-	// 证书ID
-	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+	// 主账号ID
+	AccountID *int64 `json:"AccountID,omitempty" name:"AccountID"`
 
 	// 源IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIPAddress *string `json:"SourceIPAddress,omitempty" name:"SourceIPAddress"`
 
-	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	// 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+	EventNameCn *string `json:"EventNameCn,omitempty" name:"EventNameCn"`
+
+	// 资源对
+	Resources *Resource `json:"Resources,omitempty" name:"Resources"`
+
+	// 事件地域
+	EventRegion *string `json:"EventRegion,omitempty" name:"EventRegion"`
 }
 
 type GetAttributeKeyRequest struct {
@@ -403,6 +461,7 @@ type ListAuditsResponse struct {
 	Response *struct {
 
 		// 查询跟踪集概要集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		AuditSummarys []*AuditSummary `json:"AuditSummarys,omitempty" name:"AuditSummarys" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -519,11 +578,11 @@ type ListKeyAliasByRegionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 密钥别名
-		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
-
 		// CMK的总数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 密钥别名
+		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -542,23 +601,23 @@ func (r *ListKeyAliasByRegionResponse) FromJsonString(s string) error {
 type LookUpEventsRequest struct {
 	*tchttp.BaseRequest
 
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
-
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
 	// 检索条件
 	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
+
+	// 查看更多日志的凭证
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 
 	// 返回日志的最大条数
 	MaxResults *int64 `json:"MaxResults,omitempty" name:"MaxResults"`
 
 	// 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
-
-	// 查看更多日志的凭证
-	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *LookUpEventsRequest) ToJsonString() string {
@@ -574,14 +633,17 @@ type LookUpEventsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 查看更多日志的凭证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
 		// 日志集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Events []*Event `json:"Events,omitempty" name:"Events" list`
 
 		// 日志集合是否结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
-
-		// 查看更多日志的凭证
-		NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -600,19 +662,22 @@ func (r *LookUpEventsResponse) FromJsonString(s string) error {
 type LookupAttribute struct {
 
 	// AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttributeKey *string `json:"AttributeKey,omitempty" name:"AttributeKey"`
 
-	// AttributeValue
+	// AttributeValue的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttributeValue *string `json:"AttributeValue,omitempty" name:"AttributeValue"`
 }
 
 type Resource struct {
 
-	// 资源名称
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
-
 	// 资源类型
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 }
 
 type StartLoggingRequest struct {
@@ -695,41 +760,41 @@ type UpdateAuditRequest struct {
 	// 跟踪集名称
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 
-	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-	CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
-
-	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
-
-	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
-
-	// cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
-
-	// 是否创建新的cos存储桶。1：是，0：否。
-	IsCreateNewBucket *int64 `json:"IsCreateNewBucket,omitempty" name:"IsCreateNewBucket"`
-
-	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
-
 	// 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
 	IsEnableCmqNotify *int64 `json:"IsEnableCmqNotify,omitempty" name:"IsEnableCmqNotify"`
 
-	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+	// 管理事件的读写属性。1：只读，2：只写，3：全部。
+	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
 
 	// CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
+	// cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+	CmqQueueName *string `json:"CmqQueueName,omitempty" name:"CmqQueueName"`
+
+	// 是否创建新的cos存储桶。1：是，0：否。
+	IsCreateNewBucket *int64 `json:"IsCreateNewBucket,omitempty" name:"IsCreateNewBucket"`
+
 	// kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
 	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
+
+	// 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+	IsEnableKmsEncry *int64 `json:"IsEnableKmsEncry,omitempty" name:"IsEnableKmsEncry"`
+
+	// cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+	// 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+	CmqRegion *string `json:"CmqRegion,omitempty" name:"CmqRegion"`
 
 	// 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
 	LogFilePrefix *string `json:"LogFilePrefix,omitempty" name:"LogFilePrefix"`
 
-	// 管理事件的读写属性。1：只读，2：只写，3：全部。
-	ReadWriteAttribute *int64 `json:"ReadWriteAttribute,omitempty" name:"ReadWriteAttribute"`
+	// 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 }
 
 func (r *UpdateAuditRequest) ToJsonString() string {

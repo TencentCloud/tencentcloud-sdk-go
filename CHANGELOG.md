@@ -1,71 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 12 次发布
+### 第 34 次发布
 
-发布时间：2021-04-08 08:09:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteAclRule](https://cloud.tencent.com/document/api/597/54394)
-
-修改接口：
-
-* [CreateAcl](https://cloud.tencent.com/document/api/597/40860)
-
-	* <font color="#dd0000">**修改入参**：</font>ResourceName
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 20 次发布
-
-发布时间：2021-04-08 08:04:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [KillSession](https://cloud.tencent.com/document/api/557/53595)
-
-	* 新增入参：ShardSerialId
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 45 次发布
-
-发布时间：2021-04-08 08:01:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
-
-	* 新增入参：InstanceChargeType
-
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 11 次发布
-
-发布时间：2021-04-08 08:00:44
+发布时间：2021-04-13 08:11:15
 
 本次发布包含了以下内容：
 
@@ -73,26 +12,26 @@
 
 新增接口：
 
-* [ApplyInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54391)
-* [CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)
-* [CreateInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54390)
-* [DeleteBlueprints](https://cloud.tencent.com/document/api/1207/54384)
-* [DeleteSnapshots](https://cloud.tencent.com/document/api/1207/54389)
-* [DescribeSnapshots](https://cloud.tencent.com/document/api/1207/54388)
-* [ModifyBlueprintAttribute](https://cloud.tencent.com/document/api/1207/54383)
-* [ModifySnapshotAttribute](https://cloud.tencent.com/document/api/1207/54387)
+* [CreateInvoiceV2](https://cloud.tencent.com/document/api/1122/54633)
+* [CreateRedInvoiceV2](https://cloud.tencent.com/document/api/1122/54632)
+* [QueryInvoiceV2](https://cloud.tencent.com/document/api/1122/54631)
 
 新增数据结构：
 
-* [Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot)
+* [CreateInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultV2)
+* [CreateRedInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultV2)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-### 第 43 次发布
 
-发布时间：2021-04-08 08:07:28
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 22 次发布
+
+发布时间：2021-04-13 08:01:35
 
 本次发布包含了以下内容：
 
@@ -100,16 +39,72 @@
 
 新增接口：
 
-* [DeleteWxGatewayRoute](https://cloud.tencent.com/document/api/876/54393)
-* [EstablishWxGatewayRoute](https://cloud.tencent.com/document/api/876/54392)
+* [ModifyDevice](https://cloud.tencent.com/document/api/#/#)
 
 
 
-## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 4 次发布
+
+发布时间：2021-04-13 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupInfo](https://cloud.tencent.com/document/api/1361/53754#GroupInfo)
+
+	* 新增成员：Error
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 3 次发布
+
+发布时间：2021-04-13 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：FormattedDescription, CreatedBy
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 48 次发布
+
+发布时间：2021-04-13 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateClusterVersion](https://cloud.tencent.com/document/api/457/52133)
+
+	* 新增入参：ExtraArgs
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
 ### 第 1 次发布
 
-发布时间：2021-04-08 08:10:21
+发布时间：2021-04-13 08:00:03
 
 本次发布包含了以下内容：
 
@@ -117,12 +112,56 @@
 
 新增接口：
 
-* [DescribeComponentAlertObject](https://cloud.tencent.com/document/api/#/#)
-* [DescribeServiceAlertObject](https://cloud.tencent.com/document/api/#/#)
+* [ManageConfig](https://cloud.tencent.com/document/api/1364/54616)
 
 
 
-## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 84 次发布
+
+发布时间：2021-04-13 08:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateLocalGateway](https://cloud.tencent.com/document/api/215/54630)
+* [DeleteLocalGateway](https://cloud.tencent.com/document/api/215/54629)
+* [DescribeLocalGateway](https://cloud.tencent.com/document/api/215/54628)
+* [ModifyLocalGateway](https://cloud.tencent.com/document/api/215/54627)
+
+修改接口：
+
+* [CreateSubnet](https://cloud.tencent.com/document/api/215/15782)
+
+	* 新增入参：CdcId
+
+* [CreateSubnets](https://cloud.tencent.com/document/api/215/31960)
+
+	* 新增入参：CdcId
+
+* [ReplaceRoutes](https://cloud.tencent.com/document/api/215/15764)
+
+	* 新增出参：OldRouteSet, NewRouteSet
+
+
+新增数据结构：
+
+* [LocalGateway](https://cloud.tencent.com/document/api/215/15824#LocalGateway)
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：CdcId
+
+* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
+
+	* 新增成员：CdcId, IsCdcSubnet
+
 
 
 
@@ -3340,6 +3379,21 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 25 次发布
+
+发布时间：2021-04-12 08:02:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccountBalance](https://cloud.tencent.com/document/api/555/20253)
+
+	* 新增出参：Uin, RealBalance, CashAccountBalance, IncomeIntoAccountBalance, PresentAccountBalance, FreezeAmount, OweAmount, IsAllowArrears, IsCreditLimited, CreditAmount, CreditBalance, RealCreditBalance
+
 
 ### 第 24 次发布
 
@@ -9805,7 +9859,7 @@
 
 新增接口：
 
-* [[DeleteAclRule](https://cloud.tencent.com/document/api/597/54394)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteAclRule](https://cloud.tencent.com/document/api/597/54394)
 
 修改接口：
 
@@ -10102,6 +10156,40 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 47 次发布
+
+发布时间：2021-04-09 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+
+	* 新增入参：LogsetType
+
+* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
+
+	* 新增入参：TopicType
+
+* [DescribeClsLogSet](https://cloud.tencent.com/document/api/214/46801)
+
+	* 新增出参：HealthLogsetId
+
+* [SetLoadBalancerClsLog](https://cloud.tencent.com/document/api/214/43266)
+
+	* 新增入参：LogType
+
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：HealthLogSetId, HealthLogTopicId
+
 
 ### 第 46 次发布
 
@@ -11144,6 +11232,18 @@
 
 
 ## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 6 次发布
+
+发布时间：2021-04-09 08:10:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEvents](https://cloud.tencent.com/document/api/629/54488)
 
 ### 第 5 次发布
 
@@ -12390,6 +12490,25 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 34 次发布
+
+发布时间：2021-04-13 08:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInvoiceV2](https://cloud.tencent.com/document/api/1122/54633)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRedInvoiceV2](https://cloud.tencent.com/document/api/1122/54632)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryInvoiceV2](https://cloud.tencent.com/document/api/1122/54631)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultV2)](https://cloud.tencent.com/document/api/1122/40683#[CreateInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateInvoiceResultV2))
+* [[CreateRedInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultV2)](https://cloud.tencent.com/document/api/1122/40683#[CreateRedInvoiceResultV2](https://cloud.tencent.com/document/api/1122/40683#CreateRedInvoiceResultV2))
 
 ### 第 33 次发布
 
@@ -18034,6 +18153,22 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 46 次发布
+
+发布时间：2021-04-09 08:01:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMonthPeakNetwork](https://cloud.tencent.com/document/api/1108/54487)
+
+新增数据结构：
+
+* [MonthNetwork](https://cloud.tencent.com/document/api/1108/42574#MonthNetwork)
+
 ### 第 45 次发布
 
 发布时间：2021-04-08 08:01:07
@@ -23225,6 +23360,27 @@
 
 ## 智能编辑(ie) 版本：2020-03-04
 
+### 第 8 次发布
+
+发布时间：2021-04-12 08:01:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MediaResultInfo](https://cloud.tencent.com/document/api/1186/42824#MediaResultInfo)
+* [ResultAudioInfo](https://cloud.tencent.com/document/api/1186/42824#ResultAudioInfo)
+* [ResultVideoInfo](https://cloud.tencent.com/document/api/1186/42824#ResultVideoInfo)
+
+修改数据结构：
+
+* [TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)
+
+	* 新增成员：FileSize, MediaInfo
+
+
 ### 第 7 次发布
 
 发布时间：2021-04-01 08:00:55
@@ -24958,6 +25114,18 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
+### 第 22 次发布
+
+发布时间：2021-04-13 08:01:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyDevice](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 21 次发布
 
 发布时间：2021-02-24 20:40:37
@@ -25519,6 +25687,59 @@
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
+### 第 4 次发布
+
+发布时间：2021-04-13 08:00:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupInfo](https://cloud.tencent.com/document/api/1361/53754#GroupInfo)
+
+	* 新增成员：Error
+
+
+### 第 3 次发布
+
+发布时间：2021-04-12 08:00:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDevice](https://cloud.tencent.com/document/api/1361/53723)
+
+	* 新增出参：VirtualGroupId
+
+* [DescribeGroupDevices](https://cloud.tencent.com/document/api/1361/53748)
+
+	* 新增入参：Recordable
+
+
+修改数据结构：
+
+* [AllDeviceInfo](https://cloud.tencent.com/document/api/1361/53754#AllDeviceInfo)
+
+	* 新增成员：Recordable
+
+* [GroupDeviceItem](https://cloud.tencent.com/document/api/1361/53754#GroupDeviceItem)
+
+	* 新增成员：Recordable
+
+* [GroupInfo](https://cloud.tencent.com/document/api/1361/53754#GroupInfo)
+
+	* 新增成员：GroupStatus
+
+* [GroupItem](https://cloud.tencent.com/document/api/1361/53754#GroupItem)
+
+	* 新增成员：GroupStatus
+
+
 ### 第 2 次发布
 
 发布时间：2021-03-23 08:00:09
@@ -25941,18 +26162,18 @@
 
 新增接口：
 
-* [[ApplyInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54391)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54390)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBlueprints](https://cloud.tencent.com/document/api/1207/54384)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSnapshots](https://cloud.tencent.com/document/api/1207/54389)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSnapshots](https://cloud.tencent.com/document/api/1207/54388)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBlueprintAttribute](https://cloud.tencent.com/document/api/1207/54383)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySnapshotAttribute](https://cloud.tencent.com/document/api/1207/54387)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54391)
+* [CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)
+* [CreateInstanceSnapshot](https://cloud.tencent.com/document/api/1207/54390)
+* [DeleteBlueprints](https://cloud.tencent.com/document/api/1207/54384)
+* [DeleteSnapshots](https://cloud.tencent.com/document/api/1207/54389)
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/1207/54388)
+* [ModifyBlueprintAttribute](https://cloud.tencent.com/document/api/1207/54383)
+* [ModifySnapshotAttribute](https://cloud.tencent.com/document/api/1207/54387)
 
 新增数据结构：
 
-* [[Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot)](https://cloud.tencent.com/document/api/1207/47576#[Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot))
+* [Snapshot](https://cloud.tencent.com/document/api/1207/47576#Snapshot)
 
 ### 第 10 次发布
 
@@ -28354,6 +28575,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 23 次发布
+
+发布时间：2021-04-12 08:05:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)
+
+	* 新增入参：ConditionTemplateId
+
+* [ModifyAlarmPolicyCondition](https://cloud.tencent.com/document/api/248/51276)
+
+	* 新增入参：ConditionTemplateId
+
 
 ### 第 22 次发布
 
@@ -35612,6 +35852,21 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 3 次发布
+
+发布时间：2021-04-13 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：FormattedDescription, CreatedBy
+
+
 ### 第 2 次发布
 
 发布时间：2021-03-23 08:12:09
@@ -36531,8 +36786,8 @@
 
 新增接口：
 
-* [[DeleteWxGatewayRoute](https://cloud.tencent.com/document/api/876/54393)](https://cloud.tencent.com/document/api/#/#)
-* [[EstablishWxGatewayRoute](https://cloud.tencent.com/document/api/876/54392)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteWxGatewayRoute](https://cloud.tencent.com/document/api/876/54393)
+* [EstablishWxGatewayRoute](https://cloud.tencent.com/document/api/876/54392)
 
 ### 第 42 次发布
 
@@ -39736,6 +39991,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 48 次发布
+
+发布时间：2021-04-13 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateClusterVersion](https://cloud.tencent.com/document/api/457/52133)
+
+	* 新增入参：ExtraArgs
+
+
 ### 第 47 次发布
 
 发布时间：2021-04-07 08:07:35
@@ -41403,6 +41673,23 @@
 
 
 
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 1 次发布
+
+发布时间：2021-04-13 08:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ManageConfig](https://cloud.tencent.com/document/api/1364/54616)](https://cloud.tencent.com/document/api/#/#)
+
+
+
+
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
 ### 第 49 次发布
@@ -42817,8 +43104,8 @@
 
 新增接口：
 
-* [[DescribeComponentAlertObject](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeServiceAlertObject](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeComponentAlertObject](https://cloud.tencent.com/document/api/1311/54519)
+* [DescribeServiceAlertObject](https://cloud.tencent.com/document/api/1311/54521)
 
 
 
@@ -45481,6 +45768,74 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 84 次发布
+
+发布时间：2021-04-13 08:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLocalGateway](https://cloud.tencent.com/document/api/215/54630)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLocalGateway](https://cloud.tencent.com/document/api/215/54629)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLocalGateway](https://cloud.tencent.com/document/api/215/54628)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLocalGateway](https://cloud.tencent.com/document/api/215/54627)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateSubnet](https://cloud.tencent.com/document/api/215/15782)
+
+	* 新增入参：CdcId
+
+* [CreateSubnets](https://cloud.tencent.com/document/api/215/31960)
+
+	* 新增入参：CdcId
+
+* [ReplaceRoutes](https://cloud.tencent.com/document/api/215/15764)
+
+	* 新增出参：OldRouteSet, NewRouteSet
+
+
+新增数据结构：
+
+* [[LocalGateway](https://cloud.tencent.com/document/api/215/15824#LocalGateway)](https://cloud.tencent.com/document/api/215/15824#[LocalGateway](https://cloud.tencent.com/document/api/215/15824#LocalGateway))
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：CdcId
+
+* [Subnet](https://cloud.tencent.com/document/api/215/15824#Subnet)
+
+	* 新增成员：CdcId, IsCdcSubnet
+
+
+### 第 83 次发布
+
+发布时间：2021-04-12 08:08:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyCcnAttachedInstancesAttribute](https://cloud.tencent.com/document/api/215/54517)
+
+修改数据结构：
+
+* [CcnAttachedInstance](https://cloud.tencent.com/document/api/215/15824#CcnAttachedInstance)
+
+	* 新增成员：Description
+
+* [CcnInstance](https://cloud.tencent.com/document/api/215/15824#CcnInstance)
+
+	* 新增成员：Description
+
 
 ### 第 82 次发布
 

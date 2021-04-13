@@ -1047,6 +1047,31 @@ func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (res
     return
 }
 
+func NewCreateLocalGatewayRequest() (request *CreateLocalGatewayRequest) {
+    request = &CreateLocalGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateLocalGateway")
+    return
+}
+
+func NewCreateLocalGatewayResponse() (response *CreateLocalGatewayResponse) {
+    response = &CreateLocalGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于创建用于CDC的本地网关。
+func (c *Client) CreateLocalGateway(request *CreateLocalGatewayRequest) (response *CreateLocalGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateLocalGatewayRequest()
+    }
+    response = NewCreateLocalGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNatGatewayRequest() (request *CreateNatGatewayRequest) {
     request = &CreateNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1854,6 +1879,31 @@ func (c *Client) DeleteIp6Translators(request *DeleteIp6TranslatorsRequest) (res
         request = NewDeleteIp6TranslatorsRequest()
     }
     response = NewDeleteIp6TranslatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLocalGatewayRequest() (request *DeleteLocalGatewayRequest) {
+    request = &DeleteLocalGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteLocalGateway")
+    return
+}
+
+func NewDeleteLocalGatewayResponse() (response *DeleteLocalGatewayResponse) {
+    response = &DeleteLocalGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于删除CDC的本地网关。
+func (c *Client) DeleteLocalGateway(request *DeleteLocalGatewayRequest) (response *DeleteLocalGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteLocalGatewayRequest()
+    }
+    response = NewDeleteLocalGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -3044,6 +3094,31 @@ func (c *Client) DescribeIpGeolocationInfos(request *DescribeIpGeolocationInfosR
         request = NewDescribeIpGeolocationInfosRequest()
     }
     response = NewDescribeIpGeolocationInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLocalGatewayRequest() (request *DescribeLocalGatewayRequest) {
+    request = &DescribeLocalGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeLocalGateway")
+    return
+}
+
+func NewDescribeLocalGatewayResponse() (response *DescribeLocalGatewayResponse) {
+    response = &DescribeLocalGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于查询CDC的本地网关。
+func (c *Client) DescribeLocalGateway(request *DescribeLocalGatewayRequest) (response *DescribeLocalGatewayResponse, err error) {
+    if request == nil {
+        request = NewDescribeLocalGatewayRequest()
+    }
+    response = NewDescribeLocalGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -4643,6 +4718,31 @@ func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackage
     return
 }
 
+func NewModifyCcnAttachedInstancesAttributeRequest() (request *ModifyCcnAttachedInstancesAttributeRequest) {
+    request = &ModifyCcnAttachedInstancesAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnAttachedInstancesAttribute")
+    return
+}
+
+func NewModifyCcnAttachedInstancesAttributeResponse() (response *ModifyCcnAttachedInstancesAttributeResponse) {
+    response = &ModifyCcnAttachedInstancesAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改CCN关联实例属性，目前仅修改备注description
+func (c *Client) ModifyCcnAttachedInstancesAttribute(request *ModifyCcnAttachedInstancesAttributeRequest) (response *ModifyCcnAttachedInstancesAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCcnAttachedInstancesAttributeRequest()
+    }
+    response = NewModifyCcnAttachedInstancesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCcnAttributeRequest() (request *ModifyCcnAttributeRequest) {
     request = &ModifyCcnAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4939,6 +5039,31 @@ func (c *Client) ModifyIpv6AddressesAttribute(request *ModifyIpv6AddressesAttrib
         request = NewModifyIpv6AddressesAttributeRequest()
     }
     response = NewModifyIpv6AddressesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLocalGatewayRequest() (request *ModifyLocalGatewayRequest) {
+    request = &ModifyLocalGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyLocalGateway")
+    return
+}
+
+func NewModifyLocalGatewayResponse() (response *ModifyLocalGatewayResponse) {
+    response = &ModifyLocalGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口用于修改CDC的本地网关。
+func (c *Client) ModifyLocalGateway(request *ModifyLocalGatewayRequest) (response *ModifyLocalGatewayResponse, err error) {
+    if request == nil {
+        request = NewModifyLocalGatewayRequest()
+    }
+    response = NewModifyLocalGatewayResponse()
     err = c.Send(request, response)
     return
 }

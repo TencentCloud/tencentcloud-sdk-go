@@ -4341,6 +4341,9 @@ type UpdateClusterVersionRequest struct {
 	// 需要升级到的版本
 	DstVersion *string `json:"DstVersion,omitempty" name:"DstVersion"`
 
+	// 集群自定义参数
+	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+
 	// 可容忍的最大不可用pod数目
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitempty" name:"MaxNotReadyPercent"`
 

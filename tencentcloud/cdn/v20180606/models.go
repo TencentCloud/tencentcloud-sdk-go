@@ -3760,8 +3760,9 @@ type Hsts struct {
 type HttpHeaderPathRule struct {
 
 	// http 头部设置方式
-	// add：添加头部，若已存在头部，则会存在重复头部
-	// del：删除头部
+	// set：设置。变更指定头部参数的取值为设置后的值；若设置的头部不存在，则会增加该头部；若存在多个重复的头部参数，则会全部变更，同时合并为一个头部。
+	// del：删除。删除指定的头部参数
+	// add：增加。增加指定的头部参数，默认允许重复添加，即重复添加相同的头部（注：重复添加可能会影响浏览器响应，请优先使用set操作）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderMode *string `json:"HeaderMode,omitempty" name:"HeaderMode"`
 

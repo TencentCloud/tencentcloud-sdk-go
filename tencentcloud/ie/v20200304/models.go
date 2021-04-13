@@ -1027,12 +1027,28 @@ type MediaRecognitionTaskResult struct {
 	SubtitleResults *SubtitleResult `json:"SubtitleResults,omitempty" name:"SubtitleResults"`
 }
 
+type MediaResultInfo struct {
+
+	// 媒体时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultVideoInfoSet []*ResultVideoInfo `json:"ResultVideoInfoSet,omitempty" name:"ResultVideoInfoSet" list`
+
+	// 音频流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultAudioInfoSet []*ResultAudioInfo `json:"ResultAudioInfoSet,omitempty" name:"ResultAudioInfoSet" list`
+}
+
 type MediaSourceInfo struct {
 
 	// 媒体源资源下载信息。
 	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
 
 	// 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+	// ID只能包含字母、数字、下划线、中划线，长读不能超过128。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 媒体源类型，具体类型如下：
@@ -1287,6 +1303,40 @@ type QualityControlResultItems struct {
 
 	// 质检结果项
 	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems" list`
+}
+
+type ResultAudioInfo struct {
+
+	// 流在媒体文件中的流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 流的时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type ResultVideoInfo struct {
+
+	// 流在媒体文件中的流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 流的时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 画面宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 画面高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频帧率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
 type SaveInfo struct {
@@ -1642,6 +1692,14 @@ type TaskResultFile struct {
 	// 文件链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 文件大小，部分任务支持，单位：字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 媒体信息，对于媒体文件，部分任务支持返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaInfo *MediaResultInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
 }
 
 type UrlInfo struct {

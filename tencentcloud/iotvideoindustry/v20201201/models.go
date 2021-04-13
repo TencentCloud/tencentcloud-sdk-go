@@ -57,6 +57,10 @@ type AllDeviceInfo struct {
 	// 是否存在录像,，0:不存在；1：存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitempty" name:"IsRecord"`
+
+	// 该设备是否可录制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
 }
 
 type BindGroupDevicesRequest struct {
@@ -229,6 +233,10 @@ type CreateDeviceResponse struct {
 		// 设备唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+		// 设备虚拟组信息，仅在创建NVR/VMS时返回该值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VirtualGroupId *string `json:"VirtualGroupId,omitempty" name:"VirtualGroupId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -755,6 +763,9 @@ type DescribeGroupDevicesRequest struct {
 
 	// 设备名称，根据设备名称模糊匹配时必填
 	NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+	// 过滤不可录制设备
+	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
 }
 
 func (r *DescribeGroupDevicesRequest) ToJsonString() string {
@@ -1364,6 +1375,10 @@ type GroupDeviceItem struct {
 	// 是否存在录像
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitempty" name:"IsRecord"`
+
+	// 该设备是否可录制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
 }
 
 type GroupInfo struct {
@@ -1391,6 +1406,14 @@ type GroupInfo struct {
 
 	// 创建时间
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分组状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupStatus *int64 `json:"GroupStatus,omitempty" name:"GroupStatus"`
+
+	// 设备不存在时产生的错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitempty" name:"Error"`
 }
 
 type GroupItem struct {
@@ -1434,6 +1457,10 @@ type GroupItem struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分组状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupStatus *int64 `json:"GroupStatus,omitempty" name:"GroupStatus"`
 }
 
 type ModifyDeviceDataRequest struct {

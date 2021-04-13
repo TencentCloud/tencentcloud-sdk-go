@@ -122,6 +122,31 @@ func (c *Client) DescribeAudit(request *DescribeAuditRequest) (response *Describ
     return
 }
 
+func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
+    request = &DescribeEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeEvents")
+    return
+}
+
+func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
+    response = &DescribeEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询云审计日志
+func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventsRequest()
+    }
+    response = NewDescribeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAttributeKeyRequest() (request *GetAttributeKeyRequest) {
     request = &GetAttributeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
