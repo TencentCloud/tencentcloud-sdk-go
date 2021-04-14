@@ -143,6 +143,56 @@ func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (res
     return
 }
 
+func NewDeleteResourceConfigsRequest() (request *DeleteResourceConfigsRequest) {
+    request = &DeleteResourceConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResourceConfigs")
+    return
+}
+
+func NewDeleteResourceConfigsResponse() (response *DeleteResourceConfigsResponse) {
+    response = &DeleteResourceConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除资源版本
+func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (response *DeleteResourceConfigsResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourceConfigsRequest()
+    }
+    response = NewDeleteResourceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteResourcesRequest() (request *DeleteResourcesRequest) {
+    request = &DeleteResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResources")
+    return
+}
+
+func NewDeleteResourcesResponse() (response *DeleteResourcesResponse) {
+    response = &DeleteResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除资源接口
+func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *DeleteResourcesResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourcesRequest()
+    }
+    response = NewDeleteResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTableConfigRequest() (request *DeleteTableConfigRequest) {
     request = &DeleteTableConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +264,81 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
         request = NewDescribeJobsRequest()
     }
     response = NewDescribeJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceConfigsRequest() (request *DescribeResourceConfigsRequest) {
+    request = &DescribeResourceConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceConfigs")
+    return
+}
+
+func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResponse) {
+    response = &DescribeResourceConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 描述资源配置接口
+func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceConfigsRequest()
+    }
+    response = NewDescribeResourceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceRelatedJobsRequest() (request *DescribeResourceRelatedJobsRequest) {
+    request = &DescribeResourceRelatedJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceRelatedJobs")
+    return
+}
+
+func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelatedJobsResponse) {
+    response = &DescribeResourceRelatedJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取资源关联作业信息
+func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceRelatedJobsRequest()
+    }
+    response = NewDescribeResourceRelatedJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
+    request = &DescribeResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResources")
+    return
+}
+
+func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
+    response = &DescribeResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 描述资源接口
+func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesRequest()
+    }
+    response = NewDescribeResourcesResponse()
     err = c.Send(request, response)
     return
 }

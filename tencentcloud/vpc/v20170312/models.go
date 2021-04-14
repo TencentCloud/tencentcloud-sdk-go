@@ -2892,6 +2892,147 @@ func (r *CreateSubnetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVpcEndPointRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 终端节点名称。
+	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点VIP，可以指定IP申请。
+	EndPointVip *string `json:"EndPointVip,omitempty" name:"EndPointVip"`
+
+	// 安全组ID。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+}
+
+func (r *CreateVpcEndPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcEndPointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端节点对象详细信息。
+		EndPoint *EndPoint `json:"EndPoint,omitempty" name:"EndPoint"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpcEndPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcEndPointServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 终端节点服务名称。
+	EndPointServiceName *string `json:"EndPointServiceName,omitempty" name:"EndPointServiceName"`
+
+	// 是否自动接受。
+	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitempty" name:"AutoAcceptFlag"`
+
+	// 后端服务ID，比如lb-xxx。
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" name:"ServiceInstanceId"`
+
+	// 是否是PassService类型。
+	IsPassService *bool `json:"IsPassService,omitempty" name:"IsPassService"`
+}
+
+func (r *CreateVpcEndPointServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcEndPointServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端节点服务对象详细信息。
+		EndPointService *EndPointService `json:"EndPointService,omitempty" name:"EndPointService"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpcEndPointServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcEndPointServiceWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// UIN。
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// 白名单描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateVpcEndPointServiceWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointServiceWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpcEndPointServiceWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpcEndPointServiceWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpcEndPointServiceWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateVpcRequest struct {
 	*tchttp.BaseRequest
 
@@ -4130,6 +4271,111 @@ func (r *DeleteSubnetResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteVpcEndPointRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端节点ID。
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+func (r *DeleteVpcEndPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpcEndPointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpcEndPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpcEndPointServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端节点ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+}
+
+func (r *DeleteVpcEndPointServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpcEndPointServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpcEndPointServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpcEndPointServiceWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户UIN数组。
+	UserUin []*string `json:"UserUin,omitempty" name:"UserUin" list`
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+}
+
+func (r *DeleteVpcEndPointServiceWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointServiceWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpcEndPointServiceWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpcEndPointServiceWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpcEndPointServiceWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteVpcRequest struct {
 	*tchttp.BaseRequest
 
@@ -4416,6 +4662,7 @@ type DescribeAddressesRequest struct {
 	// <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
 	// <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'EIP'，'AnycastEIP'，'HighQualityEIP'</li>
 	// <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
+	// <li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -6832,6 +7079,159 @@ func (r *DescribeTemplateLimitsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpcEndPointRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li> end-point-service-id- String - （过滤条件）终端节点服务ID。</li>
+	// <li>end-point-name - String - （过滤条件）终端节点实例名称。</li>
+	// <li> end-point-id- String - （过滤条件）终端节点实例ID。</li>
+	// <li> vpc-id- String - （过滤条件）VPC实例ID。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 终端节点ID列表。
+	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId" list`
+}
+
+func (r *DescribeVpcEndPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcEndPointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端节点对象。
+		EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet" list`
+
+		// 符合查询条件的终端节点个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcEndPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcEndPointServiceRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li> service-id- String - （过滤条件）终端节点服务唯一ID。</li>
+	// <li>service-name - String - （过滤条件）终端节点实例名称。</li>
+	// <li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 终端节点服务ID。
+	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds" list`
+}
+
+func (r *DescribeVpcEndPointServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointServiceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcEndPointServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 终端节点服务对象数组。
+		EndPointServiceSet []*EndPointService `json:"EndPointServiceSet,omitempty" name:"EndPointServiceSet" list`
+
+		// 符合查询条件的个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcEndPointServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointServiceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcEndPointServiceWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li> user-uin String - （过滤条件）用户UIN。</li>
+	// <li> end-point-service-id String - （过滤条件）终端节点服务ID。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeVpcEndPointServiceWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointServiceWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcEndPointServiceWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白名单对象数组。
+		VpcEndpointServiceUserSet []*VpcEndPointServiceUser `json:"VpcEndpointServiceUserSet,omitempty" name:"VpcEndpointServiceUserSet" list`
+
+		// 符合条件的白名单个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcEndPointServiceWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpcEndPointServiceWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVpcInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -7833,6 +8233,43 @@ func (r *DisassociateNetworkInterfaceSecurityGroupsResponse) FromJsonString(s st
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DisassociateVpcEndPointSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 安全组ID数组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 终端节点ID。
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+func (r *DisassociateVpcEndPointSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateVpcEndPointSecurityGroupsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateVpcEndPointSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateVpcEndPointSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DisassociateVpcEndPointSecurityGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadCustomerGatewayConfigurationRequest struct {
 	*tchttp.BaseRequest
 
@@ -7991,6 +8428,124 @@ func (r *EnableRoutesResponse) ToJsonString() string {
 
 func (r *EnableRoutesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableVpcEndPointConnectRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点ID。
+	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId" list`
+
+	// 是否接受终端节点连接请求。
+	AcceptFlag *bool `json:"AcceptFlag,omitempty" name:"AcceptFlag"`
+}
+
+func (r *EnableVpcEndPointConnectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableVpcEndPointConnectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableVpcEndPointConnectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableVpcEndPointConnectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableVpcEndPointConnectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EndPoint struct {
+
+	// 终端节点ID。
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+
+	// VPCID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// APPID。
+	EndPointOwner *string `json:"EndPointOwner,omitempty" name:"EndPointOwner"`
+
+	// 终端节点名称。
+	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
+
+	// 终端节点服务的VPCID。
+	ServiceVpcId *string `json:"ServiceVpcId,omitempty" name:"ServiceVpcId"`
+
+	// 终端节点服务的VIP。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// 终端节点服务的ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// 终端节点的VIP。
+	EndPointVip *string `json:"EndPointVip,omitempty" name:"EndPointVip"`
+
+	// 终端节点状态，ACTIVE：可用，PENDING：待接受，ACCEPTING：接受中，REJECTED：已拒绝，FAILED：失败。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 终端节点绑定的安全组实例ID列表。
+	GroupSet []*string `json:"GroupSet,omitempty" name:"GroupSet" list`
+
+	// 终端节点服务名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+}
+
+type EndPointService struct {
+
+	// 终端节点服务ID
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// VPCID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// APPID。
+	ServiceOwner *string `json:"ServiceOwner,omitempty" name:"ServiceOwner"`
+
+	// 终端节点服务名称。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 后端服务的VIP。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// 后端服务的ID，比如lb-xxx。
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" name:"ServiceInstanceId"`
+
+	// 是否自动接受。
+	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitempty" name:"AutoAcceptFlag"`
+
+	// 关联的终端节点个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointCount *uint64 `json:"EndPointCount,omitempty" name:"EndPointCount"`
+
+	// 终端节点对象数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet" list`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type Filter struct {
@@ -10242,6 +10797,132 @@ func (r *ModifyVpcAttributeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVpcEndPointAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端节点ID。
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+
+	// 终端节点名称。
+	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
+
+	// 安全组ID列表。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+}
+
+func (r *ModifyVpcEndPointAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpcEndPointAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpcEndPointAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpcEndPointServiceAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// VPCID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 终端节点服务名称。
+	EndPointServiceName *string `json:"EndPointServiceName,omitempty" name:"EndPointServiceName"`
+
+	// 是否自动接受。
+	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitempty" name:"AutoAcceptFlag"`
+
+	// 后端服务的ID，比如lb-xxx。
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" name:"ServiceInstanceId"`
+}
+
+func (r *ModifyVpcEndPointServiceAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointServiceAttributeRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpcEndPointServiceAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpcEndPointServiceAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointServiceAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpcEndPointServiceWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户UIN。
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
+
+	// 白名单描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyVpcEndPointServiceWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointServiceWhiteListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVpcEndPointServiceWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVpcEndPointServiceWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyVpcEndPointServiceWhiteListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyVpnConnectionAttributeRequest struct {
 	*tchttp.BaseRequest
 
@@ -12229,6 +12910,24 @@ type Vpc struct {
 	// 辅助CIDR
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+}
+
+type VpcEndPointServiceUser struct {
+
+	// AppId。
+	Owner *uint64 `json:"Owner,omitempty" name:"Owner"`
+
+	// Uin。
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 终端节点服务ID。
+	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
 }
 
 type VpcIpv6Address struct {

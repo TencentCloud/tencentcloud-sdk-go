@@ -48,6 +48,61 @@ type AbnormalExperience struct {
 	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
 }
 
+type CreatePictureRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片内容经base64编码后的string格式
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 图片后缀名
+	Suffix *string `json:"Suffix,omitempty" name:"Suffix"`
+
+	// 图片长度
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片宽度
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 显示位置x轴方向
+	XPosition *uint64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置y轴方向
+	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
+}
+
+func (r *CreatePictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片id
+		PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreatePictureResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTroubleInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -108,6 +163,43 @@ func (r *CreateTroubleInfoResponse) ToJsonString() string {
 }
 
 func (r *CreateTroubleInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePictureRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DeletePictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeletePictureResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -332,6 +424,55 @@ func (r *DescribeHistoryScaleResponse) ToJsonString() string {
 }
 
 func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePictureRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片id,不传时返回该应用下所有图片
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+}
+
+func (r *DescribePictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的图片记录数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 图片信息列表
+		PictureInfo []*PictureInfo `json:"PictureInfo,omitempty" name:"PictureInfo" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribePictureResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -905,6 +1046,55 @@ type LayoutParams struct {
 	PureAudioHoldPlaceMode *uint64 `json:"PureAudioHoldPlaceMode,omitempty" name:"PureAudioHoldPlaceMode"`
 }
 
+type ModifyPictureRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片长度
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片宽度
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 显示位置x轴方向
+	XPosition *uint64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置y轴方向
+	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
+}
+
+func (r *ModifyPictureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPictureRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPictureResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPictureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPictureResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 
 	// 旁路转码时长查询结果数组
@@ -942,6 +1132,27 @@ type OutputParams struct {
 
 	// 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
 	RecordAudioOnly *uint64 `json:"RecordAudioOnly,omitempty" name:"RecordAudioOnly"`
+}
+
+type PictureInfo struct {
+
+	// 图片长度
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片宽度
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 显示位置x轴方向
+	XPosition *uint64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置y轴方向
+	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
 }
 
 type PresetLayoutConfig struct {

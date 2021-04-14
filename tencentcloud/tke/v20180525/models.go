@@ -3638,7 +3638,7 @@ type NodePool struct {
 	// ClusterInstanceId 集群实例id
 	ClusterInstanceId *string `json:"ClusterInstanceId,omitempty" name:"ClusterInstanceId"`
 
-	// LifeState 状态
+	// LifeState 状态，当前节点池生命周期状态包括：creating，normal，updating，deleting，deleted
 	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
 
 	// LaunchConfigurationId 配置

@@ -333,7 +333,7 @@ func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
     return
 }
 
-// 每次调用人脸核身小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+// 每次调用E证通小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 func (c *Client) GetEidToken(request *GetEidTokenRequest) (response *GetEidTokenResponse, err error) {
     if request == nil {
         request = NewGetEidTokenRequest()

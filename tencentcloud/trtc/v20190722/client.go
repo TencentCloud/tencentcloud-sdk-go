@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreatePictureRequest() (request *CreatePictureRequest) {
+    request = &CreatePictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "CreatePicture")
+    return
+}
+
+func NewCreatePictureResponse() (response *CreatePictureResponse) {
+    response = &CreatePictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 上传图片
+func (c *Client) CreatePicture(request *CreatePictureRequest) (response *CreatePictureResponse, err error) {
+    if request == nil {
+        request = NewCreatePictureRequest()
+    }
+    response = NewCreatePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTroubleInfoRequest() (request *CreateTroubleInfoRequest) {
     request = &CreateTroubleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +89,31 @@ func (c *Client) CreateTroubleInfo(request *CreateTroubleInfoRequest) (response 
         request = NewCreateTroubleInfoRequest()
     }
     response = NewCreateTroubleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePictureRequest() (request *DeletePictureRequest) {
+    request = &DeletePictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DeletePicture")
+    return
+}
+
+func NewDeletePictureResponse() (response *DeletePictureResponse) {
+    response = &DeletePictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除图片
+func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeletePictureResponse, err error) {
+    if request == nil {
+        request = NewDeletePictureRequest()
+    }
+    response = NewDeletePictureResponse()
     err = c.Send(request, response)
     return
 }
@@ -165,6 +215,31 @@ func (c *Client) DescribeHistoryScale(request *DescribeHistoryScaleRequest) (res
         request = NewDescribeHistoryScaleRequest()
     }
     response = NewDescribeHistoryScaleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePictureRequest() (request *DescribePictureRequest) {
+    request = &DescribePictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribePicture")
+    return
+}
+
+func NewDescribePictureResponse() (response *DescribePictureResponse) {
+    response = &DescribePictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询某图片相关参数。
+func (c *Client) DescribePicture(request *DescribePictureRequest) (response *DescribePictureResponse, err error) {
+    if request == nil {
+        request = NewDescribePictureRequest()
+    }
+    response = NewDescribePictureResponse()
     err = c.Send(request, response)
     return
 }
@@ -430,6 +505,31 @@ func (c *Client) DismissRoomByStrRoomId(request *DismissRoomByStrRoomIdRequest) 
         request = NewDismissRoomByStrRoomIdRequest()
     }
     response = NewDismissRoomByStrRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPictureRequest() (request *ModifyPictureRequest) {
+    request = &ModifyPictureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyPicture")
+    return
+}
+
+func NewModifyPictureResponse() (response *ModifyPictureResponse) {
+    response = &ModifyPictureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改图片相关参数。
+func (c *Client) ModifyPicture(request *ModifyPictureRequest) (response *ModifyPictureResponse, err error) {
+    if request == nil {
+        request = NewModifyPictureRequest()
+    }
+    response = NewModifyPictureResponse()
     err = c.Send(request, response)
     return
 }

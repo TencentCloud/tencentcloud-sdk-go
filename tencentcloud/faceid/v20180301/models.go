@@ -661,7 +661,7 @@ type DetectInfoText struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comparemsg *string `json:"Comparemsg,omitempty" name:"Comparemsg"`
 
-	// 本次流程活体一比一的分数。
+	// 本次流程活体一比一的分数，取值范围 [0.00, 100.00]。相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sim *string `json:"Sim,omitempty" name:"Sim"`
 
@@ -925,7 +925,7 @@ func (r *GetDetectInfoResponse) FromJsonString(s string) error {
 type GetEidResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 人脸核身流程的标识，调用DetectAuth接口时生成。
+	// 人脸核身流程的标识，调用GetEidToken接口时生成的。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
 	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。

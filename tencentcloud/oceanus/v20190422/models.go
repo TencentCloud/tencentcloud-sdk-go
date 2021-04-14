@@ -234,6 +234,77 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteResourceConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源版本数组
+	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions" list`
+}
+
+func (r *DeleteResourceConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourceConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourceConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteResourceConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourceConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除资源ID列表
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+}
+
+func (r *DeleteResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteResourcesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTableConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -375,6 +446,159 @@ func (r *DescribeJobsResponse) ToJsonString() string {
 }
 
 func (r *DescribeJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回值大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源配置Versions集合
+	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions" list`
+
+	// 作业配置版本
+	JobConfigVersion *int64 `json:"JobConfigVersion,omitempty" name:"JobConfigVersion"`
+
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *DescribeResourceConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceConfigsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源配置描述数组
+		ResourceConfigSet []*ResourceConfigItem `json:"ResourceConfigSet,omitempty" name:"ResourceConfigSet" list`
+
+		// 资源配置数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceConfigsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceRelatedJobsRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 默认0;   1： 按照作业版本创建时间降序
+	DESCByJobConfigCreateTime *int64 `json:"DESCByJobConfigCreateTime,omitempty" name:"DESCByJobConfigCreateTime"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeResourceRelatedJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceRelatedJobsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceRelatedJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 关联作业信息
+		RefJobInfos []*ResourceRefJobInfo `json:"RefJobInfos,omitempty" name:"RefJobInfos" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceRelatedJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourceRelatedJobsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的资源ID数组
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 条数限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源详细信息集合
+		ResourceSet []*ResourceItem `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+
+		// 总数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeResourcesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -611,6 +835,95 @@ type Property struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type ResourceConfigItem struct {
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源所属地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 资源所属AppId
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号Uin
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 子账号Uin
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 资源位置描述
+	ResourceLoc *ResourceLoc `json:"ResourceLoc,omitempty" name:"ResourceLoc"`
+
+	// 资源创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 资源版本
+	Version *int64 `json:"Version,omitempty" name:"Version"`
+
+	// 资源描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 资源状态：0: 资源同步中，1:资源已就绪
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 关联作业个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefJobCount *int64 `json:"RefJobCount,omitempty" name:"RefJobCount"`
+}
+
+type ResourceItem struct {
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源类型
+	ResourceType *uint64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源位置
+	ResourceLoc *ResourceLoc `json:"ResourceLoc,omitempty" name:"ResourceLoc"`
+
+	// 资源地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 应用ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号Uin
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 子账号Uin
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 资源创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 资源最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 资源的资源版本ID
+	LatestResourceConfigVersion *int64 `json:"LatestResourceConfigVersion,omitempty" name:"LatestResourceConfigVersion"`
+
+	// 资源备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 版本个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionCount *int64 `json:"VersionCount,omitempty" name:"VersionCount"`
+
+	// 关联作业数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefJobCount *int64 `json:"RefJobCount,omitempty" name:"RefJobCount"`
+}
+
 type ResourceLoc struct {
 
 	// 资源位置的存储类型，目前只支持COS
@@ -661,6 +974,18 @@ type ResourceRefDetail struct {
 
 	// 1: 系统内置资源
 	SystemProvide *int64 `json:"SystemProvide,omitempty" name:"SystemProvide"`
+}
+
+type ResourceRefJobInfo struct {
+
+	// Job id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// Job配置版本
+	JobConfigVersion *int64 `json:"JobConfigVersion,omitempty" name:"JobConfigVersion"`
+
+	// 资源版本
+	ResourceVersion *int64 `json:"ResourceVersion,omitempty" name:"ResourceVersion"`
 }
 
 type RunJobDescription struct {

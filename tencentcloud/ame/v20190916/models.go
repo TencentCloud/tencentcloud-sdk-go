@@ -596,6 +596,40 @@ type Lyric struct {
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 }
 
+type ModifyMusicOnShelvesRequest struct {
+	*tchttp.BaseRequest
+
+	// 无
+	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitempty" name:"MusicDetailInfos"`
+}
+
+func (r *ModifyMusicOnShelvesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMusicOnShelvesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMusicOnShelvesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMusicOnShelvesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyMusicOnShelvesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Music struct {
 
 	// 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
@@ -618,6 +652,27 @@ type Music struct {
 	// 音乐播放链接全路径，前提是在正版曲库直通车控制台添加过域名，否则返回空字符。
 	// 如果添加过多个域名只返回第一个添加域名的播放全路径。
 	FullUrl *string `json:"FullUrl,omitempty" name:"FullUrl"`
+}
+
+type MusicDetailInfo struct {
+
+	// 资源方音乐Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 资源方识别信息
+	AmeId *string `json:"AmeId,omitempty" name:"AmeId"`
+
+	// 分类标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+
+	// 关键词
+	HitWords []*string `json:"HitWords,omitempty" name:"HitWords" list`
+
+	// 节奏信息
+	Bpm *int64 `json:"Bpm,omitempty" name:"Bpm"`
+
+	// 商业化权益
+	Score *float64 `json:"Score,omitempty" name:"Score"`
 }
 
 type MusicOpenDetail struct {
@@ -719,6 +774,50 @@ type PackageItem struct {
 	AuthorizedArea *string `json:"AuthorizedArea,omitempty" name:"AuthorizedArea"`
 }
 
+type PutMusicOnTheShelvesRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源方歌曲Id
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds" list`
+}
+
+func (r *PutMusicOnTheShelvesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutMusicOnTheShelvesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PutMusicOnTheShelvesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作成功数量
+		SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
+
+		// 操作失败数量
+		FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
+
+		// 失败歌曲Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutMusicOnTheShelvesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PutMusicOnTheShelvesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ReportDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -785,6 +884,59 @@ type Station struct {
 	// station图片集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap" list`
+}
+
+type TakeMusicOffShelves struct {
+
+	// 资源方对应音乐Id
+	MusicIds *string `json:"MusicIds,omitempty" name:"MusicIds"`
+
+	// 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
+	SaleStatus *string `json:"SaleStatus,omitempty" name:"SaleStatus"`
+}
+
+type TakeMusicOffShelvesRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源方下架必传结构
+	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves" list`
+}
+
+func (r *TakeMusicOffShelvesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TakeMusicOffShelvesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type TakeMusicOffShelvesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回成功数量
+		SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
+
+		// 返回失败数量
+		FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
+
+		// 返回失败歌曲musicId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TakeMusicOffShelvesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *TakeMusicOffShelvesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type UseRange struct {

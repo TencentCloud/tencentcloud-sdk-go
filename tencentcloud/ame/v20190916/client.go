@@ -293,6 +293,56 @@ func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *D
     return
 }
 
+func NewModifyMusicOnShelvesRequest() (request *ModifyMusicOnShelvesRequest) {
+    request = &ModifyMusicOnShelvesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "ModifyMusicOnShelves")
+    return
+}
+
+func NewModifyMusicOnShelvesResponse() (response *ModifyMusicOnShelvesResponse) {
+    response = &ModifyMusicOnShelvesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
+func (c *Client) ModifyMusicOnShelves(request *ModifyMusicOnShelvesRequest) (response *ModifyMusicOnShelvesResponse, err error) {
+    if request == nil {
+        request = NewModifyMusicOnShelvesRequest()
+    }
+    response = NewModifyMusicOnShelvesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutMusicOnTheShelvesRequest() (request *PutMusicOnTheShelvesRequest) {
+    request = &PutMusicOnTheShelvesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "PutMusicOnTheShelves")
+    return
+}
+
+func NewPutMusicOnTheShelvesResponse() (response *PutMusicOnTheShelvesResponse) {
+    response = &PutMusicOnTheShelvesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
+func (c *Client) PutMusicOnTheShelves(request *PutMusicOnTheShelvesRequest) (response *PutMusicOnTheShelvesResponse, err error) {
+    if request == nil {
+        request = NewPutMusicOnTheShelvesRequest()
+    }
+    response = NewPutMusicOnTheShelvesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReportDataRequest() (request *ReportDataRequest) {
     request = &ReportDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +364,31 @@ func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataRes
         request = NewReportDataRequest()
     }
     response = NewReportDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTakeMusicOffShelvesRequest() (request *TakeMusicOffShelvesRequest) {
+    request = &TakeMusicOffShelvesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "TakeMusicOffShelves")
+    return
+}
+
+func NewTakeMusicOffShelvesResponse() (response *TakeMusicOffShelvesResponse) {
+    response = &TakeMusicOffShelvesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
+func (c *Client) TakeMusicOffShelves(request *TakeMusicOffShelvesRequest) (response *TakeMusicOffShelvesResponse, err error) {
+    if request == nil {
+        request = NewTakeMusicOffShelvesRequest()
+    }
+    response = NewTakeMusicOffShelvesResponse()
     err = c.Send(request, response)
     return
 }

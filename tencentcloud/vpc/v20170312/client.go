@@ -1526,6 +1526,81 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
     return
 }
 
+func NewCreateVpcEndPointRequest() (request *CreateVpcEndPointRequest) {
+    request = &CreateVpcEndPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPoint")
+    return
+}
+
+func NewCreateVpcEndPointResponse() (response *CreateVpcEndPointResponse) {
+    response = &CreateVpcEndPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建终端节点。
+func (c *Client) CreateVpcEndPoint(request *CreateVpcEndPointRequest) (response *CreateVpcEndPointResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcEndPointRequest()
+    }
+    response = NewCreateVpcEndPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVpcEndPointServiceRequest() (request *CreateVpcEndPointServiceRequest) {
+    request = &CreateVpcEndPointServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPointService")
+    return
+}
+
+func NewCreateVpcEndPointServiceResponse() (response *CreateVpcEndPointServiceResponse) {
+    response = &CreateVpcEndPointServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建终端节点服务。
+func (c *Client) CreateVpcEndPointService(request *CreateVpcEndPointServiceRequest) (response *CreateVpcEndPointServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcEndPointServiceRequest()
+    }
+    response = NewCreateVpcEndPointServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVpcEndPointServiceWhiteListRequest() (request *CreateVpcEndPointServiceWhiteListRequest) {
+    request = &CreateVpcEndPointServiceWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPointServiceWhiteList")
+    return
+}
+
+func NewCreateVpcEndPointServiceWhiteListResponse() (response *CreateVpcEndPointServiceWhiteListResponse) {
+    response = &CreateVpcEndPointServiceWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建终端服务白名单。
+func (c *Client) CreateVpcEndPointServiceWhiteList(request *CreateVpcEndPointServiceWhiteListRequest) (response *CreateVpcEndPointServiceWhiteListResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcEndPointServiceWhiteListRequest()
+    }
+    response = NewCreateVpcEndPointServiceWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVpnConnectionRequest() (request *CreateVpnConnectionRequest) {
     request = &CreateVpnConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2264,6 +2339,82 @@ func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcRespon
         request = NewDeleteVpcRequest()
     }
     response = NewDeleteVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpcEndPointRequest() (request *DeleteVpcEndPointRequest) {
+    request = &DeleteVpcEndPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPoint")
+    return
+}
+
+func NewDeleteVpcEndPointResponse() (response *DeleteVpcEndPointResponse) {
+    response = &DeleteVpcEndPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除终端节点。
+func (c *Client) DeleteVpcEndPoint(request *DeleteVpcEndPointRequest) (response *DeleteVpcEndPointResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcEndPointRequest()
+    }
+    response = NewDeleteVpcEndPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpcEndPointServiceRequest() (request *DeleteVpcEndPointServiceRequest) {
+    request = &DeleteVpcEndPointServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPointService")
+    return
+}
+
+func NewDeleteVpcEndPointServiceResponse() (response *DeleteVpcEndPointServiceResponse) {
+    response = &DeleteVpcEndPointServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除终端节点服务。
+// 
+func (c *Client) DeleteVpcEndPointService(request *DeleteVpcEndPointServiceRequest) (response *DeleteVpcEndPointServiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcEndPointServiceRequest()
+    }
+    response = NewDeleteVpcEndPointServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpcEndPointServiceWhiteListRequest() (request *DeleteVpcEndPointServiceWhiteListRequest) {
+    request = &DeleteVpcEndPointServiceWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPointServiceWhiteList")
+    return
+}
+
+func NewDeleteVpcEndPointServiceWhiteListResponse() (response *DeleteVpcEndPointServiceWhiteListResponse) {
+    response = &DeleteVpcEndPointServiceWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除终端节点服务白名单。
+func (c *Client) DeleteVpcEndPointServiceWhiteList(request *DeleteVpcEndPointServiceWhiteListRequest) (response *DeleteVpcEndPointServiceWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcEndPointServiceWhiteListRequest()
+    }
+    response = NewDeleteVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3648,6 +3799,81 @@ func (c *Client) DescribeTemplateLimits(request *DescribeTemplateLimitsRequest) 
     return
 }
 
+func NewDescribeVpcEndPointRequest() (request *DescribeVpcEndPointRequest) {
+    request = &DescribeVpcEndPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPoint")
+    return
+}
+
+func NewDescribeVpcEndPointResponse() (response *DescribeVpcEndPointResponse) {
+    response = &DescribeVpcEndPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询终端节点列表。
+func (c *Client) DescribeVpcEndPoint(request *DescribeVpcEndPointRequest) (response *DescribeVpcEndPointResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcEndPointRequest()
+    }
+    response = NewDescribeVpcEndPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcEndPointServiceRequest() (request *DescribeVpcEndPointServiceRequest) {
+    request = &DescribeVpcEndPointServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPointService")
+    return
+}
+
+func NewDescribeVpcEndPointServiceResponse() (response *DescribeVpcEndPointServiceResponse) {
+    response = &DescribeVpcEndPointServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询终端节点服务列表。
+func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceRequest) (response *DescribeVpcEndPointServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcEndPointServiceRequest()
+    }
+    response = NewDescribeVpcEndPointServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcEndPointServiceWhiteListRequest() (request *DescribeVpcEndPointServiceWhiteListRequest) {
+    request = &DescribeVpcEndPointServiceWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPointServiceWhiteList")
+    return
+}
+
+func NewDescribeVpcEndPointServiceWhiteListResponse() (response *DescribeVpcEndPointServiceWhiteListResponse) {
+    response = &DescribeVpcEndPointServiceWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询终端节点服务的服务白名单列表。
+func (c *Client) DescribeVpcEndPointServiceWhiteList(request *DescribeVpcEndPointServiceWhiteListRequest) (response *DescribeVpcEndPointServiceWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcEndPointServiceWhiteListRequest()
+    }
+    response = NewDescribeVpcEndPointServiceWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcInstancesRequest() (request *DescribeVpcInstancesRequest) {
     request = &DescribeVpcInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4209,6 +4435,31 @@ func (c *Client) DisassociateNetworkInterfaceSecurityGroups(request *Disassociat
     return
 }
 
+func NewDisassociateVpcEndPointSecurityGroupsRequest() (request *DisassociateVpcEndPointSecurityGroupsRequest) {
+    request = &DisassociateVpcEndPointSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateVpcEndPointSecurityGroups")
+    return
+}
+
+func NewDisassociateVpcEndPointSecurityGroupsResponse() (response *DisassociateVpcEndPointSecurityGroupsResponse) {
+    response = &DisassociateVpcEndPointSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 终端节点解绑安全组。
+func (c *Client) DisassociateVpcEndPointSecurityGroups(request *DisassociateVpcEndPointSecurityGroupsRequest) (response *DisassociateVpcEndPointSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateVpcEndPointSecurityGroupsRequest()
+    }
+    response = NewDisassociateVpcEndPointSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomerGatewayConfigurationRequest) {
     request = &DownloadCustomerGatewayConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4307,6 +4558,31 @@ func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRou
         request = NewEnableRoutesRequest()
     }
     response = NewEnableRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableVpcEndPointConnectRequest() (request *EnableVpcEndPointConnectRequest) {
+    request = &EnableVpcEndPointConnectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "EnableVpcEndPointConnect")
+    return
+}
+
+func NewEnableVpcEndPointConnectResponse() (response *EnableVpcEndPointConnectResponse) {
+    response = &EnableVpcEndPointConnectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 是否接受终端节点连接请求。
+func (c *Client) EnableVpcEndPointConnect(request *EnableVpcEndPointConnectRequest) (response *EnableVpcEndPointConnectResponse, err error) {
+    if request == nil {
+        request = NewEnableVpcEndPointConnectRequest()
+    }
+    response = NewEnableVpcEndPointConnectResponse()
     err = c.Send(request, response)
     return
 }
@@ -5456,6 +5732,82 @@ func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (respons
         request = NewModifyVpcAttributeRequest()
     }
     response = NewModifyVpcAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcEndPointAttributeRequest() (request *ModifyVpcEndPointAttributeRequest) {
+    request = &ModifyVpcEndPointAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointAttribute")
+    return
+}
+
+func NewModifyVpcEndPointAttributeResponse() (response *ModifyVpcEndPointAttributeResponse) {
+    response = &ModifyVpcEndPointAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改终端节点属性。
+func (c *Client) ModifyVpcEndPointAttribute(request *ModifyVpcEndPointAttributeRequest) (response *ModifyVpcEndPointAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcEndPointAttributeRequest()
+    }
+    response = NewModifyVpcEndPointAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcEndPointServiceAttributeRequest() (request *ModifyVpcEndPointServiceAttributeRequest) {
+    request = &ModifyVpcEndPointServiceAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointServiceAttribute")
+    return
+}
+
+func NewModifyVpcEndPointServiceAttributeResponse() (response *ModifyVpcEndPointServiceAttributeResponse) {
+    response = &ModifyVpcEndPointServiceAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改终端节点服务属性。
+// 
+func (c *Client) ModifyVpcEndPointServiceAttribute(request *ModifyVpcEndPointServiceAttributeRequest) (response *ModifyVpcEndPointServiceAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcEndPointServiceAttributeRequest()
+    }
+    response = NewModifyVpcEndPointServiceAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcEndPointServiceWhiteListRequest() (request *ModifyVpcEndPointServiceWhiteListRequest) {
+    request = &ModifyVpcEndPointServiceWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointServiceWhiteList")
+    return
+}
+
+func NewModifyVpcEndPointServiceWhiteListResponse() (response *ModifyVpcEndPointServiceWhiteListResponse) {
+    response = &ModifyVpcEndPointServiceWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改终端节点服务白名单属性。
+func (c *Client) ModifyVpcEndPointServiceWhiteList(request *ModifyVpcEndPointServiceWhiteListRequest) (response *ModifyVpcEndPointServiceWhiteListResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcEndPointServiceWhiteListRequest()
+    }
+    response = NewModifyVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
 }
