@@ -306,6 +306,7 @@ type CreateProjectRequest struct {
 	// <li>SWITCHER：导播台。</li>
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
+	// <li>RECORD_REPLAY：录制回放。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目名称，不可超过30个字符。
@@ -335,6 +336,9 @@ type CreateProjectRequest struct {
 
 	// 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
 	StreamConnectProjectInput *StreamConnectProjectInput `json:"StreamConnectProjectInput,omitempty" name:"StreamConnectProjectInput"`
+
+	// 录制回放项目信息，仅当项目类型为 RECORD_REPLAY 时必填。
+	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -905,6 +909,7 @@ type DescribeProjectsRequest struct {
 	// <li>SWITCHER：导播台。</li>
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
+	// <li>RECORD_REPLAY：录制回放。</li>
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
 
 	// 列表排序，支持下列排序字段：
@@ -1514,6 +1519,9 @@ type ExportVideoEditProjectRequest struct {
 	// <li>CME：云剪，即导出为云剪媒体；</li>
 	// <li>VOD：云点播，即导出为云点播媒资。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
 
 	// 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
@@ -2591,6 +2599,21 @@ type ProjectInfo struct {
 
 	// 项目更新时间，格式按照 ISO 8601 标准表示。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type RecordReplayProjectInput struct {
+
+	// 录制拉流地址。
+	PullStreamUrl *string `json:"PullStreamUrl,omitempty" name:"PullStreamUrl"`
+
+	// 录制文件归属者。
+	MaterialOwner *Entity `json:"MaterialOwner,omitempty" name:"MaterialOwner"`
+
+	// 录制文件存储分类路径。
+	MaterialClassPath *string `json:"MaterialClassPath,omitempty" name:"MaterialClassPath"`
+
+	// 回放推流地址。
+	PushStreamUrl *string `json:"PushStreamUrl,omitempty" name:"PushStreamUrl"`
 }
 
 type Resource struct {

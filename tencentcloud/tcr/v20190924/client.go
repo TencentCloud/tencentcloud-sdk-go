@@ -1468,6 +1468,31 @@ func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogReq
     return
 }
 
+func NewDownloadHelmChartRequest() (request *DownloadHelmChartRequest) {
+    request = &DownloadHelmChartRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DownloadHelmChart")
+    return
+}
+
+func NewDownloadHelmChartResponse() (response *DownloadHelmChartResponse) {
+    response = &DownloadHelmChartResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于在TCR中下载helm chart
+func (c *Client) DownloadHelmChart(request *DownloadHelmChartRequest) (response *DownloadHelmChartResponse, err error) {
+    if request == nil {
+        request = NewDownloadHelmChartRequest()
+    }
+    response = NewDownloadHelmChartResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDuplicateImagePersonalRequest() (request *DuplicateImagePersonalRequest) {
     request = &DuplicateImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},

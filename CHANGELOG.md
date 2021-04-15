@@ -1,10 +1,37 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 7 次发布
+### 第 26 次发布
 
-发布时间：2021-04-14 08:09:38
+发布时间：2021-04-15 08:02:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增入参：RecordReplayProjectInput
+
+* [ExportVideoEditProject](https://cloud.tencent.com/document/api/1156/40353)
+
+	* 新增入参：CoverData
+
+
+新增数据结构：
+
+* [RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 10 次发布
+
+发布时间：2021-04-15 08:05:08
 
 本次发布包含了以下内容：
 
@@ -12,22 +39,34 @@
 
 新增接口：
 
-* [ModifyMusicOnShelves](https://cloud.tencent.com/document/api/1155/54692)
-* [PutMusicOnTheShelves](https://cloud.tencent.com/document/api/1155/54691)
-* [TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/54690)
-
-新增数据结构：
-
-* [MusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#MusicDetailInfo)
-* [TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/40113#TakeMusicOffShelves)
+* [ModifyRoomInfo](https://cloud.tencent.com/document/api/607/54730)
 
 
 
 ## 流计算服务(oceanus) 版本：2019-04-22
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2021-04-14 08:00:14
+发布时间：2021-04-15 08:00:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：MaxParallelism
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 28 次发布
+
+发布时间：2021-04-15 08:09:20
 
 本次发布包含了以下内容：
 
@@ -35,75 +74,7 @@
 
 新增接口：
 
-* [DeleteResourceConfigs](https://cloud.tencent.com/document/api/849/54667)
-* [DeleteResources](https://cloud.tencent.com/document/api/849/54670)
-* [DescribeResourceConfigs](https://cloud.tencent.com/document/api/849/54666)
-* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
-* [DescribeResources](https://cloud.tencent.com/document/api/849/54668)
-
-新增数据结构：
-
-* [ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)
-* [ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)
-* [ResourceRefJobInfo](https://cloud.tencent.com/document/api/849/52010#ResourceRefJobInfo)
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 24 次发布
-
-发布时间：2021-04-14 08:09:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePicture](https://cloud.tencent.com/document/api/647/54689)
-* [DeletePicture](https://cloud.tencent.com/document/api/647/54688)
-* [DescribePicture](https://cloud.tencent.com/document/api/647/54687)
-* [ModifyPicture](https://cloud.tencent.com/document/api/647/54686)
-
-新增数据结构：
-
-* [PictureInfo](https://cloud.tencent.com/document/api/647/44055#PictureInfo)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 85 次发布
-
-发布时间：2021-04-14 08:08:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateVpcEndPoint](https://cloud.tencent.com/document/api/215/54685)
-* [CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)
-* [CreateVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54683)
-* [DeleteVpcEndPoint](https://cloud.tencent.com/document/api/215/54682)
-* [DeleteVpcEndPointService](https://cloud.tencent.com/document/api/215/54681)
-* [DeleteVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54680)
-* [DescribeVpcEndPoint](https://cloud.tencent.com/document/api/215/54679)
-* [DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)
-* [DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)
-* [DisassociateVpcEndPointSecurityGroups](https://cloud.tencent.com/document/api/215/54676)
-* [EnableVpcEndPointConnect](https://cloud.tencent.com/document/api/215/54675)
-* [ModifyVpcEndPointAttribute](https://cloud.tencent.com/document/api/215/54674)
-* [ModifyVpcEndPointServiceAttribute](https://cloud.tencent.com/document/api/215/54673)
-* [ModifyVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54672)
-
-新增数据结构：
-
-* [EndPoint](https://cloud.tencent.com/document/api/215/15824#EndPoint)
-* [EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService)
-* [VpcEndPointServiceUser](https://cloud.tencent.com/document/api/215/15824#VpcEndPointServiceUser)
+* [DownloadHelmChart](https://cloud.tencent.com/document/api/1141/54732)
 
 
 
@@ -380,14 +351,14 @@
 
 新增接口：
 
-* [[ModifyMusicOnShelves](https://cloud.tencent.com/document/api/1155/54692)](https://cloud.tencent.com/document/api/#/#)
-* [[PutMusicOnTheShelves](https://cloud.tencent.com/document/api/1155/54691)](https://cloud.tencent.com/document/api/#/#)
-* [[TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/54690)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyMusicOnShelves](https://cloud.tencent.com/document/api/1155/54692)
+* [PutMusicOnTheShelves](https://cloud.tencent.com/document/api/1155/54691)
+* [TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/54690)
 
 新增数据结构：
 
-* [[MusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#MusicDetailInfo)](https://cloud.tencent.com/document/api/1155/40113#[MusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#MusicDetailInfo))
-* [[TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/40113#TakeMusicOffShelves)](https://cloud.tencent.com/document/api/1155/40113#[TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/40113#TakeMusicOffShelves))
+* [MusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#MusicDetailInfo)
+* [TakeMusicOffShelves](https://cloud.tencent.com/document/api/1155/40113#TakeMusicOffShelves)
 
 ### 第 6 次发布
 
@@ -11397,6 +11368,29 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 26 次发布
+
+发布时间：2021-04-15 08:02:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增入参：RecordReplayProjectInput
+
+* [ExportVideoEditProject](https://cloud.tencent.com/document/api/1156/40353)
+
+	* 新增入参：CoverData
+
+
+新增数据结构：
+
+* [[RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput))
+
 ### 第 25 次发布
 
 发布时间：2021-04-07 08:02:01
@@ -21398,6 +21392,18 @@
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 10 次发布
+
+发布时间：2021-04-15 08:05:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyRoomInfo](https://cloud.tencent.com/document/api/607/54730)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 9 次发布
 
 发布时间：2021-01-25 08:04:43
@@ -30690,6 +30696,21 @@
 
 ## 流计算服务(oceanus) 版本：2019-04-22
 
+### 第 6 次发布
+
+发布时间：2021-04-15 08:00:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：MaxParallelism
+
+
 ### 第 5 次发布
 
 发布时间：2021-04-14 08:00:14
@@ -30700,17 +30721,17 @@
 
 新增接口：
 
-* [[DeleteResourceConfigs](https://cloud.tencent.com/document/api/849/54667)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteResources](https://cloud.tencent.com/document/api/849/54670)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResourceConfigs](https://cloud.tencent.com/document/api/849/54666)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResources](https://cloud.tencent.com/document/api/849/54668)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteResourceConfigs](https://cloud.tencent.com/document/api/849/54667)
+* [DeleteResources](https://cloud.tencent.com/document/api/849/54670)
+* [DescribeResourceConfigs](https://cloud.tencent.com/document/api/849/54666)
+* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
+* [DescribeResources](https://cloud.tencent.com/document/api/849/54668)
 
 新增数据结构：
 
-* [[ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)](https://cloud.tencent.com/document/api/849/52010#[ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem))
-* [[ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)](https://cloud.tencent.com/document/api/849/52010#[ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem))
-* [[ResourceRefJobInfo](https://cloud.tencent.com/document/api/849/52010#ResourceRefJobInfo)](https://cloud.tencent.com/document/api/849/52010#[ResourceRefJobInfo](https://cloud.tencent.com/document/api/849/52010#ResourceRefJobInfo))
+* [ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)
+* [ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)
+* [ResourceRefJobInfo](https://cloud.tencent.com/document/api/849/52010#ResourceRefJobInfo)
 
 ### 第 4 次发布
 
@@ -37888,6 +37909,18 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 28 次发布
+
+发布时间：2021-04-15 08:09:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DownloadHelmChart](https://cloud.tencent.com/document/api/1141/54732)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 27 次发布
 
 发布时间：2021-03-30 08:10:59
@@ -41281,14 +41314,14 @@
 
 新增接口：
 
-* [[CreatePicture](https://cloud.tencent.com/document/api/647/54689)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePicture](https://cloud.tencent.com/document/api/647/54688)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePicture](https://cloud.tencent.com/document/api/647/54687)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPicture](https://cloud.tencent.com/document/api/647/54686)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePicture](https://cloud.tencent.com/document/api/647/54689)
+* [DeletePicture](https://cloud.tencent.com/document/api/647/54688)
+* [DescribePicture](https://cloud.tencent.com/document/api/647/54687)
+* [ModifyPicture](https://cloud.tencent.com/document/api/647/54686)
 
 新增数据结构：
 
-* [[PictureInfo](https://cloud.tencent.com/document/api/647/44055#PictureInfo)](https://cloud.tencent.com/document/api/647/44055#[PictureInfo](https://cloud.tencent.com/document/api/647/44055#PictureInfo))
+* [PictureInfo](https://cloud.tencent.com/document/api/647/44055#PictureInfo)
 
 ### 第 23 次发布
 
@@ -45781,26 +45814,26 @@
 
 新增接口：
 
-* [[CreateVpcEndPoint](https://cloud.tencent.com/document/api/215/54685)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54683)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpcEndPoint](https://cloud.tencent.com/document/api/215/54682)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpcEndPointService](https://cloud.tencent.com/document/api/215/54681)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54680)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpcEndPoint](https://cloud.tencent.com/document/api/215/54679)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateVpcEndPointSecurityGroups](https://cloud.tencent.com/document/api/215/54676)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableVpcEndPointConnect](https://cloud.tencent.com/document/api/215/54675)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVpcEndPointAttribute](https://cloud.tencent.com/document/api/215/54674)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVpcEndPointServiceAttribute](https://cloud.tencent.com/document/api/215/54673)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54672)](https://cloud.tencent.com/document/api/#/#)
+* [CreateVpcEndPoint](https://cloud.tencent.com/document/api/215/54685)
+* [CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)
+* [CreateVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54683)
+* [DeleteVpcEndPoint](https://cloud.tencent.com/document/api/215/54682)
+* [DeleteVpcEndPointService](https://cloud.tencent.com/document/api/215/54681)
+* [DeleteVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54680)
+* [DescribeVpcEndPoint](https://cloud.tencent.com/document/api/215/54679)
+* [DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)
+* [DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)
+* [DisassociateVpcEndPointSecurityGroups](https://cloud.tencent.com/document/api/215/54676)
+* [EnableVpcEndPointConnect](https://cloud.tencent.com/document/api/215/54675)
+* [ModifyVpcEndPointAttribute](https://cloud.tencent.com/document/api/215/54674)
+* [ModifyVpcEndPointServiceAttribute](https://cloud.tencent.com/document/api/215/54673)
+* [ModifyVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54672)
 
 新增数据结构：
 
-* [[EndPoint](https://cloud.tencent.com/document/api/215/15824#EndPoint)](https://cloud.tencent.com/document/api/215/15824#[EndPoint](https://cloud.tencent.com/document/api/215/15824#EndPoint))
-* [[EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService)](https://cloud.tencent.com/document/api/215/15824#[EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService))
-* [[VpcEndPointServiceUser](https://cloud.tencent.com/document/api/215/15824#VpcEndPointServiceUser)](https://cloud.tencent.com/document/api/215/15824#[VpcEndPointServiceUser](https://cloud.tencent.com/document/api/215/15824#VpcEndPointServiceUser))
+* [EndPoint](https://cloud.tencent.com/document/api/215/15824#EndPoint)
+* [EndPointService](https://cloud.tencent.com/document/api/215/15824#EndPointService)
+* [VpcEndPointServiceUser](https://cloud.tencent.com/document/api/215/15824#VpcEndPointServiceUser)
 
 ### 第 84 次发布
 

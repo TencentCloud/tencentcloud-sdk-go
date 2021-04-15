@@ -244,6 +244,31 @@ func (c *Client) ModifyAppStatus(request *ModifyAppStatusRequest) (response *Mod
     return
 }
 
+func NewModifyRoomInfoRequest() (request *ModifyRoomInfoRequest) {
+    request = &ModifyRoomInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "ModifyRoomInfo")
+    return
+}
+
+func NewModifyRoomInfoResponse() (response *ModifyRoomInfoResponse) {
+    response = &ModifyRoomInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改房间信息
+func (c *Client) ModifyRoomInfo(request *ModifyRoomInfoRequest) (response *ModifyRoomInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyRoomInfoRequest()
+    }
+    response = NewModifyRoomInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScanVoiceRequest() (request *ScanVoiceRequest) {
     request = &ScanVoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

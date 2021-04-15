@@ -2480,6 +2480,73 @@ func (r *DescribeWebhookTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadHelmChartRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// Helm chart名称
+	ChartName *string `json:"ChartName,omitempty" name:"ChartName"`
+
+	// Helm chart版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+}
+
+func (r *DownloadHelmChartRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadHelmChartRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadHelmChartResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 临时token
+		TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
+
+		// 临时的secretId
+		TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
+
+		// 临时的secretKey
+		TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+
+		// 存储桶信息
+		Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+		// 实例ID
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// chart信息
+		Path *string `json:"Path,omitempty" name:"Path"`
+
+		// 开始时间时间戳
+		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+		// token过期时间时间戳
+		ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadHelmChartResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DownloadHelmChartResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DupImageTagResp struct {
 
 	// 镜像Digest值

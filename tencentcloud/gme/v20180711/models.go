@@ -520,6 +520,56 @@ func (r *ModifyAppStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyRoomInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间id
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 301 启动推流
+	// 302 停止推流
+	// 303 重置RTMP连接
+	OperationType *int64 `json:"OperationType,omitempty" name:"OperationType"`
+}
+
+func (r *ModifyRoomInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoomInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRoomInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果, 0成功, 非0失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+		// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRoomInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyRoomInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type RealTimeSpeechStatisticsItem struct {
 
 	// 大陆地区DAU

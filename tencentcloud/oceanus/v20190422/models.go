@@ -713,6 +713,10 @@ type JobConfig struct {
 	// 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogCollect *int64 `json:"LogCollect,omitempty" name:"LogCollect"`
+
+	// 作业的最大并行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxParallelism *uint64 `json:"MaxParallelism,omitempty" name:"MaxParallelism"`
 }
 
 type JobV1 struct {
