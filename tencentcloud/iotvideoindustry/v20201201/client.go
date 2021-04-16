@@ -494,6 +494,34 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
     return
 }
 
+func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
+    request = &DescribeRecordStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeRecordStream")
+    return
+}
+
+func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) {
+    response = &DescribeRecordStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取回放视频流(NVR录制用)
+// RecordId和StartTime/EndTime互斥
+// 当存在RecordId时，StartTime和EndTime无效
+// 当RecordId为空，StartTime和EndTime生效
+func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordStreamRequest()
+    }
+    response = NewDescribeRecordStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSIPServerRequest() (request *DescribeSIPServerRequest) {
     request = &DescribeSIPServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -590,6 +618,31 @@ func (c *Client) DescribeSubGroups(request *DescribeSubGroupsRequest) (response 
         request = NewDescribeSubGroupsRequest()
     }
     response = NewDescribeSubGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoListRequest() (request *DescribeVideoListRequest) {
+    request = &DescribeVideoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeVideoList")
+    return
+}
+
+func NewDescribeVideoListResponse() (response *DescribeVideoListResponse) {
+    response = &DescribeVideoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据时间获取回放文件列表(云端录制用)
+func (c *Client) DescribeVideoList(request *DescribeVideoListRequest) (response *DescribeVideoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoListRequest()
+    }
+    response = NewDescribeVideoListResponse()
     err = c.Send(request, response)
     return
 }

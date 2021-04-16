@@ -1,72 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 26 次发布
+### 第 35 次发布
 
-发布时间：2021-04-15 08:02:12
+发布时间：2021-04-16 08:09:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+* [UploadTaxList](https://cloud.tencent.com/document/api/1122/54761)
+* [UploadTaxPayment](https://cloud.tencent.com/document/api/1122/54760)
 
-	* 新增入参：RecordReplayProjectInput
 
-* [ExportVideoEditProject](https://cloud.tencent.com/document/api/1156/40353)
 
-	* 新增入参：CoverData
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
+### 第 5 次发布
+
+发布时间：2021-04-16 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRecordStream](https://cloud.tencent.com/document/api/1361/54758)
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
 
 新增数据结构：
 
-* [RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput)
+* [DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData)
 
 
 
-## 游戏多媒体引擎(gme) 版本：2018-07-11
+## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 10 次发布
+### 第 30 次发布
 
-发布时间：2021-04-15 08:05:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyRoomInfo](https://cloud.tencent.com/document/api/607/54730)
-
-
-
-## 流计算服务(oceanus) 版本：2019-04-22
-
-### 第 6 次发布
-
-发布时间：2021-04-15 08:00:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
-
-	* 新增成员：MaxParallelism
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 28 次发布
-
-发布时间：2021-04-15 08:09:20
+发布时间：2021-04-16 08:06:39
 
 本次发布包含了以下内容：
 
@@ -74,7 +50,7 @@
 
 新增接口：
 
-* [DownloadHelmChart](https://cloud.tencent.com/document/api/1141/54732)
+* [UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)
 
 
 
@@ -11389,7 +11365,7 @@
 
 新增数据结构：
 
-* [[RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput)](https://cloud.tencent.com/document/api/1156/40360#[RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput))
+* [RecordReplayProjectInput](https://cloud.tencent.com/document/api/1156/40360#RecordReplayProjectInput)
 
 ### 第 25 次发布
 
@@ -12445,6 +12421,19 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 35 次发布
+
+发布时间：2021-04-16 08:09:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UploadTaxList](https://cloud.tencent.com/document/api/1122/54761)](https://cloud.tencent.com/document/api/#/#)
+* [[UploadTaxPayment](https://cloud.tencent.com/document/api/1122/54760)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 34 次发布
 
@@ -21402,7 +21391,7 @@
 
 新增接口：
 
-* [[ModifyRoomInfo](https://cloud.tencent.com/document/api/607/54730)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyRoomInfo](https://cloud.tencent.com/document/api/607/54730)
 
 ### 第 9 次发布
 
@@ -21900,7 +21889,7 @@
 
 
 
-## 游戏服务器引擎(gse) 版本：2019-11-12
+## 游戏服务器伸缩(gse) 版本：2019-11-12
 
 ### 第 19 次发布
 
@@ -25091,7 +25080,7 @@
 
 新增接口：
 
-* [ModifyDevice](https://cloud.tencent.com/document/api/#/#)
+* [ModifyDevice](https://cloud.tencent.com/document/api/1131/54741)
 
 ### 第 21 次发布
 
@@ -25653,6 +25642,23 @@
 
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 5 次发布
+
+发布时间：2021-04-16 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRecordStream](https://cloud.tencent.com/document/api/1361/54758)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData)](https://cloud.tencent.com/document/api/1361/53754#[DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData))
 
 ### 第 4 次发布
 
@@ -32571,6 +32577,18 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 30 次发布
+
+发布时间：2021-04-16 08:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 29 次发布
 
 发布时间：2021-02-24 08:06:21
@@ -37919,7 +37937,7 @@
 
 新增接口：
 
-* [[DownloadHelmChart](https://cloud.tencent.com/document/api/1141/54732)](https://cloud.tencent.com/document/api/#/#)
+* [DownloadHelmChart](https://cloud.tencent.com/document/api/1141/54732)
 
 ### 第 27 次发布
 

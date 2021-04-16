@@ -841,6 +841,73 @@ func (r *DescribeGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRecordStreamData struct {
+
+	// Rtsp地址
+	RtspAddr *string `json:"RtspAddr,omitempty" name:"RtspAddr"`
+
+	// Rtmp地址
+	RtmpAddr *string `json:"RtmpAddr,omitempty" name:"RtmpAddr"`
+
+	// Hls地址
+	HlsAddr *string `json:"HlsAddr,omitempty" name:"HlsAddr"`
+
+	// Flv地址
+	FlvAddr *string `json:"FlvAddr,omitempty" name:"FlvAddr"`
+
+	// 流Id
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+}
+
+type DescribeRecordStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 流失效时间
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 录像文件Id
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 录像流开始时间，当录像文件Id为空时有效
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 录像流结束时间，当录像文件Id为空时有效
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeRecordStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRecordStreamRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果
+		Data *DescribeRecordStreamData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRecordStreamResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSIPServerRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1024,6 +1091,55 @@ func (r *DescribeSubGroupsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSubGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间戳，秒级
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳，秒级
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeVideoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 录像详情列表
+		VideoList *RecordTaskItem `json:"VideoList,omitempty" name:"VideoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVideoListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

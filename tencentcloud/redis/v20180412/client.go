@@ -1617,3 +1617,28 @@ func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) 
     err = c.Send(request, response)
     return
 }
+
+func NewUpgradeVersionToMultiAvailabilityZonesRequest() (request *UpgradeVersionToMultiAvailabilityZonesRequest) {
+    request = &UpgradeVersionToMultiAvailabilityZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "UpgradeVersionToMultiAvailabilityZones")
+    return
+}
+
+func NewUpgradeVersionToMultiAvailabilityZonesResponse() (response *UpgradeVersionToMultiAvailabilityZonesResponse) {
+    response = &UpgradeVersionToMultiAvailabilityZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 升级实例支持多AZ
+func (c *Client) UpgradeVersionToMultiAvailabilityZones(request *UpgradeVersionToMultiAvailabilityZonesRequest) (response *UpgradeVersionToMultiAvailabilityZonesResponse, err error) {
+    if request == nil {
+        request = NewUpgradeVersionToMultiAvailabilityZonesRequest()
+    }
+    response = NewUpgradeVersionToMultiAvailabilityZonesResponse()
+    err = c.Send(request, response)
+    return
+}

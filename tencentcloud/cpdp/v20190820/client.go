@@ -2052,6 +2052,56 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
     return
 }
 
+func NewUploadTaxListRequest() (request *UploadTaxListRequest) {
+    request = &UploadTaxListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxList")
+    return
+}
+
+func NewUploadTaxListResponse() (response *UploadTaxListResponse) {
+    response = &UploadTaxListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-上传代理商完税列表
+func (c *Client) UploadTaxList(request *UploadTaxListRequest) (response *UploadTaxListResponse, err error) {
+    if request == nil {
+        request = NewUploadTaxListRequest()
+    }
+    response = NewUploadTaxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadTaxPaymentRequest() (request *UploadTaxPaymentRequest) {
+    request = &UploadTaxPaymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxPayment")
+    return
+}
+
+func NewUploadTaxPaymentResponse() (response *UploadTaxPaymentResponse) {
+    response = &UploadTaxPaymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 直播平台-上传代理商完税证明
+func (c *Client) UploadTaxPayment(request *UploadTaxPaymentRequest) (response *UploadTaxPaymentResponse, err error) {
+    if request == nil {
+        request = NewUploadTaxPaymentRequest()
+    }
+    response = NewUploadTaxPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWithdrawCashMembershipRequest() (request *WithdrawCashMembershipRequest) {
     request = &WithdrawCashMembershipRequest{
         BaseRequest: &tchttp.BaseRequest{},

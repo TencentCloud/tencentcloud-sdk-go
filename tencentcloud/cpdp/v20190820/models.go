@@ -7620,6 +7620,92 @@ func (r *UnifiedOrderResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type UploadTaxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台渠道
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 起始月份，YYYY-MM
+	BeginMonth *string `json:"BeginMonth,omitempty" name:"BeginMonth"`
+
+	// 结束月份。如果只上传一个月，结束月份等于起始月份
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 完税列表下载地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+func (r *UploadTaxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadTaxListRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 完税ID
+		TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadTaxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadTaxListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxPaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台渠道
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 完税ID
+	TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+	// 完税列表下载地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+func (r *UploadTaxPaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadTaxPaymentRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxPaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadTaxPaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UploadTaxPaymentResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type WithdrawBill struct {
 
 	// 业务提现订单号

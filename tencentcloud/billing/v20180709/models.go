@@ -805,28 +805,28 @@ type DescribeAccountBalanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 云账户信息中的”展示可用余额”字段，单位为"分"
+		// 接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
 		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
 
 		// 查询的用户Uin
 		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
-		// 当前真实可用余额
+		// 当前真实可用余额,单位 分
 		RealBalance *float64 `json:"RealBalance,omitempty" name:"RealBalance"`
 
-		// 现金账户余额
+		// 现金账户余额,单位 分
 		CashAccountBalance *float64 `json:"CashAccountBalance,omitempty" name:"CashAccountBalance"`
 
-		// 收益转入账户余额
+		// 收益转入账户余额,单位 分
 		IncomeIntoAccountBalance *float64 `json:"IncomeIntoAccountBalance,omitempty" name:"IncomeIntoAccountBalance"`
 
-		// 赠送账户余额
+		// 赠送账户余额,单位 分
 		PresentAccountBalance *float64 `json:"PresentAccountBalance,omitempty" name:"PresentAccountBalance"`
 
-		// 冻结金额
+		// 冻结金额,单位 分
 		FreezeAmount *float64 `json:"FreezeAmount,omitempty" name:"FreezeAmount"`
 
-		// 欠费金额
+		// 欠费金额,单位 分
 		OweAmount *float64 `json:"OweAmount,omitempty" name:"OweAmount"`
 
 		// 是否允许欠费消费
