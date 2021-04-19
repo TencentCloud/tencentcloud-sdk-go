@@ -8,7 +8,7 @@
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-02-01 08:00:37 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-03-30 08:00:17 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-04-16 08:00:31 |
-| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-04-15 08:09:45 |
+| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-04-19 08:09:23 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-04-01 08:02:04 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-03-24 08:00:38 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-04-02 08:00:26 |
@@ -27,7 +27,7 @@
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-01-07 08:01:42 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-02-25 08:02:45 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-04-07 08:00:41 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-04-12 08:03:04 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-04-19 08:02:59 |
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-04-12 08:03:18 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-01-07 08:03:25 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-04-07 08:03:25 |
@@ -68,7 +68,7 @@
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-03-16 08:02:03 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-04-12 08:01:48 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-03-24 08:05:04 |
-| gme | [游戏多媒体引擎](https://cloud.tencent.com/document/product/607) | 2021-04-15 08:05:08 |
+| gme | [游戏多媒体引擎](https://cloud.tencent.com/document/product/607) | 2021-04-19 08:04:50 |
 | gpm | [游戏玩家匹配](https://cloud.tencent.com/document/product/1294) | 2021-02-04 08:00:57 |
 | gs | [云游戏解决方案](https://cloud.tencent.com/document/product/1162) | 2021-04-13 08:02:06 |
 | gse | [游戏服务器伸缩](https://cloud.tencent.com/document/product/1165) | 2021-04-16 08:01:41 |
@@ -84,7 +84,7 @@
 | iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-04-13 08:05:53 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-01-07 08:05:49 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-03-24 08:01:29 |
-| iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-04-16 08:00:07 |
+| iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-04-19 08:00:07 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-03-22 08:05:35 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-04-08 08:00:44 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-04-02 08:05:49 |
@@ -104,7 +104,7 @@
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-04-01 08:06:40 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-03-31 08:06:30 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-04-01 08:06:54 |
-| postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-03-31 08:06:39 |
+| postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-04-19 08:06:30 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2021-04-16 08:10:14 |
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-04-16 08:06:39 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-01-07 08:11:09 |
@@ -146,7 +146,7 @@
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-01-28 08:00:40 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-01-07 08:08:32 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-04-14 08:09:27 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-04-19 08:08:47 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-04-15 08:00:05 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-04-09 08:08:01 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-04-13 08:12:01 |

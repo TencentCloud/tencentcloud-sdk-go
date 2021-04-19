@@ -337,6 +337,51 @@ func (r *DescribeFilterResultResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRoomInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号列表，最大不能超过10个
+	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds" list`
+}
+
+func (r *DescribeRoomInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoomInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoomInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果, 0成功, 非0失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+		// 房间用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RoomUsers []*RoomUser `json:"RoomUsers,omitempty" name:"RoomUsers" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRoomInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeRoomInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScanResult struct {
 
 	// 业务返回码
@@ -598,6 +643,16 @@ type RealtimeSpeechConf struct {
 
 	// 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
 	Quality *string `json:"Quality,omitempty" name:"Quality"`
+}
+
+type RoomUser struct {
+
+	// 房间id
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 房间里用户uin列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
 }
 
 type ScanDetail struct {

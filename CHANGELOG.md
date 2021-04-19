@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
-### 第 35 次发布
+### 第 11 次发布
 
-发布时间：2021-04-16 08:09:33
+发布时间：2021-04-19 08:04:50
 
 本次发布包含了以下内容：
 
@@ -12,37 +12,38 @@
 
 新增接口：
 
-* [UploadTaxList](https://cloud.tencent.com/document/api/1122/54761)
-* [UploadTaxPayment](https://cloud.tencent.com/document/api/1122/54760)
+* [DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)
+
+新增数据结构：
+
+* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
 
 
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2021-04-16 08:00:07
+发布时间：2021-04-19 08:00:07
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeRecordStream](https://cloud.tencent.com/document/api/1361/54758)
 * [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
 
-新增数据结构：
-
-* [DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData)
+	* 新增入参：DeviceId
 
 
 
-## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 30 次发布
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-发布时间：2021-04-16 08:06:39
+### 第 14 次发布
+
+发布时间：2021-04-19 08:06:30
 
 本次发布包含了以下内容：
 
@@ -50,7 +51,8 @@
 
 新增接口：
 
-* [UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)
+* [DisIsolateDBInstances](https://cloud.tencent.com/document/api/409/54791)
+* [IsolateDBInstances](https://cloud.tencent.com/document/api/409/54790)
 
 
 
@@ -12432,8 +12434,8 @@
 
 新增接口：
 
-* [[UploadTaxList](https://cloud.tencent.com/document/api/1122/54761)](https://cloud.tencent.com/document/api/#/#)
-* [[UploadTaxPayment](https://cloud.tencent.com/document/api/1122/54760)](https://cloud.tencent.com/document/api/#/#)
+* [UploadTaxList](https://cloud.tencent.com/document/api/1122/54761)
+* [UploadTaxPayment](https://cloud.tencent.com/document/api/1122/54760)
 
 ### 第 34 次发布
 
@@ -21381,6 +21383,22 @@
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 11 次发布
+
+发布时间：2021-04-19 08:04:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)](https://cloud.tencent.com/document/api/607/35375#[RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser))
+
 ### 第 10 次发布
 
 发布时间：2021-04-15 08:05:08
@@ -25643,6 +25661,21 @@
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
+### 第 6 次发布
+
+发布时间：2021-04-19 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+
+	* 新增入参：DeviceId
+
+
 ### 第 5 次发布
 
 发布时间：2021-04-16 08:00:07
@@ -25653,12 +25686,12 @@
 
 新增接口：
 
-* [[DescribeRecordStream](https://cloud.tencent.com/document/api/1361/54758)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecordStream](https://cloud.tencent.com/document/api/1361/54758)
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
 
 新增数据结构：
 
-* [[DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData)](https://cloud.tencent.com/document/api/1361/53754#[DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData))
+* [DescribeRecordStreamData](https://cloud.tencent.com/document/api/1361/53754#DescribeRecordStreamData)
 
 ### 第 4 次发布
 
@@ -32197,6 +32230,19 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 14 次发布
+
+发布时间：2021-04-19 08:06:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DisIsolateDBInstances](https://cloud.tencent.com/document/api/409/54791)](https://cloud.tencent.com/document/api/#/#)
+* [[IsolateDBInstances](https://cloud.tencent.com/document/api/409/54790)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 13 次发布
 
 发布时间：2021-03-31 08:06:39
@@ -32587,7 +32633,7 @@
 
 新增接口：
 
-* [[UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)](https://cloud.tencent.com/document/api/#/#)
+* [UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)
 
 ### 第 29 次发布
 

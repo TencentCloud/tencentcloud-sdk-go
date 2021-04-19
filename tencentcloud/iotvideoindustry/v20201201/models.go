@@ -1108,6 +1108,9 @@ type DescribeVideoListRequest struct {
 
 	// 限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
 func (r *DescribeVideoListRequest) ToJsonString() string {

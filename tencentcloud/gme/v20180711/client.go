@@ -168,6 +168,31 @@ func (c *Client) DescribeFilterResultList(request *DescribeFilterResultListReque
     return
 }
 
+func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
+    request = &DescribeRoomInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeRoomInfo")
+    return
+}
+
+func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
+    response = &DescribeRoomInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取房间内用户信息
+func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *DescribeRoomInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomInfoRequest()
+    }
+    response = NewDescribeRoomInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanResultListRequest() (request *DescribeScanResultListRequest) {
     request = &DescribeScanResultListRequest{
         BaseRequest: &tchttp.BaseRequest{},
