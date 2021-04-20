@@ -580,6 +580,10 @@ type Cluster struct {
 	// 集群所在的可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClustersZone *ClustersZone `json:"ClustersZone,omitempty" name:"ClustersZone"`
+
+	// 集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClustersVersion *string `json:"ClustersVersion,omitempty" name:"ClustersVersion"`
 }
 
 type ClusterItem struct {

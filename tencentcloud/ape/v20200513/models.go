@@ -479,6 +479,16 @@ type ImageInfo struct {
 
 	// 平台用户标识
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 平台用户下载图片购买的价格(单位:分)
+	DownloadPrice *uint64 `json:"DownloadPrice,omitempty" name:"DownloadPrice"`
+
+	// 下载类型。匹配集合中的任意元素：
+	// <li>Single: 单张购买下载</li>
+	// <li>BasicEnterpriseMember: 企业基础会员下载</li>
+	// <li>AdvancedEnterpriseMember: 企业高级会员下载</li>
+	// <li>DistinguishedEnterpriseMember: 企业尊享会员下载</li>
+	DownloadType *string `json:"DownloadType,omitempty" name:"DownloadType"`
 }
 
 type ImageItem struct {

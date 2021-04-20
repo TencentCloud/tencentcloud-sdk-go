@@ -663,6 +663,92 @@ func (r *CreateSecurityPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTagRetentionExecutionRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 版本保留规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 是否模拟执行
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *CreateTagRetentionExecutionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTagRetentionExecutionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTagRetentionExecutionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTagRetentionExecutionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTagRetentionExecutionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTagRetentionRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的Id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 保留策略
+	RetentionRule *RetentionRule `json:"RetentionRule,omitempty" name:"RetentionRule"`
+
+	// 执行周期，当前只能选择： manual;daily;weekly;monthly
+	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
+
+	// 是否禁用规则
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+}
+
+func (r *CreateTagRetentionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTagRetentionRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTagRetentionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTagRetentionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateTagRetentionRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -1222,6 +1308,43 @@ func (r *DeleteSecurityPolicyResponse) ToJsonString() string {
 }
 
 func (r *DeleteSecurityPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagRetentionRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 版本保留规则的Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+}
+
+func (r *DeleteTagRetentionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTagRetentionRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagRetentionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTagRetentionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteTagRetentionRuleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2345,6 +2468,156 @@ func (r *DescribeSecurityPoliciesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTagRetentionExecutionRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeTagRetentionExecutionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionExecutionRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagRetentionExecutionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本保留执行记录列表
+		RetentionExecutionList []*RetentionExecution `json:"RetentionExecutionList,omitempty" name:"RetentionExecutionList" list`
+
+		// 版本保留执行记录总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagRetentionExecutionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionExecutionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagRetentionExecutionTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 规则执行Id
+	ExecutionId *int64 `json:"ExecutionId,omitempty" name:"ExecutionId"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTagRetentionExecutionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionExecutionTaskRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagRetentionExecutionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本保留执行任务列表
+		RetentionTaskList []*RetentionTask `json:"RetentionTaskList,omitempty" name:"RetentionTaskList" list`
+
+		// 版本保留执行任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagRetentionExecutionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionExecutionTaskResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagRetentionRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeTagRetentionRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionRulesRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTagRetentionRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本保留策略列表
+		RetentionPolicyList []*RetentionPolicy `json:"RetentionPolicyList,omitempty" name:"RetentionPolicyList" list`
+
+		// 版本保留策略总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTagRetentionRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeTagRetentionRulesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserQuotaPersonalRequest struct {
 	*tchttp.BaseRequest
 }
@@ -3154,6 +3427,55 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyTagRetentionRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的Id，必须填写原有的命名空间id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 保留策略
+	RetentionRule *RetentionRule `json:"RetentionRule,omitempty" name:"RetentionRule"`
+
+	// 执行周期，必须填写为原来的设置
+	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 是否禁用规则
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+}
+
+func (r *ModifyTagRetentionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTagRetentionRuleRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTagRetentionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyTagRetentionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyTagRetentionRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyUserPasswordPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -3525,6 +3847,81 @@ type RespLimit struct {
 
 	// 配额信息
 	LimitInfo []*Limit `json:"LimitInfo,omitempty" name:"LimitInfo" list`
+}
+
+type RetentionExecution struct {
+
+	// 执行Id
+	ExecutionId *int64 `json:"ExecutionId,omitempty" name:"ExecutionId"`
+
+	// 所属规则id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 执行的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 执行的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 执行的状态，Failed, Succeed, Stopped, InProgress
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type RetentionPolicy struct {
+
+	// 版本保留策略Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则列表
+	RetentionRuleList []*RetentionRule `json:"RetentionRuleList,omitempty" name:"RetentionRuleList" list`
+
+	// 定期执行方式
+	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
+
+	// 是否启用规则
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+
+	// 基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+	NextExecutionTime *string `json:"NextExecutionTime,omitempty" name:"NextExecutionTime"`
+}
+
+type RetentionRule struct {
+
+	// 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 规则设置下的对应值
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
+type RetentionTask struct {
+
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 所属的规则执行Id
+	ExecutionId *int64 `json:"ExecutionId,omitempty" name:"ExecutionId"`
+
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务的执行状态，Failed, Succeed, Stopped, InProgress
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 总tag数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 保留tag数
+	Retained *int64 `json:"Retained,omitempty" name:"Retained"`
+
+	// 应用的仓库
+	Repository *string `json:"Repository,omitempty" name:"Repository"`
 }
 
 type SameImagesResp struct {

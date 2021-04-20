@@ -1,30 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 游戏多媒体引擎(gme) 版本：2018-07-11
+## 正版图库直通车(ape) 版本：2020-05-13
 
-### 第 11 次发布
+### 第 6 次发布
 
-发布时间：2021-04-19 08:04:50
+发布时间：2021-04-20 08:00:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)
+* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
 
-新增数据结构：
-
-* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
+	* 新增成员：DownloadPrice, DownloadType
 
 
 
-## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
-### 第 6 次发布
+## 内容分发网络(cdn) 版本：2018-06-06
 
-发布时间：2021-04-19 08:00:07
+### 第 65 次发布
+
+发布时间：2021-04-20 08:03:37
 
 本次发布包含了以下内容：
 
@@ -32,18 +31,56 @@
 
 修改接口：
 
-* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+* [CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)
 
-	* 新增入参：DeviceId
-
-
+	* <font color="#dd0000">**修改入参**：</font>CosUriTo
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 14 次发布
 
-发布时间：2021-04-19 08:06:30
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 48 次发布
+
+发布时间：2021-04-20 08:04:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+
+	* 新增成员：ClustersVersion
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 19 次发布
+
+发布时间：2021-04-20 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+
+	* 新增成员：LocalZone, VlanZeroDirectConnectTunnelCount, OtherVlanDirectConnectTunnelCount, MinBandwidth
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 29 次发布
+
+发布时间：2021-04-20 08:10:24
 
 本次发布包含了以下内容：
 
@@ -51,8 +88,20 @@
 
 新增接口：
 
-* [DisIsolateDBInstances](https://cloud.tencent.com/document/api/409/54791)
-* [IsolateDBInstances](https://cloud.tencent.com/document/api/409/54790)
+* [CreateTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54804)
+* [CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)
+* [DeleteTagRetentionRule](https://cloud.tencent.com/document/api/1141/54802)
+* [DescribeTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54801)
+* [DescribeTagRetentionExecutionTask](https://cloud.tencent.com/document/api/1141/54800)
+* [DescribeTagRetentionRules](https://cloud.tencent.com/document/api/1141/54799)
+* [ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)
+
+新增数据结构：
+
+* [RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution)
+* [RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)
+* [RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule)
+* [RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask)
 
 
 
@@ -683,6 +732,21 @@
 
 
 ## 正版图库直通车(ape) 版本：2020-05-13
+
+### 第 6 次发布
+
+发布时间：2021-04-20 08:00:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
+
+	* 新增成员：DownloadPrice, DownloadType
+
 
 ### 第 5 次发布
 
@@ -7719,6 +7783,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 65 次发布
+
+发布时间：2021-04-20 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)
+
+	* <font color="#dd0000">**修改入参**：</font>CosUriTo
+
+
 ### 第 64 次发布
 
 发布时间：2021-03-10 08:04:14
@@ -10066,6 +10145,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 48 次发布
+
+发布时间：2021-04-20 08:04:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+
+	* 新增成员：ClustersVersion
+
 
 ### 第 47 次发布
 
@@ -16254,6 +16348,21 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 19 次发布
+
+发布时间：2021-04-20 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
+
+	* 新增成员：LocalZone, VlanZeroDirectConnectTunnelCount, OtherVlanDirectConnectTunnelCount, MinBandwidth
+
+
 ### 第 18 次发布
 
 发布时间：2021-04-07 08:04:13
@@ -21393,11 +21502,11 @@
 
 新增接口：
 
-* [[DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)
 
 新增数据结构：
 
-* [[RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)](https://cloud.tencent.com/document/api/607/35375#[RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser))
+* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
 
 ### 第 10 次发布
 
@@ -32240,8 +32349,8 @@
 
 新增接口：
 
-* [[DisIsolateDBInstances](https://cloud.tencent.com/document/api/409/54791)](https://cloud.tencent.com/document/api/#/#)
-* [[IsolateDBInstances](https://cloud.tencent.com/document/api/409/54790)](https://cloud.tencent.com/document/api/#/#)
+* [DisIsolateDBInstances](https://cloud.tencent.com/document/api/409/54791)
+* [IsolateDBInstances](https://cloud.tencent.com/document/api/409/54790)
 
 ### 第 13 次发布
 
@@ -37972,6 +38081,31 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 29 次发布
+
+发布时间：2021-04-20 08:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54804)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteTagRetentionRule](https://cloud.tencent.com/document/api/1141/54802)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54801)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagRetentionExecutionTask](https://cloud.tencent.com/document/api/1141/54800)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagRetentionRules](https://cloud.tencent.com/document/api/1141/54799)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution)](https://cloud.tencent.com/document/api/1141/41603#[RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution))
+* [[RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)](https://cloud.tencent.com/document/api/1141/41603#[RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy))
+* [[RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule)](https://cloud.tencent.com/document/api/1141/41603#[RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule))
+* [[RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask)](https://cloud.tencent.com/document/api/1141/41603#[RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask))
 
 ### 第 28 次发布
 

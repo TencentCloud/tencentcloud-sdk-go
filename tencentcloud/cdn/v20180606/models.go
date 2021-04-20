@@ -1149,11 +1149,11 @@ type CreateEdgePackTaskRequest struct {
 	// apk 源文件的存储路径, 如 /apk/xxxx.apk
 	CosUriFrom *string `json:"CosUriFrom,omitempty" name:"CosUriFrom"`
 
-	// 拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
-	CosUriTo *string `json:"CosUriTo,omitempty" name:"CosUriTo"`
-
 	// BlockID 的值, WALLE为1903654775(0x71777777)，VasDolly为2282837503(0x881155ff),传0或不传时默认为 WALLE 方案
 	BlockID *uint64 `json:"BlockID,omitempty" name:"BlockID"`
+
+	// 拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
+	CosUriTo *string `json:"CosUriTo,omitempty" name:"CosUriTo"`
 }
 
 func (r *CreateEdgePackTaskRequest) ToJsonString() string {
