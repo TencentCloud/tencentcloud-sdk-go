@@ -2202,7 +2202,7 @@ type TopicRetentionTimeConfigRsp struct {
 
 	// 最近变更时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModTimeStamp *int64 `json:"ModTimeStamp,omitempty" name:"ModTimeStamp"`
+	ModTimeStamp *string `json:"ModTimeStamp,omitempty" name:"ModTimeStamp"`
 }
 
 type User struct {
