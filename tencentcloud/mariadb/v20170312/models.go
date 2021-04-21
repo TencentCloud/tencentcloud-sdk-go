@@ -1487,6 +1487,52 @@ func (r *DescribeFlowResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceNodeInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如tdsql-6ltok4u9
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 一次最多返回多少条数据。默认为无穷大，返回符合要求的所有数据
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回数据的偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInstanceNodeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceNodeInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceNodeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点总个数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 节点信息
+		NodesInfo []*NodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceNodeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeInstanceNodeInfoResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLogFileRetentionPeriodRequest struct {
 	*tchttp.BaseRequest
 
@@ -2387,6 +2433,15 @@ type MonitorData struct {
 
 	// 监控数据
 	Data []*float64 `json:"Data,omitempty" name:"Data" list`
+}
+
+type NodeInfo struct {
+
+	// DB节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// DB节点角色，取值为master或者slave
+	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
 type OpenDBExtranetAccessRequest struct {

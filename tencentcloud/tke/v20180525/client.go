@@ -683,7 +683,7 @@ func NewDeletePrometheusTemplateResponse() (response *DeletePrometheusTemplateRe
     return
 }
 
-// 删除一个云原生Promehtheus配置模板
+// 删除一个云原生Prometheus配置模板
 func (c *Client) DeletePrometheusTemplate(request *DeletePrometheusTemplateRequest) (response *DeletePrometheusTemplateResponse, err error) {
     if request == nil {
         request = NewDeletePrometheusTemplateRequest()

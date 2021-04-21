@@ -1513,6 +1513,11 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 
 	// 去往用户侧的路由信息
 	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitempty" name:"CustomerIDCRoutes" list`
+
+	// 是否开启巨帧
+	// 1：开启
+	// 0：不开启
+	JumboEnable *int64 `json:"JumboEnable,omitempty" name:"JumboEnable"`
 }
 
 func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {

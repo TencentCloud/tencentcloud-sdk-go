@@ -297,13 +297,16 @@ type CreateDomainBatchRequest struct {
 	// 批量购买的域名,最多为4000个
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 
-	// 付费模式 0手动在线付费，1使用余额付费
+	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 自动续费开关。有两个可选值：
 	// 0 表示关闭，不自动续费（默认值）
 	// 1 表示开启，将自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 使用的特惠包ID，PayMode为2时必填
+	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
 }
 
 func (r *CreateDomainBatchRequest) ToJsonString() string {

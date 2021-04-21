@@ -2897,6 +2897,9 @@ type DescribeLiveForbidStreamListRequest struct {
 	// 取值：1~100之前的任意整数。
 	// 默认值：10。
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 搜索的推流 id 名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
 func (r *DescribeLiveForbidStreamListRequest) ToJsonString() string {

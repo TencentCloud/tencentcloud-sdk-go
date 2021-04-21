@@ -1129,8 +1129,11 @@ type DescribeVideoListResponse struct {
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 录像详情列表
+		// 已废弃
 		VideoList *RecordTaskItem `json:"VideoList,omitempty" name:"VideoList"`
+
+		// 录像详情列表
+		RecordList []*RecordTaskItem `json:"RecordList,omitempty" name:"RecordList" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

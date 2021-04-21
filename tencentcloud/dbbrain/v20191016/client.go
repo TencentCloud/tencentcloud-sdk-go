@@ -93,6 +93,31 @@ func (c *Client) CreateDBDiagReportTask(request *CreateDBDiagReportTaskRequest) 
     return
 }
 
+func NewCreateDBDiagReportUrlRequest() (request *CreateDBDiagReportUrlRequest) {
+    request = &CreateDBDiagReportUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateDBDiagReportUrl")
+    return
+}
+
+func NewCreateDBDiagReportUrlResponse() (response *CreateDBDiagReportUrlResponse) {
+    response = &CreateDBDiagReportUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建健康报告的浏览地址。
+func (c *Client) CreateDBDiagReportUrl(request *CreateDBDiagReportUrlRequest) (response *CreateDBDiagReportUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateDBDiagReportUrlRequest()
+    }
+    response = NewCreateDBDiagReportUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMailProfileRequest() (request *CreateMailProfileRequest) {
     request = &CreateMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +318,31 @@ func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (r
     return
 }
 
+func NewDescribeDBDiagReportTasksRequest() (request *DescribeDBDiagReportTasksRequest) {
+    request = &DescribeDBDiagReportTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagReportTasks")
+    return
+}
+
+func NewDescribeDBDiagReportTasksResponse() (response *DescribeDBDiagReportTasksResponse) {
+    response = &DescribeDBDiagReportTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询健康报告生成任务列表。
+func (c *Client) DescribeDBDiagReportTasks(request *DescribeDBDiagReportTasksRequest) (response *DescribeDBDiagReportTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagReportTasksRequest()
+    }
+    response = NewDescribeDBDiagReportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
     request = &DescribeDBSpaceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -489,6 +539,81 @@ func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) 
         request = NewDescribeSlowLogTopSqlsRequest()
     }
     response = NewDescribeSlowLogTopSqlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowLogUserHostStatsRequest() (request *DescribeSlowLogUserHostStatsRequest) {
+    request = &DescribeSlowLogUserHostStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSlowLogUserHostStats")
+    return
+}
+
+func NewDescribeSlowLogUserHostStatsResponse() (response *DescribeSlowLogUserHostStatsResponse) {
+    response = &DescribeSlowLogUserHostStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取慢日志来源地址统计分布图。
+func (c *Client) DescribeSlowLogUserHostStats(request *DescribeSlowLogUserHostStatsRequest) (response *DescribeSlowLogUserHostStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogUserHostStatsRequest()
+    }
+    response = NewDescribeSlowLogUserHostStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopSpaceSchemaTimeSeriesRequest() (request *DescribeTopSpaceSchemaTimeSeriesRequest) {
+    request = &DescribeTopSpaceSchemaTimeSeriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceSchemaTimeSeries")
+    return
+}
+
+func NewDescribeTopSpaceSchemaTimeSeriesResponse() (response *DescribeTopSpaceSchemaTimeSeriesResponse) {
+    response = &DescribeTopSpaceSchemaTimeSeriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例占用空间最大的前几个库在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+func (c *Client) DescribeTopSpaceSchemaTimeSeries(request *DescribeTopSpaceSchemaTimeSeriesRequest) (response *DescribeTopSpaceSchemaTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
+    }
+    response = NewDescribeTopSpaceSchemaTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopSpaceSchemasRequest() (request *DescribeTopSpaceSchemasRequest) {
+    request = &DescribeTopSpaceSchemasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceSchemas")
+    return
+}
+
+func NewDescribeTopSpaceSchemasResponse() (response *DescribeTopSpaceSchemasResponse) {
+    response = &DescribeTopSpaceSchemasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例Top库的实时空间统计信息，默认返回按大小排序。
+func (c *Client) DescribeTopSpaceSchemas(request *DescribeTopSpaceSchemasRequest) (response *DescribeTopSpaceSchemasResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceSchemasRequest()
+    }
+    response = NewDescribeTopSpaceSchemasResponse()
     err = c.Send(request, response)
     return
 }

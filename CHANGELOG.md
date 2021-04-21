@@ -1,86 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版图库直通车(ape) 版本：2020-05-13
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
-### 第 6 次发布
+### 第 11 次发布
 
-发布时间：2021-04-20 08:00:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ImageInfo](https://cloud.tencent.com/document/api/1181/49689#ImageInfo)
-
-	* 新增成员：DownloadPrice, DownloadType
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 65 次发布
-
-发布时间：2021-04-20 08:03:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateEdgePackTask](https://cloud.tencent.com/document/api/228/49977)
-
-	* <font color="#dd0000">**修改入参**：</font>CosUriTo
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 48 次发布
-
-发布时间：2021-04-20 08:04:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
-
-	* 新增成员：ClustersVersion
-
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 19 次发布
-
-发布时间：2021-04-20 08:04:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
-
-	* 新增成员：LocalZone, VlanZeroDirectConnectTunnelCount, OtherVlanDirectConnectTunnelCount, MinBandwidth
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 29 次发布
-
-发布时间：2021-04-20 08:10:24
+发布时间：2021-04-21 08:04:17
 
 本次发布包含了以下内容：
 
@@ -88,20 +12,144 @@
 
 新增接口：
 
-* [CreateTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54804)
-* [CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)
-* [DeleteTagRetentionRule](https://cloud.tencent.com/document/api/1141/54802)
-* [DescribeTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54801)
-* [DescribeTagRetentionExecutionTask](https://cloud.tencent.com/document/api/1141/54800)
-* [DescribeTagRetentionRules](https://cloud.tencent.com/document/api/1141/54799)
-* [ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)
+* [CreateDBDiagReportUrl](https://cloud.tencent.com/document/api/1130/54874)
+* [DescribeDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/54873)
+* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/54870)
+* [DescribeTopSpaceSchemaTimeSeries](https://cloud.tencent.com/document/api/1130/54872)
+* [DescribeTopSpaceSchemas](https://cloud.tencent.com/document/api/1130/54871)
 
 新增数据结构：
 
-* [RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution)
-* [RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)
-* [RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule)
-* [RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask)
+* [HealthReportTask](https://cloud.tencent.com/document/api/1130/39561#HealthReportTask)
+* [HealthStatus](https://cloud.tencent.com/document/api/1130/39561#HealthStatus)
+* [InstanceBasicInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceBasicInfo)
+* [SchemaSpaceData](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceData)
+* [SchemaSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceTimeSeries)
+* [ScoreDetail](https://cloud.tencent.com/document/api/1130/39561#ScoreDetail)
+* [ScoreItem](https://cloud.tencent.com/document/api/1130/39561#ScoreItem)
+* [SlowLogHost](https://cloud.tencent.com/document/api/1130/39561#SlowLogHost)
+
+修改数据结构：
+
+* [SlowLogTopSqlItem](https://cloud.tencent.com/document/api/1130/39561#SlowLogTopSqlItem)
+
+	* 新增成员：QueryTimeAvg, RowsSentAvg, LockTimeAvg, RowsExaminedAvg
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 20 次发布
+
+发布时间：2021-04-21 08:04:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
+
+	* 新增入参：JumboEnable
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 13 次发布
+
+发布时间：2021-04-21 08:04:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+
+	* 新增入参：PackageResourceId
+
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 7 次发布
+
+发布时间：2021-04-21 08:00:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+
+	* 新增出参：RecordList
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 60 次发布
+
+发布时间：2021-04-21 08:05:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveForbidStreamList](https://cloud.tencent.com/document/api/267/33187)
+
+	* 新增入参：StreamName
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 17 次发布
+
+发布时间：2021-04-21 08:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/237/54875)
+
+新增数据结构：
+
+* [NodeInfo](https://cloud.tencent.com/document/api/237/16191#NodeInfo)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 81 次发布
+
+发布时间：2021-04-21 08:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AttachMediaSubtitles](https://cloud.tencent.com/document/api/266/54235)
+
+	* 新增入参：SubAppId
+
 
 
 
@@ -16067,6 +16115,40 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
+### 第 11 次发布
+
+发布时间：2021-04-21 08:04:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDBDiagReportUrl](https://cloud.tencent.com/document/api/1130/54874)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/54873)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/54870)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopSpaceSchemaTimeSeries](https://cloud.tencent.com/document/api/1130/54872)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopSpaceSchemas](https://cloud.tencent.com/document/api/1130/54871)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[HealthReportTask](https://cloud.tencent.com/document/api/1130/39561#HealthReportTask)](https://cloud.tencent.com/document/api/1130/39561#[HealthReportTask](https://cloud.tencent.com/document/api/1130/39561#HealthReportTask))
+* [[HealthStatus](https://cloud.tencent.com/document/api/1130/39561#HealthStatus)](https://cloud.tencent.com/document/api/1130/39561#[HealthStatus](https://cloud.tencent.com/document/api/1130/39561#HealthStatus))
+* [[InstanceBasicInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceBasicInfo)](https://cloud.tencent.com/document/api/1130/39561#[InstanceBasicInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceBasicInfo))
+* [[SchemaSpaceData](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceData)](https://cloud.tencent.com/document/api/1130/39561#[SchemaSpaceData](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceData))
+* [[SchemaSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceTimeSeries)](https://cloud.tencent.com/document/api/1130/39561#[SchemaSpaceTimeSeries](https://cloud.tencent.com/document/api/1130/39561#SchemaSpaceTimeSeries))
+* [[ScoreDetail](https://cloud.tencent.com/document/api/1130/39561#ScoreDetail)](https://cloud.tencent.com/document/api/1130/39561#[ScoreDetail](https://cloud.tencent.com/document/api/1130/39561#ScoreDetail))
+* [[ScoreItem](https://cloud.tencent.com/document/api/1130/39561#ScoreItem)](https://cloud.tencent.com/document/api/1130/39561#[ScoreItem](https://cloud.tencent.com/document/api/1130/39561#ScoreItem))
+* [[SlowLogHost](https://cloud.tencent.com/document/api/1130/39561#SlowLogHost)](https://cloud.tencent.com/document/api/1130/39561#[SlowLogHost](https://cloud.tencent.com/document/api/1130/39561#SlowLogHost))
+
+修改数据结构：
+
+* [SlowLogTopSqlItem](https://cloud.tencent.com/document/api/1130/39561#SlowLogTopSqlItem)
+
+	* 新增成员：QueryTimeAvg, RowsSentAvg, LockTimeAvg, RowsExaminedAvg
+
+
 ### 第 10 次发布
 
 发布时间：2021-02-03 08:04:05
@@ -16347,6 +16429,21 @@
 
 
 ## 专线接入(dc) 版本：2018-04-10
+
+### 第 20 次发布
+
+发布时间：2021-04-21 08:04:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/49100)
+
+	* 新增入参：JumboEnable
+
 
 ### 第 19 次发布
 
@@ -17236,6 +17333,21 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 13 次发布
+
+发布时间：2021-04-21 08:04:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+
+	* 新增入参：PackageResourceId
+
 
 ### 第 12 次发布
 
@@ -25770,6 +25882,21 @@
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
+### 第 7 次发布
+
+发布时间：2021-04-21 08:00:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+
+	* 新增出参：RecordList
+
+
 ### 第 6 次发布
 
 发布时间：2021-04-19 08:00:07
@@ -26487,6 +26614,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 60 次发布
+
+发布时间：2021-04-21 08:05:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveForbidStreamList](https://cloud.tencent.com/document/api/267/33187)
+
+	* 新增入参：StreamName
+
 
 ### 第 59 次发布
 
@@ -27798,6 +27940,22 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 17 次发布
+
+发布时间：2021-04-21 08:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/237/54875)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NodeInfo](https://cloud.tencent.com/document/api/237/16191#NodeInfo)](https://cloud.tencent.com/document/api/237/16191#[NodeInfo](https://cloud.tencent.com/document/api/237/16191#NodeInfo))
 
 ### 第 16 次发布
 
@@ -38092,20 +38250,20 @@
 
 新增接口：
 
-* [[CreateTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54804)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTagRetentionRule](https://cloud.tencent.com/document/api/1141/54802)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54801)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagRetentionExecutionTask](https://cloud.tencent.com/document/api/1141/54800)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagRetentionRules](https://cloud.tencent.com/document/api/1141/54799)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54804)
+* [CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)
+* [DeleteTagRetentionRule](https://cloud.tencent.com/document/api/1141/54802)
+* [DescribeTagRetentionExecution](https://cloud.tencent.com/document/api/1141/54801)
+* [DescribeTagRetentionExecutionTask](https://cloud.tencent.com/document/api/1141/54800)
+* [DescribeTagRetentionRules](https://cloud.tencent.com/document/api/1141/54799)
+* [ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)
 
 新增数据结构：
 
-* [[RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution)](https://cloud.tencent.com/document/api/1141/41603#[RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution))
-* [[RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)](https://cloud.tencent.com/document/api/1141/41603#[RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy))
-* [[RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule)](https://cloud.tencent.com/document/api/1141/41603#[RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule))
-* [[RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask)](https://cloud.tencent.com/document/api/1141/41603#[RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask))
+* [RetentionExecution](https://cloud.tencent.com/document/api/1141/41603#RetentionExecution)
+* [RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)
+* [RetentionRule](https://cloud.tencent.com/document/api/1141/41603#RetentionRule)
+* [RetentionTask](https://cloud.tencent.com/document/api/1141/41603#RetentionTask)
 
 ### 第 28 次发布
 
@@ -43626,6 +43784,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 81 次发布
+
+发布时间：2021-04-21 08:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AttachMediaSubtitles](https://cloud.tencent.com/document/api/266/54235)
+
+	* 新增入参：SubAppId
+
 
 ### 第 80 次发布
 

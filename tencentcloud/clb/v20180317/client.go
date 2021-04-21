@@ -922,7 +922,7 @@ func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse
     return
 }
 
-// 查询一个地域的负载均衡实例列表
+// 查询一个地域的负载均衡实例列表。
 func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancersRequest()

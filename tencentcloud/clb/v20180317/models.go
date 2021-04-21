@@ -2000,7 +2000,7 @@ func (r *DescribeLoadBalancersDetailResponse) FromJsonString(s string) error {
 type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID。
+	// 负载均衡实例ID。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
 
 	// 负载均衡实例的网络类型：
@@ -2025,7 +2025,7 @@ type DescribeLoadBalancersRequest struct {
 	// 负载均衡绑定的后端服务的内网 IP。
 	BackendPrivateIps []*string `json:"BackendPrivateIps,omitempty" name:"BackendPrivateIps" list`
 
-	// 数据偏移量，默认为 0。
+	// 数据偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回负载均衡实例的数量，默认为20，最大值为100。
@@ -2050,10 +2050,10 @@ type DescribeLoadBalancersRequest struct {
 	// 基础网络可传入'0'。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 安全组ID，如 sg-m1cc9123
+	// 安全组ID，如 sg-m1cc****。
 	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
-	// 主可用区ID，如 ："100001" （对应的是广州一区）
+	// 主可用区ID，如 ："100001" （对应的是广州一区）。
 	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
@@ -2062,6 +2062,8 @@ type DescribeLoadBalancersRequest struct {
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
 	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
+	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
+	// <li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
