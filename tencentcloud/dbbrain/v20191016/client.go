@@ -668,6 +668,31 @@ func (c *Client) DescribeTopSpaceTables(request *DescribeTopSpaceTablesRequest) 
     return
 }
 
+func NewDescribeUserSqlAdviceRequest() (request *DescribeUserSqlAdviceRequest) {
+    request = &DescribeUserSqlAdviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeUserSqlAdvice")
+    return
+}
+
+func NewDescribeUserSqlAdviceResponse() (response *DescribeUserSqlAdviceResponse) {
+    response = &DescribeUserSqlAdviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取SQL优化建议。
+func (c *Client) DescribeUserSqlAdvice(request *DescribeUserSqlAdviceRequest) (response *DescribeUserSqlAdviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSqlAdviceRequest()
+    }
+    response = NewDescribeUserSqlAdviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequest) {
     request = &ModifyDiagDBInstanceConfRequest{
         BaseRequest: &tchttp.BaseRequest{},

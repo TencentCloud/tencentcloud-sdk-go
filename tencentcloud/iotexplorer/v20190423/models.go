@@ -1324,6 +1324,49 @@ type FirmwareInfo struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
+type GetCOSURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 文件大小
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+}
+
+func (r *GetCOSURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCOSURLRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCOSURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件URL
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCOSURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetCOSURLResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetDeviceListRequest struct {
 	*tchttp.BaseRequest
 

@@ -207,6 +207,9 @@ type CreateBindingRequest struct {
 
 	// 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
 	ForceBind *bool `json:"ForceBind,omitempty" name:"ForceBind"`
+
+	// 设备昵称
+	Nick *string `json:"Nick,omitempty" name:"Nick"`
 }
 
 func (r *CreateBindingRequest) ToJsonString() string {
@@ -633,6 +636,10 @@ type CreateStorageServiceResponse struct {
 		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 服务状态
+	// 1：正常使用中
+	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+	// 3：已过期。查询不到设备保存在云端的数据。
+	// 4：等待服务生效。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 新增的云存定单列表
@@ -738,6 +745,9 @@ type CreateUsrTokenRequest struct {
 
 	// Token的TTL(time to alive)分钟数
 	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+
+	// 旧的AccessToken。续期Token时，此参数为必须。
+	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
 }
 
 func (r *CreateUsrTokenRequest) ToJsonString() string {
@@ -1140,6 +1150,10 @@ type DeliverStorageServiceResponse struct {
 		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 服务状态
+	// 1：正常使用中
+	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+	// 3：已过期。查询不到设备保存在云端的数据。
+	// 4：等待服务生效。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 新增的云存定单列表
@@ -2061,6 +2075,10 @@ type DescribeStorageServiceResponse struct {
 		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 服务状态
+	// 1：正常使用中
+	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+	// 3：已过期。查询不到设备保存在云端的数据。
+	// 4：等待服务生效。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 云存定单列表
@@ -2914,6 +2932,10 @@ type RefundStorageServiceResponse struct {
 		EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 服务状态
+	// 1：正常使用中
+	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+	// 3：已过期。查询不到设备保存在云端的数据。
+	// 4：等待服务生效。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 有效云存定单列表
@@ -3216,6 +3238,7 @@ type SetMessageQueueRequest struct {
 	// 3.控制状态变更
 	// 4.状态信息变更
 	// 5.事件发布
+	// 6.系统事件
 	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
 
 	// 消息队列主题，不超过32字符
@@ -3264,6 +3287,12 @@ type StorageOrder struct {
 	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
 
 	// 定单服务状态
+	// 1;订单正在使用。
+	// 2:订单未开始。
+	// 3:订单已经使用过，现在暂时未开始使用(该订单从其他服务转移而来)。
+	// 4:订单已过期。
+	// 5:订单已被退订。
+	// 6:定单已被转移到其他云存服务。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 定单服务生效时间

@@ -143,6 +143,31 @@ func (c *Client) DescribeOnlineRecordCallback(request *DescribeOnlineRecordCallb
     return
 }
 
+func NewDescribeQualityMetricsRequest() (request *DescribeQualityMetricsRequest) {
+    request = &DescribeQualityMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeQualityMetrics")
+    return
+}
+
+func NewDescribeQualityMetricsResponse() (response *DescribeQualityMetricsResponse) {
+    response = &DescribeQualityMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询互动白板质量数据
+func (c *Client) DescribeQualityMetrics(request *DescribeQualityMetricsRequest) (response *DescribeQualityMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityMetricsRequest()
+    }
+    response = NewDescribeQualityMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
     request = &DescribeTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1305,6 +1305,67 @@ func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserSqlAdviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// SQL语句。
+	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+	// 库名。
+	Schema *string `json:"Schema,omitempty" name:"Schema"`
+}
+
+func (r *DescribeUserSqlAdviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserSqlAdviceRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserSqlAdviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// SQL优化建议，可解析为JSON数组。
+		Advices *string `json:"Advices,omitempty" name:"Advices"`
+
+		// SQL优化建议备注，可解析为String数组。
+		Comments *string `json:"Comments,omitempty" name:"Comments"`
+
+		// SQL语句。
+		SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+		// 库名。
+		Schema *string `json:"Schema,omitempty" name:"Schema"`
+
+		// 相关表的DDL信息，可解析为JSON数组。
+		Tables *string `json:"Tables,omitempty" name:"Tables"`
+
+		// SQL执行计划，可解析为JSON。
+		SqlPlan *string `json:"SqlPlan,omitempty" name:"SqlPlan"`
+
+		// SQL优化后的成本节约详情，可解析为JSON。
+		Cost *string `json:"Cost,omitempty" name:"Cost"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserSqlAdviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeUserSqlAdviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DiagHistoryEventItem struct {
 
 	// 诊断类型。

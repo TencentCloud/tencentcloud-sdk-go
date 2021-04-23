@@ -147,6 +147,56 @@ func (c *Client) BindSubDomain(request *BindSubDomainRequest) (response *BindSub
     return
 }
 
+func NewBuildAPIDocRequest() (request *BuildAPIDocRequest) {
+    request = &BuildAPIDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "BuildAPIDoc")
+    return
+}
+
+func NewBuildAPIDocResponse() (response *BuildAPIDocResponse) {
+    response = &BuildAPIDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 构建 API 文档
+func (c *Client) BuildAPIDoc(request *BuildAPIDocRequest) (response *BuildAPIDocResponse, err error) {
+    if request == nil {
+        request = NewBuildAPIDocRequest()
+    }
+    response = NewBuildAPIDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAPIDocRequest() (request *CreateAPIDocRequest) {
+    request = &CreateAPIDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "CreateAPIDoc")
+    return
+}
+
+func NewCreateAPIDocResponse() (response *CreateAPIDocResponse) {
+    response = &CreateAPIDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建 API 文档
+func (c *Client) CreateAPIDoc(request *CreateAPIDocRequest) (response *CreateAPIDocResponse, err error) {
+    if request == nil {
+        request = NewCreateAPIDocRequest()
+    }
+    response = NewCreateAPIDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApiRequest() (request *CreateApiRequest) {
     request = &CreateApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -270,6 +320,31 @@ func (c *Client) CreateUsagePlan(request *CreateUsagePlanRequest) (response *Cre
         request = NewCreateUsagePlanRequest()
     }
     response = NewCreateUsagePlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAPIDocRequest() (request *DeleteAPIDocRequest) {
+    request = &DeleteAPIDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DeleteAPIDoc")
+    return
+}
+
+func NewDeleteAPIDocResponse() (response *DeleteAPIDocResponse) {
+    response = &DeleteAPIDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除 API 文档
+func (c *Client) DeleteAPIDoc(request *DeleteAPIDocRequest) (response *DeleteAPIDocResponse, err error) {
+    if request == nil {
+        request = NewDeleteAPIDocRequest()
+    }
+    response = NewDeleteAPIDocResponse()
     err = c.Send(request, response)
     return
 }
@@ -448,6 +523,56 @@ func (c *Client) DemoteServiceUsagePlan(request *DemoteServiceUsagePlanRequest) 
         request = NewDemoteServiceUsagePlanRequest()
     }
     response = NewDemoteServiceUsagePlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAPIDocDetailRequest() (request *DescribeAPIDocDetailRequest) {
+    request = &DescribeAPIDocDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAPIDocDetail")
+    return
+}
+
+func NewDescribeAPIDocDetailResponse() (response *DescribeAPIDocDetailResponse) {
+    response = &DescribeAPIDocDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询 API 文档详情
+func (c *Client) DescribeAPIDocDetail(request *DescribeAPIDocDetailRequest) (response *DescribeAPIDocDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAPIDocDetailRequest()
+    }
+    response = NewDescribeAPIDocDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAPIDocsRequest() (request *DescribeAPIDocsRequest) {
+    request = &DescribeAPIDocsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAPIDocs")
+    return
+}
+
+func NewDescribeAPIDocsResponse() (response *DescribeAPIDocsResponse) {
+    response = &DescribeAPIDocsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询 API 文档列表
+func (c *Client) DescribeAPIDocs(request *DescribeAPIDocsRequest) (response *DescribeAPIDocsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAPIDocsRequest()
+    }
+    response = NewDescribeAPIDocsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1137,6 +1262,31 @@ func (c *Client) GenerateApiDocument(request *GenerateApiDocumentRequest) (respo
     return
 }
 
+func NewModifyAPIDocRequest() (request *ModifyAPIDocRequest) {
+    request = &ModifyAPIDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ModifyAPIDoc")
+    return
+}
+
+func NewModifyAPIDocResponse() (response *ModifyAPIDocResponse) {
+    response = &ModifyAPIDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改 API 文档
+func (c *Client) ModifyAPIDoc(request *ModifyAPIDocRequest) (response *ModifyAPIDocResponse, err error) {
+    if request == nil {
+        request = NewModifyAPIDocRequest()
+    }
+    response = NewModifyAPIDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApiRequest() (request *ModifyApiRequest) {
     request = &ModifyApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1359,6 +1509,31 @@ func (c *Client) ReleaseService(request *ReleaseServiceRequest) (response *Relea
         request = NewReleaseServiceRequest()
     }
     response = NewReleaseServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetAPIDocPasswordRequest() (request *ResetAPIDocPasswordRequest) {
+    request = &ResetAPIDocPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ResetAPIDocPassword")
+    return
+}
+
+func NewResetAPIDocPasswordResponse() (response *ResetAPIDocPasswordResponse) {
+    response = &ResetAPIDocPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重置API文档密码
+func (c *Client) ResetAPIDocPassword(request *ResetAPIDocPasswordRequest) (response *ResetAPIDocPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetAPIDocPasswordRequest()
+    }
+    response = NewResetAPIDocPasswordResponse()
     err = c.Send(request, response)
     return
 }

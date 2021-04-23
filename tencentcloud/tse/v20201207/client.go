@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceAccessAddressRequest) {
+    request = &DescribeSREInstanceAccessAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstanceAccessAddress")
+    return
+}
+
+func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanceAccessAddressResponse) {
+    response = &DescribeSREInstanceAccessAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询微服务注册引擎实例访问地址
+func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAccessAddressRequest) (response *DescribeSREInstanceAccessAddressResponse, err error) {
+    if request == nil {
+        request = NewDescribeSREInstanceAccessAddressRequest()
+    }
+    response = NewDescribeSREInstanceAccessAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSREInstancesRequest() (request *DescribeSREInstancesRequest) {
+    request = &DescribeSREInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstances")
+    return
+}
+
+func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) {
+    response = &DescribeSREInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于查询微服务注册中心实例列表
+func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSREInstancesRequest()
+    }
+    response = NewDescribeSREInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManageConfigRequest() (request *ManageConfigRequest) {
     request = &ManageConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -693,6 +693,31 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
     return
 }
 
+func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
+    request = &GetCOSURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetCOSURL")
+    return
+}
+
+func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
+    response = &GetCOSURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLResponse, err error) {
+    if request == nil {
+        request = NewGetCOSURLRequest()
+    }
+    response = NewGetCOSURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDeviceListRequest() (request *GetDeviceListRequest) {
     request = &GetDeviceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

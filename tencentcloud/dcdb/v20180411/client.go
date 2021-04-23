@@ -370,6 +370,31 @@ func (c *Client) DescribeDBSyncMode(request *DescribeDBSyncModeRequest) (respons
     return
 }
 
+func NewDescribeDCDBInstanceNodeInfoRequest() (request *DescribeDCDBInstanceNodeInfoRequest) {
+    request = &DescribeDCDBInstanceNodeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBInstanceNodeInfo")
+    return
+}
+
+func NewDescribeDCDBInstanceNodeInfoResponse() (response *DescribeDCDBInstanceNodeInfoResponse) {
+    response = &DescribeDCDBInstanceNodeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeDCDBInstanceNodeInfo）用于获取实例节点信息
+func (c *Client) DescribeDCDBInstanceNodeInfo(request *DescribeDCDBInstanceNodeInfoRequest) (response *DescribeDCDBInstanceNodeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDCDBInstanceNodeInfoRequest()
+    }
+    response = NewDescribeDCDBInstanceNodeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDCDBInstancesRequest() (request *DescribeDCDBInstancesRequest) {
     request = &DescribeDCDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

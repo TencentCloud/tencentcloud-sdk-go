@@ -20,6 +20,72 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type APIDoc struct {
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+
+	// API文档名称
+	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+
+	// API文档构建状态
+	ApiDocStatus *string `json:"ApiDocStatus,omitempty" name:"ApiDocStatus"`
+}
+
+type APIDocInfo struct {
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+
+	// API文档名称
+	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+
+	// API文档构建状态
+	ApiDocStatus *string `json:"ApiDocStatus,omitempty" name:"ApiDocStatus"`
+
+	// API文档API数量
+	ApiCount *int64 `json:"ApiCount,omitempty" name:"ApiCount"`
+
+	// API文档查看次数
+	ViewCount *int64 `json:"ViewCount,omitempty" name:"ViewCount"`
+
+	// API文档发布次数
+	ReleaseCount *int64 `json:"ReleaseCount,omitempty" name:"ReleaseCount"`
+
+	// API文档访问URI
+	ApiDocUri *string `json:"ApiDocUri,omitempty" name:"ApiDocUri"`
+
+	// API文档分享密码
+	SharePassword *string `json:"SharePassword,omitempty" name:"SharePassword"`
+
+	// API文档更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 环境信息
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 生成API文档的API ID
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 生成API文档的API名称
+	ApiNames []*string `json:"ApiNames,omitempty" name:"ApiNames" list`
+}
+
+type APIDocs struct {
+
+	// API文档数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// API文档基本信息
+	APIDocSet []*APIDoc `json:"APIDocSet,omitempty" name:"APIDocSet" list`
+}
+
 type ApiEnvironmentStrategy struct {
 
 	// API唯一ID。
@@ -696,6 +762,43 @@ func (r *BindSubDomainResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BuildAPIDocRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+}
+
+func (r *BuildAPIDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BuildAPIDocRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BuildAPIDocResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作是否成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BuildAPIDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BuildAPIDocResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ConstantParameter struct {
 
 	// 常量参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
@@ -709,6 +812,52 @@ type ConstantParameter struct {
 
 	// 常量参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+}
+
+type CreateAPIDocRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档名称
+	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+
+	// 服务名称
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 环境名称
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 生成文档的API列表
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+}
+
+func (r *CreateAPIDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAPIDocRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAPIDocResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API文档基本信息
+		Result *APIDoc `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAPIDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAPIDocResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateApiKeyRequest struct {
@@ -785,7 +934,7 @@ type CreateApiRequest struct {
 	// API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。
 	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
 
-	// API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。默认为NONE。
+	// API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 是否开启跨域。
@@ -1026,6 +1175,9 @@ type CreateServiceRequest struct {
 
 	// 标签。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 独享实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *CreateServiceRequest) ToJsonString() string {
@@ -1124,6 +1276,43 @@ func (r *CreateUsagePlanResponse) ToJsonString() string {
 }
 
 func (r *CreateUsagePlanResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAPIDocRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+}
+
+func (r *DeleteAPIDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAPIDocRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAPIDocResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作是否成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAPIDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAPIDocResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1485,6 +1674,83 @@ type DesApisStatus struct {
 	// API 的请求方法，如 GET。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitempty" name:"Method"`
+}
+
+type DescribeAPIDocDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+}
+
+func (r *DescribeAPIDocDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAPIDocDetailRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAPIDocDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API文档详细信息
+		Result *APIDocInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAPIDocDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAPIDocDetailResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAPIDocsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAPIDocsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAPIDocsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAPIDocsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API文档列表信息
+		Result *APIDocs `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAPIDocsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAPIDocsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeApiEnvironmentStrategyRequest struct {
@@ -2321,6 +2587,18 @@ type DescribeServiceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 
+		// 独享实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 独享实例name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+		// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SetType *string `json:"SetType,omitempty" name:"SetType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2471,7 +2749,7 @@ type DescribeServicesStatusRequest struct {
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。
+	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
@@ -2816,6 +3094,10 @@ type EnvironmentStrategy struct {
 
 	// 限流值
 	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
+
+	// 限流最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxQuota *int64 `json:"MaxQuota,omitempty" name:"MaxQuota"`
 }
 
 type ErrorCodes struct {
@@ -3029,6 +3311,55 @@ type MicroServiceReq struct {
 	MicroServiceName *string `json:"MicroServiceName,omitempty" name:"MicroServiceName"`
 }
 
+type ModifyAPIDocRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+
+	// API文档名称
+	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+
+	// 服务名称
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 环境名称
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 生成文档的API列表
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+}
+
+func (r *ModifyAPIDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAPIDocRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAPIDocResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API文档基本信息
+		Result *APIDoc `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAPIDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAPIDocResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyApiEnvironmentStrategyRequest struct {
 	*tchttp.BaseRequest
 
@@ -3146,7 +3477,7 @@ type ModifyApiRequest struct {
 	// API 类型，支持NORMAL和TSF，默认为NORMAL。
 	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
 
-	// API 鉴权类型。支持SECRET、NONE、OAUTH。默认为NONE。
+	// API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。
@@ -3710,6 +4041,43 @@ type RequestParameter struct {
 	Required *bool `json:"Required,omitempty" name:"Required"`
 }
 
+type ResetAPIDocPasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// API文档ID
+	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+}
+
+func (r *ResetAPIDocPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetAPIDocPasswordRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetAPIDocPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API文档基本信息
+		Result *APIDoc `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetAPIDocPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ResetAPIDocPasswordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ResponseErrorCodeReq struct {
 
 	// 自定义响应配置错误码。
@@ -3793,6 +4161,14 @@ type Service struct {
 	// 服务绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 独享实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetType *string `json:"SetType,omitempty" name:"SetType"`
 }
 
 type ServiceConfig struct {
@@ -3841,6 +4217,10 @@ type ServiceEnvironmentStrategy struct {
 
 	// 限流值。
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+
+	// 最大限流值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStrategy *int64 `json:"MaxStrategy,omitempty" name:"MaxStrategy"`
 }
 
 type ServiceEnvironmentStrategyStatus struct {

@@ -72,6 +72,18 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BriefNodeInfo struct {
+
+	// DB节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// DB节点角色，取值为master或者slave
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 节点所属分片的分片ID
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+}
+
 type CloneAccountRequest struct {
 	*tchttp.BaseRequest
 
@@ -1046,6 +1058,52 @@ func (r *DescribeDBSyncModeResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBSyncModeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDCDBInstanceNodeInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 单次最多返回多少条，取值范围为(0-100]，默认为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回数据的偏移值，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDCDBInstanceNodeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDCDBInstanceNodeInfoRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDCDBInstanceNodeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点总个数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 节点信息
+		NodesInfo []*BriefNodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDCDBInstanceNodeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeDCDBInstanceNodeInfoResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

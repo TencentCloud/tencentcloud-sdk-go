@@ -301,6 +301,12 @@ type CreateProjectRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
+	// 项目名称，不可超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 项目归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
 	// 项目类别，取值有：
 	// <li>VIDEO_EDIT：视频编辑。</li>
 	// <li>SWITCHER：导播台。</li>
@@ -308,12 +314,6 @@ type CreateProjectRequest struct {
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
-
-	// 项目名称，不可超过30个字符。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 项目归属者。
-	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 画布宽高比。
 	// 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
@@ -1723,6 +1723,60 @@ func (r *GrantResourceAuthorizationResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type HandleStreamConnectProjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 云转推项目Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 请参考 [操作类型](#Operation)
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	InputInfo *StreamInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 主备输入源标识，取值有：
+	// <li> Main ：主源；</li>
+	// <li> Backup ：备源。</li>
+	InputEndpoint *string `json:"InputEndpoint,omitempty" name:"InputEndpoint"`
+
+	// 转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	OutputInfo *StreamConnectOutput `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	CurrentStopTime *string `json:"CurrentStopTime,omitempty" name:"CurrentStopTime"`
+}
+
+func (r *HandleStreamConnectProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HandleStreamConnectProjectRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type HandleStreamConnectProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HandleStreamConnectProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *HandleStreamConnectProjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ImageMaterial struct {
 
 	// 图片高度，单位：px。
@@ -2579,7 +2633,6 @@ type ProjectInfo struct {
 	// 画布宽高比。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
-	// 项目类别，取值：
 	// 项目类别，取值有：
 	// <li>VIDEO_EDIT：视频编辑。</li>
 	// <li>SWITCHER：导播台。</li>
@@ -2593,6 +2646,10 @@ type ProjectInfo struct {
 
 	// 项目封面图片地址。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
+
+	// 云转推项目信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamConnectProjectInfo *StreamConnectProjectInfo `json:"StreamConnectProjectInfo,omitempty" name:"StreamConnectProjectInfo"`
 
 	// 项目创建时间，格式按照 ISO 8601 标准表示。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -2842,6 +2899,51 @@ type StreamConnectOutput struct {
 
 	// 云转推推流地址。
 	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
+}
+
+type StreamConnectOutputInfo struct {
+
+	// 输出源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamConnectOutput *StreamConnectOutput `json:"StreamConnectOutput,omitempty" name:"StreamConnectOutput"`
+
+	// 输出流状态：
+	// <li>On ：开；</li>
+	// <li>Off ：关 。</li>
+	PushSwitch *string `json:"PushSwitch,omitempty" name:"PushSwitch"`
+}
+
+type StreamConnectProjectInfo struct {
+
+	// 转推项目状态，取值有：
+	// <li>Working ：转推中；</li>
+	// <li>Idle ：空闲中。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 当前转推输入源，取值有：
+	// <li>Main ：主输入源；</li>
+	// <li>Backup ：备输入源。</li>
+	CurrentInputEndpoint *string `json:"CurrentInputEndpoint,omitempty" name:"CurrentInputEndpoint"`
+
+	// 当前转推开始时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+	CurrentStartTime *string `json:"CurrentStartTime,omitempty" name:"CurrentStartTime"`
+
+	// 当前转推计划结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+	CurrentStopTime *string `json:"CurrentStopTime,omitempty" name:"CurrentStopTime"`
+
+	// 上一次转推结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Idle 时有效。
+	LastStopTime *string `json:"LastStopTime,omitempty" name:"LastStopTime"`
+
+	// 云转推主输入源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainInput *StreamInputInfo `json:"MainInput,omitempty" name:"MainInput"`
+
+	// 云转推备输入源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupInput *StreamInputInfo `json:"BackupInput,omitempty" name:"BackupInput"`
+
+	// 云转推输出源。
+	OutputSet []*StreamConnectOutputInfo `json:"OutputSet,omitempty" name:"OutputSet" list`
 }
 
 type StreamConnectProjectInput struct {

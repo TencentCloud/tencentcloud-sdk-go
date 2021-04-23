@@ -1446,7 +1446,7 @@ type DeleteNetworkInterfaceRequest struct {
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
-	// ECM 地域
+	// ECM 地域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 }
 

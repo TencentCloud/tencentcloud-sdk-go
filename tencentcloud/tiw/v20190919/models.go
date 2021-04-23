@@ -45,7 +45,7 @@ type CreateTranscodeRequest struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需要进行转码文件地址
+	// 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 是否为静态PPT，默认为False；
@@ -294,6 +294,64 @@ func (r *DescribeOnlineRecordResponse) ToJsonString() string {
 }
 
 func (r *DescribeOnlineRecordResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQualityMetricsRequest struct {
+	*tchttp.BaseRequest
+
+	// 白板应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间，Unix时间戳，单位秒，时间跨度不能超过7天
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，Unix时间戳，单位秒，时间跨度不能超过7天
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的指标，目前支持以下值
+	//   - image_load_total_count: 图片加载总数
+	//   - image_load_fail_count: 图片加载失败数量
+	//   - image_load_success_rate: 图片加载成功率
+	//   - ppt_load_total_count: PPT加载总数
+	//   - ppt_load_fail_count: PPT加载失败总数
+	//   - ppt_load_success_rate: PPT加载成功率
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 聚合的时间维度，目前只支持1小时，输入值为"1h"
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeQualityMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQualityMetricsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQualityMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 输入的查询指标
+		Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+		// 时间序列
+		Content []*TimeValue `json:"Content,omitempty" name:"Content" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQualityMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeQualityMetricsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1440,6 +1498,15 @@ type StreamLayout struct {
 	// 0 - 自适应模式，对视频画面进行等比例缩放，在指定区域内显示完整的画面。此模式可能存在黑边。
 	// 1 - 全屏模式，对视频画面进行等比例缩放，让画面填充满整个指定区域。此模式不会存在黑边，但会将超出区域的那一部分画面裁剪掉。
 	FillMode *int64 `json:"FillMode,omitempty" name:"FillMode"`
+}
+
+type TimeValue struct {
+
+	// Unix时间戳，单位秒
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 查询指标对应当前时间的值
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type VideoInfo struct {
