@@ -1070,6 +1070,63 @@ func (r *CreateStaticStoreResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateWxCloudBaseRunEnvRequest struct {
+	*tchttp.BaseRequest
+
+	// wx应用Id
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 订单标记。建议使用方统一转大小写之后再判断。
+	// QuickStart：快速启动来源
+	// Activity：活动来源
+	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 私有网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网列表
+	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds" list`
+}
+
+func (r *CreateWxCloudBaseRunEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWxCloudBaseRunEnvRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWxCloudBaseRunEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 环境Id
+		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+		// 后付费订单号
+		TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWxCloudBaseRunEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateWxCloudBaseRunEnvResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DatabasesInfo struct {
 
 	// 数据库唯一标识
@@ -2521,6 +2578,83 @@ func (r *DescribeSmsQuotasResponse) ToJsonString() string {
 }
 
 func (r *DescribeSmsQuotasResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWxCloudBaseRunEnvsRequest struct {
+	*tchttp.BaseRequest
+
+	// wx应用Id
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+}
+
+func (r *DescribeWxCloudBaseRunEnvsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWxCloudBaseRunEnvsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWxCloudBaseRunEnvsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// env列表
+		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWxCloudBaseRunEnvsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWxCloudBaseRunEnvsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWxCloudBaseRunSubNetsRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 查询个数限制，不填或小于等于0，等于不限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWxCloudBaseRunSubNetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWxCloudBaseRunSubNetsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWxCloudBaseRunSubNetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子网Id列表
+		SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWxCloudBaseRunSubNetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeWxCloudBaseRunSubNetsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

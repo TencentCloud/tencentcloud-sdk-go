@@ -706,6 +706,66 @@ type EidInfo struct {
 	EidSign *string `json:"EidSign,omitempty" name:"EidSign"`
 }
 
+type EncryptedPhoneVerificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号，加密方式以EncryptionMode为准
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名，加密方式以EncryptionMode为准
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号，加密方式以EncryptionMode为准
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 敏感信息的加密方式，目前只支持MD5加密传输，参数取值：
+	// 
+	// 0：明文，不加密
+	// 1：使用MD5加密
+	EncryptionMode *string `json:"EncryptionMode,omitempty" name:"EncryptionMode"`
+}
+
+func (r *EncryptedPhoneVerificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EncryptedPhoneVerificationRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EncryptedPhoneVerificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码:
+	// 【收费结果码】
+	// 0: 认证通过
+	// -4: 信息不一致
+	// 
+	// 【不收费结果码】
+	// -7: 身份证号码有误
+	// -9: 没有记录
+	// -11: 验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EncryptedPhoneVerificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EncryptedPhoneVerificationResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type Encryption struct {
 
 	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。

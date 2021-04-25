@@ -1774,6 +1774,10 @@ type DescribeClusterEndpointStatusResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
+		// 开启访问入口失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

@@ -1,10 +1,48 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 云 API(api) 版本：2020-11-06
 
-### 第 13 次发布
+### 第 1 次发布
 
-发布时间：2021-04-23 08:09:46
+发布时间：2021-04-25 10:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRegions](https://cloud.tencent.com/document/api/#/#)
+* [DescribeZones](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)
+* [ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 26 次发布
+
+发布时间：2021-04-25 10:14:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [EncryptedPhoneVerification](https://cloud.tencent.com/document/api/1007/55050)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 5 次发布
+
+发布时间：2021-04-25 10:11:19
 
 本次发布包含了以下内容：
 
@@ -12,81 +50,22 @@
 
 修改接口：
 
-* [CreateService](https://cloud.tencent.com/document/api/628/45201)
+* [DescribeCloudStorageEvents](https://cloud.tencent.com/document/api/1131/53633)
 
-	* 新增入参：InstanceId
-
-* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
-
-	* 新增出参：InstanceId, InstanceName, SetType
-
-
-修改数据结构：
-
-* [EnvironmentStrategy](https://cloud.tencent.com/document/api/628/45244#EnvironmentStrategy)
-
-	* 新增成员：MaxQuota
-
-* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
-
-	* 新增成员：InstanceId, SetType
-
-* [ServiceEnvironmentStrategy](https://cloud.tencent.com/document/api/628/45244#ServiceEnvironmentStrategy)
-
-	* 新增成员：MaxStrategy
+	* 新增出参：VideoURL
 
 
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 27 次发布
-
-发布时间：2021-04-23 08:01:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
-
-新增数据结构：
-
-* [StreamConnectOutputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInfo)
-* [StreamConnectProjectInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInfo)
-
-修改数据结构：
-
-* [ProjectInfo](https://cloud.tencent.com/document/api/1156/40360#ProjectInfo)
-
-	* 新增成员：StreamConnectProjectInfo
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
 
 
+## 腾讯云自动化助手(tat) 版本：2020-10-28
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+### 第 4 次发布
 
-### 第 12 次发布
-
-发布时间：2021-04-23 08:04:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/54999)
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 61 次发布
-
-发布时间：2021-04-23 08:05:42
+发布时间：2021-04-25 10:20:20
 
 本次发布包含了以下内容：
 
@@ -94,18 +73,18 @@
 
 修改数据结构：
 
-* [CommonMixControlParams](https://cloud.tencent.com/document/api/267/20474#CommonMixControlParams)
+* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
 
-	* 新增成员：PassInputSei
-
-
+	* 新增成员：Dropped
 
 
-## 互动白板(tiw) 版本：2019-09-19
 
-### 第 17 次发布
 
-发布时间：2021-04-23 08:09:10
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 44 次发布
+
+发布时间：2021-04-25 10:17:18
 
 本次发布包含了以下内容：
 
@@ -113,11 +92,28 @@
 
 新增接口：
 
-* [DescribeQualityMetrics](https://cloud.tencent.com/document/api/1137/55001)
+* [CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)
+* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
+* [DescribeWxCloudBaseRunSubNets](https://cloud.tencent.com/document/api/876/55052)
 
-新增数据结构：
 
-* [TimeValue](https://cloud.tencent.com/document/api/1137/40068#TimeValue)
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 49 次发布
+
+发布时间：2021-04-25 10:17:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterEndpointStatus](https://cloud.tencent.com/document/api/457/39410)
+
+	* 新增出参：ErrorMsg
+
 
 
 
@@ -867,6 +863,29 @@
 * [AuthInfo](https://cloud.tencent.com/document/api/1181/49689#AuthInfo)
 * [ImageItem](https://cloud.tencent.com/document/api/1181/49689#ImageItem)
 * [ImageMarshal](https://cloud.tencent.com/document/api/1181/49689#ImageMarshal)
+
+
+
+
+## 云 API(api) 版本：2020-11-06
+
+### 第 1 次发布
+
+发布时间：2021-04-25 10:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRegions](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeZones](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)](https://cloud.tencent.com/document/api/#/##[RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo))
+* [[ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)](https://cloud.tencent.com/document/api/#/##[ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo))
 
 
 
@@ -11559,12 +11578,12 @@
 
 新增接口：
 
-* [[HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)](https://cloud.tencent.com/document/api/#/#)
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
 
 新增数据结构：
 
-* [[StreamConnectOutputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectOutputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInfo))
-* [[StreamConnectProjectInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectProjectInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInfo))
+* [StreamConnectOutputInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInfo)
+* [StreamConnectProjectInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectProjectInfo)
 
 修改数据结构：
 
@@ -16210,7 +16229,7 @@
 
 新增接口：
 
-* [[DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/54999)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/54999)
 
 ### 第 11 次发布
 
@@ -20545,6 +20564,18 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 26 次发布
+
+发布时间：2021-04-25 10:14:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[EncryptedPhoneVerification](https://cloud.tencent.com/document/api/1007/55050)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 25 次发布
 
@@ -25899,6 +25930,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 5 次发布
+
+发布时间：2021-04-25 10:11:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudStorageEvents](https://cloud.tencent.com/document/api/1131/53633)
+
+	* 新增出参：VideoURL
+
 
 ### 第 4 次发布
 
@@ -36346,6 +36392,21 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 4 次发布
+
+发布时间：2021-04-25 10:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
+
+	* 新增成员：Dropped
+
+
 ### 第 3 次发布
 
 发布时间：2021-04-13 08:11:56
@@ -37269,6 +37330,20 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 44 次发布
+
+发布时间：2021-04-25 10:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWxCloudBaseRunSubNets](https://cloud.tencent.com/document/api/876/55052)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 43 次发布
 
@@ -40205,11 +40280,11 @@
 
 新增接口：
 
-* [[DescribeQualityMetrics](https://cloud.tencent.com/document/api/1137/55001)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeQualityMetrics](https://cloud.tencent.com/document/api/1137/55001)
 
 新增数据结构：
 
-* [[TimeValue](https://cloud.tencent.com/document/api/1137/40068#TimeValue)](https://cloud.tencent.com/document/api/1137/40068#[TimeValue](https://cloud.tencent.com/document/api/1137/40068#TimeValue))
+* [TimeValue](https://cloud.tencent.com/document/api/1137/40068#TimeValue)
 
 ### 第 16 次发布
 
@@ -40537,6 +40612,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 49 次发布
+
+发布时间：2021-04-25 10:17:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterEndpointStatus](https://cloud.tencent.com/document/api/457/39410)
+
+	* 新增出参：ErrorMsg
+
 
 ### 第 48 次发布
 

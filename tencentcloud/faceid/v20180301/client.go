@@ -218,6 +218,31 @@ func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthRes
     return
 }
 
+func NewEncryptedPhoneVerificationRequest() (request *EncryptedPhoneVerificationRequest) {
+    request = &EncryptedPhoneVerificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "EncryptedPhoneVerification")
+    return
+}
+
+func NewEncryptedPhoneVerificationResponse() (response *EncryptedPhoneVerificationResponse) {
+    response = &EncryptedPhoneVerificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持MD5加密传输。
+func (c *Client) EncryptedPhoneVerification(request *EncryptedPhoneVerificationRequest) (response *EncryptedPhoneVerificationResponse, err error) {
+    if request == nil {
+        request = NewEncryptedPhoneVerificationRequest()
+    }
+    response = NewEncryptedPhoneVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetActionSequenceRequest() (request *GetActionSequenceRequest) {
     request = &GetActionSequenceRequest{
         BaseRequest: &tchttp.BaseRequest{},

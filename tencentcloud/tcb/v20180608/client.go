@@ -268,6 +268,31 @@ func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response 
     return
 }
 
+func NewCreateWxCloudBaseRunEnvRequest() (request *CreateWxCloudBaseRunEnvRequest) {
+    request = &CreateWxCloudBaseRunEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateWxCloudBaseRunEnv")
+    return
+}
+
+func NewCreateWxCloudBaseRunEnvResponse() (response *CreateWxCloudBaseRunEnvResponse) {
+    response = &CreateWxCloudBaseRunEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建微信云托管
+func (c *Client) CreateWxCloudBaseRunEnv(request *CreateWxCloudBaseRunEnvRequest) (response *CreateWxCloudBaseRunEnvResponse, err error) {
+    if request == nil {
+        request = NewCreateWxCloudBaseRunEnvRequest()
+    }
+    response = NewCreateWxCloudBaseRunEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBaseProjectLatestVersionRequest) {
     request = &DeleteCloudBaseProjectLatestVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -917,6 +942,56 @@ func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response 
         request = NewDescribeSmsQuotasRequest()
     }
     response = NewDescribeSmsQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWxCloudBaseRunEnvsRequest() (request *DescribeWxCloudBaseRunEnvsRequest) {
+    request = &DescribeWxCloudBaseRunEnvsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxCloudBaseRunEnvs")
+    return
+}
+
+func NewDescribeWxCloudBaseRunEnvsResponse() (response *DescribeWxCloudBaseRunEnvsResponse) {
+    response = &DescribeWxCloudBaseRunEnvsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询微信云托管环境信息
+func (c *Client) DescribeWxCloudBaseRunEnvs(request *DescribeWxCloudBaseRunEnvsRequest) (response *DescribeWxCloudBaseRunEnvsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWxCloudBaseRunEnvsRequest()
+    }
+    response = NewDescribeWxCloudBaseRunEnvsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWxCloudBaseRunSubNetsRequest() (request *DescribeWxCloudBaseRunSubNetsRequest) {
+    request = &DescribeWxCloudBaseRunSubNetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxCloudBaseRunSubNets")
+    return
+}
+
+func NewDescribeWxCloudBaseRunSubNetsResponse() (response *DescribeWxCloudBaseRunSubNetsResponse) {
+    response = &DescribeWxCloudBaseRunSubNetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询微信云托管子网
+func (c *Client) DescribeWxCloudBaseRunSubNets(request *DescribeWxCloudBaseRunSubNetsRequest) (response *DescribeWxCloudBaseRunSubNetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWxCloudBaseRunSubNetsRequest()
+    }
+    response = NewDescribeWxCloudBaseRunSubNetsResponse()
     err = c.Send(request, response)
     return
 }

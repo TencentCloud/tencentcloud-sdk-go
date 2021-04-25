@@ -814,4 +814,7 @@ type TaskResult struct {
 
 	// 命令执行结束时间。
 	ExecEndTime *string `json:"ExecEndTime,omitempty" name:"ExecEndTime"`
+
+	// 命令最终输出被截断的字节数。
+	Dropped *uint64 `json:"Dropped,omitempty" name:"Dropped"`
 }
