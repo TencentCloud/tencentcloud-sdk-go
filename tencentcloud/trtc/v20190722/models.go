@@ -430,16 +430,16 @@ func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
 type DescribePictureRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用id
+	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 图片id,不传时返回该应用下所有图片
+	// 图片ID，不填时返回该应用下所有图片
 	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
 
-	// 每页数量
+	// 每页数量，不填时默认为10
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 页码
+	// 页码，不填时默认为1
 	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
 }
 

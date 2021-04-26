@@ -52,6 +52,9 @@ type BoundIpInfo struct {
 
 	// IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 运营商，0：电信；1：联通；2：移动；5：BGP
+	IspCode *uint64 `json:"IspCode,omitempty" name:"IspCode"`
 }
 
 type CCAlarmThreshold struct {

@@ -2315,6 +2315,37 @@ func (r *DescribeMachineOsListResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMachineRegionsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeMachineRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineRegionsRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMachineRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMachineRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMachineRegionsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMachinesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5667,6 +5698,9 @@ type RegionInfo struct {
 
 	// 地域代码，如 gz，sh，bj
 	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 地域英文名
+	RegionNameEn *string `json:"RegionNameEn,omitempty" name:"RegionNameEn"`
 }
 
 type RenewProVersionRequest struct {

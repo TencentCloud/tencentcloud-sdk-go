@@ -134,7 +134,7 @@ type Code struct {
 	// 对象存储对象路径
 	CosObjectName *string `json:"CosObjectName,omitempty" name:"CosObjectName"`
 
-	// 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
+	// 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
 	ZipFile *string `json:"ZipFile,omitempty" name:"ZipFile"`
 
 	// 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
@@ -345,6 +345,12 @@ type CreateFunctionRequest struct {
 
 	// 函数 Tag 参数，以键值对数组形式传入
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 是否开启异步属性，TRUE 为开启，FALSE为关闭
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitempty" name:"AsyncRunEnable"`
+
+	// 是否开启事件追踪，TRUE 为开启，FALSE为关闭
+	TraceEnable *string `json:"TraceEnable,omitempty" name:"TraceEnable"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {

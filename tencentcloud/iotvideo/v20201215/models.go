@@ -2192,6 +2192,46 @@ type FirmwareTaskInfo struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type GenerateSignedVideoURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频播放原始URL地址
+	VideoURL *string `json:"VideoURL,omitempty" name:"VideoURL"`
+
+	// 播放链接过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+func (r *GenerateSignedVideoURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateSignedVideoURLRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GenerateSignedVideoURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 视频防盗链播放URL
+		SignedVideoURL *string `json:"SignedVideoURL,omitempty" name:"SignedVideoURL"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GenerateSignedVideoURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GenerateSignedVideoURLResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type GetAllFirmwareVersionRequest struct {
 	*tchttp.BaseRequest
 

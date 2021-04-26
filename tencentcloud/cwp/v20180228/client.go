@@ -1143,6 +1143,31 @@ func (c *Client) DescribeMachineOsList(request *DescribeMachineOsListRequest) (r
     return
 }
 
+func NewDescribeMachineRegionsRequest() (request *DescribeMachineRegionsRequest) {
+    request = &DescribeMachineRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineRegions")
+    return
+}
+
+func NewDescribeMachineRegionsResponse() (response *DescribeMachineRegionsResponse) {
+    response = &DescribeMachineRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取机器地域列表
+func (c *Client) DescribeMachineRegions(request *DescribeMachineRegionsRequest) (response *DescribeMachineRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineRegionsRequest()
+    }
+    response = NewDescribeMachineRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},

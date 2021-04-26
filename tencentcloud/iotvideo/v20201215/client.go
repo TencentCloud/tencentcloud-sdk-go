@@ -993,6 +993,31 @@ func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmw
     return
 }
 
+func NewGenerateSignedVideoURLRequest() (request *GenerateSignedVideoURLRequest) {
+    request = &GenerateSignedVideoURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "GenerateSignedVideoURL")
+    return
+}
+
+func NewGenerateSignedVideoURLResponse() (response *GenerateSignedVideoURLResponse) {
+    response = &GenerateSignedVideoURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取视频防盗链播放URL
+func (c *Client) GenerateSignedVideoURL(request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
+    if request == nil {
+        request = NewGenerateSignedVideoURLRequest()
+    }
+    response = NewGenerateSignedVideoURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAllFirmwareVersionRequest() (request *GetAllFirmwareVersionRequest) {
     request = &GetAllFirmwareVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

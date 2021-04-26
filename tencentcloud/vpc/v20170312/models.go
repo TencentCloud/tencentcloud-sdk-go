@@ -10477,6 +10477,43 @@ func (r *ModifyNetworkInterfaceAttributeResponse) FromJsonString(s string) error
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyNetworkInterfaceQosRequest struct {
+	*tchttp.BaseRequest
+
+	// 弹性网卡ID，支持批量修改。
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
+
+	// 服务质量，可选值：AU、AG、PT，分别代表金、银、白金三个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+}
+
+func (r *ModifyNetworkInterfaceQosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkInterfaceQosRequest) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetworkInterfaceQosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyNetworkInterfaceQosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNetworkInterfaceQosResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPrivateIpAddressesAttributeRequest struct {
 	*tchttp.BaseRequest
 

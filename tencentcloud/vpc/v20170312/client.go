@@ -5521,6 +5521,31 @@ func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterface
     return
 }
 
+func NewModifyNetworkInterfaceQosRequest() (request *ModifyNetworkInterfaceQosRequest) {
+    request = &ModifyNetworkInterfaceQosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterfaceQos")
+    return
+}
+
+func NewModifyNetworkInterfaceQosResponse() (response *ModifyNetworkInterfaceQosResponse) {
+    response = &ModifyNetworkInterfaceQosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改弹性网卡服务质量
+func (c *Client) ModifyNetworkInterfaceQos(request *ModifyNetworkInterfaceQosRequest) (response *ModifyNetworkInterfaceQosResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkInterfaceQosRequest()
+    }
+    response = NewModifyNetworkInterfaceQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPrivateIpAddressesAttributeRequest() (request *ModifyPrivateIpAddressesAttributeRequest) {
     request = &ModifyPrivateIpAddressesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -149,7 +149,7 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
 
-	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持10个。
+	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
 	SubtitleSet []*string `json:"SubtitleSet,omitempty" name:"SubtitleSet" list`
 }
 

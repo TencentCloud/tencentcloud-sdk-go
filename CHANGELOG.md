@@ -1,32 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云 API(api) 版本：2020-11-06
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 1 次发布
+### 第 9 次发布
 
-发布时间：2021-04-25 10:09:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRegions](https://cloud.tencent.com/document/api/#/#)
-* [DescribeZones](https://cloud.tencent.com/document/api/#/#)
-
-新增数据结构：
-
-* [RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)
-* [ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 26 次发布
-
-发布时间：2021-04-25 10:14:38
+发布时间：2021-04-26 08:10:41
 
 本次发布包含了以下内容：
 
@@ -34,38 +12,22 @@
 
 新增接口：
 
-* [EncryptedPhoneVerification](https://cloud.tencent.com/document/api/1007/55050)
+* [DescribeMachineRegions](https://cloud.tencent.com/document/api/296/55137)
 
+修改数据结构：
 
+* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
 
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-### 第 5 次发布
-
-发布时间：2021-04-25 10:11:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCloudStorageEvents](https://cloud.tencent.com/document/api/1131/53633)
-
-	* 新增出参：VideoURL
+	* 新增成员：RegionNameEn
 
 
 
 
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+## DDoS 高防包(dayu) 版本：2018-07-09
 
+### 第 21 次发布
 
-
-## 腾讯云自动化助手(tat) 版本：2020-10-28
-
-### 第 4 次发布
-
-发布时间：2021-04-25 10:20:20
+发布时间：2021-04-26 08:04:08
 
 本次发布包含了以下内容：
 
@@ -73,18 +35,18 @@
 
 修改数据结构：
 
-* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
+* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/39225#BoundIpInfo)
 
-	* 新增成员：Dropped
-
-
+	* 新增成员：IspCode
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 44 次发布
 
-发布时间：2021-04-25 10:17:18
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 6 次发布
+
+发布时间：2021-04-26 08:01:26
 
 本次发布包含了以下内容：
 
@@ -92,17 +54,19 @@
 
 新增接口：
 
-* [CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)
-* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
-* [DescribeWxCloudBaseRunSubNets](https://cloud.tencent.com/document/api/876/55052)
+* [GenerateSignedVideoURL](https://cloud.tencent.com/document/api/1131/55135)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 49 次发布
 
-发布时间：2021-04-25 10:17:37
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 28 次发布
+
+发布时间：2021-04-26 08:07:03
 
 本次发布包含了以下内容：
 
@@ -110,10 +74,26 @@
 
 修改接口：
 
-* [DescribeClusterEndpointStatus](https://cloud.tencent.com/document/api/457/39410)
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
 
-	* 新增出参：ErrorMsg
+	* 新增入参：AsyncRunEnable, TraceEnable
 
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 86 次发布
+
+发布时间：2021-04-26 08:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyNetworkInterfaceQos](https://cloud.tencent.com/document/api/215/55136)
 
 
 
@@ -879,13 +859,13 @@
 
 新增接口：
 
-* [[DescribeRegions](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeZones](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRegions](https://cloud.tencent.com/document/api/#/#)
+* [DescribeZones](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [[RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)](https://cloud.tencent.com/document/api/#/##[RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo))
-* [[ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)](https://cloud.tencent.com/document/api/#/##[ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo))
+* [RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)
+* [ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)
 
 
 
@@ -15036,6 +15016,25 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 9 次发布
+
+发布时间：2021-04-26 08:10:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMachineRegions](https://cloud.tencent.com/document/api/296/55137)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/296/19867#RegionInfo)
+
+	* 新增成员：RegionNameEn
+
+
 ### 第 8 次发布
 
 发布时间：2021-03-19 08:10:11
@@ -15757,6 +15756,21 @@
 
 
 ## DDoS 高防包(dayu) 版本：2018-07-09
+
+### 第 21 次发布
+
+发布时间：2021-04-26 08:04:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/39225#BoundIpInfo)
+
+	* 新增成员：IspCode
+
 
 ### 第 20 次发布
 
@@ -20575,7 +20589,7 @@
 
 新增接口：
 
-* [[EncryptedPhoneVerification](https://cloud.tencent.com/document/api/1007/55050)](https://cloud.tencent.com/document/api/#/#)
+* [EncryptedPhoneVerification](https://cloud.tencent.com/document/api/1007/55050)
 
 ### 第 25 次发布
 
@@ -25930,6 +25944,18 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 6 次发布
+
+发布时间：2021-04-26 08:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GenerateSignedVideoURL](https://cloud.tencent.com/document/api/1131/55135)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 5 次发布
 
@@ -33793,6 +33819,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 28 次发布
+
+发布时间：2021-04-26 08:07:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：AsyncRunEnable, TraceEnable
+
+
 ### 第 27 次发布
 
 发布时间：2021-03-16 08:07:54
@@ -37341,9 +37382,9 @@
 
 新增接口：
 
-* [[CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWxCloudBaseRunSubNets](https://cloud.tencent.com/document/api/876/55052)](https://cloud.tencent.com/document/api/#/#)
+* [CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)
+* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
+* [DescribeWxCloudBaseRunSubNets](https://cloud.tencent.com/document/api/876/55052)
 
 ### 第 43 次发布
 
@@ -46457,6 +46498,18 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 86 次发布
+
+发布时间：2021-04-26 08:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyNetworkInterfaceQos](https://cloud.tencent.com/document/api/215/55136)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 85 次发布
 

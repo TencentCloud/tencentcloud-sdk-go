@@ -1674,7 +1674,7 @@ type DescribeCloudBaseRunServerVersionResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
 
-		// Repo的类型(coding/gitlab/github/coding)
+		// Repo的类型(gitlab/github/coding)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 
