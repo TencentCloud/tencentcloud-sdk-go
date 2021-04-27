@@ -43,7 +43,7 @@ type CloseAsyncRecognitionTaskRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseAsyncRecognitionTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -71,7 +71,7 @@ type CloseAsyncRecognitionTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseAsyncRecognitionTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -99,7 +99,7 @@ type CreateAsrVocabRequest struct {
 	WordWeightStr *string `json:"WordWeightStr,omitempty" name:"WordWeightStr"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAsrVocabRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -133,7 +133,7 @@ type CreateAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAsrVocabResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -182,7 +182,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAsyncRecognitionTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -222,7 +222,7 @@ type CreateAsyncRecognitionTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAsyncRecognitionTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -249,7 +249,7 @@ type CreateCustomizationRequest struct {
 	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCustomizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -283,7 +283,7 @@ type CreateCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCustomizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -360,7 +360,7 @@ type CreateRecTaskRequest struct {
 	FilterPunc *int64 `json:"FilterPunc,omitempty" name:"FilterPunc"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRecTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -406,7 +406,7 @@ type CreateRecTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRecTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -424,7 +424,7 @@ type DeleteAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAsrVocabRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -452,7 +452,7 @@ type DeleteAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAsrVocabResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -470,7 +470,7 @@ type DeleteCustomizationRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCustomizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -498,7 +498,7 @@ type DeleteCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCustomizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -513,7 +513,7 @@ type DescribeAsyncRecognitionTasksRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAsyncRecognitionTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -544,7 +544,7 @@ type DescribeAsyncRecognitionTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAsyncRecognitionTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -562,7 +562,7 @@ type DescribeTaskStatusRequest struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -593,7 +593,7 @@ type DescribeTaskStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -611,7 +611,7 @@ type DownloadAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadAsrVocabRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -645,7 +645,7 @@ type DownloadAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadAsrVocabResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -663,7 +663,7 @@ type DownloadCustomizationRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadCustomizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -694,7 +694,7 @@ type DownloadCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadCustomizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -718,7 +718,7 @@ type GetAsrVocabListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAsrVocabListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -754,7 +754,7 @@ type GetAsrVocabListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAsrVocabListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -772,7 +772,7 @@ type GetAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAsrVocabRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -821,7 +821,7 @@ type GetAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAsrVocabResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -845,7 +845,7 @@ type GetCustomizationListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCustomizationListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -883,7 +883,7 @@ type GetCustomizationListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCustomizationListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -947,7 +947,7 @@ type ModifyCustomizationRequest struct {
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -978,7 +978,7 @@ type ModifyCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -999,7 +999,7 @@ type ModifyCustomizationStateRequest struct {
 	ToState *int64 `json:"ToState,omitempty" name:"ToState"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomizationStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1031,7 +1031,7 @@ type ModifyCustomizationStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomizationStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1132,7 +1132,7 @@ type SentenceRecognitionRequest struct {
 	WordInfo *int64 `json:"WordInfo,omitempty" name:"WordInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceRecognitionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1188,7 +1188,7 @@ type SentenceRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceRecognitionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1236,7 +1236,7 @@ type SetVocabStateRequest struct {
 	State *int64 `json:"State,omitempty" name:"State"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVocabStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1268,7 +1268,7 @@ type SetVocabStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVocabStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1327,7 +1327,7 @@ type UpdateAsrVocabRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateAsrVocabRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1362,7 +1362,7 @@ type UpdateAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateAsrVocabResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

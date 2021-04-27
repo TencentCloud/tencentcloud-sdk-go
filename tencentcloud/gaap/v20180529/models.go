@@ -72,7 +72,7 @@ type AddRealServersRequest struct {
 	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -106,7 +106,7 @@ type AddRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -139,7 +139,7 @@ type BindListenerRealServersRequest struct {
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindListenerRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -168,7 +168,7 @@ type BindListenerRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindListenerRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -237,7 +237,7 @@ type BindRuleRealServersRequest struct {
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRuleRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -266,7 +266,7 @@ type BindRuleRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRuleRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -380,7 +380,7 @@ type CheckProxyCreateRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckProxyCreateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -415,7 +415,7 @@ type CheckProxyCreateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckProxyCreateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -440,7 +440,7 @@ type CloseProxiesRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseProxiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -476,7 +476,7 @@ type CloseProxiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseProxiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -494,7 +494,7 @@ type CloseProxyGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseProxyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -528,7 +528,7 @@ type CloseProxyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseProxyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -549,7 +549,7 @@ type CloseSecurityPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseSecurityPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -581,7 +581,7 @@ type CloseSecurityPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseSecurityPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -636,7 +636,7 @@ type CreateCertificateRequest struct {
 	CertificateKey *string `json:"CertificateKey,omitempty" name:"CertificateKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCertificateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -670,7 +670,7 @@ type CreateCertificateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCertificateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -706,7 +706,7 @@ type CreateDomainErrorPageInfoRequest struct {
 	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainErrorPageInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -743,7 +743,7 @@ type CreateDomainErrorPageInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainErrorPageInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -775,7 +775,7 @@ type CreateDomainRequest struct {
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -807,7 +807,7 @@ type CreateDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -834,7 +834,7 @@ type CreateHTTPListenerRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHTTPListenerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -868,7 +868,7 @@ type CreateHTTPListenerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHTTPListenerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -913,7 +913,7 @@ type CreateHTTPSListenerRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHTTPSListenerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -952,7 +952,7 @@ type CreateHTTPSListenerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHTTPSListenerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -970,7 +970,7 @@ type CreateProxyGroupDomainRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyGroupDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1001,7 +1001,7 @@ type CreateProxyGroupDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyGroupDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1031,7 +1031,7 @@ type CreateProxyGroupRequest struct {
 	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitempty" name:"AccessRegionSet" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1066,7 +1066,7 @@ type CreateProxyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1116,7 +1116,7 @@ type CreateProxyRequest struct {
 	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1157,7 +1157,7 @@ type CreateProxyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProxyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1200,7 +1200,7 @@ type CreateRuleRequest struct {
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1239,7 +1239,7 @@ type CreateRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1263,7 +1263,7 @@ type CreateSecurityPolicyRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1296,7 +1296,7 @@ type CreateSecurityPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1317,7 +1317,7 @@ type CreateSecurityRulesRequest struct {
 	RuleList []*SecurityPolicyRuleIn `json:"RuleList,omitempty" name:"RuleList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1349,7 +1349,7 @@ type CreateSecurityRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1400,7 +1400,7 @@ type CreateTCPListenersRequest struct {
 	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTCPListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1442,7 +1442,7 @@ type CreateTCPListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTCPListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1478,7 +1478,7 @@ type CreateUDPListenersRequest struct {
 	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUDPListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1515,7 +1515,7 @@ type CreateUDPListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUDPListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1533,7 +1533,7 @@ type DeleteCertificateRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCertificateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1561,7 +1561,7 @@ type DeleteCertificateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCertificateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1579,7 +1579,7 @@ type DeleteDomainErrorPageInfoRequest struct {
 	ErrorPageId *string `json:"ErrorPageId,omitempty" name:"ErrorPageId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainErrorPageInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1607,7 +1607,7 @@ type DeleteDomainErrorPageInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainErrorPageInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1632,7 +1632,7 @@ type DeleteDomainRequest struct {
 	Force *uint64 `json:"Force,omitempty" name:"Force"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1662,7 +1662,7 @@ type DeleteDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1689,7 +1689,7 @@ type DeleteListenersRequest struct {
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1729,7 +1729,7 @@ type DeleteListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1753,7 +1753,7 @@ type DeleteProxyGroupRequest struct {
 	Force *uint64 `json:"Force,omitempty" name:"Force"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProxyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1782,7 +1782,7 @@ type DeleteProxyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProxyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1806,7 +1806,7 @@ type DeleteRuleRequest struct {
 	Force *uint64 `json:"Force,omitempty" name:"Force"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1836,7 +1836,7 @@ type DeleteRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1854,7 +1854,7 @@ type DeleteSecurityPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1882,7 +1882,7 @@ type DeleteSecurityPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1903,7 +1903,7 @@ type DeleteSecurityRulesRequest struct {
 	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1932,7 +1932,7 @@ type DeleteSecurityRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1950,7 +1950,7 @@ type DescribeAccessRegionsByDestRegionRequest struct {
 	DestRegion *string `json:"DestRegion,omitempty" name:"DestRegion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRegionsByDestRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1984,7 +1984,7 @@ type DescribeAccessRegionsByDestRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRegionsByDestRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1999,7 +1999,7 @@ type DescribeAccessRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2032,7 +2032,7 @@ type DescribeAccessRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2050,7 +2050,7 @@ type DescribeCertificateDetailRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertificateDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2081,7 +2081,7 @@ type DescribeCertificateDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertificateDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2112,7 +2112,7 @@ type DescribeCertificatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertificatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2148,7 +2148,7 @@ type DescribeCertificatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertificatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2163,7 +2163,7 @@ type DescribeCountryAreaMappingRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCountryAreaMappingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2193,7 +2193,7 @@ type DescribeCountryAreaMappingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCountryAreaMappingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2208,7 +2208,7 @@ type DescribeDestRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDestRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2241,7 +2241,7 @@ type DescribeDestRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDestRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2259,7 +2259,7 @@ type DescribeDomainErrorPageInfoByIdsRequest struct {
 	ErrorPageIds []*string `json:"ErrorPageIds,omitempty" name:"ErrorPageIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainErrorPageInfoByIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2291,7 +2291,7 @@ type DescribeDomainErrorPageInfoByIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainErrorPageInfoByIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2312,7 +2312,7 @@ type DescribeDomainErrorPageInfoRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainErrorPageInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2345,7 +2345,7 @@ type DescribeDomainErrorPageInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainErrorPageInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2363,7 +2363,7 @@ type DescribeGroupAndStatisticsProxyRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupAndStatisticsProxyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2397,7 +2397,7 @@ type DescribeGroupAndStatisticsProxyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupAndStatisticsProxyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2415,7 +2415,7 @@ type DescribeGroupDomainConfigRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupDomainConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2455,7 +2455,7 @@ type DescribeGroupDomainConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupDomainConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2494,7 +2494,7 @@ type DescribeHTTPListenersRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHTTPListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2535,7 +2535,7 @@ type DescribeHTTPListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHTTPListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2574,7 +2574,7 @@ type DescribeHTTPSListenersRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHTTPSListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2615,7 +2615,7 @@ type DescribeHTTPSListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHTTPSListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2633,7 +2633,7 @@ type DescribeListenerRealServersRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeListenerRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2673,7 +2673,7 @@ type DescribeListenerRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeListenerRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2706,7 +2706,7 @@ type DescribeListenerStatisticsRequest struct {
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeListenerStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2741,7 +2741,7 @@ type DescribeListenerStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeListenerStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2785,7 +2785,7 @@ type DescribeProxiesRequest struct {
 	Independent *int64 `json:"Independent,omitempty" name:"Independent"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2828,7 +2828,7 @@ type DescribeProxiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2849,7 +2849,7 @@ type DescribeProxiesStatusRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxiesStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2881,7 +2881,7 @@ type DescribeProxiesStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxiesStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2899,7 +2899,7 @@ type DescribeProxyAndStatisticsListenersRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyAndStatisticsListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2933,7 +2933,7 @@ type DescribeProxyAndStatisticsListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyAndStatisticsListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2951,7 +2951,7 @@ type DescribeProxyDetailRequest struct {
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2982,7 +2982,7 @@ type DescribeProxyDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3000,7 +3000,7 @@ type DescribeProxyGroupDetailsRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3031,7 +3031,7 @@ type DescribeProxyGroupDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3067,7 +3067,7 @@ type DescribeProxyGroupListRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3106,7 +3106,7 @@ type DescribeProxyGroupListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3139,7 +3139,7 @@ type DescribeProxyGroupStatisticsRequest struct {
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3174,7 +3174,7 @@ type DescribeProxyGroupStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyGroupStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3207,7 +3207,7 @@ type DescribeProxyStatisticsRequest struct {
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3242,7 +3242,7 @@ type DescribeProxyStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProxyStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3278,7 +3278,7 @@ type DescribeRealServerStatisticsRequest struct {
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServerStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3318,7 +3318,7 @@ type DescribeRealServerStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServerStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3352,7 +3352,7 @@ type DescribeRealServersRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3391,7 +3391,7 @@ type DescribeRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3409,7 +3409,7 @@ type DescribeRealServersStatusRequest struct {
 	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServersStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3443,7 +3443,7 @@ type DescribeRealServersStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealServersStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3458,7 +3458,7 @@ type DescribeRegionAndPriceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionAndPriceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3499,7 +3499,7 @@ type DescribeRegionAndPriceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionAndPriceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3527,7 +3527,7 @@ type DescribeResourcesByTagRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3563,7 +3563,7 @@ type DescribeResourcesByTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3587,7 +3587,7 @@ type DescribeRuleRealServersRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3629,7 +3629,7 @@ type DescribeRuleRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3647,7 +3647,7 @@ type DescribeRulesByRuleIdsRequest struct {
 	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesByRuleIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3681,7 +3681,7 @@ type DescribeRulesByRuleIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesByRuleIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3699,7 +3699,7 @@ type DescribeRulesRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3733,7 +3733,7 @@ type DescribeRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3751,7 +3751,7 @@ type DescribeSecurityPolicyDetailRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityPolicyDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3799,7 +3799,7 @@ type DescribeSecurityPolicyDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityPolicyDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3817,7 +3817,7 @@ type DescribeSecurityRulesRequest struct {
 	SecurityRuleIds []*string `json:"SecurityRuleIds,omitempty" name:"SecurityRuleIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3851,7 +3851,7 @@ type DescribeSecurityRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3892,7 +3892,7 @@ type DescribeTCPListenersRequest struct {
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTCPListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3933,7 +3933,7 @@ type DescribeTCPListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTCPListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3974,7 +3974,7 @@ type DescribeUDPListenersRequest struct {
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUDPListenersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4015,7 +4015,7 @@ type DescribeUDPListenersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUDPListenersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4046,7 +4046,7 @@ type DestroyProxiesRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyProxiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4083,7 +4083,7 @@ type DestroyProxiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyProxiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4371,7 +4371,7 @@ type InquiryPriceCreateProxyRequest struct {
 	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4426,7 +4426,7 @@ type InquiryPriceCreateProxyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateProxyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4471,7 +4471,7 @@ type ModifyCertificateAttributesRequest struct {
 	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCertificateAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4500,7 +4500,7 @@ type ModifyCertificateAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCertificateAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4534,7 +4534,7 @@ type ModifyCertificateRequest struct {
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCertificateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4566,7 +4566,7 @@ type ModifyCertificateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCertificateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4608,7 +4608,7 @@ type ModifyDomainRequest struct {
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4641,7 +4641,7 @@ type ModifyDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4665,7 +4665,7 @@ type ModifyGroupDomainConfigRequest struct {
 	AccessRegionList []*AccessRegionDomainConf `json:"AccessRegionList,omitempty" name:"AccessRegionList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupDomainConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4695,7 +4695,7 @@ type ModifyGroupDomainConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupDomainConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4719,7 +4719,7 @@ type ModifyHTTPListenerAttributeRequest struct {
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyHTTPListenerAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4749,7 +4749,7 @@ type ModifyHTTPListenerAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyHTTPListenerAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4785,7 +4785,7 @@ type ModifyHTTPSListenerAttributeRequest struct {
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyHTTPSListenerAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4819,7 +4819,7 @@ type ModifyHTTPSListenerAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyHTTPSListenerAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4847,7 +4847,7 @@ type ModifyProxiesAttributeRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxiesAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4878,7 +4878,7 @@ type ModifyProxiesAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxiesAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4906,7 +4906,7 @@ type ModifyProxiesProjectRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxiesProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4937,7 +4937,7 @@ type ModifyProxiesProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxiesProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4973,7 +4973,7 @@ type ModifyProxyConfigurationRequest struct {
 	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxyConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5006,7 +5006,7 @@ type ModifyProxyConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxyConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5030,7 +5030,7 @@ type ModifyProxyGroupAttributeRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxyGroupAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5060,7 +5060,7 @@ type ModifyProxyGroupAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProxyGroupAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5081,7 +5081,7 @@ type ModifyRealServerNameRequest struct {
 	RealServerId *string `json:"RealServerId,omitempty" name:"RealServerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRealServerNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5110,7 +5110,7 @@ type ModifyRealServerNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRealServerNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5156,7 +5156,7 @@ type ModifyRuleAttributeRequest struct {
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRuleAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5191,7 +5191,7 @@ type ModifyRuleAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRuleAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5231,7 +5231,7 @@ type ModifySecurityRuleRequest struct {
 	DestPortRange *string `json:"DestPortRange,omitempty" name:"DestPortRange"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySecurityRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5265,7 +5265,7 @@ type ModifySecurityRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySecurityRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5307,7 +5307,7 @@ type ModifyTCPListenerAttributeRequest struct {
 	FailoverSwitch *uint64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTCPListenerAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5343,7 +5343,7 @@ type ModifyTCPListenerAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTCPListenerAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5373,7 +5373,7 @@ type ModifyUDPListenerAttributeRequest struct {
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyUDPListenerAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5405,7 +5405,7 @@ type ModifyUDPListenerAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyUDPListenerAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5448,7 +5448,7 @@ type OpenProxiesRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenProxiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5484,7 +5484,7 @@ type OpenProxiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenProxiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5502,7 +5502,7 @@ type OpenProxyGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenProxyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5536,7 +5536,7 @@ type OpenProxyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenProxyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5557,7 +5557,7 @@ type OpenSecurityPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenSecurityPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5589,7 +5589,7 @@ type OpenSecurityPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OpenSecurityPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5910,7 +5910,7 @@ type RemoveRealServersRequest struct {
 	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveRealServersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5938,7 +5938,7 @@ type RemoveRealServersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveRealServersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6117,7 +6117,7 @@ type SetAuthenticationRequest struct {
 	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitempty" name:"PolyRealServerCertificateIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetAuthenticationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6154,7 +6154,7 @@ type SetAuthenticationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetAuthenticationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

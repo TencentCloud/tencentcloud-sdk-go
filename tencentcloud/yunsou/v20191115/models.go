@@ -36,7 +36,7 @@ type DataManipulationRequest struct {
 	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DataManipulationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -70,7 +70,7 @@ type DataManipulationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DataManipulationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -186,7 +186,7 @@ type DataSearchRequest struct {
 	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DataSearchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -239,7 +239,7 @@ type DataSearchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DataSearchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

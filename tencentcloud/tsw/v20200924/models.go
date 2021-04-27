@@ -59,7 +59,7 @@ type DescribeAgentShellRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentShellRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -90,7 +90,7 @@ type DescribeAgentShellResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentShellResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

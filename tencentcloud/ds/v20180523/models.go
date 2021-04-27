@@ -39,7 +39,7 @@ type CheckVcodeRequest struct {
 	VerifyCode *string `json:"VerifyCode,omitempty" name:"VerifyCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckVcodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -71,7 +71,7 @@ type CheckVcodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckVcodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -110,7 +110,7 @@ type CreateContractByUploadRequest struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContractByUploadRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -148,7 +148,7 @@ type CreateContractByUploadResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContractByUploadResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -196,7 +196,7 @@ type CreateEnterpriseAccountRequest struct {
 	Email *string `json:"Email,omitempty" name:"Email"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEnterpriseAccountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -237,7 +237,7 @@ type CreateEnterpriseAccountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEnterpriseAccountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -270,7 +270,7 @@ type CreatePersonalAccountRequest struct {
 	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonalAccountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -306,7 +306,7 @@ type CreatePersonalAccountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonalAccountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -336,7 +336,7 @@ type CreateSealRequest struct {
 	ImgData *string `json:"ImgData,omitempty" name:"ImgData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSealRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -371,7 +371,7 @@ type CreateSealResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSealResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -395,7 +395,7 @@ type DeleteAccountRequest struct {
 	AccountList []*string `json:"AccountList,omitempty" name:"AccountList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -431,7 +431,7 @@ type DeleteAccountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -458,7 +458,7 @@ type DeleteSealRequest struct {
 	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSealRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -492,7 +492,7 @@ type DeleteSealResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSealResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -516,7 +516,7 @@ type DescribeTaskStatusRequest struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -552,7 +552,7 @@ type DescribeTaskStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -576,7 +576,7 @@ type DownloadContractRequest struct {
 	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadContractRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -609,7 +609,7 @@ type DownloadContractResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadContractResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -636,7 +636,7 @@ type SendVcodeRequest struct {
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendVcodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -667,7 +667,7 @@ type SendVcodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendVcodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -712,7 +712,7 @@ type SignContractByCoordinateRequest struct {
 	ImageData *string `json:"ImageData,omitempty" name:"ImageData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignContractByCoordinateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -749,7 +749,7 @@ type SignContractByCoordinateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignContractByCoordinateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -794,7 +794,7 @@ type SignContractByKeywordRequest struct {
 	ImageData *string `json:"ImageData,omitempty" name:"ImageData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignContractByKeywordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -831,7 +831,7 @@ type SignContractByKeywordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignContractByKeywordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

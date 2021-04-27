@@ -1664,7 +1664,7 @@ type ApplyUploadRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyUploadRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1720,7 +1720,7 @@ type ApplyUploadResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyUploadResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1800,7 +1800,7 @@ type AttachMediaSubtitlesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachMediaSubtitlesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1832,7 +1832,7 @@ type AttachMediaSubtitlesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachMediaSubtitlesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2060,7 +2060,7 @@ type CommitUploadRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CommitUploadRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2100,7 +2100,7 @@ type CommitUploadResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CommitUploadResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2172,7 +2172,7 @@ type ComposeMediaRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ComposeMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2208,7 +2208,7 @@ type ComposeMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ComposeMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2334,7 +2334,7 @@ type ConfirmEventsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ConfirmEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2364,7 +2364,7 @@ type ConfirmEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ConfirmEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2492,7 +2492,7 @@ type CreateAIAnalysisTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2530,7 +2530,7 @@ type CreateAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2581,7 +2581,7 @@ type CreateAIRecognitionTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2623,7 +2623,7 @@ type CreateAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2672,7 +2672,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2710,7 +2710,7 @@ type CreateAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2765,7 +2765,7 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2804,7 +2804,7 @@ type CreateAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2828,7 +2828,7 @@ type CreateClassRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2861,7 +2861,7 @@ type CreateClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2910,7 +2910,7 @@ type CreateContentReviewTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2950,7 +2950,7 @@ type CreateContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2978,7 +2978,7 @@ type CreateImageProcessingTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageProcessingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3012,7 +3012,7 @@ type CreateImageProcessingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageProcessingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3109,7 +3109,7 @@ type CreateImageSpriteTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3150,7 +3150,7 @@ type CreateImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3189,7 +3189,7 @@ type CreatePersonSampleRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3228,7 +3228,7 @@ type CreatePersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3264,7 +3264,7 @@ type CreateProcedureTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProcedureTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3298,7 +3298,7 @@ type CreateProcedureTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProcedureTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3365,7 +3365,7 @@ type CreateSampleSnapshotTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3405,7 +3405,7 @@ type CreateSampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3462,7 +3462,7 @@ type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3500,7 +3500,7 @@ type CreateSnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3521,7 +3521,7 @@ type CreateSubAppIdRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubAppIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3553,7 +3553,7 @@ type CreateSubAppIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubAppIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3610,7 +3610,7 @@ type CreateSuperPlayerConfigRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSuperPlayerConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3647,7 +3647,7 @@ type CreateSuperPlayerConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSuperPlayerConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3695,7 +3695,7 @@ type CreateTranscodeTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3734,7 +3734,7 @@ type CreateTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3793,7 +3793,7 @@ type CreateWatermarkTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3836,7 +3836,7 @@ type CreateWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3868,7 +3868,7 @@ type CreateWordSamplesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3898,7 +3898,7 @@ type CreateWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3934,7 +3934,7 @@ type DeleteAIAnalysisTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3963,7 +3963,7 @@ type DeleteAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3984,7 +3984,7 @@ type DeleteAIRecognitionTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4013,7 +4013,7 @@ type DeleteAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4034,7 +4034,7 @@ type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4063,7 +4063,7 @@ type DeleteAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4084,7 +4084,7 @@ type DeleteAnimatedGraphicsTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4113,7 +4113,7 @@ type DeleteAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4134,7 +4134,7 @@ type DeleteClassRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4163,7 +4163,7 @@ type DeleteClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4184,7 +4184,7 @@ type DeleteContentReviewTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4213,7 +4213,7 @@ type DeleteContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4234,7 +4234,7 @@ type DeleteImageProcessingTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageProcessingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4263,7 +4263,7 @@ type DeleteImageProcessingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageProcessingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4284,7 +4284,7 @@ type DeleteImageSpriteTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4313,7 +4313,7 @@ type DeleteImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4337,7 +4337,7 @@ type DeleteMediaRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4367,7 +4367,7 @@ type DeleteMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4388,7 +4388,7 @@ type DeletePersonSampleRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4417,7 +4417,7 @@ type DeletePersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4438,7 +4438,7 @@ type DeleteProcedureTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProcedureTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4467,7 +4467,7 @@ type DeleteProcedureTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4488,7 +4488,7 @@ type DeleteSampleSnapshotTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4517,7 +4517,7 @@ type DeleteSampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4538,7 +4538,7 @@ type DeleteSnapshotByTimeOffsetTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4567,7 +4567,7 @@ type DeleteSnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4588,7 +4588,7 @@ type DeleteSuperPlayerConfigRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSuperPlayerConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4617,7 +4617,7 @@ type DeleteSuperPlayerConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSuperPlayerConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4638,7 +4638,7 @@ type DeleteTranscodeTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4667,7 +4667,7 @@ type DeleteTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4688,7 +4688,7 @@ type DeleteWatermarkTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4717,7 +4717,7 @@ type DeleteWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4738,7 +4738,7 @@ type DeleteWordSamplesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4767,7 +4767,7 @@ type DeleteWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4794,7 +4794,7 @@ type DescribeAIAnalysisTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4831,7 +4831,7 @@ type DescribeAIAnalysisTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIAnalysisTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4858,7 +4858,7 @@ type DescribeAIRecognitionTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4895,7 +4895,7 @@ type DescribeAIRecognitionTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIRecognitionTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4927,7 +4927,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4965,7 +4965,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4983,7 +4983,7 @@ type DescribeAllClassRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5015,7 +5015,7 @@ type DescribeAllClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5047,7 +5047,7 @@ type DescribeAnimatedGraphicsTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAnimatedGraphicsTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5085,7 +5085,7 @@ type DescribeAnimatedGraphicsTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAnimatedGraphicsTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5184,7 +5184,7 @@ type DescribeCDNStatDetailsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCDNStatDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5226,7 +5226,7 @@ type DescribeCDNStatDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCDNStatDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5266,7 +5266,7 @@ type DescribeCDNUsageDataRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCDNUsageDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5305,7 +5305,7 @@ type DescribeCDNUsageDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCDNUsageDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5338,7 +5338,7 @@ type DescribeCdnLogsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCdnLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5383,7 +5383,7 @@ type DescribeCdnLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCdnLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5410,7 +5410,7 @@ type DescribeContentReviewTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5447,7 +5447,7 @@ type DescribeContentReviewTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5474,7 +5474,7 @@ type DescribeDailyMediaPlayStatRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyMediaPlayStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5508,7 +5508,7 @@ type DescribeDailyMediaPlayStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyMediaPlayStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5537,7 +5537,7 @@ type DescribeDailyMostPlayedStatRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyMostPlayedStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5571,7 +5571,7 @@ type DescribeDailyMostPlayedStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyMostPlayedStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5595,7 +5595,7 @@ type DescribeDailyPlayStatFileListRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyPlayStatFileListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5628,7 +5628,7 @@ type DescribeDailyPlayStatFileListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDailyPlayStatFileListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5646,7 +5646,7 @@ type DescribeDrmDataKeyRequest struct {
 	EdkList []*string `json:"EdkList,omitempty" name:"EdkList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDrmDataKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5677,7 +5677,7 @@ type DescribeDrmDataKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDrmDataKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5695,7 +5695,7 @@ type DescribeEventsStateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventsStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5726,7 +5726,7 @@ type DescribeEventsStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventsStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5758,7 +5758,7 @@ type DescribeImageProcessingTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageProcessingTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5796,7 +5796,7 @@ type DescribeImageProcessingTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageProcessingTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5828,7 +5828,7 @@ type DescribeImageSpriteTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageSpriteTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5866,7 +5866,7 @@ type DescribeImageSpriteTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5900,7 +5900,7 @@ type DescribeMediaInfosRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5936,7 +5936,7 @@ type DescribeMediaInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5969,7 +5969,7 @@ type DescribeMediaProcessUsageDataRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaProcessUsageDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6003,7 +6003,7 @@ type DescribeMediaProcessUsageDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaProcessUsageDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6044,7 +6044,7 @@ type DescribePersonSamplesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6084,7 +6084,7 @@ type DescribePersonSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6099,7 +6099,7 @@ type DescribePrepaidProductsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePrepaidProductsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6129,7 +6129,7 @@ type DescribePrepaidProductsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePrepaidProductsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6161,7 +6161,7 @@ type DescribeProcedureTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProcedureTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6199,7 +6199,7 @@ type DescribeProcedureTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProcedureTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6223,7 +6223,7 @@ type DescribeReviewDetailsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeReviewDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6262,7 +6262,7 @@ type DescribeReviewDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeReviewDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6294,7 +6294,7 @@ type DescribeSampleSnapshotTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSampleSnapshotTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6332,7 +6332,7 @@ type DescribeSampleSnapshotTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSampleSnapshotTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6364,7 +6364,7 @@ type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6402,7 +6402,7 @@ type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6420,7 +6420,7 @@ type DescribeStorageDataRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6463,7 +6463,7 @@ type DescribeStorageDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6507,7 +6507,7 @@ type DescribeStorageDetailsRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6543,7 +6543,7 @@ type DescribeStorageDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6570,7 +6570,7 @@ type DescribeSubAppIdsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubAppIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6607,7 +6607,7 @@ type DescribeSubAppIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubAppIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6639,7 +6639,7 @@ type DescribeSuperPlayerConfigsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSuperPlayerConfigsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6677,7 +6677,7 @@ type DescribeSuperPlayerConfigsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSuperPlayerConfigsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6698,7 +6698,7 @@ type DescribeTaskDetailRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6807,7 +6807,7 @@ type DescribeTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6848,7 +6848,7 @@ type DescribeTasksRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6889,7 +6889,7 @@ type DescribeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6931,7 +6931,7 @@ type DescribeTranscodeTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6972,7 +6972,7 @@ type DescribeTranscodeTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7000,7 +7000,7 @@ type DescribeVodDomainsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVodDomainsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7037,7 +7037,7 @@ type DescribeVodDomainsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVodDomainsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7072,7 +7072,7 @@ type DescribeWatermarkTemplatesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWatermarkTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7111,7 +7111,7 @@ type DescribeWatermarkTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWatermarkTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7152,7 +7152,7 @@ type DescribeWordSamplesRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7191,7 +7191,7 @@ type DescribeWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7320,7 +7320,7 @@ type EditMediaRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EditMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7361,7 +7361,7 @@ type EditMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EditMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7566,7 +7566,7 @@ type ExecuteFunctionRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteFunctionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7602,7 +7602,7 @@ type ExecuteFunctionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteFunctionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7703,7 +7703,7 @@ type ForbidMediaDistributionRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidMediaDistributionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7736,7 +7736,7 @@ type ForbidMediaDistributionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidMediaDistributionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8089,7 +8089,7 @@ type LiveRealTimeClipRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LiveRealTimeClipRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8142,7 +8142,7 @@ type LiveRealTimeClipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LiveRealTimeClipResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8167,7 +8167,7 @@ type ManageTaskRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8197,7 +8197,7 @@ type ManageTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9259,7 +9259,7 @@ type ModifyAIAnalysisTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9295,7 +9295,7 @@ type ModifyAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9349,7 +9349,7 @@ type ModifyAIRecognitionTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9389,7 +9389,7 @@ type ModifyAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9434,7 +9434,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9469,7 +9469,7 @@ type ModifyAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9527,7 +9527,7 @@ type ModifyAnimatedGraphicsTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9564,7 +9564,7 @@ type ModifyAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9588,7 +9588,7 @@ type ModifyClassRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9618,7 +9618,7 @@ type ModifyClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9670,7 +9670,7 @@ type ModifyContentReviewTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9708,7 +9708,7 @@ type ModifyContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9769,7 +9769,7 @@ type ModifyImageSpriteTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9808,7 +9808,7 @@ type ModifyImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9874,7 +9874,7 @@ type ModifyMediaInfoRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMediaInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9924,7 +9924,7 @@ type ModifyMediaInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMediaInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9963,7 +9963,7 @@ type ModifyPersonSampleRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10004,7 +10004,7 @@ type ModifyPersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10074,7 +10074,7 @@ type ModifySampleSnapshotTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10112,7 +10112,7 @@ type ModifySampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10172,7 +10172,7 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10208,7 +10208,7 @@ type ModifySnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10232,7 +10232,7 @@ type ModifySubAppIdInfoRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubAppIdInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10262,7 +10262,7 @@ type ModifySubAppIdInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubAppIdInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10287,7 +10287,7 @@ type ModifySubAppIdStatusRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubAppIdStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10316,7 +10316,7 @@ type ModifySubAppIdStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubAppIdStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10366,7 +10366,7 @@ type ModifySuperPlayerConfigRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySuperPlayerConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10403,7 +10403,7 @@ type ModifySuperPlayerConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySuperPlayerConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10452,7 +10452,7 @@ type ModifyTranscodeTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10489,7 +10489,7 @@ type ModifyTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10542,7 +10542,7 @@ type ModifyWatermarkTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10582,7 +10582,7 @@ type ModifyWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10617,7 +10617,7 @@ type ModifyWordSampleRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWordSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10648,7 +10648,7 @@ type ModifyWordSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWordSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10819,7 +10819,7 @@ type ParseStreamingManifestRequest struct {
 	ManifestType *string `json:"ManifestType,omitempty" name:"ManifestType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseStreamingManifestRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -10851,7 +10851,7 @@ type ParseStreamingManifestResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseStreamingManifestResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11317,7 +11317,7 @@ type ProcessMediaByProcedureRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaByProcedureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11355,7 +11355,7 @@ type ProcessMediaByProcedureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaByProcedureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11400,7 +11400,7 @@ type ProcessMediaByUrlRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaByUrlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11440,7 +11440,7 @@ type ProcessMediaByUrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaByUrlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11488,7 +11488,7 @@ type ProcessMediaRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11529,7 +11529,7 @@ type ProcessMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11692,7 +11692,7 @@ type PullEventsRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PullEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11725,7 +11725,7 @@ type PullEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PullEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11779,7 +11779,7 @@ type PullUploadRequest struct {
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PullUploadRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11821,7 +11821,7 @@ type PullUploadResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PullUploadResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11884,7 +11884,7 @@ type PushUrlCacheRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PushUrlCacheRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11913,7 +11913,7 @@ type PushUrlCacheResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PushUrlCacheResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -11970,7 +11970,7 @@ type ResetProcedureTemplateRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetProcedureTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12004,7 +12004,7 @@ type ResetProcedureTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetProcedureTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12223,7 +12223,7 @@ type SearchMediaRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12280,7 +12280,7 @@ type SearchMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12335,7 +12335,7 @@ type SimpleHlsClipRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimpleHlsClipRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12376,7 +12376,7 @@ type SimpleHlsClipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimpleHlsClipResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12545,7 +12545,7 @@ type SplitMediaRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SplitMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -12581,7 +12581,7 @@ type SplitMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SplitMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -13742,7 +13742,7 @@ type WeChatMiniProgramPublishRequest struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WeChatMiniProgramPublishRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -13775,7 +13775,7 @@ type WeChatMiniProgramPublishResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WeChatMiniProgramPublishResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

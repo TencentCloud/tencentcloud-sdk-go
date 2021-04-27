@@ -48,7 +48,7 @@ type CreateAudioDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAudioDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -90,7 +90,7 @@ type CreateAudioDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAudioDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -123,7 +123,7 @@ type CreateDataDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDataDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -163,7 +163,7 @@ type CreateDataDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDataDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -202,7 +202,7 @@ type CreateDocDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDocDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -244,7 +244,7 @@ type CreateDocDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDocDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type CreateHashDepositNoCertRequest struct {
 	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositNoCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -318,7 +318,7 @@ type CreateHashDepositNoCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositNoCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -345,7 +345,7 @@ type CreateHashDepositNoSealRequest struct {
 	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositNoSealRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -392,7 +392,7 @@ type CreateHashDepositNoSealResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositNoSealResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -422,7 +422,7 @@ type CreateHashDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -461,7 +461,7 @@ type CreateHashDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHashDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -500,7 +500,7 @@ type CreateImageDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -542,7 +542,7 @@ type CreateImageDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -581,7 +581,7 @@ type CreateVideoDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -623,7 +623,7 @@ type CreateVideoDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -653,7 +653,7 @@ type CreateWebpageDepositRequest struct {
 	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWebpageDepositRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -692,7 +692,7 @@ type CreateWebpageDepositResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWebpageDepositResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -710,7 +710,7 @@ type GetDepositCertRequest struct {
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -744,7 +744,7 @@ type GetDepositCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -762,7 +762,7 @@ type GetDepositFileRequest struct {
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositFileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -796,7 +796,7 @@ type GetDepositFileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositFileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -814,7 +814,7 @@ type GetDepositInfoRequest struct {
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -854,7 +854,7 @@ type GetDepositInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDepositInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

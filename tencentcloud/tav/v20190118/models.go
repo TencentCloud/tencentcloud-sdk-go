@@ -27,7 +27,7 @@ type GetLocalEngineRequest struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLocalEngineRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -64,7 +64,7 @@ type GetLocalEngineResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLocalEngineResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -85,7 +85,7 @@ type GetScanResultRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetScanResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -124,7 +124,7 @@ type GetScanResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetScanResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -151,7 +151,7 @@ type ScanFileHashRequest struct {
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanFileHashRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -193,7 +193,7 @@ type ScanFileHashResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanFileHashResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -217,7 +217,7 @@ type ScanFileRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanFileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -256,7 +256,7 @@ type ScanFileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanFileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

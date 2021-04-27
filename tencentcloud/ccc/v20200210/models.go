@@ -30,7 +30,7 @@ type CreateSDKLoginTokenRequest struct {
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSDKLoginTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -68,7 +68,7 @@ type CreateSDKLoginTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSDKLoginTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -89,7 +89,7 @@ type CreateStaffRequest struct {
 	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStaffRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -118,7 +118,7 @@ type CreateStaffResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStaffResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -151,7 +151,7 @@ type DescribeChatMessagesRequest struct {
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeChatMessagesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -190,7 +190,7 @@ type DescribeChatMessagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeChatMessagesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -226,7 +226,7 @@ type DescribeIMCdrsRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIMCdrsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -266,7 +266,7 @@ type DescribeIMCdrsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIMCdrsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type DescribePSTNActiveSessionListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePSTNActiveSessionListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -326,7 +326,7 @@ type DescribePSTNActiveSessionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePSTNActiveSessionListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -350,7 +350,7 @@ type DescribeSeatUserListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSeatUserListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -386,7 +386,7 @@ type DescribeSeatUserListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSeatUserListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -416,7 +416,7 @@ type DescribeSkillGroupInfoListRequest struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSkillGroupInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -454,7 +454,7 @@ type DescribeSkillGroupInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSkillGroupInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -484,7 +484,7 @@ type DescribeStaffInfoListRequest struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStaffInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -522,7 +522,7 @@ type DescribeStaffInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStaffInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -546,7 +546,7 @@ type DescribeTelCallInfoRequest struct {
 	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelCallInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -585,7 +585,7 @@ type DescribeTelCallInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelCallInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -624,7 +624,7 @@ type DescribeTelCdrRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelCdrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -665,7 +665,7 @@ type DescribeTelCdrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelCdrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -686,7 +686,7 @@ type DescribeTelSessionRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelSessionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -718,7 +718,7 @@ type DescribeTelSessionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTelSessionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

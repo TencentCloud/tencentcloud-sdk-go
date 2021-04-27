@@ -72,7 +72,7 @@ type GetTaskDetailRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -103,7 +103,7 @@ type GetTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -136,7 +136,7 @@ type GetTaskListRequest struct {
 	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTaskListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -172,7 +172,7 @@ type GetTaskListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTaskListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -235,7 +235,7 @@ type PredictRatingRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PredictRatingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -267,7 +267,7 @@ type PredictRatingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PredictRatingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -297,7 +297,7 @@ type QueryCallDetailsRequest struct {
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCallDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -332,7 +332,7 @@ type QueryCallDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCallDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type QueryCallStatRequest struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCallStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -389,7 +389,7 @@ type QueryCallStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCallStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -407,7 +407,7 @@ type QueryGeneralStatRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryGeneralStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -438,7 +438,7 @@ type QueryGeneralStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryGeneralStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -501,7 +501,7 @@ type UploadIdRequest struct {
 	IdListBase64 *string `json:"IdListBase64,omitempty" name:"IdListBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -534,7 +534,7 @@ type UploadIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

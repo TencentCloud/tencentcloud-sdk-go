@@ -48,7 +48,7 @@ type CreateEmailAddressRequest struct {
 	EmailSenderName *string `json:"EmailSenderName,omitempty" name:"EmailSenderName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -77,7 +77,7 @@ type CreateEmailAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -95,7 +95,7 @@ type CreateEmailIdentityRequest struct {
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailIdentityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type CreateEmailIdentityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailIdentityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -153,7 +153,7 @@ type CreateEmailTemplateRequest struct {
 	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -182,7 +182,7 @@ type CreateEmailTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEmailTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -218,7 +218,7 @@ type DeleteBlackListRequest struct {
 	EmailAddressList []*string `json:"EmailAddressList,omitempty" name:"EmailAddressList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteBlackListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -246,7 +246,7 @@ type DeleteBlackListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteBlackListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -264,7 +264,7 @@ type DeleteEmailAddressRequest struct {
 	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -292,7 +292,7 @@ type DeleteEmailAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -310,7 +310,7 @@ type DeleteEmailIdentityRequest struct {
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailIdentityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -338,7 +338,7 @@ type DeleteEmailIdentityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailIdentityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type DeleteEmailTemplateRequest struct {
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -384,7 +384,7 @@ type DeleteEmailTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEmailTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -428,7 +428,7 @@ type GetEmailIdentityRequest struct {
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEmailIdentityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -465,7 +465,7 @@ type GetEmailIdentityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEmailIdentityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -483,7 +483,7 @@ type GetEmailTemplateRequest struct {
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEmailTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -514,7 +514,7 @@ type GetEmailTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEmailTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -544,7 +544,7 @@ type GetSendEmailStatusRequest struct {
 	ToEmailAddress *string `json:"ToEmailAddress,omitempty" name:"ToEmailAddress"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSendEmailStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -579,7 +579,7 @@ type GetSendEmailStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSendEmailStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -606,7 +606,7 @@ type GetStatisticsReportRequest struct {
 	ReceivingMailboxType *string `json:"ReceivingMailboxType,omitempty" name:"ReceivingMailboxType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetStatisticsReportRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -643,7 +643,7 @@ type GetStatisticsReportResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetStatisticsReportResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -676,7 +676,7 @@ type ListBlackEmailAddressRequest struct {
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListBlackEmailAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -715,7 +715,7 @@ type ListBlackEmailAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListBlackEmailAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -730,7 +730,7 @@ type ListEmailAddressRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -761,7 +761,7 @@ type ListEmailAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -776,7 +776,7 @@ type ListEmailIdentitiesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailIdentitiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -806,7 +806,7 @@ type ListEmailIdentitiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailIdentitiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -827,7 +827,7 @@ type ListEmailTemplatesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -862,7 +862,7 @@ type ListEmailTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListEmailTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -900,7 +900,7 @@ type SendEmailRequest struct {
 	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendEmailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -937,7 +937,7 @@ type SendEmailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendEmailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1066,7 +1066,7 @@ type UpdateEmailIdentityRequest struct {
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateEmailIdentityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1103,7 +1103,7 @@ type UpdateEmailIdentityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateEmailIdentityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1127,7 +1127,7 @@ type UpdateEmailTemplateRequest struct {
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateEmailTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1157,7 +1157,7 @@ type UpdateEmailTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateEmailTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

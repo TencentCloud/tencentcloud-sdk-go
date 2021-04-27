@@ -27,7 +27,7 @@ type DescribeRegionsRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -61,7 +61,7 @@ type DescribeRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -79,7 +79,7 @@ type DescribeZonesRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZonesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -113,7 +113,7 @@ type DescribeZonesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZonesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -69,7 +69,7 @@ type AssociateAccessGroupsRequest struct {
 	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssociateAccessGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -98,7 +98,7 @@ type AssociateAccessGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssociateAccessGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -125,7 +125,7 @@ type CreateAccessGroupRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccessGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -159,7 +159,7 @@ type CreateAccessGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccessGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -180,7 +180,7 @@ type CreateAccessRulesRequest struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccessRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -209,7 +209,7 @@ type CreateAccessRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccessRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -245,7 +245,7 @@ type CreateFileSystemRequest struct {
 	RootInodeGroup *string `json:"RootInodeGroup,omitempty" name:"RootInodeGroup"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -282,7 +282,7 @@ type CreateFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -303,7 +303,7 @@ type CreateLifeCycleRulesRequest struct {
 	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLifeCycleRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -332,7 +332,7 @@ type CreateLifeCycleRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLifeCycleRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type CreateMountPointRequest struct {
 	MountPointStatus *uint64 `json:"MountPointStatus,omitempty" name:"MountPointStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMountPointRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -389,7 +389,7 @@ type CreateMountPointResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMountPointResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -410,7 +410,7 @@ type CreateRestoreTasksRequest struct {
 	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRestoreTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -439,7 +439,7 @@ type CreateRestoreTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRestoreTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -457,7 +457,7 @@ type DeleteAccessGroupRequest struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccessGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -485,7 +485,7 @@ type DeleteAccessGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccessGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -503,7 +503,7 @@ type DeleteAccessRulesRequest struct {
 	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitempty" name:"AccessRuleIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccessRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -531,7 +531,7 @@ type DeleteAccessRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAccessRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -549,7 +549,7 @@ type DeleteFileSystemRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -577,7 +577,7 @@ type DeleteFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -595,7 +595,7 @@ type DeleteLifeCycleRulesRequest struct {
 	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitempty" name:"LifeCycleRuleIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLifeCycleRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -623,7 +623,7 @@ type DeleteLifeCycleRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLifeCycleRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -641,7 +641,7 @@ type DeleteMountPointRequest struct {
 	MountPointId *string `json:"MountPointId,omitempty" name:"MountPointId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMountPointRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -669,7 +669,7 @@ type DeleteMountPointResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMountPointResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type DescribeAccessGroupRequest struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -718,7 +718,7 @@ type DescribeAccessGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -740,7 +740,7 @@ type DescribeAccessGroupsRequest struct {
 	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -772,7 +772,7 @@ type DescribeAccessGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -790,7 +790,7 @@ type DescribeAccessRulesRequest struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -821,7 +821,7 @@ type DescribeAccessRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -839,7 +839,7 @@ type DescribeFileSystemRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -878,7 +878,7 @@ type DescribeFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -893,7 +893,7 @@ type DescribeFileSystemsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSystemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -923,7 +923,7 @@ type DescribeFileSystemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSystemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -941,7 +941,7 @@ type DescribeLifeCycleRulesRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLifeCycleRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -972,7 +972,7 @@ type DescribeLifeCycleRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLifeCycleRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -990,7 +990,7 @@ type DescribeMountPointRequest struct {
 	MountPointId *string `json:"MountPointId,omitempty" name:"MountPointId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountPointRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1021,7 +1021,7 @@ type DescribeMountPointResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountPointResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1046,7 +1046,7 @@ type DescribeMountPointsRequest struct {
 	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountPointsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1079,7 +1079,7 @@ type DescribeMountPointsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountPointsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1097,7 +1097,7 @@ type DescribeResourceTagsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1128,7 +1128,7 @@ type DescribeResourceTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1146,7 +1146,7 @@ type DescribeRestoreTasksRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRestoreTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1177,7 +1177,7 @@ type DescribeRestoreTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRestoreTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1198,7 +1198,7 @@ type DisassociateAccessGroupsRequest struct {
 	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisassociateAccessGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1227,7 +1227,7 @@ type DisassociateAccessGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisassociateAccessGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1308,7 +1308,7 @@ type ModifyAccessGroupRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAccessGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1338,7 +1338,7 @@ type ModifyAccessGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAccessGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1356,7 +1356,7 @@ type ModifyAccessRulesRequest struct {
 	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAccessRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1384,7 +1384,7 @@ type ModifyAccessRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAccessRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1418,7 +1418,7 @@ type ModifyFileSystemRequest struct {
 	PosixAcl *bool `json:"PosixAcl,omitempty" name:"PosixAcl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1451,7 +1451,7 @@ type ModifyFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1469,7 +1469,7 @@ type ModifyLifeCycleRulesRequest struct {
 	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLifeCycleRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1497,7 +1497,7 @@ type ModifyLifeCycleRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLifeCycleRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1521,7 +1521,7 @@ type ModifyMountPointRequest struct {
 	MountPointStatus *uint64 `json:"MountPointStatus,omitempty" name:"MountPointStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMountPointRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1551,7 +1551,7 @@ type ModifyMountPointResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMountPointResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1572,7 +1572,7 @@ type ModifyResourceTagsRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourceTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1601,7 +1601,7 @@ type ModifyResourceTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourceTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

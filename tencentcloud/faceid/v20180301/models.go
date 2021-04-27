@@ -30,7 +30,7 @@ type BankCard2EVerificationRequest struct {
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCard2EVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -84,7 +84,7 @@ type BankCard2EVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCard2EVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -118,7 +118,7 @@ type BankCard4EVerificationRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCard4EVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -178,7 +178,7 @@ type BankCard4EVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCard4EVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -209,7 +209,7 @@ type BankCardVerificationRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCardVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -267,7 +267,7 @@ type BankCardVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BankCardVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -285,7 +285,7 @@ type CheckBankCardInformationRequest struct {
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckBankCardInformationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -331,7 +331,7 @@ type CheckBankCardInformationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckBankCardInformationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -374,7 +374,7 @@ type CheckIdCardInformationRequest struct {
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckIdCardInformationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -449,7 +449,7 @@ type CheckIdCardInformationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckIdCardInformationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -470,7 +470,7 @@ type CheckPhoneAndNameRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckPhoneAndNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -512,7 +512,7 @@ type CheckPhoneAndNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckPhoneAndNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -553,7 +553,7 @@ type DetectAuthRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectAuthRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -595,7 +595,7 @@ type DetectAuthResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectAuthResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -829,7 +829,7 @@ type EncryptedPhoneVerificationRequest struct {
 	EncryptionMode *string `json:"EncryptionMode,omitempty" name:"EncryptionMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EncryptedPhoneVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -874,7 +874,7 @@ type EncryptedPhoneVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EncryptedPhoneVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -904,7 +904,7 @@ type GetActionSequenceRequest struct {
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetActionSequenceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -935,7 +935,7 @@ type GetActionSequenceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetActionSequenceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -973,7 +973,7 @@ type GetDetectInfoEnhancedRequest struct {
 	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1027,7 +1027,7 @@ type GetDetectInfoEnhancedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDetectInfoEnhancedResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1053,7 +1053,7 @@ type GetDetectInfoRequest struct {
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDetectInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1134,7 +1134,7 @@ type GetDetectInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetDetectInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1160,7 +1160,7 @@ type GetEidResultRequest struct {
 	BestFramesCount *uint64 `json:"BestFramesCount,omitempty" name:"BestFramesCount"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEidResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1206,7 +1206,7 @@ type GetEidResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEidResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1249,7 +1249,7 @@ type GetEidTokenRequest struct {
 	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEidTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1285,7 +1285,7 @@ type GetEidTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetEidTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1309,7 +1309,7 @@ type GetFaceIdResultRequest struct {
 	IsNeedBestFrame *bool `json:"IsNeedBestFrame,omitempty" name:"IsNeedBestFrame"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFaceIdResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1366,7 +1366,7 @@ type GetFaceIdResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFaceIdResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1400,7 +1400,7 @@ type GetFaceIdTokenRequest struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFaceIdTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1436,7 +1436,7 @@ type GetFaceIdTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFaceIdTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1451,7 +1451,7 @@ type GetLiveCodeRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLiveCodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1481,7 +1481,7 @@ type GetLiveCodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLiveCodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1499,7 +1499,7 @@ type GetRealNameAuthResultRequest struct {
 	AuthToken *string `json:"AuthToken,omitempty" name:"AuthToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRealNameAuthResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1538,7 +1538,7 @@ type GetRealNameAuthResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRealNameAuthResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1562,7 +1562,7 @@ type GetRealNameAuthTokenRequest struct {
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRealNameAuthTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1598,7 +1598,7 @@ type GetRealNameAuthTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRealNameAuthTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1635,7 +1635,7 @@ type IdCardOCRVerificationRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IdCardOCRVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1703,7 +1703,7 @@ type IdCardOCRVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IdCardOCRVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1724,7 +1724,7 @@ type IdCardVerificationRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IdCardVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1767,7 +1767,7 @@ type IdCardVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IdCardVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1796,7 +1796,7 @@ type ImageRecognitionRequest struct {
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageRecognitionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1836,7 +1836,7 @@ type ImageRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageRecognitionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1876,7 +1876,7 @@ type LivenessCompareRequest struct {
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessCompareRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1925,7 +1925,7 @@ type LivenessCompareResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessCompareResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1965,7 +1965,7 @@ type LivenessRecognitionRequest struct {
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessRecognitionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2015,7 +2015,7 @@ type LivenessRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessRecognitionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2049,7 +2049,7 @@ type LivenessRequest struct {
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2094,7 +2094,7 @@ type LivenessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LivenessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2128,7 +2128,7 @@ type MinorsVerificationRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MinorsVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2185,7 +2185,7 @@ type MinorsVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MinorsVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2206,7 +2206,7 @@ type MobileNetworkTimeVerificationRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MobileNetworkTimeVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2252,7 +2252,7 @@ type MobileNetworkTimeVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MobileNetworkTimeVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2273,7 +2273,7 @@ type MobileStatusRequest struct {
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MobileStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2323,7 +2323,7 @@ type MobileStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MobileStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2356,7 +2356,7 @@ type PhoneVerificationRequest struct {
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PhoneVerificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2406,7 +2406,7 @@ type PhoneVerificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PhoneVerificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

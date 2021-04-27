@@ -33,7 +33,7 @@ type ChangeRoomPlayerProfileRequest struct {
 	CustomProfile *string `json:"CustomProfile,omitempty" name:"CustomProfile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeRoomPlayerProfileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -66,7 +66,7 @@ type ChangeRoomPlayerProfileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeRoomPlayerProfileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -90,7 +90,7 @@ type ChangeRoomPlayerStatusRequest struct {
 	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeRoomPlayerStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -123,7 +123,7 @@ type ChangeRoomPlayerStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeRoomPlayerStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -147,7 +147,7 @@ type DescribePlayerRequest struct {
 	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -180,7 +180,7 @@ type DescribePlayerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type DescribeRoomRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -237,7 +237,7 @@ type DescribeRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -258,7 +258,7 @@ type DismissRoomRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -287,7 +287,7 @@ type DismissRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -335,7 +335,7 @@ type ModifyRoomRequest struct {
 	IsForbidJoin *bool `json:"IsForbidJoin,omitempty" name:"IsForbidJoin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -376,7 +376,7 @@ type ModifyRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -421,7 +421,7 @@ type RemoveRoomPlayerRequest struct {
 	RemovePlayerId *string `json:"RemovePlayerId,omitempty" name:"RemovePlayerId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveRoomPlayerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -453,7 +453,7 @@ type RemoveRoomPlayerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveRoomPlayerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

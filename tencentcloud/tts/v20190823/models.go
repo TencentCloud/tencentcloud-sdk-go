@@ -56,7 +56,7 @@ type TextToVoiceRequest struct {
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextToVoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -99,7 +99,7 @@ type TextToVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextToVoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

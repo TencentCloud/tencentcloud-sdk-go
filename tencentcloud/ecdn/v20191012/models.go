@@ -63,7 +63,7 @@ type AddEcdnDomainRequest struct {
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddEcdnDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -103,7 +103,7 @@ type AddEcdnDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddEcdnDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -171,7 +171,7 @@ type DeleteEcdnDomainRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEcdnDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -199,7 +199,7 @@ type DeleteEcdnDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEcdnDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -226,7 +226,7 @@ type DescribeDomainsConfigRequest struct {
 	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -263,7 +263,7 @@ type DescribeDomainsConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -287,7 +287,7 @@ type DescribeDomainsRequest struct {
 	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -323,7 +323,7 @@ type DescribeDomainsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -353,7 +353,7 @@ type DescribeEcdnDomainLogsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnDomainLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -392,7 +392,7 @@ type DescribeEcdnDomainLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnDomainLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -441,7 +441,7 @@ type DescribeEcdnDomainStatisticsRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnDomainStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -482,7 +482,7 @@ type DescribeEcdnDomainStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnDomainStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -536,7 +536,7 @@ type DescribeEcdnStatisticsRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -573,7 +573,7 @@ type DescribeEcdnStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEcdnStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -597,7 +597,7 @@ type DescribeIpStatusRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIpStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -632,7 +632,7 @@ type DescribeIpStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIpStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -647,7 +647,7 @@ type DescribePurgeQuotaRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePurgeQuotaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -680,7 +680,7 @@ type DescribePurgeQuotaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePurgeQuotaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -719,7 +719,7 @@ type DescribePurgeTasksRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePurgeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -760,7 +760,7 @@ type DescribePurgeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePurgeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1127,7 +1127,7 @@ type PurgePathCacheRequest struct {
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PurgePathCacheRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1159,7 +1159,7 @@ type PurgePathCacheResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PurgePathCacheResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1198,7 +1198,7 @@ type PurgeUrlsCacheRequest struct {
 	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PurgeUrlsCacheRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1229,7 +1229,7 @@ type PurgeUrlsCacheResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PurgeUrlsCacheResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1324,7 +1324,7 @@ type StartEcdnDomainRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartEcdnDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1352,7 +1352,7 @@ type StartEcdnDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartEcdnDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1370,7 +1370,7 @@ type StopEcdnDomainRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopEcdnDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1398,7 +1398,7 @@ type StopEcdnDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopEcdnDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1470,7 +1470,7 @@ type UpdateDomainConfigRequest struct {
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDomainConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1509,7 +1509,7 @@ type UpdateDomainConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDomainConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

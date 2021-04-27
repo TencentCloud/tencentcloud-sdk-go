@@ -108,7 +108,7 @@ type CreateAppRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAppRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -164,7 +164,7 @@ type CreateAppResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAppResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -191,7 +191,7 @@ type DescribeAppStatisticsRequest struct {
 	Services []*string `json:"Services,omitempty" name:"Services" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAppStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -222,7 +222,7 @@ type DescribeAppStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAppStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -246,7 +246,7 @@ type DescribeApplicationDataRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeApplicationDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type DescribeApplicationDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeApplicationDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -309,7 +309,7 @@ type DescribeFilterResultListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFilterResultListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -349,7 +349,7 @@ type DescribeFilterResultListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFilterResultListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -370,7 +370,7 @@ type DescribeFilterResultRequest struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFilterResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -403,7 +403,7 @@ type DescribeFilterResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFilterResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -424,7 +424,7 @@ type DescribeRoomInfoRequest struct {
 	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -461,7 +461,7 @@ type DescribeRoomInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -529,7 +529,7 @@ type DescribeScanResultListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanResultListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -563,7 +563,7 @@ type DescribeScanResultListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanResultListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -587,7 +587,7 @@ type DescribeUserInAndOutTimeRequest struct {
 	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserInAndOutTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -623,7 +623,7 @@ type DescribeUserInAndOutTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserInAndOutTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -653,7 +653,7 @@ type ModifyAppStatusRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAppStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -685,7 +685,7 @@ type ModifyAppStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAppStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -711,7 +711,7 @@ type ModifyRoomInfoRequest struct {
 	OperationType *int64 `json:"OperationType,omitempty" name:"OperationType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRoomInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -749,7 +749,7 @@ type ModifyRoomInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRoomInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -880,7 +880,7 @@ type ScanVoiceRequest struct {
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanVoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -916,7 +916,7 @@ type ScanVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ScanVoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1037,7 +1037,7 @@ type VoiceFilterRequest struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VoiceFilterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1070,7 +1070,7 @@ type VoiceFilterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VoiceFilterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

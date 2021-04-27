@@ -52,7 +52,7 @@ type ClearDeviceActiveCodeRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearDeviceActiveCodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -80,7 +80,7 @@ type ClearDeviceActiveCodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearDeviceActiveCodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -123,7 +123,7 @@ type CreateAnonymousAccessTokenRequest struct {
 	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnonymousAccessTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -162,7 +162,7 @@ type CreateAnonymousAccessTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnonymousAccessTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -183,7 +183,7 @@ type CreateAppUsrRequest struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAppUsrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -221,7 +221,7 @@ type CreateAppUsrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAppUsrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -251,7 +251,7 @@ type CreateBindingRequest struct {
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBindingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -286,7 +286,7 @@ type CreateBindingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBindingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -310,7 +310,7 @@ type CreateDevTokenRequest struct {
 	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDevTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -344,7 +344,7 @@ type CreateDevTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDevTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -371,7 +371,7 @@ type CreateDevicesRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDevicesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -405,7 +405,7 @@ type CreateDevicesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDevicesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -426,7 +426,7 @@ type CreateGencodeRequest struct {
 	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGencodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -459,7 +459,7 @@ type CreateGencodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGencodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -477,7 +477,7 @@ type CreateIotDataTypeRequest struct {
 	IotDataType *string `json:"IotDataType,omitempty" name:"IotDataType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateIotDataTypeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -505,7 +505,7 @@ type CreateIotDataTypeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateIotDataTypeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -526,7 +526,7 @@ type CreateIotModelRequest struct {
 	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateIotModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -555,7 +555,7 @@ type CreateIotModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateIotModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -611,7 +611,7 @@ type CreateProductRequest struct {
 	ChipArch *string `json:"ChipArch,omitempty" name:"ChipArch"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -652,7 +652,7 @@ type CreateProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -676,7 +676,7 @@ type CreateStorageRequest struct {
 	UserTag *string `json:"UserTag,omitempty" name:"UserTag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStorageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -706,7 +706,7 @@ type CreateStorageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStorageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -756,7 +756,7 @@ type CreateStorageServiceRequest struct {
 	EnableTime *int64 `json:"EnableTime,omitempty" name:"EnableTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStorageServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -824,7 +824,7 @@ type CreateStorageServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStorageServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -842,7 +842,7 @@ type CreateTraceIdsRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTraceIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -870,7 +870,7 @@ type CreateTraceIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTraceIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -891,7 +891,7 @@ type CreateUploadPathRequest struct {
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUploadPathRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -924,7 +924,7 @@ type CreateUploadPathResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUploadPathResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -951,7 +951,7 @@ type CreateUsrTokenRequest struct {
 	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUsrTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -994,7 +994,7 @@ type CreateUsrTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateUsrTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1035,7 +1035,7 @@ type DeleteAppUsrRequest struct {
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAppUsrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1063,7 +1063,7 @@ type DeleteAppUsrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAppUsrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1087,7 +1087,7 @@ type DeleteBindingRequest struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteBindingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1117,7 +1117,7 @@ type DeleteBindingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteBindingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1135,7 +1135,7 @@ type DeleteDeviceRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1163,7 +1163,7 @@ type DeleteDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1181,7 +1181,7 @@ type DeleteIotDataTypeRequest struct {
 	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteIotDataTypeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1209,7 +1209,7 @@ type DeleteIotDataTypeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteIotDataTypeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1227,7 +1227,7 @@ type DeleteMessageQueueRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMessageQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1255,7 +1255,7 @@ type DeleteMessageQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMessageQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1279,7 +1279,7 @@ type DeleteOtaVersionRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOtaVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1309,7 +1309,7 @@ type DeleteOtaVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOtaVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1327,7 +1327,7 @@ type DeleteProductRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1355,7 +1355,7 @@ type DeleteProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1373,7 +1373,7 @@ type DeleteTraceIdsRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTraceIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1401,7 +1401,7 @@ type DeleteTraceIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTraceIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1428,7 +1428,7 @@ type DeliverStorageServiceRequest struct {
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverStorageServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1493,7 +1493,7 @@ type DeliverStorageServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverStorageServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1511,7 +1511,7 @@ type DescribeAccountBalanceRequest struct {
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1555,7 +1555,7 @@ type DescribeAccountBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1573,7 +1573,7 @@ type DescribeBindDevRequest struct {
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindDevRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1605,7 +1605,7 @@ type DescribeBindDevResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindDevResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1626,7 +1626,7 @@ type DescribeBindUsrRequest struct {
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindUsrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1659,7 +1659,7 @@ type DescribeBindUsrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindUsrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1680,7 +1680,7 @@ type DescribeDeviceModelRequest struct {
 	Branch *string `json:"Branch,omitempty" name:"Branch"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeviceModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1713,7 +1713,7 @@ type DescribeDeviceModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeviceModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1731,7 +1731,7 @@ type DescribeDeviceRequest struct {
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1763,7 +1763,7 @@ type DescribeDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1797,7 +1797,7 @@ type DescribeDevicesRequest struct {
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDevicesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1837,7 +1837,7 @@ type DescribeDevicesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDevicesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1855,7 +1855,7 @@ type DescribeIotDataTypeRequest struct {
 	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotDataTypeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1887,7 +1887,7 @@ type DescribeIotDataTypeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotDataTypeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1908,7 +1908,7 @@ type DescribeIotModelRequest struct {
 	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1941,7 +1941,7 @@ type DescribeIotModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1959,7 +1959,7 @@ type DescribeIotModelsRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotModelsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1991,7 +1991,7 @@ type DescribeIotModelsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIotModelsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2027,7 +2027,7 @@ type DescribeLogsRequest struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2068,7 +2068,7 @@ type DescribeLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2086,7 +2086,7 @@ type DescribeMessageQueueRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMessageQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2118,7 +2118,7 @@ type DescribeMessageQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMessageQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2136,7 +2136,7 @@ type DescribeModelDataRetRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeModelDataRetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2168,7 +2168,7 @@ type DescribeModelDataRetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeModelDataRetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2183,7 +2183,7 @@ type DescribeOsListRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOsListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2214,7 +2214,7 @@ type DescribeOsListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOsListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2244,7 +2244,7 @@ type DescribeOtaVersionsRequest struct {
 	PubStatus *uint64 `json:"PubStatus,omitempty" name:"PubStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOtaVersionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2283,7 +2283,7 @@ type DescribeOtaVersionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOtaVersionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2301,7 +2301,7 @@ type DescribeProductRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2333,7 +2333,7 @@ type DescribeProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2363,7 +2363,7 @@ type DescribeProductsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProductsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2402,7 +2402,7 @@ type DescribeProductsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProductsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2420,7 +2420,7 @@ type DescribePubVersionsRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePubVersionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2452,7 +2452,7 @@ type DescribePubVersionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePubVersionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2476,7 +2476,7 @@ type DescribeRechargeRecordsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRechargeRecordsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2514,7 +2514,7 @@ type DescribeRechargeRecordsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRechargeRecordsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2532,7 +2532,7 @@ type DescribeRegistrationStatusRequest struct {
 	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegistrationStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2563,7 +2563,7 @@ type DescribeRegistrationStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegistrationStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2581,7 +2581,7 @@ type DescribeRunLogRequest struct {
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRunLogRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2613,7 +2613,7 @@ type DescribeRunLogResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRunLogResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2634,7 +2634,7 @@ type DescribeStorageServiceRequest struct {
 	GetFinishedOrder *bool `json:"GetFinishedOrder,omitempty" name:"GetFinishedOrder"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2694,7 +2694,7 @@ type DescribeStorageServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStorageServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2724,7 +2724,7 @@ type DescribeStreamRequest struct {
 	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2760,7 +2760,7 @@ type DescribeStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2775,7 +2775,7 @@ type DescribeTraceIdsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTraceIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2806,7 +2806,7 @@ type DescribeTraceIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTraceIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2824,7 +2824,7 @@ type DescribeTraceStatusRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTraceStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2856,7 +2856,7 @@ type DescribeTraceStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTraceStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2999,7 +2999,7 @@ type DisableDeviceRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3027,7 +3027,7 @@ type DisableDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3045,7 +3045,7 @@ type DisableDeviceStreamRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableDeviceStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3073,7 +3073,7 @@ type DisableDeviceStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableDeviceStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3097,7 +3097,7 @@ type DisableOtaVersionRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableOtaVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3127,7 +3127,7 @@ type DisableOtaVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableOtaVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3187,7 +3187,7 @@ type ModifyDeviceActionRequest struct {
 	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDeviceActionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3228,7 +3228,7 @@ type ModifyDeviceActionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDeviceActionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3258,7 +3258,7 @@ type ModifyDevicePropertyRequest struct {
 	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDevicePropertyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3290,7 +3290,7 @@ type ModifyDevicePropertyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDevicePropertyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3314,7 +3314,7 @@ type ModifyDeviceRequest struct {
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3344,7 +3344,7 @@ type ModifyDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3374,7 +3374,7 @@ type ModifyProductRequest struct {
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3406,7 +3406,7 @@ type ModifyProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3436,7 +3436,7 @@ type ModifyVerContentRequest struct {
 	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyVerContentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3468,7 +3468,7 @@ type ModifyVerContentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyVerContentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3659,7 +3659,7 @@ type RefundStorageServiceRequest struct {
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundStorageServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3719,7 +3719,7 @@ type RefundStorageServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundStorageServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3746,7 +3746,7 @@ type RunDeviceRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3774,7 +3774,7 @@ type RunDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3792,7 +3792,7 @@ type RunDeviceStreamRequest struct {
 	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunDeviceStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3820,7 +3820,7 @@ type RunDeviceStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunDeviceStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3841,7 +3841,7 @@ type RunIotModelRequest struct {
 	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunIotModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3870,7 +3870,7 @@ type RunIotModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunIotModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3906,7 +3906,7 @@ type RunOtaVersionRequest struct {
 	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunOtaVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3940,7 +3940,7 @@ type RunOtaVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunOtaVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3970,7 +3970,7 @@ type RunTestOtaVersionRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunTestOtaVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4002,7 +4002,7 @@ type RunTestOtaVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunTestOtaVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4035,7 +4035,7 @@ type SendOnlineMsgRequest struct {
 	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendOnlineMsgRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4073,7 +4073,7 @@ type SendOnlineMsgResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendOnlineMsgResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4113,7 +4113,7 @@ type SetMessageQueueRequest struct {
 	MsgRegion *string `json:"MsgRegion,omitempty" name:"MsgRegion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetMessageQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4146,7 +4146,7 @@ type SetMessageQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetMessageQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4218,7 +4218,7 @@ type UpgradeDeviceRequest struct {
 	UpgradeNow *bool `json:"UpgradeNow,omitempty" name:"UpgradeNow"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDeviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4252,7 +4252,7 @@ type UpgradeDeviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDeviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4291,7 +4291,7 @@ type UploadOtaVersionRequest struct {
 	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadOtaVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4326,7 +4326,7 @@ type UploadOtaVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadOtaVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

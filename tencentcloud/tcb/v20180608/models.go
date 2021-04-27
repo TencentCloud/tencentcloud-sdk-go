@@ -49,7 +49,7 @@ type CheckTcbServiceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckTcbServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -79,7 +79,7 @@ type CheckTcbServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckTcbServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -589,7 +589,7 @@ type CommonServiceAPIRequest struct {
 	JSONData *string `json:"JSONData,omitempty" name:"JSONData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CommonServiceAPIRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -621,7 +621,7 @@ type CommonServiceAPIResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CommonServiceAPIResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -675,7 +675,7 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 	RepoUrl *string `json:"RepoUrl,omitempty" name:"RepoUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAndDeployCloudBaseProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -719,7 +719,7 @@ type CreateAndDeployCloudBaseProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAndDeployCloudBaseProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -740,7 +740,7 @@ type CreateAuthDomainRequest struct {
 	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAuthDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -769,7 +769,7 @@ type CreateAuthDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAuthDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -793,7 +793,7 @@ type CreateCloudBaseRunResourceRequest struct {
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCloudBaseRunResourceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -827,7 +827,7 @@ type CreateCloudBaseRunResourceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCloudBaseRunResourceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -950,7 +950,7 @@ type CreateCloudBaseRunServerVersionRequest struct {
 	ServiceVolumes []*CloudRunServiceVolume `json:"ServiceVolumes,omitempty" name:"ServiceVolumes" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1025,7 +1025,7 @@ type CreateCloudBaseRunServerVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCloudBaseRunServerVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1049,7 +1049,7 @@ type CreateHostingDomainRequest struct {
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHostingDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1079,7 +1079,7 @@ type CreateHostingDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateHostingDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1131,7 +1131,7 @@ type CreatePostpayPackageRequest struct {
 	Flag *string `json:"Flag,omitempty" name:"Flag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePostpayPackageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1174,7 +1174,7 @@ type CreatePostpayPackageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePostpayPackageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1195,7 +1195,7 @@ type CreateStaticStoreRequest struct {
 	EnableUnion *bool `json:"EnableUnion,omitempty" name:"EnableUnion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStaticStoreRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1228,7 +1228,7 @@ type CreateStaticStoreResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStaticStoreResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1263,7 +1263,7 @@ type CreateWxCloudBaseRunEnvRequest struct {
 	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWxCloudBaseRunEnvRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1302,7 +1302,7 @@ type CreateWxCloudBaseRunEnvResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWxCloudBaseRunEnvResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1340,7 +1340,7 @@ type DeleteCloudBaseProjectLatestVersionRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCloudBaseProjectLatestVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1369,7 +1369,7 @@ type DeleteCloudBaseProjectLatestVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCloudBaseProjectLatestVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1390,7 +1390,7 @@ type DeleteEndUserRequest struct {
 	UserList []*string `json:"UserList,omitempty" name:"UserList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEndUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1419,7 +1419,7 @@ type DeleteEndUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEndUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1440,7 +1440,7 @@ type DeleteWxGatewayRouteRequest struct {
 	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWxGatewayRouteRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1469,7 +1469,7 @@ type DeleteWxGatewayRouteResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWxGatewayRouteResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1487,7 +1487,7 @@ type DescribeAuthDomainsRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthDomainsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1518,7 +1518,7 @@ type DescribeAuthDomainsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthDomainsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1545,7 +1545,7 @@ type DescribeCloudBaseBuildServiceRequest struct {
 	ServiceVersion *string `json:"ServiceVersion,omitempty" name:"ServiceVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseBuildServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1600,7 +1600,7 @@ type DescribeCloudBaseBuildServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1633,7 +1633,7 @@ type DescribeCloudBaseProjectLatestVersionListRequest struct {
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseProjectLatestVersionListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1674,7 +1674,7 @@ type DescribeCloudBaseProjectLatestVersionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseProjectLatestVersionListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1707,7 +1707,7 @@ type DescribeCloudBaseProjectVersionListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseProjectVersionListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1748,7 +1748,7 @@ type DescribeCloudBaseProjectVersionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseProjectVersionListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1766,7 +1766,7 @@ type DescribeCloudBaseRunResourceForExtendRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunResourceForExtendRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1814,7 +1814,7 @@ type DescribeCloudBaseRunResourceForExtendResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunResourceForExtendResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1832,7 +1832,7 @@ type DescribeCloudBaseRunResourceRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunResourceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1880,7 +1880,7 @@ type DescribeCloudBaseRunResourceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunResourceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1904,7 +1904,7 @@ type DescribeCloudBaseRunServerVersionRequest struct {
 	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunServerVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2053,7 +2053,7 @@ type DescribeCloudBaseRunServerVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunServerVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2077,7 +2077,7 @@ type DescribeCloudBaseRunVersionRequest struct {
 	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2220,7 +2220,7 @@ type DescribeCloudBaseRunVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2253,7 +2253,7 @@ type DescribeCloudBaseRunVersionSnapshotRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunVersionSnapshotRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2290,7 +2290,7 @@ type DescribeCloudBaseRunVersionSnapshotResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudBaseRunVersionSnapshotResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2311,7 +2311,7 @@ type DescribeDatabaseACLRequest struct {
 	CollectionName *string `json:"CollectionName,omitempty" name:"CollectionName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDatabaseACLRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2347,7 +2347,7 @@ type DescribeDatabaseACLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDatabaseACLResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2365,7 +2365,7 @@ type DescribeDownloadFileRequest struct {
 	CodeUri *string `json:"CodeUri,omitempty" name:"CodeUri"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDownloadFileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2405,7 +2405,7 @@ type DescribeDownloadFileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDownloadFileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2428,7 +2428,7 @@ type DescribeEndUserLoginStatisticRequest struct {
 	Source *string `json:"Source,omitempty" name:"Source"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUserLoginStatisticRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2461,7 +2461,7 @@ type DescribeEndUserLoginStatisticResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUserLoginStatisticResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2479,7 +2479,7 @@ type DescribeEndUserStatisticRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUserStatisticRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2514,7 +2514,7 @@ type DescribeEndUserStatisticResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUserStatisticResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2541,7 +2541,7 @@ type DescribeEndUsersRequest struct {
 	UUIds []*string `json:"UUIds,omitempty" name:"UUIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUsersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2578,7 +2578,7 @@ type DescribeEndUsersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEndUsersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2600,7 +2600,7 @@ type DescribeEnvFreeQuotaRequest struct {
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvFreeQuotaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2633,7 +2633,7 @@ type DescribeEnvFreeQuotaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvFreeQuotaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2648,7 +2648,7 @@ type DescribeEnvLimitRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvLimitRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2699,7 +2699,7 @@ type DescribeEnvLimitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvLimitResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2724,7 +2724,7 @@ type DescribeEnvsRequest struct {
 	Channels []*string `json:"Channels,omitempty" name:"Channels" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2757,7 +2757,7 @@ type DescribeEnvsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2775,7 +2775,7 @@ type DescribeExtensionUploadInfoRequest struct {
 	ExtensionFiles []*ExtensionFile `json:"ExtensionFiles,omitempty" name:"ExtensionFiles" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExtensionUploadInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2806,7 +2806,7 @@ type DescribeExtensionUploadInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExtensionUploadInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2824,7 +2824,7 @@ type DescribeExtraPkgBillingInfoRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExtraPkgBillingInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2858,7 +2858,7 @@ type DescribeExtraPkgBillingInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExtraPkgBillingInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2876,7 +2876,7 @@ type DescribePostpayFreeQuotasRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePostpayFreeQuotasRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2908,7 +2908,7 @@ type DescribePostpayFreeQuotasResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePostpayFreeQuotasResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2929,7 +2929,7 @@ type DescribePostpayPackageFreeQuotasRequest struct {
 	FreeQuotaType *string `json:"FreeQuotaType,omitempty" name:"FreeQuotaType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePostpayPackageFreeQuotasRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2962,7 +2962,7 @@ type DescribePostpayPackageFreeQuotasResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePostpayPackageFreeQuotasResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3013,7 +3013,7 @@ type DescribeQuotaDataRequest struct {
 	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQuotaDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3053,7 +3053,7 @@ type DescribeQuotaDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQuotaDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3071,7 +3071,7 @@ type DescribeSmsQuotasRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsQuotasRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3103,7 +3103,7 @@ type DescribeSmsQuotasResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsQuotasResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3121,7 +3121,7 @@ type DescribeWxCloudBaseRunEnvsRequest struct {
 	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWxCloudBaseRunEnvsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3152,7 +3152,7 @@ type DescribeWxCloudBaseRunEnvsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWxCloudBaseRunEnvsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3173,7 +3173,7 @@ type DescribeWxCloudBaseRunSubNetsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWxCloudBaseRunSubNetsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3205,7 +3205,7 @@ type DescribeWxCloudBaseRunSubNetsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWxCloudBaseRunSubNetsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3229,7 +3229,7 @@ type DestroyEnvRequest struct {
 	BypassCheck *bool `json:"BypassCheck,omitempty" name:"BypassCheck"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyEnvRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3259,7 +3259,7 @@ type DestroyEnvResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyEnvResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3280,7 +3280,7 @@ type DestroyStaticStoreRequest struct {
 	CdnDomain *string `json:"CdnDomain,omitempty" name:"CdnDomain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyStaticStoreRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3312,7 +3312,7 @@ type DestroyStaticStoreResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyStaticStoreResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3529,7 +3529,7 @@ type EstablishCloudBaseRunServerRequest struct {
 	PublicAccess *int64 `json:"PublicAccess,omitempty" name:"PublicAccess"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3567,7 +3567,7 @@ type EstablishCloudBaseRunServerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstablishCloudBaseRunServerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3597,7 +3597,7 @@ type EstablishWxGatewayRouteRequest struct {
 	GatewayRouteDesc *string `json:"GatewayRouteDesc,omitempty" name:"GatewayRouteDesc"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstablishWxGatewayRouteRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3629,7 +3629,7 @@ type EstablishWxGatewayRouteResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstablishWxGatewayRouteResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3771,7 +3771,7 @@ type ModifyDatabaseACLRequest struct {
 	AclTag *string `json:"AclTag,omitempty" name:"AclTag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDatabaseACLRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3801,7 +3801,7 @@ type ModifyDatabaseACLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDatabaseACLResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3825,7 +3825,7 @@ type ModifyEndUserRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEndUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3855,7 +3855,7 @@ type ModifyEndUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEndUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3876,7 +3876,7 @@ type ModifyEnvRequest struct {
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEnvRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3905,7 +3905,7 @@ type ModifyEnvResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEnvResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4038,7 +4038,7 @@ type ReinstateEnvRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReinstateEnvRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4066,7 +4066,7 @@ type ReinstateEnvResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReinstateEnvResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

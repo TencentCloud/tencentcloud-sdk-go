@@ -160,7 +160,7 @@ type CreateClusterRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -194,7 +194,7 @@ type CreateClusterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -221,7 +221,7 @@ type CreateEnvironmentRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEnvironmentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -265,7 +265,7 @@ type CreateEnvironmentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEnvironmentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -301,7 +301,7 @@ type CreateSubscriptionRequest struct {
 	AutoCreatePolicyTopic *bool `json:"AutoCreatePolicyTopic,omitempty" name:"AutoCreatePolicyTopic"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscriptionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -338,7 +338,7 @@ type CreateSubscriptionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscriptionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -376,7 +376,7 @@ type CreateTopicRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTopicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -431,7 +431,7 @@ type CreateTopicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTopicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -449,7 +449,7 @@ type DeleteClusterRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type DeleteClusterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -501,7 +501,7 @@ type DeleteEnvironmentsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEnvironmentsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -533,7 +533,7 @@ type DeleteEnvironmentsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEnvironmentsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -557,7 +557,7 @@ type DeleteSubscriptionsRequest struct {
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSubscriptionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -590,7 +590,7 @@ type DeleteSubscriptionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSubscriptionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -614,7 +614,7 @@ type DeleteTopicsRequest struct {
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTopicsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -647,7 +647,7 @@ type DeleteTopicsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTopicsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -662,7 +662,7 @@ type DescribeBindClustersRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindClustersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -695,7 +695,7 @@ type DescribeBindClustersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindClustersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -719,7 +719,7 @@ type DescribeBindVpcsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindVpcsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -755,7 +755,7 @@ type DescribeBindVpcsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBindVpcsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -773,7 +773,7 @@ type DescribeClusterDetailRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -804,7 +804,7 @@ type DescribeClusterDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -825,7 +825,7 @@ type DescribeClustersRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClustersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -860,7 +860,7 @@ type DescribeClustersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClustersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -881,7 +881,7 @@ type DescribeEnvironmentAttributesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -934,7 +934,7 @@ type DescribeEnvironmentAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -964,7 +964,7 @@ type DescribeEnvironmentRolesRequest struct {
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentRolesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1002,7 +1002,7 @@ type DescribeEnvironmentRolesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentRolesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1029,7 +1029,7 @@ type DescribeEnvironmentsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1066,7 +1066,7 @@ type DescribeEnvironmentsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEnvironmentsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1099,7 +1099,7 @@ type DescribeProducersRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProducersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1138,7 +1138,7 @@ type DescribeProducersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProducersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1174,7 +1174,7 @@ type DescribeSubscriptionsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscriptionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1214,7 +1214,7 @@ type DescribeSubscriptionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscriptionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1253,7 +1253,7 @@ type DescribeTopicsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopicsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1292,7 +1292,7 @@ type DescribeTopicsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopicsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1373,7 +1373,7 @@ type ModifyClusterRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1406,7 +1406,7 @@ type ModifyClusterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1433,7 +1433,7 @@ type ModifyEnvironmentAttributesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEnvironmentAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1478,7 +1478,7 @@ type ModifyEnvironmentAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEnvironmentAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1508,7 +1508,7 @@ type ModifyTopicRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTopicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1546,7 +1546,7 @@ type ModifyTopicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTopicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1648,7 +1648,7 @@ type ResetMsgSubOffsetByTimestampRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetMsgSubOffsetByTimestampRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1684,7 +1684,7 @@ type ResetMsgSubOffsetByTimestampResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetMsgSubOffsetByTimestampResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1726,7 +1726,7 @@ type SendBatchMessagesRequest struct {
 	BatchingMaxBytes *int64 `json:"BatchingMaxBytes,omitempty" name:"BatchingMaxBytes"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendBatchMessagesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1770,7 +1770,7 @@ type SendBatchMessagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendBatchMessagesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1803,7 +1803,7 @@ type SendMessagesRequest struct {
 	MaxPendingMessages *int64 `json:"MaxPendingMessages,omitempty" name:"MaxPendingMessages"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendMessagesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1844,7 +1844,7 @@ type SendMessagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendMessagesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

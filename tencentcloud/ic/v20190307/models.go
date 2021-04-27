@@ -167,7 +167,7 @@ type DescribeAppRequest struct {
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAppRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -199,7 +199,7 @@ type DescribeAppResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAppResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -220,7 +220,7 @@ type DescribeCardRequest struct {
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCardRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -253,7 +253,7 @@ type DescribeCardResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCardResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -277,7 +277,7 @@ type DescribeCardsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCardsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -310,7 +310,7 @@ type DescribeCardsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCardsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -334,7 +334,7 @@ type RenewCardsRequest struct {
 	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewCardsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -368,7 +368,7 @@ type RenewCardsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewCardsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -399,7 +399,7 @@ type SendMultiSmsRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendMultiSmsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -433,7 +433,7 @@ type SendMultiSmsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendMultiSmsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -457,7 +457,7 @@ type SendSmsRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendSmsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -491,7 +491,7 @@ type SendSmsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendSmsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -97,7 +97,7 @@ type CreateDomainRequest struct {
 	Tags *string `json:"Tags,omitempty" name:"Tags"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -130,7 +130,7 @@ type CreateDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -169,7 +169,7 @@ type DeleteDomainRequest struct {
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -197,7 +197,7 @@ type DeleteDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type DescribeDashboardRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDashboardRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -243,7 +243,7 @@ type DescribeDashboardResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDashboardResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -261,7 +261,7 @@ type DescribeDomainCertsRequest struct {
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainCertsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -292,7 +292,7 @@ type DescribeDomainCertsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainCertsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -307,7 +307,7 @@ type DescribeDomainTagsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -337,7 +337,7 @@ type DescribeDomainTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -404,7 +404,7 @@ type DescribeDomainsRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -444,7 +444,7 @@ type DescribeDomainsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -459,7 +459,7 @@ type DescribeNoticeInfoRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNoticeInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -489,7 +489,7 @@ type DescribeNoticeInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNoticeInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -565,7 +565,7 @@ type ModifyDomainTagsRequest struct {
 	Tags *string `json:"Tags,omitempty" name:"Tags"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -594,7 +594,7 @@ type ModifyDomainTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -624,7 +624,7 @@ type RefreshDomainRequest struct {
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefreshDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -652,7 +652,7 @@ type RefreshDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefreshDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -670,7 +670,7 @@ type ResolveDomainRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResolveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -701,7 +701,7 @@ type ResolveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResolveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

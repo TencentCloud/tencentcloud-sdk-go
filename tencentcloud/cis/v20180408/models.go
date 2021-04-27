@@ -159,7 +159,7 @@ type CreateContainerInstanceRequest struct {
 	Containers []*Container `json:"Containers,omitempty" name:"Containers" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContainerInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -195,7 +195,7 @@ type CreateContainerInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContainerInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -213,7 +213,7 @@ type DeleteContainerInstanceRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContainerInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -244,7 +244,7 @@ type DeleteContainerInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContainerInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type DescribeContainerInstanceEventsRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstanceEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -293,7 +293,7 @@ type DescribeContainerInstanceEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstanceEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -311,7 +311,7 @@ type DescribeContainerInstanceRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -342,7 +342,7 @@ type DescribeContainerInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -369,7 +369,7 @@ type DescribeContainerInstancesRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -405,7 +405,7 @@ type DescribeContainerInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -432,7 +432,7 @@ type DescribeContainerLogRequest struct {
 	SinceTime *string `json:"SinceTime,omitempty" name:"SinceTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerLogRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -466,7 +466,7 @@ type DescribeContainerLogResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContainerLogResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -529,7 +529,7 @@ type InquiryPriceCreateCisRequest struct {
 	Memory *float64 `json:"Memory,omitempty" name:"Memory"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateCisRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -562,7 +562,7 @@ type InquiryPriceCreateCisResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateCisResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

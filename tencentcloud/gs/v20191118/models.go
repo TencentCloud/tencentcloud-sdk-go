@@ -75,7 +75,7 @@ type CreateSessionRequest struct {
 	GameContext *string `json:"GameContext,omitempty" name:"GameContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSessionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -128,7 +128,7 @@ type CreateSessionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSessionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -149,7 +149,7 @@ type DescribeInstancesCountRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesCountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -184,7 +184,7 @@ type DescribeInstancesCountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesCountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -205,7 +205,7 @@ type SaveGameArchiveRequest struct {
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SaveGameArchiveRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -234,7 +234,7 @@ type SaveGameArchiveResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SaveGameArchiveResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -255,7 +255,7 @@ type StopGameRequest struct {
 	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopGameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -284,7 +284,7 @@ type StopGameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopGameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -311,7 +311,7 @@ type SwitchGameArchiveRequest struct {
 	GameContext *string `json:"GameContext,omitempty" name:"GameContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwitchGameArchiveRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -342,7 +342,7 @@ type SwitchGameArchiveResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwitchGameArchiveResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -375,7 +375,7 @@ type TrylockWorkerRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TrylockWorkerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -408,7 +408,7 @@ type TrylockWorkerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TrylockWorkerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

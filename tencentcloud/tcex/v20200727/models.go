@@ -69,7 +69,7 @@ type DescribeInvocationResultRequest struct {
 	InvokeId *string `json:"InvokeId,omitempty" name:"InvokeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -105,7 +105,7 @@ type DescribeInvocationResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type InvokeServiceRequest struct {
 	Input *string `json:"Input,omitempty" name:"Input"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -163,7 +163,7 @@ type InvokeServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

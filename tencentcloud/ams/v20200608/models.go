@@ -218,7 +218,7 @@ type CancelTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -246,7 +246,7 @@ type CancelTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -276,7 +276,7 @@ type CreateAudioModerationTaskRequest struct {
 	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAudioModerationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -312,7 +312,7 @@ type CreateAudioModerationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAudioModerationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -339,7 +339,7 @@ type CreateBizConfigRequest struct {
 	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBizConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -370,7 +370,7 @@ type CreateBizConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBizConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -397,7 +397,7 @@ type DescribeAmsListRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAmsListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -437,7 +437,7 @@ type DescribeAmsListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAmsListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -458,7 +458,7 @@ type DescribeAudioStatRequest struct {
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAudioStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -496,7 +496,7 @@ type DescribeAudioStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAudioStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -514,7 +514,7 @@ type DescribeBizConfigRequest struct {
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBizConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -562,7 +562,7 @@ type DescribeBizConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBizConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -583,7 +583,7 @@ type DescribeTaskDetailRequest struct {
 	ShowAllSegments *bool `json:"ShowAllSegments,omitempty" name:"ShowAllSegments"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -686,7 +686,7 @@ type DescribeTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

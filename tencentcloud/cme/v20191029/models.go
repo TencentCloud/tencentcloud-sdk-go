@@ -67,7 +67,7 @@ type AddTeamMemberRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddTeamMemberRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -98,7 +98,7 @@ type AddTeamMemberResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddTeamMemberResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -238,7 +238,7 @@ type CreateClassRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -269,7 +269,7 @@ type CreateClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -312,7 +312,7 @@ type CreateLinkRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLinkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -350,7 +350,7 @@ type CreateLinkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLinkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -407,7 +407,7 @@ type CreateProjectRequest struct {
 	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -449,7 +449,7 @@ type CreateProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -479,7 +479,7 @@ type CreateTeamRequest struct {
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTeamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -514,7 +514,7 @@ type CreateTeamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTeamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -541,7 +541,7 @@ type DeleteClassRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -572,7 +572,7 @@ type DeleteClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -593,7 +593,7 @@ type DeleteLoginStatusRequest struct {
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLoginStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -622,7 +622,7 @@ type DeleteLoginStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLoginStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -646,7 +646,7 @@ type DeleteMaterialRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -676,7 +676,7 @@ type DeleteMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -700,7 +700,7 @@ type DeleteProjectRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -730,7 +730,7 @@ type DeleteProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -757,7 +757,7 @@ type DeleteTeamMembersRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTeamMembersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -788,7 +788,7 @@ type DeleteTeamMembersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTeamMembersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -812,7 +812,7 @@ type DeleteTeamRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTeamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -842,7 +842,7 @@ type DeleteTeamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTeamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -869,7 +869,7 @@ type DescribeAccountsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -906,7 +906,7 @@ type DescribeAccountsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -930,7 +930,7 @@ type DescribeClassRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -963,7 +963,7 @@ type DescribeClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -990,7 +990,7 @@ type DescribeJoinTeamsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeJoinTeamsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1027,7 +1027,7 @@ type DescribeJoinTeamsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeJoinTeamsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1048,7 +1048,7 @@ type DescribeLoginStatusRequest struct {
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLoginStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1080,7 +1080,7 @@ type DescribeLoginStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLoginStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1109,7 +1109,7 @@ type DescribeMaterialsRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMaterialsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1143,7 +1143,7 @@ type DescribeMaterialsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMaterialsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1170,7 +1170,7 @@ type DescribePlatformsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlatformsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1207,7 +1207,7 @@ type DescribePlatformsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlatformsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1256,7 +1256,7 @@ type DescribeProjectsRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1298,7 +1298,7 @@ type DescribeProjectsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1325,7 +1325,7 @@ type DescribeResourceAuthorizationRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceAuthorizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1363,7 +1363,7 @@ type DescribeResourceAuthorizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceAuthorizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1387,7 +1387,7 @@ type DescribeSharedSpaceRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSharedSpaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1424,7 +1424,7 @@ type DescribeSharedSpaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSharedSpaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1448,7 +1448,7 @@ type DescribeTaskDetailRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1506,7 +1506,7 @@ type DescribeTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1546,7 +1546,7 @@ type DescribeTasksRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1586,7 +1586,7 @@ type DescribeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1619,7 +1619,7 @@ type DescribeTeamMembersRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTeamMembersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1658,7 +1658,7 @@ type DescribeTeamMembersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTeamMembersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1685,7 +1685,7 @@ type DescribeTeamsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTeamsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1722,7 +1722,7 @@ type DescribeTeamsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTeamsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1780,7 +1780,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByEditorTrackDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1817,7 +1817,7 @@ type ExportVideoByEditorTrackDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByEditorTrackDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1861,7 +1861,7 @@ type ExportVideoByTemplateRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1899,7 +1899,7 @@ type ExportVideoByTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1946,7 +1946,7 @@ type ExportVideoByVideoSegmentationDataRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByVideoSegmentationDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1985,7 +1985,7 @@ type ExportVideoByVideoSegmentationDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoByVideoSegmentationDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2029,7 +2029,7 @@ type ExportVideoEditProjectRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoEditProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2067,7 +2067,7 @@ type ExportVideoEditProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExportVideoEditProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2109,7 +2109,7 @@ type FlattenListMediaRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FlattenListMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2148,7 +2148,7 @@ type FlattenListMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FlattenListMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2172,7 +2172,7 @@ type GenerateVideoSegmentationSchemeByAiRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GenerateVideoSegmentationSchemeByAiRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2205,7 +2205,7 @@ type GenerateVideoSegmentationSchemeByAiResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GenerateVideoSegmentationSchemeByAiResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2242,7 +2242,7 @@ type GrantResourceAuthorizationRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GrantResourceAuthorizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2275,7 +2275,7 @@ type GrantResourceAuthorizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GrantResourceAuthorizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2313,7 +2313,7 @@ type HandleStreamConnectProjectRequest struct {
 	CurrentStopTime *string `json:"CurrentStopTime,omitempty" name:"CurrentStopTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *HandleStreamConnectProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2347,7 +2347,7 @@ type HandleStreamConnectProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *HandleStreamConnectProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2414,7 +2414,7 @@ type ImportMaterialRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2456,7 +2456,7 @@ type ImportMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2500,7 +2500,7 @@ type ImportMediaToProjectRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportMediaToProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2541,7 +2541,7 @@ type ImportMediaToProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportMediaToProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2646,7 +2646,7 @@ type ListMediaRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2688,7 +2688,7 @@ type ListMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2944,7 +2944,7 @@ type ModifyMaterialRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2977,7 +2977,7 @@ type ModifyMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3009,7 +3009,7 @@ type ModifyProjectRequest struct {
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3041,7 +3041,7 @@ type ModifyProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3076,7 +3076,7 @@ type ModifyTeamMemberRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTeamMemberRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3109,7 +3109,7 @@ type ModifyTeamMemberResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTeamMemberResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3136,7 +3136,7 @@ type ModifyTeamRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTeamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3167,7 +3167,7 @@ type ModifyTeamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTeamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3197,7 +3197,7 @@ type MoveClassRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveClassRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3229,7 +3229,7 @@ type MoveClassResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveClassResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3256,7 +3256,7 @@ type MoveResourceRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveResourceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3287,7 +3287,7 @@ type MoveResourceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveResourceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3453,7 +3453,7 @@ type RevokeResourceAuthorizationRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeResourceAuthorizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3486,7 +3486,7 @@ type RevokeResourceAuthorizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeResourceAuthorizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3549,7 +3549,7 @@ type SearchMaterialRequest struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3594,7 +3594,7 @@ type SearchMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

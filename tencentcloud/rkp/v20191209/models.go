@@ -55,7 +55,7 @@ type GetOpenIdRequest struct {
 	Option *string `json:"Option,omitempty" name:"Option"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOpenIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -95,7 +95,7 @@ type GetOpenIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOpenIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -128,7 +128,7 @@ type GetTokenRequest struct {
 	OldToken *string `json:"OldToken,omitempty" name:"OldToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -167,7 +167,7 @@ type GetTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -254,7 +254,7 @@ type QueryDevAndRiskRequest struct {
 	SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryDevAndRiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -316,7 +316,7 @@ type QueryDevAndRiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryDevAndRiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

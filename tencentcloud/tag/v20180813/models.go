@@ -33,7 +33,7 @@ type AddResourceTagRequest struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddResourceTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -63,7 +63,7 @@ type AddResourceTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddResourceTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -96,7 +96,7 @@ type AttachResourcesTagRequest struct {
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachResourcesTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -129,7 +129,7 @@ type AttachResourcesTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachResourcesTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -150,7 +150,7 @@ type CreateTagRequest struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -179,7 +179,7 @@ type CreateTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -200,7 +200,7 @@ type DeleteResourceTagRequest struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteResourceTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -229,7 +229,7 @@ type DeleteResourceTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteResourceTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -250,7 +250,7 @@ type DeleteTagRequest struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type DeleteTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -312,7 +312,7 @@ type DescribeResourceTagsByResourceIdsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByResourceIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -357,7 +357,7 @@ type DescribeResourceTagsByResourceIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByResourceIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -390,7 +390,7 @@ type DescribeResourceTagsByResourceIdsSeqRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByResourceIdsSeqRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -435,7 +435,7 @@ type DescribeResourceTagsByResourceIdsSeqResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByResourceIdsSeqResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -471,7 +471,7 @@ type DescribeResourceTagsByTagKeysRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByTagKeysRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -517,7 +517,7 @@ type DescribeResourceTagsByTagKeysResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsByTagKeysResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -556,7 +556,7 @@ type DescribeResourceTagsRequest struct {
 	CosResourceId *uint64 `json:"CosResourceId,omitempty" name:"CosResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -604,7 +604,7 @@ type DescribeResourceTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -643,7 +643,7 @@ type DescribeResourcesByTagsRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -691,7 +691,7 @@ type DescribeResourcesByTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -730,7 +730,7 @@ type DescribeResourcesByTagsUnionRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagsUnionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -777,7 +777,7 @@ type DescribeResourcesByTagsUnionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourcesByTagsUnionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -804,7 +804,7 @@ type DescribeTagKeysRequest struct {
 	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagKeysRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -847,7 +847,7 @@ type DescribeTagKeysResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagKeysResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -874,7 +874,7 @@ type DescribeTagValuesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagValuesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -917,7 +917,7 @@ type DescribeTagValuesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagValuesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -944,7 +944,7 @@ type DescribeTagValuesSeqRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagValuesSeqRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -987,7 +987,7 @@ type DescribeTagValuesSeqResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagValuesSeqResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1023,7 +1023,7 @@ type DescribeTagsRequest struct {
 	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1069,7 +1069,7 @@ type DescribeTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1105,7 +1105,7 @@ type DescribeTagsSeqRequest struct {
 	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagsSeqRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1151,7 +1151,7 @@ type DescribeTagsSeqResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTagsSeqResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1181,7 +1181,7 @@ type DetachResourcesTagRequest struct {
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachResourcesTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1213,7 +1213,7 @@ type DetachResourcesTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachResourcesTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1237,7 +1237,7 @@ type ModifyResourceTagsRequest struct {
 	DeleteTags []*TagKeyObject `json:"DeleteTags,omitempty" name:"DeleteTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourceTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1267,7 +1267,7 @@ type ModifyResourceTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourceTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1300,7 +1300,7 @@ type ModifyResourcesTagValueRequest struct {
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourcesTagValueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1333,7 +1333,7 @@ type ModifyResourcesTagValueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyResourcesTagValueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1449,7 +1449,7 @@ type UpdateResourceTagValueRequest struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateResourceTagValueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1479,7 +1479,7 @@ type UpdateResourceTagValueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateResourceTagValueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

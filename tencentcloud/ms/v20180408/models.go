@@ -210,7 +210,7 @@ type CreateBindInstanceRequest struct {
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBindInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -244,7 +244,7 @@ type CreateBindInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBindInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -265,7 +265,7 @@ type CreateCosSecKeyInstanceRequest struct {
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCosSecKeyInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -318,7 +318,7 @@ type CreateCosSecKeyInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCosSecKeyInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -345,7 +345,7 @@ type CreateResourceInstancesRequest struct {
 	ResourceNum *uint64 `json:"ResourceNum,omitempty" name:"ResourceNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateResourceInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -379,7 +379,7 @@ type CreateResourceInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateResourceInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -400,7 +400,7 @@ type CreateScanInstancesRequest struct {
 	ScanInfo *ScanInfo `json:"ScanInfo,omitempty" name:"ScanInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScanInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -444,7 +444,7 @@ type CreateScanInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScanInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -465,7 +465,7 @@ type CreateShieldInstanceRequest struct {
 	ServiceInfo *ServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateShieldInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -500,7 +500,7 @@ type CreateShieldInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateShieldInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -524,7 +524,7 @@ type CreateShieldPlanInstanceRequest struct {
 	PlanInfo *PlanInfo `json:"PlanInfo,omitempty" name:"PlanInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateShieldPlanInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -560,7 +560,7 @@ type CreateShieldPlanInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateShieldPlanInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -578,7 +578,7 @@ type DeleteScanInstancesRequest struct {
 	AppSids []*string `json:"AppSids,omitempty" name:"AppSids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScanInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -609,7 +609,7 @@ type DeleteScanInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScanInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -627,7 +627,7 @@ type DeleteShieldInstancesRequest struct {
 	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteShieldInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -658,7 +658,7 @@ type DeleteShieldInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteShieldInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -691,7 +691,7 @@ type DescribeResourceInstancesRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -730,7 +730,7 @@ type DescribeResourceInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -763,7 +763,7 @@ type DescribeScanInstancesRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -802,7 +802,7 @@ type DescribeScanInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -823,7 +823,7 @@ type DescribeScanResultsRequest struct {
 	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanResultsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -858,7 +858,7 @@ type DescribeScanResultsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScanResultsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -891,7 +891,7 @@ type DescribeShieldInstancesRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -930,7 +930,7 @@ type DescribeShieldInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -951,7 +951,7 @@ type DescribeShieldPlanInstanceRequest struct {
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldPlanInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -989,7 +989,7 @@ type DescribeShieldPlanInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldPlanInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1007,7 +1007,7 @@ type DescribeShieldResultRequest struct {
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1050,7 +1050,7 @@ type DescribeShieldResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShieldResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1065,7 +1065,7 @@ type DescribeUserBaseInfoInstanceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserBaseInfoInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1101,7 +1101,7 @@ type DescribeUserBaseInfoInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserBaseInfoInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

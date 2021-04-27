@@ -75,7 +75,7 @@ type ImageModerationRequest struct {
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -156,7 +156,7 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -210,7 +210,7 @@ type ImageRecognitionRequest struct {
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageRecognitionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -296,7 +296,7 @@ type ImageRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageRecognitionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

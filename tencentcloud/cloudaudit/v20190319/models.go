@@ -114,7 +114,7 @@ type CreateAuditRequest struct {
 	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAuditRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -157,7 +157,7 @@ type CreateAuditResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAuditResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -175,7 +175,7 @@ type DeleteAuditRequest struct {
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAuditRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -206,7 +206,7 @@ type DeleteAuditResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAuditResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -224,7 +224,7 @@ type DescribeAuditRequest struct {
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuditRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -291,7 +291,7 @@ type DescribeAuditResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuditResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type DescribeEventsRequest struct {
 	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -363,7 +363,7 @@ type DescribeEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type GetAttributeKeyRequest struct {
 	WebsiteType *string `json:"WebsiteType,omitempty" name:"WebsiteType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAttributeKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -465,7 +465,7 @@ type GetAttributeKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetAttributeKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type InquireAuditCreditRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquireAuditCreditRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -510,7 +510,7 @@ type InquireAuditCreditResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquireAuditCreditResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -534,7 +534,7 @@ type ListAuditsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListAuditsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -565,7 +565,7 @@ type ListAuditsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListAuditsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -583,7 +583,7 @@ type ListCmqEnableRegionRequest struct {
 	WebsiteType *string `json:"WebsiteType,omitempty" name:"WebsiteType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListCmqEnableRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -614,7 +614,7 @@ type ListCmqEnableRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListCmqEnableRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -632,7 +632,7 @@ type ListCosEnableRegionRequest struct {
 	WebsiteType *string `json:"WebsiteType,omitempty" name:"WebsiteType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListCosEnableRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -663,7 +663,7 @@ type ListCosEnableRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListCosEnableRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type ListKeyAliasByRegionRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListKeyAliasByRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -723,7 +723,7 @@ type ListKeyAliasByRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListKeyAliasByRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -756,7 +756,7 @@ type LookUpEventsRequest struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LookUpEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -801,7 +801,7 @@ type LookUpEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LookUpEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -840,7 +840,7 @@ type StartLoggingRequest struct {
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartLoggingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -871,7 +871,7 @@ type StartLoggingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartLoggingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -889,7 +889,7 @@ type StopLoggingRequest struct {
 	AuditName *string `json:"AuditName,omitempty" name:"AuditName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopLoggingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -920,7 +920,7 @@ type StopLoggingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopLoggingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -974,7 +974,7 @@ type UpdateAuditRequest struct {
 	IsCreateNewQueue *int64 `json:"IsCreateNewQueue,omitempty" name:"IsCreateNewQueue"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateAuditRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1017,7 +1017,7 @@ type UpdateAuditResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateAuditResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

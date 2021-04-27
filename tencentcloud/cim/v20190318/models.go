@@ -24,7 +24,7 @@ type DescribeSdkAppidRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSdkAppidRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -54,7 +54,7 @@ type DescribeSdkAppidResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSdkAppidResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -70,7 +70,7 @@ type CreateTranscodeRequest struct {
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -107,7 +107,7 @@ type CreateTranscodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -151,7 +151,7 @@ type CreateVideoGenerationTaskRequest struct {
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoGenerationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -188,7 +188,7 @@ type CreateVideoGenerationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoGenerationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -215,7 +215,7 @@ type DescribeOnlineRecordCallbackRequest struct {
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOnlineRecordCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -249,7 +249,7 @@ type DescribeOnlineRecordCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOnlineRecordCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -270,7 +270,7 @@ type DescribeOnlineRecordRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOnlineRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -347,7 +347,7 @@ type DescribeOnlineRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOnlineRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -388,7 +388,7 @@ type DescribeQualityMetricsRequest struct {
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQualityMetricsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -426,7 +426,7 @@ type DescribeQualityMetricsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQualityMetricsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -444,7 +444,7 @@ type DescribeTranscodeCallbackRequest struct {
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -478,7 +478,7 @@ type DescribeTranscodeCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -499,7 +499,7 @@ type DescribeTranscodeRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -567,7 +567,7 @@ type DescribeTranscodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -585,7 +585,7 @@ type DescribeVideoGenerationTaskCallbackRequest struct {
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoGenerationTaskCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -619,7 +619,7 @@ type DescribeVideoGenerationTaskCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoGenerationTaskCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -640,7 +640,7 @@ type DescribeVideoGenerationTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoGenerationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -696,7 +696,7 @@ type DescribeVideoGenerationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoGenerationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -714,7 +714,7 @@ type DescribeWhiteboardPushCallbackRequest struct {
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWhiteboardPushCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -748,7 +748,7 @@ type DescribeWhiteboardPushCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWhiteboardPushCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -769,7 +769,7 @@ type DescribeWhiteboardPushRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWhiteboardPushRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -838,7 +838,7 @@ type DescribeWhiteboardPushResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWhiteboardPushResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -912,7 +912,7 @@ type PauseOnlineRecordRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PauseOnlineRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -941,7 +941,7 @@ type PauseOnlineRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PauseOnlineRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -995,7 +995,7 @@ type ResumeOnlineRecordRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeOnlineRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1024,7 +1024,7 @@ type ResumeOnlineRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeOnlineRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1045,7 +1045,7 @@ type SetOnlineRecordCallbackKeyRequest struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetOnlineRecordCallbackKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1074,7 +1074,7 @@ type SetOnlineRecordCallbackKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetOnlineRecordCallbackKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1095,7 +1095,7 @@ type SetOnlineRecordCallbackRequest struct {
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetOnlineRecordCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1124,7 +1124,7 @@ type SetOnlineRecordCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetOnlineRecordCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1145,7 +1145,7 @@ type SetTranscodeCallbackKeyRequest struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTranscodeCallbackKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1174,7 +1174,7 @@ type SetTranscodeCallbackKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTranscodeCallbackKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1196,7 +1196,7 @@ type SetTranscodeCallbackRequest struct {
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTranscodeCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1225,7 +1225,7 @@ type SetTranscodeCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTranscodeCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1246,7 +1246,7 @@ type SetVideoGenerationTaskCallbackKeyRequest struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVideoGenerationTaskCallbackKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1275,7 +1275,7 @@ type SetVideoGenerationTaskCallbackKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVideoGenerationTaskCallbackKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1296,7 +1296,7 @@ type SetVideoGenerationTaskCallbackRequest struct {
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVideoGenerationTaskCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1325,7 +1325,7 @@ type SetVideoGenerationTaskCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetVideoGenerationTaskCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1346,7 +1346,7 @@ type SetWhiteboardPushCallbackKeyRequest struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetWhiteboardPushCallbackKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1375,7 +1375,7 @@ type SetWhiteboardPushCallbackKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetWhiteboardPushCallbackKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1396,7 +1396,7 @@ type SetWhiteboardPushCallbackRequest struct {
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetWhiteboardPushCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1425,7 +1425,7 @@ type SetWhiteboardPushCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetWhiteboardPushCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1498,7 +1498,7 @@ type StartOnlineRecordRequest struct {
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartOnlineRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1543,7 +1543,7 @@ type StartOnlineRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartOnlineRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1642,7 +1642,7 @@ type StartWhiteboardPushRequest struct {
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartWhiteboardPushRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1692,7 +1692,7 @@ type StartWhiteboardPushResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartWhiteboardPushResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1713,7 +1713,7 @@ type StopOnlineRecordRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopOnlineRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1742,7 +1742,7 @@ type StopOnlineRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopOnlineRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1763,7 +1763,7 @@ type StopWhiteboardPushRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopWhiteboardPushRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1796,7 +1796,7 @@ type StopWhiteboardPushResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopWhiteboardPushResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

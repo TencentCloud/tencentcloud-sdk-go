@@ -45,7 +45,7 @@ type BatchDescribeOrderCertificateRequest struct {
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchDescribeOrderCertificateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -76,7 +76,7 @@ type BatchDescribeOrderCertificateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchDescribeOrderCertificateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -94,7 +94,7 @@ type BatchDescribeOrderImageRequest struct {
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchDescribeOrderImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -125,7 +125,7 @@ type BatchDescribeOrderImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchDescribeOrderImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -143,7 +143,7 @@ type CreateOrderAndDownloadsRequest struct {
 	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrderAndDownloadsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -178,7 +178,7 @@ type CreateOrderAndDownloadsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrderAndDownloadsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -202,7 +202,7 @@ type CreateOrderAndPayRequest struct {
 	MarshalId *uint64 `json:"MarshalId,omitempty" name:"MarshalId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrderAndPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -235,7 +235,7 @@ type CreateOrderAndPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrderAndPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -256,7 +256,7 @@ type DescribeAuthUsersRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthUsersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -295,7 +295,7 @@ type DescribeAuthUsersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthUsersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -325,7 +325,7 @@ type DescribeDownloadInfosRequest struct {
 	ImageIds []*int64 `json:"ImageIds,omitempty" name:"ImageIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDownloadInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -364,7 +364,7 @@ type DescribeDownloadInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDownloadInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -382,7 +382,7 @@ type DescribeImageRequest struct {
 	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -452,7 +452,7 @@ type DescribeImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -485,7 +485,7 @@ type DescribeImagesRequest struct {
 	LayeredGalleryIds []*int64 `json:"LayeredGalleryIds,omitempty" name:"LayeredGalleryIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImagesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -533,7 +533,7 @@ type DescribeImagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImagesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

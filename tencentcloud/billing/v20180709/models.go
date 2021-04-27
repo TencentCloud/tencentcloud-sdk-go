@@ -792,7 +792,7 @@ type DescribeAccountBalanceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -858,7 +858,7 @@ type DescribeAccountBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -910,7 +910,7 @@ type DescribeBillDetailRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -956,7 +956,7 @@ type DescribeBillDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -992,7 +992,7 @@ type DescribeBillListRequest struct {
 	WithZeroAmount *uint64 `json:"WithZeroAmount,omitempty" name:"WithZeroAmount"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1062,7 +1062,7 @@ type DescribeBillListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1096,7 +1096,7 @@ type DescribeBillResourceSummaryRequest struct {
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1136,7 +1136,7 @@ type DescribeBillResourceSummaryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillResourceSummaryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1160,7 +1160,7 @@ type DescribeBillSummaryByPayModeRequest struct {
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1197,7 +1197,7 @@ type DescribeBillSummaryByPayModeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByPayModeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1221,7 +1221,7 @@ type DescribeBillSummaryByProductRequest struct {
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1262,7 +1262,7 @@ type DescribeBillSummaryByProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1286,7 +1286,7 @@ type DescribeBillSummaryByProjectRequest struct {
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1323,7 +1323,7 @@ type DescribeBillSummaryByProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1347,7 +1347,7 @@ type DescribeBillSummaryByRegionRequest struct {
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1384,7 +1384,7 @@ type DescribeBillSummaryByRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1411,7 +1411,7 @@ type DescribeBillSummaryByTagRequest struct {
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByTagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1449,7 +1449,7 @@ type DescribeBillSummaryByTagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillSummaryByTagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1492,7 +1492,7 @@ type DescribeCostDetailRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1536,7 +1536,7 @@ type DescribeCostDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1569,7 +1569,7 @@ type DescribeCostSummaryByProductRequest struct {
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1616,7 +1616,7 @@ type DescribeCostSummaryByProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1649,7 +1649,7 @@ type DescribeCostSummaryByProjectRequest struct {
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1694,7 +1694,7 @@ type DescribeCostSummaryByProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1727,7 +1727,7 @@ type DescribeCostSummaryByRegionRequest struct {
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByRegionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1773,7 +1773,7 @@ type DescribeCostSummaryByRegionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByRegionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1812,7 +1812,7 @@ type DescribeCostSummaryByResourceRequest struct {
 	Conditions *Conditions `json:"Conditions,omitempty" name:"Conditions"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByResourceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1866,7 +1866,7 @@ type DescribeCostSummaryByResourceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCostSummaryByResourceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1914,7 +1914,7 @@ type DescribeDealsByCondRequest struct {
 	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDealsByCondRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1954,7 +1954,7 @@ type DescribeDealsByCondResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDealsByCondResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1978,7 +1978,7 @@ type DescribeDosageCosDetailByDateRequest struct {
 	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDosageCosDetailByDateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2011,7 +2011,7 @@ type DescribeDosageCosDetailByDateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDosageCosDetailByDateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2062,7 +2062,7 @@ type DescribeDosageDetailByDateRequest struct {
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDosageDetailByDateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2110,7 +2110,7 @@ type DescribeDosageDetailByDateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDosageDetailByDateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2159,7 +2159,7 @@ type PayDealsRequest struct {
 	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PayDealsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2199,7 +2199,7 @@ type PayDealsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PayDealsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

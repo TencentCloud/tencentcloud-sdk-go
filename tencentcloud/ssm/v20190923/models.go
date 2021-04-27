@@ -45,7 +45,7 @@ type CreateSecretRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -93,7 +93,7 @@ type CreateSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -114,7 +114,7 @@ type DeleteSecretRequest struct {
 	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitempty" name:"RecoveryWindowInDays"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -149,7 +149,7 @@ type DeleteSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -170,7 +170,7 @@ type DeleteSecretVersionRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecretVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -205,7 +205,7 @@ type DeleteSecretVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecretVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -223,7 +223,7 @@ type DescribeSecretRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -272,7 +272,7 @@ type DescribeSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type DisableSecretRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type DisableSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -339,7 +339,7 @@ type EnableSecretRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -370,7 +370,7 @@ type EnableSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -385,7 +385,7 @@ type GetRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -415,7 +415,7 @@ type GetRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -436,7 +436,7 @@ type GetSecretValueRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSecretValueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -477,7 +477,7 @@ type GetSecretValueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSecretValueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -492,7 +492,7 @@ type GetServiceStatusRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetServiceStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -525,7 +525,7 @@ type GetServiceStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetServiceStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -543,7 +543,7 @@ type ListSecretVersionIdsRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListSecretVersionIdsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -578,7 +578,7 @@ type ListSecretVersionIdsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListSecretVersionIdsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -611,7 +611,7 @@ type ListSecretsRequest struct {
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListSecretsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -650,7 +650,7 @@ type ListSecretsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListSecretsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -677,7 +677,7 @@ type PutSecretValueRequest struct {
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PutSecretValueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -714,7 +714,7 @@ type PutSecretValueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PutSecretValueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -732,7 +732,7 @@ type RestoreSecretRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestoreSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -763,7 +763,7 @@ type RestoreSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestoreSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -829,7 +829,7 @@ type UpdateDescriptionRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDescriptionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -861,7 +861,7 @@ type UpdateDescriptionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDescriptionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -888,7 +888,7 @@ type UpdateSecretRequest struct {
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateSecretRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -925,7 +925,7 @@ type UpdateSecretResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateSecretResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

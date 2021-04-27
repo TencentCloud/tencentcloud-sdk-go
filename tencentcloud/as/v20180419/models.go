@@ -94,7 +94,7 @@ type AttachInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -126,7 +126,7 @@ type AttachInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -255,7 +255,7 @@ type ClearLaunchConfigurationAttributesRequest struct {
 	ClearDataDisks *bool `json:"ClearDataDisks,omitempty" name:"ClearDataDisks"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearLaunchConfigurationAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -284,7 +284,7 @@ type ClearLaunchConfigurationAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearLaunchConfigurationAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -311,7 +311,7 @@ type CompleteLifecycleActionRequest struct {
 	LifecycleActionToken *string `json:"LifecycleActionToken,omitempty" name:"LifecycleActionToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompleteLifecycleActionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -342,7 +342,7 @@ type CompleteLifecycleActionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompleteLifecycleActionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -375,7 +375,7 @@ type CreateAutoScalingGroupFromInstanceRequest struct {
 	InheritInstanceTag *bool `json:"InheritInstanceTag,omitempty" name:"InheritInstanceTag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoScalingGroupFromInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -411,7 +411,7 @@ type CreateAutoScalingGroupFromInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoScalingGroupFromInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -501,7 +501,7 @@ type CreateAutoScalingGroupRequest struct {
 	MultiZoneSubnetPolicy *string `json:"MultiZoneSubnetPolicy,omitempty" name:"MultiZoneSubnetPolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoScalingGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -550,7 +550,7 @@ type CreateAutoScalingGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoScalingGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -642,7 +642,7 @@ type CreateLaunchConfigurationRequest struct {
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -693,7 +693,7 @@ type CreateLaunchConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLaunchConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -732,7 +732,7 @@ type CreateLifecycleHookRequest struct {
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLifecycleHookRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -770,7 +770,7 @@ type CreateLifecycleHookResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLifecycleHookResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -800,7 +800,7 @@ type CreateNotificationConfigurationRequest struct {
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotificationConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -833,7 +833,7 @@ type CreateNotificationConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotificationConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -881,7 +881,7 @@ type CreatePaiInstanceRequest struct {
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePaiInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -922,7 +922,7 @@ type CreatePaiInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePaiInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -958,7 +958,7 @@ type CreateScalingPolicyRequest struct {
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScalingPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -995,7 +995,7 @@ type CreateScalingPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScalingPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1034,7 +1034,7 @@ type CreateScheduledActionRequest struct {
 	Recurrence *string `json:"Recurrence,omitempty" name:"Recurrence"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScheduledActionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1072,7 +1072,7 @@ type CreateScheduledActionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScheduledActionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1105,7 +1105,7 @@ type DeleteAutoScalingGroupRequest struct {
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAutoScalingGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1133,7 +1133,7 @@ type DeleteAutoScalingGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAutoScalingGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1151,7 +1151,7 @@ type DeleteLaunchConfigurationRequest struct {
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLaunchConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1179,7 +1179,7 @@ type DeleteLaunchConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLaunchConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1197,7 +1197,7 @@ type DeleteLifecycleHookRequest struct {
 	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLifecycleHookRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1225,7 +1225,7 @@ type DeleteLifecycleHookResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLifecycleHookResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1243,7 +1243,7 @@ type DeleteNotificationConfigurationRequest struct {
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitempty" name:"AutoScalingNotificationId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotificationConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1271,7 +1271,7 @@ type DeleteNotificationConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotificationConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1289,7 +1289,7 @@ type DeleteScalingPolicyRequest struct {
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitempty" name:"AutoScalingPolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScalingPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1317,7 +1317,7 @@ type DeleteScalingPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScalingPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1335,7 +1335,7 @@ type DeleteScheduledActionRequest struct {
 	ScheduledActionId *string `json:"ScheduledActionId,omitempty" name:"ScheduledActionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScheduledActionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1363,7 +1363,7 @@ type DeleteScheduledActionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScheduledActionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1378,7 +1378,7 @@ type DescribeAccountLimitsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountLimitsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1417,7 +1417,7 @@ type DescribeAccountLimitsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccountLimitsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1455,7 +1455,7 @@ type DescribeAutoScalingActivitiesRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingActivitiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1494,7 +1494,7 @@ type DescribeAutoScalingActivitiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingActivitiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1512,7 +1512,7 @@ type DescribeAutoScalingGroupLastActivitiesRequest struct {
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingGroupLastActivitiesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1543,7 +1543,7 @@ type DescribeAutoScalingGroupLastActivitiesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingGroupLastActivitiesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1578,7 +1578,7 @@ type DescribeAutoScalingGroupsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1615,7 +1615,7 @@ type DescribeAutoScalingGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1645,7 +1645,7 @@ type DescribeAutoScalingInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1682,7 +1682,7 @@ type DescribeAutoScalingInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoScalingInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1713,7 +1713,7 @@ type DescribeLaunchConfigurationsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLaunchConfigurationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1750,7 +1750,7 @@ type DescribeLaunchConfigurationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLaunchConfigurationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1785,7 +1785,7 @@ type DescribeLifecycleHooksRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLifecycleHooksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1822,7 +1822,7 @@ type DescribeLifecycleHooksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLifecycleHooksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1852,7 +1852,7 @@ type DescribeNotificationConfigurationsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotificationConfigurationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1889,7 +1889,7 @@ type DescribeNotificationConfigurationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotificationConfigurationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1916,7 +1916,7 @@ type DescribePaiInstancesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePaiInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1953,7 +1953,7 @@ type DescribePaiInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePaiInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1984,7 +1984,7 @@ type DescribeScalingPoliciesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScalingPoliciesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2021,7 +2021,7 @@ type DescribeScalingPoliciesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScalingPoliciesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2051,7 +2051,7 @@ type DescribeScheduledActionsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScheduledActionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2088,7 +2088,7 @@ type DescribeScheduledActionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScheduledActionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2109,7 +2109,7 @@ type DetachInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2141,7 +2141,7 @@ type DetachInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2159,7 +2159,7 @@ type DisableAutoScalingGroupRequest struct {
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableAutoScalingGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2187,7 +2187,7 @@ type DisableAutoScalingGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableAutoScalingGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2205,7 +2205,7 @@ type EnableAutoScalingGroupRequest struct {
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableAutoScalingGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2233,7 +2233,7 @@ type EnableAutoScalingGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableAutoScalingGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2266,7 +2266,7 @@ type ExecuteScalingPolicyRequest struct {
 	TriggerSource *string `json:"TriggerSource,omitempty" name:"TriggerSource"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteScalingPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2299,7 +2299,7 @@ type ExecuteScalingPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteScalingPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2724,7 +2724,7 @@ type ModifyAutoScalingGroupRequest struct {
 	MultiZoneSubnetPolicy *string `json:"MultiZoneSubnetPolicy,omitempty" name:"MultiZoneSubnetPolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAutoScalingGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2768,7 +2768,7 @@ type ModifyAutoScalingGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAutoScalingGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2789,7 +2789,7 @@ type ModifyDesiredCapacityRequest struct {
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDesiredCapacityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2818,7 +2818,7 @@ type ModifyDesiredCapacityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDesiredCapacityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2892,7 +2892,7 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2933,7 +2933,7 @@ type ModifyLaunchConfigurationAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLaunchConfigurationAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2962,7 +2962,7 @@ type ModifyLoadBalancersRequest struct {
 	LoadBalancersCheckPolicy *string `json:"LoadBalancersCheckPolicy,omitempty" name:"LoadBalancersCheckPolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLoadBalancersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2996,7 +2996,7 @@ type ModifyLoadBalancersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLoadBalancersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3026,7 +3026,7 @@ type ModifyNotificationConfigurationRequest struct {
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyNotificationConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3056,7 +3056,7 @@ type ModifyNotificationConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyNotificationConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3093,7 +3093,7 @@ type ModifyScalingPolicyRequest struct {
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyScalingPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3127,7 +3127,7 @@ type ModifyScalingPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyScalingPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3166,7 +3166,7 @@ type ModifyScheduledActionRequest struct {
 	Recurrence *string `json:"Recurrence,omitempty" name:"Recurrence"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyScheduledActionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3201,7 +3201,7 @@ type ModifyScheduledActionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyScheduledActionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3245,7 +3245,7 @@ type PreviewPaiDomainNameRequest struct {
 	DomainNameType *string `json:"DomainNameType,omitempty" name:"DomainNameType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PreviewPaiDomainNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3276,7 +3276,7 @@ type PreviewPaiDomainNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PreviewPaiDomainNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3297,7 +3297,7 @@ type RemoveInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3329,7 +3329,7 @@ type RemoveInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3439,7 +3439,7 @@ type SetInstancesProtectionRequest struct {
 	ProtectedFromScaleIn *bool `json:"ProtectedFromScaleIn,omitempty" name:"ProtectedFromScaleIn"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetInstancesProtectionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3469,7 +3469,7 @@ type SetInstancesProtectionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetInstancesProtectionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3500,7 +3500,7 @@ type StartAutoScalingInstancesRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartAutoScalingInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3532,7 +3532,7 @@ type StartAutoScalingInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartAutoScalingInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3559,7 +3559,7 @@ type StopAutoScalingInstancesRequest struct {
 	StoppedMode *string `json:"StoppedMode,omitempty" name:"StoppedMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopAutoScalingInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3592,7 +3592,7 @@ type StopAutoScalingInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopAutoScalingInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3713,7 +3713,7 @@ type UpgradeLaunchConfigurationRequest struct {
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLaunchConfigurationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3761,7 +3761,7 @@ type UpgradeLaunchConfigurationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLaunchConfigurationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3800,7 +3800,7 @@ type UpgradeLifecycleHookRequest struct {
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLifecycleHookRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3835,7 +3835,7 @@ type UpgradeLifecycleHookResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLifecycleHookResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

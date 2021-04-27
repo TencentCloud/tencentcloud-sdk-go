@@ -51,7 +51,7 @@ type CreateFlowServiceRequest struct {
 	Input *string `json:"Input,omitempty" name:"Input"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFlowServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -93,7 +93,7 @@ type CreateFlowServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFlowServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -111,7 +111,7 @@ type DescribeExecutionHistoryRequest struct {
 	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionHistoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -142,7 +142,7 @@ type DescribeExecutionHistoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionHistoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -160,7 +160,7 @@ type DescribeExecutionRequest struct {
 	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -217,7 +217,7 @@ type DescribeExecutionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -247,7 +247,7 @@ type DescribeExecutionsRequest struct {
 	FilterExecutionResourceName *string `json:"FilterExecutionResourceName,omitempty" name:"FilterExecutionResourceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type DescribeExecutionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeExecutionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -297,7 +297,7 @@ type DescribeFlowServiceDetailRequest struct {
 	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFlowServiceDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -365,7 +365,7 @@ type DescribeFlowServiceDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFlowServiceDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -389,7 +389,7 @@ type DescribeFlowServicesRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFlowServicesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -425,7 +425,7 @@ type DescribeFlowServicesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFlowServicesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -504,7 +504,7 @@ type ModifyFlowServiceRequest struct {
 	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFlowServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -546,7 +546,7 @@ type ModifyFlowServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFlowServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -570,7 +570,7 @@ type StartExecutionRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartExecutionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -606,7 +606,7 @@ type StartExecutionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartExecutionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -665,7 +665,7 @@ type StopExecutionRequest struct {
 	ExecutionQrn *string `json:"ExecutionQrn,omitempty" name:"ExecutionQrn"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopExecutionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -693,7 +693,7 @@ type StopExecutionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopExecutionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

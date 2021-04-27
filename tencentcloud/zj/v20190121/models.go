@@ -42,7 +42,7 @@ type AddCrowdPackInfoRequest struct {
 	PhoneNum *int64 `json:"PhoneNum,omitempty" name:"PhoneNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddCrowdPackInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -78,7 +78,7 @@ type AddCrowdPackInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddCrowdPackInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -131,7 +131,7 @@ type AddSmsSignRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddSmsSignRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -168,7 +168,7 @@ type AddSmsSignResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddSmsSignResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -221,7 +221,7 @@ type AddSmsTemplateRequest struct {
 	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddSmsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -261,7 +261,7 @@ type AddSmsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddSmsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type CancelCampaignRequest struct {
 	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelCampaignRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -320,7 +320,7 @@ type CancelCampaignResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelCampaignResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type CreateCampaignRequest struct {
 	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCampaignRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -393,7 +393,7 @@ type CreateCampaignResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCampaignResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -444,7 +444,7 @@ type CreateMmsInstanceRequest struct {
 	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMmsInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -495,7 +495,7 @@ type CreateMmsInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMmsInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -516,7 +516,7 @@ type DelCrowdPackRequest struct {
 	ID *uint64 `json:"ID,omitempty" name:"ID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelCrowdPackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -548,7 +548,7 @@ type DelCrowdPackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelCrowdPackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -575,7 +575,7 @@ type DelTemplateRequest struct {
 	TemplateID *int64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -607,7 +607,7 @@ type DelTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -628,7 +628,7 @@ type DeleteMmsInstanceRequest struct {
 	InstanceId *uint64 `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMmsInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -660,7 +660,7 @@ type DeleteMmsInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMmsInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -681,7 +681,7 @@ type DescribeMmsInstanceInfoRequest struct {
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMmsInstanceInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -713,7 +713,7 @@ type DescribeMmsInstanceInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMmsInstanceInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -743,7 +743,7 @@ type DescribeMmsInstanceListRequest struct {
 	Title *string `json:"Title,omitempty" name:"Title"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMmsInstanceListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -778,7 +778,7 @@ type DescribeMmsInstanceListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMmsInstanceListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -799,7 +799,7 @@ type DescribeSmsCampaignStatisticsRequest struct {
 	License *string `json:"License,omitempty" name:"License"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsCampaignStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -831,7 +831,7 @@ type DescribeSmsCampaignStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsCampaignStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -882,7 +882,7 @@ type DescribeSmsSignListRequest struct {
 	International *uint64 `json:"International,omitempty" name:"International"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsSignListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -915,7 +915,7 @@ type DescribeSmsSignListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsSignListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -966,7 +966,7 @@ type DescribeSmsTemplateListRequest struct {
 	International *uint64 `json:"International,omitempty" name:"International"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsTemplateListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -999,7 +999,7 @@ type DescribeSmsTemplateListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsTemplateListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1029,7 +1029,7 @@ type GetCrowdPackListRequest struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCrowdPackListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1064,7 +1064,7 @@ type GetCrowdPackListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCrowdPackListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1085,7 +1085,7 @@ type GetCrowdUploadInfoRequest struct {
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCrowdUploadInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1117,7 +1117,7 @@ type GetCrowdUploadInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCrowdUploadInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1135,7 +1135,7 @@ type GetSmsAmountInfoRequest struct {
 	License *string `json:"License,omitempty" name:"License"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSmsAmountInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1166,7 +1166,7 @@ type GetSmsAmountInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSmsAmountInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1187,7 +1187,7 @@ type GetSmsCampaignStatusRequest struct {
 	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSmsCampaignStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1219,7 +1219,7 @@ type GetSmsCampaignStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSmsCampaignStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1341,7 +1341,7 @@ type ModifySmsTemplateRequest struct {
 	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySmsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1382,7 +1382,7 @@ type ModifySmsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySmsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1445,7 +1445,7 @@ type PushMmsContentRequest struct {
 	DynamicParaValue []*string `json:"DynamicParaValue,omitempty" name:"DynamicParaValue" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PushMmsContentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1493,7 +1493,7 @@ type PushMmsContentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PushMmsContentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1555,7 +1555,7 @@ type SendSmsRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendSmsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1594,7 +1594,7 @@ type SendSmsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendSmsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

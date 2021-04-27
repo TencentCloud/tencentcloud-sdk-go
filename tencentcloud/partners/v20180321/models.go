@@ -373,7 +373,7 @@ type AgentPayDealsRequest struct {
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AgentPayDealsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -403,7 +403,7 @@ type AgentPayDealsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AgentPayDealsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -439,7 +439,7 @@ type AgentTransferMoneyRequest struct {
 	Amount *uint64 `json:"Amount,omitempty" name:"Amount"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AgentTransferMoneyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -468,7 +468,7 @@ type AgentTransferMoneyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AgentTransferMoneyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -492,7 +492,7 @@ type AuditApplyClientRequest struct {
 	Note *string `json:"Note,omitempty" name:"Note"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AuditApplyClientRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -534,7 +534,7 @@ type AuditApplyClientResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AuditApplyClientResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -552,7 +552,7 @@ type CreatePayRelationForClientRequest struct {
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePayRelationForClientRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -580,7 +580,7 @@ type CreatePayRelationForClientResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePayRelationForClientResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -646,7 +646,7 @@ type DescribeAgentAuditedClientsRequest struct {
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentAuditedClientsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -692,7 +692,7 @@ type DescribeAgentAuditedClientsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentAuditedClientsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -728,7 +728,7 @@ type DescribeAgentBillsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentBillsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -768,7 +768,7 @@ type DescribeAgentBillsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentBillsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -786,7 +786,7 @@ type DescribeAgentClientGradeRequest struct {
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentClientGradeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -826,7 +826,7 @@ type DescribeAgentClientGradeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentClientGradeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -865,7 +865,7 @@ type DescribeAgentClientsRequest struct {
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentClientsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -906,7 +906,7 @@ type DescribeAgentClientsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentClientsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -948,7 +948,7 @@ type DescribeAgentDealsByCacheRequest struct {
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentDealsByCacheRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -990,7 +990,7 @@ type DescribeAgentDealsByCacheResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentDealsByCacheResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1032,7 +1032,7 @@ type DescribeAgentDealsCacheRequest struct {
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentDealsCacheRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1074,7 +1074,7 @@ type DescribeAgentDealsCacheResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentDealsCacheResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1113,7 +1113,7 @@ type DescribeAgentPayDealsRequest struct {
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentPayDealsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1154,7 +1154,7 @@ type DescribeAgentPayDealsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentPayDealsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1193,7 +1193,7 @@ type DescribeAgentPayDealsV2Request struct {
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentPayDealsV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1234,7 +1234,7 @@ type DescribeAgentPayDealsV2Response struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentPayDealsV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1273,7 +1273,7 @@ type DescribeAgentSelfPayDealsRequest struct {
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentSelfPayDealsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1314,7 +1314,7 @@ type DescribeAgentSelfPayDealsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentSelfPayDealsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1353,7 +1353,7 @@ type DescribeAgentSelfPayDealsV2Request struct {
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentSelfPayDealsV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1394,7 +1394,7 @@ type DescribeAgentSelfPayDealsV2Response struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAgentSelfPayDealsV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1412,7 +1412,7 @@ type DescribeClientBalanceRequest struct {
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClientBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1443,7 +1443,7 @@ type DescribeClientBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClientBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1467,7 +1467,7 @@ type DescribeRebateInfosRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRebateInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1503,7 +1503,7 @@ type DescribeRebateInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRebateInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1533,7 +1533,7 @@ type DescribeSalesmansRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSalesmansRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1571,7 +1571,7 @@ type DescribeSalesmansResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSalesmansResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1607,7 +1607,7 @@ type DescribeUnbindClientListRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUnbindClientListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1647,7 +1647,7 @@ type DescribeUnbindClientListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUnbindClientListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1668,7 +1668,7 @@ type ModifyClientRemarkRequest struct {
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClientRemarkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1697,7 +1697,7 @@ type ModifyClientRemarkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClientRemarkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1745,7 +1745,7 @@ type RemovePayRelationForClientRequest struct {
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemovePayRelationForClientRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1773,7 +1773,7 @@ type RemovePayRelationForClientResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemovePayRelationForClientResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

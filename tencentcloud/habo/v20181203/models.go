@@ -30,7 +30,7 @@ type DescribeStatusRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -68,7 +68,7 @@ type DescribeStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -92,7 +92,7 @@ type StartAnalyseRequest struct {
 	DlUrl *string `json:"DlUrl,omitempty" name:"DlUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartAnalyseRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -131,7 +131,7 @@ type StartAnalyseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartAnalyseResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

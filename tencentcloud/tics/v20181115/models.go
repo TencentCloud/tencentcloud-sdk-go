@@ -30,7 +30,7 @@ type DescribeDomainInfoRequest struct {
 	Option *uint64 `json:"Option,omitempty" name:"Option"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -96,7 +96,7 @@ type DescribeDomainInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -117,7 +117,7 @@ type DescribeFileInfoRequest struct {
 	Option *uint64 `json:"Option,omitempty" name:"Option"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -169,7 +169,7 @@ type DescribeFileInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -190,7 +190,7 @@ type DescribeIpInfoRequest struct {
 	Option *uint64 `json:"Option,omitempty" name:"Option"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIpInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -256,7 +256,7 @@ type DescribeIpInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIpInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -280,7 +280,7 @@ type DescribeThreatInfoRequest struct {
 	Option *uint64 `json:"Option,omitempty" name:"Option"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeThreatInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -353,7 +353,7 @@ type DescribeThreatInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeThreatInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

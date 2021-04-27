@@ -37,7 +37,7 @@ type CancelFaceMorphJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelFaceMorphJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -65,7 +65,7 @@ type CancelFaceMorphJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelFaceMorphJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -98,7 +98,7 @@ type ChangeAgePicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeAgePicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -135,7 +135,7 @@ type ChangeAgePicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChangeAgePicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -167,7 +167,7 @@ type FaceCartoonPicRequest struct {
 	DisableGlobalEffect *string `json:"DisableGlobalEffect,omitempty" name:"DisableGlobalEffect"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceCartoonPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type FaceCartoonPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceCartoonPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -298,7 +298,7 @@ type MorphFaceRequest struct {
 	OutputHeight *int64 `json:"OutputHeight,omitempty" name:"OutputHeight"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MorphFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -338,7 +338,7 @@ type MorphFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MorphFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type QueryFaceMorphJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryFaceMorphJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -391,7 +391,7 @@ type QueryFaceMorphJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryFaceMorphJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -424,7 +424,7 @@ type SwapGenderPicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwapGenderPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -461,7 +461,7 @@ type SwapGenderPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwapGenderPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -77,7 +77,7 @@ type TextProcessRequest struct {
 	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextProcessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -143,7 +143,7 @@ type TextProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextProcessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -173,7 +173,7 @@ type TextResetRequest struct {
 	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextResetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -237,7 +237,7 @@ type TextResetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextResetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

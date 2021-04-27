@@ -813,7 +813,7 @@ type DescribeAssetDetailRequest struct {
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -845,7 +845,7 @@ type DescribeAssetDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -863,7 +863,7 @@ type DescribeAssetListRequest struct {
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -900,7 +900,7 @@ type DescribeAssetListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -918,7 +918,7 @@ type DescribeAssetsMappingListRequest struct {
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetsMappingListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -956,7 +956,7 @@ type DescribeAssetsMappingListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssetsMappingListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -986,7 +986,7 @@ type DescribeCheckConfigAssetListRequest struct {
 	Filter []*Filter `json:"Filter,omitempty" name:"Filter" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCheckConfigAssetListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1025,7 +1025,7 @@ type DescribeCheckConfigAssetListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCheckConfigAssetListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1043,7 +1043,7 @@ type DescribeCheckConfigDetailRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCheckConfigDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1074,7 +1074,7 @@ type DescribeCheckConfigDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCheckConfigDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1104,7 +1104,7 @@ type DescribeComplianceAssetListRequest struct {
 	Search []*Filter `json:"Search,omitempty" name:"Search" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceAssetListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1142,7 +1142,7 @@ type DescribeComplianceAssetListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceAssetListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1160,7 +1160,7 @@ type DescribeComplianceDetailRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1191,7 +1191,7 @@ type DescribeComplianceDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1209,7 +1209,7 @@ type DescribeComplianceListRequest struct {
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1248,7 +1248,7 @@ type DescribeComplianceListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComplianceListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1266,7 +1266,7 @@ type DescribeConfigListRequest struct {
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeConfigListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1297,7 +1297,7 @@ type DescribeConfigListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeConfigListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1327,7 +1327,7 @@ type DescribeEventDetailRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1362,7 +1362,7 @@ type DescribeEventDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEventDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1392,7 +1392,7 @@ type DescribeLeakDetectionListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLeakDetectionListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1430,7 +1430,7 @@ type DescribeLeakDetectionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLeakDetectionListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1469,7 +1469,7 @@ type DescribeSafetyEventListRequest struct {
 	IsFilterResponseTime *bool `json:"IsFilterResponseTime,omitempty" name:"IsFilterResponseTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSafetyEventListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1510,7 +1510,7 @@ type DescribeSafetyEventListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSafetyEventListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1531,7 +1531,7 @@ type DescribeVulDetailRequest struct {
 	Source *string `json:"Source,omitempty" name:"Source"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVulDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1644,7 +1644,7 @@ type DescribeVulDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVulDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1662,7 +1662,7 @@ type DescribeVulListRequest struct {
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVulListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1693,7 +1693,7 @@ type DescribeVulListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVulListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1816,7 +1816,7 @@ type SaDivulgeDataQueryPubRequest struct {
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SaDivulgeDataQueryPubRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1858,7 +1858,7 @@ type SaDivulgeDataQueryPubResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SaDivulgeDataQueryPubResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

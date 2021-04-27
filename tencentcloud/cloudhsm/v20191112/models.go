@@ -27,7 +27,7 @@ type DescribeHSMBySubnetIdRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHSMBySubnetIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -61,7 +61,7 @@ type DescribeHSMBySubnetIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHSMBySubnetIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -79,7 +79,7 @@ type DescribeHSMByVpcIdRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHSMByVpcIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -113,7 +113,7 @@ type DescribeHSMByVpcIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHSMByVpcIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -140,7 +140,7 @@ type DescribeSubnetRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubnetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -178,7 +178,7 @@ type DescribeSubnetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubnetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -202,7 +202,7 @@ type DescribeUsgRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUsgRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -239,7 +239,7 @@ type DescribeUsgResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUsgResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -257,7 +257,7 @@ type DescribeUsgRuleRequest struct {
 	SgIds []*string `json:"SgIds,omitempty" name:"SgIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUsgRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -293,7 +293,7 @@ type DescribeUsgRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUsgRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -317,7 +317,7 @@ type DescribeVpcRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVpcRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -354,7 +354,7 @@ type DescribeVpcResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVpcResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -372,7 +372,7 @@ type DescribeVsmAttributesRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVsmAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -477,7 +477,7 @@ type DescribeVsmAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVsmAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -504,7 +504,7 @@ type DescribeVsmsRequest struct {
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVsmsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -542,7 +542,7 @@ type DescribeVsmsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVsmsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -575,7 +575,7 @@ type InquiryPriceBuyVsmRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceBuyVsmRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -628,7 +628,7 @@ type InquiryPriceBuyVsmResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceBuyVsmResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -664,7 +664,7 @@ type ModifyVsmAttributesRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyVsmAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -697,7 +697,7 @@ type ModifyVsmAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyVsmAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

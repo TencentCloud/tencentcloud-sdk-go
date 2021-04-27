@@ -79,7 +79,7 @@ type RecognizeProductRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -117,7 +117,7 @@ type RecognizeProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

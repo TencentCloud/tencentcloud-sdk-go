@@ -24,7 +24,7 @@ type DescribeComponentAlertObjectRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComponentAlertObjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -51,7 +51,7 @@ type DescribeComponentAlertObjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeComponentAlertObjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -66,7 +66,7 @@ type DescribeServiceAlertObjectRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeServiceAlertObjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -93,7 +93,7 @@ type DescribeServiceAlertObjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeServiceAlertObjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -27,7 +27,7 @@ type DescribeEntityRequest struct {
 	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEntityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -58,7 +58,7 @@ type DescribeEntityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEntityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -79,7 +79,7 @@ type DescribeRelationRequest struct {
 	RightEntityName *string `json:"RightEntityName,omitempty" name:"RightEntityName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRelationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -111,7 +111,7 @@ type DescribeRelationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRelationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -129,7 +129,7 @@ type DescribeTripleRequest struct {
 	TripleCondition *string `json:"TripleCondition,omitempty" name:"TripleCondition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTripleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -160,7 +160,7 @@ type DescribeTripleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTripleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

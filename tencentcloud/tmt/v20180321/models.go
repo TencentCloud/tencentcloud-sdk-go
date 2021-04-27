@@ -62,7 +62,7 @@ type ImageTranslateRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageTranslateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -107,7 +107,7 @@ type ImageTranslateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageTranslateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -149,7 +149,7 @@ type LanguageDetectRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LanguageDetectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -182,7 +182,7 @@ type LanguageDetectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LanguageDetectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -227,7 +227,7 @@ type SpeechTranslateRequest struct {
 	TransType *int64 `json:"TransType,omitempty" name:"TransType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SpeechTranslateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type SpeechTranslateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SpeechTranslateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -353,7 +353,7 @@ type TextTranslateBatchRequest struct {
 	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextTranslateBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -393,7 +393,7 @@ type TextTranslateBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextTranslateBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -461,7 +461,7 @@ type TextTranslateRequest struct {
 	UntranslatedText *string `json:"UntranslatedText,omitempty" name:"UntranslatedText"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextTranslateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -502,7 +502,7 @@ type TextTranslateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextTranslateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -131,7 +131,7 @@ type CreateCommandRequest struct {
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCommandRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -169,7 +169,7 @@ type CreateCommandResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCommandResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -187,7 +187,7 @@ type DeleteCommandRequest struct {
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCommandRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -215,7 +215,7 @@ type DeleteCommandResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCommandResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type DescribeAutomationAgentStatusRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutomationAgentStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type DescribeAutomationAgentStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutomationAgentStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -306,7 +306,7 @@ type DescribeCommandsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCommandsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -343,7 +343,7 @@ type DescribeCommandsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCommandsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -373,7 +373,7 @@ type DescribeInvocationTasksRequest struct {
 	HideOutput *bool `json:"HideOutput,omitempty" name:"HideOutput"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -411,7 +411,7 @@ type DescribeInvocationTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -438,7 +438,7 @@ type DescribeInvocationsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -475,7 +475,7 @@ type DescribeInvocationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInvocationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -490,7 +490,7 @@ type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -523,7 +523,7 @@ type DescribeRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -668,7 +668,7 @@ type InvokeCommandRequest struct {
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeCommandRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -701,7 +701,7 @@ type InvokeCommandResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeCommandResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -745,7 +745,7 @@ type ModifyCommandRequest struct {
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCommandRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -780,7 +780,7 @@ type ModifyCommandResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCommandResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -810,7 +810,7 @@ type PreviewReplacedCommandContentRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PreviewReplacedCommandContentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -843,7 +843,7 @@ type PreviewReplacedCommandContentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PreviewReplacedCommandContentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -918,7 +918,7 @@ type RunCommandRequest struct {
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunCommandRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -962,7 +962,7 @@ type RunCommandResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunCommandResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

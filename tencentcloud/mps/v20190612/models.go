@@ -1653,7 +1653,7 @@ type CreateAIAnalysisTemplateRequest struct {
 	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1689,7 +1689,7 @@ type CreateAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1725,7 +1725,7 @@ type CreateAIRecognitionTemplateRequest struct {
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1762,7 +1762,7 @@ type CreateAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1804,7 +1804,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1840,7 +1840,7 @@ type CreateAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1892,7 +1892,7 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1930,7 +1930,7 @@ type CreateAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1969,7 +1969,7 @@ type CreateContentReviewTemplateRequest struct {
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2006,7 +2006,7 @@ type CreateContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2071,7 +2071,7 @@ type CreateImageSpriteTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2111,7 +2111,7 @@ type CreateImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2147,7 +2147,7 @@ type CreatePersonSampleRequest struct {
 	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2185,7 +2185,7 @@ type CreatePersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2249,7 +2249,7 @@ type CreateSampleSnapshotTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2288,7 +2288,7 @@ type CreateSampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2342,7 +2342,7 @@ type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2379,7 +2379,7 @@ type CreateSnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2424,7 +2424,7 @@ type CreateTranscodeTemplateRequest struct {
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2462,7 +2462,7 @@ type CreateTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2518,7 +2518,7 @@ type CreateWatermarkTemplateRequest struct {
 	SvgTemplate *SvgWatermarkInput `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2560,7 +2560,7 @@ type CreateWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2589,7 +2589,7 @@ type CreateWordSamplesRequest struct {
 	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2618,7 +2618,7 @@ type CreateWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2663,7 +2663,7 @@ type CreateWorkflowRequest struct {
 	TaskPriority *int64 `json:"TaskPriority,omitempty" name:"TaskPriority"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWorkflowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2703,7 +2703,7 @@ type CreateWorkflowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWorkflowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2721,7 +2721,7 @@ type DeleteAIAnalysisTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2749,7 +2749,7 @@ type DeleteAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2767,7 +2767,7 @@ type DeleteAIRecognitionTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2795,7 +2795,7 @@ type DeleteAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2813,7 +2813,7 @@ type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2841,7 +2841,7 @@ type DeleteAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2859,7 +2859,7 @@ type DeleteAnimatedGraphicsTemplateRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2887,7 +2887,7 @@ type DeleteAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2905,7 +2905,7 @@ type DeleteContentReviewTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2933,7 +2933,7 @@ type DeleteContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2951,7 +2951,7 @@ type DeleteImageSpriteTemplateRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2979,7 +2979,7 @@ type DeleteImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2997,7 +2997,7 @@ type DeletePersonSampleRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3025,7 +3025,7 @@ type DeletePersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3043,7 +3043,7 @@ type DeleteSampleSnapshotTemplateRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3071,7 +3071,7 @@ type DeleteSampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3089,7 +3089,7 @@ type DeleteSnapshotByTimeOffsetTemplateRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3117,7 +3117,7 @@ type DeleteSnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3135,7 +3135,7 @@ type DeleteTranscodeTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3163,7 +3163,7 @@ type DeleteTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3181,7 +3181,7 @@ type DeleteWatermarkTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3209,7 +3209,7 @@ type DeleteWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3227,7 +3227,7 @@ type DeleteWordSamplesRequest struct {
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3255,7 +3255,7 @@ type DeleteWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3273,7 +3273,7 @@ type DeleteWorkflowRequest struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" name:"WorkflowId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWorkflowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3301,7 +3301,7 @@ type DeleteWorkflowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWorkflowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3325,7 +3325,7 @@ type DescribeAIAnalysisTemplatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3361,7 +3361,7 @@ type DescribeAIAnalysisTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIAnalysisTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3385,7 +3385,7 @@ type DescribeAIRecognitionTemplatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3421,7 +3421,7 @@ type DescribeAIRecognitionTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAIRecognitionTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3450,7 +3450,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3487,7 +3487,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3516,7 +3516,7 @@ type DescribeAnimatedGraphicsTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAnimatedGraphicsTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3553,7 +3553,7 @@ type DescribeAnimatedGraphicsTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAnimatedGraphicsTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3577,7 +3577,7 @@ type DescribeContentReviewTemplatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3613,7 +3613,7 @@ type DescribeContentReviewTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3642,7 +3642,7 @@ type DescribeImageSpriteTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageSpriteTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3679,7 +3679,7 @@ type DescribeImageSpriteTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3697,7 +3697,7 @@ type DescribeMediaMetaDataRequest struct {
 	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaMetaDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3728,7 +3728,7 @@ type DescribeMediaMetaDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaMetaDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3766,7 +3766,7 @@ type DescribePersonSamplesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3805,7 +3805,7 @@ type DescribePersonSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3834,7 +3834,7 @@ type DescribeSampleSnapshotTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSampleSnapshotTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3871,7 +3871,7 @@ type DescribeSampleSnapshotTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSampleSnapshotTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3900,7 +3900,7 @@ type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3937,7 +3937,7 @@ type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3955,7 +3955,7 @@ type DescribeTaskDetailRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4032,7 +4032,7 @@ type DescribeTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4056,7 +4056,7 @@ type DescribeTasksRequest struct {
 	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4092,7 +4092,7 @@ type DescribeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4131,7 +4131,7 @@ type DescribeTranscodeTemplatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4170,7 +4170,7 @@ type DescribeTranscodeTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4201,7 +4201,7 @@ type DescribeWatermarkTemplatesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWatermarkTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4238,7 +4238,7 @@ type DescribeWatermarkTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWatermarkTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4276,7 +4276,7 @@ type DescribeWordSamplesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordSamplesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4316,7 +4316,7 @@ type DescribeWordSamplesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordSamplesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4346,7 +4346,7 @@ type DescribeWorkflowsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWorkflowsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4383,7 +4383,7 @@ type DescribeWorkflowsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWorkflowsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4401,7 +4401,7 @@ type DisableWorkflowRequest struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" name:"WorkflowId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableWorkflowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4429,7 +4429,7 @@ type DisableWorkflowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableWorkflowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4477,7 +4477,7 @@ type EditMediaRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EditMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4514,7 +4514,7 @@ type EditMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EditMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4573,7 +4573,7 @@ type EnableWorkflowRequest struct {
 	WorkflowId *int64 `json:"WorkflowId,omitempty" name:"WorkflowId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableWorkflowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4601,7 +4601,7 @@ type EnableWorkflowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableWorkflowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4622,7 +4622,7 @@ type ExecuteFunctionRequest struct {
 	FunctionArg *string `json:"FunctionArg,omitempty" name:"FunctionArg"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteFunctionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4654,7 +4654,7 @@ type ExecuteFunctionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteFunctionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5240,7 +5240,7 @@ type ManageTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5269,7 +5269,7 @@ type ManageTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5911,7 +5911,7 @@ type ModifyAIAnalysisTemplateRequest struct {
 	FrameTagConfigure *FrameTagConfigureInfoForUpdate `json:"FrameTagConfigure,omitempty" name:"FrameTagConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIAnalysisTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5945,7 +5945,7 @@ type ModifyAIAnalysisTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIAnalysisTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5984,7 +5984,7 @@ type ModifyAIRecognitionTemplateRequest struct {
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIRecognitionTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6019,7 +6019,7 @@ type ModifyAIRecognitionTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6062,7 +6062,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6096,7 +6096,7 @@ type ModifyAdaptiveDynamicStreamingTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6151,7 +6151,7 @@ type ModifyAnimatedGraphicsTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAnimatedGraphicsTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6187,7 +6187,7 @@ type ModifyAnimatedGraphicsTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAnimatedGraphicsTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6229,7 +6229,7 @@ type ModifyContentReviewTemplateRequest struct {
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyContentReviewTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6264,7 +6264,7 @@ type ModifyContentReviewTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6332,7 +6332,7 @@ type ModifyImageSpriteTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6370,7 +6370,7 @@ type ModifyImageSpriteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6406,7 +6406,7 @@ type ModifyPersonSampleRequest struct {
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6446,7 +6446,7 @@ type ModifyPersonSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6513,7 +6513,7 @@ type ModifySampleSnapshotTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySampleSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6550,7 +6550,7 @@ type ModifySampleSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySampleSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6607,7 +6607,7 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6642,7 +6642,7 @@ type ModifySnapshotByTimeOffsetTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6688,7 +6688,7 @@ type ModifyTranscodeTemplateRequest struct {
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6724,7 +6724,7 @@ type ModifyTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6774,7 +6774,7 @@ type ModifyWatermarkTemplateRequest struct {
 	SvgTemplate *SvgWatermarkInputForUpdate `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWatermarkTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6813,7 +6813,7 @@ type ModifyWatermarkTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWatermarkTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6845,7 +6845,7 @@ type ModifyWordSampleRequest struct {
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWordSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6875,7 +6875,7 @@ type ModifyWordSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyWordSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7017,7 +7017,7 @@ type ParseLiveStreamProcessNotificationRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseLiveStreamProcessNotificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7072,7 +7072,7 @@ type ParseLiveStreamProcessNotificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseLiveStreamProcessNotificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7090,7 +7090,7 @@ type ParseNotificationRequest struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseNotificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7137,7 +7137,7 @@ type ParseNotificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ParseNotificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7428,7 +7428,7 @@ type ProcessLiveStreamRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7466,7 +7466,7 @@ type ProcessLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7514,7 +7514,7 @@ type ProcessMediaRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7555,7 +7555,7 @@ type ProcessMediaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ProcessMediaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7727,7 +7727,7 @@ type RecognizeMediaForZhiXueRequest struct {
 	ActionConfig *ActionConfigInfo `json:"ActionConfig,omitempty" name:"ActionConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeMediaForZhiXueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7760,7 +7760,7 @@ type RecognizeMediaForZhiXueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeMediaForZhiXueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7808,7 +7808,7 @@ type ResetWorkflowRequest struct {
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetWorkflowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7846,7 +7846,7 @@ type ResetWorkflowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetWorkflowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

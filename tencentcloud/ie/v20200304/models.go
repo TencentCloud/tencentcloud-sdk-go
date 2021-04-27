@@ -237,7 +237,7 @@ type CreateEditingTaskRequest struct {
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEditingTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type CreateEditingTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEditingTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -298,7 +298,7 @@ type CreateMediaProcessTaskRequest struct {
 	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMediaProcessTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -333,7 +333,7 @@ type CreateMediaProcessTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMediaProcessTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -360,7 +360,7 @@ type CreateMediaQualityRestorationTaskRequest struct {
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMediaQualityRestorationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -394,7 +394,7 @@ type CreateMediaQualityRestorationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMediaQualityRestorationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -418,7 +418,7 @@ type CreateQualityControlTaskRequest struct {
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateQualityControlTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -452,7 +452,7 @@ type CreateQualityControlTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateQualityControlTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -507,7 +507,7 @@ type DescribeEditingTaskResultRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEditingTaskResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -538,7 +538,7 @@ type DescribeEditingTaskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEditingTaskResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -556,7 +556,7 @@ type DescribeMediaProcessTaskResultRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaProcessTaskResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -588,7 +588,7 @@ type DescribeMediaProcessTaskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaProcessTaskResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -606,7 +606,7 @@ type DescribeMediaQualityRestorationTaskRusultRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaQualityRestorationTaskRusultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -637,7 +637,7 @@ type DescribeMediaQualityRestorationTaskRusultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMediaQualityRestorationTaskRusultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -655,7 +655,7 @@ type DescribeQualityControlTaskResultRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQualityControlTaskResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -686,7 +686,7 @@ type DescribeQualityControlTaskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQualityControlTaskResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1504,7 +1504,7 @@ type StopMediaProcessTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMediaProcessTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1532,7 +1532,7 @@ type StopMediaProcessTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMediaProcessTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1550,7 +1550,7 @@ type StopMediaQualityRestorationTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMediaQualityRestorationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1578,7 +1578,7 @@ type StopMediaQualityRestorationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMediaQualityRestorationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

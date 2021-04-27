@@ -27,7 +27,7 @@ type DetectFraudKOLRequest struct {
 	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFraudKOLRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -59,7 +59,7 @@ type DetectFraudKOLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFraudKOLResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -77,7 +77,7 @@ type EnhanceTaDegreeRequest struct {
 	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnhanceTaDegreeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -109,7 +109,7 @@ type EnhanceTaDegreeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnhanceTaDegreeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -486,7 +486,7 @@ type RecognizeCustomizedAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeCustomizedAudienceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -518,7 +518,7 @@ type RecognizeCustomizedAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -536,7 +536,7 @@ type RecognizeEffectiveFlowRequest struct {
 	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -567,7 +567,7 @@ type RecognizeEffectiveFlowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -585,7 +585,7 @@ type RecognizePreciseTargetAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizePreciseTargetAudienceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -617,7 +617,7 @@ type RecognizePreciseTargetAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizePreciseTargetAudienceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -635,7 +635,7 @@ type RecognizeTargetAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -667,7 +667,7 @@ type RecognizeTargetAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -685,7 +685,7 @@ type SendTrafficSecuritySmsMessageRequest struct {
 	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTrafficSecuritySmsMessageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -717,7 +717,7 @@ type SendTrafficSecuritySmsMessageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

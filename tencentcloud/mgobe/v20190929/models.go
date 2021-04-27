@@ -30,7 +30,7 @@ type DismissRoomRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -59,7 +59,7 @@ type DismissRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

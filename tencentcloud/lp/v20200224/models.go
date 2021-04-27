@@ -139,7 +139,7 @@ type QueryLoginProtectionRequest struct {
 	WxToken *string `json:"WxToken,omitempty" name:"WxToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryLoginProtectionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -247,7 +247,7 @@ type QueryLoginProtectionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryLoginProtectionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -72,7 +72,7 @@ type CreateStructureTaskRequest struct {
 	ImageList []*string `json:"ImageList,omitempty" name:"ImageList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStructureTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -110,7 +110,7 @@ type CreateStructureTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStructureTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -128,7 +128,7 @@ type DescribeStructCompareDataRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStructCompareDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -186,7 +186,7 @@ type DescribeStructCompareDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStructCompareDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type DescribeStructureTaskResultRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStructureTaskResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type DescribeStructureTaskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStructureTaskResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

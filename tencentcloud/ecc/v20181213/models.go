@@ -102,7 +102,7 @@ type CorrectMultiImageRequest struct {
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CorrectMultiImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -143,7 +143,7 @@ type CorrectMultiImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CorrectMultiImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -164,7 +164,7 @@ type DescribeTaskRequest struct {
 	EccAppid *string `json:"EccAppid,omitempty" name:"EccAppid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type DescribeTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -246,7 +246,7 @@ type ECCRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ECCRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type ECCResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ECCResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -338,7 +338,7 @@ type EHOCRRequest struct {
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EHOCRRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -379,7 +379,7 @@ type EHOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EHOCRResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

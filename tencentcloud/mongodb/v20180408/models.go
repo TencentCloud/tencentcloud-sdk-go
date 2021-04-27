@@ -30,7 +30,7 @@ type AssignProjectRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssignProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -62,7 +62,7 @@ type AssignProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssignProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -131,7 +131,7 @@ type CreateDBInstanceHourRequest struct {
 	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBInstanceHourRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -179,7 +179,7 @@ type CreateDBInstanceHourResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBInstanceHourResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -233,7 +233,7 @@ type CreateDBInstanceRequest struct {
 	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type CreateDBInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -297,7 +297,7 @@ type DescribeClientConnectionsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClientConnectionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -329,7 +329,7 @@ type DescribeClientConnectionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClientConnectionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -377,7 +377,7 @@ type DescribeDBInstancesRequest struct {
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -421,7 +421,7 @@ type DescribeDBInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -454,7 +454,7 @@ type DescribeSlowLogRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -493,7 +493,7 @@ type DescribeSlowLogResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -511,7 +511,7 @@ type DescribeSpecInfoRequest struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSpecInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -542,7 +542,7 @@ type DescribeSpecInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSpecInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -721,7 +721,7 @@ type RenameInstanceRequest struct {
 	NewName *string `json:"NewName,omitempty" name:"NewName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenameInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -750,7 +750,7 @@ type RenameInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenameInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -771,7 +771,7 @@ type SetAutoRenewRequest struct {
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetAutoRenewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -800,7 +800,7 @@ type SetAutoRenewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetAutoRenewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -824,7 +824,7 @@ type SetPasswordRequest struct {
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetPasswordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -857,7 +857,7 @@ type SetPasswordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetPasswordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -962,7 +962,7 @@ type TerminateDBInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateDBInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -993,7 +993,7 @@ type TerminateDBInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateDBInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1020,7 +1020,7 @@ type UpgradeDBInstanceHourRequest struct {
 	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDBInstanceHourRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1054,7 +1054,7 @@ type UpgradeDBInstanceHourResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDBInstanceHourResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1081,7 +1081,7 @@ type UpgradeDBInstanceRequest struct {
 	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDBInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1115,7 +1115,7 @@ type UpgradeDBInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeDBInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

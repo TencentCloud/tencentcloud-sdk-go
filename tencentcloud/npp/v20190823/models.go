@@ -133,7 +133,7 @@ type CreateCallBackRequest struct {
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCallBackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -194,7 +194,7 @@ type CreateCallBackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCallBackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -218,7 +218,7 @@ type DelVirtualNumRequest struct {
 	BizId *string `json:"BizId,omitempty" name:"BizId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelVirtualNumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -263,7 +263,7 @@ type DelVirtualNumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DelVirtualNumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -287,7 +287,7 @@ type DeleteCallBackRequest struct {
 	CancelFlag *string `json:"CancelFlag,omitempty" name:"CancelFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCallBackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -328,7 +328,7 @@ type DeleteCallBackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCallBackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -358,7 +358,7 @@ type DescribeCallBackCdrRequest struct {
 	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallBackCdrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -406,7 +406,7 @@ type DescribeCallBackCdrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallBackCdrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -436,7 +436,7 @@ type DescribeCallBackStatusRequest struct {
 	CallStatus *string `json:"CallStatus,omitempty" name:"CallStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallBackStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -489,7 +489,7 @@ type DescribeCallBackStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallBackStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -507,7 +507,7 @@ type DescribeCallerDisplayListRequest struct {
 	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallerDisplayListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -550,7 +550,7 @@ type DescribeCallerDisplayListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallerDisplayListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -580,7 +580,7 @@ type Get400CdrRequest struct {
 	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *Get400CdrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -627,7 +627,7 @@ type Get400CdrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *Get400CdrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -697,7 +697,7 @@ type GetVirtualNumRequest struct {
 	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetVirtualNumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -756,7 +756,7 @@ type GetVirtualNumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetVirtualNumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

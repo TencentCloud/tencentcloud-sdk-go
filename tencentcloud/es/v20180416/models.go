@@ -125,7 +125,7 @@ type CreateInstanceRequest struct {
 	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -183,7 +183,7 @@ type CreateInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -201,7 +201,7 @@ type DeleteInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -229,7 +229,7 @@ type DeleteInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -274,7 +274,7 @@ type DescribeInstanceLogsRequest struct {
 	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstanceLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -315,7 +315,7 @@ type DescribeInstanceLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstanceLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -345,7 +345,7 @@ type DescribeInstanceOperationsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstanceOperationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -383,7 +383,7 @@ type DescribeInstanceOperationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstanceOperationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -425,7 +425,7 @@ type DescribeInstancesRequest struct {
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -467,7 +467,7 @@ type DescribeInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -533,7 +533,7 @@ type GetRequestTargetNodeTypesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRequestTargetNodeTypesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -564,7 +564,7 @@ type GetRequestTargetNodeTypesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetRequestTargetNodeTypesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -892,7 +892,7 @@ type RestartInstanceRequest struct {
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -921,7 +921,7 @@ type RestartInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -939,7 +939,7 @@ type RestartKibanaRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartKibanaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -967,7 +967,7 @@ type RestartKibanaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartKibanaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -991,7 +991,7 @@ type RestartNodesRequest struct {
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartNodesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1021,7 +1021,7 @@ type RestartNodesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RestartNodesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1165,7 +1165,7 @@ type UpdateInstanceRequest struct {
 	KibanaConfig *string `json:"KibanaConfig,omitempty" name:"KibanaConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1216,7 +1216,7 @@ type UpdateInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1246,7 +1246,7 @@ type UpdatePluginsRequest struct {
 	ForceUpdate *bool `json:"ForceUpdate,omitempty" name:"ForceUpdate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdatePluginsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1278,7 +1278,7 @@ type UpdatePluginsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdatePluginsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1299,7 +1299,7 @@ type UpdateRequestTargetNodeTypesRequest struct {
 	TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateRequestTargetNodeTypesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1328,7 +1328,7 @@ type UpdateRequestTargetNodeTypesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateRequestTargetNodeTypesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1361,7 +1361,7 @@ type UpgradeInstanceRequest struct {
 	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1394,7 +1394,7 @@ type UpgradeInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1427,7 +1427,7 @@ type UpgradeLicenseRequest struct {
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLicenseRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1460,7 +1460,7 @@ type UpgradeLicenseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeLicenseResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

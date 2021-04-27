@@ -157,7 +157,7 @@ type ApplyApplicationMaterialRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyApplicationMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -197,7 +197,7 @@ type ApplyApplicationMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyApplicationMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -317,7 +317,7 @@ type ApplyOutwardOrderRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyOutwardOrderRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -367,7 +367,7 @@ type ApplyOutwardOrderResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyOutwardOrderResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -421,7 +421,7 @@ type ApplyPayerInfoRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyPayerInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -461,7 +461,7 @@ type ApplyPayerInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyPayerInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -523,7 +523,7 @@ type ApplyReWithdrawalRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyReWithdrawalRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -559,7 +559,7 @@ type ApplyReWithdrawalResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyReWithdrawalResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -642,7 +642,7 @@ type ApplyTradeRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyTradeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type ApplyTradeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyTradeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -769,7 +769,7 @@ type ApplyWithdrawalRequest struct {
 	WithdrawOrderId *string `json:"WithdrawOrderId,omitempty" name:"WithdrawOrderId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyWithdrawalRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -812,7 +812,7 @@ type ApplyWithdrawalResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyWithdrawalResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -939,7 +939,7 @@ type BindAcctRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindAcctRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -982,7 +982,7 @@ type BindAcctResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindAcctResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1015,7 +1015,7 @@ type BindRelateAccReUnionPayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAccReUnionPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1065,7 +1065,7 @@ type BindRelateAccReUnionPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAccReUnionPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1119,7 +1119,7 @@ type BindRelateAcctSmallAmountRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAcctSmallAmountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1172,7 +1172,7 @@ type BindRelateAcctSmallAmountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAcctSmallAmountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1226,7 +1226,7 @@ type BindRelateAcctUnionPayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAcctUnionPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1279,7 +1279,7 @@ type BindRelateAcctUnionPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRelateAcctUnionPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1345,7 +1345,7 @@ type CheckAcctRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckAcctRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1387,7 +1387,7 @@ type CheckAcctResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckAcctResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1423,7 +1423,7 @@ type CheckAmountRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckAmountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1472,7 +1472,7 @@ type CheckAmountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckAmountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1543,7 +1543,7 @@ type CloseOrderRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseOrderRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1577,7 +1577,7 @@ type CloseOrderResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CloseOrderResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1661,7 +1661,7 @@ type CreateAcctRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAcctRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1711,7 +1711,7 @@ type CreateAcctResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAcctResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1747,7 +1747,7 @@ type CreateAgentTaxPaymentInfosRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAgentTaxPaymentInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1784,7 +1784,7 @@ type CreateAgentTaxPaymentInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAgentTaxPaymentInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1844,7 +1844,7 @@ type CreateCustAcctIdRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCustAcctIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1903,7 +1903,7 @@ type CreateCustAcctIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCustAcctIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2082,7 +2082,7 @@ type CreateInvoiceRequest struct {
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInvoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2148,7 +2148,7 @@ type CreateInvoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInvoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2308,7 +2308,7 @@ type CreateInvoiceV2Request struct {
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInvoiceV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2381,7 +2381,7 @@ type CreateInvoiceV2Response struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateInvoiceV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2463,7 +2463,7 @@ type CreateMerchantRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMerchantRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2514,7 +2514,7 @@ type CreateMerchantResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMerchantResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2584,7 +2584,7 @@ type CreateRedInvoiceRequest struct {
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRedInvoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2618,7 +2618,7 @@ type CreateRedInvoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRedInvoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2679,7 +2679,7 @@ type CreateRedInvoiceV2Request struct {
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRedInvoiceV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2720,7 +2720,7 @@ type CreateRedInvoiceV2Response struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRedInvoiceV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2789,7 +2789,7 @@ type CreateSinglePayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSinglePayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2837,7 +2837,7 @@ type CreateSinglePayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSinglePayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2926,7 +2926,7 @@ type CreateTransferBatchRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTransferBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2976,7 +2976,7 @@ type CreateTransferBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTransferBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2997,7 +2997,7 @@ type DeleteAgentTaxPaymentInfoRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAgentTaxPaymentInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3026,7 +3026,7 @@ type DeleteAgentTaxPaymentInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAgentTaxPaymentInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3044,7 +3044,7 @@ type DeleteAgentTaxPaymentInfosRequest struct {
 	BatchNum *int64 `json:"BatchNum,omitempty" name:"BatchNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAgentTaxPaymentInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3072,7 +3072,7 @@ type DeleteAgentTaxPaymentInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAgentTaxPaymentInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3129,7 +3129,7 @@ type DescribeChargeDetailRequest struct {
 	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeChargeDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3209,7 +3209,7 @@ type DescribeChargeDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeChargeDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3272,7 +3272,7 @@ type DescribeOrderStatusRequest struct {
 	TransDate *string `json:"TransDate,omitempty" name:"TransDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOrderStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3342,7 +3342,7 @@ type DescribeOrderStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeOrderStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3376,7 +3376,7 @@ type DownloadBillRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadBillRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3417,7 +3417,7 @@ type DownloadBillResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadBillResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3511,7 +3511,7 @@ type ExecuteMemberTransactionRequest struct {
 	ReservedMessage *string `json:"ReservedMessage,omitempty" name:"ReservedMessage"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteMemberTransactionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3572,7 +3572,7 @@ type ExecuteMemberTransactionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExecuteMemberTransactionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3645,7 +3645,7 @@ type MigrateOrderRefundQueryRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MigrateOrderRefundQueryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3693,7 +3693,7 @@ type MigrateOrderRefundQueryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MigrateOrderRefundQueryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3735,7 +3735,7 @@ type MigrateOrderRefundRequest struct {
 	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MigrateOrderRefundRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3780,7 +3780,7 @@ type MigrateOrderRefundResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MigrateOrderRefundResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3807,7 +3807,7 @@ type ModifyAgentTaxPaymentInfoRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAgentTaxPaymentInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3841,7 +3841,7 @@ type ModifyAgentTaxPaymentInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAgentTaxPaymentInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3880,7 +3880,7 @@ type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMntMbrBindRelateAcctBankCodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3928,7 +3928,7 @@ type ModifyMntMbrBindRelateAcctBankCodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4050,7 +4050,7 @@ type QueryAcctBindingRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctBindingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4089,7 +4089,7 @@ type QueryAcctBindingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctBindingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4135,7 +4135,7 @@ type QueryAcctInfoListRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4179,7 +4179,7 @@ type QueryAcctInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4219,7 +4219,7 @@ type QueryAcctInfoRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4295,7 +4295,7 @@ type QueryAcctInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAcctInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4363,7 +4363,7 @@ type QueryAgentStatementsRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAgentStatementsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4396,7 +4396,7 @@ type QueryAgentStatementsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAgentStatementsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4417,7 +4417,7 @@ type QueryAgentTaxPaymentBatchRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAgentTaxPaymentBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4449,7 +4449,7 @@ type QueryAgentTaxPaymentBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAgentTaxPaymentBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4470,7 +4470,7 @@ type QueryAnchorContractInfoRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAnchorContractInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4502,7 +4502,7 @@ type QueryAnchorContractInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAnchorContractInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4523,7 +4523,7 @@ type QueryApplicationMaterialRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryApplicationMaterialRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4555,7 +4555,7 @@ type QueryApplicationMaterialResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryApplicationMaterialResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4596,7 +4596,7 @@ type QueryBalanceRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4645,7 +4645,7 @@ type QueryBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4681,7 +4681,7 @@ type QueryBankClearRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankClearRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4748,7 +4748,7 @@ type QueryBankClearResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankClearResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4790,7 +4790,7 @@ type QueryBankTransactionDetailsRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankTransactionDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4859,7 +4859,7 @@ type QueryBankTransactionDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankTransactionDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4901,7 +4901,7 @@ type QueryBankWithdrawCashDetailsRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankWithdrawCashDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4970,7 +4970,7 @@ type QueryBankWithdrawCashDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBankWithdrawCashDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5008,7 +5008,7 @@ type QueryBillDownloadURLRequest struct {
 	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBillDownloadURLRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5048,7 +5048,7 @@ type QueryBillDownloadURLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBillDownloadURLResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5084,7 +5084,7 @@ type QueryCommonTransferRechargeRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCommonTransferRechargeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5151,7 +5151,7 @@ type QueryCommonTransferRechargeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCommonTransferRechargeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5184,7 +5184,7 @@ type QueryCustAcctIdBalanceRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCustAcctIdBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5250,7 +5250,7 @@ type QueryCustAcctIdBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryCustAcctIdBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5323,7 +5323,7 @@ type QueryExchangeRateRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryExchangeRateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5356,7 +5356,7 @@ type QueryExchangeRateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryExchangeRateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5421,7 +5421,7 @@ type QueryInvoiceRequest struct {
 	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryInvoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5458,7 +5458,7 @@ type QueryInvoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryInvoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5552,7 +5552,7 @@ type QueryInvoiceV2Request struct {
 	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryInvoiceV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5595,7 +5595,7 @@ type QueryInvoiceV2Response struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryInvoiceV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5657,7 +5657,7 @@ type QueryMemberBindRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMemberBindRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5723,7 +5723,7 @@ type QueryMemberBindResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMemberBindResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5792,7 +5792,7 @@ type QueryMemberTransactionRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMemberTransactionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5854,7 +5854,7 @@ type QueryMemberTransactionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMemberTransactionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5887,7 +5887,7 @@ type QueryMerchantBalanceRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMerchantBalanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5919,7 +5919,7 @@ type QueryMerchantBalanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMerchantBalanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5955,7 +5955,7 @@ type QueryMerchantInfoForManagementRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMerchantInfoForManagementRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5990,7 +5990,7 @@ type QueryMerchantInfoForManagementResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryMerchantInfoForManagementResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6157,7 +6157,7 @@ type QueryOrderRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryOrderRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6202,7 +6202,7 @@ type QueryOrderResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryOrderResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6275,7 +6275,7 @@ type QueryOutwardOrderRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryOutwardOrderRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6307,7 +6307,7 @@ type QueryOutwardOrderResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryOutwardOrderResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6337,7 +6337,7 @@ type QueryPayerInfoRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryPayerInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6369,7 +6369,7 @@ type QueryPayerInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryPayerInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6451,7 +6451,7 @@ type QueryReconciliationDocumentRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryReconciliationDocumentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6504,7 +6504,7 @@ type QueryReconciliationDocumentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryReconciliationDocumentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6541,7 +6541,7 @@ type QueryRefundRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryRefundRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6577,7 +6577,7 @@ type QueryRefundResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryRefundResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6617,7 +6617,7 @@ type QuerySinglePayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySinglePayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6649,7 +6649,7 @@ type QuerySinglePayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySinglePayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6702,7 +6702,7 @@ type QuerySingleTransactionStatusRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySingleTransactionStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6781,7 +6781,7 @@ type QuerySingleTransactionStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySingleTransactionStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6811,7 +6811,7 @@ type QuerySmallAmountTransferRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySmallAmountTransferRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6864,7 +6864,7 @@ type QuerySmallAmountTransferResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuerySmallAmountTransferResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6943,7 +6943,7 @@ type QueryTradeRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTradeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6975,7 +6975,7 @@ type QueryTradeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTradeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7044,7 +7044,7 @@ type QueryTransferBatchRequest struct {
 	DetailStatus *string `json:"DetailStatus,omitempty" name:"DetailStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7175,7 +7175,7 @@ type QueryTransferBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7222,7 +7222,7 @@ type QueryTransferDetailRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7341,7 +7341,7 @@ type QueryTransferDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7398,7 +7398,7 @@ type QueryTransferResultRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7441,7 +7441,7 @@ type QueryTransferResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryTransferResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7525,7 +7525,7 @@ type RechargeByThirdPayRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RechargeByThirdPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7586,7 +7586,7 @@ type RechargeByThirdPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RechargeByThirdPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7649,7 +7649,7 @@ type RechargeMemberThirdPayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RechargeMemberThirdPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7716,7 +7716,7 @@ type RechargeMemberThirdPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RechargeMemberThirdPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7804,7 +7804,7 @@ type RefundMemberTransactionRequest struct {
 	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundMemberTransactionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7864,7 +7864,7 @@ type RefundMemberTransactionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundMemberTransactionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7937,7 +7937,7 @@ type RefundRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7976,7 +7976,7 @@ type RefundResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RefundResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8048,7 +8048,7 @@ type RegisterBillRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterBillRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8103,7 +8103,7 @@ type RegisterBillResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterBillResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8148,7 +8148,7 @@ type RegisterBillSupportWithdrawRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterBillSupportWithdrawRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8203,7 +8203,7 @@ type RegisterBillSupportWithdrawResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterBillSupportWithdrawResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8248,7 +8248,7 @@ type RevResigterBillSupportWithdrawRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevResigterBillSupportWithdrawRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8302,7 +8302,7 @@ type RevResigterBillSupportWithdrawResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevResigterBillSupportWithdrawResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8332,7 +8332,7 @@ type ReviseMbrPropertyRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReviseMbrPropertyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8377,7 +8377,7 @@ type ReviseMbrPropertyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReviseMbrPropertyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8428,7 +8428,7 @@ type RevokeMemberRechargeThirdPayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeMemberRechargeThirdPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8488,7 +8488,7 @@ type RevokeMemberRechargeThirdPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeMemberRechargeThirdPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8566,7 +8566,7 @@ type RevokeRechargeByThirdPayRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeRechargeByThirdPayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8624,7 +8624,7 @@ type RevokeRechargeByThirdPayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevokeRechargeByThirdPayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8878,7 +8878,7 @@ type TransferSinglePayRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferSinglePayRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8927,7 +8927,7 @@ type TransferSinglePayResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferSinglePayResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8971,7 +8971,7 @@ type UnBindAcctRequest struct {
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnBindAcctRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9005,7 +9005,7 @@ type UnBindAcctResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnBindAcctResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9038,7 +9038,7 @@ type UnbindRelateAcctRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRelateAcctRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9088,7 +9088,7 @@ type UnbindRelateAcctResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRelateAcctResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9217,7 +9217,7 @@ type UnifiedOrderRequest struct {
 	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnifiedOrderRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9282,7 +9282,7 @@ type UnifiedOrderResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnifiedOrderResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9309,7 +9309,7 @@ type UploadTaxListRequest struct {
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadTaxListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9343,7 +9343,7 @@ type UploadTaxListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadTaxListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9367,7 +9367,7 @@ type UploadTaxPaymentRequest struct {
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadTaxPaymentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9397,7 +9397,7 @@ type UploadTaxPaymentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadTaxPaymentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9481,7 +9481,7 @@ type WithdrawCashMembershipRequest struct {
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WithdrawCashMembershipRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -9543,7 +9543,7 @@ type WithdrawCashMembershipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WithdrawCashMembershipResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

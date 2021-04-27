@@ -27,7 +27,7 @@ type BindEipAclsRequest struct {
 	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindEipAclsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -55,7 +55,7 @@ type BindEipAclsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindEipAclsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -76,7 +76,7 @@ type BindHostedRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindHostedRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -108,7 +108,7 @@ type BindHostedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindHostedResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -129,7 +129,7 @@ type BindRsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -161,7 +161,7 @@ type BindRsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindRsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -185,7 +185,7 @@ type BindVpcIpRequest struct {
 	VpcIp *string `json:"VpcIp,omitempty" name:"VpcIp"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindVpcIpRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -218,7 +218,7 @@ type BindVpcIpResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindVpcIpResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -239,7 +239,7 @@ type CreateEipAclRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEipAclRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -280,7 +280,7 @@ type CreateEipAclResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEipAclResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -316,7 +316,7 @@ type CreateEipRequest struct {
 	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEipRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -356,7 +356,7 @@ type CreateEipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEipResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -374,7 +374,7 @@ type DeleteEipAclRequest struct {
 	AclId *string `json:"AclId,omitempty" name:"AclId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEipAclRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -402,7 +402,7 @@ type DeleteEipAclResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEipAclResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -420,7 +420,7 @@ type DeleteEipRequest struct {
 	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEipRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -451,7 +451,7 @@ type DeleteEipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteEipResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -496,7 +496,7 @@ type DescribeEipAclsRequest struct {
 	AclNames []*string `json:"AclNames,omitempty" name:"AclNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipAclsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -539,7 +539,7 @@ type DescribeEipAclsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipAclsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -554,7 +554,7 @@ type DescribeEipQuotaRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipQuotaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -596,7 +596,7 @@ type DescribeEipQuotaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipQuotaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -614,7 +614,7 @@ type DescribeEipTaskRequest struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -645,7 +645,7 @@ type DescribeEipTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -705,7 +705,7 @@ type DescribeEipsRequest struct {
 	BindAcl *int64 `json:"BindAcl,omitempty" name:"BindAcl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -753,7 +753,7 @@ type DescribeEipsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEipsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -930,7 +930,7 @@ type ModifyEipAclRequest struct {
 	Rules []*EipAclRule `json:"Rules,omitempty" name:"Rules" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipAclRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -962,7 +962,7 @@ type ModifyEipAclResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipAclResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -986,7 +986,7 @@ type ModifyEipChargeRequest struct {
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipChargeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1019,7 +1019,7 @@ type ModifyEipChargeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipChargeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1040,7 +1040,7 @@ type ModifyEipNameRequest struct {
 	EipName *string `json:"EipName,omitempty" name:"EipName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1069,7 +1069,7 @@ type ModifyEipNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyEipNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1087,7 +1087,7 @@ type UnbindEipAclsRequest struct {
 	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindEipAclsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1115,7 +1115,7 @@ type UnbindEipAclsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindEipAclsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1139,7 +1139,7 @@ type UnbindHostedRequest struct {
 	Eip *string `json:"Eip,omitempty" name:"Eip"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindHostedRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1172,7 +1172,7 @@ type UnbindHostedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindHostedResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1190,7 +1190,7 @@ type UnbindRsListRequest struct {
 	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRsListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1221,7 +1221,7 @@ type UnbindRsListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRsListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1242,7 +1242,7 @@ type UnbindRsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1274,7 +1274,7 @@ type UnbindRsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindRsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1298,7 +1298,7 @@ type UnbindVpcIpRequest struct {
 	VpcIp *string `json:"VpcIp,omitempty" name:"VpcIp"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindVpcIpRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1331,7 +1331,7 @@ type UnbindVpcIpResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindVpcIpResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

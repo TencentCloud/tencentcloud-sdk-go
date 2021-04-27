@@ -27,7 +27,7 @@ type AuthTestTidRequest struct {
 	Data *string `json:"Data,omitempty" name:"Data"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AuthTestTidRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -58,7 +58,7 @@ type AuthTestTidResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AuthTestTidResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -79,7 +79,7 @@ type BurnTidNotifyRequest struct {
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BurnTidNotifyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -111,7 +111,7 @@ type BurnTidNotifyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BurnTidNotifyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type DeliverTidNotifyRequest struct {
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverTidNotifyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -170,7 +170,7 @@ type DeliverTidNotifyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverTidNotifyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -191,7 +191,7 @@ type DeliverTidsRequest struct {
 	Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverTidsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -227,7 +227,7 @@ type DeliverTidsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeliverTidsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -245,7 +245,7 @@ type DescribeAvailableLibCountRequest struct {
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAvailableLibCountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -276,7 +276,7 @@ type DescribeAvailableLibCountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAvailableLibCountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -291,7 +291,7 @@ type DescribePermissionRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePermissionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -327,7 +327,7 @@ type DescribePermissionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePermissionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -348,7 +348,7 @@ type DownloadTidsRequest struct {
 	Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadTidsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -381,7 +381,7 @@ type DownloadTidsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadTidsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -423,7 +423,7 @@ type UploadDeviceUniqueCodeRequest struct {
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadDeviceUniqueCodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -466,7 +466,7 @@ type UploadDeviceUniqueCodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadDeviceUniqueCodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -484,7 +484,7 @@ type VerifyChipBurnInfoRequest struct {
 	Data *string `json:"Data,omitempty" name:"Data"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyChipBurnInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -521,7 +521,7 @@ type VerifyChipBurnInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyChipBurnInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -196,7 +196,7 @@ type ManageMarketingRiskRequest struct {
 	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageMarketingRiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -228,7 +228,7 @@ type ManageMarketingRiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageMarketingRiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -399,7 +399,7 @@ type QueryActivityAntiRushAdvancedRequest struct {
 	BusinessSecurityData *InputActivityAntiRushAdvanced `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryActivityAntiRushAdvancedRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -430,7 +430,7 @@ type QueryActivityAntiRushAdvancedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryActivityAntiRushAdvancedResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -560,7 +560,7 @@ type QueryActivityAntiRushRequest struct {
 	CheckDevice *string `json:"CheckDevice,omitempty" name:"CheckDevice"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryActivityAntiRushRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -669,7 +669,7 @@ type QueryActivityAntiRushResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryActivityAntiRushResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

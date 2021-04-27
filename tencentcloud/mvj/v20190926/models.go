@@ -61,7 +61,7 @@ type MarketingValueJudgementRequest struct {
 	Referer *string `json:"Referer,omitempty" name:"Referer"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MarketingValueJudgementRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -97,7 +97,7 @@ type MarketingValueJudgementResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MarketingValueJudgementResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

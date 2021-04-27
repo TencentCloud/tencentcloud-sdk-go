@@ -130,7 +130,7 @@ type DescribeCaptchaAppIdInfoRequest struct {
 	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaAppIdInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -205,7 +205,7 @@ type DescribeCaptchaAppIdInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaAppIdInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -232,7 +232,7 @@ type DescribeCaptchaDataRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -274,7 +274,7 @@ type DescribeCaptchaDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -298,7 +298,7 @@ type DescribeCaptchaDataSumRequest struct {
 	End *int64 `json:"End,omitempty" name:"End"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaDataSumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -350,7 +350,7 @@ type DescribeCaptchaDataSumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaDataSumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -377,7 +377,7 @@ type DescribeCaptchaMiniDataRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -419,7 +419,7 @@ type DescribeCaptchaMiniDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -443,7 +443,7 @@ type DescribeCaptchaMiniDataSumRequest struct {
 	End *int64 `json:"End,omitempty" name:"End"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniDataSumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -509,7 +509,7 @@ type DescribeCaptchaMiniDataSumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniDataSumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -533,7 +533,7 @@ type DescribeCaptchaMiniOperDataRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -574,7 +574,7 @@ type DescribeCaptchaMiniOperDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniOperDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -616,7 +616,7 @@ type DescribeCaptchaMiniResultRequest struct {
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -667,7 +667,7 @@ type DescribeCaptchaMiniResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -715,7 +715,7 @@ type DescribeCaptchaMiniRiskResultRequest struct {
 	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniRiskResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -775,7 +775,7 @@ type DescribeCaptchaMiniRiskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaMiniRiskResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -799,7 +799,7 @@ type DescribeCaptchaOperDataRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaOperDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -840,7 +840,7 @@ type DescribeCaptchaOperDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaOperDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -888,7 +888,7 @@ type DescribeCaptchaResultRequest struct {
 	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitempty" name:"NeedGetCaptchaTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -963,7 +963,7 @@ type DescribeCaptchaResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -984,7 +984,7 @@ type DescribeCaptchaTicketDataRequest struct {
 	Start *int64 `json:"Start,omitempty" name:"Start"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1024,7 +1024,7 @@ type DescribeCaptchaTicketDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaTicketDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1039,7 +1039,7 @@ type DescribeCaptchaUserAllAppIdRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaUserAllAppIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1077,7 +1077,7 @@ type DescribeCaptchaUserAllAppIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCaptchaUserAllAppIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1216,7 +1216,7 @@ type UpdateCaptchaAppIdInfoRequest struct {
 	TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCaptchaAppIdInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1263,7 +1263,7 @@ type UpdateCaptchaAppIdInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCaptchaAppIdInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

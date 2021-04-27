@@ -51,7 +51,7 @@ type ApplyUserCertRequest struct {
 	Notes *string `json:"Notes,omitempty" name:"Notes"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyUserCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -93,7 +93,7 @@ type ApplyUserCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyUserCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -189,7 +189,7 @@ type BlockByNumberHandlerRequest struct {
 	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BlockByNumberHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -223,7 +223,7 @@ type BlockByNumberHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BlockByNumberHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type CreateChaincodeAndInstallForUserRequest struct {
 	Chaincode *string `json:"Chaincode,omitempty" name:"Chaincode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateChaincodeAndInstallForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -326,7 +326,7 @@ type CreateChaincodeAndInstallForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateChaincodeAndInstallForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -359,7 +359,7 @@ type DeployDynamicBcosContractRequest struct {
 	ConstructorParams *string `json:"ConstructorParams,omitempty" name:"ConstructorParams"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeployDynamicBcosContractRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -395,7 +395,7 @@ type DeployDynamicBcosContractResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeployDynamicBcosContractResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -431,7 +431,7 @@ type DeployDynamicContractHandlerRequest struct {
 	ConstructorParams []*string `json:"ConstructorParams,omitempty" name:"ConstructorParams" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeployDynamicContractHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -468,7 +468,7 @@ type DeployDynamicContractHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeployDynamicContractHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -501,7 +501,7 @@ type DownloadUserCertRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadUserCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DownloadUserCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DownloadUserCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -573,7 +573,7 @@ type GetBcosBlockByNumberRequest struct {
 	BlockNumber *int64 `json:"BlockNumber,omitempty" name:"BlockNumber"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosBlockByNumberRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -606,7 +606,7 @@ type GetBcosBlockByNumberResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosBlockByNumberResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -639,7 +639,7 @@ type GetBcosBlockListRequest struct {
 	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosBlockListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -678,7 +678,7 @@ type GetBcosBlockListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosBlockListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -702,7 +702,7 @@ type GetBcosTransByHashRequest struct {
 	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosTransByHashRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -735,7 +735,7 @@ type GetBcosTransByHashResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosTransByHashResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -768,7 +768,7 @@ type GetBcosTransListRequest struct {
 	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosTransListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -807,7 +807,7 @@ type GetBcosTransListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBcosTransListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -840,7 +840,7 @@ type GetBlockListHandlerRequest struct {
 	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockListHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -882,7 +882,7 @@ type GetBlockListHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockListHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -924,7 +924,7 @@ type GetBlockListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -966,7 +966,7 @@ type GetBlockListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1005,7 +1005,7 @@ type GetBlockTransactionListForUserRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockTransactionListForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1046,7 +1046,7 @@ type GetBlockTransactionListForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetBlockTransactionListForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1088,7 +1088,7 @@ type GetChaincodeCompileLogForUserRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeCompileLogForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1130,7 +1130,7 @@ type GetChaincodeCompileLogForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeCompileLogForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1169,7 +1169,7 @@ type GetChaincodeInitializeResultForUserRequest struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeInitializeResultForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1210,7 +1210,7 @@ type GetChaincodeInitializeResultForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeInitializeResultForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1252,7 +1252,7 @@ type GetChaincodeLogForUserRequest struct {
 	RowNum *int64 `json:"RowNum,omitempty" name:"RowNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeLogForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1294,7 +1294,7 @@ type GetChaincodeLogForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChaincodeLogForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1327,7 +1327,7 @@ type GetChannelListForUserRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChannelListForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1366,7 +1366,7 @@ type GetChannelListForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetChannelListForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1393,7 +1393,7 @@ type GetClusterListForUserRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetClusterListForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1430,7 +1430,7 @@ type GetClusterListForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetClusterListForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1460,7 +1460,7 @@ type GetClusterSummaryRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetClusterSummaryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1537,7 +1537,7 @@ type GetClusterSummaryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetClusterSummaryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1576,7 +1576,7 @@ type GetInvokeTxRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetInvokeTxRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1620,7 +1620,7 @@ type GetInvokeTxResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetInvokeTxResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1665,7 +1665,7 @@ type GetLatesdTransactionListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLatesdTransactionListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1708,7 +1708,7 @@ type GetLatesdTransactionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetLatesdTransactionListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1744,7 +1744,7 @@ type GetPeerLogForUserRequest struct {
 	RowNum *int64 `json:"RowNum,omitempty" name:"RowNum"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPeerLogForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1784,7 +1784,7 @@ type GetPeerLogForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPeerLogForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1811,7 +1811,7 @@ type GetTransByHashHandlerRequest struct {
 	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransByHashHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1845,7 +1845,7 @@ type GetTransByHashHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransByHashHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1878,7 +1878,7 @@ type GetTransListHandlerRequest struct {
 	TransHash *string `json:"TransHash,omitempty" name:"TransHash"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransListHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1920,7 +1920,7 @@ type GetTransListHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransListHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1956,7 +1956,7 @@ type GetTransactionDetailForUserRequest struct {
 	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransactionDetailForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2029,7 +2029,7 @@ type GetTransactionDetailForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetTransactionDetailForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2080,7 +2080,7 @@ type InitializeChaincodeForUserRequest struct {
 	Args []*string `json:"Args,omitempty" name:"Args" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InitializeChaincodeForUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2119,7 +2119,7 @@ type InitializeChaincodeForUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InitializeChaincodeForUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2155,7 +2155,7 @@ type InvokeBcosTransRequest struct {
 	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeBcosTransRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2192,7 +2192,7 @@ type InvokeBcosTransResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeBcosTransResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2237,7 +2237,7 @@ type InvokeRequest struct {
 	AsyncFlag *uint64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2280,7 +2280,7 @@ type InvokeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InvokeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2346,7 +2346,7 @@ type QueryRequest struct {
 	Args []*string `json:"Args,omitempty" name:"Args" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2385,7 +2385,7 @@ type QueryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2418,7 +2418,7 @@ type SendTransactionHandlerRequest struct {
 	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTransactionHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2454,7 +2454,7 @@ type SendTransactionHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTransactionHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2478,7 +2478,7 @@ type SrvInvokeRequest struct {
 	Param *string `json:"Param,omitempty" name:"Param"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SrvInvokeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2517,7 +2517,7 @@ type SrvInvokeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SrvInvokeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2556,7 +2556,7 @@ type TransByDynamicContractHandlerRequest struct {
 	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransByDynamicContractHandlerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2594,7 +2594,7 @@ type TransByDynamicContractHandlerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransByDynamicContractHandlerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

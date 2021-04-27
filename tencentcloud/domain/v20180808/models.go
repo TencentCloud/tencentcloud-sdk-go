@@ -35,7 +35,7 @@ type BatchModifyDomainInfoRequest struct {
 	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchModifyDomainInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -68,7 +68,7 @@ type BatchModifyDomainInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BatchModifyDomainInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -138,7 +138,7 @@ type CheckBatchStatusRequest struct {
 	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckBatchStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -169,7 +169,7 @@ type CheckBatchStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckBatchStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -190,7 +190,7 @@ type CheckDomainRequest struct {
 	Period *string `json:"Period,omitempty" name:"Period"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type CheckDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -348,7 +348,7 @@ type CreateDomainBatchRequest struct {
 	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -385,7 +385,7 @@ type CreateDomainBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDomainBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -406,7 +406,7 @@ type CreateTemplateRequest struct {
 	CertificateInfo *CertificateInfo `json:"CertificateInfo,omitempty" name:"CertificateInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -438,7 +438,7 @@ type CreateTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -456,7 +456,7 @@ type DeleteTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -484,7 +484,7 @@ type DeleteTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -508,7 +508,7 @@ type DescribeBatchOperationLogDetailsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBatchOperationLogDetailsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -545,7 +545,7 @@ type DescribeBatchOperationLogDetailsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBatchOperationLogDetailsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -566,7 +566,7 @@ type DescribeBatchOperationLogsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBatchOperationLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -602,7 +602,7 @@ type DescribeBatchOperationLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBatchOperationLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -620,7 +620,7 @@ type DescribeDomainBaseInfoRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainBaseInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -655,7 +655,7 @@ type DescribeDomainBaseInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainBaseInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -676,7 +676,7 @@ type DescribeDomainNameListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainNameListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -712,7 +712,7 @@ type DescribeDomainNameListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainNameListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -736,7 +736,7 @@ type DescribeDomainPriceListRequest struct {
 	Operation []*string `json:"Operation,omitempty" name:"Operation" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainPriceListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -769,7 +769,7 @@ type DescribeDomainPriceListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDomainPriceListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -796,7 +796,7 @@ type DescribeTemplateListRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTemplateListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -833,7 +833,7 @@ type DescribeTemplateListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTemplateListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -851,7 +851,7 @@ type DescribeTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -882,7 +882,7 @@ type DescribeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1077,7 +1077,7 @@ type ModifyDomainDNSBatchRequest struct {
 	Dns []*string `json:"Dns,omitempty" name:"Dns" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainDNSBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1109,7 +1109,7 @@ type ModifyDomainDNSBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainDNSBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1130,7 +1130,7 @@ type ModifyDomainOwnerBatchRequest struct {
 	NewOwnerUin *string `json:"NewOwnerUin,omitempty" name:"NewOwnerUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainOwnerBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1162,7 +1162,7 @@ type ModifyDomainOwnerBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDomainOwnerBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1210,7 +1210,7 @@ type RenewDomainBatchRequest struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewDomainBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1244,7 +1244,7 @@ type RenewDomainBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewDomainBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1268,7 +1268,7 @@ type SetDomainAutoRenewRequest struct {
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetDomainAutoRenewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1297,7 +1297,7 @@ type SetDomainAutoRenewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetDomainAutoRenewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1370,7 +1370,7 @@ type TransferInDomainBatchRequest struct {
 	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferInDomainBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1406,7 +1406,7 @@ type TransferInDomainBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferInDomainBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1429,7 +1429,7 @@ type TransferProhibitionBatchRequest struct {
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferProhibitionBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1461,7 +1461,7 @@ type TransferProhibitionBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransferProhibitionBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1484,7 +1484,7 @@ type UpdateProhibitionBatchRequest struct {
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateProhibitionBatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1516,7 +1516,7 @@ type UpdateProhibitionBatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateProhibitionBatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1534,7 +1534,7 @@ type UploadImageRequest struct {
 	ImageFile *string `json:"ImageFile,omitempty" name:"ImageFile"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1565,7 +1565,7 @@ type UploadImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

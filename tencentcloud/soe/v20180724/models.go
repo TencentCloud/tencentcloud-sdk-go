@@ -60,7 +60,7 @@ type InitOralProcessRequest struct {
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InitOralProcessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -102,7 +102,7 @@ type InitOralProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InitOralProcessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -162,7 +162,7 @@ type KeywordEvaluateRequest struct {
 	IsQuery *uint64 `json:"IsQuery,omitempty" name:"IsQuery"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *KeywordEvaluateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type KeywordEvaluateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *KeywordEvaluateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -316,7 +316,7 @@ type TransmitOralProcessRequest struct {
 	IsQuery *int64 `json:"IsQuery,omitempty" name:"IsQuery"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransmitOralProcessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -379,7 +379,7 @@ type TransmitOralProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransmitOralProcessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -445,7 +445,7 @@ type TransmitOralProcessWithInitRequest struct {
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -516,7 +516,7 @@ type TransmitOralProcessWithInitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TransmitOralProcessWithInitResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

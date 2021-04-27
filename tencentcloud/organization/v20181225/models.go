@@ -27,7 +27,7 @@ type AcceptOrganizationInvitationRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AcceptOrganizationInvitationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -55,7 +55,7 @@ type AcceptOrganizationInvitationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AcceptOrganizationInvitationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -76,7 +76,7 @@ type AddOrganizationNodeRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddOrganizationNodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -108,7 +108,7 @@ type AddOrganizationNodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddOrganizationNodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -126,7 +126,7 @@ type CancelOrganizationInvitationRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelOrganizationInvitationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -154,7 +154,7 @@ type CancelOrganizationInvitationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelOrganizationInvitationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -172,7 +172,7 @@ type CreateOrganizationRequest struct {
 	OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrganizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type CreateOrganizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateOrganizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -233,7 +233,7 @@ type DeleteOrganizationMemberFromNodeRequest struct {
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationMemberFromNodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type DeleteOrganizationMemberFromNodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationMemberFromNodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -280,7 +280,7 @@ type DeleteOrganizationMembersRequest struct {
 	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationMembersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -308,7 +308,7 @@ type DeleteOrganizationMembersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationMembersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -326,7 +326,7 @@ type DeleteOrganizationNodesRequest struct {
 	NodeIds []*uint64 `json:"NodeIds,omitempty" name:"NodeIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationNodesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -354,7 +354,7 @@ type DeleteOrganizationNodesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationNodesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -369,7 +369,7 @@ type DeleteOrganizationRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -396,7 +396,7 @@ type DeleteOrganizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteOrganizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -414,7 +414,7 @@ type DenyOrganizationInvitationRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DenyOrganizationInvitationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -442,7 +442,7 @@ type DenyOrganizationInvitationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DenyOrganizationInvitationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -460,7 +460,7 @@ type GetOrganizationMemberRequest struct {
 	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOrganizationMemberRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -509,7 +509,7 @@ type GetOrganizationMemberResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOrganizationMemberResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -524,7 +524,7 @@ type GetOrganizationRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOrganizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -569,7 +569,7 @@ type GetOrganizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetOrganizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -593,7 +593,7 @@ type ListOrganizationInvitationsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationInvitationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -629,7 +629,7 @@ type ListOrganizationInvitationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationInvitationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -650,7 +650,7 @@ type ListOrganizationMembersRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationMembersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -685,7 +685,7 @@ type ListOrganizationMembersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationMembersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -709,7 +709,7 @@ type ListOrganizationNodeMembersRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationNodeMembersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -745,7 +745,7 @@ type ListOrganizationNodeMembersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationNodeMembersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -760,7 +760,7 @@ type ListOrganizationNodesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationNodesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -790,7 +790,7 @@ type ListOrganizationNodesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListOrganizationNodesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -811,7 +811,7 @@ type MoveOrganizationMembersToNodeRequest struct {
 	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveOrganizationMembersToNodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -840,7 +840,7 @@ type MoveOrganizationMembersToNodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *MoveOrganizationMembersToNodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -924,7 +924,7 @@ type QuitOrganizationRequest struct {
 	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuitOrganizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -952,7 +952,7 @@ type QuitOrganizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QuitOrganizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -976,7 +976,7 @@ type SendOrganizationInvitationRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendOrganizationInvitationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1006,7 +1006,7 @@ type SendOrganizationInvitationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendOrganizationInvitationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1030,7 +1030,7 @@ type UpdateOrganizationMemberRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateOrganizationMemberRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1060,7 +1060,7 @@ type UpdateOrganizationMemberResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateOrganizationMemberResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1084,7 +1084,7 @@ type UpdateOrganizationNodeRequest struct {
 	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateOrganizationNodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1114,7 +1114,7 @@ type UpdateOrganizationNodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateOrganizationNodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

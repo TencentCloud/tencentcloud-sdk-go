@@ -109,7 +109,7 @@ type DescribeBRIRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBRIRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -141,7 +141,7 @@ type DescribeBRIResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBRIResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

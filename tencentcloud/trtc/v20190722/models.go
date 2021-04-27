@@ -73,7 +73,7 @@ type CreatePictureRequest struct {
 	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -110,7 +110,7 @@ type CreatePictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -157,7 +157,7 @@ type CreateTroubleInfoRequest struct {
 	TroubleMsg *string `json:"TroubleMsg,omitempty" name:"TroubleMsg"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTroubleInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -192,7 +192,7 @@ type CreateTroubleInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTroubleInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -213,7 +213,7 @@ type DeletePictureRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type DeletePictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -269,7 +269,7 @@ type DescribeAbnormalEventRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAbnormalEventRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -306,7 +306,7 @@ type DescribeAbnormalEventResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAbnormalEventResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -358,7 +358,7 @@ type DescribeCallDetailRequest struct {
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -404,7 +404,7 @@ type DescribeCallDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type DescribeDetailEventRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDetailEventRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -469,7 +469,7 @@ type DescribeDetailEventResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDetailEventResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -493,7 +493,7 @@ type DescribeHistoryScaleRequest struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHistoryScaleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -530,7 +530,7 @@ type DescribeHistoryScaleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHistoryScaleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -557,7 +557,7 @@ type DescribePictureRequest struct {
 	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -594,7 +594,7 @@ type DescribePictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -623,7 +623,7 @@ type DescribeRealtimeNetworkRequest struct {
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeNetworkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -657,7 +657,7 @@ type DescribeRealtimeNetworkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeNetworkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -688,7 +688,7 @@ type DescribeRealtimeQualityRequest struct {
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeQualityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -722,7 +722,7 @@ type DescribeRealtimeQualityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeQualityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -751,7 +751,7 @@ type DescribeRealtimeScaleRequest struct {
 	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeScaleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -785,7 +785,7 @@ type DescribeRealtimeScaleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRealtimeScaleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -810,7 +810,7 @@ type DescribeRecordStatisticRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRecordStatisticRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -843,7 +843,7 @@ type DescribeRecordStatisticResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRecordStatisticResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -876,7 +876,7 @@ type DescribeRoomInformationRequest struct {
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomInformationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -915,7 +915,7 @@ type DescribeRoomInformationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRoomInformationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -940,7 +940,7 @@ type DescribeTrtcInteractiveTimeRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrtcInteractiveTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -973,7 +973,7 @@ type DescribeTrtcInteractiveTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrtcInteractiveTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -998,7 +998,7 @@ type DescribeTrtcMcuTranscodeTimeRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrtcMcuTranscodeTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1031,7 +1031,7 @@ type DescribeTrtcMcuTranscodeTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrtcMcuTranscodeTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1067,7 +1067,7 @@ type DescribeUserInformationRequest struct {
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserInformationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1108,7 +1108,7 @@ type DescribeUserInformationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserInformationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1129,7 +1129,7 @@ type DismissRoomByStrRoomIdRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomByStrRoomIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1158,7 +1158,7 @@ type DismissRoomByStrRoomIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomByStrRoomIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1179,7 +1179,7 @@ type DismissRoomRequest struct {
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1208,7 +1208,7 @@ type DismissRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DismissRoomResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1345,7 +1345,7 @@ type ModifyPictureRequest struct {
 	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1378,7 +1378,7 @@ type ModifyPictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1548,7 +1548,7 @@ type RemoveUserByStrRoomIdRequest struct {
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveUserByStrRoomIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1578,7 +1578,7 @@ type RemoveUserByStrRoomIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveUserByStrRoomIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1602,7 +1602,7 @@ type RemoveUserRequest struct {
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1632,7 +1632,7 @@ type RemoveUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RemoveUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1774,7 +1774,7 @@ type StartMCUMixTranscodeByStrRoomIdRequest struct {
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMCUMixTranscodeByStrRoomIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1807,7 +1807,7 @@ type StartMCUMixTranscodeByStrRoomIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1840,7 +1840,7 @@ type StartMCUMixTranscodeRequest struct {
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMCUMixTranscodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1873,7 +1873,7 @@ type StartMCUMixTranscodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMCUMixTranscodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1894,7 +1894,7 @@ type StopMCUMixTranscodeByStrRoomIdRequest struct {
 	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMCUMixTranscodeByStrRoomIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1923,7 +1923,7 @@ type StopMCUMixTranscodeByStrRoomIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1944,7 +1944,7 @@ type StopMCUMixTranscodeRequest struct {
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMCUMixTranscodeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1973,7 +1973,7 @@ type StopMCUMixTranscodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMCUMixTranscodeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

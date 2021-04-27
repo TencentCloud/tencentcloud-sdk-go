@@ -66,7 +66,7 @@ type CreateJobRequest struct {
 	RuntimeConf []*string `json:"RuntimeConf,omitempty" name:"RuntimeConf" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -110,7 +110,7 @@ type CreateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -152,7 +152,7 @@ type CreateModelRequest struct {
 	RuntimeConf []*string `json:"RuntimeConf,omitempty" name:"RuntimeConf" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -191,7 +191,7 @@ type CreateModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type DeleteJobRequest struct {
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -241,7 +241,7 @@ type DeleteJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -265,7 +265,7 @@ type DeleteModelRequest struct {
 	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -295,7 +295,7 @@ type DeleteModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -316,7 +316,7 @@ type DescribeJobRequest struct {
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -348,7 +348,7 @@ type DescribeJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -372,7 +372,7 @@ type DescribeModelRequest struct {
 	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -405,7 +405,7 @@ type DescribeModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -429,7 +429,7 @@ type InstallAgentRequest struct {
 	Update *bool `json:"Update,omitempty" name:"Update"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InstallAgentRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -462,7 +462,7 @@ type InstallAgentResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InstallAgentResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -558,7 +558,7 @@ type ListJobsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListJobsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -591,7 +591,7 @@ type ListJobsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListJobsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -618,7 +618,7 @@ type ListModelsRequest struct {
 	ServType *string `json:"ServType,omitempty" name:"ServType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListModelsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -652,7 +652,7 @@ type ListModelsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ListModelsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -757,7 +757,7 @@ type QueryLogsRequest struct {
 	Context *string `json:"Context,omitempty" name:"Context"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -799,7 +799,7 @@ type QueryLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

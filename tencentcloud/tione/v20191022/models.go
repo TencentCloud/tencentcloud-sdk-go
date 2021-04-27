@@ -113,7 +113,7 @@ type CreateCodeRepositoryRequest struct {
 	GitSecret *GitSecret `json:"GitSecret,omitempty" name:"GitSecret"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCodeRepositoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -146,7 +146,7 @@ type CreateCodeRepositoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCodeRepositoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -216,7 +216,7 @@ type CreateNotebookInstanceRequest struct {
 	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -259,7 +259,7 @@ type CreateNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -285,7 +285,7 @@ type CreateNotebookLifecycleScriptRequest struct {
 	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotebookLifecycleScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -318,7 +318,7 @@ type CreateNotebookLifecycleScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateNotebookLifecycleScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -340,7 +340,7 @@ type CreatePresignedNotebookInstanceUrlRequest struct {
 	SessionExpirationDurationInSeconds *int64 `json:"SessionExpirationDurationInSeconds,omitempty" name:"SessionExpirationDurationInSeconds"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePresignedNotebookInstanceUrlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -372,7 +372,7 @@ type CreatePresignedNotebookInstanceUrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePresignedNotebookInstanceUrlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -421,7 +421,7 @@ type CreateTrainingJobRequest struct {
 	RetryWhenResourceInsufficient *string `json:"RetryWhenResourceInsufficient,omitempty" name:"RetryWhenResourceInsufficient"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTrainingJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -462,7 +462,7 @@ type CreateTrainingJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTrainingJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -491,7 +491,7 @@ type DeleteCodeRepositoryRequest struct {
 	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCodeRepositoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -522,7 +522,7 @@ type DeleteCodeRepositoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCodeRepositoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DeleteNotebookInstanceRequest struct {
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -568,7 +568,7 @@ type DeleteNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -589,7 +589,7 @@ type DeleteNotebookLifecycleScriptRequest struct {
 	Forcible *bool `json:"Forcible,omitempty" name:"Forcible"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotebookLifecycleScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -618,7 +618,7 @@ type DeleteNotebookLifecycleScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteNotebookLifecycleScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -649,7 +649,7 @@ type DescribeCodeRepositoriesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCodeRepositoriesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type DescribeCodeRepositoriesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCodeRepositoriesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -705,7 +705,7 @@ type DescribeCodeRepositoryRequest struct {
 	CodeRepositoryName *string `json:"CodeRepositoryName,omitempty" name:"CodeRepositoryName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCodeRepositoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -748,7 +748,7 @@ type DescribeCodeRepositoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCodeRepositoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -767,7 +767,7 @@ type DescribeNotebookInstanceRequest struct {
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -886,7 +886,7 @@ type DescribeNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -926,7 +926,7 @@ type DescribeNotebookInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -964,7 +964,7 @@ type DescribeNotebookInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -982,7 +982,7 @@ type DescribeNotebookLifecycleScriptRequest struct {
 	NotebookLifecycleScriptsName *string `json:"NotebookLifecycleScriptsName,omitempty" name:"NotebookLifecycleScriptsName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookLifecycleScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1027,7 +1027,7 @@ type DescribeNotebookLifecycleScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookLifecycleScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1058,7 +1058,7 @@ type DescribeNotebookLifecycleScriptsRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookLifecycleScriptsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1095,7 +1095,7 @@ type DescribeNotebookLifecycleScriptsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookLifecycleScriptsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1110,7 +1110,7 @@ type DescribeNotebookSummaryRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookSummaryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1149,7 +1149,7 @@ type DescribeNotebookSummaryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNotebookSummaryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1167,7 +1167,7 @@ type DescribeTrainingJobRequest struct {
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrainingJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1276,7 +1276,7 @@ type DescribeTrainingJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrainingJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1314,7 +1314,7 @@ type DescribeTrainingJobsRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrainingJobsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1354,7 +1354,7 @@ type DescribeTrainingJobsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrainingJobsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1585,7 +1585,7 @@ type StartNotebookInstanceRequest struct {
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1615,7 +1615,7 @@ type StartNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1633,7 +1633,7 @@ type StopNotebookInstanceRequest struct {
 	NotebookInstanceName *string `json:"NotebookInstanceName,omitempty" name:"NotebookInstanceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1661,7 +1661,7 @@ type StopNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1679,7 +1679,7 @@ type StopTrainingJobRequest struct {
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopTrainingJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1707,7 +1707,7 @@ type StopTrainingJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopTrainingJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1775,7 +1775,7 @@ type UpdateCodeRepositoryRequest struct {
 	GitSecret *GitSecret `json:"GitSecret,omitempty" name:"GitSecret"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCodeRepositoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1807,7 +1807,7 @@ type UpdateCodeRepositoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCodeRepositoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1875,7 +1875,7 @@ type UpdateNotebookInstanceRequest struct {
 	ClsConfig *ClsConfig `json:"ClsConfig,omitempty" name:"ClsConfig"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateNotebookInstanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1917,7 +1917,7 @@ type UpdateNotebookInstanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateNotebookInstanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1943,7 +1943,7 @@ type UpdateNotebookLifecycleScriptRequest struct {
 	StartScript *string `json:"StartScript,omitempty" name:"StartScript"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateNotebookLifecycleScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1973,7 +1973,7 @@ type UpdateNotebookLifecycleScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateNotebookLifecycleScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

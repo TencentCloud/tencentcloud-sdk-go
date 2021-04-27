@@ -27,7 +27,7 @@ type ClearQueueRequest struct {
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -55,7 +55,7 @@ type ClearQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -76,7 +76,7 @@ type ClearSubscriptionFilterTagsRequest struct {
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearSubscriptionFilterTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -105,7 +105,7 @@ type ClearSubscriptionFilterTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearSubscriptionFilterTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -165,7 +165,7 @@ type CreateQueueRequest struct {
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -210,7 +210,7 @@ type CreateQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -249,7 +249,7 @@ type CreateSubscribeRequest struct {
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -287,7 +287,7 @@ type CreateSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -317,7 +317,7 @@ type CreateTopicRequest struct {
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTopicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -352,7 +352,7 @@ type CreateTopicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTopicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -404,7 +404,7 @@ type DeleteQueueRequest struct {
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -432,7 +432,7 @@ type DeleteQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -453,7 +453,7 @@ type DeleteSubscribeRequest struct {
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -482,7 +482,7 @@ type DeleteSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -500,7 +500,7 @@ type DeleteTopicRequest struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTopicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -528,7 +528,7 @@ type DeleteTopicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTopicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -555,7 +555,7 @@ type DescribeDeadLetterSourceQueuesRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeadLetterSourceQueuesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -592,7 +592,7 @@ type DescribeDeadLetterSourceQueuesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeadLetterSourceQueuesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -622,7 +622,7 @@ type DescribeQueueDetailRequest struct {
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQueueDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -660,7 +660,7 @@ type DescribeQueueDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeQueueDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type DescribeSubscriptionDetailRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscriptionDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -725,7 +725,7 @@ type DescribeSubscriptionDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscriptionDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -755,7 +755,7 @@ type DescribeTopicDetailRequest struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopicDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -793,7 +793,7 @@ type DescribeTopicDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopicDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -859,7 +859,7 @@ type ModifyQueueAttributeRequest struct {
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyQueueAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -900,7 +900,7 @@ type ModifyQueueAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyQueueAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -935,7 +935,7 @@ type ModifySubscriptionAttributeRequest struct {
 	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscriptionAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -968,7 +968,7 @@ type ModifySubscriptionAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscriptionAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -995,7 +995,7 @@ type ModifyTopicAttributeRequest struct {
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTopicAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1026,7 +1026,7 @@ type ModifyTopicAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTopicAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1148,7 +1148,7 @@ type RewindQueueRequest struct {
 	StartConsumeTime *uint64 `json:"StartConsumeTime,omitempty" name:"StartConsumeTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RewindQueueRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1177,7 +1177,7 @@ type RewindQueueResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RewindQueueResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1325,7 +1325,7 @@ type UnbindDeadLetterRequest struct {
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindDeadLetterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1353,7 +1353,7 @@ type UnbindDeadLetterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindDeadLetterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

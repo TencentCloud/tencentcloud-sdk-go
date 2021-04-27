@@ -70,7 +70,7 @@ type CreateDatabaseRequest struct {
 	DatabaseInfo *DatabaseInfo `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDatabaseRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -101,7 +101,7 @@ type CreateDatabaseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDatabaseResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -128,7 +128,7 @@ type CreateScriptRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -159,7 +159,7 @@ type CreateScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -177,7 +177,7 @@ type CreateTableRequest struct {
 	TableInfo *TableInfo `json:"TableInfo,omitempty" name:"TableInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTableRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -208,7 +208,7 @@ type CreateTableResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTableResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -229,7 +229,7 @@ type CreateTaskRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type CreateTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -343,7 +343,7 @@ type DeleteScriptRequest struct {
 	ScriptIds []*string `json:"ScriptIds,omitempty" name:"ScriptIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScriptRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -374,7 +374,7 @@ type DeleteScriptResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteScriptResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -398,7 +398,7 @@ type DescribeDatabasesRequest struct {
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDatabasesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type DescribeDatabasesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDatabasesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -466,7 +466,7 @@ type DescribeScriptsRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScriptsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -505,7 +505,7 @@ type DescribeScriptsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScriptsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -526,7 +526,7 @@ type DescribeTableRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -558,7 +558,7 @@ type DescribeTableResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -587,7 +587,7 @@ type DescribeTablesRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -624,7 +624,7 @@ type DescribeTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -663,7 +663,7 @@ type DescribeTasksRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -703,7 +703,7 @@ type DescribeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -732,7 +732,7 @@ type DescribeViewsRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeViewsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -769,7 +769,7 @@ type DescribeViewsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeViewsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -114,7 +114,7 @@ type CreateCfsFileSystemRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -176,7 +176,7 @@ type CreateCfsFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -197,7 +197,7 @@ type CreateCfsPGroupRequest struct {
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsPGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -241,7 +241,7 @@ type CreateCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsPGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type CreateCfsRuleRequest struct {
 	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type CreateCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCfsRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -339,7 +339,7 @@ type DeleteCfsFileSystemRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsFileSystemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -367,7 +367,7 @@ type DeleteCfsFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsFileSystemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -385,7 +385,7 @@ type DeleteCfsPGroupRequest struct {
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsPGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -419,7 +419,7 @@ type DeleteCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsPGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -440,7 +440,7 @@ type DeleteCfsRuleRequest struct {
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -475,7 +475,7 @@ type DeleteCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCfsRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -496,7 +496,7 @@ type DeleteMountTargetRequest struct {
 	MountTargetId *string `json:"MountTargetId,omitempty" name:"MountTargetId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMountTargetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -525,7 +525,7 @@ type DeleteMountTargetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMountTargetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DescribeAvailableZoneInfoRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAvailableZoneInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -570,7 +570,7 @@ type DescribeAvailableZoneInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAvailableZoneInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -588,7 +588,7 @@ type DescribeCfsFileSystemClientsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsFileSystemClientsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -619,7 +619,7 @@ type DescribeCfsFileSystemClientsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsFileSystemClientsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -643,7 +643,7 @@ type DescribeCfsFileSystemsRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -679,7 +679,7 @@ type DescribeCfsFileSystemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsFileSystemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -694,7 +694,7 @@ type DescribeCfsPGroupsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsPGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -724,7 +724,7 @@ type DescribeCfsPGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsPGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -742,7 +742,7 @@ type DescribeCfsRulesRequest struct {
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -773,7 +773,7 @@ type DescribeCfsRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -788,7 +788,7 @@ type DescribeCfsServiceStatusRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsServiceStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -818,7 +818,7 @@ type DescribeCfsServiceStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfsServiceStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -836,7 +836,7 @@ type DescribeMountTargetsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountTargetsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -870,7 +870,7 @@ type DescribeMountTargetsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMountTargetsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1041,7 +1041,7 @@ type SignUpCfsServiceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignUpCfsServiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1071,7 +1071,7 @@ type SignUpCfsServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SignUpCfsServiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1101,7 +1101,7 @@ type UpdateCfsFileSystemNameRequest struct {
 	FsName *string `json:"FsName,omitempty" name:"FsName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1139,7 +1139,7 @@ type UpdateCfsFileSystemNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1160,7 +1160,7 @@ type UpdateCfsFileSystemPGroupRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemPGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1195,7 +1195,7 @@ type UpdateCfsFileSystemPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemPGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1216,7 +1216,7 @@ type UpdateCfsFileSystemSizeLimitRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemSizeLimitRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1245,7 +1245,7 @@ type UpdateCfsFileSystemSizeLimitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsFileSystemSizeLimitResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1269,7 +1269,7 @@ type UpdateCfsPGroupRequest struct {
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsPGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1308,7 +1308,7 @@ type UpdateCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsPGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1341,7 +1341,7 @@ type UpdateCfsRuleRequest struct {
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1392,7 +1392,7 @@ type UpdateCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateCfsRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

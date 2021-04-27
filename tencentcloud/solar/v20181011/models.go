@@ -61,7 +61,7 @@ type CheckStaffChUserRequest struct {
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckStaffChUserRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -90,7 +90,7 @@ type CheckStaffChUserResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckStaffChUserResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -114,7 +114,7 @@ type CopyActivityChannelRequest struct {
 	ChannelTo []*string `json:"ChannelTo,omitempty" name:"ChannelTo" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CopyActivityChannelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -144,7 +144,7 @@ type CopyActivityChannelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CopyActivityChannelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -174,7 +174,7 @@ type CreateProjectRequest struct {
 	ProjectOrgId *string `json:"ProjectOrgId,omitempty" name:"ProjectOrgId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -209,7 +209,7 @@ type CreateProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -230,7 +230,7 @@ type CreateSubProjectRequest struct {
 	SubProjectName *string `json:"SubProjectName,omitempty" name:"SubProjectName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type CreateSubProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -362,7 +362,7 @@ type DeleteProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -390,7 +390,7 @@ type DeleteProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -408,7 +408,7 @@ type DescribeCustomerRequest struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomerRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -552,7 +552,7 @@ type DescribeCustomerResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomerResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -606,7 +606,7 @@ type DescribeCustomersRequest struct {
 	SubProjectId *string `json:"SubProjectId,omitempty" name:"SubProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -653,7 +653,7 @@ type DescribeCustomersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -671,7 +671,7 @@ type DescribeProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -724,7 +724,7 @@ type DescribeProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -742,7 +742,7 @@ type DescribeProjectStockRequest struct {
 	SubProjectId *string `json:"SubProjectId,omitempty" name:"SubProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectStockRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -773,7 +773,7 @@ type DescribeProjectStockResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectStockResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -803,7 +803,7 @@ type DescribeProjectsRequest struct {
 	ProjectStatus *int64 `json:"ProjectStatus,omitempty" name:"ProjectStatus"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -841,7 +841,7 @@ type DescribeProjectsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProjectsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -859,7 +859,7 @@ type DescribeResourceTemplateHeadersRequest struct {
 	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTemplateHeadersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -894,7 +894,7 @@ type DescribeResourceTemplateHeadersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeResourceTemplateHeadersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -912,7 +912,7 @@ type DescribeSubProjectRequest struct {
 	SubProjectId *string `json:"SubProjectId,omitempty" name:"SubProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -976,7 +976,7 @@ type DescribeSubProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -994,7 +994,7 @@ type ExpireFlowRequest struct {
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExpireFlowRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1022,7 +1022,7 @@ type ExpireFlowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExpireFlowResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1067,7 +1067,7 @@ type ModifyProjectRequest struct {
 	ProjectOrgId *string `json:"ProjectOrgId,omitempty" name:"ProjectOrgId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1100,7 +1100,7 @@ type ModifyProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1118,7 +1118,7 @@ type OffLineProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OffLineProjectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1146,7 +1146,7 @@ type OffLineProjectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OffLineProjectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1259,7 +1259,7 @@ type ReplenishProjectStockRequest struct {
 	PoolName *string `json:"PoolName,omitempty" name:"PoolName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReplenishProjectStockRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1291,7 +1291,7 @@ type ReplenishProjectStockResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReplenishProjectStockResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1364,7 +1364,7 @@ type SendWxTouchTaskRequest struct {
 	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendWxTouchTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1403,7 +1403,7 @@ type SendWxTouchTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendWxTouchTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

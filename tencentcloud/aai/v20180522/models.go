@@ -33,7 +33,7 @@ type ChatRequest struct {
 	User *string `json:"User,omitempty" name:"User"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -66,7 +66,7 @@ type ChatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -108,7 +108,7 @@ type SentenceRecognitionRequest struct {
 	DataLen *int64 `json:"DataLen,omitempty" name:"DataLen"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceRecognitionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -147,7 +147,7 @@ type SentenceRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceRecognitionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -198,7 +198,7 @@ type SimultaneousInterpretingRequest struct {
 	Seq *uint64 `json:"Seq,omitempty" name:"Seq"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimultaneousInterpretingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -243,7 +243,7 @@ type SimultaneousInterpretingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimultaneousInterpretingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type TextToVoiceRequest struct {
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextToVoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -333,7 +333,7 @@ type TextToVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextToVoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

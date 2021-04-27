@@ -51,7 +51,7 @@ type AddCustomRuleRequest struct {
 	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddCustomRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -94,7 +94,7 @@ type AddCustomRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddCustomRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -136,7 +136,7 @@ type CreateAttackDownloadTaskRequest struct {
 	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAttackDownloadTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -175,7 +175,7 @@ type CreateAttackDownloadTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAttackDownloadTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -193,7 +193,7 @@ type DeleteAttackDownloadRecordRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAttackDownloadRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -221,7 +221,7 @@ type DeleteAttackDownloadRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAttackDownloadRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -239,7 +239,7 @@ type DeleteDownloadRecordRequest struct {
 	Flow *string `json:"Flow,omitempty" name:"Flow"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDownloadRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -267,7 +267,7 @@ type DeleteDownloadRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDownloadRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type DeleteSessionRequest struct {
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSessionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type DeleteSessionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSessionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -360,7 +360,7 @@ type DescribeCustomRulesRequest struct {
 	Search *string `json:"Search,omitempty" name:"Search"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -398,7 +398,7 @@ type DescribeCustomRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCustomRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -446,7 +446,7 @@ type DescribeUserClbWafRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserClbWafRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -477,7 +477,7 @@ type DescribeUserClbWafRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserClbWafRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -504,7 +504,7 @@ type ModifyCustomRuleStatusRequest struct {
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomRuleStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -538,7 +538,7 @@ type ModifyCustomRuleStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyCustomRuleStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

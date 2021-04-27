@@ -36,7 +36,7 @@ type DescribeMaterialListRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMaterialListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -73,7 +73,7 @@ type DescribeMaterialListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMaterialListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -106,7 +106,7 @@ type FaceFusionLiteRequest struct {
 	Engine *string `json:"Engine,omitempty" name:"Engine"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceFusionLiteRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -146,7 +146,7 @@ type FaceFusionLiteResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceFusionLiteResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -180,7 +180,7 @@ type FaceFusionRequest struct {
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceFusionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -219,7 +219,7 @@ type FaceFusionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FaceFusionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type FuseFaceRequest struct {
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FuseFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -329,7 +329,7 @@ type FuseFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *FuseFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -30,7 +30,7 @@ type DeleteCertRequest struct {
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -59,7 +59,7 @@ type DeleteCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -98,7 +98,7 @@ type DescribeCertListRequest struct {
 	AltDomain *string `json:"AltDomain,omitempty" name:"AltDomain"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -139,7 +139,7 @@ type DescribeCertListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCertListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -306,7 +306,7 @@ type UploadCertRequest struct {
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -342,7 +342,7 @@ type UploadCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UploadCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

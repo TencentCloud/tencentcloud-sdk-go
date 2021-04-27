@@ -48,7 +48,7 @@ type AnalyzeDenseLandmarksRequest struct {
 	NeedRotateDetection *int64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AnalyzeDenseLandmarksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -92,7 +92,7 @@ type AnalyzeDenseLandmarksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AnalyzeDenseLandmarksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -135,7 +135,7 @@ type AnalyzeFaceRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AnalyzeFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -179,7 +179,7 @@ type AnalyzeFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AnalyzeFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type CheckSimilarPersonRequest struct {
 	UniquePersonControl *int64 `json:"UniquePersonControl,omitempty" name:"UniquePersonControl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckSimilarPersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -274,7 +274,7 @@ type CheckSimilarPersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CheckSimilarPersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -339,7 +339,7 @@ type CompareFaceRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompareFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -383,7 +383,7 @@ type CompareFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompareFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -404,7 +404,7 @@ type CopyPersonRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CopyPersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -439,7 +439,7 @@ type CopyPersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CopyPersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -489,7 +489,7 @@ type CreateFaceRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -544,7 +544,7 @@ type CreateFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -588,7 +588,7 @@ type CreateGroupRequest struct {
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -623,7 +623,7 @@ type CreateGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -689,7 +689,7 @@ type CreatePersonRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -740,7 +740,7 @@ type CreatePersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -761,7 +761,7 @@ type DeleteFaceRequest struct {
 	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -796,7 +796,7 @@ type DeleteFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -814,7 +814,7 @@ type DeleteGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -842,7 +842,7 @@ type DeleteGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -863,7 +863,7 @@ type DeletePersonFromGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonFromGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -892,7 +892,7 @@ type DeletePersonFromGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonFromGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -910,7 +910,7 @@ type DeletePersonRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -938,7 +938,7 @@ type DeletePersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1044,7 +1044,7 @@ type DetectFaceAttributesRequest struct {
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFaceAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1089,7 +1089,7 @@ type DetectFaceAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFaceAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1144,7 +1144,7 @@ type DetectFaceRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1199,7 +1199,7 @@ type DetectFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1237,7 +1237,7 @@ type DetectLiveFaceRequest struct {
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectLiveFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1278,7 +1278,7 @@ type DetectLiveFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectLiveFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1297,7 +1297,7 @@ type EstimateCheckSimilarPersonCostTimeRequest struct {
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1328,7 +1328,7 @@ type EstimateCheckSimilarPersonCostTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EstimateCheckSimilarPersonCostTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1666,7 +1666,7 @@ type GetCheckSimilarPersonJobIdListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCheckSimilarPersonJobIdListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1701,7 +1701,7 @@ type GetCheckSimilarPersonJobIdListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetCheckSimilarPersonJobIdListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1719,7 +1719,7 @@ type GetGroupInfoRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1765,7 +1765,7 @@ type GetGroupInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1786,7 +1786,7 @@ type GetGroupListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1822,7 +1822,7 @@ type GetGroupListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1840,7 +1840,7 @@ type GetPersonBaseInfoRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonBaseInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1877,7 +1877,7 @@ type GetPersonBaseInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonBaseInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1901,7 +1901,7 @@ type GetPersonGroupInfoRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonGroupInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1942,7 +1942,7 @@ type GetPersonGroupInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonGroupInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1960,7 +1960,7 @@ type GetPersonListNumRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListNumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1994,7 +1994,7 @@ type GetPersonListNumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListNumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2018,7 +2018,7 @@ type GetPersonListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2063,7 +2063,7 @@ type GetPersonListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2081,7 +2081,7 @@ type GetSimilarPersonResultRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSimilarPersonResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2116,7 +2116,7 @@ type GetSimilarPersonResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSimilarPersonResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2137,7 +2137,7 @@ type GetUpgradeGroupFaceModelVersionJobListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetUpgradeGroupFaceModelVersionJobListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2172,7 +2172,7 @@ type GetUpgradeGroupFaceModelVersionJobListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetUpgradeGroupFaceModelVersionJobListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2190,7 +2190,7 @@ type GetUpgradeGroupFaceModelVersionResultRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetUpgradeGroupFaceModelVersionResultRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2247,7 +2247,7 @@ type GetUpgradeGroupFaceModelVersionResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetUpgradeGroupFaceModelVersionResultResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2372,7 +2372,7 @@ type ModifyGroupRequest struct {
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2403,7 +2403,7 @@ type ModifyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2427,7 +2427,7 @@ type ModifyPersonBaseInfoRequest struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonBaseInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2457,7 +2457,7 @@ type ModifyPersonBaseInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonBaseInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2481,7 +2481,7 @@ type ModifyPersonGroupInfoRequest struct {
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonGroupInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2511,7 +2511,7 @@ type ModifyPersonGroupInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonGroupInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2612,7 +2612,7 @@ type RevertGroupFaceModelVersionRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevertGroupFaceModelVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2640,7 +2640,7 @@ type RevertGroupFaceModelVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RevertGroupFaceModelVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2701,7 +2701,7 @@ type SearchFacesRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchFacesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2747,7 +2747,7 @@ type SearchFacesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchFacesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2809,7 +2809,7 @@ type SearchFacesReturnsByGroupRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchFacesReturnsByGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2855,7 +2855,7 @@ type SearchFacesReturnsByGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchFacesReturnsByGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2917,7 +2917,7 @@ type SearchPersonsRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchPersonsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2964,7 +2964,7 @@ type SearchPersonsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchPersonsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3024,7 +3024,7 @@ type SearchPersonsReturnsByGroupRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchPersonsReturnsByGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3070,7 +3070,7 @@ type SearchPersonsReturnsByGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchPersonsReturnsByGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3091,7 +3091,7 @@ type UpgradeGroupFaceModelVersionRequest struct {
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeGroupFaceModelVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3123,7 +3123,7 @@ type UpgradeGroupFaceModelVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpgradeGroupFaceModelVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3191,7 +3191,7 @@ type VerifyFaceRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyFaceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3236,7 +3236,7 @@ type VerifyFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyFaceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3279,7 +3279,7 @@ type VerifyPersonRequest struct {
 	NeedRotateDetection *uint64 `json:"NeedRotateDetection,omitempty" name:"NeedRotateDetection"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyPersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3320,7 +3320,7 @@ type VerifyPersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyPersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

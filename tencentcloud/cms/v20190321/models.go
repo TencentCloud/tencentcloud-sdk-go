@@ -93,7 +93,7 @@ type CreateFileSampleRequest struct {
 	Label *uint64 `json:"Label,omitempty" name:"Label"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFileSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -129,7 +129,7 @@ type CreateFileSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFileSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -165,7 +165,7 @@ type CreateTextSampleRequest struct {
 	Test *string `json:"Test,omitempty" name:"Test"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTextSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type CreateTextSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTextSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -237,7 +237,7 @@ type DeleteFileSampleRequest struct {
 	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFileSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -270,7 +270,7 @@ type DeleteFileSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFileSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type DeleteTextSampleRequest struct {
 	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTextSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type DeleteTextSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTextSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -351,7 +351,7 @@ type DescribeFileSampleRequest struct {
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -389,7 +389,7 @@ type DescribeFileSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFileSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -419,7 +419,7 @@ type DescribeTextSampleRequest struct {
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextSampleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -457,7 +457,7 @@ type DescribeTextSampleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextSampleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -687,7 +687,7 @@ type ImageModerationRequest struct {
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -723,7 +723,7 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -878,7 +878,7 @@ type ManualReviewRequest struct {
 	ReviewContent *ManualReviewContent `json:"ReviewContent,omitempty" name:"ReviewContent"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManualReviewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -909,7 +909,7 @@ type ManualReviewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManualReviewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1095,7 +1095,7 @@ type TextModerationRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1134,7 +1134,7 @@ type TextModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

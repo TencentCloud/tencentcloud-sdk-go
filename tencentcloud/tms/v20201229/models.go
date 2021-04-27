@@ -104,7 +104,7 @@ type TextModerationRequest struct {
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -172,7 +172,7 @@ type TextModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

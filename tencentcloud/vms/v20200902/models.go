@@ -40,7 +40,7 @@ type SendCodeVoiceRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendCodeVoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -75,7 +75,7 @@ type SendCodeVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendCodeVoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -119,7 +119,7 @@ type SendTtsVoiceRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTtsVoiceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -155,7 +155,7 @@ type SendTtsVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SendTtsVoiceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

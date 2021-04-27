@@ -27,7 +27,7 @@ type DescribeSREInstanceAccessAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSREInstanceAccessAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -58,7 +58,7 @@ type DescribeSREInstanceAccessAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSREInstanceAccessAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -82,7 +82,7 @@ type DescribeSREInstancesRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSREInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -118,7 +118,7 @@ type DescribeSREInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSREInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -157,7 +157,7 @@ type ManageConfigRequest struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -193,7 +193,7 @@ type ManageConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

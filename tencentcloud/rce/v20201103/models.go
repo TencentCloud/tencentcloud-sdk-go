@@ -191,7 +191,7 @@ type ManageMarketingRiskRequest struct {
 	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageMarketingRiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -222,7 +222,7 @@ type ManageMarketingRiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ManageMarketingRiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

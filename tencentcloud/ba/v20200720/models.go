@@ -27,7 +27,7 @@ type CreateWeappQRUrlRequest struct {
 	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWeappQRUrlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -58,7 +58,7 @@ type CreateWeappQRUrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWeappQRUrlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -27,7 +27,7 @@ type AcceptDirectConnectTunnelRequest struct {
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AcceptDirectConnectTunnelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -55,7 +55,7 @@ type AcceptDirectConnectTunnelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AcceptDirectConnectTunnelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -120,7 +120,7 @@ type ApplyInternetAddressRequest struct {
 	AddrProto *int64 `json:"AddrProto,omitempty" name:"AddrProto"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyInternetAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -154,7 +154,7 @@ type ApplyInternetAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyInternetAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -257,7 +257,7 @@ type CreateDirectConnectRequest struct {
 	SignLaw *bool `json:"SignLaw,omitempty" name:"SignLaw"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDirectConnectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -304,7 +304,7 @@ type CreateDirectConnectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDirectConnectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -376,7 +376,7 @@ type CreateDirectConnectTunnelRequest struct {
 	CloudAttachId *string `json:"CloudAttachId,omitempty" name:"CloudAttachId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDirectConnectTunnelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -422,7 +422,7 @@ type CreateDirectConnectTunnelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDirectConnectTunnelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -440,7 +440,7 @@ type DeleteDirectConnectRequest struct {
 	DirectConnectId *string `json:"DirectConnectId,omitempty" name:"DirectConnectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDirectConnectRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -468,7 +468,7 @@ type DeleteDirectConnectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDirectConnectResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -486,7 +486,7 @@ type DeleteDirectConnectTunnelRequest struct {
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDirectConnectTunnelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -514,7 +514,7 @@ type DeleteDirectConnectTunnelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDirectConnectTunnelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DescribeAccessPointsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessPointsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -576,7 +576,7 @@ type DescribeAccessPointsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAccessPointsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -594,7 +594,7 @@ type DescribeDirectConnectTunnelExtraRequest struct {
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectTunnelExtraRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -625,7 +625,7 @@ type DescribeDirectConnectTunnelExtraResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectTunnelExtraResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -656,7 +656,7 @@ type DescribeDirectConnectTunnelsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectTunnelsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -693,7 +693,7 @@ type DescribeDirectConnectTunnelsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectTunnelsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -720,7 +720,7 @@ type DescribeDirectConnectsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -761,7 +761,7 @@ type DescribeDirectConnectsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDirectConnectsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -776,7 +776,7 @@ type DescribeInternetAddressQuotaRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressQuotaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -823,7 +823,7 @@ type DescribeInternetAddressQuotaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressQuotaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -852,7 +852,7 @@ type DescribeInternetAddressRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -889,7 +889,7 @@ type DescribeInternetAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -904,7 +904,7 @@ type DescribeInternetAddressStatisticsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressStatisticsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -938,7 +938,7 @@ type DescribeInternetAddressStatisticsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInternetAddressStatisticsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -967,7 +967,7 @@ type DescribePublicDirectConnectTunnelRoutesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePublicDirectConnectTunnelRoutesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1004,7 +1004,7 @@ type DescribePublicDirectConnectTunnelRoutesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePublicDirectConnectTunnelRoutesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1416,7 +1416,7 @@ type DisableInternetAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableInternetAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1444,7 +1444,7 @@ type DisableInternetAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableInternetAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1462,7 +1462,7 @@ type EnableInternetAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableInternetAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1490,7 +1490,7 @@ type EnableInternetAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableInternetAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1619,7 +1619,7 @@ type ModifyDirectConnectAttributeRequest struct {
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1659,7 +1659,7 @@ type ModifyDirectConnectAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1698,7 +1698,7 @@ type ModifyDirectConnectTunnelAttributeRequest struct {
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitempty" name:"TencentBackupAddress"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectTunnelAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1733,7 +1733,7 @@ type ModifyDirectConnectTunnelAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectTunnelAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1799,7 +1799,7 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 	JumboEnable *int64 `json:"JumboEnable,omitempty" name:"JumboEnable"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectTunnelExtraRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1842,7 +1842,7 @@ type ModifyDirectConnectTunnelExtraResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDirectConnectTunnelExtraResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1872,7 +1872,7 @@ type RejectDirectConnectTunnelRequest struct {
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitempty" name:"DirectConnectTunnelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RejectDirectConnectTunnelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1900,7 +1900,7 @@ type RejectDirectConnectTunnelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RejectDirectConnectTunnelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1918,7 +1918,7 @@ type ReleaseInternetAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReleaseInternetAddressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1946,7 +1946,7 @@ type ReleaseInternetAddressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReleaseInternetAddressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

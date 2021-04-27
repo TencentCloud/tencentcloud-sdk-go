@@ -50,7 +50,7 @@ type BeautifyPicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BeautifyPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -90,7 +90,7 @@ type BeautifyPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BeautifyPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -145,7 +145,7 @@ type BeautifyVideoRequest struct {
 	OutputVideoType *string `json:"OutputVideoType,omitempty" name:"OutputVideoType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BeautifyVideoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -181,7 +181,7 @@ type BeautifyVideoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BeautifyVideoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -214,7 +214,7 @@ type CancelBeautifyVideoJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelBeautifyVideoJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type CancelBeautifyVideoJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelBeautifyVideoJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -263,7 +263,7 @@ type CreateModelRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -295,7 +295,7 @@ type CreateModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -313,7 +313,7 @@ type DeleteModelRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteModelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -341,7 +341,7 @@ type DeleteModelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteModelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -377,7 +377,7 @@ type GetModelListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetModelListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -413,7 +413,7 @@ type GetModelListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetModelListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -460,7 +460,7 @@ type QueryBeautifyVideoJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBeautifyVideoJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -495,7 +495,7 @@ type QueryBeautifyVideoJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryBeautifyVideoJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -546,7 +546,7 @@ type StyleImageProRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StyleImageProRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -586,7 +586,7 @@ type StyleImageProResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StyleImageProResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -622,7 +622,7 @@ type StyleImageRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StyleImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -662,7 +662,7 @@ type StyleImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StyleImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -695,7 +695,7 @@ type TryLipstickPicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TryLipstickPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -732,7 +732,7 @@ type TryLipstickPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TryLipstickPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

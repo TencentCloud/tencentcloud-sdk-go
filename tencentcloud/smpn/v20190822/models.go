@@ -53,7 +53,7 @@ type CreateSmpnEpaRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSmpnEpaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -85,7 +85,7 @@ type CreateSmpnEpaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSmpnEpaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -106,7 +106,7 @@ type DescribeSmpnChpRequest struct {
 	RequestData *CHPRequest `json:"RequestData,omitempty" name:"RequestData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnChpRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -138,7 +138,7 @@ type DescribeSmpnChpResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnChpResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -159,7 +159,7 @@ type DescribeSmpnFnrRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnFnrRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -191,7 +191,7 @@ type DescribeSmpnFnrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnFnrResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type DescribeSmpnMhmRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnMhmRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -244,7 +244,7 @@ type DescribeSmpnMhmResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnMhmResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -265,7 +265,7 @@ type DescribeSmpnMrlRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnMrlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -297,7 +297,7 @@ type DescribeSmpnMrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmpnMrlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

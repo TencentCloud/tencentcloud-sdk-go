@@ -104,7 +104,7 @@ type QueryAntiFraudRequest struct {
 	NameCryptoType *string `json:"NameCryptoType,omitempty" name:"NameCryptoType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAntiFraudRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -169,7 +169,7 @@ type QueryAntiFraudResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryAntiFraudResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

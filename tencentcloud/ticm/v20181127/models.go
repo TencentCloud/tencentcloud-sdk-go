@@ -36,7 +36,7 @@ type DescribeVideoTaskRequest struct {
 	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -100,7 +100,7 @@ type DescribeVideoTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -186,7 +186,7 @@ type ImageModerationRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -243,7 +243,7 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -377,7 +377,7 @@ type VideoModerationRequest struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VideoModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -411,7 +411,7 @@ type VideoModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VideoModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

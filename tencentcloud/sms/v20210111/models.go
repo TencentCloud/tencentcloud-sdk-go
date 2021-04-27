@@ -32,7 +32,7 @@ type DescribeSmsTemplateListRequest struct {
 	International *uint64 `json:"International,omitempty" name:"International"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsTemplateListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -64,7 +64,7 @@ type DescribeSmsTemplateListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSmsTemplateListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -45,7 +45,7 @@ type AccountTipoffAccessRequest struct {
 	EvilContent *string `json:"EvilContent,omitempty" name:"EvilContent"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AccountTipoffAccessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -83,7 +83,7 @@ type AccountTipoffAccessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AccountTipoffAccessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -101,7 +101,7 @@ type DescribeTextLibRequest struct {
 	StrategyType *int64 `json:"StrategyType,omitempty" name:"StrategyType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextLibRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type DescribeTextLibResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextLibResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -153,7 +153,7 @@ type DescribeTextStatRequest struct {
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -192,7 +192,7 @@ type DescribeTextStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTextStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -344,7 +344,7 @@ type TextModerationRequest struct {
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -416,7 +416,7 @@ type TextModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

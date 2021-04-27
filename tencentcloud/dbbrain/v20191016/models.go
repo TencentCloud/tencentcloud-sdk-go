@@ -33,7 +33,7 @@ type AddUserContactRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddUserContactRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -66,7 +66,7 @@ type AddUserContactResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddUserContactResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -114,7 +114,7 @@ type CreateDBDiagReportTaskRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBDiagReportTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -152,7 +152,7 @@ type CreateDBDiagReportTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBDiagReportTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -176,7 +176,7 @@ type CreateDBDiagReportUrlRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBDiagReportUrlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type CreateDBDiagReportUrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDBDiagReportUrlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -245,7 +245,7 @@ type CreateMailProfileRequest struct {
 	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMailProfileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -278,7 +278,7 @@ type CreateMailProfileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMailProfileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -308,7 +308,7 @@ type CreateSchedulerMailProfileRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSchedulerMailProfileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -340,7 +340,7 @@ type CreateSchedulerMailProfileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSchedulerMailProfileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -370,7 +370,7 @@ type CreateSecurityAuditLogExportTaskRequest struct {
 	DangerLevels []*int64 `json:"DangerLevels,omitempty" name:"DangerLevels" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityAuditLogExportTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -405,7 +405,7 @@ type CreateSecurityAuditLogExportTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityAuditLogExportTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -429,7 +429,7 @@ type DeleteSecurityAuditLogExportTasksRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityAuditLogExportTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -459,7 +459,7 @@ type DeleteSecurityAuditLogExportTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityAuditLogExportTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type DescribeAllUserContactRequest struct {
 	Names []*string `json:"Names,omitempty" name:"Names" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllUserContactRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -516,7 +516,7 @@ type DescribeAllUserContactResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllUserContactResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -537,7 +537,7 @@ type DescribeAllUserGroupRequest struct {
 	Names []*string `json:"Names,omitempty" name:"Names" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllUserGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -573,7 +573,7 @@ type DescribeAllUserGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllUserGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -597,7 +597,7 @@ type DescribeDBDiagEventRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagEventRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -661,7 +661,7 @@ type DescribeDBDiagEventResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagEventResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -688,7 +688,7 @@ type DescribeDBDiagHistoryRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagHistoryRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -722,7 +722,7 @@ type DescribeDBDiagHistoryResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagHistoryResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -764,7 +764,7 @@ type DescribeDBDiagReportTasksRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagReportTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -806,7 +806,7 @@ type DescribeDBDiagReportTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBDiagReportTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -830,7 +830,7 @@ type DescribeDBSpaceStatusRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBSpaceStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -872,7 +872,7 @@ type DescribeDBSpaceStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDBSpaceStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -908,7 +908,7 @@ type DescribeDiagDBInstancesRequest struct {
 	Regions []*string `json:"Regions,omitempty" name:"Regions" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiagDBInstancesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -951,7 +951,7 @@ type DescribeDiagDBInstancesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiagDBInstancesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -975,7 +975,7 @@ type DescribeHealthScoreRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHealthScoreRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1008,7 +1008,7 @@ type DescribeHealthScoreResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHealthScoreResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1038,7 +1038,7 @@ type DescribeMailProfileRequest struct {
 	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMailProfileRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1078,7 +1078,7 @@ type DescribeMailProfileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMailProfileResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1102,7 +1102,7 @@ type DescribeSecurityAuditLogDownloadUrlsRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityAuditLogDownloadUrlsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1135,7 +1135,7 @@ type DescribeSecurityAuditLogDownloadUrlsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityAuditLogDownloadUrlsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1165,7 +1165,7 @@ type DescribeSecurityAuditLogExportTasksRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityAuditLogExportTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1203,7 +1203,7 @@ type DescribeSecurityAuditLogExportTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityAuditLogExportTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1230,7 +1230,7 @@ type DescribeSlowLogTimeSeriesStatsRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogTimeSeriesStatsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1270,7 +1270,7 @@ type DescribeSlowLogTimeSeriesStatsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogTimeSeriesStatsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1312,7 +1312,7 @@ type DescribeSlowLogTopSqlsRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogTopSqlsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1354,7 +1354,7 @@ type DescribeSlowLogTopSqlsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogTopSqlsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1381,7 +1381,7 @@ type DescribeSlowLogUserHostStatsRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogUserHostStatsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1418,7 +1418,7 @@ type DescribeSlowLogUserHostStatsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSlowLogUserHostStatsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1451,7 +1451,7 @@ type DescribeTopSpaceSchemaTimeSeriesRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceSchemaTimeSeriesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1487,7 +1487,7 @@ type DescribeTopSpaceSchemaTimeSeriesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceSchemaTimeSeriesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1514,7 +1514,7 @@ type DescribeTopSpaceSchemasRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceSchemasRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1551,7 +1551,7 @@ type DescribeTopSpaceSchemasResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceSchemasResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1584,7 +1584,7 @@ type DescribeTopSpaceTableTimeSeriesRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceTableTimeSeriesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1620,7 +1620,7 @@ type DescribeTopSpaceTableTimeSeriesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceTableTimeSeriesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1647,7 +1647,7 @@ type DescribeTopSpaceTablesRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1684,7 +1684,7 @@ type DescribeTopSpaceTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopSpaceTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1708,7 +1708,7 @@ type DescribeUserSqlAdviceRequest struct {
 	Schema *string `json:"Schema,omitempty" name:"Schema"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserSqlAdviceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1759,7 +1759,7 @@ type DescribeUserSqlAdviceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserSqlAdviceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2069,7 +2069,7 @@ type ModifyDiagDBInstanceConfRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiagDBInstanceConfRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2100,7 +2100,7 @@ type ModifyDiagDBInstanceConfResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiagDBInstanceConfResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

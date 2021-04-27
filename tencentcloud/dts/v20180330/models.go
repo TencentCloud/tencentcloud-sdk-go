@@ -42,7 +42,7 @@ type ActivateSubscribeRequest struct {
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ActivateSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -78,7 +78,7 @@ type ActivateSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ActivateSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -96,7 +96,7 @@ type CompleteMigrateJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompleteMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -124,7 +124,7 @@ type CompleteMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompleteMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -154,7 +154,7 @@ type CreateMigrateCheckJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMigrateCheckJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -182,7 +182,7 @@ type CreateMigrateCheckJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMigrateCheckJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -232,7 +232,7 @@ type CreateMigrateJobRequest struct {
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type CreateMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -304,7 +304,7 @@ type CreateSubscribeRequest struct {
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -341,7 +341,7 @@ type CreateSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -359,7 +359,7 @@ type CreateSyncCheckJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSyncCheckJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -387,7 +387,7 @@ type CreateSyncCheckJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSyncCheckJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -431,7 +431,7 @@ type CreateSyncJobRequest struct {
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSyncJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -470,7 +470,7 @@ type CreateSyncJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSyncJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -488,7 +488,7 @@ type DeleteMigrateJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -516,7 +516,7 @@ type DeleteMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -534,7 +534,7 @@ type DeleteSyncJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSyncJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -562,7 +562,7 @@ type DeleteSyncJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSyncJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -580,7 +580,7 @@ type DescribeAsyncRequestInfoRequest struct {
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAsyncRequestInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -614,7 +614,7 @@ type DescribeAsyncRequestInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -632,7 +632,7 @@ type DescribeMigrateCheckJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMigrateCheckJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -675,7 +675,7 @@ type DescribeMigrateCheckJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMigrateCheckJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -708,7 +708,7 @@ type DescribeMigrateJobsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMigrateJobsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -747,7 +747,7 @@ type DescribeMigrateJobsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMigrateJobsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -762,7 +762,7 @@ type DescribeRegionConfRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionConfRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -795,7 +795,7 @@ type DescribeRegionConfResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionConfResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -813,7 +813,7 @@ type DescribeSubscribeConfRequest struct {
 	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscribeConfRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -921,7 +921,7 @@ type DescribeSubscribeConfResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscribeConfResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -975,7 +975,7 @@ type DescribeSubscribesRequest struct {
 	SubscribeVersion *string `json:"SubscribeVersion,omitempty" name:"SubscribeVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscribesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1021,7 +1021,7 @@ type DescribeSubscribesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSubscribesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1039,7 +1039,7 @@ type DescribeSyncCheckJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncCheckJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1082,7 +1082,7 @@ type DescribeSyncCheckJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncCheckJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1115,7 +1115,7 @@ type DescribeSyncJobsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncJobsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1154,7 +1154,7 @@ type DescribeSyncJobsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncJobsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1205,7 +1205,7 @@ type IsolateSubscribeRequest struct {
 	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IsolateSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1233,7 +1233,7 @@ type IsolateSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *IsolateSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1415,7 +1415,7 @@ type ModifyMigrateJobRequest struct {
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1450,7 +1450,7 @@ type ModifyMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1471,7 +1471,7 @@ type ModifySubscribeAutoRenewFlagRequest struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeAutoRenewFlagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1500,7 +1500,7 @@ type ModifySubscribeAutoRenewFlagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeAutoRenewFlagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1521,7 +1521,7 @@ type ModifySubscribeConsumeTimeRequest struct {
 	ConsumeStartTime *string `json:"ConsumeStartTime,omitempty" name:"ConsumeStartTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeConsumeTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1550,7 +1550,7 @@ type ModifySubscribeConsumeTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeConsumeTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1571,7 +1571,7 @@ type ModifySubscribeNameRequest struct {
 	SubscribeName *string `json:"SubscribeName,omitempty" name:"SubscribeName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1600,7 +1600,7 @@ type ModifySubscribeNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1624,7 +1624,7 @@ type ModifySubscribeObjectsRequest struct {
 	Objects []*SubscribeObject `json:"Objects,omitempty" name:"Objects" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeObjectsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1657,7 +1657,7 @@ type ModifySubscribeObjectsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeObjectsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1684,7 +1684,7 @@ type ModifySubscribeVipVportRequest struct {
 	DstPort *int64 `json:"DstPort,omitempty" name:"DstPort"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeVipVportRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1715,7 +1715,7 @@ type ModifySubscribeVipVportResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySubscribeVipVportResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1744,7 +1744,7 @@ type ModifySyncJobRequest struct {
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySyncJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1775,7 +1775,7 @@ type ModifySyncJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySyncJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1793,7 +1793,7 @@ type OfflineIsolatedSubscribeRequest struct {
 	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OfflineIsolatedSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1821,7 +1821,7 @@ type OfflineIsolatedSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *OfflineIsolatedSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1839,7 +1839,7 @@ type ResetSubscribeRequest struct {
 	SubscribeId *string `json:"SubscribeId,omitempty" name:"SubscribeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetSubscribeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1867,7 +1867,7 @@ type ResetSubscribeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetSubscribeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1937,7 +1937,7 @@ type StartMigrateJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1965,7 +1965,7 @@ type StartMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1983,7 +1983,7 @@ type StartSyncJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartSyncJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2011,7 +2011,7 @@ type StartSyncJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartSyncJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2029,7 +2029,7 @@ type StopMigrateJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMigrateJobRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2057,7 +2057,7 @@ type StopMigrateJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopMigrateJobResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2194,7 +2194,7 @@ type SwitchDrToMasterRequest struct {
 	DatabaseType *string `json:"DatabaseType,omitempty" name:"DatabaseType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwitchDrToMasterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2226,7 +2226,7 @@ type SwitchDrToMasterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SwitchDrToMasterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

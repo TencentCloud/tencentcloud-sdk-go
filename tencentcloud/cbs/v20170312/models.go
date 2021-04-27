@@ -30,7 +30,7 @@ type ApplySnapshotRequest struct {
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplySnapshotRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -59,7 +59,7 @@ type ApplySnapshotResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplySnapshotResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -95,7 +95,7 @@ type AttachDisksRequest struct {
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -125,7 +125,7 @@ type AttachDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AttachDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -179,7 +179,7 @@ type BindAutoSnapshotPolicyRequest struct {
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindAutoSnapshotPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -208,7 +208,7 @@ type BindAutoSnapshotPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindAutoSnapshotPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -241,7 +241,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -280,7 +280,7 @@ type CreateAutoSnapshotPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAutoSnapshotPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -334,7 +334,7 @@ type CreateDisksRequest struct {
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -377,7 +377,7 @@ type CreateDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -401,7 +401,7 @@ type CreateSnapshotRequest struct {
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type CreateSnapshotResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -452,7 +452,7 @@ type DeleteAutoSnapshotPoliciesRequest struct {
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAutoSnapshotPoliciesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type DeleteAutoSnapshotPoliciesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAutoSnapshotPoliciesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -498,7 +498,7 @@ type DeleteSnapshotsRequest struct {
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -526,7 +526,7 @@ type DeleteSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -559,7 +559,7 @@ type DescribeAutoSnapshotPoliciesRequest struct {
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoSnapshotPoliciesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -598,7 +598,7 @@ type DescribeAutoSnapshotPoliciesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAutoSnapshotPoliciesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -616,7 +616,7 @@ type DescribeDiskAssociatedAutoSnapshotPolicyRequest struct {
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -650,7 +650,7 @@ type DescribeDiskAssociatedAutoSnapshotPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskAssociatedAutoSnapshotPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -689,7 +689,7 @@ type DescribeDiskConfigQuotaRequest struct {
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskConfigQuotaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -727,7 +727,7 @@ type DescribeDiskConfigQuotaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskConfigQuotaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -752,7 +752,7 @@ type DescribeDiskOperationLogsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskOperationLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -785,7 +785,7 @@ type DescribeDiskOperationLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDiskOperationLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -821,7 +821,7 @@ type DescribeDisksRequest struct {
 	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy,omitempty" name:"ReturnBindAutoSnapshotPolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -861,7 +861,7 @@ type DescribeDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -879,7 +879,7 @@ type DescribeInstancesDiskNumRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesDiskNumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -910,7 +910,7 @@ type DescribeInstancesDiskNumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeInstancesDiskNumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -935,7 +935,7 @@ type DescribeSnapshotOperationLogsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotOperationLogsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -968,7 +968,7 @@ type DescribeSnapshotOperationLogsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotOperationLogsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -986,7 +986,7 @@ type DescribeSnapshotSharePermissionRequest struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotSharePermissionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1017,7 +1017,7 @@ type DescribeSnapshotSharePermissionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotSharePermissionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1052,7 +1052,7 @@ type DescribeSnapshotsRequest struct {
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1091,7 +1091,7 @@ type DescribeSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1112,7 +1112,7 @@ type DetachDisksRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1141,7 +1141,7 @@ type DetachDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetachDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1359,7 +1359,7 @@ type GetSnapOverviewRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSnapOverviewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1398,7 +1398,7 @@ type GetSnapOverviewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetSnapOverviewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1428,7 +1428,7 @@ type InquirePriceModifyDiskExtraPerformanceRequest struct {
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquirePriceModifyDiskExtraPerformanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1460,7 +1460,7 @@ type InquirePriceModifyDiskExtraPerformanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquirePriceModifyDiskExtraPerformanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1496,7 +1496,7 @@ type InquiryPriceCreateDisksRequest struct {
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1533,7 +1533,7 @@ type InquiryPriceCreateDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceCreateDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1560,7 +1560,7 @@ type InquiryPriceRenewDisksRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceRenewDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1594,7 +1594,7 @@ type InquiryPriceRenewDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceRenewDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1618,7 +1618,7 @@ type InquiryPriceResizeDiskRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceResizeDiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1651,7 +1651,7 @@ type InquiryPriceResizeDiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *InquiryPriceResizeDiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1684,7 +1684,7 @@ type ModifyAutoSnapshotPolicyAttributeRequest struct {
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAutoSnapshotPolicyAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1717,7 +1717,7 @@ type ModifyAutoSnapshotPolicyAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAutoSnapshotPolicyAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1750,7 +1750,7 @@ type ModifyDiskAttributesRequest struct {
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiskAttributesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1783,7 +1783,7 @@ type ModifyDiskAttributesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiskAttributesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1804,7 +1804,7 @@ type ModifyDiskExtraPerformanceRequest struct {
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiskExtraPerformanceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1833,7 +1833,7 @@ type ModifyDiskExtraPerformanceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDiskExtraPerformanceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1854,7 +1854,7 @@ type ModifyDisksChargeTypeRequest struct {
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDisksChargeTypeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1883,7 +1883,7 @@ type ModifyDisksChargeTypeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDisksChargeTypeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1904,7 +1904,7 @@ type ModifyDisksRenewFlagRequest struct {
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDisksRenewFlagRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1933,7 +1933,7 @@ type ModifyDisksRenewFlagResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyDisksRenewFlagResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1960,7 +1960,7 @@ type ModifySnapshotAttributeRequest struct {
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotAttributeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1991,7 +1991,7 @@ type ModifySnapshotAttributeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotAttributeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2015,7 +2015,7 @@ type ModifySnapshotsSharePermissionRequest struct {
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotsSharePermissionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2045,7 +2045,7 @@ type ModifySnapshotsSharePermissionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotsSharePermissionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2174,7 +2174,7 @@ type RenewDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewDiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2203,7 +2203,7 @@ type RenewDiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RenewDiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2224,7 +2224,7 @@ type ResizeDiskRequest struct {
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResizeDiskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2253,7 +2253,7 @@ type ResizeDiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResizeDiskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2381,7 +2381,7 @@ type TerminateDisksRequest struct {
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateDisksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2409,7 +2409,7 @@ type TerminateDisksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateDisksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2430,7 +2430,7 @@ type UnbindAutoSnapshotPolicyRequest struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindAutoSnapshotPolicyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2459,7 +2459,7 @@ type UnbindAutoSnapshotPolicyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnbindAutoSnapshotPolicyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

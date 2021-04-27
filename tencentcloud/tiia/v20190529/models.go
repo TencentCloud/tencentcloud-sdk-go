@@ -38,7 +38,7 @@ type AssessQualityRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssessQualityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -88,7 +88,7 @@ type AssessQualityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssessQualityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -160,7 +160,7 @@ type CropImageRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CropImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -220,7 +220,7 @@ type CropImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CropImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -249,7 +249,7 @@ type DetectCelebrityRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectCelebrityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type DetectCelebrityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectCelebrityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -317,7 +317,7 @@ type DetectDisgustRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectDisgustRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -352,7 +352,7 @@ type DetectDisgustResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectDisgustResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -406,7 +406,7 @@ type DetectLabelRequest struct {
 	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectLabelRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -453,7 +453,7 @@ type DetectLabelResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectLabelResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -482,7 +482,7 @@ type DetectMisbehaviorRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectMisbehaviorRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -517,7 +517,7 @@ type DetectMisbehaviorResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectMisbehaviorResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DetectProductBetaRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectProductBetaRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -578,7 +578,7 @@ type DetectProductBetaResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectProductBetaResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -607,7 +607,7 @@ type DetectProductRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectProductRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -639,7 +639,7 @@ type DetectProductResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectProductResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -668,7 +668,7 @@ type EnhanceImageRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnhanceImageRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -700,7 +700,7 @@ type EnhanceImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnhanceImageResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -842,7 +842,7 @@ type RecognizeCarRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeCarRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -877,7 +877,7 @@ type RecognizeCarResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecognizeCarResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

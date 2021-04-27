@@ -39,7 +39,7 @@ type CancelMatchingRequest struct {
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelMatchingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -71,7 +71,7 @@ type CancelMatchingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelMatchingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -125,7 +125,7 @@ type CreateMatchRequest struct {
 	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -168,7 +168,7 @@ type CreateMatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateMatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -195,7 +195,7 @@ type CreateRuleRequest struct {
 	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -229,7 +229,7 @@ type CreateRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -247,7 +247,7 @@ type DeleteMatchRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -275,7 +275,7 @@ type DeleteMatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteMatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -293,7 +293,7 @@ type DeleteRuleRequest struct {
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -321,7 +321,7 @@ type DeleteRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -348,7 +348,7 @@ type DescribeDataRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -387,7 +387,7 @@ type DescribeDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -411,7 +411,7 @@ type DescribeMatchCodesRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchCodesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -449,7 +449,7 @@ type DescribeMatchCodesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchCodesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -467,7 +467,7 @@ type DescribeMatchRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -499,7 +499,7 @@ type DescribeMatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -529,7 +529,7 @@ type DescribeMatchesRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -580,7 +580,7 @@ type DescribeMatchesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -598,7 +598,7 @@ type DescribeMatchingProgressRequest struct {
 	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchingProgressRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -634,7 +634,7 @@ type DescribeMatchingProgressResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMatchingProgressResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -652,7 +652,7 @@ type DescribeRuleRequest struct {
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -684,7 +684,7 @@ type DescribeRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -714,7 +714,7 @@ type DescribeRulesRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -765,7 +765,7 @@ type DescribeRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -783,7 +783,7 @@ type DescribeTokenRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -819,7 +819,7 @@ type DescribeTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1046,7 +1046,7 @@ type ModifyMatchRequest struct {
 	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMatchRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1090,7 +1090,7 @@ type ModifyMatchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMatchResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1117,7 +1117,7 @@ type ModifyRuleRequest struct {
 	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1151,7 +1151,7 @@ type ModifyRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1175,7 +1175,7 @@ type ModifyTokenRequest struct {
 	MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1212,7 +1212,7 @@ type ModifyTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1381,7 +1381,7 @@ type StartMatchingRequest struct {
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMatchingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1417,7 +1417,7 @@ type StartMatchingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartMatchingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

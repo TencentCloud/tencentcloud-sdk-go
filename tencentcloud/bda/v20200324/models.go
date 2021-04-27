@@ -183,7 +183,7 @@ type CreateGroupRequest struct {
 	BodyModelVersion *string `json:"BodyModelVersion,omitempty" name:"BodyModelVersion"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -214,7 +214,7 @@ type CreateGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -242,7 +242,7 @@ type CreatePersonRequest struct {
 	Trace *Trace `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -289,7 +289,7 @@ type CreatePersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -315,7 +315,7 @@ type CreateSegmentationTaskRequest struct {
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSegmentationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -351,7 +351,7 @@ type CreateSegmentationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSegmentationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -372,7 +372,7 @@ type CreateTraceRequest struct {
 	Trace *Trace `json:"Trace,omitempty" name:"Trace"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTraceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -416,7 +416,7 @@ type CreateTraceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTraceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type DeleteGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -462,7 +462,7 @@ type DeleteGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type DeletePersonRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -508,7 +508,7 @@ type DeletePersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -526,7 +526,7 @@ type DescribeSegmentationTaskRequest struct {
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSegmentationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -576,7 +576,7 @@ type DescribeSegmentationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSegmentationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -602,7 +602,7 @@ type DetectBodyJointsRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectBodyJointsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -634,7 +634,7 @@ type DetectBodyJointsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectBodyJointsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -675,7 +675,7 @@ type DetectBodyRequest struct {
 	AttributesOptions *AttributesOptions `json:"AttributesOptions,omitempty" name:"AttributesOptions"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectBodyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -712,7 +712,7 @@ type DetectBodyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DetectBodyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -742,7 +742,7 @@ type GetGroupListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -777,7 +777,7 @@ type GetGroupListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetGroupListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -801,7 +801,7 @@ type GetPersonListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -840,7 +840,7 @@ type GetPersonListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetPersonListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -952,7 +952,7 @@ type ModifyGroupRequest struct {
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -982,7 +982,7 @@ type ModifyGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1003,7 +1003,7 @@ type ModifyPersonInfoRequest struct {
 	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1032,7 +1032,7 @@ type ModifyPersonInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1083,7 +1083,7 @@ type SearchTraceRequest struct {
 	TraceMatchThreshold *float64 `json:"TraceMatchThreshold,omitempty" name:"TraceMatchThreshold"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchTraceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1129,7 +1129,7 @@ type SearchTraceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchTraceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1160,7 +1160,7 @@ type SegmentCustomizedPortraitPicRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SegmentCustomizedPortraitPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1200,7 +1200,7 @@ type SegmentCustomizedPortraitPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SegmentCustomizedPortraitPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1228,7 +1228,7 @@ type SegmentPortraitPicRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SegmentPortraitPicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1263,7 +1263,7 @@ type SegmentPortraitPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SegmentPortraitPicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1347,7 +1347,7 @@ type TerminateSegmentationTaskRequest struct {
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateSegmentationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1375,7 +1375,7 @@ type TerminateSegmentationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TerminateSegmentationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -30,7 +30,7 @@ type ClearTablesRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -65,7 +65,7 @@ type ClearTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ClearTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -170,7 +170,7 @@ type CompareIdlFilesRequest struct {
 	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompareIdlFilesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -210,7 +210,7 @@ type CompareIdlFilesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CompareIdlFilesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -234,7 +234,7 @@ type CreateBackupRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBackupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -267,7 +267,7 @@ type CreateBackupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBackupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -312,7 +312,7 @@ type CreateClusterRequest struct {
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -352,7 +352,7 @@ type CreateClusterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -373,7 +373,7 @@ type CreateSnapshotsRequest struct {
 	SelectedTables []*SnapshotInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -408,7 +408,7 @@ type CreateSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -435,7 +435,7 @@ type CreateTableGroupRequest struct {
 	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTableGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -469,7 +469,7 @@ type CreateTableGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTableGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -496,7 +496,7 @@ type CreateTablesRequest struct {
 	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -533,7 +533,7 @@ type CreateTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -551,7 +551,7 @@ type DeleteClusterRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClusterRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -582,7 +582,7 @@ type DeleteClusterResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteClusterResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -603,7 +603,7 @@ type DeleteIdlFilesRequest struct {
 	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteIdlFilesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -638,7 +638,7 @@ type DeleteIdlFilesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteIdlFilesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -659,7 +659,7 @@ type DeleteSnapshotsRequest struct {
 	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -694,7 +694,7 @@ type DeleteSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -715,7 +715,7 @@ type DeleteTableGroupRequest struct {
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTableGroupRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -747,7 +747,7 @@ type DeleteTableGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTableGroupResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -768,7 +768,7 @@ type DeleteTableIndexRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTableIndexRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -803,7 +803,7 @@ type DeleteTableIndexResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTableIndexResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -824,7 +824,7 @@ type DeleteTablesRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -859,7 +859,7 @@ type DeleteTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -877,7 +877,7 @@ type DescribeClusterTagsRequest struct {
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -913,7 +913,7 @@ type DescribeClusterTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -943,7 +943,7 @@ type DescribeClustersRequest struct {
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClustersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -981,7 +981,7 @@ type DescribeClustersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClustersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1011,7 +1011,7 @@ type DescribeIdlFileInfosRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIdlFileInfosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1049,7 +1049,7 @@ type DescribeIdlFileInfosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIdlFileInfosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1067,7 +1067,7 @@ type DescribeMachineRequest struct {
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMachineRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1098,7 +1098,7 @@ type DescribeMachineResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMachineResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1113,7 +1113,7 @@ type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1146,7 +1146,7 @@ type DescribeRegionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRegionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1173,7 +1173,7 @@ type DescribeSnapshotsRequest struct {
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1210,7 +1210,7 @@ type DescribeSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1231,7 +1231,7 @@ type DescribeTableGroupTagsRequest struct {
 	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableGroupTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1268,7 +1268,7 @@ type DescribeTableGroupTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableGroupTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1298,7 +1298,7 @@ type DescribeTableGroupsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableGroupsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1336,7 +1336,7 @@ type DescribeTableGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableGroupsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1357,7 +1357,7 @@ type DescribeTableTagsRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1392,7 +1392,7 @@ type DescribeTableTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1422,7 +1422,7 @@ type DescribeTablesInRecycleRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesInRecycleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1460,7 +1460,7 @@ type DescribeTablesInRecycleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesInRecycleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1493,7 +1493,7 @@ type DescribeTablesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1532,7 +1532,7 @@ type DescribeTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1562,7 +1562,7 @@ type DescribeTasksRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1600,7 +1600,7 @@ type DescribeTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTasksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1615,7 +1615,7 @@ type DescribeUinInWhitelistRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUinInWhitelistRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1645,7 +1645,7 @@ type DescribeUinInWhitelistResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUinInWhitelistResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1663,7 +1663,7 @@ type DisableRestProxyRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableRestProxyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1697,7 +1697,7 @@ type DisableRestProxyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DisableRestProxyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1715,7 +1715,7 @@ type EnableRestProxyRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableRestProxyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1749,7 +1749,7 @@ type EnableRestProxyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableRestProxyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1868,7 +1868,7 @@ type ImportSnapshotsRequest struct {
 	NewTableName *string `json:"NewTableName,omitempty" name:"NewTableName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportSnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1906,7 +1906,7 @@ type ImportSnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImportSnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1957,7 +1957,7 @@ type ModifyClusterMachineRequest struct {
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterMachineRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1991,7 +1991,7 @@ type ModifyClusterMachineResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterMachineResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2012,7 +2012,7 @@ type ModifyClusterNameRequest struct {
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2041,7 +2041,7 @@ type ModifyClusterNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2071,7 +2071,7 @@ type ModifyClusterPasswordRequest struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterPasswordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2103,7 +2103,7 @@ type ModifyClusterPasswordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterPasswordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2127,7 +2127,7 @@ type ModifyClusterTagsRequest struct {
 	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2161,7 +2161,7 @@ type ModifyClusterTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyClusterTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2182,7 +2182,7 @@ type ModifySnapshotsRequest struct {
 	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2217,7 +2217,7 @@ type ModifySnapshotsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySnapshotsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2241,7 +2241,7 @@ type ModifyTableGroupNameRequest struct {
 	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableGroupNameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2271,7 +2271,7 @@ type ModifyTableGroupNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableGroupNameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2298,7 +2298,7 @@ type ModifyTableGroupTagsRequest struct {
 	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableGroupTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2333,7 +2333,7 @@ type ModifyTableGroupTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableGroupTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2354,7 +2354,7 @@ type ModifyTableMemosRequest struct {
 	TableMemos []*SelectedTableInfoNew `json:"TableMemos,omitempty" name:"TableMemos" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableMemosRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2389,7 +2389,7 @@ type ModifyTableMemosResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableMemosResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2410,7 +2410,7 @@ type ModifyTableQuotasRequest struct {
 	TableQuotas []*SelectedTableInfoNew `json:"TableQuotas,omitempty" name:"TableQuotas" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableQuotasRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2445,7 +2445,7 @@ type ModifyTableQuotasResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableQuotasResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2472,7 +2472,7 @@ type ModifyTableTagsRequest struct {
 	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableTagsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2509,7 +2509,7 @@ type ModifyTableTagsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableTagsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2533,7 +2533,7 @@ type ModifyTablesRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2569,7 +2569,7 @@ type ModifyTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2710,7 +2710,7 @@ type RecoverRecycleTablesRequest struct {
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecoverRecycleTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2745,7 +2745,7 @@ type RecoverRecycleTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RecoverRecycleTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2787,7 +2787,7 @@ type RollbackTablesRequest struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RollbackTablesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2824,7 +2824,7 @@ type RollbackTablesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RollbackTablesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2944,7 +2944,7 @@ type SetTableIndexRequest struct {
 	SelectedTables []*SelectedTableWithField `json:"SelectedTables,omitempty" name:"SelectedTables" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTableIndexRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2979,7 +2979,7 @@ type SetTableIndexResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetTableIndexResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3393,7 +3393,7 @@ type VerifyIdlFilesRequest struct {
 	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyIdlFilesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3433,7 +3433,7 @@ type VerifyIdlFilesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *VerifyIdlFilesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

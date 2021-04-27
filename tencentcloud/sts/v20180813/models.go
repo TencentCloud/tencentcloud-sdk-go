@@ -61,7 +61,7 @@ type AssumeRoleRequest struct {
 	ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssumeRoleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -102,7 +102,7 @@ type AssumeRoleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssumeRoleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type AssumeRoleWithSAMLRequest struct {
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssumeRoleWithSAMLRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -173,7 +173,7 @@ type AssumeRoleWithSAMLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AssumeRoleWithSAMLResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -213,7 +213,7 @@ type GetFederationTokenRequest struct {
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFederationTokenRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -253,7 +253,7 @@ type GetFederationTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *GetFederationTokenResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type QueryApiKeyRequest struct {
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryApiKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -302,7 +302,7 @@ type QueryApiKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *QueryApiKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

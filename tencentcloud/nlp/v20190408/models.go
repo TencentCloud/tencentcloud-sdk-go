@@ -31,7 +31,7 @@ type AutoSummarizationRequest struct {
 	Length *uint64 `json:"Length,omitempty" name:"Length"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AutoSummarizationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -63,7 +63,7 @@ type AutoSummarizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AutoSummarizationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -99,7 +99,7 @@ type ChatBotRequest struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChatBotRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -135,7 +135,7 @@ type ChatBotResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ChatBotResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -171,7 +171,7 @@ type CreateDictRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDictRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -203,7 +203,7 @@ type CreateDictResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateDictResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -224,7 +224,7 @@ type CreateWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -253,7 +253,7 @@ type CreateWordItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateWordItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -271,7 +271,7 @@ type DeleteDictRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDictRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -299,7 +299,7 @@ type DeleteDictResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteDictResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -320,7 +320,7 @@ type DeleteWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -349,7 +349,7 @@ type DeleteWordItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteWordItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -367,7 +367,7 @@ type DependencyParsingRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DependencyParsingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -413,7 +413,7 @@ type DependencyParsingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DependencyParsingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -434,7 +434,7 @@ type DescribeDictRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDictRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -466,7 +466,7 @@ type DescribeDictResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDictResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -487,7 +487,7 @@ type DescribeDictsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDictsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -522,7 +522,7 @@ type DescribeDictsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDictsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DescribeEntityRequest struct {
 	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEntityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -571,7 +571,7 @@ type DescribeEntityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeEntityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -592,7 +592,7 @@ type DescribeRelationRequest struct {
 	RightEntityName *string `json:"RightEntityName,omitempty" name:"RightEntityName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRelationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -624,7 +624,7 @@ type DescribeRelationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRelationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -642,7 +642,7 @@ type DescribeTripleRequest struct {
 	TripleCondition *string `json:"TripleCondition,omitempty" name:"TripleCondition"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTripleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -673,7 +673,7 @@ type DescribeTripleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTripleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -700,7 +700,7 @@ type DescribeWordItemsRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -737,7 +737,7 @@ type DescribeWordItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWordItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -836,7 +836,7 @@ type KeywordsExtractionRequest struct {
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *KeywordsExtractionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -868,7 +868,7 @@ type KeywordsExtractionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *KeywordsExtractionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -894,7 +894,7 @@ type LexicalAnalysisRequest struct {
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LexicalAnalysisRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -934,7 +934,7 @@ type LexicalAnalysisResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *LexicalAnalysisResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1000,7 +1000,7 @@ type SearchWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchWordItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1032,7 +1032,7 @@ type SearchWordItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SearchWordItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1050,7 +1050,7 @@ type SentenceEmbeddingRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceEmbeddingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1084,7 +1084,7 @@ type SentenceEmbeddingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentenceEmbeddingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1114,7 +1114,7 @@ type SentimentAnalysisRequest struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentimentAnalysisRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1159,7 +1159,7 @@ type SentimentAnalysisResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SentimentAnalysisResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1180,7 +1180,7 @@ type SimilarWordsRequest struct {
 	WordNumber *uint64 `json:"WordNumber,omitempty" name:"WordNumber"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimilarWordsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1212,7 +1212,7 @@ type SimilarWordsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SimilarWordsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1244,7 +1244,7 @@ type TextClassificationRequest struct {
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextClassificationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1276,7 +1276,7 @@ type TextClassificationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextClassificationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1294,7 +1294,7 @@ type TextCorrectionRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextCorrectionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1328,7 +1328,7 @@ type TextCorrectionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextCorrectionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1350,7 +1350,7 @@ type TextSimilarityRequest struct {
 	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextSimilarityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1382,7 +1382,7 @@ type TextSimilarityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextSimilarityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1421,7 +1421,7 @@ type UpdateDictRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDictRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1451,7 +1451,7 @@ type UpdateDictResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateDictResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1469,7 +1469,7 @@ type WordEmbeddingRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WordEmbeddingRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1503,7 +1503,7 @@ type WordEmbeddingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WordEmbeddingResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1536,7 +1536,7 @@ type WordSimilarityRequest struct {
 	TargetWord *string `json:"TargetWord,omitempty" name:"TargetWord"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WordSimilarityRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1568,7 +1568,7 @@ type WordSimilarityResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *WordSimilarityResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -42,7 +42,7 @@ type AddDelayLiveStreamRequest struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddDelayLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -74,7 +74,7 @@ type AddDelayLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddDelayLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -116,7 +116,7 @@ type AddLiveDomainRequest struct {
 	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddLiveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -148,7 +148,7 @@ type AddLiveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddLiveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -184,7 +184,7 @@ type AddLiveWatermarkRequest struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddLiveWatermarkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -220,7 +220,7 @@ type AddLiveWatermarkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddLiveWatermarkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -288,7 +288,7 @@ type BindLiveDomainCertRequest struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindLiveDomainCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -318,7 +318,7 @@ type BindLiveDomainCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *BindLiveDomainCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -412,7 +412,7 @@ type CancelCommonMixStreamRequest struct {
 	MixStreamSessionId *string `json:"MixStreamSessionId,omitempty" name:"MixStreamSessionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelCommonMixStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -440,7 +440,7 @@ type CancelCommonMixStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelCommonMixStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -696,7 +696,7 @@ type CreateCommonMixStreamRequest struct {
 	ControlParams *CommonMixControlParams `json:"ControlParams,omitempty" name:"ControlParams"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCommonMixStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -728,7 +728,7 @@ type CreateCommonMixStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateCommonMixStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -752,7 +752,7 @@ type CreateLiveCallbackRuleRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCallbackRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -782,7 +782,7 @@ type CreateLiveCallbackRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCallbackRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -835,7 +835,7 @@ type CreateLiveCallbackTemplateRequest struct {
 	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -874,7 +874,7 @@ type CreateLiveCallbackTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCallbackTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -909,7 +909,7 @@ type CreateLiveCertRequest struct {
 	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -945,7 +945,7 @@ type CreateLiveCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1007,7 +1007,7 @@ type CreateLiveRecordRequest struct {
 	StreamParam *string `json:"StreamParam,omitempty" name:"StreamParam"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1047,7 +1047,7 @@ type CreateLiveRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1075,7 +1075,7 @@ type CreateLiveRecordRuleRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1106,7 +1106,7 @@ type CreateLiveRecordRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1150,7 +1150,7 @@ type CreateLiveRecordTemplateRequest struct {
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1189,7 +1189,7 @@ type CreateLiveRecordTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveRecordTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1217,7 +1217,7 @@ type CreateLiveSnapshotRuleRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveSnapshotRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1248,7 +1248,7 @@ type CreateLiveSnapshotRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveSnapshotRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1308,7 +1308,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1349,7 +1349,7 @@ type CreateLiveSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1376,7 +1376,7 @@ type CreateLiveTranscodeRuleRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveTranscodeRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1407,7 +1407,7 @@ type CreateLiveTranscodeRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveTranscodeRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1509,7 +1509,7 @@ type CreateLiveTranscodeTemplateRequest struct {
 	ShortEdgeAsHeight *int64 `json:"ShortEdgeAsHeight,omitempty" name:"ShortEdgeAsHeight"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1559,7 +1559,7 @@ type CreateLiveTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1586,7 +1586,7 @@ type CreateLiveWatermarkRuleRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveWatermarkRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1617,7 +1617,7 @@ type CreateLiveWatermarkRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLiveWatermarkRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1673,7 +1673,7 @@ type CreatePullStreamConfigRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePullStreamConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1709,7 +1709,7 @@ type CreatePullStreamConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreatePullStreamConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1750,7 +1750,7 @@ type CreateRecordTaskRequest struct {
 	Extension *string `json:"Extension,omitempty" name:"Extension"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRecordTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1788,7 +1788,7 @@ type CreateRecordTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateRecordTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1858,7 +1858,7 @@ type DeleteLiveCallbackRuleRequest struct {
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCallbackRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1887,7 +1887,7 @@ type DeleteLiveCallbackRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCallbackRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1907,7 +1907,7 @@ type DeleteLiveCallbackTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCallbackTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1935,7 +1935,7 @@ type DeleteLiveCallbackTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCallbackTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1953,7 +1953,7 @@ type DeleteLiveCertRequest struct {
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1981,7 +1981,7 @@ type DeleteLiveCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2002,7 +2002,7 @@ type DeleteLiveDomainRequest struct {
 	DomainType *uint64 `json:"DomainType,omitempty" name:"DomainType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2031,7 +2031,7 @@ type DeleteLiveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2052,7 +2052,7 @@ type DeleteLiveRecordRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2081,7 +2081,7 @@ type DeleteLiveRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2108,7 +2108,7 @@ type DeleteLiveRecordRuleRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2138,7 +2138,7 @@ type DeleteLiveRecordRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2156,7 +2156,7 @@ type DeleteLiveRecordTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2184,7 +2184,7 @@ type DeleteLiveRecordTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveRecordTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2208,7 +2208,7 @@ type DeleteLiveSnapshotRuleRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveSnapshotRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2238,7 +2238,7 @@ type DeleteLiveSnapshotRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveSnapshotRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2258,7 +2258,7 @@ type DeleteLiveSnapshotTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2286,7 +2286,7 @@ type DeleteLiveSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2313,7 +2313,7 @@ type DeleteLiveTranscodeRuleRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveTranscodeRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2344,7 +2344,7 @@ type DeleteLiveTranscodeRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveTranscodeRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2364,7 +2364,7 @@ type DeleteLiveTranscodeTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2392,7 +2392,7 @@ type DeleteLiveTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2412,7 +2412,7 @@ type DeleteLiveWatermarkRequest struct {
 	WatermarkId *int64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveWatermarkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2440,7 +2440,7 @@ type DeleteLiveWatermarkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveWatermarkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2464,7 +2464,7 @@ type DeleteLiveWatermarkRuleRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveWatermarkRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2494,7 +2494,7 @@ type DeleteLiveWatermarkRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteLiveWatermarkRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2514,7 +2514,7 @@ type DeletePullStreamConfigRequest struct {
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePullStreamConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2542,7 +2542,7 @@ type DeletePullStreamConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePullStreamConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2560,7 +2560,7 @@ type DeleteRecordTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRecordTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2588,7 +2588,7 @@ type DeleteRecordTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteRecordTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2609,7 +2609,7 @@ type DescribeAllStreamPlayInfoListRequest struct {
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllStreamPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2644,7 +2644,7 @@ type DescribeAllStreamPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllStreamPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2668,7 +2668,7 @@ type DescribeAreaBillBandwidthAndFluxListRequest struct {
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAreaBillBandwidthAndFluxListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2701,7 +2701,7 @@ type DescribeAreaBillBandwidthAndFluxListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAreaBillBandwidthAndFluxListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2742,7 +2742,7 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillBandwidthAndFluxListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2793,7 +2793,7 @@ type DescribeBillBandwidthAndFluxListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBillBandwidthAndFluxListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2832,7 +2832,7 @@ type DescribeCallbackRecordsListRequest struct {
 	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallbackRecordsListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2881,7 +2881,7 @@ type DescribeCallbackRecordsListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCallbackRecordsListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2914,7 +2914,7 @@ type DescribeConcurrentRecordStreamNumRequest struct {
 	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeConcurrentRecordStreamNumRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2949,7 +2949,7 @@ type DescribeConcurrentRecordStreamNumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeConcurrentRecordStreamNumResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2970,7 +2970,7 @@ type DescribeDeliverBandwidthListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeliverBandwidthListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3002,7 +3002,7 @@ type DescribeDeliverBandwidthListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeDeliverBandwidthListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3036,7 +3036,7 @@ type DescribeGroupProIspPlayInfoListRequest struct {
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupProIspPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3072,7 +3072,7 @@ type DescribeGroupProIspPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeGroupProIspPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3099,7 +3099,7 @@ type DescribeHttpStatusInfoListRequest struct {
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHttpStatusInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3132,7 +3132,7 @@ type DescribeHttpStatusInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHttpStatusInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3147,7 +3147,7 @@ type DescribeLiveCallbackRulesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3177,7 +3177,7 @@ type DescribeLiveCallbackRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3197,7 +3197,7 @@ type DescribeLiveCallbackTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3228,7 +3228,7 @@ type DescribeLiveCallbackTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3243,7 +3243,7 @@ type DescribeLiveCallbackTemplatesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3273,7 +3273,7 @@ type DescribeLiveCallbackTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCallbackTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3291,7 +3291,7 @@ type DescribeLiveCertRequest struct {
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3322,7 +3322,7 @@ type DescribeLiveCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3337,7 +3337,7 @@ type DescribeLiveCertsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCertsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3367,7 +3367,7 @@ type DescribeLiveCertsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveCertsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3382,7 +3382,7 @@ type DescribeLiveDelayInfoListRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDelayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3412,7 +3412,7 @@ type DescribeLiveDelayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDelayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3430,7 +3430,7 @@ type DescribeLiveDomainCertRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3461,7 +3461,7 @@ type DescribeLiveDomainCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3479,7 +3479,7 @@ type DescribeLiveDomainPlayInfoListRequest struct {
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3525,7 +3525,7 @@ type DescribeLiveDomainPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3543,7 +3543,7 @@ type DescribeLiveDomainRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3575,7 +3575,7 @@ type DescribeLiveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3608,7 +3608,7 @@ type DescribeLiveDomainsRequest struct {
 	DomainPrefix *string `json:"DomainPrefix,omitempty" name:"DomainPrefix"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3647,7 +3647,7 @@ type DescribeLiveDomainsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveDomainsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3673,7 +3673,7 @@ type DescribeLiveForbidStreamListRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveForbidStreamListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3718,7 +3718,7 @@ type DescribeLiveForbidStreamListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveForbidStreamListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3756,7 +3756,7 @@ type DescribeLivePackageInfoRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePackageInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3820,7 +3820,7 @@ type DescribeLivePackageInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePackageInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3838,7 +3838,7 @@ type DescribeLivePlayAuthKeyRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePlayAuthKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3869,7 +3869,7 @@ type DescribeLivePlayAuthKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePlayAuthKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3887,7 +3887,7 @@ type DescribeLivePushAuthKeyRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePushAuthKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3918,7 +3918,7 @@ type DescribeLivePushAuthKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLivePushAuthKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3933,7 +3933,7 @@ type DescribeLiveRecordRulesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3963,7 +3963,7 @@ type DescribeLiveRecordRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -3981,7 +3981,7 @@ type DescribeLiveRecordTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4012,7 +4012,7 @@ type DescribeLiveRecordTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4032,7 +4032,7 @@ type DescribeLiveRecordTemplatesRequest struct {
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4063,7 +4063,7 @@ type DescribeLiveRecordTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveRecordTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4078,7 +4078,7 @@ type DescribeLiveSnapshotRulesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4108,7 +4108,7 @@ type DescribeLiveSnapshotRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4127,7 +4127,7 @@ type DescribeLiveSnapshotTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4158,7 +4158,7 @@ type DescribeLiveSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4173,7 +4173,7 @@ type DescribeLiveSnapshotTemplatesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4203,7 +4203,7 @@ type DescribeLiveSnapshotTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveSnapshotTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4266,7 +4266,7 @@ type DescribeLiveStreamEventListRequest struct {
 	IsAsc *int64 `json:"IsAsc,omitempty" name:"IsAsc"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamEventListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4318,7 +4318,7 @@ type DescribeLiveStreamEventListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamEventListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4350,7 +4350,7 @@ type DescribeLiveStreamOnlineListRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamOnlineListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4397,7 +4397,7 @@ type DescribeLiveStreamOnlineListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamOnlineListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4442,7 +4442,7 @@ type DescribeLiveStreamPublishedListRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamPublishedListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4491,7 +4491,7 @@ type DescribeLiveStreamPublishedListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamPublishedListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4522,7 +4522,7 @@ type DescribeLiveStreamPushInfoListRequest struct {
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamPushInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4568,7 +4568,7 @@ type DescribeLiveStreamPushInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamPushInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4592,7 +4592,7 @@ type DescribeLiveStreamStateRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamStateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4628,7 +4628,7 @@ type DescribeLiveStreamStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveStreamStateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4672,7 +4672,7 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 	EndDayTime *string `json:"EndDayTime,omitempty" name:"EndDayTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeDetailInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4721,7 +4721,7 @@ type DescribeLiveTranscodeDetailInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeDetailInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4742,7 +4742,7 @@ type DescribeLiveTranscodeRulesRequest struct {
 	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4774,7 +4774,7 @@ type DescribeLiveTranscodeRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4793,7 +4793,7 @@ type DescribeLiveTranscodeTemplateRequest struct {
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4824,7 +4824,7 @@ type DescribeLiveTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4839,7 +4839,7 @@ type DescribeLiveTranscodeTemplatesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeTemplatesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4869,7 +4869,7 @@ type DescribeLiveTranscodeTemplatesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveTranscodeTemplatesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4887,7 +4887,7 @@ type DescribeLiveWatermarkRequest struct {
 	WatermarkId *uint64 `json:"WatermarkId,omitempty" name:"WatermarkId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4918,7 +4918,7 @@ type DescribeLiveWatermarkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4933,7 +4933,7 @@ type DescribeLiveWatermarkRulesRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarkRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4963,7 +4963,7 @@ type DescribeLiveWatermarkRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarkRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -4978,7 +4978,7 @@ type DescribeLiveWatermarksRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5011,7 +5011,7 @@ type DescribeLiveWatermarksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLiveWatermarksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5038,7 +5038,7 @@ type DescribeLogDownloadListRequest struct {
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLogDownloadListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5074,7 +5074,7 @@ type DescribeLogDownloadListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLogDownloadListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5111,7 +5111,7 @@ type DescribePlayErrorCodeDetailInfoListRequest struct {
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayErrorCodeDetailInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5150,7 +5150,7 @@ type DescribePlayErrorCodeDetailInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayErrorCodeDetailInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5192,7 +5192,7 @@ type DescribePlayErrorCodeSumInfoListRequest struct {
 	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayErrorCodeSumInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5260,7 +5260,7 @@ type DescribePlayErrorCodeSumInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePlayErrorCodeSumInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5302,7 +5302,7 @@ type DescribeProIspPlaySumInfoListRequest struct {
 	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProIspPlaySumInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5364,7 +5364,7 @@ type DescribeProIspPlaySumInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProIspPlaySumInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5417,7 +5417,7 @@ type DescribeProvinceIspPlayInfoListRequest struct {
 	IpType *string `json:"IpType,omitempty" name:"IpType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProvinceIspPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5459,7 +5459,7 @@ type DescribeProvinceIspPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeProvinceIspPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5478,7 +5478,7 @@ type DescribePullStreamConfigsRequest struct {
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePullStreamConfigsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5509,7 +5509,7 @@ type DescribePullStreamConfigsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePullStreamConfigsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5539,7 +5539,7 @@ type DescribeScreenShotSheetNumListRequest struct {
 	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScreenShotSheetNumListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5574,7 +5574,7 @@ type DescribeScreenShotSheetNumListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeScreenShotSheetNumListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5611,7 +5611,7 @@ type DescribeStreamDayPlayInfoListRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamDayPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5659,7 +5659,7 @@ type DescribeStreamDayPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamDayPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5697,7 +5697,7 @@ type DescribeStreamPlayInfoListRequest struct {
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5733,7 +5733,7 @@ type DescribeStreamPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5763,7 +5763,7 @@ type DescribeStreamPushInfoListRequest struct {
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPushInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5798,7 +5798,7 @@ type DescribeStreamPushInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPushInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5838,7 +5838,7 @@ type DescribeTopClientIpSumInfoListRequest struct {
 	OutLanguage *string `json:"OutLanguage,omitempty" name:"OutLanguage"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopClientIpSumInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5891,7 +5891,7 @@ type DescribeTopClientIpSumInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTopClientIpSumInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5921,7 +5921,7 @@ type DescribeUploadStreamNumsRequest struct {
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUploadStreamNumsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5955,7 +5955,7 @@ type DescribeUploadStreamNumsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUploadStreamNumsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -5995,7 +5995,7 @@ type DescribeVisitTopSumInfoListRequest struct {
 	OrderParam *string `json:"OrderParam,omitempty" name:"OrderParam"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVisitTopSumInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6053,7 +6053,7 @@ type DescribeVisitTopSumInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVisitTopSumInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6199,7 +6199,7 @@ type DropLiveStreamRequest struct {
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DropLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6229,7 +6229,7 @@ type DropLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DropLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6247,7 +6247,7 @@ type EnableLiveDomainRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableLiveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6275,7 +6275,7 @@ type EnableLiveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EnableLiveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6293,7 +6293,7 @@ type ForbidLiveDomainRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6321,7 +6321,7 @@ type ForbidLiveDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6356,7 +6356,7 @@ type ForbidLiveStreamRequest struct {
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6388,7 +6388,7 @@ type ForbidLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6563,7 +6563,7 @@ type ModifyLiveCallbackTemplateRequest struct {
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveCallbackTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6599,7 +6599,7 @@ type ModifyLiveCallbackTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveCallbackTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6632,7 +6632,7 @@ type ModifyLiveCertRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6665,7 +6665,7 @@ type ModifyLiveCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6689,7 +6689,7 @@ type ModifyLiveDomainCertRequest struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveDomainCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6719,7 +6719,7 @@ type ModifyLiveDomainCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveDomainCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6753,7 +6753,7 @@ type ModifyLivePlayAuthKeyRequest struct {
 	AuthBackKey *string `json:"AuthBackKey,omitempty" name:"AuthBackKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePlayAuthKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6785,7 +6785,7 @@ type ModifyLivePlayAuthKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePlayAuthKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6806,7 +6806,7 @@ type ModifyLivePlayDomainRequest struct {
 	PlayType *int64 `json:"PlayType,omitempty" name:"PlayType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePlayDomainRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6835,7 +6835,7 @@ type ModifyLivePlayDomainResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePlayDomainResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6868,7 +6868,7 @@ type ModifyLivePushAuthKeyRequest struct {
 	AuthDelta *uint64 `json:"AuthDelta,omitempty" name:"AuthDelta"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePushAuthKeyRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6900,7 +6900,7 @@ type ModifyLivePushAuthKeyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLivePushAuthKeyResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6942,7 +6942,7 @@ type ModifyLiveRecordTemplateRequest struct {
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -6978,7 +6978,7 @@ type ModifyLiveRecordTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveRecordTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7035,7 +7035,7 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveSnapshotTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7074,7 +7074,7 @@ type ModifyLiveSnapshotTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveSnapshotTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7167,7 +7167,7 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	ShortEdgeAsHeight *int64 `json:"ShortEdgeAsHeight,omitempty" name:"ShortEdgeAsHeight"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveTranscodeTemplateRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7213,7 +7213,7 @@ type ModifyLiveTranscodeTemplateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyLiveTranscodeTemplateResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7279,7 +7279,7 @@ type ModifyPullStreamConfigRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPullStreamConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7313,7 +7313,7 @@ type ModifyPullStreamConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPullStreamConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7334,7 +7334,7 @@ type ModifyPullStreamStatusRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPullStreamStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7363,7 +7363,7 @@ type ModifyPullStreamStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPullStreamStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7772,7 +7772,7 @@ type ResumeDelayLiveStreamRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeDelayLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7802,7 +7802,7 @@ type ResumeDelayLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeDelayLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7826,7 +7826,7 @@ type ResumeLiveStreamRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7856,7 +7856,7 @@ type ResumeLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResumeLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7941,7 +7941,7 @@ type StopLiveRecordRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopLiveRecordRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7970,7 +7970,7 @@ type StopLiveRecordResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopLiveRecordResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -7988,7 +7988,7 @@ type StopRecordTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopRecordTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8016,7 +8016,7 @@ type StopRecordTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopRecordTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8249,7 +8249,7 @@ type UnBindLiveDomainCertRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnBindLiveDomainCertRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8277,7 +8277,7 @@ type UnBindLiveDomainCertResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UnBindLiveDomainCertResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8317,7 +8317,7 @@ type UpdateLiveWatermarkRequest struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateLiveWatermarkRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -8351,7 +8351,7 @@ type UpdateLiveWatermarkResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateLiveWatermarkResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

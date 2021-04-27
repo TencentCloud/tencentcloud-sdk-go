@@ -144,7 +144,7 @@ type CreateAcRulesRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAcRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -186,7 +186,7 @@ type CreateAcRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAcRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -213,7 +213,7 @@ type CreateSecurityGroupApiRulesRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityGroupApiRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -247,7 +247,7 @@ type CreateSecurityGroupApiRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSecurityGroupApiRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -274,7 +274,7 @@ type DeleteAcRuleRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAcRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -312,7 +312,7 @@ type DeleteAcRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAcRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -336,7 +336,7 @@ type DeleteAllAccessControlRuleRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAllAccessControlRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -373,7 +373,7 @@ type DeleteAllAccessControlRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteAllAccessControlRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -394,7 +394,7 @@ type DeleteSecurityGroupAllRuleRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityGroupAllRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -430,7 +430,7 @@ type DeleteSecurityGroupAllRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityGroupAllRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -457,7 +457,7 @@ type DeleteSecurityGroupRuleRequest struct {
 	IsDelReverse *uint64 `json:"IsDelReverse,omitempty" name:"IsDelReverse"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityGroupRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -495,7 +495,7 @@ type DeleteSecurityGroupRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteSecurityGroupRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -540,7 +540,7 @@ type DescribeAcListsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAcListsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -590,7 +590,7 @@ type DescribeAcListsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAcListsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -629,7 +629,7 @@ type DescribeAssociatedInstanceListRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssociatedInstanceListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -672,7 +672,7 @@ type DescribeAssociatedInstanceListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAssociatedInstanceListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -696,7 +696,7 @@ type DescribeCfwEipsRequest struct {
 	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfwEipsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -729,7 +729,7 @@ type DescribeCfwEipsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCfwEipsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -765,7 +765,7 @@ type DescribeNatRuleOverviewRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNatRuleOverviewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -818,7 +818,7 @@ type DescribeNatRuleOverviewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNatRuleOverviewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -836,7 +836,7 @@ type DescribeRuleOverviewRequest struct {
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleOverviewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -884,7 +884,7 @@ type DescribeRuleOverviewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeRuleOverviewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -920,7 +920,7 @@ type DescribeSecurityGroupListRequest struct {
 	Filter *uint64 `json:"Filter,omitempty" name:"Filter"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityGroupListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -967,7 +967,7 @@ type DescribeSecurityGroupListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSecurityGroupListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1006,7 +1006,7 @@ type DescribeSwitchListsRequest struct {
 	By *string `json:"By,omitempty" name:"By"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSwitchListsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1058,7 +1058,7 @@ type DescribeSwitchListsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSwitchListsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1076,7 +1076,7 @@ type DescribeSyncAssetStatusRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncAssetStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1107,7 +1107,7 @@ type DescribeSyncAssetStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeSyncAssetStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1134,7 +1134,7 @@ type DescribeTableStatusRequest struct {
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1169,7 +1169,7 @@ type DescribeTableStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTableStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1187,7 +1187,7 @@ type DescribeVpcRuleOverviewRequest struct {
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVpcRuleOverviewRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1223,7 +1223,7 @@ type DescribeVpcRuleOverviewResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVpcRuleOverviewResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1247,7 +1247,7 @@ type ExpandCfwVerticalRequest struct {
 	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExpandCfwVerticalRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1277,7 +1277,7 @@ type ExpandCfwVerticalResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ExpandCfwVerticalResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1304,7 +1304,7 @@ type ModifyAcRuleRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAcRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1342,7 +1342,7 @@ type ModifyAcRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAcRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1369,7 +1369,7 @@ type ModifyAllRuleStatusRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAllRuleStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1404,7 +1404,7 @@ type ModifyAllRuleStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAllRuleStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1434,7 +1434,7 @@ type ModifyAllSwitchStatusRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAllSwitchStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1469,7 +1469,7 @@ type ModifyAllSwitchStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyAllSwitchStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1493,7 +1493,7 @@ type ModifyItemSwitchStatusRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyItemSwitchStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1526,7 +1526,7 @@ type ModifyItemSwitchStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyItemSwitchStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1553,7 +1553,7 @@ type ModifySecurityGroupAllRuleStatusRequest struct {
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySecurityGroupAllRuleStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1588,7 +1588,7 @@ type ModifySecurityGroupAllRuleStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySecurityGroupAllRuleStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1615,7 +1615,7 @@ type ModifySequenceRulesRequest struct {
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySequenceRulesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1650,7 +1650,7 @@ type ModifySequenceRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifySequenceRulesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1677,7 +1677,7 @@ type ModifyTableStatusRequest struct {
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableStatusRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1712,7 +1712,7 @@ type ModifyTableStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyTableStatusResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1801,7 +1801,7 @@ type RunSyncAssetRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunSyncAssetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1832,7 +1832,7 @@ type RunSyncAssetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RunSyncAssetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1973,7 +1973,7 @@ type SetNatFwDnatRuleRequest struct {
 	NewDnat *CfwNatDnatRule `json:"NewDnat,omitempty" name:"NewDnat"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetNatFwDnatRuleRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2006,7 +2006,7 @@ type SetNatFwDnatRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *SetNatFwDnatRuleResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

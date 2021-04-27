@@ -81,7 +81,7 @@ type CreateAccountRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -113,7 +113,7 @@ type CreateAccountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateAccountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -146,7 +146,7 @@ type CreateFacePictureRequest struct {
 	IsForceUpload *bool `json:"IsForceUpload,omitempty" name:"IsForceUpload"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFacePictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -188,7 +188,7 @@ type CreateFacePictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateFacePictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -221,7 +221,7 @@ type DeletePersonFeatureRequest struct {
 	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonFeatureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -251,7 +251,7 @@ type DeletePersonFeatureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeletePersonFeatureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type DescribeCameraPersonRequest struct {
 	IsNeedPic *int64 `json:"IsNeedPic,omitempty" name:"IsNeedPic"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCameraPersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -340,7 +340,7 @@ type DescribeCameraPersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCameraPersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -367,7 +367,7 @@ type DescribeClusterPersonArrivedMallRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterPersonArrivedMallRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -410,7 +410,7 @@ type DescribeClusterPersonArrivedMallResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterPersonArrivedMallResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -437,7 +437,7 @@ type DescribeClusterPersonTraceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterPersonTraceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -480,7 +480,7 @@ type DescribeClusterPersonTraceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeClusterPersonTraceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -513,7 +513,7 @@ type DescribeFaceIdByTempIdRequest struct {
 	PictureExpires *int64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFaceIdByTempIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -567,7 +567,7 @@ type DescribeFaceIdByTempIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFaceIdByTempIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -603,7 +603,7 @@ type DescribeHistoryNetworkInfoRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHistoryNetworkInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -640,7 +640,7 @@ type DescribeHistoryNetworkInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeHistoryNetworkInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -664,7 +664,7 @@ type DescribeNetworkInfoRequest struct {
 	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNetworkInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -697,7 +697,7 @@ type DescribeNetworkInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeNetworkInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -724,7 +724,7 @@ type DescribePersonArrivedMallRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonArrivedMallRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -767,7 +767,7 @@ type DescribePersonArrivedMallResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonArrivedMallResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -791,7 +791,7 @@ type DescribePersonInfoByFacePictureRequest struct {
 	Picture *string `json:"Picture,omitempty" name:"Picture"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonInfoByFacePictureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -842,7 +842,7 @@ type DescribePersonInfoByFacePictureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonInfoByFacePictureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -878,7 +878,7 @@ type DescribePersonInfoRequest struct {
 	PersonType *uint64 `json:"PersonType,omitempty" name:"PersonType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -924,7 +924,7 @@ type DescribePersonInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -948,7 +948,7 @@ type DescribePersonRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -984,7 +984,7 @@ type DescribePersonResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1008,7 +1008,7 @@ type DescribePersonTraceDetailRequest struct {
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonTraceDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1050,7 +1050,7 @@ type DescribePersonTraceDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonTraceDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1077,7 +1077,7 @@ type DescribePersonTraceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonTraceRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1120,7 +1120,7 @@ type DescribePersonTraceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonTraceResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1162,7 +1162,7 @@ type DescribePersonVisitInfoRequest struct {
 	EndDateTime *string `json:"EndDateTime,omitempty" name:"EndDateTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonVisitInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1210,7 +1210,7 @@ type DescribePersonVisitInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePersonVisitInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1243,7 +1243,7 @@ type DescribeShopHourTrafficInfoRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopHourTrafficInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1288,7 +1288,7 @@ type DescribeShopHourTrafficInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopHourTrafficInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1309,7 +1309,7 @@ type DescribeShopInfoRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1344,7 +1344,7 @@ type DescribeShopInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1377,7 +1377,7 @@ type DescribeShopTrafficInfoRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopTrafficInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1422,7 +1422,7 @@ type DescribeShopTrafficInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeShopTrafficInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1455,7 +1455,7 @@ type DescribeTrajectoryDataRequest struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrajectoryDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1509,7 +1509,7 @@ type DescribeTrajectoryDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTrajectoryDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1539,7 +1539,7 @@ type DescribeZoneFlowAgeInfoByZoneIdRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowAgeInfoByZoneIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1586,7 +1586,7 @@ type DescribeZoneFlowAgeInfoByZoneIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowAgeInfoByZoneIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1613,7 +1613,7 @@ type DescribeZoneFlowAndStayTimeRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowAndStayTimeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1653,7 +1653,7 @@ type DescribeZoneFlowAndStayTimeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowAndStayTimeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1683,7 +1683,7 @@ type DescribeZoneFlowDailyByZoneIdRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowDailyByZoneIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1730,7 +1730,7 @@ type DescribeZoneFlowDailyByZoneIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowDailyByZoneIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1760,7 +1760,7 @@ type DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1807,7 +1807,7 @@ type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1837,7 +1837,7 @@ type DescribeZoneFlowGenderInfoByZoneIdRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowGenderInfoByZoneIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1887,7 +1887,7 @@ type DescribeZoneFlowGenderInfoByZoneIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowGenderInfoByZoneIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1917,7 +1917,7 @@ type DescribeZoneFlowHourlyByZoneIdRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowHourlyByZoneIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1964,7 +1964,7 @@ type DescribeZoneFlowHourlyByZoneIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneFlowHourlyByZoneIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1997,7 +1997,7 @@ type DescribeZoneTrafficInfoRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneTrafficInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2042,7 +2042,7 @@ type DescribeZoneTrafficInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeZoneTrafficInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2096,7 +2096,7 @@ type ModifyPersonFeatureInfoRequest struct {
 	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonFeatureInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2147,7 +2147,7 @@ type ModifyPersonFeatureInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonFeatureInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2171,7 +2171,7 @@ type ModifyPersonTagInfoRequest struct {
 	Tags []*PersonTagInfo `json:"Tags,omitempty" name:"Tags" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonTagInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2201,7 +2201,7 @@ type ModifyPersonTagInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonTagInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2234,7 +2234,7 @@ type ModifyPersonTypeRequest struct {
 	PersonSubType *uint64 `json:"PersonSubType,omitempty" name:"PersonSubType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonTypeRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2266,7 +2266,7 @@ type ModifyPersonTypeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyPersonTypeResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2563,7 +2563,7 @@ type RegisterCallbackRequest struct {
 	NeedFacePic *uint64 `json:"NeedFacePic,omitempty" name:"NeedFacePic"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterCallbackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -2594,7 +2594,7 @@ type RegisterCallbackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterCallbackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

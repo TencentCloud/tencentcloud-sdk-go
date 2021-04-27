@@ -30,7 +30,7 @@ type DescribeImageStatRequest struct {
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -69,7 +69,7 @@ type DescribeImageStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImageStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -93,7 +93,7 @@ type DescribeImsListRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImsListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -130,7 +130,7 @@ type DescribeImsListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeImsListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -226,7 +226,7 @@ type ImageModerationRequest struct {
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -308,7 +308,7 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ImageModerationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

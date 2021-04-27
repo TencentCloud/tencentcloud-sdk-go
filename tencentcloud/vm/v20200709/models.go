@@ -184,7 +184,7 @@ type CancelTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -212,7 +212,7 @@ type CancelTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CancelTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -239,7 +239,7 @@ type CreateBizConfigRequest struct {
 	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBizConfigRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -270,7 +270,7 @@ type CreateBizConfigResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBizConfigResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -303,7 +303,7 @@ type CreateVideoModerationTaskRequest struct {
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoModerationTaskRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -340,7 +340,7 @@ type CreateVideoModerationTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateVideoModerationTaskResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -361,7 +361,7 @@ type DescribeTaskDetailRequest struct {
 	ShowAllSegments *bool `json:"ShowAllSegments,omitempty" name:"ShowAllSegments"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -471,7 +471,7 @@ type DescribeTaskDetailResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeTaskDetailResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -492,7 +492,7 @@ type DescribeVideoStatRequest struct {
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoStatRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -530,7 +530,7 @@ type DescribeVideoStatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeVideoStatResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

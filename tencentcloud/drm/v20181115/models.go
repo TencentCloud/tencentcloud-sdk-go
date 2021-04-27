@@ -44,7 +44,7 @@ type AddFairPlayPemRequest struct {
 	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddFairPlayPemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -84,7 +84,7 @@ type AddFairPlayPemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *AddFairPlayPemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -111,7 +111,7 @@ type CreateEncryptKeysRequest struct {
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEncryptKeysRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -142,7 +142,7 @@ type CreateEncryptKeysResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateEncryptKeysResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -173,7 +173,7 @@ type CreateLicenseRequest struct {
 	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLicenseRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -211,7 +211,7 @@ type CreateLicenseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateLicenseResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -233,7 +233,7 @@ type DeleteFairPlayPemRequest struct {
 	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFairPlayPemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -262,7 +262,7 @@ type DeleteFairPlayPemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteFairPlayPemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -290,7 +290,7 @@ type DescribeAllKeysRequest struct {
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllKeysRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -335,7 +335,7 @@ type DescribeAllKeysResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAllKeysResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -357,7 +357,7 @@ type DescribeFairPlayPemRequest struct {
 	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFairPlayPemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -390,7 +390,7 @@ type DescribeFairPlayPemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeFairPlayPemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -422,7 +422,7 @@ type DescribeKeysRequest struct {
 	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeKeysRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -469,7 +469,7 @@ type DescribeKeysResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeKeysResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -595,7 +595,7 @@ type ModifyFairPlayPemRequest struct {
 	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFairPlayPemRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -636,7 +636,7 @@ type ModifyFairPlayPemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyFairPlayPemResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -678,7 +678,7 @@ type StartEncryptionRequest struct {
 	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartEncryptionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -711,7 +711,7 @@ type StartEncryptionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StartEncryptionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

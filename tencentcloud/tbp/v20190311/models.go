@@ -30,7 +30,7 @@ type CreateBotRequest struct {
 	BotCnName *string `json:"BotCnName,omitempty" name:"BotCnName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBotRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -65,7 +65,7 @@ type CreateBotResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateBotResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -92,7 +92,7 @@ type ResetRequest struct {
 	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -158,7 +158,7 @@ type ResetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ResetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -199,7 +199,7 @@ type TextProcessRequest struct {
 	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextProcessRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -259,7 +259,7 @@ type TextProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextProcessResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -283,7 +283,7 @@ type TextResetRequest struct {
 	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextResetRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -341,7 +341,7 @@ type TextResetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TextResetResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

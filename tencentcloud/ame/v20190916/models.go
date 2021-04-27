@@ -96,7 +96,7 @@ type DescribeAuthInfoRequest struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthInfoRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -132,7 +132,7 @@ type DescribeAuthInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeAuthInfoResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -150,7 +150,7 @@ type DescribeCloudMusicPurchasedRequest struct {
 	AuthInfoId *string `json:"AuthInfoId,omitempty" name:"AuthInfoId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudMusicPurchasedRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -182,7 +182,7 @@ type DescribeCloudMusicPurchasedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudMusicPurchasedResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -204,7 +204,7 @@ type DescribeCloudMusicRequest struct {
 	MusicType *string `json:"MusicType,omitempty" name:"MusicType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudMusicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -254,7 +254,7 @@ type DescribeCloudMusicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeCloudMusicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -272,7 +272,7 @@ type DescribeItemByIdRequest struct {
 	ItemIDs *string `json:"ItemIDs,omitempty" name:"ItemIDs"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeItemByIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -304,7 +304,7 @@ type DescribeItemByIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeItemByIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -331,7 +331,7 @@ type DescribeItemsRequest struct {
 	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -379,7 +379,7 @@ type DescribeItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -400,7 +400,7 @@ type DescribeLyricRequest struct {
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLyricRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -433,7 +433,7 @@ type DescribeLyricResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeLyricResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -462,7 +462,7 @@ type DescribeMusicRequest struct {
 	Ssl *string `json:"Ssl,omitempty" name:"Ssl"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMusicRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -497,7 +497,7 @@ type DescribeMusicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeMusicResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -521,7 +521,7 @@ type DescribePackageItemsRequest struct {
 	Length *uint64 `json:"Length,omitempty" name:"Length"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePackageItemsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -555,7 +555,7 @@ type DescribePackageItemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePackageItemsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -576,7 +576,7 @@ type DescribePackagesRequest struct {
 	Length *uint64 `json:"Length,omitempty" name:"Length"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePackagesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -609,7 +609,7 @@ type DescribePackagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribePackagesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -630,7 +630,7 @@ type DescribeStationsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStationsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -675,7 +675,7 @@ type DescribeStationsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStationsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -741,7 +741,7 @@ type ModifyMusicOnShelvesRequest struct {
 	AmeKey *string `json:"AmeKey,omitempty" name:"AmeKey"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMusicOnShelvesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -770,7 +770,7 @@ type ModifyMusicOnShelvesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ModifyMusicOnShelvesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -932,7 +932,7 @@ type PutMusicOnTheShelvesRequest struct {
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PutMusicOnTheShelvesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -970,7 +970,7 @@ type PutMusicOnTheShelvesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PutMusicOnTheShelvesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1000,7 +1000,7 @@ type ReportDataRequest struct {
 	ReportData *string `json:"ReportData,omitempty" name:"ReportData"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReportDataRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1028,7 +1028,7 @@ type ReportDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ReportDataResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1077,7 +1077,7 @@ type TakeMusicOffShelvesRequest struct {
 	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TakeMusicOffShelvesRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -1115,7 +1115,7 @@ type TakeMusicOffShelvesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *TakeMusicOffShelvesResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

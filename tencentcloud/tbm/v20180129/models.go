@@ -108,7 +108,7 @@ type DescribeBrandCommentCountRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandCommentCountRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -141,7 +141,7 @@ type DescribeBrandCommentCountResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandCommentCountResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -165,7 +165,7 @@ type DescribeBrandExposureRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandExposureRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -201,7 +201,7 @@ type DescribeBrandExposureResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandExposureResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -225,7 +225,7 @@ type DescribeBrandMediaReportRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandMediaReportRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -261,7 +261,7 @@ type DescribeBrandMediaReportResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandMediaReportResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -291,7 +291,7 @@ type DescribeBrandNegCommentsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandNegCommentsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -329,7 +329,7 @@ type DescribeBrandNegCommentsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandNegCommentsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -359,7 +359,7 @@ type DescribeBrandPosCommentsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandPosCommentsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -397,7 +397,7 @@ type DescribeBrandPosCommentsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandPosCommentsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -430,7 +430,7 @@ type DescribeBrandSocialOpinionRequest struct {
 	ShowList *bool `json:"ShowList,omitempty" name:"ShowList"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandSocialOpinionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -475,7 +475,7 @@ type DescribeBrandSocialOpinionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandSocialOpinionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -499,7 +499,7 @@ type DescribeBrandSocialReportRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandSocialReportRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -535,7 +535,7 @@ type DescribeBrandSocialReportResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeBrandSocialReportResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -568,7 +568,7 @@ type DescribeIndustryNewsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIndustryNewsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -616,7 +616,7 @@ type DescribeIndustryNewsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeIndustryNewsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -634,7 +634,7 @@ type DescribeUserPortraitRequest struct {
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserPortraitRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -677,7 +677,7 @@ type DescribeUserPortraitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeUserPortraitResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

@@ -30,7 +30,7 @@ type ApplyStackRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -62,7 +62,7 @@ type ApplyStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ApplyStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -89,7 +89,7 @@ type CreateStackRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -126,7 +126,7 @@ type CreateStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -153,7 +153,7 @@ type CreateStackVersionRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStackVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -187,7 +187,7 @@ type CreateStackVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateStackVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -205,7 +205,7 @@ type DeleteStackRequest struct {
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -233,7 +233,7 @@ type DeleteStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -251,7 +251,7 @@ type DeleteStackVersionRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteStackVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -279,7 +279,7 @@ type DeleteStackVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DeleteStackVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -297,7 +297,7 @@ type DescribeStackEventRequest struct {
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackEventRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -349,7 +349,7 @@ type DescribeStackEventResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackEventResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -390,7 +390,7 @@ type DescribeStackEventsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackEventsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -427,7 +427,7 @@ type DescribeStackEventsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackEventsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -464,7 +464,7 @@ type DescribeStackVersionsRequest struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackVersionsRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -501,7 +501,7 @@ type DescribeStackVersionsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStackVersionsResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -525,7 +525,7 @@ type DescribeStacksRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStacksRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -561,7 +561,7 @@ type DescribeStacksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStacksResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -582,7 +582,7 @@ type DestroyStackRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -614,7 +614,7 @@ type DestroyStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DestroyStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -668,7 +668,7 @@ type PlanStackRequest struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PlanStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -700,7 +700,7 @@ type PlanStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *PlanStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -745,7 +745,7 @@ type UpdateStackRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateStackRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -775,7 +775,7 @@ type UpdateStackResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateStackResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -802,7 +802,7 @@ type UpdateStackVersionRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateStackVersionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -833,7 +833,7 @@ type UpdateStackVersionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *UpdateStackVersionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

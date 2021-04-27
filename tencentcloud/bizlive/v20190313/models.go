@@ -45,7 +45,7 @@ type CreateSessionRequest struct {
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSessionRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -82,7 +82,7 @@ type CreateSessionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *CreateSessionResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -130,7 +130,7 @@ type DescribeStreamPlayInfoListRequest struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPlayInfoListRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -164,7 +164,7 @@ type DescribeStreamPlayInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeStreamPlayInfoListResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -179,7 +179,7 @@ type DescribeWorkersRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWorkersRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -215,7 +215,7 @@ type DescribeWorkersResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *DescribeWorkersResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -243,7 +243,7 @@ type ForbidLiveStreamRequest struct {
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveStreamRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -274,7 +274,7 @@ type ForbidLiveStreamResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *ForbidLiveStreamResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -301,7 +301,7 @@ type RegisterIMRequest struct {
 	Level *int64 `json:"Level,omitempty" name:"Level"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterIMRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -335,7 +335,7 @@ type RegisterIMResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *RegisterIMResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -353,7 +353,7 @@ type StopGameRequest struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopGameRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -381,7 +381,7 @@ type StopGameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *StopGameResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }

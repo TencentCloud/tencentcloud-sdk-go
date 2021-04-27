@@ -63,7 +63,7 @@ type EvaluationRequest struct {
 	RejectVagueArithmetic *bool `json:"RejectVagueArithmetic,omitempty" name:"RejectVagueArithmetic"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EvaluationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
@@ -113,7 +113,7 @@ type EvaluationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *%(obj)s) ToJsonString() string {
+func (r *EvaluationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
