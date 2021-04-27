@@ -63,13 +63,35 @@ type EvaluationRequest struct {
 	RejectVagueArithmetic *bool `json:"RejectVagueArithmetic,omitempty" name:"RejectVagueArithmetic"`
 }
 
-func (r *EvaluationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EvaluationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Image")
+	delete(f, "HcmAppid")
+	delete(f, "Url")
+	delete(f, "SupportHorizontalImage")
+	delete(f, "RejectNonArithmeticImage")
+	delete(f, "IsAsync")
+	delete(f, "EnableDispRelatedVertical")
+	delete(f, "EnableDispMidresult")
+	delete(f, "EnablePdfRecognize")
+	delete(f, "PdfPageIndex")
+	delete(f, "LaTex")
+	delete(f, "RejectVagueArithmetic")
+	if len(f) > 0 {
+		return errors.New("EvaluationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EvaluationResponse struct {
@@ -91,13 +113,15 @@ type EvaluationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EvaluationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EvaluationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Item struct {

@@ -37,13 +37,23 @@ type CancelFaceMorphJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *CancelFaceMorphJobRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelFaceMorphJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return errors.New("CancelFaceMorphJobRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelFaceMorphJobResponse struct {
@@ -55,13 +65,15 @@ type CancelFaceMorphJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CancelFaceMorphJobResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelFaceMorphJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChangeAgePicRequest struct {
@@ -86,13 +98,26 @@ type ChangeAgePicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *ChangeAgePicRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChangeAgePicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgeInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return errors.New("ChangeAgePicRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChangeAgePicResponse struct {
@@ -110,13 +135,15 @@ type ChangeAgePicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ChangeAgePicResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChangeAgePicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceCartoonPicRequest struct {
@@ -140,13 +167,26 @@ type FaceCartoonPicRequest struct {
 	DisableGlobalEffect *string `json:"DisableGlobalEffect,omitempty" name:"DisableGlobalEffect"`
 }
 
-func (r *FaceCartoonPicRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceCartoonPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	delete(f, "DisableGlobalEffect")
+	if len(f) > 0 {
+		return errors.New("FaceCartoonPicRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceCartoonPicResponse struct {
@@ -164,13 +204,15 @@ type FaceCartoonPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FaceCartoonPicResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceCartoonPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceMorphOutput struct {
@@ -256,13 +298,29 @@ type MorphFaceRequest struct {
 	OutputHeight *int64 `json:"OutputHeight,omitempty" name:"OutputHeight"`
 }
 
-func (r *MorphFaceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MorphFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Images")
+	delete(f, "Urls")
+	delete(f, "GradientInfos")
+	delete(f, "Fps")
+	delete(f, "OutputType")
+	delete(f, "OutputWidth")
+	delete(f, "OutputHeight")
+	if len(f) > 0 {
+		return errors.New("MorphFaceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MorphFaceResponse struct {
@@ -280,13 +338,15 @@ type MorphFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MorphFaceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MorphFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFaceMorphJobRequest struct {
@@ -296,13 +356,23 @@ type QueryFaceMorphJobRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
-func (r *QueryFaceMorphJobRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryFaceMorphJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return errors.New("QueryFaceMorphJobRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFaceMorphJobResponse struct {
@@ -321,13 +391,15 @@ type QueryFaceMorphJobResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryFaceMorphJobResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryFaceMorphJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SwapGenderPicRequest struct {
@@ -352,13 +424,26 @@ type SwapGenderPicRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 }
 
-func (r *SwapGenderPicRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SwapGenderPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GenderInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return errors.New("SwapGenderPicRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SwapGenderPicResponse struct {
@@ -376,11 +461,13 @@ type SwapGenderPicResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SwapGenderPicResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SwapGenderPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

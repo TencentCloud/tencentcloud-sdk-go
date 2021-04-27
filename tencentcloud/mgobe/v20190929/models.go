@@ -30,13 +30,24 @@ type DismissRoomRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
-func (r *DismissRoomRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DismissRoomRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return errors.New("DismissRoomRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DismissRoomResponse struct {
@@ -48,11 +59,13 @@ type DismissRoomResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DismissRoomResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DismissRoomResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

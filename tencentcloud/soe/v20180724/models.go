@@ -60,13 +60,34 @@ type InitOralProcessRequest struct {
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
-func (r *InitOralProcessRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InitOralProcessRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "RefText")
+	delete(f, "WorkMode")
+	delete(f, "EvalMode")
+	delete(f, "ScoreCoeff")
+	delete(f, "SoeAppId")
+	delete(f, "IsLongLifeSession")
+	delete(f, "StorageMode")
+	delete(f, "SentenceInfoEnabled")
+	delete(f, "ServerType")
+	delete(f, "IsAsync")
+	delete(f, "TextMode")
+	if len(f) > 0 {
+		return errors.New("InitOralProcessRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InitOralProcessResponse struct {
@@ -81,13 +102,15 @@ type InitOralProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *InitOralProcessResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InitOralProcessResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Keyword struct {
@@ -139,13 +162,31 @@ type KeywordEvaluateRequest struct {
 	IsQuery *uint64 `json:"IsQuery,omitempty" name:"IsQuery"`
 }
 
-func (r *KeywordEvaluateRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *KeywordEvaluateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SeqId")
+	delete(f, "IsEnd")
+	delete(f, "VoiceFileType")
+	delete(f, "VoiceEncodeType")
+	delete(f, "UserVoiceData")
+	delete(f, "SessionId")
+	delete(f, "Keywords")
+	delete(f, "SoeAppId")
+	delete(f, "IsQuery")
+	if len(f) > 0 {
+		return errors.New("KeywordEvaluateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type KeywordEvaluateResponse struct {
@@ -163,13 +204,15 @@ type KeywordEvaluateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *KeywordEvaluateResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *KeywordEvaluateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type KeywordScore struct {
@@ -273,13 +316,31 @@ type TransmitOralProcessRequest struct {
 	IsQuery *int64 `json:"IsQuery,omitempty" name:"IsQuery"`
 }
 
-func (r *TransmitOralProcessRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitOralProcessRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SeqId")
+	delete(f, "IsEnd")
+	delete(f, "VoiceFileType")
+	delete(f, "VoiceEncodeType")
+	delete(f, "UserVoiceData")
+	delete(f, "SessionId")
+	delete(f, "SoeAppId")
+	delete(f, "IsLongLifeSession")
+	delete(f, "IsQuery")
+	if len(f) > 0 {
+		return errors.New("TransmitOralProcessRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransmitOralProcessResponse struct {
@@ -318,13 +379,15 @@ type TransmitOralProcessResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TransmitOralProcessResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitOralProcessResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransmitOralProcessWithInitRequest struct {
@@ -382,13 +445,39 @@ type TransmitOralProcessWithInitRequest struct {
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
 }
 
-func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitOralProcessWithInitRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SeqId")
+	delete(f, "IsEnd")
+	delete(f, "VoiceFileType")
+	delete(f, "VoiceEncodeType")
+	delete(f, "UserVoiceData")
+	delete(f, "SessionId")
+	delete(f, "RefText")
+	delete(f, "WorkMode")
+	delete(f, "EvalMode")
+	delete(f, "ScoreCoeff")
+	delete(f, "SoeAppId")
+	delete(f, "StorageMode")
+	delete(f, "SentenceInfoEnabled")
+	delete(f, "ServerType")
+	delete(f, "IsAsync")
+	delete(f, "IsQuery")
+	delete(f, "TextMode")
+	if len(f) > 0 {
+		return errors.New("TransmitOralProcessWithInitRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransmitOralProcessWithInitResponse struct {
@@ -427,13 +516,15 @@ type TransmitOralProcessWithInitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TransmitOralProcessWithInitResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitOralProcessWithInitResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WordRsp struct {

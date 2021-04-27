@@ -30,13 +30,24 @@ type DescribeStatusRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *DescribeStatusRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Pk")
+	delete(f, "Md5")
+	if len(f) > 0 {
+		return errors.New("DescribeStatusRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeStatusResponse struct {
@@ -57,13 +68,15 @@ type DescribeStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeStatusResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartAnalyseRequest struct {
@@ -79,13 +92,25 @@ type StartAnalyseRequest struct {
 	DlUrl *string `json:"DlUrl,omitempty" name:"DlUrl"`
 }
 
-func (r *StartAnalyseRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartAnalyseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Pk")
+	delete(f, "Md5")
+	delete(f, "DlUrl")
+	if len(f) > 0 {
+		return errors.New("StartAnalyseRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartAnalyseResponse struct {
@@ -106,11 +131,13 @@ type StartAnalyseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *StartAnalyseResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartAnalyseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

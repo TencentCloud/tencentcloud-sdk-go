@@ -69,13 +69,23 @@ type DescribeInvocationResultRequest struct {
 	InvokeId *string `json:"InvokeId,omitempty" name:"InvokeId"`
 }
 
-func (r *DescribeInvocationResultRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInvocationResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokeId")
+	if len(f) > 0 {
+		return errors.New("DescribeInvocationResultRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInvocationResultResponse struct {
@@ -95,13 +105,15 @@ type DescribeInvocationResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeInvocationResultResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInvocationResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvokeServiceRequest struct {
@@ -120,13 +132,26 @@ type InvokeServiceRequest struct {
 	Input *string `json:"Input,omitempty" name:"Input"`
 }
 
-func (r *InvokeServiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvokeServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ServiceStatus")
+	delete(f, "FileUrl")
+	delete(f, "Input")
+	if len(f) > 0 {
+		return errors.New("InvokeServiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvokeServiceResponse struct {
@@ -138,11 +163,13 @@ type InvokeServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *InvokeServiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvokeServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

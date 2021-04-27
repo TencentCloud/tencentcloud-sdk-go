@@ -308,12 +308,37 @@ func NewDescribeAgentPayDealsResponse() (response *DescribeAgentPayDealsResponse
     return
 }
 
-// 可以查询代理商代付的所有订单
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
 func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (response *DescribeAgentPayDealsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentPayDealsRequest()
     }
     response = NewDescribeAgentPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Request) {
+    request = &DescribeAgentPayDealsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDealsV2")
+    return
+}
+
+func NewDescribeAgentPayDealsV2Response() (response *DescribeAgentPayDealsV2Response) {
+    response = &DescribeAgentPayDealsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以查询代理商代付的所有订单
+func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request) (response *DescribeAgentPayDealsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeAgentPayDealsV2Request()
+    }
+    response = NewDescribeAgentPayDealsV2Response()
     err = c.Send(request, response)
     return
 }
@@ -333,12 +358,37 @@ func NewDescribeAgentSelfPayDealsResponse() (response *DescribeAgentSelfPayDeals
     return
 }
 
-// 可以查询代理商下指定客户的自付订单
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
 func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsRequest) (response *DescribeAgentSelfPayDealsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentSelfPayDealsRequest()
     }
     response = NewDescribeAgentSelfPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDealsV2Request) {
+    request = &DescribeAgentSelfPayDealsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDealsV2")
+    return
+}
+
+func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDealsV2Response) {
+    response = &DescribeAgentSelfPayDealsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 可以查询代理商下指定客户的自付订单
+func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV2Request) (response *DescribeAgentSelfPayDealsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeAgentSelfPayDealsV2Request()
+    }
+    response = NewDescribeAgentSelfPayDealsV2Response()
     err = c.Send(request, response)
     return
 }

@@ -75,13 +75,30 @@ type ImageModerationRequest struct {
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
-func (r *ImageModerationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "FileContent")
+	delete(f, "FileUrl")
+	delete(f, "Interval")
+	delete(f, "MaxFrames")
+	delete(f, "User")
+	delete(f, "Device")
+	if len(f) > 0 {
+		return errors.New("ImageModerationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ImageModerationResponse struct {
@@ -139,13 +156,15 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ImageModerationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ImageRecognitionRequest struct {
@@ -191,13 +210,35 @@ type ImageRecognitionRequest struct {
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 }
 
-func (r *ImageRecognitionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageRecognitionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Channel")
+	delete(f, "CustomAppId")
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "FileContent")
+	delete(f, "FileUrl")
+	delete(f, "Interval")
+	delete(f, "MaxFrames")
+	delete(f, "User")
+	delete(f, "Device")
+	delete(f, "CustomUin")
+	delete(f, "CustomSubAccountUin")
+	delete(f, "StreamId")
+	if len(f) > 0 {
+		return errors.New("ImageRecognitionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ImageRecognitionResponse struct {
@@ -255,13 +296,15 @@ type ImageRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ImageRecognitionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageRecognitionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LabelDetailItem struct {

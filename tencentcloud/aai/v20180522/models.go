@@ -33,13 +33,25 @@ type ChatRequest struct {
 	User *string `json:"User,omitempty" name:"User"`
 }
 
-func (r *ChatRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "ProjectId")
+	delete(f, "User")
+	if len(f) > 0 {
+		return errors.New("ChatRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChatResponse struct {
@@ -54,13 +66,15 @@ type ChatResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ChatResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceRecognitionRequest struct {
@@ -94,13 +108,31 @@ type SentenceRecognitionRequest struct {
 	DataLen *int64 `json:"DataLen,omitempty" name:"DataLen"`
 }
 
-func (r *SentenceRecognitionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
+	delete(f, "EngSerViceType")
+	delete(f, "SourceType")
+	delete(f, "VoiceFormat")
+	delete(f, "UsrAudioKey")
+	delete(f, "Url")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	if len(f) > 0 {
+		return errors.New("SentenceRecognitionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceRecognitionResponse struct {
@@ -115,13 +147,15 @@ type SentenceRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SentenceRecognitionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimultaneousInterpretingRequest struct {
@@ -164,13 +198,34 @@ type SimultaneousInterpretingRequest struct {
 	Seq *uint64 `json:"Seq,omitempty" name:"Seq"`
 }
 
-func (r *SimultaneousInterpretingRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimultaneousInterpretingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
+	delete(f, "RecEngineModelType")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	delete(f, "VoiceId")
+	delete(f, "IsEnd")
+	delete(f, "VoiceFormat")
+	delete(f, "OpenTranslate")
+	delete(f, "SourceLanguage")
+	delete(f, "TargetLanguage")
+	delete(f, "Seq")
+	if len(f) > 0 {
+		return errors.New("SimultaneousInterpretingRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimultaneousInterpretingResponse struct {
@@ -188,13 +243,15 @@ type SimultaneousInterpretingResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SimultaneousInterpretingResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimultaneousInterpretingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextToVoiceRequest struct {
@@ -233,13 +290,32 @@ type TextToVoiceRequest struct {
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
-func (r *TextToVoiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "SessionId")
+	delete(f, "ModelType")
+	delete(f, "Volume")
+	delete(f, "Speed")
+	delete(f, "ProjectId")
+	delete(f, "VoiceType")
+	delete(f, "PrimaryLanguage")
+	delete(f, "SampleRate")
+	delete(f, "Codec")
+	if len(f) > 0 {
+		return errors.New("TextToVoiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextToVoiceResponse struct {
@@ -257,11 +333,13 @@ type TextToVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TextToVoiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

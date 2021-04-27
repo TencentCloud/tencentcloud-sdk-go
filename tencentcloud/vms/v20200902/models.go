@@ -40,13 +40,27 @@ type SendCodeVoiceRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *SendCodeVoiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendCodeVoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CodeMessage")
+	delete(f, "CalledNumber")
+	delete(f, "VoiceSdkAppid")
+	delete(f, "PlayTimes")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return errors.New("SendCodeVoiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendCodeVoiceResponse struct {
@@ -61,13 +75,15 @@ type SendCodeVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SendCodeVoiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendCodeVoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendStatus struct {
@@ -103,13 +119,28 @@ type SendTtsVoiceRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
-func (r *SendTtsVoiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTtsVoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "CalledNumber")
+	delete(f, "VoiceSdkAppid")
+	delete(f, "TemplateParamSet")
+	delete(f, "PlayTimes")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return errors.New("SendTtsVoiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendTtsVoiceResponse struct {
@@ -124,11 +155,13 @@ type SendTtsVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SendTtsVoiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTtsVoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

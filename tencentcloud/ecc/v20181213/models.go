@@ -102,13 +102,33 @@ type CorrectMultiImageRequest struct {
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
-func (r *CorrectMultiImageRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CorrectMultiImageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "InputType")
+	delete(f, "EccAppid")
+	delete(f, "SessionId")
+	delete(f, "ServerType")
+	delete(f, "Title")
+	delete(f, "Grade")
+	delete(f, "Requirement")
+	delete(f, "ModelTitle")
+	delete(f, "ModelContent")
+	delete(f, "IsAsync")
+	if len(f) > 0 {
+		return errors.New("CorrectMultiImageRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CorrectMultiImageResponse struct {
@@ -123,13 +143,15 @@ type CorrectMultiImageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CorrectMultiImageResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CorrectMultiImageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskRequest struct {
@@ -142,13 +164,24 @@ type DescribeTaskRequest struct {
 	EccAppid *string `json:"EccAppid,omitempty" name:"EccAppid"`
 }
 
-func (r *DescribeTaskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "EccAppid")
+	if len(f) > 0 {
+		return errors.New("DescribeTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskResponse struct {
@@ -171,13 +204,15 @@ type DescribeTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeTaskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ECCRequest struct {
@@ -211,13 +246,31 @@ type ECCRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
-func (r *ECCRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ECCRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	delete(f, "Title")
+	delete(f, "Grade")
+	delete(f, "Requirement")
+	delete(f, "ModelTitle")
+	delete(f, "ModelContent")
+	delete(f, "EccAppid")
+	delete(f, "IsAsync")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return errors.New("ECCRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ECCResponse struct {
@@ -237,13 +290,15 @@ type ECCResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ECCResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ECCResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EHOCRRequest struct {
@@ -283,13 +338,33 @@ type EHOCRRequest struct {
 	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
 }
 
-func (r *EHOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EHOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "InputType")
+	delete(f, "EccAppid")
+	delete(f, "SessionId")
+	delete(f, "ServerType")
+	delete(f, "Title")
+	delete(f, "Grade")
+	delete(f, "Requirement")
+	delete(f, "ModelTitle")
+	delete(f, "ModelContent")
+	delete(f, "IsAsync")
+	if len(f) > 0 {
+		return errors.New("EHOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EHOCRResponse struct {
@@ -304,13 +379,15 @@ type EHOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EHOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EHOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ErrorCoordinate struct {

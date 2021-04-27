@@ -27,13 +27,23 @@ type CreateWeappQRUrlRequest struct {
 	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
 }
 
-func (r *CreateWeappQRUrlRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWeappQRUrlRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionKey")
+	if len(f) > 0 {
+		return errors.New("CreateWeappQRUrlRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWeappQRUrlResponse struct {
@@ -48,11 +58,13 @@ type CreateWeappQRUrlResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateWeappQRUrlResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWeappQRUrlResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

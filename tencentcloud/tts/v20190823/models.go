@@ -56,13 +56,32 @@ type TextToVoiceRequest struct {
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 }
 
-func (r *TextToVoiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "SessionId")
+	delete(f, "ModelType")
+	delete(f, "Volume")
+	delete(f, "Speed")
+	delete(f, "ProjectId")
+	delete(f, "VoiceType")
+	delete(f, "PrimaryLanguage")
+	delete(f, "SampleRate")
+	delete(f, "Codec")
+	if len(f) > 0 {
+		return errors.New("TextToVoiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextToVoiceResponse struct {
@@ -80,11 +99,13 @@ type TextToVoiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TextToVoiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

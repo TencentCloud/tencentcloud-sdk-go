@@ -1594,6 +1594,31 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
     return
 }
 
+func NewDescribeContainerEventsRequest() (request *DescribeContainerEventsRequest) {
+    request = &DescribeContainerEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerEvents")
+    return
+}
+
+func NewDescribeContainerEventsResponse() (response *DescribeContainerEventsResponse) {
+    response = &DescribeContainerEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取容器事件列表
+func (c *Client) DescribeContainerEvents(request *DescribeContainerEventsRequest) (response *DescribeContainerEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerEventsRequest()
+    }
+    response = NewDescribeContainerEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerGroupDetailRequest() (request *DescribeContainerGroupDetailRequest) {
     request = &DescribeContainerGroupDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2666,6 +2691,31 @@ func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) 
         request = NewDescribeTaskLastStatusRequest()
     }
     response = NewDescribeTaskLastStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnitApiUseDetailRequest() (request *DescribeUnitApiUseDetailRequest) {
+    request = &DescribeUnitApiUseDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitApiUseDetail")
+    return
+}
+
+func NewDescribeUnitApiUseDetailResponse() (response *DescribeUnitApiUseDetailResponse) {
+    response = &DescribeUnitApiUseDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
+func (c *Client) DescribeUnitApiUseDetail(request *DescribeUnitApiUseDetailRequest) (response *DescribeUnitApiUseDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnitApiUseDetailRequest()
+    }
+    response = NewDescribeUnitApiUseDetailResponse()
     err = c.Send(request, response)
     return
 }

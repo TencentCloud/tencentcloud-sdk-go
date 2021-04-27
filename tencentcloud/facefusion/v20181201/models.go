@@ -36,13 +36,26 @@ type DescribeMaterialListRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *DescribeMaterialListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActivityId")
+	delete(f, "MaterialId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return errors.New("DescribeMaterialListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMaterialListResponse struct {
@@ -60,13 +73,15 @@ type DescribeMaterialListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeMaterialListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionLiteRequest struct {
@@ -91,13 +106,28 @@ type FaceFusionLiteRequest struct {
 	Engine *string `json:"Engine,omitempty" name:"Engine"`
 }
 
-func (r *FaceFusionLiteRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "MergeInfos")
+	delete(f, "RspImgType")
+	delete(f, "CelebrityIdentify")
+	delete(f, "Engine")
+	if len(f) > 0 {
+		return errors.New("FaceFusionLiteRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionLiteResponse struct {
@@ -116,13 +146,15 @@ type FaceFusionLiteResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FaceFusionLiteResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionLiteResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionRequest struct {
@@ -148,13 +180,28 @@ type FaceFusionRequest struct {
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
-func (r *FaceFusionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "Image")
+	delete(f, "RspImgType")
+	delete(f, "PornDetect")
+	delete(f, "CelebrityIdentify")
+	if len(f) > 0 {
+		return errors.New("FaceFusionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionResponse struct {
@@ -172,13 +219,15 @@ type FaceFusionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FaceFusionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceInfo struct {
@@ -239,13 +288,29 @@ type FuseFaceRequest struct {
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
-func (r *FuseFaceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FuseFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "RspImgType")
+	delete(f, "MergeInfos")
+	delete(f, "FuseProfileDegree")
+	delete(f, "FuseFaceDegree")
+	delete(f, "CelebrityIdentify")
+	if len(f) > 0 {
+		return errors.New("FuseFaceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FuseFaceResponse struct {
@@ -264,13 +329,15 @@ type FuseFaceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FuseFaceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FuseFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FuseFaceReviewDetail struct {

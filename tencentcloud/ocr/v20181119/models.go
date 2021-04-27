@@ -34,13 +34,24 @@ type AdvertiseOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *AdvertiseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AdvertiseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("AdvertiseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AdvertiseOCRResponse struct {
@@ -55,13 +66,15 @@ type AdvertiseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *AdvertiseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AdvertiseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AdvertiseTextDetection struct {
@@ -115,13 +128,30 @@ type ArithmeticOCRRequest struct {
 	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
 }
 
-func (r *ArithmeticOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ArithmeticOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "SupportHorizontalImage")
+	delete(f, "RejectNonArithmeticPic")
+	delete(f, "EnableDispRelatedVertical")
+	delete(f, "EnableDispMidResult")
+	delete(f, "EnablePdfRecognize")
+	delete(f, "PdfPageIndex")
+	if len(f) > 0 {
+		return errors.New("ArithmeticOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ArithmeticOCRResponse struct {
@@ -139,13 +169,15 @@ type ArithmeticOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ArithmeticOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BankCardOCRRequest struct {
@@ -175,13 +207,29 @@ type BankCardOCRRequest struct {
 	EnableBorderCheck *bool `json:"EnableBorderCheck,omitempty" name:"EnableBorderCheck"`
 }
 
-func (r *BankCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BankCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetBorderCutImage")
+	delete(f, "RetCardNoImage")
+	delete(f, "EnableCopyCheck")
+	delete(f, "EnableReshootCheck")
+	delete(f, "EnableBorderCheck")
+	if len(f) > 0 {
+		return errors.New("BankCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BankCardOCRResponse struct {
@@ -226,13 +274,15 @@ type BankCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *BankCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BankCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseOCRRequest struct {
@@ -252,13 +302,24 @@ type BizLicenseOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *BizLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("BizLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseOCRResponse struct {
@@ -310,13 +371,15 @@ type BizLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *BizLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseVerifyResult struct {
@@ -366,13 +429,24 @@ type BusInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *BusInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("BusInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusInvoiceOCRResponse struct {
@@ -390,13 +464,15 @@ type BusInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *BusInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusinessCardInfo struct {
@@ -440,13 +516,25 @@ type BusinessCardOCRRequest struct {
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *BusinessCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusinessCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return errors.New("BusinessCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusinessCardOCRResponse struct {
@@ -467,13 +555,15 @@ type BusinessCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *BusinessCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CandWord struct {
@@ -517,13 +607,24 @@ type CarInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *CarInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CarInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("CarInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CarInvoiceOCRResponse struct {
@@ -538,13 +639,15 @@ type CarInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CarInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CarInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CellContent struct {
@@ -609,13 +712,25 @@ type ClassifyDetectOCRRequest struct {
 	DiscernType []*string `json:"DiscernType,omitempty" name:"DiscernType" list`
 }
 
-func (r *ClassifyDetectOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClassifyDetectOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "DiscernType")
+	if len(f) > 0 {
+		return errors.New("ClassifyDetectOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClassifyDetectOCRResponse struct {
@@ -630,13 +745,15 @@ type ClassifyDetectOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ClassifyDetectOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClassifyDetectOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Coord struct {
@@ -665,13 +782,25 @@ type DriverLicenseOCRRequest struct {
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
-func (r *DriverLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return errors.New("DriverLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DriverLicenseOCRResponse struct {
@@ -736,13 +865,15 @@ type DriverLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DriverLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DutyPaidProofInfo struct {
@@ -775,13 +906,24 @@ type DutyPaidProofOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *DutyPaidProofOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DutyPaidProofOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("DutyPaidProofOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DutyPaidProofOCRResponse struct {
@@ -799,13 +941,15 @@ type DutyPaidProofOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DutyPaidProofOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DutyPaidProofOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EduPaperOCRRequest struct {
@@ -834,13 +978,25 @@ type EduPaperOCRRequest struct {
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *EduPaperOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EduPaperOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return errors.New("EduPaperOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EduPaperOCRResponse struct {
@@ -861,13 +1017,15 @@ type EduPaperOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EduPaperOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EduPaperOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnglishOCRRequest struct {
@@ -895,13 +1053,26 @@ type EnglishOCRRequest struct {
 	EnableCandWord *bool `json:"EnableCandWord,omitempty" name:"EnableCandWord"`
 }
 
-func (r *EnglishOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnglishOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "EnableCoordPoint")
+	delete(f, "EnableCandWord")
+	if len(f) > 0 {
+		return errors.New("EnglishOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnglishOCRResponse struct {
@@ -919,13 +1090,15 @@ type EnglishOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EnglishOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnglishOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnterpriseLicenseInfo struct {
@@ -955,13 +1128,24 @@ type EnterpriseLicenseOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *EnterpriseLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnterpriseLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("EnterpriseLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnterpriseLicenseOCRResponse struct {
@@ -979,13 +1163,15 @@ type EnterpriseLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EnterpriseLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnterpriseLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstateCertOCRRequest struct {
@@ -1005,13 +1191,24 @@ type EstateCertOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *EstateCertOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstateCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("EstateCertOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstateCertOCRResponse struct {
@@ -1059,13 +1256,15 @@ type EstateCertOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EstateCertOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstateCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillInfo struct {
@@ -1100,13 +1299,24 @@ type FinanBillOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *FinanBillOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("FinanBillOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillOCRResponse struct {
@@ -1121,13 +1331,15 @@ type FinanBillOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FinanBillOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillSliceInfo struct {
@@ -1157,13 +1369,24 @@ type FinanBillSliceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *FinanBillSliceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillSliceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("FinanBillSliceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillSliceOCRResponse struct {
@@ -1178,13 +1401,15 @@ type FinanBillSliceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FinanBillSliceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillSliceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FlightInvoiceInfo struct {
@@ -1217,13 +1442,24 @@ type FlightInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *FlightInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("FlightInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FlightInvoiceOCRResponse struct {
@@ -1238,13 +1474,15 @@ type FlightInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FlightInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FlightInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FormulaOCRRequest struct {
@@ -1264,13 +1502,24 @@ type FormulaOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *FormulaOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FormulaOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("FormulaOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FormulaOCRResponse struct {
@@ -1288,13 +1537,15 @@ type FormulaOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *FormulaOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FormulaOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralAccurateOCRRequest struct {
@@ -1311,13 +1562,24 @@ type GeneralAccurateOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *GeneralAccurateOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("GeneralAccurateOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralAccurateOCRResponse struct {
@@ -1335,13 +1597,15 @@ type GeneralAccurateOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GeneralAccurateOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralAccurateOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralBasicOCRRequest struct {
@@ -1384,13 +1648,28 @@ type GeneralBasicOCRRequest struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
-func (r *GeneralBasicOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralBasicOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Scene")
+	delete(f, "LanguageType")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return errors.New("GeneralBasicOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralBasicOCRResponse struct {
@@ -1414,13 +1693,15 @@ type GeneralBasicOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GeneralBasicOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralBasicOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralEfficientOCRRequest struct {
@@ -1437,13 +1718,24 @@ type GeneralEfficientOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *GeneralEfficientOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralEfficientOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("GeneralEfficientOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralEfficientOCRResponse struct {
@@ -1461,13 +1753,15 @@ type GeneralEfficientOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GeneralEfficientOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralEfficientOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralFastOCRRequest struct {
@@ -1493,13 +1787,26 @@ type GeneralFastOCRRequest struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
-func (r *GeneralFastOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralFastOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return errors.New("GeneralFastOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralFastOCRResponse struct {
@@ -1524,13 +1831,15 @@ type GeneralFastOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GeneralFastOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralFastOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralHandwritingOCRRequest struct {
@@ -1557,13 +1866,26 @@ type GeneralHandwritingOCRRequest struct {
 	EnableWordPolygon *bool `json:"EnableWordPolygon,omitempty" name:"EnableWordPolygon"`
 }
 
-func (r *GeneralHandwritingOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Scene")
+	delete(f, "EnableWordPolygon")
+	if len(f) > 0 {
+		return errors.New("GeneralHandwritingOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralHandwritingOCRResponse struct {
@@ -1581,13 +1903,15 @@ type GeneralHandwritingOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GeneralHandwritingOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HKIDCardOCRRequest struct {
@@ -1612,13 +1936,26 @@ type HKIDCardOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *HKIDCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DetectFake")
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("HKIDCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HKIDCardOCRResponse struct {
@@ -1681,13 +2018,15 @@ type HKIDCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *HKIDCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HKIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HmtResidentPermitOCRRequest struct {
@@ -1712,13 +2051,25 @@ type HmtResidentPermitOCRRequest struct {
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
-func (r *HmtResidentPermitOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return errors.New("HmtResidentPermitOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HmtResidentPermitOCRResponse struct {
@@ -1761,13 +2112,15 @@ type HmtResidentPermitOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *HmtResidentPermitOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IDCardOCRRequest struct {
@@ -1806,13 +2159,26 @@ type IDCardOCRRequest struct {
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
-func (r *IDCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *IDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return errors.New("IDCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IDCardOCRResponse struct {
@@ -1866,13 +2232,15 @@ type IDCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *IDCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *IDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstitutionOCRRequest struct {
@@ -1892,13 +2260,24 @@ type InstitutionOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *InstitutionOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InstitutionOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("InstitutionOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstitutionOCRResponse struct {
@@ -1925,13 +2304,15 @@ type InstitutionOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *InstitutionOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InstitutionOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InsuranceBillInfo struct {
@@ -1968,13 +2349,24 @@ type InsuranceBillOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *InsuranceBillOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InsuranceBillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("InsuranceBillOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InsuranceBillOCRResponse struct {
@@ -1989,13 +2381,15 @@ type InsuranceBillOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *InsuranceBillOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InsuranceBillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvoiceDetectInfo struct {
@@ -2060,13 +2454,24 @@ type InvoiceGeneralOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *InvoiceGeneralOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvoiceGeneralOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("InvoiceGeneralOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvoiceGeneralOCRResponse struct {
@@ -2084,13 +2489,15 @@ type InvoiceGeneralOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *InvoiceGeneralOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ItemCoord struct {
@@ -2125,13 +2532,24 @@ type LicensePlateOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *LicensePlateOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LicensePlateOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("LicensePlateOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LicensePlateOCRResponse struct {
@@ -2152,13 +2570,15 @@ type LicensePlateOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *LicensePlateOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDCardOCRRequest struct {
@@ -2180,13 +2600,25 @@ type MLIDCardOCRRequest struct {
 	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
 }
 
-func (r *MLIDCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetImage")
+	if len(f) > 0 {
+		return errors.New("MLIDCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDCardOCRResponse struct {
@@ -2242,13 +2674,15 @@ type MLIDCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MLIDCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDPassportOCRRequest struct {
@@ -2261,13 +2695,24 @@ type MLIDPassportOCRRequest struct {
 	RetImage *bool `json:"RetImage,omitempty" name:"RetImage"`
 }
 
-func (r *MLIDPassportOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDPassportOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "RetImage")
+	if len(f) > 0 {
+		return errors.New("MLIDPassportOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDPassportOCRResponse struct {
@@ -2320,13 +2765,15 @@ type MLIDPassportOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MLIDPassportOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDPassportOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MainlandPermitOCRRequest struct {
@@ -2349,13 +2796,25 @@ type MainlandPermitOCRRequest struct {
 	RetProfile *bool `json:"RetProfile,omitempty" name:"RetProfile"`
 }
 
-func (r *MainlandPermitOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetProfile")
+	if len(f) > 0 {
+		return errors.New("MainlandPermitOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MainlandPermitOCRResponse struct {
@@ -2400,13 +2859,15 @@ type MainlandPermitOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MainlandPermitOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MainlandPermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceDetectRequest struct {
@@ -2429,13 +2890,25 @@ type MixedInvoiceDetectRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *MixedInvoiceDetectRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceDetectRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("MixedInvoiceDetectRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceDetectResponse struct {
@@ -2450,13 +2923,15 @@ type MixedInvoiceDetectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MixedInvoiceDetectResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceDetectResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceItem struct {
@@ -2523,13 +2998,25 @@ type MixedInvoiceOCRRequest struct {
 	Types []*int64 `json:"Types,omitempty" name:"Types" list`
 }
 
-func (r *MixedInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Types")
+	if len(f) > 0 {
+		return errors.New("MixedInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceOCRResponse struct {
@@ -2544,13 +3031,15 @@ type MixedInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *MixedInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OrgCodeCertOCRRequest struct {
@@ -2570,13 +3059,24 @@ type OrgCodeCertOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *OrgCodeCertOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *OrgCodeCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("OrgCodeCertOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OrgCodeCertOCRResponse struct {
@@ -2600,13 +3100,15 @@ type OrgCodeCertOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *OrgCodeCertOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *OrgCodeCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PassportOCRRequest struct {
@@ -2625,13 +3127,25 @@ type PassportOCRRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *PassportOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PassportOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("PassportOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PassportOCRResponse struct {
@@ -2688,13 +3202,15 @@ type PassportOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *PassportOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PassportOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PermitOCRRequest struct {
@@ -2714,13 +3230,24 @@ type PermitOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *PermitOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("PermitOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PermitOCRResponse struct {
@@ -2756,13 +3283,15 @@ type PermitOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *PermitOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Polygon struct {
@@ -2864,13 +3393,24 @@ type PropOwnerCertOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *PropOwnerCertOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PropOwnerCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("PropOwnerCertOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PropOwnerCertOCRResponse struct {
@@ -2900,13 +3440,15 @@ type PropOwnerCertOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *PropOwnerCertOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PropOwnerCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodeImgSize struct {
@@ -2930,13 +3472,24 @@ type QrcodeOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *QrcodeOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QrcodeOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("QrcodeOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodeOCRResponse struct {
@@ -2954,13 +3507,15 @@ type QrcodeOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QrcodeOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QrcodeOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodePositionObj struct {
@@ -2997,13 +3552,23 @@ type QueryBarCodeRequest struct {
 	BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
 }
 
-func (r *QueryBarCodeRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBarCodeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BarCode")
+	if len(f) > 0 {
+		return errors.New("QueryBarCodeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBarCodeResponse struct {
@@ -3021,13 +3586,15 @@ type QueryBarCodeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryBarCodeResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBarCodeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuestionBlockObj struct {
@@ -3080,13 +3647,24 @@ type QuotaInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *QuotaInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("QuotaInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuotaInvoiceOCRResponse struct {
@@ -3125,13 +3703,15 @@ type QuotaInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QuotaInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTableOCRRequest struct {
@@ -3157,13 +3737,27 @@ type RecognizeTableOCRRequest struct {
 	TableLanguage *string `json:"TableLanguage,omitempty" name:"TableLanguage"`
 }
 
-func (r *RecognizeTableOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTableOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "TableLanguage")
+	if len(f) > 0 {
+		return errors.New("RecognizeTableOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTableOCRResponse struct {
@@ -3188,13 +3782,15 @@ type RecognizeTableOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizeTableOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTableOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeThaiIDCardOCRRequest struct {
@@ -3209,13 +3805,24 @@ type RecognizeThaiIDCardOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *RecognizeThaiIDCardOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("RecognizeThaiIDCardOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeThaiIDCardOCRResponse struct {
@@ -3251,13 +3858,15 @@ type RecognizeThaiIDCardOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizeThaiIDCardOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeThaiIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Rect struct {
@@ -3292,13 +3901,24 @@ type ResidenceBookletOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *ResidenceBookletOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResidenceBookletOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("ResidenceBookletOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResidenceBookletOCRResponse struct {
@@ -3346,13 +3966,15 @@ type ResidenceBookletOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ResidenceBookletOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingDriverLicenseOCRRequest struct {
@@ -3367,13 +3989,24 @@ type RideHailingDriverLicenseOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *RideHailingDriverLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingDriverLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("RideHailingDriverLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingDriverLicenseOCRResponse struct {
@@ -3400,13 +4033,15 @@ type RideHailingDriverLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RideHailingDriverLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingDriverLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingTransportLicenseOCRRequest struct {
@@ -3421,13 +4056,24 @@ type RideHailingTransportLicenseOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *RideHailingTransportLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingTransportLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("RideHailingTransportLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingTransportLicenseOCRResponse struct {
@@ -3457,13 +4103,15 @@ type RideHailingTransportLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RideHailingTransportLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SealOCRRequest struct {
@@ -3478,13 +4126,24 @@ type SealOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *SealOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SealOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("SealOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SealOCRResponse struct {
@@ -3505,13 +4164,15 @@ type SealOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SealOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SealOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShipInvoiceInfo struct {
@@ -3544,13 +4205,24 @@ type ShipInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *ShipInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ShipInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("ShipInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShipInvoiceOCRResponse struct {
@@ -3568,13 +4240,15 @@ type ShipInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ShipInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ShipInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SingleInvoiceInfo struct {
@@ -3659,13 +4333,24 @@ type TableOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *TableOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TableOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("TableOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TableOCRResponse struct {
@@ -3683,13 +4368,15 @@ type TableOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TableOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TableOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TableTitle struct {
@@ -3716,13 +4403,24 @@ type TaxiInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *TaxiInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TaxiInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("TaxiInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TaxiInvoiceOCRResponse struct {
@@ -3772,13 +4470,15 @@ type TaxiInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TaxiInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TaxiInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextArithmetic struct {
@@ -3837,13 +4537,24 @@ type TextDetectRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *TextDetectRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextDetectRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("TextDetectRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextDetectResponse struct {
@@ -3858,13 +4569,15 @@ type TextDetectResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TextDetectResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextDetectResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextDetection struct {
@@ -4140,13 +4853,24 @@ type TollInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *TollInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TollInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("TollInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TollInvoiceOCRResponse struct {
@@ -4164,13 +4888,15 @@ type TollInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TollInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TollInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrainTicketOCRRequest struct {
@@ -4190,13 +4916,24 @@ type TrainTicketOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *TrainTicketOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TrainTicketOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("TrainTicketOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrainTicketOCRResponse struct {
@@ -4244,13 +4981,15 @@ type TrainTicketOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *TrainTicketOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoice struct {
@@ -4416,13 +5155,26 @@ type VatInvoiceOCRRequest struct {
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
-func (r *VatInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return errors.New("VatInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceOCRResponse struct {
@@ -4446,13 +5198,15 @@ type VatInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VatInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceUserInfo struct {
@@ -4491,13 +5245,26 @@ type VatInvoiceVerifyRequest struct {
 	Additional *string `json:"Additional,omitempty" name:"Additional"`
 }
 
-func (r *VatInvoiceVerifyRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoiceCode")
+	delete(f, "InvoiceNo")
+	delete(f, "InvoiceDate")
+	delete(f, "Additional")
+	if len(f) > 0 {
+		return errors.New("VatInvoiceVerifyRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceVerifyResponse struct {
@@ -4512,13 +5279,15 @@ type VatInvoiceVerifyResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VatInvoiceVerifyResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatRollInvoiceInfo struct {
@@ -4551,13 +5320,24 @@ type VatRollInvoiceOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *VatRollInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("VatRollInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatRollInvoiceOCRResponse struct {
@@ -4575,13 +5355,15 @@ type VatRollInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VatRollInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleLicenseOCRRequest struct {
@@ -4601,13 +5383,25 @@ type VehicleLicenseOCRRequest struct {
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
-func (r *VehicleLicenseOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return errors.New("VehicleLicenseOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleLicenseOCRResponse struct {
@@ -4641,13 +5435,15 @@ type VehicleLicenseOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VehicleLicenseOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleRegCertInfo struct {
@@ -4687,13 +5483,24 @@ type VehicleRegCertOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *VehicleRegCertOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleRegCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("VehicleRegCertOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleRegCertOCRResponse struct {
@@ -4708,13 +5515,15 @@ type VehicleRegCertOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VehicleRegCertOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleRegCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBasicBizLicenseRequest struct {
@@ -4752,13 +5561,29 @@ type VerifyBasicBizLicenseRequest struct {
 	RegCapital *int64 `json:"RegCapital,omitempty" name:"RegCapital"`
 }
 
-func (r *VerifyBasicBizLicenseRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBasicBizLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ImageConfig")
+	delete(f, "RegNum")
+	delete(f, "Name")
+	delete(f, "Address")
+	delete(f, "RegCapital")
+	if len(f) > 0 {
+		return errors.New("VerifyBasicBizLicenseRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBasicBizLicenseResponse struct {
@@ -4821,13 +5646,15 @@ type VerifyBasicBizLicenseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VerifyBasicBizLicenseResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBasicBizLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBizLicenseRequest struct {
@@ -4862,13 +5689,28 @@ type VerifyBizLicenseRequest struct {
 	Address *string `json:"Address,omitempty" name:"Address"`
 }
 
-func (r *VerifyBizLicenseRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBizLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ImageConfig")
+	delete(f, "RegNum")
+	delete(f, "Name")
+	delete(f, "Address")
+	if len(f) > 0 {
+		return errors.New("VerifyBizLicenseRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBizLicenseResponse struct {
@@ -4982,13 +5824,15 @@ type VerifyBizLicenseResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VerifyBizLicenseResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyOfdVatInvoiceOCRRequest struct {
@@ -5002,13 +5846,24 @@ type VerifyOfdVatInvoiceOCRRequest struct {
 	OfdFileBase64 *string `json:"OfdFileBase64,omitempty" name:"OfdFileBase64"`
 }
 
-func (r *VerifyOfdVatInvoiceOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyOfdVatInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OfdFileUrl")
+	delete(f, "OfdFileBase64")
+	if len(f) > 0 {
+		return errors.New("VerifyOfdVatInvoiceOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyOfdVatInvoiceOCRResponse struct {
@@ -5073,13 +5928,15 @@ type VerifyOfdVatInvoiceOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VerifyOfdVatInvoiceOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyOfdVatInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VinOCRRequest struct {
@@ -5099,13 +5956,24 @@ type VinOCRRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
 
-func (r *VinOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VinOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return errors.New("VinOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VinOCRResponse struct {
@@ -5120,13 +5988,15 @@ type VinOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VinOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VinOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillOCRRequest struct {
@@ -5149,13 +6019,25 @@ type WaybillOCRRequest struct {
 	EnablePreDetect *bool `json:"EnablePreDetect,omitempty" name:"EnablePreDetect"`
 }
 
-func (r *WaybillOCRRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WaybillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "EnablePreDetect")
+	if len(f) > 0 {
+		return errors.New("WaybillOCRRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillOCRResponse struct {
@@ -5170,13 +6052,15 @@ type WaybillOCRResponse struct {
 	} `json:"Response"`
 }
 
-func (r *WaybillOCRResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WaybillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillObj struct {

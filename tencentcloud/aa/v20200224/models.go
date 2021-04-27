@@ -196,13 +196,23 @@ type ManageMarketingRiskRequest struct {
 	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *ManageMarketingRiskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return errors.New("ManageMarketingRiskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ManageMarketingRiskResponse struct {
@@ -218,13 +228,15 @@ type ManageMarketingRiskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ManageMarketingRiskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OnlineScamInfo struct {
@@ -387,13 +399,23 @@ type QueryActivityAntiRushAdvancedRequest struct {
 	BusinessSecurityData *InputActivityAntiRushAdvanced `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *QueryActivityAntiRushAdvancedRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushAdvancedRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return errors.New("QueryActivityAntiRushAdvancedRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryActivityAntiRushAdvancedResponse struct {
@@ -408,13 +430,15 @@ type QueryActivityAntiRushAdvancedResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryActivityAntiRushAdvancedResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushAdvancedResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryActivityAntiRushRequest struct {
@@ -536,13 +560,53 @@ type QueryActivityAntiRushRequest struct {
 	CheckDevice *string `json:"CheckDevice,omitempty" name:"CheckDevice"`
 }
 
-func (r *QueryActivityAntiRushRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountType")
+	delete(f, "Uid")
+	delete(f, "UserIp")
+	delete(f, "PostTime")
+	delete(f, "AppIdU")
+	delete(f, "NickName")
+	delete(f, "PhoneNumber")
+	delete(f, "EmailAddress")
+	delete(f, "RegisterTime")
+	delete(f, "RegisterIp")
+	delete(f, "CookieHash")
+	delete(f, "Address")
+	delete(f, "LoginSource")
+	delete(f, "LoginType")
+	delete(f, "LoginSpend")
+	delete(f, "RootId")
+	delete(f, "Referer")
+	delete(f, "JumpUrl")
+	delete(f, "UserAgent")
+	delete(f, "XForwardedFor")
+	delete(f, "MouseClickCount")
+	delete(f, "KeyboardClickCount")
+	delete(f, "MacAddress")
+	delete(f, "VendorId")
+	delete(f, "Imei")
+	delete(f, "AppVersion")
+	delete(f, "BusinessId")
+	delete(f, "WxSubType")
+	delete(f, "RandNum")
+	delete(f, "WxToken")
+	delete(f, "CheckDevice")
+	if len(f) > 0 {
+		return errors.New("QueryActivityAntiRushRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryActivityAntiRushResponse struct {
@@ -605,13 +669,15 @@ type QueryActivityAntiRushResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryActivityAntiRushResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SponsorInfo struct {

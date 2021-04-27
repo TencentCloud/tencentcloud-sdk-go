@@ -326,6 +326,31 @@ func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response 
     return
 }
 
+func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
+    request = &DescribeAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "DescribeAccounts")
+    return
+}
+
+func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
+    response = &DescribeAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取用户账号信息。
+func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountsRequest()
+    }
+    response = NewDescribeAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClassRequest() (request *DescribeClassRequest) {
     request = &DescribeClassRequest{
         BaseRequest: &tchttp.BaseRequest{},

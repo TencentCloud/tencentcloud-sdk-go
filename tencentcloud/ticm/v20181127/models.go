@@ -36,13 +36,23 @@ type DescribeVideoTaskRequest struct {
 	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
 }
 
-func (r *DescribeVideoTaskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVideoTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VodTaskId")
+	if len(f) > 0 {
+		return errors.New("DescribeVideoTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVideoTaskResponse struct {
@@ -90,13 +100,15 @@ type DescribeVideoTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeVideoTaskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVideoTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisgustResult struct {
@@ -174,13 +186,27 @@ type ImageModerationRequest struct {
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 }
 
-func (r *ImageModerationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scenes")
+	delete(f, "ImageUrl")
+	delete(f, "Config")
+	delete(f, "Extra")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return errors.New("ImageModerationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ImageModerationResponse struct {
@@ -217,13 +243,15 @@ type ImageModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ImageModerationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ImageModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PoliticsResult struct {
@@ -349,13 +377,26 @@ type VideoModerationRequest struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 }
 
-func (r *VideoModerationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VideoModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VideoUrl")
+	delete(f, "DeveloperId")
+	delete(f, "CBUrl")
+	delete(f, "Extra")
+	if len(f) > 0 {
+		return errors.New("VideoModerationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VideoModerationResponse struct {
@@ -370,13 +411,15 @@ type VideoModerationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *VideoModerationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VideoModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VodAsrTextSegmentItem struct {

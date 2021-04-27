@@ -139,13 +139,53 @@ type QueryLoginProtectionRequest struct {
 	WxToken *string `json:"WxToken,omitempty" name:"WxToken"`
 }
 
-func (r *QueryLoginProtectionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryLoginProtectionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoginIp")
+	delete(f, "Uid")
+	delete(f, "LoginTime")
+	delete(f, "AccountType")
+	delete(f, "AppIdU")
+	delete(f, "AssociateAccount")
+	delete(f, "NickName")
+	delete(f, "PhoneNumber")
+	delete(f, "EmailAddress")
+	delete(f, "RegisterTime")
+	delete(f, "Address")
+	delete(f, "CookieHash")
+	delete(f, "LoginSource")
+	delete(f, "LoginType")
+	delete(f, "Referer")
+	delete(f, "JumpUrl")
+	delete(f, "UserAgent")
+	delete(f, "XForwardedFor")
+	delete(f, "MouseClickCount")
+	delete(f, "KeyboardClickCount")
+	delete(f, "Result")
+	delete(f, "Reason")
+	delete(f, "LoginSpend")
+	delete(f, "MacAddress")
+	delete(f, "VendorId")
+	delete(f, "AppVersion")
+	delete(f, "Imei")
+	delete(f, "BusinessId")
+	delete(f, "WxSubType")
+	delete(f, "RandNum")
+	delete(f, "WxToken")
+	if len(f) > 0 {
+		return errors.New("QueryLoginProtectionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryLoginProtectionResponse struct {
@@ -207,11 +247,13 @@ type QueryLoginProtectionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryLoginProtectionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryLoginProtectionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

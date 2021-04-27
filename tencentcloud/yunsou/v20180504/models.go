@@ -36,13 +36,26 @@ type DataManipulationRequest struct {
 	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
-func (r *DataManipulationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataManipulationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpType")
+	delete(f, "Encoding")
+	delete(f, "Contents")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return errors.New("DataManipulationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataManipulationResponse struct {
@@ -57,13 +70,15 @@ type DataManipulationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DataManipulationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataManipulationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataSearchRequest struct {
@@ -139,13 +154,45 @@ type DataSearchRequest struct {
 	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter" list`
 }
 
-func (r *DataSearchRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataSearchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "SearchQuery")
+	delete(f, "PageId")
+	delete(f, "NumPerPage")
+	delete(f, "SearchId")
+	delete(f, "QueryEncode")
+	delete(f, "RankType")
+	delete(f, "NumFilter")
+	delete(f, "ClFilter")
+	delete(f, "Extra")
+	delete(f, "SourceId")
+	delete(f, "SecondSearch")
+	delete(f, "MaxDocReturn")
+	delete(f, "IsSmartbox")
+	delete(f, "EnableAbsHighlight")
+	delete(f, "QcBid")
+	delete(f, "GroupBy")
+	delete(f, "Distinct")
+	delete(f, "L4RankExpression")
+	delete(f, "MatchValue")
+	delete(f, "Longitude")
+	delete(f, "Latitude")
+	delete(f, "MultiFilter")
+	if len(f) > 0 {
+		return errors.New("DataSearchRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataSearchResponse struct {
@@ -160,11 +207,13 @@ type DataSearchResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DataSearchResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataSearchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

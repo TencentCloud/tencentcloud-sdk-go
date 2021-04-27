@@ -114,13 +114,33 @@ type CreateCfsFileSystemRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
-func (r *CreateCfsFileSystemRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "NetInterface")
+	delete(f, "PGroupId")
+	delete(f, "Protocol")
+	delete(f, "StorageType")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "MountIP")
+	delete(f, "FsName")
+	delete(f, "ResourceTags")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return errors.New("CreateCfsFileSystemRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCfsFileSystemResponse struct {
@@ -156,13 +176,15 @@ type CreateCfsFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateCfsFileSystemResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsFileSystemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCfsPGroupRequest struct {
@@ -175,13 +197,24 @@ type CreateCfsPGroupRequest struct {
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 
-func (r *CreateCfsPGroupRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsPGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "DescInfo")
+	if len(f) > 0 {
+		return errors.New("CreateCfsPGroupRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCfsPGroupResponse struct {
@@ -208,13 +241,15 @@ type CreateCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateCfsPGroupResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsPGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCfsRuleRequest struct {
@@ -236,13 +271,27 @@ type CreateCfsRuleRequest struct {
 	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
 }
 
-func (r *CreateCfsRuleRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsRuleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	delete(f, "AuthClientIp")
+	delete(f, "Priority")
+	delete(f, "RWPermission")
+	delete(f, "UserPermission")
+	if len(f) > 0 {
+		return errors.New("CreateCfsRuleRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCfsRuleResponse struct {
@@ -272,13 +321,15 @@ type CreateCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateCfsRuleResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCfsRuleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsFileSystemRequest struct {
@@ -288,13 +339,23 @@ type DeleteCfsFileSystemRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *DeleteCfsFileSystemRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsFileSystemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return errors.New("DeleteCfsFileSystemRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsFileSystemResponse struct {
@@ -306,13 +367,15 @@ type DeleteCfsFileSystemResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteCfsFileSystemResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsFileSystemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsPGroupRequest struct {
@@ -322,13 +385,23 @@ type DeleteCfsPGroupRequest struct {
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
 
-func (r *DeleteCfsPGroupRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsPGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	if len(f) > 0 {
+		return errors.New("DeleteCfsPGroupRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsPGroupResponse struct {
@@ -346,13 +419,15 @@ type DeleteCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteCfsPGroupResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsPGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsRuleRequest struct {
@@ -365,13 +440,24 @@ type DeleteCfsRuleRequest struct {
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
 
-func (r *DeleteCfsRuleRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsRuleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return errors.New("DeleteCfsRuleRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCfsRuleResponse struct {
@@ -389,13 +475,15 @@ type DeleteCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteCfsRuleResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteMountTargetRequest struct {
@@ -408,13 +496,24 @@ type DeleteMountTargetRequest struct {
 	MountTargetId *string `json:"MountTargetId,omitempty" name:"MountTargetId"`
 }
 
-func (r *DeleteMountTargetRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "MountTargetId")
+	if len(f) > 0 {
+		return errors.New("DeleteMountTargetRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteMountTargetResponse struct {
@@ -426,26 +525,37 @@ type DeleteMountTargetResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteMountTargetResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAvailableZoneInfoRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *DescribeAvailableZoneInfoRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAvailableZoneInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeAvailableZoneInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAvailableZoneInfoResponse struct {
@@ -460,13 +570,15 @@ type DescribeAvailableZoneInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeAvailableZoneInfoResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAvailableZoneInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsFileSystemClientsRequest struct {
@@ -476,13 +588,23 @@ type DescribeCfsFileSystemClientsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *DescribeCfsFileSystemClientsRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemClientsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return errors.New("DescribeCfsFileSystemClientsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsFileSystemClientsResponse struct {
@@ -497,13 +619,15 @@ type DescribeCfsFileSystemClientsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCfsFileSystemClientsResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemClientsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsFileSystemsRequest struct {
@@ -519,13 +643,25 @@ type DescribeCfsFileSystemsRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
-func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return errors.New("DescribeCfsFileSystemsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsFileSystemsResponse struct {
@@ -543,26 +679,37 @@ type DescribeCfsFileSystemsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCfsFileSystemsResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsPGroupsRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *DescribeCfsPGroupsRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsPGroupsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeCfsPGroupsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsPGroupsResponse struct {
@@ -577,13 +724,15 @@ type DescribeCfsPGroupsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCfsPGroupsResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsPGroupsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsRulesRequest struct {
@@ -593,13 +742,23 @@ type DescribeCfsRulesRequest struct {
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
 
-func (r *DescribeCfsRulesRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsRulesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	if len(f) > 0 {
+		return errors.New("DescribeCfsRulesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsRulesResponse struct {
@@ -614,26 +773,37 @@ type DescribeCfsRulesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCfsRulesResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsRulesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsServiceStatusRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *DescribeCfsServiceStatusRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsServiceStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeCfsServiceStatusRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCfsServiceStatusResponse struct {
@@ -648,13 +818,15 @@ type DescribeCfsServiceStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCfsServiceStatusResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCfsServiceStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMountTargetsRequest struct {
@@ -664,13 +836,23 @@ type DescribeMountTargetsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *DescribeMountTargetsRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMountTargetsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return errors.New("DescribeMountTargetsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMountTargetsResponse struct {
@@ -688,13 +870,15 @@ type DescribeMountTargetsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeMountTargetsResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMountTargetsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FileSystemClient struct {
@@ -857,13 +1041,22 @@ type SignUpCfsServiceRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *SignUpCfsServiceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SignUpCfsServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("SignUpCfsServiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SignUpCfsServiceResponse struct {
@@ -878,13 +1071,15 @@ type SignUpCfsServiceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SignUpCfsServiceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TagInfo struct {
@@ -906,13 +1101,24 @@ type UpdateCfsFileSystemNameRequest struct {
 	FsName *string `json:"FsName,omitempty" name:"FsName"`
 }
 
-func (r *UpdateCfsFileSystemNameRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemNameRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "FsName")
+	if len(f) > 0 {
+		return errors.New("UpdateCfsFileSystemNameRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsFileSystemNameResponse struct {
@@ -933,13 +1139,15 @@ type UpdateCfsFileSystemNameResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCfsFileSystemNameResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemNameResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsFileSystemPGroupRequest struct {
@@ -952,13 +1160,24 @@ type UpdateCfsFileSystemPGroupRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *UpdateCfsFileSystemPGroupRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemPGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return errors.New("UpdateCfsFileSystemPGroupRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsFileSystemPGroupResponse struct {
@@ -976,13 +1195,15 @@ type UpdateCfsFileSystemPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCfsFileSystemPGroupResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemPGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsFileSystemSizeLimitRequest struct {
@@ -995,13 +1216,24 @@ type UpdateCfsFileSystemSizeLimitRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
 
-func (r *UpdateCfsFileSystemSizeLimitRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemSizeLimitRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FsLimit")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return errors.New("UpdateCfsFileSystemSizeLimitRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsFileSystemSizeLimitResponse struct {
@@ -1013,13 +1245,15 @@ type UpdateCfsFileSystemSizeLimitResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCfsFileSystemSizeLimitResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemSizeLimitResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsPGroupRequest struct {
@@ -1035,13 +1269,25 @@ type UpdateCfsPGroupRequest struct {
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 
-func (r *UpdateCfsPGroupRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsPGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	delete(f, "Name")
+	delete(f, "DescInfo")
+	if len(f) > 0 {
+		return errors.New("UpdateCfsPGroupRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsPGroupResponse struct {
@@ -1062,13 +1308,15 @@ type UpdateCfsPGroupResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCfsPGroupResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsPGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsRuleRequest struct {
@@ -1093,13 +1341,28 @@ type UpdateCfsRuleRequest struct {
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 }
 
-func (r *UpdateCfsRuleRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsRuleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PGroupId")
+	delete(f, "RuleId")
+	delete(f, "AuthClientIp")
+	delete(f, "RWPermission")
+	delete(f, "UserPermission")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return errors.New("UpdateCfsRuleRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCfsRuleResponse struct {
@@ -1129,11 +1392,13 @@ type UpdateCfsRuleResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCfsRuleResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCfsRuleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

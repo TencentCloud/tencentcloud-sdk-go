@@ -1043,6 +1043,31 @@ func (c *Client) DescribeImpactedHosts(request *DescribeImpactedHostsRequest) (r
     return
 }
 
+func NewDescribeImportMachineInfoRequest() (request *DescribeImportMachineInfoRequest) {
+    request = &DescribeImportMachineInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeImportMachineInfo")
+    return
+}
+
+func NewDescribeImportMachineInfoResponse() (response *DescribeImportMachineInfoResponse) {
+    response = &DescribeImportMachineInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询批量导入机器信息
+func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoRequest) (response *DescribeImportMachineInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeImportMachineInfoRequest()
+    }
+    response = NewDescribeImportMachineInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest) {
     request = &DescribeLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2339,6 +2364,56 @@ func (c *Client) ExportTasks(request *ExportTasksRequest) (response *ExportTasks
         request = NewExportTasksRequest()
     }
     response = NewExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportVulDetectionExcelRequest() (request *ExportVulDetectionExcelRequest) {
+    request = &ExportVulDetectionExcelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionExcel")
+    return
+}
+
+func NewExportVulDetectionExcelResponse() (response *ExportVulDetectionExcelResponse) {
+    response = &ExportVulDetectionExcelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出本次漏洞检测Excel
+func (c *Client) ExportVulDetectionExcel(request *ExportVulDetectionExcelRequest) (response *ExportVulDetectionExcelResponse, err error) {
+    if request == nil {
+        request = NewExportVulDetectionExcelRequest()
+    }
+    response = NewExportVulDetectionExcelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportVulDetectionReportRequest() (request *ExportVulDetectionReportRequest) {
+    request = &ExportVulDetectionReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionReport")
+    return
+}
+
+func NewExportVulDetectionReportResponse() (response *ExportVulDetectionReportResponse) {
+    response = &ExportVulDetectionReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出漏洞检测报告。
+func (c *Client) ExportVulDetectionReport(request *ExportVulDetectionReportRequest) (response *ExportVulDetectionReportResponse, err error) {
+    if request == nil {
+        request = NewExportVulDetectionReportRequest()
+    }
+    response = NewExportVulDetectionReportResponse()
     err = c.Send(request, response)
     return
 }

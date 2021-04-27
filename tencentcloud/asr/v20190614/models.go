@@ -43,13 +43,23 @@ type CloseAsyncRecognitionTaskRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *CloseAsyncRecognitionTaskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CloseAsyncRecognitionTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return errors.New("CloseAsyncRecognitionTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CloseAsyncRecognitionTaskResponse struct {
@@ -61,13 +71,15 @@ type CloseAsyncRecognitionTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CloseAsyncRecognitionTaskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CloseAsyncRecognitionTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAsrVocabRequest struct {
@@ -87,13 +99,26 @@ type CreateAsrVocabRequest struct {
 	WordWeightStr *string `json:"WordWeightStr,omitempty" name:"WordWeightStr"`
 }
 
-func (r *CreateAsrVocabRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAsrVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "WordWeights")
+	delete(f, "WordWeightStr")
+	if len(f) > 0 {
+		return errors.New("CreateAsrVocabRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAsrVocabResponse struct {
@@ -108,13 +133,15 @@ type CreateAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateAsrVocabResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAsrVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAsyncRecognitionTaskRequest struct {
@@ -155,13 +182,32 @@ type CreateAsyncRecognitionTaskRequest struct {
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 }
 
-func (r *CreateAsyncRecognitionTaskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAsyncRecognitionTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineType")
+	delete(f, "Url")
+	delete(f, "CallbackUrl")
+	delete(f, "SignToken")
+	delete(f, "FilterDirty")
+	delete(f, "FilterModal")
+	delete(f, "FilterPunc")
+	delete(f, "ConvertNumMode")
+	delete(f, "WordInfo")
+	delete(f, "HotwordId")
+	if len(f) > 0 {
+		return errors.New("CreateAsyncRecognitionTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAsyncRecognitionTaskResponse struct {
@@ -176,13 +222,15 @@ type CreateAsyncRecognitionTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateAsyncRecognitionTaskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAsyncRecognitionTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCustomizationRequest struct {
@@ -201,13 +249,26 @@ type CreateCustomizationRequest struct {
 	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
 }
 
-func (r *CreateCustomizationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCustomizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "TextUrl")
+	delete(f, "ModelType")
+	delete(f, "TagInfos")
+	if len(f) > 0 {
+		return errors.New("CreateCustomizationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCustomizationResponse struct {
@@ -222,13 +283,15 @@ type CreateCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateCustomizationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCustomizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRecTaskRequest struct {
@@ -297,13 +360,38 @@ type CreateRecTaskRequest struct {
 	FilterPunc *int64 `json:"FilterPunc,omitempty" name:"FilterPunc"`
 }
 
-func (r *CreateRecTaskRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRecTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineModelType")
+	delete(f, "ChannelNum")
+	delete(f, "ResTextFormat")
+	delete(f, "SourceType")
+	delete(f, "SpeakerDiarization")
+	delete(f, "SpeakerNumber")
+	delete(f, "CallbackUrl")
+	delete(f, "Url")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	delete(f, "HotwordId")
+	delete(f, "FilterDirty")
+	delete(f, "FilterModal")
+	delete(f, "ConvertNumMode")
+	delete(f, "Extra")
+	delete(f, "FilterPunc")
+	if len(f) > 0 {
+		return errors.New("CreateRecTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRecTaskResponse struct {
@@ -318,13 +406,15 @@ type CreateRecTaskResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateRecTaskResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRecTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAsrVocabRequest struct {
@@ -334,13 +424,23 @@ type DeleteAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *DeleteAsrVocabRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAsrVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabId")
+	if len(f) > 0 {
+		return errors.New("DeleteAsrVocabRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAsrVocabResponse struct {
@@ -352,13 +452,15 @@ type DeleteAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteAsrVocabResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAsrVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCustomizationRequest struct {
@@ -368,13 +470,23 @@ type DeleteCustomizationRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
-func (r *DeleteCustomizationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCustomizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return errors.New("DeleteCustomizationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCustomizationResponse struct {
@@ -386,26 +498,37 @@ type DeleteCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DeleteCustomizationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCustomizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAsyncRecognitionTasksRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *DescribeAsyncRecognitionTasksRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAsyncRecognitionTasksRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeAsyncRecognitionTasksRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAsyncRecognitionTasksResponse struct {
@@ -421,13 +544,15 @@ type DescribeAsyncRecognitionTasksResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeAsyncRecognitionTasksResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAsyncRecognitionTasksResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskStatusRequest struct {
@@ -437,13 +562,23 @@ type DescribeTaskStatusRequest struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
-func (r *DescribeTaskStatusRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return errors.New("DescribeTaskStatusRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskStatusResponse struct {
@@ -458,13 +593,15 @@ type DescribeTaskStatusResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeTaskStatusResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadAsrVocabRequest struct {
@@ -474,13 +611,23 @@ type DownloadAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *DownloadAsrVocabRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadAsrVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabId")
+	if len(f) > 0 {
+		return errors.New("DownloadAsrVocabRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadAsrVocabResponse struct {
@@ -498,13 +645,15 @@ type DownloadAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DownloadAsrVocabResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadAsrVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadCustomizationRequest struct {
@@ -514,13 +663,23 @@ type DownloadCustomizationRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
-func (r *DownloadCustomizationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadCustomizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return errors.New("DownloadCustomizationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadCustomizationResponse struct {
@@ -535,13 +694,15 @@ type DownloadCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DownloadCustomizationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadCustomizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetAsrVocabListRequest struct {
@@ -557,13 +718,25 @@ type GetAsrVocabListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *GetAsrVocabListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetAsrVocabListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagInfos")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("GetAsrVocabListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetAsrVocabListResponse struct {
@@ -581,13 +754,15 @@ type GetAsrVocabListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GetAsrVocabListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetAsrVocabListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetAsrVocabRequest struct {
@@ -597,13 +772,23 @@ type GetAsrVocabRequest struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 }
 
-func (r *GetAsrVocabRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetAsrVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabId")
+	if len(f) > 0 {
+		return errors.New("GetAsrVocabRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetAsrVocabResponse struct {
@@ -636,13 +821,15 @@ type GetAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GetAsrVocabResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetAsrVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetCustomizationListRequest struct {
@@ -658,13 +845,25 @@ type GetCustomizationListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
-func (r *GetCustomizationListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetCustomizationListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagInfos")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return errors.New("GetCustomizationListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetCustomizationListResponse struct {
@@ -684,13 +883,15 @@ type GetCustomizationListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GetCustomizationListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetCustomizationListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HotWord struct {
@@ -746,13 +947,26 @@ type ModifyCustomizationRequest struct {
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 }
 
-func (r *ModifyCustomizationRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCustomizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ModelName")
+	delete(f, "ModelType")
+	delete(f, "TextUrl")
+	if len(f) > 0 {
+		return errors.New("ModifyCustomizationRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCustomizationResponse struct {
@@ -764,13 +978,15 @@ type ModifyCustomizationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ModifyCustomizationResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCustomizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCustomizationStateRequest struct {
@@ -783,13 +999,24 @@ type ModifyCustomizationStateRequest struct {
 	ToState *int64 `json:"ToState,omitempty" name:"ToState"`
 }
 
-func (r *ModifyCustomizationStateRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCustomizationStateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ToState")
+	if len(f) > 0 {
+		return errors.New("ModifyCustomizationStateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCustomizationStateResponse struct {
@@ -804,13 +1031,15 @@ type ModifyCustomizationStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ModifyCustomizationStateResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceDetail struct {
@@ -903,13 +1132,37 @@ type SentenceRecognitionRequest struct {
 	WordInfo *int64 `json:"WordInfo,omitempty" name:"WordInfo"`
 }
 
-func (r *SentenceRecognitionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
+	delete(f, "EngSerViceType")
+	delete(f, "SourceType")
+	delete(f, "VoiceFormat")
+	delete(f, "UsrAudioKey")
+	delete(f, "Url")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	delete(f, "HotwordId")
+	delete(f, "FilterDirty")
+	delete(f, "FilterModal")
+	delete(f, "FilterPunc")
+	delete(f, "ConvertNumMode")
+	delete(f, "WordInfo")
+	if len(f) > 0 {
+		return errors.New("SentenceRecognitionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceRecognitionResponse struct {
@@ -935,13 +1188,15 @@ type SentenceRecognitionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SentenceRecognitionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceWord struct {
@@ -981,13 +1236,24 @@ type SetVocabStateRequest struct {
 	State *int64 `json:"State,omitempty" name:"State"`
 }
 
-func (r *SetVocabStateRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetVocabStateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabId")
+	delete(f, "State")
+	if len(f) > 0 {
+		return errors.New("SetVocabStateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetVocabStateResponse struct {
@@ -1002,13 +1268,15 @@ type SetVocabStateResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SetVocabStateResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetVocabStateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Task struct {
@@ -1059,13 +1327,27 @@ type UpdateAsrVocabRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
-func (r *UpdateAsrVocabRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAsrVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabId")
+	delete(f, "Name")
+	delete(f, "WordWeights")
+	delete(f, "WordWeightStr")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return errors.New("UpdateAsrVocabRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAsrVocabResponse struct {
@@ -1080,13 +1362,15 @@ type UpdateAsrVocabResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateAsrVocabResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAsrVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Vocab struct {

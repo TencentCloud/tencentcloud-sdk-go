@@ -130,13 +130,23 @@ type DescribeCaptchaAppIdInfoRequest struct {
 	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 }
 
-func (r *DescribeCaptchaAppIdInfoRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaAppIdInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaAppIdInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaAppIdInfoResponse struct {
@@ -195,13 +205,15 @@ type DescribeCaptchaAppIdInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaAppIdInfoResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaAppIdInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaDataRequest struct {
@@ -220,13 +232,26 @@ type DescribeCaptchaDataRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *DescribeCaptchaDataRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "End")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaDataResponse struct {
@@ -249,13 +274,15 @@ type DescribeCaptchaDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaDataResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaDataSumRequest struct {
@@ -271,13 +298,25 @@ type DescribeCaptchaDataSumRequest struct {
 	End *int64 `json:"End,omitempty" name:"End"`
 }
 
-func (r *DescribeCaptchaDataSumRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataSumRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "End")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaDataSumRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaDataSumResponse struct {
@@ -311,13 +350,15 @@ type DescribeCaptchaDataSumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaDataSumResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataSumResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniDataRequest struct {
@@ -336,13 +377,26 @@ type DescribeCaptchaMiniDataRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *DescribeCaptchaMiniDataRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "End")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaMiniDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniDataResponse struct {
@@ -365,13 +419,15 @@ type DescribeCaptchaMiniDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaMiniDataResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniDataSumRequest struct {
@@ -387,13 +443,25 @@ type DescribeCaptchaMiniDataSumRequest struct {
 	End *int64 `json:"End,omitempty" name:"End"`
 }
 
-func (r *DescribeCaptchaMiniDataSumRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "End")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaMiniDataSumRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniDataSumResponse struct {
@@ -441,13 +509,15 @@ type DescribeCaptchaMiniDataSumResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaMiniDataSumResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataSumResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniOperDataRequest struct {
@@ -463,13 +533,25 @@ type DescribeCaptchaMiniOperDataRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaMiniOperDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniOperDataResponse struct {
@@ -492,13 +574,15 @@ type DescribeCaptchaMiniOperDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaMiniOperDataResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniResultRequest struct {
@@ -532,13 +616,31 @@ type DescribeCaptchaMiniResultRequest struct {
 	Imei *string `json:"Imei,omitempty" name:"Imei"`
 }
 
-func (r *DescribeCaptchaMiniResultRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaType")
+	delete(f, "Ticket")
+	delete(f, "UserIp")
+	delete(f, "CaptchaAppId")
+	delete(f, "AppSecretKey")
+	delete(f, "BusinessId")
+	delete(f, "SceneId")
+	delete(f, "MacAddress")
+	delete(f, "Imei")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaMiniResultRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniResultResponse struct {
@@ -565,13 +667,15 @@ type DescribeCaptchaMiniResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaMiniResultResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniRiskResultRequest struct {
@@ -611,13 +715,33 @@ type DescribeCaptchaMiniRiskResultRequest struct {
 	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
 }
 
-func (r *DescribeCaptchaMiniRiskResultRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniRiskResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaType")
+	delete(f, "Ticket")
+	delete(f, "UserIp")
+	delete(f, "CaptchaAppId")
+	delete(f, "AppSecretKey")
+	delete(f, "BusinessId")
+	delete(f, "SceneId")
+	delete(f, "MacAddress")
+	delete(f, "Imei")
+	delete(f, "SceneCode")
+	delete(f, "WeChatOpenId")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaMiniRiskResultRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaMiniRiskResultResponse struct {
@@ -651,13 +775,15 @@ type DescribeCaptchaMiniRiskResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaMiniRiskResultResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniRiskResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaOperDataRequest struct {
@@ -673,13 +799,25 @@ type DescribeCaptchaOperDataRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *DescribeCaptchaOperDataRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaOperDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaOperDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaOperDataResponse struct {
@@ -702,13 +840,15 @@ type DescribeCaptchaOperDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaOperDataResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaResultRequest struct {
@@ -748,13 +888,33 @@ type DescribeCaptchaResultRequest struct {
 	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitempty" name:"NeedGetCaptchaTime"`
 }
 
-func (r *DescribeCaptchaResultRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaType")
+	delete(f, "Ticket")
+	delete(f, "UserIp")
+	delete(f, "Randstr")
+	delete(f, "CaptchaAppId")
+	delete(f, "AppSecretKey")
+	delete(f, "BusinessId")
+	delete(f, "SceneId")
+	delete(f, "MacAddress")
+	delete(f, "Imei")
+	delete(f, "NeedGetCaptchaTime")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaResultRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaResultResponse struct {
@@ -803,13 +963,15 @@ type DescribeCaptchaResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaResultResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaTicketDataRequest struct {
@@ -822,13 +984,24 @@ type DescribeCaptchaTicketDataRequest struct {
 	Start *int64 `json:"Start,omitempty" name:"Start"`
 }
 
-func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "Start")
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaTicketDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaTicketDataResponse struct {
@@ -851,26 +1024,37 @@ type DescribeCaptchaTicketDataResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaTicketDataResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaTicketDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaUserAllAppIdRequest struct {
 	*tchttp.BaseRequest
 }
 
-func (r *DescribeCaptchaUserAllAppIdRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaUserAllAppIdRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeCaptchaUserAllAppIdRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCaptchaUserAllAppIdResponse struct {
@@ -893,13 +1077,15 @@ type DescribeCaptchaUserAllAppIdResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeCaptchaUserAllAppIdResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OutputManageMarketingRiskValue struct {
@@ -1030,13 +1216,35 @@ type UpdateCaptchaAppIdInfoRequest struct {
 	TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
 }
 
-func (r *UpdateCaptchaAppIdInfoRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCaptchaAppIdInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaptchaAppId")
+	delete(f, "AppName")
+	delete(f, "DomainLimit")
+	delete(f, "SceneType")
+	delete(f, "CapType")
+	delete(f, "EvilInterceptGrade")
+	delete(f, "SmartVerify")
+	delete(f, "SmartEngine")
+	delete(f, "SchemeColor")
+	delete(f, "CaptchaLanguage")
+	delete(f, "MailAlarm")
+	delete(f, "TopFullScreen")
+	delete(f, "TrafficThreshold")
+	if len(f) > 0 {
+		return errors.New("UpdateCaptchaAppIdInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCaptchaAppIdInfoResponse struct {
@@ -1055,11 +1263,13 @@ type UpdateCaptchaAppIdInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *UpdateCaptchaAppIdInfoResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCaptchaAppIdInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

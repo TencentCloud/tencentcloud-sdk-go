@@ -32,13 +32,24 @@ type DescribeSmsTemplateListRequest struct {
 	International *uint64 `json:"International,omitempty" name:"International"`
 }
 
-func (r *DescribeSmsTemplateListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSmsTemplateListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateIdSet")
+	delete(f, "International")
+	if len(f) > 0 {
+		return errors.New("DescribeSmsTemplateListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSmsTemplateListResponse struct {
@@ -53,13 +64,15 @@ type DescribeSmsTemplateListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeSmsTemplateListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSmsTemplateListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTemplateListStatus struct {

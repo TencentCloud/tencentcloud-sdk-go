@@ -27,13 +27,23 @@ type GetLocalEngineRequest struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 }
 
-func (r *GetLocalEngineRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetLocalEngineRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	if len(f) > 0 {
+		return errors.New("GetLocalEngineRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetLocalEngineResponse struct {
@@ -54,13 +64,15 @@ type GetLocalEngineResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GetLocalEngineResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetLocalEngineResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetScanResultRequest struct {
@@ -73,13 +85,24 @@ type GetScanResultRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *GetScanResultRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetScanResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Md5")
+	if len(f) > 0 {
+		return errors.New("GetScanResultRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetScanResultResponse struct {
@@ -101,13 +124,15 @@ type GetScanResultResponse struct {
 	} `json:"Response"`
 }
 
-func (r *GetScanResultResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetScanResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileHashRequest struct {
@@ -126,13 +151,26 @@ type ScanFileHashRequest struct {
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
 }
 
-func (r *ScanFileHashRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileHashRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Md5s")
+	delete(f, "WithCategory")
+	delete(f, "SensitiveLevel")
+	if len(f) > 0 {
+		return errors.New("ScanFileHashRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileHashResponse struct {
@@ -155,13 +193,15 @@ type ScanFileHashResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ScanFileHashResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileHashResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileRequest struct {
@@ -177,13 +217,25 @@ type ScanFileRequest struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
-func (r *ScanFileRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Sample")
+	delete(f, "Md5")
+	if len(f) > 0 {
+		return errors.New("ScanFileRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileResponse struct {
@@ -204,11 +256,13 @@ type ScanFileResponse struct {
 	} `json:"Response"`
 }
 
-func (r *ScanFileResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

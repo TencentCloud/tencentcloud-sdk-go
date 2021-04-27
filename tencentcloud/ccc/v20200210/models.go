@@ -30,13 +30,24 @@ type CreateSDKLoginTokenRequest struct {
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
 }
 
-func (r *CreateSDKLoginTokenRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSDKLoginTokenRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SeatUserId")
+	if len(f) > 0 {
+		return errors.New("CreateSDKLoginTokenRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSDKLoginTokenResponse struct {
@@ -57,13 +68,15 @@ type CreateSDKLoginTokenResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateSDKLoginTokenResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSDKLoginTokenResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateStaffRequest struct {
@@ -76,13 +89,24 @@ type CreateStaffRequest struct {
 	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs" list`
 }
 
-func (r *CreateStaffRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateStaffRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Staffs")
+	if len(f) > 0 {
+		return errors.New("CreateStaffRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateStaffResponse struct {
@@ -94,13 +118,15 @@ type CreateStaffResponse struct {
 	} `json:"Response"`
 }
 
-func (r *CreateStaffResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateStaffResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeChatMessagesRequest struct {
@@ -125,13 +151,28 @@ type DescribeChatMessagesRequest struct {
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 }
 
-func (r *DescribeChatMessagesRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeChatMessagesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CdrId")
+	delete(f, "InstanceId")
+	delete(f, "SdkAppId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return errors.New("DescribeChatMessagesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeChatMessagesResponse struct {
@@ -149,13 +190,15 @@ type DescribeChatMessagesResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeChatMessagesResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeChatMessagesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIMCdrsRequest struct {
@@ -183,13 +226,29 @@ type DescribeIMCdrsRequest struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
-func (r *DescribeIMCdrsRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIMCdrsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	delete(f, "InstanceId")
+	delete(f, "SdkAppId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeIMCdrsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIMCdrsResponse struct {
@@ -207,13 +266,15 @@ type DescribeIMCdrsResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeIMCdrsResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePSTNActiveSessionListRequest struct {
@@ -229,13 +290,25 @@ type DescribePSTNActiveSessionListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *DescribePSTNActiveSessionListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePSTNActiveSessionListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribePSTNActiveSessionListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePSTNActiveSessionListResponse struct {
@@ -253,13 +326,15 @@ type DescribePSTNActiveSessionListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribePSTNActiveSessionListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSeatUserListRequest struct {
@@ -275,13 +350,25 @@ type DescribeSeatUserListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
-func (r *DescribeSeatUserListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSeatUserListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribeSeatUserListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSeatUserListResponse struct {
@@ -299,13 +386,15 @@ type DescribeSeatUserListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeSeatUserListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSkillGroupInfoListRequest struct {
@@ -327,13 +416,27 @@ type DescribeSkillGroupInfoListRequest struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
-func (r *DescribeSkillGroupInfoListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSkillGroupInfoListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "SkillGroupId")
+	delete(f, "ModifiedTime")
+	if len(f) > 0 {
+		return errors.New("DescribeSkillGroupInfoListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSkillGroupInfoListResponse struct {
@@ -351,13 +454,15 @@ type DescribeSkillGroupInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeSkillGroupInfoListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSkillGroupInfoListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeStaffInfoListRequest struct {
@@ -379,13 +484,27 @@ type DescribeStaffInfoListRequest struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
-func (r *DescribeStaffInfoListRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "StaffMail")
+	delete(f, "ModifiedTime")
+	if len(f) > 0 {
+		return errors.New("DescribeStaffInfoListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeStaffInfoListResponse struct {
@@ -403,13 +522,15 @@ type DescribeStaffInfoListResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeStaffInfoListResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelCallInfoRequest struct {
@@ -425,13 +546,25 @@ type DescribeTelCallInfoRequest struct {
 	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList" list`
 }
 
-func (r *DescribeTelCallInfoRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelCallInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTimeStamp")
+	delete(f, "EndTimeStamp")
+	delete(f, "SdkAppIdList")
+	if len(f) > 0 {
+		return errors.New("DescribeTelCallInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelCallInfoResponse struct {
@@ -452,13 +585,15 @@ type DescribeTelCallInfoResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeTelCallInfoResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelCdrRequest struct {
@@ -489,13 +624,30 @@ type DescribeTelCdrRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
-func (r *DescribeTelCdrRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTimeStamp")
+	delete(f, "EndTimeStamp")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "InstanceId")
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return errors.New("DescribeTelCdrRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelCdrResponse struct {
@@ -513,13 +665,15 @@ type DescribeTelCdrResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeTelCdrResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelSessionRequest struct {
@@ -532,13 +686,24 @@ type DescribeTelSessionRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
-func (r *DescribeTelSessionRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelSessionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return errors.New("DescribeTelSessionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTelSessionResponse struct {
@@ -553,13 +718,15 @@ type DescribeTelSessionResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DescribeTelSessionResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IMCdrInfo struct {

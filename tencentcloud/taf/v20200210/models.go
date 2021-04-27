@@ -27,13 +27,23 @@ type DetectFraudKOLRequest struct {
 	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *DetectFraudKOLRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("DetectFraudKOLRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectFraudKOLResponse struct {
@@ -49,13 +59,15 @@ type DetectFraudKOLResponse struct {
 	} `json:"Response"`
 }
 
-func (r *DetectFraudKOLResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceTaDegreeRequest struct {
@@ -65,13 +77,23 @@ type EnhanceTaDegreeRequest struct {
 	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *EnhanceTaDegreeRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("EnhanceTaDegreeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceTaDegreeResponse struct {
@@ -87,13 +109,15 @@ type EnhanceTaDegreeResponse struct {
 	} `json:"Response"`
 }
 
-func (r *EnhanceTaDegreeResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InputKolBspData struct {
@@ -462,13 +486,23 @@ type RecognizeCustomizedAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *RecognizeCustomizedAudienceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("RecognizeCustomizedAudienceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeCustomizedAudienceResponse struct {
@@ -484,13 +518,15 @@ type RecognizeCustomizedAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeEffectiveFlowRequest struct {
@@ -500,13 +536,23 @@ type RecognizeEffectiveFlowRequest struct {
 	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
 
-func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return errors.New("RecognizeEffectiveFlowRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeEffectiveFlowResponse struct {
@@ -521,13 +567,15 @@ type RecognizeEffectiveFlowResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizePreciseTargetAudienceRequest struct {
@@ -537,13 +585,23 @@ type RecognizePreciseTargetAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *RecognizePreciseTargetAudienceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("RecognizePreciseTargetAudienceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizePreciseTargetAudienceResponse struct {
@@ -559,13 +617,15 @@ type RecognizePreciseTargetAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizePreciseTargetAudienceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTargetAudienceRequest struct {
@@ -575,13 +635,23 @@ type RecognizeTargetAudienceRequest struct {
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("RecognizeTargetAudienceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTargetAudienceResponse struct {
@@ -597,13 +667,15 @@ type RecognizeTargetAudienceResponse struct {
 	} `json:"Response"`
 }
 
-func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendTrafficSecuritySmsMessageRequest struct {
@@ -613,13 +685,23 @@ type SendTrafficSecuritySmsMessageRequest struct {
 	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
 }
 
-func (r *SendTrafficSecuritySmsMessageRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return errors.New("SendTrafficSecuritySmsMessageRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendTrafficSecuritySmsMessageResponse struct {
@@ -635,11 +717,13 @@ type SendTrafficSecuritySmsMessageResponse struct {
 	} `json:"Response"`
 }
 
-func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

@@ -104,13 +104,44 @@ type QueryAntiFraudVipRequest struct {
 	NameCryptoType *string `json:"NameCryptoType,omitempty" name:"NameCryptoType"`
 }
 
-func (r *QueryAntiFraudVipRequest) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAntiFraudVipRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PhoneNumber")
+	delete(f, "IdNumber")
+	delete(f, "BankCardNumber")
+	delete(f, "UserIp")
+	delete(f, "Imei")
+	delete(f, "Idfa")
+	delete(f, "Scene")
+	delete(f, "Name")
+	delete(f, "EmailAddress")
+	delete(f, "Address")
+	delete(f, "AccountType")
+	delete(f, "Uid")
+	delete(f, "AppIdU")
+	delete(f, "WifiMac")
+	delete(f, "WifiSSID")
+	delete(f, "WifiBSSID")
+	delete(f, "BusinessId")
+	delete(f, "IdCryptoType")
+	delete(f, "PhoneCryptoType")
+	delete(f, "Mac")
+	delete(f, "Imsi")
+	delete(f, "NameCryptoType")
+	if len(f) > 0 {
+		return errors.New("QueryAntiFraudVipRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAntiFraudVipResponse struct {
@@ -139,13 +170,15 @@ type QueryAntiFraudVipResponse struct {
 	} `json:"Response"`
 }
 
-func (r *QueryAntiFraudVipResponse) ToJsonString() string {
+func (r *%(obj)s) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAntiFraudVipResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RiskDetail struct {
