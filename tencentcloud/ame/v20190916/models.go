@@ -16,6 +16,7 @@ package v20190916
 
 import (
     "encoding/json"
+    "errors"
 
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
