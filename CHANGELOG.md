@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 8 次发布
+### 第 66 次发布
 
-发布时间：2021-04-27 08:10:58
+发布时间：2021-04-28 08:04:49
 
 本次发布包含了以下内容：
 
@@ -12,170 +12,137 @@
 
 修改接口：
 
-* [ModifyMusicOnShelves](https://cloud.tencent.com/document/api/1155/54692)
+* [DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)
 
-	* 新增入参：AmeKey
+	* 新增入参：Interval
 
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 4 次发布
+
+发布时间：2021-04-28 08:13:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyBlockIgnoreList](https://cloud.tencent.com/document/api/1132/55248)
+
+新增数据结构：
+
+* [IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 13 次发布
+
+发布时间：2021-04-28 08:12:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)
+* [DescribeRegion](https://cloud.tencent.com/document/api/597/55245)
+
+新增数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo)
+* [Price](https://cloud.tencent.com/document/api/597/40861#Price)
+* [Region](https://cloud.tencent.com/document/api/597/40861#Region)
+* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
+* [ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse)
 
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 28 次发布
+### 第 29 次发布
 
-发布时间：2021-04-27 08:02:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAccounts](https://cloud.tencent.com/document/api/1156/55196)
-
-新增数据结构：
-
-* [AccountInfo](https://cloud.tencent.com/document/api/1156/40360#AccountInfo)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 10 次发布
-
-发布时间：2021-04-27 08:12:06
+发布时间：2021-04-28 08:03:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
-* [ExportVulDetectionExcel](https://cloud.tencent.com/document/api/296/55202)
-* [ExportVulDetectionReport](https://cloud.tencent.com/document/api/296/55201)
-
-新增数据结构：
-
-* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
-
-
-
-## 渠道合作伙伴(partners) 版本：2018-03-21
-
-### 第 20 次发布
-
-发布时间：2021-04-27 08:07:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAgentPayDealsV2](https://cloud.tencent.com/document/api/563/55198)
-* [DescribeAgentSelfPayDealsV2](https://cloud.tencent.com/document/api/563/55197)
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 50 次发布
-
-发布时间：2021-04-27 08:08:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeContainerEvents](https://cloud.tencent.com/document/api/649/55200)
-* [DescribeUnitApiUseDetail](https://cloud.tencent.com/document/api/649/55199)
 
 修改接口：
 
-* [CreateGroup](https://cloud.tencent.com/document/api/649/36074)
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
 
-	* 新增入参：Alias
+	* 新增入参：Mode
 
-* [ModifyContainerGroup](https://cloud.tencent.com/document/api/649/36062)
+* [DescribeProjects](https://cloud.tencent.com/document/api/1156/40348)
 
-	* 新增入参：Alias
+	* 新增入参：Modes
 
+* [ModifyProject](https://cloud.tencent.com/document/api/1156/40347)
+
+	* 新增入参：Mode
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 47 次发布
+
+发布时间：2021-04-28 08:01:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [ContainerEvent](https://cloud.tencent.com/document/api/649/36099#ContainerEvent)
-* [FieldRef](https://cloud.tencent.com/document/api/649/36099#FieldRef)
-* [GroupUnitApiDailyUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiDailyUseStatistics)
-* [GroupUnitApiUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiUseStatistics)
-* [MetricDataPoint](https://cloud.tencent.com/document/api/649/36099#MetricDataPoint)
-* [MetricDataPointMap](https://cloud.tencent.com/document/api/649/36099#MetricDataPointMap)
-* [ResourceFieldRef](https://cloud.tencent.com/document/api/649/36099#ResourceFieldRef)
-* [TsfPageContainerEvent](https://cloud.tencent.com/document/api/649/36099#TsfPageContainerEvent)
-* [ValueFrom](https://cloud.tencent.com/document/api/649/36099#ValueFrom)
+* [PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition)
 
 修改数据结构：
 
-* [ApiGroupInfo](https://cloud.tencent.com/document/api/649/36099#ApiGroupInfo)
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
 
-	* 新增成员：GatewayInstanceType, GatewayInstanceId
+	* 新增成员：PhysicalPosition
 
-* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
 
-	* 新增成员：Alias
 
-* [Env](https://cloud.tencent.com/document/api/649/36099#Env)
 
-	* 新增成员：ValueFrom
+## 游戏玩家匹配(gpm) 版本：2020-08-20
 
-	* <font color="#dd0000">**修改成员**：</font>Value
+### 第 4 次发布
 
-* [GatewayApiGroupVo](https://cloud.tencent.com/document/api/649/36099#GatewayApiGroupVo)
+发布时间：2021-04-28 08:00:58
 
-	* 新增成员：GatewayInstanceType, GatewayInstanceId
+本次发布包含了以下内容：
 
-* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+改善已有的文档。
 
-	* 新增成员：Alias
+新增接口：
 
-* [VmGroupSimple](https://cloud.tencent.com/document/api/649/36099#VmGroupSimple)
-
-	* 新增成员：Alias
-
+* [StartMatchingBackfill](https://cloud.tencent.com/document/api/1294/55243)
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 82 次发布
+### 第 83 次发布
 
-发布时间：2021-04-27 08:10:24
+发布时间：2021-04-28 08:11:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeTasks](https://cloud.tencent.com/document/api/266/33430)
-
-	* 新增入参：CreateTime, FinishTime, Sort
-
-	* <font color="#dd0000">**修改入参**：</font>Status
-
-
-修改数据结构：
-
-* [MediaBasicInfo](https://cloud.tencent.com/document/api/266/31773#MediaBasicInfo)
-
-	* 新增成员：StorageClass
-
-* [TaskSimpleInfo](https://cloud.tencent.com/document/api/266/31773#TaskSimpleInfo)
-
-	* 新增成员：Status, FileId
-
+* [ModifyEventConfig](https://cloud.tencent.com/document/api/266/55244)
 
 
 
@@ -7988,6 +7955,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 66 次发布
+
+发布时间：2021-04-28 08:04:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)
+
+	* 新增入参：Interval
+
+
 ### 第 65 次发布
 
 发布时间：2021-04-20 08:03:37
@@ -9686,6 +9668,22 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 4 次发布
+
+发布时间：2021-04-28 08:13:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyBlockIgnoreList](https://cloud.tencent.com/document/api/1132/55248)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData)](https://cloud.tencent.com/document/api/1132/49071#[IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData))
+
 ### 第 3 次发布
 
 发布时间：2021-04-01 08:10:23
@@ -10042,6 +10040,27 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 13 次发布
+
+发布时间：2021-04-28 08:12:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRegion](https://cloud.tencent.com/document/api/597/55245)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo)](https://cloud.tencent.com/document/api/597/40861#[ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo))
+* [[Price](https://cloud.tencent.com/document/api/597/40861#Price)](https://cloud.tencent.com/document/api/597/40861#[Price](https://cloud.tencent.com/document/api/597/40861#Price))
+* [[Region](https://cloud.tencent.com/document/api/597/40861#Region)](https://cloud.tencent.com/document/api/597/40861#[Region](https://cloud.tencent.com/document/api/597/40861#Region))
+* [[ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)](https://cloud.tencent.com/document/api/597/40861#[ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo))
+* [[ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse)](https://cloud.tencent.com/document/api/597/40861#[ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse))
 
 ### 第 12 次发布
 
@@ -11645,6 +11664,29 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 29 次发布
+
+发布时间：2021-04-28 08:03:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增入参：Mode
+
+* [DescribeProjects](https://cloud.tencent.com/document/api/1156/40348)
+
+	* 新增入参：Modes
+
+* [ModifyProject](https://cloud.tencent.com/document/api/1156/40347)
+
+	* 新增入参：Mode
+
+
 ### 第 28 次发布
 
 发布时间：2021-04-27 08:02:11
@@ -11655,11 +11697,11 @@
 
 新增接口：
 
-* [[DescribeAccounts](https://cloud.tencent.com/document/api/1156/55196)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1156/55196)
 
 新增数据结构：
 
-* [[AccountInfo](https://cloud.tencent.com/document/api/1156/40360#AccountInfo)](https://cloud.tencent.com/document/api/1156/40360#[AccountInfo](https://cloud.tencent.com/document/api/1156/40360#AccountInfo))
+* [AccountInfo](https://cloud.tencent.com/document/api/1156/40360#AccountInfo)
 
 ### 第 27 次发布
 
@@ -15139,13 +15181,13 @@
 
 新增接口：
 
-* [[DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)](https://cloud.tencent.com/document/api/#/#)
-* [[ExportVulDetectionExcel](https://cloud.tencent.com/document/api/296/55202)](https://cloud.tencent.com/document/api/#/#)
-* [[ExportVulDetectionReport](https://cloud.tencent.com/document/api/296/55201)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
+* [ExportVulDetectionExcel](https://cloud.tencent.com/document/api/296/55202)
+* [ExportVulDetectionReport](https://cloud.tencent.com/document/api/296/55201)
 
 新增数据结构：
 
-* [[EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)](https://cloud.tencent.com/document/api/296/19867#[EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo))
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
 
 ### 第 9 次发布
 
@@ -18596,6 +18638,25 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 47 次发布
+
+发布时间：2021-04-28 08:01:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition)](https://cloud.tencent.com/document/api/1108/42574#[PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition))
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+
+	* 新增成员：PhysicalPosition
+
 
 ### 第 46 次发布
 
@@ -22097,6 +22158,18 @@
 
 
 ## 游戏玩家匹配(gpm) 版本：2020-08-20
+
+### 第 4 次发布
+
+发布时间：2021-04-28 08:00:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[StartMatchingBackfill](https://cloud.tencent.com/document/api/1294/55243)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 
@@ -32518,8 +32591,8 @@
 
 新增接口：
 
-* [[DescribeAgentPayDealsV2](https://cloud.tencent.com/document/api/563/55198)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAgentSelfPayDealsV2](https://cloud.tencent.com/document/api/563/55197)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAgentPayDealsV2](https://cloud.tencent.com/document/api/563/55198)
+* [DescribeAgentSelfPayDealsV2](https://cloud.tencent.com/document/api/563/55197)
 
 ### 第 19 次发布
 
@@ -42561,8 +42634,8 @@
 
 新增接口：
 
-* [[DescribeContainerEvents](https://cloud.tencent.com/document/api/649/55200)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUnitApiUseDetail](https://cloud.tencent.com/document/api/649/55199)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeContainerEvents](https://cloud.tencent.com/document/api/649/55200)
+* [DescribeUnitApiUseDetail](https://cloud.tencent.com/document/api/649/55199)
 
 修改接口：
 
@@ -42577,15 +42650,15 @@
 
 新增数据结构：
 
-* [[ContainerEvent](https://cloud.tencent.com/document/api/649/36099#ContainerEvent)](https://cloud.tencent.com/document/api/649/36099#[ContainerEvent](https://cloud.tencent.com/document/api/649/36099#ContainerEvent))
-* [[FieldRef](https://cloud.tencent.com/document/api/649/36099#FieldRef)](https://cloud.tencent.com/document/api/649/36099#[FieldRef](https://cloud.tencent.com/document/api/649/36099#FieldRef))
-* [[GroupUnitApiDailyUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiDailyUseStatistics)](https://cloud.tencent.com/document/api/649/36099#[GroupUnitApiDailyUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiDailyUseStatistics))
-* [[GroupUnitApiUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiUseStatistics)](https://cloud.tencent.com/document/api/649/36099#[GroupUnitApiUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiUseStatistics))
-* [[MetricDataPoint](https://cloud.tencent.com/document/api/649/36099#MetricDataPoint)](https://cloud.tencent.com/document/api/649/36099#[MetricDataPoint](https://cloud.tencent.com/document/api/649/36099#MetricDataPoint))
-* [[MetricDataPointMap](https://cloud.tencent.com/document/api/649/36099#MetricDataPointMap)](https://cloud.tencent.com/document/api/649/36099#[MetricDataPointMap](https://cloud.tencent.com/document/api/649/36099#MetricDataPointMap))
-* [[ResourceFieldRef](https://cloud.tencent.com/document/api/649/36099#ResourceFieldRef)](https://cloud.tencent.com/document/api/649/36099#[ResourceFieldRef](https://cloud.tencent.com/document/api/649/36099#ResourceFieldRef))
-* [[TsfPageContainerEvent](https://cloud.tencent.com/document/api/649/36099#TsfPageContainerEvent)](https://cloud.tencent.com/document/api/649/36099#[TsfPageContainerEvent](https://cloud.tencent.com/document/api/649/36099#TsfPageContainerEvent))
-* [[ValueFrom](https://cloud.tencent.com/document/api/649/36099#ValueFrom)](https://cloud.tencent.com/document/api/649/36099#[ValueFrom](https://cloud.tencent.com/document/api/649/36099#ValueFrom))
+* [ContainerEvent](https://cloud.tencent.com/document/api/649/36099#ContainerEvent)
+* [FieldRef](https://cloud.tencent.com/document/api/649/36099#FieldRef)
+* [GroupUnitApiDailyUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiDailyUseStatistics)
+* [GroupUnitApiUseStatistics](https://cloud.tencent.com/document/api/649/36099#GroupUnitApiUseStatistics)
+* [MetricDataPoint](https://cloud.tencent.com/document/api/649/36099#MetricDataPoint)
+* [MetricDataPointMap](https://cloud.tencent.com/document/api/649/36099#MetricDataPointMap)
+* [ResourceFieldRef](https://cloud.tencent.com/document/api/649/36099#ResourceFieldRef)
+* [TsfPageContainerEvent](https://cloud.tencent.com/document/api/649/36099#TsfPageContainerEvent)
+* [ValueFrom](https://cloud.tencent.com/document/api/649/36099#ValueFrom)
 
 修改数据结构：
 
@@ -44317,6 +44390,18 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 83 次发布
+
+发布时间：2021-04-28 08:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyEventConfig](https://cloud.tencent.com/document/api/266/55244)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 82 次发布
 
@@ -48869,7 +48954,7 @@
 
 
 
-## 网站管家(waf) 版本：2018-01-25
+## Web 应用防火墙(waf) 版本：2018-01-25
 
 ### 第 1 次发布
 

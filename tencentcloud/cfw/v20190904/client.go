@@ -543,6 +543,34 @@ func (c *Client) ModifyAllSwitchStatus(request *ModifyAllSwitchStatusRequest) (r
     return
 }
 
+func NewModifyBlockIgnoreListRequest() (request *ModifyBlockIgnoreListRequest) {
+    request = &ModifyBlockIgnoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockIgnoreList")
+    return
+}
+
+func NewModifyBlockIgnoreListResponse() (response *ModifyBlockIgnoreListResponse) {
+    response = &ModifyBlockIgnoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 支持对拦截列表、忽略列表如下操作：
+// 批量增加拦截IP、忽略IP/域名
+// 批量删除拦截IP、忽略IP/域名
+// 批量修改拦截IP、忽略IP/域名生效事件
+func (c *Client) ModifyBlockIgnoreList(request *ModifyBlockIgnoreListRequest) (response *ModifyBlockIgnoreListResponse, err error) {
+    if request == nil {
+        request = NewModifyBlockIgnoreListRequest()
+    }
+    response = NewModifyBlockIgnoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyItemSwitchStatusRequest() (request *ModifyItemSwitchStatusRequest) {
     request = &ModifyItemSwitchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

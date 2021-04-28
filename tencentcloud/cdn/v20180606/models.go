@@ -2244,6 +2244,11 @@ type DescribeDistrictIspDataRequest struct {
 	// ipv6：指定查询 ipv6 对应指标
 	// 指定IP协议查询时，不可同时指定省份、运营商查询
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 时间粒度，支持以下几种模式（默认5min）：
+	// min：1 分钟粒度，支持近 60 天内的数据查询，每次查询时间区间不超过10分钟，可返回 1 分钟粒度明细数据
+	// 5min：5 分钟粒度，支持近 60 天内的数据查询，每次查询时间区间不超过3 小时，可返回 5 分钟粒度明细数据
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
 func (r *DescribeDistrictIspDataRequest) ToJsonString() string {
@@ -2266,6 +2271,7 @@ func (r *DescribeDistrictIspDataRequest) FromJsonString(s string) error {
 	delete(f, "Isps")
 	delete(f, "Protocol")
 	delete(f, "IpProtocol")
+	delete(f, "Interval")
 	if len(f) > 0 {
 		return errors.New("DescribeDistrictIspDataRequest has unknown keys!")
 	}

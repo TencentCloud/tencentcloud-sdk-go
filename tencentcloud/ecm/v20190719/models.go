@@ -5120,6 +5120,10 @@ type Instance struct {
 	// 实例运营商字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ISP *string `json:"ISP,omitempty" name:"ISP"`
+
+	// 物理位置信息。注意该字段目前为保留字段，均为空值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalPosition *PhysicalPosition `json:"PhysicalPosition,omitempty" name:"PhysicalPosition"`
 }
 
 type InstanceFamilyConfig struct {
@@ -5229,11 +5233,11 @@ type InstanceTypeConfig struct {
 
 type Internet struct {
 
-	// 实例的内网相关信息列表。
+	// 实例的内网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIPAddressSet []*PrivateIPAddressInfo `json:"PrivateIPAddressSet,omitempty" name:"PrivateIPAddressSet" list`
 
-	// 实例的公网相关信息列表。
+	// 实例的公网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIPAddressSet []*PublicIPAddressInfo `json:"PublicIPAddressSet,omitempty" name:"PublicIPAddressSet" list`
 
@@ -7228,6 +7232,21 @@ type PeakNetworkRegionInfo struct {
 	// 网络峰值集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeakNetworkSet []*PeakNetwork `json:"PeakNetworkSet,omitempty" name:"PeakNetworkSet" list`
+}
+
+type PhysicalPosition struct {
+
+	// 机位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PosId *string `json:"PosId,omitempty" name:"PosId"`
+
+	// 机架
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RackId *string `json:"RackId,omitempty" name:"RackId"`
+
+	// 交换机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchId *string `json:"SwitchId,omitempty" name:"SwitchId"`
 }
 
 type Position struct {

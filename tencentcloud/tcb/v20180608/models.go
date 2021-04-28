@@ -2247,10 +2247,10 @@ type DescribeCloudBaseRunVersionSnapshotRequest struct {
 	// 版本历史名
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
-	// 偏移量
+	// 偏移量。默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制大小
+	// 限制大小。默认10，最大20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

@@ -9720,6 +9720,71 @@ func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyEventConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 接收事件通知的方式。
+	// <li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
+	// <li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
+	// 注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。
+	NotificationUrl *string `json:"NotificationUrl,omitempty" name:"NotificationUrl"`
+
+	// 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	UploadMediaCompleteEventSwitch *string `json:"UploadMediaCompleteEventSwitch,omitempty" name:"UploadMediaCompleteEventSwitch"`
+
+	// 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+	DeleteMediaCompleteEventSwitch *string `json:"DeleteMediaCompleteEventSwitch,omitempty" name:"DeleteMediaCompleteEventSwitch"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyEventConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEventConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "NotificationUrl")
+	delete(f, "UploadMediaCompleteEventSwitch")
+	delete(f, "DeleteMediaCompleteEventSwitch")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return errors.New("ModifyEventConfigRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEventConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyEventConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEventConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyImageSpriteTemplateRequest struct {
 	*tchttp.BaseRequest
 

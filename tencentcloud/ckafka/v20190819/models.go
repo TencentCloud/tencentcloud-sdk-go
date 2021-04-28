@@ -74,6 +74,39 @@ type Assignment struct {
 	Topics []*GroupInfoTopics `json:"Topics,omitempty" name:"Topics" list`
 }
 
+type ClusterInfo struct {
+
+	// 集群Id
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群最大磁盘 单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+
+	// 集群最大带宽 单位MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxBandWidth *int64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 集群当前可用磁盘  单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableDiskSize *int64 `json:"AvailableDiskSize,omitempty" name:"AvailableDiskSize"`
+
+	// 集群当前可用带宽 单位MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableBandWidth *int64 `json:"AvailableBandWidth,omitempty" name:"AvailableBandWidth"`
+
+	// 集群所属可用区，表明集群归属的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+}
+
 type Config struct {
 
 	// 消息保留时间
@@ -1008,6 +1041,51 @@ func (r *DescribeAppInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCkafkaZoneRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCkafkaZoneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCkafkaZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeCkafkaZoneRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCkafkaZoneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询结果复杂对象实体
+		Result *ZoneResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCkafkaZoneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCkafkaZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1454,6 +1532,64 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 业务字段，可忽略
+	Business *string `json:"Business,omitempty" name:"Business"`
+}
+
+func (r *DescribeRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Business")
+	if len(f) > 0 {
+		return errors.New("DescribeRegionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回地域枚举结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*Region `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2461,6 +2597,47 @@ type PartitionOffset struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
+type Price struct {
+
+	// 折扣价
+	RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 原价
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+}
+
+type Region struct {
+
+	// 地域ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 区域名称
+	AreaName *string `json:"AreaName,omitempty" name:"AreaName"`
+
+	// 地域代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 地域代码（V3版本）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCodeV3 *string `json:"RegionCodeV3,omitempty" name:"RegionCodeV3"`
+
+	// NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Support *string `json:"Support,omitempty" name:"Support"`
+
+	// 是否支持ipv6, 0：表示不支持，1：表示支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6 *int64 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 是否支持跨可用区, 0：表示不支持，1：表示支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiZone *int64 `json:"MultiZone,omitempty" name:"MultiZone"`
+}
+
 type Route struct {
 
 	// 实例接入方式
@@ -2692,4 +2869,69 @@ type VipEntity struct {
 
 	// 虚拟端口
 	Vport *string `json:"Vport,omitempty" name:"Vport"`
+}
+
+type ZoneInfo struct {
+
+	// zone的id
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 是否内部APP
+	IsInternalApp *int64 `json:"IsInternalApp,omitempty" name:"IsInternalApp"`
+
+	// app id
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 标识
+	Flag *bool `json:"Flag,omitempty" name:"Flag"`
+
+	// zone名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// zone状态
+	ZoneStatus *int64 `json:"ZoneStatus,omitempty" name:"ZoneStatus"`
+
+	// 额外标识
+	Exflag *string `json:"Exflag,omitempty" name:"Exflag"`
+
+	// json对象，key为机型，value true为售罄，false为未售罄
+	SoldOut *string `json:"SoldOut,omitempty" name:"SoldOut"`
+}
+
+type ZoneResponse struct {
+
+	// zone列表
+	ZoneList []*ZoneInfo `json:"ZoneList,omitempty" name:"ZoneList" list`
+
+	// 最大购买实例个数
+	MaxBuyInstanceNum *int64 `json:"MaxBuyInstanceNum,omitempty" name:"MaxBuyInstanceNum"`
+
+	// 最大购买带宽 单位Mb/s
+	MaxBandwidth *int64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+
+	// 后付费单位价格
+	UnitPrice *Price `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 后付费消息单价
+	MessagePrice *Price `json:"MessagePrice,omitempty" name:"MessagePrice"`
+
+	// 用户独占集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo" list`
+
+	// 购买标准版配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Standard *string `json:"Standard,omitempty" name:"Standard"`
+
+	// 购买标准版S2配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardS2 *string `json:"StandardS2,omitempty" name:"StandardS2"`
+
+	// 购买专业版配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Profession *string `json:"Profession,omitempty" name:"Profession"`
+
+	// 购买物理独占版配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Physical *string `json:"Physical,omitempty" name:"Physical"`
 }

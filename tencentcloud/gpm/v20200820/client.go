@@ -467,3 +467,28 @@ func (c *Client) StartMatching(request *StartMatchingRequest) (response *StartMa
     err = c.Send(request, response)
     return
 }
+
+func NewStartMatchingBackfillRequest() (request *StartMatchingBackfillRequest) {
+    request = &StartMatchingBackfillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gpm", APIVersion, "StartMatchingBackfill")
+    return
+}
+
+func NewStartMatchingBackfillResponse() (response *StartMatchingBackfillResponse) {
+    response = &StartMatchingBackfillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
+func (c *Client) StartMatchingBackfill(request *StartMatchingBackfillRequest) (response *StartMatchingBackfillResponse, err error) {
+    if request == nil {
+        request = NewStartMatchingBackfillRequest()
+    }
+    response = NewStartMatchingBackfillResponse()
+    err = c.Send(request, response)
+    return
+}

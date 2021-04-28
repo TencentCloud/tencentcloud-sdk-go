@@ -382,6 +382,12 @@ type CreateProjectRequest struct {
 	// <li>RECORD_REPLAY：录制回放。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
+	// 项目模式，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Default：默认模式。</li>
+	// <li>VideoEditTemplate：视频编辑模板制作模式。</li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
 	// 画布宽高比。
 	// 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
@@ -424,6 +430,7 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Owner")
 	delete(f, "Category")
+	delete(f, "Mode")
 	delete(f, "AspectRatio")
 	delete(f, "Description")
 	delete(f, "SwitcherProjectInput")
@@ -1239,6 +1246,12 @@ type DescribeProjectsRequest struct {
 	// <li>RECORD_REPLAY：录制回放。</li>
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
 
+	// 项目模式，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Default：默认模式。</li>
+	// <li>VideoEditTemplate：视频编辑模板制作模式。</li>
+	Modes []*string `json:"Modes,omitempty" name:"Modes" list`
+
 	// 列表排序，支持下列排序字段：
 	// <li>CreateTime：创建时间；</li>
 	// <li>UpdateTime：更新时间。</li>
@@ -1273,6 +1286,7 @@ func (r *DescribeProjectsRequest) FromJsonString(s string) error {
 	delete(f, "ProjectIds")
 	delete(f, "AspectRatioSet")
 	delete(f, "CategorySet")
+	delete(f, "Modes")
 	delete(f, "Sort")
 	delete(f, "Owner")
 	delete(f, "Offset")
@@ -3008,6 +3022,12 @@ type ModifyProjectRequest struct {
 
 	// 项目归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 项目模式，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Defualt：默认模式。</li>
+	// <li>VideoEditTemplate：视频编辑模板制作模式。</li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
 func (r *ModifyProjectRequest) ToJsonString() string {
@@ -3027,6 +3047,7 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "AspectRatio")
 	delete(f, "Owner")
+	delete(f, "Mode")
 	if len(f) > 0 {
 		return errors.New("ModifyProjectRequest has unknown keys!")
 	}
@@ -3381,7 +3402,7 @@ type ProjectInfo struct {
 	// 项目封面图片地址。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
-	// 云转推项目信息。
+	// 云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamConnectProjectInfo *StreamConnectProjectInfo `json:"StreamConnectProjectInfo,omitempty" name:"StreamConnectProjectInfo"`
 

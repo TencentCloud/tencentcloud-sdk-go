@@ -1289,6 +1289,18 @@ func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IocListData struct {
+
+	// 待处置IP地址，IP/Domain字段二选一
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 只能为0或者1   0代表出站 1代表入站
+	Direction *int64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 待处置域名，IP/Domain字段二选一
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type ModifyAcRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -1478,6 +1490,74 @@ func (r *ModifyAllSwitchStatusResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAllSwitchStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBlockIgnoreListRequest struct {
+	*tchttp.BaseRequest
+
+	// 1拦截列表 2 忽略列表
+	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
+
+	// IP、Domain二选一，不能同时为空
+	IOC []*IocListData `json:"IOC,omitempty" name:"IOC" list`
+
+	// 默认值:delete（删除）、edit（编辑）、add（添加）  其他值无效
+	IocAction *string `json:"IocAction,omitempty" name:"IocAction"`
+
+	// 时间格式：yyyy-MM-dd HH:mm:ss
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间格式：yyyy-MM-dd HH:mm:ss
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *ModifyBlockIgnoreListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockIgnoreListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleType")
+	delete(f, "IOC")
+	delete(f, "IocAction")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return errors.New("ModifyBlockIgnoreListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBlockIgnoreListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 接口返回信息
+		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+		// 接口返回错误码，0请求成功  非0失败
+		ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBlockIgnoreListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockIgnoreListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

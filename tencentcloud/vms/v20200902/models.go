@@ -111,6 +111,7 @@ type SendTtsVoiceRequest struct {
 	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitempty" name:"VoiceSdkAppid"`
 
 	// 模板参数，若模板没有参数，请提供为空数组。
+	// 注：语音消息的内容长度不超过350字。
 	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet" list`
 
 	// 播放次数，可选，最多3次，默认2次。

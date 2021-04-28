@@ -1369,6 +1369,68 @@ type RuleInfo struct {
 	CreateUin *string `json:"CreateUin,omitempty" name:"CreateUin"`
 }
 
+type StartMatchingBackfillRequest struct {
+	*tchttp.BaseRequest
+
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 玩家信息
+	Players []*Player `json:"Players,omitempty" name:"Players" list`
+
+	// 游戏服务器回话 ID [1-256] 个ASCII 字符
+	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
+
+	// 匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]
+	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
+}
+
+func (r *StartMatchingBackfillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartMatchingBackfillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MatchCode")
+	delete(f, "Players")
+	delete(f, "GameServerSessionId")
+	delete(f, "MatchTicketId")
+	if len(f) > 0 {
+		return errors.New("StartMatchingBackfillRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartMatchingBackfillResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 匹配票据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MatchTicket *MatchTicket `json:"MatchTicket,omitempty" name:"MatchTicket"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StartMatchingBackfillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartMatchingBackfillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StartMatchingRequest struct {
 	*tchttp.BaseRequest
 
