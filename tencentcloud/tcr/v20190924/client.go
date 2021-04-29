@@ -1318,6 +1318,31 @@ func (c *Client) DescribeReplicationInstanceCreateTasks(request *DescribeReplica
     return
 }
 
+func NewDescribeReplicationInstanceSyncStatusRequest() (request *DescribeReplicationInstanceSyncStatusRequest) {
+    request = &DescribeReplicationInstanceSyncStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstanceSyncStatus")
+    return
+}
+
+func NewDescribeReplicationInstanceSyncStatusResponse() (response *DescribeReplicationInstanceSyncStatusResponse) {
+    response = &DescribeReplicationInstanceSyncStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询从实例同步状态
+func (c *Client) DescribeReplicationInstanceSyncStatus(request *DescribeReplicationInstanceSyncStatusRequest) (response *DescribeReplicationInstanceSyncStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstanceSyncStatusRequest()
+    }
+    response = NewDescribeReplicationInstanceSyncStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReplicationInstancesRequest() (request *DescribeReplicationInstancesRequest) {
     request = &DescribeReplicationInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

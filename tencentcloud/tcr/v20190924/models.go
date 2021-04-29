@@ -2899,6 +2899,66 @@ func (r *DescribeReplicationInstanceCreateTasksResponse) FromJsonString(s string
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReplicationInstanceSyncStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 主实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 复制实例Id
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 复制实例的地域Id
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+}
+
+func (r *DescribeReplicationInstanceSyncStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationInstanceSyncStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "ReplicationRegistryId")
+	delete(f, "ReplicationRegionId")
+	if len(f) > 0 {
+		return errors.New("DescribeReplicationInstanceSyncStatusRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReplicationInstanceSyncStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 同步状态
+		ReplicationStatus *string `json:"ReplicationStatus,omitempty" name:"ReplicationStatus"`
+
+		// 同步完成时间
+		ReplicationTime *string `json:"ReplicationTime,omitempty" name:"ReplicationTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReplicationInstanceSyncStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationInstanceSyncStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeReplicationInstancesRequest struct {
 	*tchttp.BaseRequest
 

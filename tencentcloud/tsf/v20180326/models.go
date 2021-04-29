@@ -966,6 +966,10 @@ type ConfigRelease struct {
 	// 发布描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 }
 
 type ConfigReleaseLog struct {

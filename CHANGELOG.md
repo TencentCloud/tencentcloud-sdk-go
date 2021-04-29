@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 66 次发布
+### 第 30 次发布
 
-发布时间：2021-04-28 08:04:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDistrictIspData](https://cloud.tencent.com/document/api/228/47395)
-
-	* 新增入参：Interval
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 4 次发布
-
-发布时间：2021-04-28 08:13:47
+发布时间：2021-04-29 08:09:13
 
 本次发布包含了以下内容：
 
@@ -31,110 +12,34 @@
 
 新增接口：
 
-* [ModifyBlockIgnoreList](https://cloud.tencent.com/document/api/1132/55248)
-
-新增数据结构：
-
-* [IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData)
+* [DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)
 
 
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 13 次发布
+### 第 51 次发布
 
-发布时间：2021-04-28 08:12:27
+发布时间：2021-04-29 08:07:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)
-* [DescribeRegion](https://cloud.tencent.com/document/api/597/55245)
-
-新增数据结构：
-
-* [ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo)
-* [Price](https://cloud.tencent.com/document/api/597/40861#Price)
-* [Region](https://cloud.tencent.com/document/api/597/40861#Region)
-* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
-* [ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse)
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 29 次发布
-
-发布时间：2021-04-28 08:03:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
-
-	* 新增入参：Mode
-
-* [DescribeProjects](https://cloud.tencent.com/document/api/1156/40348)
-
-	* 新增入参：Modes
-
-* [ModifyProject](https://cloud.tencent.com/document/api/1156/40347)
-
-	* 新增入参：Mode
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 47 次发布
-
-发布时间：2021-04-28 08:01:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition)
 
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/1108/42574#Instance)
+* [ConfigRelease](https://cloud.tencent.com/document/api/649/36099#ConfigRelease)
 
-	* 新增成员：PhysicalPosition
+	* 新增成员：ApplicationId
 
-
-
-
-## 游戏玩家匹配(gpm) 版本：2020-08-20
-
-### 第 4 次发布
-
-发布时间：2021-04-28 08:00:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [StartMatchingBackfill](https://cloud.tencent.com/document/api/1294/55243)
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 83 次发布
+### 第 84 次发布
 
-发布时间：2021-04-28 08:11:47
+发布时间：2021-04-29 08:08:35
 
 本次发布包含了以下内容：
 
@@ -142,7 +47,7 @@
 
 新增接口：
 
-* [ModifyEventConfig](https://cloud.tencent.com/document/api/266/55244)
+* [DescribeEventConfig](https://cloud.tencent.com/document/api/266/55296)
 
 
 
@@ -923,13 +828,13 @@
 
 新增接口：
 
-* [DescribeRegions](https://cloud.tencent.com/document/api/#/#)
-* [DescribeZones](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1278/55255)
+* [DescribeZones](https://cloud.tencent.com/document/api/1278/55254)
 
 新增数据结构：
 
-* [RegionInfo](https://cloud.tencent.com/document/api/#/##RegionInfo)
-* [ZoneInfo](https://cloud.tencent.com/document/api/#/##ZoneInfo)
+* [RegionInfo](https://cloud.tencent.com/document/api/1278/55256#RegionInfo)
+* [ZoneInfo](https://cloud.tencent.com/document/api/1278/55256#ZoneInfo)
 
 
 
@@ -9678,11 +9583,11 @@
 
 新增接口：
 
-* [[ModifyBlockIgnoreList](https://cloud.tencent.com/document/api/1132/55248)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyBlockIgnoreList](https://cloud.tencent.com/document/api/1132/55248)
 
 新增数据结构：
 
-* [[IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData)](https://cloud.tencent.com/document/api/1132/49071#[IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData))
+* [IocListData](https://cloud.tencent.com/document/api/1132/49071#IocListData)
 
 ### 第 3 次发布
 
@@ -10051,16 +9956,16 @@
 
 新增接口：
 
-* [[DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRegion](https://cloud.tencent.com/document/api/597/55245)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)
+* [DescribeRegion](https://cloud.tencent.com/document/api/597/55245)
 
 新增数据结构：
 
-* [[ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo)](https://cloud.tencent.com/document/api/597/40861#[ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo))
-* [[Price](https://cloud.tencent.com/document/api/597/40861#Price)](https://cloud.tencent.com/document/api/597/40861#[Price](https://cloud.tencent.com/document/api/597/40861#Price))
-* [[Region](https://cloud.tencent.com/document/api/597/40861#Region)](https://cloud.tencent.com/document/api/597/40861#[Region](https://cloud.tencent.com/document/api/597/40861#Region))
-* [[ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)](https://cloud.tencent.com/document/api/597/40861#[ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo))
-* [[ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse)](https://cloud.tencent.com/document/api/597/40861#[ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse))
+* [ClusterInfo](https://cloud.tencent.com/document/api/597/40861#ClusterInfo)
+* [Price](https://cloud.tencent.com/document/api/597/40861#Price)
+* [Region](https://cloud.tencent.com/document/api/597/40861#Region)
+* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
+* [ZoneResponse](https://cloud.tencent.com/document/api/597/40861#ZoneResponse)
 
 ### 第 12 次发布
 
@@ -18649,7 +18554,7 @@
 
 新增数据结构：
 
-* [[PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition)](https://cloud.tencent.com/document/api/1108/42574#[PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition))
+* [PhysicalPosition](https://cloud.tencent.com/document/api/1108/42574#PhysicalPosition)
 
 修改数据结构：
 
@@ -22169,7 +22074,7 @@
 
 新增接口：
 
-* [[StartMatchingBackfill](https://cloud.tencent.com/document/api/1294/55243)](https://cloud.tencent.com/document/api/#/#)
+* [StartMatchingBackfill](https://cloud.tencent.com/document/api/1294/55243)
 
 ### 第 3 次发布
 
@@ -38732,6 +38637,18 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 30 次发布
+
+发布时间：2021-04-29 08:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 29 次发布
 
 发布时间：2021-04-20 08:10:24
@@ -42624,6 +42541,21 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 51 次发布
+
+发布时间：2021-04-29 08:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ConfigRelease](https://cloud.tencent.com/document/api/649/36099#ConfigRelease)
+
+	* 新增成员：ApplicationId
+
+
 ### 第 50 次发布
 
 发布时间：2021-04-27 08:08:59
@@ -44391,6 +44323,18 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 84 次发布
+
+发布时间：2021-04-29 08:08:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEventConfig](https://cloud.tencent.com/document/api/266/55296)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 83 次发布
 
 发布时间：2021-04-28 08:11:47
@@ -44401,7 +44345,7 @@
 
 新增接口：
 
-* [[ModifyEventConfig](https://cloud.tencent.com/document/api/266/55244)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyEventConfig](https://cloud.tencent.com/document/api/266/55244)
 
 ### 第 82 次发布
 
