@@ -6892,6 +6892,7 @@ type DescribeTasksRequest struct {
 	// 过滤条件：任务结束时间。
 	FinishTime *TimeRange `json:"FinishTime,omitempty" name:"FinishTime"`
 
+	// (该字段暂不支持)
 	// 排序方式。Sort.Field 可选：
 	// <li> CreateTime 任务创建时间。</li>
 	// <li>FinishTime 任务结束时间。</li>

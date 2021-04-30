@@ -104,3 +104,52 @@ func (r *DescribeServiceAlertObjectResponse) ToJsonString() string {
 func (r *DescribeServiceAlertObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return errors.New("DescribeTokenRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// token
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

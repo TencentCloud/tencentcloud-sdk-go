@@ -92,3 +92,28 @@ func (c *Client) DescribeServiceAlertObject(request *DescribeServiceAlertObjectR
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
+    request = &DescribeTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsw", APIVersion, "DescribeToken")
+    return
+}
+
+func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
+    response = &DescribeTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询token
+func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenRequest()
+    }
+    response = NewDescribeTokenResponse()
+    err = c.Send(request, response)
+    return
+}

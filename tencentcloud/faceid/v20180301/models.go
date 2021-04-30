@@ -787,7 +787,7 @@ type DetectInfoText struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 本次流程最终比对库源类型。包括：
-	// 公安商业库；
+	// 权威库；
 	// 业务方自有库（用户上传照片、客户的混合库、混合部署库）；
 	// 二次验证库；
 	// 人工审核库；

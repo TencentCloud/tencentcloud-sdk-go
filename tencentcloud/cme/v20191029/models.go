@@ -452,6 +452,10 @@ type CreateProjectResponse struct {
 		// 项目 Id。
 		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
+		// 输入源推流信息。
+	//  <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>
+		RtmpPushInputInfoSet []*RtmpPushInputInfo `json:"RtmpPushInputInfoSet,omitempty" name:"RtmpPushInputInfoSet" list`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2356,6 +2360,9 @@ func (r *HandleStreamConnectProjectRequest) FromJsonString(s string) error {
 type HandleStreamConnectProjectResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
+		StreamInputRtmpPushUrl *string `json:"StreamInputRtmpPushUrl,omitempty" name:"StreamInputRtmpPushUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1,10 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 腾讯云剪(cme) 版本：2019-10-29
 
 ### 第 30 次发布
 
-发布时间：2021-04-29 08:09:13
+发布时间：2021-04-30 08:02:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增出参：RtmpPushInputInfoSet
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增出参：StreamInputRtmpPushUrl
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 45 次发布
+
+发布时间：2021-04-30 08:07:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
+
+	* <font color="#dd0000">**修改入参**：</font>WxAppId
+
+
+
+
+## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
+
+### 第 2 次发布
+
+发布时间：2021-04-30 08:10:47
 
 本次发布包含了以下内容：
 
@@ -12,42 +54,11 @@
 
 新增接口：
 
-* [DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)
+* [DescribeToken](https://cloud.tencent.com/document/api/1311/55324)
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 51 次发布
-
-发布时间：2021-04-29 08:07:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ConfigRelease](https://cloud.tencent.com/document/api/649/36099#ConfigRelease)
-
-	* 新增成员：ApplicationId
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 84 次发布
-
-发布时间：2021-04-29 08:08:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEventConfig](https://cloud.tencent.com/document/api/266/55296)
+## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
 
 
 
@@ -11568,6 +11579,25 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 30 次发布
+
+发布时间：2021-04-30 08:02:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增出参：RtmpPushInputInfoSet
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增出参：StreamInputRtmpPushUrl
+
 
 ### 第 29 次发布
 
@@ -37494,6 +37524,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 45 次发布
+
+发布时间：2021-04-30 08:07:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
+
+	* <font color="#dd0000">**修改入参**：</font>WxAppId
+
+
 ### 第 44 次发布
 
 发布时间：2021-04-25 10:17:18
@@ -38647,7 +38692,7 @@
 
 新增接口：
 
-* [[DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)
 
 ### 第 29 次发布
 
@@ -44023,6 +44068,18 @@
 
 ## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
 
+### 第 2 次发布
+
+发布时间：2021-04-30 08:10:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeToken](https://cloud.tencent.com/document/api/1311/55324)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 1 次发布
 
 发布时间：2021-04-08 08:10:21
@@ -44333,7 +44390,7 @@
 
 新增接口：
 
-* [[DescribeEventConfig](https://cloud.tencent.com/document/api/266/55296)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEventConfig](https://cloud.tencent.com/document/api/266/55296)
 
 ### 第 83 次发布
 

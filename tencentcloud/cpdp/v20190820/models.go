@@ -8857,7 +8857,7 @@ type TransferSinglePayRequest struct {
 	// 平安为收款方银行账号
 	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 
-	// 收款方姓名，微信，支付宝可选；平安模式下必传
+	// 收款方姓名。支付宝可选；微信，平安模式下必传
 	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
 
 	// 收款方附加信息，平安接入使用。需要以JSON格式提供以下字段：
