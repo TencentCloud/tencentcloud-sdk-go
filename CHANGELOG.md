@@ -1,52 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 弹性微服务(tem) 版本：2020-12-21
 
-### 第 30 次发布
+### 第 1 次发布
 
-发布时间：2021-04-30 08:02:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
-
-	* 新增出参：RtmpPushInputInfoSet
-
-* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
-
-	* 新增出参：StreamInputRtmpPushUrl
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 45 次发布
-
-发布时间：2021-04-30 08:07:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeWxCloudBaseRunEnvs](https://cloud.tencent.com/document/api/876/55053)
-
-	* <font color="#dd0000">**修改入参**：</font>WxAppId
-
-
-
-
-## 腾讯微服务观测平台 TSW(tsw) 版本：2021-04-12
-
-### 第 2 次发布
-
-发布时间：2021-04-30 08:10:47
+发布时间：2021-05-03 08:00:04
 
 本次发布包含了以下内容：
 
@@ -54,11 +12,23 @@
 
 新增接口：
 
-* [DescribeToken](https://cloud.tencent.com/document/api/1311/55324)
+* [CreateCosToken](https://cloud.tencent.com/document/api/1371/55420)
+* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1371/55416)
+* [ModifyIngress](https://cloud.tencent.com/document/api/1371/55419)
+* [ModifyNamespace](https://cloud.tencent.com/document/api/1371/55415)
 
+新增数据结构：
 
-
-## 腾讯微服务观测平台 TSW(tsw) 版本：2020-09-24
+* [CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken)
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
+* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
+* [IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend)
+* [IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath)
+* [IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue)
+* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
+* [NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage)
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)
 
 
 
@@ -39438,6 +39408,39 @@
 
 
 
+## 弹性微服务(tem) 版本：2020-12-21
+
+### 第 1 次发布
+
+发布时间：2021-05-03 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCosToken](https://cloud.tencent.com/document/api/1371/55420)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNamespaces](https://cloud.tencent.com/document/api/1371/55416)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyIngress](https://cloud.tencent.com/document/api/1371/55419)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNamespace](https://cloud.tencent.com/document/api/1371/55415)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken)](https://cloud.tencent.com/document/api/1371/55421#[CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken))
+* [[IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)](https://cloud.tencent.com/document/api/1371/55421#[IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo))
+* [[IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)](https://cloud.tencent.com/document/api/1371/55421#[IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule))
+* [[IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend)](https://cloud.tencent.com/document/api/1371/55421#[IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend))
+* [[IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath)](https://cloud.tencent.com/document/api/1371/55421#[IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath))
+* [[IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue)](https://cloud.tencent.com/document/api/1371/55421#[IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue))
+* [[IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)](https://cloud.tencent.com/document/api/1371/55421#[IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls))
+* [[NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage)](https://cloud.tencent.com/document/api/1371/55421#[NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage))
+* [[TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)](https://cloud.tencent.com/document/api/1371/55421#[TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo))
+
+
+
+
 ## 智能钛机器学习(tia) 版本：2018-02-26
 
 ### 第 3 次发布
@@ -44078,7 +44081,7 @@
 
 新增接口：
 
-* [[DescribeToken](https://cloud.tencent.com/document/api/1311/55324)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeToken](https://cloud.tencent.com/document/api/1311/55324)
 
 ### 第 1 次发布
 
