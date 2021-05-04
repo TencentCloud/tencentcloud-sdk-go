@@ -1,37 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 弹性微服务(tem) 版本：2020-12-21
-
-### 第 1 次发布
-
-发布时间：2021-05-03 08:00:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCosToken](https://cloud.tencent.com/document/api/1371/55420)
-* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
-* [DescribeNamespaces](https://cloud.tencent.com/document/api/1371/55416)
-* [ModifyIngress](https://cloud.tencent.com/document/api/1371/55419)
-* [ModifyNamespace](https://cloud.tencent.com/document/api/1371/55415)
-
-新增数据结构：
-
-* [CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken)
-* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
-* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
-* [IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend)
-* [IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath)
-* [IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue)
-* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
-* [NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage)
-* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -39420,23 +39388,23 @@
 
 新增接口：
 
-* [[CreateCosToken](https://cloud.tencent.com/document/api/1371/55420)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNamespaces](https://cloud.tencent.com/document/api/1371/55416)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIngress](https://cloud.tencent.com/document/api/1371/55419)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyNamespace](https://cloud.tencent.com/document/api/1371/55415)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCosToken](https://cloud.tencent.com/document/api/1371/55420)
+* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1371/55416)
+* [ModifyIngress](https://cloud.tencent.com/document/api/1371/55419)
+* [ModifyNamespace](https://cloud.tencent.com/document/api/1371/55415)
 
 新增数据结构：
 
-* [[CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken)](https://cloud.tencent.com/document/api/1371/55421#[CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken))
-* [[IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)](https://cloud.tencent.com/document/api/1371/55421#[IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo))
-* [[IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)](https://cloud.tencent.com/document/api/1371/55421#[IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule))
-* [[IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend)](https://cloud.tencent.com/document/api/1371/55421#[IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend))
-* [[IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath)](https://cloud.tencent.com/document/api/1371/55421#[IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath))
-* [[IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue)](https://cloud.tencent.com/document/api/1371/55421#[IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue))
-* [[IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)](https://cloud.tencent.com/document/api/1371/55421#[IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls))
-* [[NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage)](https://cloud.tencent.com/document/api/1371/55421#[NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage))
-* [[TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)](https://cloud.tencent.com/document/api/1371/55421#[TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo))
+* [CosToken](https://cloud.tencent.com/document/api/1371/55421#CosToken)
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
+* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
+* [IngressRuleBackend](https://cloud.tencent.com/document/api/1371/55421#IngressRuleBackend)
+* [IngressRulePath](https://cloud.tencent.com/document/api/1371/55421#IngressRulePath)
+* [IngressRuleValue](https://cloud.tencent.com/document/api/1371/55421#IngressRuleValue)
+* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
+* [NamespacePage](https://cloud.tencent.com/document/api/1371/55421#NamespacePage)
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)
 
 
 
