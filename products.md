@@ -65,7 +65,7 @@
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-04-28 08:01:54 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-04-22 08:04:59 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-03-09 08:04:52 |
-| facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-04-30 08:04:47 |
+| facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-05-07 08:04:04 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-04-30 08:04:50 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-03-16 08:02:03 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-04-12 08:01:48 |
