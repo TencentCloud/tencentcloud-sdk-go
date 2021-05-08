@@ -268,6 +268,9 @@ type CopyFleetRequest struct {
 
 	// 云联网信息，包含对应的账号信息及所属id
 	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 func (r *CopyFleetRequest) ToJsonString() string {
@@ -301,6 +304,7 @@ func (r *CopyFleetRequest) FromJsonString(s string) error {
 	delete(f, "DataDiskInfo")
 	delete(f, "SelectedTimerType")
 	delete(f, "CcnInfos")
+	delete(f, "InternetMaxBandwidthOut")
 	if len(f) > 0 {
 		return errors.New("CopyFleetRequest has unknown keys!")
 	}
@@ -410,7 +414,7 @@ type CreateAssetRequest struct {
 	// 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
 	AssetRegion *string `json:"AssetRegion,omitempty" name:"AssetRegion"`
 
-	// 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）
+	// 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
 	OperateSystem *string `json:"OperateSystem,omitempty" name:"OperateSystem"`
 
 	// 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
@@ -605,6 +609,9 @@ type CreateFleetRequest struct {
 
 	// 云联网信息，包含对应的账号信息及所属id
 	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 func (r *CreateFleetRequest) ToJsonString() string {
@@ -635,6 +642,7 @@ func (r *CreateFleetRequest) FromJsonString(s string) error {
 	delete(f, "SystemDiskInfo")
 	delete(f, "DataDiskInfo")
 	delete(f, "CcnInfos")
+	delete(f, "InternetMaxBandwidthOut")
 	if len(f) > 0 {
 		return errors.New("CreateFleetRequest has unknown keys!")
 	}
@@ -1516,6 +1524,15 @@ type DescribeFleetEventsRequest struct {
 
 	// 分页时的数据偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 事件代码
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 发生事件的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 发生事件的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeFleetEventsRequest) ToJsonString() string {
@@ -1533,6 +1550,9 @@ func (r *DescribeFleetEventsRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "EventCode")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return errors.New("DescribeFleetEventsRequest has unknown keys!")
 	}
@@ -2993,6 +3013,10 @@ type FleetAttributes struct {
 	// 云联网相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedCcnInfos []*RelatedCcnInfo `json:"RelatedCcnInfos,omitempty" name:"RelatedCcnInfos" list`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 type FleetCapacity struct {

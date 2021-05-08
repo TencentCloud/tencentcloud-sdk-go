@@ -250,6 +250,9 @@ type CreateDeviceRequest struct {
 	// 设备密码
 	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
 
+	// 设备类型 2:国标IPC设备; 3:NVR设备
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
 	// 设备需要绑定的分组ID，参数为空则默认绑定到根分组
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
@@ -268,6 +271,7 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NickName")
 	delete(f, "PassWord")
+	delete(f, "DeviceType")
 	delete(f, "GroupId")
 	if len(f) > 0 {
 		return errors.New("CreateDeviceRequest has unknown keys!")

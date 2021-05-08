@@ -71,6 +71,56 @@ func (r *ApplyInstanceSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateInstancesKeyPairsRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *AssociateInstancesKeyPairsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateInstancesKeyPairsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyIds")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return errors.New("AssociateInstancesKeyPairsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateInstancesKeyPairsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateInstancesKeyPairsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Blueprint struct {
 
 	// 镜像 ID  ，是 Blueprint 的唯一标识。
@@ -119,6 +169,33 @@ type Blueprint struct {
 
 	// 镜像所需内存大小, 单位: GB
 	RequiredMemorySize *int64 `json:"RequiredMemorySize,omitempty" name:"RequiredMemorySize"`
+}
+
+type BlueprintInstance struct {
+
+	// 镜像信息。
+	Blueprint *Blueprint `json:"Blueprint,omitempty" name:"Blueprint"`
+
+	// 软件列表。
+	SoftwareSet []*Software `json:"SoftwareSet,omitempty" name:"SoftwareSet" list`
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type BlueprintPrice struct {
+
+	// 镜像单价，原价。单位元。
+	OriginalBlueprintPrice *float64 `json:"OriginalBlueprintPrice,omitempty" name:"OriginalBlueprintPrice"`
+
+	// 镜像总价，原价。单位元。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣。
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 镜像折扣后总价。单位元。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
 type Bundle struct {
@@ -338,6 +415,55 @@ func (r *CreateInstanceSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateKeyPairRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+}
+
+func (r *CreateKeyPairRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyPairRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyName")
+	if len(f) > 0 {
+		return errors.New("CreateKeyPairRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateKeyPairResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 密钥对信息。
+		KeyPair *KeyPair `json:"KeyPair,omitempty" name:"KeyPair"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateKeyPairResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyPairResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
@@ -438,6 +564,52 @@ func (r *DeleteFirewallRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteKeyPairsRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+}
+
+func (r *DeleteKeyPairsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKeyPairsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return errors.New("DeleteKeyPairsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteKeyPairsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteKeyPairsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
@@ -481,6 +653,70 @@ func (r *DeleteSnapshotsResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeniedAction struct {
+
+	// 限制操作名。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 限制操作消息码。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 限制操作消息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type DescribeBlueprintInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表，当前最多支持 1 个。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DescribeBlueprintInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return errors.New("DescribeBlueprintInstancesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBlueprintInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的镜像实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 镜像实例列表信息。
+		BlueprintInstanceSet []*BlueprintInstance `json:"BlueprintInstanceSet,omitempty" name:"BlueprintInstanceSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBlueprintInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -695,6 +931,250 @@ func (r *DescribeFirewallRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFirewallRulesTemplateRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeFirewallRulesTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirewallRulesTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeFirewallRulesTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirewallRulesTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的防火墙规则数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 防火墙规则详细信息列表。
+		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirewallRulesTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirewallRulesTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGeneralResourceQuotasRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源名列表，取值为：USER_KEY_PAIR、INSTANCE、SNAPSHOT。
+	ResourceNames []*string `json:"ResourceNames,omitempty" name:"ResourceNames" list`
+}
+
+func (r *DescribeGeneralResourceQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralResourceQuotasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceNames")
+	if len(f) > 0 {
+		return errors.New("DescribeGeneralResourceQuotasRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGeneralResourceQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 通用资源配额详细信息列表。
+		GeneralResourceQuotaSet []*GeneralResourceQuota `json:"GeneralResourceQuotaSet,omitempty" name:"GeneralResourceQuotaSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGeneralResourceQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralResourceQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceLoginKeyPairAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceLoginKeyPairAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLoginKeyPairAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DescribeInstanceLoginKeyPairAttributeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceLoginKeyPairAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否允许使用默认密钥对登录，YES：允许登录 NO：禁止登录。
+		PermitLogin *string `json:"PermitLogin,omitempty" name:"PermitLogin"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceLoginKeyPairAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLoginKeyPairAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceVncUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceVncUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceVncUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DescribeInstanceVncUrlRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceVncUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例的管理终端地址。
+		InstanceVncUrl *string `json:"InstanceVncUrl,omitempty" name:"InstanceVncUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesDeniedActionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DescribeInstancesDeniedActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesDeniedActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return errors.New("DescribeInstancesDeniedActionsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesDeniedActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例操作限制列表详细信息。
+		InstanceDeniedActionSet []*InstanceDeniedActions `json:"InstanceDeniedActionSet,omitempty" name:"InstanceDeniedActionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesDeniedActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesDeniedActionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -769,6 +1249,66 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesReturnableRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstancesReturnableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesReturnableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribeInstancesReturnableRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesReturnableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 可退还实例详细信息列表。
+		InstanceReturnableSet []*InstanceReturnable `json:"InstanceReturnableSet,omitempty" name:"InstanceReturnableSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesReturnableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesReturnableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesTrafficPackagesRequest struct {
 	*tchttp.BaseRequest
 
@@ -826,6 +1366,311 @@ func (r *DescribeInstancesTrafficPackagesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesTrafficPackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKeyPairsRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对 ID 列表。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKeyPairsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeyPairsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribeKeyPairsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKeyPairsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的密钥对数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 密钥对详细信息列表。
+		KeyPairSet []*KeyPair `json:"KeyPairSet,omitempty" name:"KeyPairSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKeyPairsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModifyInstanceBundlesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 过滤器列表。
+	// <li>bundle-id</li>按照【套餐 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>support-platform-type</li>按照【系统类型】进行过滤。
+	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeModifyInstanceBundlesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyInstanceBundlesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribeModifyInstanceBundlesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModifyInstanceBundlesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的套餐数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 变更套餐详细信息。
+		ModifyBundleSet []*ModifyBundle `json:"ModifyBundleSet,omitempty" name:"ModifyBundleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeModifyInstanceBundlesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyInstanceBundlesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeRegionsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 地域数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 地域信息列表。
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResetInstanceBlueprintsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>blueprint-id</li>按照【镜像 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
+	// 取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+	// 类型：String
+	// 必选：否
+	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
+	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeResetInstanceBlueprintsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResetInstanceBlueprintsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return errors.New("DescribeResetInstanceBlueprintsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResetInstanceBlueprintsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的镜像数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 镜像重置信息列表
+		ResetInstanceBlueprintSet []*ResetInstanceBlueprint `json:"ResetInstanceBlueprintSet,omitempty" name:"ResetInstanceBlueprintSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResetInstanceBlueprintsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResetInstanceBlueprintsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotsDeniedActionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 快照 ID 列表, 可通过 DescribeSnapshots 查询。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+}
+
+func (r *DescribeSnapshotsDeniedActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotsDeniedActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotIds")
+	if len(f) > 0 {
+		return errors.New("DescribeSnapshotsDeniedActionsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotsDeniedActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照操作限制列表详细信息。
+		SnapshotDeniedActionSet []*SnapshotDeniedActions `json:"SnapshotDeniedActionSet,omitempty" name:"SnapshotDeniedActionSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotsDeniedActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotsDeniedActionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -907,6 +1752,56 @@ func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisassociateInstancesKeyPairsRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *DisassociateInstancesKeyPairsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyIds")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return errors.New("DisassociateInstancesKeyPairsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateInstancesKeyPairsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateInstancesKeyPairsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -953,6 +1848,234 @@ type FirewallRuleInfo struct {
 
 	// 防火墙规则描述。
 	FirewallRuleDescription *string `json:"FirewallRuleDescription,omitempty" name:"FirewallRuleDescription"`
+}
+
+type GeneralResourceQuota struct {
+
+	// 资源名称。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源当前可用数量。
+	ResourceQuotaAvailable *int64 `json:"ResourceQuotaAvailable,omitempty" name:"ResourceQuotaAvailable"`
+
+	// 资源总数量。
+	ResourceQuotaTotal *int64 `json:"ResourceQuotaTotal,omitempty" name:"ResourceQuotaTotal"`
+}
+
+type ImportKeyPairRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对名称，可由数字，字母和下划线组成，长度不超过 25 个字符。
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+
+	// 密钥对的公钥内容， OpenSSH RSA 格式。
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+}
+
+func (r *ImportKeyPairRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportKeyPairRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyName")
+	delete(f, "PublicKey")
+	if len(f) > 0 {
+		return errors.New("ImportKeyPairRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ImportKeyPairResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 密钥对 ID。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ImportKeyPairResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportKeyPairResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceCreateBlueprintRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义镜像的个数。默认值为1。
+	BlueprintCount *int64 `json:"BlueprintCount,omitempty" name:"BlueprintCount"`
+}
+
+func (r *InquirePriceCreateBlueprintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateBlueprintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintCount")
+	if len(f) > 0 {
+		return errors.New("InquirePriceCreateBlueprintRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceCreateBlueprintResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义镜像的价格参数。
+		BlueprintPrice *BlueprintPrice `json:"BlueprintPrice,omitempty" name:"BlueprintPrice"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceCreateBlueprintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateBlueprintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceCreateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的套餐 ID。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+
+	// 创建数量，默认为 1。
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 应用镜像 ID，使用收费应用镜像时必填。
+	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
+}
+
+func (r *InquirePriceCreateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BundleId")
+	delete(f, "InstanceCount")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "BlueprintId")
+	if len(f) > 0 {
+		return errors.New("InquirePriceCreateInstancesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceCreateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 询价信息。
+		Price *Price `json:"Price,omitempty" name:"Price"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceCreateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceRenewInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 待续费的实例。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+}
+
+func (r *InquirePriceRenewInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "InstanceChargePrepaid")
+	if len(f) > 0 {
+		return errors.New("InquirePriceRenewInstancesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquirePriceRenewInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 询价信息。
+		Price *Price `json:"Price,omitempty" name:"Price"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InquirePriceRenewInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Instance struct {
@@ -1047,6 +2170,25 @@ type Instance struct {
 	OsName *string `json:"OsName,omitempty" name:"OsName"`
 }
 
+type InstanceChargePrepaid struct {
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_AUTO_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type InstanceDeniedActions struct {
+
+	// 实例 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 操作限制列表。
+	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions" list`
+}
+
 type InstancePrice struct {
 
 	// 套餐单价原价。
@@ -1060,6 +2202,21 @@ type InstancePrice struct {
 
 	// 折后价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
+type InstanceReturnable struct {
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例是否可退还。
+	IsReturnable *bool `json:"IsReturnable,omitempty" name:"IsReturnable"`
+
+	// 实例退还失败错误码。
+	ReturnFailCode *int64 `json:"ReturnFailCode,omitempty" name:"ReturnFailCode"`
+
+	// 实例退还失败错误信息。
+	ReturnFailMessage *string `json:"ReturnFailMessage,omitempty" name:"ReturnFailMessage"`
 }
 
 type InstanceTrafficPackage struct {
@@ -1081,6 +2238,30 @@ type InternetAccessible struct {
 
 	// 是否分配公网 IP。
 	PublicIpAssigned *bool `json:"PublicIpAssigned,omitempty" name:"PublicIpAssigned"`
+}
+
+type KeyPair struct {
+
+	// 密钥对 ID ，是密钥对的唯一标识。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 密钥对名称。
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+
+	// 密钥对的纯文本公钥。
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 密钥对关联的实例 ID 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitempty" name:"AssociatedInstanceIds" list`
+
+	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 密钥对私钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
 }
 
 type LoginSettings struct {
@@ -1140,6 +2321,279 @@ func (r *ModifyBlueprintAttributeResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBlueprintAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBundle struct {
+
+	// 更改实例套餐后需要补的差价。
+	ModifyPrice *Price `json:"ModifyPrice,omitempty" name:"ModifyPrice"`
+
+	// 变更套餐状态。取值：
+	// <li>SOLD_OUT：套餐售罄</li>
+	// <li>AVAILABLE：支持套餐变更</li>
+	// <li>UNAVAILABLE：暂不支持套餐变更</li>
+	ModifyBundleState *string `json:"ModifyBundleState,omitempty" name:"ModifyBundleState"`
+
+	// 套餐信息。
+	Bundle *Bundle `json:"Bundle,omitempty" name:"Bundle"`
+}
+
+type ModifyFirewallRuleDescriptionRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 防火墙规则。
+	FirewallRule *FirewallRule `json:"FirewallRule,omitempty" name:"FirewallRule"`
+
+	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
+}
+
+func (r *ModifyFirewallRuleDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFirewallRuleDescriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FirewallRule")
+	delete(f, "FirewallVersion")
+	if len(f) > 0 {
+		return errors.New("ModifyFirewallRuleDescriptionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFirewallRuleDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyFirewallRuleDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFirewallRuleDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFirewallRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 防火墙规则列表。
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+
+	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
+}
+
+func (r *ModifyFirewallRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFirewallRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FirewallRules")
+	delete(f, "FirewallVersion")
+	if len(f) > 0 {
+		return errors.New("ModifyFirewallRulesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFirewallRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyFirewallRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFirewallRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 实例名称。可任意命名，但不得超过 60 个字符。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
+func (r *ModifyInstancesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return errors.New("ModifyInstancesAttributeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesLoginKeyPairAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
+	PermitLogin *string `json:"PermitLogin,omitempty" name:"PermitLogin"`
+}
+
+func (r *ModifyInstancesLoginKeyPairAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesLoginKeyPairAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "PermitLogin")
+	if len(f) > 0 {
+		return errors.New("ModifyInstancesLoginKeyPairAttributeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesLoginKeyPairAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancesLoginKeyPairAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesLoginKeyPairAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesRenewFlagRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+func (r *ModifyInstancesRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesRenewFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "RenewFlag")
+	if len(f) > 0 {
+		return errors.New("ModifyInstancesRenewFlagRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancesRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancesRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1245,6 +2699,33 @@ func (r *RebootInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RegionInfo struct {
+
+	// 地域名称，例如，ap-guangzhou。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域描述，例如，华南地区(广州)。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 地域是否可用状态。
+	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
+
+	// 是否中国大陆地域
+	IsChinaMainland *bool `json:"IsChinaMainland,omitempty" name:"IsChinaMainland"`
+}
+
+type ResetInstanceBlueprint struct {
+
+	// 镜像详细信息
+	BlueprintInfo *Blueprint `json:"BlueprintInfo,omitempty" name:"BlueprintInfo"`
+
+	// 实例镜像是否可重置为目标镜像
+	IsResettable *bool `json:"IsResettable,omitempty" name:"IsResettable"`
+
+	// 不可重置信息.当镜像可重置时为""
+	NonResettableMessage *string `json:"NonResettableMessage,omitempty" name:"NonResettableMessage"`
+}
+
 type ResetInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1295,6 +2776,62 @@ func (r *ResetInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResetInstancesPasswordRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID 列表。每次请求批量实例的上限为 100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
+	// `LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
+	// `WINDOWS` 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<br><li>如果实例即包含 `LINUX_UNIX` 实例又包含 `WINDOWS` 实例，则密码复杂度限制按照 `WINDOWS` 实例的限制。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 待重置密码的实例操作系统用户名。不得超过 64 个字符。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *ResetInstancesPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetInstancesPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "Password")
+	delete(f, "UserName")
+	if len(f) > 0 {
+		return errors.New("ResetInstancesPasswordRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetInstancesPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetInstancesPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetInstancesPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Snapshot struct {
 
 	// 快照 ID。
@@ -1340,6 +2877,45 @@ type Snapshot struct {
 
 	// 快照的创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type SnapshotDeniedActions struct {
+
+	// 快照 ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 操作限制列表。
+	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions" list`
+}
+
+type Software struct {
+
+	// 软件名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 软件版本。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 软件图片 URL。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 软件安装目录。
+	InstallDir *string `json:"InstallDir,omitempty" name:"InstallDir"`
+
+	// 软件详情列表。
+	DetailSet []*SoftwareDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+}
+
+type SoftwareDetail struct {
+
+	// 详情唯一键。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 详情标题。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 详情值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type StartInstancesRequest struct {
@@ -1447,6 +3023,52 @@ type SystemDisk struct {
 	// 系统盘ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
+type TerminateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+}
+
+func (r *TerminateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return errors.New("TerminateInstancesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrafficPackage struct {

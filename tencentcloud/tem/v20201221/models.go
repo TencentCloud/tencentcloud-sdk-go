@@ -117,6 +117,68 @@ func (r *CreateCosTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCosTokenV2Request struct {
+	*tchttp.BaseRequest
+
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 包名
+	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
+
+	// optType 1上传  2查询
+	OptType *int64 `json:"OptType,omitempty" name:"OptType"`
+
+	// 来源 channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *CreateCosTokenV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosTokenV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "PkgName")
+	delete(f, "OptType")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("CreateCosTokenV2Request has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCosTokenV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功时为CosToken对象，失败为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CosToken `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCosTokenV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosTokenV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNamespaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -187,6 +249,484 @@ func (r *CreateNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间 Id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源 Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 来源
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *CreateResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceId")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("CreateResourceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功与否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否使用默认镜像服务
+	UseDefaultImageService *int64 `json:"UseDefaultImageService,omitempty" name:"UseDefaultImageService"`
+
+	// 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版
+	RepoType *int64 `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 企业版镜像服务的实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 绑定镜像服务器地址
+	RepoServer *string `json:"RepoServer,omitempty" name:"RepoServer"`
+
+	// 绑定镜像仓库名
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 服务所在子网
+	SubnetList []*string `json:"SubnetList,omitempty" name:"SubnetList" list`
+
+	// 编程语言
+	CodingLanguage *string `json:"CodingLanguage,omitempty" name:"CodingLanguage"`
+
+	// 部署方式
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+}
+
+func (r *CreateServiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServiceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceName")
+	delete(f, "Description")
+	delete(f, "UseDefaultImageService")
+	delete(f, "RepoType")
+	delete(f, "InstanceId")
+	delete(f, "RepoServer")
+	delete(f, "RepoName")
+	delete(f, "SourceChannel")
+	delete(f, "SubnetList")
+	delete(f, "CodingLanguage")
+	delete(f, "DeployMode")
+	if len(f) > 0 {
+		return errors.New("CreateServiceV2Request has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateServiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务code
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateServiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServiceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIngressRequest struct {
+	*tchttp.BaseRequest
+
+	// tem NamespaceId
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// eks namespace 名
+	EksNamespace *string `json:"EksNamespace,omitempty" name:"EksNamespace"`
+
+	// ingress 规则名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DeleteIngressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIngressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "EksNamespace")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("DeleteIngressRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIngressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否删除成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteIngressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIngressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployServiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 容器端口
+	ContainerPort *uint64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 初始化 pod 数
+	InitPodNum *uint64 `json:"InitPodNum,omitempty" name:"InitPodNum"`
+
+	// cpu规格
+	CpuSpec *float64 `json:"CpuSpec,omitempty" name:"CpuSpec"`
+
+	// 内存规格
+	MemorySpec *float64 `json:"MemorySpec,omitempty" name:"MemorySpec"`
+
+	// 环境ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 镜像仓库
+	ImgRepo *string `json:"ImgRepo,omitempty" name:"ImgRepo"`
+
+	// 版本描述信息
+	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+
+	// 启动参数
+	JvmOpts *string `json:"JvmOpts,omitempty" name:"JvmOpts"`
+
+	// 弹性伸缩配置，不传默认不启用弹性伸缩配置
+	EsInfo *EsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
+
+	// 环境变量配置
+	EnvConf []*Pair `json:"EnvConf,omitempty" name:"EnvConf" list`
+
+	// 日志配置
+	LogConfs []*string `json:"LogConfs,omitempty" name:"LogConfs" list`
+
+	// 数据卷配置
+	StorageConfs []*StorageConf `json:"StorageConfs,omitempty" name:"StorageConfs" list`
+
+	// 数据卷挂载配置
+	StorageMountConfs []*StorageMountConf `json:"StorageMountConfs,omitempty" name:"StorageMountConfs" list`
+
+	// 部署类型。
+	// - JAR：通过 jar 包部署
+	// - WAR：通过 war 包部署
+	// - IMAGE：通过镜像部署
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// 部署类型为 IMAGE 时，该参数表示镜像 tag。
+	// 部署类型为 JAR/WAR 时，该参数表示包版本号。
+	DeployVersion *string `json:"DeployVersion,omitempty" name:"DeployVersion"`
+
+	// 包名。使用 JAR 包或者 WAR 包部署的时候必填。
+	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
+
+	// JDK 版本。
+	// - KONA：使用 kona jdk。
+	// - OPEN：使用 open jdk。
+	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
+
+	// 安全组ID s
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+
+	// 日志输出配置
+	LogOutputConf *LogOutputConf `json:"LogOutputConf,omitempty" name:"LogOutputConf"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 版本描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 镜像命令
+	ImageCommand *string `json:"ImageCommand,omitempty" name:"ImageCommand"`
+
+	// 镜像命令参数
+	ImageArgs []*string `json:"ImageArgs,omitempty" name:"ImageArgs" list`
+}
+
+func (r *DeployServiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployServiceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ContainerPort")
+	delete(f, "InitPodNum")
+	delete(f, "CpuSpec")
+	delete(f, "MemorySpec")
+	delete(f, "NamespaceId")
+	delete(f, "ImgRepo")
+	delete(f, "VersionDesc")
+	delete(f, "JvmOpts")
+	delete(f, "EsInfo")
+	delete(f, "EnvConf")
+	delete(f, "LogConfs")
+	delete(f, "StorageConfs")
+	delete(f, "StorageMountConfs")
+	delete(f, "DeployMode")
+	delete(f, "DeployVersion")
+	delete(f, "PkgName")
+	delete(f, "JdkVersion")
+	delete(f, "SecurityGroupIds")
+	delete(f, "LogOutputConf")
+	delete(f, "SourceChannel")
+	delete(f, "Description")
+	delete(f, "ImageCommand")
+	delete(f, "ImageArgs")
+	if len(f) > 0 {
+		return errors.New("DeployServiceV2Request has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployServiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 版本ID（前端可忽略）
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeployServiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployServiceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIngressRequest struct {
+	*tchttp.BaseRequest
+
+	// tem namespaceId
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// eks namespace 名
+	EksNamespace *string `json:"EksNamespace,omitempty" name:"EksNamespace"`
+
+	// ingress 规则名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeIngressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIngressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "EksNamespace")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("DescribeIngressRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIngressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ingressInfo
+		Result *IngressInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIngressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIngressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIngressesRequest struct {
+	*tchttp.BaseRequest
+
+	// namespace id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// namespace
+	EksNamespace *string `json:"EksNamespace,omitempty" name:"EksNamespace"`
+
+	// 来源
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeIngressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIngressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "EksNamespace")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("DescribeIngressesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIngressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ingress 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*IngressInfo `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIngressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIngressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNamespacesRequest struct {
 	*tchttp.BaseRequest
 
@@ -242,6 +782,115 @@ func (r *DescribeNamespacesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRunPodPage struct {
+
+	// 分页下标
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 请求id
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+
+	// 条目
+	PodList []*RunVersionPod `json:"PodList,omitempty" name:"PodList" list`
+}
+
+type DescribeServiceRunPodListV2Request struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 服务名id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 单页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页下标
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// pod状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 名字
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeServiceRunPodListV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceRunPodListV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "ServiceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "PodName")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("DescribeServiceRunPodListV2Request has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServiceRunPodListV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *DescribeRunPodPage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServiceRunPodListV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceRunPodListV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EsInfo struct {
+
+	// 最小实例数
+	MinAliveInstances *int64 `json:"MinAliveInstances,omitempty" name:"MinAliveInstances"`
+
+	// 最大实例数
+	MaxAliveInstances *int64 `json:"MaxAliveInstances,omitempty" name:"MaxAliveInstances"`
+
+	// 弹性策略,1:cpu，2:内存
+	EsStrategy *int64 `json:"EsStrategy,omitempty" name:"EsStrategy"`
+
+	// 弹性扩缩容条件值
+	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 版本Id
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 type IngressInfo struct {
@@ -320,6 +969,18 @@ type IngressTls struct {
 
 	// secret name
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+}
+
+type LogOutputConf struct {
+
+	// 日志消费端类型
+	OutputType *string `json:"OutputType,omitempty" name:"OutputType"`
+
+	// cls日志集
+	ClsLogsetName *string `json:"ClsLogsetName,omitempty" name:"ClsLogsetName"`
+
+	// cls日志主题
+	ClsLogTopicId *string `json:"ClsLogTopicId,omitempty" name:"ClsLogTopicId"`
 }
 
 type ModifyIngressRequest struct {
@@ -459,6 +1120,55 @@ type NamespacePage struct {
 
 	// 页数
 	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+}
+
+type Pair struct {
+
+	// 建
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type RunVersionPod struct {
+
+	// shell地址
+	Webshell *string `json:"Webshell,omitempty" name:"Webshell"`
+
+	// pod的id
+	PodId *string `json:"PodId,omitempty" name:"PodId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// pod的ip
+	PodIp *string `json:"PodIp,omitempty" name:"PodIp"`
+}
+
+type StorageConf struct {
+
+	// 存储卷名称
+	StorageVolName *string `json:"StorageVolName,omitempty" name:"StorageVolName"`
+
+	// 存储卷路径
+	StorageVolPath *string `json:"StorageVolPath,omitempty" name:"StorageVolPath"`
+
+	// 存储卷IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageVolIp *string `json:"StorageVolIp,omitempty" name:"StorageVolIp"`
+}
+
+type StorageMountConf struct {
+
+	// 数据卷名
+	VolumeName *string `json:"VolumeName,omitempty" name:"VolumeName"`
+
+	// 数据卷绑定路径
+	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
 }
 
 type TemNamespaceInfo struct {
