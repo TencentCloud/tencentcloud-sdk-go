@@ -24,7 +24,7 @@
 
     export GOPROXY=https://mirrors.tencent.com/go/
 
-注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。
+注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有v3.0.\*和3.0.\*的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
 
 ## 通过源码安装
 
