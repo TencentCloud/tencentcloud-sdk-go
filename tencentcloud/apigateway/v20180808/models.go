@@ -1706,6 +1706,9 @@ type DeleteServiceRequest struct {
 
 	// 待删除服务的唯一 ID。
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 跳过删除前置条件校验（仅支持独享实例上的服务）
+	SkipVerification *int64 `json:"SkipVerification,omitempty" name:"SkipVerification"`
 }
 
 func (r *DeleteServiceRequest) ToJsonString() string {
@@ -1721,6 +1724,7 @@ func (r *DeleteServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "SkipVerification")
 	if len(f) > 0 {
 		return errors.New("DeleteServiceRequest has unknown keys!")
 	}

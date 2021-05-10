@@ -2962,6 +2962,80 @@ func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateHeadTailTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板名，长度限制 64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制 256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+
+	// 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片尾。
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+	// <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+	// <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：stretch 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateHeadTailTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHeadTailTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "HeadCandidateSet")
+	delete(f, "TailCandidateSet")
+	delete(f, "FillType")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return errors.New("CreateHeadTailTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHeadTailTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 片头片尾模板号。
+		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHeadTailTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHeadTailTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateImageProcessingTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -4222,6 +4296,56 @@ func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteContentReviewTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHeadTailTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 片头片尾模板号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteHeadTailTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHeadTailTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return errors.New("DeleteHeadTailTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHeadTailTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteHeadTailTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHeadTailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5793,6 +5917,70 @@ func (r *DescribeEventsStateResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEventsStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHeadTailTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 片头片尾模板号，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeHeadTailTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHeadTailTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return errors.New("DescribeHeadTailTemplatesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHeadTailTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合过滤条件的记录总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 片头片尾模板详情列表。
+		HeadTailTemplateSet []*HeadTailTemplate `json:"HeadTailTemplateSet,omitempty" name:"HeadTailTemplateSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHeadTailTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHeadTailTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7845,6 +8033,38 @@ type HeadTailConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HeadTailTaskInput struct {
+
+	// 片头片尾模板号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type HeadTailTemplate struct {
+
+	// 片头片尾模板号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板名，最大支持 64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述，最大支持 256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 片头候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+
+	// 片尾候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+	// <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+	// <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值：stretch 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+}
+
 type HighlightSegmentItem struct {
 
 	// 置信度。
@@ -9841,6 +10061,81 @@ func (r *ModifyEventConfigResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEventConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyHeadTailTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 片头片尾模板号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板名，长度限制 64 个字符。不传代表不修改。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述，长度限制 256 个字符。不传代表不修改，传空代表清空。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+
+	// 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+	// <li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+	// <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 默认值为不修改。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyHeadTailTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHeadTailTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "HeadCandidateSet")
+	delete(f, "TailCandidateSet")
+	delete(f, "FillType")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return errors.New("ModifyHeadTailTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyHeadTailTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyHeadTailTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHeadTailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13339,6 +13634,9 @@ type TranscodeTaskInput struct {
 
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
+
+	// 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitempty" name:"HeadTailSet" list`
 
 	// 转码后的视频的起始时间偏移，单位：秒。
 	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>

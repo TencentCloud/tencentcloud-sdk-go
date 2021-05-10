@@ -1263,6 +1263,9 @@ type InquiryPriceScaleOutInstanceRequest struct {
 
 	// 扩容的Router节点数量。
 	RouterCount *uint64 `json:"RouterCount,omitempty" name:"RouterCount"`
+
+	// 扩容的Master节点数量。
+	MasterCount *uint64 `json:"MasterCount,omitempty" name:"MasterCount"`
 }
 
 func (r *InquiryPriceScaleOutInstanceRequest) ToJsonString() string {
@@ -1286,6 +1289,7 @@ func (r *InquiryPriceScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "TaskCount")
 	delete(f, "Currency")
 	delete(f, "RouterCount")
+	delete(f, "MasterCount")
 	if len(f) > 0 {
 		return errors.New("InquiryPriceScaleOutInstanceRequest has unknown keys!")
 	}

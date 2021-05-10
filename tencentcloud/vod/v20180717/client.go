@@ -331,6 +331,31 @@ func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplat
     return
 }
 
+func NewCreateHeadTailTemplateRequest() (request *CreateHeadTailTemplateRequest) {
+    request = &CreateHeadTailTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateHeadTailTemplate")
+    return
+}
+
+func NewCreateHeadTailTemplateResponse() (response *CreateHeadTailTemplateResponse) {
+    response = &CreateHeadTailTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建片头片尾模板。
+func (c *Client) CreateHeadTailTemplate(request *CreateHeadTailTemplateRequest) (response *CreateHeadTailTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateHeadTailTemplateRequest()
+    }
+    response = NewCreateHeadTailTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageProcessingTemplateRequest() (request *CreateImageProcessingTemplateRequest) {
     request = &CreateImageProcessingTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -755,6 +780,31 @@ func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplat
         request = NewDeleteContentReviewTemplateRequest()
     }
     response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteHeadTailTemplateRequest() (request *DeleteHeadTailTemplateRequest) {
+    request = &DeleteHeadTailTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteHeadTailTemplate")
+    return
+}
+
+func NewDeleteHeadTailTemplateResponse() (response *DeleteHeadTailTemplateResponse) {
+    response = &DeleteHeadTailTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除片头片尾模板。
+func (c *Client) DeleteHeadTailTemplate(request *DeleteHeadTailTemplateRequest) (response *DeleteHeadTailTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteHeadTailTemplateRequest()
+    }
+    response = NewDeleteHeadTailTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1435,6 +1485,31 @@ func (c *Client) DescribeEventsState(request *DescribeEventsStateRequest) (respo
         request = NewDescribeEventsStateRequest()
     }
     response = NewDescribeEventsStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHeadTailTemplatesRequest() (request *DescribeHeadTailTemplatesRequest) {
+    request = &DescribeHeadTailTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeHeadTailTemplates")
+    return
+}
+
+func NewDescribeHeadTailTemplatesResponse() (response *DescribeHeadTailTemplatesResponse) {
+    response = &DescribeHeadTailTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取片头片尾模板列表。
+func (c *Client) DescribeHeadTailTemplates(request *DescribeHeadTailTemplatesRequest) (response *DescribeHeadTailTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHeadTailTemplatesRequest()
+    }
+    response = NewDescribeHeadTailTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2305,6 +2380,31 @@ func (c *Client) ModifyEventConfig(request *ModifyEventConfigRequest) (response 
         request = NewModifyEventConfigRequest()
     }
     response = NewModifyEventConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHeadTailTemplateRequest() (request *ModifyHeadTailTemplateRequest) {
+    request = &ModifyHeadTailTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyHeadTailTemplate")
+    return
+}
+
+func NewModifyHeadTailTemplateResponse() (response *ModifyHeadTailTemplateResponse) {
+    response = &ModifyHeadTailTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改片头片尾模板。
+func (c *Client) ModifyHeadTailTemplate(request *ModifyHeadTailTemplateRequest) (response *ModifyHeadTailTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyHeadTailTemplateRequest()
+    }
+    response = NewModifyHeadTailTemplateResponse()
     err = c.Send(request, response)
     return
 }
