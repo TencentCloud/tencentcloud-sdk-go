@@ -651,7 +651,7 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 	// 环境变量
 	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters" list`
 
-	// 环境别名
+	// 环境别名。要以a-z开头，不能包含a-zA-z0-9-以外的字符
 	EnvAlias *string `json:"EnvAlias,omitempty" name:"EnvAlias"`
 
 	// rc.json的内容
@@ -666,7 +666,7 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 	// 网络配置
 	NetworkConfig *string `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
 
-	// 免费额度的"basic", 不使用的用""
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
 
 	// 是否代码变更触发自动部署
@@ -1314,6 +1314,60 @@ func (r *CreateWxCloudBaseRunEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateWxCloudBaseRunServerDBClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户密码
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 微信appid
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+}
+
+func (r *CreateWxCloudBaseRunServerDBClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWxCloudBaseRunServerDBClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountPassword")
+	delete(f, "EnvId")
+	delete(f, "WxAppId")
+	if len(f) > 0 {
+		return errors.New("CreateWxCloudBaseRunServerDBClusterRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWxCloudBaseRunServerDBClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWxCloudBaseRunServerDBClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWxCloudBaseRunServerDBClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DatabasesInfo struct {
 
 	// 数据库唯一标识
@@ -1701,10 +1755,10 @@ type DescribeCloudBaseProjectVersionListRequest struct {
 	// 第几页,从0开始
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 起始时间
+	// 起始时间 2021-03-27 12:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 终止时间
+	// 终止时间 2021-03-27 12:00:00
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -3823,6 +3877,8 @@ type ModifyEndUserRequest struct {
 	UUId *string `json:"UUId,omitempty" name:"UUId"`
 
 	// 帐号的状态
+	// <li>ENABLE</li>
+	// <li>DISABLE</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 

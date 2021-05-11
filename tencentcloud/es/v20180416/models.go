@@ -479,6 +479,60 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiagnoseInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 需要触发的诊断项
+	DiagnoseJobs []*string `json:"DiagnoseJobs,omitempty" name:"DiagnoseJobs" list`
+
+	// 需要诊断的索引，支持通配符
+	DiagnoseIndices *string `json:"DiagnoseIndices,omitempty" name:"DiagnoseIndices"`
+}
+
+func (r *DiagnoseInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DiagnoseInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DiagnoseJobs")
+	delete(f, "DiagnoseIndices")
+	if len(f) > 0 {
+		return errors.New("DiagnoseInstanceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiagnoseInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DiagnoseInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DiagnoseInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DictInfo struct {
 
 	// 词典键值
@@ -1082,6 +1136,60 @@ type TaskDetail struct {
 
 	// 子任务
 	SubTasks []*SubTaskDetail `json:"SubTasks,omitempty" name:"SubTasks" list`
+}
+
+type UpdateDiagnoseSettingsRequest struct {
+	*tchttp.BaseRequest
+
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0：开启智能运维；-1：关闭智能运维
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 智能运维每天定时巡检时间
+	CronTime *string `json:"CronTime,omitempty" name:"CronTime"`
+}
+
+func (r *UpdateDiagnoseSettingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDiagnoseSettingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Status")
+	delete(f, "CronTime")
+	if len(f) > 0 {
+		return errors.New("UpdateDiagnoseSettingsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDiagnoseSettingsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateDiagnoseSettingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDiagnoseSettingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateInstanceRequest struct {

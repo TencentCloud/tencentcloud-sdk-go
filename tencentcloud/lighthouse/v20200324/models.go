@@ -796,6 +796,58 @@ func (r *DescribeBlueprintsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBundleDiscountRequest struct {
+	*tchttp.BaseRequest
+
+	// 套餐 ID。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+}
+
+func (r *DescribeBundleDiscountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBundleDiscountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BundleId")
+	if len(f) > 0 {
+		return errors.New("DescribeBundleDiscountRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBundleDiscountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 币种：CNY人民币，USD 美元。
+		Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+		// 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+		DiscountDetail []*DiscountDetail `json:"DiscountDetail,omitempty" name:"DiscountDetail" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBundleDiscountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBundleDiscountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBundlesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1802,6 +1854,27 @@ func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiscountDetail struct {
+
+	// 计费时长。
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 计费单元。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 总价。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 折后总价。
+	RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 折扣。
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 具体折扣详情。
+	PolicyDetail *PolicyDetail `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -2645,6 +2718,18 @@ func (r *ModifySnapshotAttributeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifySnapshotAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PolicyDetail struct {
+
+	// 用户折扣。
+	UserDiscount *int64 `json:"UserDiscount,omitempty" name:"UserDiscount"`
+
+	// 公共折扣。
+	CommonDiscount *int64 `json:"CommonDiscount,omitempty" name:"CommonDiscount"`
+
+	// 最终折扣。
+	FinalDiscount *int64 `json:"FinalDiscount,omitempty" name:"FinalDiscount"`
 }
 
 type Price struct {

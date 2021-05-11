@@ -168,6 +168,31 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDiagnoseInstanceRequest() (request *DiagnoseInstanceRequest) {
+    request = &DiagnoseInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "DiagnoseInstance")
+    return
+}
+
+func NewDiagnoseInstanceResponse() (response *DiagnoseInstanceResponse) {
+    response = &DiagnoseInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 智能运维诊断集群
+func (c *Client) DiagnoseInstance(request *DiagnoseInstanceRequest) (response *DiagnoseInstanceResponse, err error) {
+    if request == nil {
+        request = NewDiagnoseInstanceRequest()
+    }
+    response = NewDiagnoseInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRequest) {
     request = &GetRequestTargetNodeTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +289,31 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
         request = NewRestartNodesRequest()
     }
     response = NewRestartNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDiagnoseSettingsRequest() (request *UpdateDiagnoseSettingsRequest) {
+    request = &UpdateDiagnoseSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpdateDiagnoseSettings")
+    return
+}
+
+func NewUpdateDiagnoseSettingsResponse() (response *UpdateDiagnoseSettingsResponse) {
+    response = &UpdateDiagnoseSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新智能运维配置
+func (c *Client) UpdateDiagnoseSettings(request *UpdateDiagnoseSettingsRequest) (response *UpdateDiagnoseSettingsResponse, err error) {
+    if request == nil {
+        request = NewUpdateDiagnoseSettingsRequest()
+    }
+    response = NewUpdateDiagnoseSettingsResponse()
     err = c.Send(request, response)
     return
 }

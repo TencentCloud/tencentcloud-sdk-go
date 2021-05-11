@@ -2558,6 +2558,11 @@ type LaunchConfiguration struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 云盘类型选择策略。取值范围：
+	// <br><li>ORIGINAL：使用设置的云盘类型
+	// <br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
+	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
 }
 
 type LifecycleActionResultInfo struct {

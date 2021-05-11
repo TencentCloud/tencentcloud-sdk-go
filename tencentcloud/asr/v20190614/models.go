@@ -240,7 +240,7 @@ type CreateCustomizationRequest struct {
 	// 自学习模型名称，需在1-20字符之间
 	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
 
-	// 文本文件的下载地址，服务会从该地址下载文件， 以训练模型，目前仅支持腾讯云cos
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
 	// 自学习模型类型，填写8k或者16k

@@ -4228,11 +4228,17 @@ type ModifyInstanceTokenRequest struct {
 	// 实例长期访问凭证 ID
 	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
 
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
 	// 启用或禁用实例长期访问凭证
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 
-	// 实例 ID
-	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+	// 访问凭证描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 1为修改描述 2为启动禁用，不填写默认为修改启动禁用
+	ModifyFlag *int64 `json:"ModifyFlag,omitempty" name:"ModifyFlag"`
 }
 
 func (r *ModifyInstanceTokenRequest) ToJsonString() string {
@@ -4248,8 +4254,10 @@ func (r *ModifyInstanceTokenRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TokenId")
-	delete(f, "Enable")
 	delete(f, "RegistryId")
+	delete(f, "Enable")
+	delete(f, "Desc")
+	delete(f, "ModifyFlag")
 	if len(f) > 0 {
 		return errors.New("ModifyInstanceTokenRequest has unknown keys!")
 	}

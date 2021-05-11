@@ -77,14 +77,14 @@ func (r *AutoSummarizationResponse) FromJsonString(s string) error {
 
 type CCIToken struct {
 
+	// 错别字内容
+	Word *string `json:"Word,omitempty" name:"Word"`
+
 	// 错别字的起始位置，从0开始
 	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 错别字纠错结果
 	CorrectWord *string `json:"CorrectWord,omitempty" name:"CorrectWord"`
-
-	// 错别字内容
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type ChatBotRequest struct {
@@ -93,11 +93,11 @@ type ChatBotRequest struct {
 	// 用户请求的query
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
-	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
-
 	// 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
 func (r *ChatBotRequest) ToJsonString() string {
@@ -113,8 +113,8 @@ func (r *ChatBotRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Query")
-	delete(f, "Flag")
 	delete(f, "OpenId")
+	delete(f, "Flag")
 	if len(f) > 0 {
 		return errors.New("ChatBotRequest has unknown keys!")
 	}
@@ -125,11 +125,11 @@ type ChatBotResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 对于当前输出回复的自信度
-		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
-
 		// 闲聊回复
 		Reply *string `json:"Reply,omitempty" name:"Reply"`
+
+		// 对于当前输出回复的自信度
+		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -152,14 +152,40 @@ type ClassificationResult struct {
 	// 一级分类名称
 	FirstClassName *string `json:"FirstClassName,omitempty" name:"FirstClassName"`
 
-	// 一级分类概率
-	FirstClassProbability *float64 `json:"FirstClassProbability,omitempty" name:"FirstClassProbability"`
-
 	// 二级分类名称
 	SecondClassName *string `json:"SecondClassName,omitempty" name:"SecondClassName"`
 
+	// 一级分类概率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstClassProbability *float64 `json:"FirstClassProbability,omitempty" name:"FirstClassProbability"`
+
 	// 二级分类概率
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondClassProbability *float64 `json:"SecondClassProbability,omitempty" name:"SecondClassProbability"`
+
+	// 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdClassName *string `json:"ThirdClassName,omitempty" name:"ThirdClassName"`
+
+	// 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdClassProbability *float64 `json:"ThirdClassProbability,omitempty" name:"ThirdClassProbability"`
+
+	// 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FourthClassName *string `json:"FourthClassName,omitempty" name:"FourthClassName"`
+
+	// 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FourthClassProbability *float64 `json:"FourthClassProbability,omitempty" name:"FourthClassProbability"`
+
+	// 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FifthClassName *string `json:"FifthClassName,omitempty" name:"FifthClassName"`
+
+	// 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FifthClassProbability *float64 `json:"FifthClassProbability,omitempty" name:"FifthClassProbability"`
 }
 
 type CreateDictRequest struct {
@@ -197,6 +223,7 @@ type CreateDictResponse struct {
 	Response *struct {
 
 		// 创建的自定义词库ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		DictId *string `json:"DictId,omitempty" name:"DictId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -218,11 +245,11 @@ func (r *CreateDictResponse) FromJsonString(s string) error {
 type CreateWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待添加的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待添加的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
 }
 
 func (r *CreateWordItemsRequest) ToJsonString() string {
@@ -237,8 +264,8 @@ func (r *CreateWordItemsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "WordItems")
 	delete(f, "DictId")
+	delete(f, "WordItems")
 	if len(f) > 0 {
 		return errors.New("CreateWordItemsRequest has unknown keys!")
 	}
@@ -314,11 +341,11 @@ func (r *DeleteDictResponse) FromJsonString(s string) error {
 type DeleteWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待删除的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待删除的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
 }
 
 func (r *DeleteWordItemsRequest) ToJsonString() string {
@@ -333,8 +360,8 @@ func (r *DeleteWordItemsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "WordItems")
 	delete(f, "DictId")
+	delete(f, "WordItems")
 	if len(f) > 0 {
 		return errors.New("DeleteWordItemsRequest has unknown keys!")
 	}
@@ -460,6 +487,7 @@ type DescribeDictResponse struct {
 	Response *struct {
 
 		// 查询到的词库信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -512,11 +540,12 @@ type DescribeDictsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 自定义词库信息列表。
-		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
-
 		// 记录总条数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 自定义词库信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -691,11 +720,11 @@ type DescribeWordItemsRequest struct {
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 
-	// 每页数据量，范围为1~100，默认为10。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
 	// 分页偏移量，从0开始，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数据量，范围为1~100，默认为10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 待检索的词条文本，支持模糊匹配。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -714,8 +743,8 @@ func (r *DescribeWordItemsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DictId")
-	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Text")
 	if len(f) > 0 {
 		return errors.New("DescribeWordItemsRequest has unknown keys!")
@@ -727,11 +756,12 @@ type DescribeWordItemsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 词条信息列表。
-		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 		// 词条记录总条数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 词条信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -751,71 +781,84 @@ func (r *DescribeWordItemsResponse) FromJsonString(s string) error {
 
 type DictInfo struct {
 
-	// 自定义词库ID。
-	Id *string `json:"Id,omitempty" name:"Id"`
-
 	// 自定义词库名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	// 自定义词库ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 自定义词库描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type DpToken struct {
 
-	// 当前词父节点的序号
-	HeadId *uint64 `json:"HeadId,omitempty" name:"HeadId"`
-
-	// 基础词的序号
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
-
 	// 句法依存关系的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
 
+	// 当前词父节点的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadId *uint64 `json:"HeadId,omitempty" name:"HeadId"`
+
 	// 基础词
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 基础词的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
 type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的object
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
 
-	// 实体关系查询返回关系的subject
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
-
 	// 实体关系查询返回的关系名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
+
+	// 实体关系查询返回关系的subject
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
 }
 
 type EntityRelationObject struct {
 
+	// object对应popular值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+
 	// object对应id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id []*string `json:"Id,omitempty" name:"Id" list`
 
 	// object对应name
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name []*string `json:"Name,omitempty" name:"Name" list`
-
-	// object对应popular值
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
 }
 
 type EntityRelationSubject struct {
+
+	// Subject对应popular
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
 
 	// Subject对应id
 	Id []*string `json:"Id,omitempty" name:"Id" list`
 
 	// Subject对应name
 	Name []*string `json:"Name,omitempty" name:"Name" list`
-
-	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
 }
 
 type Keyword struct {
@@ -862,6 +905,7 @@ type KeywordsExtractionResponse struct {
 	Response *struct {
 
 		// 关键词提取结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -925,6 +969,7 @@ type LexicalAnalysisResponse struct {
 	// <li>LOC：表示地名，如北京、华山</li>
 	// <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
 	// <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens" list`
 
 		// 分词&词性标注结果（词性表请参见附录）
@@ -948,57 +993,59 @@ func (r *LexicalAnalysisResponse) FromJsonString(s string) error {
 
 type NerToken struct {
 
-	// 起始位置
-	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+	// 基础词
+	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 长度
-	Length *uint64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 起始位置
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 命名实体类型
 	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 基础词
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type PosToken struct {
 
-	// 起始位置
-	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+	// 基础词
+	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 长度
-	Length *uint64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 起始位置
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 词性
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
-
-	// 基础词
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type SearchResult struct {
+
+	// 被搜索的词条文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 0表示词条不存在，1表示存在。
 	IsExist *uint64 `json:"IsExist,omitempty" name:"IsExist"`
 
 	// 匹配到的词条文本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchText *string `json:"MatchText,omitempty" name:"MatchText"`
 
-	// 被搜索的词条文本。
-	Text *string `json:"Text,omitempty" name:"Text"`
-
 	// 词条的词性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 
 type SearchWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待检索的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待检索的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
 }
 
 func (r *SearchWordItemsRequest) ToJsonString() string {
@@ -1013,8 +1060,8 @@ func (r *SearchWordItemsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "WordItems")
 	delete(f, "DictId")
+	delete(f, "WordItems")
 	if len(f) > 0 {
 		return errors.New("SearchWordItemsRequest has unknown keys!")
 	}
@@ -1026,6 +1073,7 @@ type SearchWordItemsResponse struct {
 	Response *struct {
 
 		// 词条检索结果集合。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Results []*SearchResult `json:"Results,omitempty" name:"Results" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1074,11 +1122,11 @@ type SentenceEmbeddingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 句向量的维度
-		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
-
 		// 句向量数组
 		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
+
+		// 句向量的维度
+		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1140,14 +1188,15 @@ type SentimentAnalysisResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 负面情感概率
-		Negative *float64 `json:"Negative,omitempty" name:"Negative"`
-
-		// 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
-		Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
-
 		// 正面情感概率
 		Positive *float64 `json:"Positive,omitempty" name:"Positive"`
+
+		// 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
+
+		// 负面情感概率
+		Negative *float64 `json:"Negative,omitempty" name:"Negative"`
 
 		// 情感分类结果：
 	// 1、positive，表示正面情感
@@ -1226,11 +1275,11 @@ func (r *SimilarWordsResponse) FromJsonString(s string) error {
 
 type Similarity struct {
 
-	// 相似度分数
-	Score *float64 `json:"Score,omitempty" name:"Score"`
-
 	// 目标文本句子
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 相似度分数
+	Score *float64 `json:"Score,omitempty" name:"Score"`
 }
 
 type TextClassificationRequest struct {
@@ -1240,8 +1289,8 @@ type TextClassificationRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 领域分类体系（默认取1值）：
-	// 1、通用领域
-	// 2、新闻领域
+	// 1、通用领域，二分类
+	// 2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
@@ -1291,7 +1340,7 @@ func (r *TextClassificationResponse) FromJsonString(s string) error {
 type TextCorrectionRequest struct {
 	*tchttp.BaseRequest
 
-	// 待纠错的文本（仅支持UTF-8格式，不超过2000字）
+	// 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
@@ -1319,6 +1368,7 @@ type TextCorrectionResponse struct {
 	Response *struct {
 
 		// 纠错详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		CCITokens []*CCIToken `json:"CCITokens,omitempty" name:"CCITokens" list`
 
 		// 纠错后的文本
@@ -1346,8 +1396,7 @@ type TextSimilarityRequest struct {
 	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
-	// 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字符）
-	// 注意：每成功计算1个目标句子与源句子的相似度算1次调用
+	// 目标句子
 	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
 }
 
@@ -1396,17 +1445,21 @@ func (r *TextSimilarityResponse) FromJsonString(s string) error {
 
 type TripleContent struct {
 
-	// 实体id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	// 实体流行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
 
 	// 实体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 实体order
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 
-	// 实体流行度
-	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
+	// 实体id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type UpdateDictRequest struct {
@@ -1493,11 +1546,11 @@ type WordEmbeddingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 词向量的维度
-		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
-
 		// 词向量数组
 		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
+
+		// 词向量的维度
+		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1524,6 +1577,7 @@ type WordItem struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 词条的词性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 

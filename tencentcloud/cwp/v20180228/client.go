@@ -943,6 +943,31 @@ func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (respons
     return
 }
 
+func NewDescribeESHitsRequest() (request *DescribeESHitsRequest) {
+    request = &DescribeESHitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeESHits")
+    return
+}
+
+func NewDescribeESHitsResponse() (response *DescribeESHitsResponse) {
+    response = &DescribeESHitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取ES查询文档列表
+func (c *Client) DescribeESHits(request *DescribeESHitsRequest) (response *DescribeESHitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeESHitsRequest()
+    }
+    response = NewDescribeESHitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExportMachinesRequest() (request *DescribeExportMachinesRequest) {
     request = &DescribeExportMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},

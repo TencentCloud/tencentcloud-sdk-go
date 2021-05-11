@@ -680,6 +680,90 @@ func (r *CreateAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则表达式
+	Expr *string `json:"Expr,omitempty" name:"Expr"`
+
+	// 告警通知模板 ID 列表
+	Receivers []*string `json:"Receivers,omitempty" name:"Receivers" list`
+
+	// 规则状态码，取值如下：
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则报警持续时间
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 标签列表
+	Labels []*PrometheusRuleKV `json:"Labels,omitempty" name:"Labels" list`
+
+	// 注释列表
+	Annotations []*PrometheusRuleKV `json:"Annotations,omitempty" name:"Annotations" list`
+
+	// 报警策略模板分类
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RuleName")
+	delete(f, "Expr")
+	delete(f, "Receivers")
+	delete(f, "RuleState")
+	delete(f, "Duration")
+	delete(f, "Labels")
+	delete(f, "Annotations")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("CreateAlertRuleRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePolicyGroupCondition struct {
 
 	// 指标Id
@@ -993,6 +1077,56 @@ func (r *DeleteAlarmPolicyResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAlarmPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlertRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则 ID 列表
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds" list`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteAlertRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlertRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIds")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DeleteAlertRulesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlertRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAlertRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlertRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1837,6 +1971,85 @@ func (r *DescribeAlarmPolicyResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlarmPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlertRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码，取值如下：
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 报警策略模板分类
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeAlertRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "RuleId")
+	delete(f, "RuleState")
+	delete(f, "RuleName")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("DescribeAlertRulesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlertRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 报警规则数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 报警规则详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AlertRuleSet []*PrometheusRuleSet `json:"AlertRuleSet,omitempty" name:"AlertRuleSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAlertRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4304,6 +4517,66 @@ type ProductSimple struct {
 	ProductEnName *string `json:"ProductEnName,omitempty" name:"ProductEnName"`
 }
 
+type PrometheusRuleKV struct {
+
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type PrometheusRuleSet struct {
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则状态码
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 规则标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*PrometheusRuleKV `json:"Labels,omitempty" name:"Labels" list`
+
+	// 规则注释列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Annotations []*PrometheusRuleKV `json:"Annotations,omitempty" name:"Annotations" list`
+
+	// 规则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expr *string `json:"Expr,omitempty" name:"Expr"`
+
+	// 规则报警持续时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 报警接收组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Receivers []*string `json:"Receivers,omitempty" name:"Receivers" list`
+
+	// 规则运行健康状态，取值如下：
+	// <li>unknown 未知状态</li>
+	// <li>pending 加载中</li>
+	// <li>ok 运行正常</li>
+	// <li>err 运行错误</li>
+	Health *string `json:"Health,omitempty" name:"Health"`
+
+	// 规则创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 规则更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+}
+
 type PutMonitorDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -4700,6 +4973,152 @@ func (r *UnBindingPolicyObjectResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnBindingPolicyObjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// Prometheus 报警规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 报警规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 报警规则表达式
+	Expr *string `json:"Expr,omitempty" name:"Expr"`
+
+	// 报警规则持续时间
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 报警规则接收组列表
+	Receivers []*string `json:"Receivers,omitempty" name:"Receivers" list`
+
+	// 报警规则标签列表
+	Labels []*PrometheusRuleKV `json:"Labels,omitempty" name:"Labels" list`
+
+	// 报警规则注释列表
+	Annotations []*PrometheusRuleKV `json:"Annotations,omitempty" name:"Annotations" list`
+
+	// 报警策略模板分类
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *UpdateAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "InstanceId")
+	delete(f, "RuleState")
+	delete(f, "RuleName")
+	delete(f, "Expr")
+	delete(f, "Duration")
+	delete(f, "Receivers")
+	delete(f, "Labels")
+	delete(f, "Annotations")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return errors.New("UpdateAlertRuleRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则 ID
+		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertRuleStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则 ID 列表
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds" list`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 规则状态码，取值如下：
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+func (r *UpdateAlertRuleStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertRuleStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIds")
+	delete(f, "InstanceId")
+	delete(f, "RuleState")
+	if len(f) > 0 {
+		return errors.New("UpdateAlertRuleStateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertRuleStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAlertRuleStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlertRuleStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

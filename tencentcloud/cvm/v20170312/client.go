@@ -287,6 +287,31 @@ func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *Delet
     return
 }
 
+func NewDescribeAccountQuotaRequest() (request *DescribeAccountQuotaRequest) {
+    request = &DescribeAccountQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeAccountQuota")
+    return
+}
+
+func NewDescribeAccountQuotaResponse() (response *DescribeAccountQuotaResponse) {
+    response = &DescribeAccountQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DescribeAccountQuota)用于查询用户配额详情。
+func (c *Client) DescribeAccountQuota(request *DescribeAccountQuotaRequest) (response *DescribeAccountQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountQuotaRequest()
+    }
+    response = NewDescribeAccountQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDisasterRecoverGroupQuotaRequest() (request *DescribeDisasterRecoverGroupQuotaRequest) {
     request = &DescribeDisasterRecoverGroupQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},

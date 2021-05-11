@@ -293,6 +293,31 @@ func (c *Client) CreateWxCloudBaseRunEnv(request *CreateWxCloudBaseRunEnvRequest
     return
 }
 
+func NewCreateWxCloudBaseRunServerDBClusterRequest() (request *CreateWxCloudBaseRunServerDBClusterRequest) {
+    request = &CreateWxCloudBaseRunServerDBClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateWxCloudBaseRunServerDBCluster")
+    return
+}
+
+func NewCreateWxCloudBaseRunServerDBClusterResponse() (response *CreateWxCloudBaseRunServerDBClusterResponse) {
+    response = &CreateWxCloudBaseRunServerDBClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 开通微信云托管MySQL数据库服务
+func (c *Client) CreateWxCloudBaseRunServerDBCluster(request *CreateWxCloudBaseRunServerDBClusterRequest) (response *CreateWxCloudBaseRunServerDBClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateWxCloudBaseRunServerDBClusterRequest()
+    }
+    response = NewCreateWxCloudBaseRunServerDBClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBaseProjectLatestVersionRequest) {
     request = &DeleteCloudBaseProjectLatestVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

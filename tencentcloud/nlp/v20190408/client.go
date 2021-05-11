@@ -552,11 +552,9 @@ func NewTextClassificationResponse() (response *TextClassificationResponse) {
 // 
 // 目前已提供：
 // 
-// - 通用领域分类体系，包括15个分类类目，分别是汽车、科技、健康、体育、旅行、教育、职业、文化、军事、房产、娱乐、女性、奥运、财经以及其他，适用于通用的场景。
+// - 通用领域分类体系，二级分类，包括15个分类类目，分别是汽车、科技、健康、体育、旅行、教育、职业、文化、军事、房产、娱乐、女性、奥运、财经以及其他，适用于通用的场景。
 // 
-// - 新闻领域分类体系，包括37个一级分类类目，285个二级分类（详细请见 [类目体系映射表](https://cloud.tencent.com/document/product/271/36459)），已应用于腾讯新闻的文章分类。
-// 
-// 更多垂直领域的分类体系即将推出，敬请期待。
+// - 新闻领域分类体系，五级分类，包括35个一级分类类目，228个二级分类，493个三级分类，204个四级分类，40个五级分类（详细请见附录->文本分类映射表），已应用于腾讯新闻的文章分类。
 func (c *Client) TextClassification(request *TextClassificationRequest) (response *TextClassificationResponse, err error) {
     if request == nil {
         request = NewTextClassificationRequest()
@@ -581,7 +579,7 @@ func NewTextCorrectionResponse() (response *TextCorrectionResponse) {
     return
 }
 
-// 提供对中文文本的自动纠错功能，能够识别输入文本中的错误片段，定位错误并给出正确的文本结果；支持长度不超过2000字的长文本纠错。
+// 提供对中文文本的自动纠错功能，能够识别输入文本中的错误片段，定位错误并给出正确的文本结果；支持长度不超过2000字符（含标点符号）的长文本纠错。
 // 
 // 此功能是基于千亿级大规模互联网语料和LSTM、BERT等深度神经网络模型进行训练，并持续迭代更新，以保证效果不断提升，是搜索引擎、语音识别、内容审核等功能更好运行的基础之一。 
 func (c *Client) TextCorrection(request *TextCorrectionRequest) (response *TextCorrectionResponse, err error) {

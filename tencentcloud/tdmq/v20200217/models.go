@@ -1028,6 +1028,12 @@ type DescribeEnvironmentsRequest struct {
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// * EnvironmentId
+	// 按照名称空间进行过滤，精确查询。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeEnvironmentsRequest) ToJsonString() string {
@@ -1046,6 +1052,7 @@ func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ClusterId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return errors.New("DescribeEnvironmentsRequest has unknown keys!")
 	}
@@ -1252,6 +1259,12 @@ type DescribeTopicsRequest struct {
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// * TopicName
+	// 按照主题名字查询，精确查询。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 }
 
 func (r *DescribeTopicsRequest) ToJsonString() string {
@@ -1272,6 +1285,7 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "TopicType")
 	delete(f, "ClusterId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return errors.New("DescribeTopicsRequest has unknown keys!")
 	}
@@ -1349,6 +1363,15 @@ type EnvironmentRole struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type Filter struct {
+
+	// 过滤参数的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
+}
+
 type FilterSubscription struct {
 
 	// 是否仅展示包含真实消费者的订阅。
@@ -1359,6 +1382,9 @@ type FilterSubscription struct {
 
 	// 是否仅展示存在消息超期丢弃的订阅。
 	ConsumerHasExpired *bool `json:"ConsumerHasExpired,omitempty" name:"ConsumerHasExpired"`
+
+	// 按照订阅名过滤，精确查询。
+	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames" list`
 }
 
 type ModifyClusterRequest struct {
@@ -2029,6 +2055,14 @@ type Topic struct {
 	// 最近修改时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 生产者上限。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerLimit *string `json:"ProducerLimit,omitempty" name:"ProducerLimit"`
+
+	// 消费者上限。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerLimit *string `json:"ConsumerLimit,omitempty" name:"ConsumerLimit"`
 }
 
 type TopicRecord struct {

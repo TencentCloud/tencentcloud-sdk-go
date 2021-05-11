@@ -2468,6 +2468,9 @@ type CreateDirectConnectGatewayRequest struct {
 
 	// 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
 	ModeType *string `json:"ModeType,omitempty" name:"ModeType"`
+
+	// 专线网关可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -2487,6 +2490,7 @@ func (r *CreateDirectConnectGatewayRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInstanceId")
 	delete(f, "GatewayType")
 	delete(f, "ModeType")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return errors.New("CreateDirectConnectGatewayRequest has unknown keys!")
 	}
@@ -10143,6 +10147,14 @@ type DirectConnectGateway struct {
 	// 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModeType *string `json:"ModeType,omitempty" name:"ModeType"`
+
+	// 是否为localZone专线网关。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
+
+	// 专线网关所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type DirectConnectGatewayCcnRoute struct {

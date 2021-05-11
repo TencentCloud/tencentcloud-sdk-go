@@ -118,6 +118,31 @@ func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) (response 
     return
 }
 
+func NewCreateAlertRuleRequest() (request *CreateAlertRuleRequest) {
+    request = &CreateAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateAlertRule")
+    return
+}
+
+func NewCreateAlertRuleResponse() (response *CreateAlertRuleResponse) {
+    response = &CreateAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建 Prometheus 告警规则
+func (c *Client) CreateAlertRule(request *CreateAlertRuleRequest) (response *CreateAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAlertRuleRequest()
+    }
+    response = NewCreateAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
     request = &CreatePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -216,6 +241,31 @@ func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) (response 
         request = NewDeleteAlarmPolicyRequest()
     }
     response = NewDeleteAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAlertRulesRequest() (request *DeleteAlertRulesRequest) {
+    request = &DeleteAlertRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlertRules")
+    return
+}
+
+func NewDeleteAlertRulesResponse() (response *DeleteAlertRulesResponse) {
+    response = &DeleteAlertRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 批量删除 Prometheus 报警规则
+func (c *Client) DeleteAlertRules(request *DeleteAlertRulesRequest) (response *DeleteAlertRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlertRulesRequest()
+    }
+    response = NewDeleteAlertRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -495,6 +545,31 @@ func (c *Client) DescribeAlarmPolicy(request *DescribeAlarmPolicyRequest) (respo
         request = NewDescribeAlarmPolicyRequest()
     }
     response = NewDescribeAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlertRulesRequest() (request *DescribeAlertRulesRequest) {
+    request = &DescribeAlertRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertRules")
+    return
+}
+
+func NewDescribeAlertRulesResponse() (response *DescribeAlertRulesResponse) {
+    response = &DescribeAlertRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// Prometheus 报警规则查询接口
+func (c *Client) DescribeAlertRules(request *DescribeAlertRulesRequest) (response *DescribeAlertRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlertRulesRequest()
+    }
+    response = NewDescribeAlertRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1156,6 +1231,56 @@ func (c *Client) UnBindingPolicyObject(request *UnBindingPolicyObjectRequest) (r
         request = NewUnBindingPolicyObjectRequest()
     }
     response = NewUnBindingPolicyObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAlertRuleRequest() (request *UpdateAlertRuleRequest) {
+    request = &UpdateAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertRule")
+    return
+}
+
+func NewUpdateAlertRuleResponse() (response *UpdateAlertRuleResponse) {
+    response = &UpdateAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新 Prometheus 的报警规则
+func (c *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (response *UpdateAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewUpdateAlertRuleRequest()
+    }
+    response = NewUpdateAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAlertRuleStateRequest() (request *UpdateAlertRuleStateRequest) {
+    request = &UpdateAlertRuleStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertRuleState")
+    return
+}
+
+func NewUpdateAlertRuleStateResponse() (response *UpdateAlertRuleStateResponse) {
+    response = &UpdateAlertRuleStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 更新 Prometheus 报警策略状态
+func (c *Client) UpdateAlertRuleState(request *UpdateAlertRuleStateRequest) (response *UpdateAlertRuleStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateAlertRuleStateRequest()
+    }
+    response = NewUpdateAlertRuleStateResponse()
     err = c.Send(request, response)
     return
 }

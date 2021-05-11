@@ -245,7 +245,7 @@ type CreateResourceRequest struct {
 	// 资源名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 资源类型，占时只支持jar，填1
+	// 资源类型。目前只支持 JAR，取值为 1
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源描述
@@ -532,7 +532,7 @@ type DescribeJobsRequest struct {
 	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
 	JobIds []*string `json:"JobIds,omitempty" name:"JobIds" list`
 
-	// 过滤条件，详见作业过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定JobIds和Filters。
+	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 偏移量，默认为0
@@ -596,10 +596,10 @@ type DescribeResourceConfigsRequest struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 偏移量
+	// 偏移量，仅当设置 Limit 时该参数有效
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回值大小
+	// 返回值大小，不填则返回全量数据
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 资源配置Versions集合
@@ -732,10 +732,10 @@ type DescribeResourcesRequest struct {
 	// 需要查询的资源ID数组
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 
-	// 偏移量
+	// 偏移量，仅当设置 Limit 参数时有效
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 条数限制
+	// 条数限制。如果不填，默认返回 20 条
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
@@ -796,13 +796,13 @@ type DescribeSystemResourcesRequest struct {
 	// 需要查询的资源ID数组
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
 
-	// 偏移量
+	// 偏移量，仅当设置 Limit 参数时有效
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 条数限制
+	// 条数限制，默认返回 20 条
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
+	// 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 集群ID
@@ -1204,10 +1204,10 @@ type RunJobDescription struct {
 	// 运行类型，1：启动，2：恢复
 	RunType *int64 `json:"RunType,omitempty" name:"RunType"`
 
-	// SQL类型作业启动参数：指定数据源消费起始时间点
+	// 已废弃。旧版 SQL 类型作业启动参数：指定数据源消费起始时间点
 	StartMode *string `json:"StartMode,omitempty" name:"StartMode"`
 
-	// 已发布上线的作业配置版本
+	// 当前作业的某个版本
 	JobConfigVersion *uint64 `json:"JobConfigVersion,omitempty" name:"JobConfigVersion"`
 }
 
@@ -1320,7 +1320,7 @@ type SystemResourceItem struct {
 	// 资源名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 资源类型
+	// 资源类型。1 表示 JAR 包，目前只支持该值。
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源备注

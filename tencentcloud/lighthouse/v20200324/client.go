@@ -372,6 +372,31 @@ func (c *Client) DescribeBlueprints(request *DescribeBlueprintsRequest) (respons
     return
 }
 
+func NewDescribeBundleDiscountRequest() (request *DescribeBundleDiscountRequest) {
+    request = &DescribeBundleDiscountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeBundleDiscount")
+    return
+}
+
+func NewDescribeBundleDiscountResponse() (response *DescribeBundleDiscountResponse) {
+    response = &DescribeBundleDiscountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeBundleDiscount）用于查询套餐折扣信息。
+func (c *Client) DescribeBundleDiscount(request *DescribeBundleDiscountRequest) (response *DescribeBundleDiscountResponse, err error) {
+    if request == nil {
+        request = NewDescribeBundleDiscountRequest()
+    }
+    response = NewDescribeBundleDiscountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBundlesRequest() (request *DescribeBundlesRequest) {
     request = &DescribeBundlesRequest{
         BaseRequest: &tchttp.BaseRequest{},

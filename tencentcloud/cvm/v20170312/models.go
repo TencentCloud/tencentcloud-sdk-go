@@ -21,6 +21,33 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccountQuota struct {
+
+	// 后付费配额列表
+	PostPaidQuotaSet []*PostPaidQuota `json:"PostPaidQuotaSet,omitempty" name:"PostPaidQuotaSet" list`
+
+	// 预付费配额列表
+	PrePaidQuotaSet []*PrePaidQuota `json:"PrePaidQuotaSet,omitempty" name:"PrePaidQuotaSet" list`
+
+	// spot配额列表
+	SpotPaidQuotaSet []*SpotPaidQuota `json:"SpotPaidQuotaSet,omitempty" name:"SpotPaidQuotaSet" list`
+
+	// 镜像配额列表
+	ImageQuotaSet []*ImageQuota `json:"ImageQuotaSet,omitempty" name:"ImageQuotaSet" list`
+
+	// 置放群组配额列表
+	DisasterRecoverGroupQuotaSet []*DisasterRecoverGroupQuota `json:"DisasterRecoverGroupQuotaSet,omitempty" name:"DisasterRecoverGroupQuotaSet" list`
+}
+
+type AccountQuotaOverview struct {
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 配额数据
+	AccountQuota *AccountQuota `json:"AccountQuota,omitempty" name:"AccountQuota"`
+}
+
 type ActionTimer struct {
 
 	// 扩展数据
@@ -607,6 +634,61 @@ func (r *DeleteKeyPairsResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>quota-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：PostPaidQuotaSet,DisasterRecoverGroupQuotaSet,PrePaidQuotaSet,SpotPaidQuotaSet</p>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeAccountQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return errors.New("DescribeAccountQuotaRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户appid
+		AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+		// 配额数据
+		AccountQuotaOverview *AccountQuotaOverview `json:"AccountQuotaOverview,omitempty" name:"AccountQuotaOverview"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2053,6 +2135,24 @@ type DisasterRecoverGroup struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type DisasterRecoverGroupQuota struct {
+
+	// 可创建置放群组数量的上限。
+	GroupQuota *int64 `json:"GroupQuota,omitempty" name:"GroupQuota"`
+
+	// 当前用户已经创建的置放群组数量。
+	CurrentNum *int64 `json:"CurrentNum,omitempty" name:"CurrentNum"`
+
+	// 物理机类型容灾组内实例的配额数。
+	CvmInHostGroupQuota *int64 `json:"CvmInHostGroupQuota,omitempty" name:"CvmInHostGroupQuota"`
+
+	// 交换机类型容灾组内实例的配额数。
+	CvmInSwitchGroupQuota *int64 `json:"CvmInSwitchGroupQuota,omitempty" name:"CvmInSwitchGroupQuota"`
+
+	// 机架类型容灾组内实例的配额数。
+	CvmInRackGroupQuota *int64 `json:"CvmInRackGroupQuota,omitempty" name:"CvmInRackGroupQuota"`
+}
+
 type EnhancedService struct {
 
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
@@ -2220,6 +2320,15 @@ type ImageOsList struct {
 	// 支持的linux操作系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Linux []*string `json:"Linux,omitempty" name:"Linux" list`
+}
+
+type ImageQuota struct {
+
+	// 已使用配额
+	UsedQuota *uint64 `json:"UsedQuota,omitempty" name:"UsedQuota"`
+
+	// 总配额
+	TotalQuota *uint64 `json:"TotalQuota,omitempty" name:"TotalQuota"`
 }
 
 type ImportImageRequest struct {
@@ -3898,6 +4007,39 @@ type Placement struct {
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
 }
 
+type PostPaidQuota struct {
+
+	// 累计已使用配额
+	UsedQuota *uint64 `json:"UsedQuota,omitempty" name:"UsedQuota"`
+
+	// 剩余配额
+	RemainingQuota *uint64 `json:"RemainingQuota,omitempty" name:"RemainingQuota"`
+
+	// 总配额
+	TotalQuota *uint64 `json:"TotalQuota,omitempty" name:"TotalQuota"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type PrePaidQuota struct {
+
+	// 当月已使用配额
+	UsedQuota *uint64 `json:"UsedQuota,omitempty" name:"UsedQuota"`
+
+	// 单次购买最大数量
+	OnceQuota *uint64 `json:"OnceQuota,omitempty" name:"OnceQuota"`
+
+	// 剩余配额
+	RemainingQuota *uint64 `json:"RemainingQuota,omitempty" name:"RemainingQuota"`
+
+	// 总配额
+	TotalQuota *uint64 `json:"TotalQuota,omitempty" name:"TotalQuota"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
 type Price struct {
 
 	// 描述了实例价格。
@@ -4822,6 +4964,21 @@ type SpotMarketOptions struct {
 
 	// 竞价请求类型，当前仅支持类型：one-time
 	SpotInstanceType *string `json:"SpotInstanceType,omitempty" name:"SpotInstanceType"`
+}
+
+type SpotPaidQuota struct {
+
+	// 已使用配额，单位：vCPU核心数
+	UsedQuota *uint64 `json:"UsedQuota,omitempty" name:"UsedQuota"`
+
+	// 剩余配额，单位：vCPU核心数
+	RemainingQuota *uint64 `json:"RemainingQuota,omitempty" name:"RemainingQuota"`
+
+	// 总配额，单位：vCPU核心数
+	TotalQuota *uint64 `json:"TotalQuota,omitempty" name:"TotalQuota"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type StartInstancesRequest struct {

@@ -519,7 +519,7 @@ type AuthenticationTypeA struct {
 	SignParam *string `json:"SignParam,omitempty" name:"SignParam"`
 
 	// 签名过期时间设置
-	// 单位为秒，最大可设置为 31536000
+	// 单位为秒，最大可设置为 630720000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
@@ -539,7 +539,7 @@ type AuthenticationTypeB struct {
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 
 	// 签名过期时间设置
-	// 单位为秒，最大可设置为 31536000
+	// 单位为秒，最大可设置为 630720000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
@@ -559,7 +559,7 @@ type AuthenticationTypeC struct {
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 
 	// 签名过期时间设置
-	// 单位为秒，最大可设置为 31536000
+	// 单位为秒，最大可设置为 630720000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
@@ -585,7 +585,7 @@ type AuthenticationTypeD struct {
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 
 	// 签名过期时间设置
-	// 单位为秒，最大可设置为 31536000
+	// 单位为秒，最大可设置为 630720000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
