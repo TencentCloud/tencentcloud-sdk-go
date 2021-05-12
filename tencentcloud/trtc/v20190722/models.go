@@ -1470,7 +1470,7 @@ type PresetLayoutConfig struct {
 	// 该画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
 	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 
-	// 该画面在输出时的层级，单位为像素值，不填默认为0。
+	// 该画面在输出时的层级，不填默认为0。
 	ZOrder *uint64 `json:"ZOrder,omitempty" name:"ZOrder"`
 
 	// 该画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。

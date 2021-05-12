@@ -981,6 +981,12 @@ type LogOutputConf struct {
 
 	// cls日志主题
 	ClsLogTopicId *string `json:"ClsLogTopicId,omitempty" name:"ClsLogTopicId"`
+
+	// cls日志集id
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// cls日志名称
+	ClsLogTopicName *string `json:"ClsLogTopicName,omitempty" name:"ClsLogTopicName"`
 }
 
 type ModifyIngressRequest struct {
@@ -1221,4 +1227,7 @@ type TemNamespaceInfo struct {
 
 	// eks cluster status
 	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 是否开启tsw
+	EnableTswTraceService *bool `json:"EnableTswTraceService,omitempty" name:"EnableTswTraceService"`
 }

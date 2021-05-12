@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 物联卡(ic) 版本：2019-03-07
 
-### 第 33 次发布
+### 第 4 次发布
 
-发布时间：2021-05-11 08:02:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
-
-	* 新增成员：DiskTypePolicy
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 58 次发布
-
-发布时间：2021-05-11 08:04:20
+发布时间：2021-05-11 20:09:52
 
 本次发布包含了以下内容：
 
@@ -31,25 +12,15 @@
 
 新增接口：
 
-* [DescribeAccountQuota](https://cloud.tencent.com/document/api/213/55628)
-
-新增数据结构：
-
-* [AccountQuota](https://cloud.tencent.com/document/api/213/15753#AccountQuota)
-* [AccountQuotaOverview](https://cloud.tencent.com/document/api/213/15753#AccountQuotaOverview)
-* [DisasterRecoverGroupQuota](https://cloud.tencent.com/document/api/213/15753#DisasterRecoverGroupQuota)
-* [ImageQuota](https://cloud.tencent.com/document/api/213/15753#ImageQuota)
-* [PostPaidQuota](https://cloud.tencent.com/document/api/213/15753#PostPaidQuota)
-* [PrePaidQuota](https://cloud.tencent.com/document/api/213/15753#PrePaidQuota)
-* [SpotPaidQuota](https://cloud.tencent.com/document/api/213/15753#SpotPaidQuota)
+* [ModifyUserCardRemark](https://cloud.tencent.com/document/api/636/55674)
 
 
 
-## 主机安全(cwp) 版本：2018-02-28
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
 ### 第 11 次发布
 
-发布时间：2021-05-11 08:11:40
+发布时间：2021-05-12 08:06:12
 
 本次发布包含了以下内容：
 
@@ -57,105 +28,24 @@
 
 新增接口：
 
-* [DescribeESHits](https://cloud.tencent.com/document/api/296/55637)
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 16 次发布
-
-发布时间：2021-05-11 08:05:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DiagnoseInstance](https://cloud.tencent.com/document/api/845/55630)
-* [UpdateDiagnoseSettings](https://cloud.tencent.com/document/api/845/55629)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 13 次发布
-
-发布时间：2021-05-11 08:00:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBundleDiscount](https://cloud.tencent.com/document/api/1207/55627)
+* [DescribeSecurityGroup](https://cloud.tencent.com/document/api/240/55675)
 
 新增数据结构：
 
-* [DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail)
-* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
+* [SecurityGroup](https://cloud.tencent.com/document/api/240/38576#SecurityGroup)
+* [SecurityGroupBound](https://cloud.tencent.com/document/api/240/38576#SecurityGroupBound)
 
 
 
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 24 次发布
-
-发布时间：2021-05-11 08:06:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAlertRule](https://cloud.tencent.com/document/api/248/55635)
-* [DeleteAlertRules](https://cloud.tencent.com/document/api/248/55634)
-* [DescribeAlertRules](https://cloud.tencent.com/document/api/248/55633)
-* [UpdateAlertRule](https://cloud.tencent.com/document/api/248/55632)
-* [UpdateAlertRuleState](https://cloud.tencent.com/document/api/248/55631)
-
-新增数据结构：
-
-* [PrometheusRuleKV](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleKV)
-* [PrometheusRuleSet](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleSet)
-
-
-
-## 自然语言处理(nlp) 版本：2019-04-08
-
-### 第 12 次发布
-
-发布时间：2021-05-10 16:12:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClassificationResult](https://cloud.tencent.com/document/api/271/35511#ClassificationResult)
-
-	* 新增成员：ThirdClassName, ThirdClassProbability, FourthClassName, FourthClassProbability, FifthClassName, FifthClassProbability
-
-* [NerToken](https://cloud.tencent.com/document/api/271/35511#NerToken)
-
-	* <font color="#dd0000">**修改成员**：</font>Word, Length, BeginOffset, Type
-
-* [PosToken](https://cloud.tencent.com/document/api/271/35511#PosToken)
-
-	* <font color="#dd0000">**修改成员**：</font>Word, Length, BeginOffset, Pos
-
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 46 次发布
+### 第 47 次发布
 
-发布时间：2021-05-11 08:08:22
+发布时间：2021-05-12 08:07:37
 
 本次发布包含了以下内容：
 
@@ -163,91 +53,36 @@
 
 新增接口：
 
-* [CreateWxCloudBaseRunServerDBCluster](https://cloud.tencent.com/document/api/876/55636)
+* [RollUpdateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/55676)
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：IsCreateJnsGw
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 31 次发布
+## 弹性微服务(tem) 版本：2020-12-21
 
-发布时间：2021-05-11 08:10:44
+### 第 3 次发布
+
+发布时间：2021-05-12 08:00:07
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [ModifyInstanceToken](https://cloud.tencent.com/document/api/1141/42910)
-
-	* 新增入参：Desc, ModifyFlag
-
-	* <font color="#dd0000">**修改入参**：</font>Enable
-
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 6 次发布
-
-发布时间：2021-05-11 08:11:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)
-
-	* 新增入参：Filters
-
-* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
-
-	* 新增入参：Filters
-
-
-新增数据结构：
-
-* [Filter](https://cloud.tencent.com/document/api/1179/46089#Filter)
 
 修改数据结构：
 
-* [FilterSubscription](https://cloud.tencent.com/document/api/1179/46089#FilterSubscription)
+* [LogOutputConf](https://cloud.tencent.com/document/api/1371/55421#LogOutputConf)
 
-	* 新增成员：SubscriptionNames
+	* 新增成员：ClsLogsetId, ClsLogTopicName
 
-* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)
 
-	* 新增成员：ProducerLimit, ConsumerLimit
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 87 次发布
-
-发布时间：2021-05-11 08:09:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDirectConnectGateway](https://cloud.tencent.com/document/api/215/19192)
-
-	* 新增入参：Zone
-
-
-修改数据结构：
-
-* [DirectConnectGateway](https://cloud.tencent.com/document/api/215/15824#DirectConnectGateway)
-
-	* 新增成员：LocalZone, Zone
+	* 新增成员：EnableTswTraceService
 
 
 
@@ -14190,17 +14025,17 @@
 
 新增接口：
 
-* [[DescribeAccountQuota](https://cloud.tencent.com/document/api/213/55628)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAccountQuota](https://cloud.tencent.com/document/api/213/55628)
 
 新增数据结构：
 
-* [[AccountQuota](https://cloud.tencent.com/document/api/213/15753#AccountQuota)](https://cloud.tencent.com/document/api/213/15753#[AccountQuota](https://cloud.tencent.com/document/api/213/15753#AccountQuota))
-* [[AccountQuotaOverview](https://cloud.tencent.com/document/api/213/15753#AccountQuotaOverview)](https://cloud.tencent.com/document/api/213/15753#[AccountQuotaOverview](https://cloud.tencent.com/document/api/213/15753#AccountQuotaOverview))
-* [[DisasterRecoverGroupQuota](https://cloud.tencent.com/document/api/213/15753#DisasterRecoverGroupQuota)](https://cloud.tencent.com/document/api/213/15753#[DisasterRecoverGroupQuota](https://cloud.tencent.com/document/api/213/15753#DisasterRecoverGroupQuota))
-* [[ImageQuota](https://cloud.tencent.com/document/api/213/15753#ImageQuota)](https://cloud.tencent.com/document/api/213/15753#[ImageQuota](https://cloud.tencent.com/document/api/213/15753#ImageQuota))
-* [[PostPaidQuota](https://cloud.tencent.com/document/api/213/15753#PostPaidQuota)](https://cloud.tencent.com/document/api/213/15753#[PostPaidQuota](https://cloud.tencent.com/document/api/213/15753#PostPaidQuota))
-* [[PrePaidQuota](https://cloud.tencent.com/document/api/213/15753#PrePaidQuota)](https://cloud.tencent.com/document/api/213/15753#[PrePaidQuota](https://cloud.tencent.com/document/api/213/15753#PrePaidQuota))
-* [[SpotPaidQuota](https://cloud.tencent.com/document/api/213/15753#SpotPaidQuota)](https://cloud.tencent.com/document/api/213/15753#[SpotPaidQuota](https://cloud.tencent.com/document/api/213/15753#SpotPaidQuota))
+* [AccountQuota](https://cloud.tencent.com/document/api/213/15753#AccountQuota)
+* [AccountQuotaOverview](https://cloud.tencent.com/document/api/213/15753#AccountQuotaOverview)
+* [DisasterRecoverGroupQuota](https://cloud.tencent.com/document/api/213/15753#DisasterRecoverGroupQuota)
+* [ImageQuota](https://cloud.tencent.com/document/api/213/15753#ImageQuota)
+* [PostPaidQuota](https://cloud.tencent.com/document/api/213/15753#PostPaidQuota)
+* [PrePaidQuota](https://cloud.tencent.com/document/api/213/15753#PrePaidQuota)
+* [SpotPaidQuota](https://cloud.tencent.com/document/api/213/15753#SpotPaidQuota)
 
 ### 第 57 次发布
 
@@ -15383,7 +15218,7 @@
 
 新增接口：
 
-* [[DescribeESHits](https://cloud.tencent.com/document/api/296/55637)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeESHits](https://cloud.tencent.com/document/api/296/55637)
 
 ### 第 10 次发布
 
@@ -20545,8 +20380,8 @@
 
 新增接口：
 
-* [[DiagnoseInstance](https://cloud.tencent.com/document/api/845/55630)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateDiagnoseSettings](https://cloud.tencent.com/document/api/845/55629)](https://cloud.tencent.com/document/api/#/#)
+* [DiagnoseInstance](https://cloud.tencent.com/document/api/845/55630)
+* [UpdateDiagnoseSettings](https://cloud.tencent.com/document/api/845/55629)
 
 ### 第 15 次发布
 
@@ -24129,6 +23964,18 @@
 
 ## 物联卡(ic) 版本：2019-03-07
 
+### 第 4 次发布
+
+发布时间：2021-05-11 20:09:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyUserCardRemark](https://cloud.tencent.com/document/api/636/55674)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 3 次发布
 
 发布时间：2020-07-02 08:11:27
@@ -27111,12 +26958,12 @@
 
 新增接口：
 
-* [[DescribeBundleDiscount](https://cloud.tencent.com/document/api/1207/55627)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBundleDiscount](https://cloud.tencent.com/document/api/1207/55627)
 
 新增数据结构：
 
-* [[DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail)](https://cloud.tencent.com/document/api/1207/47576#[DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail))
-* [[PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)](https://cloud.tencent.com/document/api/1207/47576#[PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail))
+* [DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail)
+* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
 
 ### 第 12 次发布
 
@@ -29433,6 +29280,23 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 11 次发布
+
+发布时间：2021-05-12 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSecurityGroup](https://cloud.tencent.com/document/api/240/55675)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SecurityGroup](https://cloud.tencent.com/document/api/240/38576#SecurityGroup)](https://cloud.tencent.com/document/api/240/38576#[SecurityGroup](https://cloud.tencent.com/document/api/240/38576#SecurityGroup))
+* [[SecurityGroupBound](https://cloud.tencent.com/document/api/240/38576#SecurityGroupBound)](https://cloud.tencent.com/document/api/240/38576#[SecurityGroupBound](https://cloud.tencent.com/document/api/240/38576#SecurityGroupBound))
+
 ### 第 10 次发布
 
 发布时间：2021-03-29 08:05:40
@@ -29653,16 +29517,16 @@
 
 新增接口：
 
-* [[CreateAlertRule](https://cloud.tencent.com/document/api/248/55635)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAlertRules](https://cloud.tencent.com/document/api/248/55634)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAlertRules](https://cloud.tencent.com/document/api/248/55633)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateAlertRule](https://cloud.tencent.com/document/api/248/55632)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateAlertRuleState](https://cloud.tencent.com/document/api/248/55631)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAlertRule](https://cloud.tencent.com/document/api/248/55635)
+* [DeleteAlertRules](https://cloud.tencent.com/document/api/248/55634)
+* [DescribeAlertRules](https://cloud.tencent.com/document/api/248/55633)
+* [UpdateAlertRule](https://cloud.tencent.com/document/api/248/55632)
+* [UpdateAlertRuleState](https://cloud.tencent.com/document/api/248/55631)
 
 新增数据结构：
 
-* [[PrometheusRuleKV](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleKV)](https://cloud.tencent.com/document/api/248/30354#[PrometheusRuleKV](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleKV))
-* [[PrometheusRuleSet](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleSet)](https://cloud.tencent.com/document/api/248/30354#[PrometheusRuleSet](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleSet))
+* [PrometheusRuleKV](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleKV)
+* [PrometheusRuleSet](https://cloud.tencent.com/document/api/248/30354#PrometheusRuleSet)
 
 ### 第 23 次发布
 
@@ -37992,6 +37856,25 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 47 次发布
+
+发布时间：2021-05-12 08:07:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RollUpdateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/55676)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：IsCreateJnsGw
+
+
 ### 第 46 次发布
 
 发布时间：2021-05-11 08:08:22
@@ -38002,7 +37885,7 @@
 
 新增接口：
 
-* [[CreateWxCloudBaseRunServerDBCluster](https://cloud.tencent.com/document/api/876/55636)](https://cloud.tencent.com/document/api/#/#)
+* [CreateWxCloudBaseRunServerDBCluster](https://cloud.tencent.com/document/api/876/55636)
 
 ### 第 45 次发布
 
@@ -39773,7 +39656,7 @@
 
 新增数据结构：
 
-* [[Filter](https://cloud.tencent.com/document/api/1179/46089#Filter)](https://cloud.tencent.com/document/api/1179/46089#[Filter](https://cloud.tencent.com/document/api/1179/46089#Filter))
+* [Filter](https://cloud.tencent.com/document/api/1179/46089#Filter)
 
 修改数据结构：
 
@@ -39970,6 +39853,25 @@
 
 
 ## 弹性微服务(tem) 版本：2020-12-21
+
+### 第 3 次发布
+
+发布时间：2021-05-12 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LogOutputConf](https://cloud.tencent.com/document/api/1371/55421#LogOutputConf)
+
+	* 新增成员：ClsLogsetId, ClsLogTopicName
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/55421#TemNamespaceInfo)
+
+	* 新增成员：EnableTswTraceService
+
 
 ### 第 2 次发布
 

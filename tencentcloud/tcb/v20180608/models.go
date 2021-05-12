@@ -949,6 +949,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 服务磁盘挂载
 	ServiceVolumes []*CloudRunServiceVolume `json:"ServiceVolumes,omitempty" name:"ServiceVolumes" list`
+
+	// 是否创建JnsGw 0未传默认创建 1创建 2不创建
+	IsCreateJnsGw *int64 `json:"IsCreateJnsGw,omitempty" name:"IsCreateJnsGw"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -999,6 +1002,7 @@ func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 	delete(f, "SidecarSpecs")
 	delete(f, "Security")
 	delete(f, "ServiceVolumes")
+	delete(f, "IsCreateJnsGw")
 	if len(f) > 0 {
 		return errors.New("CreateCloudBaseRunServerVersionRequest has unknown keys!")
 	}
@@ -4131,6 +4135,187 @@ func (r *ReinstateEnvResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReinstateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollUpdateCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 要替换的版本名称，可以为latest
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 枚举（package/repository/image)
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// repository的类型(coding/gitlab/github)
+	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+
+	// 流量占比
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// dockerfile地址
+	DockerfilePath *string `json:"DockerfilePath,omitempty" name:"DockerfilePath"`
+
+	// 构建目录
+	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+
+	// Cpu的大小，单位：核
+	Cpu *string `json:"Cpu,omitempty" name:"Cpu"`
+
+	// Mem的大小，单位：G
+	Mem *string `json:"Mem,omitempty" name:"Mem"`
+
+	// 最小副本数，最小值：0
+	MinNum *string `json:"MinNum,omitempty" name:"MinNum"`
+
+	// 最大副本数
+	MaxNum *string `json:"MaxNum,omitempty" name:"MaxNum"`
+
+	// 策略类型
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	PolicyThreshold *string `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+
+	// 环境变量
+	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+	// 容器端口
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// repository地址
+	Repository *string `json:"Repository,omitempty" name:"Repository"`
+
+	// 分支
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+	// 版本备注
+	VersionRemark *string `json:"VersionRemark,omitempty" name:"VersionRemark"`
+
+	// 代码包名字
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 代码包版本
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// Image的详情
+	ImageInfo *CloudBaseRunImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// Github等拉取代码的详情
+	CodeDetail *CloudBaseCodeRepoDetail `json:"CodeDetail,omitempty" name:"CodeDetail"`
+
+	// 是否回放流量
+	IsRebuild *bool `json:"IsRebuild,omitempty" name:"IsRebuild"`
+
+	// 延迟多长时间开始健康检查（单位s）
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// cfs挂载信息
+	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo" list`
+
+	// 是否回滚
+	Rollback *bool `json:"Rollback,omitempty" name:"Rollback"`
+
+	// 版本历史名
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 自定义采集路径
+	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+	// 是否启用统一域名
+	EnableUnion *bool `json:"EnableUnion,omitempty" name:"EnableUnion"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+
+	// 服务路径（只会第一次生效）
+	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
+}
+
+func (r *RollUpdateCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollUpdateCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "VersionName")
+	delete(f, "UploadType")
+	delete(f, "RepositoryType")
+	delete(f, "FlowRatio")
+	delete(f, "DockerfilePath")
+	delete(f, "BuildDir")
+	delete(f, "Cpu")
+	delete(f, "Mem")
+	delete(f, "MinNum")
+	delete(f, "MaxNum")
+	delete(f, "PolicyType")
+	delete(f, "PolicyThreshold")
+	delete(f, "EnvParams")
+	delete(f, "ContainerPort")
+	delete(f, "ServerName")
+	delete(f, "Repository")
+	delete(f, "Branch")
+	delete(f, "VersionRemark")
+	delete(f, "PackageName")
+	delete(f, "PackageVersion")
+	delete(f, "ImageInfo")
+	delete(f, "CodeDetail")
+	delete(f, "IsRebuild")
+	delete(f, "InitialDelaySeconds")
+	delete(f, "MountVolumeInfo")
+	delete(f, "Rollback")
+	delete(f, "SnapshotName")
+	delete(f, "CustomLogs")
+	delete(f, "EnableUnion")
+	delete(f, "OperatorRemark")
+	delete(f, "ServerPath")
+	if len(f) > 0 {
+		return errors.New("RollUpdateCloudBaseRunServerVersionRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollUpdateCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// succ为成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 滚动更新的VersionName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+		// 操作记录id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RunId *string `json:"RunId,omitempty" name:"RunId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RollUpdateCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollUpdateCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

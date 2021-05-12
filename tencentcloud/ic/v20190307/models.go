@@ -322,6 +322,60 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyUserCardRemarkRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 物联卡ICCID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 备注信息，限50字
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyUserCardRemarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserCardRemarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccid")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return errors.New("ModifyUserCardRemarkRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserCardRemarkResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUserCardRemarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserCardRemarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RenewCardsRequest struct {
 	*tchttp.BaseRequest
 

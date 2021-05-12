@@ -241,7 +241,7 @@ type CheckDomainResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FeeRenew *uint64 `json:"FeeRenew,omitempty" name:"FeeRenew"`
 
-		// 域名真实价格
+		// 域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RealPrice *uint64 `json:"RealPrice,omitempty" name:"RealPrice"`
 

@@ -1220,3 +1220,28 @@ func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *Reinstate
     err = c.Send(request, response)
     return
 }
+
+func NewRollUpdateCloudBaseRunServerVersionRequest() (request *RollUpdateCloudBaseRunServerVersionRequest) {
+    request = &RollUpdateCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "RollUpdateCloudBaseRunServerVersion")
+    return
+}
+
+func NewRollUpdateCloudBaseRunServerVersionResponse() (response *RollUpdateCloudBaseRunServerVersionResponse) {
+    response = &RollUpdateCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 针对特定的版本，进行滚动更新
+func (c *Client) RollUpdateCloudBaseRunServerVersion(request *RollUpdateCloudBaseRunServerVersionRequest) (response *RollUpdateCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewRollUpdateCloudBaseRunServerVersionRequest()
+    }
+    response = NewRollUpdateCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}

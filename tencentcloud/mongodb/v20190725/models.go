@@ -1146,6 +1146,55 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，格式如：cmgo-p8vnipr5。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DescribeSecurityGroupRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例绑定的安全组
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogPatternsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2104,6 +2153,45 @@ func (r *ResetDBInstancePasswordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetDBInstancePasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityGroup struct {
+
+	// 所属项目id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 入站规则
+	Inbound []*SecurityGroupBound `json:"Inbound,omitempty" name:"Inbound" list`
+
+	// 出站规则
+	Outbound []*SecurityGroupBound `json:"Outbound,omitempty" name:"Outbound" list`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+
+	// 安全组备注
+	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitempty" name:"SecurityGroupRemark"`
+}
+
+type SecurityGroupBound struct {
+
+	// 执行规则。ACCEPT或DROP
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// ip段。
+	CidrIp *string `json:"CidrIp,omitempty" name:"CidrIp"`
+
+	// 端口范围
+	PortRange *string `json:"PortRange,omitempty" name:"PortRange"`
+
+	// 传输层协议。tcp，udp或ALL
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
 }
 
 type ShardInfo struct {

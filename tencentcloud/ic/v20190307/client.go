@@ -118,6 +118,31 @@ func (c *Client) DescribeCards(request *DescribeCardsRequest) (response *Describ
     return
 }
 
+func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
+    request = &ModifyUserCardRemarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ic", APIVersion, "ModifyUserCardRemark")
+    return
+}
+
+func NewModifyUserCardRemarkResponse() (response *ModifyUserCardRemarkResponse) {
+    response = &ModifyUserCardRemarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 编辑卡片备注
+func (c *Client) ModifyUserCardRemark(request *ModifyUserCardRemarkRequest) (response *ModifyUserCardRemarkResponse, err error) {
+    if request == nil {
+        request = NewModifyUserCardRemarkRequest()
+    }
+    response = NewModifyUserCardRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewCardsRequest() (request *RenewCardsRequest) {
     request = &RenewCardsRequest{
         BaseRequest: &tchttp.BaseRequest{},

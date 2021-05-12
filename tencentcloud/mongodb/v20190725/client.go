@@ -370,6 +370,31 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
     return
 }
 
+func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
+    request = &DescribeSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSecurityGroup")
+    return
+}
+
+func NewDescribeSecurityGroupResponse() (response *DescribeSecurityGroupResponse) {
+    response = &DescribeSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询实例绑定的安全组
+func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) (response *DescribeSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupRequest()
+    }
+    response = NewDescribeSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogPatternsRequest() (request *DescribeSlowLogPatternsRequest) {
     request = &DescribeSlowLogPatternsRequest{
         BaseRequest: &tchttp.BaseRequest{},
