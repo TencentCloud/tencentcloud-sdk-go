@@ -35,6 +35,12 @@ type ArtifactReduction struct {
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 }
 
+type AudioEnhance struct {
+
+	// 音效增强种类，可选项：normal
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type AudioInfo struct {
 
 	// 音频码率，取值范围：0 和 [26, 256]，单位：kbps。
@@ -61,6 +67,15 @@ type AudioInfo struct {
 	// 1：开启，
 	// 默认不开启
 	EnableMuteAudio *int64 `json:"EnableMuteAudio,omitempty" name:"EnableMuteAudio"`
+
+	// 音频响度信息
+	LoudnessInfo *LoudnessInfo `json:"LoudnessInfo,omitempty" name:"LoudnessInfo"`
+
+	// 音频音效增强
+	AudioEnhance *AudioEnhance `json:"AudioEnhance,omitempty" name:"AudioEnhance"`
+
+	// 去除混音
+	RemoveReverb *RemoveReverb `json:"RemoveReverb,omitempty" name:"RemoveReverb"`
 }
 
 type AudioInfoResultItem struct {
@@ -934,6 +949,15 @@ type IntervalTime struct {
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 }
 
+type LoudnessInfo struct {
+
+	// 音频整体响度
+	Loudness *float64 `json:"Loudness,omitempty" name:"Loudness"`
+
+	// 音频响度范围
+	LoudnessRange *float64 `json:"LoudnessRange,omitempty" name:"LoudnessRange"`
+}
+
 type LowLightEnhance struct {
 
 	// 低光照增强类型，可选项：normal。
@@ -1411,6 +1435,12 @@ type QualityControlResultItems struct {
 
 	// 质检结果项
 	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems" list`
+}
+
+type RemoveReverb struct {
+
+	// 去混响类型，可选项：normal
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ResultAudioInfo struct {

@@ -793,6 +793,31 @@ func (c *Client) DescribeClusterAsGroups(request *DescribeClusterAsGroupsRequest
     return
 }
 
+func NewDescribeClusterCommonNamesRequest() (request *DescribeClusterCommonNamesRequest) {
+    request = &DescribeClusterCommonNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterCommonNames")
+    return
+}
+
+func NewDescribeClusterCommonNamesResponse() (response *DescribeClusterCommonNamesResponse) {
+    response = &DescribeClusterCommonNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取指定子账户在RBAC授权模式中对应kube-apiserver客户端证书的CommonName字段，如果没有客户端证书，将会签发一个，此接口有最大传入子账户数量上限，当前为50
+func (c *Client) DescribeClusterCommonNames(request *DescribeClusterCommonNamesRequest) (response *DescribeClusterCommonNamesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterCommonNamesRequest()
+    }
+    response = NewDescribeClusterCommonNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterEndpointStatusRequest() (request *DescribeClusterEndpointStatusRequest) {
     request = &DescribeClusterEndpointStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

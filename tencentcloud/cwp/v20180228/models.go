@@ -619,6 +619,104 @@ func (r *CreateProcessTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSearchLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 搜索内容
+	SearchContent *string `json:"SearchContent,omitempty" name:"SearchContent"`
+}
+
+func (r *CreateSearchLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchContent")
+	if len(f) > 0 {
+		return errors.New("CreateSearchLogRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSearchLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0：成功，非0：失败
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSearchLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSearchTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 搜索模板
+	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitempty" name:"SearchTemplate"`
+}
+
+func (r *CreateSearchTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchTemplate")
+	if len(f) > 0 {
+		return errors.New("CreateSearchTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSearchTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0：成功，非0：失败
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSearchTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1363,6 +1461,55 @@ func (r *DeleteReverseShellRulesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteReverseShellRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSearchTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteSearchTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSearchTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return errors.New("DeleteSearchTemplateRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSearchTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0：成功，非0：失败
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSearchTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSearchTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2329,6 +2476,55 @@ func (r *DescribeComponentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeESAggregationsRequest struct {
+	*tchttp.BaseRequest
+
+	// ES聚合条件JSON
+	Query *string `json:"Query,omitempty" name:"Query"`
+}
+
+func (r *DescribeESAggregationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeESAggregationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	if len(f) > 0 {
+		return errors.New("DescribeESAggregationsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeESAggregationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ES聚合结果JSON
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeESAggregationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeESAggregationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeESHitsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2605,6 +2801,66 @@ func (r *DescribeHistoryAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeHistoryServiceRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeHistoryServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHistoryServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeHistoryServiceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistoryServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 1 可购买 2 只能升降配 3 只能跳到续费管理页
+		BuyStatus *uint64 `json:"BuyStatus,omitempty" name:"BuyStatus"`
+
+		// 用户已购容量 单位 G
+		InquireNum *uint64 `json:"InquireNum,omitempty" name:"InquireNum"`
+
+		// 到期时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 是否自动续费,0 初始值, 1 开通 2 没开通
+		IsAutoOpenRenew *uint64 `json:"IsAutoOpenRenew,omitempty" name:"IsAutoOpenRenew"`
+
+		// 资源ID
+		ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+		// 0 没开通 1 正常 2隔离 3销毁
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHistoryServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHistoryServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImpactedHostsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2725,6 +2981,99 @@ func (r *DescribeImportMachineInfoResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImportMachineInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeIndexListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeIndexListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ES 索引信息
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIndexListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLogStorageStatisticRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeLogStorageStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageStatisticRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeLogStorageStatisticRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLogStorageStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总容量
+		TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+		// 已使用容量
+		UsedSize *uint64 `json:"UsedSize,omitempty" name:"UsedSize"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLogStorageStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageStatisticResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4232,6 +4581,159 @@ func (r *DescribeScanMalwareScheduleResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScanMalwareScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchExportListRequest struct {
+	*tchttp.BaseRequest
+
+	// ES查询条件JSON
+	Query *string `json:"Query,omitempty" name:"Query"`
+}
+
+func (r *DescribeSearchExportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchExportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	if len(f) > 0 {
+		return errors.New("DescribeSearchExportListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchExportListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出的任务号
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 下载地址
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSearchExportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchExportListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchLogsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSearchLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeSearchLogsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 历史搜索记录
+		Data []*string `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSearchLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSearchTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("DescribeSearchTemplatesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSearchTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 模板列表
+		List []*SearchTemplate `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSearchTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7527,6 +8029,33 @@ type ReverseShellRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+}
+
+type SearchTemplate struct {
+
+	// 检索名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 检索索引类型
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 检索语句
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 时间范围
+	TimeRange *string `json:"TimeRange,omitempty" name:"TimeRange"`
+
+	// 转换的检索语句内容
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 检索方式。输入框检索：standard,过滤，检索：simple
+	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 展示数据
+	DisplayData *string `json:"DisplayData,omitempty" name:"DisplayData"`
+
+	// 规则ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
 type SecurityDynamic struct {

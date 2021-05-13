@@ -3702,6 +3702,10 @@ type Instance struct {
 	// 实例是否保留, 1-保留，0-不保留,默认
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveValue *int64 `json:"ReserveValue,omitempty" name:"ReserveValue"`
+
+	// 实例的私有IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
 
 type InstanceAccess struct {

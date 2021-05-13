@@ -663,6 +663,15 @@ type ClusterVersion struct {
 	Versions []*string `json:"Versions,omitempty" name:"Versions" list`
 }
 
+type CommonName struct {
+
+	// 子账户UIN
+	SubaccountUin *string `json:"SubaccountUin,omitempty" name:"SubaccountUin"`
+
+	// 子账户客户端证书中的CommonName字段
+	CN *string `json:"CN,omitempty" name:"CN"`
+}
+
 type CreateClusterAsGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2181,6 +2190,63 @@ func (r *DescribeClusterAsGroupsResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterAsGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterCommonNamesRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 子账户列表，不可超出最大值50
+	SubaccountUins []*string `json:"SubaccountUins,omitempty" name:"SubaccountUins" list`
+
+	// 角色ID列表，不可超出最大值50
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds" list`
+}
+
+func (r *DescribeClusterCommonNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterCommonNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SubaccountUins")
+	delete(f, "RoleIds")
+	if len(f) > 0 {
+		return errors.New("DescribeClusterCommonNamesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterCommonNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子账户Uin与其客户端证书的CN字段映射
+		CommonNames []*CommonName `json:"CommonNames,omitempty" name:"CommonNames" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterCommonNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterCommonNamesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -193,6 +193,56 @@ func (c *Client) CreateProcessTask(request *CreateProcessTaskRequest) (response 
     return
 }
 
+func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
+    request = &CreateSearchLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchLog")
+    return
+}
+
+func NewCreateSearchLogResponse() (response *CreateSearchLogResponse) {
+    response = &CreateSearchLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加历史搜索记录
+func (c *Client) CreateSearchLog(request *CreateSearchLogRequest) (response *CreateSearchLogResponse, err error) {
+    if request == nil {
+        request = NewCreateSearchLogRequest()
+    }
+    response = NewCreateSearchLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSearchTemplateRequest() (request *CreateSearchTemplateRequest) {
+    request = &CreateSearchTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchTemplate")
+    return
+}
+
+func NewCreateSearchTemplateResponse() (response *CreateSearchTemplateResponse) {
+    response = &CreateSearchTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 添加检索模板
+func (c *Client) CreateSearchTemplate(request *CreateSearchTemplateRequest) (response *CreateSearchTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateSearchTemplateRequest()
+    }
+    response = NewCreateSearchTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUsualLoginPlacesRequest() (request *CreateUsualLoginPlacesRequest) {
     request = &CreateUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -564,6 +614,31 @@ func (c *Client) DeleteReverseShellRules(request *DeleteReverseShellRulesRequest
         request = NewDeleteReverseShellRulesRequest()
     }
     response = NewDeleteReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSearchTemplateRequest() (request *DeleteSearchTemplateRequest) {
+    request = &DeleteSearchTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteSearchTemplate")
+    return
+}
+
+func NewDeleteSearchTemplateResponse() (response *DeleteSearchTemplateResponse) {
+    response = &DeleteSearchTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除检索模板
+func (c *Client) DeleteSearchTemplate(request *DeleteSearchTemplateRequest) (response *DeleteSearchTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSearchTemplateRequest()
+    }
+    response = NewDeleteSearchTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -943,6 +1018,31 @@ func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (respons
     return
 }
 
+func NewDescribeESAggregationsRequest() (request *DescribeESAggregationsRequest) {
+    request = &DescribeESAggregationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeESAggregations")
+    return
+}
+
+func NewDescribeESAggregationsResponse() (response *DescribeESAggregationsResponse) {
+    response = &DescribeESAggregationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取ES字段聚合结果
+func (c *Client) DescribeESAggregations(request *DescribeESAggregationsRequest) (response *DescribeESAggregationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeESAggregationsRequest()
+    }
+    response = NewDescribeESAggregationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeESHitsRequest() (request *DescribeESHitsRequest) {
     request = &DescribeESHitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1043,6 +1143,31 @@ func (c *Client) DescribeHistoryAccounts(request *DescribeHistoryAccountsRequest
     return
 }
 
+func NewDescribeHistoryServiceRequest() (request *DescribeHistoryServiceRequest) {
+    request = &DescribeHistoryServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeHistoryService")
+    return
+}
+
+func NewDescribeHistoryServiceResponse() (response *DescribeHistoryServiceResponse) {
+    response = &DescribeHistoryServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询日志检索服务信息
+func (c *Client) DescribeHistoryService(request *DescribeHistoryServiceRequest) (response *DescribeHistoryServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryServiceRequest()
+    }
+    response = NewDescribeHistoryServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImpactedHostsRequest() (request *DescribeImpactedHostsRequest) {
     request = &DescribeImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1089,6 +1214,56 @@ func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoReq
         request = NewDescribeImportMachineInfoRequest()
     }
     response = NewDescribeImportMachineInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
+    request = &DescribeIndexListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeIndexList")
+    return
+}
+
+func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
+    response = &DescribeIndexListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取索引列表
+func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIndexListRequest()
+    }
+    response = NewDescribeIndexListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatisticRequest) {
+    request = &DescribeLogStorageStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLogStorageStatistic")
+    return
+}
+
+func NewDescribeLogStorageStatisticResponse() (response *DescribeLogStorageStatisticResponse) {
+    response = &DescribeLogStorageStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取日志检索容量使用统计
+func (c *Client) DescribeLogStorageStatistic(request *DescribeLogStorageStatisticRequest) (response *DescribeLogStorageStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogStorageStatisticRequest()
+    }
+    response = NewDescribeLogStorageStatisticResponse()
     err = c.Send(request, response)
     return
 }
@@ -1689,6 +1864,81 @@ func (c *Client) DescribeScanMalwareSchedule(request *DescribeScanMalwareSchedul
         request = NewDescribeScanMalwareScheduleRequest()
     }
     response = NewDescribeScanMalwareScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSearchExportListRequest() (request *DescribeSearchExportListRequest) {
+    request = &DescribeSearchExportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchExportList")
+    return
+}
+
+func NewDescribeSearchExportListResponse() (response *DescribeSearchExportListResponse) {
+    response = &DescribeSearchExportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出ES查询文档列表
+func (c *Client) DescribeSearchExportList(request *DescribeSearchExportListRequest) (response *DescribeSearchExportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSearchExportListRequest()
+    }
+    response = NewDescribeSearchExportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSearchLogsRequest() (request *DescribeSearchLogsRequest) {
+    request = &DescribeSearchLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchLogs")
+    return
+}
+
+func NewDescribeSearchLogsResponse() (response *DescribeSearchLogsResponse) {
+    response = &DescribeSearchLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取历史搜索记录
+func (c *Client) DescribeSearchLogs(request *DescribeSearchLogsRequest) (response *DescribeSearchLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSearchLogsRequest()
+    }
+    response = NewDescribeSearchLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSearchTemplatesRequest() (request *DescribeSearchTemplatesRequest) {
+    request = &DescribeSearchTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchTemplates")
+    return
+}
+
+func NewDescribeSearchTemplatesResponse() (response *DescribeSearchTemplatesResponse) {
+    response = &DescribeSearchTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取快速检索列表
+func (c *Client) DescribeSearchTemplates(request *DescribeSearchTemplatesRequest) (response *DescribeSearchTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSearchTemplatesRequest()
+    }
+    response = NewDescribeSearchTemplatesResponse()
     err = c.Send(request, response)
     return
 }
