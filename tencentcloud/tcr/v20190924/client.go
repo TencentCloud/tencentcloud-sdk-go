@@ -918,6 +918,31 @@ func (c *Client) DescribeApplicationTriggerPersonal(request *DescribeApplication
     return
 }
 
+func NewDescribeChartDownloadInfoRequest() (request *DescribeChartDownloadInfoRequest) {
+    request = &DescribeChartDownloadInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeChartDownloadInfo")
+    return
+}
+
+func NewDescribeChartDownloadInfoResponse() (response *DescribeChartDownloadInfoResponse) {
+    response = &DescribeChartDownloadInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于在企业版中返回Chart的下载信息
+func (c *Client) DescribeChartDownloadInfo(request *DescribeChartDownloadInfoRequest) (response *DescribeChartDownloadInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeChartDownloadInfoRequest()
+    }
+    response = NewDescribeChartDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExternalEndpointStatusRequest() (request *DescribeExternalEndpointStatusRequest) {
     request = &DescribeExternalEndpointStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

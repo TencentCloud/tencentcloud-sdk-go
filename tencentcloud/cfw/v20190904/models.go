@@ -741,6 +741,51 @@ func (r *DescribeCfwEipsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGuideScanInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeGuideScanInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGuideScanInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeGuideScanInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGuideScanInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 扫描信息
+		Data *ScanInfo `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGuideScanInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGuideScanInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNatRuleOverviewRequest struct {
 	*tchttp.BaseRequest
 
@@ -1922,6 +1967,42 @@ func (r *RunSyncAssetResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunSyncAssetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanInfo struct {
+
+	// 扫描结果信息
+	ScanResultInfo *ScanResultInfo `json:"ScanResultInfo,omitempty" name:"ScanResultInfo"`
+
+	// 扫描状态 0扫描中 1完成   2没赠送过扫描显示开启界面
+	ScanStatus *int64 `json:"ScanStatus,omitempty" name:"ScanStatus"`
+
+	// 进度
+	ScanPercent *float64 `json:"ScanPercent,omitempty" name:"ScanPercent"`
+
+	// 预计完成时间
+	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+}
+
+type ScanResultInfo struct {
+
+	// 暴漏漏洞数量
+	LeakNum *uint64 `json:"LeakNum,omitempty" name:"LeakNum"`
+
+	// 防护ip数量
+	IPNum *uint64 `json:"IPNum,omitempty" name:"IPNum"`
+
+	// 暴漏端口数量
+	PortNum *uint64 `json:"PortNum,omitempty" name:"PortNum"`
+
+	// 是否开启防护
+	IPStatus *bool `json:"IPStatus,omitempty" name:"IPStatus"`
+
+	// 是否拦截攻击
+	IdpStatus *bool `json:"IdpStatus,omitempty" name:"IdpStatus"`
+
+	// 是否禁封端口
+	BanStatus *bool `json:"BanStatus,omitempty" name:"BanStatus"`
 }
 
 type SecurityGroupApiRuleData struct {

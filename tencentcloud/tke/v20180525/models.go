@@ -2952,6 +2952,59 @@ func (r *DescribeEKSClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEnableVpcCniProgressRequest struct {
+	*tchttp.BaseRequest
+
+	// 开启vpc-cni的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeEnableVpcCniProgressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnableVpcCniProgressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return errors.New("DescribeEnableVpcCniProgressRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnableVpcCniProgressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务进度的描述：Running/Succeed/Failed
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnableVpcCniProgressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnableVpcCniProgressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeExistedInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3731,6 +3784,64 @@ type EksCluster struct {
 	// 标签描述列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+}
+
+type EnableVpcCniNetworkTypeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 开启vpc-cni的模式，tke-route-eni开启的是策略路由模式，tke-direct-eni开启的是独立网卡模式
+	VpcCniType *string `json:"VpcCniType,omitempty" name:"VpcCniType"`
+
+	// 是否开启固定IP模式
+	EnableStaticIp *bool `json:"EnableStaticIp,omitempty" name:"EnableStaticIp"`
+
+	// 使用的容器子网
+	Subnets []*string `json:"Subnets,omitempty" name:"Subnets" list`
+}
+
+func (r *EnableVpcCniNetworkTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableVpcCniNetworkTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VpcCniType")
+	delete(f, "EnableStaticIp")
+	delete(f, "Subnets")
+	if len(f) > 0 {
+		return errors.New("EnableVpcCniNetworkTypeRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableVpcCniNetworkTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableVpcCniNetworkTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableVpcCniNetworkTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhancedService struct {

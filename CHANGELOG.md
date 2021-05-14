@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 12 次发布
+### 第 5 次发布
 
-发布时间：2021-05-13 08:10:09
+发布时间：2021-05-14 08:11:06
 
 本次发布包含了以下内容：
 
@@ -12,72 +12,36 @@
 
 新增接口：
 
-* [CreateSearchLog](https://cloud.tencent.com/document/api/296/55731)
-* [CreateSearchTemplate](https://cloud.tencent.com/document/api/296/55730)
-* [DeleteSearchTemplate](https://cloud.tencent.com/document/api/296/55729)
-* [DescribeESAggregations](https://cloud.tencent.com/document/api/296/55728)
-* [DescribeHistoryService](https://cloud.tencent.com/document/api/296/55727)
-* [DescribeIndexList](https://cloud.tencent.com/document/api/296/55726)
-* [DescribeLogStorageStatistic](https://cloud.tencent.com/document/api/296/55725)
-* [DescribeSearchExportList](https://cloud.tencent.com/document/api/296/55724)
-* [DescribeSearchLogs](https://cloud.tencent.com/document/api/296/55723)
-* [DescribeSearchTemplates](https://cloud.tencent.com/document/api/296/55722)
+* [DescribeGuideScanInfo](https://cloud.tencent.com/document/api/1132/55761)
 
 新增数据结构：
 
-* [SearchTemplate](https://cloud.tencent.com/document/api/296/19867#SearchTemplate)
+* [ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo)
+* [ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo)
 
 
 
-## 游戏服务器伸缩(gse) 版本：2019-11-12
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 21 次发布
+### 第 32 次发布
 
-发布时间：2021-05-13 08:01:51
+发布时间：2021-05-14 08:09:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Instance](https://cloud.tencent.com/document/api/1165/42074#Instance)
-
-	* 新增成员：PrivateIpAddress
-
-
-
-
-## 智能编辑(ie) 版本：2020-03-04
-
-### 第 9 次发布
-
-发布时间：2021-05-13 08:01:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AudioEnhance](https://cloud.tencent.com/document/api/1186/42824#AudioEnhance)
-* [LoudnessInfo](https://cloud.tencent.com/document/api/1186/42824#LoudnessInfo)
-* [RemoveReverb](https://cloud.tencent.com/document/api/1186/42824#RemoveReverb)
-
-修改数据结构：
-
-* [AudioInfo](https://cloud.tencent.com/document/api/1186/42824#AudioInfo)
-
-	* 新增成员：LoudnessInfo, AudioEnhance, RemoveReverb
-
+* [DescribeChartDownloadInfo](https://cloud.tencent.com/document/api/1141/55759)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 50 次发布
+### 第 51 次发布
 
-发布时间：2021-05-13 08:07:42
+发布时间：2021-05-14 08:08:14
 
 本次发布包含了以下内容：
 
@@ -85,11 +49,8 @@
 
 新增接口：
 
-* [DescribeClusterCommonNames](https://cloud.tencent.com/document/api/457/55721)
-
-新增数据结构：
-
-* [CommonName](https://cloud.tencent.com/document/api/457/31866#CommonName)
+* [DescribeEnableVpcCniProgress](https://cloud.tencent.com/document/api/457/55758)
+* [EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)
 
 
 
@@ -9645,6 +9606,23 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 5 次发布
+
+发布时间：2021-05-14 08:11:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeGuideScanInfo](https://cloud.tencent.com/document/api/1132/55761)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo)](https://cloud.tencent.com/document/api/1132/49071#[ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo))
+* [[ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo)](https://cloud.tencent.com/document/api/1132/49071#[ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo))
+
 ### 第 4 次发布
 
 发布时间：2021-04-28 08:13:47
@@ -15224,20 +15202,20 @@
 
 新增接口：
 
-* [[CreateSearchLog](https://cloud.tencent.com/document/api/296/55731)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSearchTemplate](https://cloud.tencent.com/document/api/296/55730)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSearchTemplate](https://cloud.tencent.com/document/api/296/55729)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeESAggregations](https://cloud.tencent.com/document/api/296/55728)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHistoryService](https://cloud.tencent.com/document/api/296/55727)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIndexList](https://cloud.tencent.com/document/api/296/55726)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLogStorageStatistic](https://cloud.tencent.com/document/api/296/55725)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSearchExportList](https://cloud.tencent.com/document/api/296/55724)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSearchLogs](https://cloud.tencent.com/document/api/296/55723)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSearchTemplates](https://cloud.tencent.com/document/api/296/55722)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSearchLog](https://cloud.tencent.com/document/api/296/55731)
+* [CreateSearchTemplate](https://cloud.tencent.com/document/api/296/55730)
+* [DeleteSearchTemplate](https://cloud.tencent.com/document/api/296/55729)
+* [DescribeESAggregations](https://cloud.tencent.com/document/api/296/55728)
+* [DescribeHistoryService](https://cloud.tencent.com/document/api/296/55727)
+* [DescribeIndexList](https://cloud.tencent.com/document/api/296/55726)
+* [DescribeLogStorageStatistic](https://cloud.tencent.com/document/api/296/55725)
+* [DescribeSearchExportList](https://cloud.tencent.com/document/api/296/55724)
+* [DescribeSearchLogs](https://cloud.tencent.com/document/api/296/55723)
+* [DescribeSearchTemplates](https://cloud.tencent.com/document/api/296/55722)
 
 新增数据结构：
 
-* [[SearchTemplate](https://cloud.tencent.com/document/api/296/19867#SearchTemplate)](https://cloud.tencent.com/document/api/296/19867#[SearchTemplate](https://cloud.tencent.com/document/api/296/19867#SearchTemplate))
+* [SearchTemplate](https://cloud.tencent.com/document/api/296/19867#SearchTemplate)
 
 ### 第 11 次发布
 
@@ -24092,9 +24070,9 @@
 
 新增数据结构：
 
-* [[AudioEnhance](https://cloud.tencent.com/document/api/1186/42824#AudioEnhance)](https://cloud.tencent.com/document/api/1186/42824#[AudioEnhance](https://cloud.tencent.com/document/api/1186/42824#AudioEnhance))
-* [[LoudnessInfo](https://cloud.tencent.com/document/api/1186/42824#LoudnessInfo)](https://cloud.tencent.com/document/api/1186/42824#[LoudnessInfo](https://cloud.tencent.com/document/api/1186/42824#LoudnessInfo))
-* [[RemoveReverb](https://cloud.tencent.com/document/api/1186/42824#RemoveReverb)](https://cloud.tencent.com/document/api/1186/42824#[RemoveReverb](https://cloud.tencent.com/document/api/1186/42824#RemoveReverb))
+* [AudioEnhance](https://cloud.tencent.com/document/api/1186/42824#AudioEnhance)
+* [LoudnessInfo](https://cloud.tencent.com/document/api/1186/42824#LoudnessInfo)
+* [RemoveReverb](https://cloud.tencent.com/document/api/1186/42824#RemoveReverb)
 
 修改数据结构：
 
@@ -39112,6 +39090,18 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 32 次发布
+
+发布时间：2021-05-14 08:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeChartDownloadInfo](https://cloud.tencent.com/document/api/1141/55759)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 31 次发布
 
 发布时间：2021-05-11 08:10:44
@@ -41395,6 +41385,19 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 51 次发布
+
+发布时间：2021-05-14 08:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEnableVpcCniProgress](https://cloud.tencent.com/document/api/457/55758)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 50 次发布
 
 发布时间：2021-05-13 08:07:42
@@ -41405,11 +41408,11 @@
 
 新增接口：
 
-* [[DescribeClusterCommonNames](https://cloud.tencent.com/document/api/457/55721)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterCommonNames](https://cloud.tencent.com/document/api/457/55721)
 
 新增数据结构：
 
-* [[CommonName](https://cloud.tencent.com/document/api/457/31866#CommonName)](https://cloud.tencent.com/document/api/457/31866#[CommonName](https://cloud.tencent.com/document/api/457/31866#CommonName))
+* [CommonName](https://cloud.tencent.com/document/api/457/31866#CommonName)
 
 ### 第 49 次发布
 

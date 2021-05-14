@@ -1985,6 +1985,67 @@ func (r *DescribeApplicationTriggerPersonalResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeChartDownloadInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// Chart包的名称
+	ChartName *string `json:"ChartName,omitempty" name:"ChartName"`
+
+	// Chart包的版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+}
+
+func (r *DescribeChartDownloadInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChartDownloadInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "ChartName")
+	delete(f, "ChartVersion")
+	if len(f) > 0 {
+		return errors.New("DescribeChartDownloadInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChartDownloadInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用于下载的url的预签名地址
+		PreSignedDownloadURL *string `json:"PreSignedDownloadURL,omitempty" name:"PreSignedDownloadURL"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChartDownloadInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChartDownloadInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeExternalEndpointStatusRequest struct {
 	*tchttp.BaseRequest
 

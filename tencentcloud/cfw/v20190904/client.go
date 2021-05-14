@@ -268,6 +268,31 @@ func (c *Client) DescribeCfwEips(request *DescribeCfwEipsRequest) (response *Des
     return
 }
 
+func NewDescribeGuideScanInfoRequest() (request *DescribeGuideScanInfoRequest) {
+    request = &DescribeGuideScanInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeGuideScanInfo")
+    return
+}
+
+func NewDescribeGuideScanInfoResponse() (response *DescribeGuideScanInfoResponse) {
+    response = &DescribeGuideScanInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGuideScanInfo新手引导扫描接口信息
+func (c *Client) DescribeGuideScanInfo(request *DescribeGuideScanInfoRequest) (response *DescribeGuideScanInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeGuideScanInfoRequest()
+    }
+    response = NewDescribeGuideScanInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatRuleOverviewRequest() (request *DescribeNatRuleOverviewRequest) {
     request = &DescribeNatRuleOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
