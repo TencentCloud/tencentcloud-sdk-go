@@ -1839,6 +1839,31 @@ func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *V
     return
 }
 
+func NewVerifyEnterpriseFourFactorsRequest() (request *VerifyEnterpriseFourFactorsRequest) {
+    request = &VerifyEnterpriseFourFactorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyEnterpriseFourFactors")
+    return
+}
+
+func NewVerifyEnterpriseFourFactorsResponse() (response *VerifyEnterpriseFourFactorsResponse) {
+    response = &VerifyEnterpriseFourFactorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
+func (c *Client) VerifyEnterpriseFourFactors(request *VerifyEnterpriseFourFactorsRequest) (response *VerifyEnterpriseFourFactorsResponse, err error) {
+    if request == nil {
+        request = NewVerifyEnterpriseFourFactorsRequest()
+    }
+    response = NewVerifyEnterpriseFourFactorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyOfdVatInvoiceOCRRequest() (request *VerifyOfdVatInvoiceOCRRequest) {
     request = &VerifyOfdVatInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

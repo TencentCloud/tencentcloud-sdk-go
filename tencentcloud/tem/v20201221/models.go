@@ -255,13 +255,13 @@ type CreateResourceRequest struct {
 	// 命名空间 Id
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
-	// 资源类型
+	// 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源 Id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 来源
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 }
 
@@ -320,7 +320,7 @@ type CreateServiceV2Request struct {
 	// 描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 是否使用默认镜像服务
+	// 是否使用默认镜像服务 1-是，0-否
 	UseDefaultImageService *int64 `json:"UseDefaultImageService,omitempty" name:"UseDefaultImageService"`
 
 	// 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版
@@ -341,10 +341,15 @@ type CreateServiceV2Request struct {
 	// 服务所在子网
 	SubnetList []*string `json:"SubnetList,omitempty" name:"SubnetList" list`
 
-	// 编程语言
+	// 编程语言 
+	// - JAVA
+	// - OTHER
 	CodingLanguage *string `json:"CodingLanguage,omitempty" name:"CodingLanguage"`
 
-	// 部署方式
+	// 部署方式 
+	// - IMAGE
+	// - JAR
+	// - WAR
 	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
 }
 
@@ -650,7 +655,7 @@ type DescribeIngressResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// ingressInfo
+		// Ingress 规则配置
 		Result *IngressInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -678,7 +683,7 @@ type DescribeIngressesRequest struct {
 	// namespace
 	EksNamespace *string `json:"EksNamespace,omitempty" name:"EksNamespace"`
 
-	// 来源
+	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 }
 
@@ -811,16 +816,19 @@ type DescribeServiceRunPodListV2Request struct {
 	// 服务名id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
-	// 单页条数
+	// 单页条数，默认值20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页下标
+	// 分页下标，默认值0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// pod状态
+	// 实例状态 
+	// - Running 
+	// - Pending 
+	// - Error
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 名字
+	// 实例名字
 	PodName *string `json:"PodName,omitempty" name:"PodName"`
 
 	// 来源渠道

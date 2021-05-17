@@ -5281,6 +5281,18 @@ type RunSecurityServiceEnabled struct {
 
 type SetNodePoolNodeProtectionRequest struct {
 	*tchttp.BaseRequest
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池id
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点id
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 节点是否需要移出保护
+	ProtectedFromScaleIn *bool `json:"ProtectedFromScaleIn,omitempty" name:"ProtectedFromScaleIn"`
 }
 
 func (r *SetNodePoolNodeProtectionRequest) ToJsonString() string {
@@ -5295,6 +5307,10 @@ func (r *SetNodePoolNodeProtectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "InstanceIds")
+	delete(f, "ProtectedFromScaleIn")
 	if len(f) > 0 {
 		return errors.New("SetNodePoolNodeProtectionRequest has unknown keys!")
 	}
@@ -5304,6 +5320,14 @@ func (r *SetNodePoolNodeProtectionRequest) FromJsonString(s string) error {
 type SetNodePoolNodeProtectionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 成功设置的节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SucceedInstanceIds []*string `json:"SucceedInstanceIds,omitempty" name:"SucceedInstanceIds" list`
+
+		// 没有成功设置的节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

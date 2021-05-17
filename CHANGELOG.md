@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 移动网络加速(mna) 版本：2021-01-19
 
-### 第 5 次发布
+### 第 1 次发布
 
-发布时间：2021-05-14 08:11:06
+发布时间：2021-05-17 08:00:05
 
 本次发布包含了以下内容：
 
@@ -12,20 +12,23 @@
 
 新增接口：
 
-* [DescribeGuideScanInfo](https://cloud.tencent.com/document/api/1132/55761)
+* [CreateQos](https://cloud.tencent.com/document/api/1385/55845)
+* [DeleteQos](https://cloud.tencent.com/document/api/1385/55844)
 
 新增数据结构：
 
-* [ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo)
-* [ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo)
+* [Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity)
+* [DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo)
+* [SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo)
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 32 次发布
+### 第 48 次发布
 
-发布时间：2021-05-14 08:09:55
+发布时间：2021-05-17 08:07:03
 
 本次发布包含了以下内容：
 
@@ -33,24 +36,32 @@
 
 新增接口：
 
-* [DescribeChartDownloadInfo](https://cloud.tencent.com/document/api/1141/55759)
+* [VerifyEnterpriseFourFactors](https://cloud.tencent.com/document/api/866/55857)
+
+新增数据结构：
+
+* [Detail](https://cloud.tencent.com/document/api/866/33527#Detail)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 51 次发布
+### 第 52 次发布
 
-发布时间：2021-05-14 08:08:14
+发布时间：2021-05-17 08:08:15
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeEnableVpcCniProgress](https://cloud.tencent.com/document/api/457/55758)
-* [EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)
+* [SetNodePoolNodeProtection](https://cloud.tencent.com/document/api/457/53705)
+
+	* 新增入参：ClusterId, NodePoolId, InstanceIds, ProtectedFromScaleIn
+
+	* 新增出参：SucceedInstanceIds, FailedInstanceIds
+
 
 
 
@@ -9616,12 +9627,12 @@
 
 新增接口：
 
-* [[DescribeGuideScanInfo](https://cloud.tencent.com/document/api/1132/55761)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGuideScanInfo](https://cloud.tencent.com/document/api/1132/55761)
 
 新增数据结构：
 
-* [[ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo)](https://cloud.tencent.com/document/api/1132/49071#[ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo))
-* [[ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo)](https://cloud.tencent.com/document/api/1132/49071#[ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo))
+* [ScanInfo](https://cloud.tencent.com/document/api/1132/49071#ScanInfo)
+* [ScanResultInfo](https://cloud.tencent.com/document/api/1132/49071#ScanResultInfo)
 
 ### 第 4 次发布
 
@@ -29224,6 +29235,31 @@
 
 
 
+## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 1 次发布
+
+发布时间：2021-05-17 08:00:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateQos](https://cloud.tencent.com/document/api/1385/55845)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteQos](https://cloud.tencent.com/document/api/1385/55844)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity)](https://cloud.tencent.com/document/api/1385/55846#[Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity))
+* [[DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo)](https://cloud.tencent.com/document/api/1385/55846#[DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo))
+* [[DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo)](https://cloud.tencent.com/document/api/1385/55846#[DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo))
+* [[SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo)](https://cloud.tencent.com/document/api/1385/55846#[SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo))
+
+
+
+
 ## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
 ### 第 5 次发布
@@ -31869,6 +31905,22 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 48 次发布
+
+发布时间：2021-05-17 08:07:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[VerifyEnterpriseFourFactors](https://cloud.tencent.com/document/api/866/55857)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Detail](https://cloud.tencent.com/document/api/866/33527#Detail)](https://cloud.tencent.com/document/api/866/33527#[Detail](https://cloud.tencent.com/document/api/866/33527#Detail))
 
 ### 第 47 次发布
 
@@ -39100,7 +39152,7 @@
 
 新增接口：
 
-* [[DescribeChartDownloadInfo](https://cloud.tencent.com/document/api/1141/55759)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeChartDownloadInfo](https://cloud.tencent.com/document/api/1141/55759)
 
 ### 第 31 次发布
 
@@ -41385,6 +41437,23 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 52 次发布
+
+发布时间：2021-05-17 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SetNodePoolNodeProtection](https://cloud.tencent.com/document/api/457/53705)
+
+	* 新增入参：ClusterId, NodePoolId, InstanceIds, ProtectedFromScaleIn
+
+	* 新增出参：SucceedInstanceIds, FailedInstanceIds
+
+
 ### 第 51 次发布
 
 发布时间：2021-05-14 08:08:14
@@ -41395,8 +41464,8 @@
 
 新增接口：
 
-* [[DescribeEnableVpcCniProgress](https://cloud.tencent.com/document/api/457/55758)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEnableVpcCniProgress](https://cloud.tencent.com/document/api/457/55758)
+* [EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)
 
 ### 第 50 次发布
 

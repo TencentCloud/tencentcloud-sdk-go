@@ -766,6 +766,15 @@ type Coord struct {
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 }
 
+type Detail struct {
+
+	// 企业四要素核验结果状态码
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 企业四要素核验结果描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
 type DriverLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -5833,6 +5842,71 @@ func (r *VerifyBizLicenseResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyEnterpriseFourFactorsRequest struct {
+	*tchttp.BaseRequest
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 证件号码（公司注册证件号）
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 企业全称
+	EnterpriseName *string `json:"EnterpriseName,omitempty" name:"EnterpriseName"`
+
+	// 企业标识（注册号，统一社会信用代码）
+	EnterpriseMark *string `json:"EnterpriseMark,omitempty" name:"EnterpriseMark"`
+}
+
+func (r *VerifyEnterpriseFourFactorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyEnterpriseFourFactorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RealName")
+	delete(f, "IdCard")
+	delete(f, "EnterpriseName")
+	delete(f, "EnterpriseMark")
+	if len(f) > 0 {
+		return errors.New("VerifyEnterpriseFourFactorsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyEnterpriseFourFactorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 核验一致性（1:一致，2:不一致）
+		State *int64 `json:"State,omitempty" name:"State"`
+
+		// 返回不一致时，返回明细，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Detail *Detail `json:"Detail,omitempty" name:"Detail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyEnterpriseFourFactorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyEnterpriseFourFactorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
