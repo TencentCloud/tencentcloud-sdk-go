@@ -43,6 +43,170 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
+    request = &AddSmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "AddSmsSign")
+    return
+}
+
+func NewAddSmsSignResponse() (response *AddSmsSignResponse) {
+    response = &AddSmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 添加短信签名，申请之前请先认真参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
+// 2. ⚠️注意：个人认证用户不支持使用 API 申请短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台申请短信签名。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignResponse, err error) {
+    if request == nil {
+        request = NewAddSmsSignRequest()
+    }
+    response = NewAddSmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
+    request = &AddSmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "AddSmsTemplate")
+    return
+}
+
+func NewAddSmsTemplateResponse() (response *AddSmsTemplateResponse) {
+    response = &AddSmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 添加短信模板，申请之前请先认真参阅 [腾讯云短信正文模板审核标准](https://cloud.tencent.com/document/product/382/39023)。
+// 2. ⚠️注意：个人认证用户不支持使用 API 申请短信正文模板，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 申请短信正文模板。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewAddSmsTemplateRequest()
+    }
+    response = NewAddSmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCallbackStatusStatisticsRequest() (request *CallbackStatusStatisticsRequest) {
+    request = &CallbackStatusStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "CallbackStatusStatistics")
+    return
+}
+
+func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsResponse) {
+    response = &CallbackStatusStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 统计用户回执的数据。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) CallbackStatusStatistics(request *CallbackStatusStatisticsRequest) (response *CallbackStatusStatisticsResponse, err error) {
+    if request == nil {
+        request = NewCallbackStatusStatisticsRequest()
+    }
+    response = NewCallbackStatusStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmsSignRequest() (request *DeleteSmsSignRequest) {
+    request = &DeleteSmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsSign")
+    return
+}
+
+func NewDeleteSmsSignResponse() (response *DeleteSmsSignResponse) {
+    response = &DeleteSmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ⚠️注意：个人认证用户不支持使用 API 删除短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，请登录 [控制台](https://console.cloud.tencent.com/smsv2) 删除短信签名。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (response *DeleteSmsSignResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmsSignRequest()
+    }
+    response = NewDeleteSmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmsTemplateRequest() (request *DeleteSmsTemplateRequest) {
+    request = &DeleteSmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsTemplate")
+    return
+}
+
+func NewDeleteSmsTemplateResponse() (response *DeleteSmsTemplateResponse) {
+    response = &DeleteSmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ⚠️注意：个人认证用户不支持使用 API 删除短信正文模板，请登录 [控制台](https://console.cloud.tencent.com/smsv2) 删除短信正文模板，如需了解请参阅 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (response *DeleteSmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmsTemplateRequest()
+    }
+    response = NewDeleteSmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
+    request = &DescribeSmsSignListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DescribeSmsSignList")
+    return
+}
+
+func NewDescribeSmsSignListResponse() (response *DescribeSmsSignListResponse) {
+    response = &DescribeSmsSignListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ⚠️注意：个人认证用户不支持使用 API 查询短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629),如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 查询短信签名。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (response *DescribeSmsSignListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsSignListRequest()
+    }
+    response = NewDescribeSmsSignListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmsTemplateListRequest() (request *DescribeSmsTemplateListRequest) {
     request = &DescribeSmsTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -58,14 +222,267 @@ func NewDescribeSmsTemplateListResponse() (response *DescribeSmsTemplateListResp
     return
 }
 
-// ⚠️注意：个人认证用户不支持使用 API 查询短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
-// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
-// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+// ⚠️注意：个人认证用户不支持使用 API 查询短信正文模板，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest) (response *DescribeSmsTemplateListResponse, err error) {
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
     }
     response = NewDescribeSmsTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySmsSignRequest() (request *ModifySmsSignRequest) {
+    request = &ModifySmsSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "ModifySmsSign")
+    return
+}
+
+func NewModifySmsSignResponse() (response *ModifySmsSignResponse) {
+    response = &ModifySmsSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 修改短信签名，修改之前请先认证参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
+// 2. ⚠️注意：个人认证用户不支持使用 API 修改短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 修改短信签名。
+// 3. 修改短信签名，仅当签名为**待审核**或**已拒绝**状态时，才能进行修改，**已审核通过**的签名不支持修改。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) ModifySmsSign(request *ModifySmsSignRequest) (response *ModifySmsSignResponse, err error) {
+    if request == nil {
+        request = NewModifySmsSignRequest()
+    }
+    response = NewModifySmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
+    request = &ModifySmsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "ModifySmsTemplate")
+    return
+}
+
+func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
+    response = &ModifySmsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 1. 修改短信正文模板，修改之前请先认真参阅 [腾讯云短信正文模板审核标准](https://cloud.tencent.com/document/product/382/39023)。
+// 2. ⚠️注意：个人认证用户不支持使用 API 修改短信正文模板，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 修改短信正文模板。
+// 3. 修改短信模板，仅当正文模板为**待审核**或**已拒绝**状态时，才能进行修改，**已审核通过**的正文模板不支持修改。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response *ModifySmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySmsTemplateRequest()
+    }
+    response = NewModifySmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPullSmsReplyStatusRequest() (request *PullSmsReplyStatusRequest) {
+    request = &PullSmsReplyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "PullSmsReplyStatus")
+    return
+}
+
+func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
+    response = &PullSmsReplyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取短信回复状态。
+// 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) PullSmsReplyStatus(request *PullSmsReplyStatusRequest) (response *PullSmsReplyStatusResponse, err error) {
+    if request == nil {
+        request = NewPullSmsReplyStatusRequest()
+    }
+    response = NewPullSmsReplyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPullSmsReplyStatusByPhoneNumberRequest() (request *PullSmsReplyStatusByPhoneNumberRequest) {
+    request = &PullSmsReplyStatusByPhoneNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "PullSmsReplyStatusByPhoneNumber")
+    return
+}
+
+func NewPullSmsReplyStatusByPhoneNumberResponse() (response *PullSmsReplyStatusByPhoneNumberResponse) {
+    response = &PullSmsReplyStatusByPhoneNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取单个号码短信回复状态。
+// 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) PullSmsReplyStatusByPhoneNumber(request *PullSmsReplyStatusByPhoneNumberRequest) (response *PullSmsReplyStatusByPhoneNumberResponse, err error) {
+    if request == nil {
+        request = NewPullSmsReplyStatusByPhoneNumberRequest()
+    }
+    response = NewPullSmsReplyStatusByPhoneNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPullSmsSendStatusRequest() (request *PullSmsSendStatusRequest) {
+    request = &PullSmsSendStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "PullSmsSendStatus")
+    return
+}
+
+func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
+    response = &PullSmsSendStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取短信下发状态。
+// 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
+// >- 注：此接口需要联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) PullSmsSendStatus(request *PullSmsSendStatusRequest) (response *PullSmsSendStatusResponse, err error) {
+    if request == nil {
+        request = NewPullSmsSendStatusRequest()
+    }
+    response = NewPullSmsSendStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPullSmsSendStatusByPhoneNumberRequest() (request *PullSmsSendStatusByPhoneNumberRequest) {
+    request = &PullSmsSendStatusByPhoneNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "PullSmsSendStatusByPhoneNumber")
+    return
+}
+
+func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByPhoneNumberResponse) {
+    response = &PullSmsSendStatusByPhoneNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取单个号码短信下发状态。
+// 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11
+// &Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) PullSmsSendStatusByPhoneNumber(request *PullSmsSendStatusByPhoneNumberRequest) (response *PullSmsSendStatusByPhoneNumberResponse, err error) {
+    if request == nil {
+        request = NewPullSmsSendStatusByPhoneNumberRequest()
+    }
+    response = NewPullSmsSendStatusByPhoneNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendSmsRequest() (request *SendSmsRequest) {
+    request = &SendSmsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "SendSms")
+    return
+}
+
+func NewSendSmsResponse() (response *SendSmsResponse) {
+    response = &SendSmsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 短信发送接口，用户给用户发短信验证码、通知类短信或营销短信。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
+    if request == nil {
+        request = NewSendSmsRequest()
+    }
+    response = NewSendSmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendStatusStatisticsRequest() (request *SendStatusStatisticsRequest) {
+    request = &SendStatusStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "SendStatusStatistics")
+    return
+}
+
+func NewSendStatusStatisticsResponse() (response *SendStatusStatisticsResponse) {
+    response = &SendStatusStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 统计用户发送短信的数据。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) SendStatusStatistics(request *SendStatusStatisticsRequest) (response *SendStatusStatisticsResponse, err error) {
+    if request == nil {
+        request = NewSendStatusStatisticsRequest()
+    }
+    response = NewSendStatusStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSmsPackagesStatisticsRequest() (request *SmsPackagesStatisticsRequest) {
+    request = &SmsPackagesStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "SmsPackagesStatistics")
+    return
+}
+
+func NewSmsPackagesStatisticsResponse() (response *SmsPackagesStatisticsResponse) {
+    response = &SmsPackagesStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用户套餐包信息统计。
+// >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
+// >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
+func (c *Client) SmsPackagesStatistics(request *SmsPackagesStatisticsRequest) (response *SmsPackagesStatisticsResponse, err error) {
+    if request == nil {
+        request = NewSmsPackagesStatisticsRequest()
+    }
+    response = NewSmsPackagesStatisticsResponse()
     err = c.Send(request, response)
     return
 }
