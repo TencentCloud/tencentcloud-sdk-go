@@ -546,6 +546,24 @@ func (r *AuditApplyClientResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientBaseElem struct {
+
+	// 代客关联的代理商UIN
+	AgentUin *string `json:"AgentUin,omitempty" name:"AgentUin"`
+
+	// 代客UIN
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 代客关联类型 0:代理 1:转售
+	ClientRelateType *uint64 `json:"ClientRelateType,omitempty" name:"ClientRelateType"`
+
+	// 代理商合作模式 0:代理 1:转售
+	AgentCooperationMode *uint64 `json:"AgentCooperationMode,omitempty" name:"AgentCooperationMode"`
+
+	// 代理商国家编码 China:中国  其他:海外，如US等
+	AgentCountry *string `json:"AgentCountry,omitempty" name:"AgentCountry"`
+}
+
 type CreatePayRelationForClientRequest struct {
 	*tchttp.BaseRequest
 
@@ -1436,8 +1454,11 @@ type DescribeClientBalanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 账户余额，单位分
+		// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
 		Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 账户现金余额，单位分
+		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1452,6 +1473,58 @@ func (r *DescribeClientBalanceResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClientBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBaseInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 代客UIN
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *DescribeClientBaseInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBaseInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return errors.New("DescribeClientBaseInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBaseInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 代客基础信息数组
+		ClientBaseSet []*ClientBaseElem `json:"ClientBaseSet,omitempty" name:"ClientBaseSet" list`
+
+		// 符合条件的代客数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClientBaseInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBaseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

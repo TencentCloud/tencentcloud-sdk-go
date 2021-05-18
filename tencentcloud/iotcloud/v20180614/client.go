@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
+    request = &BatchUpdateFirmwareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "BatchUpdateFirmware")
+    return
+}
+
+func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
+    response = &BatchUpdateFirmwareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
+    if request == nil {
+        request = NewBatchUpdateFirmwareRequest()
+    }
+    response = NewBatchUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindDevicesRequest() (request *BindDevicesRequest) {
     request = &BindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1139,6 +1164,31 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
         request = NewEnableTopicRuleRequest()
     }
     response = NewEnableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
+    request = &GetCOSURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "GetCOSURL")
+    return
+}
+
+func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
+    response = &GetCOSURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLResponse, err error) {
+    if request == nil {
+        request = NewGetCOSURLRequest()
+    }
+    response = NewGetCOSURLResponse()
     err = c.Send(request, response)
     return
 }

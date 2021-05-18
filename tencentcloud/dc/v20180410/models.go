@@ -1130,11 +1130,11 @@ type DirectConnect struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
 
-	// 该物理专线下vlan 0的专线通道数量
+	// 该物理专线下vlan 0的专用通道数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VlanZeroDirectConnectTunnelCount *uint64 `json:"VlanZeroDirectConnectTunnelCount,omitempty" name:"VlanZeroDirectConnectTunnelCount"`
 
-	// 该物理专线下非vlan 0的专线通道数量
+	// 该物理专线下非vlan 0的专用通道数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherVlanDirectConnectTunnelCount *uint64 `json:"OtherVlanDirectConnectTunnelCount,omitempty" name:"OtherVlanDirectConnectTunnelCount"`
 

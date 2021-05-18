@@ -43,6 +43,56 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewClearCmqQueueRequest() (request *ClearCmqQueueRequest) {
+    request = &ClearCmqQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ClearCmqQueue")
+    return
+}
+
+func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
+    response = &ClearCmqQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 清空cmq消息队列中的消息
+func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
+    if request == nil {
+        request = NewClearCmqQueueRequest()
+    }
+    response = NewClearCmqQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewClearCmqSubscriptionFilterTagsRequest() (request *ClearCmqSubscriptionFilterTagsRequest) {
+    request = &ClearCmqSubscriptionFilterTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ClearCmqSubscriptionFilterTags")
+    return
+}
+
+func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscriptionFilterTagsResponse) {
+    response = &ClearCmqSubscriptionFilterTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 清空订阅者消息标签
+func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFilterTagsRequest) (response *ClearCmqSubscriptionFilterTagsResponse, err error) {
+    if request == nil {
+        request = NewClearCmqSubscriptionFilterTagsRequest()
+    }
+    response = NewClearCmqSubscriptionFilterTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,6 +114,81 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
         request = NewCreateClusterRequest()
     }
     response = NewCreateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCmqQueueRequest() (request *CreateCmqQueueRequest) {
+    request = &CreateCmqQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqQueue")
+    return
+}
+
+func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
+    response = &CreateCmqQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建cmq队列接口
+func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
+    if request == nil {
+        request = NewCreateCmqQueueRequest()
+    }
+    response = NewCreateCmqQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCmqSubscribeRequest() (request *CreateCmqSubscribeRequest) {
+    request = &CreateCmqSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqSubscribe")
+    return
+}
+
+func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
+    response = &CreateCmqSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建cmq订阅接口
+func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateCmqSubscribeRequest()
+    }
+    response = NewCreateCmqSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCmqTopicRequest() (request *CreateCmqTopicRequest) {
+    request = &CreateCmqTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqTopic")
+    return
+}
+
+func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
+    response = &CreateCmqTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 创建cmq主题
+func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateCmqTopicRequest()
+    }
+    response = NewCreateCmqTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -164,6 +289,81 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
         request = NewDeleteClusterRequest()
     }
     response = NewDeleteClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCmqQueueRequest() (request *DeleteCmqQueueRequest) {
+    request = &DeleteCmqQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqQueue")
+    return
+}
+
+func NewDeleteCmqQueueResponse() (response *DeleteCmqQueueResponse) {
+    response = &DeleteCmqQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除cmq队列
+func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *DeleteCmqQueueResponse, err error) {
+    if request == nil {
+        request = NewDeleteCmqQueueRequest()
+    }
+    response = NewDeleteCmqQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCmqSubscribeRequest() (request *DeleteCmqSubscribeRequest) {
+    request = &DeleteCmqSubscribeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqSubscribe")
+    return
+}
+
+func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
+    response = &DeleteCmqSubscribeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除cmq订阅
+func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDeleteCmqSubscribeRequest()
+    }
+    response = NewDeleteCmqSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCmqTopicRequest() (request *DeleteCmqTopicRequest) {
+    request = &DeleteCmqTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqTopic")
+    return
+}
+
+func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
+    response = &DeleteCmqTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 删除cmq主题
+func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteCmqTopicRequest()
+    }
+    response = NewDeleteCmqTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -343,6 +543,156 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
     return
 }
 
+func NewDescribeCmqDeadLetterSourceQueuesRequest() (request *DescribeCmqDeadLetterSourceQueuesRequest) {
+    request = &DescribeCmqDeadLetterSourceQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqDeadLetterSourceQueues")
+    return
+}
+
+func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLetterSourceQueuesResponse) {
+    response = &DescribeCmqDeadLetterSourceQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 枚举cmq死信队列源队列
+func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLetterSourceQueuesRequest) (response *DescribeCmqDeadLetterSourceQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqDeadLetterSourceQueuesRequest()
+    }
+    response = NewDescribeCmqDeadLetterSourceQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmqQueueDetailRequest() (request *DescribeCmqQueueDetailRequest) {
+    request = &DescribeCmqQueueDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqQueueDetail")
+    return
+}
+
+func NewDescribeCmqQueueDetailResponse() (response *DescribeCmqQueueDetailResponse) {
+    response = &DescribeCmqQueueDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询cmq队列详情
+func (c *Client) DescribeCmqQueueDetail(request *DescribeCmqQueueDetailRequest) (response *DescribeCmqQueueDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqQueueDetailRequest()
+    }
+    response = NewDescribeCmqQueueDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmqQueuesRequest() (request *DescribeCmqQueuesRequest) {
+    request = &DescribeCmqQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqQueues")
+    return
+}
+
+func NewDescribeCmqQueuesResponse() (response *DescribeCmqQueuesResponse) {
+    response = &DescribeCmqQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询cmq全量队列
+func (c *Client) DescribeCmqQueues(request *DescribeCmqQueuesRequest) (response *DescribeCmqQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqQueuesRequest()
+    }
+    response = NewDescribeCmqQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmqSubscriptionDetailRequest() (request *DescribeCmqSubscriptionDetailRequest) {
+    request = &DescribeCmqSubscriptionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqSubscriptionDetail")
+    return
+}
+
+func NewDescribeCmqSubscriptionDetailResponse() (response *DescribeCmqSubscriptionDetailResponse) {
+    response = &DescribeCmqSubscriptionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询cmq订阅详情
+func (c *Client) DescribeCmqSubscriptionDetail(request *DescribeCmqSubscriptionDetailRequest) (response *DescribeCmqSubscriptionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqSubscriptionDetailRequest()
+    }
+    response = NewDescribeCmqSubscriptionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmqTopicDetailRequest() (request *DescribeCmqTopicDetailRequest) {
+    request = &DescribeCmqTopicDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqTopicDetail")
+    return
+}
+
+func NewDescribeCmqTopicDetailResponse() (response *DescribeCmqTopicDetailResponse) {
+    response = &DescribeCmqTopicDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询cmq主题详情
+func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) (response *DescribeCmqTopicDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqTopicDetailRequest()
+    }
+    response = NewDescribeCmqTopicDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmqTopicsRequest() (request *DescribeCmqTopicsRequest) {
+    request = &DescribeCmqTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqTopics")
+    return
+}
+
+func NewDescribeCmqTopicsResponse() (response *DescribeCmqTopicsResponse) {
+    response = &DescribeCmqTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 枚举cmq全量主题
+func (c *Client) DescribeCmqTopics(request *DescribeCmqTopicsRequest) (response *DescribeCmqTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmqTopicsRequest()
+    }
+    response = NewDescribeCmqTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvironmentAttributesRequest() (request *DescribeEnvironmentAttributesRequest) {
     request = &DescribeEnvironmentAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -518,6 +868,81 @@ func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyC
     return
 }
 
+func NewModifyCmqQueueAttributeRequest() (request *ModifyCmqQueueAttributeRequest) {
+    request = &ModifyCmqQueueAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqQueueAttribute")
+    return
+}
+
+func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResponse) {
+    response = &ModifyCmqQueueAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改cmq队列属性
+func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCmqQueueAttributeRequest()
+    }
+    response = NewModifyCmqQueueAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCmqSubscriptionAttributeRequest() (request *ModifyCmqSubscriptionAttributeRequest) {
+    request = &ModifyCmqSubscriptionAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqSubscriptionAttribute")
+    return
+}
+
+func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptionAttributeResponse) {
+    response = &ModifyCmqSubscriptionAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改cmq订阅属性
+func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAttributeRequest) (response *ModifyCmqSubscriptionAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCmqSubscriptionAttributeRequest()
+    }
+    response = NewModifyCmqSubscriptionAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCmqTopicAttributeRequest() (request *ModifyCmqTopicAttributeRequest) {
+    request = &ModifyCmqTopicAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqTopicAttribute")
+    return
+}
+
+func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResponse) {
+    response = &ModifyCmqTopicAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改cmq主题属性
+func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest) (response *ModifyCmqTopicAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCmqTopicAttributeRequest()
+    }
+    response = NewModifyCmqTopicAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEnvironmentAttributesRequest() (request *ModifyEnvironmentAttributesRequest) {
     request = &ModifyEnvironmentAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -568,6 +993,31 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
     return
 }
 
+func NewPublishCmqMsgRequest() (request *PublishCmqMsgRequest) {
+    request = &PublishCmqMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "PublishCmqMsg")
+    return
+}
+
+func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
+    response = &PublishCmqMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发送cmq主题消息
+func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *PublishCmqMsgResponse, err error) {
+    if request == nil {
+        request = NewPublishCmqMsgRequest()
+    }
+    response = NewPublishCmqMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetMsgSubOffsetByTimestampRequest() (request *ResetMsgSubOffsetByTimestampRequest) {
     request = &ResetMsgSubOffsetByTimestampRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +1039,31 @@ func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimest
         request = NewResetMsgSubOffsetByTimestampRequest()
     }
     response = NewResetMsgSubOffsetByTimestampResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRewindCmqQueueRequest() (request *RewindCmqQueueRequest) {
+    request = &RewindCmqQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "RewindCmqQueue")
+    return
+}
+
+func NewRewindCmqQueueResponse() (response *RewindCmqQueueResponse) {
+    response = &RewindCmqQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 回溯cmq队列
+func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *RewindCmqQueueResponse, err error) {
+    if request == nil {
+        request = NewRewindCmqQueueRequest()
+    }
+    response = NewRewindCmqQueueResponse()
     err = c.Send(request, response)
     return
 }
@@ -618,6 +1093,31 @@ func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response 
     return
 }
 
+func NewSendCmqMsgRequest() (request *SendCmqMsgRequest) {
+    request = &SendCmqMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "SendCmqMsg")
+    return
+}
+
+func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
+    response = &SendCmqMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 发送cmq消息
+func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
+    if request == nil {
+        request = NewSendCmqMsgRequest()
+    }
+    response = NewSendCmqMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendMessagesRequest() (request *SendMessagesRequest) {
     request = &SendMessagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -639,6 +1139,31 @@ func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessa
         request = NewSendMessagesRequest()
     }
     response = NewSendMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindCmqDeadLetterRequest() (request *UnbindCmqDeadLetterRequest) {
+    request = &UnbindCmqDeadLetterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "UnbindCmqDeadLetter")
+    return
+}
+
+func NewUnbindCmqDeadLetterResponse() (response *UnbindCmqDeadLetterResponse) {
+    response = &UnbindCmqDeadLetterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 解绑cmq死信队列
+func (c *Client) UnbindCmqDeadLetter(request *UnbindCmqDeadLetterRequest) (response *UnbindCmqDeadLetterResponse, err error) {
+    if request == nil {
+        request = NewUnbindCmqDeadLetterRequest()
+    }
+    response = NewUnbindCmqDeadLetterResponse()
     err = c.Send(request, response)
     return
 }

@@ -343,6 +343,56 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     return
 }
 
+func NewDescribeBalanceRequest() (request *DescribeBalanceRequest) {
+    request = &DescribeBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBalance")
+    return
+}
+
+func NewDescribeBalanceResponse() (response *DescribeBalanceResponse) {
+    response = &DescribeBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询账户余额
+func (c *Client) DescribeBalance(request *DescribeBalanceRequest) (response *DescribeBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeBalanceRequest()
+    }
+    response = NewDescribeBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBalanceTransactionsRequest() (request *DescribeBalanceTransactionsRequest) {
+    request = &DescribeBalanceTransactionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBalanceTransactions")
+    return
+}
+
+func NewDescribeBalanceTransactionsResponse() (response *DescribeBalanceTransactionsResponse) {
+    response = &DescribeBalanceTransactionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 拉取账户流水
+func (c *Client) DescribeBalanceTransactions(request *DescribeBalanceTransactionsRequest) (response *DescribeBalanceTransactionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBalanceTransactionsRequest()
+    }
+    response = NewDescribeBalanceTransactionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchRequest() (request *DescribeBatchRequest) {
     request = &DescribeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},

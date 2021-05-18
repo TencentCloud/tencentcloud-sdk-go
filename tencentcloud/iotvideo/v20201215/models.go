@@ -56,6 +56,27 @@ type ActionHistory struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type BalanceTransaction struct {
+
+	// 账户类型：1-设备接入 2-云存。
+	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 账户变更类型：Rechareg-充值；CreateOrder-新购。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 流水ID。
+	DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+	// 变更金额，单位：分（人民币）。
+	Amount *uint64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 变更后账户余额，单位：分（人民币）。
+	Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 变更时间。
+	OperationTime *int64 `json:"OperationTime,omitempty" name:"OperationTime"`
+}
+
 type BatchUpdateFirmwareRequest struct {
 	*tchttp.BaseRequest
 
@@ -881,6 +902,119 @@ func (r *DeleteProductResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBalanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户类型：1-设备接入；2-云存。
+	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
+}
+
+func (r *DescribeBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountType")
+	if len(f) > 0 {
+		return errors.New("DescribeBalanceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户余额，单位：分（人民币）。
+		Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBalanceTransactionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户类型：1-设备接入；2-云存。
+	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 分页游标开始，默认为0开始拉取第一条。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页数量。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *DescribeBalanceTransactionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBalanceTransactionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Operation")
+	if len(f) > 0 {
+		return errors.New("DescribeBalanceTransactionsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBalanceTransactionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户流水总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 账户流水详情数组。
+		Transactions []*BalanceTransaction `json:"Transactions,omitempty" name:"Transactions" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBalanceTransactionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBalanceTransactionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

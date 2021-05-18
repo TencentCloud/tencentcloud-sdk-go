@@ -798,6 +798,9 @@ type CreateListenerRequest struct {
 
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
 	EndPort *uint64 `json:"EndPort,omitempty" name:"EndPort"`
+
+	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -825,6 +828,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "SessionType")
 	delete(f, "KeepaliveEnable")
 	delete(f, "EndPort")
+	delete(f, "DeregisterTargetRst")
 	if len(f) > 0 {
 		return errors.New("CreateListenerRequest has unknown keys!")
 	}
@@ -3327,6 +3331,10 @@ type Listener struct {
 	// 仅支持Nat64 CLB TCP监听器
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Toa *bool `json:"Toa,omitempty" name:"Toa"`
+
+	// 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
 }
 
 type ListenerBackend struct {
@@ -4035,6 +4043,9 @@ type ModifyListenerRequest struct {
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
+
+	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -4058,6 +4069,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "Scheduler")
 	delete(f, "SniSwitch")
 	delete(f, "KeepaliveEnable")
+	delete(f, "DeregisterTargetRst")
 	if len(f) > 0 {
 		return errors.New("ModifyListenerRequest has unknown keys!")
 	}

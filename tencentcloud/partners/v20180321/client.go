@@ -418,6 +418,31 @@ func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (r
     return
 }
 
+func NewDescribeClientBaseInfoRequest() (request *DescribeClientBaseInfoRequest) {
+    request = &DescribeClientBaseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBaseInfo")
+    return
+}
+
+func NewDescribeClientBaseInfoResponse() (response *DescribeClientBaseInfoResponse) {
+    response = &DescribeClientBaseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 国际站根据UIN查询代客基础信息
+func (c *Client) DescribeClientBaseInfo(request *DescribeClientBaseInfoRequest) (response *DescribeClientBaseInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientBaseInfoRequest()
+    }
+    response = NewDescribeClientBaseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

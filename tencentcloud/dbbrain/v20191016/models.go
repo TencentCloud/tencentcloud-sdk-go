@@ -1442,10 +1442,10 @@ type DescribeTopSpaceSchemaTimeSeriesRequest struct {
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 开始日期，最早为当日的前第29天，默认为截止日期的前第6天。
+	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 截止日期，最早为当日的前第29天，默认为当日。
+	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
@@ -1575,10 +1575,10 @@ type DescribeTopSpaceTableTimeSeriesRequest struct {
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 开始日期，最早为当日的前第29天，默认为截止日期的前第6天。
+	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 截止日期，最早为当日的前第29天，默认为当日。
+	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。

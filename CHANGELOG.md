@@ -1,54 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 移动网络加速(mna) 版本：2021-01-19
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 1 次发布
+### 第 49 次发布
 
-发布时间：2021-05-17 08:00:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateQos](https://cloud.tencent.com/document/api/1385/55845)
-* [DeleteQos](https://cloud.tencent.com/document/api/1385/55844)
-
-新增数据结构：
-
-* [Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity)
-* [DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo)
-* [DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo)
-* [SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 48 次发布
-
-发布时间：2021-05-17 08:07:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [VerifyEnterpriseFourFactors](https://cloud.tencent.com/document/api/866/55857)
-
-新增数据结构：
-
-* [Detail](https://cloud.tencent.com/document/api/866/33527#Detail)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 52 次发布
-
-发布时间：2021-05-17 08:08:15
+发布时间：2021-05-18 08:04:20
 
 本次发布包含了以下内容：
 
@@ -56,11 +12,153 @@
 
 修改接口：
 
-* [SetNodePoolNodeProtection](https://cloud.tencent.com/document/api/457/53705)
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
 
-	* 新增入参：ClusterId, NodePoolId, InstanceIds, ProtectedFromScaleIn
+	* 新增入参：DeregisterTargetRst
 
-	* 新增出参：SucceedInstanceIds, FailedInstanceIds
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：DeregisterTargetRst
+
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* 新增成员：DeregisterTargetRst
+
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 21 次发布
+
+发布时间：2021-05-18 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/55898)
+* [GetCOSURL](https://cloud.tencent.com/document/api/634/55897)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 7 次发布
+
+发布时间：2021-05-18 08:01:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBalance](https://cloud.tencent.com/document/api/1131/55896)
+* [DescribeBalanceTransactions](https://cloud.tencent.com/document/api/1131/55895)
+
+新增数据结构：
+
+* [BalanceTransaction](https://cloud.tencent.com/document/api/1131/53113#BalanceTransaction)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 21 次发布
+
+发布时间：2021-05-18 08:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClientBaseInfo](https://cloud.tencent.com/document/api/563/55899)
+
+修改接口：
+
+* [DescribeClientBalance](https://cloud.tencent.com/document/api/563/19924)
+
+	* 新增出参：Cash
+
+
+新增数据结构：
+
+* [ClientBaseElem](https://cloud.tencent.com/document/api/563/16047#ClientBaseElem)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 7 次发布
+
+发布时间：2021-05-18 08:11:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ClearCmqQueue](https://cloud.tencent.com/document/api/1179/55922)
+* [ClearCmqSubscriptionFilterTags](https://cloud.tencent.com/document/api/1179/55921)
+* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+* [CreateCmqSubscribe](https://cloud.tencent.com/document/api/1179/55916)
+* [CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)
+* [DeleteCmqQueue](https://cloud.tencent.com/document/api/1179/55914)
+* [DeleteCmqSubscribe](https://cloud.tencent.com/document/api/1179/55913)
+* [DeleteCmqTopic](https://cloud.tencent.com/document/api/1179/55912)
+* [DescribeCmqDeadLetterSourceQueues](https://cloud.tencent.com/document/api/1179/55911)
+* [DescribeCmqQueueDetail](https://cloud.tencent.com/document/api/1179/55910)
+* [DescribeCmqQueues](https://cloud.tencent.com/document/api/1179/55909)
+* [DescribeCmqSubscriptionDetail](https://cloud.tencent.com/document/api/1179/55908)
+* [DescribeCmqTopicDetail](https://cloud.tencent.com/document/api/1179/55907)
+* [DescribeCmqTopics](https://cloud.tencent.com/document/api/1179/55906)
+* [ModifyCmqQueueAttribute](https://cloud.tencent.com/document/api/1179/55905)
+* [ModifyCmqSubscriptionAttribute](https://cloud.tencent.com/document/api/1179/55904)
+* [ModifyCmqTopicAttribute](https://cloud.tencent.com/document/api/1179/55903)
+* [PublishCmqMsg](https://cloud.tencent.com/document/api/1179/55920)
+* [RewindCmqQueue](https://cloud.tencent.com/document/api/1179/55902)
+* [SendCmqMsg](https://cloud.tencent.com/document/api/1179/55919)
+* [UnbindCmqDeadLetter](https://cloud.tencent.com/document/api/1179/55901)
+
+新增数据结构：
+
+* [CmqDeadLetterPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterPolicy)
+* [CmqDeadLetterSource](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterSource)
+* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+* [CmqSubscription](https://cloud.tencent.com/document/api/1179/46089#CmqSubscription)
+* [CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic)
+* [CmqTransactionPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqTransactionPolicy)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 53 次发布
+
+发布时间：2021-05-18 08:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)
+
+	* 新增入参：ExpiredSeconds
 
 
 
@@ -10360,6 +10458,32 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 49 次发布
+
+发布时间：2021-05-18 08:04:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：DeregisterTargetRst
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：DeregisterTargetRst
+
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* 新增成员：DeregisterTargetRst
+
 
 ### 第 48 次发布
 
@@ -24789,6 +24913,19 @@
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
 
+### 第 21 次发布
+
+发布时间：2021-05-18 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/55898)](https://cloud.tencent.com/document/api/#/#)
+* [[GetCOSURL](https://cloud.tencent.com/document/api/634/55897)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 20 次发布
 
 发布时间：2021-04-05 08:05:16
@@ -26323,6 +26460,23 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 7 次发布
+
+发布时间：2021-05-18 08:01:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBalance](https://cloud.tencent.com/document/api/1131/55896)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBalanceTransactions](https://cloud.tencent.com/document/api/1131/55895)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BalanceTransaction](https://cloud.tencent.com/document/api/1131/53113#BalanceTransaction)](https://cloud.tencent.com/document/api/1131/53113#[BalanceTransaction](https://cloud.tencent.com/document/api/1131/53113#BalanceTransaction))
 
 ### 第 6 次发布
 
@@ -29247,15 +29401,15 @@
 
 新增接口：
 
-* [[CreateQos](https://cloud.tencent.com/document/api/1385/55845)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteQos](https://cloud.tencent.com/document/api/1385/55844)](https://cloud.tencent.com/document/api/#/#)
+* [CreateQos](https://cloud.tencent.com/document/api/1385/55845)
+* [DeleteQos](https://cloud.tencent.com/document/api/1385/55844)
 
 新增数据结构：
 
-* [[Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity)](https://cloud.tencent.com/document/api/1385/55846#[Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity))
-* [[DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo)](https://cloud.tencent.com/document/api/1385/55846#[DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo))
-* [[DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo)](https://cloud.tencent.com/document/api/1385/55846#[DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo))
-* [[SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo)](https://cloud.tencent.com/document/api/1385/55846#[SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo))
+* [Capacity](https://cloud.tencent.com/document/api/1385/55846#Capacity)
+* [DestAddressInfo](https://cloud.tencent.com/document/api/1385/55846#DestAddressInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceInfo)
+* [SrcAddressInfo](https://cloud.tencent.com/document/api/1385/55846#SrcAddressInfo)
 
 
 
@@ -31916,11 +32070,11 @@
 
 新增接口：
 
-* [[VerifyEnterpriseFourFactors](https://cloud.tencent.com/document/api/866/55857)](https://cloud.tencent.com/document/api/#/#)
+* [VerifyEnterpriseFourFactors](https://cloud.tencent.com/document/api/866/55857)
 
 新增数据结构：
 
-* [[Detail](https://cloud.tencent.com/document/api/866/33527#Detail)](https://cloud.tencent.com/document/api/866/33527#[Detail](https://cloud.tencent.com/document/api/866/33527#Detail))
+* [Detail](https://cloud.tencent.com/document/api/866/33527#Detail)
 
 ### 第 47 次发布
 
@@ -32944,6 +33098,29 @@
 
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 21 次发布
+
+发布时间：2021-05-18 08:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClientBaseInfo](https://cloud.tencent.com/document/api/563/55899)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeClientBalance](https://cloud.tencent.com/document/api/563/19924)
+
+	* 新增出参：Cash
+
+
+新增数据结构：
+
+* [[ClientBaseElem](https://cloud.tencent.com/document/api/563/16047#ClientBaseElem)](https://cloud.tencent.com/document/api/563/16047#[ClientBaseElem](https://cloud.tencent.com/document/api/563/16047#ClientBaseElem))
 
 ### 第 20 次发布
 
@@ -39744,6 +39921,47 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 7 次发布
+
+发布时间：2021-05-18 08:11:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ClearCmqQueue](https://cloud.tencent.com/document/api/1179/55922)](https://cloud.tencent.com/document/api/#/#)
+* [[ClearCmqSubscriptionFilterTags](https://cloud.tencent.com/document/api/1179/55921)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCmqSubscribe](https://cloud.tencent.com/document/api/1179/55916)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCmqQueue](https://cloud.tencent.com/document/api/1179/55914)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCmqSubscribe](https://cloud.tencent.com/document/api/1179/55913)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCmqTopic](https://cloud.tencent.com/document/api/1179/55912)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqDeadLetterSourceQueues](https://cloud.tencent.com/document/api/1179/55911)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqQueueDetail](https://cloud.tencent.com/document/api/1179/55910)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqQueues](https://cloud.tencent.com/document/api/1179/55909)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqSubscriptionDetail](https://cloud.tencent.com/document/api/1179/55908)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqTopicDetail](https://cloud.tencent.com/document/api/1179/55907)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCmqTopics](https://cloud.tencent.com/document/api/1179/55906)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCmqQueueAttribute](https://cloud.tencent.com/document/api/1179/55905)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCmqSubscriptionAttribute](https://cloud.tencent.com/document/api/1179/55904)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCmqTopicAttribute](https://cloud.tencent.com/document/api/1179/55903)](https://cloud.tencent.com/document/api/#/#)
+* [[PublishCmqMsg](https://cloud.tencent.com/document/api/1179/55920)](https://cloud.tencent.com/document/api/#/#)
+* [[RewindCmqQueue](https://cloud.tencent.com/document/api/1179/55902)](https://cloud.tencent.com/document/api/#/#)
+* [[SendCmqMsg](https://cloud.tencent.com/document/api/1179/55919)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindCmqDeadLetter](https://cloud.tencent.com/document/api/1179/55901)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CmqDeadLetterPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterPolicy)](https://cloud.tencent.com/document/api/1179/46089#[CmqDeadLetterPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterPolicy))
+* [[CmqDeadLetterSource](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterSource)](https://cloud.tencent.com/document/api/1179/46089#[CmqDeadLetterSource](https://cloud.tencent.com/document/api/1179/46089#CmqDeadLetterSource))
+* [[CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)](https://cloud.tencent.com/document/api/1179/46089#[CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue))
+* [[CmqSubscription](https://cloud.tencent.com/document/api/1179/46089#CmqSubscription)](https://cloud.tencent.com/document/api/1179/46089#[CmqSubscription](https://cloud.tencent.com/document/api/1179/46089#CmqSubscription))
+* [[CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic)](https://cloud.tencent.com/document/api/1179/46089#[CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic))
+* [[CmqTransactionPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqTransactionPolicy)](https://cloud.tencent.com/document/api/1179/46089#[CmqTransactionPolicy](https://cloud.tencent.com/document/api/1179/46089#CmqTransactionPolicy))
+
 ### 第 6 次发布
 
 发布时间：2021-05-11 08:11:30
@@ -41436,6 +41654,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 53 次发布
+
+发布时间：2021-05-18 08:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnableVpcCniNetworkType](https://cloud.tencent.com/document/api/457/55757)
+
+	* 新增入参：ExpiredSeconds
+
 
 ### 第 52 次发布
 

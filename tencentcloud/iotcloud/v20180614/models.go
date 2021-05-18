@@ -36,6 +36,87 @@ type BatchPublishMessage struct {
 	Payload *string `json:"Payload,omitempty" name:"Payload"`
 }
 
+type BatchUpdateFirmwareRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件新版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件原版本号，根据文件列表升级固件不需要填写此参数
+	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitempty" name:"FirmwareOriVersion"`
+
+	// 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitempty" name:"UpgradeMethod"`
+
+	// 设备列表文件名称，根据文件列表升级固件需要填写此参数
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 设备列表的文件md5值
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 设备列表的文件大小值
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 需要升级的设备名称列表
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+
+	// 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
+	TimeoutInterval *uint64 `json:"TimeoutInterval,omitempty" name:"TimeoutInterval"`
+}
+
+func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	delete(f, "FirmwareOriVersion")
+	delete(f, "UpgradeMethod")
+	delete(f, "FileName")
+	delete(f, "FileMd5")
+	delete(f, "FileSize")
+	delete(f, "DeviceNames")
+	delete(f, "TimeoutInterval")
+	if len(f) > 0 {
+		return errors.New("BatchUpdateFirmwareRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchUpdateFirmwareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchUpdateFirmwareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateFirmwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchUpdateShadow struct {
 
 	// 设备影子的期望状态，格式为 Json 对象序列化之后的字符串
@@ -3044,6 +3125,59 @@ type FirmwareTaskInfo struct {
 	// 任务创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type GetCOSURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+}
+
+func (r *GetCOSURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCOSURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductID")
+	delete(f, "FirmwareVersion")
+	if len(f) > 0 {
+		return errors.New("GetCOSURLRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCOSURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 固件URL
+		Url *string `json:"Url,omitempty" name:"Url"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCOSURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCOSURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUserResourceInfoRequest struct {

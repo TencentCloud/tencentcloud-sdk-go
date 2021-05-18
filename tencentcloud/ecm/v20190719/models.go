@@ -261,7 +261,7 @@ type AssignPrivateIpAddressesRequest struct {
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
-	// ECM 地域
+	// ECM 地域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
 	// 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
@@ -5440,7 +5440,7 @@ type LoadBalancerInternetAccessible struct {
 type MigrateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 
-	// ECM 地域
+	// ECM 地域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
@@ -5498,10 +5498,10 @@ func (r *MigrateNetworkInterfaceResponse) FromJsonString(s string) error {
 type MigratePrivateIpAddressRequest struct {
 	*tchttp.BaseRequest
 
-	// ECM 地域
+	// ECM 地域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
-	// 当内网IP绑定的弹性网卡实例ID，例如：eni-11112222。
+	// 当前内网IP绑定的弹性网卡实例ID，例如：eni-11112222。
 	SourceNetworkInterfaceId *string `json:"SourceNetworkInterfaceId,omitempty" name:"SourceNetworkInterfaceId"`
 
 	// 待迁移的目的弹性网卡实例ID。
@@ -7521,7 +7521,7 @@ func (r *ReleaseIpv6AddressesResponse) FromJsonString(s string) error {
 type RemovePrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 
-	// ECM 地域。
+	// ECM 地域，形如ap-xian-ecm。
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
 
 	// 弹性网卡实例ID，例如：eni-11112222。

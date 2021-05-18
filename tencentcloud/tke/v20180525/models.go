@@ -3800,6 +3800,9 @@ type EnableVpcCniNetworkTypeRequest struct {
 
 	// 使用的容器子网
 	Subnets []*string `json:"Subnets,omitempty" name:"Subnets" list`
+
+	// 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
+	ExpiredSeconds *uint64 `json:"ExpiredSeconds,omitempty" name:"ExpiredSeconds"`
 }
 
 func (r *EnableVpcCniNetworkTypeRequest) ToJsonString() string {
@@ -3818,6 +3821,7 @@ func (r *EnableVpcCniNetworkTypeRequest) FromJsonString(s string) error {
 	delete(f, "VpcCniType")
 	delete(f, "EnableStaticIp")
 	delete(f, "Subnets")
+	delete(f, "ExpiredSeconds")
 	if len(f) > 0 {
 		return errors.New("EnableVpcCniNetworkTypeRequest has unknown keys!")
 	}
