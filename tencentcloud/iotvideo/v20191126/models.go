@@ -4095,13 +4095,13 @@ type SetMessageQueueRequest struct {
 	MsgQueueType *uint64 `json:"MsgQueueType,omitempty" name:"MsgQueueType"`
 
 	// 消息类型,整型值（0-31）之间以“,”分隔
-	// 0：在线状态变更
-	// 1.固件版本变更
-	// 2.设置参数变更
-	// 3.控制状态变更
-	// 4.状态信息变更
-	// 5.事件发布
-	// 6.系统事件
+	// 0.设备在线状态变更
+	// 1.常亮属性(ProConst)变更
+	// 2.可写属性(ProWritable)变更
+	// 3.只读属性(ProReadonly)变更
+	// 4.设备控制(Action)
+	// 5.设备事件(Event)
+	// 6.系统事件(System)
 	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
 
 	// 消息队列主题，不超过32字符

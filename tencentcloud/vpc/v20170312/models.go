@@ -15583,7 +15583,7 @@ type Resource struct {
 
 type ResourceDashboard struct {
 
-	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	// Vpc实例ID，例如：vpc-bq4bzxpj。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网实例ID，例如：subnet-bthucmmy。
@@ -15598,7 +15598,7 @@ type ResourceDashboard struct {
 	// 对等连接。
 	Pcx *uint64 `json:"Pcx,omitempty" name:"Pcx"`
 
-	// 当前已使用的IP总数。
+	// 统计当前除云服务器 IP、弹性网卡IP和网络探测IP以外的所有已使用的IP总数。云服务器 IP、弹性网卡IP和网络探测IP单独计数。
 	Ip *uint64 `json:"Ip,omitempty" name:"Ip"`
 
 	// NAT网关。
