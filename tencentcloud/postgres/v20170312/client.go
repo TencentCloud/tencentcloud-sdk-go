@@ -133,12 +133,37 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
     return
 }
 
-// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例。
+// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。
 func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response *CreateDBInstancesResponse, err error) {
     if request == nil {
         request = NewCreateDBInstancesRequest()
     }
     response = NewCreateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
+    request = &CreateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateInstances")
+    return
+}
+
+func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
+    response = &CreateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口 (CreateInstances) 用于创建一个或者多个PostgreSQL实例，通过此接口创建的实例无需进行初始化，可直接使用。
+func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *CreateInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateInstancesRequest()
+    }
+    response = NewCreateInstancesResponse()
     err = c.Send(request, response)
     return
 }

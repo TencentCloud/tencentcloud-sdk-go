@@ -263,8 +263,6 @@ func NewDescribeDomainBaseInfoResponse() (response *DescribeDomainBaseInfoRespon
 }
 
 // 本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) DescribeDomainBaseInfo(request *DescribeDomainBaseInfoRequest) (response *DescribeDomainBaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDomainBaseInfoRequest()

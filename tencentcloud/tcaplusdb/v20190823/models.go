@@ -21,6 +21,103 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Application struct {
+
+	// 审批单号
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 申请类型
+	ApplicationType *int64 `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 表格组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableGroupName *string `json:"TableGroupName,omitempty" name:"TableGroupName"`
+
+	// 表格名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 申请人
+	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
+
+	// 建单时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 处理状态 -1 撤回 0-待审核 1-已经审核并提交任务 2-已驳回
+	ApplicationStatus *int64 `json:"ApplicationStatus,omitempty" name:"ApplicationStatus"`
+
+	// 表格组Id
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 已提交的任务Id，未提交申请为0
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 腾讯云上table的唯一键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableInstanceId *string `json:"TableInstanceId,omitempty" name:"TableInstanceId"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 审批人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUser *string `json:"ExecuteUser,omitempty" name:"ExecuteUser"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteStatus *string `json:"ExecuteStatus,omitempty" name:"ExecuteStatus"`
+
+	// 该申请单是否可以被当前用户审批
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanCensor *bool `json:"CanCensor,omitempty" name:"CanCensor"`
+
+	// 该申请单是否可以被当前用户撤回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanWithdrawal *bool `json:"CanWithdrawal,omitempty" name:"CanWithdrawal"`
+}
+
+type ApplyResult struct {
+
+	// 申请单id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 申请类型
+	ApplicationType *int64 `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationStatus *int64 `json:"ApplicationStatus,omitempty" name:"ApplicationStatus"`
+
+	// 已提交的任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+}
+
+type ApplyStatus struct {
+
+	// 集群id-申请单id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
+	ApplicationStatus *int64 `json:"ApplicationStatus,omitempty" name:"ApplicationStatus"`
+
+	// 申请单类型
+	ApplicationType *int64 `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type ClearTablesRequest struct {
 	*tchttp.BaseRequest
 
@@ -153,6 +250,13 @@ type ClusterInfo struct {
 	// 独占proxy机器信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyList []*ProxyDetailInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+
+	// 是否开启审核 0-不开启 1-开启
+	Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
+
+	// 审批人uin列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbaUins []*string `json:"DbaUins,omitempty" name:"DbaUins" list`
 }
 
 type CompareIdlFilesRequest struct {
@@ -222,6 +326,33 @@ func (r *CompareIdlFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CompareTablesInfo struct {
+
+	// 源表格的集群id
+	SrcTableClusterId *string `json:"SrcTableClusterId,omitempty" name:"SrcTableClusterId"`
+
+	// 源表格的表格组id
+	SrcTableGroupId *string `json:"SrcTableGroupId,omitempty" name:"SrcTableGroupId"`
+
+	// 源表格的表名
+	SrcTableName *string `json:"SrcTableName,omitempty" name:"SrcTableName"`
+
+	// 目标表格的集群id
+	DstTableClusterId *string `json:"DstTableClusterId,omitempty" name:"DstTableClusterId"`
+
+	// 目标表格的表格组id
+	DstTableGroupId *string `json:"DstTableGroupId,omitempty" name:"DstTableGroupId"`
+
+	// 目标表格的表名
+	DstTableName *string `json:"DstTableName,omitempty" name:"DstTableName"`
+
+	// 源表格的实例id
+	SrcTableInstanceId *string `json:"SrcTableInstanceId,omitempty" name:"SrcTableInstanceId"`
+
+	// 目标表格的实例id
+	DstTableInstanceId *string `json:"DstTableInstanceId,omitempty" name:"DstTableInstanceId"`
+}
+
 type CreateBackupRequest struct {
 	*tchttp.BaseRequest
 
@@ -261,7 +392,12 @@ type CreateBackupResponse struct {
 	Response *struct {
 
 		// 创建的备份任务ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+
+		// 创建的备份申请ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplicationIds []*string `json:"ApplicationIds,omitempty" name:"ApplicationIds" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -868,6 +1004,86 @@ func (r *DeleteTablesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID，用于获取指定集群的单据
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 申请单状态，用于过滤
+	CensorStatus *int64 `json:"CensorStatus,omitempty" name:"CensorStatus"`
+
+	// 表格组id，用于过滤
+	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格名，用于过滤
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 申请人uin，用于过滤
+	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
+
+	// 申请类型，用于过滤
+	ApplyType *int64 `json:"ApplyType,omitempty" name:"ApplyType"`
+}
+
+func (r *DescribeApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "CensorStatus")
+	delete(f, "TableGroupId")
+	delete(f, "TableName")
+	delete(f, "Applicant")
+	delete(f, "ApplyType")
+	if len(f) > 0 {
+		return errors.New("DescribeApplicationsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 申请单列表
+		Applications []*Application `json:"Applications,omitempty" name:"Applications" list`
+
+		// 申请单个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1792,6 +2008,9 @@ type Filter struct {
 
 	// 过滤字段值
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 过滤字段值
+	Values []*string `json:"Values,omitempty" name:"Values" list`
 }
 
 type IdlFileInfo struct {
@@ -1940,6 +2159,150 @@ type MachineInfo struct {
 
 	// 机器数量
 	MachineNum *int64 `json:"MachineNum,omitempty" name:"MachineNum"`
+}
+
+type MergeTableResult struct {
+
+	// 任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 成功时此字段返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *ErrorInfo `json:"Error,omitempty" name:"Error"`
+
+	// 对比的表格信息
+	Table *CompareTablesInfo `json:"Table,omitempty" name:"Table"`
+
+	// 申请单Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+type MergeTablesDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 选取的表格
+	SelectedTables []*MergeTablesInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+
+	// true只做对比，false既对比又执行
+	IsOnlyCompare *bool `json:"IsOnlyCompare,omitempty" name:"IsOnlyCompare"`
+}
+
+func (r *MergeTablesDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MergeTablesDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SelectedTables")
+	delete(f, "IsOnlyCompare")
+	if len(f) > 0 {
+		return errors.New("MergeTablesDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MergeTablesDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 合服结果集
+		Results []*MergeTableResult `json:"Results,omitempty" name:"Results" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MergeTablesDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MergeTablesDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MergeTablesInfo struct {
+
+	// 合服的表格信息
+	MergeTables *CompareTablesInfo `json:"MergeTables,omitempty" name:"MergeTables"`
+
+	// 是否检查索引
+	CheckIndex *bool `json:"CheckIndex,omitempty" name:"CheckIndex"`
+}
+
+type ModifyCensorshipRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群是否开启审核 0-关闭 1-开启
+	Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
+
+	// 审批人uin列表
+	Uins []*string `json:"Uins,omitempty" name:"Uins" list`
+}
+
+func (r *ModifyCensorshipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCensorshipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Censorship")
+	delete(f, "Uins")
+	if len(f) > 0 {
+		return errors.New("ModifyCensorshipRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCensorshipResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群id
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 已加入审批人的uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uins []*string `json:"Uins,omitempty" name:"Uins" list`
+
+		// 集群是否开启审核 0-关闭 1-开启
+		Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCensorshipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCensorshipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClusterMachineRequest struct {
@@ -3229,6 +3592,10 @@ type TableResultNew struct {
 	// 任务ID列表，对于创建多任务的接口有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+
+	// 腾讯云申请审核单Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 }
 
 type TableRollbackResultNew struct {
@@ -3376,6 +3743,59 @@ type TaskInfoNew struct {
 
 	// 任务详情
 	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+type UpdateApplyRequest struct {
+	*tchttp.BaseRequest
+
+	// 申请单状态
+	ApplyStatus []*ApplyStatus `json:"ApplyStatus,omitempty" name:"ApplyStatus" list`
+}
+
+func (r *UpdateApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyStatus")
+	if len(f) > 0 {
+		return errors.New("UpdateApplyRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已更新的申请单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplyResults []*ApplyResult `json:"ApplyResults,omitempty" name:"ApplyResults" list`
+
+		// 更新数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyIdlFilesRequest struct {

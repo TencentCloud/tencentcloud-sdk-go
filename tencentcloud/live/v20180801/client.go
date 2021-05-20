@@ -1365,6 +1365,32 @@ func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayI
     return
 }
 
+func NewDescribeLiveDomainRefererRequest() (request *DescribeLiveDomainRefererRequest) {
+    request = &DescribeLiveDomainRefererRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomainReferer")
+    return
+}
+
+func NewDescribeLiveDomainRefererResponse() (response *DescribeLiveDomainRefererResponse) {
+    response = &DescribeLiveDomainRefererResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询直播域名 Referer 黑白名单配置。
+// 由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 webrtc 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
+func (c *Client) DescribeLiveDomainReferer(request *DescribeLiveDomainRefererRequest) (response *DescribeLiveDomainRefererResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainRefererRequest()
+    }
+    response = NewDescribeLiveDomainRefererResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainsRequest() (request *DescribeLiveDomainsRequest) {
     request = &DescribeLiveDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2442,6 +2468,32 @@ func (c *Client) ModifyLiveDomainCert(request *ModifyLiveDomainCertRequest) (res
         request = NewModifyLiveDomainCertRequest()
     }
     response = NewModifyLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveDomainRefererRequest() (request *ModifyLiveDomainRefererRequest) {
+    request = &ModifyLiveDomainRefererRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveDomainReferer")
+    return
+}
+
+func NewModifyLiveDomainRefererResponse() (response *ModifyLiveDomainRefererResponse) {
+    response = &ModifyLiveDomainRefererResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 设置直播域名 Referer 黑白名单。
+// 由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 webrtc 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
+func (c *Client) ModifyLiveDomainReferer(request *ModifyLiveDomainRefererRequest) (response *ModifyLiveDomainRefererResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveDomainRefererRequest()
+    }
+    response = NewModifyLiveDomainRefererResponse()
     err = c.Send(request, response)
     return
 }

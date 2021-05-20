@@ -1237,6 +1237,9 @@ type DeleteNonlocalLoginPlacesRequest struct {
 
 	// 异地登录事件的Ip。DelType为Ip时必填
 	Ip []*string `json:"Ip,omitempty" name:"Ip" list`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 func (r *DeleteNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -1254,6 +1257,7 @@ func (r *DeleteNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 	delete(f, "DelType")
 	delete(f, "Ids")
 	delete(f, "Ip")
+	delete(f, "Uuid")
 	if len(f) > 0 {
 		return errors.New("DeleteNonlocalLoginPlacesRequest has unknown keys!")
 	}
@@ -3055,10 +3059,10 @@ type DescribeLogStorageStatisticResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 总容量
+		// 总容量（单位：GB）
 		TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
 
-		// 已使用容量
+		// 已使用容量（单位：GB）
 		UsedSize *uint64 `json:"UsedSize,omitempty" name:"UsedSize"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

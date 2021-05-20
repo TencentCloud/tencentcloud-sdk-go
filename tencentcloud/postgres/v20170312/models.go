@@ -204,7 +204,7 @@ type CreateDBInstancesRequest struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4三种版本。
+	// PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例容量大小，单位：GB。
@@ -318,6 +318,141 @@ func (r *CreateDBInstancesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
+
+	// PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4、11.8、12.4五种版本。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 实例容量大小，单位：GB。
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 一次性购买的实例数量。取值1-10。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例字符集，目前只支持：UTF8、LATIN1。
+	Charset *string `json:"Charset,omitempty" name:"Charset"`
+
+	// 实例根账号用户名。
+	AdminName *string `json:"AdminName,omitempty" name:"AdminName"`
+
+	// 实例根账号用户名对应的密码。
+	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
+
+	// 项目ID。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 是否自动使用代金券。1（是），0（否），默认不使用。
+	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 代金券ID列表，目前仅支持指定一张代金券。
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+
+	// 私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 已配置的私有网络中的子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 续费标记：0-正常续费（默认）；1-自动续费。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 活动ID。
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 实例名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否需要支持Ipv6，1：是，0：否。
+	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
+
+	// 实例需要绑定的Tag信息，默认为空。
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList" list`
+
+	// 安全组ID。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+}
+
+func (r *CreateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpecCode")
+	delete(f, "DBVersion")
+	delete(f, "Storage")
+	delete(f, "InstanceCount")
+	delete(f, "Period")
+	delete(f, "Zone")
+	delete(f, "Charset")
+	delete(f, "AdminName")
+	delete(f, "AdminPassword")
+	delete(f, "ProjectId")
+	delete(f, "InstanceChargeType")
+	delete(f, "AutoVoucher")
+	delete(f, "VoucherIds")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "AutoRenewFlag")
+	delete(f, "ActivityId")
+	delete(f, "Name")
+	delete(f, "NeedSupportIpv6")
+	delete(f, "TagList")
+	delete(f, "SecurityGroupIds")
+	if len(f) > 0 {
+		return errors.New("CreateInstancesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单号列表。每个实例对应一个订单号。
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+
+		// 冻结流水号。
+		BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+		// 创建成功的实例ID集合，只在后付费情景下有返回值。
+		DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1796,7 +1931,7 @@ type DisIsolateDBInstancesRequest struct {
 	// 包年包月实例解隔离时购买时常 以月为单位
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 是否使用代金券
+	// 是否使用代金券：true-使用,false-不使用，默认不使用
 	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券id列表

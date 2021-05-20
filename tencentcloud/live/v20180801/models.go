@@ -3537,6 +3537,55 @@ func (r *DescribeLiveDomainPlayInfoListResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveDomainRefererRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *DescribeLiveDomainRefererRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveDomainRefererRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	if len(f) > 0 {
+		return errors.New("DescribeLiveDomainRefererRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveDomainRefererResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名 Referer 黑白名单配置。
+		RefererAuthConfig *RefererAuthConfig `json:"RefererAuthConfig,omitempty" name:"RefererAuthConfig"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveDomainRefererResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveDomainRefererResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -6731,6 +6780,68 @@ func (r *ModifyLiveDomainCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyLiveDomainRefererRequest struct {
+	*tchttp.BaseRequest
+
+	// 播放域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 是否开启当前域名的 Referer 黑白名单鉴权。
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 名单类型，0：黑名单，1：白名单。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否允许空 Referer，0：不允许，1：允许。
+	AllowEmpty *int64 `json:"AllowEmpty,omitempty" name:"AllowEmpty"`
+
+	// Referer 名单列表，以;分隔。
+	Rules *string `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *ModifyLiveDomainRefererRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveDomainRefererRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "Enable")
+	delete(f, "Type")
+	delete(f, "AllowEmpty")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return errors.New("ModifyLiveDomainRefererRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLiveDomainRefererResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLiveDomainRefererResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveDomainRefererResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyLivePlayAuthKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -7758,6 +7869,24 @@ type RecordTemplateInfo struct {
 
 	// MP3 录制参数。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
+}
+
+type RefererAuthConfig struct {
+
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 是否启用，0：关闭，1：启用。
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 名单类型，0：黑名单，1：白名单。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否允许空Referer，0：不允许，1：允许。
+	AllowEmpty *int64 `json:"AllowEmpty,omitempty" name:"AllowEmpty"`
+
+	// 名单列表，以分号(;)分隔。
+	Rules *string `json:"Rules,omitempty" name:"Rules"`
 }
 
 type ResumeDelayLiveStreamRequest struct {

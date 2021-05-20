@@ -4140,6 +4140,10 @@ type InstanceAdvancedSettings struct {
 	// 节点相关的自定义参数信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+
+	// 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitempty" name:"DesiredPodNumber"`
 }
 
 type InstanceDataDiskMountSetting struct {

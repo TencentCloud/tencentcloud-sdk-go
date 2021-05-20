@@ -795,6 +795,9 @@ type DescribeTemplateListRequest struct {
 
 	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 域名所有者筛选
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *DescribeTemplateListRequest) ToJsonString() string {
@@ -813,6 +816,7 @@ func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Type")
 	delete(f, "Status")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return errors.New("DescribeTemplateListRequest has unknown keys!")
 	}
