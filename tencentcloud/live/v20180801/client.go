@@ -2121,6 +2121,34 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
     return
 }
 
+func NewDescribeRecordTaskRequest() (request *DescribeRecordTaskRequest) {
+    request = &DescribeRecordTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeRecordTask")
+    return
+}
+
+func NewDescribeRecordTaskResponse() (response *DescribeRecordTaskResponse) {
+    response = &DescribeRecordTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询指定时间段范围内启动和结束的录制任务列表。
+// - 使用前提
+// 1. 仅用于查询由 CreateRecordTask 接口创建的录制任务。
+// 2. 不能查询被 DeleteRecordTask 接口删除以及已过期（平台侧保留3个月）的录制任务。
+func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordTaskRequest()
+    }
+    response = NewDescribeRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScreenShotSheetNumListRequest() (request *DescribeScreenShotSheetNumListRequest) {
     request = &DescribeScreenShotSheetNumListRequest{
         BaseRequest: &tchttp.BaseRequest{},

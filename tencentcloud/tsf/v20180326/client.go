@@ -2695,6 +2695,31 @@ func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) 
     return
 }
 
+func NewDescribeTaskRecordsRequest() (request *DescribeTaskRecordsRequest) {
+    request = &DescribeTaskRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskRecords")
+    return
+}
+
+func NewDescribeTaskRecordsResponse() (response *DescribeTaskRecordsResponse) {
+    response = &DescribeTaskRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 翻页查询任务列表
+func (c *Client) DescribeTaskRecords(request *DescribeTaskRecordsRequest) (response *DescribeTaskRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskRecordsRequest()
+    }
+    response = NewDescribeTaskRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUnitApiUseDetailRequest() (request *DescribeUnitApiUseDetailRequest) {
     request = &DescribeUnitApiUseDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

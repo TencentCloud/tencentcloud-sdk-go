@@ -7789,6 +7789,79 @@ func (r *DescribeTaskLastStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 翻页偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询单页数量。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模糊查询关键字，支持任务ID和任务名称。
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 任务启用状态。enabled/disabled
+	TaskState *string `json:"TaskState,omitempty" name:"TaskState"`
+
+	// 分组ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 任务类型。
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务触发类型，UNICAST、BROADCAST。
+	ExecuteType *string `json:"ExecuteType,omitempty" name:"ExecuteType"`
+}
+
+func (r *DescribeTaskRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchWord")
+	delete(f, "TaskState")
+	delete(f, "GroupId")
+	delete(f, "TaskType")
+	delete(f, "ExecuteType")
+	if len(f) > 0 {
+		return errors.New("DescribeTaskRecordsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务记录列表
+		Result *TaskRecordPage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUnitApiUseDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -12132,6 +12205,15 @@ type TaskRecord struct {
 	// 任务参数，长度限制10000个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskArgument *string `json:"TaskArgument,omitempty" name:"TaskArgument"`
+}
+
+type TaskRecordPage struct {
+
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务记录列表
+	Content []*TaskRecord `json:"Content,omitempty" name:"Content" list`
 }
 
 type TaskRule struct {

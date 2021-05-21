@@ -249,6 +249,18 @@ type CloudBaseProjectVersion struct {
 	AutoDeployOnCodeChange *bool `json:"AutoDeployOnCodeChange,omitempty" name:"AutoDeployOnCodeChange"`
 }
 
+type CloudBaseRunEmptyDirVolumeSource struct {
+
+	// 启用emptydir数据卷
+	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
+
+	// "","Memory","HugePages"
+	Medium *string `json:"Medium,omitempty" name:"Medium"`
+
+	// emptydir数据卷大小
+	SizeLimit *string `json:"SizeLimit,omitempty" name:"SizeLimit"`
+}
+
 type CloudBaseRunImageInfo struct {
 
 	// 镜像仓库名称
@@ -298,6 +310,24 @@ type CloudBaseRunNfsVolumeSource struct {
 
 	// 临时目录
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
+}
+
+type CloudBaseRunServiceVolumeMount struct {
+
+	// Volume 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 挂载路径
+	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
+
+	// 是否只读
+	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// 子路径
+	SubPath *string `json:"SubPath,omitempty" name:"SubPath"`
+
+	// 传播挂载方式
+	MountPropagation *string `json:"MountPropagation,omitempty" name:"MountPropagation"`
 }
 
 type CloudBaseRunSideSpec struct {
@@ -540,9 +570,13 @@ type CloudRunServiceVolume struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
-	// 是否开启临时目录
+	// 是否开启临时目录逐步废弃，请使用 EmptyDir
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
+
+	// emptydir数据卷详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyDir *CloudBaseRunEmptyDirVolumeSource `json:"EmptyDir,omitempty" name:"EmptyDir"`
 }
 
 type CodeSource struct {
@@ -952,6 +986,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 是否创建JnsGw 0未传默认创建 1创建 2不创建
 	IsCreateJnsGw *int64 `json:"IsCreateJnsGw,omitempty" name:"IsCreateJnsGw"`
+
+	// 数据卷挂载参数
+	ServiceVolumeMounts []*CloudBaseRunServiceVolumeMount `json:"ServiceVolumeMounts,omitempty" name:"ServiceVolumeMounts" list`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1003,6 +1040,7 @@ func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 	delete(f, "Security")
 	delete(f, "ServiceVolumes")
 	delete(f, "IsCreateJnsGw")
+	delete(f, "ServiceVolumeMounts")
 	if len(f) > 0 {
 		return errors.New("CreateCloudBaseRunServerVersionRequest has unknown keys!")
 	}
@@ -3549,6 +3587,10 @@ type EnvInfo struct {
 	// 环境所属地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 环境标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type EstablishCloudBaseRunServerRequest struct {
@@ -4379,4 +4421,13 @@ type StorageInfo struct {
 
 	// 资源所属用户的腾讯云appId
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

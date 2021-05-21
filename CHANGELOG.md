@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 13 次发布
+### 第 27 次发布
 
-发布时间：2021-05-20 08:10:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteNonlocalLoginPlaces](https://cloud.tencent.com/document/api/296/19843)
-
-	* 新增入参：Uuid
-
-
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 14 次发布
-
-发布时间：2021-05-20 08:04:37
+发布时间：2021-05-21 08:03:17
 
 本次发布包含了以下内容：
 
@@ -31,18 +12,18 @@
 
 修改接口：
 
-* [DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)
+* [AttachDisks](https://cloud.tencent.com/document/api/362/16313)
 
-	* 新增入参：Keyword
+	* 新增入参：AttachMode
 
 
 
 
 ## 云直播(live) 版本：2018-08-01
 
-### 第 62 次发布
+### 第 63 次发布
 
-发布时间：2021-05-20 08:05:50
+发布时间：2021-05-21 08:05:51
 
 本次发布包含了以下内容：
 
@@ -50,98 +31,153 @@
 
 新增接口：
 
-* [DescribeLiveDomainReferer](https://cloud.tencent.com/document/api/267/56106)
-* [ModifyLiveDomainReferer](https://cloud.tencent.com/document/api/267/56105)
+* [DescribeRecordTask](https://cloud.tencent.com/document/api/267/56135)
 
 新增数据结构：
 
-* [RefererAuthConfig](https://cloud.tencent.com/document/api/267/20474#RefererAuthConfig)
+* [RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask)
 
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+## 视频处理(mps) 版本：2019-06-12
 
-### 第 15 次发布
+### 第 30 次发布
 
-发布时间：2021-05-20 08:07:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 12 次发布
-
-发布时间：2021-05-20 08:07:49
+发布时间：2021-05-21 08:06:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeApplications](https://cloud.tencent.com/document/api/596/56109)
-* [MergeTablesData](https://cloud.tencent.com/document/api/596/56111)
-* [ModifyCensorship](https://cloud.tencent.com/document/api/596/56108)
-* [UpdateApply](https://cloud.tencent.com/document/api/596/56110)
-
-修改接口：
-
-* [CreateBackup](https://cloud.tencent.com/document/api/596/41496)
-
-	* 新增出参：ApplicationIds
-
-
-新增数据结构：
-
-* [Application](https://cloud.tencent.com/document/api/596/39686#Application)
-* [ApplyResult](https://cloud.tencent.com/document/api/596/39686#ApplyResult)
-* [ApplyStatus](https://cloud.tencent.com/document/api/596/39686#ApplyStatus)
-* [CompareTablesInfo](https://cloud.tencent.com/document/api/596/39686#CompareTablesInfo)
-* [MergeTableResult](https://cloud.tencent.com/document/api/596/39686#MergeTableResult)
-* [MergeTablesInfo](https://cloud.tencent.com/document/api/596/39686#MergeTablesInfo)
 
 修改数据结构：
 
-* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+* [RawImageWatermarkInput](https://cloud.tencent.com/document/api/862/37615#RawImageWatermarkInput)
 
-	* 新增成员：Censorship, DbaUins
+	* 新增成员：RepeatType
 
-* [Filter](https://cloud.tencent.com/document/api/596/39686#Filter)
 
-	* 新增成员：Values
 
-	* <font color="#dd0000">**修改成员**：</font>Value
 
-* [TableResultNew](https://cloud.tencent.com/document/api/596/39686#TableResultNew)
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-	* 新增成员：ApplicationId
+### 第 48 次发布
+
+发布时间：2021-05-21 08:07:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：ServiceVolumeMounts
+
+
+新增数据结构：
+
+* [CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource)
+* [CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount)
+* [Tag](https://cloud.tencent.com/document/api/876/34822#Tag)
+
+修改数据结构：
+
+* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
+
+	* 新增成员：EmptyDir
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：Tags
 
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 54 次发布
+### 第 55 次发布
 
-发布时间：2021-05-20 08:08:13
+发布时间：2021-05-21 08:08:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增入参：InstanceAdvancedSettingsOverrides
+
+
 修改数据结构：
 
-* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#InstanceAdvancedSettings)
+* [ExistedInstancesForNode](https://cloud.tencent.com/document/api/457/31866#ExistedInstancesForNode)
 
-	* 新增成员：DesiredPodNumber
+	* 新增成员：DesiredPodNumbers
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 52 次发布
+
+发布时间：2021-05-21 08:08:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)
+
+新增数据结构：
+
+* [TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 88 次发布
+
+发布时间：2021-05-21 08:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AttachNetworkInterface](https://cloud.tencent.com/document/api/215/15819)
+
+	* 新增入参：AttachType
+
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+
+	* 新增入参：AttachType
+
+* [DescribeNetworkInterfaceLimit](https://cloud.tencent.com/document/api/215/38533)
+
+	* 新增出参：ExtendEniQuantity, ExtendEniPrivateIpAddressQuantity
+
+* [MigrateNetworkInterface](https://cloud.tencent.com/document/api/215/15821)
+
+	* 新增入参：AttachType
+
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：TagSet
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：AttachType
 
 
 
@@ -5941,6 +5977,21 @@
 
 
 ## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 27 次发布
+
+发布时间：2021-05-21 08:03:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AttachDisks](https://cloud.tencent.com/document/api/362/16313)
+
+	* 新增入参：AttachMode
+
 
 ### 第 26 次发布
 
@@ -27464,6 +27515,22 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 63 次发布
+
+发布时间：2021-05-21 08:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRecordTask](https://cloud.tencent.com/document/api/267/56135)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask)](https://cloud.tencent.com/document/api/267/20474#[RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask))
+
 ### 第 62 次发布
 
 发布时间：2021-05-20 08:05:50
@@ -27474,12 +27541,12 @@
 
 新增接口：
 
-* [[DescribeLiveDomainReferer](https://cloud.tencent.com/document/api/267/56106)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLiveDomainReferer](https://cloud.tencent.com/document/api/267/56105)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLiveDomainReferer](https://cloud.tencent.com/document/api/267/56106)
+* [ModifyLiveDomainReferer](https://cloud.tencent.com/document/api/267/56105)
 
 新增数据结构：
 
-* [[RefererAuthConfig](https://cloud.tencent.com/document/api/267/20474#RefererAuthConfig)](https://cloud.tencent.com/document/api/267/20474#[RefererAuthConfig](https://cloud.tencent.com/document/api/267/20474#RefererAuthConfig))
+* [RefererAuthConfig](https://cloud.tencent.com/document/api/267/20474#RefererAuthConfig)
 
 ### 第 61 次发布
 
@@ -30327,6 +30394,21 @@
 
 
 ## 视频处理(mps) 版本：2019-06-12
+
+### 第 30 次发布
+
+发布时间：2021-05-21 08:06:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RawImageWatermarkInput](https://cloud.tencent.com/document/api/862/37615#RawImageWatermarkInput)
+
+	* 新增成员：RepeatType
+
 
 ### 第 29 次发布
 
@@ -33526,7 +33608,7 @@
 
 新增接口：
 
-* [[CreateInstances](https://cloud.tencent.com/document/api/409/56107)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
 
 ### 第 14 次发布
 
@@ -37806,10 +37888,10 @@
 
 新增接口：
 
-* [[DescribeApplications](https://cloud.tencent.com/document/api/596/56109)](https://cloud.tencent.com/document/api/#/#)
-* [[MergeTablesData](https://cloud.tencent.com/document/api/596/56111)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCensorship](https://cloud.tencent.com/document/api/596/56108)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateApply](https://cloud.tencent.com/document/api/596/56110)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApplications](https://cloud.tencent.com/document/api/596/56109)
+* [MergeTablesData](https://cloud.tencent.com/document/api/596/56111)
+* [ModifyCensorship](https://cloud.tencent.com/document/api/596/56108)
+* [UpdateApply](https://cloud.tencent.com/document/api/596/56110)
 
 修改接口：
 
@@ -37820,12 +37902,12 @@
 
 新增数据结构：
 
-* [[Application](https://cloud.tencent.com/document/api/596/39686#Application)](https://cloud.tencent.com/document/api/596/39686#[Application](https://cloud.tencent.com/document/api/596/39686#Application))
-* [[ApplyResult](https://cloud.tencent.com/document/api/596/39686#ApplyResult)](https://cloud.tencent.com/document/api/596/39686#[ApplyResult](https://cloud.tencent.com/document/api/596/39686#ApplyResult))
-* [[ApplyStatus](https://cloud.tencent.com/document/api/596/39686#ApplyStatus)](https://cloud.tencent.com/document/api/596/39686#[ApplyStatus](https://cloud.tencent.com/document/api/596/39686#ApplyStatus))
-* [[CompareTablesInfo](https://cloud.tencent.com/document/api/596/39686#CompareTablesInfo)](https://cloud.tencent.com/document/api/596/39686#[CompareTablesInfo](https://cloud.tencent.com/document/api/596/39686#CompareTablesInfo))
-* [[MergeTableResult](https://cloud.tencent.com/document/api/596/39686#MergeTableResult)](https://cloud.tencent.com/document/api/596/39686#[MergeTableResult](https://cloud.tencent.com/document/api/596/39686#MergeTableResult))
-* [[MergeTablesInfo](https://cloud.tencent.com/document/api/596/39686#MergeTablesInfo)](https://cloud.tencent.com/document/api/596/39686#[MergeTablesInfo](https://cloud.tencent.com/document/api/596/39686#MergeTablesInfo))
+* [Application](https://cloud.tencent.com/document/api/596/39686#Application)
+* [ApplyResult](https://cloud.tencent.com/document/api/596/39686#ApplyResult)
+* [ApplyStatus](https://cloud.tencent.com/document/api/596/39686#ApplyStatus)
+* [CompareTablesInfo](https://cloud.tencent.com/document/api/596/39686#CompareTablesInfo)
+* [MergeTableResult](https://cloud.tencent.com/document/api/596/39686#MergeTableResult)
+* [MergeTablesInfo](https://cloud.tencent.com/document/api/596/39686#MergeTablesInfo)
 
 修改数据结构：
 
@@ -38291,6 +38373,38 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 48 次发布
+
+发布时间：2021-05-21 08:07:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：ServiceVolumeMounts
+
+
+新增数据结构：
+
+* [[CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource))
+* [[CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount))
+* [[Tag](https://cloud.tencent.com/document/api/876/34822#Tag)](https://cloud.tencent.com/document/api/876/34822#[Tag](https://cloud.tencent.com/document/api/876/34822#Tag))
+
+修改数据结构：
+
+* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
+
+	* 新增成员：EmptyDir
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：Tags
+
 
 ### 第 47 次发布
 
@@ -41817,6 +41931,28 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 55 次发布
+
+发布时间：2021-05-21 08:08:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
+
+	* 新增入参：InstanceAdvancedSettingsOverrides
+
+
+修改数据结构：
+
+* [ExistedInstancesForNode](https://cloud.tencent.com/document/api/457/31866#ExistedInstancesForNode)
+
+	* 新增成员：DesiredPodNumbers
+
+
 ### 第 54 次发布
 
 发布时间：2021-05-20 08:08:13
@@ -43645,6 +43781,22 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 52 次发布
+
+发布时间：2021-05-21 08:08:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage)](https://cloud.tencent.com/document/api/649/36099#[TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage))
 
 ### 第 51 次发布
 
@@ -47908,6 +48060,44 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 88 次发布
+
+发布时间：2021-05-21 08:08:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AttachNetworkInterface](https://cloud.tencent.com/document/api/215/15819)
+
+	* 新增入参：AttachType
+
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+
+	* 新增入参：AttachType
+
+* [DescribeNetworkInterfaceLimit](https://cloud.tencent.com/document/api/215/38533)
+
+	* 新增出参：ExtendEniQuantity, ExtendEniPrivateIpAddressQuantity
+
+* [MigrateNetworkInterface](https://cloud.tencent.com/document/api/215/15821)
+
+	* 新增入参：AttachType
+
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：TagSet
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：AttachType
+
 
 ### 第 87 次发布
 

@@ -5570,6 +5570,78 @@ func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRecordTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
+}
+
+func (r *DescribeRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "StreamName")
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "ScrollToken")
+	if len(f) > 0 {
+		return errors.New("DescribeRecordTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
+		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
+
+		// 录制任务列表。当该字段为空，说明已返回所有数据。
+		TaskList []*RecordTask `json:"TaskList,omitempty" name:"TaskList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScreenShotSheetNumListRequest struct {
 	*tchttp.BaseRequest
 
@@ -7835,6 +7907,33 @@ type RecordParam struct {
 	// 
 	// 若未设置默认录制文件名为{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}
 	VodFileName *string `json:"VodFileName,omitempty" name:"VodFileName"`
+}
+
+type RecordTask struct {
+
+	// 录制任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 任务开始时间，Unix时间戳。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix时间戳。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 录制模板ID。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 调用 StopRecordTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
+	Stopped *uint64 `json:"Stopped,omitempty" name:"Stopped"`
 }
 
 type RecordTemplateInfo struct {

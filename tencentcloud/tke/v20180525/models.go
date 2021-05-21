@@ -96,6 +96,11 @@ type AddExistedInstancesRequest struct {
 
 	// 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
 	SkipValidateOptions []*string `json:"SkipValidateOptions,omitempty" name:"SkipValidateOptions" list`
+
+	// 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
+	// 
+	// 参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
+	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitempty" name:"InstanceAdvancedSettingsOverrides" list`
 }
 
 func (r *AddExistedInstancesRequest) ToJsonString() string {
@@ -119,6 +124,7 @@ func (r *AddExistedInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroupIds")
 	delete(f, "NodePool")
 	delete(f, "SkipValidateOptions")
+	delete(f, "InstanceAdvancedSettingsOverrides")
 	if len(f) > 0 {
 		return errors.New("AddExistedInstancesRequest has unknown keys!")
 	}
@@ -3926,6 +3932,9 @@ type ExistedInstancesForNode struct {
 
 	// 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）
 	InstanceAdvancedSettingsOverride *InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverride,omitempty" name:"InstanceAdvancedSettingsOverride"`
+
+	// 自定义模式集群，可指定每个节点的pod数量
+	DesiredPodNumbers []*int64 `json:"DesiredPodNumbers,omitempty" name:"DesiredPodNumbers" list`
 }
 
 type ExistedInstancesPara struct {
