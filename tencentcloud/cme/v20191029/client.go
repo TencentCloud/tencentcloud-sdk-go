@@ -1105,6 +1105,31 @@ func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResou
     return
 }
 
+func NewParseEventRequest() (request *ParseEventRequest) {
+    request = &ParseEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "ParseEvent")
+    return
+}
+
+func NewParseEventResponse() (response *ParseEventResponse) {
+    response = &ParseEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口接受制作云回调给客户的事件内容，将其转化为对应的 EventContent 结构，请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  即可使用。
+func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventResponse, err error) {
+    if request == nil {
+        request = NewParseEventRequest()
+    }
+    response = NewParseEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRevokeResourceAuthorizationRequest() (request *RevokeResourceAuthorizationRequest) {
     request = &RevokeResourceAuthorizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

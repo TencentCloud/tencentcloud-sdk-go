@@ -1387,6 +1387,10 @@ type DirectConnectTunnelExtra struct {
 	// 用户侧互联IPv6地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitempty" name:"CustomerIPv6Address"`
+
+	// 专线通道是否支持巨帧。1 支持，0 不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JumboEnable *int64 `json:"JumboEnable,omitempty" name:"JumboEnable"`
 }
 
 type DirectConnectTunnelRoute struct {

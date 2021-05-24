@@ -84,8 +84,6 @@ func NewCheckBatchStatusResponse() (response *CheckBatchStatusResponse) {
 }
 
 // 本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) CheckBatchStatus(request *CheckBatchStatusRequest) (response *CheckBatchStatusResponse, err error) {
     if request == nil {
         request = NewCheckBatchStatusRequest()
@@ -135,9 +133,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
     return
 }
 
-// 本接口 ( CreateDomainBatch ) 用于批量注册域名 。
-// 
-// 默认接口请求频率限制：20次/秒。
+// 本接口 ( CreateDomainBatch ) 用于批量域名注册 。
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     if request == nil {
         request = NewCreateDomainBatchRequest()
@@ -187,7 +183,7 @@ func NewDeleteTemplateResponse() (response *DeleteTemplateResponse) {
     return
 }
 
-// 本接口 ( DeleteTemplate ) 用于删除域名信息模板。
+// 本接口 ( DeleteTemplate ) 用于删除信息模板。
 func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteTemplateRequest()
@@ -262,7 +258,7 @@ func NewDescribeDomainBaseInfoResponse() (response *DescribeDomainBaseInfoRespon
     return
 }
 
-// 本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
+// 本接口 (  DescribeDomainBaseInfo) 获取域名基本信息。
 func (c *Client) DescribeDomainBaseInfo(request *DescribeDomainBaseInfoRequest) (response *DescribeDomainBaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDomainBaseInfoRequest()
@@ -287,7 +283,7 @@ func NewDescribeDomainNameListResponse() (response *DescribeDomainNameListRespon
     return
 }
 
-// 本接口 (  DescribeDomainNameList ) 获取域名列表。
+// 本接口 (  DescribeDomainNameList ) 我的域名列表。
 func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {
     if request == nil {
         request = NewDescribeDomainNameListRequest()
@@ -362,7 +358,7 @@ func NewDescribeTemplateListResponse() (response *DescribeTemplateListResponse) 
     return
 }
 
-// 本接口 (DescribeTemplateList) 用于获取模板列表。
+// 本接口 (DescribeTemplateList) 用于获取信息模板列表。
 func (c *Client) DescribeTemplateList(request *DescribeTemplateListRequest) (response *DescribeTemplateListResponse, err error) {
     if request == nil {
         request = NewDescribeTemplateListRequest()
@@ -387,9 +383,7 @@ func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) 
     return
 }
 
-// 本接口 ( ModifyDomainDNSBatch) 用于批量修改域名DNS信息 。
-// 
-// 默认接口请求频率限制：20次/秒。
+// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (response *ModifyDomainDNSBatchResponse, err error) {
     if request == nil {
         request = NewModifyDomainDNSBatchRequest()
@@ -440,8 +434,6 @@ func NewRenewDomainBatchResponse() (response *RenewDomainBatchResponse) {
 }
 
 // 本接口 ( RenewDomainBatch ) 用于批量续费域名 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *RenewDomainBatchResponse, err error) {
     if request == nil {
         request = NewRenewDomainBatchRequest()
@@ -467,8 +459,6 @@ func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
 }
 
 // 本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
     if request == nil {
         request = NewSetDomainAutoRenewRequest()
@@ -494,8 +484,6 @@ func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse
 }
 
 // 本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
-// 
-// 默认接口请求频率限制：20次/秒。
 func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
     if request == nil {
         request = NewTransferInDomainBatchRequest()
@@ -520,9 +508,7 @@ func NewTransferProhibitionBatchResponse() (response *TransferProhibitionBatchRe
     return
 }
 
-// 本接口 ( TransferInDomainBatch ) 用于批量禁止域名转移 。
-// 
-// 默认接口请求频率限制：20次/秒。
+// 本接口 ( TransferProhibitionBatch ) 用于批量禁止域名转移 。
 func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
     if request == nil {
         request = NewTransferProhibitionBatchRequest()
@@ -547,7 +533,7 @@ func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchRespon
     return
 }
 
-// 本接口 ( UpdateProhibitionBatch ) 用于批量设置禁止域名更新 。
+// 本接口 ( UpdateProhibitionBatch ) 用于批量禁止更新锁。
 func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
     if request == nil {
         request = NewUpdateProhibitionBatchRequest()
@@ -572,7 +558,7 @@ func NewUploadImageResponse() (response *UploadImageResponse) {
     return
 }
 
-// 本接口 ( UploadImage ) 用于上传资质照片 。
+// 本接口 ( UploadImage ) 用于证件图片上传 。
 func (c *Client) UploadImage(request *UploadImageRequest) (response *UploadImageResponse, err error) {
     if request == nil {
         request = NewUploadImageRequest()

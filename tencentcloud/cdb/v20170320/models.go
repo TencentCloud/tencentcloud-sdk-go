@@ -47,8 +47,11 @@ type AccountInfo struct {
 	// 修改密码的时间
 	ModifyPasswordTime *string `json:"ModifyPasswordTime,omitempty" name:"ModifyPasswordTime"`
 
-	// 账号的创建时间
+	// 该值已废弃
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户最大可用实例连接数
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type AddTimeWindowRequest struct {
@@ -615,6 +618,9 @@ type CreateAccountsRequest struct {
 
 	// 备注信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 新账户最大可用连接数。
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 func (r *CreateAccountsRequest) ToJsonString() string {
@@ -633,6 +639,7 @@ func (r *CreateAccountsRequest) FromJsonString(s string) error {
 	delete(f, "Accounts")
 	delete(f, "Password")
 	delete(f, "Description")
+	delete(f, "MaxUserConnections")
 	if len(f) > 0 {
 		return errors.New("CreateAccountsRequest has unknown keys!")
 	}
@@ -2205,6 +2212,9 @@ type DescribeAccountsResponse struct {
 
 		// 符合查询条件的账号详细信息。
 		Items []*AccountInfo `json:"Items,omitempty" name:"Items" list`
+
+		// 用户可设置实例最大连接数。
+		MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5799,6 +5809,10 @@ type InstanceInfo struct {
 
 	// 节点数
 	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfoItem `json:"TagList,omitempty" name:"TagList" list`
 }
 
 type InstanceRebootTime struct {
@@ -5989,6 +6003,63 @@ func (r *ModifyAccountDescriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyAccountMaxUserConnectionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 云数据库账号。
+	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts" list`
+
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 设置账户最大可用连接数。
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
+}
+
+func (r *ModifyAccountMaxUserConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountMaxUserConnectionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Accounts")
+	delete(f, "InstanceId")
+	delete(f, "MaxUserConnections")
+	if len(f) > 0 {
+		return errors.New("ModifyAccountMaxUserConnectionsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountMaxUserConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAccountMaxUserConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountMaxUserConnectionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyAccountPasswordRequest struct {
 	*tchttp.BaseRequest
 
@@ -6070,6 +6141,9 @@ type ModifyAccountPrivilegesRequest struct {
 	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 	// 注意，不传该参数表示清除该权限。
 	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges" list`
+
+	// 该参数不为空时，为批量修改权限。可选值为：grant，revoke。
+	ModifyAction *string `json:"ModifyAction,omitempty" name:"ModifyAction"`
 }
 
 func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
@@ -6090,6 +6164,7 @@ func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
 	delete(f, "DatabasePrivileges")
 	delete(f, "TablePrivileges")
 	delete(f, "ColumnPrivileges")
+	delete(f, "ModifyAction")
 	if len(f) > 0 {
 		return errors.New("ModifyAccountPrivilegesRequest has unknown keys!")
 	}
@@ -8362,6 +8437,17 @@ type TagInfo struct {
 
 	// 标签值
 	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+}
+
+type TagInfoItem struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TagInfoUnit struct {

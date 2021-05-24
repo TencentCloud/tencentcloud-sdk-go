@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 27 次发布
+### 第 61 次发布
 
-发布时间：2021-05-21 08:03:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AttachDisks](https://cloud.tencent.com/document/api/362/16313)
-
-	* 新增入参：AttachMode
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 63 次发布
-
-发布时间：2021-05-21 08:05:51
+发布时间：2021-05-24 08:03:21
 
 本次发布包含了以下内容：
 
@@ -31,100 +12,45 @@
 
 新增接口：
 
-* [DescribeRecordTask](https://cloud.tencent.com/document/api/267/56135)
-
-新增数据结构：
-
-* [RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask)
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 30 次发布
-
-发布时间：2021-05-21 08:06:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RawImageWatermarkInput](https://cloud.tencent.com/document/api/862/37615#RawImageWatermarkInput)
-
-	* 新增成员：RepeatType
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 48 次发布
-
-发布时间：2021-05-21 08:07:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [ModifyAccountMaxUserConnections](https://cloud.tencent.com/document/api/236/56200)
 
 修改接口：
 
-* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+* [CreateAccounts](https://cloud.tencent.com/document/api/236/17502)
 
-	* 新增入参：ServiceVolumeMounts
+	* 新增入参：MaxUserConnections
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
+
+	* 新增出参：MaxUserConnections
+
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/236/17496)
+
+	* 新增入参：ModifyAction
 
 
 新增数据结构：
 
-* [CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource)
-* [CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount)
-* [Tag](https://cloud.tencent.com/document/api/876/34822#Tag)
+* [TagInfoItem](https://cloud.tencent.com/document/api/236/15878#TagInfoItem)
 
 修改数据结构：
 
-* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
+* [AccountInfo](https://cloud.tencent.com/document/api/236/15878#AccountInfo)
 
-	* 新增成员：EmptyDir
+	* 新增成员：MaxUserConnections
 
-* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
 
-	* 新增成员：Tags
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 55 次发布
-
-发布时间：2021-05-21 08:08:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
-
-	* 新增入参：InstanceAdvancedSettingsOverrides
-
-
-修改数据结构：
-
-* [ExistedInstancesForNode](https://cloud.tencent.com/document/api/457/31866#ExistedInstancesForNode)
-
-	* 新增成员：DesiredPodNumbers
+	* 新增成员：TagList
 
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 52 次发布
+### 第 31 次发布
 
-发布时间：2021-05-21 08:08:26
+发布时间：2021-05-24 08:02:19
 
 本次发布包含了以下内容：
 
@@ -132,19 +58,109 @@
 
 新增接口：
 
-* [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)
+* [ParseEvent](https://cloud.tencent.com/document/api/1156/56199)
 
 新增数据结构：
 
-* [TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage)
+* [EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)
+* [StorageNewFileCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#StorageNewFileCreatedEvent)
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 21 次发布
+
+发布时间：2021-05-24 08:04:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
+
+	* 新增成员：JumboEnable
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 1 次发布
+
+发布时间：2021-05-21 17:26:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDomain](https://cloud.tencent.com/document/api/1427/56184)
+* [CreateDomainAlias](https://cloud.tencent.com/document/api/1427/56183)
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/1427/56182)
+* [CreateDomainGroup](https://cloud.tencent.com/document/api/1427/56181)
+* [CreateRecord](https://cloud.tencent.com/document/api/1427/56180)
+* [CreateRecordBatch](https://cloud.tencent.com/document/api/1427/56179)
+* [DeleteDomain](https://cloud.tencent.com/document/api/1427/56178)
+* [DeleteDomainAlias](https://cloud.tencent.com/document/api/1427/56177)
+* [DeleteRecord](https://cloud.tencent.com/document/api/1427/56176)
+* [DeleteShareDomain](https://cloud.tencent.com/document/api/1427/56175)
+* [DescribeBatchTask](https://cloud.tencent.com/document/api/1427/56174)
+* [DescribeDomain](https://cloud.tencent.com/document/api/1427/56173)
+* [DescribeDomainList](https://cloud.tencent.com/document/api/1427/56172)
+* [DescribeDomainLogList](https://cloud.tencent.com/document/api/1427/56171)
+* [DescribeDomainPurview](https://cloud.tencent.com/document/api/1427/56170)
+* [DescribeDomainShareInfo](https://cloud.tencent.com/document/api/1427/56169)
+* [DescribeRecord](https://cloud.tencent.com/document/api/1427/56168)
+* [DescribeRecordLineList](https://cloud.tencent.com/document/api/1427/56167)
+* [DescribeRecordList](https://cloud.tencent.com/document/api/1427/56166)
+* [DescribeRecordType](https://cloud.tencent.com/document/api/1427/56165)
+* [DescribeUserDetail](https://cloud.tencent.com/document/api/1427/56164)
+* [ModifyDomainLock](https://cloud.tencent.com/document/api/1427/56163)
+* [ModifyDomainOwner](https://cloud.tencent.com/document/api/1427/56162)
+* [ModifyDomainRemark](https://cloud.tencent.com/document/api/1427/56161)
+* [ModifyDomainStatus](https://cloud.tencent.com/document/api/1427/56160)
+* [ModifyDomainUnlock](https://cloud.tencent.com/document/api/1427/56159)
+* [ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)
+* [ModifyRecord](https://cloud.tencent.com/document/api/1427/56157)
+* [ModifyRecordBatch](https://cloud.tencent.com/document/api/1427/56156)
+* [ModifyRecordRemark](https://cloud.tencent.com/document/api/1427/56155)
+* [ModifyRecordStatus](https://cloud.tencent.com/document/api/1427/56154)
+
+新增数据结构：
+
+* [AddRecordBatch](https://cloud.tencent.com/document/api/1427/56185#AddRecordBatch)
+* [BatchRecordInfo](https://cloud.tencent.com/document/api/1427/56185#BatchRecordInfo)
+* [CreateDomainBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchDetail)
+* [CreateDomainBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchRecord)
+* [CreateRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchDetail)
+* [CreateRecordBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchRecord)
+* [DescribeBatchTaskDetail](https://cloud.tencent.com/document/api/1427/56185#DescribeBatchTaskDetail)
+* [DomainCountInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCountInfo)
+* [DomainCreateInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCreateInfo)
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+* [DomainListItem](https://cloud.tencent.com/document/api/1427/56185#DomainListItem)
+* [DomainShareInfo](https://cloud.tencent.com/document/api/1427/56185#DomainShareInfo)
+* [LineGroupInfo](https://cloud.tencent.com/document/api/1427/56185#LineGroupInfo)
+* [LineInfo](https://cloud.tencent.com/document/api/1427/56185#LineInfo)
+* [LockInfo](https://cloud.tencent.com/document/api/1427/56185#LockInfo)
+* [ModifyRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#ModifyRecordBatchDetail)
+* [PurviewInfo](https://cloud.tencent.com/document/api/1427/56185#PurviewInfo)
+* [RecordCountInfo](https://cloud.tencent.com/document/api/1427/56185#RecordCountInfo)
+* [RecordInfo](https://cloud.tencent.com/document/api/1427/56185#RecordInfo)
+* [RecordListItem](https://cloud.tencent.com/document/api/1427/56185#RecordListItem)
+* [UserInfo](https://cloud.tencent.com/document/api/1427/56185#UserInfo)
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 88 次发布
+### 第 89 次发布
 
-发布时间：2021-05-21 08:08:53
+发布时间：2021-05-24 08:08:44
 
 本次发布包含了以下内容：
 
@@ -152,32 +168,9 @@
 
 修改接口：
 
-* [AttachNetworkInterface](https://cloud.tencent.com/document/api/215/15819)
+* [SetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/19194)
 
-	* 新增入参：AttachType
-
-* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
-
-	* 新增入参：AttachType
-
-* [DescribeNetworkInterfaceLimit](https://cloud.tencent.com/document/api/215/38533)
-
-	* 新增出参：ExtendEniQuantity, ExtendEniPrivateIpAddressQuantity
-
-* [MigrateNetworkInterface](https://cloud.tencent.com/document/api/215/15821)
-
-	* 新增入参：AttachType
-
-
-修改数据结构：
-
-* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
-
-	* 新增成员：TagSet
-
-* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
-
-	* 新增成员：AttachType
+	* 新增入参：SetDefaultLimitFlag
 
 
 
@@ -6755,6 +6748,48 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 61 次发布
+
+发布时间：2021-05-24 08:03:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyAccountMaxUserConnections](https://cloud.tencent.com/document/api/236/56200)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateAccounts](https://cloud.tencent.com/document/api/236/17502)
+
+	* 新增入参：MaxUserConnections
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499)
+
+	* 新增出参：MaxUserConnections
+
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/236/17496)
+
+	* 新增入参：ModifyAction
+
+
+新增数据结构：
+
+* [[TagInfoItem](https://cloud.tencent.com/document/api/236/15878#TagInfoItem)](https://cloud.tencent.com/document/api/236/15878#[TagInfoItem](https://cloud.tencent.com/document/api/236/15878#TagInfoItem))
+
+修改数据结构：
+
+* [AccountInfo](https://cloud.tencent.com/document/api/236/15878#AccountInfo)
+
+	* 新增成员：MaxUserConnections
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：TagList
+
+
 ### 第 60 次发布
 
 发布时间：2021-03-30 08:03:14
@@ -11812,6 +11847,23 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 31 次发布
+
+发布时间：2021-05-24 08:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ParseEvent](https://cloud.tencent.com/document/api/1156/56199)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)](https://cloud.tencent.com/document/api/1156/40360#[EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent))
+* [[StorageNewFileCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#StorageNewFileCreatedEvent)](https://cloud.tencent.com/document/api/1156/40360#[StorageNewFileCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#StorageNewFileCreatedEvent))
 
 ### 第 30 次发布
 
@@ -16975,6 +17027,21 @@
 
 ## 专线接入(dc) 版本：2018-04-10
 
+### 第 21 次发布
+
+发布时间：2021-05-24 08:04:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
+
+	* 新增成员：JumboEnable
+
+
 ### 第 20 次发布
 
 发布时间：2021-04-21 08:04:26
@@ -17889,6 +17956,77 @@
 * [TextFile](https://cloud.tencent.com/document/api/1342/53778#TextFile)
 * [ViewBaseInfo](https://cloud.tencent.com/document/api/1342/53778#ViewBaseInfo)
 * [ViewResponseInfo](https://cloud.tencent.com/document/api/1342/53778#ViewResponseInfo)
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 1 次发布
+
+发布时间：2021-05-21 17:26:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDomain](https://cloud.tencent.com/document/api/1427/56184)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDomainAlias](https://cloud.tencent.com/document/api/1427/56183)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDomainBatch](https://cloud.tencent.com/document/api/1427/56182)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDomainGroup](https://cloud.tencent.com/document/api/1427/56181)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRecord](https://cloud.tencent.com/document/api/1427/56180)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateRecordBatch](https://cloud.tencent.com/document/api/1427/56179)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDomain](https://cloud.tencent.com/document/api/1427/56178)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDomainAlias](https://cloud.tencent.com/document/api/1427/56177)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecord](https://cloud.tencent.com/document/api/1427/56176)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteShareDomain](https://cloud.tencent.com/document/api/1427/56175)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBatchTask](https://cloud.tencent.com/document/api/1427/56174)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomain](https://cloud.tencent.com/document/api/1427/56173)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainList](https://cloud.tencent.com/document/api/1427/56172)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainLogList](https://cloud.tencent.com/document/api/1427/56171)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainPurview](https://cloud.tencent.com/document/api/1427/56170)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainShareInfo](https://cloud.tencent.com/document/api/1427/56169)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecord](https://cloud.tencent.com/document/api/1427/56168)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordLineList](https://cloud.tencent.com/document/api/1427/56167)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordList](https://cloud.tencent.com/document/api/1427/56166)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordType](https://cloud.tencent.com/document/api/1427/56165)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserDetail](https://cloud.tencent.com/document/api/1427/56164)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainLock](https://cloud.tencent.com/document/api/1427/56163)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainOwner](https://cloud.tencent.com/document/api/1427/56162)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainRemark](https://cloud.tencent.com/document/api/1427/56161)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainStatus](https://cloud.tencent.com/document/api/1427/56160)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainUnlock](https://cloud.tencent.com/document/api/1427/56159)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRecord](https://cloud.tencent.com/document/api/1427/56157)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRecordBatch](https://cloud.tencent.com/document/api/1427/56156)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRecordRemark](https://cloud.tencent.com/document/api/1427/56155)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRecordStatus](https://cloud.tencent.com/document/api/1427/56154)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AddRecordBatch](https://cloud.tencent.com/document/api/1427/56185#AddRecordBatch)](https://cloud.tencent.com/document/api/1427/56185#[AddRecordBatch](https://cloud.tencent.com/document/api/1427/56185#AddRecordBatch))
+* [[BatchRecordInfo](https://cloud.tencent.com/document/api/1427/56185#BatchRecordInfo)](https://cloud.tencent.com/document/api/1427/56185#[BatchRecordInfo](https://cloud.tencent.com/document/api/1427/56185#BatchRecordInfo))
+* [[CreateDomainBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchDetail)](https://cloud.tencent.com/document/api/1427/56185#[CreateDomainBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchDetail))
+* [[CreateDomainBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchRecord)](https://cloud.tencent.com/document/api/1427/56185#[CreateDomainBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateDomainBatchRecord))
+* [[CreateRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchDetail)](https://cloud.tencent.com/document/api/1427/56185#[CreateRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchDetail))
+* [[CreateRecordBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchRecord)](https://cloud.tencent.com/document/api/1427/56185#[CreateRecordBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchRecord))
+* [[DescribeBatchTaskDetail](https://cloud.tencent.com/document/api/1427/56185#DescribeBatchTaskDetail)](https://cloud.tencent.com/document/api/1427/56185#[DescribeBatchTaskDetail](https://cloud.tencent.com/document/api/1427/56185#DescribeBatchTaskDetail))
+* [[DomainCountInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCountInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainCountInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCountInfo))
+* [[DomainCreateInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCreateInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainCreateInfo](https://cloud.tencent.com/document/api/1427/56185#DomainCreateInfo))
+* [[DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo))
+* [[DomainListItem](https://cloud.tencent.com/document/api/1427/56185#DomainListItem)](https://cloud.tencent.com/document/api/1427/56185#[DomainListItem](https://cloud.tencent.com/document/api/1427/56185#DomainListItem))
+* [[DomainShareInfo](https://cloud.tencent.com/document/api/1427/56185#DomainShareInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainShareInfo](https://cloud.tencent.com/document/api/1427/56185#DomainShareInfo))
+* [[LineGroupInfo](https://cloud.tencent.com/document/api/1427/56185#LineGroupInfo)](https://cloud.tencent.com/document/api/1427/56185#[LineGroupInfo](https://cloud.tencent.com/document/api/1427/56185#LineGroupInfo))
+* [[LineInfo](https://cloud.tencent.com/document/api/1427/56185#LineInfo)](https://cloud.tencent.com/document/api/1427/56185#[LineInfo](https://cloud.tencent.com/document/api/1427/56185#LineInfo))
+* [[LockInfo](https://cloud.tencent.com/document/api/1427/56185#LockInfo)](https://cloud.tencent.com/document/api/1427/56185#[LockInfo](https://cloud.tencent.com/document/api/1427/56185#LockInfo))
+* [[ModifyRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#ModifyRecordBatchDetail)](https://cloud.tencent.com/document/api/1427/56185#[ModifyRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#ModifyRecordBatchDetail))
+* [[PurviewInfo](https://cloud.tencent.com/document/api/1427/56185#PurviewInfo)](https://cloud.tencent.com/document/api/1427/56185#[PurviewInfo](https://cloud.tencent.com/document/api/1427/56185#PurviewInfo))
+* [[RecordCountInfo](https://cloud.tencent.com/document/api/1427/56185#RecordCountInfo)](https://cloud.tencent.com/document/api/1427/56185#[RecordCountInfo](https://cloud.tencent.com/document/api/1427/56185#RecordCountInfo))
+* [[RecordInfo](https://cloud.tencent.com/document/api/1427/56185#RecordInfo)](https://cloud.tencent.com/document/api/1427/56185#[RecordInfo](https://cloud.tencent.com/document/api/1427/56185#RecordInfo))
+* [[RecordListItem](https://cloud.tencent.com/document/api/1427/56185#RecordListItem)](https://cloud.tencent.com/document/api/1427/56185#[RecordListItem](https://cloud.tencent.com/document/api/1427/56185#RecordListItem))
+* [[UserInfo](https://cloud.tencent.com/document/api/1427/56185#UserInfo)](https://cloud.tencent.com/document/api/1427/56185#[UserInfo](https://cloud.tencent.com/document/api/1427/56185#UserInfo))
 
 
 
@@ -27525,11 +27663,11 @@
 
 新增接口：
 
-* [[DescribeRecordTask](https://cloud.tencent.com/document/api/267/56135)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRecordTask](https://cloud.tencent.com/document/api/267/56135)
 
 新增数据结构：
 
-* [[RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask)](https://cloud.tencent.com/document/api/267/20474#[RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask))
+* [RecordTask](https://cloud.tencent.com/document/api/267/20474#RecordTask)
 
 ### 第 62 次发布
 
@@ -38391,9 +38529,9 @@
 
 新增数据结构：
 
-* [[CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource))
-* [[CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount))
-* [[Tag](https://cloud.tencent.com/document/api/876/34822#Tag)](https://cloud.tencent.com/document/api/876/34822#[Tag](https://cloud.tencent.com/document/api/876/34822#Tag))
+* [CloudBaseRunEmptyDirVolumeSource](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunEmptyDirVolumeSource)
+* [CloudBaseRunServiceVolumeMount](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeMount)
+* [Tag](https://cloud.tencent.com/document/api/876/34822#Tag)
 
 修改数据结构：
 
@@ -43792,11 +43930,11 @@
 
 新增接口：
 
-* [[DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)
 
 新增数据结构：
 
-* [[TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage)](https://cloud.tencent.com/document/api/649/36099#[TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage))
+* [TaskRecordPage](https://cloud.tencent.com/document/api/649/36099#TaskRecordPage)
 
 ### 第 51 次发布
 
@@ -48060,6 +48198,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 89 次发布
+
+发布时间：2021-05-24 08:08:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SetCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/19194)
+
+	* 新增入参：SetDefaultLimitFlag
+
 
 ### 第 88 次发布
 

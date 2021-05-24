@@ -1769,6 +1769,16 @@ type Entity struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
+type EventContent struct {
+
+	// 事件类型，可取值为：
+	// <li>Storage.NewFileCreated：新文件产生。</li>
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
+	StorageNewFileCreatedEvent *StorageNewFileCreatedEvent `json:"StorageNewFileCreatedEvent,omitempty" name:"StorageNewFileCreatedEvent"`
+}
+
 type ExportVideoByEditorTrackDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -3336,6 +3346,59 @@ type OtherMaterial struct {
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
+type ParseEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 回调事件内容。
+	EventContent *string `json:"EventContent,omitempty" name:"EventContent"`
+}
+
+func (r *ParseEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "EventContent")
+	if len(f) > 0 {
+		return errors.New("ParseEventRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 事件内容。
+		EventContent *EventContent `json:"EventContent,omitempty" name:"EventContent"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ParseEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PenguinMediaPlatformPublishInfo struct {
 
 	// 视频发布标题。
@@ -3684,6 +3747,30 @@ type SortBy struct {
 
 	// 排序方式，可选值：Asc（升序）、Desc（降序），默认降序。
 	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type StorageNewFileCreatedEvent struct {
+
+	// 云点播文件  Id。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 操作者 Id。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 操作类型，可取值为：
+	// <li>Upload：上传；</li>
+	// <li>PullUpload：拉取上传；</li>
+	// <li>Record：直播录制。</li>
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 媒体归属。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 媒体分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 }
 
 type StreamConnectOutput struct {

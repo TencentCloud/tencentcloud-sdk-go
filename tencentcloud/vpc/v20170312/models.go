@@ -2989,6 +2989,7 @@ type CreateNetDetectRequest struct {
 	// PEERCONNECTION：对等连接；
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
+	// CCN：云联网网关；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -2997,6 +2998,7 @@ type CreateNetDetectRequest struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+	// 下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。
@@ -14462,6 +14464,7 @@ type NetDetect struct {
 	// PEERCONNECTION：对等连接；
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
+	// CCN：云联网网关；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -14470,6 +14473,7 @@ type NetDetect struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+	// 下一跳类型为CCN，取值云联网网关，形如：ccn-12345678；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 下一跳网关名称。
@@ -16029,6 +16033,9 @@ type SetCcnRegionBandwidthLimitsRequest struct {
 
 	// 云联网（CCN）各地域出带宽上限。
 	CcnRegionBandwidthLimits []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimits,omitempty" name:"CcnRegionBandwidthLimits" list`
+
+	// 是否设置带宽为默认值。
+	SetDefaultLimitFlag *bool `json:"SetDefaultLimitFlag,omitempty" name:"SetDefaultLimitFlag"`
 }
 
 func (r *SetCcnRegionBandwidthLimitsRequest) ToJsonString() string {
@@ -16045,6 +16052,7 @@ func (r *SetCcnRegionBandwidthLimitsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CcnId")
 	delete(f, "CcnRegionBandwidthLimits")
+	delete(f, "SetDefaultLimitFlag")
 	if len(f) > 0 {
 		return errors.New("SetCcnRegionBandwidthLimitsRequest has unknown keys!")
 	}
