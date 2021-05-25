@@ -29,7 +29,7 @@
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-01-07 08:01:42 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-05-21 08:03:17 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-04-07 08:00:41 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-05-24 08:03:21 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-05-25 08:03:54 |
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-05-11 08:03:44 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-01-07 08:03:25 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-04-07 08:03:25 |
@@ -47,7 +47,7 @@
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-05-14 08:10:33 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-05-17 08:04:20 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-05-25 08:04:57 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-05-20 08:10:42 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云数据库 CynosDB](https://cloud.tencent.com/document/product/1003) | 2021-01-18 08:00:35 |
@@ -88,9 +88,9 @@
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-01-07 08:05:49 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-05-18 08:01:52 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-05-08 15:18:48 |
-| kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-05-18 08:06:38 |
+| kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-05-25 08:06:56 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-05-11 08:00:57 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-05-21 08:05:51 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-05-25 08:07:04 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-01-07 08:00:37 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-04-21 08:06:07 |
 | memcached | [云数据库 Memcached](https://cloud.tencent.com/document/product) | 2020-08-24 08:07:49 |
@@ -99,6 +99,7 @@
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-05-12 08:06:12 |
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-05-17 08:06:33 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-05-21 08:06:33 |
+| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-05-25 08:00:05 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2021-01-07 08:06:57 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
@@ -152,8 +153,8 @@
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-01-28 08:00:40 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-01-07 08:08:32 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-05-12 08:09:13 |
-| tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-04-22 08:00:07 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-05-25 08:11:20 |
+| tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-05-25 08:00:36 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-05-21 08:08:26 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-04-30 08:10:47 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-02-26 08:08:15 |

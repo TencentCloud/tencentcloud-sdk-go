@@ -21,6 +21,72 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type DescribeConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 配置中心类型（consul、zookeeper、apollo等）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 配置项的节点路径key
+	Key *string `json:"Key,omitempty" name:"Key"`
+}
+
+func (r *DescribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return errors.New("DescribeConfigRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置项或路径key
+		Key *string `json:"Key,omitempty" name:"Key"`
+
+		// 配置项的值
+		Value *string `json:"Value,omitempty" name:"Value"`
+
+		// 当前key是否为路径
+		IsDir *bool `json:"IsDir,omitempty" name:"IsDir"`
+
+		// 当前key下的子路径
+		List []*string `json:"List,omitempty" name:"List" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSREInstanceAccessAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -188,6 +254,10 @@ type ManageConfigResponse struct {
 		// 对配置中心操作配置之后的返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 操作是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OpResult *bool `json:"OpResult,omitempty" name:"OpResult"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

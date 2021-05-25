@@ -957,6 +957,148 @@ func (r *CreateLiveCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLivePullStreamTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 拉流源的类型：
+	// PullLivePushLive -直播，
+	// PullVodPushLive -点播。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 拉流源 url 列表。
+	// SourceType 为直播（PullLivePushLive）只可以填1个，
+	// SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
+	// 当前支持的文件格式：flv，mp4，hls。
+	// 当前支持的拉流协议：http，https，rtmp。
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+
+	// 推流域名。
+	// 将拉取过来的流推到该域名。
+	// 注意：请使用已在云直播配置的推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径。
+	// 将拉取过来的流推到该路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 推流名称。
+	// 将拉取过来的流推到该流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 开始时间。
+	// 使用 UTC 格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，注意：
+	// 1. 结束时间必须大于开始时间；
+	// 2. 结束时间和开始时间必须大于当前时间；
+	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 使用 UTC 格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务操作人备注。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 推流参数。
+	// 推流时携带自定义参数。
+	// 示例：
+	// bak=1&test=2 。
+	PushArgs *string `json:"PushArgs,omitempty" name:"PushArgs"`
+
+	// 选择需要回调的事件（不填则回调全部）：
+	// TaskStart：任务启动回调，
+	// TaskExit：任务停止回调，
+	// VodSourceFileStart：从点播源文件开始拉流回调，
+	// VodSourceFileFinish：从点播源文件拉流结束回调，
+	// ResetTaskConfig：任务更新回调。
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+
+	// 点播拉流转推循环次数。默认：-1。
+	// -1：无限循环，直到任务结束。
+	// 0：不循环。
+	// >0：具体循环次数。次数和时间以先结束的为准。
+	// 注意：该配置仅对拉流源为点播时生效。
+	VodLoopTimes *string `json:"VodLoopTimes,omitempty" name:"VodLoopTimes"`
+
+	// 点播更新SourceUrls后的播放方式：
+	// ImmediateNewSource：立即播放新的拉流源内容；
+	// ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的拉流源播放。（旧拉流源未播放的点播 url 不会再播放）
+	// 
+	// 注意：该配置生效仅对变更前拉流源为点播时生效。
+	VodRefreshType *string `json:"VodRefreshType,omitempty" name:"VodRefreshType"`
+
+	// 自定义回调地址。
+	// 拉流转推任务相关事件会回调到该地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 其他参数。
+	// 示例: ignore_region  用于忽略传入地域, 内部按负载分配。
+	ExtraCmd *string `json:"ExtraCmd,omitempty" name:"ExtraCmd"`
+
+	// 任务描述，限制 512 字节。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *CreateLivePullStreamTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceType")
+	delete(f, "SourceUrls")
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Operator")
+	delete(f, "PushArgs")
+	delete(f, "CallbackEvents")
+	delete(f, "VodLoopTimes")
+	delete(f, "VodRefreshType")
+	delete(f, "CallbackUrl")
+	delete(f, "ExtraCmd")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return errors.New("CreateLivePullStreamTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLivePullStreamTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 Id 。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLivePullStreamTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePullStreamTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateLiveRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -2040,6 +2182,56 @@ func (r *DeleteLiveDomainResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLiveDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLivePullStreamTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作人姓名。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DeleteLivePullStreamTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePullStreamTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return errors.New("DeleteLivePullStreamTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLivePullStreamTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteLivePullStreamTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePullStreamTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3927,6 +4119,81 @@ func (r *DescribeLivePlayAuthKeyResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLivePlayAuthKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLivePullStreamTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID。 
+	// 来源：调用 CreateLivePullStreamTask 接口时返回。
+	// 不填默认查询所有任务，按更新时间倒序排序。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 取得第几页，默认值：1。
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页大小，默认值：10。
+	// 取值范围：1~20 之前的任意整数。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLivePullStreamTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePullStreamTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return errors.New("DescribeLivePullStreamTasksRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLivePullStreamTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 直播拉流任务信息列表。
+		TaskInfos []*PullStreamTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+
+		// 分页的页码。
+		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+		// 每页大小。
+		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 符合条件的总个数。
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 总页数。
+		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+		// 限制可创建的最大任务数。
+		LimitTaskNum *uint64 `json:"LimitTaskNum,omitempty" name:"LimitTaskNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLivePullStreamTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePullStreamTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7030,6 +7297,134 @@ func (r *ModifyLivePlayDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyLivePullStreamTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作人姓名。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 拉流源url列表。
+	// SourceType为直播（PullLivePushLive）只可以填1个，
+	// SourceType为点播（PullVodPushLive）可以填多个，上限30个。
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+
+	// 开始时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，注意：
+	// 1. 结束时间必须大于开始时间；
+	// 2. 结束时间和开始时间必须大于当前时间；
+	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 点播拉流转推循环次数。
+	// -1：无限循环，直到任务结束。
+	// 0：不循环。
+	// >0：具体循环次数。次数和时间以先结束的为准。
+	// 注意：拉流源为点播，该配置生效。
+	VodLoopTimes *int64 `json:"VodLoopTimes,omitempty" name:"VodLoopTimes"`
+
+	// 点播更新SourceUrls后的播放方式：
+	// ImmediateNewSource：立即从更新的拉流源开始播放；
+	// ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
+	// 注意：拉流源为点播，该配置生效。
+	VodRefreshType *string `json:"VodRefreshType,omitempty" name:"VodRefreshType"`
+
+	// 任务状态：
+	// enable - 启用，
+	// pause - 暂停。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 选择需要回调的事件（不填则回调全部）：
+	// TaskStart：任务启动回调，
+	// TaskExit：任务停止回调，
+	// VodSourceFileStart：从点播源文件开始拉流回调，
+	// VodSourceFileFinish：从点播源文件拉流结束回调，
+	// ResetTaskConfig：任务更新回调。
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+
+	// 自定义回调地址。
+	// 相关事件会回调到该地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 指定播放文件索引。
+	// 注意：
+	// 1. 从1开始，不大于SourceUrls中文件个数。
+	// 2. 只有VodRefreshType为ContinueBeginPoint时指定才有效。
+	// 3. 只有当前任务处于暂停时，指定后启动任务才会生效。
+	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
+
+	// 指定播放文件偏移。
+	// 注意：
+	// 1. 单位：秒，配合FileIndex使用。
+	// 2. 只有VodRefreshType为ContinueBeginPoint时指定才有效。
+	// 3. 只有当前任务处于暂停时，指定后启动任务才会生效。
+	OffsetTime *int64 `json:"OffsetTime,omitempty" name:"OffsetTime"`
+
+	// 任务备注。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *ModifyLivePullStreamTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Operator")
+	delete(f, "SourceUrls")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "VodLoopTimes")
+	delete(f, "VodRefreshType")
+	delete(f, "Status")
+	delete(f, "CallbackEvents")
+	delete(f, "CallbackUrl")
+	delete(f, "FileIndex")
+	delete(f, "OffsetTime")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return errors.New("ModifyLivePullStreamTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLivePullStreamTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLivePullStreamTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLivePullStreamTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyLivePushAuthKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -7731,6 +8126,124 @@ type PullStreamConfig struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type PullStreamTaskInfo struct {
+
+	// 拉流任务Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 拉流源的类型：
+	// PullLivePushLive -直播，
+	// PullVodPushLive -点播。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 拉流源url列表。
+	// SourceType为直播（PullLiveToLive）只可以填1个，
+	// SourceType为点播（PullVodToLive）可以填多个，上限10个。
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+
+	// 推流域名。
+	// 将拉到的源推到该域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径。
+	// 将拉到的源推到该路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 将拉到的源推到该流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 推流参数。
+	// 推流携带的自定义参数。
+	PushArgs *string `json:"PushArgs,omitempty" name:"PushArgs"`
+
+	// 开始时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，注意：
+	// 1. 结束时间必须大于开始时间；
+	// 2. 结束时间和开始时间必须大于当前时间；
+	// 3. 结束时间 和 开始时间 间隔必须小于七天。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 拉流源所在地域（请就近选取）：
+	// ap-beijing - 华北地区(北京)，
+	// ap-shanghai -华东地区(上海)，
+	// ap-guangzhou -华南地区(广州)，
+	// ap-mumbai - 印度。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 点播拉流转推循环次数。
+	// -1：无限循环，直到任务结束。
+	// 0：不循环。
+	// >0：具体循环次数。次数和时间以先结束的为准。
+	// 注意：拉流源为点播，该配置生效。
+	VodLoopTimes *int64 `json:"VodLoopTimes,omitempty" name:"VodLoopTimes"`
+
+	// 点播更新SourceUrls后的播放方式：
+	// ImmediateNewSource：立即从更新的拉流源开始播放；
+	// ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
+	// 
+	// 注意：拉流源为点播，该配置生效。
+	VodRefreshType *string `json:"VodRefreshType,omitempty" name:"VodRefreshType"`
+
+	// 任务创建时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务更新时间。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创建任务的操作者。
+	CreateBy *string `json:"CreateBy,omitempty" name:"CreateBy"`
+
+	// 最后更新任务的操作者。
+	UpdateBy *string `json:"UpdateBy,omitempty" name:"UpdateBy"`
+
+	// 回调地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 选择需要回调的事件：
+	// TaskStart：任务启动回调，
+	// TaskExit：任务停止回调，
+	// VodSourceFileStart：从点播源文件开始拉流回调，
+	// VodSourceFileFinish：从点播源文件拉流结束回调，
+	// ResetTaskConfig：任务更新回调。
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+
+	// 注意：该信息暂不返回。
+	// 最后一次回调信息。
+	CallbackInfo *string `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+
+	// 注意：该信息暂不返回。
+	// 错误信息。
+	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+
+	// 状态。
+	// enable：生效中。
+	// pause：暂停中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 注意：该信息仅在查询单个任务时返回。
+	// 任务最新拉流信息。
+	// 包含：源 url，偏移时间，上报时间。
+	RecentPullInfo *RecentPullInfo `json:"RecentPullInfo,omitempty" name:"RecentPullInfo"`
+
+	// 任务备注信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
 type PushAuthKeyInfo struct {
 
 	// 域名。
@@ -7866,6 +8379,23 @@ type PushQualityData struct {
 
 	// 推流参数
 	StreamParam *string `json:"StreamParam,omitempty" name:"StreamParam"`
+}
+
+type RecentPullInfo struct {
+
+	// 当前正在拉的文件地址。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 当前正在拉的文件偏移，单位：秒。
+	OffsetTime *uint64 `json:"OffsetTime,omitempty" name:"OffsetTime"`
+
+	// 最新上报偏移信息时间。UTC格式。
+	// 如：2020-07-23T03:20:39Z。
+	// 注意：与北京时间相差八小时。
+	ReportTime *string `json:"ReportTime,omitempty" name:"ReportTime"`
+
+	// 已经轮播的次数。
+	LoopedTimes *int64 `json:"LoopedTimes,omitempty" name:"LoopedTimes"`
 }
 
 type RecordParam struct {

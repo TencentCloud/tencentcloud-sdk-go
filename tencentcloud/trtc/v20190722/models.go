@@ -1322,6 +1322,9 @@ type LayoutParams struct {
 
 	// 悬浮模板、九宫格、屏幕分享模板生效，用于控制纯音频上行是否占用画面布局位置。设置为0是代表后台默认处理方式，悬浮小画面占布局位置，九宫格画面占布局位置、屏幕分享小画面不占布局位置；设置为1时代表纯音频上行占布局位置；设置为2时代表纯音频上行不占布局位置。默认为0。
 	PureAudioHoldPlaceMode *uint64 `json:"PureAudioHoldPlaceMode,omitempty" name:"PureAudioHoldPlaceMode"`
+
+	// 水印参数。
+	WaterMarkParams *WaterMarkParams `json:"WaterMarkParams,omitempty" name:"WaterMarkParams"`
 }
 
 type ModifyPictureRequest struct {
@@ -2019,4 +2022,22 @@ type UserInformation struct {
 
 	// 判断用户是否已经离开房间
 	Finished *bool `json:"Finished,omitempty" name:"Finished"`
+}
+
+type WaterMarkParams struct {
+
+	// 混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
+	WaterMarkId *uint64 `json:"WaterMarkId,omitempty" name:"WaterMarkId"`
+
+	// 混流-水印宽。单位为像素值。
+	WaterMarkWidth *uint64 `json:"WaterMarkWidth,omitempty" name:"WaterMarkWidth"`
+
+	// 混流-水印高。单位为像素值。
+	WaterMarkHeight *uint64 `json:"WaterMarkHeight,omitempty" name:"WaterMarkHeight"`
+
+	// 水印在输出时的X偏移。单位为像素值。
+	LocationX *uint64 `json:"LocationX,omitempty" name:"LocationX"`
+
+	// 水印在输出时的Y偏移。单位为像素值。
+	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 }

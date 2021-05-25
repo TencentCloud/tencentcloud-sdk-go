@@ -43,6 +43,31 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
+    request = &DescribeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfig")
+    return
+}
+
+func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
+    response = &DescribeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查看配置项
+func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigRequest()
+    }
+    response = NewDescribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceAccessAddressRequest) {
     request = &DescribeSREInstanceAccessAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
