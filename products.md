@@ -40,9 +40,9 @@
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-05-17 08:10:03 |
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2021-05-18 08:04:20 |
-| cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-04-09 08:10:33 |
+| cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-05-26 08:10:55 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-02-04 08:46:11 |
-| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-05-24 08:02:19 |
+| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-05-26 08:02:29 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-02-22 08:01:08 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-05-14 08:10:33 |
@@ -64,10 +64,11 @@
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-01-07 08:04:40 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-04-22 08:01:35 |
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-05-21 08:01:20 |
+| eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-05-26 08:00:07 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-05-10 08:04:43 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-05-11 08:05:19 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-05-07 08:04:04 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-04-30 08:04:50 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-05-26 08:05:08 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-03-16 08:02:03 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-04-12 08:01:48 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-03-24 08:05:04 |
@@ -77,7 +78,7 @@
 | gse | [游戏服务器伸缩](https://cloud.tencent.com/document/product/1165) | 2021-05-13 08:01:51 |
 | habo | [](https://cloud.tencent.com/document/product) | 2019-05-09 19:37:22 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2021-02-03 08:05:01 |
-| iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-01-07 08:05:13 |
+| iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-05-26 08:05:27 |
 | ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-05-11 20:09:52 |
 | ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-05-13 08:01:13 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-01-07 08:00:40 |

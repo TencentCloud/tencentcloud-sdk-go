@@ -1233,7 +1233,7 @@ type GetEidTokenConfig struct {
 type GetEidTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// EID商户id
+	// EID商户id，字段长度最长50位。
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
 	// 身份标识（未使用OCR服务时，必须传入）。
@@ -1243,7 +1243,7 @@ type GetEidTokenRequest struct {
 	// 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 透传字段，在获取验证结果时返回。
+	// 透传字段，在获取验证结果时返回。最长长度1024位。
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 小程序模式配置，包括如何传入姓名身份证的配置。

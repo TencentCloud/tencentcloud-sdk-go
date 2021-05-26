@@ -223,6 +223,21 @@ type ClassInfo struct {
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 }
 
+type CosPublishInputInfo struct {
+
+	// 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 发布生成的视频在 COS 存储的对象键。对象键（ObjectKey）是对象（Object）在存储桶（Bucket）中的唯一标识。
+	VideoKey *string `json:"VideoKey,omitempty" name:"VideoKey"`
+
+	// 发布生成的封面在 COS 存储的对象键。
+	CoverKey *string `json:"CoverKey,omitempty" name:"CoverKey"`
+}
+
 type CreateClassRequest struct {
 	*tchttp.BaseRequest
 
@@ -3974,6 +3989,9 @@ type ThirdPartyPublishInfo struct {
 
 	// 快手发布信息，如果使用的发布通道为快手时必填。
 	KuaishouPublishInfo *KuaishouPublishInfo `json:"KuaishouPublishInfo,omitempty" name:"KuaishouPublishInfo"`
+
+	// 腾讯云对象存储发布信息， 如果使用的发布通道为腾讯云对象存储时必填。
+	CosPublishInfo *CosPublishInputInfo `json:"CosPublishInfo,omitempty" name:"CosPublishInfo"`
 }
 
 type TimeRange struct {

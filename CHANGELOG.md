@@ -1,145 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云审计(cloudaudit) 版本：2019-03-19
 
-### 第 62 次发布
+### 第 7 次发布
 
-发布时间：2021-05-25 08:03:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
-
-	* 新增入参：TagKeysForSearch
-
-* [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566)
-
-	* 新增入参：InstanceId
-
-	* <font color="#dd0000">**修改入参**：</font>Zone, GoodsNum, Memory, Volume, PayType
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 64 次发布
-
-发布时间：2021-05-25 08:07:04
+发布时间：2021-05-26 08:10:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
-* [DeleteLivePullStreamTask](https://cloud.tencent.com/document/api/267/56244)
-* [DescribeLivePullStreamTasks](https://cloud.tencent.com/document/api/267/56243)
-* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
-
-新增数据结构：
-
-* [PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)
-* [RecentPullInfo](https://cloud.tencent.com/document/api/267/20474#RecentPullInfo)
-
-
-
-## 医疗报告结构化(mrs) 版本：2020-09-10
-
-### 第 1 次发布
-
-发布时间：2021-05-25 08:00:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ImageToClass](https://cloud.tencent.com/document/api/1314/56229)
-* [ImageToObject](https://cloud.tencent.com/document/api/1314/56228)
-* [TextToClass](https://cloud.tencent.com/document/api/1314/56227)
-* [TextToObject](https://cloud.tencent.com/document/api/1314/56226)
-
-新增数据结构：
-
-* [Advice](https://cloud.tencent.com/document/api/1314/56230#Advice)
-* [AspectRatio](https://cloud.tencent.com/document/api/1314/56230#AspectRatio)
-* [BlockInfo](https://cloud.tencent.com/document/api/1314/56230#BlockInfo)
-* [Check](https://cloud.tencent.com/document/api/1314/56230#Check)
-* [Desc](https://cloud.tencent.com/document/api/1314/56230#Desc)
-* [DiagCert](https://cloud.tencent.com/document/api/1314/56230#DiagCert)
-* [DiagCertItem](https://cloud.tencent.com/document/api/1314/56230#DiagCertItem)
-* [DischargeDiagnosis](https://cloud.tencent.com/document/api/1314/56230#DischargeDiagnosis)
-* [DiseaseMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseMedicalHistory)
-* [Elastic](https://cloud.tencent.com/document/api/1314/56230#Elastic)
-* [FamilyMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyMedicalHistory)
-* [FirstPage](https://cloud.tencent.com/document/api/1314/56230#FirstPage)
-* [HandleParam](https://cloud.tencent.com/document/api/1314/56230#HandleParam)
-* [HistologyLevel](https://cloud.tencent.com/document/api/1314/56230#HistologyLevel)
-* [HistologyType](https://cloud.tencent.com/document/api/1314/56230#HistologyType)
-* [IHCInfo](https://cloud.tencent.com/document/api/1314/56230#IHCInfo)
-* [ImageInfo](https://cloud.tencent.com/document/api/1314/56230#ImageInfo)
-* [Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator)
-* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
-* [Invas](https://cloud.tencent.com/document/api/1314/56230#Invas)
-* [Lymph](https://cloud.tencent.com/document/api/1314/56230#Lymph)
-* [MedDoc](https://cloud.tencent.com/document/api/1314/56230#MedDoc)
-* [MenstrualMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualMedicalHistory)
-* [Multiple](https://cloud.tencent.com/document/api/1314/56230#Multiple)
-* [NormPart](https://cloud.tencent.com/document/api/1314/56230#NormPart)
-* [NormSize](https://cloud.tencent.com/document/api/1314/56230#NormSize)
-* [ObstericalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#ObstericalMedicalHistory)
-* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
-* [Part](https://cloud.tencent.com/document/api/1314/56230#Part)
-* [PathologyReport](https://cloud.tencent.com/document/api/1314/56230#PathologyReport)
-* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
-* [PersonalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalMedicalHistory)
-* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
-* [Size](https://cloud.tencent.com/document/api/1314/56230#Size)
-* [Summary](https://cloud.tencent.com/document/api/1314/56230#Summary)
-* [SymptomInfo](https://cloud.tencent.com/document/api/1314/56230#SymptomInfo)
-* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
-* [TextType](https://cloud.tencent.com/document/api/1314/56230#TextType)
-* [TreatmentRecord](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecord)
-* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
-* [Value](https://cloud.tencent.com/document/api/1314/56230#Value)
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 25 次发布
-
-发布时间：2021-05-25 08:11:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [WaterMarkParams](https://cloud.tencent.com/document/api/647/44055#WaterMarkParams)
 
 修改数据结构：
 
-* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+* [Event](https://cloud.tencent.com/document/api/629/35353#Event)
 
-	* 新增成员：WaterMarkParams
-
-
+	* 新增成员：Location
 
 
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
-### 第 3 次发布
 
-发布时间：2021-05-25 08:00:36
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 32 次发布
+
+发布时间：2021-05-26 08:02:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo)
+
+修改数据结构：
+
+* [ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)
+
+	* 新增成员：CosPublishInfo
+
+
+
+
+## 企业集成服务(eis) 版本：2020-07-15
+
+### 第 1 次发布
+
+发布时间：2021-05-26 08:00:07
 
 本次发布包含了以下内容：
 
@@ -147,14 +54,14 @@
 
 新增接口：
 
-* [DescribeConfig](https://cloud.tencent.com/document/api/1364/56241)
+* [DescribeEisConnectorConfig](https://cloud.tencent.com/document/api/1270/56304)
+* [ListEisConnectorOperations](https://cloud.tencent.com/document/api/1270/56303)
+* [ListEisConnectors](https://cloud.tencent.com/document/api/1270/56302)
 
-修改接口：
+新增数据结构：
 
-* [ManageConfig](https://cloud.tencent.com/document/api/1364/54616)
-
-	* 新增出参：OpResult
-
+* [EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation)
+* [EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary)
 
 
 
@@ -11649,6 +11556,21 @@
 
 ## 云审计(cloudaudit) 版本：2019-03-19
 
+### 第 7 次发布
+
+发布时间：2021-05-26 08:10:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Event](https://cloud.tencent.com/document/api/629/35353#Event)
+
+	* 新增成员：Location
+
+
 ### 第 6 次发布
 
 发布时间：2021-04-09 08:10:33
@@ -11851,6 +11773,25 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 32 次发布
+
+发布时间：2021-05-26 08:02:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo))
+
+修改数据结构：
+
+* [ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)
+
+	* 新增成员：CosPublishInfo
+
 
 ### 第 31 次发布
 
@@ -20154,6 +20095,30 @@
 
 
 
+## 企业集成服务(eis) 版本：2020-07-15
+
+### 第 1 次发布
+
+发布时间：2021-05-26 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEisConnectorConfig](https://cloud.tencent.com/document/api/1270/56304)](https://cloud.tencent.com/document/api/#/#)
+* [[ListEisConnectorOperations](https://cloud.tencent.com/document/api/1270/56303)](https://cloud.tencent.com/document/api/#/#)
+* [[ListEisConnectors](https://cloud.tencent.com/document/api/1270/56302)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation)](https://cloud.tencent.com/document/api/1270/56305#[EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation))
+* [[EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary)](https://cloud.tencent.com/document/api/1270/56305#[EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary))
+
+
+
+
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
 ### 第 20 次发布
@@ -27667,15 +27632,15 @@
 
 新增接口：
 
-* [[CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLivePullStreamTask](https://cloud.tencent.com/document/api/267/56244)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLivePullStreamTasks](https://cloud.tencent.com/document/api/267/56243)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+* [DeleteLivePullStreamTask](https://cloud.tencent.com/document/api/267/56244)
+* [DescribeLivePullStreamTasks](https://cloud.tencent.com/document/api/267/56243)
+* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
 
 新增数据结构：
 
-* [[PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)](https://cloud.tencent.com/document/api/267/20474#[PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo))
-* [[RecentPullInfo](https://cloud.tencent.com/document/api/267/20474#RecentPullInfo)](https://cloud.tencent.com/document/api/267/20474#[RecentPullInfo](https://cloud.tencent.com/document/api/267/20474#RecentPullInfo))
+* [PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)
+* [RecentPullInfo](https://cloud.tencent.com/document/api/267/20474#RecentPullInfo)
 
 ### 第 63 次发布
 
@@ -31706,54 +31671,54 @@
 
 新增接口：
 
-* [[ImageToClass](https://cloud.tencent.com/document/api/1314/56229)](https://cloud.tencent.com/document/api/#/#)
-* [[ImageToObject](https://cloud.tencent.com/document/api/1314/56228)](https://cloud.tencent.com/document/api/#/#)
-* [[TextToClass](https://cloud.tencent.com/document/api/1314/56227)](https://cloud.tencent.com/document/api/#/#)
-* [[TextToObject](https://cloud.tencent.com/document/api/1314/56226)](https://cloud.tencent.com/document/api/#/#)
+* [ImageToClass](https://cloud.tencent.com/document/api/1314/56229)
+* [ImageToObject](https://cloud.tencent.com/document/api/1314/56228)
+* [TextToClass](https://cloud.tencent.com/document/api/1314/56227)
+* [TextToObject](https://cloud.tencent.com/document/api/1314/56226)
 
 新增数据结构：
 
-* [[Advice](https://cloud.tencent.com/document/api/1314/56230#Advice)](https://cloud.tencent.com/document/api/1314/56230#[Advice](https://cloud.tencent.com/document/api/1314/56230#Advice))
-* [[AspectRatio](https://cloud.tencent.com/document/api/1314/56230#AspectRatio)](https://cloud.tencent.com/document/api/1314/56230#[AspectRatio](https://cloud.tencent.com/document/api/1314/56230#AspectRatio))
-* [[BlockInfo](https://cloud.tencent.com/document/api/1314/56230#BlockInfo)](https://cloud.tencent.com/document/api/1314/56230#[BlockInfo](https://cloud.tencent.com/document/api/1314/56230#BlockInfo))
-* [[Check](https://cloud.tencent.com/document/api/1314/56230#Check)](https://cloud.tencent.com/document/api/1314/56230#[Check](https://cloud.tencent.com/document/api/1314/56230#Check))
-* [[Desc](https://cloud.tencent.com/document/api/1314/56230#Desc)](https://cloud.tencent.com/document/api/1314/56230#[Desc](https://cloud.tencent.com/document/api/1314/56230#Desc))
-* [[DiagCert](https://cloud.tencent.com/document/api/1314/56230#DiagCert)](https://cloud.tencent.com/document/api/1314/56230#[DiagCert](https://cloud.tencent.com/document/api/1314/56230#DiagCert))
-* [[DiagCertItem](https://cloud.tencent.com/document/api/1314/56230#DiagCertItem)](https://cloud.tencent.com/document/api/1314/56230#[DiagCertItem](https://cloud.tencent.com/document/api/1314/56230#DiagCertItem))
-* [[DischargeDiagnosis](https://cloud.tencent.com/document/api/1314/56230#DischargeDiagnosis)](https://cloud.tencent.com/document/api/1314/56230#[DischargeDiagnosis](https://cloud.tencent.com/document/api/1314/56230#DischargeDiagnosis))
-* [[DiseaseMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseMedicalHistory)](https://cloud.tencent.com/document/api/1314/56230#[DiseaseMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseMedicalHistory))
-* [[Elastic](https://cloud.tencent.com/document/api/1314/56230#Elastic)](https://cloud.tencent.com/document/api/1314/56230#[Elastic](https://cloud.tencent.com/document/api/1314/56230#Elastic))
-* [[FamilyMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyMedicalHistory)](https://cloud.tencent.com/document/api/1314/56230#[FamilyMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyMedicalHistory))
-* [[FirstPage](https://cloud.tencent.com/document/api/1314/56230#FirstPage)](https://cloud.tencent.com/document/api/1314/56230#[FirstPage](https://cloud.tencent.com/document/api/1314/56230#FirstPage))
-* [[HandleParam](https://cloud.tencent.com/document/api/1314/56230#HandleParam)](https://cloud.tencent.com/document/api/1314/56230#[HandleParam](https://cloud.tencent.com/document/api/1314/56230#HandleParam))
-* [[HistologyLevel](https://cloud.tencent.com/document/api/1314/56230#HistologyLevel)](https://cloud.tencent.com/document/api/1314/56230#[HistologyLevel](https://cloud.tencent.com/document/api/1314/56230#HistologyLevel))
-* [[HistologyType](https://cloud.tencent.com/document/api/1314/56230#HistologyType)](https://cloud.tencent.com/document/api/1314/56230#[HistologyType](https://cloud.tencent.com/document/api/1314/56230#HistologyType))
-* [[IHCInfo](https://cloud.tencent.com/document/api/1314/56230#IHCInfo)](https://cloud.tencent.com/document/api/1314/56230#[IHCInfo](https://cloud.tencent.com/document/api/1314/56230#IHCInfo))
-* [[ImageInfo](https://cloud.tencent.com/document/api/1314/56230#ImageInfo)](https://cloud.tencent.com/document/api/1314/56230#[ImageInfo](https://cloud.tencent.com/document/api/1314/56230#ImageInfo))
-* [[Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator)](https://cloud.tencent.com/document/api/1314/56230#[Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator))
-* [[IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)](https://cloud.tencent.com/document/api/1314/56230#[IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem))
-* [[Invas](https://cloud.tencent.com/document/api/1314/56230#Invas)](https://cloud.tencent.com/document/api/1314/56230#[Invas](https://cloud.tencent.com/document/api/1314/56230#Invas))
-* [[Lymph](https://cloud.tencent.com/document/api/1314/56230#Lymph)](https://cloud.tencent.com/document/api/1314/56230#[Lymph](https://cloud.tencent.com/document/api/1314/56230#Lymph))
-* [[MedDoc](https://cloud.tencent.com/document/api/1314/56230#MedDoc)](https://cloud.tencent.com/document/api/1314/56230#[MedDoc](https://cloud.tencent.com/document/api/1314/56230#MedDoc))
-* [[MenstrualMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualMedicalHistory)](https://cloud.tencent.com/document/api/1314/56230#[MenstrualMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualMedicalHistory))
-* [[Multiple](https://cloud.tencent.com/document/api/1314/56230#Multiple)](https://cloud.tencent.com/document/api/1314/56230#[Multiple](https://cloud.tencent.com/document/api/1314/56230#Multiple))
-* [[NormPart](https://cloud.tencent.com/document/api/1314/56230#NormPart)](https://cloud.tencent.com/document/api/1314/56230#[NormPart](https://cloud.tencent.com/document/api/1314/56230#NormPart))
-* [[NormSize](https://cloud.tencent.com/document/api/1314/56230#NormSize)](https://cloud.tencent.com/document/api/1314/56230#[NormSize](https://cloud.tencent.com/document/api/1314/56230#NormSize))
-* [[ObstericalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#ObstericalMedicalHistory)](https://cloud.tencent.com/document/api/1314/56230#[ObstericalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#ObstericalMedicalHistory))
-* [[Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)](https://cloud.tencent.com/document/api/1314/56230#[Organ](https://cloud.tencent.com/document/api/1314/56230#Organ))
-* [[Part](https://cloud.tencent.com/document/api/1314/56230#Part)](https://cloud.tencent.com/document/api/1314/56230#[Part](https://cloud.tencent.com/document/api/1314/56230#Part))
-* [[PathologyReport](https://cloud.tencent.com/document/api/1314/56230#PathologyReport)](https://cloud.tencent.com/document/api/1314/56230#[PathologyReport](https://cloud.tencent.com/document/api/1314/56230#PathologyReport))
-* [[PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)](https://cloud.tencent.com/document/api/1314/56230#[PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo))
-* [[PersonalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalMedicalHistory)](https://cloud.tencent.com/document/api/1314/56230#[PersonalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalMedicalHistory))
-* [[ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)](https://cloud.tencent.com/document/api/1314/56230#[ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo))
-* [[Size](https://cloud.tencent.com/document/api/1314/56230#Size)](https://cloud.tencent.com/document/api/1314/56230#[Size](https://cloud.tencent.com/document/api/1314/56230#Size))
-* [[Summary](https://cloud.tencent.com/document/api/1314/56230#Summary)](https://cloud.tencent.com/document/api/1314/56230#[Summary](https://cloud.tencent.com/document/api/1314/56230#Summary))
-* [[SymptomInfo](https://cloud.tencent.com/document/api/1314/56230#SymptomInfo)](https://cloud.tencent.com/document/api/1314/56230#[SymptomInfo](https://cloud.tencent.com/document/api/1314/56230#SymptomInfo))
-* [[Template](https://cloud.tencent.com/document/api/1314/56230#Template)](https://cloud.tencent.com/document/api/1314/56230#[Template](https://cloud.tencent.com/document/api/1314/56230#Template))
-* [[TextType](https://cloud.tencent.com/document/api/1314/56230#TextType)](https://cloud.tencent.com/document/api/1314/56230#[TextType](https://cloud.tencent.com/document/api/1314/56230#TextType))
-* [[TreatmentRecord](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecord)](https://cloud.tencent.com/document/api/1314/56230#[TreatmentRecord](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecord))
-* [[TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)](https://cloud.tencent.com/document/api/1314/56230#[TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo))
-* [[Value](https://cloud.tencent.com/document/api/1314/56230#Value)](https://cloud.tencent.com/document/api/1314/56230#[Value](https://cloud.tencent.com/document/api/1314/56230#Value))
+* [Advice](https://cloud.tencent.com/document/api/1314/56230#Advice)
+* [AspectRatio](https://cloud.tencent.com/document/api/1314/56230#AspectRatio)
+* [BlockInfo](https://cloud.tencent.com/document/api/1314/56230#BlockInfo)
+* [Check](https://cloud.tencent.com/document/api/1314/56230#Check)
+* [Desc](https://cloud.tencent.com/document/api/1314/56230#Desc)
+* [DiagCert](https://cloud.tencent.com/document/api/1314/56230#DiagCert)
+* [DiagCertItem](https://cloud.tencent.com/document/api/1314/56230#DiagCertItem)
+* [DischargeDiagnosis](https://cloud.tencent.com/document/api/1314/56230#DischargeDiagnosis)
+* [DiseaseMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseMedicalHistory)
+* [Elastic](https://cloud.tencent.com/document/api/1314/56230#Elastic)
+* [FamilyMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyMedicalHistory)
+* [FirstPage](https://cloud.tencent.com/document/api/1314/56230#FirstPage)
+* [HandleParam](https://cloud.tencent.com/document/api/1314/56230#HandleParam)
+* [HistologyLevel](https://cloud.tencent.com/document/api/1314/56230#HistologyLevel)
+* [HistologyType](https://cloud.tencent.com/document/api/1314/56230#HistologyType)
+* [IHCInfo](https://cloud.tencent.com/document/api/1314/56230#IHCInfo)
+* [ImageInfo](https://cloud.tencent.com/document/api/1314/56230#ImageInfo)
+* [Indicator](https://cloud.tencent.com/document/api/1314/56230#Indicator)
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+* [Invas](https://cloud.tencent.com/document/api/1314/56230#Invas)
+* [Lymph](https://cloud.tencent.com/document/api/1314/56230#Lymph)
+* [MedDoc](https://cloud.tencent.com/document/api/1314/56230#MedDoc)
+* [MenstrualMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualMedicalHistory)
+* [Multiple](https://cloud.tencent.com/document/api/1314/56230#Multiple)
+* [NormPart](https://cloud.tencent.com/document/api/1314/56230#NormPart)
+* [NormSize](https://cloud.tencent.com/document/api/1314/56230#NormSize)
+* [ObstericalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#ObstericalMedicalHistory)
+* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
+* [Part](https://cloud.tencent.com/document/api/1314/56230#Part)
+* [PathologyReport](https://cloud.tencent.com/document/api/1314/56230#PathologyReport)
+* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
+* [PersonalMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalMedicalHistory)
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+* [Size](https://cloud.tencent.com/document/api/1314/56230#Size)
+* [Summary](https://cloud.tencent.com/document/api/1314/56230#Summary)
+* [SymptomInfo](https://cloud.tencent.com/document/api/1314/56230#SymptomInfo)
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+* [TextType](https://cloud.tencent.com/document/api/1314/56230#TextType)
+* [TreatmentRecord](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecord)
+* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
+* [Value](https://cloud.tencent.com/document/api/1314/56230#Value)
 
 
 
@@ -43577,7 +43542,7 @@
 
 新增数据结构：
 
-* [[WaterMarkParams](https://cloud.tencent.com/document/api/647/44055#WaterMarkParams)](https://cloud.tencent.com/document/api/647/44055#[WaterMarkParams](https://cloud.tencent.com/document/api/647/44055#WaterMarkParams))
+* [WaterMarkParams](https://cloud.tencent.com/document/api/647/44055#WaterMarkParams)
 
 修改数据结构：
 
@@ -44002,7 +43967,7 @@
 
 新增接口：
 
-* [[DescribeConfig](https://cloud.tencent.com/document/api/1364/56241)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeConfig](https://cloud.tencent.com/document/api/1364/56241)
 
 修改接口：
 

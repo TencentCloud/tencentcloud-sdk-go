@@ -426,6 +426,9 @@ type Event struct {
 
 	// 事件地域
 	EventRegion *string `json:"EventRegion,omitempty" name:"EventRegion"`
+
+	// IP 归属地
+	Location *string `json:"Location,omitempty" name:"Location"`
 }
 
 type GetAttributeKeyRequest struct {
