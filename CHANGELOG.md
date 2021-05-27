@@ -1,52 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云审计(cloudaudit) 版本：2019-03-19
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 7 次发布
+### 第 22 次发布
 
-发布时间：2021-05-26 08:10:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Event](https://cloud.tencent.com/document/api/629/35353#Event)
-
-	* 新增成员：Location
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 32 次发布
-
-发布时间：2021-05-26 08:02:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo)
-
-修改数据结构：
-
-* [ThirdPartyPublishInfo](https://cloud.tencent.com/document/api/1156/40360#ThirdPartyPublishInfo)
-
-	* 新增成员：CosPublishInfo
-
-
-
-
-## 企业集成服务(eis) 版本：2020-07-15
-
-### 第 1 次发布
-
-发布时间：2021-05-26 08:00:07
+发布时间：2021-05-27 08:04:44
 
 本次发布包含了以下内容：
 
@@ -54,14 +12,113 @@
 
 新增接口：
 
-* [DescribeEisConnectorConfig](https://cloud.tencent.com/document/api/1270/56304)
-* [ListEisConnectorOperations](https://cloud.tencent.com/document/api/1270/56303)
-* [ListEisConnectors](https://cloud.tencent.com/document/api/1270/56302)
+* [DescribeDcnDetail](https://cloud.tencent.com/document/api/557/56346)
 
 新增数据结构：
 
-* [EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation)
-* [EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary)
+* [DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 18 次发布
+
+发布时间：2021-05-27 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDcnDetail](https://cloud.tencent.com/document/api/237/56347)
+
+新增数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 12 次发布
+
+发布时间：2021-05-27 08:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecurityGroupBound](https://cloud.tencent.com/document/api/240/38576#SecurityGroupBound)
+
+	* 新增成员：Id, AddressModule, ServiceModule, Desc
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 49 次发布
+
+发布时间：2021-05-27 08:06:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)
+
+	* 新增入参：EstablishTime
+
+	* 新增出参：EstablishTime
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 56 次发布
+
+发布时间：2021-05-27 08:08:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB)
+
+	* 新增成员：ExtraParam
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 86 次发布
+
+发布时间：2021-05-27 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StorageStatData](https://cloud.tencent.com/document/api/266/31773#StorageStatData)
+
+	* 新增成员：ArchiveStorage, DeepArchiveStorage
+
 
 
 
@@ -11784,7 +11841,7 @@
 
 新增数据结构：
 
-* [[CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo)](https://cloud.tencent.com/document/api/1156/40360#[CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo))
+* [CosPublishInputInfo](https://cloud.tencent.com/document/api/1156/40360#CosPublishInputInfo)
 
 修改数据结构：
 
@@ -17370,6 +17427,22 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 22 次发布
+
+发布时间：2021-05-27 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDcnDetail](https://cloud.tencent.com/document/api/557/56346)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)](https://cloud.tencent.com/document/api/557/16142#[DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem))
+
 ### 第 21 次发布
 
 发布时间：2021-04-22 08:04:38
@@ -20107,14 +20180,14 @@
 
 新增接口：
 
-* [[DescribeEisConnectorConfig](https://cloud.tencent.com/document/api/1270/56304)](https://cloud.tencent.com/document/api/#/#)
-* [[ListEisConnectorOperations](https://cloud.tencent.com/document/api/1270/56303)](https://cloud.tencent.com/document/api/#/#)
-* [[ListEisConnectors](https://cloud.tencent.com/document/api/1270/56302)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEisConnectorConfig](https://cloud.tencent.com/document/api/1270/56304)
+* [ListEisConnectorOperations](https://cloud.tencent.com/document/api/1270/56303)
+* [ListEisConnectors](https://cloud.tencent.com/document/api/1270/56302)
 
 新增数据结构：
 
-* [[EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation)](https://cloud.tencent.com/document/api/1270/56305#[EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation))
-* [[EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary)](https://cloud.tencent.com/document/api/1270/56305#[EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary))
+* [EisConnectionOperation](https://cloud.tencent.com/document/api/1270/56305#EisConnectionOperation)
+* [EisConnectorSummary](https://cloud.tencent.com/document/api/1270/56305#EisConnectorSummary)
 
 
 
@@ -29016,6 +29089,22 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 18 次发布
+
+发布时间：2021-05-27 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDcnDetail](https://cloud.tencent.com/document/api/237/56347)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)](https://cloud.tencent.com/document/api/237/16191#[DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem))
+
 ### 第 17 次发布
 
 发布时间：2021-04-21 08:06:07
@@ -29738,6 +29827,21 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 12 次发布
+
+发布时间：2021-05-27 08:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecurityGroupBound](https://cloud.tencent.com/document/api/240/38576#SecurityGroupBound)
+
+	* 新增成员：Id, AddressModule, ServiceModule, Desc
+
 
 ### 第 11 次发布
 
@@ -32362,6 +32466,23 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 49 次发布
+
+发布时间：2021-05-27 08:06:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyBasicBizLicense](https://cloud.tencent.com/document/api/866/47279)
+
+	* 新增入参：EstablishTime
+
+	* 新增出参：EstablishTime
+
 
 ### 第 48 次发布
 
@@ -42122,6 +42243,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 56 次发布
+
+发布时间：2021-05-27 08:08:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterPublicLB](https://cloud.tencent.com/document/api/457/31866#ClusterPublicLB)
+
+	* 新增成员：ExtraParam
+
+
 ### 第 55 次发布
 
 发布时间：2021-05-21 08:08:09
@@ -45820,6 +45956,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 86 次发布
+
+发布时间：2021-05-27 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StorageStatData](https://cloud.tencent.com/document/api/266/31773#StorageStatData)
+
+	* 新增成员：ArchiveStorage, DeepArchiveStorage
+
 
 ### 第 85 次发布
 

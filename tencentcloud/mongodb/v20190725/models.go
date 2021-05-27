@@ -2192,6 +2192,18 @@ type SecurityGroupBound struct {
 
 	// 传输层协议。tcp，udp或ALL
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 安全组id代表的地址集合
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 地址组id代表的地址集合
+	AddressModule *string `json:"AddressModule,omitempty" name:"AddressModule"`
+
+	// 服务组id代表的协议和端口集合
+	ServiceModule *string `json:"ServiceModule,omitempty" name:"ServiceModule"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 type ShardInfo struct {

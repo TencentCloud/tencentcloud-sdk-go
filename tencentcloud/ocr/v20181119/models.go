@@ -5569,6 +5569,9 @@ type VerifyBasicBizLicenseRequest struct {
 
 	// 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
 	RegCapital *int64 `json:"RegCapital,omitempty" name:"RegCapital"`
+
+	// true表示展示成立/注册日期
+	EstablishTime *bool `json:"EstablishTime,omitempty" name:"EstablishTime"`
 }
 
 func (r *VerifyBasicBizLicenseRequest) ToJsonString() string {
@@ -5590,6 +5593,7 @@ func (r *VerifyBasicBizLicenseRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Address")
 	delete(f, "RegCapital")
+	delete(f, "EstablishTime")
 	if len(f) > 0 {
 		return errors.New("VerifyBasicBizLicenseRequest has unknown keys!")
 	}
@@ -5650,6 +5654,9 @@ type VerifyBasicBizLicenseResponse struct {
 
 		// 注册资本（单位：万元）,只有输入参数regCapital为1的时候才输出
 		RegCapital *string `json:"RegCapital,omitempty" name:"RegCapital"`
+
+		// 成立/注册日期，只有输入参数EstablishTime为true时展示，默认为空
+		EstablishTime *string `json:"EstablishTime,omitempty" name:"EstablishTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

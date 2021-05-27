@@ -2821,6 +2821,7 @@ func NewPullEventsResponse() (response *PullEventsResponse) {
 // * 请求最多挂起5秒，建议请求方将超时时间设置为10秒；
 // * 未被拉取的事件通知最多保留4天，超过该时限的事件通知可能会被清除；
 // * 若该接口有事件返回，调用方必须在<font color="red">30秒</font>内调用 [确认事件通知](https://cloud.tencent.com/document/product/266/33434) 接口，确认事件通知已经处理，否则该事件通知在<font color="red">30秒</font>后会再次被拉取到。
+// * 当前，API 每次最多可以获取16个事件通知。
 func (c *Client) PullEvents(request *PullEventsRequest) (response *PullEventsResponse, err error) {
     if request == nil {
         request = NewPullEventsRequest()

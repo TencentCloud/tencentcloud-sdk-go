@@ -621,6 +621,31 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
     return
 }
 
+func NewDescribeDcnDetailRequest() (request *DescribeDcnDetailRequest) {
+    request = &DescribeDcnDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDcnDetail")
+    return
+}
+
+func NewDescribeDcnDetailResponse() (response *DescribeDcnDetailResponse) {
+    response = &DescribeDcnDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取实例灾备详情
+func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response *DescribeDcnDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDcnDetailRequest()
+    }
+    response = NewDescribeDcnDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
