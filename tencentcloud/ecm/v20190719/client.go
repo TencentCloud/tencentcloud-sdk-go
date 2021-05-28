@@ -2909,7 +2909,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
     return
 }
 
-// 创建ECM实例
+// 创建ECM实例。
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     if request == nil {
         request = NewRunInstancesRequest()

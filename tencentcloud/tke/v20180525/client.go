@@ -118,6 +118,31 @@ func (c *Client) AddNodeToNodePool(request *AddNodeToNodePoolRequest) (response 
     return
 }
 
+func NewAddVpcCniSubnetsRequest() (request *AddVpcCniSubnetsRequest) {
+    request = &AddVpcCniSubnetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "AddVpcCniSubnets")
+    return
+}
+
+func NewAddVpcCniSubnetsResponse() (response *AddVpcCniSubnetsResponse) {
+    response = &AddVpcCniSubnetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
+func (c *Client) AddVpcCniSubnets(request *AddVpcCniSubnetsRequest) (response *AddVpcCniSubnetsResponse, err error) {
+    if request == nil {
+        request = NewAddVpcCniSubnetsRequest()
+    }
+    response = NewAddVpcCniSubnetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckInstancesUpgradeAbleRequest() (request *CheckInstancesUpgradeAbleRequest) {
     request = &CheckInstancesUpgradeAbleRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -68,6 +68,31 @@ func (c *Client) AddEcdnDomain(request *AddEcdnDomainRequest) (response *AddEcdn
     return
 }
 
+func NewCreateVerifyRecordRequest() (request *CreateVerifyRecordRequest) {
+    request = &CreateVerifyRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecdn", APIVersion, "CreateVerifyRecord")
+    return
+}
+
+func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
+    response = &CreateVerifyRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权
+func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (response *CreateVerifyRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateVerifyRecordRequest()
+    }
+    response = NewCreateVerifyRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEcdnDomainRequest() (request *DeleteEcdnDomainRequest) {
     request = &DeleteEcdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},

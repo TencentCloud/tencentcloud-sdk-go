@@ -13179,6 +13179,12 @@ type StorageStatData struct {
 
 	// 当前标准存储量，单位是字节。
 	StandardStorage *uint64 `json:"StandardStorage,omitempty" name:"StandardStorage"`
+
+	// 当前归档存储量，单位是字节。
+	ArchiveStorage *uint64 `json:"ArchiveStorage,omitempty" name:"ArchiveStorage"`
+
+	// 当前深度归档存储量，单位是字节。
+	DeepArchiveStorage *uint64 `json:"DeepArchiveStorage,omitempty" name:"DeepArchiveStorage"`
 }
 
 type SubAppIdInfo struct {

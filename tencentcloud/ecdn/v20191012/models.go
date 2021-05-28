@@ -165,6 +165,61 @@ type ClientCert struct {
 	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
 }
 
+type CreateVerifyRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 要取回的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *CreateVerifyRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVerifyRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return errors.New("CreateVerifyRecordRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVerifyRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子解析
+		SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+		// 解析值
+		Record *string `json:"Record,omitempty" name:"Record"`
+
+		// 解析类型
+		RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVerifyRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteEcdnDomainRequest struct {
 	*tchttp.BaseRequest
 

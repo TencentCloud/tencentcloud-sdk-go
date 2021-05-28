@@ -811,6 +811,42 @@ type DatabaseView struct {
 	View *string `json:"View,omitempty" name:"View"`
 }
 
+type DcnDetailItem struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例IP地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例IPv6地址
+	Vipv6 *string `json:"Vipv6,omitempty" name:"Vipv6"`
+
+	// 实例端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 实例状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 实例DCN标志，1-主，2-备
+	DcnFlag *int64 `json:"DcnFlag,omitempty" name:"DcnFlag"`
+
+	// 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+}
+
 type Deal struct {
 
 	// 订单号
@@ -1951,6 +1987,55 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDcnDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDcnDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDcnDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DescribeDcnDetailRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDcnDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DCN同步详情
+		DcnDetails []*DcnDetailItem `json:"DcnDetails,omitempty" name:"DcnDetails" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDcnDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDcnDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

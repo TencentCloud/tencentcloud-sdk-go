@@ -190,6 +190,51 @@ func (r *DescribeSubnetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSupportedHsmRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSupportedHsmRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedHsmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.New("DescribeSupportedHsmRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSupportedHsmResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前地域所支持的设备列表
+		DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSupportedHsmResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedHsmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUsgRequest struct {
 	*tchttp.BaseRequest
 
@@ -473,6 +518,10 @@ type DescribeVsmAttributesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
+		// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -503,6 +552,9 @@ type DescribeVsmsRequest struct {
 
 	// 标签过滤条件
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+
+	// 设备所属的厂商名称，根据厂商来进行筛选
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
 }
 
 func (r *DescribeVsmsRequest) ToJsonString() string {
@@ -521,6 +573,7 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchWord")
 	delete(f, "TagFilters")
+	delete(f, "Manufacturer")
 	if len(f) > 0 {
 		return errors.New("DescribeVsmsRequest has unknown keys!")
 	}
@@ -552,6 +605,24 @@ func (r *DescribeVsmsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeVsmsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceInfo struct {
+
+	// 厂商名称
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// 此厂商旗下的设备信息列表
+	HsmTypes []*HsmInfo `json:"HsmTypes,omitempty" name:"HsmTypes" list`
+}
+
+type HsmInfo struct {
+
+	// 加密机型号
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 此类型的加密机所支持的VSM类型列表
+	VsmTypes []*VsmInfo `json:"VsmTypes,omitempty" name:"VsmTypes" list`
 }
 
 type InquiryPriceBuyVsmRequest struct {
@@ -794,6 +865,10 @@ type ResourceInfo struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+
+	// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
 }
 
 type SgUnit struct {
@@ -955,4 +1030,13 @@ type Vpc struct {
 	// 是否为默认VPC
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+}
+
+type VsmInfo struct {
+
+	// VSM类型名称
+	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
+
+	// VSM类型值
+	TypeID *int64 `json:"TypeID,omitempty" name:"TypeID"`
 }

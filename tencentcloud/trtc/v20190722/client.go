@@ -58,7 +58,7 @@ func NewCreatePictureResponse() (response *CreatePictureResponse) {
     return
 }
 
-// 上传图片
+// 此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 func (c *Client) CreatePicture(request *CreatePictureRequest) (response *CreatePictureResponse, err error) {
     if request == nil {
         request = NewCreatePictureRequest()
@@ -108,7 +108,7 @@ func NewDeletePictureResponse() (response *DeletePictureResponse) {
     return
 }
 
-// 删除图片
+// 此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeletePictureResponse, err error) {
     if request == nil {
         request = NewDeletePictureRequest()
@@ -234,7 +234,7 @@ func NewDescribePictureResponse() (response *DescribePictureResponse) {
     return
 }
 
-// 查询某图片相关参数。
+// 此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 func (c *Client) DescribePicture(request *DescribePictureRequest) (response *DescribePictureResponse, err error) {
     if request == nil {
         request = NewDescribePictureRequest()
@@ -524,7 +524,7 @@ func NewModifyPictureResponse() (response *ModifyPictureResponse) {
     return
 }
 
-// 修改图片相关参数。
+// 此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 func (c *Client) ModifyPicture(request *ModifyPictureRequest) (response *ModifyPictureResponse, err error) {
     if request == nil {
         request = NewModifyPictureRequest()

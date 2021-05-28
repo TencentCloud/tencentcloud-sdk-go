@@ -57,7 +57,7 @@ type AddClusterInstancesRequest struct {
 	// 实例额外需要设置参数信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 部署组ID
+	// 安全组 ID 列表
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
 }
 

@@ -81,6 +81,9 @@ type Command struct {
 
 	// 命令创建者。TAT 代表公共命令，USER 代表个人命令。
 	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
+
+	// 命令关联的标签列表。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 type CommandDocument struct {
@@ -972,6 +975,15 @@ func (r *RunCommandResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TaskResult struct {
