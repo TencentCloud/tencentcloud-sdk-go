@@ -200,8 +200,11 @@ type DescribeCloudMusicRequest struct {
 	// 歌曲Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
-	// MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
-	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
+	// 歌曲类型，可选值有：
+	// <li>MP3-128K-FTW：含有水印的试听资源；</li>
+	// <li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
+	// <li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
+	// 默认为：MP3-128K-FTW
 	MusicType *string `json:"MusicType,omitempty" name:"MusicType"`
 }
 
@@ -825,6 +828,24 @@ type MusicDetailInfo struct {
 
 	// 商业化权益
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 场景信息
+	Scene []*string `json:"Scene,omitempty" name:"Scene" list`
+
+	// 应用地域
+	Region []*string `json:"Region,omitempty" name:"Region" list`
+
+	// 授权期限
+	AuthPeriod *string `json:"AuthPeriod,omitempty" name:"AuthPeriod"`
+
+	// 商业化权益
+	Commercialization *string `json:"Commercialization,omitempty" name:"Commercialization"`
+
+	// 跨平台传播权益
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 传播渠道
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 type MusicOpenDetail struct {

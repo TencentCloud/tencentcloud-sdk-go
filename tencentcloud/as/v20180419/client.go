@@ -1133,6 +1133,64 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
     return
 }
 
+func NewScaleInInstancesRequest() (request *ScaleInInstancesRequest) {
+    request = &ScaleInInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ScaleInInstances")
+    return
+}
+
+func NewScaleInInstancesResponse() (response *ScaleInInstancesResponse) {
+    response = &ScaleInInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为伸缩组指定数量缩容实例，返回缩容活动的 ActivityId。
+// * 伸缩组需要未处于活动中
+// * 根据伸缩组的`TerminationPolicies`策略，选择被缩容的实例，可参考[缩容处理](https://cloud.tencent.com/document/product/377/8563)
+// * 接口只会选择`IN_SERVICE`实例缩容，如果需要缩容其他状态实例，可以使用 [DetachInstances](https://cloud.tencent.com/document/api/377/20436) 或 [RemoveInstances](https://cloud.tencent.com/document/api/377/20431) 接口
+// * 接口会减少期望实例数，新的期望实例数需要大于等于最小实例数
+// * 缩容如果失败或者部分成功，最后期望实例数只会扣减实际缩容成功的实例数量
+func (c *Client) ScaleInInstances(request *ScaleInInstancesRequest) (response *ScaleInInstancesResponse, err error) {
+    if request == nil {
+        request = NewScaleInInstancesRequest()
+    }
+    response = NewScaleInInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOutInstancesRequest() (request *ScaleOutInstancesRequest) {
+    request = &ScaleOutInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ScaleOutInstances")
+    return
+}
+
+func NewScaleOutInstancesResponse() (response *ScaleOutInstancesResponse) {
+    response = &ScaleOutInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 为伸缩组指定数量扩容实例，返回扩容活动的 ActivityId。
+// * 伸缩组需要未处于活动中
+// * 接口会增加期望实例数，新的期望实例数需要小于等于最大实例数
+// * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
+func (c *Client) ScaleOutInstances(request *ScaleOutInstancesRequest) (response *ScaleOutInstancesResponse, err error) {
+    if request == nil {
+        request = NewScaleOutInstancesRequest()
+    }
+    response = NewScaleOutInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetInstancesProtectionRequest() (request *SetInstancesProtectionRequest) {
     request = &SetInstancesProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},

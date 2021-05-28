@@ -118,6 +118,31 @@ func (c *Client) DescribeSubnet(request *DescribeSubnetRequest) (response *Descr
     return
 }
 
+func NewDescribeSupportedHsmRequest() (request *DescribeSupportedHsmRequest) {
+    request = &DescribeSupportedHsmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeSupportedHsm")
+    return
+}
+
+func NewDescribeSupportedHsmResponse() (response *DescribeSupportedHsmResponse) {
+    response = &DescribeSupportedHsmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取当前地域所支持的设备列表
+func (c *Client) DescribeSupportedHsm(request *DescribeSupportedHsmRequest) (response *DescribeSupportedHsmResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupportedHsmRequest()
+    }
+    response = NewDescribeSupportedHsmResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsgRequest() (request *DescribeUsgRequest) {
     request = &DescribeUsgRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -221,6 +221,60 @@ func (r *AddNodeToNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AddVpcCniSubnetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 为集群容器网络增加的子网列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+
+	// 集群所属的VPC的ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *AddVpcCniSubnetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVpcCniSubnetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SubnetIds")
+	delete(f, "VpcId")
+	if len(f) > 0 {
+		return errors.New("AddVpcCniSubnetsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddVpcCniSubnetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddVpcCniSubnetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVpcCniSubnetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AutoScalingGroupRange struct {
 
 	// 伸缩组最小实例数
@@ -646,6 +700,18 @@ type ClusterNetworkSettings struct {
 
 	// 网络插件是否启用CNI(默认开启)
 	Cni *bool `json:"Cni,omitempty" name:"Cni"`
+
+	// service的网络模式，当前参数只适用于ipvs+bpf模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeProxyMode *string `json:"KubeProxyMode,omitempty" name:"KubeProxyMode"`
+
+	// 用于分配service的IP range，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCIDR *string `json:"ServiceCIDR,omitempty" name:"ServiceCIDR"`
+
+	// 集群关联的容器子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subnets []*string `json:"Subnets,omitempty" name:"Subnets" list`
 }
 
 type ClusterPublicLB struct {

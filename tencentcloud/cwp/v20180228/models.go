@@ -343,6 +343,84 @@ type BruteAttack struct {
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
+type BruteAttackInfo struct {
+
+	// 唯一Id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜客户端唯一标识UUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 来源ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 失败：FAILED；成功：SUCCESS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 国家id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *uint64 `json:"Country,omitempty" name:"Country"`
+
+	// 城市id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *uint64 `json:"City,omitempty" name:"City"`
+
+	// 省份id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *uint64 `json:"Province,omitempty" name:"Province"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 阻断状态：0-未阻断；1-已阻断；2-阻断失败；3-内网攻击暂不支持阻断；4-安平暂不支持阻断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BanStatus *uint64 `json:"BanStatus,omitempty" name:"BanStatus"`
+
+	// 事件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *uint64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 发生次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 机器UUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 是否为专业版（true/false）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsProVersion *bool `json:"IsProVersion,omitempty" name:"IsProVersion"`
+
+	// 被攻击的服务的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 最近攻击时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
 type ChargePrepaid struct {
 
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
@@ -2217,6 +2295,75 @@ func (r *DescribeBashRulesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBashRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBruteAttackListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
+	// <li>UserName - String - 是否必填：否 - UserName筛选</li>
+	// <li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
+	// <li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选，开始时间</li>
+	// <li>CreateEndTime - String - 是否必填：否 - 创建时间筛选，结束时间</li>
+	// <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+}
+
+func (r *DescribeBruteAttackListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBruteAttackListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return errors.New("DescribeBruteAttackListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBruteAttackListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 密码破解列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BruteAttackList []*BruteAttackInfo `json:"BruteAttackList,omitempty" name:"BruteAttackList" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBruteAttackListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBruteAttackListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1283,19 +1283,24 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode、db-tag-key。
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+	// db-instance-id：按照实例ID过滤，类型为string
+	// db-instance-name：按照实例名过滤，类型为string
+	// db-project-id：按照项目ID过滤，类型为integer
+	// db-pay-mode：按照付费模式过滤，类型为string
+	// db-tag-key：按照标签键过滤，类型为string
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 每页显示数量，默认返回10条。
+	// 每页显示数量，取值范围为1-100，默认为返回10条。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 数据偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序、降序
+	// 页码偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式，包括升序：asc、降序：desc。
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
@@ -1313,8 +1318,8 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "Limit")
-	delete(f, "Offset")
 	delete(f, "OrderBy")
+	delete(f, "Offset")
 	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return errors.New("DescribeDBInstancesRequest has unknown keys!")

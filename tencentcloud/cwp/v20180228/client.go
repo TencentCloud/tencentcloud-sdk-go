@@ -918,6 +918,31 @@ func (c *Client) DescribeBashRules(request *DescribeBashRulesRequest) (response 
     return
 }
 
+func NewDescribeBruteAttackListRequest() (request *DescribeBruteAttackListRequest) {
+    request = &DescribeBruteAttackListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackList")
+    return
+}
+
+func NewDescribeBruteAttackListResponse() (response *DescribeBruteAttackListResponse) {
+    response = &DescribeBruteAttackListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取密码破解列表
+func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest) (response *DescribeBruteAttackListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBruteAttackListRequest()
+    }
+    response = NewDescribeBruteAttackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBruteAttacksRequest() (request *DescribeBruteAttacksRequest) {
     request = &DescribeBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
