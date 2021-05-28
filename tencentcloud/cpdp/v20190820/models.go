@@ -1291,6 +1291,28 @@ func (r *BindRelateAcctUnionPayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelContractInfo struct {
+
+	// 外部合约协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 米大师内部生成的合约协议号
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+}
+
+type ChannelReturnContractInfo struct {
+
+	// 平台合约状态
+	// 协议状态，枚举值：
+	// CONTRACT_STATUS_SIGNED：已签约
+	// CONTRACT_STATUS_TERMINATED：未签约
+	// CONTRACT_STATUS_PENDING：签约进行中
+	ContractStatus *string `json:"ContractStatus,omitempty" name:"ContractStatus"`
+
+	// 米大师内部存放的合约信息
+	ChannelContractInfo *ChannelContractInfo `json:"ChannelContractInfo,omitempty" name:"ChannelContractInfo"`
+}
+
 type CheckAcctRequest struct {
 	*tchttp.BaseRequest
 
@@ -1587,6 +1609,298 @@ func (r *CloseOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CloseOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractInfo struct {
+
+	// 米大师内部签约商户号
+	ChannelContractMerchantId *string `json:"ChannelContractMerchantId,omitempty" name:"ChannelContractMerchantId"`
+
+	// 米大师内部签约子商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractSubMerchantId *string `json:"ChannelContractSubMerchantId,omitempty" name:"ChannelContractSubMerchantId"`
+
+	// 米大师内部签约应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractAppId *string `json:"ChannelContractAppId,omitempty" name:"ChannelContractAppId"`
+
+	// 米大师内部签约子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractSubAppId *string `json:"ChannelContractSubAppId,omitempty" name:"ChannelContractSubAppId"`
+
+	// 业务合约协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 第三方渠道用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalContractUserInfoList []*ExternalContractUserInfo `json:"ExternalContractUserInfoList,omitempty" name:"ExternalContractUserInfoList" list`
+
+	// 签约方式，如 wechat_app ，使用app方式下的微信签
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 合约场景id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 用户信息
+	UserInfo *ContractUserInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 第三方渠道签约数据
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+}
+
+type ContractOrderInSubOrder struct {
+
+	// 子订单结算应收金额，单位： 分
+	SubMchIncome *int64 `json:"SubMchIncome,omitempty" name:"SubMchIncome"`
+
+	// 子订单平台应收金额，单位：分
+	PlatformIncome *int64 `json:"PlatformIncome,omitempty" name:"PlatformIncome"`
+
+	// 子订单商品详情
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 子订单商品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子订单号
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 子订单支付金额
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 子订单原始金额
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 发货标识，由业务在调用聚鑫下单接口的 时候下发
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+}
+
+type ContractOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// ISO 货币代码，CNY
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 商品详情，需要URL编码
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 商品ID，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 商品名称，需要URL编码
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 支付金额，单位： 分
+	TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 银行真实渠道.如:bank_pingan
+	RealChannel *string `json:"RealChannel,omitempty" name:"RealChannel"`
+
+	// 原始金额
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 签约通知地址
+	ContractNotifyUrl *string `json:"ContractNotifyUrl,omitempty" name:"ContractNotifyUrl"`
+
+	// Web端回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 指定支付渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 透传字段，支付成功回调透传给应用，用于业务透传自定义内容
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 购买数量，不传默认为1
+	Quantity *int64 `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+	// 注：接入银行或其他支付渠道服务商模式下，必传
+	SubOrderList []*ContractOrderInSubOrder `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+
+	// 结算应收金额，单位：分
+	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
+
+	// 平台应收金额，单位：分
+	TotalPlatformIncome *int64 `json:"TotalPlatformIncome,omitempty" name:"TotalPlatformIncome"`
+
+	// 微信公众号/小程序支付时为必选，需要传微信下的openid
+	WxOpenId *string `json:"WxOpenId,omitempty" name:"WxOpenId"`
+
+	// 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一
+	WxSubOpenId *string `json:"WxSubOpenId,omitempty" name:"WxSubOpenId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 微信商户应用ID
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 微信商户子应用ID
+	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
+
+	// 支付通知地址
+	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
+
+	// 传入调用方在Midas注册签约信息时获得的ContractSceneId。若未在Midas注册签约信息，则传入ExternalContractData。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 需要按照各个渠道的扩展签约信息规范组装好该字段。若未在Midas注册签约信息，则传入该字段。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 外部签约协议号，唯一标记一个签约关系。仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 透传给第三方渠道的附加数据
+	AttachData *string `json:"AttachData,omitempty" name:"AttachData"`
+
+	// 展示用的签约用户名称，若不传入时，默认取UserId
+	ContractDisplayName *string `json:"ContractDisplayName,omitempty" name:"ContractDisplayName"`
+}
+
+func (r *ContractOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContractOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CurrencyType")
+	delete(f, "MidasAppId")
+	delete(f, "OutTradeNo")
+	delete(f, "ProductDetail")
+	delete(f, "ProductId")
+	delete(f, "ProductName")
+	delete(f, "TotalAmt")
+	delete(f, "UserId")
+	delete(f, "RealChannel")
+	delete(f, "OriginalAmt")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "ContractNotifyUrl")
+	delete(f, "CallbackUrl")
+	delete(f, "Channel")
+	delete(f, "Metadata")
+	delete(f, "Quantity")
+	delete(f, "SubAppId")
+	delete(f, "SubOrderList")
+	delete(f, "TotalMchIncome")
+	delete(f, "TotalPlatformIncome")
+	delete(f, "WxOpenId")
+	delete(f, "WxSubOpenId")
+	delete(f, "MidasEnvironment")
+	delete(f, "WxAppId")
+	delete(f, "WxSubAppId")
+	delete(f, "PaymentNotifyUrl")
+	delete(f, "ContractSceneId")
+	delete(f, "ExternalContractData")
+	delete(f, "OutContractCode")
+	delete(f, "AttachData")
+	delete(f, "ContractDisplayName")
+	if len(f) > 0 {
+		return errors.New("ContractOrderRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 支付金额，单位： 分
+		TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+		// 应用支付订单号
+		OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+		// 支付参数透传给聚鑫SDK（原文透传给SDK即可，不需要解码）
+		PayInfo *string `json:"PayInfo,omitempty" name:"PayInfo"`
+
+		// 聚鑫的交易订单号
+		TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+		// 外部签约协议号
+		OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ContractOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContractOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractSyncInfo struct {
+
+	// 第三方渠道合约信息
+	ExternalReturnContractInfo *ExternalReturnContractInfo `json:"ExternalReturnContractInfo,omitempty" name:"ExternalReturnContractInfo"`
+
+	// 第三方渠道用户信息
+	ExternalContractUserInfo []*ExternalContractUserInfo `json:"ExternalContractUserInfo,omitempty" name:"ExternalContractUserInfo" list`
+
+	// 签约方式，枚举值，
+	// <br/>CONTRACT_METHOD_WECHAT_INVALID: 无效
+	// CONTRACT_METHOD_WECHAT_APP: 微信APP
+	// CONTRACT_METHOD_WECHAT_PUBLIC: 微信公众号
+	// CONTRACT_METHOD_WECHAT_MINIPROGRAM: 微信小程序
+	// CONTRACT_METHOD_WECHAT_H5: 微信H5
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 在米大师侧分配的场景id
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 调用方从第三方渠道查询到的签约数据，由各个渠道定义
+	ExternalReturnContractData *string `json:"ExternalReturnContractData,omitempty" name:"ExternalReturnContractData"`
+}
+
+type ContractUserInfo struct {
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型用户ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 用户类型
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type CreateAcctRequest struct {
@@ -3584,6 +3898,62 @@ func (r *ExecuteMemberTransactionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExternalContractUserInfo struct {
+
+	// 第三方用户类型，例如:  WX_OPENID, WX_SUB_OPENID,WX_PAYER_OPENID
+	ExternalUserType *string `json:"ExternalUserType,omitempty" name:"ExternalUserType"`
+
+	// 第三方用户ID
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+}
+
+type ExternalReturnContractInfo struct {
+
+	// 第三方渠道协议id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnAgreementId *string `json:"ExternalReturnAgreementId,omitempty" name:"ExternalReturnAgreementId"`
+
+	// 第三方渠道协议生效时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractEffectiveTimestamp *string `json:"ExternalReturnContractEffectiveTimestamp,omitempty" name:"ExternalReturnContractEffectiveTimestamp"`
+
+	// 第三方渠道协议解约时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationTimestamp *string `json:"ExternalReturnContractTerminationTimestamp,omitempty" name:"ExternalReturnContractTerminationTimestamp"`
+
+	// 平台合约状态
+	// 协议状态，枚举值：
+	// CONTRACT_STATUS_SIGNED：已签约
+	// CONTRACT_STATUS_TERMINATED：未签约
+	// CONTRACT_STATUS_PENDING：签约进行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractStatus *string `json:"ExternalReturnContractStatus,omitempty" name:"ExternalReturnContractStatus"`
+
+	// 第三方渠道请求序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnRequestId *string `json:"ExternalReturnRequestId,omitempty" name:"ExternalReturnRequestId"`
+
+	// 第三方渠道协议签署时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractSignedTimestamp *string `json:"ExternalReturnContractSignedTimestamp,omitempty" name:"ExternalReturnContractSignedTimestamp"`
+
+	// 第三方渠道协议到期时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractExpiredTimestamp *string `json:"ExternalReturnContractExpiredTimestamp,omitempty" name:"ExternalReturnContractExpiredTimestamp"`
+
+	// 第三方渠道返回的合约数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractData *string `json:"ExternalReturnContractData,omitempty" name:"ExternalReturnContractData"`
+
+	// 第三方渠道解约备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationRemark *string `json:"ExternalReturnContractTerminationRemark,omitempty" name:"ExternalReturnContractTerminationRemark"`
+
+	// 第三方渠道协议解约方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationMode *string `json:"ExternalReturnContractTerminationMode,omitempty" name:"ExternalReturnContractTerminationMode"`
+}
+
 type FileItem struct {
 
 	// STRING(256)，文件名称
@@ -5160,6 +5530,115 @@ func (r *QueryCommonTransferRechargeResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryCommonTransferRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 枚举值：
+	// CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE：按 OutContractCode + ContractSceneId 查询
+	// CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode查询
+	ContractQueryMode *string `json:"ContractQueryMode,omitempty" name:"ContractQueryMode"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 业务签约合同协议号 当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 ，必填
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约场景ID，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 米大师生成的协议号 ，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE 时必填
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+
+	// 第三方渠道合约数据，为json字符串，与特定渠道有关
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+}
+
+func (r *QueryContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "ContractQueryMode")
+	delete(f, "MidasSignature")
+	delete(f, "MidasSecretId")
+	delete(f, "SubAppId")
+	delete(f, "OutContractCode")
+	delete(f, "ContractSceneId")
+	delete(f, "ChannelContractCode")
+	delete(f, "ExternalContractData")
+	delete(f, "MidasEnvironment")
+	delete(f, "UserType")
+	if len(f) > 0 {
+		return errors.New("QueryContractRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 签约数据
+		ContractData *ResponseQueryContract `json:"ContractData,omitempty" name:"ContractData"`
+
+		// 请求处理信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8215,6 +8694,73 @@ func (r *RegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResponseQueryContract struct {
+
+	// 第三方渠道错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnCode *string `json:"ExternalReturnCode,omitempty" name:"ExternalReturnCode"`
+
+	// 第三方渠道错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnMessage *string `json:"ExternalReturnMessage,omitempty" name:"ExternalReturnMessage"`
+
+	// 第三方渠道返回的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
+
+	// 米大师内部商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 米大师内部子商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 米大师内部应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelAppId *string `json:"ChannelAppId,omitempty" name:"ChannelAppId"`
+
+	// 米大师内部子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubAppId *string `json:"ChannelSubAppId,omitempty" name:"ChannelSubAppId"`
+
+	// 渠道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 返回的合约信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnContractInfo *ReturnContractInfo `json:"ReturnContractInfo,omitempty" name:"ReturnContractInfo"`
+
+	// 签约通知地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type ResponseTerminateContract struct {
+
+	// 第三方渠道错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnCode *string `json:"ExternalReturnCode,omitempty" name:"ExternalReturnCode"`
+
+	// 第三方渠道错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnMessage *string `json:"ExternalReturnMessage,omitempty" name:"ExternalReturnMessage"`
+
+	// 第三方渠道返回的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
+}
+
+type ReturnContractInfo struct {
+
+	// 合约信息
+	ContractInfo *ContractInfo `json:"ContractInfo,omitempty" name:"ContractInfo"`
+
+	// 米大师内部生成的合约信息
+	ChannelReturnContractInfo *ChannelReturnContractInfo `json:"ChannelReturnContractInfo,omitempty" name:"ChannelReturnContractInfo"`
+
+	// 第三方渠道合约信息
+	ExternalReturnContractInfo *ExternalReturnContractInfo `json:"ExternalReturnContractInfo,omitempty" name:"ExternalReturnContractInfo"`
+}
+
 type RevResigterBillSupportWithdrawRequest struct {
 	*tchttp.BaseRequest
 
@@ -8633,6 +9179,239 @@ func (r *RevokeRechargeByThirdPayResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RevokeRechargeByThirdPayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SceneInfo struct {
+
+	// 语言代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocaleCode *string `json:"LocaleCode,omitempty" name:"LocaleCode"`
+
+	// 地区代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 用户IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+}
+
+type SyncContractDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 签约使用的渠道
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 业务签约合同协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约状态，枚举值
+	// CONTRACT_STATUS_INVALID=无效状态
+	// CONTRACT_STATUS_SIGNED=已签约
+	// CONTRACT_STATUS_TERMINATED=已解约
+	// CONTRACT_STATUS_PENDING=签约进行中
+	ContractStatus *string `json:"ContractStatus,omitempty" name:"ContractStatus"`
+
+	// 签约同步信息
+	ContractSyncInfo *ContractSyncInfo `json:"ContractSyncInfo,omitempty" name:"ContractSyncInfo"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 用户类型，枚举值
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 场景信息
+	SceneInfo *SceneInfo `json:"SceneInfo,omitempty" name:"SceneInfo"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *SyncContractDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncContractDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "OutContractCode")
+	delete(f, "ContractStatus")
+	delete(f, "ContractSyncInfo")
+	delete(f, "MidasSignature")
+	delete(f, "MidasSecretId")
+	delete(f, "SubAppId")
+	delete(f, "UserType")
+	delete(f, "SceneInfo")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return errors.New("SyncContractDataRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncContractDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求处理信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncContractDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncContractDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 枚举值：
+	// CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE: 按OutContractCode+ContractSceneId解约
+	// CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode解约
+	TerminateMode *string `json:"TerminateMode,omitempty" name:"TerminateMode"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 业务签约合同协议号 当TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约场景ID，当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 米大师生成的协议号 当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE 时 必填
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+
+	// 第三方渠道合约数据，json字符串，与特定渠道有关
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 终止合约原因
+	TerminationReason *string `json:"TerminationReason,omitempty" name:"TerminationReason"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+}
+
+func (r *TerminateContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "TerminateMode")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "SubAppId")
+	delete(f, "OutContractCode")
+	delete(f, "ContractSceneId")
+	delete(f, "ChannelContractCode")
+	delete(f, "ExternalContractData")
+	delete(f, "TerminationReason")
+	delete(f, "MidasEnvironment")
+	delete(f, "UserType")
+	if len(f) > 0 {
+		return errors.New("TerminateContractRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解约数据
+		ContractTerminateData *ResponseTerminateContract `json:"ContractTerminateData,omitempty" name:"ContractTerminateData"`
+
+		// 请求处理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateContractResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

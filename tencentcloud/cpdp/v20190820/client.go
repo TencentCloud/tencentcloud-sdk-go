@@ -375,6 +375,31 @@ func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderRes
     return
 }
 
+func NewContractOrderRequest() (request *ContractOrderRequest) {
+    request = &ContractOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ContractOrder")
+    return
+}
+
+func NewContractOrderResponse() (response *ContractOrderResponse) {
+    response = &ContractOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+func (c *Client) ContractOrder(request *ContractOrderRequest) (response *ContractOrderResponse, err error) {
+    if request == nil {
+        request = NewContractOrderRequest()
+    }
+    response = NewContractOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAcctRequest() (request *CreateAcctRequest) {
     request = &CreateAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1201,6 +1226,31 @@ func (c *Client) QueryCommonTransferRecharge(request *QueryCommonTransferRecharg
     return
 }
 
+func NewQueryContractRequest() (request *QueryContractRequest) {
+    request = &QueryContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryContract")
+    return
+}
+
+func NewQueryContractResponse() (response *QueryContractResponse) {
+    response = &QueryContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过此接口查询签约数据
+func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryContractResponse, err error) {
+    if request == nil {
+        request = NewQueryContractRequest()
+    }
+    response = NewQueryContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryCustAcctIdBalanceRequest() (request *QueryCustAcctIdBalanceRequest) {
     request = &QueryCustAcctIdBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1948,6 +1998,56 @@ func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayReque
         request = NewRevokeRechargeByThirdPayRequest()
     }
     response = NewRevokeRechargeByThirdPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncContractDataRequest() (request *SyncContractDataRequest) {
+    request = &SyncContractDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "SyncContractData")
+    return
+}
+
+func NewSyncContractDataResponse() (response *SyncContractDataResponse) {
+    response = &SyncContractDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 对于存量的签约关系导入或者部分场景下米大师无法收到签约通知的场景，需要由调用方主动将签约状态同步至米大师
+func (c *Client) SyncContractData(request *SyncContractDataRequest) (response *SyncContractDataResponse, err error) {
+    if request == nil {
+        request = NewSyncContractDataRequest()
+    }
+    response = NewSyncContractDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateContractRequest() (request *TerminateContractRequest) {
+    request = &TerminateContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "TerminateContract")
+    return
+}
+
+func NewTerminateContractResponse() (response *TerminateContractResponse) {
+    response = &TerminateContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 通过此接口进行解约
+func (c *Client) TerminateContract(request *TerminateContractRequest) (response *TerminateContractResponse, err error) {
+    if request == nil {
+        request = NewTerminateContractRequest()
+    }
+    response = NewTerminateContractResponse()
     err = c.Send(request, response)
     return
 }
