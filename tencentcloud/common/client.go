@@ -25,9 +25,17 @@ type Client struct {
 	signMethod      string
 	unsignedPayload bool
 	debug           bool
+	traceFactory    tracingFactory
+}
+
+type tracingFactory interface {
+	NewSpan(name string) func()
 }
 
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
+	if c.traceFactory != nil {
+		defer c.traceFactory.NewSpan(fmt.Sprintf("%s.%s", request.GetService(), request.GetAction()))()
+	}
 	if request.GetScheme() == "" {
 		request.SetScheme(c.httpProfile.Scheme)
 	}
@@ -243,6 +251,11 @@ func (c *Client) WithSecretId(secretId, secretKey string) *Client {
 
 func (c *Client) WithCredential(cred *Credential) *Client {
 	c.credential = cred
+	return c
+}
+
+func (c *Client) WithTracingFactory(t tracingFactory) *Client {
+	c.traceFactory = t
 	return c
 }
 
