@@ -3253,11 +3253,11 @@ func (r *UpdateAliasResponse) FromJsonString(s string) error {
 type UpdateFunctionCodeRequest struct {
 	*tchttp.BaseRequest
 
-	// 函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
-	Handler *string `json:"Handler,omitempty" name:"Handler"`
-
 	// 要修改的函数名称
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
+	Handler *string `json:"Handler,omitempty" name:"Handler"`
 
 	// 对象存储桶名称
 	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
@@ -3299,8 +3299,8 @@ func (r *UpdateFunctionCodeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Handler")
 	delete(f, "FunctionName")
+	delete(f, "Handler")
 	delete(f, "CosBucketName")
 	delete(f, "CosObjectName")
 	delete(f, "ZipFile")

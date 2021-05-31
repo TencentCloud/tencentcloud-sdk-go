@@ -133,6 +133,9 @@ type CreateCommandRequest struct {
 	// 自定义参数最多20个。
 	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
+
+	// 为命令关联的标签，列表长度不超过10。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *CreateCommandRequest) ToJsonString() string {
@@ -155,6 +158,7 @@ func (r *CreateCommandRequest) FromJsonString(s string) error {
 	delete(f, "Timeout")
 	delete(f, "EnableParameter")
 	delete(f, "DefaultParameters")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return errors.New("CreateCommandRequest has unknown keys!")
 	}
@@ -300,7 +304,15 @@ type DescribeCommandsRequest struct {
 	// 命令ID列表，每次请求的上限为100。参数不支持同时指定 `CommandIds` 和 `Filters` 。
 	CommandIds []*string `json:"CommandIds,omitempty" name:"CommandIds" list`
 
-	// 过滤条件。<br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。<br> <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。<br> <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
+	// 过滤条件。
+	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。
+	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。 
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>
+	// 
+	// 每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -920,6 +932,9 @@ type RunCommandRequest struct {
 	// 自定义参数最多20个。
 	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 如果保存命令，可为命令设置标签。列表长度不超过10。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
 }
 
 func (r *RunCommandRequest) ToJsonString() string {
@@ -945,6 +960,7 @@ func (r *RunCommandRequest) FromJsonString(s string) error {
 	delete(f, "EnableParameter")
 	delete(f, "DefaultParameters")
 	delete(f, "Parameters")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return errors.New("RunCommandRequest has unknown keys!")
 	}

@@ -1658,6 +1658,9 @@ type DescribeFirmwareResponse struct {
 		// 产品名称
 		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
+		// 固件类型。选项：mcu、module
+		FwType *string `json:"FwType,omitempty" name:"FwType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3018,6 +3021,9 @@ type EditFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件类型：选填 mcu、moudule。默认：mcu
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 func (r *EditFirmwareRequest) ToJsonString() string {
@@ -3036,6 +3042,7 @@ func (r *EditFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return errors.New("EditFirmwareRequest has unknown keys!")
 	}
@@ -4249,6 +4256,9 @@ type UploadFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件类型：选填 mcu、moudule。默认：mcu
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 func (r *UploadFirmwareRequest) ToJsonString() string {
@@ -4269,6 +4279,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileSize")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return errors.New("UploadFirmwareRequest has unknown keys!")
 	}

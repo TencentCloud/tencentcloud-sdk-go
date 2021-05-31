@@ -394,6 +394,58 @@ func (r *DescribeItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeKTVMusicDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 曲目 Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+}
+
+func (r *DescribeKTVMusicDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MusicId")
+	if len(f) > 0 {
+		return errors.New("DescribeKTVMusicDetailRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVMusicDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲基础信息
+		KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
+
+		// 播放凭证
+		PlayToken *string `json:"PlayToken,omitempty" name:"PlayToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVMusicDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLyricRequest struct {
 	*tchttp.BaseRequest
 
@@ -721,6 +773,27 @@ type Item struct {
 	// 歌曲状态，1:添加进购物车；2:核销进曲库包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type KTVMusicBaseInfo struct {
+
+	// 歌曲 Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 演唱者列表
+	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet" list`
+
+	// 作词者列表
+	LyricistSet []*string `json:"LyricistSet,omitempty" name:"LyricistSet" list`
+
+	// 作曲者列表
+	ComposerSet []*string `json:"ComposerSet,omitempty" name:"ComposerSet" list`
+
+	// 标签列表
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
 }
 
 type Lyric struct {
@@ -1058,6 +1131,66 @@ func (r *ReportDataResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReportDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchKTVMusicsRequest struct {
+	*tchttp.BaseRequest
+
+	// 搜索关键词
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 分页游标
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页页长
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *SearchKTVMusicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyWord")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return errors.New("SearchKTVMusicsRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchKTVMusicsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// KTV 曲目列表
+		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchKTVMusicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchKTVMusicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

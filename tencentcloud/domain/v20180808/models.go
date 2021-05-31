@@ -187,7 +187,7 @@ type CheckDomainRequest struct {
 	// 所查询域名名称
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 年限
+	// 年限。该参数为空时无法查询溢价词域名
 	Period *string `json:"Period,omitempty" name:"Period"`
 }
 

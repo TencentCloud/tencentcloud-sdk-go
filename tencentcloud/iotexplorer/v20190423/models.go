@@ -1689,6 +1689,10 @@ type FirmwareInfo struct {
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 固件升级模块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 type GetCOSURLRequest struct {
@@ -3226,6 +3230,9 @@ type UploadFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件升级模块；可选值 mcu|moudule
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 func (r *UploadFirmwareRequest) ToJsonString() string {
@@ -3246,6 +3253,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileSize")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return errors.New("UploadFirmwareRequest has unknown keys!")
 	}

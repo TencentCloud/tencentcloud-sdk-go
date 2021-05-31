@@ -168,6 +168,31 @@ func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *Describ
     return
 }
 
+func NewDescribeKTVMusicDetailRequest() (request *DescribeKTVMusicDetailRequest) {
+    request = &DescribeKTVMusicDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicDetail")
+    return
+}
+
+func NewDescribeKTVMusicDetailResponse() (response *DescribeKTVMusicDetailResponse) {
+    response = &DescribeKTVMusicDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据 Id 查询歌曲的详细信息，包含基础信息及播放信息。
+func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicDetailRequest()
+    }
+    response = NewDescribeKTVMusicDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +389,31 @@ func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataRes
         request = NewReportDataRequest()
     }
     response = NewReportDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
+    request = &SearchKTVMusicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "SearchKTVMusics")
+    return
+}
+
+func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
+    response = &SearchKTVMusicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 根据搜索条件，返回匹配的歌曲列表。
+func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
+    if request == nil {
+        request = NewSearchKTVMusicsRequest()
+    }
+    response = NewSearchKTVMusicsResponse()
     err = c.Send(request, response)
     return
 }

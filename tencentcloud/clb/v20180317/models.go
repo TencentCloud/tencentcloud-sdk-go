@@ -4822,22 +4822,22 @@ type RewriteTarget struct {
 
 type RsWeightRule struct {
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 要修改权重的后端机器列表
+	// 要修改权重的后端机器列表。
 	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
 
-	// 转发规则的ID，七层规则时需要此参数，4层规则不需要
+	// 转发规则的ID，七层规则时需要此参数，4层规则不需要。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
-	// 目标规则的域名，提供LocationId参数时本参数不生效
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 目标规则的URL，提供LocationId参数时本参数不生效
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 后端服务新的转发权重，取值范围：0~100。
+	// 后端服务修改后的转发权重，取值范围：[0，100]。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Weight参数，即最终的权重值以Target中的Weight参数值为准，仅当Target中的Weight参数为空时，才以RsWeightRule中的Weight参数为准。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
@@ -5191,7 +5191,7 @@ type Target struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+	// 后端服务修改后的转发权重，取值范围：[0, 100]，默认为 10。此参数的优先级高于[RsWeightRule](https://cloud.tencent.com/document/api/214/30694#RsWeightRule)中的Weight参数，即最终的权重值以此Weight参数值为准，仅当此Weight参数为空时，才以RsWeightRule中的Weight参数为准。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 绑定IP时需要传入此参数，支持弹性网卡的IP和其他内网IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。

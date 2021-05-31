@@ -5227,6 +5227,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// 查询指标，取值有：
 	// <li>Traffic：流量，单位为 Byte。</li>
 	// <li>Bandwidth：带宽，单位为 Bps。</li>
+	// <li>Requests：请求数。</li>
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -6737,9 +6738,18 @@ type DescribeStorageDetailsRequest struct {
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 	// 查询的存储类型，有效值：
-	// <li>TotalStorage：存储总量。</li>
+	// <li>TotalStorage：存储总量，标准、低频、归档和深度归档存储量之和，不含提前删除量。</li>
 	// <li>StandardStorage：标准存储。</li>
 	// <li>InfrequentStorage：低频存储。</li>
+	// <li>ArchiveStorage：归档存储。</li>
+	// <li>DeepArchiveStorage：深度归档存储。</li>
+	// <li>DeletedArchiveStorage：归档提前删除量。</li>
+	// <li>DeletedDeepArchiveStorage：深度归档提前删除量。
+	// <li>ArchiveStandardRetrieval：归档标准取回量。</li>
+	// <li>ArchiveExpeditedRetrieval：归档快速取回量。</li>
+	// <li>ArchiveBulkRetrieval：归档批量取回量。</li>
+	// <li>DeepArchiveStandardRetrieval：深度归档标准取回量。</li>
+	// <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
 	// 默认值为 TotalStorage。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
@@ -7080,7 +7090,6 @@ type DescribeTasksRequest struct {
 	// 过滤条件：任务结束时间。
 	FinishTime *TimeRange `json:"FinishTime,omitempty" name:"FinishTime"`
 
-	// (该字段暂不支持)
 	// 排序方式。Sort.Field 可选：
 	// <li> CreateTime 任务创建时间。</li>
 	// <li>FinishTime 任务结束时间。</li>

@@ -588,6 +588,13 @@ type CynosdbClusterDetail struct {
 
 	// 实例绑定的tag数组信息
 	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
+	// resume
+	// resuming
+	// pause
+	// pausing
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 }
 
 type CynosdbInstance struct {

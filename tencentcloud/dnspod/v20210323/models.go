@@ -114,7 +114,7 @@ type CreateDomainAliasRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -926,13 +926,13 @@ func (r *DescribeBatchTaskResponse) FromJsonString(s string) error {
 type DescribeDomainListRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名分组类型，默认为ALL
+	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 记录开始的偏移, 第一条记录为 0, 依次类推
+	// 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 要获取的域名数量, 比如获取20个, 则为20
+	// 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分组ID, 获取指定分组的域名
@@ -1310,16 +1310,16 @@ type DescribeRecordListRequest struct {
 	// 通过关键字搜索解析记录，当前支持搜索主机头和记录值
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
-	// 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段
+	// 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。默认值为updated_on。
 	SortField *string `json:"SortField,omitempty" name:"SortField"`
 
-	// 排序方式，正序：ASC，逆序：DESC
+	// 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
 	SortType *string `json:"SortType,omitempty" name:"SortType"`
 
-	// 偏移量
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数量，当前Limit最大支持3000
+	// 限制数量，当前Limit最大支持3000。默认值为3000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1949,7 +1949,7 @@ type ModifyDomainStatusRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名状态，”enable” 、”disable” 分别代表启用和暂
+	// 域名状态，”enable” 、”disable” 分别代表启用和暂停
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。

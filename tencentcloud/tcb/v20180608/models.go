@@ -3628,6 +3628,9 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// 0/1=允许公网访问;2=关闭公网访问
 	PublicAccess *int64 `json:"PublicAccess,omitempty" name:"PublicAccess"`
+
+	// OA PUBLIC MINIAPP VPC
+	OpenAccessTypes []*string `json:"OpenAccessTypes,omitempty" name:"OpenAccessTypes" list`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
@@ -3653,6 +3656,7 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 	delete(f, "Source")
 	delete(f, "VpcInfo")
 	delete(f, "PublicAccess")
+	delete(f, "OpenAccessTypes")
 	if len(f) > 0 {
 		return errors.New("EstablishCloudBaseRunServerRequest has unknown keys!")
 	}
