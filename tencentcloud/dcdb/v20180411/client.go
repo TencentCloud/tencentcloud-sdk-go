@@ -646,6 +646,31 @@ func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response 
     return
 }
 
+func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
+    request = &DescribeFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeFlow")
+    return
+}
+
+func NewDescribeFlowResponse() (response *DescribeFlowResponse) {
+    response = &DescribeFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DescribeFlow）用于查询流程状态
+func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowRequest()
+    }
+    response = NewDescribeFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -792,6 +817,56 @@ func (c *Client) DescribeUserTasks(request *DescribeUserTasksRequest) (response 
         request = NewDescribeUserTasksRequest()
     }
     response = NewDescribeUserTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyDCDBInstanceRequest() (request *DestroyDCDBInstanceRequest) {
+    request = &DestroyDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DestroyDCDBInstance")
+    return
+}
+
+func NewDestroyDCDBInstanceResponse() (response *DestroyDCDBInstanceResponse) {
+    response = &DestroyDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(DestroyDCDBInstance)用于销毁已隔离的包年包月实例。
+func (c *Client) DestroyDCDBInstance(request *DestroyDCDBInstanceRequest) (response *DestroyDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyDCDBInstanceRequest()
+    }
+    response = NewDestroyDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyHourDCDBInstanceRequest() (request *DestroyHourDCDBInstanceRequest) {
+    request = &DestroyHourDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DestroyHourDCDBInstance")
+    return
+}
+
+func NewDestroyHourDCDBInstanceResponse() (response *DestroyHourDCDBInstanceResponse) {
+    response = &DestroyHourDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DestroyHourDCDBInstance）用于销毁按量计费实例。
+func (c *Client) DestroyHourDCDBInstance(request *DestroyHourDCDBInstanceRequest) (response *DestroyHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyHourDCDBInstanceRequest()
+    }
+    response = NewDestroyHourDCDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

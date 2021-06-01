@@ -2443,6 +2443,31 @@ func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse,
     return
 }
 
+func NewExportAssetCoreModuleListRequest() (request *ExportAssetCoreModuleListRequest) {
+    request = &ExportAssetCoreModuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportAssetCoreModuleList")
+    return
+}
+
+func NewExportAssetCoreModuleListResponse() (response *ExportAssetCoreModuleListResponse) {
+    response = &ExportAssetCoreModuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 导出资产管理内核模块列表
+func (c *Client) ExportAssetCoreModuleList(request *ExportAssetCoreModuleListRequest) (response *ExportAssetCoreModuleListResponse, err error) {
+    if request == nil {
+        request = NewExportAssetCoreModuleListRequest()
+    }
+    response = NewExportAssetCoreModuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
     request = &ExportAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},

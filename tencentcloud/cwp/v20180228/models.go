@@ -3294,6 +3294,9 @@ type DescribeMachineInfoRequest struct {
 
 	// 云镜客户端唯一Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// cvm id， quuid、uuid必填一个
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeMachineInfoRequest) ToJsonString() string {
@@ -3309,6 +3312,7 @@ func (r *DescribeMachineInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Uuid")
+	delete(f, "Quuid")
 	if len(f) > 0 {
 		return errors.New("DescribeMachineInfoRequest has unknown keys!")
 	}
@@ -3380,6 +3384,9 @@ type DescribeMachineInfoResponse struct {
 
 		// 专业版到期时间(仅预付费)
 		ProVersionDeadline *string `json:"ProVersionDeadline,omitempty" name:"ProVersionDeadline"`
+
+		// 是否有资产扫描记录，0无，1有
+		HasAssetScan *uint64 `json:"HasAssetScan,omitempty" name:"HasAssetScan"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6127,6 +6134,73 @@ type EffectiveMachineInfo struct {
 	// 机器Quuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+type ExportAssetCoreModuleListRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li>Name- string - 是否必填：否 - 包名</li>
+	// <li>User- string - 是否必填：否 - 用户</li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters" list`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序依据:Size,ProcessCount,ModuleCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *ExportAssetCoreModuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportAssetCoreModuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return errors.New("ExportAssetCoreModuleListRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportAssetCoreModuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步下载任务ID，需要配合ExportTasks接口使用
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportAssetCoreModuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportAssetCoreModuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExportAttackLogsRequest struct {

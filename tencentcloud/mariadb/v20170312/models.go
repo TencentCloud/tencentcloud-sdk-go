@@ -21,6 +21,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Account struct {
+
+	// 账户的名称
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 账户的域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+}
+
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -195,6 +204,21 @@ func (r *CloseDBExtranetAccessResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CloseDBExtranetAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ColumnPrivilege struct {
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 数据库列名
+	Column *string `json:"Column,omitempty" name:"Column"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
 }
 
 type ConstraintRange struct {
@@ -414,6 +438,9 @@ type CreateDBInstanceRequest struct {
 
 	// 标签键值对数组
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams" list`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -445,6 +472,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenewFlag")
 	delete(f, "Ipv6Flag")
 	delete(f, "ResourceTags")
+	delete(f, "InitParams")
 	if len(f) > 0 {
 		return errors.New("CreateDBInstanceRequest has unknown keys!")
 	}
@@ -595,7 +623,7 @@ type DBInstance struct {
 	// 子网 ID，基础网络时为 0
 	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除
+	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 内网 IP 地址
@@ -749,6 +777,15 @@ type Database struct {
 
 	// 数据库名称
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
+}
+
+type DatabasePrivilege struct {
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
 }
 
 type DcnDetailItem struct {
@@ -1148,6 +1185,12 @@ type DescribeDBInstancesRequest struct {
 
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitempty" name:"FilterInstanceType"`
+
+	// 按照实例状态进行筛选
+	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+
+	// 排除实例状态
+	ExcludeStatus []*int64 `json:"ExcludeStatus,omitempty" name:"ExcludeStatus" list`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1179,6 +1222,8 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ExclusterIds")
 	delete(f, "TagKeys")
 	delete(f, "FilterInstanceType")
+	delete(f, "Status")
+	delete(f, "ExcludeStatus")
 	if len(f) > 0 {
 		return errors.New("DescribeDBInstancesRequest has unknown keys!")
 	}
@@ -2462,6 +2507,58 @@ func (r *DescribeUpgradePriceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DestroyHourDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：tdsql-avw0207d，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DestroyHourDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyHourDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return errors.New("DestroyHourDBInstanceRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyHourDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 实例 ID，与入参InstanceId一致。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DestroyHourDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyHourDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2560,6 +2657,18 @@ func (r *FlushBinlogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FlushBinlogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FunctionPrivilege struct {
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库函数名
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
 }
 
 type GrantAccountPrivilegesRequest struct {
@@ -2828,6 +2937,94 @@ func (r *ModifyAccountDescriptionResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAccountDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库的账号，包括用户名和域名。
+	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts" list`
+
+	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges" list`
+
+	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges" list`
+
+	// 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges" list`
+
+	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges" list`
+
+	// 数据库视图的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ViewPrivileges []*ViewPrivileges `json:"ViewPrivileges,omitempty" name:"ViewPrivileges" list`
+
+	// 数据库函数的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	FunctionPrivileges []*FunctionPrivilege `json:"FunctionPrivileges,omitempty" name:"FunctionPrivileges" list`
+
+	// 数据库存储过程的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ProcedurePrivileges []*ProcedurePrivilege `json:"ProcedurePrivileges,omitempty" name:"ProcedurePrivileges" list`
+}
+
+func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Accounts")
+	delete(f, "GlobalPrivileges")
+	delete(f, "DatabasePrivileges")
+	delete(f, "TablePrivileges")
+	delete(f, "ColumnPrivileges")
+	delete(f, "ViewPrivileges")
+	delete(f, "FunctionPrivileges")
+	delete(f, "ProcedurePrivileges")
+	if len(f) > 0 {
+		return errors.New("ModifyAccountPrivilegesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3308,6 +3505,18 @@ type PerformanceMonitorSet struct {
 	IsMasterSwitched *MonitorData `json:"IsMasterSwitched,omitempty" name:"IsMasterSwitched"`
 }
 
+type ProcedurePrivilege struct {
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库存储过程名
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+}
+
 type RegionInfo struct {
 
 	// 地域英文ID
@@ -3475,6 +3684,9 @@ type RestartDBInstancesRequest struct {
 
 	// 实例ID的数组
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+
+	// 重启时间
+	RestartTime *string `json:"RestartTime,omitempty" name:"RestartTime"`
 }
 
 func (r *RestartDBInstancesRequest) ToJsonString() string {
@@ -3490,6 +3702,7 @@ func (r *RestartDBInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "RestartTime")
 	if len(f) > 0 {
 		return errors.New("RestartDBInstancesRequest has unknown keys!")
 	}
@@ -3679,6 +3892,18 @@ type SqlLogItem struct {
 	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
 }
 
+type TablePrivilege struct {
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+}
+
 type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -3745,6 +3970,18 @@ func (r *UpgradeDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewPrivileges struct {
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库视图名
+	View *string `json:"View,omitempty" name:"View"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
 }
 
 type ZoneChooseInfo struct {

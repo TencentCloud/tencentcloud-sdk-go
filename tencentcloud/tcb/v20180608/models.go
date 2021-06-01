@@ -2791,6 +2791,12 @@ type DescribeEnvLimitResponse struct {
 		// 本月已销毁环境次数
 		CurrentDeleteMonthly *int64 `json:"CurrentDeleteMonthly,omitempty" name:"CurrentDeleteMonthly"`
 
+		// 微信网关体验版可购买月份数
+		MaxFreeTrialNum *int64 `json:"MaxFreeTrialNum,omitempty" name:"MaxFreeTrialNum"`
+
+		// 微信网关体验版已购买月份数
+		CurrentFreeTrialNum *int64 `json:"CurrentFreeTrialNum,omitempty" name:"CurrentFreeTrialNum"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

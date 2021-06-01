@@ -136,7 +136,7 @@ type CreatePrivateZoneRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 是否开启子域名递归, ENABLED， DISABLED
+	// 是否开启子域名递归, ENABLED， DISABLED。默认值为DISABLED
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
@@ -312,7 +312,7 @@ type DescribeAuditLogRequest struct {
 	// 请求量统计起始时间
 	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
 
-	// 筛选参数：
+	// 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
 	// 请求量统计结束时间
@@ -624,7 +624,7 @@ type DescribePrivateZoneServiceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 私有域解析服务开通状态
+		// 私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
 		ServiceStatus *string `json:"ServiceStatus,omitempty" name:"ServiceStatus"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -646,13 +646,13 @@ func (r *DescribePrivateZoneServiceResponse) FromJsonString(s string) error {
 type DescribeRequestDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 请求量统计起始时间
+	// 请求量统计起始时间，格式：2020-11-22 00:00:00
 	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
 
 	// 筛选参数：
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
 
-	// 请求量统计结束时间
+	// 请求量统计结束时间，格式：2020-11-22 23:59:59
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
 }
 
@@ -813,7 +813,7 @@ func (r *ModifyPrivateZoneRecordResponse) FromJsonString(s string) error {
 type ModifyPrivateZoneRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名，格式必须是标准的TLD
+	// 私有域ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 备注

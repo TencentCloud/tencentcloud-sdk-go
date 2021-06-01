@@ -392,6 +392,9 @@ type CreateCloudStorageRequest struct {
 	// yc1w7d : 全时7天存储周套餐。
 	// ye1w7d : 事件7天存储周套餐。
 	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+	Override *uint64 `json:"Override,omitempty" name:"Override"`
 }
 
 func (r *CreateCloudStorageRequest) ToJsonString() string {
@@ -409,6 +412,7 @@ func (r *CreateCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "PackageId")
+	delete(f, "Override")
 	if len(f) > 0 {
 		return errors.New("CreateCloudStorageRequest has unknown keys!")
 	}

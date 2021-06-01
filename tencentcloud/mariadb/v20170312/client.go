@@ -871,6 +871,31 @@ func (c *Client) DescribeUpgradePrice(request *DescribeUpgradePriceRequest) (res
     return
 }
 
+func NewDestroyHourDBInstanceRequest() (request *DestroyHourDBInstanceRequest) {
+    request = &DestroyHourDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "DestroyHourDBInstance")
+    return
+}
+
+func NewDestroyHourDBInstanceResponse() (response *DestroyHourDBInstanceResponse) {
+    response = &DestroyHourDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（DestroyHourDBInstance）用于销毁按量计费实例。
+func (c *Client) DestroyHourDBInstance(request *DestroyHourDBInstanceRequest) (response *DestroyHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyHourDBInstanceRequest()
+    }
+    response = NewDestroyHourDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
     request = &DisassociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1019,6 +1044,36 @@ func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionReque
         request = NewModifyAccountDescriptionRequest()
     }
     response = NewModifyAccountDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountPrivilegesRequest() (request *ModifyAccountPrivilegesRequest) {
+    request = &ModifyAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "ModifyAccountPrivileges")
+    return
+}
+
+func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResponse) {
+    response = &ModifyAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
+// 
+// **注意**
+// - 系统保留库："mysql"，只开放["SELECT"]权限
+// - 只读账号授予读写权限会报错
+// - 不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
+func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountPrivilegesRequest()
+    }
+    response = NewModifyAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
 }
