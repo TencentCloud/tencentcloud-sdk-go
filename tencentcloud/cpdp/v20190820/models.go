@@ -52,6 +52,21 @@ type Acct struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type AgencyClientInfo struct {
+
+	// 经办人姓名，存在经办人必输
+	AgencyClientName *string `json:"AgencyClientName,omitempty" name:"AgencyClientName"`
+
+	// 经办人证件类型，存在经办人必输
+	AgencyClientGlobalType *string `json:"AgencyClientGlobalType,omitempty" name:"AgencyClientGlobalType"`
+
+	// 经办人证件号，存在经办人必输
+	AgencyClientGlobalId *string `json:"AgencyClientGlobalId,omitempty" name:"AgencyClientGlobalId"`
+
+	// 经办人手机号，存在经办人必输
+	AgencyClientMobile *string `json:"AgencyClientMobile,omitempty" name:"AgencyClientMobile"`
+}
+
 type AgentTaxPayment struct {
 
 	// 主播银行账号
@@ -938,6 +953,9 @@ type BindAcctRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 经办人信息
+	AgencyClientInfo *AgencyClientInfo `json:"AgencyClientInfo,omitempty" name:"AgencyClientInfo"`
 }
 
 func (r *BindAcctRequest) ToJsonString() string {
@@ -968,6 +986,7 @@ func (r *BindAcctRequest) FromJsonString(s string) error {
 	delete(f, "EiconBankBranchId")
 	delete(f, "EncryptType")
 	delete(f, "MidasEnvironment")
+	delete(f, "AgencyClientInfo")
 	if len(f) > 0 {
 		return errors.New("BindAcctRequest has unknown keys!")
 	}
@@ -1939,6 +1958,7 @@ type CreateAcctRequest struct {
 	// 子商户类型：
 	// 个人: personal
 	// 企业: enterprise
+	// 个体工商户: individual
 	// 缺省: enterprise
 	SubMchType *string `json:"SubMchType,omitempty" name:"SubMchType"`
 
@@ -1974,6 +1994,13 @@ type CreateAcctRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 店铺名称
+	// 企业、个体工商户必输
+	SubMerchantStoreName *string `json:"SubMerchantStoreName,omitempty" name:"SubMerchantStoreName"`
+
+	// 公司信息
+	OrganizationInfo *OrganizationInfo `json:"OrganizationInfo,omitempty" name:"OrganizationInfo"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -2005,6 +2032,8 @@ func (r *CreateAcctRequest) FromJsonString(s string) error {
 	delete(f, "EncryptType")
 	delete(f, "SubAcctNo")
 	delete(f, "MidasEnvironment")
+	delete(f, "SubMerchantStoreName")
+	delete(f, "OrganizationInfo")
 	if len(f) > 0 {
 		return errors.New("CreateAcctRequest has unknown keys!")
 	}
@@ -4390,6 +4419,27 @@ type OrderItem struct {
 	// 商品编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaxCode *string `json:"TaxCode,omitempty" name:"TaxCode"`
+}
+
+type OrganizationInfo struct {
+
+	// 公司名称，个体工商户必输
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 公司证件类型，个体工商户必输，证件类型仅支持73
+	OrganizationType *string `json:"OrganizationType,omitempty" name:"OrganizationType"`
+
+	// 公司证件号码，个体工商户必输
+	OrganizationCode *string `json:"OrganizationCode,omitempty" name:"OrganizationCode"`
+
+	// 法人名称，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
+
+	// 法人证件类型，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	LegalPersonIdType *string `json:"LegalPersonIdType,omitempty" name:"LegalPersonIdType"`
+
+	// 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
 }
 
 type QueryAcctBindingRequest struct {
@@ -8467,6 +8517,114 @@ func (r *RefundResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RegisterBehaviorRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 功能标志
+	// 1：登记行为记录信息
+	// 2：查询补录信息
+	FunctionFlag *int64 `json:"FunctionFlag,omitempty" name:"FunctionFlag"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 操作点击时间
+	// yyyyMMddHHmmss
+	// 功能标志FunctionFlag=1时必输
+	OperationClickTime *string `json:"OperationClickTime,omitempty" name:"OperationClickTime"`
+
+	// IP地址
+	// 功能标志FunctionFlag=1时必输
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// MAC地址
+	// 功能标志FunctionFlag=1时必输
+	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+
+	// 签约渠道
+	// 1:  App
+	// 2:  平台H5网页
+	// 3：公众号
+	// 4：小程序
+	// 功能标志FunctionFlag=1时必输
+	SignChannel *int64 `json:"SignChannel,omitempty" name:"SignChannel"`
+}
+
+func (r *RegisterBehaviorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterBehaviorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "FunctionFlag")
+	delete(f, "MidasEnvironment")
+	delete(f, "OperationClickTime")
+	delete(f, "IpAddress")
+	delete(f, "MacAddress")
+	delete(f, "SignChannel")
+	if len(f) > 0 {
+		return errors.New("RegisterBehaviorRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterBehaviorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 补录是否成功标志
+	// 功能标志为2时存在。
+	// S：成功
+	// F：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReplenishSuccessFlag *string `json:"ReplenishSuccessFlag,omitempty" name:"ReplenishSuccessFlag"`
+
+		// 签约信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegisterInfo *RegisterInfo `json:"RegisterInfo,omitempty" name:"RegisterInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RegisterBehaviorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterBehaviorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RegisterBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -8692,6 +8850,33 @@ func (r *RegisterBillSupportWithdrawResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterInfo struct {
+
+	// 法人证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
+
+	// 法人证件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonIdType *string `json:"LegalPersonIdType,omitempty" name:"LegalPersonIdType"`
+
+	// 法人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
+
+	// 公司证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCode *string `json:"OrganizationCode,omitempty" name:"OrganizationCode"`
+
+	// 公司名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 公司证件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationType *string `json:"OrganizationType,omitempty" name:"OrganizationType"`
 }
 
 type ResponseQueryContract struct {

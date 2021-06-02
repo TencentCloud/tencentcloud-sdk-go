@@ -243,6 +243,31 @@ func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsReq
     return
 }
 
+func NewCreateMultipleSecurityPolicyRequest() (request *CreateMultipleSecurityPolicyRequest) {
+    request = &CreateMultipleSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateMultipleSecurityPolicy")
+    return
+}
+
+func NewCreateMultipleSecurityPolicyResponse() (response *CreateMultipleSecurityPolicyResponse) {
+    response = &CreateMultipleSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于在TCR实例中，创建多个白名单策略
+func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPolicyRequest) (response *CreateMultipleSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateMultipleSecurityPolicyRequest()
+    }
+    response = NewCreateMultipleSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
     request = &CreateNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +714,31 @@ func (c *Client) DeleteInternalEndpointDns(request *DeleteInternalEndpointDnsReq
         request = NewDeleteInternalEndpointDnsRequest()
     }
     response = NewDeleteInternalEndpointDnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMultipleSecurityPolicyRequest() (request *DeleteMultipleSecurityPolicyRequest) {
+    request = &DeleteMultipleSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteMultipleSecurityPolicy")
+    return
+}
+
+func NewDeleteMultipleSecurityPolicyResponse() (response *DeleteMultipleSecurityPolicyResponse) {
+    response = &DeleteMultipleSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 用于删除实例多个公网访问白名单策略
+func (c *Client) DeleteMultipleSecurityPolicy(request *DeleteMultipleSecurityPolicyRequest) (response *DeleteMultipleSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteMultipleSecurityPolicyRequest()
+    }
+    response = NewDeleteMultipleSecurityPolicyResponse()
     err = c.Send(request, response)
     return
 }

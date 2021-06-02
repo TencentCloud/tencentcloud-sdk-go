@@ -1852,6 +1852,31 @@ func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest
     return
 }
 
+func NewRegisterBehaviorRequest() (request *RegisterBehaviorRequest) {
+    request = &RegisterBehaviorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBehavior")
+    return
+}
+
+func NewRegisterBehaviorResponse() (response *RegisterBehaviorResponse) {
+    response = &RegisterBehaviorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 商户查询是否签约和签约行为上报
+func (c *Client) RegisterBehavior(request *RegisterBehaviorRequest) (response *RegisterBehaviorResponse, err error) {
+    if request == nil {
+        request = NewRegisterBehaviorRequest()
+    }
+    response = NewRegisterBehaviorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterBillRequest() (request *RegisterBillRequest) {
     request = &RegisterBillRequest{
         BaseRequest: &tchttp.BaseRequest{},

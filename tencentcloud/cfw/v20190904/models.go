@@ -1547,7 +1547,7 @@ type ModifyBlockIgnoreListRequest struct {
 	// IP、Domain二选一，不能同时为空
 	IOC []*IocListData `json:"IOC,omitempty" name:"IOC" list`
 
-	// 默认值:delete（删除）、edit（编辑）、add（添加）  其他值无效
+	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
 	IocAction *string `json:"IocAction,omitempty" name:"IocAction"`
 
 	// 时间格式：yyyy-MM-dd HH:mm:ss
