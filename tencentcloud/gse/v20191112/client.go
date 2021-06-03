@@ -1133,6 +1133,31 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
     return
 }
 
+func NewEndGameServerSessionAndProcessRequest() (request *EndGameServerSessionAndProcessRequest) {
+    request = &EndGameServerSessionAndProcessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gse", APIVersion, "EndGameServerSessionAndProcess")
+    return
+}
+
+func NewEndGameServerSessionAndProcessResponse() (response *EndGameServerSessionAndProcessResponse) {
+    response = &EndGameServerSessionAndProcessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程。
+func (c *Client) EndGameServerSessionAndProcess(request *EndGameServerSessionAndProcessRequest) (response *EndGameServerSessionAndProcessResponse, err error) {
+    if request == nil {
+        request = NewEndGameServerSessionAndProcessRequest()
+    }
+    response = NewEndGameServerSessionAndProcessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGameServerInstanceLogUrlRequest() (request *GetGameServerInstanceLogUrlRequest) {
     request = &GetGameServerInstanceLogUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

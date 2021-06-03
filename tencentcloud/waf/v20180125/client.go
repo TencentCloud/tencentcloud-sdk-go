@@ -193,6 +193,31 @@ func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (respo
     return
 }
 
+func NewDescribeFlowTrendRequest() (request *DescribeFlowTrendRequest) {
+    request = &DescribeFlowTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeFlowTrend")
+    return
+}
+
+func NewDescribeFlowTrendResponse() (response *DescribeFlowTrendResponse) {
+    response = &DescribeFlowTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 获取waf流量访问趋势
+func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowTrendRequest()
+    }
+    response = NewDescribeFlowTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserClbWafRegionsRequest() (request *DescribeUserClbWafRegionsRequest) {
     request = &DescribeUserClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

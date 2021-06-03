@@ -1,42 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 区块链可信取证(btoe) 版本：2021-05-14
+## 游戏服务器伸缩(gse) 版本：2019-11-12
 
-### 第 1 次发布
+### 第 22 次发布
 
-发布时间：2021-06-02 08:00:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAudioDeposit](https://cloud.tencent.com/document/api/#/#)
-* [CreateDataDeposit](https://cloud.tencent.com/document/api/#/#)
-* [CreateDocDeposit](https://cloud.tencent.com/document/api/#/#)
-* [CreateHashDeposit](https://cloud.tencent.com/document/api/#/#)
-* [CreateHashDepositNoCert](https://cloud.tencent.com/document/api/#/#)
-* [CreateHashDepositNoSeal](https://cloud.tencent.com/document/api/#/#)
-* [CreateImageDeposit](https://cloud.tencent.com/document/api/#/#)
-* [CreateVideoDeposit](https://cloud.tencent.com/document/api/#/#)
-* [GetDepositCert](https://cloud.tencent.com/document/api/#/#)
-* [GetDepositFile](https://cloud.tencent.com/document/api/#/#)
-* [GetDepositInfo](https://cloud.tencent.com/document/api/#/#)
-* [VerifyEvidenceBlockChainTxHash](https://cloud.tencent.com/document/api/#/#)
-* [VerifyEvidenceHash](https://cloud.tencent.com/document/api/#/#)
-
-
-
-## 区块链可信取证(btoe) 版本：2021-03-03
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 37 次发布
-
-发布时间：2021-06-02 08:10:27
+发布时间：2021-06-03 08:02:10
 
 本次发布包含了以下内容：
 
@@ -44,69 +12,58 @@
 
 新增接口：
 
-* [RegisterBehavior](https://cloud.tencent.com/document/api/1122/56525)
+* [EndGameServerSessionAndProcess](https://cloud.tencent.com/document/api/1165/56618)
 
-修改接口：
 
-* [BindAcct](https://cloud.tencent.com/document/api/1122/40681)
 
-	* 新增入参：AgencyClientInfo
+## 弹性微服务(tem) 版本：2020-12-21
 
-* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+### 第 4 次发布
 
-	* 新增入参：SubMerchantStoreName, OrganizationInfo
+发布时间：2021-06-03 08:00:27
 
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
+
+	* 新增成员：CreateTime, Mixed
+
+* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
+
+	* 新增成员：Protocol
+
+* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
+
+	* 新增成员：CertificateId
+
+* [RunVersionPod](https://cloud.tencent.com/document/api/1371/55421#RunVersionPod)
+
+	* 新增成员：Zone, DeployVersion
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 2 次发布
+
+发布时间：2021-06-03 08:11:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFlowTrend](https://cloud.tencent.com/document/api/627/56620)
 
 新增数据结构：
 
-* [AgencyClientInfo](https://cloud.tencent.com/document/api/1122/40683#AgencyClientInfo)
-* [OrganizationInfo](https://cloud.tencent.com/document/api/1122/40683#OrganizationInfo)
-* [RegisterInfo](https://cloud.tencent.com/document/api/1122/40683#RegisterInfo)
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 20 次发布
-
-发布时间：2021-06-01 14:53:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [FunctionPrivilege](https://cloud.tencent.com/document/api/237/16191#FunctionPrivilege)
-
-	* 新增成员：FunctionName
-
-	* <font color="#dd0000">**删除成员**：</font>Function
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 33 次发布
-
-发布时间：2021-06-02 08:09:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56524)
-* [DeleteMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56523)
-
-修改数据结构：
-
-* [SecurityPolicy](https://cloud.tencent.com/document/api/1141/41603#SecurityPolicy)
-
-	* <font color="#dd0000">**修改成员**：</font>PolicyIndex, Description, CidrBlock, PolicyVersion
-
+* [BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem)
 
 
 
@@ -5114,19 +5071,19 @@
 
 新增接口：
 
-* [[CreateAudioDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDataDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDocDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateHashDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateHashDepositNoCert](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateHashDepositNoSeal](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateImageDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateVideoDeposit](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetDepositCert](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetDepositFile](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[GetDepositInfo](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[VerifyEvidenceBlockChainTxHash](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[VerifyEvidenceHash](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAudioDeposit](https://cloud.tencent.com/document/api/1259/56574)
+* [CreateDataDeposit](https://cloud.tencent.com/document/api/1259/56573)
+* [CreateDocDeposit](https://cloud.tencent.com/document/api/1259/56572)
+* [CreateHashDeposit](https://cloud.tencent.com/document/api/1259/56571)
+* [CreateHashDepositNoCert](https://cloud.tencent.com/document/api/1259/56570)
+* [CreateHashDepositNoSeal](https://cloud.tencent.com/document/api/1259/56569)
+* [CreateImageDeposit](https://cloud.tencent.com/document/api/1259/56568)
+* [CreateVideoDeposit](https://cloud.tencent.com/document/api/1259/56567)
+* [GetDepositCert](https://cloud.tencent.com/document/api/1259/56566)
+* [GetDepositFile](https://cloud.tencent.com/document/api/1259/56565)
+* [GetDepositInfo](https://cloud.tencent.com/document/api/1259/56564)
+* [VerifyEvidenceBlockChainTxHash](https://cloud.tencent.com/document/api/1259/56563)
+* [VerifyEvidenceHash](https://cloud.tencent.com/document/api/1259/56562)
 
 
 
@@ -13209,7 +13166,7 @@
 
 新增接口：
 
-* [[RegisterBehavior](https://cloud.tencent.com/document/api/1122/56525)](https://cloud.tencent.com/document/api/#/#)
+* [RegisterBehavior](https://cloud.tencent.com/document/api/1122/56525)
 
 修改接口：
 
@@ -13224,9 +13181,9 @@
 
 新增数据结构：
 
-* [[AgencyClientInfo](https://cloud.tencent.com/document/api/1122/40683#AgencyClientInfo)](https://cloud.tencent.com/document/api/1122/40683#[AgencyClientInfo](https://cloud.tencent.com/document/api/1122/40683#AgencyClientInfo))
-* [[OrganizationInfo](https://cloud.tencent.com/document/api/1122/40683#OrganizationInfo)](https://cloud.tencent.com/document/api/1122/40683#[OrganizationInfo](https://cloud.tencent.com/document/api/1122/40683#OrganizationInfo))
-* [[RegisterInfo](https://cloud.tencent.com/document/api/1122/40683#RegisterInfo)](https://cloud.tencent.com/document/api/1122/40683#[RegisterInfo](https://cloud.tencent.com/document/api/1122/40683#RegisterInfo))
+* [AgencyClientInfo](https://cloud.tencent.com/document/api/1122/40683#AgencyClientInfo)
+* [OrganizationInfo](https://cloud.tencent.com/document/api/1122/40683#OrganizationInfo)
+* [RegisterInfo](https://cloud.tencent.com/document/api/1122/40683#RegisterInfo)
 
 ### 第 36 次发布
 
@@ -23350,6 +23307,18 @@
 
 
 ## 游戏服务器伸缩(gse) 版本：2019-11-12
+
+### 第 22 次发布
+
+发布时间：2021-06-03 08:02:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[EndGameServerSessionAndProcess](https://cloud.tencent.com/document/api/1165/56618)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 21 次发布
 
@@ -40509,8 +40478,8 @@
 
 新增接口：
 
-* [[CreateMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56524)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56523)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56524)
+* [DeleteMultipleSecurityPolicy](https://cloud.tencent.com/document/api/1141/56523)
 
 修改数据结构：
 
@@ -41380,6 +41349,33 @@
 
 
 ## 弹性微服务(tem) 版本：2020-12-21
+
+### 第 4 次发布
+
+发布时间：2021-06-03 08:00:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
+
+	* 新增成员：CreateTime, Mixed
+
+* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
+
+	* 新增成员：Protocol
+
+* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
+
+	* 新增成员：CertificateId
+
+* [RunVersionPod](https://cloud.tencent.com/document/api/1371/55421#RunVersionPod)
+
+	* 新增成员：Zone, DeployVersion
+
 
 ### 第 3 次发布
 
@@ -51281,6 +51277,22 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 2 次发布
+
+发布时间：2021-06-03 08:11:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeFlowTrend](https://cloud.tencent.com/document/api/627/56620)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem)](https://cloud.tencent.com/document/api/627/53609#[BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem))
 
 ### 第 1 次发布
 

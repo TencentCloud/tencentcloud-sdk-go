@@ -2870,6 +2870,60 @@ type DiskInfo struct {
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
+type EndGameServerSessionAndProcessRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话ID
+	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
+
+	// CVM的公网IP地址
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 端口号，最小值不小于1，最大值不超过60000
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+func (r *EndGameServerSessionAndProcessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndGameServerSessionAndProcessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "IpAddress")
+	delete(f, "Port")
+	if len(f) > 0 {
+		return errors.New("EndGameServerSessionAndProcessRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EndGameServerSessionAndProcessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EndGameServerSessionAndProcessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndGameServerSessionAndProcessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Event struct {
 
 	// 事件代码，支持以下的事件代码

@@ -299,6 +299,7 @@ type DescribeOnlineRecordResponse struct {
 	// - AUTO: 房间内长时间没有音视频上行及白板操作导致自动停止录制
 	// - USER_CALL: 主动调用了停止录制接口
 	// - EXCEPTION: 录制异常结束
+	// - FORCE_STOP: 强制停止录制，一般是因为暂停超过90分钟或者录制总时长超过24小时。
 		FinishReason *string `json:"FinishReason,omitempty" name:"FinishReason"`
 
 		// 需要查询结果的录制任务Id

@@ -136,19 +136,19 @@ type DischargeDiagnosis struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIndex *int64 `json:"TableIndex,omitempty" name:"TableIndex"`
 
-	// ""
+	// 出院诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutDiagnosis *BlockInfo `json:"OutDiagnosis,omitempty" name:"OutDiagnosis"`
 
-	// ""
+	// 疾病编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiseaseCode *BlockInfo `json:"DiseaseCode,omitempty" name:"DiseaseCode"`
 
-	// ""
+	// 入院情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InStatus *BlockInfo `json:"InStatus,omitempty" name:"InStatus"`
 
-	// ""
+	// 出院情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutStatus *BlockInfo `json:"OutStatus,omitempty" name:"OutStatus"`
 }
@@ -201,15 +201,15 @@ type Elastic struct {
 
 type FamilyMedicalHistory struct {
 
-	// ""
+	// 家族成员史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelativeHistory *string `json:"RelativeHistory,omitempty" name:"RelativeHistory"`
 
-	// ""
+	// 家族肿瘤史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelativeCancerHistory *string `json:"RelativeCancerHistory,omitempty" name:"RelativeCancerHistory"`
 
-	// ""
+	// 家族遗传史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GeneticHistory *string `json:"GeneticHistory,omitempty" name:"GeneticHistory"`
 }
@@ -258,7 +258,7 @@ type HandleParam struct {
 
 type HistologyLevel struct {
 
-	// “”
+	// 等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *string `json:"Grade,omitempty" name:"Grade"`
 
@@ -273,7 +273,7 @@ type HistologyLevel struct {
 
 type HistologyType struct {
 
-	// “”
+	// 浸润
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Infiltration *string `json:"Infiltration,omitempty" name:"Infiltration"`
 
@@ -296,15 +296,15 @@ type IHCInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index" list`
 
-	// “”
+	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Src *string `json:"Src,omitempty" name:"Src"`
 
-	// “”
+	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// “”
+	// 值
 	Value *Value `json:"Value,omitempty" name:"Value"`
 }
 
@@ -323,7 +323,7 @@ type ImageInfo struct {
 type ImageToClassRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片列表
+	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
 
 	// 图片处理参数
@@ -381,7 +381,7 @@ func (r *ImageToClassResponse) FromJsonString(s string) error {
 type ImageToObjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片列表
+	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
 
 	// 图片处理参数
@@ -449,35 +449,35 @@ type Indicator struct {
 
 type IndicatorItem struct {
 
-	// “”
+	// 英文缩写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// “”
+	// 标准缩写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scode *string `json:"Scode,omitempty" name:"Scode"`
 
-	// “”
+	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// “”
+	// 标准名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sname *string `json:"Sname,omitempty" name:"Sname"`
 
-	// “”
+	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitempty" name:"Result"`
 
-	// “”
+	// 单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 
-	// “”
+	// 参考范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Range *string `json:"Range,omitempty" name:"Range"`
 
-	// “”
+	// 上下箭头
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arrow *string `json:"Arrow,omitempty" name:"Arrow"`
 
@@ -530,57 +530,57 @@ type Lymph struct {
 
 type MedDoc struct {
 
-	// “”
+	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Advice *Advice `json:"Advice,omitempty" name:"Advice"`
 
-	// “”
+	// 诊断结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Diagnosis []*DiagCertItem `json:"Diagnosis,omitempty" name:"Diagnosis" list`
 
-	// “”
+	// 疾病史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiseaseMedicalHistory *DiseaseMedicalHistory `json:"DiseaseMedicalHistory,omitempty" name:"DiseaseMedicalHistory"`
 
-	// “”
+	// 个人史
 	PersonalMedicalHistory *PersonalMedicalHistory `json:"PersonalMedicalHistory,omitempty" name:"PersonalMedicalHistory"`
 
-	// “”
+	// 婚孕史
 	ObstericalMedicalHistory *ObstericalMedicalHistory `json:"ObstericalMedicalHistory,omitempty" name:"ObstericalMedicalHistory"`
 
-	// “”
+	// 家族史
 	FamilyMedicalHistory *FamilyMedicalHistory `json:"FamilyMedicalHistory,omitempty" name:"FamilyMedicalHistory"`
 
-	// “”
+	// 月经史
 	MenstrualMedicalHistory *MenstrualMedicalHistory `json:"MenstrualMedicalHistory,omitempty" name:"MenstrualMedicalHistory"`
 
-	// “”
+	// 诊疗记录
 	TreatmentRecord *TreatmentRecord `json:"TreatmentRecord,omitempty" name:"TreatmentRecord"`
 }
 
 type MenstrualMedicalHistory struct {
 
-	// “”
+	// 末次月经时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastMenstrualPeriod *string `json:"LastMenstrualPeriod,omitempty" name:"LastMenstrualPeriod"`
 
-	// “”
+	// 经量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MenstrualFlow *string `json:"MenstrualFlow,omitempty" name:"MenstrualFlow"`
 
-	// “”
+	// 月经初潮年龄
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MenarcheAge *string `json:"MenarcheAge,omitempty" name:"MenarcheAge"`
 
-	// “”
+	// 是否来月经
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MenstruationOrNot *string `json:"MenstruationOrNot,omitempty" name:"MenstruationOrNot"`
 
-	// “”
+	// 月经周期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MenstrualCycles *string `json:"MenstrualCycles,omitempty" name:"MenstrualCycles"`
 
-	// “”
+	// 月经持续天数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MenstrualPeriod *string `json:"MenstrualPeriod,omitempty" name:"MenstrualPeriod"`
 }
@@ -667,75 +667,75 @@ type Organ struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size []*Size `json:"Size,omitempty" name:"Size" list`
 
-	// ""
+	// 包膜
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Envelope *BlockInfo `json:"Envelope,omitempty" name:"Envelope"`
 
-	// ""
+	// 边缘
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Edge *BlockInfo `json:"Edge,omitempty" name:"Edge"`
 
-	// ""
+	// 内部回声
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerEcho *BlockInfo `json:"InnerEcho,omitempty" name:"InnerEcho"`
 
-	// ""
+	// 腺体
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gland *BlockInfo `json:"Gland,omitempty" name:"Gland"`
 
-	// ""
+	// 形状
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Shape *BlockInfo `json:"Shape,omitempty" name:"Shape"`
 
-	// ""
+	// 厚度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Thickness *BlockInfo `json:"Thickness,omitempty" name:"Thickness"`
 
-	// ""
+	// 形态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShapeAttr *BlockInfo `json:"ShapeAttr,omitempty" name:"ShapeAttr"`
 
-	// ""
+	// 血液cdfi
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CDFI *BlockInfo `json:"CDFI,omitempty" name:"CDFI"`
 
-	// ""
+	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SymDesc *BlockInfo `json:"SymDesc,omitempty" name:"SymDesc"`
 
-	// ""
+	// 大小状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SizeStatus *BlockInfo `json:"SizeStatus,omitempty" name:"SizeStatus"`
 
-	// ""
+	// 轮廓
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Outline *BlockInfo `json:"Outline,omitempty" name:"Outline"`
 
-	// ""
+	// 结构
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Structure *BlockInfo `json:"Structure,omitempty" name:"Structure"`
 
-	// ""
+	// 密度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Density *BlockInfo `json:"Density,omitempty" name:"Density"`
 
-	// ""
+	// 血管
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vas *BlockInfo `json:"Vas,omitempty" name:"Vas"`
 
-	// ""
+	// 囊壁
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cysticwall *BlockInfo `json:"Cysticwall,omitempty" name:"Cysticwall"`
 
-	// ""
+	// 被膜
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capsule *BlockInfo `json:"Capsule,omitempty" name:"Capsule"`
 
-	// ""
+	// 峡部厚度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsthmusThicknese *Size `json:"IsthmusThicknese,omitempty" name:"IsthmusThicknese"`
 
-	// ""
+	// 内部回声分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerEchoDistribution *BlockInfo `json:"InnerEchoDistribution,omitempty" name:"InnerEchoDistribution"`
 
@@ -773,11 +773,11 @@ type Part struct {
 
 type PathologyReport struct {
 
-	// ""
+	// 癌症部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CancerPart *Part `json:"CancerPart,omitempty" name:"CancerPart"`
 
-	// ""
+	// 癌症部位大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CancerSize []*Size `json:"CancerSize,omitempty" name:"CancerSize" list`
 
@@ -785,47 +785,47 @@ type PathologyReport struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescText *string `json:"DescText,omitempty" name:"DescText"`
 
-	// 癌症
+	// 组织学等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HistologyLevel *HistologyLevel `json:"HistologyLevel,omitempty" name:"HistologyLevel"`
 
-	// 扩散
+	// 组织学类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HistologyType *HistologyType `json:"HistologyType,omitempty" name:"HistologyType"`
 
-	// 淋巴
+	// IHC信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IHC []*IHCInfo `json:"IHC,omitempty" name:"IHC" list`
 
-	// ""
+	// 浸润深度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InfiltrationDepth *BlockInfo `json:"InfiltrationDepth,omitempty" name:"InfiltrationDepth"`
 
-	// ""
+	// 肿瘤扩散
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Invasive []*Invas `json:"Invasive,omitempty" name:"Invasive" list`
 
-	// ""
+	// 淋巴结
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LymphNodes []*Lymph `json:"LymphNodes,omitempty" name:"LymphNodes" list`
 
-	// ""
+	// PTNM信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTNM *BlockInfo `json:"PTNM,omitempty" name:"PTNM"`
 
-	// ""
+	// 病理报告类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathologicalReportType *BlockInfo `json:"PathologicalReportType,omitempty" name:"PathologicalReportType"`
 
-	// ""
+	// 报告原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportText *string `json:"ReportText,omitempty" name:"ReportText"`
 
-	// ""
+	// 标本类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleType *BlockInfo `json:"SampleType,omitempty" name:"SampleType"`
 
-	// ""
+	// 结论文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SummaryText *string `json:"SummaryText,omitempty" name:"SummaryText"`
 }
@@ -1170,111 +1170,111 @@ type TextType struct {
 
 type TreatmentRecord struct {
 
-	// ""
+	// 入院
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DmissionCondition *string `json:"DmissionCondition,omitempty" name:"DmissionCondition"`
 
-	// ""
+	// 主诉
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChiefComplaint *string `json:"ChiefComplaint,omitempty" name:"ChiefComplaint"`
 
-	// ""
+	// 现病史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiseasePresent *string `json:"DiseasePresent,omitempty" name:"DiseasePresent"`
 
-	// ""
+	// 主要症状体征
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SymptomsAndSigns *string `json:"SymptomsAndSigns,omitempty" name:"SymptomsAndSigns"`
 
-	// “”
+	// 辅助检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuxiliaryExamination *string `json:"AuxiliaryExamination,omitempty" name:"AuxiliaryExamination"`
 
-	// “”
+	// 体格检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BodyExamination *string `json:"BodyExamination,omitempty" name:"BodyExamination"`
 
-	// “”
+	// 专科检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecialistExamination *string `json:"SpecialistExamination,omitempty" name:"SpecialistExamination"`
 
-	// “”
+	// 精神检查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MentalExamination *string `json:"MentalExamination,omitempty" name:"MentalExamination"`
 
-	// “”
+	// 检查记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckRecord *string `json:"CheckRecord,omitempty" name:"CheckRecord"`
 
-	// “”
+	// 化验结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InspectResult *string `json:"InspectResult,omitempty" name:"InspectResult"`
 
-	// “”
+	// 切口愈合情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncisionHealing *string `json:"IncisionHealing,omitempty" name:"IncisionHealing"`
 
-	// “”
+	// 处理意见
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreatmentSuggestion *string `json:"TreatmentSuggestion,omitempty" name:"TreatmentSuggestion"`
 
-	// “”
+	// 门诊随访要求
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowUpRequirements *string `json:"FollowUpRequirements,omitempty" name:"FollowUpRequirements"`
 
-	// “”
+	// 诊疗经过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckAndTreatmentProcess *string `json:"CheckAndTreatmentProcess,omitempty" name:"CheckAndTreatmentProcess"`
 
-	// “”
+	// 手术经过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SurgeryCondition *string `json:"SurgeryCondition,omitempty" name:"SurgeryCondition"`
 
-	// “”
+	// 入院情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionChanges *string `json:"ConditionChanges,omitempty" name:"ConditionChanges"`
 
-	// “”
+	// 出院情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DischargeCondition *string `json:"DischargeCondition,omitempty" name:"DischargeCondition"`
 
-	// “”
+	// pTNM信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTNM *string `json:"PTNM,omitempty" name:"PTNM"`
 
-	// “”
+	// pTNMM信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTNMM *string `json:"PTNMM,omitempty" name:"PTNMM"`
 
-	// “”
+	// pTNMN信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTNMN *string `json:"PTNMN,omitempty" name:"PTNMN"`
 
-	// “”
+	// pTNMT信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTNMT *string `json:"PTNMT,omitempty" name:"PTNMT"`
 
-	// “”
+	// ECOG信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ECOG *string `json:"ECOG,omitempty" name:"ECOG"`
 
-	// “”
+	// NRS信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NRS *string `json:"NRS,omitempty" name:"NRS"`
 
-	// “”
+	// KPS信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KPS *string `json:"KPS,omitempty" name:"KPS"`
 
-	// “”
+	// 死亡日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeathDate *string `json:"DeathDate,omitempty" name:"DeathDate"`
 
-	// “”
+	// 复发日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelapseDate *string `json:"RelapseDate,omitempty" name:"RelapseDate"`
 
-	// “”
+	// 观测天数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObservationDays *string `json:"ObservationDays,omitempty" name:"ObservationDays"`
 }
@@ -1293,7 +1293,7 @@ type TuberInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size []*Size `json:"Size,omitempty" name:"Size" list`
 
-	// 数量
+	// 多发
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Multiple *Multiple `json:"Multiple,omitempty" name:"Multiple"`
 
@@ -1313,23 +1313,23 @@ type TuberInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RearEcho *BlockInfo `json:"RearEcho,omitempty" name:"RearEcho"`
 
-	// 质地
+	// 质地弹性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Elastic *Elastic `json:"Elastic,omitempty" name:"Elastic"`
 
-	// 形态
+	// 形状
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Shape *BlockInfo `json:"Shape,omitempty" name:"Shape"`
 
-	// 形态属性
+	// 形态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShapeAttr *BlockInfo `json:"ShapeAttr,omitempty" name:"ShapeAttr"`
 
-	// “”
+	// 皮髓质信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkinMedulla *BlockInfo `json:"SkinMedulla,omitempty" name:"SkinMedulla"`
 
-	// “”
+	// 变化趋势
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trend *BlockInfo `json:"Trend,omitempty" name:"Trend"`
 
@@ -1357,11 +1357,11 @@ type TuberInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Activity *BlockInfo `json:"Activity,omitempty" name:"Activity"`
 
-	// “”
+	// 手术情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *BlockInfo `json:"Operation,omitempty" name:"Operation"`
 
-	// “”
+	// 血液cdfi
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CDFI *BlockInfo `json:"CDFI,omitempty" name:"CDFI"`
 
@@ -1369,58 +1369,58 @@ type TuberInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index" list`
 
-	// “”
+	// 大小状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SizeStatus *BlockInfo `json:"SizeStatus,omitempty" name:"SizeStatus"`
 
-	// “”
+	// 内部回声分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerEchoDistribution *BlockInfo `json:"InnerEchoDistribution,omitempty" name:"InnerEchoDistribution"`
 
-	// “”
+	// 内部回声类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerEchoType []*BlockInfo `json:"InnerEchoType,omitempty" name:"InnerEchoType" list`
 
-	// “”
+	// 轮廓
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Outline *BlockInfo `json:"Outline,omitempty" name:"Outline"`
 
-	// “”
+	// 结构
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Structure *BlockInfo `json:"Structure,omitempty" name:"Structure"`
 
-	// “”
+	// 密度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Density *BlockInfo `json:"Density,omitempty" name:"Density"`
 
-	// “”
+	// 血管
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vas *BlockInfo `json:"Vas,omitempty" name:"Vas"`
 
-	// “”
+	// 囊壁
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cysticwall *BlockInfo `json:"Cysticwall,omitempty" name:"Cysticwall"`
 
-	// “”
+	// 被膜
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capsule *BlockInfo `json:"Capsule,omitempty" name:"Capsule"`
 
-	// “”
+	// 峡部厚度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsthmusThicknese *Size `json:"IsthmusThicknese,omitempty" name:"IsthmusThicknese"`
 
-	// “”
+	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Src *string `json:"Src,omitempty" name:"Src"`
 }
 
 type Value struct {
 
-	// “”
+	// 等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *string `json:"Grade,omitempty" name:"Grade"`
 
-	// “”
+	// 百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent []*float64 `json:"Percent,omitempty" name:"Percent" list`
 

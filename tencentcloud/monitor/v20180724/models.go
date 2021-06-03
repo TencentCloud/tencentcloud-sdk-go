@@ -414,20 +414,20 @@ type BindingPolicyObjectDimension struct {
 type BindingPolicyObjectRequest struct {
 	*tchttp.BaseRequest
 
+	// 必填。固定值"monitor"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
 	// 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 必填。固定值"monitor"
-	Module *string `json:"Module,omitempty" name:"Module"`
+	// 告警策略ID，使用此字段时 GroupId 会被忽略
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 实例分组ID
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
 
 	// 需要绑定的对象维度信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitempty" name:"Dimensions" list`
-
-	// 告警策略ID，使用此字段时 GroupId 会被忽略
-	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 func (r *BindingPolicyObjectRequest) ToJsonString() string {
@@ -442,11 +442,11 @@ func (r *BindingPolicyObjectRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "GroupId")
 	delete(f, "Module")
+	delete(f, "GroupId")
+	delete(f, "PolicyId")
 	delete(f, "InstanceGroupId")
 	delete(f, "Dimensions")
-	delete(f, "PolicyId")
 	if len(f) > 0 {
 		return errors.New("BindingPolicyObjectRequest has unknown keys!")
 	}

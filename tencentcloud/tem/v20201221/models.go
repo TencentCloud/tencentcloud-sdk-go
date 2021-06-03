@@ -934,6 +934,13 @@ type IngressInfo struct {
 	// clb ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+	Mixed *bool `json:"Mixed,omitempty" name:"Mixed"`
 }
 
 type IngressRule struct {
@@ -944,6 +951,9 @@ type IngressRule struct {
 	// host 地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 协议，选项为 http， https，默认为 http
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 type IngressRuleBackend struct {
@@ -972,11 +982,14 @@ type IngressRuleValue struct {
 
 type IngressTls struct {
 
-	// host 数组
+	// host 数组, 空数组表示全部域名的默认证书
 	Hosts []*string `json:"Hosts,omitempty" name:"Hosts" list`
 
-	// secret name
+	// secret name，如使用证书，则填空字符串
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// SSL Certificate Id
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 }
 
 type LogOutputConf struct {
@@ -1159,8 +1172,16 @@ type RunVersionPod struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// pod的ip
+	// 实例的ip
 	PodIp *string `json:"PodIp,omitempty" name:"PodIp"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 部署版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployVersion *string `json:"DeployVersion,omitempty" name:"DeployVersion"`
 }
 
 type StorageConf struct {

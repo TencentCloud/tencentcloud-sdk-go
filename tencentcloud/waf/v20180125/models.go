@@ -106,6 +106,21 @@ func (r *AddCustomRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BotStatPointItem struct {
+
+	// 横坐标
+	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
+
+	// value的所属对象
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 纵列表
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// Key对应的页面展示内容
+	Label *string `json:"Label,omitempty" name:"Label"`
+}
+
 type CreateAttackDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -441,6 +456,63 @@ type DescribeCustomRulesRspRuleListItem struct {
 
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies" list`
+}
+
+type DescribeFlowTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要获取流量趋势的域名, all表示所有域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 起始时间戳，精度秒
+	StartTs *int64 `json:"StartTs,omitempty" name:"StartTs"`
+
+	// 结束时间戳，精度秒
+	EndTs *int64 `json:"EndTs,omitempty" name:"EndTs"`
+}
+
+func (r *DescribeFlowTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartTs")
+	delete(f, "EndTs")
+	if len(f) > 0 {
+		return errors.New("DescribeFlowTrendRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流量趋势数据
+		Data []*BotStatPointItem `json:"Data,omitempty" name:"Data" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeUserClbWafRegionsRequest struct {
