@@ -25,6 +25,35 @@ import (
 	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
+func TestDescribeInstancesSignV1Get(t *testing.T) {
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.ReqMethod = "GET"
+	cpf.SignMethod = "HmacSHA1"
+	client, err := cvm.NewClient(
+		credential,
+		regions.Guangzhou,
+		cpf)
+	if err != nil {
+		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+	}
+
+	request := cvm.NewDescribeInstancesRequest()
+	request.Filters = []*cvm.Filter{
+		&cvm.Filter{
+			Name:   common.StringPtr("zone"),
+			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
+		},
+	}
+	resp, err := client.DescribeInstances(request)
+	if err != nil {
+		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+	}
+	fmt.Printf("%s\n", resp.ToJsonString())
+}
+
 func TestDescribeInstances(t *testing.T) {
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
