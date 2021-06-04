@@ -68,6 +68,31 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewChangeReplicaToMasterRequest() (request *ChangeReplicaToMasterRequest) {
+    request = &ChangeReplicaToMasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ChangeReplicaToMaster")
+    return
+}
+
+func NewChangeReplicaToMasterResponse() (response *ChangeReplicaToMasterResponse) {
+    response = &ChangeReplicaToMasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 该接口仅支持多AZ实例副本组提主
+func (c *Client) ChangeReplicaToMaster(request *ChangeReplicaToMasterRequest) (response *ChangeReplicaToMasterResponse, err error) {
+    if request == nil {
+        request = NewChangeReplicaToMasterRequest()
+    }
+    response = NewChangeReplicaToMasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCleanUpInstanceRequest() (request *CleanUpInstanceRequest) {
     request = &CleanUpInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

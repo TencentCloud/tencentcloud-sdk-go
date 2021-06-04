@@ -1148,7 +1148,7 @@ func NewEndGameServerSessionAndProcessResponse() (response *EndGameServerSession
     return
 }
 
-// 本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程。
+// 本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程，适用于时限保护和不保护。
 func (c *Client) EndGameServerSessionAndProcess(request *EndGameServerSessionAndProcessRequest) (response *EndGameServerSessionAndProcessResponse, err error) {
     if request == nil {
         request = NewEndGameServerSessionAndProcessRequest()

@@ -199,6 +199,9 @@ type CreateNamespaceRequest struct {
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 是否开启tsw服务
+	EnableTswTraceService *bool `json:"EnableTswTraceService,omitempty" name:"EnableTswTraceService"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -219,6 +222,7 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "K8sVersion")
 	delete(f, "SourceChannel")
+	delete(f, "EnableTswTraceService")
 	if len(f) > 0 {
 		return errors.New("CreateNamespaceRequest has unknown keys!")
 	}
@@ -546,6 +550,12 @@ type DeployServiceV2Request struct {
 
 	// 镜像命令参数
 	ImageArgs []*string `json:"ImageArgs,omitempty" name:"ImageArgs" list`
+
+	// 服务端口映射
+	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings" list`
+
+	// 是否添加默认注册中心配置
+	UseRegistryDefaultConfig *bool `json:"UseRegistryDefaultConfig,omitempty" name:"UseRegistryDefaultConfig"`
 }
 
 func (r *DeployServiceV2Request) ToJsonString() string {
@@ -584,6 +594,8 @@ func (r *DeployServiceV2Request) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "ImageCommand")
 	delete(f, "ImageArgs")
+	delete(f, "PortMappings")
+	delete(f, "UseRegistryDefaultConfig")
 	if len(f) > 0 {
 		return errors.New("DeployServiceV2Request has unknown keys!")
 	}
@@ -685,6 +697,9 @@ type DescribeIngressesRequest struct {
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// ingress 规则名列表
+	Names []*string `json:"Names,omitempty" name:"Names" list`
 }
 
 func (r *DescribeIngressesRequest) ToJsonString() string {
@@ -702,6 +717,7 @@ func (r *DescribeIngressesRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "EksNamespace")
 	delete(f, "SourceChannel")
+	delete(f, "Names")
 	if len(f) > 0 {
 		return errors.New("DescribeIngressesRequest has unknown keys!")
 	}
@@ -786,6 +802,68 @@ func (r *DescribeNamespacesResponse) ToJsonString() string {
 // It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRelatedIngressesRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境 id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// EKS namespace
+	EksNamespace *string `json:"EksNamespace,omitempty" name:"EksNamespace"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 服务 ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+func (r *DescribeRelatedIngressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedIngressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "EksNamespace")
+	delete(f, "SourceChannel")
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return errors.New("DescribeRelatedIngressesRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRelatedIngressesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ingress 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*IngressInfo `json:"Result,omitempty" name:"Result" list`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRelatedIngressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedIngressesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1134,6 +1212,64 @@ func (r *ModifyNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyServiceInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *ModifyServiceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Description")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("ModifyServiceInfoRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyServiceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功与否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyServiceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NamespacePage struct {
 
 	// 分页内容
@@ -1156,6 +1292,92 @@ type Pair struct {
 
 	// 值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type PortMapping struct {
+
+	// 端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 映射端口
+	TargetPort *int64 `json:"TargetPort,omitempty" name:"TargetPort"`
+
+	// 协议栈 TCP/UDP
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+type RestartServiceRunPodRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 服务名id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 名字
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 单页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页下标
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// pod状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *RestartServiceRunPodRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartServiceRunPodRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "ServiceId")
+	delete(f, "PodName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return errors.New("RestartServiceRunPodRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartServiceRunPodResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartServiceRunPodResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartServiceRunPodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RunVersionPod struct {

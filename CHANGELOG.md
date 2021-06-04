@@ -1,10 +1,95 @@
 # 本版本更新包含以下内容：
 
-## 游戏服务器伸缩(gse) 版本：2019-11-12
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 22 次发布
+### 第 28 次发布
 
-发布时间：2021-06-03 08:02:10
+发布时间：2021-06-04 08:03:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDisksChargeType](https://cloud.tencent.com/document/api/362/38075)
+
+	* 新增入参：DiskChargePostpaid
+
+	* <font color="#dd0000">**修改入参**：</font>DiskChargePrepaid
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 16 次发布
+
+发布时间：2021-06-04 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
+
+	* 新增入参：IsQueryProMachine
+
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：Uuid
+
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 23 次发布
+
+发布时间：2021-06-04 08:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
+
+	* 新增入参：PayloadEncoding
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 14 次发布
+
+发布时间：2021-06-04 08:01:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)
+
+	* 新增入参：Filters
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 31 次发布
+
+发布时间：2021-06-04 08:07:27
 
 本次发布包含了以下内容：
 
@@ -12,46 +97,15 @@
 
 新增接口：
 
-* [EndGameServerSessionAndProcess](https://cloud.tencent.com/document/api/1165/56618)
+* [ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)
 
 
 
 ## 弹性微服务(tem) 版本：2020-12-21
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2021-06-03 08:00:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [IngressInfo](https://cloud.tencent.com/document/api/1371/55421#IngressInfo)
-
-	* 新增成员：CreateTime, Mixed
-
-* [IngressRule](https://cloud.tencent.com/document/api/1371/55421#IngressRule)
-
-	* 新增成员：Protocol
-
-* [IngressTls](https://cloud.tencent.com/document/api/1371/55421#IngressTls)
-
-	* 新增成员：CertificateId
-
-* [RunVersionPod](https://cloud.tencent.com/document/api/1371/55421#RunVersionPod)
-
-	* 新增成员：Zone, DeployVersion
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 2 次发布
-
-发布时间：2021-06-03 08:11:25
+发布时间：2021-06-04 08:00:25
 
 本次发布包含了以下内容：
 
@@ -59,11 +113,28 @@
 
 新增接口：
 
-* [DescribeFlowTrend](https://cloud.tencent.com/document/api/627/56620)
+* [DescribeRelatedIngresses](https://cloud.tencent.com/document/api/1371/56697)
+* [ModifyServiceInfo](https://cloud.tencent.com/document/api/1371/56696)
+* [RestartServiceRunPod](https://cloud.tencent.com/document/api/1371/56695)
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
+
+	* 新增入参：EnableTswTraceService
+
+* [DeployServiceV2](https://cloud.tencent.com/document/api/1371/55519)
+
+	* 新增入参：PortMappings, UseRegistryDefaultConfig
+
+* [DescribeIngresses](https://cloud.tencent.com/document/api/1371/55520)
+
+	* 新增入参：Names
+
 
 新增数据结构：
 
-* [BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem)
+* [PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping)
 
 
 
@@ -5935,6 +6006,23 @@
 
 
 ## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 28 次发布
+
+发布时间：2021-06-04 08:03:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDisksChargeType](https://cloud.tencent.com/document/api/362/38075)
+
+	* 新增入参：DiskChargePostpaid
+
+	* <font color="#dd0000">**修改入参**：</font>DiskChargePrepaid
+
 
 ### 第 27 次发布
 
@@ -15603,6 +15691,28 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 16 次发布
+
+发布时间：2021-06-04 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
+
+	* 新增入参：IsQueryProMachine
+
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：Uuid
+
+
 ### 第 15 次发布
 
 发布时间：2021-06-01 08:12:13
@@ -23318,7 +23428,7 @@
 
 新增接口：
 
-* [[EndGameServerSessionAndProcess](https://cloud.tencent.com/document/api/1165/56618)](https://cloud.tencent.com/document/api/#/#)
+* [EndGameServerSessionAndProcess](https://cloud.tencent.com/document/api/1165/56618)
 
 ### 第 21 次发布
 
@@ -25519,6 +25629,21 @@
 
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 23 次发布
+
+发布时间：2021-06-04 08:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
+
+	* 新增入参：PayloadEncoding
+
 
 ### 第 22 次发布
 
@@ -27824,6 +27949,21 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 14 次发布
+
+发布时间：2021-06-04 08:01:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)
+
+	* 新增入参：Filters
+
 
 ### 第 13 次发布
 
@@ -34837,6 +34977,18 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 31 次发布
+
+发布时间：2021-06-04 08:07:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 30 次发布
 
 发布时间：2021-04-16 08:06:39
@@ -41349,6 +41501,39 @@
 
 
 ## 弹性微服务(tem) 版本：2020-12-21
+
+### 第 5 次发布
+
+发布时间：2021-06-04 08:00:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRelatedIngresses](https://cloud.tencent.com/document/api/1371/56697)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyServiceInfo](https://cloud.tencent.com/document/api/1371/56696)](https://cloud.tencent.com/document/api/#/#)
+* [[RestartServiceRunPod](https://cloud.tencent.com/document/api/1371/56695)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
+
+	* 新增入参：EnableTswTraceService
+
+* [DeployServiceV2](https://cloud.tencent.com/document/api/1371/55519)
+
+	* 新增入参：PortMappings, UseRegistryDefaultConfig
+
+* [DescribeIngresses](https://cloud.tencent.com/document/api/1371/55520)
+
+	* 新增入参：Names
+
+
+新增数据结构：
+
+* [[PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping)](https://cloud.tencent.com/document/api/1371/55421#[PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping))
 
 ### 第 4 次发布
 
@@ -51288,11 +51473,11 @@
 
 新增接口：
 
-* [[DescribeFlowTrend](https://cloud.tencent.com/document/api/627/56620)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFlowTrend](https://cloud.tencent.com/document/api/627/56620)
 
 新增数据结构：
 
-* [[BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem)](https://cloud.tencent.com/document/api/627/53609#[BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem))
+* [BotStatPointItem](https://cloud.tencent.com/document/api/627/53609#BotStatPointItem)
 
 ### 第 1 次发布
 

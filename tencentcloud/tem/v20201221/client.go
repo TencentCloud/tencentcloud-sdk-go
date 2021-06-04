@@ -293,6 +293,31 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
     return
 }
 
+func NewDescribeRelatedIngressesRequest() (request *DescribeRelatedIngressesRequest) {
+    request = &DescribeRelatedIngressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeRelatedIngresses")
+    return
+}
+
+func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesResponse) {
+    response = &DescribeRelatedIngressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 查询服务关联的 Ingress 规则列表
+func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedIngressesRequest()
+    }
+    response = NewDescribeRelatedIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceRunPodListV2Request() (request *DescribeServiceRunPodListV2Request) {
     request = &DescribeServiceRunPodListV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +389,56 @@ func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *Mod
         request = NewModifyNamespaceRequest()
     }
     response = NewModifyNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyServiceInfoRequest() (request *ModifyServiceInfoRequest) {
+    request = &ModifyServiceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyServiceInfo")
+    return
+}
+
+func NewModifyServiceInfoResponse() (response *ModifyServiceInfoResponse) {
+    response = &ModifyServiceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 修改服务基本信息
+func (c *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (response *ModifyServiceInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceInfoRequest()
+    }
+    response = NewModifyServiceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestartServiceRunPodRequest() (request *RestartServiceRunPodRequest) {
+    request = &RestartServiceRunPodRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "RestartServiceRunPod")
+    return
+}
+
+func NewRestartServiceRunPodResponse() (response *RestartServiceRunPodResponse) {
+    response = &RestartServiceRunPodResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 重启实例
+func (c *Client) RestartServiceRunPod(request *RestartServiceRunPodRequest) (response *RestartServiceRunPodResponse, err error) {
+    if request == nil {
+        request = NewRestartServiceRunPodRequest()
+    }
+    response = NewRestartServiceRunPodResponse()
     err = c.Send(request, response)
     return
 }

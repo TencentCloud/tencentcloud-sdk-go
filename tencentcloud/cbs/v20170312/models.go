@@ -1857,6 +1857,9 @@ type ModifyDisksChargeTypeRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 后付费模式
+	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
 }
 
 func (r *ModifyDisksChargeTypeRequest) ToJsonString() string {
@@ -1873,6 +1876,7 @@ func (r *ModifyDisksChargeTypeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskIds")
 	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskChargePostpaid")
 	if len(f) > 0 {
 		return errors.New("ModifyDisksChargeTypeRequest has unknown keys!")
 	}

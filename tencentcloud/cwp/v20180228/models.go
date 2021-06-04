@@ -3085,6 +3085,9 @@ type DescribeImportMachineInfoRequest struct {
 
 	// 批量导入的数据类型：Ip、Name、Id 三选一
 	ImportType *string `json:"ImportType,omitempty" name:"ImportType"`
+
+	// 是否仅支持专业版机器的查询（true：仅专业版   false：专业版+基础版）
+	IsQueryProMachine *bool `json:"IsQueryProMachine,omitempty" name:"IsQueryProMachine"`
 }
 
 func (r *DescribeImportMachineInfoRequest) ToJsonString() string {
@@ -3101,6 +3104,7 @@ func (r *DescribeImportMachineInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MachineList")
 	delete(f, "ImportType")
+	delete(f, "IsQueryProMachine")
 	if len(f) > 0 {
 		return errors.New("DescribeImportMachineInfoRequest has unknown keys!")
 	}
@@ -6134,6 +6138,10 @@ type EffectiveMachineInfo struct {
 	// 机器Quuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 云镜Uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type ExportAssetCoreModuleListRequest struct {
