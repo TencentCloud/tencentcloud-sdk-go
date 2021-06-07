@@ -273,7 +273,7 @@ type CmqQueue struct {
 
 	// 死信队列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeadLetterSource []*CmqDeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource" list`
+	DeadLetterSource []*CmqDeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource"`
 
 	// 死信队列策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -289,7 +289,7 @@ type CmqQueue struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -332,7 +332,7 @@ type CmqSubscription struct {
 
 	// 表示订阅接收消息的过滤策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -342,7 +342,7 @@ type CmqSubscription struct {
 	// filterType = 1表示用户使用 filterTag 标签过滤
 	// filterType = 2表示用户使用 bindingKey 过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -405,7 +405,7 @@ type CmqTopic struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -519,7 +519,7 @@ type CreateClusterRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 集群的标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -691,10 +691,10 @@ type CreateCmqSubscribeRequest struct {
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" name:"NotifyStrategy"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag" list`
+	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
@@ -1246,7 +1246,7 @@ type DeleteEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 
 	// 环境（命名空间）数组，每次最多删除20个。
-	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds" list`
+	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds"`
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1277,7 +1277,7 @@ type DeleteEnvironmentsResponse struct {
 	Response *struct {
 
 		// 成功删除的环境（命名空间）数组。
-		EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds" list`
+		EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1299,7 +1299,7 @@ type DeleteSubscriptionsRequest struct {
 	*tchttp.BaseRequest
 
 	// 订阅关系集合，每次最多删除20个。
-	SubscriptionTopicSets []*SubscriptionTopic `json:"SubscriptionTopicSets,omitempty" name:"SubscriptionTopicSets" list`
+	SubscriptionTopicSets []*SubscriptionTopic `json:"SubscriptionTopicSets,omitempty" name:"SubscriptionTopicSets"`
 
 	// pulsar集群Id。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1334,7 +1334,7 @@ type DeleteSubscriptionsResponse struct {
 	Response *struct {
 
 		// 成功删除的订阅关系数组。
-		SubscriptionTopicSets []*SubscriptionTopic `json:"SubscriptionTopicSets,omitempty" name:"SubscriptionTopicSets" list`
+		SubscriptionTopicSets []*SubscriptionTopic `json:"SubscriptionTopicSets,omitempty" name:"SubscriptionTopicSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1356,7 +1356,7 @@ type DeleteTopicsRequest struct {
 	*tchttp.BaseRequest
 
 	// 主题集合，每次最多删除20个。
-	TopicSets []*TopicRecord `json:"TopicSets,omitempty" name:"TopicSets" list`
+	TopicSets []*TopicRecord `json:"TopicSets,omitempty" name:"TopicSets"`
 
 	// pulsar集群Id。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1391,7 +1391,7 @@ type DeleteTopicsResponse struct {
 	Response *struct {
 
 		// 被删除的主题数组。
-		TopicSets []*TopicRecord `json:"TopicSets,omitempty" name:"TopicSets" list`
+		TopicSets []*TopicRecord `json:"TopicSets,omitempty" name:"TopicSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1439,7 +1439,7 @@ type DescribeBindClustersResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 专享集群的列表
-		ClusterSet []*BindCluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+		ClusterSet []*BindCluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1499,7 +1499,7 @@ type DescribeBindVpcsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// Vpc集合。
-		VpcSets []*VpcBindRecord `json:"VpcSets,omitempty" name:"VpcSets" list`
+		VpcSets []*VpcBindRecord `json:"VpcSets,omitempty" name:"VpcSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1604,7 +1604,7 @@ type DescribeClustersResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 集群信息列表
-		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1668,7 +1668,7 @@ type DescribeCmqDeadLetterSourceQueuesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 死信队列源队列
-		QueueSet []*CmqDeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet" list`
+		QueueSet []*CmqDeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1778,7 +1778,7 @@ type DescribeCmqQueuesResponse struct {
 
 		// 队列列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		QueueList []*CmqQueue `json:"QueueList,omitempty" name:"QueueList" list`
+		QueueList []*CmqQueue `json:"QueueList,omitempty" name:"QueueList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1843,7 +1843,7 @@ type DescribeCmqSubscriptionDetailResponse struct {
 
 		// Subscription属性集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubscriptionSet []*CmqSubscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet" list`
+		SubscriptionSet []*CmqSubscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1950,7 +1950,7 @@ type DescribeCmqTopicsResponse struct {
 
 		// 主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopicList []*CmqTopic `json:"TopicList,omitempty" name:"TopicList" list`
+		TopicList []*CmqTopic `json:"TopicList,omitempty" name:"TopicList"`
 
 		// 全量主题数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2095,7 +2095,7 @@ type DescribeEnvironmentRolesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 命名空间角色集合。
-		EnvironmentRoleSets []*EnvironmentRole `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets" list`
+		EnvironmentRoleSets []*EnvironmentRole `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2132,7 +2132,7 @@ type DescribeEnvironmentsRequest struct {
 	// 按照名称空间进行过滤，精确查询。
 	// 类型：String
 	// 必选：否
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeEnvironmentsRequest) ToJsonString() string {
@@ -2166,7 +2166,7 @@ type DescribeEnvironmentsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 命名空间集合数组。
-		EnvironmentSet []*Environment `json:"EnvironmentSet,omitempty" name:"EnvironmentSet" list`
+		EnvironmentSet []*Environment `json:"EnvironmentSet,omitempty" name:"EnvironmentSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2235,7 +2235,7 @@ type DescribeProducersResponse struct {
 	Response *struct {
 
 		// 生产者集合数组。
-		ProducerSets []*Producer `json:"ProducerSets,omitempty" name:"ProducerSets" list`
+		ProducerSets []*Producer `json:"ProducerSets,omitempty" name:"ProducerSets"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2275,7 +2275,7 @@ type DescribeSubscriptionsRequest struct {
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
 
 	// 数据过滤条件。
-	Filters []*FilterSubscription `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*FilterSubscription `json:"Filters,omitempty" name:"Filters"`
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -2311,7 +2311,7 @@ type DescribeSubscriptionsResponse struct {
 	Response *struct {
 
 		// 订阅者集合数组。
-		SubscriptionSets []*Subscription `json:"SubscriptionSets,omitempty" name:"SubscriptionSets" list`
+		SubscriptionSets []*Subscription `json:"SubscriptionSets,omitempty" name:"SubscriptionSets"`
 
 		// 数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2363,7 +2363,7 @@ type DescribeTopicsRequest struct {
 	// 按照主题名字查询，精确查询。
 	// 类型：String
 	// 必选：否
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTopicsRequest) ToJsonString() string {
@@ -2396,7 +2396,7 @@ type DescribeTopicsResponse struct {
 	Response *struct {
 
 		// 主题集合数组。
-		TopicSets []*Topic `json:"TopicSets,omitempty" name:"TopicSets" list`
+		TopicSets []*Topic `json:"TopicSets,omitempty" name:"TopicSets"`
 
 		// 主题数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2450,7 +2450,7 @@ type EnvironmentRole struct {
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
 	// 授权项，最多只能包含produce、consume两项的非空字符串数组。
-	Permissions []*string `json:"Permissions,omitempty" name:"Permissions" list`
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
 
 	// 角色描述。
 	RoleDescribe *string `json:"RoleDescribe,omitempty" name:"RoleDescribe"`
@@ -2468,7 +2468,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FilterSubscription struct {
@@ -2483,7 +2483,7 @@ type FilterSubscription struct {
 	ConsumerHasExpired *bool `json:"ConsumerHasExpired,omitempty" name:"ConsumerHasExpired"`
 
 	// 按照订阅名过滤，精确查询。
-	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames" list`
+	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames"`
 }
 
 type ModifyClusterRequest struct {
@@ -2663,10 +2663,10 @@ type ModifyCmqSubscriptionAttributeRequest struct {
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 }
 
 func (r *ModifyCmqSubscriptionAttributeRequest) ToJsonString() string {
@@ -2980,7 +2980,7 @@ type Producer struct {
 
 	// 连接集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConnectionSets []*Connection `json:"ConnectionSets,omitempty" name:"ConnectionSets" list`
+	ConnectionSets []*Connection `json:"ConnectionSets,omitempty" name:"ConnectionSets"`
 }
 
 type PublishCmqMsgRequest struct {
@@ -2993,7 +2993,7 @@ type PublishCmqMsgRequest struct {
 	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
 
 	// 消息标签
-	MsgTag []*string `json:"MsgTag,omitempty" name:"MsgTag" list`
+	MsgTag []*string `json:"MsgTag,omitempty" name:"MsgTag"`
 }
 
 func (r *PublishCmqMsgRequest) ToJsonString() string {
@@ -3379,6 +3379,64 @@ func (r *SendMessagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SendMsgRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境（命名空间）名称。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 主题名称，如果是分区topic需要指定具体分区，如果没有指定则默认发到0分区，例如：my_topic-partition-0。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 消息内容，不能为空且大小不得大于5242880个byte。
+	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
+
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *SendMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "MsgContent")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return errors.New("SendMsgRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SendMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Subscription struct {
 
 	// 主题名称。
@@ -3425,7 +3483,7 @@ type Subscription struct {
 
 	// 消费者集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConsumerSets []*Consumer `json:"ConsumerSets,omitempty" name:"ConsumerSets" list`
+	ConsumerSets []*Consumer `json:"ConsumerSets,omitempty" name:"ConsumerSets"`
 
 	// 是否在线。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3433,7 +3491,7 @@ type Subscription struct {
 
 	// 消费进度集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConsumersScheduleSets []*ConsumersSchedule `json:"ConsumersScheduleSets,omitempty" name:"ConsumersScheduleSets" list`
+	ConsumersScheduleSets []*ConsumersSchedule `json:"ConsumersScheduleSets,omitempty" name:"ConsumersScheduleSets"`
 
 	// 备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3521,7 +3579,7 @@ type Topic struct {
 
 	// 分区topic里面的子分区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubTopicSets []*PartitionsTopic `json:"SubTopicSets,omitempty" name:"SubTopicSets" list`
+	SubTopicSets []*PartitionsTopic `json:"SubTopicSets,omitempty" name:"SubTopicSets"`
 
 	// topic类型描述：
 	// 0：普通消息；

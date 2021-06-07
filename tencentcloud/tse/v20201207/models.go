@@ -69,7 +69,7 @@ type DescribeConfigResponse struct {
 		IsDir *bool `json:"IsDir,omitempty" name:"IsDir"`
 
 		// 当前key下的子路径
-		List []*string `json:"List,omitempty" name:"List" list`
+		List []*string `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -140,7 +140,7 @@ type DescribeSREInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 请求过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 翻页单页查询限制数量[0,1000], 默认值0
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -178,7 +178,7 @@ type DescribeSREInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例记录
-		Content []*SREInstance `json:"Content,omitempty" name:"Content" list`
+		Content []*SREInstance `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -202,7 +202,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤参数值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ManageConfigRequest struct {
@@ -303,7 +303,7 @@ type SREInstance struct {
 
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 是否开启持久化存储
 	// 注意：此字段可能返回 null，表示取不到有效值。

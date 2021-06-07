@@ -39,7 +39,7 @@ type CallDetails struct {
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 调用明细数组
-	CallDetailSet []*CallDetailItem `json:"CallDetailSet,omitempty" name:"CallDetailSet" list`
+	CallDetailSet []*CallDetailItem `json:"CallDetailSet,omitempty" name:"CallDetailSet"`
 }
 
 type CallStatItem struct {
@@ -97,7 +97,7 @@ type GetTaskDetailResponse struct {
 	Response *struct {
 
 		// 画像洞察任务TAG详细数据列表
-		TaskDetailDataList []*TaskDetailData `json:"TaskDetailDataList,omitempty" name:"TaskDetailDataList" list`
+		TaskDetailDataList []*TaskDetailData `json:"TaskDetailDataList,omitempty" name:"TaskDetailDataList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -383,7 +383,7 @@ type QueryCallStatResponse struct {
 	Response *struct {
 
 		// 调用量数组
-		CallSet []*CallStatItem `json:"CallSet,omitempty" name:"CallSet" list`
+		CallSet []*CallStatItem `json:"CallSet,omitempty" name:"CallSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -471,7 +471,7 @@ type TaskDetailData struct {
 	TagDesc *string `json:"TagDesc,omitempty" name:"TagDesc"`
 
 	// 画像Label对象列表（一个TAG对于N个Label，例如“省份分布”TAG对应“广东省”、“浙江省”等多个Label）
-	LabelDetailDataList []*LabelDetailData `json:"LabelDetailDataList,omitempty" name:"LabelDetailDataList" list`
+	LabelDetailDataList []*LabelDetailData `json:"LabelDetailDataList,omitempty" name:"LabelDetailDataList"`
 }
 
 type TaskListData struct {
@@ -486,7 +486,7 @@ type TaskListData struct {
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 任务列表
-	TaskList []*ListModel `json:"TaskList,omitempty" name:"TaskList" list`
+	TaskList []*ListModel `json:"TaskList,omitempty" name:"TaskList"`
 }
 
 type UploadIdRequest struct {

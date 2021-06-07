@@ -27,7 +27,7 @@ type AggregationObj struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 数组
-	Bucket []*Bucket `json:"Bucket,omitempty" name:"Bucket" list`
+	Bucket []*Bucket `json:"Bucket,omitempty" name:"Bucket"`
 }
 
 type Asset struct {
@@ -57,13 +57,13 @@ type Asset struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 标签
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// 配置风险统计数
 	AssetCspmRiskNum *int64 `json:"AssetCspmRiskNum,omitempty" name:"AssetCspmRiskNum"`
 
 	// 主机IP
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 资产唯一标识
 	AssetUniqid *string `json:"AssetUniqid,omitempty" name:"AssetUniqid"`
@@ -78,7 +78,7 @@ type Asset struct {
 	AssetVulNum *int64 `json:"AssetVulNum,omitempty" name:"AssetVulNum"`
 
 	// 主机IP内网
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 所属分组
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -121,11 +121,11 @@ type Asset struct {
 
 	// 负载均衡实例的vip列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// ipv6信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetIpv6 []*string `json:"AssetIpv6,omitempty" name:"AssetIpv6" list`
+	AssetIpv6 []*string `json:"AssetIpv6,omitempty" name:"AssetIpv6"`
 
 	// ssh端口暴露风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -161,7 +161,7 @@ type AssetDetail struct {
 	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
 
 	// 主机IP-公网
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 引擎版本
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
@@ -170,7 +170,7 @@ type AssetDetail struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 标签
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// 内网IP地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -182,7 +182,7 @@ type AssetDetail struct {
 
 	// 负载均衡示例的vip列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -232,7 +232,7 @@ type AssetDetail struct {
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
 	// 主机IP-内网
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 证书有效期
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -244,11 +244,11 @@ type AssetDetail struct {
 
 	// 端口服务数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Port []*string `json:"Port,omitempty" name:"Port" list`
+	Port []*string `json:"Port,omitempty" name:"Port"`
 
 	// 配置风险数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskConfig []*string `json:"RiskConfig,omitempty" name:"RiskConfig" list`
+	RiskConfig []*string `json:"RiskConfig,omitempty" name:"RiskConfig"`
 
 	// 相关待处理事件
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -292,7 +292,7 @@ type AssetDetail struct {
 
 	// ipv6信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetIpv6 []*string `json:"AssetIpv6,omitempty" name:"AssetIpv6" list`
+	AssetIpv6 []*string `json:"AssetIpv6,omitempty" name:"AssetIpv6"`
 
 	// ssh风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -317,7 +317,7 @@ type AssetList struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 资产数组
-	List []*Asset `json:"List,omitempty" name:"List" list`
+	List []*Asset `json:"List,omitempty" name:"List"`
 }
 
 type Bucket struct {
@@ -548,11 +548,11 @@ type DataAssetMapping struct {
 
 	// 资产标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// 资产组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Group []*string `json:"Group,omitempty" name:"Group" list`
+	Group []*string `json:"Group,omitempty" name:"Group"`
 
 	// 端口和服务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -769,7 +769,7 @@ type DataEvent struct {
 
 	// 资产ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetIpAll []*string `json:"AssetIpAll,omitempty" name:"AssetIpAll" list`
+	AssetIpAll []*string `json:"AssetIpAll,omitempty" name:"AssetIpAll"`
 
 	// 资产类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -777,10 +777,10 @@ type DataEvent struct {
 
 	// cvm类型资产的公网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// cvm类型资产的内网ip
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 事件响应状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -891,10 +891,10 @@ type DescribeAssetListResponse struct {
 		AssetList *AssetList `json:"AssetList,omitempty" name:"AssetList"`
 
 		// 聚合数据
-		AggregationData []*AggregationObj `json:"AggregationData,omitempty" name:"AggregationData" list`
+		AggregationData []*AggregationObj `json:"AggregationData,omitempty" name:"AggregationData"`
 
 		// 命名空间数据
-		NamespaceData []*string `json:"NamespaceData,omitempty" name:"NamespaceData" list`
+		NamespaceData []*string `json:"NamespaceData,omitempty" name:"NamespaceData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -943,7 +943,7 @@ type DescribeAssetsMappingListResponse struct {
 	Response *struct {
 
 		// 资产测绘列表
-		Data []*DataAssetMapping `json:"Data,omitempty" name:"Data" list`
+		Data []*DataAssetMapping `json:"Data,omitempty" name:"Data"`
 
 		// 资产测绘总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -981,10 +981,10 @@ type DescribeCheckConfigAssetListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// db搜索条件
-	Search []*Filter `json:"Search,omitempty" name:"Search" list`
+	Search []*Filter `json:"Search,omitempty" name:"Search"`
 
 	// ES过滤条件
-	Filter []*Filter `json:"Filter,omitempty" name:"Filter" list`
+	Filter []*Filter `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeCheckConfigAssetListRequest) ToJsonString() string {
@@ -1019,7 +1019,7 @@ type DescribeCheckConfigAssetListResponse struct {
 
 		// 资产列表项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CheckAssetsList []*CheckAssetItem `json:"CheckAssetsList,omitempty" name:"CheckAssetsList" list`
+		CheckAssetsList []*CheckAssetItem `json:"CheckAssetsList,omitempty" name:"CheckAssetsList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1099,10 +1099,10 @@ type DescribeComplianceAssetListRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 过滤条件
-	Filter []*Filter `json:"Filter,omitempty" name:"Filter" list`
+	Filter []*Filter `json:"Filter,omitempty" name:"Filter"`
 
 	// 查询条件
-	Search []*Filter `json:"Search,omitempty" name:"Search" list`
+	Search []*Filter `json:"Search,omitempty" name:"Search"`
 }
 
 func (r *DescribeComplianceAssetListRequest) ToJsonString() string {
@@ -1133,7 +1133,7 @@ type DescribeComplianceAssetListResponse struct {
 	Response *struct {
 
 		// 资产组列表
-		CheckAssetsList []*CheckAssetItem `json:"CheckAssetsList,omitempty" name:"CheckAssetsList" list`
+		CheckAssetsList []*CheckAssetItem `json:"CheckAssetsList,omitempty" name:"CheckAssetsList"`
 
 		// 资产组列表总数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -1234,7 +1234,7 @@ type DescribeComplianceListResponse struct {
 	Response *struct {
 
 		// 检查项列表
-		Data []*DataCompliance `json:"Data,omitempty" name:"Data" list`
+		Data []*DataCompliance `json:"Data,omitempty" name:"Data"`
 
 		// 总检查资产数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1291,7 +1291,7 @@ type DescribeConfigListResponse struct {
 	Response *struct {
 
 		// 检查项列表
-		Data []*DataCheck `json:"Data,omitempty" name:"Data" list`
+		Data []*DataCheck `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1378,7 +1378,7 @@ type DescribeLeakDetectionListRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 每页数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -1424,7 +1424,7 @@ type DescribeLeakDetectionListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 数据列表
-		List []*string `json:"List,omitempty" name:"List" list`
+		List []*string `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1501,7 +1501,7 @@ type DescribeSafetyEventListResponse struct {
 	Response *struct {
 
 		// 事件列表
-		List []*DataEvent `json:"List,omitempty" name:"List" list`
+		List []*DataEvent `json:"List,omitempty" name:"List"`
 
 		// 事件总条数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -1711,7 +1711,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 
 	// 是否需要精确匹配
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
@@ -1774,7 +1774,7 @@ type SaDivulgeDataQueryPubList struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
 	// List
-	List []*SaDivulgeDataQueryPub `json:"List,omitempty" name:"List" list`
+	List []*SaDivulgeDataQueryPub `json:"List,omitempty" name:"List"`
 }
 
 type SaDivulgeDataQueryPubRequest struct {
@@ -1951,15 +1951,15 @@ type VulItem struct {
 
 	// 资产IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetIpAll []*string `json:"AssetIpAll,omitempty" name:"AssetIpAll" list`
+	AssetIpAll []*string `json:"AssetIpAll,omitempty" name:"AssetIpAll"`
 
 	// cvm类型的公网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// cvm类型的内网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 漏洞来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1993,7 +1993,7 @@ type VulItem struct {
 type VulList struct {
 
 	// 列表
-	List []*VulItem `json:"List,omitempty" name:"List" list`
+	List []*VulItem `json:"List,omitempty" name:"List"`
 
 	// 总数
 	Total *int64 `json:"Total,omitempty" name:"Total"`

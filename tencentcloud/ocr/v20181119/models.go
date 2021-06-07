@@ -60,7 +60,7 @@ type AdvertiseOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -87,7 +87,7 @@ type AdvertiseTextDetection struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
@@ -160,7 +160,7 @@ type ArithmeticOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextArithmetic `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextArithmetic `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片横屏的角度(90度或270度)
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -268,7 +268,7 @@ type BankCardOCRResponse struct {
 	// -9114:银行卡翻拍件
 	// （告警码可以同时存在多个）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode" list`
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -360,12 +360,12 @@ type BizLicenseOCRResponse struct {
 		// Code 告警码列表和释义：
 	// -20001 非营业执照
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// OCR_WARNING_TPYE_NOT_MATCH 非营业执照
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -455,7 +455,7 @@ type BusInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 汽车票识别结果，具体内容请点击左侧链接。
-		BusInvoiceInfos []*BusInvoiceInfo `json:"BusInvoiceInfos,omitempty" name:"BusInvoiceInfos" list`
+		BusInvoiceInfos []*BusInvoiceInfo `json:"BusInvoiceInfos,omitempty" name:"BusInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -543,7 +543,7 @@ type BusinessCardOCRResponse struct {
 	Response *struct {
 
 		// 名片识别结果，具体内容请点击左侧链接。
-		BusinessCardInfos []*BusinessCardInfo `json:"BusinessCardInfos,omitempty" name:"BusinessCardInfos" list`
+		BusinessCardInfos []*BusinessCardInfo `json:"BusinessCardInfos,omitempty" name:"BusinessCardInfos"`
 
 		// 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
 		RetImageBase64 *string `json:"RetImageBase64,omitempty" name:"RetImageBase64"`
@@ -570,7 +570,7 @@ func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
 type CandWord struct {
 
 	// 候选字符集的单词信息（包括单词Character和单词置信度confidence）
-	CandWords []*Words `json:"CandWords,omitempty" name:"CandWords" list`
+	CandWords []*Words `json:"CandWords,omitempty" name:"CandWords"`
 }
 
 type CarInvoiceInfo struct {
@@ -633,7 +633,7 @@ type CarInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 购车发票识别结果，具体内容请点击左侧链接。
-		CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitempty" name:"CarInvoiceInfos" list`
+		CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitempty" name:"CarInvoiceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -710,7 +710,7 @@ type ClassifyDetectOCRRequest struct {
 	// HmtResidentPermitBack: 港澳台居住证背面
 	// EstateCert: 不动产证
 	// BizLicense: 营业执照
-	DiscernType []*string `json:"DiscernType,omitempty" name:"DiscernType" list`
+	DiscernType []*string `json:"DiscernType,omitempty" name:"DiscernType"`
 }
 
 func (r *ClassifyDetectOCRRequest) ToJsonString() string {
@@ -739,7 +739,7 @@ type ClassifyDetectOCRResponse struct {
 	Response *struct {
 
 		// 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
-		ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitempty" name:"ClassifyDetectInfos" list`
+		ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitempty" name:"ClassifyDetectInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -858,14 +858,14 @@ type DriverLicenseOCRResponse struct {
 	// -9103  翻拍件告警
 	// -9106  ps告警
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
 		// 发证单位
 		IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
@@ -941,7 +941,7 @@ type DutyPaidProofOCRResponse struct {
 	Response *struct {
 
 		// 完税证明识别结果，具体内容请点击左侧链接。
-		DutyPaidProofInfos []*DutyPaidProofInfo `json:"DutyPaidProofInfos,omitempty" name:"DutyPaidProofInfos" list`
+		DutyPaidProofInfos []*DutyPaidProofInfo `json:"DutyPaidProofInfos,omitempty" name:"DutyPaidProofInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -1014,13 +1014,13 @@ type EduPaperOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		EduPaperInfos []*TextEduPaper `json:"EduPaperInfos,omitempty" name:"EduPaperInfos" list`
+		EduPaperInfos []*TextEduPaper `json:"EduPaperInfos,omitempty" name:"EduPaperInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
 		Angle *int64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 结构化方式输出，具体内容请点击左侧链接。
-		QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitempty" name:"QuestionBlockInfos" list`
+		QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitempty" name:"QuestionBlockInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1090,7 +1090,7 @@ type EnglishOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextDetectionEn `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetectionEn `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
@@ -1163,7 +1163,7 @@ type EnterpriseLicenseOCRResponse struct {
 	Response *struct {
 
 		// 企业证照识别结果，具体内容请点击左侧链接。
-		EnterpriseLicenseInfos []*EnterpriseLicenseInfo `json:"EnterpriseLicenseInfos,omitempty" name:"EnterpriseLicenseInfos" list`
+		EnterpriseLicenseInfos []*EnterpriseLicenseInfo `json:"EnterpriseLicenseInfos,omitempty" name:"EnterpriseLicenseInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -1334,7 +1334,7 @@ type FinanBillOCRResponse struct {
 	Response *struct {
 
 		// 金融票据整单识别结果，具体内容请点击左侧链接。
-		FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitempty" name:"FinanBillInfos" list`
+		FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitempty" name:"FinanBillInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1404,7 +1404,7 @@ type FinanBillSliceOCRResponse struct {
 	Response *struct {
 
 		// 金融票据切片识别结果，具体内容请点击左侧链接。
-		FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitempty" name:"FinanBillSliceInfos" list`
+		FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitempty" name:"FinanBillSliceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1477,7 +1477,7 @@ type FlightInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 机票行程单识别结果，具体内容请点击左侧链接。
-		FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitempty" name:"FlightInvoiceInfos" list`
+		FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitempty" name:"FlightInvoiceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1540,7 +1540,7 @@ type FormulaOCRResponse struct {
 		Angle *int64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		FormulaInfos []*TextFormula `json:"FormulaInfos,omitempty" name:"FormulaInfos" list`
+		FormulaInfos []*TextFormula `json:"FormulaInfos,omitempty" name:"FormulaInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1597,7 +1597,7 @@ type GeneralAccurateOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
@@ -1687,7 +1687,7 @@ type GeneralBasicOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
 		Language *string `json:"Language,omitempty" name:"Language"`
@@ -1753,7 +1753,7 @@ type GeneralEfficientOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
@@ -1824,7 +1824,7 @@ type GeneralFastOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
 	// 返回结果含义为：zh - 中英混合，jap - 日文，kor - 韩文。
@@ -1903,7 +1903,7 @@ type GeneralHandwritingOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
@@ -2021,7 +2021,7 @@ type HKIDCardOCRResponse struct {
 	// -9103：证照翻拍告警
 	// -9104：证照PS告警
 	// -9105：证照防伪告警
-		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode" list`
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2384,7 +2384,7 @@ type InsuranceBillOCRResponse struct {
 	Response *struct {
 
 		// 保险单据识别结果，具体内容请点击左侧链接。
-		InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitempty" name:"InsuranceBillInfos" list`
+		InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitempty" name:"InsuranceBillInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2489,7 +2489,7 @@ type InvoiceGeneralOCRResponse struct {
 	Response *struct {
 
 		// 通用机打发票识别结果，具体内容请点击左侧链接。
-		InvoiceGeneralInfos []*InvoiceGeneralInfo `json:"InvoiceGeneralInfos,omitempty" name:"InvoiceGeneralInfos" list`
+		InvoiceGeneralInfos []*InvoiceGeneralInfo `json:"InvoiceGeneralInfos,omitempty" name:"InvoiceGeneralInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -2651,7 +2651,7 @@ type MLIDCardOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
-		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
@@ -2755,7 +2755,7 @@ type MLIDPassportOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
-		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
@@ -2927,7 +2927,7 @@ type MixedInvoiceDetectResponse struct {
 	Response *struct {
 
 		// 检测出的票据类型列表，具体内容请点击左侧链接。
-		InvoiceDetectInfos []*InvoiceDetectInfo `json:"InvoiceDetectInfos,omitempty" name:"InvoiceDetectInfos" list`
+		InvoiceDetectInfos []*InvoiceDetectInfo `json:"InvoiceDetectInfos,omitempty" name:"InvoiceDetectInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2975,7 +2975,7 @@ type MixedInvoiceItem struct {
 	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 	// 识别到的内容。
-	SingleInvoiceInfos []*SingleInvoiceInfo `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos" list`
+	SingleInvoiceInfos []*SingleInvoiceInfo `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos"`
 }
 
 type MixedInvoiceOCRRequest struct {
@@ -3006,7 +3006,7 @@ type MixedInvoiceOCRRequest struct {
 	// 11：增值税发票（卷票 ）
 	// 12：购车发票
 	// 13：过路过桥费发票
-	Types []*int64 `json:"Types,omitempty" name:"Types" list`
+	Types []*int64 `json:"Types,omitempty" name:"Types"`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -3035,7 +3035,7 @@ type MixedInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 混贴票据识别结果，具体内容请点击左侧链接。
-		MixedInvoiceItems []*MixedInvoiceItem `json:"MixedInvoiceItems,omitempty" name:"MixedInvoiceItems" list`
+		MixedInvoiceItems []*MixedInvoiceItem `json:"MixedInvoiceItems,omitempty" name:"MixedInvoiceItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3350,7 +3350,7 @@ type ProductDataRecord struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 图片链接
-	ImageLink []*string `json:"ImageLink,omitempty" name:"ImageLink" list`
+	ImageLink []*string `json:"ImageLink,omitempty" name:"ImageLink"`
 
 	// 厂家名称
 	ManufacturerName *string `json:"ManufacturerName,omitempty" name:"ManufacturerName"`
@@ -3508,7 +3508,7 @@ type QrcodeOCRResponse struct {
 	Response *struct {
 
 		// 二维码/条形码识别结果信息，具体内容请点击左侧链接。
-		CodeResults []*QrcodeResultsInfo `json:"CodeResults,omitempty" name:"CodeResults" list`
+		CodeResults []*QrcodeResultsInfo `json:"CodeResults,omitempty" name:"CodeResults"`
 
 		// 图片大小，具体内容请点击左侧链接。
 		ImgSize *QrcodeImgSize `json:"ImgSize,omitempty" name:"ImgSize"`
@@ -3590,7 +3590,7 @@ type QueryBarCodeResponse struct {
 		BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
 
 		// 条码信息数组
-		ProductDataRecords []*ProductDataRecord `json:"ProductDataRecords,omitempty" name:"ProductDataRecords" list`
+		ProductDataRecords []*ProductDataRecord `json:"ProductDataRecords,omitempty" name:"ProductDataRecords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3611,7 +3611,7 @@ func (r *QueryBarCodeResponse) FromJsonString(s string) error {
 type QuestionBlockObj struct {
 
 	// 数学试题识别结构化信息数组
-	QuestionArr []*QuestionObj `json:"QuestionArr,omitempty" name:"QuestionArr" list`
+	QuestionArr []*QuestionObj `json:"QuestionArr,omitempty" name:"QuestionArr"`
 
 	// 题目主体区域检测框在图片中的像素坐标
 	QuestionBboxCoord *Rect `json:"QuestionBboxCoord,omitempty" name:"QuestionBboxCoord"`
@@ -3638,7 +3638,7 @@ type QuestionObj struct {
 	QuestionSubquestion *string `json:"QuestionSubquestion,omitempty" name:"QuestionSubquestion"`
 
 	// 示意图检测框在的图片中的像素坐标
-	QuestionImageCoords []*Rect `json:"QuestionImageCoords,omitempty" name:"QuestionImageCoords" list`
+	QuestionImageCoords []*Rect `json:"QuestionImageCoords,omitempty" name:"QuestionImageCoords"`
 }
 
 type QuotaInvoiceOCRRequest struct {
@@ -3776,7 +3776,7 @@ type RecognizeTableOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TableDetections []*TableDetectInfo `json:"TableDetections,omitempty" name:"TableDetections" list`
+		TableDetections []*TableDetectInfo `json:"TableDetections,omitempty" name:"TableDetections"`
 
 		// Base64 编码后的 Excel 数据。
 		Data *string `json:"Data,omitempty" name:"Data"`
@@ -4167,7 +4167,7 @@ type SealOCRResponse struct {
 		Location *Rect `json:"Location,omitempty" name:"Location"`
 
 		// 其它文本内容
-		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts" list`
+		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4240,7 +4240,7 @@ type ShipInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 轮船票识别结果，具体内容请点击左侧链接。
-		ShipInvoiceInfos []*ShipInvoiceInfo `json:"ShipInvoiceInfos,omitempty" name:"ShipInvoiceInfos" list`
+		ShipInvoiceInfos []*ShipInvoiceInfo `json:"ShipInvoiceInfos,omitempty" name:"ShipInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -4294,25 +4294,25 @@ type TableCell struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 单元格在图像中的四点坐标
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
 	// 单元格文本属性
-	Contents []*CellContent `json:"Contents,omitempty" name:"Contents" list`
+	Contents []*CellContent `json:"Contents,omitempty" name:"Contents"`
 }
 
 type TableDetectInfo struct {
 
 	// 单元格内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cells []*TableCell `json:"Cells,omitempty" name:"Cells" list`
+	Cells []*TableCell `json:"Cells,omitempty" name:"Cells"`
 
 	// 表格标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles" list`
+	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles"`
 
 	// 图像中的文本块类型，0 为非表格文本，
 	// 1 为有线表格，2 为无线表格
@@ -4323,7 +4323,7 @@ type TableDetectInfo struct {
 	// 表格主体四个顶点坐标（依次为左上角，
 	// 右上角，右下角，左下角）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableCoordPoint []*Coord `json:"TableCoordPoint,omitempty" name:"TableCoordPoint" list`
+	TableCoordPoint []*Coord `json:"TableCoordPoint,omitempty" name:"TableCoordPoint"`
 }
 
 type TableOCRRequest struct {
@@ -4368,7 +4368,7 @@ type TableOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接
-		TextDetections []*TextTable `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextTable `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// Base64 编码后的 Excel 数据。
 		Data *string `json:"Data,omitempty" name:"Data"`
@@ -4504,7 +4504,7 @@ type TextArithmetic struct {
 
 	// 原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 保留字段，暂不支持
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
@@ -4600,7 +4600,7 @@ type TextDetection struct {
 
 	// 文本行坐标，以四个顶点坐标表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
@@ -4620,19 +4620,19 @@ type TextDetectionEn struct {
 
 	// 文本行在原图中的四点坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
 	// 英文单词在原图中的四点坐标。
-	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint" list`
+	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint"`
 
 	// 候选字符集(包含候选字Character以及置信度Confidence)。
-	CandWord []*CandWord `json:"CandWord,omitempty" name:"CandWord" list`
+	CandWord []*CandWord `json:"CandWord,omitempty" name:"CandWord"`
 
 	// 识别出来的单词信息（包括单词Character和单词置信度confidence）
-	Words []*Words `json:"Words,omitempty" name:"Words" list`
+	Words []*Words `json:"Words,omitempty" name:"Words"`
 }
 
 type TextEduPaper struct {
@@ -4662,7 +4662,7 @@ type TextGeneralHandwriting struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// 能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
@@ -4671,7 +4671,7 @@ type TextGeneralHandwriting struct {
 
 	// 字的坐标数组，以四个顶点坐标表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WordPolygon []*Polygon `json:"WordPolygon,omitempty" name:"WordPolygon" list`
+	WordPolygon []*Polygon `json:"WordPolygon,omitempty" name:"WordPolygon"`
 }
 
 type TextTable struct {
@@ -4698,7 +4698,7 @@ type TextTable struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
@@ -4888,7 +4888,7 @@ type TollInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 过路过桥费发票识别结果，具体内容请点击左侧链接。
-		TollInvoiceInfos []*TollInvoiceInfo `json:"TollInvoiceInfos,omitempty" name:"TollInvoiceInfos" list`
+		TollInvoiceInfos []*TollInvoiceInfo `json:"TollInvoiceInfos,omitempty" name:"TollInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -5082,7 +5082,7 @@ type VatInvoice struct {
 	AmountWithTax *string `json:"AmountWithTax,omitempty" name:"AmountWithTax"`
 
 	// 项目明细
-	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items"`
 }
 
 type VatInvoiceGoodsInfo struct {
@@ -5192,10 +5192,10 @@ type VatInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos" list`
+		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos"`
 
 		// 明细条目。VatInvoiceInfos中关于明细项的具体条目。
-		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items"`
 
 		// 默认值为0。如果图片为PDF时，返回PDF的总页数。
 		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
@@ -5355,7 +5355,7 @@ type VatRollInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 增值税发票（卷票）识别结果，具体内容请点击左侧链接。
-		VatRollInvoiceInfos []*VatRollInvoiceInfo `json:"VatRollInvoiceInfos,omitempty" name:"VatRollInvoiceInfos" list`
+		VatRollInvoiceInfos []*VatRollInvoiceInfo `json:"VatRollInvoiceInfos,omitempty" name:"VatRollInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -5431,14 +5431,14 @@ type VehicleLicenseOCRResponse struct {
 	// -9103 翻拍件告警
 	// -9106 ps告警
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5518,7 +5518,7 @@ type VehicleRegCertOCRResponse struct {
 	Response *struct {
 
 		// 机动车登记证书识别结果，具体内容请点击左侧链接。
-		VehicleRegCertInfos []*VehicleRegCertInfo `json:"VehicleRegCertInfos,omitempty" name:"VehicleRegCertInfos" list`
+		VehicleRegCertInfos []*VehicleRegCertInfo `json:"VehicleRegCertInfos,omitempty" name:"VehicleRegCertInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6003,7 +6003,7 @@ type VerifyOfdVatInvoiceOCRResponse struct {
 		Note *string `json:"Note,omitempty" name:"Note"`
 
 		// 货物或服务清单
-		GoodsInfos []*VatInvoiceGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos" list`
+		GoodsInfos []*VatInvoiceGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6154,7 +6154,7 @@ type WaybillObj struct {
 type WordCoordPoint struct {
 
 	// 英文OCR识别出的每个单词在原图中的四点坐标。
-	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate" list`
+	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
 }
 
 type Words struct {

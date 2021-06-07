@@ -34,7 +34,7 @@ type BaradData struct {
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 值数组
-	Data []*float64 `json:"Data,omitempty" name:"Data" list`
+	Data []*float64 `json:"Data,omitempty" name:"Data"`
 
 	// 值数组的大小
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
@@ -161,10 +161,10 @@ type CCPolicy struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 规则列表
-	RuleList []*CCRule `json:"RuleList,omitempty" name:"RuleList" list`
+	RuleList []*CCRule `json:"RuleList,omitempty" name:"RuleList"`
 
 	// IP列表，如果不填时，请传空数组但不能为null；
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 	// cc防护类型，取值[http，https]
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -277,10 +277,10 @@ type CreateBoundIPRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
-	BoundDevList []*BoundIpInfo `json:"BoundDevList,omitempty" name:"BoundDevList" list`
+	BoundDevList []*BoundIpInfo `json:"BoundDevList,omitempty" name:"BoundDevList"`
 
 	// 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
-	UnBoundDevList []*BoundIpInfo `json:"UnBoundDevList,omitempty" name:"UnBoundDevList" list`
+	UnBoundDevList []*BoundIpInfo `json:"UnBoundDevList,omitempty" name:"UnBoundDevList"`
 
 	// 已弃用，不填
 	CopyPolicy *string `json:"CopyPolicy,omitempty" name:"CopyPolicy"`
@@ -488,13 +488,13 @@ type CreateDDoSPolicyCaseRequest struct {
 	CaseName *string `json:"CaseName,omitempty" name:"CaseName"`
 
 	// 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
-	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes" list`
+	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes"`
 
 	// 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
 	// 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
-	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols" list`
+	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols"`
 
 	// TCP业务起始端口，取值(0, 65535]
 	TcpSportStart *string `json:"TcpSportStart,omitempty" name:"TcpSportStart"`
@@ -530,7 +530,7 @@ type CreateDDoSPolicyCaseRequest struct {
 	UdpFootprint *string `json:"UdpFootprint,omitempty" name:"UdpFootprint"`
 
 	// Web业务的API的URL
-	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl" list`
+	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl"`
 
 	// TCP业务报文长度最小值，取值范围(0, 1500)
 	MinTcpPackageLen *string `json:"MinTcpPackageLen,omitempty" name:"MinTcpPackageLen"`
@@ -626,22 +626,22 @@ type CreateDDoSPolicyRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 协议禁用，必须填写且数组长度必须为1
-	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions" list`
+	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions"`
 
 	// 策略名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 端口禁用，当没有禁用端口时填空数组
-	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits"`
 
 	// 请求源IP黑白名单，当没有IP黑白名单时填空数组
-	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys" list`
+	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys"`
 
 	// 报文过滤，当没有报文过滤时填空数组
-	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters"`
 
 	// 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
-	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint"`
 }
 
 func (r *CreateDDoSPolicyRequest) ToJsonString() string {
@@ -759,7 +759,7 @@ type CreateL4HealthConfigRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 四层健康检查配置数组
-	HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+	HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig"`
 }
 
 func (r *CreateL4HealthConfigRequest) ToJsonString() string {
@@ -816,7 +816,7 @@ type CreateL4RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则列表
-	Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateL4RulesRequest) ToJsonString() string {
@@ -879,7 +879,7 @@ type CreateL7CCRuleRequest struct {
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 7层CC自定义规则参数，当操作码为query时，可以不用填写；当操作码为add或del时，必须填写，且数组长度只能为1；
-	RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+	RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig"`
 }
 
 func (r *CreateL7CCRuleRequest) ToJsonString() string {
@@ -910,7 +910,7 @@ type CreateL7CCRuleResponse struct {
 	Response *struct {
 
 		// 7层CC自定义规则参数，当没有开启CC自定义规则时，返回空数组
-		RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig" list`
+		RuleConfig []*CCRuleConfig `json:"RuleConfig,omitempty" name:"RuleConfig"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -938,7 +938,7 @@ type CreateL7HealthConfigRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 七层健康检查配置数组
-	HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+	HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig"`
 }
 
 func (r *CreateL7HealthConfigRequest) ToJsonString() string {
@@ -1068,7 +1068,7 @@ type CreateL7RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则列表
-	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateL7RulesRequest) ToJsonString() string {
@@ -1125,7 +1125,7 @@ type CreateL7RulesUploadRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则列表
-	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateL7RulesUploadRequest) ToJsonString() string {
@@ -1229,13 +1229,13 @@ type CreateNewL4RulesRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 添加规则资源列表
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 
 	// 添加规则IP列表
-	VipList []*string `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*string `json:"VipList,omitempty" name:"VipList"`
 
 	// 规则列表
-	Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateNewL4RulesRequest) ToJsonString() string {
@@ -1290,13 +1290,13 @@ type CreateNewL7RulesRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID列表
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 
 	// 资源IP列表
-	VipList []*string `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*string `json:"VipList,omitempty" name:"VipList"`
 
 	// 规则列表
-	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateNewL7RulesRequest) ToJsonString() string {
@@ -1351,13 +1351,13 @@ type CreateNewL7RulesUploadRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID列表
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 
 	// 资源IP列表
-	VipList []*string `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*string `json:"VipList,omitempty" name:"VipList"`
 
 	// 规则列表
-	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateNewL7RulesUploadRequest) ToJsonString() string {
@@ -1676,19 +1676,19 @@ type DDoSPolicyPortLimit struct {
 type DDosPolicy struct {
 
 	// 策略绑定的资源
-	Resources []*ResourceIp `json:"Resources,omitempty" name:"Resources" list`
+	Resources []*ResourceIp `json:"Resources,omitempty" name:"Resources"`
 
 	// 禁用协议
 	DropOptions *DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions"`
 
 	// 禁用端口
-	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits"`
 
 	// 报文过滤
-	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters"`
 
 	// 黑白IP名单
-	IpBlackWhiteLists []*IpBlackWhite `json:"IpBlackWhiteLists,omitempty" name:"IpBlackWhiteLists" list`
+	IpBlackWhiteLists []*IpBlackWhite `json:"IpBlackWhiteLists,omitempty" name:"IpBlackWhiteLists"`
 
 	// 策略ID
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
@@ -1700,14 +1700,14 @@ type DDosPolicy struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 水印策略参数，最多只有一个，当没有水印策略时数组为空
-	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint"`
 
 	// 水印密钥，最多只有2个，当没有水印策略时数组为空
-	WaterKey []*WaterPrintKey `json:"WaterKey,omitempty" name:"WaterKey" list`
+	WaterKey []*WaterPrintKey `json:"WaterKey,omitempty" name:"WaterKey"`
 
 	// 策略绑定的资源实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BoundResources []*string `json:"BoundResources,omitempty" name:"BoundResources" list`
+	BoundResources []*string `json:"BoundResources,omitempty" name:"BoundResources"`
 
 	// 策略所属的策略场景
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1940,7 +1940,7 @@ type DeleteL4RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID列表
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DeleteL4RulesRequest) ToJsonString() string {
@@ -1997,7 +1997,7 @@ type DeleteL7RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID列表
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DeleteL7RulesRequest) ToJsonString() string {
@@ -2051,7 +2051,7 @@ type DeleteNewL4RulesRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 删除接口结构体
-	Rule []*L4DelRule `json:"Rule,omitempty" name:"Rule" list`
+	Rule []*L4DelRule `json:"Rule,omitempty" name:"Rule"`
 }
 
 func (r *DeleteNewL4RulesRequest) ToJsonString() string {
@@ -2104,7 +2104,7 @@ type DeleteNewL7RulesRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 删除规则列表
-	Rule []*L4DelRule `json:"Rule,omitempty" name:"Rule" list`
+	Rule []*L4DelRule `json:"Rule,omitempty" name:"Rule"`
 }
 
 func (r *DeleteNewL7RulesRequest) ToJsonString() string {
@@ -2204,7 +2204,7 @@ type DescribeActionLogResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 记录数组
-		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2311,7 +2311,7 @@ type DescribeBaradDataRequest struct {
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
 	// 协议端口数组
-	ProtocolPort []*ProtocolPort `json:"ProtocolPort,omitempty" name:"ProtocolPort" list`
+	ProtocolPort []*ProtocolPort `json:"ProtocolPort,omitempty" name:"ProtocolPort"`
 
 	// 资源实例下的IP，只有当Business=net(高防IP专业版)时才必须填写资源的一个IP（因为高防IP专业版资源实例有多个IP，才需要指定）；
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -2349,7 +2349,7 @@ type DescribeBaradDataResponse struct {
 	Response *struct {
 
 		// 返回指标的值
-		DataList []*BaradData `json:"DataList,omitempty" name:"DataList" list`
+		DataList []*BaradData `json:"DataList,omitempty" name:"DataList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2534,7 +2534,7 @@ type DescribeBizHttpStatusRequest struct {
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
 	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
-	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo" list`
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
 
 	// 特定域名查询
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -2614,7 +2614,7 @@ type DescribeBizTrendRequest struct {
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
-	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo" list`
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
 
 	// 统计纬度为qps时，可选特定域名查询
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -2652,7 +2652,7 @@ type DescribeBizTrendResponse struct {
 	Response *struct {
 
 		// 曲线图各个时间点的值
-		DataList []*float64 `json:"DataList,omitempty" name:"DataList" list`
+		DataList []*float64 `json:"DataList,omitempty" name:"DataList"`
 
 		// 统计纬度
 		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
@@ -2742,7 +2742,7 @@ type DescribeCCEvListRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 资源实例的IP，当business不为basic时，如果IpList不为空则Id也必须不能为空；
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 	// 一页条数，填0表示不分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2788,7 +2788,7 @@ type DescribeCCEvListResponse struct {
 
 		// 资源实例的IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+		IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 		// 开始时间
 		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -2797,7 +2797,7 @@ type DescribeCCEvListResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// CC攻击事件列表
-		Data []*CCEventRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*CCEventRecord `json:"Data,omitempty" name:"Data"`
 
 		// 总记录数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2857,7 +2857,7 @@ type DescribeCCFrequencyRulesResponse struct {
 	Response *struct {
 
 		// 访问频率控制规则列表
-		CCFrequencyRuleList []*CCFrequencyRule `json:"CCFrequencyRuleList,omitempty" name:"CCFrequencyRuleList" list`
+		CCFrequencyRuleList []*CCFrequencyRule `json:"CCFrequencyRuleList,omitempty" name:"CCFrequencyRuleList"`
 
 		// 访问频率控制规则开关状态，取值[on(开启)，off(关闭)]
 		CCFrequencyRuleStatus *string `json:"CCFrequencyRuleStatus,omitempty" name:"CCFrequencyRuleStatus"`
@@ -2889,7 +2889,7 @@ type DescribeCCIpAllowDenyRequest struct {
 
 	// 黑或白名单，取值[white(白名单)，black(黑名单)]
 	// 注意：此数组只能有一个值，不能同时获取黑名单和白名单
-	Type []*string `json:"Type,omitempty" name:"Type" list`
+	Type []*string `json:"Type,omitempty" name:"Type"`
 
 	// 分页参数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2930,7 +2930,7 @@ type DescribeCCIpAllowDenyResponse struct {
 	Response *struct {
 
 		// 该字段被RecordList字段替代了，请不要使用
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 记录数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2940,7 +2940,7 @@ type DescribeCCIpAllowDenyResponse struct {
 	// "Key":"domain"时， "Value":值表示域名;
 	// "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
 	// "Key":"protocol"时，"Value":值表示CC防护的协议(http或https);
-		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3004,7 +3004,7 @@ type DescribeCCSelfDefinePolicyResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 策略列表
-		Policys []*CCPolicy `json:"Policys,omitempty" name:"Policys" list`
+		Policys []*CCPolicy `json:"Policys,omitempty" name:"Policys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3103,7 +3103,7 @@ type DescribeCCTrendResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 值数组
-		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
 
 		// 值个数
 		Count *uint64 `json:"Count,omitempty" name:"Count"`
@@ -3135,7 +3135,7 @@ type DescribeCCUrlAllowRequest struct {
 
 	// 黑或白名单，取值[white(白名单)]，目前只支持白名单
 	// 注意：此数组只能有一个值，且只能为white
-	Type []*string `json:"Type,omitempty" name:"Type" list`
+	Type []*string `json:"Type,omitempty" name:"Type"`
 
 	// 分页参数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -3176,7 +3176,7 @@ type DescribeCCUrlAllowResponse struct {
 	Response *struct {
 
 		// 该字段被RecordList字段替代了，请不要使用
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 记录总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -3186,7 +3186,7 @@ type DescribeCCUrlAllowResponse struct {
 	// "Key":"domain"时， "Value":值表示域名;
 	// "Key":"type"时，"Value":值表示黑白名单类型(white为白名单，block为黑名单);
 	// "Key":"protocol"时，"Value":值表示CC的防护类型(HTTP防护或HTTPS域名防护);
-		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*KeyValueRecord `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3273,7 +3273,7 @@ type DescribeDDoSAttackIPRegionMapRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定资源的特定IP的攻击源，可选
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *DescribeDDoSAttackIPRegionMapRequest) ToJsonString() string {
@@ -3304,10 +3304,10 @@ type DescribeDDoSAttackIPRegionMapResponse struct {
 	Response *struct {
 
 		// 全球地域分布数据
-		NationCount []*KeyValueRecord `json:"NationCount,omitempty" name:"NationCount" list`
+		NationCount []*KeyValueRecord `json:"NationCount,omitempty" name:"NationCount"`
 
 		// 国内省份地域分布数据
-		ProvinceCount []*KeyValueRecord `json:"ProvinceCount,omitempty" name:"ProvinceCount" list`
+		ProvinceCount []*KeyValueRecord `json:"ProvinceCount,omitempty" name:"ProvinceCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3347,7 +3347,7 @@ type DescribeDDoSAttackSourceRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 获取指定资源的特定ip的攻击源，可选
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *DescribeDDoSAttackSourceRequest) ToJsonString() string {
@@ -3383,7 +3383,7 @@ type DescribeDDoSAttackSourceResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 攻击源列表
-		AttackSourceList []*DDoSAttackSourceRecord `json:"AttackSourceList,omitempty" name:"AttackSourceList" list`
+		AttackSourceList []*DDoSAttackSourceRecord `json:"AttackSourceList,omitempty" name:"AttackSourceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3484,7 +3484,7 @@ type DescribeDDoSCountResponse struct {
 	// 
 	// 当MetricName为classnum时：
 	// key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3701,7 +3701,7 @@ type DescribeDDoSEvInfoResponse struct {
 		Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
 
 		// PCAP文件下载链接
-		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl" list`
+		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3735,7 +3735,7 @@ type DescribeDDoSEvListRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 资源的IP
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 	// 是否超过弹性防护峰值，取值[yes(是)，no(否)]，填写空字符串时表示不进行过滤
 	OverLoad *string `json:"OverLoad,omitempty" name:"OverLoad"`
@@ -3785,7 +3785,7 @@ type DescribeDDoSEvListResponse struct {
 
 		// 资源的IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+		IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 		// 开始时间
 		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -3794,7 +3794,7 @@ type DescribeDDoSEvListResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// DDoS攻击事件列表
-		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data"`
 
 		// 总记录数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -3879,7 +3879,7 @@ type DescribeDDoSIpLogResponse struct {
 		// IP攻击日志，KeyValue数组，Key-Value取值说明：
 	// Key为"LogTime"时，Value值为IP日志时间
 	// Key为"LogMessage"时，Value值为Ip日志内容
-		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3973,7 +3973,7 @@ type DescribeDDoSNetCountResponse struct {
 	// 
 	// 当MetricName为classnum时：
 	// key的值表示攻击事件类型，其中Key为"UNKNOWNFLOOD"，表示未知的攻击事件
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4079,7 +4079,7 @@ type DescribeDDoSNetEvInfoResponse struct {
 		Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
 
 		// PCAP文件下载链接
-		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl" list`
+		PcapUrl []*string `json:"PcapUrl,omitempty" name:"PcapUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4160,7 +4160,7 @@ type DescribeDDoSNetEvListResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// DDoS攻击事件列表
-		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*DDoSEventRecord `json:"Data,omitempty" name:"Data"`
 
 		// 总记录数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -4238,7 +4238,7 @@ type DescribeDDoSNetIpLogResponse struct {
 		// IP攻击日志，KeyValue数组，Key-Value取值说明：
 	// Key为"LogTime"时，Value值为IP日志时间
 	// Key为"LogMessage"时，Value值为Ip日志内容
-		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4325,7 +4325,7 @@ type DescribeDDoSNetTrendResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 值数组
-		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
 
 		// 值个数
 		Count *uint64 `json:"Count,omitempty" name:"Count"`
@@ -4381,7 +4381,7 @@ type DescribeDDoSPolicyResponse struct {
 	Response *struct {
 
 		// DDoS高级策略列表
-		DDosPolicyList []*DDosPolicy `json:"DDosPolicyList,omitempty" name:"DDosPolicyList" list`
+		DDosPolicyList []*DDosPolicy `json:"DDosPolicyList,omitempty" name:"DDosPolicyList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4476,7 +4476,7 @@ type DescribeDDoSTrendResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
-		Data []*uint64 `json:"Data,omitempty" name:"Data" list`
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
 
 		// 值个数
 		Count *uint64 `json:"Count,omitempty" name:"Count"`
@@ -4530,7 +4530,7 @@ type DescribeDDoSUsedStatisResponse struct {
 		// 字段值，如下：
 	// Days：高防资源使用天数
 	// Attacks：DDoS防护次数
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4555,7 +4555,7 @@ type DescribeIPProductInfoRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// IP列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *DescribeIPProductInfoRequest) ToJsonString() string {
@@ -4587,7 +4587,7 @@ type DescribeIPProductInfoResponse struct {
 	// Key为ProductInstanceId时，value表示云产品实例的ID；
 	// Key为ProductType时，value表示的是云产品的类型（cvm表示云主机、clb表示负载均衡）;
 	// Key为IP时，value表示云产品实例的IP；
-		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValueRecord `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4609,7 +4609,7 @@ type DescribeInsurePacksRequest struct {
 	*tchttp.BaseRequest
 
 	// 可选字段，保险包套餐ID，当要获取指定ID（例如insure-000000xe）的保险包套餐时请填写此字段；
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 }
 
 func (r *DescribeInsurePacksRequest) ToJsonString() string {
@@ -4636,7 +4636,7 @@ type DescribeInsurePacksResponse struct {
 	Response *struct {
 
 		// 保险包套餐列表
-		InsurePacks []*KeyValueRecord `json:"InsurePacks,omitempty" name:"InsurePacks" list`
+		InsurePacks []*KeyValueRecord `json:"InsurePacks,omitempty" name:"InsurePacks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4681,7 +4681,7 @@ type DescribeIpBlockListResponse struct {
 	Response *struct {
 
 		// IP封堵列表
-		List []*IpBlockData `json:"List,omitempty" name:"List" list`
+		List []*IpBlockData `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4756,7 +4756,7 @@ type DescribeIpUnBlockListResponse struct {
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 		// IP解封记录
-		List []*IpUnBlockData `json:"List,omitempty" name:"List" list`
+		List []*IpUnBlockData `json:"List,omitempty" name:"List"`
 
 		// 总记录数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -4787,7 +4787,7 @@ type DescribeL4HealthConfigRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DescribeL4HealthConfigRequest) ToJsonString() string {
@@ -4816,7 +4816,7 @@ type DescribeL4HealthConfigResponse struct {
 	Response *struct {
 
 		// 四层健康检查配置数组
-		HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+		HealthConfig []*L4HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4872,7 +4872,7 @@ type DescribeL4RulesErrHealthResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
-		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths" list`
+		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths"`
 
 		// 异常规则列表(提供更多的错误相关信息)，返回值说明:
 	// Key值为RuleId时，Value值为规则ID；
@@ -4881,7 +4881,7 @@ type DescribeL4RulesErrHealthResponse struct {
 	// Key值为ErrMessage时，Value值为健康检查异常信息；
 	// 健康检查异常信息的格式为"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6" 多个源IP的错误信息用，分割,
 	// SourceIp表示源站IP，SourcePort表示源站端口，AbnormalStatTime表示异常时间，AbnormalReason表示异常原因，Interval表示检查周期，CheckNum表示检查次数，FailNum表示失败次数；
-		ExtErrHealths []*KeyValueRecord `json:"ExtErrHealths,omitempty" name:"ExtErrHealths" list`
+		ExtErrHealths []*KeyValueRecord `json:"ExtErrHealths,omitempty" name:"ExtErrHealths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4909,7 +4909,7 @@ type DescribeL7HealthConfigRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID数组，当导出所有规则的健康检查配置则不填或填空数组；
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DescribeL7HealthConfigRequest) ToJsonString() string {
@@ -4938,7 +4938,7 @@ type DescribeL7HealthConfigResponse struct {
 	Response *struct {
 
 		// 七层健康检查配置数组
-		HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig" list`
+		HealthConfig []*L7HealthConfig `json:"HealthConfig,omitempty" name:"HealthConfig"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4963,7 +4963,7 @@ type DescribeNewL4RulesErrHealthRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 规则ID列表
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DescribeNewL4RulesErrHealthRequest) ToJsonString() string {
@@ -4994,7 +4994,7 @@ type DescribeNewL4RulesErrHealthResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP，多个IP用","分割
-		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths" list`
+		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5059,13 +5059,13 @@ type DescribeNewL4RulesResponse struct {
 	Response *struct {
 
 		// 转发规则列表
-		Rules []*NewL4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*NewL4RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
 		// 总规则数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 四层健康检查配置列表
-		Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+		Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5090,7 +5090,7 @@ type DescribeNewL7RulesErrHealthRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 规则Id列表
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DescribeNewL7RulesErrHealthRequest) ToJsonString() string {
@@ -5121,7 +5121,7 @@ type DescribeNewL7RulesErrHealthResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割
-		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths" list`
+		ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5176,7 +5176,7 @@ type DescribePackIndexResponse struct {
 	// ExpiredPackCount：过期的资源数
 	// ExpireingPackCount：即将过期的资源数
 	// IsolatePackCount：隔离中的资源数
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5241,7 +5241,7 @@ type DescribePcapResponse struct {
 	Response *struct {
 
 		// pcap包的下载链接列表，无pcap包时为空数组；
-		PcapUrlList []*string `json:"PcapUrlList,omitempty" name:"PcapUrlList" list`
+		PcapUrlList []*string `json:"PcapUrlList,omitempty" name:"PcapUrlList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5294,7 +5294,7 @@ type DescribePolicyCaseResponse struct {
 	Response *struct {
 
 		// 策略场景列表
-		CaseList []*KeyValueRecord `json:"CaseList,omitempty" name:"CaseList" list`
+		CaseList []*KeyValueRecord `json:"CaseList,omitempty" name:"CaseList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5319,7 +5319,7 @@ type DescribeResIpListRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID, 如果不填，则获取用户所有资源的IP
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 }
 
 func (r *DescribeResIpListRequest) ToJsonString() string {
@@ -5347,7 +5347,7 @@ type DescribeResIpListResponse struct {
 	Response *struct {
 
 		// 资源的IP列表
-		Resource []*ResourceIp `json:"Resource,omitempty" name:"Resource" list`
+		Resource []*ResourceIp `json:"Resource,omitempty" name:"Resource"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5372,28 +5372,28 @@ type DescribeResourceListRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 地域码搜索，可选，当不指定地域时空数组，当指定地域时，填地域码。例如：["gz", "sh"]
-	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
+	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 线路搜索，可选，只有当获取高防IP资源列表是可以选填，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]，当获取其他产品时请填空数组；
-	Line []*uint64 `json:"Line,omitempty" name:"Line" list`
+	Line []*uint64 `json:"Line,omitempty" name:"Line"`
 
 	// 资源ID搜索，可选，当不为空数组时表示获取指定资源的资源列表；
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 
 	// 资源名称搜索，可选，当不为空字符串时表示按名称搜索资源；
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// IP搜索列表，可选，当不为空时表示按照IP搜索资源；
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 	// 资源状态搜索列表，可选，取值为[0（运行中）, 1（清洗中）, 2（封堵中）]，当填空数组时不进行状态搜索；
-	Status []*uint64 `json:"Status,omitempty" name:"Status" list`
+	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 即将到期搜索；可选，取值为[0（不搜索），1（搜索即将到期的资源）]
 	Expire *uint64 `json:"Expire,omitempty" name:"Expire"`
 
 	// 排序字段，可选
-	OderBy []*OrderBy `json:"OderBy,omitempty" name:"OderBy" list`
+	OderBy []*OrderBy `json:"OderBy,omitempty" name:"OderBy"`
 
 	// 一页条数，填0表示不分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -5477,7 +5477,7 @@ type DescribeResourceListResponse struct {
 	// "Key": "DdosMax" 表示资源实例的保底防护值，只针对高防IP专业版
 	// "Key": "GFBandwidth" 表示资源实例的保底业务带宽，只针对高防IP
 	// "Key": "ServiceBandwidth" 表示资源实例的保底业务带宽，只针对高防IP专业版
-		ServicePacks []*KeyValueRecord `json:"ServicePacks,omitempty" name:"ServicePacks" list`
+		ServicePacks []*KeyValueRecord `json:"ServicePacks,omitempty" name:"ServicePacks"`
 
 		// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包；bgpip表示高防IP；net表示高防IP专业版）
 		Business *string `json:"Business,omitempty" name:"Business"`
@@ -5505,7 +5505,7 @@ type DescribeRuleSetsRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID列表
-	IdList []*string `json:"IdList,omitempty" name:"IdList" list`
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
 }
 
 func (r *DescribeRuleSetsRequest) ToJsonString() string {
@@ -5537,14 +5537,14 @@ type DescribeRuleSetsResponse struct {
 	// Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
 	// Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
 	// Key值为"RuleNum"时，Value值表示资源的规则数
-		L4RuleSets []*KeyValueRecord `json:"L4RuleSets,omitempty" name:"L4RuleSets" list`
+		L4RuleSets []*KeyValueRecord `json:"L4RuleSets,omitempty" name:"L4RuleSets"`
 
 		// 规则记录数数组，取值说明:
 	// Key值为"Id"时，Value表示资源ID
 	// Key值为"RuleIdList"时，Value值表示资源的规则ID，多个规则ID用","分割
 	// Key值为"RuleNameList"时，Value值表示资源的规则名，多个规则名用","分割
 	// Key值为"RuleNum"时，Value值表示资源的规则数
-		L7RuleSets []*KeyValueRecord `json:"L7RuleSets,omitempty" name:"L7RuleSets" list`
+		L7RuleSets []*KeyValueRecord `json:"L7RuleSets,omitempty" name:"L7RuleSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5604,7 +5604,7 @@ type DescribeSchedulingDomainListResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 调度域名列表信息
-		DomainList []*SchedulingDomain `json:"DomainList,omitempty" name:"DomainList" list`
+		DomainList []*SchedulingDomain `json:"DomainList,omitempty" name:"DomainList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5654,7 +5654,7 @@ type DescribeSecIndexResponse struct {
 	// BlockCount：封堵次数
 	// MaxMbps：攻击峰值Mbps
 	// IpNum：统计的IP数据
-		Data []*KeyValue `json:"Data,omitempty" name:"Data" list`
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
 
 		// 本月开始时间
 		BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
@@ -5755,7 +5755,7 @@ type DescribeTransmitStatisRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 资源的IP（当Business为bgp-multip时必填，且仅支持一个IP）；当不填写时，默认统计资源实例的所有IP；资源实例有多个IP（比如高防IP专业版）时，统计方式是求和；
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *DescribeTransmitStatisRequest) ToJsonString() string {
@@ -5789,11 +5789,11 @@ type DescribeTransmitStatisResponse struct {
 
 		// 当MetricName=traffic时，表示入流量带宽，单位bps；
 	// 当MetricName=pkg时，表示入包速率，单位pps；
-		InDataList []*float64 `json:"InDataList,omitempty" name:"InDataList" list`
+		InDataList []*float64 `json:"InDataList,omitempty" name:"InDataList"`
 
 		// 当MetricName=traffic时，表示出流量带宽，单位bps；
 	// 当MetricName=pkg时，表示出包速率，单位pps；
-		OutDataList []*float64 `json:"OutDataList,omitempty" name:"OutDataList" list`
+		OutDataList []*float64 `json:"OutDataList,omitempty" name:"OutDataList"`
 
 		// 指标名：
 	// traffic表示流量带宽；
@@ -5880,7 +5880,7 @@ type DescribleL4RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID，可选参数，填写后获取指定的规则
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 
 	// 一页条数，填0表示不分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -5917,13 +5917,13 @@ type DescribleL4RulesResponse struct {
 	Response *struct {
 
 		// 转发规则列表
-		Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*L4RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
 		// 总规则数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 健康检查配置列表
-		Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+		Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5951,7 +5951,7 @@ type DescribleL7RulesRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 规则ID，可选参数，填写后获取指定的规则
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 
 	// 一页条数，填0表示不分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -5963,10 +5963,10 @@ type DescribleL7RulesRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 转发协议搜索，选填，取值[http, https, http/https]
-	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList" list`
+	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList"`
 
 	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList" list`
+	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList"`
 }
 
 func (r *DescribleL7RulesRequest) ToJsonString() string {
@@ -6000,13 +6000,13 @@ type DescribleL7RulesResponse struct {
 	Response *struct {
 
 		// 转发规则列表
-		Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
 		// 总规则数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 健康检查配置列表
-		Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+		Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6040,10 +6040,10 @@ type DescribleNewL7RulesRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 转发协议搜索，选填，取值[http, https, http/https]
-	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList" list`
+	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList"`
 
 	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
-	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList" list`
+	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList"`
 
 	// IP搜索，选填，当需要搜索IP请填写
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -6079,13 +6079,13 @@ type DescribleNewL7RulesResponse struct {
 	Response *struct {
 
 		// 转发规则列表
-		Rules []*NewL7RuleEntry `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*NewL7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
 		// 总规则数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 健康检查配置列表
-		Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+		Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6110,7 +6110,7 @@ type DescribleRegionCountRequest struct {
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 根据线路统计，取值为[1（BGP线路），2（南京电信），3（南京联通），99（第三方合作线路）]；只对高防IP产品有效，其他产品此字段忽略
-	LineList []*uint64 `json:"LineList,omitempty" name:"LineList" list`
+	LineList []*uint64 `json:"LineList,omitempty" name:"LineList"`
 }
 
 func (r *DescribleRegionCountRequest) ToJsonString() string {
@@ -6138,7 +6138,7 @@ type DescribleRegionCountResponse struct {
 	Response *struct {
 
 		// 地域资源实例数
-		RegionList []*RegionInstanceCount `json:"RegionList,omitempty" name:"RegionList" list`
+		RegionList []*RegionInstanceCount `json:"RegionList,omitempty" name:"RegionList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6159,34 +6159,34 @@ func (r *DescribleRegionCountResponse) FromJsonString(s string) error {
 type HttpStatusMap struct {
 
 	// http2xx状态码
-	Http2xx []*float64 `json:"Http2xx,omitempty" name:"Http2xx" list`
+	Http2xx []*float64 `json:"Http2xx,omitempty" name:"Http2xx"`
 
 	// http3xx状态码
-	Http3xx []*float64 `json:"Http3xx,omitempty" name:"Http3xx" list`
+	Http3xx []*float64 `json:"Http3xx,omitempty" name:"Http3xx"`
 
 	// http404状态码
-	Http404 []*float64 `json:"Http404,omitempty" name:"Http404" list`
+	Http404 []*float64 `json:"Http404,omitempty" name:"Http404"`
 
 	// http4xx状态码
-	Http4xx []*float64 `json:"Http4xx,omitempty" name:"Http4xx" list`
+	Http4xx []*float64 `json:"Http4xx,omitempty" name:"Http4xx"`
 
 	// http5xx状态码
-	Http5xx []*float64 `json:"Http5xx,omitempty" name:"Http5xx" list`
+	Http5xx []*float64 `json:"Http5xx,omitempty" name:"Http5xx"`
 
 	// http2xx回源状态码
-	SourceHttp2xx []*float64 `json:"SourceHttp2xx,omitempty" name:"SourceHttp2xx" list`
+	SourceHttp2xx []*float64 `json:"SourceHttp2xx,omitempty" name:"SourceHttp2xx"`
 
 	// http3xx回源状态码
-	SourceHttp3xx []*float64 `json:"SourceHttp3xx,omitempty" name:"SourceHttp3xx" list`
+	SourceHttp3xx []*float64 `json:"SourceHttp3xx,omitempty" name:"SourceHttp3xx"`
 
 	// http404回源状态码
-	SourceHttp404 []*float64 `json:"SourceHttp404,omitempty" name:"SourceHttp404" list`
+	SourceHttp404 []*float64 `json:"SourceHttp404,omitempty" name:"SourceHttp404"`
 
 	// http4xx回源状态码
-	SourceHttp4xx []*float64 `json:"SourceHttp4xx,omitempty" name:"SourceHttp4xx" list`
+	SourceHttp4xx []*float64 `json:"SourceHttp4xx,omitempty" name:"SourceHttp4xx"`
 
 	// http5xx回源状态码
-	SourceHttp5xx []*float64 `json:"SourceHttp5xx,omitempty" name:"SourceHttp5xx" list`
+	SourceHttp5xx []*float64 `json:"SourceHttp5xx,omitempty" name:"SourceHttp5xx"`
 }
 
 type IpBlackWhite struct {
@@ -6243,7 +6243,7 @@ type KeyValue struct {
 type KeyValueRecord struct {
 
 	// 一条记录的Key-Value数组
-	Record []*KeyValue `json:"Record,omitempty" name:"Record" list`
+	Record []*KeyValue `json:"Record,omitempty" name:"Record"`
 }
 
 type L4DelRule struct {
@@ -6255,7 +6255,7 @@ type L4DelRule struct {
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 规则Id
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 type L4HealthConfig struct {
@@ -6303,7 +6303,7 @@ type L4RuleEntry struct {
 	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
 
 	// 回源列表
-	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
 
 	// 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
 	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
@@ -6396,7 +6396,7 @@ type L7RuleEntry struct {
 	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
 
 	// 回源列表
-	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
 
 	// 负载均衡方式，取值[1(加权轮询)]
 	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
@@ -6489,7 +6489,7 @@ type ModifyCCAlarmThresholdRequest struct {
 	AlarmThreshold *uint64 `json:"AlarmThreshold,omitempty" name:"AlarmThreshold"`
 
 	// 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *ModifyCCAlarmThresholdRequest) ToJsonString() string {
@@ -6760,7 +6760,7 @@ type ModifyCCIpAllowDenyRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 黑/白名单的IP数组
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 
 	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -7131,7 +7131,7 @@ type ModifyCCUrlAllowRequest struct {
 	// URL数组，URL格式如下：
 	// http://域名/cgi
 	// https://域名/cgi
-	UrlList []*string `json:"UrlList,omitempty" name:"UrlList" list`
+	UrlList []*string `json:"UrlList,omitempty" name:"UrlList"`
 
 	// 可选字段，代表CC防护类型，取值[http（HTTP协议的CC防护），https（HTTPS协议的CC防护）]；当不填时，默认为HTTP协议的CC防护；当填写https时还需要填写Domain和RuleId字段；
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -7273,7 +7273,7 @@ type ModifyDDoSAlarmThresholdRequest struct {
 	AlarmThreshold *uint64 `json:"AlarmThreshold,omitempty" name:"AlarmThreshold"`
 
 	// 资源关联的IP列表，高防包未绑定时，传空数组，高防IP专业版传多个IP的数据
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *ModifyDDoSAlarmThresholdRequest) ToJsonString() string {
@@ -7499,13 +7499,13 @@ type ModifyDDoSPolicyCaseRequest struct {
 	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
 
 	// 开发平台，取值[PC（PC客户端）， MOBILE（移动端）， TV（电视端）， SERVER（主机）]
-	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes" list`
+	PlatformTypes []*string `json:"PlatformTypes,omitempty" name:"PlatformTypes"`
 
 	// 细分品类，取值[WEB（网站）， GAME（游戏）， APP（应用）， OTHER（其他）]
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
 	// 应用协议，取值[tcp（TCP协议），udp（UDP协议），icmp（ICMP协议），all（其他协议）]
-	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols" list`
+	AppProtocols []*string `json:"AppProtocols,omitempty" name:"AppProtocols"`
 
 	// TCP业务起始端口，取值(0, 65535]
 	TcpSportStart *string `json:"TcpSportStart,omitempty" name:"TcpSportStart"`
@@ -7541,7 +7541,7 @@ type ModifyDDoSPolicyCaseRequest struct {
 	UdpFootprint *string `json:"UdpFootprint,omitempty" name:"UdpFootprint"`
 
 	// Web业务的API的URL
-	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl" list`
+	WebApiUrl []*string `json:"WebApiUrl,omitempty" name:"WebApiUrl"`
 
 	// TCP业务报文长度最小值，取值范围(0, 1500)
 	MinTcpPackageLen *string `json:"MinTcpPackageLen,omitempty" name:"MinTcpPackageLen"`
@@ -7697,19 +7697,19 @@ type ModifyDDoSPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 协议禁用，必须填写且数组长度必须为1
-	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions" list`
+	DropOptions []*DDoSPolicyDropOption `json:"DropOptions,omitempty" name:"DropOptions"`
 
 	// 端口禁用，当没有禁用端口时填空数组
-	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits" list`
+	PortLimits []*DDoSPolicyPortLimit `json:"PortLimits,omitempty" name:"PortLimits"`
 
 	// IP黑白名单，当没有IP黑白名单时填空数组
-	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys" list`
+	IpAllowDenys []*IpBlackWhite `json:"IpAllowDenys,omitempty" name:"IpAllowDenys"`
 
 	// 报文过滤，当没有报文过滤时填空数组
-	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters" list`
+	PacketFilters []*DDoSPolicyPacketFilter `json:"PacketFilters,omitempty" name:"PacketFilters"`
 
 	// 水印策略参数，当没有启用水印功能时填空数组，最多只能传一条水印策略（即数组大小不超过1）
-	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint" list`
+	WaterPrint []*WaterPrintPolicy `json:"WaterPrint,omitempty" name:"WaterPrint"`
 }
 
 func (r *ModifyDDoSPolicyRequest) ToJsonString() string {
@@ -7960,7 +7960,7 @@ type ModifyDDoSWaterKeyResponse struct {
 	Response *struct {
 
 		// 水印密钥列表
-		KeyList []*WaterPrintKey `json:"KeyList,omitempty" name:"KeyList" list`
+		KeyList []*WaterPrintKey `json:"KeyList,omitempty" name:"KeyList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8045,7 +8045,7 @@ type ModifyL4HealthRequest struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 健康检查参数数组
-	Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths" list`
+	Healths []*L4RuleHealth `json:"Healths,omitempty" name:"Healths"`
 }
 
 func (r *ModifyL4HealthRequest) ToJsonString() string {
@@ -8576,7 +8576,7 @@ type NewL4RuleEntry struct {
 	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
 
 	// 回源列表
-	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
 
 	// 负载均衡方式，取值[1(加权轮询)，2(源IP hash)]
 	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
@@ -8624,7 +8624,7 @@ type NewL7RuleEntry struct {
 	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
 
 	// 回源列表
-	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList" list`
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
 
 	// 负载均衡方式，取值[1(加权轮询)]
 	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
@@ -8733,7 +8733,7 @@ type ResourceIp struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 资源的IP数组
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 type SchedulingDomain struct {
@@ -8742,19 +8742,19 @@ type SchedulingDomain struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// BGP线路IP列表
-	BGPIpList []*string `json:"BGPIpList,omitempty" name:"BGPIpList" list`
+	BGPIpList []*string `json:"BGPIpList,omitempty" name:"BGPIpList"`
 
 	// 电信线路IP列表
-	CTCCIpList []*string `json:"CTCCIpList,omitempty" name:"CTCCIpList" list`
+	CTCCIpList []*string `json:"CTCCIpList,omitempty" name:"CTCCIpList"`
 
 	// 联通线路IP列表
-	CUCCIpList []*string `json:"CUCCIpList,omitempty" name:"CUCCIpList" list`
+	CUCCIpList []*string `json:"CUCCIpList,omitempty" name:"CUCCIpList"`
 
 	// 移动线路IP列表
-	CMCCIpList []*string `json:"CMCCIpList,omitempty" name:"CMCCIpList" list`
+	CMCCIpList []*string `json:"CMCCIpList,omitempty" name:"CMCCIpList"`
 
 	// 海外线路IP列表
-	OverseaIpList []*string `json:"OverseaIpList,omitempty" name:"OverseaIpList" list`
+	OverseaIpList []*string `json:"OverseaIpList,omitempty" name:"OverseaIpList"`
 
 	// 调度方式，当前仅支持优先级, 取值为priority
 	Method *string `json:"Method,omitempty" name:"Method"`
@@ -8804,10 +8804,10 @@ type WaterPrintKey struct {
 type WaterPrintPolicy struct {
 
 	// TCP端口段，例如["2000-3000","3500-4000"]
-	TcpPortList []*string `json:"TcpPortList,omitempty" name:"TcpPortList" list`
+	TcpPortList []*string `json:"TcpPortList,omitempty" name:"TcpPortList"`
 
 	// UDP端口段，例如["2000-3000","3500-4000"]
-	UdpPortList []*string `json:"UdpPortList,omitempty" name:"UdpPortList" list`
+	UdpPortList []*string `json:"UdpPortList,omitempty" name:"UdpPortList"`
 
 	// 水印偏移量，取值范围[0, 100)
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`

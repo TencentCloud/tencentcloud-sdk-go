@@ -30,7 +30,7 @@ type AccountCreateInfo struct {
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// DB权限列表
-	DBPrivileges []*DBPrivilege `json:"DBPrivileges,omitempty" name:"DBPrivileges" list`
+	DBPrivileges []*DBPrivilege `json:"DBPrivileges,omitempty" name:"DBPrivileges"`
 
 	// 账号备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -63,7 +63,7 @@ type AccountDetail struct {
 	InternalStatus *string `json:"InternalStatus,omitempty" name:"InternalStatus"`
 
 	// 该账户对相关db的读写权限信息
-	Dbs []*DBPrivilege `json:"Dbs,omitempty" name:"Dbs" list`
+	Dbs []*DBPrivilege `json:"Dbs,omitempty" name:"Dbs"`
 
 	// 是否为管理员账户
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
@@ -93,7 +93,7 @@ type AccountPrivilegeModifyInfo struct {
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 账号权限变更信息
-	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitempty" name:"DBPrivileges" list`
+	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitempty" name:"DBPrivileges"`
 }
 
 type AccountRemark struct {
@@ -112,7 +112,7 @@ type AssociateSecurityGroupsRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
 func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
@@ -182,7 +182,7 @@ type Backup struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 多库备份时的DB列表
-	DBs []*string `json:"DBs,omitempty" name:"DBs" list`
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
 	// 备份策略（0-实例备份；1-多库备份）
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
@@ -201,7 +201,7 @@ type CloneDBRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 按照ReNameRestoreDatabase中的库进行克隆，并重命名，新库名称必须指定
-	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 }
 
 func (r *CloneDBRequest) ToJsonString() string {
@@ -361,7 +361,7 @@ type CreateAccountRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库实例账户信息
-	Accounts []*AccountCreateInfo `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountCreateInfo `json:"Accounts,omitempty" name:"Accounts"`
 }
 
 func (r *CreateAccountRequest) ToJsonString() string {
@@ -423,7 +423,7 @@ type CreateBackupMigrationRequest struct {
 	MigrationName *string `json:"MigrationName,omitempty" name:"MigrationName"`
 
 	// UploadType是COS_URL时这里填URL，COS_UPLOAD这里填备份文件的名字。只支持1个备份文件，但1个备份文件内可包含多个库
-	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
 }
 
 func (r *CreateBackupMigrationRequest) ToJsonString() string {
@@ -479,7 +479,7 @@ type CreateBackupRequest struct {
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 需要备份库名的列表(多库备份才填写)
-	DBNames []*string `json:"DBNames,omitempty" name:"DBNames" list`
+	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
 
 	// 实例ID，形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -573,7 +573,7 @@ type CreateBasicDBInstancesRequest struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 安全组列表，填写形如sg-xxx的安全组ID
-	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList" list`
+	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList"`
 
 	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
@@ -582,10 +582,10 @@ type CreateBasicDBInstancesRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID数组，目前单个订单只能使用一张
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
-	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly" list`
+	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
 
 	// 可维护时间窗配置，每天可维护的开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -594,7 +594,7 @@ type CreateBasicDBInstancesRequest struct {
 	Span *int64 `json:"Span,omitempty" name:"Span"`
 
 	// 新建实例绑定的标签集合
-	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateBasicDBInstancesRequest) ToJsonString() string {
@@ -692,7 +692,7 @@ type CreateDBInstancesRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID数组，目前单个订单只能使用一张
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard）2017（SQL Server 2017 Enterprise）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
@@ -701,10 +701,10 @@ type CreateDBInstancesRequest struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 安全组列表，填写形如sg-xxx的安全组ID
-	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList" list`
+	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList"`
 
 	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
-	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly" list`
+	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
 
 	// 可维护时间窗配置，每天可维护的开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -719,7 +719,7 @@ type CreateDBInstancesRequest struct {
 	MultiZones *bool `json:"MultiZones,omitempty" name:"MultiZones"`
 
 	// 新建实例绑定的标签集合
-	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -768,7 +768,7 @@ type CreateDBInstancesResponse struct {
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 订单名称数组
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -793,7 +793,7 @@ type CreateDBRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库创建信息
-	DBs []*DBCreateInfo `json:"DBs,omitempty" name:"DBs" list`
+	DBs []*DBCreateInfo `json:"DBs,omitempty" name:"DBs"`
 }
 
 func (r *CreateDBRequest) ToJsonString() string {
@@ -849,7 +849,7 @@ type CreateIncrementalMigrationRequest struct {
 	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
 
 	// 增量备份文件，全量备份任务UploadType是COS_URL时这里填URL，是COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
-	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
 
 	// 是否需要恢复，NO-不需要，YES-需要，默认不需要
 	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
@@ -919,10 +919,10 @@ type CreateMigrationRequest struct {
 	Target *MigrateTarget `json:"Target,omitempty" name:"Target"`
 
 	// 迁移DB对象 ，离线迁移不使用（SourceType=4或SourceType=5）。
-	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet"`
 
 	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。SourceType=5的情况下有效。
-	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 }
 
 func (r *CreateMigrationRequest) ToJsonString() string {
@@ -983,7 +983,7 @@ type CreatePublishSubscribeRequest struct {
 	SubscribeInstanceId *string `json:"SubscribeInstanceId,omitempty" name:"SubscribeInstanceId"`
 
 	// 数据库的订阅发布关系集合
-	DatabaseTupleSet []*DatabaseTuple `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet" list`
+	DatabaseTupleSet []*DatabaseTuple `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet"`
 
 	// 发布订阅的名称，默认值为：default_name
 	PublishSubscribeName *string `json:"PublishSubscribeName,omitempty" name:"PublishSubscribeName"`
@@ -1086,16 +1086,16 @@ type CreateReadOnlyDBInstancesRequest struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 安全组列表，填写形如sg-xxx的安全组ID
-	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList" list`
+	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList"`
 
 	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID数组，目前单个订单只能使用一张
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 新建实例绑定的标签集合
-	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateReadOnlyDBInstancesRequest) ToJsonString() string {
@@ -1141,7 +1141,7 @@ type CreateReadOnlyDBInstancesResponse struct {
 	Response *struct {
 
 		// 订单名称数组
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1168,7 +1168,7 @@ type DBCreateInfo struct {
 	Charset *string `json:"Charset,omitempty" name:"Charset"`
 
 	// 数据库账号权限信息
-	Accounts []*AccountPrivilege `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountPrivilege `json:"Accounts,omitempty" name:"Accounts"`
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -1192,7 +1192,7 @@ type DBDetail struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 数据库账号权限信息
-	Accounts []*AccountPrivilege `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountPrivilege `json:"Accounts,omitempty" name:"Accounts"`
 
 	// 内部状态。ONLINE表示运行中
 	InternalStatus *string `json:"InternalStatus,omitempty" name:"InternalStatus"`
@@ -1314,7 +1314,7 @@ type DBInstance struct {
 
 	// 实例绑定的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 type DBPrivilege struct {
@@ -1392,7 +1392,7 @@ type DealInfo struct {
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 
 	// 所属账号
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
@@ -1408,7 +1408,7 @@ type DeleteAccountRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例用户名数组
-	UserNames []*string `json:"UserNames,omitempty" name:"UserNames" list`
+	UserNames []*string `json:"UserNames,omitempty" name:"UserNames"`
 }
 
 func (r *DeleteAccountRequest) ToJsonString() string {
@@ -1557,7 +1557,7 @@ type DeleteDBRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库名数组
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 }
 
 func (r *DeleteDBRequest) ToJsonString() string {
@@ -1710,7 +1710,7 @@ type DeletePublishSubscribeRequest struct {
 	PublishSubscribeId *uint64 `json:"PublishSubscribeId,omitempty" name:"PublishSubscribeId"`
 
 	// 待删除的数据库的订阅发布关系集合
-	DatabaseTupleSet []*DatabaseTuple `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet" list`
+	DatabaseTupleSet []*DatabaseTuple `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet"`
 }
 
 func (r *DeletePublishSubscribeRequest) ToJsonString() string {
@@ -1795,7 +1795,7 @@ type DescribeAccountsResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 账户信息列表
-		Accounts []*AccountDetail `json:"Accounts,omitempty" name:"Accounts" list`
+		Accounts []*AccountDetail `json:"Accounts,omitempty" name:"Accounts"`
 
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1878,7 +1878,7 @@ type DescribeBackupByFlowIdResponse struct {
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 多库备份时的DB列表
-		DBs []*string `json:"DBs,omitempty" name:"DBs" list`
+		DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
 		// 内网下载地址
 		InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
@@ -1979,7 +1979,7 @@ type DescribeBackupMigrationRequest struct {
 	BackupFileName *string `json:"BackupFileName,omitempty" name:"BackupFileName"`
 
 	// 导入任务状态集合
-	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet" list`
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
 
 	// 导入任务恢复类型，FULL,FULL_LOG,FULL_DIFF
 	RecoveryType *string `json:"RecoveryType,omitempty" name:"RecoveryType"`
@@ -2037,7 +2037,7 @@ type DescribeBackupMigrationResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 迁移任务集合
-		BackupMigrationSet []*Migration `json:"BackupMigrationSet,omitempty" name:"BackupMigrationSet" list`
+		BackupMigrationSet []*Migration `json:"BackupMigrationSet,omitempty" name:"BackupMigrationSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2094,7 +2094,7 @@ type DescribeBackupUploadSizeResponse struct {
 	Response *struct {
 
 		// 已上传的备份的信息
-		CosUploadBackupFileSet []*CosUploadBackupFile `json:"CosUploadBackupFileSet,omitempty" name:"CosUploadBackupFileSet" list`
+		CosUploadBackupFileSet []*CosUploadBackupFile `json:"CosUploadBackupFileSet,omitempty" name:"CosUploadBackupFileSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2182,7 +2182,7 @@ type DescribeBackupsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 备份列表详情
-		Backups []*Backup `json:"Backups,omitempty" name:"Backups" list`
+		Backups []*Backup `json:"Backups,omitempty" name:"Backups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2283,7 +2283,7 @@ type DescribeDBCharsetsResponse struct {
 	Response *struct {
 
 		// 数据库字符集列表
-		DatabaseCharsets []*string `json:"DatabaseCharsets,omitempty" name:"DatabaseCharsets" list`
+		DatabaseCharsets []*string `json:"DatabaseCharsets,omitempty" name:"DatabaseCharsets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2329,7 +2329,7 @@ type DescribeDBInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 
 	// 付费类型检索 1-包年包月，0-按量计费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
@@ -2341,19 +2341,19 @@ type DescribeDBInstancesRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例内网地址列表，格式如：172.1.0.12
-	VipSet []*string `json:"VipSet,omitempty" name:"VipSet" list`
+	VipSet []*string `json:"VipSet,omitempty" name:"VipSet"`
 
 	// 实例名称列表，模糊查询
-	InstanceNameSet []*string `json:"InstanceNameSet,omitempty" name:"InstanceNameSet" list`
+	InstanceNameSet []*string `json:"InstanceNameSet,omitempty" name:"InstanceNameSet"`
 
 	// 实例版本代号列表，格式如：2008R2，2012SP3等
-	VersionSet []*string `json:"VersionSet,omitempty" name:"VersionSet" list`
+	VersionSet []*string `json:"VersionSet,omitempty" name:"VersionSet"`
 
 	// 实例可用区，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例标签列表
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 模糊查询关键字，支持实例id、实例名、内网ip
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
@@ -2399,7 +2399,7 @@ type DescribeDBInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例列表
-		DBInstances []*DBInstance `json:"DBInstances,omitempty" name:"DBInstances" list`
+		DBInstances []*DBInstance `json:"DBInstances,omitempty" name:"DBInstances"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2448,7 +2448,7 @@ type DescribeDBSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组详情。
-		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
+		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2470,7 +2470,7 @@ type DescribeDBsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 
 	// 分页返回，每页返回的数目，取值为1-100，默认值为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2508,7 +2508,7 @@ type DescribeDBsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例数据库列表
-		DBInstances []*InstanceDBDetail `json:"DBInstances,omitempty" name:"DBInstances" list`
+		DBInstances []*InstanceDBDetail `json:"DBInstances,omitempty" name:"DBInstances"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2588,7 +2588,7 @@ type DescribeIncrementalMigrationRequest struct {
 	BackupFileName *string `json:"BackupFileName,omitempty" name:"BackupFileName"`
 
 	// 导入任务状态集合
-	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet" list`
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
 
 	// 分页，页大小
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -2641,7 +2641,7 @@ type DescribeIncrementalMigrationResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 增量导入任务集合
-		IncrementalMigrationSet []*Migration `json:"IncrementalMigrationSet,omitempty" name:"IncrementalMigrationSet" list`
+		IncrementalMigrationSet []*Migration `json:"IncrementalMigrationSet,omitempty" name:"IncrementalMigrationSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2690,7 +2690,7 @@ type DescribeMaintenanceSpanResponse struct {
 	Response *struct {
 
 		// 以周为单位，表示周几允许维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日。
-		Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly" list`
+		Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
 
 		// 每天可维护的开始时间，例如：10:24标识可维护时间窗10点24分开始。
 		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -2756,7 +2756,7 @@ type DescribeMigrationDatabasesResponse struct {
 		Amount *int64 `json:"Amount,omitempty" name:"Amount"`
 
 		// 数据库名称数组
-		MigrateDBSet []*string `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+		MigrateDBSet []*string `json:"MigrateDBSet,omitempty" name:"MigrateDBSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2844,7 +2844,7 @@ type DescribeMigrationDetailResponse struct {
 		Target *MigrateTarget `json:"Target,omitempty" name:"Target"`
 
 		// 迁移DB对象 ，离线迁移（SourceType=4或SourceType=5）不使用。
-		MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+		MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2866,7 +2866,7 @@ type DescribeMigrationsRequest struct {
 	*tchttp.BaseRequest
 
 	// 状态集合。只要符合集合中某一状态的迁移任务，就会查出来
-	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet" list`
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
 
 	// 迁移任务的名称，模糊匹配
 	MigrateName *string `json:"MigrateName,omitempty" name:"MigrateName"`
@@ -2916,7 +2916,7 @@ type DescribeMigrationsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询结果的列表
-		MigrateTaskSet []*MigrateTask `json:"MigrateTaskSet,omitempty" name:"MigrateTaskSet" list`
+		MigrateTaskSet []*MigrateTask `json:"MigrateTaskSet,omitempty" name:"MigrateTaskSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2938,7 +2938,7 @@ type DescribeOrdersRequest struct {
 	*tchttp.BaseRequest
 
 	// 订单数组。发货时会返回订单名字，利用该订单名字调用DescribeOrders接口查询发货情况
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeOrdersRequest) ToJsonString() string {
@@ -2965,7 +2965,7 @@ type DescribeOrdersResponse struct {
 	Response *struct {
 
 		// 订单信息数组
-		Deals []*DealInfo `json:"Deals,omitempty" name:"Deals" list`
+		Deals []*DealInfo `json:"Deals,omitempty" name:"Deals"`
 
 		// 返回多少个订单的信息
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3021,7 +3021,7 @@ type DescribeProductConfigResponse struct {
 	Response *struct {
 
 		// 规格信息数组
-		SpecInfoList []*SpecInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList" list`
+		SpecInfoList []*SpecInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList"`
 
 		// 返回总共多少条数据
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3073,7 +3073,7 @@ type DescribeProjectSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组详情。
-		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
+		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3157,7 +3157,7 @@ type DescribePublishSubscribeResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 发布订阅列表
-		PublishSubscribeSet []*PublishSubscribe `json:"PublishSubscribeSet,omitempty" name:"PublishSubscribeSet" list`
+		PublishSubscribeSet []*PublishSubscribe `json:"PublishSubscribeSet,omitempty" name:"PublishSubscribeSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3325,7 +3325,7 @@ type DescribeReadOnlyGroupDetailsResponse struct {
 		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 		// 只读实例副本集合
-		ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet" list`
+		ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet"`
 
 		// 只读组状态: 1-申请成功运行中，5-申请中
 		Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -3380,7 +3380,7 @@ type DescribeReadOnlyGroupListResponse struct {
 	Response *struct {
 
 		// 只读组列表
-		ReadOnlyGroupSet []*ReadOnlyGroup `json:"ReadOnlyGroupSet,omitempty" name:"ReadOnlyGroupSet" list`
+		ReadOnlyGroupSet []*ReadOnlyGroup `json:"ReadOnlyGroupSet,omitempty" name:"ReadOnlyGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3428,7 +3428,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 地域信息数组
-		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3453,7 +3453,7 @@ type DescribeRollbackTimeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 需要查询的数据库列表
-	DBs []*string `json:"DBs,omitempty" name:"DBs" list`
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
 }
 
 func (r *DescribeRollbackTimeRequest) ToJsonString() string {
@@ -3481,7 +3481,7 @@ type DescribeRollbackTimeResponse struct {
 	Response *struct {
 
 		// 数据库可回档实例信息
-		Details []*DbRollbackTimeInfo `json:"Details,omitempty" name:"Details" list`
+		Details []*DbRollbackTimeInfo `json:"Details,omitempty" name:"Details"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3549,7 +3549,7 @@ type DescribeSlowlogsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 慢查询日志信息列表
-		Slowlogs []*SlowlogInfo `json:"Slowlogs,omitempty" name:"Slowlogs" list`
+		Slowlogs []*SlowlogInfo `json:"Slowlogs,omitempty" name:"Slowlogs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3749,7 +3749,7 @@ type DescribeZonesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可用区数组
-		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet" list`
+		ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3774,7 +3774,7 @@ type DisassociateSecurityGroupsRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
 func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
@@ -4035,7 +4035,7 @@ type InstanceDBDetail struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库信息列表
-	DBDetails []*DBDetail `json:"DBDetails,omitempty" name:"DBDetails" list`
+	DBDetails []*DBDetail `json:"DBDetails,omitempty" name:"DBDetails"`
 }
 
 type InstanceRenewInfo struct {
@@ -4089,7 +4089,7 @@ type MigrateSource struct {
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
 	// 离线迁移的源备份地址，MigrateType=4或MigrateType=5使用
-	Url []*string `json:"Url,omitempty" name:"Url" list`
+	Url []*string `json:"Url,omitempty" name:"Url"`
 
 	// 离线迁移的源备份密码，MigrateType=4或MigrateType=5使用
 	UrlPassword *string `json:"UrlPassword,omitempty" name:"UrlPassword"`
@@ -4174,7 +4174,7 @@ type Migration struct {
 	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
 
 	// 备份文件列表，UploadType确定，COS_URL则保存URL，COS_UPLOAD则保存备份名称
-	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
 
 	// 迁移任务状态，2-创建完成，7-全量导入中，8-等待增量，9-导入成功，10-导入失败，12-增量导入中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -4205,10 +4205,10 @@ type Migration struct {
 type MigrationAction struct {
 
 	// 支持的所有操作，值包括：view(查看任务) ，modify(修改任务)， start(启动任务)，incremental(创建增量任务)，delete(删除任务)，upload(获取上传权限)。
-	AllAction []*string `json:"AllAction,omitempty" name:"AllAction" list`
+	AllAction []*string `json:"AllAction,omitempty" name:"AllAction"`
 
 	// 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
-	AllowedAction []*string `json:"AllowedAction,omitempty" name:"AllowedAction" list`
+	AllowedAction []*string `json:"AllowedAction,omitempty" name:"AllowedAction"`
 }
 
 type MigrationDetail struct {
@@ -4224,7 +4224,7 @@ type MigrationDetail struct {
 
 	// 步骤信息，null表示还未开始迁移
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StepInfo []*MigrationStep `json:"StepInfo,omitempty" name:"StepInfo" list`
+	StepInfo []*MigrationStep `json:"StepInfo,omitempty" name:"StepInfo"`
 }
 
 type MigrationStep struct {
@@ -4249,7 +4249,7 @@ type ModifyAccountPrivilegeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 账号权限变更信息
-	Accounts []*AccountPrivilegeModifyInfo `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountPrivilegeModifyInfo `json:"Accounts,omitempty" name:"Accounts"`
 }
 
 func (r *ModifyAccountPrivilegeRequest) ToJsonString() string {
@@ -4302,7 +4302,7 @@ type ModifyAccountRemarkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 修改备注的账户信息
-	Accounts []*AccountRemark `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountRemark `json:"Accounts,omitempty" name:"Accounts"`
 }
 
 func (r *ModifyAccountRemarkRequest) ToJsonString() string {
@@ -4364,7 +4364,7 @@ type ModifyBackupMigrationRequest struct {
 	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
 
 	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
-	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
 }
 
 func (r *ModifyBackupMigrationRequest) ToJsonString() string {
@@ -4647,7 +4647,7 @@ type ModifyDBInstanceProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID数组，形如mssql-j8kv137v
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 
 	// 项目ID，为0的话表示默认项目
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -4700,7 +4700,7 @@ type ModifyDBInstanceRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例续费状态标记信息
-	RenewFlags []*InstanceRenewInfo `json:"RenewFlags,omitempty" name:"RenewFlags" list`
+	RenewFlags []*InstanceRenewInfo `json:"RenewFlags,omitempty" name:"RenewFlags"`
 }
 
 func (r *ModifyDBInstanceRenewFlagRequest) ToJsonString() string {
@@ -4752,7 +4752,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
-	SecurityGroupIdSet []*string `json:"SecurityGroupIdSet,omitempty" name:"SecurityGroupIdSet" list`
+	SecurityGroupIdSet []*string `json:"SecurityGroupIdSet,omitempty" name:"SecurityGroupIdSet"`
 }
 
 func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
@@ -4859,7 +4859,7 @@ type ModifyDBRemarkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库名称及备注数组，每个元素包含数据库名和对应的备注
-	DBRemarks []*DBRemark `json:"DBRemarks,omitempty" name:"DBRemarks" list`
+	DBRemarks []*DBRemark `json:"DBRemarks,omitempty" name:"DBRemarks"`
 }
 
 func (r *ModifyDBRemarkRequest) ToJsonString() string {
@@ -4918,7 +4918,7 @@ type ModifyIncrementalMigrationRequest struct {
 	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
 
 	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
-	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles" list`
+	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
 }
 
 func (r *ModifyIncrementalMigrationRequest) ToJsonString() string {
@@ -4974,7 +4974,7 @@ type ModifyMaintenanceSpanRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 以周为单位，表示允许周几维护，例如：[1,2,3,4,5,6,7]表示周一到周日均为可维护日，本参数不填，则不修改此值。
-	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly" list`
+	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
 
 	// 每天可维护的开始时间，例如：10:24标识可维护时间窗10点24分开始，本参数不填，则不修改此值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -5047,7 +5047,7 @@ type ModifyMigrationRequest struct {
 	Target *MigrateTarget `json:"Target,omitempty" name:"Target"`
 
 	// 迁移DB对象 ，离线迁移（SourceType=4或SourceType=5）不使用，若不填则不修改
-	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet" list`
+	MigrateDBSet []*MigrateDB `json:"MigrateDBSet,omitempty" name:"MigrateDBSet"`
 }
 
 func (r *ModifyMigrationRequest) ToJsonString() string {
@@ -5170,7 +5170,7 @@ type ModifyReadOnlyGroupDetailsRequest struct {
 	MinReadOnlyInGroup *int64 `json:"MinReadOnlyInGroup,omitempty" name:"MinReadOnlyInGroup"`
 
 	// 只读组实例权重修改集合，不填此参数，则不修改
-	WeightPairs []*ReadOnlyInstanceWeightPair `json:"WeightPairs,omitempty" name:"WeightPairs" list`
+	WeightPairs []*ReadOnlyInstanceWeightPair `json:"WeightPairs,omitempty" name:"WeightPairs"`
 
 	// 0-用户自定义权重（根据WeightPairs调整）,1-系统自动分配权重(WeightPairs无效)， 默认为0
 	AutoWeight *int64 `json:"AutoWeight,omitempty" name:"AutoWeight"`
@@ -5253,7 +5253,7 @@ type PublishSubscribe struct {
 	SubscribeInstanceIp *string `json:"SubscribeInstanceIp,omitempty" name:"SubscribeInstanceIp"`
 
 	// 数据库的订阅发布关系集合
-	DatabaseTupleSet []*DatabaseTupleStatus `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet" list`
+	DatabaseTupleSet []*DatabaseTupleStatus `json:"DatabaseTupleSet,omitempty" name:"DatabaseTupleSet"`
 }
 
 type QueryMigrationCheckProcessRequest struct {
@@ -5293,7 +5293,7 @@ type QueryMigrationCheckProcessResponse struct {
 		CurrentStep *int64 `json:"CurrentStep,omitempty" name:"CurrentStep"`
 
 		// 所有步骤详情
-		StepDetails []*StepDetail `json:"StepDetails,omitempty" name:"StepDetails" list`
+		StepDetails []*StepDetail `json:"StepDetails,omitempty" name:"StepDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5353,7 +5353,7 @@ type ReadOnlyGroup struct {
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
 
 	// 只读实例副本集合
-	ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet" list`
+	ReadOnlyInstanceSet []*ReadOnlyInstance `json:"ReadOnlyInstanceSet,omitempty" name:"ReadOnlyInstanceSet"`
 }
 
 type ReadOnlyInstance struct {
@@ -5572,7 +5572,7 @@ type RemoveBackupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
-	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames" list`
+	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
 }
 
 func (r *RemoveBackupsRequest) ToJsonString() string {
@@ -5638,7 +5638,7 @@ type RenewDBInstanceRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID数组，目前只支持使用1张代金券
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 }
 
 func (r *RenewDBInstanceRequest) ToJsonString() string {
@@ -5739,7 +5739,7 @@ type ResetAccountPasswordRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 更新后的账户密码信息数组
-	Accounts []*AccountPassword `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*AccountPassword `json:"Accounts,omitempty" name:"Accounts"`
 }
 
 func (r *ResetAccountPasswordRequest) ToJsonString() string {
@@ -5856,7 +5856,7 @@ type RestoreInstanceRequest struct {
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
 
 	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
-	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 }
 
 func (r *RestoreInstanceRequest) ToJsonString() string {
@@ -5914,7 +5914,7 @@ type RollbackInstanceRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 需要回档的数据库
-	DBs []*string `json:"DBs,omitempty" name:"DBs" list`
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
 	// 回档目标时间点
 	Time *string `json:"Time,omitempty" name:"Time"`
@@ -5923,7 +5923,7 @@ type RollbackInstanceRequest struct {
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
 
 	// 按照ReNameRestoreDatabase中的库进行重命名，仅在Type = 1重命名回档方式有效；不填则按照默认方式命名库，DBs参数确定要恢复的库
-	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore" list`
+	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 }
 
 func (r *RollbackInstanceRequest) ToJsonString() string {
@@ -6031,10 +6031,10 @@ type SecurityGroup struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 入站规则
-	InboundSet []*SecurityGroupPolicy `json:"InboundSet,omitempty" name:"InboundSet" list`
+	InboundSet []*SecurityGroupPolicy `json:"InboundSet,omitempty" name:"InboundSet"`
 
 	// 出站规则
-	OutboundSet []*SecurityGroupPolicy `json:"OutboundSet,omitempty" name:"OutboundSet" list`
+	OutboundSet []*SecurityGroupPolicy `json:"OutboundSet,omitempty" name:"OutboundSet"`
 
 	// 安全组ID
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
@@ -6132,7 +6132,7 @@ type SpecInfo struct {
 
 	// 此规格对应的按量计费Pid列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostPid []*int64 `json:"PostPid,omitempty" name:"PostPid" list`
+	PostPid []*int64 `json:"PostPid,omitempty" name:"PostPid"`
 
 	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
 	PayModeStatus *string `json:"PayModeStatus,omitempty" name:"PayModeStatus"`
@@ -6368,7 +6368,7 @@ type TerminateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 主动销毁的实例ID列表，格式如：[mssql-3l3fgqn7]。与云数据库控制台页面中显示的实例ID相同
-	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet" list`
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
 func (r *TerminateDBInstanceRequest) ToJsonString() string {
@@ -6426,7 +6426,7 @@ type UpgradeDBInstanceRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID，目前单个订单只能使用一张代金券
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 实例升级后的CPU核心数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`

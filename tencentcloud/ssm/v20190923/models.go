@@ -43,7 +43,7 @@ type CreateSecretRequest struct {
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateSecretRequest) ToJsonString() string {
@@ -409,7 +409,7 @@ type GetRegionsResponse struct {
 	Response *struct {
 
 		// region列表。
-		Regions []*string `json:"Regions,omitempty" name:"Regions" list`
+		Regions []*string `json:"Regions,omitempty" name:"Regions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -572,7 +572,7 @@ type ListSecretVersionIdsResponse struct {
 
 		// VersionId列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions" list`
+		Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -609,7 +609,7 @@ type ListSecretsRequest struct {
 	SearchSecretName *string `json:"SearchSecretName,omitempty" name:"SearchSecretName"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -644,7 +644,7 @@ type ListSecretsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回凭据信息列表。
-		SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitempty" name:"SecretMetadatas" list`
+		SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitempty" name:"SecretMetadatas"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -817,7 +817,7 @@ type TagFilter struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UpdateDescriptionRequest struct {

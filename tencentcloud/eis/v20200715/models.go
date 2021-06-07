@@ -286,7 +286,7 @@ type ListEisConnectorOperationsResponse struct {
 	Response *struct {
 
 		// 连接器列表
-		Operations []*EisConnectionOperation `json:"Operations,omitempty" name:"Operations" list`
+		Operations []*EisConnectionOperation `json:"Operations,omitempty" name:"Operations"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -346,7 +346,7 @@ type ListEisConnectorsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 连接器列表
-		Connectors []*EisConnectorSummary `json:"Connectors,omitempty" name:"Connectors" list`
+		Connectors []*EisConnectorSummary `json:"Connectors,omitempty" name:"Connectors"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

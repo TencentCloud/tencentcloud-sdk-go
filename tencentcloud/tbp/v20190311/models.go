@@ -136,7 +136,7 @@ type ResetResponse struct {
 
 		// 语义解析的槽位结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 透传字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -241,7 +241,7 @@ type TextProcessResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -323,7 +323,7 @@ type TextResetResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。

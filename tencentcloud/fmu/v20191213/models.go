@@ -140,7 +140,7 @@ type BeautifyVideoRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
-	BeautyParam []*BeautyParam `json:"BeautyParam,omitempty" name:"BeautyParam" list`
+	BeautyParam []*BeautyParam `json:"BeautyParam,omitempty" name:"BeautyParam"`
 
 	// 目前只支持mp4
 	OutputVideoType *string `json:"OutputVideoType,omitempty" name:"OutputVideoType"`
@@ -407,7 +407,7 @@ type GetModelListResponse struct {
 
 		// 素材数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ModelInfos []*ModelInfo `json:"ModelInfos,omitempty" name:"ModelInfos" list`
+		ModelInfos []*ModelInfo `json:"ModelInfos,omitempty" name:"ModelInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -679,7 +679,7 @@ type TryLipstickPicRequest struct {
 
 	// 唇色信息。 
 	// 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
-	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitempty" name:"LipColorInfos" list`
+	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitempty" name:"LipColorInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过6M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。

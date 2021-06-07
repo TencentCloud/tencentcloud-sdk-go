@@ -133,7 +133,7 @@ type DescribeCertListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 列表。
-		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet" list`
+		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -227,7 +227,7 @@ type SSLCertificate struct {
 
 	// 证书包含的多个域名（包含主域名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称
 	// 注意：此字段可能返回 null，表示取不到有效值。

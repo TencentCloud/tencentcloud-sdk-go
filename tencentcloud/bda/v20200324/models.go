@@ -113,7 +113,7 @@ type BodyJointsResult struct {
 	BoundBox *BoundRect `json:"BoundBox,omitempty" name:"BoundBox"`
 
 	// 14个人体关键点的坐标，人体关键点详见KeyPointInfo。
-	BodyJoints []*KeyPointInfo `json:"BodyJoints,omitempty" name:"BodyJoints" list`
+	BodyJoints []*KeyPointInfo `json:"BodyJoints,omitempty" name:"BodyJoints"`
 
 	// 检测出的人体置信度，0-1之间，数值越高越准确。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -283,7 +283,7 @@ type CreatePersonResponse struct {
 		// 输入的人体轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
 	// RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
-		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails" list`
+		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -410,7 +410,7 @@ type CreateTraceResponse struct {
 
 		// 输入的人体轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
-		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails" list`
+		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -628,7 +628,7 @@ type DetectBodyJointsResponse struct {
 	Response *struct {
 
 		// 图中检测出的人体框和人体关键点， 包含14个人体关键点的坐标，建议根据人体框置信度筛选出合格的人体；
-		BodyJointsResults []*BodyJointsResult `json:"BodyJointsResults,omitempty" name:"BodyJointsResults" list`
+		BodyJointsResults []*BodyJointsResult `json:"BodyJointsResults,omitempty" name:"BodyJointsResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -703,7 +703,7 @@ type DetectBodyResponse struct {
 	Response *struct {
 
 		// 图中检测出来的人体框。
-		BodyDetectResults []*BodyDetectResult `json:"BodyDetectResults,omitempty" name:"BodyDetectResults" list`
+		BodyDetectResults []*BodyDetectResult `json:"BodyDetectResults,omitempty" name:"BodyDetectResults"`
 
 		// 人体识别所用的算法模型版本。
 		BodyModelVersion *string `json:"BodyModelVersion,omitempty" name:"BodyModelVersion"`
@@ -768,7 +768,7 @@ type GetGroupListResponse struct {
 	Response *struct {
 
 		// 返回的人体库信息。
-		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos" list`
+		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos"`
 
 		// 人体库总数量。
 		GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
@@ -828,7 +828,7 @@ type GetPersonListResponse struct {
 	Response *struct {
 
 		// 返回的人员信息。
-		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos" list`
+		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos"`
 
 		// 该人体库的人员数量。
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
@@ -1062,7 +1062,7 @@ type PersonInfo struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 包含的人体轨迹图片信息列表。
-	TraceInfos []*TraceInfo `json:"TraceInfos,omitempty" name:"TraceInfos" list`
+	TraceInfos []*TraceInfo `json:"TraceInfos,omitempty" name:"TraceInfos"`
 }
 
 type SearchTraceRequest struct {
@@ -1111,7 +1111,7 @@ type SearchTraceResponse struct {
 	Response *struct {
 
 		// 识别出的最相似候选人。
-		Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+		Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 
 		// 输入的人体轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
@@ -1120,7 +1120,7 @@ type SearchTraceResponse struct {
 
 		// 输入的人体轨迹图片中的合法性校验结果详情。 
 	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
-		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails" list`
+		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
 		// 人体识别所用的算法模型版本。
 		BodyModelVersion *string `json:"BodyModelVersion,omitempty" name:"BodyModelVersion"`
@@ -1194,7 +1194,7 @@ type SegmentCustomizedPortraitPicResponse struct {
 
 		// 坐标信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageRects []*ImageRect `json:"ImageRects,omitempty" name:"ImageRects" list`
+		ImageRects []*ImageRect `json:"ImageRects,omitempty" name:"ImageRects"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1393,7 +1393,7 @@ type Trace struct {
 	// 数组长度最小为1最大为5。 
 	// 单个图片 base64 编码后大小不可超过2M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 人体轨迹图片 Url 数组。 
 	// 数组长度最小为1最大为5。 
@@ -1402,13 +1402,13 @@ type Trace struct {
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 若输入的Images 和 Urls 是已经裁剪后的人体小图，则可以忽略本参数。 
 	// 若否，或图片中包含多个人体，则需要通过本参数来指定图片中的人体框。 
 	// 顺序对应 Images 或 Urls 中的顺序。  
 	// 当不输入本参数时，我们将认为输入图片已是经过裁剪后的人体小图，不会进行人体检测而直接进行特征提取处理。
-	BodyRects []*BodyRect `json:"BodyRects,omitempty" name:"BodyRects" list`
+	BodyRects []*BodyRect `json:"BodyRects,omitempty" name:"BodyRects"`
 }
 
 type TraceInfo struct {
@@ -1417,7 +1417,7 @@ type TraceInfo struct {
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 	// 包含的人体轨迹图片Id列表。
-	BodyIds []*string `json:"BodyIds,omitempty" name:"BodyIds" list`
+	BodyIds []*string `json:"BodyIds,omitempty" name:"BodyIds"`
 }
 
 type UpperBodyCloth struct {

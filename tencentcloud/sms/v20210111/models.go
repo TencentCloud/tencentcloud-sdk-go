@@ -440,7 +440,7 @@ type DescribeSmsSignListRequest struct {
 
 	// 签名 ID 数组。
 	// 注：默认数组最大长度100。
-	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet" list`
+	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
@@ -473,7 +473,7 @@ type DescribeSmsSignListResponse struct {
 	Response *struct {
 
 		// 获取签名信息响应
-		DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitempty" name:"DescribeSignListStatusSet" list`
+		DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitempty" name:"DescribeSignListStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -496,7 +496,7 @@ type DescribeSmsTemplateListRequest struct {
 
 	// 模板 ID 数组。
 	// 注：默认数组长度最大100。
-	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet" list`
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
@@ -529,7 +529,7 @@ type DescribeSmsTemplateListResponse struct {
 	Response *struct {
 
 		// 获取短信模板信息响应
-		DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet" list`
+		DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -834,7 +834,7 @@ type PullSmsReplyStatusByPhoneNumberResponse struct {
 	Response *struct {
 
 		// 回复状态响应集合。
-		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet" list`
+		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -887,7 +887,7 @@ type PullSmsReplyStatusResponse struct {
 	Response *struct {
 
 		// 回复状态响应集合。
-		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet" list`
+		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -982,7 +982,7 @@ type PullSmsSendStatusByPhoneNumberResponse struct {
 	Response *struct {
 
 		// 下发状态响应集合。
-		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet" list`
+		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1035,7 +1035,7 @@ type PullSmsSendStatusResponse struct {
 	Response *struct {
 
 		// 下发状态响应集合。
-		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet" list`
+		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1058,7 +1058,7 @@ type SendSmsRequest struct {
 
 	// 下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet" list`
+	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet"`
 
 	// 短信 SdkAppId，在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
 	SmsSdkAppId *string `json:"SmsSdkAppId,omitempty" name:"SmsSdkAppId"`
@@ -1071,7 +1071,7 @@ type SendSmsRequest struct {
 	SignName *string `json:"SignName,omitempty" name:"SignName"`
 
 	// 模板参数，若无模板参数，则设置为空。
-	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet" list`
+	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet"`
 
 	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
@@ -1115,7 +1115,7 @@ type SendSmsResponse struct {
 	Response *struct {
 
 		// 短信发送状态。
-		SendStatusSet []*SendStatus `json:"SendStatusSet,omitempty" name:"SendStatusSet" list`
+		SendStatusSet []*SendStatus `json:"SendStatusSet,omitempty" name:"SendStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1310,7 +1310,7 @@ type SmsPackagesStatisticsResponse struct {
 	Response *struct {
 
 		// 发送数据统计响应包体。
-		SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitempty" name:"SmsPackagesStatisticsSet" list`
+		SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitempty" name:"SmsPackagesStatisticsSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

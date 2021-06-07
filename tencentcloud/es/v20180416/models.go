@@ -83,7 +83,7 @@ type CreateInstanceRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表（目前仅支持指定一张代金券）
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 已废弃请使用NodeInfoList
 	// 是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
@@ -108,16 +108,16 @@ type CreateInstanceRequest struct {
 	DeployMode *uint64 `json:"DeployMode,omitempty" name:"DeployMode"`
 
 	// 多可用区部署时可用区的详细信息(DeployMode为1时必传)
-	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo"`
 
 	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
 
 	// 节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等
-	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList"`
 
 	// 节点标签信息列表
-	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList" list`
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
 
 	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`
@@ -309,7 +309,7 @@ type DescribeInstanceLogsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 日志详细信息列表
-		InstanceLogList []*InstanceLog `json:"InstanceLogList,omitempty" name:"InstanceLogList" list`
+		InstanceLogList []*InstanceLog `json:"InstanceLogList,omitempty" name:"InstanceLogList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -377,7 +377,7 @@ type DescribeInstanceOperationsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 操作记录
-		Operations []*Operation `json:"Operations,omitempty" name:"Operations" list`
+		Operations []*Operation `json:"Operations,omitempty" name:"Operations"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -402,10 +402,10 @@ type DescribeInstancesRequest struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 集群实例ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 集群实例名称列表
-	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
 
 	// 分页起始值, 默认值0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -420,10 +420,10 @@ type DescribeInstancesRequest struct {
 	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
 
 	// 节点标签信息列表
-	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList" list`
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
 
 	// 私有网络vip列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -461,7 +461,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息列表
-		InstanceList []*InstanceInfo `json:"InstanceList,omitempty" name:"InstanceList" list`
+		InstanceList []*InstanceInfo `json:"InstanceList,omitempty" name:"InstanceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -486,7 +486,7 @@ type DiagnoseInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 需要触发的诊断项
-	DiagnoseJobs []*string `json:"DiagnoseJobs,omitempty" name:"DiagnoseJobs" list`
+	DiagnoseJobs []*string `json:"DiagnoseJobs,omitempty" name:"DiagnoseJobs"`
 
 	// 需要诊断的索引，支持通配符
 	DiagnoseIndices *string `json:"DiagnoseIndices,omitempty" name:"DiagnoseIndices"`
@@ -548,25 +548,25 @@ type DictInfo struct {
 type EsAcl struct {
 
 	// kibana访问黑名单
-	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList" list`
+	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList"`
 
 	// kibana访问白名单
-	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList" list`
+	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList"`
 }
 
 type EsDictionaryInfo struct {
 
 	// 启用词词典列表
-	MainDict []*DictInfo `json:"MainDict,omitempty" name:"MainDict" list`
+	MainDict []*DictInfo `json:"MainDict,omitempty" name:"MainDict"`
 
 	// 停用词词典列表
-	Stopwords []*DictInfo `json:"Stopwords,omitempty" name:"Stopwords" list`
+	Stopwords []*DictInfo `json:"Stopwords,omitempty" name:"Stopwords"`
 
 	// QQ分词词典列表
-	QQDict []*DictInfo `json:"QQDict,omitempty" name:"QQDict" list`
+	QQDict []*DictInfo `json:"QQDict,omitempty" name:"QQDict"`
 
 	// 同义词词典列表
-	Synonym []*DictInfo `json:"Synonym,omitempty" name:"Synonym" list`
+	Synonym []*DictInfo `json:"Synonym,omitempty" name:"Synonym"`
 
 	// 更新词典类型
 	UpdateType *string `json:"UpdateType,omitempty" name:"UpdateType"`
@@ -575,10 +575,10 @@ type EsDictionaryInfo struct {
 type EsPublicAcl struct {
 
 	// 访问黑名单
-	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList" list`
+	BlackIpList []*string `json:"BlackIpList,omitempty" name:"BlackIpList"`
 
 	// 访问白名单
-	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList" list`
+	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList"`
 }
 
 type GetRequestTargetNodeTypesRequest struct {
@@ -612,7 +612,7 @@ type GetRequestTargetNodeTypesResponse struct {
 	Response *struct {
 
 		// 接收请求的目标节点类型列表
-		TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes" list`
+		TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -732,7 +732,7 @@ type InstanceInfo struct {
 	AllowCosBackup *bool `json:"AllowCosBackup,omitempty" name:"AllowCosBackup"`
 
 	// 实例拥有的标签列表
-	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList" list`
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
 
 	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
@@ -767,7 +767,7 @@ type InstanceInfo struct {
 
 	// 集群节点信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList"`
 
 	// Es公网地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -775,7 +775,7 @@ type InstanceInfo struct {
 
 	// 多可用区网络信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo"`
 
 	// 部署模式<li>0：单可用区</li><li>1：多可用区</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -922,7 +922,7 @@ type Operation struct {
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 流程任务信息
-	Tasks []*TaskDetail `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*TaskDetail `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 操作进度
 	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
@@ -931,10 +931,10 @@ type Operation struct {
 type OperationDetail struct {
 
 	// 实例原始配置信息
-	OldInfo []*KeyValue `json:"OldInfo,omitempty" name:"OldInfo" list`
+	OldInfo []*KeyValue `json:"OldInfo,omitempty" name:"OldInfo"`
 
 	// 实例更新后配置信息
-	NewInfo []*KeyValue `json:"NewInfo,omitempty" name:"NewInfo" list`
+	NewInfo []*KeyValue `json:"NewInfo,omitempty" name:"NewInfo"`
 }
 
 type RestartInstanceRequest struct {
@@ -1040,7 +1040,7 @@ type RestartNodesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 节点名称列表
-	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames" list`
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames"`
 
 	// 是否强制重启
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
@@ -1105,7 +1105,7 @@ type SubTaskDetail struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 升级检查失败的索引名
-	FailedIndices []*string `json:"FailedIndices,omitempty" name:"FailedIndices" list`
+	FailedIndices []*string `json:"FailedIndices,omitempty" name:"FailedIndices"`
 
 	// 子任务结束时间
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
@@ -1135,7 +1135,7 @@ type TaskDetail struct {
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
 	// 子任务
-	SubTasks []*SubTaskDetail `json:"SubTasks,omitempty" name:"SubTasks" list`
+	SubTasks []*SubTaskDetail `json:"SubTasks,omitempty" name:"SubTasks"`
 }
 
 type UpdateDiagnoseSettingsRequest struct {
@@ -1241,7 +1241,7 @@ type UpdateInstanceRequest struct {
 	CosBackup *CosBackup `json:"CosBackup,omitempty" name:"CosBackup"`
 
 	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
-	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList" list`
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList"`
 
 	// 公网访问状态
 	PublicAccess *string `json:"PublicAccess,omitempty" name:"PublicAccess"`
@@ -1265,7 +1265,7 @@ type UpdateInstanceRequest struct {
 	ScaleType *int64 `json:"ScaleType,omitempty" name:"ScaleType"`
 
 	// 多可用区部署
-	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo" list`
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitempty" name:"MultiZoneInfo"`
 
 	// 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
 	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
@@ -1343,10 +1343,10 @@ type UpdatePluginsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 需要安装的插件名列表
-	InstallPluginList []*string `json:"InstallPluginList,omitempty" name:"InstallPluginList" list`
+	InstallPluginList []*string `json:"InstallPluginList,omitempty" name:"InstallPluginList"`
 
 	// 需要卸载的插件名列表
-	RemovePluginList []*string `json:"RemovePluginList,omitempty" name:"RemovePluginList" list`
+	RemovePluginList []*string `json:"RemovePluginList,omitempty" name:"RemovePluginList"`
 
 	// 是否强制重启
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
@@ -1405,7 +1405,7 @@ type UpdateRequestTargetNodeTypesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 接收请求的目标节点类型列表
-	TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes" list`
+	TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes"`
 }
 
 func (r *UpdateRequestTargetNodeTypesRequest) ToJsonString() string {
@@ -1527,7 +1527,7 @@ type UpgradeLicenseRequest struct {
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表（目前仅支持指定一张代金券）
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitempty" name:"BasicSecurityType"`

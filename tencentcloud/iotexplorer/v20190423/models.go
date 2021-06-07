@@ -307,22 +307,22 @@ type CreateLoRaFrequencyRequest struct {
 	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
 
 	// 数据上行信道
-	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp"`
 
 	// 数据下行RX1信道
-	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1"`
 
 	// 数据下行RX2信道
-	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2"`
 
 	// 入网上行信道
-	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp"`
 
 	// 入网下行RX1信道
-	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1"`
 
 	// 入网下行RX2信道
-	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2"`
 
 	// 频点配置描述
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -994,7 +994,7 @@ type DescribeDeviceDataHistoryResponse struct {
 
 		// 历史数据结果数组，返回对应时间点及取值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results" list`
+		Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1800,7 +1800,7 @@ type GetDeviceListResponse struct {
 
 		// 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices"`
 
 		// 产品下的设备总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1865,7 +1865,7 @@ type GetLoRaGatewayListResponse struct {
 
 		// 返回详情项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Gateways []*LoRaGatewayItem `json:"Gateways,omitempty" name:"Gateways" list`
+		Gateways []*LoRaGatewayItem `json:"Gateways,omitempty" name:"Gateways"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1923,7 +1923,7 @@ type GetProjectListResponse struct {
 
 		// 项目列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Projects []*ProjectEntryEx `json:"Projects,omitempty" name:"Projects" list`
+		Projects []*ProjectEntryEx `json:"Projects,omitempty" name:"Projects"`
 
 		// 列表项个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1988,7 +1988,7 @@ type GetStudioProductListResponse struct {
 	Response *struct {
 
 		// 产品列表
-		Products []*ProductEntry `json:"Products,omitempty" name:"Products" list`
+		Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
 
 		// 产品数量
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -2047,7 +2047,7 @@ type GetTopicRuleListResponse struct {
 		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
 
 		// 规则列表
-		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2137,7 +2137,7 @@ type ListEventHistoryResponse struct {
 
 		// 搜集结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory" list`
+		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2168,7 +2168,7 @@ type ListFirmwaresRequest struct {
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
 	// 搜索过滤条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListFirmwaresRequest) ToJsonString() string {
@@ -2201,7 +2201,7 @@ type ListFirmwaresResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 固件列表
-		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares" list`
+		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2231,22 +2231,22 @@ type LoRaFrequencyEntry struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 数据上行信道
-	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp"`
 
 	// 数据下行信道RX1
-	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1"`
 
 	// 数据下行信道RX2
-	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2"`
 
 	// 入网上行信道
-	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp"`
 
 	// 入网下行RX1信道
-	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1"`
 
 	// 入网下行RX2信道
-	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2"`
 
 	// 创建时间
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -2316,22 +2316,22 @@ type ModifyLoRaFrequencyRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 数据上行信道
-	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp" list`
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp"`
 
 	// 数据下行信道RX1
-	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1" list`
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1"`
 
 	// 数据下行信道RX2
-	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2" list`
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2"`
 
 	// 入网上行信道
-	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp" list`
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp"`
 
 	// 入网下行信道RX1
-	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1" list`
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1"`
 
 	// 入网下行信道RX2
-	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2" list`
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2"`
 }
 
 func (r *ModifyLoRaFrequencyRequest) ToJsonString() string {
@@ -2976,7 +2976,7 @@ type SearchStudioProductResponse struct {
 	Response *struct {
 
 		// 产品列表
-		Products []*ProductEntry `json:"Products,omitempty" name:"Products" list`
+		Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
 
 		// 产品数量
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -3031,7 +3031,7 @@ type SearchTopicRuleResponse struct {
 		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
 
 		// 规则信息列表
-		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

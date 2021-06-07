@@ -674,7 +674,7 @@ type DetectInfoBestFrame struct {
 
 	// 自截帧。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BestFrames []*string `json:"BestFrames,omitempty" name:"BestFrames" list`
+	BestFrames []*string `json:"BestFrames,omitempty" name:"BestFrames"`
 }
 
 type DetectInfoIdCardData struct {
@@ -780,7 +780,7 @@ type DetectInfoText struct {
 
 	// 本次流程进行的活体一比一流水。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LivenessDetail []*DetectDetail `json:"LivenessDetail,omitempty" name:"LivenessDetail" list`
+	LivenessDetail []*DetectDetail `json:"LivenessDetail,omitempty" name:"LivenessDetail"`
 
 	// 手机号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -892,7 +892,7 @@ type Encryption struct {
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
-	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList" list`
+	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList"`
 
 	// 有加密需求的用户，传入CBC加密的初始向量
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
@@ -1865,14 +1865,14 @@ type LivenessCompareRequest struct {
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType,omitempty" name:"LivenessType"`
 
-	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
-	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
+	// 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+	// 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
 	// 静默模式传参：空。
 	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
 	// {
-	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
@@ -1919,7 +1919,7 @@ type LivenessCompareResponse struct {
 
 		// 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1954,14 +1954,14 @@ type LivenessRecognitionRequest struct {
 	// LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
 	LivenessType *string `json:"LivenessType,omitempty" name:"LivenessType"`
 
-	// 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
-	// 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
+	// 数字模式传参：传数字验证码，验证码需先调用<a href="https://cloud.tencent.com/document/product/1007/31821">获取数字验证码接口</a>得到；
+	// 动作模式传参：传动作顺序，动作顺序需先调用<a href="https://cloud.tencent.com/document/product/1007/31822">获取动作顺序接口</a>得到；
 	// 静默模式传参：空。
 	ValidateData *string `json:"ValidateData,omitempty" name:"ValidateData"`
 
 	// 额外配置，传入JSON字符串。
 	// {
-	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
+	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
 }
@@ -2009,7 +2009,7 @@ type LivenessRecognitionResponse struct {
 
 		// 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2088,7 +2088,7 @@ type LivenessResponse struct {
 
 		// 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList" list`
+		BestFrameList []*string `json:"BestFrameList,omitempty" name:"BestFrameList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2351,7 +2351,7 @@ type PhoneVerificationRequest struct {
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
 
 	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
-	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList" list`
+	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList"`
 
 	// 有加密需求的用户，传入CBC加密的初试向量
 	Iv *string `json:"Iv,omitempty" name:"Iv"`

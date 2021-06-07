@@ -124,7 +124,7 @@ func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
 type InputKolBspData struct {
 
 	// BspData
-	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList" list`
+	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList"`
 }
 
 type InputKolDataList struct {
@@ -157,7 +157,7 @@ type InputRecognizeTargetAudience struct {
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 
 	// 模型ID列表
-	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList" list`
+	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList"`
 
 	// 用户IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -271,7 +271,7 @@ type InputSendTrafficSecuritySmsMsg struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 手机号码列表（号码量<=200）
-	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles" list`
+	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles"`
 }
 
 type InputTaBspData struct {
@@ -364,7 +364,7 @@ type OutputKolData struct {
 
 	// 业务返回数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputKolValue `json:"Value,omitempty" name:"Value" list`
+	Value []*OutputKolValue `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputKolValue struct {
@@ -423,7 +423,7 @@ type OutputRecognizeTargetAudience struct {
 
 	// 返回模型结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitempty" name:"Value" list`
+	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputRecognizeTargetAudienceValue struct {
@@ -452,7 +452,7 @@ type OutputSendTrafficSecuritySmsMsg struct {
 
 	// 发送失败的号码列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputTaData struct {

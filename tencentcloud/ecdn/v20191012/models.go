@@ -58,7 +58,7 @@ type AddEcdnDomainRequest struct {
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
 	// 域名绑定的标签
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// WebSocket配置
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
@@ -118,7 +118,7 @@ func (r *AddEcdnDomainResponse) FromJsonString(s string) error {
 type Cache struct {
 
 	// 缓存配置规则数组。
-	CacheRules []*CacheRule `json:"CacheRules,omitempty" name:"CacheRules" list`
+	CacheRules []*CacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 
 	// 遵循源站 Cache-Control: max-age 配置，白名单功能。
 	// on：开启
@@ -140,7 +140,7 @@ type CacheRule struct {
 	CacheType *string `json:"CacheType,omitempty" name:"CacheType"`
 
 	// 缓存内容列表。
-	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents" list`
+	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents"`
 
 	// 缓存时间，单位秒。
 	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
@@ -276,7 +276,7 @@ type DescribeDomainsConfigRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器。
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询结果排序规则。
 	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
@@ -309,7 +309,7 @@ type DescribeDomainsConfigResponse struct {
 	Response *struct {
 
 		// 域名列表。
-		Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains"`
 
 		// 符合查询条件的域名总数，用于分页查询。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -340,7 +340,7 @@ type DescribeDomainsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器。
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -369,7 +369,7 @@ type DescribeDomainsResponse struct {
 	Response *struct {
 
 		// 域名信息列表。
-		Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains"`
 
 		// 域名总个数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -438,7 +438,7 @@ type DescribeEcdnDomainLogsResponse struct {
 
 		// 日志链接列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs" list`
+		DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs"`
 
 		// 日志链接总条数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -474,14 +474,14 @@ type DescribeEcdnDomainStatisticsRequest struct {
 	// flux：流量，单位为 byte
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 指定查询域名列表
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Projects []*int64 `json:"Projects,omitempty" name:"Projects" list`
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
 
 	// 列表分页起始地址，默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -528,7 +528,7 @@ type DescribeEcdnDomainStatisticsResponse struct {
 	Response *struct {
 
 		// 域名数据
-		Data []*DomainData `json:"Data,omitempty" name:"Data" list`
+		Data []*DomainData `json:"Data,omitempty" name:"Data"`
 
 		// 数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -566,7 +566,7 @@ type DescribeEcdnStatisticsRequest struct {
 	// 3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
 	// 4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
 	// 5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 时间粒度，支持以下几种模式：
 	// 1 天	 1，5，15，30，60，120，240，1440 
@@ -578,11 +578,11 @@ type DescribeEcdnStatisticsRequest struct {
 	// 指定查询域名列表
 	// 
 	// 最多可一次性查询30个加速域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Projects []*int64 `json:"Projects,omitempty" name:"Projects" list`
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
 
 	// 统计区域:
 	// mainland: 境内
@@ -622,7 +622,7 @@ type DescribeEcdnStatisticsResponse struct {
 	Response *struct {
 
 		// 指定条件查询得到的数据明细
-		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -678,7 +678,7 @@ type DescribeIpStatusResponse struct {
 	Response *struct {
 
 		// 节点列表
-		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips" list`
+		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips"`
 
 		// 节点总个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -806,7 +806,7 @@ type DescribePurgeTasksResponse struct {
 	Response *struct {
 
 		// 刷新历史记录。
-		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs" list`
+		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs"`
 
 		// 任务总数，用于分页。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -881,7 +881,7 @@ type DomainData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 结果详情
-	DetailData []*DetailData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*DetailData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
 type DomainDetailInfo struct {
@@ -956,7 +956,7 @@ type DomainDetailInfo struct {
 
 	// 域名标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// WebSocket配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -976,10 +976,11 @@ type DomainFilter struct {
 	// - https：是否配置https，on，off或processing。
 	// - originPullProtocol：回源协议类型，支持http，follow或https。
 	// - area：加速区域，支持mainland，overseas或global。
+	// - tagKey：标签键。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 
 	// 是否启用模糊查询，仅支持过滤字段名为origin，domain。
 	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
@@ -1000,10 +1001,10 @@ type DomainLogs struct {
 type EcdnData struct {
 
 	// 查询指定的指标名称：Bandwidth，Flux，Request，Delay，状态码，LogBandwidth，LogFlux，LogRequest
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 明细数据组合
-	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
 type ForceRedirect struct {
@@ -1056,7 +1057,7 @@ type HttpHeaderPathRule struct {
 
 	// url路径或文件类型列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 }
 
 type Https struct {
@@ -1109,7 +1110,7 @@ type IpFilter struct {
 
 	// IP黑白名单列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 }
 
 type IpFreqLimit struct {
@@ -1148,7 +1149,7 @@ type IpStatus struct {
 type Origin struct {
 
 	// 主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
-	Origins []*string `json:"Origins,omitempty" name:"Origins" list`
+	Origins []*string `json:"Origins,omitempty" name:"Origins"`
 
 	// 主源站类型，支持domain，ip，分别表示域名源站，ip源站。
 	// 设置Origins时必须填写。
@@ -1165,7 +1166,7 @@ type Origin struct {
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 
 	// 备份源站列表。
-	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins" list`
+	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins"`
 
 	// 备份源站类型，同OriginType。
 	// 设置BackupOrigins时必须填写。
@@ -1177,7 +1178,7 @@ type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 要刷新的目录列表，必须包含协议头部。
-	Paths []*string `json:"Paths,omitempty" name:"Paths" list`
+	Paths []*string `json:"Paths,omitempty" name:"Paths"`
 
 	// 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
@@ -1251,7 +1252,7 @@ type PurgeUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 要刷新的Url列表，必须包含协议头部。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *PurgeUrlsCacheRequest) ToJsonString() string {
@@ -1328,7 +1329,7 @@ type ResponseHeader struct {
 
 	// 自定义响应头规则数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules" list`
+	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules"`
 }
 
 type ServerCert struct {
@@ -1483,7 +1484,7 @@ type TimestampData struct {
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 数据值
-	Value []*float64 `json:"Value,omitempty" name:"Value" list`
+	Value []*float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type UpdateDomainConfigRequest struct {

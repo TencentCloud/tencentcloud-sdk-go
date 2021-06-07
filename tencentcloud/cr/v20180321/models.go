@@ -31,7 +31,7 @@ type ApplyBlackListDataRequest struct {
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*BlackListData `json:"BlackList,omitempty" name:"BlackList" list`
+	BlackList []*BlackListData `json:"BlackList,omitempty" name:"BlackList"`
 }
 
 func (r *ApplyBlackListDataRequest) ToJsonString() string {
@@ -85,7 +85,7 @@ type ApplyBlackListRequest struct {
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList" list`
+	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList"`
 
 	// 实例ID，不传默认为系统分配的初始实例
 	InstId *string `json:"InstId,omitempty" name:"InstId"`
@@ -252,7 +252,7 @@ type BotFlow struct {
 	BotFlowName *string `json:"BotFlowName,omitempty" name:"BotFlowName"`
 
 	// 号码组信息列表
-	PhonePoolList []*PhonePool `json:"PhonePoolList,omitempty" name:"PhonePoolList" list`
+	PhonePoolList []*PhonePool `json:"PhonePoolList,omitempty" name:"PhonePoolList"`
 }
 
 type BotInfo struct {
@@ -609,15 +609,15 @@ type DescribeBotFlowResponse struct {
 
 		// 机器人对话流列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BotFlowList []*BotFlow `json:"BotFlowList,omitempty" name:"BotFlowList" list`
+		BotFlowList []*BotFlow `json:"BotFlowList,omitempty" name:"BotFlowList"`
 
 		// 短信签名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SmsSignList []*SmsSign `json:"SmsSignList,omitempty" name:"SmsSignList" list`
+		SmsSignList []*SmsSign `json:"SmsSignList,omitempty" name:"SmsSignList"`
 
 		// 短信模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SmsTemplateList []*SmsTemplate `json:"SmsTemplateList,omitempty" name:"SmsTemplateList" list`
+		SmsTemplateList []*SmsTemplate `json:"SmsTemplateList,omitempty" name:"SmsTemplateList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -855,7 +855,7 @@ type DescribeRecordsResponse struct {
 
 		// 录音列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RecordList []*SingleRecord `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*SingleRecord `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 录音总量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1255,7 +1255,7 @@ type ExportBotDataResponse struct {
 	Response *struct {
 
 		// 导出文件列表
-		Data []*BotFileData `json:"Data,omitempty" name:"Data" list`
+		Data []*BotFileData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1362,7 +1362,7 @@ type QueryBlackListDataResponse struct {
 
 		// 黑名单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*BlackListData `json:"Data,omitempty" name:"Data" list`
+		Data []*BlackListData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1415,7 +1415,7 @@ type QueryBotListResponse struct {
 	Response *struct {
 
 		// 任务列表。
-		BotList []*BotInfo `json:"BotList,omitempty" name:"BotList" list`
+		BotList []*BotInfo `json:"BotList,omitempty" name:"BotList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1485,7 +1485,7 @@ type QueryCallListResponse struct {
 
 		// 任务作业状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CallList []*CallInfo `json:"CallList,omitempty" name:"CallList" list`
+		CallList []*CallInfo `json:"CallList,omitempty" name:"CallList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1616,7 +1616,7 @@ type QueryProductsResponse struct {
 	Response *struct {
 
 		// 产品信息。
-		ProductList []*ProductQueryInfo `json:"ProductList,omitempty" name:"ProductList" list`
+		ProductList []*ProductQueryInfo `json:"ProductList,omitempty" name:"ProductList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1697,7 +1697,7 @@ type QueryRecordListResponse struct {
 	Response *struct {
 
 		// 录音列表。
-		RecordList []*RecordInfo `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*RecordInfo `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`

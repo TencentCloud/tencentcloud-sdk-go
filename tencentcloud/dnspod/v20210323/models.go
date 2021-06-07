@@ -166,7 +166,7 @@ type CreateDomainBatchDetail struct {
 
 	// 见RecordInfoBatch
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordList []*CreateDomainBatchRecord `json:"RecordList,omitempty" name:"RecordList" list`
+	RecordList []*CreateDomainBatchRecord `json:"RecordList,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -234,7 +234,7 @@ type CreateDomainBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 域名数组
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 
 	// 每个域名添加 @ 和 www 的 A 记录值，记录值为IP，如果不传此参数或者传空，将只添加域名，不添加记录。
 	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
@@ -265,7 +265,7 @@ type CreateDomainBatchResponse struct {
 	Response *struct {
 
 		// 批量添加域名信息
-		DetailList []*CreateDomainBatchDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*CreateDomainBatchDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 批量任务的ID
 		JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
@@ -396,7 +396,7 @@ type CreateRecordBatchDetail struct {
 
 	// 见RecordInfoBatch
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordList []*CreateRecordBatchRecord `json:"RecordList,omitempty" name:"RecordList" list`
+	RecordList []*CreateRecordBatchRecord `json:"RecordList,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -472,10 +472,10 @@ type CreateRecordBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 域名ID，多个 domain_id 用英文逗号进行分割。
-	DomainIdList []*string `json:"DomainIdList,omitempty" name:"DomainIdList" list`
+	DomainIdList []*string `json:"DomainIdList,omitempty" name:"DomainIdList"`
 
 	// 记录数组
-	RecordList []*AddRecordBatch `json:"RecordList,omitempty" name:"RecordList" list`
+	RecordList []*AddRecordBatch `json:"RecordList,omitempty" name:"RecordList"`
 }
 
 func (r *CreateRecordBatchRequest) ToJsonString() string {
@@ -503,7 +503,7 @@ type CreateRecordBatchResponse struct {
 	Response *struct {
 
 		// 批量添加域名信息
-		DetailList []*CreateRecordBatchDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*CreateRecordBatchDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 批量任务的ID
 		JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
@@ -829,7 +829,7 @@ type DescribeBatchTaskDetail struct {
 
 	// 见BatchRecordInfo
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordList []*BatchRecordInfo `json:"RecordList,omitempty" name:"RecordList" list`
+	RecordList []*BatchRecordInfo `json:"RecordList,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -890,7 +890,7 @@ type DescribeBatchTaskResponse struct {
 	Response *struct {
 
 		// 批量任务详情
-		DetailList []*DescribeBatchTaskDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*DescribeBatchTaskDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 总任务条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -973,7 +973,7 @@ type DescribeDomainListResponse struct {
 		DomainCountInfo *DomainCountInfo `json:"DomainCountInfo,omitempty" name:"DomainCountInfo"`
 
 		// 域名列表
-		DomainList []*DomainListItem `json:"DomainList,omitempty" name:"DomainList" list`
+		DomainList []*DomainListItem `json:"DomainList,omitempty" name:"DomainList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1035,7 +1035,7 @@ type DescribeDomainLogListResponse struct {
 
 		// 域名信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LogList []*string `json:"LogList,omitempty" name:"LogList" list`
+		LogList []*string `json:"LogList,omitempty" name:"LogList"`
 
 		// 分页大小
 		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
@@ -1094,7 +1094,7 @@ type DescribeDomainPurviewResponse struct {
 	Response *struct {
 
 		// 域名权限列表
-		PurviewList []*PurviewInfo `json:"PurviewList,omitempty" name:"PurviewList" list`
+		PurviewList []*PurviewInfo `json:"PurviewList,omitempty" name:"PurviewList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1200,7 +1200,7 @@ type DescribeDomainShareInfoResponse struct {
 	Response *struct {
 
 		// 域名共享信息
-		ShareList []*DomainShareInfo `json:"ShareList,omitempty" name:"ShareList" list`
+		ShareList []*DomainShareInfo `json:"ShareList,omitempty" name:"ShareList"`
 
 		// 域名拥有者账号
 		Owner *string `json:"Owner,omitempty" name:"Owner"`
@@ -1262,10 +1262,10 @@ type DescribeRecordLineListResponse struct {
 	Response *struct {
 
 		// 线路列表。
-		LineList []*LineInfo `json:"LineList,omitempty" name:"LineList" list`
+		LineList []*LineInfo `json:"LineList,omitempty" name:"LineList"`
 
 		// 线路分组列表。
-		LineGroupList []*LineGroupInfo `json:"LineGroupList,omitempty" name:"LineGroupList" list`
+		LineGroupList []*LineGroupInfo `json:"LineGroupList,omitempty" name:"LineGroupList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1361,7 +1361,7 @@ type DescribeRecordListResponse struct {
 		RecordCountInfo *RecordCountInfo `json:"RecordCountInfo,omitempty" name:"RecordCountInfo"`
 
 		// 获取的记录列表
-		RecordList []*RecordListItem `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*RecordListItem `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1469,7 +1469,7 @@ type DescribeRecordTypeResponse struct {
 	Response *struct {
 
 		// 记录类型列表
-		TypeList []*string `json:"TypeList,omitempty" name:"TypeList" list`
+		TypeList []*string `json:"TypeList,omitempty" name:"TypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1583,7 +1583,7 @@ type DomainCreateInfo struct {
 	Punycode *string `json:"Punycode,omitempty" name:"Punycode"`
 
 	// 域名的NS列表
-	GradeNsList []*string `json:"GradeNsList,omitempty" name:"GradeNsList" list`
+	GradeNsList []*string `json:"GradeNsList,omitempty" name:"GradeNsList"`
 }
 
 type DomainInfo struct {
@@ -1620,7 +1620,7 @@ type DomainInfo struct {
 	DnsStatus *string `json:"DnsStatus,omitempty" name:"DnsStatus"`
 
 	// 域名的NS列表
-	DnspodNsList []*string `json:"DnspodNsList,omitempty" name:"DnspodNsList" list`
+	DnspodNsList []*string `json:"DnspodNsList,omitempty" name:"DnspodNsList"`
 
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -1651,7 +1651,7 @@ type DomainInfo struct {
 
 	// 域名实际使用的NS列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActualNsList []*string `json:"ActualNsList,omitempty" name:"ActualNsList" list`
+	ActualNsList []*string `json:"ActualNsList,omitempty" name:"ActualNsList"`
 
 	// 域名的记录数量
 	RecordCount *uint64 `json:"RecordCount,omitempty" name:"RecordCount"`
@@ -1697,7 +1697,7 @@ type DomainListItem struct {
 	Punycode *string `json:"Punycode,omitempty" name:"Punycode"`
 
 	// 系统为域名分配的有效DNS
-	EffectiveDNS []*string `json:"EffectiveDNS,omitempty" name:"EffectiveDNS" list`
+	EffectiveDNS []*string `json:"EffectiveDNS,omitempty" name:"EffectiveDNS"`
 
 	// 域名套餐等级对应的序号
 	GradeLevel *uint64 `json:"GradeLevel,omitempty" name:"GradeLevel"`
@@ -1754,7 +1754,7 @@ type LineGroupInfo struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 线路分组包含的线路列表
-	LineList []*string `json:"LineList,omitempty" name:"LineList" list`
+	LineList []*string `json:"LineList,omitempty" name:"LineList"`
 }
 
 type LineInfo struct {
@@ -2128,7 +2128,7 @@ type ModifyRecordBatchDetail struct {
 
 	// 见RecordInfoBatchModify
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordList []*BatchRecordInfo `json:"RecordList,omitempty" name:"RecordList" list`
+	RecordList []*BatchRecordInfo `json:"RecordList,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -2162,7 +2162,7 @@ type ModifyRecordBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 记录ID数组
-	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList" list`
+	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList"`
 
 	// 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
 	Change *string `json:"Change,omitempty" name:"Change"`
@@ -2208,7 +2208,7 @@ type ModifyRecordBatchResponse struct {
 		JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
 
 		// 见modifyRecordBatchDetail
-		DetailList []*ModifyRecordBatchDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*ModifyRecordBatchDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

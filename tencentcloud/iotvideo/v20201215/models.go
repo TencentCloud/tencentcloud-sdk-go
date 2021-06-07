@@ -102,7 +102,7 @@ type BatchUpdateFirmwareRequest struct {
 	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
 
 	// 需要升级的设备名称列表
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 }
 
 func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
@@ -295,7 +295,7 @@ type CloudStorageEvent struct {
 type CloudStorageTimeData struct {
 
 	// 云存时间轴信息列表
-	TimeList []*CloudStorageTimeInfo `json:"TimeList,omitempty" name:"TimeList" list`
+	TimeList []*CloudStorageTimeInfo `json:"TimeList,omitempty" name:"TimeList"`
 
 	// 播放地址
 	VideoURL *string `json:"VideoURL,omitempty" name:"VideoURL"`
@@ -570,7 +570,7 @@ type CreateProductRequest struct {
 	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
 
 	// 设备功能码
-	Features []*string `json:"Features,omitempty" name:"Features" list`
+	Features []*string `json:"Features,omitempty" name:"Features"`
 
 	// 设备操作系统
 	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
@@ -1004,7 +1004,7 @@ type DescribeBalanceTransactionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 账户流水详情数组。
-		Transactions []*BalanceTransaction `json:"Transactions,omitempty" name:"Transactions" list`
+		Transactions []*BalanceTransaction `json:"Transactions,omitempty" name:"Transactions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1113,7 +1113,7 @@ type DescribeBatchsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 批次列表详情
-		Data []*VideoBatch `json:"Data,omitempty" name:"Data" list`
+		Data []*VideoBatch `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1215,7 +1215,7 @@ type DescribeCloudStorageDateResponse struct {
 	Response *struct {
 
 		// 云存日期数组，["2021-01-05","2021-01-06"]
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1288,7 +1288,7 @@ type DescribeCloudStorageEventsResponse struct {
 	Response *struct {
 
 		// 云存事件列表
-		Events []*CloudStorageEvent `json:"Events,omitempty" name:"Events" list`
+		Events []*CloudStorageEvent `json:"Events,omitempty" name:"Events"`
 
 		// 请求上下文, 用作查询游标
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -1553,7 +1553,7 @@ type DescribeDeviceActionHistoryResponse struct {
 
 		// 动作历史
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ActionHistories []*ActionHistory `json:"ActionHistories,omitempty" name:"ActionHistories" list`
+		ActionHistories []*ActionHistory `json:"ActionHistories,omitempty" name:"ActionHistories"`
 
 		// 用于标识查询结果的上下文，翻页用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1640,7 +1640,7 @@ type DescribeDeviceCommLogResponse struct {
 		Context *string `json:"Context,omitempty" name:"Context"`
 
 		// 日志数据结果数组，返回对应时间点及取值。
-		Results []*DeviceCommLogItem `json:"Results,omitempty" name:"Results" list`
+		Results []*DeviceCommLogItem `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1677,7 +1677,7 @@ type DescribeDeviceDataHistoryRequest struct {
 	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
 
 	// 返回条数
-	Limit []*uint64 `json:"Limit,omitempty" name:"Limit" list`
+	Limit []*uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 检索上下文
 	Context *string `json:"Context,omitempty" name:"Context"`
@@ -1726,7 +1726,7 @@ type DescribeDeviceDataHistoryResponse struct {
 
 		// 历史数据结果数组，返回对应时间点及取值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results" list`
+		Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1869,7 +1869,7 @@ type DescribeDeviceEventHistoryResponse struct {
 
 		// 搜集结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory" list`
+		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2001,7 +2001,7 @@ type DescribeDevicesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 设备详细信息列表
-		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2104,7 +2104,7 @@ type DescribeFirmwareTaskDevicesRequest struct {
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
 
 	// 筛选条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2145,7 +2145,7 @@ type DescribeFirmwareTaskDevicesResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 固件升级任务的设备列表
-		Devices []*DeviceUpdateStatus `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceUpdateStatus `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2202,7 +2202,7 @@ type DescribeFirmwareTaskDistributionResponse struct {
 	Response *struct {
 
 		// 固件升级任务状态分布信息
-		StatusInfos []*StatusStatistic `json:"StatusInfos,omitempty" name:"StatusInfos" list`
+		StatusInfos []*StatusStatistic `json:"StatusInfos,omitempty" name:"StatusInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2384,7 +2384,7 @@ type DescribeFirmwareTasksRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索过滤条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeFirmwareTasksRequest) ToJsonString() string {
@@ -2416,7 +2416,7 @@ type DescribeFirmwareTasksResponse struct {
 
 		// 固件升级任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 固件升级任务总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2668,7 +2668,7 @@ type DescribeProductsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 产品详情列表
-		Data []*VideoProduct `json:"Data,omitempty" name:"Data" list`
+		Data []*VideoProduct `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2973,7 +2973,7 @@ type GetAllFirmwareVersionResponse struct {
 	Response *struct {
 
 		// 无
-		Version []*string `json:"Version,omitempty" name:"Version" list`
+		Version []*string `json:"Version,omitempty" name:"Version"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3107,7 +3107,7 @@ type ListFirmwaresRequest struct {
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
 	// 搜索过滤条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListFirmwaresRequest) ToJsonString() string {
@@ -3140,7 +3140,7 @@ type ListFirmwaresResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 固件列表
-		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares" list`
+		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3830,7 +3830,7 @@ type VideoProduct struct {
 	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
 	// 设备功能码
-	Features []*string `json:"Features,omitempty" name:"Features" list`
+	Features []*string `json:"Features,omitempty" name:"Features"`
 
 	// 操作系统
 	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`

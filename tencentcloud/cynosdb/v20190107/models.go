@@ -120,15 +120,15 @@ type AddInstancesResponse struct {
 
 		// 后付费订单号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 发货资源id列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 大订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
+		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -191,7 +191,7 @@ type BillingResourceInfo struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 实例ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type ClusterInstanceDetail struct {
@@ -311,7 +311,7 @@ type CreateClustersRequest struct {
 	OrderSource *string `json:"OrderSource,omitempty" name:"OrderSource"`
 
 	// 集群创建需要绑定的tag数组信息
-	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// Db类型
 	// 当DbType为MYSQL时可选(默认NORMAL)：
@@ -399,19 +399,19 @@ type CreateClustersResponse struct {
 
 		// 订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 资源ID列表（异步发货可能无法返回该字段, 强烈建议使用dealNames字段查询接口DescribeResourcesByDealName获取异步发货的资源ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 集群ID列表（异步发货可能不返回该字段, 强烈建议使用dealNames查询接口DescribeResourcesByDealName获取异步发货的集群ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+		ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
 		// 大订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
+		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -504,10 +504,10 @@ type CynosdbCluster struct {
 	ProcessingTask *string `json:"ProcessingTask,omitempty" name:"ProcessingTask"`
 
 	// 集群的任务数组
-	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 集群绑定的tag数组
-	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// Db类型(NORMAL, SERVERLESS)
 	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
@@ -563,10 +563,10 @@ type CynosdbClusterDetail struct {
 	UsedStorage *int64 `json:"UsedStorage,omitempty" name:"UsedStorage"`
 
 	// 读写分离Vport
-	RoAddr []*Addr `json:"RoAddr,omitempty" name:"RoAddr" list`
+	RoAddr []*Addr `json:"RoAddr,omitempty" name:"RoAddr"`
 
 	// 实例信息
-	InstanceSet []*ClusterInstanceDetail `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+	InstanceSet []*ClusterInstanceDetail `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 	// 付费模式
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
@@ -587,7 +587,7 @@ type CynosdbClusterDetail struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 实例绑定的tag数组信息
-	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
 	// resume
@@ -863,7 +863,7 @@ type CynosdbInstanceGrp struct {
 	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
 
 	// 实例组包含实例信息
-	InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+	InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet"`
 }
 
 type DescribeAccountsRequest struct {
@@ -873,7 +873,7 @@ type DescribeAccountsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 需要过滤的账户列表
-	AccountNames []*string `json:"AccountNames,omitempty" name:"AccountNames" list`
+	AccountNames []*string `json:"AccountNames,omitempty" name:"AccountNames"`
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
@@ -906,7 +906,7 @@ type DescribeAccountsResponse struct {
 	Response *struct {
 
 		// 数据库账号列表
-		AccountSet []*Account `json:"AccountSet,omitempty" name:"AccountSet" list`
+		AccountSet []*Account `json:"AccountSet,omitempty" name:"AccountSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -965,7 +965,7 @@ type DescribeBackupConfigResponse struct {
 
 		// 备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq" list`
+		BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq"`
 
 		// 备份方式，logic-逻辑备份，snapshot-快照备份
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1029,7 +1029,7 @@ type DescribeBackupListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 备份文件列表
-		BackupList []*BackupFileInfo `json:"BackupList,omitempty" name:"BackupList" list`
+		BackupList []*BackupFileInfo `json:"BackupList,omitempty" name:"BackupList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1130,7 +1130,7 @@ type DescribeClusterInstanceGrpsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例组列表
-		InstanceGrpInfoList []*CynosdbInstanceGrp `json:"InstanceGrpInfoList,omitempty" name:"InstanceGrpInfoList" list`
+		InstanceGrpInfoList []*CynosdbInstanceGrp `json:"InstanceGrpInfoList,omitempty" name:"InstanceGrpInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1171,7 +1171,7 @@ type DescribeClustersRequest struct {
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
 	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
-	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -1206,7 +1206,7 @@ type DescribeClustersResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 集群列表
-		ClusterSet []*CynosdbCluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+		ClusterSet []*CynosdbCluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1255,7 +1255,7 @@ type DescribeDBSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组信息
-		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1354,7 +1354,7 @@ type DescribeInstanceSpecsResponse struct {
 	Response *struct {
 
 		// 规格信息
-		InstanceSpecSet []*InstanceSpec `json:"InstanceSpecSet,omitempty" name:"InstanceSpecSet" list`
+		InstanceSpecSet []*InstanceSpec `json:"InstanceSpecSet,omitempty" name:"InstanceSpecSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1392,7 +1392,7 @@ type DescribeInstancesRequest struct {
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
 	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
-	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
@@ -1401,7 +1401,7 @@ type DescribeInstancesRequest struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 实例id列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -1438,7 +1438,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例列表
-		InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+		InstanceSet []*CynosdbInstance `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1487,7 +1487,7 @@ type DescribeMaintainPeriodResponse struct {
 	Response *struct {
 
 		// 维护week days
-		MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays" list`
+		MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays"`
 
 		// 维护开始时间，单位秒
 		MaintainStartTime *int64 `json:"MaintainStartTime,omitempty" name:"MaintainStartTime"`
@@ -1542,7 +1542,7 @@ type DescribeProjectSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组详情
-		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1591,7 +1591,7 @@ type DescribeResourcesByDealNameResponse struct {
 	Response *struct {
 
 		// 计费资源id信息数组
-		BillingResourceInfos []*BillingResourceInfo `json:"BillingResourceInfos,omitempty" name:"BillingResourceInfos" list`
+		BillingResourceInfos []*BillingResourceInfo `json:"BillingResourceInfos,omitempty" name:"BillingResourceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1783,7 +1783,7 @@ type IsolateClusterResponse struct {
 
 		// 退款订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1808,7 +1808,7 @@ type IsolateInstanceRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 实例ID数组
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
@@ -1845,7 +1845,7 @@ type IsolateInstanceResponse struct {
 
 		// 隔离实例的订单id（预付费实例）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1879,7 +1879,7 @@ type ModifyBackupConfigRequest struct {
 	ReserveDuration *uint64 `json:"ReserveDuration,omitempty" name:"ReserveDuration"`
 
 	// 备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
-	BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq" list`
+	BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq"`
 
 	// 备份方式，logic-逻辑备份，snapshot-快照备份
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
@@ -1936,7 +1936,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -1996,7 +1996,7 @@ type ModifyMaintainPeriodConfigRequest struct {
 	MaintainDuration *int64 `json:"MaintainDuration,omitempty" name:"MaintainDuration"`
 
 	// 每周维护日期
-	MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays" list`
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays"`
 }
 
 func (r *ModifyMaintainPeriodConfigRequest) ToJsonString() string {
@@ -2120,7 +2120,7 @@ type OfflineInstanceRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 实例ID数组
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 func (r *OfflineInstanceRequest) ToJsonString() string {
@@ -2196,10 +2196,10 @@ type PolicyRule struct {
 type QueryFilter struct {
 
 	// 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 搜索字符串
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 
 	// 是否精确匹配
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
@@ -2217,10 +2217,10 @@ type SecurityGroup struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 入站规则
-	Inbound []*PolicyRule `json:"Inbound,omitempty" name:"Inbound" list`
+	Inbound []*PolicyRule `json:"Inbound,omitempty" name:"Inbound"`
 
 	// 出站规则
-	Outbound []*PolicyRule `json:"Outbound,omitempty" name:"Outbound" list`
+	Outbound []*PolicyRule `json:"Outbound,omitempty" name:"Outbound"`
 
 	// 安全组ID
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
@@ -2236,7 +2236,7 @@ type SetRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
 	// 需操作的实例ID
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 自动续费标志位
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
@@ -2355,10 +2355,10 @@ type UpgradeInstanceResponse struct {
 
 		// 大订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
+		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 
 		// 订单号
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

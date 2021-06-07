@@ -125,7 +125,7 @@ type ClearTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待清理表信息列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *ClearTablesRequest) ToJsonString() string {
@@ -156,7 +156,7 @@ type ClearTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 清除表结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -245,18 +245,18 @@ type ClusterInfo struct {
 
 	// 独占server机器信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerList []*ServerDetailInfo `json:"ServerList,omitempty" name:"ServerList" list`
+	ServerList []*ServerDetailInfo `json:"ServerList,omitempty" name:"ServerList"`
 
 	// 独占proxy机器信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyList []*ProxyDetailInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+	ProxyList []*ProxyDetailInfo `json:"ProxyList,omitempty" name:"ProxyList"`
 
 	// 是否开启审核 0-不开启 1-开启
 	Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
 
 	// 审批人uin列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbaUins []*string `json:"DbaUins,omitempty" name:"DbaUins" list`
+	DbaUins []*string `json:"DbaUins,omitempty" name:"DbaUins"`
 }
 
 type CompareIdlFilesRequest struct {
@@ -266,13 +266,13 @@ type CompareIdlFilesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待修改表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 选中的已上传IDL文件列表，与NewIdlFiles必选其一
-	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles" list`
+	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles"`
 
 	// 本次上传IDL文件列表，与ExistingIdlFiles必选其一
-	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles" list`
+	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles"`
 }
 
 func (r *CompareIdlFilesRequest) ToJsonString() string {
@@ -302,13 +302,13 @@ type CompareIdlFilesResponse struct {
 	Response *struct {
 
 		// 本次上传校验所有的IDL文件信息列表
-		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 
 		// 本次校验合法的表格数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
-		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
+		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -360,7 +360,7 @@ type CreateBackupRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待创建备份表信息列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -393,11 +393,11 @@ type CreateBackupResponse struct {
 
 		// 创建的备份任务ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+		TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 		// 创建的备份申请ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApplicationIds []*string `json:"ApplicationIds,omitempty" name:"ApplicationIds" list`
+		ApplicationIds []*string `json:"ApplicationIds,omitempty" name:"ApplicationIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -434,16 +434,16 @@ type CreateClusterRequest struct {
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 集群标签列表
-	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// 集群是否开启IPv6功能
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitempty" name:"Ipv6Enable"`
 
 	// 独占集群占用的svr机器
-	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList"`
 
 	// 独占集群占用的proxy机器
-	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList"`
 
 	// 集群类型1共享2独占
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
@@ -507,7 +507,7 @@ type CreateSnapshotsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 快照列表
-	SelectedTables []*SnapshotInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SnapshotInfo `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *CreateSnapshotsRequest) ToJsonString() string {
@@ -538,7 +538,7 @@ type CreateSnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 批量创建的快照结果列表
-		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -569,7 +569,7 @@ type CreateTableGroupRequest struct {
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 表格组标签列表
-	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateTableGroupRequest) ToJsonString() string {
@@ -624,13 +624,13 @@ type CreateTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 用户选定的建表格IDL文件列表
-	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 
 	// 待创建表格信息列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 表格标签列表
-	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 func (r *CreateTablesRequest) ToJsonString() string {
@@ -663,7 +663,7 @@ type CreateTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 批量创建表格结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -737,7 +737,7 @@ type DeleteIdlFilesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待删除的IDL文件信息列表
-	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 }
 
 func (r *DeleteIdlFilesRequest) ToJsonString() string {
@@ -768,7 +768,7 @@ type DeleteIdlFilesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 删除结果
-		IdlFileInfos []*IdlFileInfoWithoutContent `json:"IdlFileInfos,omitempty" name:"IdlFileInfos" list`
+		IdlFileInfos []*IdlFileInfoWithoutContent `json:"IdlFileInfos,omitempty" name:"IdlFileInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -793,7 +793,7 @@ type DeleteSnapshotsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 删除的快照列表
-	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *DeleteSnapshotsRequest) ToJsonString() string {
@@ -824,7 +824,7 @@ type DeleteSnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 批量删除的快照结果
-		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -902,7 +902,7 @@ type DeleteTableIndexRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待删除分布式索引的表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *DeleteTableIndexRequest) ToJsonString() string {
@@ -933,7 +933,7 @@ type DeleteTableIndexResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 删除表格分布式索引结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -958,7 +958,7 @@ type DeleteTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待删除表信息列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *DeleteTablesRequest) ToJsonString() string {
@@ -989,7 +989,7 @@ type DeleteTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 删除表结果详情列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1066,7 +1066,7 @@ type DescribeApplicationsResponse struct {
 	Response *struct {
 
 		// 申请单列表
-		Applications []*Application `json:"Applications,omitempty" name:"Applications" list`
+		Applications []*Application `json:"Applications,omitempty" name:"Applications"`
 
 		// 申请单个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1091,7 +1091,7 @@ type DescribeClusterTagsRequest struct {
 	*tchttp.BaseRequest
 
 	// 集群ID列表
-	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 }
 
 func (r *DescribeClusterTagsRequest) ToJsonString() string {
@@ -1119,7 +1119,7 @@ type DescribeClusterTagsResponse struct {
 
 		// 集群标签信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Rows []*TagsInfoOfCluster `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*TagsInfoOfCluster `json:"Rows,omitempty" name:"Rows"`
 
 		// 返回结果个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1145,10 +1145,10 @@ type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
 
 	// 指定查询的集群ID列表
-	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
 	// 查询过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1191,7 +1191,7 @@ type DescribeClustersResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 集群实例列表
-		Clusters []*ClusterInfo `json:"Clusters,omitempty" name:"Clusters" list`
+		Clusters []*ClusterInfo `json:"Clusters,omitempty" name:"Clusters"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1216,10 +1216,10 @@ type DescribeIdlFileInfosRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 文件所属表格组ID
-	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
 	// 指定文件ID列表
-	IdlFileIds []*string `json:"IdlFileIds,omitempty" name:"IdlFileIds" list`
+	IdlFileIds []*string `json:"IdlFileIds,omitempty" name:"IdlFileIds"`
 
 	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1259,7 +1259,7 @@ type DescribeIdlFileInfosResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 文件详情列表
-		IdlFileInfos []*IdlFileInfo `json:"IdlFileInfos,omitempty" name:"IdlFileInfos" list`
+		IdlFileInfos []*IdlFileInfo `json:"IdlFileInfos,omitempty" name:"IdlFileInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1308,7 +1308,7 @@ type DescribeMachineResponse struct {
 	Response *struct {
 
 		// 独占机器资源列表
-		PoolList []*PoolInfo `json:"PoolList,omitempty" name:"PoolList" list`
+		PoolList []*PoolInfo `json:"PoolList,omitempty" name:"PoolList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1356,7 +1356,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可用区详情结果列表
-		RegionInfos []*RegionInfo `json:"RegionInfos,omitempty" name:"RegionInfos" list`
+		RegionInfos []*RegionInfo `json:"RegionInfos,omitempty" name:"RegionInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1420,7 +1420,7 @@ type DescribeSnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 快照结果列表
-		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1445,7 +1445,7 @@ type DescribeTableGroupTagsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待查询标签表格组ID列表
-	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 }
 
 func (r *DescribeTableGroupTagsRequest) ToJsonString() string {
@@ -1474,7 +1474,7 @@ type DescribeTableGroupTagsResponse struct {
 
 		// 表格组标签信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Rows []*TagsInfoOfTableGroup `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*TagsInfoOfTableGroup `json:"Rows,omitempty" name:"Rows"`
 
 		// 返回结果个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1503,10 +1503,10 @@ type DescribeTableGroupsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 表格组ID列表
-	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
 	// 过滤条件，本接口支持：TableGroupName，TableGroupId
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1546,7 +1546,7 @@ type DescribeTableGroupsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格组信息列表
-		TableGroups []*TableGroupInfo `json:"TableGroups,omitempty" name:"TableGroups" list`
+		TableGroups []*TableGroupInfo `json:"TableGroups,omitempty" name:"TableGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1571,7 +1571,7 @@ type DescribeTableTagsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *DescribeTableTagsRequest) ToJsonString() string {
@@ -1602,7 +1602,7 @@ type DescribeTableTagsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格标签信息列表
-		Rows []*TagsInfoOfTable `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*TagsInfoOfTable `json:"Rows,omitempty" name:"Rows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1627,10 +1627,10 @@ type DescribeTablesInRecycleRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待查询表格所属表格组ID列表
-	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询结果偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1670,7 +1670,7 @@ type DescribeTablesInRecycleResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格详情结果列表
-		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
+		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1695,13 +1695,13 @@ type DescribeTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待查询表格所属表格组ID列表
-	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds" list`
+	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
 	// 待查询表格信息列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询结果偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1742,7 +1742,7 @@ type DescribeTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格详情结果列表
-		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
+		TableInfos []*TableInfoNew `json:"TableInfos,omitempty" name:"TableInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1764,13 +1764,13 @@ type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询任务所属的集群ID列表
-	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds" list`
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
 	// 需要查询的任务ID列表
-	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 过滤条件，本接口支持：Content，TaskType, Operator, Time
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询列表偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1810,7 +1810,7 @@ type DescribeTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询到的任务详情列表
-		TaskInfos []*TaskInfoNew `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*TaskInfoNew `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2010,7 +2010,7 @@ type Filter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 
 	// 过滤字段值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type IdlFileInfo struct {
@@ -2183,7 +2183,7 @@ type MergeTablesDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 选取的表格
-	SelectedTables []*MergeTablesInfo `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*MergeTablesInfo `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// true只做对比，false既对比又执行
 	IsOnlyCompare *bool `json:"IsOnlyCompare,omitempty" name:"IsOnlyCompare"`
@@ -2214,7 +2214,7 @@ type MergeTablesDataResponse struct {
 	Response *struct {
 
 		// 合服结果集
-		Results []*MergeTableResult `json:"Results,omitempty" name:"Results" list`
+		Results []*MergeTableResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2251,7 +2251,7 @@ type ModifyCensorshipRequest struct {
 	Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
 
 	// 审批人uin列表
-	Uins []*string `json:"Uins,omitempty" name:"Uins" list`
+	Uins []*string `json:"Uins,omitempty" name:"Uins"`
 }
 
 func (r *ModifyCensorshipRequest) ToJsonString() string {
@@ -2284,7 +2284,7 @@ type ModifyCensorshipResponse struct {
 
 		// 已加入审批人的uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Uins []*string `json:"Uins,omitempty" name:"Uins" list`
+		Uins []*string `json:"Uins,omitempty" name:"Uins"`
 
 		// 集群是否开启审核 0-关闭 1-开启
 		Censorship *int64 `json:"Censorship,omitempty" name:"Censorship"`
@@ -2312,10 +2312,10 @@ type ModifyClusterMachineRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// svr占用的机器
-	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+	ServerList []*MachineInfo `json:"ServerList,omitempty" name:"ServerList"`
 
 	// proxy占用的机器
-	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+	ProxyList []*MachineInfo `json:"ProxyList,omitempty" name:"ProxyList"`
 
 	// 集群类型1共享集群2独占集群
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
@@ -2485,10 +2485,10 @@ type ModifyClusterTagsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待增加或修改的标签列表
-	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags"`
 
 	// 待删除的标签
-	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags"`
 }
 
 func (r *ModifyClusterTagsRequest) ToJsonString() string {
@@ -2543,7 +2543,7 @@ type ModifySnapshotsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 快照列表
-	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SnapshotInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *ModifySnapshotsRequest) ToJsonString() string {
@@ -2574,7 +2574,7 @@ type ModifySnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 批量创建的快照结果列表
-		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2656,10 +2656,10 @@ type ModifyTableGroupTagsRequest struct {
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 待增加或修改的标签列表
-	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags"`
 
 	// 待删除的标签
-	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags"`
 }
 
 func (r *ModifyTableGroupTagsRequest) ToJsonString() string {
@@ -2715,7 +2715,7 @@ type ModifyTableMemosRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 选定表详情列表
-	TableMemos []*SelectedTableInfoNew `json:"TableMemos,omitempty" name:"TableMemos" list`
+	TableMemos []*SelectedTableInfoNew `json:"TableMemos,omitempty" name:"TableMemos"`
 }
 
 func (r *ModifyTableMemosRequest) ToJsonString() string {
@@ -2746,7 +2746,7 @@ type ModifyTableMemosResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表备注修改结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2771,7 +2771,7 @@ type ModifyTableQuotasRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 已选中待修改的表配额列表
-	TableQuotas []*SelectedTableInfoNew `json:"TableQuotas,omitempty" name:"TableQuotas" list`
+	TableQuotas []*SelectedTableInfoNew `json:"TableQuotas,omitempty" name:"TableQuotas"`
 }
 
 func (r *ModifyTableQuotasRequest) ToJsonString() string {
@@ -2802,7 +2802,7 @@ type ModifyTableQuotasResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 扩缩容结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2827,13 +2827,13 @@ type ModifyTableTagsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待修改标签表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 待增加或修改的标签列表
-	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+	ReplaceTags []*TagInfoUnit `json:"ReplaceTags,omitempty" name:"ReplaceTags"`
 
 	// 待删除的标签列表
-	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+	DeleteTags []*TagInfoUnit `json:"DeleteTags,omitempty" name:"DeleteTags"`
 }
 
 func (r *ModifyTableTagsRequest) ToJsonString() string {
@@ -2866,7 +2866,7 @@ type ModifyTableTagsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回结果
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2891,10 +2891,10 @@ type ModifyTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 选中的改表IDL文件
-	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 
 	// 待改表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *ModifyTablesRequest) ToJsonString() string {
@@ -2926,7 +2926,7 @@ type ModifyTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 修改表结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3031,10 +3031,10 @@ type PoolInfo struct {
 	AvailableAppCount *int64 `json:"AvailableAppCount,omitempty" name:"AvailableAppCount"`
 
 	// svr机器列表
-	ServerList []*ServerMachineInfo `json:"ServerList,omitempty" name:"ServerList" list`
+	ServerList []*ServerMachineInfo `json:"ServerList,omitempty" name:"ServerList"`
 
 	// proxy机器列表
-	ProxyList []*ProxyMachineInfo `json:"ProxyList,omitempty" name:"ProxyList" list`
+	ProxyList []*ProxyMachineInfo `json:"ProxyList,omitempty" name:"ProxyList"`
 }
 
 type ProxyDetailInfo struct {
@@ -3071,7 +3071,7 @@ type RecoverRecycleTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待恢复表信息
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *RecoverRecycleTablesRequest) ToJsonString() string {
@@ -3102,7 +3102,7 @@ type RecoverRecycleTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 恢复表信息列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3142,7 +3142,7 @@ type RollbackTablesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待回档表格列表
-	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 待回档时间
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
@@ -3181,7 +3181,7 @@ type RollbackTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格回档任务结果列表
-		TableResults []*TableRollbackResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableRollbackResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3262,7 +3262,7 @@ type SelectedTableWithField struct {
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
 	// 待创建索引的字段列表
-	SelectedFields []*FieldInfo `json:"SelectedFields,omitempty" name:"SelectedFields" list`
+	SelectedFields []*FieldInfo `json:"SelectedFields,omitempty" name:"SelectedFields"`
 
 	// 索引分片数
 	ShardNum *uint64 `json:"ShardNum,omitempty" name:"ShardNum"`
@@ -3305,7 +3305,7 @@ type SetTableIndexRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 待创建分布式索引表格列表
-	SelectedTables []*SelectedTableWithField `json:"SelectedTables,omitempty" name:"SelectedTables" list`
+	SelectedTables []*SelectedTableWithField `json:"SelectedTables,omitempty" name:"SelectedTables"`
 }
 
 func (r *SetTableIndexRequest) ToJsonString() string {
@@ -3336,7 +3336,7 @@ type SetTableIndexResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 表格分布式索引创建结果列表
-		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults" list`
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3504,7 +3504,7 @@ type TableInfoNew struct {
 
 	// 表格所关联IDL文件信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+	IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 
 	// 表格预留容量（GB）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3591,7 +3591,7 @@ type TableResultNew struct {
 
 	// 任务ID列表，对于创建多任务的接口有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 腾讯云申请审核单Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3630,7 +3630,7 @@ type TableRollbackResultNew struct {
 
 	// 任务ID列表，对于创建多任务的接口有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 上传的key文件ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3663,7 +3663,7 @@ type TagsInfoOfCluster struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3686,7 +3686,7 @@ type TagsInfoOfTable struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3705,7 +3705,7 @@ type TagsInfoOfTableGroup struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfoUnit `json:"Tags,omitempty" name:"Tags"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3749,7 +3749,7 @@ type UpdateApplyRequest struct {
 	*tchttp.BaseRequest
 
 	// 申请单状态
-	ApplyStatus []*ApplyStatus `json:"ApplyStatus,omitempty" name:"ApplyStatus" list`
+	ApplyStatus []*ApplyStatus `json:"ApplyStatus,omitempty" name:"ApplyStatus"`
 }
 
 func (r *UpdateApplyRequest) ToJsonString() string {
@@ -3777,7 +3777,7 @@ type UpdateApplyResponse struct {
 
 		// 已更新的申请单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApplyResults []*ApplyResult `json:"ApplyResults,omitempty" name:"ApplyResults" list`
+		ApplyResults []*ApplyResult `json:"ApplyResults,omitempty" name:"ApplyResults"`
 
 		// 更新数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3808,10 +3808,10 @@ type VerifyIdlFilesRequest struct {
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
 
 	// 曾经上传过的IDL文件信息列表，与NewIdlFiles至少有一者
-	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles" list`
+	ExistingIdlFiles []*IdlFileInfo `json:"ExistingIdlFiles,omitempty" name:"ExistingIdlFiles"`
 
 	// 待上传的IDL文件信息列表，与ExistingIdlFiles至少有一者
-	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles" list`
+	NewIdlFiles []*IdlFileInfo `json:"NewIdlFiles,omitempty" name:"NewIdlFiles"`
 }
 
 func (r *VerifyIdlFilesRequest) ToJsonString() string {
@@ -3841,13 +3841,13 @@ type VerifyIdlFilesResponse struct {
 	Response *struct {
 
 		// 本次上传校验所有的IDL文件信息列表
-		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles" list`
+		IdlFiles []*IdlFileInfo `json:"IdlFiles,omitempty" name:"IdlFiles"`
 
 		// 读取IDL描述文件后解析出的合法表数量，不包含已经创建的表
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
-		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos" list`
+		TableInfos []*ParsedTableInfoNew `json:"TableInfos,omitempty" name:"TableInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

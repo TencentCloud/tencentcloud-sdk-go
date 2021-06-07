@@ -28,7 +28,7 @@ type DescribeImageStatRequest struct {
 	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
 
 	// 查询条件
-	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeImageStatRequest) ToJsonString() string {
@@ -59,11 +59,11 @@ type DescribeImageStatResponse struct {
 		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
 
 		// 识别量统计
-		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount" list`
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
 
 		// 违规数据分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount" list`
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -91,7 +91,7 @@ type DescribeImsListRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeImsListRequest) ToJsonString() string {
@@ -121,7 +121,7 @@ type DescribeImsListResponse struct {
 
 		// 返回列表数据----非必选，该参数暂未对外开放
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet" list`
+		ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet"`
 
 		// 总条数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -184,7 +184,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Filters struct {
@@ -196,7 +196,7 @@ type Filters struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 查询值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ImageModerationRequest struct {
@@ -278,20 +278,20 @@ type ImageModerationResponse struct {
 
 		// 智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults" list`
+		LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults"`
 
 		// 物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults" list`
+		ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults"`
 
 		// OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults" list`
+		OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults"`
 
 		// 基于图片风险库识别的结果。
 	// 风险库包括不安全黑库与正常白库的结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults" list`
+		LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults"`
 
 		// 请求参数中的DataId。
 		DataId *string `json:"DataId,omitempty" name:"DataId"`
@@ -384,7 +384,7 @@ type LabelResult struct {
 
 	// 分类模型命中子标签结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*LabelDetailItem `json:"Details,omitempty" name:"Details" list`
+	Details []*LabelDetailItem `json:"Details,omitempty" name:"Details"`
 }
 
 type LibDetail struct {
@@ -436,7 +436,7 @@ type LibResult struct {
 
 	// 黑白库结果明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*LibDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*LibDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type Location struct {
@@ -498,11 +498,11 @@ type ObjectResult struct {
 
 	// 实体名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 实体检测结果明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*ObjectDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*ObjectDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type OcrResult struct {
@@ -525,7 +525,7 @@ type OcrResult struct {
 	Score *uint64 `json:"Score,omitempty" name:"Score"`
 
 	// ocr结果详情
-	Details []*OcrTextDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*OcrTextDetail `json:"Details,omitempty" name:"Details"`
 
 	// ocr识别出的文本结果
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -547,7 +547,7 @@ type OcrTextDetail struct {
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 
 	// 该标签下命中的关键词
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 该标签模型命中的分值
 	Score *uint64 `json:"Score,omitempty" name:"Score"`

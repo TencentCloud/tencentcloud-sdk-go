@@ -48,37 +48,37 @@ type ApplicationDataStatistics struct {
 	DauDataNum *uint64 `json:"DauDataNum,omitempty" name:"DauDataNum"`
 
 	// 大陆地区Dau统计数据，单位人
-	DauDataMainland []*StatisticsItem `json:"DauDataMainland,omitempty" name:"DauDataMainland" list`
+	DauDataMainland []*StatisticsItem `json:"DauDataMainland,omitempty" name:"DauDataMainland"`
 
 	// 海外地区Dau统计数据，单位人
-	DauDataOversea []*StatisticsItem `json:"DauDataOversea,omitempty" name:"DauDataOversea" list`
+	DauDataOversea []*StatisticsItem `json:"DauDataOversea,omitempty" name:"DauDataOversea"`
 
 	// 大陆和海外地区Dau统计数据汇总，单位人
-	DauDataSum []*StatisticsItem `json:"DauDataSum,omitempty" name:"DauDataSum" list`
+	DauDataSum []*StatisticsItem `json:"DauDataSum,omitempty" name:"DauDataSum"`
 
 	// 实时语音时长统计项数目
 	DurationDataNum *uint64 `json:"DurationDataNum,omitempty" name:"DurationDataNum"`
 
 	// 大陆地区实时语音时长统计数据，单位分钟
-	DurationDataMainland []*StatisticsItem `json:"DurationDataMainland,omitempty" name:"DurationDataMainland" list`
+	DurationDataMainland []*StatisticsItem `json:"DurationDataMainland,omitempty" name:"DurationDataMainland"`
 
 	// 海外地区实时语音时长统计数据，单位分钟
-	DurationDataOversea []*StatisticsItem `json:"DurationDataOversea,omitempty" name:"DurationDataOversea" list`
+	DurationDataOversea []*StatisticsItem `json:"DurationDataOversea,omitempty" name:"DurationDataOversea"`
 
 	// 大陆和海外地区实时语音时长统计数据汇总，单位分钟
-	DurationDataSum []*StatisticsItem `json:"DurationDataSum,omitempty" name:"DurationDataSum" list`
+	DurationDataSum []*StatisticsItem `json:"DurationDataSum,omitempty" name:"DurationDataSum"`
 
 	// Pcu统计项数目
 	PcuDataNum *uint64 `json:"PcuDataNum,omitempty" name:"PcuDataNum"`
 
 	// 大陆地区Pcu统计数据，单位人
-	PcuDataMainland []*StatisticsItem `json:"PcuDataMainland,omitempty" name:"PcuDataMainland" list`
+	PcuDataMainland []*StatisticsItem `json:"PcuDataMainland,omitempty" name:"PcuDataMainland"`
 
 	// 海外地区Pcu统计数据，单位人
-	PcuDataOversea []*StatisticsItem `json:"PcuDataOversea,omitempty" name:"PcuDataOversea" list`
+	PcuDataOversea []*StatisticsItem `json:"PcuDataOversea,omitempty" name:"PcuDataOversea"`
 
 	// 大陆和海外地区Pcu统计数据汇总，单位人
-	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum" list`
+	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum"`
 }
 
 type CreateAppRequest struct {
@@ -91,10 +91,10 @@ type CreateAppRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 需要支持的引擎列表，默认全选。
-	EngineList []*string `json:"EngineList,omitempty" name:"EngineList" list`
+	EngineList []*string `json:"EngineList,omitempty" name:"EngineList"`
 
 	// 服务区域列表，默认全选。
-	RegionList []*string `json:"RegionList,omitempty" name:"RegionList" list`
+	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 实时语音服务配置数据
 	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
@@ -106,7 +106,7 @@ type CreateAppRequest struct {
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
 
 	// 需要添加的标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateAppRequest) ToJsonString() string {
@@ -189,7 +189,7 @@ type DescribeAppStatisticsRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter
-	Services []*string `json:"Services,omitempty" name:"Services" list`
+	Services []*string `json:"Services,omitempty" name:"Services"`
 }
 
 func (r *DescribeAppStatisticsRequest) ToJsonString() string {
@@ -219,7 +219,7 @@ type DescribeAppStatisticsResponse struct {
 	Response *struct {
 
 		// 应用用量统计数据
-		AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics" list`
+		AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics"`
 	} `json:"Response"`
 }
 
@@ -343,7 +343,7 @@ type DescribeFilterResultListResponse struct {
 
 		// 当前分页过滤结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*VoiceFilterInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -422,7 +422,7 @@ type DescribeRoomInfoRequest struct {
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 房间号列表，最大不能超过10个
-	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds" list`
+	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds"`
 }
 
 func (r *DescribeRoomInfoRequest) ToJsonString() string {
@@ -455,7 +455,7 @@ type DescribeRoomInfoResponse struct {
 
 		// 房间用户信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RoomUsers []*RoomUser `json:"RoomUsers,omitempty" name:"RoomUsers" list`
+		RoomUsers []*RoomUser `json:"RoomUsers,omitempty" name:"RoomUsers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -496,13 +496,13 @@ type DescribeScanResult struct {
 
 	// 检测结果，Code 为 0 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanPiece []*ScanPiece `json:"ScanPiece,omitempty" name:"ScanPiece" list`
+	ScanPiece []*ScanPiece `json:"ScanPiece,omitempty" name:"ScanPiece"`
 
 	// 提交检测的时间戳
 	ScanStartTime *uint64 `json:"ScanStartTime,omitempty" name:"ScanStartTime"`
 
 	// 语音检测场景，对应请求时的 Scene
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 语音检测任务 ID，由后台分配
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -524,7 +524,7 @@ type DescribeScanResultListRequest struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
-	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList" list`
+	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList"`
 
 	// 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -557,7 +557,7 @@ type DescribeScanResultListResponse struct {
 
 		// 要查询的语音检测任务的结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*DescribeScanResult `json:"Data,omitempty" name:"Data" list`
+		Data []*DescribeScanResult `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -614,7 +614,7 @@ type DescribeUserInAndOutTimeResponse struct {
 	Response *struct {
 
 		// 用户在房间得进出时间列表
-		InOutList []*InOutTimeInfo `json:"InOutList,omitempty" name:"InOutList" list`
+		InOutList []*InOutTimeInfo `json:"InOutList,omitempty" name:"InOutList"`
 
 		// 用户在房间中总时长
 		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
@@ -798,7 +798,7 @@ type RoomUser struct {
 
 	// 房间里用户uin列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
 }
 
 type ScanDetail struct {
@@ -833,7 +833,7 @@ type ScanPiece struct {
 	MainType *string `json:"MainType,omitempty" name:"MainType"`
 
 	// 语音检测详情
-	ScanDetail []*ScanDetail `json:"ScanDetail,omitempty" name:"ScanDetail" list`
+	ScanDetail []*ScanDetail `json:"ScanDetail,omitempty" name:"ScanDetail"`
 
 	// gme实时语音房间ID，透传任务传入时的RoomId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -867,7 +867,7 @@ type ScanVoiceRequest struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
 	Live *bool `json:"Live,omitempty" name:"Live"`
@@ -875,7 +875,7 @@ type ScanVoiceRequest struct {
 	// 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
 	// <li>DataId：数据的唯一ID</li>
 	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
-	Tasks []*Task `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
@@ -910,7 +910,7 @@ type ScanVoiceResponse struct {
 
 		// 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
 	// <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
-		Data []*ScanVoiceResult `json:"Data,omitempty" name:"Data" list`
+		Data []*ScanVoiceResult `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1013,7 +1013,7 @@ type VoiceFilterInfo struct {
 
 	// 过滤结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*VoiceFilter `json:"Data,omitempty" name:"Data" list`
+	Data []*VoiceFilter `json:"Data,omitempty" name:"Data"`
 }
 
 type VoiceFilterRequest struct {

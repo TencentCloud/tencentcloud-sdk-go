@@ -87,7 +87,7 @@ type CreateStaffRequest struct {
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 客服信息，个数不超过 10
-	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs" list`
+	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs"`
 }
 
 func (r *CreateStaffRequest) ToJsonString() string {
@@ -184,7 +184,7 @@ type DescribeChatMessagesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 消息列表
-		Messages []*MessageBody `json:"Messages,omitempty" name:"Messages" list`
+		Messages []*MessageBody `json:"Messages,omitempty" name:"Messages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -260,7 +260,7 @@ type DescribeIMCdrsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 服务记录列表
-		IMCdrs []*IMCdrInfo `json:"IMCdrs,omitempty" name:"IMCdrs" list`
+		IMCdrs []*IMCdrInfo `json:"IMCdrs,omitempty" name:"IMCdrs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -320,7 +320,7 @@ type DescribePSTNActiveSessionListResponse struct {
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 列表内容
-		Sessions []*PSTNSessionInfo `json:"Sessions,omitempty" name:"Sessions" list`
+		Sessions []*PSTNSessionInfo `json:"Sessions,omitempty" name:"Sessions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -380,7 +380,7 @@ type DescribeSeatUserListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 坐席用户信息列表
-		SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers" list`
+		SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -448,7 +448,7 @@ type DescribeSkillGroupInfoListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 技能组信息列表
-		SkillGroupList []*SkillGroupInfoItem `json:"SkillGroupList,omitempty" name:"SkillGroupList" list`
+		SkillGroupList []*SkillGroupInfoItem `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -516,7 +516,7 @@ type DescribeStaffInfoListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 坐席用户信息列表
-		StaffList []*StaffInfo `json:"StaffList,omitempty" name:"StaffList" list`
+		StaffList []*StaffInfo `json:"StaffList,omitempty" name:"StaffList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -544,7 +544,7 @@ type DescribeTelCallInfoRequest struct {
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 
 	// 应用ID列表，多个ID时，返回值为多个ID使用总和
-	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList" list`
+	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList"`
 }
 
 func (r *DescribeTelCallInfoRequest) ToJsonString() string {
@@ -659,7 +659,7 @@ type DescribeTelCdrResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 话单记录
-		TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs" list`
+		TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -783,7 +783,7 @@ type MessageBody struct {
 	From *string `json:"From,omitempty" name:"From"`
 
 	// 消息列表
-	Messages []*Message `json:"Messages,omitempty" name:"Messages" list`
+	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
 }
 
 type PSTNSession struct {
@@ -887,7 +887,7 @@ type SeatUserInfo struct {
 
 	// 坐席关联的技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" name:"SkillGroupNameList" list`
+	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" name:"SkillGroupNameList"`
 
 	// 工号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1027,7 +1027,7 @@ type StaffInfo struct {
 
 	// 所属技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitempty" name:"SkillGroupList" list`
+	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
 
 	// 最后修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1106,7 +1106,7 @@ type TelCdrInfo struct {
 
 	// IVR 按键信息 ，e.g. ["1","2","3"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IVRKeyPressed []*string `json:"IVRKeyPressed,omitempty" name:"IVRKeyPressed" list`
+	IVRKeyPressed []*string `json:"IVRKeyPressed,omitempty" name:"IVRKeyPressed"`
 
 	// 挂机方 seat 坐席 user 用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1114,7 +1114,7 @@ type TelCdrInfo struct {
 
 	// 服务参与者列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitempty" name:"ServeParticipants" list`
+	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitempty" name:"ServeParticipants"`
 
 	// 技能组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1155,7 +1155,7 @@ type TelCdrInfo struct {
 
 	// 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitempty" name:"PostIVRKeyPressed" list`
+	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitempty" name:"PostIVRKeyPressed"`
 
 	// 排队技能组Id
 	// 注意：此字段可能返回 null，表示取不到有效值。

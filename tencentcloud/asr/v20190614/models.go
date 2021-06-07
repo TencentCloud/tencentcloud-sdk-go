@@ -34,7 +34,7 @@ type AsyncRecognitionTasks struct {
 
 	// 任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tasks []*AsyncRecognitionTaskInfo `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*AsyncRecognitionTaskInfo `json:"Tasks,omitempty" name:"Tasks"`
 }
 
 type CloseAsyncRecognitionTaskRequest struct {
@@ -93,7 +93,7 @@ type CreateAsrVocabRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
-	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights"`
 
 	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
 	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
@@ -247,7 +247,7 @@ type CreateCustomizationRequest struct {
 	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
 
 	// 标签信息
-	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
 }
 
 func (r *CreateCustomizationRequest) ToJsonString() string {
@@ -710,7 +710,7 @@ type GetAsrVocabListRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
-	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
 
 	// 分页Offset
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -745,7 +745,7 @@ type GetAsrVocabListResponse struct {
 	Response *struct {
 
 		// 热词表列表
-		VocabList []*Vocab `json:"VocabList,omitempty" name:"VocabList" list`
+		VocabList []*Vocab `json:"VocabList,omitempty" name:"VocabList"`
 
 		// 热词列表总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -806,7 +806,7 @@ type GetAsrVocabResponse struct {
 		VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 
 		// 词权重列表
-		WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+		WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights"`
 
 		// 词表创建时间
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -837,7 +837,7 @@ type GetCustomizationListRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
-	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
 
 	// 分页大小，默认1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -873,7 +873,7 @@ type GetCustomizationListResponse struct {
 
 		// 自学习模型数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*Model `json:"Data,omitempty" name:"Data" list`
+		Data []*Model `json:"Data,omitempty" name:"Data"`
 
 		// 自学习模型总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -929,7 +929,7 @@ type Model struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
 }
 
 type ModifyCustomizationRequest struct {
@@ -1067,7 +1067,7 @@ type SentenceDetail struct {
 
 	// 单句中词详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Words []*SentenceWords `json:"Words,omitempty" name:"Words" list`
+	Words []*SentenceWords `json:"Words,omitempty" name:"Words"`
 
 	// 单句语速，单位：字数/秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1182,7 +1182,7 @@ type SentenceRecognitionResponse struct {
 
 		// 词时间戳列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		WordList []*SentenceWord `json:"WordList,omitempty" name:"WordList" list`
+		WordList []*SentenceWord `json:"WordList,omitempty" name:"WordList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1305,7 +1305,7 @@ type TaskStatus struct {
 
 	// 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultDetail []*SentenceDetail `json:"ResultDetail,omitempty" name:"ResultDetail" list`
+	ResultDetail []*SentenceDetail `json:"ResultDetail,omitempty" name:"ResultDetail"`
 }
 
 type UpdateAsrVocabRequest struct {
@@ -1318,7 +1318,7 @@ type UpdateAsrVocabRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
-	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights"`
 
 	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
 	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
@@ -1386,7 +1386,7 @@ type Vocab struct {
 	VocabId *string `json:"VocabId,omitempty" name:"VocabId"`
 
 	// 词权重列表
-	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights" list`
+	WordWeights []*HotWord `json:"WordWeights,omitempty" name:"WordWeights"`
 
 	// 词表创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1399,5 +1399,5 @@ type Vocab struct {
 
 	// 标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos" list`
+	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
 }

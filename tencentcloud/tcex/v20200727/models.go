@@ -94,7 +94,7 @@ type DescribeInvocationResultResponse struct {
 	Response *struct {
 
 		// 服务的调用结果
-		Results []*AlgorithmResult `json:"Results,omitempty" name:"Results" list`
+		Results []*AlgorithmResult `json:"Results,omitempty" name:"Results"`
 
 		// 0:获取结果失败
 	// 1：结果还没有生成，继续轮询

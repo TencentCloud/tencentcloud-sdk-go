@@ -197,7 +197,7 @@ type CreateNotebookInstanceRequest struct {
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	// 参考https://cloud.tencent.com/document/product/851/43139
-	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 	// 已弃用，请使用ClsConfig配置。
 	// 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
@@ -400,7 +400,7 @@ type CreateTrainingJobRequest struct {
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
 	// 输入数据配置
-	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
+	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig"`
 
 	// 中止条件
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
@@ -412,7 +412,7 @@ type CreateTrainingJobRequest struct {
 	HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
 	// 环境变量配置
-	EnvConfig []*EnvConfig `json:"EnvConfig,omitempty" name:"EnvConfig" list`
+	EnvConfig []*EnvConfig `json:"EnvConfig,omitempty" name:"EnvConfig"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -642,7 +642,7 @@ type DescribeCodeRepositoriesRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序规则。默认取Descending
 	// Descending 按更新时间降序
@@ -681,7 +681,7 @@ type DescribeCodeRepositoriesResponse struct {
 
 		// 存储库列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitempty" name:"CodeRepoSet" list`
+		CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitempty" name:"CodeRepoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -860,7 +860,7 @@ type DescribeNotebookInstanceResponse struct {
 		// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 		// 是否开启CLS日志服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -921,7 +921,7 @@ type DescribeNotebookInstancesRequest struct {
 	// billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
 	//    StorageOnly：仅存储计费的实例
 	//    Computing：计算和存储都计费的实例
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 【废弃字段】排序字段
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
@@ -955,7 +955,7 @@ type DescribeNotebookInstancesResponse struct {
 	Response *struct {
 
 		// Notebook实例列表
-		NotebookInstanceSet []*NotebookInstanceSummary `json:"NotebookInstanceSet,omitempty" name:"NotebookInstanceSet" list`
+		NotebookInstanceSet []*NotebookInstanceSummary `json:"NotebookInstanceSet,omitempty" name:"NotebookInstanceSet"`
 
 		// Notebook实例总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1051,7 +1051,7 @@ type DescribeNotebookLifecycleScriptsRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序规则。默认取Descending
 	// Descending 按更新时间降序
@@ -1086,7 +1086,7 @@ type DescribeNotebookLifecycleScriptsResponse struct {
 	Response *struct {
 
 		// Notebook生命周期脚本列表
-		NotebookLifecycleScriptsSet []*NotebookLifecycleScriptsSummary `json:"NotebookLifecycleScriptsSet,omitempty" name:"NotebookLifecycleScriptsSet" list`
+		NotebookLifecycleScriptsSet []*NotebookLifecycleScriptsSummary `json:"NotebookLifecycleScriptsSet,omitempty" name:"NotebookLifecycleScriptsSet"`
 
 		// Notebook生命周期脚本总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1202,7 +1202,7 @@ type DescribeTrainingJobResponse struct {
 		HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
 		// 输入数据配置
-		InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
+		InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig"`
 
 		// 输出数据配置
 		OutputDataConfig *OutputDataConfig `json:"OutputDataConfig,omitempty" name:"OutputDataConfig"`
@@ -1251,7 +1251,7 @@ type DescribeTrainingJobResponse struct {
 
 		// 详细状态事件记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecondaryStatusTransitions []*SecondaryStatusTransition `json:"SecondaryStatusTransitions,omitempty" name:"SecondaryStatusTransitions" list`
+		SecondaryStatusTransitions []*SecondaryStatusTransition `json:"SecondaryStatusTransitions,omitempty" name:"SecondaryStatusTransitions"`
 
 		// 角色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1312,7 +1312,7 @@ type DescribeTrainingJobsRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTrainingJobsRequest) ToJsonString() string {
@@ -1345,7 +1345,7 @@ type DescribeTrainingJobsResponse struct {
 	Response *struct {
 
 		// 训练任务列表
-		TrainingJobSet []*TrainingJobSummary `json:"TrainingJobSet,omitempty" name:"TrainingJobSet" list`
+		TrainingJobSet []*TrainingJobSummary `json:"TrainingJobSet,omitempty" name:"TrainingJobSet"`
 
 		// 训练任务总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1400,7 +1400,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段取值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GitConfig struct {
@@ -1851,7 +1851,7 @@ type UpdateNotebookInstanceRequest struct {
 
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
-	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 	// 是否取消关联默认存储库，默认false
 	// 该值为true时，DefaultCodeRepository将被忽略
@@ -1989,7 +1989,7 @@ type VpcConfig struct {
 
 	// 安全组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 子网id
 	// 注意：此字段可能返回 null，表示取不到有效值。

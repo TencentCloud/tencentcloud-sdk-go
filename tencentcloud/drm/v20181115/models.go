@@ -103,7 +103,7 @@ type CreateEncryptKeysRequest struct {
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 设置的加密密钥列表。
-	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys" list`
+	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys"`
 
 	// 一个加密内容的唯一标识。
 	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
@@ -168,7 +168,7 @@ type CreateLicenseRequest struct {
 
 	// 授权播放的Track列表。
 	// 该值为空时，默认授权所有track播放。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 播放策略参数。
 	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
@@ -319,7 +319,7 @@ type DescribeAllKeysResponse struct {
 
 		// 加密密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys"`
 
 		// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
@@ -384,7 +384,7 @@ type DescribeFairPlayPemResponse struct {
 
 		// 该账户下，所有设置的FairPlay私钥摘要信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems" list`
+		FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -409,7 +409,7 @@ type DescribeKeysRequest struct {
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 加密的track列表，接口取值VIDEO、AUDIO。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
@@ -451,7 +451,7 @@ type DescribeKeysResponse struct {
 	Response *struct {
 
 		// 加密密钥列表
-		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys"`
 
 		// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
@@ -676,7 +676,7 @@ type StartEncryptionRequest struct {
 	SourceObject *DrmSourceObject `json:"SourceObject,omitempty" name:"SourceObject"`
 
 	// 加密后的内容存储到COS的对象
-	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects" list`
+	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects"`
 }
 
 func (r *StartEncryptionRequest) ToJsonString() string {

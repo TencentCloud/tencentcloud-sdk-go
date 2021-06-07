@@ -177,7 +177,7 @@ type InputManageMarketingRisk struct {
 	// 其他 os_system String 否 操作系统
 	// 其他 browser String 否 浏览器信息
 	// 其他 from_url String 否 来源链接
-	Details []*InputDetails `json:"Details,omitempty" name:"Details" list`
+	Details []*InputDetails `json:"Details,omitempty" name:"Details"`
 
 	// 可选填写。详情请跳转至SponsorInfo查看。
 	Sponsor *SponsorInfo `json:"Sponsor,omitempty" name:"Sponsor"`
@@ -353,7 +353,7 @@ type OutputManageMarketingRiskValue struct {
 	// 2062 疑似 虚拟设备 请求设备为模拟器、脚本、云设备等虚拟设备
 	// 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 }
 
 type QQAccountInfo struct {

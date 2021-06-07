@@ -357,7 +357,7 @@ type CreateKeyRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -443,7 +443,7 @@ type CreateWhiteBoxKeyRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateWhiteBoxKeyRequest) ToJsonString() string {
@@ -707,7 +707,7 @@ type DescribeKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询CMK的ID列表，批量查询一次最多支持100个KeyId
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *DescribeKeysRequest) ToJsonString() string {
@@ -735,7 +735,7 @@ type DescribeKeysResponse struct {
 
 		// 返回的属性信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
+		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -833,7 +833,7 @@ type DescribeWhiteBoxDeviceFingerprintsResponse struct {
 	Response *struct {
 
 		// 设备指纹列表
-		DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints" list`
+		DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -864,7 +864,7 @@ type DescribeWhiteBoxKeyDetailsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeWhiteBoxKeyDetailsRequest) ToJsonString() string {
@@ -894,7 +894,7 @@ type DescribeWhiteBoxKeyDetailsResponse struct {
 	Response *struct {
 
 		// 白盒密钥信息列表
-		KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos" list`
+		KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos"`
 
 		// key总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1116,7 +1116,7 @@ type DisableKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要批量禁用的CMK Id 列表，CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *DisableKeysRequest) ToJsonString() string {
@@ -1208,7 +1208,7 @@ type DisableWhiteBoxKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *DisableWhiteBoxKeysRequest) ToJsonString() string {
@@ -1346,7 +1346,7 @@ type EnableKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要批量启用的CMK Id 列表， CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *EnableKeysRequest) ToJsonString() string {
@@ -1438,7 +1438,7 @@ type EnableWhiteBoxKeysRequest struct {
 	*tchttp.BaseRequest
 
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *EnableWhiteBoxKeysRequest) ToJsonString() string {
@@ -1914,7 +1914,7 @@ type GetRegionsResponse struct {
 
 		// 可用region列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Regions []*string `json:"Regions,omitempty" name:"Regions" list`
+		Regions []*string `json:"Regions,omitempty" name:"Regions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2138,13 +2138,13 @@ type ListAlgorithmsResponse struct {
 	Response *struct {
 
 		// 本地区支持的对称加密算法
-		SymmetricAlgorithms []*AlgorithmInfo `json:"SymmetricAlgorithms,omitempty" name:"SymmetricAlgorithms" list`
+		SymmetricAlgorithms []*AlgorithmInfo `json:"SymmetricAlgorithms,omitempty" name:"SymmetricAlgorithms"`
 
 		// 本地区支持的非对称加密算法
-		AsymmetricAlgorithms []*AlgorithmInfo `json:"AsymmetricAlgorithms,omitempty" name:"AsymmetricAlgorithms" list`
+		AsymmetricAlgorithms []*AlgorithmInfo `json:"AsymmetricAlgorithms,omitempty" name:"AsymmetricAlgorithms"`
 
 		// 本地区支持的非对称签名验签算法
-		AsymmetricSignVerifyAlgorithms []*AlgorithmInfo `json:"AsymmetricSignVerifyAlgorithms,omitempty" name:"AsymmetricSignVerifyAlgorithms" list`
+		AsymmetricSignVerifyAlgorithms []*AlgorithmInfo `json:"AsymmetricSignVerifyAlgorithms,omitempty" name:"AsymmetricSignVerifyAlgorithms"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2190,7 +2190,7 @@ type ListKeyDetailRequest struct {
 	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {
@@ -2229,7 +2229,7 @@ type ListKeyDetailResponse struct {
 
 		// 返回的属性信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
+		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2287,7 +2287,7 @@ type ListKeysResponse struct {
 
 		// CMK列表数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys"`
 
 		// CMK的总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2315,7 +2315,7 @@ type OverwriteWhiteBoxDeviceFingerprintsRequest struct {
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
 	// 设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
-	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints" list`
+	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints"`
 }
 
 func (r *OverwriteWhiteBoxDeviceFingerprintsRequest) ToJsonString() string {
@@ -2560,7 +2560,7 @@ type TagFilter struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UnbindCloudResourceRequest struct {

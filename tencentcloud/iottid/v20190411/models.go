@@ -218,7 +218,7 @@ type DeliverTidsResponse struct {
 
 		// 空发的TID信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TidSet []*TidKeysInfo `json:"TidSet,omitempty" name:"TidSet" list`
+		TidSet []*TidKeysInfo `json:"TidSet,omitempty" name:"TidSet"`
 
 		// 产品公钥
 		ProductKey *string `json:"ProductKey,omitempty" name:"ProductKey"`
@@ -375,7 +375,7 @@ type DownloadTidsResponse struct {
 
 		// 下载的TID信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TidSet []*TidKeysInfo `json:"TidSet,omitempty" name:"TidSet" list`
+		TidSet []*TidKeysInfo `json:"TidSet,omitempty" name:"TidSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -418,7 +418,7 @@ type UploadDeviceUniqueCodeRequest struct {
 	*tchttp.BaseRequest
 
 	// 硬件唯一标识码
-	CodeSet []*string `json:"CodeSet,omitempty" name:"CodeSet" list`
+	CodeSet []*string `json:"CodeSet,omitempty" name:"CodeSet"`
 
 	// 硬件标识码绑定的申请编号
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
@@ -453,14 +453,14 @@ type UploadDeviceUniqueCodeResponse struct {
 
 		// 重复的硬件唯一标识码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ExistedCodeSet []*string `json:"ExistedCodeSet,omitempty" name:"ExistedCodeSet" list`
+		ExistedCodeSet []*string `json:"ExistedCodeSet,omitempty" name:"ExistedCodeSet"`
 
 		// 剩余可上传数量
 		LeftQuantity *uint64 `json:"LeftQuantity,omitempty" name:"LeftQuantity"`
 
 		// 错误的硬件唯一标识码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		IllegalCodeSet []*string `json:"IllegalCodeSet,omitempty" name:"IllegalCodeSet" list`
+		IllegalCodeSet []*string `json:"IllegalCodeSet,omitempty" name:"IllegalCodeSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

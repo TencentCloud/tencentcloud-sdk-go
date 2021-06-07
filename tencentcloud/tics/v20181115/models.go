@@ -81,13 +81,13 @@ type DescribeDomainInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -154,13 +154,13 @@ type DescribeFileInfoResponse struct {
 		// 文件类型，文件hash
 	// （md5,sha1,sha256）,文件大小等等文件
 	// 基础信息
-		FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo" list`
+		FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -241,13 +241,13 @@ type DescribeIpInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -332,10 +332,10 @@ type DescribeThreatInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 		// 当前状态
 	// active = 活跃

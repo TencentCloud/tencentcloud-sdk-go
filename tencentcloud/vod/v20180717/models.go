@@ -148,10 +148,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
-	SubtitleSet []*string `json:"SubtitleSet,omitempty" name:"SubtitleSet" list`
+	SubtitleSet []*string `json:"SubtitleSet,omitempty" name:"SubtitleSet"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -182,7 +182,7 @@ type AdaptiveDynamicStreamingTemplate struct {
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 自适应转码输入流参数信息，最多输入10路流。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 是否禁止视频低码率转高码率，取值范围：
 	// <li>0：否，</li>
@@ -260,7 +260,7 @@ type AiAnalysisTaskClassificationInput struct {
 type AiAnalysisTaskClassificationOutput struct {
 
 	// 视频智能分类列表。
-	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet" list`
+	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet"`
 }
 
 type AiAnalysisTaskClassificationResult struct {
@@ -294,7 +294,7 @@ type AiAnalysisTaskCoverInput struct {
 type AiAnalysisTaskCoverOutput struct {
 
 	// 智能封面列表。
-	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet" list`
+	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet"`
 }
 
 type AiAnalysisTaskCoverResult struct {
@@ -328,7 +328,7 @@ type AiAnalysisTaskFrameTagInput struct {
 type AiAnalysisTaskFrameTagOutput struct {
 
 	// 视频按帧标签列表。
-	SegmentSet []*MediaAiAnalysisFrameTagSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaAiAnalysisFrameTagSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiAnalysisTaskFrameTagResult struct {
@@ -362,7 +362,7 @@ type AiAnalysisTaskHighlightInput struct {
 type AiAnalysisTaskHighlightOutput struct {
 
 	// 视频智能精彩片段列表。
-	HighlightSet []*MediaAiAnalysisHighlightItem `json:"HighlightSet,omitempty" name:"HighlightSet" list`
+	HighlightSet []*MediaAiAnalysisHighlightItem `json:"HighlightSet,omitempty" name:"HighlightSet"`
 }
 
 type AiAnalysisTaskHighlightResult struct {
@@ -402,7 +402,7 @@ type AiAnalysisTaskTagInput struct {
 type AiAnalysisTaskTagOutput struct {
 
 	// 视频智能标签列表。
-	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type AiAnalysisTaskTagResult struct {
@@ -573,7 +573,7 @@ type AiRecognitionTaskAsrFullTextResultInput struct {
 type AiRecognitionTaskAsrFullTextResultOutput struct {
 
 	// 语音全文识别片段列表。
-	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
 	// 字幕文件 Url。
 	SubtitleUrl *string `json:"SubtitleUrl,omitempty" name:"SubtitleUrl"`
@@ -628,13 +628,13 @@ type AiRecognitionTaskAsrWordsResultItem struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 语音关键词出现的时间片段列表。
-	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskAsrWordsResultOutput struct {
 
 	// 语音关键词识别结果集。
-	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskAsrWordsSegmentItem struct {
@@ -691,13 +691,13 @@ type AiRecognitionTaskFaceResultItem struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 人物出现的片段结果集。
-	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskFaceResultOutput struct {
 
 	// 智能人脸识别结果集。
-	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskFaceSegmentItem struct {
@@ -712,7 +712,7 @@ type AiRecognitionTaskFaceSegmentItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskHeadTailResult struct {
@@ -798,13 +798,13 @@ type AiRecognitionTaskObjectResultItem struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 物体出现的片段列表。
-	SegmentSet []*AiRecognitionTaskObjectSeqmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskObjectSeqmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskObjectResultOutput struct {
 
 	// 智能物体识别结果集。
-	ResultSet []*AiRecognitionTaskObjectResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskObjectResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskObjectSeqmentItem struct {
@@ -819,7 +819,7 @@ type AiRecognitionTaskObjectSeqmentItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskOcrFullTextResult struct {
@@ -853,7 +853,7 @@ type AiRecognitionTaskOcrFullTextResultInput struct {
 type AiRecognitionTaskOcrFullTextResultOutput struct {
 
 	// 文本全文识别结果集。
-	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskOcrFullTextSegmentItem struct {
@@ -865,7 +865,7 @@ type AiRecognitionTaskOcrFullTextSegmentItem struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 识别片段结果集。
-	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet" list`
+	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet"`
 }
 
 type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
@@ -874,7 +874,7 @@ type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 识别文本。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -914,13 +914,13 @@ type AiRecognitionTaskOcrWordsResultItem struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 文本关键出现的片段列表。
-	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskOcrWordsResultOutput struct {
 
 	// 文本关键词识别结果集。
-	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskOcrWordsSegmentItem struct {
@@ -935,7 +935,7 @@ type AiRecognitionTaskOcrWordsSegmentItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskSegmentResult struct {
@@ -970,7 +970,7 @@ type AiRecognitionTaskSegmentResultInput struct {
 type AiRecognitionTaskSegmentResultOutput struct {
 
 	// 视频拆条片段列表。
-	SegmentSet []*AiRecognitionTaskSegmentSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskSegmentSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskSegmentSegmentItem struct {
@@ -1015,7 +1015,7 @@ type AiReviewPoliticalAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPoliticalOcrTaskInput struct {
@@ -1036,7 +1036,7 @@ type AiReviewPoliticalOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPoliticalTaskInput struct {
@@ -1064,7 +1064,7 @@ type AiReviewPoliticalTaskOutput struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉政嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornAsrTaskInput struct {
@@ -1085,7 +1085,7 @@ type AiReviewPornAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornOcrTaskInput struct {
@@ -1106,7 +1106,7 @@ type AiReviewPornOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornTaskInput struct {
@@ -1134,7 +1134,7 @@ type AiReviewPornTaskOutput struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewProhibitedAsrTaskInput struct {
@@ -1155,7 +1155,7 @@ type AiReviewProhibitedAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉违禁嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewProhibitedOcrTaskInput struct {
@@ -1176,7 +1176,7 @@ type AiReviewProhibitedOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉违禁嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewTaskPoliticalAsrResult struct {
@@ -1416,7 +1416,7 @@ type AiReviewTerrorismOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉恐嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewTerrorismTaskInput struct {
@@ -1449,7 +1449,7 @@ type AiReviewTerrorismTaskOutput struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有暴恐嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiSampleFaceInfo struct {
@@ -1467,13 +1467,13 @@ type AiSampleFaceOperation struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 人脸 ID 集合，当 Type为delete 时，该字段必填。
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
 	// <li>当 Type为add 或 reset 时，该字段必填；</li>
 	// <li>数组长度限制：5 张图片。</li>
 	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents"`
 }
 
 type AiSampleFailFaceInfo struct {
@@ -1502,13 +1502,13 @@ type AiSamplePerson struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 人脸信息。
-	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 	// 人物标签。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 应用场景。
-	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet"`
 
 	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1523,7 +1523,7 @@ type AiSampleTagOperation struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 标签，长度限制：128 个字符。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AiSampleWord struct {
@@ -1532,10 +1532,10 @@ type AiSampleWord struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
 	// 关键词标签。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 关键词应用场景。
-	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet"`
 
 	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1552,7 +1552,7 @@ type AiSampleWordInfo struct {
 	// 关键词标签
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AnimatedGraphicTaskInput struct {
@@ -1765,7 +1765,7 @@ type AsrWordsConfigureInfo struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type AsrWordsConfigureInfoForUpdate struct {
@@ -1777,7 +1777,7 @@ type AsrWordsConfigureInfoForUpdate struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type AttachMediaSubtitlesRequest struct {
@@ -1795,7 +1795,7 @@ type AttachMediaSubtitlesRequest struct {
 	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
 
 	// 字幕的唯一标识。
-	SubtitleIds []*string `json:"SubtitleIds,omitempty" name:"SubtitleIds" list`
+	SubtitleIds []*string `json:"SubtitleIds,omitempty" name:"SubtitleIds"`
 
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -1937,7 +1937,7 @@ type AudioTrackItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 对音频片段进行的操作，如音量调节等。
-	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
+	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations"`
 }
 
 type AudioTransform struct {
@@ -2155,7 +2155,7 @@ type ComposeMediaRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频、图片，每一种类型的轨道最多支持10个。</li>
-	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 输出的媒体文件信息。
 	Output *ComposeMediaOutput `json:"Output,omitempty" name:"Output"`
@@ -2260,7 +2260,7 @@ type ComposeMediaTask struct {
 type ComposeMediaTaskInput struct {
 
 	// 输入的媒体轨道列表，包括视频、音频、图片等素材组成的多个轨道信息。
-	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*MediaTrack `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 制作视频文件时使用的画布。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2318,7 +2318,7 @@ type ConcatTask2017 struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 视频拼接源文件信息。
-	FileInfoSet []*ConcatFileInfo2017 `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
+	FileInfoSet []*ConcatFileInfo2017 `json:"FileInfoSet,omitempty" name:"FileInfoSet"`
 }
 
 type ConfirmEventsRequest struct {
@@ -2326,7 +2326,7 @@ type ConfirmEventsRequest struct {
 
 	// 事件句柄，即 [拉取事件通知](/document/product/266/33433) 接口输出参数中的 EventSet. EventHandle 字段。
 	// 数组长度限制：16。
-	EventHandles []*string `json:"EventHandles,omitempty" name:"EventHandles" list`
+	EventHandles []*string `json:"EventHandles,omitempty" name:"EventHandles"`
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
@@ -2440,7 +2440,7 @@ type CoverBySnapshotTaskInput struct {
 	PositionValue *float64 `json:"PositionValue,omitempty" name:"PositionValue"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 }
 
 type CoverBySnapshotTaskOutput struct {
@@ -2644,7 +2644,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 自适应转码输出子流参数信息，最多输出10路子流。
 	// 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2972,10 +2972,10 @@ type CreateHeadTailTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。
-	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet"`
 
 	// 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片尾。
-	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -3041,7 +3041,7 @@ type CreateImageProcessingTemplateRequest struct {
 
 	// 图片处理操作数组，操作将以其在数组中的顺序执行。
 	// <li>长度限制：3。</li>
-	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations" list`
+	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations"`
 
 	// 图片处理模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -3121,7 +3121,7 @@ type CreateImageSpriteTask2017 struct {
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 截取雪碧图输出的地址。
-	ImageSpriteUrlSet []*string `json:"ImageSpriteUrlSet,omitempty" name:"ImageSpriteUrlSet" list`
+	ImageSpriteUrlSet []*string `json:"ImageSpriteUrlSet,omitempty" name:"ImageSpriteUrlSet"`
 
 	// 雪碧图子图位置与时间关系 WebVtt 文件地址。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
@@ -3246,19 +3246,19 @@ type CreatePersonSampleRequest struct {
 	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
 	// 2. Review：用于内容不适宜，等价于 Review.Face。
 	// 3. All：包含以上全部，等价于 1+2。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 素材描述，长度限制：1024 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
 	// 注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。
-	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents"`
 
 	// 素材标签
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -3296,7 +3296,7 @@ type CreatePersonSampleResponse struct {
 		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
 
 		// 处理失败的五官定位信息。
-		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3668,7 +3668,7 @@ type CreateSuperPlayerConfigRequest struct {
 	// <li>MinEdgeLength：1440，Name：2K；</li>
 	// <li>MinEdgeLength：2160，Name：4K；</li>
 	// <li>MinEdgeLength：4320，Name：8K。</li>
-	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames"`
 
 	// 播放时使用的域名。不填或者填 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -3934,10 +3934,10 @@ type CreateWordSamplesRequest struct {
 	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容识别，等价于 3+4；
 	// 7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 关键词，数组长度限制：100。
-	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words" list`
+	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -4456,7 +4456,7 @@ type DeleteMediaRequest struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 指定本次需要删除的部分。默认值为 "[]", 表示删除媒体及其对应的全部视频处理文件。
-	DeleteParts []*MediaDeleteItem `json:"DeleteParts,omitempty" name:"DeleteParts" list`
+	DeleteParts []*MediaDeleteItem `json:"DeleteParts,omitempty" name:"DeleteParts"`
 
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -4857,7 +4857,7 @@ type DeleteWordSamplesRequest struct {
 	*tchttp.BaseRequest
 
 	// 关键词，数组长度限制：100 个词。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -4907,7 +4907,7 @@ type DescribeAIAnalysisTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -4949,7 +4949,7 @@ type DescribeAIAnalysisTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 视频内容分析模板详情列表。
-		AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet" list`
+		AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4971,7 +4971,7 @@ type DescribeAIRecognitionTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -5013,7 +5013,7 @@ type DescribeAIRecognitionTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 视频内容识别模板详情列表。
-		AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet" list`
+		AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5035,7 +5035,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -5083,7 +5083,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 转自适应码流模板详情列表。
-		AdaptiveDynamicStreamingTemplateSet []*AdaptiveDynamicStreamingTemplate `json:"AdaptiveDynamicStreamingTemplateSet,omitempty" name:"AdaptiveDynamicStreamingTemplateSet" list`
+		AdaptiveDynamicStreamingTemplateSet []*AdaptiveDynamicStreamingTemplate `json:"AdaptiveDynamicStreamingTemplateSet,omitempty" name:"AdaptiveDynamicStreamingTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5133,7 +5133,7 @@ type DescribeAllClassResponse struct {
 
 		// 分类信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ClassInfoSet []*MediaClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet" list`
+		ClassInfoSet []*MediaClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5155,7 +5155,7 @@ type DescribeAnimatedGraphicsTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转动图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -5203,7 +5203,7 @@ type DescribeAnimatedGraphicsTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 转动图模板详情列表。
-		AnimatedGraphicsTemplateSet []*AnimatedGraphicsTemplate `json:"AnimatedGraphicsTemplateSet,omitempty" name:"AnimatedGraphicsTemplateSet" list`
+		AnimatedGraphicsTemplateSet []*AnimatedGraphicsTemplate `json:"AnimatedGraphicsTemplateSet,omitempty" name:"AnimatedGraphicsTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5237,7 +5237,7 @@ type DescribeCDNStatDetailsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。
-	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
 
 	// 服务区域，取值有：
 	// <li>Chinese Mainland：中国大陆。 </li>
@@ -5287,7 +5287,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>Hong Kong, Macao and Taiwan：港澳台。</li>
 	// <li>Outside Chinese Mainland：海外。</li>
 	// <li>Other：其他 。</li>
-	Districts []*string `json:"Districts,omitempty" name:"Districts" list`
+	Districts []*string `json:"Districts,omitempty" name:"Districts"`
 
 	// 用户所属运营商信息，Area 为 Chinese Mainland 时，取值为以下运营商信息。当 Area 为其它值时忽略 Isps 参数。
 	// <li>China Telecom：中国电信。 </li>
@@ -5298,7 +5298,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>China Mobile Tietong：中国铁通。</li>
 	// <li>ISPs outside Chinese Mainland：海外运营商。</li>
 	// <li>Other ISPs：其他运营商。</li>
-	Isps []*string `json:"Isps,omitempty" name:"Isps" list`
+	Isps []*string `json:"Isps,omitempty" name:"Isps"`
 
 	// 每条数据的时间粒度，单位：分钟，取值有：
 	// <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
@@ -5345,7 +5345,7 @@ type DescribeCDNStatDetailsResponse struct {
 		DataInterval *uint64 `json:"DataInterval,omitempty" name:"DataInterval"`
 
 		// CDN 用量数据。
-		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5385,7 +5385,7 @@ type DescribeCDNUsageDataRequest struct {
 	DataInterval *uint64 `json:"DataInterval,omitempty" name:"DataInterval"`
 
 	// 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
-	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
 
 	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
@@ -5424,7 +5424,7 @@ type DescribeCDNUsageDataResponse struct {
 		DataInterval *int64 `json:"DataInterval,omitempty" name:"DataInterval"`
 
 		// CDN 统计数据。
-		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5498,11 +5498,11 @@ type DescribeCdnLogsResponse struct {
 
 		// 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitempty" name:"OverseaCdnLogs" list`
+		OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitempty" name:"OverseaCdnLogs"`
 
 		// 国内CDN节点的日志下载列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitempty" name:"DomesticCdnLogs" list`
+		DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitempty" name:"DomesticCdnLogs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5524,7 +5524,7 @@ type DescribeContentReviewTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -5566,7 +5566,7 @@ type DescribeContentReviewTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 内容智能识别模板详情列表。
-		ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet" list`
+		ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5627,7 +5627,7 @@ type DescribeDailyMediaPlayStatResponse struct {
 	Response *struct {
 
 		// 播放统计数据。
-		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet" list`
+		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5690,7 +5690,7 @@ type DescribeDailyMostPlayedStatResponse struct {
 	Response *struct {
 
 		// 媒体文件播放统计信息。
-		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet" list`
+		DailyPlayStatInfoSet []*DailyPlayStatInfo `json:"DailyPlayStatInfoSet,omitempty" name:"DailyPlayStatInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5747,7 +5747,7 @@ type DescribeDailyPlayStatFileListResponse struct {
 	Response *struct {
 
 		// 播放统计文件列表。
-		PlayStatFileSet []*PlayStatFileInfo `json:"PlayStatFileSet,omitempty" name:"PlayStatFileSet" list`
+		PlayStatFileSet []*PlayStatFileInfo `json:"PlayStatFileSet,omitempty" name:"PlayStatFileSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5769,7 +5769,7 @@ type DescribeDrmDataKeyRequest struct {
 	*tchttp.BaseRequest
 
 	// 加密后的数据密钥列表，最大支持10个。
-	EdkList []*string `json:"EdkList,omitempty" name:"EdkList" list`
+	EdkList []*string `json:"EdkList,omitempty" name:"EdkList"`
 }
 
 func (r *DescribeDrmDataKeyRequest) ToJsonString() string {
@@ -5796,7 +5796,7 @@ type DescribeDrmDataKeyResponse struct {
 	Response *struct {
 
 		// 密钥列表，包含加密的数据密钥。
-		KeyList []*SimpleAesEdkPair `json:"KeyList,omitempty" name:"KeyList" list`
+		KeyList []*SimpleAesEdkPair `json:"KeyList,omitempty" name:"KeyList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5925,7 +5925,7 @@ type DescribeHeadTailTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 片头片尾模板号，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -5967,7 +5967,7 @@ type DescribeHeadTailTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 片头片尾模板详情列表。
-		HeadTailTemplateSet []*HeadTailTemplate `json:"HeadTailTemplateSet,omitempty" name:"HeadTailTemplateSet" list`
+		HeadTailTemplateSet []*HeadTailTemplate `json:"HeadTailTemplateSet,omitempty" name:"HeadTailTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5989,7 +5989,7 @@ type DescribeImageProcessingTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片处理模板标识列表。长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 模板类型过滤条件，可选值：
 	// <li>Preset：系统预置模板；</li>
@@ -6037,7 +6037,7 @@ type DescribeImageProcessingTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 图片处理模板详情列表。
-		ImageProcessingTemplateSet []*ImageProcessingTemplate `json:"ImageProcessingTemplateSet,omitempty" name:"ImageProcessingTemplateSet" list`
+		ImageProcessingTemplateSet []*ImageProcessingTemplate `json:"ImageProcessingTemplateSet,omitempty" name:"ImageProcessingTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6059,7 +6059,7 @@ type DescribeImageSpriteTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 雪碧图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6107,7 +6107,7 @@ type DescribeImageSpriteTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 雪碧图模板详情列表。
-		ImageSpriteTemplateSet []*ImageSpriteTemplate `json:"ImageSpriteTemplateSet,omitempty" name:"ImageSpriteTemplateSet" list`
+		ImageSpriteTemplateSet []*ImageSpriteTemplate `json:"ImageSpriteTemplateSet,omitempty" name:"ImageSpriteTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6129,7 +6129,7 @@ type DescribeMediaInfosRequest struct {
 	*tchttp.BaseRequest
 
 	// 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
-	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 	// <li>basicInfo（视频基础信息）。</li>
@@ -6142,7 +6142,7 @@ type DescribeMediaInfosRequest struct {
 	// <li>keyFrameDescInfo（打点信息）。</li>
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 
 	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -6174,10 +6174,10 @@ type DescribeMediaInfosResponse struct {
 	Response *struct {
 
 		// 媒体文件信息列表。
-		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
+		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
 
 		// 不存在的文件 ID 列表。
-		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet" list`
+		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6244,7 +6244,7 @@ type DescribeMediaProcessUsageDataResponse struct {
 	Response *struct {
 
 		// 视频处理统计数据概览，展示所查询任务的概览以及详细数据。
-		MediaProcessDataSet []*TaskStatData `json:"MediaProcessDataSet,omitempty" name:"MediaProcessDataSet" list`
+		MediaProcessDataSet []*TaskStatData `json:"MediaProcessDataSet,omitempty" name:"MediaProcessDataSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6274,13 +6274,13 @@ type DescribePersonSamplesRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 素材 ID，数组长度限制：100。
-	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
+	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds"`
 
 	// 素材名称，数组长度限制：20。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 素材标签，数组长度限制：20。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6325,7 +6325,7 @@ type DescribePersonSamplesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 人物信息。
-		PersonSet []*AiSamplePerson `json:"PersonSet,omitempty" name:"PersonSet" list`
+		PersonSet []*AiSamplePerson `json:"PersonSet,omitempty" name:"PersonSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6370,7 +6370,7 @@ type DescribePrepaidProductsResponse struct {
 	Response *struct {
 
 		// 购买的预付费商品实例列表。
-		ProductInstanceSet []*ProductInstance `json:"ProductInstanceSet,omitempty" name:"ProductInstanceSet" list`
+		ProductInstanceSet []*ProductInstance `json:"ProductInstanceSet,omitempty" name:"ProductInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6392,7 +6392,7 @@ type DescribeProcedureTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务流模板名字过滤条件，数组长度限制：100。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 任务流模板类型过滤条件，可选值：
 	// <li>Preset：系统预置任务流模板；</li>
@@ -6440,7 +6440,7 @@ type DescribeProcedureTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务流模板详情列表。
-		ProcedureTemplateSet []*ProcedureTemplate `json:"ProcedureTemplateSet,omitempty" name:"ProcedureTemplateSet" list`
+		ProcedureTemplateSet []*ProcedureTemplate `json:"ProcedureTemplateSet,omitempty" name:"ProcedureTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6503,7 +6503,7 @@ type DescribeReviewDetailsResponse struct {
 		TotalDuration *int64 `json:"TotalDuration,omitempty" name:"TotalDuration"`
 
 		// 内容智能识别时长统计数据，每天一个数据。
-		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6525,7 +6525,7 @@ type DescribeSampleSnapshotTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 采样截图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6573,7 +6573,7 @@ type DescribeSampleSnapshotTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 采样截图模板详情列表。
-		SampleSnapshotTemplateSet []*SampleSnapshotTemplate `json:"SampleSnapshotTemplateSet,omitempty" name:"SampleSnapshotTemplateSet" list`
+		SampleSnapshotTemplateSet []*SampleSnapshotTemplate `json:"SampleSnapshotTemplateSet,omitempty" name:"SampleSnapshotTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6595,7 +6595,7 @@ type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6643,7 +6643,7 @@ type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 指定时间点截图模板详情列表。
-		SnapshotByTimeOffsetTemplateSet []*SnapshotByTimeOffsetTemplate `json:"SnapshotByTimeOffsetTemplateSet,omitempty" name:"SnapshotByTimeOffsetTemplateSet" list`
+		SnapshotByTimeOffsetTemplateSet []*SnapshotByTimeOffsetTemplate `json:"SnapshotByTimeOffsetTemplateSet,omitempty" name:"SnapshotByTimeOffsetTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6704,7 +6704,7 @@ type DescribeStorageDataResponse struct {
 		StandardStorage *uint64 `json:"StandardStorage,omitempty" name:"StandardStorage"`
 
 		// 各计费区域的存储用量。
-		StorageStat []*StorageStatData `json:"StorageStat,omitempty" name:"StorageStat" list`
+		StorageStat []*StorageStatData `json:"StorageStat,omitempty" name:"StorageStat"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6793,7 +6793,7 @@ type DescribeStorageDetailsResponse struct {
 	Response *struct {
 
 		// 存储统计数据，每5分钟或每天一条数据。
-		Data []*StatDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*StatDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6818,7 +6818,7 @@ type DescribeSubAppIdsRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 标签信息，查询指定标签的子应用列表。
-	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*ResourceTag `json:"Tags,omitempty" name:"Tags"`
 
 	// 分页拉取的起始偏移量。默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6854,7 +6854,7 @@ type DescribeSubAppIdsResponse struct {
 	Response *struct {
 
 		// 子应用信息集合。
-		SubAppIdInfoSet []*SubAppIdInfo `json:"SubAppIdInfoSet,omitempty" name:"SubAppIdInfoSet" list`
+		SubAppIdInfoSet []*SubAppIdInfo `json:"SubAppIdInfoSet,omitempty" name:"SubAppIdInfoSet"`
 
 		// 子应用总数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -6879,7 +6879,7 @@ type DescribeSuperPlayerConfigsRequest struct {
 	*tchttp.BaseRequest
 
 	// 播放器配置名字过滤条件，数组长度限制：100。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6927,7 +6927,7 @@ type DescribeSuperPlayerConfigsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 播放器配置数组。
-		PlayerConfigSet []*PlayerConfig `json:"PlayerConfigSet,omitempty" name:"PlayerConfigSet" list`
+		PlayerConfigSet []*PlayerConfig `json:"PlayerConfigSet,omitempty" name:"PlayerConfigSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7136,7 +7136,7 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务概要列表。
-		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet" list`
+		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet"`
 
 		// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
 		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
@@ -7161,7 +7161,7 @@ type DescribeTranscodeTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转码模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 模板类型过滤条件，可选值：
 	// <li>Preset：系统预置模板；</li>
@@ -7222,7 +7222,7 @@ type DescribeTranscodeTemplatesResponse struct {
 
 		// 转码模板详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranscodeTemplateSet []*TranscodeTemplate `json:"TranscodeTemplateSet,omitempty" name:"TranscodeTemplateSet" list`
+		TranscodeTemplateSet []*TranscodeTemplate `json:"TranscodeTemplateSet,omitempty" name:"TranscodeTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7245,7 +7245,7 @@ type DescribeVodDomainsRequest struct {
 
 	// 域名列表。当该字段不填时，则默认列出所有域名信息。本字段字段限制如下：
 	// <li>域名个数度最大为 20。</li>
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 分页拉取的最大返回结果数。默认值：20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -7287,7 +7287,7 @@ type DescribeVodDomainsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 域名信息列表。
-		DomainSet []*DomainDetailInfo `json:"DomainSet,omitempty" name:"DomainSet" list`
+		DomainSet []*DomainDetailInfo `json:"DomainSet,omitempty" name:"DomainSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7309,7 +7309,7 @@ type DescribeWatermarkTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 水印模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 水印类型过滤条件，可选值：
 	// <li>image：图片水印；</li>
@@ -7361,7 +7361,7 @@ type DescribeWatermarkTemplatesResponse struct {
 
 		// 水印模板详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		WatermarkTemplateSet []*WatermarkTemplate `json:"WatermarkTemplateSet,omitempty" name:"WatermarkTemplateSet" list`
+		WatermarkTemplateSet []*WatermarkTemplate `json:"WatermarkTemplateSet,omitempty" name:"WatermarkTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7391,13 +7391,13 @@ type DescribeWordSamplesRequest struct {
 	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
 	// 可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 关键词过滤条件，数组长度限制：100 个词。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 标签过滤条件，数组长度限制：20 个词。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -7441,7 +7441,7 @@ type DescribeWordSamplesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 关键词信息。
-		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet" list`
+		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7466,7 +7466,7 @@ type DomainDetailInfo struct {
 
 	// 加速地区信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccelerateAreaInfos []*AccelerateAreaInfo `json:"AccelerateAreaInfos,omitempty" name:"AccelerateAreaInfos" list`
+	AccelerateAreaInfos []*AccelerateAreaInfo `json:"AccelerateAreaInfos,omitempty" name:"AccelerateAreaInfos"`
 
 	// 部署状态，取值有：
 	// <li>Online：上线；</li>
@@ -7545,10 +7545,10 @@ type EditMediaRequest struct {
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
 
 	// 输入的视频文件信息，当 InputType 为 File 时必填。
-	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos" list`
+	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
 
 	// 输入的流信息，当 InputType 为 Stream 时必填。
-	StreamInfos []*EditMediaStreamInfo `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*EditMediaStreamInfo `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
 	// <li>10：拼接时，以分辨率最高的输入为基准；</li>
@@ -7687,10 +7687,10 @@ type EditMediaTaskInput struct {
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
 
 	// 输入的视频文件信息，当 InputType 为 File 时，该字段有值。
-	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
+	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet"`
 
 	// 输入的流信息，当 InputType 为 Stream 时，该字段有值。
-	StreamInfoSet []*EditMediaStreamInfo `json:"StreamInfoSet,omitempty" name:"StreamInfoSet" list`
+	StreamInfoSet []*EditMediaStreamInfo `json:"StreamInfoSet,omitempty" name:"StreamInfoSet"`
 }
 
 type EditMediaTaskOutput struct {
@@ -7884,11 +7884,11 @@ type FaceConfigureInfo struct {
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
-	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：
 	// <li>Default：使用默认人物库；</li>
@@ -7912,11 +7912,11 @@ type FaceConfigureInfoForUpdate struct {
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
-	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：
 	// <li>Default：使用默认人物库；</li>
@@ -7928,7 +7928,7 @@ type FaceConfigureInfoForUpdate struct {
 type FileDeleteTask struct {
 
 	// 删除文件 ID 列表。
-	FileIdSet []*string `json:"FileIdSet,omitempty" name:"FileIdSet" list`
+	FileIdSet []*string `json:"FileIdSet,omitempty" name:"FileIdSet"`
 }
 
 type FileUploadTask struct {
@@ -7951,7 +7951,7 @@ type ForbidMediaDistributionRequest struct {
 	*tchttp.BaseRequest
 
 	// 媒体文件列表，每次最多可提交 20 条。
-	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// forbid：禁播，recover：解禁。
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
@@ -7986,7 +7986,7 @@ type ForbidMediaDistributionResponse struct {
 	Response *struct {
 
 		// 不存在的文件 ID 列表。
-		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet" list`
+		NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitempty" name:"NotExistFileIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8060,10 +8060,10 @@ type HeadTailTemplate struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 片头候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
-	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet"`
 
 	// 片尾候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
-	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -8151,7 +8151,7 @@ type ImageProcessingTemplate struct {
 
 	// 图片处理操作数组，操作将以数组顺序执行。
 	// <li>长度限制：3。</li>
-	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations" list`
+	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations"`
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -8424,7 +8424,7 @@ type LiveRealTimeClipResponse struct {
 		MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 		// <span id="p_segmentset">剪辑后的视频片段信息。</span>
-		SegmentSet []*LiveRealTimeClipMediaSegmentInfo `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+		SegmentSet []*LiveRealTimeClipMediaSegmentInfo `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8500,7 +8500,7 @@ func (r *ManageTaskResponse) FromJsonString(s string) error {
 type MediaAdaptiveDynamicStreamingInfo struct {
 
 	// 转自适应码流信息数组。
-	AdaptiveDynamicStreamingSet []*AdaptiveDynamicStreamingInfoItem `json:"AdaptiveDynamicStreamingSet,omitempty" name:"AdaptiveDynamicStreamingSet" list`
+	AdaptiveDynamicStreamingSet []*AdaptiveDynamicStreamingInfoItem `json:"AdaptiveDynamicStreamingSet,omitempty" name:"AdaptiveDynamicStreamingSet"`
 }
 
 type MediaAiAnalysisClassificationItem struct {
@@ -8528,7 +8528,7 @@ type MediaAiAnalysisFrameTagItem struct {
 
 	// 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
 	// 比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
-	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
+	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
 
 	// 按帧标签的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -8543,7 +8543,7 @@ type MediaAiAnalysisFrameTagSegmentItem struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 时间片段内的标签列表。
-	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type MediaAiAnalysisHighlightItem struct {
@@ -8561,7 +8561,7 @@ type MediaAiAnalysisHighlightItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 智能精彩集锦子片段列表，精彩集锦片段由这些子片段拼接生成。
-	SegmentSet []*HighlightSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*HighlightSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type MediaAiAnalysisTagItem struct {
@@ -8576,7 +8576,7 @@ type MediaAiAnalysisTagItem struct {
 type MediaAnimatedGraphicsInfo struct {
 
 	// 视频转动图结果信息
-	AnimatedGraphicsSet []*MediaAnimatedGraphicsItem `json:"AnimatedGraphicsSet,omitempty" name:"AnimatedGraphicsSet" list`
+	AnimatedGraphicsSet []*MediaAnimatedGraphicsItem `json:"AnimatedGraphicsSet,omitempty" name:"AnimatedGraphicsSet"`
 }
 
 type MediaAnimatedGraphicsItem struct {
@@ -8667,7 +8667,7 @@ type MediaBasicInfo struct {
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
 	// 媒体文件的标签信息。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 直播录制文件的唯一标识。
 	Vid *string `json:"Vid,omitempty" name:"Vid"`
@@ -8704,7 +8704,7 @@ type MediaClassInfo struct {
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
 	// 当前分类的第一级子类 ID 集合
-	SubClassIdSet []*int64 `json:"SubClassIdSet,omitempty" name:"SubClassIdSet" list`
+	SubClassIdSet []*int64 `json:"SubClassIdSet,omitempty" name:"SubClassIdSet"`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
@@ -8725,7 +8725,7 @@ type MediaContentReviewAsrTextSegmentItem struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 }
 
 type MediaContentReviewOcrTextSegmentItem struct {
@@ -8746,10 +8746,10 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 
 	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	// PicUrlExpireTime 时间点后图片将被删除）。
@@ -8810,7 +8810,7 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 该字段已废弃，请使用 PicUrlExpireTime。
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitempty" name:"PicUrlExpireTimeStamp"`
@@ -8865,7 +8865,7 @@ type MediaDeleteItem struct {
 type MediaImageSpriteInfo struct {
 
 	// 特定规格的雪碧图信息集合，每个元素代表一套相同规格的雪碧图。
-	ImageSpriteSet []*MediaImageSpriteItem `json:"ImageSpriteSet,omitempty" name:"ImageSpriteSet" list`
+	ImageSpriteSet []*MediaImageSpriteItem `json:"ImageSpriteSet,omitempty" name:"ImageSpriteSet"`
 }
 
 type MediaImageSpriteItem struct {
@@ -8883,7 +8883,7 @@ type MediaImageSpriteItem struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 每一张雪碧图大图的地址。
-	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
+	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet"`
 
 	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
@@ -8954,7 +8954,7 @@ type MediaInputInfo struct {
 type MediaKeyFrameDescInfo struct {
 
 	// 视频打点信息数组。
-	KeyFrameDescSet []*MediaKeyFrameDescItem `json:"KeyFrameDescSet,omitempty" name:"KeyFrameDescSet" list`
+	KeyFrameDescSet []*MediaKeyFrameDescItem `json:"KeyFrameDescSet,omitempty" name:"KeyFrameDescSet"`
 }
 
 type MediaKeyFrameDescItem struct {
@@ -8990,10 +8990,10 @@ type MediaMetaData struct {
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频流信息。
-	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
 
 	// 音频流信息。
-	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 
 	// 视频时长，单位：秒。
 	VideoDuration *float64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
@@ -9027,7 +9027,7 @@ type MediaMiniProgramReviewElem struct {
 type MediaMiniProgramReviewInfo struct {
 
 	// 审核信息列表。
-	MiniProgramReviewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReviewList,omitempty" name:"MiniProgramReviewList" list`
+	MiniProgramReviewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReviewList,omitempty" name:"MiniProgramReviewList"`
 }
 
 type MediaMiniProgramReviewInfoItem struct {
@@ -9047,7 +9047,7 @@ type MediaMiniProgramReviewInfoItem struct {
 	ReviewResult *string `json:"ReviewResult,omitempty" name:"ReviewResult"`
 
 	// 小程序审核元素。
-	ReviewSummary []*MediaMiniProgramReviewElem `json:"ReviewSummary,omitempty" name:"ReviewSummary" list`
+	ReviewSummary []*MediaMiniProgramReviewElem `json:"ReviewSummary,omitempty" name:"ReviewSummary"`
 }
 
 type MediaOutputInfo struct {
@@ -9151,25 +9151,25 @@ type MediaProcessTaskImageSpriteResult struct {
 type MediaProcessTaskInput struct {
 
 	// 视频转码任务列表。
-	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet" list`
+	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet"`
 
 	// 视频转动图任务列表。
-	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet" list`
+	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet"`
 
 	// 对视频按时间点截图任务列表。
-	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet" list`
+	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet"`
 
 	// 对视频采样截图任务列表。
-	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet" list`
+	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet"`
 
 	// 对视频截雪碧图任务列表。
-	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
+	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet"`
 
 	// 对视频截图做封面任务列表。
-	CoverBySnapshotTaskSet []*CoverBySnapshotTaskInput `json:"CoverBySnapshotTaskSet,omitempty" name:"CoverBySnapshotTaskSet" list`
+	CoverBySnapshotTaskSet []*CoverBySnapshotTaskInput `json:"CoverBySnapshotTaskSet,omitempty" name:"CoverBySnapshotTaskSet"`
 
 	// 对视频转自适应码流任务列表。
-	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
+	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet"`
 }
 
 type MediaProcessTaskResult struct {
@@ -9285,7 +9285,7 @@ type MediaProcessTaskTranscodeResult struct {
 type MediaSampleSnapshotInfo struct {
 
 	// 特定规格的采样截图信息集合，每个元素代表一套相同规格的采样截图。
-	SampleSnapshotSet []*MediaSampleSnapshotItem `json:"SampleSnapshotSet,omitempty" name:"SampleSnapshotSet" list`
+	SampleSnapshotSet []*MediaSampleSnapshotItem `json:"SampleSnapshotSet,omitempty" name:"SampleSnapshotSet"`
 }
 
 type MediaSampleSnapshotItem struct {
@@ -9304,16 +9304,16 @@ type MediaSampleSnapshotItem struct {
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 生成的截图 url 列表。
-	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
+	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet"`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
-	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
+	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition"`
 }
 
 type MediaSnapshotByTimeOffsetInfo struct {
 
 	// 特定规格的指定时间点截图信息集合。目前每种规格只能有一套截图。
-	SnapshotByTimeOffsetSet []*MediaSnapshotByTimeOffsetItem `json:"SnapshotByTimeOffsetSet,omitempty" name:"SnapshotByTimeOffsetSet" list`
+	SnapshotByTimeOffsetSet []*MediaSnapshotByTimeOffsetItem `json:"SnapshotByTimeOffsetSet,omitempty" name:"SnapshotByTimeOffsetSet"`
 }
 
 type MediaSnapshotByTimeOffsetItem struct {
@@ -9322,7 +9322,7 @@ type MediaSnapshotByTimeOffsetItem struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 同一规格的截图信息集合，每个元素代表一张截图。
-	PicInfoSet []*MediaSnapshotByTimePicInfoItem `json:"PicInfoSet,omitempty" name:"PicInfoSet" list`
+	PicInfoSet []*MediaSnapshotByTimePicInfoItem `json:"PicInfoSet,omitempty" name:"PicInfoSet"`
 }
 
 type MediaSnapshotByTimePicInfoItem struct {
@@ -9334,7 +9334,7 @@ type MediaSnapshotByTimePicInfoItem struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
-	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
+	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition"`
 }
 
 type MediaSourceData struct {
@@ -9353,7 +9353,7 @@ type MediaSourceData struct {
 type MediaSubtitleInfo struct {
 
 	// 字幕信息列表。
-	SubtitleSet []*MediaSubtitleItem `json:"SubtitleSet,omitempty" name:"SubtitleSet" list`
+	SubtitleSet []*MediaSubtitleItem `json:"SubtitleSet,omitempty" name:"SubtitleSet"`
 }
 
 type MediaSubtitleInput struct {
@@ -9413,7 +9413,7 @@ type MediaTrack struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 轨道上的媒体片段列表。
-	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems" list`
+	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems"`
 }
 
 type MediaTrackItem struct {
@@ -9451,7 +9451,7 @@ type MediaTrackItem struct {
 type MediaTranscodeInfo struct {
 
 	// 各规格的转码信息集合，每个元素代表一个规格的转码结果。
-	TranscodeSet []*MediaTranscodeItem `json:"TranscodeSet,omitempty" name:"TranscodeSet" list`
+	TranscodeSet []*MediaTranscodeItem `json:"TranscodeSet,omitempty" name:"TranscodeSet"`
 }
 
 type MediaTranscodeItem struct {
@@ -9484,10 +9484,10 @@ type MediaTranscodeItem struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 音频流信息。
-	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 
 	// 视频流信息。
-	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
 }
 
 type MediaTransitionItem struct {
@@ -9496,7 +9496,7 @@ type MediaTransitionItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
-	Transitions []*TransitionOpertion `json:"Transitions,omitempty" name:"Transitions" list`
+	Transitions []*TransitionOpertion `json:"Transitions,omitempty" name:"Transitions"`
 }
 
 type MediaVideoStreamItem struct {
@@ -9714,7 +9714,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 自适应转码输入流参数信息，最多输入10路流。
 	// 注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
@@ -10086,10 +10086,10 @@ type ModifyHeadTailTemplateRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
-	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet" list`
+	HeadCandidateSet []*string `json:"HeadCandidateSet,omitempty" name:"HeadCandidateSet"`
 
 	// 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
-	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet" list`
+	TailCandidateSet []*string `json:"TailCandidateSet,omitempty" name:"TailCandidateSet"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
@@ -10270,30 +10270,30 @@ type ModifyMediaInfoRequest struct {
 	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
 
 	// 新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
-	AddKeyFrameDescs []*MediaKeyFrameDescItem `json:"AddKeyFrameDescs,omitempty" name:"AddKeyFrameDescs" list`
+	AddKeyFrameDescs []*MediaKeyFrameDescItem `json:"AddKeyFrameDescs,omitempty" name:"AddKeyFrameDescs"`
 
 	// 要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
-	DeleteKeyFrameDescs []*float64 `json:"DeleteKeyFrameDescs,omitempty" name:"DeleteKeyFrameDescs" list`
+	DeleteKeyFrameDescs []*float64 `json:"DeleteKeyFrameDescs,omitempty" name:"DeleteKeyFrameDescs"`
 
 	// 取值 1 表示清空视频打点信息，其他值无意义。
 	// 同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。
 	ClearKeyFrameDescs *int64 `json:"ClearKeyFrameDescs,omitempty" name:"ClearKeyFrameDescs"`
 
 	// 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 16 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
-	AddTags []*string `json:"AddTags,omitempty" name:"AddTags" list`
+	AddTags []*string `json:"AddTags,omitempty" name:"AddTags"`
 
 	// 要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
-	DeleteTags []*string `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+	DeleteTags []*string `json:"DeleteTags,omitempty" name:"DeleteTags"`
 
 	// 取值 1 表示清空媒体文件所有标签，其他值无意义。
 	// 同一个请求里，ClearTags 与 AddTags 不能同时出现。
 	ClearTags *int64 `json:"ClearTags,omitempty" name:"ClearTags"`
 
 	// 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
-	AddSubtitles []*MediaSubtitleInput `json:"AddSubtitles,omitempty" name:"AddSubtitles" list`
+	AddSubtitles []*MediaSubtitleInput `json:"AddSubtitles,omitempty" name:"AddSubtitles"`
 
 	// 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
-	DeleteSubtitleIds []*string `json:"DeleteSubtitleIds,omitempty" name:"DeleteSubtitleIds" list`
+	DeleteSubtitleIds []*string `json:"DeleteSubtitleIds,omitempty" name:"DeleteSubtitleIds"`
 
 	// 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
 	// 同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
@@ -10346,7 +10346,7 @@ type ModifyMediaInfoResponse struct {
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 		// 新增的字幕信息。
-		AddedSubtitleSet []*MediaSubtitleItem `json:"AddedSubtitleSet,omitempty" name:"AddedSubtitleSet" list`
+		AddedSubtitleSet []*MediaSubtitleItem `json:"AddedSubtitleSet,omitempty" name:"AddedSubtitleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10380,7 +10380,7 @@ type ModifyPersonSampleRequest struct {
 	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
 	// 2. Review：用于不适宜的内容识别，等价于 Review.Face。
 	// 3. All：用于内容识别、不适宜的内容识别，等价于 1+2。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 五官操作信息。
 	FaceOperationInfo *AiSampleFaceOperation `json:"FaceOperationInfo,omitempty" name:"FaceOperationInfo"`
@@ -10426,7 +10426,7 @@ type ModifyPersonSampleResponse struct {
 
 		// 处理失败的五官信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10777,7 +10777,7 @@ type ModifySuperPlayerConfigRequest struct {
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
 	// 播放器对不于不同分辨率的子流展示名字。
-	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames" list`
+	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames"`
 
 	// 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -11037,7 +11037,7 @@ type ModifyWordSampleRequest struct {
 	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
 	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
 	// 7. All：包含以上全部，等价于 1+2+3+4。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 标签操作信息。
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
@@ -11186,7 +11186,7 @@ type OcrWordsConfigureInfo struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type OcrWordsConfigureInfoForUpdate struct {
@@ -11198,7 +11198,7 @@ type OcrWordsConfigureInfoForUpdate struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type OutputAudioStream struct {
@@ -11273,7 +11273,7 @@ type ParseStreamingManifestResponse struct {
 	Response *struct {
 
 		// 分片文件列表。
-		MediaSegmentSet []*string `json:"MediaSegmentSet,omitempty" name:"MediaSegmentSet" list`
+		MediaSegmentSet []*string `json:"MediaSegmentSet,omitempty" name:"MediaSegmentSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11336,7 +11336,7 @@ type PlayerConfig struct {
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
 	// 播放器对不于不同分辨率的子流展示名字。
-	ResolutionNameSet []*ResolutionNameInfo `json:"ResolutionNameSet,omitempty" name:"ResolutionNameSet" list`
+	ResolutionNameSet []*ResolutionNameInfo `json:"ResolutionNameSet,omitempty" name:"ResolutionNameSet"`
 
 	// 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -11428,7 +11428,7 @@ type PoliticalImgReviewTemplateInfo struct {
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
 	// <li>military：军事人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -11453,7 +11453,7 @@ type PoliticalImgReviewTemplateInfoForUpdate struct {
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
 	// <li>military：军事人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -11557,7 +11557,7 @@ type PornImgReviewTemplateInfo struct {
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -11578,7 +11578,7 @@ type PornImgReviewTemplateInfoForUpdate struct {
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -11651,16 +11651,16 @@ type ProcedureTask struct {
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 视频处理任务的执行状态与结果。
-	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet" list`
+	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet"`
 
 	// 视频内容审核任务的执行状态与结果。
-	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet" list`
+	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet"`
 
 	// 视频内容分析任务的执行状态与结果。
-	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet" list`
+	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet"`
 
 	// 视频内容识别任务的执行状态与结果。
-	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet" list`
+	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet"`
 
 	// 任务流的优先级，取值范围为 [-10, 10]。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
@@ -11995,7 +11995,7 @@ type ProductInstance struct {
 	BindStatus *int64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 预付费资源包实例中包含的资源包列表。
-	ProductInstanceResourceSet []*ProductInstanceRecource `json:"ProductInstanceResourceSet,omitempty" name:"ProductInstanceResourceSet" list`
+	ProductInstanceResourceSet []*ProductInstanceRecource `json:"ProductInstanceResourceSet,omitempty" name:"ProductInstanceResourceSet"`
 
 	// 资源包实例的状态，取值有：
 	// <li>Effective：生效，可用于计费抵扣。</li>
@@ -12147,7 +12147,7 @@ type PullEventsResponse struct {
 
 		// 事件列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		EventSet []*EventContent `json:"EventSet,omitempty" name:"EventSet" list`
+		EventSet []*EventContent `json:"EventSet,omitempty" name:"EventSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -12307,7 +12307,7 @@ type PushUrlCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 预热的 URL 列表，单次最多指定20个 URL。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -12366,7 +12366,7 @@ type RefererAuthPolicy struct {
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 用于校验的 Referer 名单。
-	Referers []*string `json:"Referers,omitempty" name:"Referers" list`
+	Referers []*string `json:"Referers,omitempty" name:"Referers"`
 
 	// 是否允许空 Referer 访问本域名，可选值：
 	// <li>Yes: 是；</li>
@@ -12468,7 +12468,7 @@ type SampleSnapshotTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 }
 
 type SampleSnapshotTemplate struct {
@@ -12539,49 +12539,49 @@ type SearchMediaRequest struct {
 	// 文件 ID 集合，匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	// <li>单个 ID 长度限制：40个字符。</li>
-	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 文件名集合，模糊匹配媒体文件的文件名，匹配度越高，排序越优先。
 	// <li>单个文件名长度限制：40个字符。</li>
 	// <li>数组长度限制：10。</li>
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 文件名前缀，前缀匹配媒体文件的文件名。
 	// <li>单个文件名前缀长度限制：20个字符。</li>
 	// <li>数组长度限制：10。</li>
-	NamePrefixes []*string `json:"NamePrefixes,omitempty" name:"NamePrefixes" list`
+	NamePrefixes []*string `json:"NamePrefixes,omitempty" name:"NamePrefixes"`
 
 	// 文件描述集合，模糊匹配媒体文件的描述，匹配度越高，排序越优先。
 	// <li>单个描述长度限制：100个字符。</li>
 	// <li>数组长度限制：10。</li>
-	Descriptions []*string `json:"Descriptions,omitempty" name:"Descriptions" list`
+	Descriptions []*string `json:"Descriptions,omitempty" name:"Descriptions"`
 
 	// 分类 ID 集合，匹配集合指定 ID 的分类及其所有子类。
 	// <li>数组长度限制：10。</li>
-	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds" list`
+	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds"`
 
 	// 标签集合，匹配集合中任意元素。
 	// <li>单个标签长度限制：8个字符。</li>
 	// <li>数组长度限制：10。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 文件类型。匹配集合中的任意元素：
 	// <li>Video: 视频文件</li>
 	// <li>Audio: 音频文件</li>
 	// <li>Image: 图片文件</li>
-	Categories []*string `json:"Categories,omitempty" name:"Categories" list`
+	Categories []*string `json:"Categories,omitempty" name:"Categories"`
 
 	// 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
 	// <li>数组长度限制：10。</li>
-	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes" list`
+	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes"`
 
 	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
-	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds" list`
+	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds"`
 
 	// 直播录制文件的唯一标识。匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
-	Vids []*string `json:"Vids,omitempty" name:"Vids" list`
+	Vids []*string `json:"Vids,omitempty" name:"Vids"`
 
 	// 匹配创建时间在此时间段内的文件。
 	// <li>包含所指定的头尾时间点。</li>
@@ -12611,12 +12611,12 @@ type SearchMediaRequest struct {
 	// <li>keyFrameDescInfo（打点信息）。</li>
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 
 	// 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
 	// <li>单个存储地区长度限制：20个字符。</li>
 	// <li>数组长度限制：20。</li>
-	StorageRegions []*string `json:"StorageRegions,omitempty" name:"StorageRegions" list`
+	StorageRegions []*string `json:"StorageRegions,omitempty" name:"StorageRegions"`
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -12702,7 +12702,7 @@ type SearchMediaResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 媒体文件信息列表。
-		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet" list`
+		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -12842,7 +12842,7 @@ type SnapshotByTimeOffsetTask2017 struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 截图结果信息。
-	SnapshotInfoSet []*SnapshotByTimeOffset2017 `json:"SnapshotInfoSet,omitempty" name:"SnapshotInfoSet" list`
+	SnapshotInfoSet []*SnapshotByTimeOffset2017 `json:"SnapshotInfoSet,omitempty" name:"SnapshotInfoSet"`
 }
 
 type SnapshotByTimeOffsetTaskInput struct {
@@ -12853,13 +12853,13 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 截图时间点列表，时间点支持 s、% 两种格式：
 	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
 	// <li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
-	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet" list`
+	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet"`
 
 	// 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
-	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
+	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 }
 
 type SnapshotByTimeOffsetTemplate struct {
@@ -12933,7 +12933,7 @@ type SpecificationDataItem struct {
 	Specification *string `json:"Specification,omitempty" name:"Specification"`
 
 	// 统计数据。
-	Data []*TaskStatDataItem `json:"Data,omitempty" name:"Data" list`
+	Data []*TaskStatDataItem `json:"Data,omitempty" name:"Data"`
 }
 
 type SplitMediaOutputConfig struct {
@@ -12959,7 +12959,7 @@ type SplitMediaRequest struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 视频拆条任务信息列表，最多同时支持100个拆条信息。
-	Segments []*SplitMediaTaskConfig `json:"Segments,omitempty" name:"Segments" list`
+	Segments []*SplitMediaTaskConfig `json:"Segments,omitempty" name:"Segments"`
 
 	// 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
@@ -13041,7 +13041,7 @@ type SplitMediaTask struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 视频拆条任务详细信息列表。
-	FileInfoSet []*SplitMediaTaskSegmentInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
+	FileInfoSet []*SplitMediaTaskSegmentInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet"`
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
@@ -13170,7 +13170,7 @@ type StickerTrackItem struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 
 	// 对贴图进行的操作，如图像旋转等。
-	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations" list`
+	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations"`
 }
 
 type StorageStatData struct {
@@ -13375,7 +13375,7 @@ type TaskStatData struct {
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务数统计数据概览，用量单位为秒。
-	Summary []*TaskStatDataItem `json:"Summary,omitempty" name:"Summary" list`
+	Summary []*TaskStatDataItem `json:"Summary,omitempty" name:"Summary"`
 
 	// 不同规格任务统计数据详情。
 	// 转码规格：
@@ -13412,7 +13412,7 @@ type TaskStatData struct {
 	// <li>Edit.H265.FHD: H.265编码方式全高清视频编辑</li>
 	// <li>Edit.H265.2K: H.265编码方式2K视频编辑</li>
 	// <li>Edit.H265.4K: H.265编码方式4K视频编辑</li>
-	Details []*SpecificationDataItem `json:"Details,omitempty" name:"Details" list`
+	Details []*SpecificationDataItem `json:"Details,omitempty" name:"Details"`
 }
 
 type TaskStatDataItem struct {
@@ -13479,7 +13479,7 @@ type TerrorismImgReviewTemplateInfo struct {
 	// <li>explosion：爆炸火灾；</li>
 	// <li>terrorists：暴恐人物；</li>
 	// <li>scenario：暴恐画面。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13505,7 +13505,7 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	// <li>explosion：爆炸火灾；</li>
 	// <li>terrorists：暴恐人物；</li>
 	// <li>scenario：暴恐画面。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13636,7 +13636,7 @@ type TranscodeTask2017 struct {
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 	// 视频转码后生成的播放信息。
-	PlayInfoSet []*TranscodePlayInfo2017 `json:"PlayInfoSet,omitempty" name:"PlayInfoSet" list`
+	PlayInfoSet []*TranscodePlayInfo2017 `json:"PlayInfoSet,omitempty" name:"PlayInfoSet"`
 }
 
 type TranscodeTaskInput struct {
@@ -13645,13 +13645,13 @@ type TranscodeTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 马赛克列表，最大可支持 10 张。
-	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
+	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet"`
 
 	// 片头片尾列表，支持多片头片尾，最大可支持 10 个。
-	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitempty" name:"HeadTailSet" list`
+	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitempty" name:"HeadTailSet"`
 
 	// 转码后的视频的起始时间偏移，单位：秒。
 	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
@@ -13791,7 +13791,7 @@ type UserDefineAsrTextReviewTemplateInfo struct {
 
 	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13809,7 +13809,7 @@ type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13854,7 +13854,7 @@ type UserDefineFaceReviewTemplateInfo struct {
 
 	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13872,7 +13872,7 @@ type UserDefineFaceReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13890,7 +13890,7 @@ type UserDefineOcrTextReviewTemplateInfo struct {
 
 	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -13908,7 +13908,7 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -14070,10 +14070,10 @@ type VideoTrackItem struct {
 	Height *string `json:"Height,omitempty" name:"Height"`
 
 	// 对图像进行的操作，如图像旋转等。
-	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations" list`
+	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations"`
 
 	// 对音频进行操作，如静音等。
-	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations" list`
+	AudioOperations []*AudioTransform `json:"AudioOperations,omitempty" name:"AudioOperations"`
 }
 
 type WatermarkCycleConfigForUpdate struct {

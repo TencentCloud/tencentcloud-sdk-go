@@ -1,95 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 音频内容检测(ams) 版本：2020-12-29
 
-### 第 28 次发布
+### 第 2 次发布
 
-发布时间：2021-06-04 08:03:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDisksChargeType](https://cloud.tencent.com/document/api/362/38075)
-
-	* 新增入参：DiskChargePostpaid
-
-	* <font color="#dd0000">**修改入参**：</font>DiskChargePrepaid
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 16 次发布
-
-发布时间：2021-06-04 08:10:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
-
-	* 新增入参：IsQueryProMachine
-
-
-修改数据结构：
-
-* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
-
-	* 新增成员：Uuid
-
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-### 第 23 次发布
-
-发布时间：2021-06-04 08:05:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
-
-	* 新增入参：PayloadEncoding
-
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 14 次发布
-
-发布时间：2021-06-04 08:01:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeKeyPairs](https://cloud.tencent.com/document/api/1207/55540)
-
-	* 新增入参：Filters
-
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 31 次发布
-
-发布时间：2021-06-04 08:07:27
+发布时间：2021-06-04 16:38:43
 
 本次发布包含了以下内容：
 
@@ -97,44 +12,32 @@
 
 新增接口：
 
-* [ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
-
-### 第 5 次发布
-
-发布时间：2021-06-04 08:00:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRelatedIngresses](https://cloud.tencent.com/document/api/1371/56697)
-* [ModifyServiceInfo](https://cloud.tencent.com/document/api/1371/56696)
-* [RestartServiceRunPod](https://cloud.tencent.com/document/api/1371/56695)
-
-修改接口：
-
-* [CreateNamespace](https://cloud.tencent.com/document/api/1371/55417)
-
-	* 新增入参：EnableTswTraceService
-
-* [DeployServiceV2](https://cloud.tencent.com/document/api/1371/55519)
-
-	* 新增入参：PortMappings, UseRegistryDefaultConfig
-
-* [DescribeIngresses](https://cloud.tencent.com/document/api/1371/55520)
-
-	* 新增入参：Names
-
+* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
 
 新增数据结构：
 
-* [PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping)
+* [MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult)
+* [TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult)
+
+
+
+## 音频内容检测(ams) 版本：2020-06-08
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 8 次发布
+
+发布时间：2021-06-07 08:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendMsg](https://cloud.tencent.com/document/api/1179/56772)
 
 
 
@@ -738,6 +641,23 @@
 
 
 ## 音频内容检测(ams) 版本：2020-12-29
+
+### 第 2 次发布
+
+发布时间：2021-06-04 16:38:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult)](https://cloud.tencent.com/document/api/1219/53259#[MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult))
+* [[TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult)](https://cloud.tencent.com/document/api/1219/53259#[TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult))
 
 ### 第 1 次发布
 
@@ -34987,7 +34907,7 @@
 
 新增接口：
 
-* [[ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)](https://cloud.tencent.com/document/api/#/#)
+* [ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)
 
 ### 第 30 次发布
 
@@ -41242,6 +41162,18 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 8 次发布
+
+发布时间：2021-06-07 08:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SendMsg](https://cloud.tencent.com/document/api/1179/56772)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 7 次发布
 
 发布时间：2021-05-18 08:11:59
@@ -41512,9 +41444,9 @@
 
 新增接口：
 
-* [[DescribeRelatedIngresses](https://cloud.tencent.com/document/api/1371/56697)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyServiceInfo](https://cloud.tencent.com/document/api/1371/56696)](https://cloud.tencent.com/document/api/#/#)
-* [[RestartServiceRunPod](https://cloud.tencent.com/document/api/1371/56695)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRelatedIngresses](https://cloud.tencent.com/document/api/1371/56697)
+* [ModifyServiceInfo](https://cloud.tencent.com/document/api/1371/56696)
+* [RestartServiceRunPod](https://cloud.tencent.com/document/api/1371/56695)
 
 修改接口：
 
@@ -41533,7 +41465,7 @@
 
 新增数据结构：
 
-* [[PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping)](https://cloud.tencent.com/document/api/1371/55421#[PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping))
+* [PortMapping](https://cloud.tencent.com/document/api/1371/55421#PortMapping)
 
 ### 第 4 次发布
 

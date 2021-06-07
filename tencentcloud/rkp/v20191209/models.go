@@ -31,7 +31,7 @@ type DevInfoQ struct {
 
 	// 风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo" list`
+	RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
 	// 概率值
 	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
@@ -89,7 +89,7 @@ type GetOpenIdResponse struct {
 
 		// 设备风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskInfo []*RiskInfo `json:"RiskInfo,omitempty" name:"RiskInfo" list`
+		RiskInfo []*RiskInfo `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -310,7 +310,7 @@ type QueryDevAndRiskResponse struct {
 
 		// 匹配到的设备信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Matches []*DevInfoQ `json:"Matches,omitempty" name:"Matches" list`
+		Matches []*DevInfoQ `json:"Matches,omitempty" name:"Matches"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

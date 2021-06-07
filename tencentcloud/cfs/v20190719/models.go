@@ -42,7 +42,7 @@ type AvailableRegion struct {
 	RegionStatus *string `json:"RegionStatus,omitempty" name:"RegionStatus"`
 
 	// 可用区数组
-	Zones []*AvailableZone `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*AvailableZone `json:"Zones,omitempty" name:"Zones"`
 
 	// 区域中文名称，如“广州”
 	RegionCnName *string `json:"RegionCnName,omitempty" name:"RegionCnName"`
@@ -51,7 +51,7 @@ type AvailableRegion struct {
 type AvailableType struct {
 
 	// 协议与售卖详情
-	Protocols []*AvailableProtoStatus `json:"Protocols,omitempty" name:"Protocols" list`
+	Protocols []*AvailableProtoStatus `json:"Protocols,omitempty" name:"Protocols"`
 
 	// 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -72,7 +72,7 @@ type AvailableZone struct {
 	ZoneCnName *string `json:"ZoneCnName,omitempty" name:"ZoneCnName"`
 
 	// Type数组
-	Types []*AvailableType `json:"Types,omitempty" name:"Types" list`
+	Types []*AvailableType `json:"Types,omitempty" name:"Types"`
 
 	// 可用区中英文名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
@@ -109,7 +109,7 @@ type CreateCfsFileSystemRequest struct {
 	FsName *string `json:"FsName,omitempty" name:"FsName"`
 
 	// 文件系统标签
-	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
@@ -564,7 +564,7 @@ type DescribeAvailableZoneInfoResponse struct {
 	Response *struct {
 
 		// 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
-		RegionZones []*AvailableRegion `json:"RegionZones,omitempty" name:"RegionZones" list`
+		RegionZones []*AvailableRegion `json:"RegionZones,omitempty" name:"RegionZones"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -613,7 +613,7 @@ type DescribeCfsFileSystemClientsResponse struct {
 	Response *struct {
 
 		// 客户端列表
-		ClientList []*FileSystemClient `json:"ClientList,omitempty" name:"ClientList" list`
+		ClientList []*FileSystemClient `json:"ClientList,omitempty" name:"ClientList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -670,7 +670,7 @@ type DescribeCfsFileSystemsResponse struct {
 	Response *struct {
 
 		// 文件系统信息
-		FileSystems []*FileSystemInfo `json:"FileSystems,omitempty" name:"FileSystems" list`
+		FileSystems []*FileSystemInfo `json:"FileSystems,omitempty" name:"FileSystems"`
 
 		// 文件系统总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -718,7 +718,7 @@ type DescribeCfsPGroupsResponse struct {
 	Response *struct {
 
 		// 权限组信息列表
-		PGroupList []*PGroupInfo `json:"PGroupList,omitempty" name:"PGroupList" list`
+		PGroupList []*PGroupInfo `json:"PGroupList,omitempty" name:"PGroupList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -767,7 +767,7 @@ type DescribeCfsRulesResponse struct {
 	Response *struct {
 
 		// 权限组规则列表
-		RuleList []*PGroupRuleInfo `json:"RuleList,omitempty" name:"RuleList" list`
+		RuleList []*PGroupRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -861,7 +861,7 @@ type DescribeMountTargetsResponse struct {
 	Response *struct {
 
 		// 挂载点详情
-		MountTargets []*MountInfo `json:"MountTargets,omitempty" name:"MountTargets" list`
+		MountTargets []*MountInfo `json:"MountTargets,omitempty" name:"MountTargets"`
 
 		// 挂载点数量
 		NumberOfMountTargets *int64 `json:"NumberOfMountTargets,omitempty" name:"NumberOfMountTargets"`

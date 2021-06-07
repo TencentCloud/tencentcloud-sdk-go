@@ -104,7 +104,7 @@ type EvaluationResponse struct {
 
 		// 识别出的算式信息；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items" list`
+		Items []*Item `json:"Items,omitempty" name:"Items"`
 
 		// 任务 id，用于查询接口
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`

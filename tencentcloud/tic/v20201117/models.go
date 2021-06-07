@@ -365,7 +365,7 @@ type DescribeStackEventsRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照⼀个或者多个事件ID查询
-	EventIds []*string `json:"EventIds,omitempty" name:"EventIds" list`
+	EventIds []*string `json:"EventIds,omitempty" name:"EventIds"`
 
 	// <li>**VersionId**</li>
 	// 按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
@@ -382,7 +382,7 @@ type DescribeStackEventsRequest struct {
 	// <li>**Status**</li>
 	// 按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
 	// 类型：string
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -421,7 +421,7 @@ type DescribeStackEventsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 事件详细信息列表
-		Events []*EventInfo `json:"Events,omitempty" name:"Events" list`
+		Events []*EventInfo `json:"Events,omitempty" name:"Events"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -443,7 +443,7 @@ type DescribeStackVersionsRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照⼀个或者多个版本ID查询
-	VersionIds []*string `json:"VersionIds,omitempty" name:"VersionIds" list`
+	VersionIds []*string `json:"VersionIds,omitempty" name:"VersionIds"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -462,7 +462,7 @@ type DescribeStackVersionsRequest struct {
 	// <li>**StackId**</li>
 	// 按照版本所属的【**资源栈ID**】进行过滤，形如`stk-xxxxxx`
 	// 类型：string
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeStackVersionsRequest) ToJsonString() string {
@@ -495,7 +495,7 @@ type DescribeStackVersionsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 版本详细信息列表
-		Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions" list`
+		Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -517,7 +517,7 @@ type DescribeStacksRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照⼀个或者多个资源栈ID查询
-	StackIds []*string `json:"StackIds,omitempty" name:"StackIds" list`
+	StackIds []*string `json:"StackIds,omitempty" name:"StackIds"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -555,7 +555,7 @@ type DescribeStacksResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 资源栈详细信息列表
-		Stacks []*StackInfo `json:"Stacks,omitempty" name:"Stacks" list`
+		Stacks []*StackInfo `json:"Stacks,omitempty" name:"Stacks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -656,7 +656,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 匹配的值，可以有多个
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type PlanStackRequest struct {

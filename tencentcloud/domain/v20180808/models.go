@@ -25,7 +25,7 @@ type BatchModifyDomainInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量修改的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 模板ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -136,7 +136,7 @@ type CheckBatchStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 操作日志 ID数组，最多 200 个
-	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds" list`
+	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds"`
 }
 
 func (r *CheckBatchStatusRequest) ToJsonString() string {
@@ -163,7 +163,7 @@ type CheckBatchStatusResponse struct {
 	Response *struct {
 
 		// 批量任务状态集
-		StatusSet []*BatchStatus `json:"StatusSet,omitempty" name:"StatusSet" list`
+		StatusSet []*BatchStatus `json:"StatusSet,omitempty" name:"StatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -335,7 +335,7 @@ type CreateDomainBatchRequest struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 批量购买的域名,最多为4000个
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
@@ -539,7 +539,7 @@ type DescribeBatchOperationLogDetailsResponse struct {
 
 		// 日志详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitempty" name:"DomainBatchDetailSet" list`
+		DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitempty" name:"DomainBatchDetailSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -596,7 +596,7 @@ type DescribeBatchOperationLogsResponse struct {
 
 		// 日志列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitempty" name:"DomainBatchLogSet" list`
+		DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitempty" name:"DomainBatchLogSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -703,7 +703,7 @@ type DescribeDomainNameListResponse struct {
 
 		// 域名信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainSet []*DomainList `json:"DomainSet,omitempty" name:"DomainSet" list`
+		DomainSet []*DomainList `json:"DomainSet,omitempty" name:"DomainSet"`
 
 		// 域名总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -728,13 +728,13 @@ type DescribeDomainPriceListRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询价格的后缀列表。默认则为全部后缀
-	TldList []*string `json:"TldList,omitempty" name:"TldList" list`
+	TldList []*string `json:"TldList,omitempty" name:"TldList"`
 
 	// 查询购买的年份，默认会列出所有年份的价格
-	Year []*int64 `json:"Year,omitempty" name:"Year" list`
+	Year []*int64 `json:"Year,omitempty" name:"Year"`
 
 	// 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
-	Operation []*string `json:"Operation,omitempty" name:"Operation" list`
+	Operation []*string `json:"Operation,omitempty" name:"Operation"`
 }
 
 func (r *DescribeDomainPriceListRequest) ToJsonString() string {
@@ -763,7 +763,7 @@ type DescribeDomainPriceListResponse struct {
 	Response *struct {
 
 		// 域名价格列表
-		PriceList []*PriceInfo `json:"PriceList,omitempty" name:"PriceList" list`
+		PriceList []*PriceInfo `json:"PriceList,omitempty" name:"PriceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -831,7 +831,7 @@ type DescribeTemplateListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 模板详细信息列表。
-		TemplateSet []*TemplateInfo `json:"TemplateSet,omitempty" name:"TemplateSet" list`
+		TemplateSet []*TemplateInfo `json:"TemplateSet,omitempty" name:"TemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -949,7 +949,7 @@ type DomainBaseInfo struct {
 	// clientTransferProhibited：注册商禁止转移
 	// clientUpdateProhibited：注册商禁止更新
 	// clientDeleteProhibited：注册商禁止删除
-	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus" list`
+	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus"`
 
 	// 域名购买状态。
 	// ok：正常
@@ -974,7 +974,7 @@ type DomainBaseInfo struct {
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
 
 	// 域名绑定的ns
-	NameServer []*string `json:"NameServer,omitempty" name:"NameServer" list`
+	NameServer []*string `json:"NameServer,omitempty" name:"NameServer"`
 
 	// true：开启锁定
 	// false：关闭锁定
@@ -1076,10 +1076,10 @@ type ModifyDomainDNSBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 域名DNS 数组。
-	Dns []*string `json:"Dns,omitempty" name:"Dns" list`
+	Dns []*string `json:"Dns,omitempty" name:"Dns"`
 }
 
 func (r *ModifyDomainDNSBatchRequest) ToJsonString() string {
@@ -1129,7 +1129,7 @@ type ModifyDomainOwnerBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 要过户的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 转入账户的uin。
 	NewOwnerUin *string `json:"NewOwnerUin,omitempty" name:"NewOwnerUin"`
@@ -1203,7 +1203,7 @@ type RenewDomainBatchRequest struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 批量续费的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 付费模式 0手动在线付费，1使用余额付费。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
@@ -1353,10 +1353,10 @@ type TransferInDomainBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 转入的域名名称数组。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 域名转移码数组。
-	PassWords []*string `json:"PassWords,omitempty" name:"PassWords" list`
+	PassWords []*string `json:"PassWords,omitempty" name:"PassWords"`
 
 	// 模板ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -1426,7 +1426,7 @@ type TransferProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名转移。
 	// True: 开启禁止域名转移状态。
@@ -1481,7 +1481,7 @@ type UpdateProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名更新。
 	// True:开启禁止域名更新状态。

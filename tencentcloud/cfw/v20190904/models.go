@@ -121,7 +121,7 @@ type CreateAcRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 创建规则数据
-	Data []*RuleInfoData `json:"Data,omitempty" name:"Data" list`
+	Data []*RuleInfoData `json:"Data,omitempty" name:"Data"`
 
 	// 0：添加（默认），1：插入
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
@@ -202,7 +202,7 @@ type CreateSecurityGroupApiRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 创建规则数据
-	Data []*SecurityGroupApiRuleData `json:"Data,omitempty" name:"Data" list`
+	Data []*SecurityGroupApiRuleData `json:"Data,omitempty" name:"Data"`
 
 	// 方向，0：出站，1：入站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
@@ -577,7 +577,7 @@ type DescribeAcListsResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 访问控制列表数据
-		Data []*AcListsData `json:"Data,omitempty" name:"Data" list`
+		Data []*AcListsData `json:"Data,omitempty" name:"Data"`
 
 		// 不算筛选条数的总条数
 		AllTotal *uint64 `json:"AllTotal,omitempty" name:"AllTotal"`
@@ -666,7 +666,7 @@ type DescribeAssociatedInstanceListResponse struct {
 
 		// 实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*AssociatedInstanceInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*AssociatedInstanceInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -723,7 +723,7 @@ type DescribeCfwEipsResponse struct {
 	Response *struct {
 
 		// 返回值信息
-		NatFwEipList []*NatFwEipsInfo `json:"NatFwEipList,omitempty" name:"NatFwEipList" list`
+		NatFwEipList []*NatFwEipsInfo `json:"NatFwEipList,omitempty" name:"NatFwEipList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -842,7 +842,7 @@ type DescribeNatRuleOverviewResponse struct {
 		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 		// 弹性IP列表
-		EipList []*string `json:"EipList,omitempty" name:"EipList" list`
+		EipList []*string `json:"EipList,omitempty" name:"EipList"`
 
 		// 端口转发规则数量
 		DnatNum *int64 `json:"DnatNum,omitempty" name:"DnatNum"`
@@ -999,7 +999,7 @@ type DescribeSecurityGroupListResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 安全组规则列表数据
-		Data []*SecurityGroupListData `json:"Data,omitempty" name:"Data" list`
+		Data []*SecurityGroupListData `json:"Data,omitempty" name:"Data"`
 
 		// 不算筛选条数的总条数
 		AllTotal *uint64 `json:"AllTotal,omitempty" name:"AllTotal"`
@@ -1086,10 +1086,10 @@ type DescribeSwitchListsResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 列表数据
-		Data []*SwitchListsData `json:"Data,omitempty" name:"Data" list`
+		Data []*SwitchListsData `json:"Data,omitempty" name:"Data"`
 
 		// 区域列表
-		AreaLists []*string `json:"AreaLists,omitempty" name:"AreaLists" list`
+		AreaLists []*string `json:"AreaLists,omitempty" name:"AreaLists"`
 
 		// 打开个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1350,7 +1350,7 @@ type ModifyAcRuleRequest struct {
 	*tchttp.BaseRequest
 
 	// 规则数组
-	Data []*RuleInfoData `json:"Data,omitempty" name:"Data" list`
+	Data []*RuleInfoData `json:"Data,omitempty" name:"Data"`
 
 	// EdgeId值
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
@@ -1483,7 +1483,7 @@ type ModifyAllSwitchStatusRequest struct {
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 选中的防火墙开关Id
-	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 
 	// NAT开关切换类型，1,单个子网，2，同开同关，3，全部
 	ChangeType *int64 `json:"ChangeType,omitempty" name:"ChangeType"`
@@ -1545,7 +1545,7 @@ type ModifyBlockIgnoreListRequest struct {
 	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
 
 	// IP、Domain二选一，不能同时为空
-	IOC []*IocListData `json:"IOC,omitempty" name:"IOC" list`
+	IOC []*IocListData `json:"IOC,omitempty" name:"IOC"`
 
 	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
 	IocAction *string `json:"IocAction,omitempty" name:"IocAction"`
@@ -1732,7 +1732,7 @@ type ModifySequenceRulesRequest struct {
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
 
 	// 修改数据
-	Data []*SequenceData `json:"Data,omitempty" name:"Data" list`
+	Data []*SequenceData `json:"Data,omitempty" name:"Data"`
 
 	// NAT地域
 	Area *string `json:"Area,omitempty" name:"Area"`
@@ -2126,7 +2126,7 @@ type SetNatFwDnatRuleRequest struct {
 	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
 
 	// 添加或删除操作的Dnat规则列表。
-	AddOrDelDnatRules []*CfwNatDnatRule `json:"AddOrDelDnatRules,omitempty" name:"AddOrDelDnatRules" list`
+	AddOrDelDnatRules []*CfwNatDnatRule `json:"AddOrDelDnatRules,omitempty" name:"AddOrDelDnatRules"`
 
 	// 修改操作的原始Dnat规则
 	OriginDnat *CfwNatDnatRule `json:"OriginDnat,omitempty" name:"OriginDnat"`

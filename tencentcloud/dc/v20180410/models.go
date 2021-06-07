@@ -82,14 +82,14 @@ type AccessPoint struct {
 	Location *string `json:"Location,omitempty" name:"Location"`
 
 	// 接入点支持的运营商列表。
-	LineOperator []*string `json:"LineOperator,omitempty" name:"LineOperator" list`
+	LineOperator []*string `json:"LineOperator,omitempty" name:"LineOperator"`
 
 	// 接入点管理的大区ID。
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType" list`
+	AvailablePortType []*string `json:"AvailablePortType,omitempty" name:"AvailablePortType"`
 
 	// 接入点经纬度
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -298,7 +298,7 @@ type CreateDirectConnectResponse struct {
 	Response *struct {
 
 		// 物理专线的ID。
-		DirectConnectIdSet []*string `json:"DirectConnectIdSet,omitempty" name:"DirectConnectIdSet" list`
+		DirectConnectIdSet []*string `json:"DirectConnectIdSet,omitempty" name:"DirectConnectIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -357,7 +357,7 @@ type CreateDirectConnectTunnelRequest struct {
 	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
 
 	// 静态路由，用户IDC的网段地址
-	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
+	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
 
 	// vlan，范围：0 ~ 3000
 	// 0：不开启子接口
@@ -416,7 +416,7 @@ type CreateDirectConnectTunnelResponse struct {
 	Response *struct {
 
 		// 专用通道ID
-		DirectConnectTunnelIdSet []*string `json:"DirectConnectTunnelIdSet,omitempty" name:"DirectConnectTunnelIdSet" list`
+		DirectConnectTunnelIdSet []*string `json:"DirectConnectTunnelIdSet,omitempty" name:"DirectConnectTunnelIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -567,7 +567,7 @@ type DescribeAccessPointsResponse struct {
 	Response *struct {
 
 		// 接入点信息。
-		AccessPointSet []*AccessPoint `json:"AccessPointSet,omitempty" name:"AccessPointSet" list`
+		AccessPointSet []*AccessPoint `json:"AccessPointSet,omitempty" name:"AccessPointSet"`
 
 		// 符合接入点数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -645,10 +645,10 @@ type DescribeDirectConnectTunnelsRequest struct {
 	// <li> direct-connect-tunnel-name, 专用通道名称。</li>
 	// <li> direct-connect-tunnel-id, 专用通道实例ID，如dcx-abcdefgh。</li>
 	// <li>direct-connect-id, 物理专线实例ID，如，dc-abcdefgh。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 专用通道 ID数组
-	DirectConnectTunnelIds []*string `json:"DirectConnectTunnelIds,omitempty" name:"DirectConnectTunnelIds" list`
+	DirectConnectTunnelIds []*string `json:"DirectConnectTunnelIds,omitempty" name:"DirectConnectTunnelIds"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -684,7 +684,7 @@ type DescribeDirectConnectTunnelsResponse struct {
 	Response *struct {
 
 		// 专用通道列表
-		DirectConnectTunnelSet []*DirectConnectTunnel `json:"DirectConnectTunnelSet,omitempty" name:"DirectConnectTunnelSet" list`
+		DirectConnectTunnelSet []*DirectConnectTunnel `json:"DirectConnectTunnelSet,omitempty" name:"DirectConnectTunnelSet"`
 
 		// 符合专用通道数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -709,10 +709,10 @@ type DescribeDirectConnectsRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件:
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 物理专线 ID数组
-	DirectConnectIds []*string `json:"DirectConnectIds,omitempty" name:"DirectConnectIds" list`
+	DirectConnectIds []*string `json:"DirectConnectIds,omitempty" name:"DirectConnectIds"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -748,7 +748,7 @@ type DescribeDirectConnectsResponse struct {
 	Response *struct {
 
 		// 物理专线列表。
-		DirectConnectSet []*DirectConnect `json:"DirectConnectSet,omitempty" name:"DirectConnectSet" list`
+		DirectConnectSet []*DirectConnect `json:"DirectConnectSet,omitempty" name:"DirectConnectSet"`
 
 		// 符合物理专线列表数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -850,7 +850,7 @@ type DescribeInternetAddressRequest struct {
 	// <li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
 	// <li>Subnet 互联网公网地址，数组</li>
 	// <InstanceIds>互联网公网地址ID，数组</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeInternetAddressRequest) ToJsonString() string {
@@ -883,7 +883,7 @@ type DescribeInternetAddressResponse struct {
 
 		// 互联网公网地址列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Subnets []*InternetAddressDetail `json:"Subnets,omitempty" name:"Subnets" list`
+		Subnets []*InternetAddressDetail `json:"Subnets,omitempty" name:"Subnets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -932,7 +932,7 @@ type DescribeInternetAddressStatisticsResponse struct {
 
 		// 互联网公网地址统计信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InternetAddressStatistics []*InternetAddressStatistics `json:"InternetAddressStatistics,omitempty" name:"InternetAddressStatistics" list`
+		InternetAddressStatistics []*InternetAddressStatistics `json:"InternetAddressStatistics,omitempty" name:"InternetAddressStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -959,7 +959,7 @@ type DescribePublicDirectConnectTunnelRoutesRequest struct {
 	// 过滤条件：
 	// route-type：路由类型，取值：BGP/STATIC
 	// route-subnet：路由cidr，取值如：192.68.1.0/24
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -995,7 +995,7 @@ type DescribePublicDirectConnectTunnelRoutesResponse struct {
 	Response *struct {
 
 		// 互联网通道路由列表
-		Routes []*DirectConnectTunnelRoute `json:"Routes,omitempty" name:"Routes" list`
+		Routes []*DirectConnectTunnelRoute `json:"Routes,omitempty" name:"Routes"`
 
 		// 记录总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1105,7 +1105,7 @@ type DirectConnect struct {
 
 	// 标签键值对
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 物理专线的接入点类型。
 	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
@@ -1189,7 +1189,7 @@ type DirectConnectTunnel struct {
 	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
 
 	// 用户侧网段地址
-	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
+	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
 
 	// 专用通道的Vlan
 	Vlan *int64 `json:"Vlan,omitempty" name:"Vlan"`
@@ -1210,7 +1210,7 @@ type DirectConnectTunnel struct {
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
 	// 专用通道标签值
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 关联的网络自定义探测ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1303,10 +1303,10 @@ type DirectConnectTunnelExtra struct {
 	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
 
 	// 用户侧网段地址
-	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
+	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
 
 	// 互联网通道公网网段地址
-	PublicAddresses []*RouteFilterPrefix `json:"PublicAddresses,omitempty" name:"PublicAddresses" list`
+	PublicAddresses []*RouteFilterPrefix `json:"PublicAddresses,omitempty" name:"PublicAddresses"`
 
 	// 专用通道的Vlan
 	Vlan *int64 `json:"Vlan,omitempty" name:"Vlan"`
@@ -1408,7 +1408,7 @@ type DirectConnectTunnelRoute struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// ASPath信息
-	ASPath []*string `json:"ASPath,omitempty" name:"ASPath" list`
+	ASPath []*string `json:"ASPath,omitempty" name:"ASPath"`
 
 	// 路由下一跳IP
 	NextHop *string `json:"NextHop,omitempty" name:"NextHop"`
@@ -1512,7 +1512,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type InternetAddressDetail struct {
@@ -1688,7 +1688,7 @@ type ModifyDirectConnectTunnelAttributeRequest struct {
 	BgpPeer *BgpPeer `json:"BgpPeer,omitempty" name:"BgpPeer"`
 
 	// 用户侧网段地址
-	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes" list`
+	RouteFilterPrefixes []*RouteFilterPrefix `json:"RouteFilterPrefixes,omitempty" name:"RouteFilterPrefixes"`
 
 	// 腾讯侧互联IP
 	TencentAddress *string `json:"TencentAddress,omitempty" name:"TencentAddress"`
@@ -1796,7 +1796,7 @@ type ModifyDirectConnectTunnelExtraRequest struct {
 	IPv6Enable *int64 `json:"IPv6Enable,omitempty" name:"IPv6Enable"`
 
 	// 去往用户侧的路由信息
-	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitempty" name:"CustomerIDCRoutes" list`
+	CustomerIDCRoutes []*RouteFilterPrefix `json:"CustomerIDCRoutes,omitempty" name:"CustomerIDCRoutes"`
 
 	// 是否开启巨帧
 	// 1：开启

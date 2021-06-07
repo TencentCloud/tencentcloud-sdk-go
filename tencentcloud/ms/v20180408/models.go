@@ -24,22 +24,22 @@ import (
 type AdInfo struct {
 
 	// 插播广告列表
-	Spots []*PluginInfo `json:"Spots,omitempty" name:"Spots" list`
+	Spots []*PluginInfo `json:"Spots,omitempty" name:"Spots"`
 
 	// 精品推荐广告列表
-	BoutiqueRecommands []*PluginInfo `json:"BoutiqueRecommands,omitempty" name:"BoutiqueRecommands" list`
+	BoutiqueRecommands []*PluginInfo `json:"BoutiqueRecommands,omitempty" name:"BoutiqueRecommands"`
 
 	// 悬浮窗广告列表
-	FloatWindowses []*PluginInfo `json:"FloatWindowses,omitempty" name:"FloatWindowses" list`
+	FloatWindowses []*PluginInfo `json:"FloatWindowses,omitempty" name:"FloatWindowses"`
 
 	// banner广告列表
-	Banners []*PluginInfo `json:"Banners,omitempty" name:"Banners" list`
+	Banners []*PluginInfo `json:"Banners,omitempty" name:"Banners"`
 
 	// 积分墙广告列表
-	IntegralWalls []*PluginInfo `json:"IntegralWalls,omitempty" name:"IntegralWalls" list`
+	IntegralWalls []*PluginInfo `json:"IntegralWalls,omitempty" name:"IntegralWalls"`
 
 	// 通知栏广告列表
-	NotifyBars []*PluginInfo `json:"NotifyBars,omitempty" name:"NotifyBars" list`
+	NotifyBars []*PluginInfo `json:"NotifyBars,omitempty" name:"NotifyBars"`
 }
 
 type AppDetailInfo struct {
@@ -373,7 +373,7 @@ type CreateResourceInstancesResponse struct {
 	Response *struct {
 
 		// 新创建的资源列表。
-		ResourceSet []*string `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*string `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -395,7 +395,7 @@ type CreateScanInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 待扫描的app信息列表，一次最多提交20个
-	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos" list`
+	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos"`
 
 	// 扫描信息
 	ScanInfo *ScanInfo `json:"ScanInfo,omitempty" name:"ScanInfo"`
@@ -432,7 +432,7 @@ type CreateScanInstancesResponse struct {
 		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
 		// 提交成功的app的md5集合
-		AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s" list`
+		AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
 
 		// 剩余可用次数
 		LimitCount *uint64 `json:"LimitCount,omitempty" name:"LimitCount"`
@@ -576,7 +576,7 @@ type DeleteScanInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 删除一个或多个扫描的app，最大支持20个
-	AppSids []*string `json:"AppSids,omitempty" name:"AppSids" list`
+	AppSids []*string `json:"AppSids,omitempty" name:"AppSids"`
 }
 
 func (r *DeleteScanInstancesRequest) ToJsonString() string {
@@ -625,7 +625,7 @@ type DeleteShieldInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务唯一标识ItemId的列表
-	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds" list`
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
 }
 
 func (r *DeleteShieldInstancesRequest) ToJsonString() string {
@@ -674,10 +674,10 @@ type DescribeResourceInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
-	Pids []*uint64 `json:"Pids,omitempty" name:"Pids" list`
+	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
 
 	// 支持通过资源id，pid进行查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -724,7 +724,7 @@ type DescribeResourceInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合要求的资源数组
-		ResourceSet []*ResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*ResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -746,7 +746,7 @@ type DescribeScanInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 支持通过app名称，app包名进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -755,7 +755,7 @@ type DescribeScanInstancesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
-	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds" list`
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
 
 	// 按某个字段排序，目前仅支持TaskTime排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -796,7 +796,7 @@ type DescribeScanInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
-		ScanSet []*AppScanSet `json:"ScanSet,omitempty" name:"ScanSet" list`
+		ScanSet []*AppScanSet `json:"ScanSet,omitempty" name:"ScanSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -821,7 +821,7 @@ type DescribeScanResultsRequest struct {
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
 	// 批量查询一个或者多个app的扫描结果，如果不传表示查询该任务下所提交的所有app
-	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s" list`
+	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
 }
 
 func (r *DescribeScanResultsRequest) ToJsonString() string {
@@ -849,7 +849,7 @@ type DescribeScanResultsResponse struct {
 	Response *struct {
 
 		// 批量扫描的app结果集
-		ScanSet []*ScanSetInfo `json:"ScanSet,omitempty" name:"ScanSet" list`
+		ScanSet []*ScanSetInfo `json:"ScanSet,omitempty" name:"ScanSet"`
 
 		// 批量扫描结果的个数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -874,7 +874,7 @@ type DescribeShieldInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -883,7 +883,7 @@ type DescribeShieldInstancesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
-	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds" list`
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
 
 	// 按某个字段排序，目前仅支持TaskTime排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -924,7 +924,7 @@ type DescribeShieldInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
-		AppSet []*AppSetInfo `json:"AppSet,omitempty" name:"AppSet" list`
+		AppSet []*AppSetInfo `json:"AppSet,omitempty" name:"AppSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1170,7 +1170,7 @@ type PlanInfo struct {
 	AntiVMP *uint64 `json:"AntiVMP,omitempty" name:"AntiVMP"`
 
 	// 保护so的强度，
-	SoType []*string `json:"SoType,omitempty" name:"SoType" list`
+	SoType []*string `json:"SoType,omitempty" name:"SoType"`
 
 	// 防日志泄漏，0关闭，1开启
 	AntiLogLeak *uint64 `json:"AntiLogLeak,omitempty" name:"AntiLogLeak"`
@@ -1242,7 +1242,7 @@ type ScanInfo struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，PERMISSION-系统权限信息，SENSITIVE-敏感词信息，可以自由组合
-	ScanTypes []*string `json:"ScanTypes,omitempty" name:"ScanTypes" list`
+	ScanTypes []*string `json:"ScanTypes,omitempty" name:"ScanTypes"`
 }
 
 type ScanPermissionInfo struct {
@@ -1254,13 +1254,13 @@ type ScanPermissionInfo struct {
 type ScanPermissionList struct {
 
 	// 系统权限信息
-	PermissionList []*ScanPermissionInfo `json:"PermissionList,omitempty" name:"PermissionList" list`
+	PermissionList []*ScanPermissionInfo `json:"PermissionList,omitempty" name:"PermissionList"`
 }
 
 type ScanSensitiveInfo struct {
 
 	// 敏感词
-	WordList []*string `json:"WordList,omitempty" name:"WordList" list`
+	WordList []*string `json:"WordList,omitempty" name:"WordList"`
 
 	// 敏感词对应的文件信息
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
@@ -1272,7 +1272,7 @@ type ScanSensitiveInfo struct {
 type ScanSensitiveList struct {
 
 	// 敏感词列表
-	SensitiveList []*ScanSensitiveInfo `json:"SensitiveList,omitempty" name:"SensitiveList" list`
+	SensitiveList []*ScanSensitiveInfo `json:"SensitiveList,omitempty" name:"SensitiveList"`
 }
 
 type ScanSetInfo struct {
@@ -1356,13 +1356,13 @@ type ShieldPlanInfo struct {
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 加固策略具体信息数组
-	PlanSet []*PlanDetailInfo `json:"PlanSet,omitempty" name:"PlanSet" list`
+	PlanSet []*PlanDetailInfo `json:"PlanSet,omitempty" name:"PlanSet"`
 }
 
 type SoInfo struct {
 
 	// so文件列表
-	SoFileNames []*string `json:"SoFileNames,omitempty" name:"SoFileNames" list`
+	SoFileNames []*string `json:"SoFileNames,omitempty" name:"SoFileNames"`
 }
 
 type VirusInfo struct {
@@ -1380,7 +1380,7 @@ type VirusInfo struct {
 type VulInfo struct {
 
 	// 漏洞列表
-	VulList []*VulList `json:"VulList,omitempty" name:"VulList" list`
+	VulList []*VulList `json:"VulList,omitempty" name:"VulList"`
 
 	// 漏洞文件评分
 	VulFileScore *uint64 `json:"VulFileScore,omitempty" name:"VulFileScore"`

@@ -62,7 +62,7 @@ type AddTeamMemberRequest struct {
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
 	// 要添加的成员列表，一次最多添加30个成员。
-	TeamMembers []*AddMemberInfo `json:"TeamMembers,omitempty" name:"TeamMembers" list`
+	TeamMembers []*AddMemberInfo `json:"TeamMembers,omitempty" name:"TeamMembers"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -179,7 +179,7 @@ type AuthorizationInfo struct {
 	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 	// <li>W：可修改、删除媒资。</li>
-	PermissionSet []*string `json:"PermissionSet,omitempty" name:"PermissionSet" list`
+	PermissionSet []*string `json:"PermissionSet,omitempty" name:"PermissionSet"`
 }
 
 type Authorizer struct {
@@ -208,10 +208,10 @@ type CMEExportInfo struct {
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
 	// 导出的媒体标签，单个标签不得超过10个字符。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 第三方平台发布信息列表。暂未正式对外，请勿使用。
-	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
+	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos"`
 }
 
 type ClassInfo struct {
@@ -469,7 +469,7 @@ type CreateProjectResponse struct {
 
 		// 输入源推流信息。
 	//  <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>
-		RtmpPushInputInfoSet []*RtmpPushInputInfo `json:"RtmpPushInputInfoSet,omitempty" name:"RtmpPushInputInfoSet" list`
+		RtmpPushInputInfoSet []*RtmpPushInputInfo `json:"RtmpPushInputInfoSet,omitempty" name:"RtmpPushInputInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -617,7 +617,7 @@ type DeleteLoginStatusRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 用户 Id 列表，N 从 0 开始取值，最大 19。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 func (r *DeleteLoginStatusRequest) ToJsonString() string {
@@ -778,7 +778,7 @@ type DeleteTeamMembersRequest struct {
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
 	// 要删除的成员列表。
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds" list`
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -926,7 +926,7 @@ type DescribeAccountsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 账号信息列表。
-		AccountInfoSet []*AccountInfo `json:"AccountInfoSet,omitempty" name:"AccountInfoSet" list`
+		AccountInfoSet []*AccountInfo `json:"AccountInfoSet,omitempty" name:"AccountInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -983,7 +983,7 @@ type DescribeClassResponse struct {
 	Response *struct {
 
 		// 分类信息列表。
-		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet" list`
+		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1047,7 +1047,7 @@ type DescribeJoinTeamsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 团队列表
-		TeamSet []*JoinTeamInfo `json:"TeamSet,omitempty" name:"TeamSet" list`
+		TeamSet []*JoinTeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1072,7 +1072,7 @@ type DescribeLoginStatusRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 用户 Id 列表，N 从 0 开始取值，最大 19。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 func (r *DescribeLoginStatusRequest) ToJsonString() string {
@@ -1100,7 +1100,7 @@ type DescribeLoginStatusResponse struct {
 	Response *struct {
 
 		// 用户登录状态列表。
-		LoginStatusInfoSet []*LoginStatusInfo `json:"LoginStatusInfoSet,omitempty" name:"LoginStatusInfoSet" list`
+		LoginStatusInfoSet []*LoginStatusInfo `json:"LoginStatusInfoSet,omitempty" name:"LoginStatusInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1125,7 +1125,7 @@ type DescribeMaterialsRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 媒体 ID 列表，N 从 0 开始取值，最大 19。
-	MaterialIds []*string `json:"MaterialIds,omitempty" name:"MaterialIds" list`
+	MaterialIds []*string `json:"MaterialIds,omitempty" name:"MaterialIds"`
 
 	// 列表排序，支持下列排序字段：
 	// <li>CreateTime：创建时间；</li>
@@ -1163,7 +1163,7 @@ type DescribeMaterialsResponse struct {
 	Response *struct {
 
 		// 媒体列表信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
+		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1185,10 +1185,10 @@ type DescribePlatformsRequest struct {
 	*tchttp.BaseRequest
 
 	// 平台集合。
-	Platforms []*string `json:"Platforms,omitempty" name:"Platforms" list`
+	Platforms []*string `json:"Platforms,omitempty" name:"Platforms"`
 
 	// 平台绑定的 license Id 集合。
-	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds" list`
+	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds"`
 
 	// 分页返回的起始偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1227,7 +1227,7 @@ type DescribePlatformsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 平台信息列表。
-		PlatformInfoSet []*PlatformInfo `json:"PlatformInfoSet,omitempty" name:"PlatformInfoSet" list`
+		PlatformInfoSet []*PlatformInfo `json:"PlatformInfoSet,omitempty" name:"PlatformInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1252,10 +1252,10 @@ type DescribeProjectsRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 项目 Id 列表，N 从 0 开始取值，最大 19。
-	ProjectIds []*string `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+	ProjectIds []*string `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
 	// 画布宽高比集合。
-	AspectRatioSet []*string `json:"AspectRatioSet,omitempty" name:"AspectRatioSet" list`
+	AspectRatioSet []*string `json:"AspectRatioSet,omitempty" name:"AspectRatioSet"`
 
 	// 项目类别，取值有：
 	// <li>VIDEO_EDIT：视频编辑。</li>
@@ -1263,13 +1263,13 @@ type DescribeProjectsRequest struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
-	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
+	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
 
 	// 项目模式，一个项目可以有多种模式并相互切换。
 	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
 	// <li>Default：默认模式。</li>
 	// <li>VideoEditTemplate：视频编辑模板制作模式。</li>
-	Modes []*string `json:"Modes,omitempty" name:"Modes" list`
+	Modes []*string `json:"Modes,omitempty" name:"Modes"`
 
 	// 列表排序，支持下列排序字段：
 	// <li>CreateTime：创建时间；</li>
@@ -1325,7 +1325,7 @@ type DescribeProjectsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 项目信息列表。
-		ProjectInfoSet []*ProjectInfo `json:"ProjectInfoSet,omitempty" name:"ProjectInfoSet" list`
+		ProjectInfoSet []*ProjectInfo `json:"ProjectInfoSet,omitempty" name:"ProjectInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1390,7 +1390,7 @@ type DescribeResourceAuthorizationResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 授权信息列表。
-		AuthorizationInfoSet []*AuthorizationInfo `json:"AuthorizationInfoSet,omitempty" name:"AuthorizationInfoSet" list`
+		AuthorizationInfoSet []*AuthorizationInfo `json:"AuthorizationInfoSet,omitempty" name:"AuthorizationInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1451,7 +1451,7 @@ type DescribeSharedSpaceResponse struct {
 
 		// 各个共享空间对应的授权者信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AuthorizerSet []*Authorizer `json:"AuthorizerSet,omitempty" name:"AuthorizerSet" list`
+		AuthorizerSet []*Authorizer `json:"AuthorizerSet,omitempty" name:"AuthorizerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1562,13 +1562,13 @@ type DescribeTasksRequest struct {
 
 	// 任务类型集合，取值有：
 	// <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
-	TaskTypeSet []*string `json:"TaskTypeSet,omitempty" name:"TaskTypeSet" list`
+	TaskTypeSet []*string `json:"TaskTypeSet,omitempty" name:"TaskTypeSet"`
 
 	// 任务状态集合，取值有：
 	// <li>PROCESSING：处理中；</li>
 	// <li>SUCCESS：成功；</li>
 	// <li>FAIL：失败。</li>
-	StatusSet []*string `json:"StatusSet,omitempty" name:"StatusSet" list`
+	StatusSet []*string `json:"StatusSet,omitempty" name:"StatusSet"`
 
 	// 分页返回的起始偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1613,7 +1613,7 @@ type DescribeTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务基础信息列表。
-		TaskBaseInfoSet []*TaskBaseInfo `json:"TaskBaseInfoSet,omitempty" name:"TaskBaseInfoSet" list`
+		TaskBaseInfoSet []*TaskBaseInfo `json:"TaskBaseInfoSet,omitempty" name:"TaskBaseInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1641,7 +1641,7 @@ type DescribeTeamMembersRequest struct {
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
 	// 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds" list`
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
 
 	// 分页偏移量，默认值：0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1685,7 +1685,7 @@ type DescribeTeamMembersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 团队成员列表。
-		MemberSet []*TeamMemberInfo `json:"MemberSet,omitempty" name:"MemberSet" list`
+		MemberSet []*TeamMemberInfo `json:"MemberSet,omitempty" name:"MemberSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1710,7 +1710,7 @@ type DescribeTeamsRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
-	TeamIds []*string `json:"TeamIds,omitempty" name:"TeamIds" list`
+	TeamIds []*string `json:"TeamIds,omitempty" name:"TeamIds"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1749,7 +1749,7 @@ type DescribeTeamsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 团队列表。
-		TeamSet []*TeamInfo `json:"TeamSet,omitempty" name:"TeamSet" list`
+		TeamSet []*TeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1893,7 +1893,7 @@ type ExportVideoByTemplateRequest struct {
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
 	// 需要替换的素材信息。
-	SlotReplacements []*SlotReplacementInfo `json:"SlotReplacements,omitempty" name:"SlotReplacements" list`
+	SlotReplacements []*SlotReplacementInfo `json:"SlotReplacements,omitempty" name:"SlotReplacements"`
 
 	// 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
@@ -1967,7 +1967,7 @@ type ExportVideoByVideoSegmentationDataRequest struct {
 	SegmentGroupId *string `json:"SegmentGroupId,omitempty" name:"SegmentGroupId"`
 
 	// 指定需要导出的智能拆条片段 Id  集合。
-	SegmentIds []*string `json:"SegmentIds,omitempty" name:"SegmentIds" list`
+	SegmentIds []*string `json:"SegmentIds,omitempty" name:"SegmentIds"`
 
 	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
 	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
@@ -2185,7 +2185,7 @@ type FlattenListMediaResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 该分类路径下及其子分类下的所有媒体基础信息列表。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
+		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2270,17 +2270,17 @@ type GrantResourceAuthorizationRequest struct {
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 被授权资源。
-	Resources []*Resource `json:"Resources,omitempty" name:"Resources" list`
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
 
 	// 被授权目标，个人或者团队。
-	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees" list`
+	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees"`
 
 	// 详细授权值。 取值有：
 	// <li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
 	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 	// <li>W：可修改、删除媒资。</li>
-	Permissions []*string `json:"Permissions,omitempty" name:"Permissions" list`
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -2725,10 +2725,10 @@ type ListMediaResponse struct {
 		MaterialTotalCount *int64 `json:"MaterialTotalCount,omitempty" name:"MaterialTotalCount"`
 
 		// 浏览分类路径下的媒体列表信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
+		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
 
 		// 浏览分类路径下的一级子类。
-		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet" list`
+		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2801,10 +2801,10 @@ type MaterialBasicInfo struct {
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
 	// 预置标签列表。
-	PresetTagSet []*PresetTagInfo `json:"PresetTagSet,omitempty" name:"PresetTagSet" list`
+	PresetTagSet []*PresetTagInfo `json:"PresetTagSet,omitempty" name:"PresetTagSet"`
 
 	// 人工标签列表。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 媒体文件的预览图。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
@@ -2812,7 +2812,7 @@ type MaterialBasicInfo struct {
 	// 媒体绑定的标签信息列表 。
 	// 该字段已废弃。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet" list`
+	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet"`
 }
 
 type MaterialInfo struct {
@@ -2879,7 +2879,7 @@ type MediaImageSpriteInfo struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 截取雪碧图输出的地址。
-	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet" list`
+	ImageUrlSet []*string `json:"ImageUrlSet,omitempty" name:"ImageUrlSet"`
 
 	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
 	WebVttUrl *string `json:"WebVttUrl,omitempty" name:"WebVttUrl"`
@@ -2909,10 +2909,10 @@ type MediaMetaData struct {
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频流信息。
-	VideoStreamInfoSet []*VideoStreamInfo `json:"VideoStreamInfoSet,omitempty" name:"VideoStreamInfoSet" list`
+	VideoStreamInfoSet []*VideoStreamInfo `json:"VideoStreamInfoSet,omitempty" name:"VideoStreamInfoSet"`
 
 	// 音频流信息。
-	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitempty" name:"AudioStreamInfoSet" list`
+	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitempty" name:"AudioStreamInfoSet"`
 }
 
 type MediaReplacementInfo struct {
@@ -2934,7 +2934,7 @@ type MediaTrack struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 轨道上的媒体片段列表。
-	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems" list`
+	TrackItems []*MediaTrackItem `json:"TrackItems,omitempty" name:"TrackItems"`
 }
 
 type MediaTrackItem struct {
@@ -3423,7 +3423,7 @@ type PenguinMediaPlatformPublishInfo struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 视频标签。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 视频分类，详见[企鹅号官网](https://open.om.qq.com/resources/resourcesCenter)视频分类。
 	Category *int64 `json:"Category,omitempty" name:"Category"`
@@ -3544,17 +3544,17 @@ type RevokeResourceAuthorizationRequest struct {
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 被授权资源。
-	Resources []*Resource `json:"Resources,omitempty" name:"Resources" list`
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
 
 	// 被授权目标实体。
-	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees" list`
+	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees"`
 
 	// 详细授权值。 取值有：
 	// <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
 	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 	// <li>W：可修改、删除媒资。</li>
-	Permissions []*string `json:"Permissions,omitempty" name:"Permissions" list`
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -3620,13 +3620,13 @@ type SearchMaterialRequest struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 指定搜索空间，数组长度不得超过5。
-	SearchScopes []*SearchScope `json:"SearchScopes,omitempty" name:"SearchScopes" list`
+	SearchScopes []*SearchScope `json:"SearchScopes,omitempty" name:"SearchScopes"`
 
 	// 媒体类型，取值：
 	// <li>AUDIO：音频；</li>
 	// <li>VIDEO：视频 ；</li>
 	// <li>IMAGE：图片。</li>
-	MaterialTypes []*string `json:"MaterialTypes,omitempty" name:"MaterialTypes" list`
+	MaterialTypes []*string `json:"MaterialTypes,omitempty" name:"MaterialTypes"`
 
 	// 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -3641,7 +3641,7 @@ type SearchMaterialRequest struct {
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" name:"CreateTimeRange"`
 
 	// 按标签检索，填入检索的标签名。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
@@ -3694,7 +3694,7 @@ type SearchMaterialResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 媒体信息，仅返回基础信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet" list`
+		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3847,7 +3847,7 @@ type StreamConnectProjectInfo struct {
 	BackupInput *StreamInputInfo `json:"BackupInput,omitempty" name:"BackupInput"`
 
 	// 云转推输出源。
-	OutputSet []*StreamConnectOutputInfo `json:"OutputSet,omitempty" name:"OutputSet" list`
+	OutputSet []*StreamConnectOutputInfo `json:"OutputSet,omitempty" name:"OutputSet"`
 }
 
 type StreamConnectProjectInput struct {
@@ -3859,7 +3859,7 @@ type StreamConnectProjectInput struct {
 	BackupInput *StreamInputInfo `json:"BackupInput,omitempty" name:"BackupInput"`
 
 	// 云转推输出源信息。
-	Outputs []*StreamConnectOutput `json:"Outputs,omitempty" name:"Outputs" list`
+	Outputs []*StreamConnectOutput `json:"Outputs,omitempty" name:"Outputs"`
 }
 
 type StreamInputInfo struct {
@@ -4012,7 +4012,7 @@ type VODExportInfo struct {
 	ClassId *uint64 `json:"ClassId,omitempty" name:"ClassId"`
 
 	// 第三方平台发布信息列表。暂未正式对外，请勿使用。
-	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos" list`
+	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos"`
 }
 
 type VideoEditProjectInput struct {
@@ -4029,7 +4029,7 @@ type VideoEditProjectInput struct {
 
 	// 输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
 	// 注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
-	InitTracks []*MediaTrack `json:"InitTracks,omitempty" name:"InitTracks" list`
+	InitTracks []*MediaTrack `json:"InitTracks,omitempty" name:"InitTracks"`
 }
 
 type VideoEditProjectOutput struct {
@@ -4054,7 +4054,7 @@ type VideoEditTemplateMaterial struct {
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
 	// 卡槽信息。
-	SlotSet []*SlotInfo `json:"SlotSet,omitempty" name:"SlotSet" list`
+	SlotSet []*SlotInfo `json:"SlotSet,omitempty" name:"SlotSet"`
 }
 
 type VideoMaterial struct {
@@ -4183,7 +4183,7 @@ type VideoTrackItem struct {
 type VodPullInputInfo struct {
 
 	// 点播输入拉流 URL 。
-	InputUrls []*string `json:"InputUrls,omitempty" name:"InputUrls" list`
+	InputUrls []*string `json:"InputUrls,omitempty" name:"InputUrls"`
 
 	// 播放次数，取值有：
 	// <li>-1 : 循环播放，直到转推结束；</li>

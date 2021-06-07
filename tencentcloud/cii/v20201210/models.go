@@ -61,16 +61,16 @@ type CreateStructureTaskRequest struct {
 	Year *string `json:"Year,omitempty" name:"Year"`
 
 	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
-	FileList []*string `json:"FileList,omitempty" name:"FileList" list`
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
 
 	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
 	// CriticalDiseaseInsurance:重疾险
 	// LifeInsurance：寿险
 	// AccidentInsurance：意外险
-	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes" list`
+	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
 
 	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
-	ImageList []*string `json:"ImageList,omitempty" name:"ImageList" list`
+	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
 }
 
 func (r *CreateStructureTaskRequest) ToJsonString() string {
@@ -236,7 +236,7 @@ type DescribeStructureTaskResultResponse struct {
 
 		// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*ResultObject `json:"Results,omitempty" name:"Results" list`
+		Results []*ResultObject `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

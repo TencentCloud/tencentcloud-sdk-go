@@ -64,7 +64,7 @@ type ChartHistogram struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 项目值
-	Children []*ChartNameValue `json:"Children,omitempty" name:"Children" list`
+	Children []*ChartNameValue `json:"Children,omitempty" name:"Children"`
 }
 
 type ChartNameValue struct {
@@ -145,22 +145,22 @@ func (r *CreateDomainResponse) FromJsonString(s string) error {
 type DashboardResult struct {
 
 	// 安全等级图表
-	SecurityLevelPie []*ChartNameValue `json:"SecurityLevelPie,omitempty" name:"SecurityLevelPie" list`
+	SecurityLevelPie []*ChartNameValue `json:"SecurityLevelPie,omitempty" name:"SecurityLevelPie"`
 
 	// 证书品牌图表
-	CertBrandsPie []*ChartNameValue `json:"CertBrandsPie,omitempty" name:"CertBrandsPie" list`
+	CertBrandsPie []*ChartNameValue `json:"CertBrandsPie,omitempty" name:"CertBrandsPie"`
 
 	// 证书有效时间图表
-	CertValidTimePie []*ChartNameValue `json:"CertValidTimePie,omitempty" name:"CertValidTimePie" list`
+	CertValidTimePie []*ChartNameValue `json:"CertValidTimePie,omitempty" name:"CertValidTimePie"`
 
 	// 证书类型图表
-	CertTypePie []*ChartNameValue `json:"CertTypePie,omitempty" name:"CertTypePie" list`
+	CertTypePie []*ChartNameValue `json:"CertTypePie,omitempty" name:"CertTypePie"`
 
 	// ssl bugs图表
-	SSLBugsLoopholeHistogram []*ChartHistogram `json:"SSLBugsLoopholeHistogram,omitempty" name:"SSLBugsLoopholeHistogram" list`
+	SSLBugsLoopholeHistogram []*ChartHistogram `json:"SSLBugsLoopholeHistogram,omitempty" name:"SSLBugsLoopholeHistogram"`
 
 	// 合规图表
-	ComplianceHistogram []*ChartHistogram `json:"ComplianceHistogram,omitempty" name:"ComplianceHistogram" list`
+	ComplianceHistogram []*ChartHistogram `json:"ComplianceHistogram,omitempty" name:"ComplianceHistogram"`
 }
 
 type DeleteDomainRequest struct {
@@ -286,7 +286,7 @@ type DescribeDomainCertsResponse struct {
 	Response *struct {
 
 		// 证书信息
-		Data []*CertInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*CertInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -331,7 +331,7 @@ type DescribeDomainTagsResponse struct {
 	Response *struct {
 
 		// Tag数组
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -353,7 +353,7 @@ type DescribeDomains struct {
 
 	// 列表数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*DomainSiteInfo `json:"Result,omitempty" name:"Result" list`
+	Result []*DomainSiteInfo `json:"Result,omitempty" name:"Result"`
 
 	// 搜索出来的数量
 	SearchTotal *int64 `json:"SearchTotal,omitempty" name:"SearchTotal"`
@@ -535,7 +535,7 @@ type DomainSiteInfo struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 域名状态
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -615,7 +615,7 @@ type NoticeInfoResult struct {
 	NoticeType *int64 `json:"NoticeType,omitempty" name:"NoticeType"`
 
 	// 额度信息
-	LimitInfos []*LimitInfo `json:"LimitInfos,omitempty" name:"LimitInfos" list`
+	LimitInfos []*LimitInfo `json:"LimitInfos,omitempty" name:"LimitInfos"`
 }
 
 type RefreshDomainRequest struct {
@@ -695,7 +695,7 @@ type ResolveDomainResponse struct {
 	Response *struct {
 
 		// 响应数据
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

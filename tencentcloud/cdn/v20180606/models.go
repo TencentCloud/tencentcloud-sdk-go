@@ -28,7 +28,7 @@ type AccessControl struct {
 
 	// 请求头部及请求url访问规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitempty" name:"AccessControlRules" list`
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitempty" name:"AccessControlRules"`
 
 	// 返回状态码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -158,7 +158,7 @@ type AddCdnDomainRequest struct {
 	OriginPullTimeout *OriginPullTimeout `json:"OriginPullTimeout,omitempty" name:"OriginPullTimeout"`
 
 	// 标签配置
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// Ipv6 访问配置
 	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
@@ -260,7 +260,7 @@ type AdvanceCacheRule struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// default 时填充 "no max-age"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents" list`
+	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents"`
 
 	// 缓存过期时间
 	// 单位为秒，最大可设置为 365 天
@@ -341,7 +341,7 @@ type AdvancedAuthenticationTypeA struct {
 	ExpireCode *int64 `json:"ExpireCode,omitempty" name:"ExpireCode"`
 
 	// 需要鉴权的url路径列表。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 保留字段。
 	Transformation *int64 `json:"Transformation,omitempty" name:"Transformation"`
@@ -377,7 +377,7 @@ type AdvancedAuthenticationTypeB struct {
 	ExpireCode *int64 `json:"ExpireCode,omitempty" name:"ExpireCode"`
 
 	// 需要鉴权的url路径列表。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 }
 
 type AdvancedAuthenticationTypeC struct {
@@ -464,7 +464,7 @@ type AdvancedCache struct {
 
 	// 缓存过期规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CacheRules []*AdvanceCacheRule `json:"CacheRules,omitempty" name:"CacheRules" list`
+	CacheRules []*AdvanceCacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 
 	// 强制缓存配置
 	// on：开启
@@ -524,7 +524,7 @@ type AuthenticationTypeA struct {
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
 	// 如果包含字符 *  则表示所有文件
-	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions" list`
+	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions"`
 
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
@@ -544,7 +544,7 @@ type AuthenticationTypeB struct {
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
 	// 如果包含字符 *  则表示所有文件
-	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions" list`
+	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions"`
 
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
@@ -564,7 +564,7 @@ type AuthenticationTypeC struct {
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
 	// 如果包含字符 *  则表示所有文件
-	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions" list`
+	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions"`
 
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
@@ -590,7 +590,7 @@ type AuthenticationTypeD struct {
 
 	// 鉴权/不做鉴权的文件扩展名列表设置
 	// 如果包含字符 *  则表示所有文件
-	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions" list`
+	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions"`
 
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
@@ -655,7 +655,7 @@ type BotCookie struct {
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
 	// 规则值，['*']
-	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue" list`
+	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue"`
 
 	// 执行动作，monitor|intercept|redirect|captcha
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -678,7 +678,7 @@ type BotJavaScript struct {
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
 	// 规则值，['html', 'htm']
-	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue" list`
+	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue"`
 
 	// 执行动作，monitor|intercept|redirect|captcha
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -768,7 +768,7 @@ type Cache struct {
 
 	// 高级路径缓存配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleCache []*RuleCache `json:"RuleCache,omitempty" name:"RuleCache" list`
+	RuleCache []*RuleCache `json:"RuleCache,omitempty" name:"RuleCache"`
 }
 
 type CacheConfigCache struct {
@@ -863,18 +863,18 @@ type CacheKey struct {
 
 	// 分路径缓存键配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyRules []*KeyRule `json:"KeyRules,omitempty" name:"KeyRules" list`
+	KeyRules []*KeyRule `json:"KeyRules,omitempty" name:"KeyRules"`
 }
 
 type CacheOptResult struct {
 
 	// 成功的url列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccessUrls []*string `json:"SuccessUrls,omitempty" name:"SuccessUrls" list`
+	SuccessUrls []*string `json:"SuccessUrls,omitempty" name:"SuccessUrls"`
 
 	// 失败的url列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailUrls []*string `json:"FailUrls,omitempty" name:"FailUrls" list`
+	FailUrls []*string `json:"FailUrls,omitempty" name:"FailUrls"`
 }
 
 type CacheTagKey struct {
@@ -902,7 +902,7 @@ type CappingRule struct {
 	// file 时填充后缀名，如 jpg、txt
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 下行速度值设置，单位为 KB/s
 	KBpsThreshold *int64 `json:"KBpsThreshold,omitempty" name:"KBpsThreshold"`
@@ -924,7 +924,7 @@ type CdnData struct {
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 明细数据组合
-	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData"`
 
 	// 汇总数据组合
 	SummarizedData *SummarizedData `json:"SummarizedData,omitempty" name:"SummarizedData"`
@@ -945,7 +945,7 @@ type CdnIp struct {
 	Location *string `json:"Location,omitempty" name:"Location"`
 
 	// 节点上下线历史记录
-	History []*CdnIpHistory `json:"History,omitempty" name:"History" list`
+	History []*CdnIpHistory `json:"History,omitempty" name:"History"`
 
 	// 节点的所在区域
 	// mainland：中国境内加速节点
@@ -1042,7 +1042,7 @@ type ClsSearchLogs struct {
 	Listover *bool `json:"Listover,omitempty" name:"Listover"`
 
 	// 日志内容信息
-	Results []*ClsLogObject `json:"Results,omitempty" name:"Results" list`
+	Results []*ClsLogObject `json:"Results,omitempty" name:"Results"`
 }
 
 type Compatibility struct {
@@ -1061,7 +1061,7 @@ type Compression struct {
 
 	// 压缩规则数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CompressionRules []*CompressionRule `json:"CompressionRules,omitempty" name:"CompressionRules" list`
+	CompressionRules []*CompressionRule `json:"CompressionRules,omitempty" name:"CompressionRules"`
 }
 
 type CompressionRule struct {
@@ -1073,7 +1073,7 @@ type CompressionRule struct {
 	// 根据文件后缀类型压缩
 	// 例如 jpg、txt
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions" list`
+	FileExtensions []*string `json:"FileExtensions,omitempty" name:"FileExtensions"`
 
 	// 触发压缩的文件长度最小值，单位为字节数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1088,7 +1088,7 @@ type CompressionRule struct {
 	// gzip：指定 GZIP 压缩
 	// brotli：指定Brotli压缩
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms" list`
+	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms"`
 }
 
 type CookieKey struct {
@@ -1115,7 +1115,7 @@ type CreateClsLogTopicRequest struct {
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 域名区域信息
-	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs"`
 }
 
 func (r *CreateClsLogTopicRequest) ToJsonString() string {
@@ -1377,13 +1377,13 @@ type CreateScdnLogTaskRequest struct {
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 指定域名查询, 与 Domain 参数同时有值时使用 Domains 参数，不填默认查询全部域名，指定域名查询时最多支持同时选择 5 个域名查询
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定攻击类型查询, 与 AttackType 参数同时有值时使用 AttackTypes 参数，不填默认查询全部攻击类型
-	AttackTypes []*string `json:"AttackTypes,omitempty" name:"AttackTypes" list`
+	AttackTypes []*string `json:"AttackTypes,omitempty" name:"AttackTypes"`
 
 	// 查询条件
-	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
+	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions"`
 
 	// 来源产品 cdn ecdn
 	Source *string `json:"Source,omitempty" name:"Source"`
@@ -1736,7 +1736,7 @@ type DescribeBillingDataResponse struct {
 		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 数据明细
-		Data []*ResourceBillingData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceBillingData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1785,7 +1785,7 @@ type DescribeCdnDataRequest struct {
 
 	// 指定查询域名列表
 	// 最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
@@ -1885,7 +1885,7 @@ type DescribeCdnDataResponse struct {
 		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 指定条件查询得到的数据明细
-		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1963,7 +1963,7 @@ type DescribeCdnDomainLogsResponse struct {
 	Response *struct {
 
 		// 日志包下载链接
-		DomainLogs []*DomainLog `json:"DomainLogs,omitempty" name:"DomainLogs" list`
+		DomainLogs []*DomainLog `json:"DomainLogs,omitempty" name:"DomainLogs"`
 
 		// 查询到的总条数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1988,7 +1988,7 @@ type DescribeCdnIpRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询的 IP 列表
-	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+	Ips []*string `json:"Ips,omitempty" name:"Ips"`
 }
 
 func (r *DescribeCdnIpRequest) ToJsonString() string {
@@ -2015,7 +2015,7 @@ type DescribeCdnIpResponse struct {
 	Response *struct {
 
 		// 查询的节点归属详情。
-		Ips []*CdnIp `json:"Ips,omitempty" name:"Ips" list`
+		Ips []*CdnIp `json:"Ips,omitempty" name:"Ips"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2060,7 +2060,7 @@ type DescribeCdnOriginIpResponse struct {
 	Response *struct {
 
 		// 回源节点IP详情。
-		Ips []*OriginIp `json:"Ips,omitempty" name:"Ips" list`
+		Ips []*OriginIp `json:"Ips,omitempty" name:"Ips"`
 
 		// 回源节点IP总个数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2113,11 +2113,11 @@ type DescribeCertDomainsResponse struct {
 
 		// 已接入CDN的域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 		// 已配置证书的CDN域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CertifiedDomains []*string `json:"CertifiedDomains,omitempty" name:"CertifiedDomains" list`
+		CertifiedDomains []*string `json:"CertifiedDomains,omitempty" name:"CertifiedDomains"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2209,7 +2209,7 @@ type DescribeDistrictIspDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 域名列表，最多支持20个域名
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
 	// 支持近 60 天内的数据查询，每次查询时间区间为 3 小时
@@ -2226,11 +2226,11 @@ type DescribeDistrictIspDataRequest struct {
 
 	// 指定省份查询，不填充表示查询所有省份
 	// 省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-	Districts []*int64 `json:"Districts,omitempty" name:"Districts" list`
+	Districts []*int64 `json:"Districts,omitempty" name:"Districts"`
 
 	// 指定运营商查询，不填充表示查询所有运营商
 	// 运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
-	Isps []*int64 `json:"Isps,omitempty" name:"Isps" list`
+	Isps []*int64 `json:"Isps,omitempty" name:"Isps"`
 
 	// 指定协议查询，不填充表示查询所有协议
 	// all：所有协议
@@ -2284,7 +2284,7 @@ type DescribeDistrictIspDataResponse struct {
 
 		// 地区运营商数据明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*DistrictIspInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*DistrictIspInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2312,7 +2312,7 @@ type DescribeDomainsConfigRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器，复杂类型
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序规则
 	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
@@ -2345,7 +2345,7 @@ type DescribeDomainsConfigResponse struct {
 	Response *struct {
 
 		// 域名列表
-		Domains []*DetailDomain `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*DetailDomain `json:"Domains,omitempty" name:"Domains"`
 
 		// 符合查询条件的域名总数
 	// 用于分页查询
@@ -2377,7 +2377,7 @@ type DescribeDomainsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器，复杂类型
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -2406,7 +2406,7 @@ type DescribeDomainsResponse struct {
 	Response *struct {
 
 		// 域名列表
-		Domains []*BriefDomain `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*BriefDomain `json:"Domains,omitempty" name:"Domains"`
 
 		// 符合查询条件的域名总数
 	// 用于分页查询
@@ -2531,7 +2531,7 @@ type DescribeIpStatusResponse struct {
 	Response *struct {
 
 		// 节点列表
-		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips" list`
+		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips"`
 
 		// 节点总个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2564,7 +2564,7 @@ type DescribeIpVisitRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
@@ -2607,7 +2607,7 @@ type DescribeIpVisitResponse struct {
 		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 各个资源的回源数据详情。
-		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2658,15 +2658,15 @@ type DescribeMapInfoResponse struct {
 	Response *struct {
 
 		// 映射关系数组。
-		MapInfoList []*MapInfo `json:"MapInfoList,omitempty" name:"MapInfoList" list`
+		MapInfoList []*MapInfo `json:"MapInfoList,omitempty" name:"MapInfoList"`
 
 		// 服务端区域id和子区域id的映射关系。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServerRegionRelation []*RegionMapRelation `json:"ServerRegionRelation,omitempty" name:"ServerRegionRelation" list`
+		ServerRegionRelation []*RegionMapRelation `json:"ServerRegionRelation,omitempty" name:"ServerRegionRelation"`
 
 		// 客户端区域id和子区域id的映射关系。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ClientRegionRelation []*RegionMapRelation `json:"ClientRegionRelation,omitempty" name:"ClientRegionRelation" list`
+		ClientRegionRelation []*RegionMapRelation `json:"ClientRegionRelation,omitempty" name:"ClientRegionRelation"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2712,7 +2712,7 @@ type DescribeOriginDataRequest struct {
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，最多可一次性查询 30 个加速域名明细
@@ -2770,7 +2770,7 @@ type DescribeOriginDataResponse struct {
 		Interval *string `json:"Interval,omitempty" name:"Interval"`
 
 		// 各个资源的回源数据详情。
-		Data []*ResourceOriginData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceOriginData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2893,10 +2893,10 @@ type DescribePurgeQuotaResponse struct {
 	Response *struct {
 
 		// URL刷新用量及配额。
-		UrlPurge []*Quota `json:"UrlPurge,omitempty" name:"UrlPurge" list`
+		UrlPurge []*Quota `json:"UrlPurge,omitempty" name:"UrlPurge"`
 
 		// 目录刷新用量及配额。
-		PathPurge []*Quota `json:"PathPurge,omitempty" name:"PathPurge" list`
+		PathPurge []*Quota `json:"PathPurge,omitempty" name:"PathPurge"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2987,7 +2987,7 @@ type DescribePurgeTasksResponse struct {
 
 		// 详细刷新记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs" list`
+		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs"`
 
 		// 任务总数，用于分页
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3036,7 +3036,7 @@ type DescribePushQuotaResponse struct {
 	Response *struct {
 
 		// Url预热用量及配额。
-		UrlPush []*Quota `json:"UrlPush,omitempty" name:"UrlPush" list`
+		UrlPush []*Quota `json:"UrlPush,omitempty" name:"UrlPush"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3121,7 +3121,7 @@ type DescribePushTasksResponse struct {
 
 		// 预热历史记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PushLogs []*PushTask `json:"PushLogs,omitempty" name:"PushLogs" list`
+		PushLogs []*PushTask `json:"PushLogs,omitempty" name:"PushLogs"`
 
 		// 任务总数，用于分页
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3209,10 +3209,10 @@ type DescribeReportDataResponse struct {
 	Response *struct {
 
 		// 域名维度数据详情
-		DomainReport []*ReportData `json:"DomainReport,omitempty" name:"DomainReport" list`
+		DomainReport []*ReportData `json:"DomainReport,omitempty" name:"DomainReport"`
 
 		// 项目维度数据详情
-		ProjectReport []*ReportData `json:"ProjectReport,omitempty" name:"ProjectReport" list`
+		ProjectReport []*ReportData `json:"ProjectReport,omitempty" name:"ProjectReport"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3381,18 +3381,18 @@ type DescribeScdnTopDataResponse struct {
 
 		// WAF 攻击类型统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopTypeData []*ScdnTypeData `json:"TopTypeData,omitempty" name:"TopTypeData" list`
+		TopTypeData []*ScdnTypeData `json:"TopTypeData,omitempty" name:"TopTypeData"`
 
 		// TOP 攻击源 IP 统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopIpData []*ScdnTopData `json:"TopIpData,omitempty" name:"TopIpData" list`
+		TopIpData []*ScdnTopData `json:"TopIpData,omitempty" name:"TopIpData"`
 
 		// 查询的SCDN类型，当前仅支持 waf
 		Mode *string `json:"Mode,omitempty" name:"Mode"`
 
 		// TOP URL 统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TopUrlData []*ScdnTopUrlData `json:"TopUrlData,omitempty" name:"TopUrlData" list`
+		TopUrlData []*ScdnTopUrlData `json:"TopUrlData,omitempty" name:"TopUrlData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3448,7 +3448,7 @@ type DescribeTrafficPackagesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 流量包详情
-		TrafficPackages []*TrafficPackage `json:"TrafficPackages,omitempty" name:"TrafficPackages" list`
+		TrafficPackages []*TrafficPackage `json:"TrafficPackages,omitempty" name:"TrafficPackages"`
 
 		// 即将过期的流量包个数（7天内）
 		ExpiringCount *int64 `json:"ExpiringCount,omitempty" name:"ExpiringCount"`
@@ -3482,7 +3482,7 @@ type DescribeUrlViolationsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 指定的域名查询
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 func (r *DescribeUrlViolationsRequest) ToJsonString() string {
@@ -3512,7 +3512,7 @@ type DescribeUrlViolationsResponse struct {
 
 		// 违规 URL 详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UrlRecordList []*ViolationUrl `json:"UrlRecordList,omitempty" name:"UrlRecordList" list`
+		UrlRecordList []*ViolationUrl `json:"UrlRecordList,omitempty" name:"UrlRecordList"`
 
 		// 记录总数，用于分页
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3736,11 +3736,11 @@ type DetailDomain struct {
 
 	// 访问端口配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
+	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort"`
 
 	// 标签配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 
 	// 时间戳防盗链高级配置，白名单功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3756,7 +3756,7 @@ type DetailDomain struct {
 
 	// 高级配置集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdvanceSet []*AdvanceConfig `json:"AdvanceSet,omitempty" name:"AdvanceSet" list`
+	AdvanceSet []*AdvanceConfig `json:"AdvanceSet,omitempty" name:"AdvanceSet"`
 
 	// 离线缓存
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3779,7 +3779,7 @@ type DiagnoseData struct {
 
 	// 诊断报告内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*DiagnoseUnit `json:"Data,omitempty" name:"Data" list`
+	Data []*DiagnoseUnit `json:"Data,omitempty" name:"Data"`
 
 	// 当前诊断项是否正常。
 	// "ok"：正常
@@ -3813,7 +3813,7 @@ type DiagnoseInfo struct {
 
 	// 访问诊断链接的客户端简易信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientList []*DiagnoseList `json:"ClientList,omitempty" name:"ClientList" list`
+	ClientList []*DiagnoseList `json:"ClientList,omitempty" name:"ClientList"`
 
 	// 域名加速区域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3832,7 +3832,7 @@ type DiagnoseList struct {
 
 	// 客户端信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientInfo []*ClientInfo `json:"ClientInfo,omitempty" name:"ClientInfo" list`
+	ClientInfo []*ClientInfo `json:"ClientInfo,omitempty" name:"ClientInfo"`
 
 	// 最终诊断结果。
 	// -1：已提交
@@ -3872,7 +3872,7 @@ type DisableCachesRequest struct {
 
 	// 禁用的 URL 列表（分协议生效，必须包含http://或https://）
 	// 每次最多可提交 100 条，每日最多可提交 3000 条
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *DisableCachesRequest) ToJsonString() string {
@@ -4002,7 +4002,7 @@ type DistrictIspInfo struct {
 	Isp *int64 `json:"Isp,omitempty" name:"Isp"`
 
 	// 指标数据点
-	DataPoints []*uint64 `json:"DataPoints,omitempty" name:"DataPoints" list`
+	DataPoints []*uint64 `json:"DataPoints,omitempty" name:"DataPoints"`
 
 	// 地区名称
 	DistrictName *string `json:"DistrictName,omitempty" name:"DistrictName"`
@@ -4017,7 +4017,7 @@ type DomainAreaConfig struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 地区列表，其中元素可为mainland/overseas
-	Area []*string `json:"Area,omitempty" name:"Area" list`
+	Area []*string `json:"Area,omitempty" name:"Area"`
 }
 
 type DomainFilter struct {
@@ -4037,7 +4037,7 @@ type DomainFilter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 
 	// 是否启用模糊查询，仅支持过滤字段名为origin，domain。
 	// 模糊查询时，Value长度最大为1，否则Value长度最大为5。
@@ -4073,7 +4073,7 @@ type DownstreamCapping struct {
 
 	// 下行限速规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CappingRules []*CappingRule `json:"CappingRules,omitempty" name:"CappingRules" list`
+	CappingRules []*CappingRule `json:"CappingRules,omitempty" name:"CappingRules"`
 }
 
 type DuplicateDomainConfigRequest struct {
@@ -4130,7 +4130,7 @@ type EnableCachesRequest struct {
 	*tchttp.BaseRequest
 
 	// 解封 URL 列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *EnableCachesRequest) ToJsonString() string {
@@ -4240,7 +4240,7 @@ type ErrorPage struct {
 
 	// 状态码重定向规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageRules []*ErrorPageRule `json:"PageRules,omitempty" name:"PageRules" list`
+	PageRules []*ErrorPageRule `json:"PageRules,omitempty" name:"PageRules"`
 }
 
 type ErrorPageRule struct {
@@ -4344,7 +4344,7 @@ type GetDisableRecordsResponse struct {
 
 		// 封禁历史记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UrlRecordList []*UrlRecord `json:"UrlRecordList,omitempty" name:"UrlRecordList" list`
+		UrlRecordList []*UrlRecord `json:"UrlRecordList,omitempty" name:"UrlRecordList"`
 
 		// 任务总数，用于分页
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4431,7 +4431,7 @@ type HttpHeaderPathRule struct {
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 }
 
 type HttpHeaderRule struct {
@@ -4504,7 +4504,7 @@ type Https struct {
 
 	// Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion" list`
+	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion"`
 }
 
 type ImageOptimization struct {
@@ -4539,11 +4539,11 @@ type IpFilter struct {
 	// 支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
 	// 最多可填充 50 个白名单或 50 个黑名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 
 	// IP 黑白名单分路径配置，白名单功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterRules []*IpFilterPathRule `json:"FilterRules,omitempty" name:"FilterRules" list`
+	FilterRules []*IpFilterPathRule `json:"FilterRules,omitempty" name:"FilterRules"`
 }
 
 type IpFilterPathRule struct {
@@ -4558,7 +4558,7 @@ type IpFilterPathRule struct {
 	// 支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
 	// 最多可填充 50 个白名单或 50 个黑名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 
 	// 规则类型：
 	// all：所有文件生效
@@ -4574,7 +4574,7 @@ type IpFilterPathRule struct {
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 }
 
 type IpFreqLimit struct {
@@ -4632,7 +4632,7 @@ type KeyRule struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 规则类型：
 	// file：指定文件后缀生效
@@ -4696,7 +4696,7 @@ type ListClsLogTopicsResponse struct {
 
 		// 日志主题信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics" list`
+		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4765,7 +4765,7 @@ type ListClsTopicDomainsResponse struct {
 		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 		// 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
-		DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+		DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs"`
 
 		// 日志主题名称
 		TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
@@ -4825,7 +4825,7 @@ type ListDiagnoseReportResponse struct {
 	Response *struct {
 
 		// 诊断信息。
-		Data []*DiagnoseInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*DiagnoseInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4883,7 +4883,7 @@ type ListScdnDomainsResponse struct {
 
 		// 域名列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainList []*ScdnDomain `json:"DomainList,omitempty" name:"DomainList" list`
+		DomainList []*ScdnDomain `json:"DomainList,omitempty" name:"DomainList"`
 
 		// 域名的总条数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4940,7 +4940,7 @@ type ListScdnLogTasksResponse struct {
 	Response *struct {
 
 		// 日志下载任务详情
-		TaskList []*ScdnLogTaskDetail `json:"TaskList,omitempty" name:"TaskList" list`
+		TaskList []*ScdnLogTaskDetail `json:"TaskList,omitempty" name:"TaskList"`
 
 		// 查询到的下载任务的总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -5002,7 +5002,7 @@ type ListTopDataRequest struct {
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
@@ -5059,7 +5059,7 @@ type ListTopDataResponse struct {
 	Response *struct {
 
 		// 各个资源的Top 访问数据详情。
-		Data []*TopData `json:"Data,omitempty" name:"Data" list`
+		Data []*TopData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5217,7 +5217,7 @@ type ManageClsTopicDomainsRequest struct {
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
-	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs" list`
+	DomainAreaConfigs []*DomainAreaConfig `json:"DomainAreaConfigs,omitempty" name:"DomainAreaConfigs"`
 }
 
 func (r *ManageClsTopicDomainsRequest) ToJsonString() string {
@@ -5281,7 +5281,7 @@ type MaxAge struct {
 
 	// MaxAge 规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxAgeRules []*MaxAgeRule `json:"MaxAgeRules,omitempty" name:"MaxAgeRules" list`
+	MaxAgeRules []*MaxAgeRule `json:"MaxAgeRules,omitempty" name:"MaxAgeRules"`
 }
 
 type MaxAgeRule struct {
@@ -5301,7 +5301,7 @@ type MaxAgeRule struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
 	// 注意：all规则不可删除，默认遵循源站，可修改。
-	MaxAgeContents []*string `json:"MaxAgeContents,omitempty" name:"MaxAgeContents" list`
+	MaxAgeContents []*string `json:"MaxAgeContents,omitempty" name:"MaxAgeContents"`
 
 	// MaxAge 时间设置，单位秒
 	// 注意：时间为0，即不缓存。
@@ -5323,7 +5323,7 @@ type Origin struct {
 	// 主源站列表
 	// 修改源站时，需要同时填充对应的 OriginType
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Origins []*string `json:"Origins,omitempty" name:"Origins" list`
+	Origins []*string `json:"Origins,omitempty" name:"Origins"`
 
 	// 主源站类型
 	// 入参支持以下几种类型：
@@ -5360,7 +5360,7 @@ type Origin struct {
 	// 备源站列表
 	// 修改备源站时，需要同时填充对应的 BackupOriginType
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins" list`
+	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins"`
 
 	// 备源站类型，支持以下类型：
 	// domain：域名类型
@@ -5379,11 +5379,11 @@ type Origin struct {
 
 	// 回源路径重写规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules" list`
+	PathRules []*PathRule `json:"PathRules,omitempty" name:"PathRules"`
 
 	// 分路径回源配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PathBasedOrigin []*PathBasedOriginRule `json:"PathBasedOrigin,omitempty" name:"PathBasedOrigin" list`
+	PathBasedOrigin []*PathBasedOriginRule `json:"PathBasedOrigin,omitempty" name:"PathBasedOrigin"`
 }
 
 type OriginAuthentication struct {
@@ -5554,10 +5554,10 @@ type PathBasedOriginRule struct {
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 源站列表，支持域名或ipv4地址
-	Origin []*string `json:"Origin,omitempty" name:"Origin" list`
+	Origin []*string `json:"Origin,omitempty" name:"Origin"`
 }
 
 type PathRule struct {
@@ -5593,7 +5593,7 @@ type PathRule struct {
 
 	// 路径匹配时回源的头部设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders" list`
+	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders"`
 }
 
 type PostSize struct {
@@ -5611,7 +5611,7 @@ type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 目录列表，需要包含协议头部 http:// 或 https://
-	Paths []*string `json:"Paths,omitempty" name:"Paths" list`
+	Paths []*string `json:"Paths,omitempty" name:"Paths"`
 
 	// 刷新类型
 	// flush：刷新产生更新的资源
@@ -5698,7 +5698,7 @@ type PurgeUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// URL 列表，需要包含协议头部 http:// 或 https://
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 刷新区域
 	// 无此参数时，默认刷新加速域名所在加速区域
@@ -5790,7 +5790,7 @@ type PushUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// URL 列表，需要包含协议头部 http:// 或 https://
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 指定预热请求回源时 HTTP 请求的 User-Agent 头部
 	// 默认为 TencentCdn
@@ -5917,7 +5917,7 @@ type Referer struct {
 
 	// referer 黑白名单配置规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefererRules []*RefererRule `json:"RefererRules,omitempty" name:"RefererRules" list`
+	RefererRules []*RefererRule `json:"RefererRules,omitempty" name:"RefererRules"`
 }
 
 type RefererRule struct {
@@ -5934,7 +5934,7 @@ type RefererRule struct {
 	// file 时填充后缀名，如 jpg、txt
 	// directory 时填充路径，如 /xxx/test/
 	// path 时填充绝对路径，如 /xxx/test.html
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// referer 配置类型
 	// whitelist：白名单
@@ -5942,7 +5942,7 @@ type RefererRule struct {
 	RefererType *string `json:"RefererType,omitempty" name:"RefererType"`
 
 	// referer 内容列表列表
-	Referers []*string `json:"Referers,omitempty" name:"Referers" list`
+	Referers []*string `json:"Referers,omitempty" name:"Referers"`
 
 	// 是否允许空 referer
 	// true：允许空 referer
@@ -5956,7 +5956,7 @@ type RegionMapRelation struct {
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 子区域ID列表
-	SubRegionIdList []*int64 `json:"SubRegionIdList,omitempty" name:"SubRegionIdList" list`
+	SubRegionIdList []*int64 `json:"SubRegionIdList,omitempty" name:"SubRegionIdList"`
 }
 
 type ReportData struct {
@@ -5989,7 +5989,7 @@ type RequestHeader struct {
 
 	// 自定义请求头配置规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules" list`
+	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules"`
 }
 
 type ResourceBillingData struct {
@@ -6002,7 +6002,7 @@ type ResourceBillingData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 计费数据详情
-	BillingData []*CdnData `json:"BillingData,omitempty" name:"BillingData" list`
+	BillingData []*CdnData `json:"BillingData,omitempty" name:"BillingData"`
 }
 
 type ResourceData struct {
@@ -6015,7 +6015,7 @@ type ResourceData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 资源对应的数据明细
-	CdnData []*CdnData `json:"CdnData,omitempty" name:"CdnData" list`
+	CdnData []*CdnData `json:"CdnData,omitempty" name:"CdnData"`
 }
 
 type ResourceOriginData struct {
@@ -6028,7 +6028,7 @@ type ResourceOriginData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 回源数据详情
-	OriginData []*CdnData `json:"OriginData,omitempty" name:"OriginData" list`
+	OriginData []*CdnData `json:"OriginData,omitempty" name:"OriginData"`
 }
 
 type ResponseHeader struct {
@@ -6040,7 +6040,7 @@ type ResponseHeader struct {
 
 	// 自定义响应头规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules" list`
+	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules"`
 }
 
 type ResponseHeaderCache struct {
@@ -6071,7 +6071,7 @@ type RuleCache struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 规则类型：
 	// all：所有文件生效
@@ -6124,7 +6124,7 @@ type ScdnAclConfig struct {
 
 	// Acl规则组，switch为on时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScriptData []*ScdnAclGroup `json:"ScriptData,omitempty" name:"ScriptData" list`
+	ScriptData []*ScdnAclGroup `json:"ScriptData,omitempty" name:"ScriptData"`
 
 	// 错误页面配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6137,7 +6137,7 @@ type ScdnAclGroup struct {
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 具体配置
-	Configure []*ScdnAclRule `json:"Configure,omitempty" name:"Configure" list`
+	Configure []*ScdnAclRule `json:"Configure,omitempty" name:"Configure"`
 
 	// 规则行为，一般为refuse
 	Result *string `json:"Result,omitempty" name:"Result"`
@@ -6165,11 +6165,11 @@ type ScdnBotConfig struct {
 
 	// Bot cookie策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotCookie []*BotCookie `json:"BotCookie,omitempty" name:"BotCookie" list`
+	BotCookie []*BotCookie `json:"BotCookie,omitempty" name:"BotCookie"`
 
 	// Bot Js策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotJavaScript []*BotJavaScript `json:"BotJavaScript,omitempty" name:"BotJavaScript" list`
+	BotJavaScript []*BotJavaScript `json:"BotJavaScript,omitempty" name:"BotJavaScript"`
 }
 
 type ScdnCCRules struct {
@@ -6183,7 +6183,7 @@ type ScdnCCRules struct {
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
 	// 规则值
-	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue" list`
+	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue"`
 
 	// 规则限频
 	Qps *uint64 `json:"Qps,omitempty" name:"Qps"`
@@ -6220,7 +6220,7 @@ type ScdnConfig struct {
 
 	// 自定义 cc 防护规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*ScdnCCRules `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*ScdnCCRules `json:"Rules,omitempty" name:"Rules"`
 }
 
 type ScdnDdosConfig struct {
@@ -6347,7 +6347,7 @@ type ScdnLogTaskDetail struct {
 
 	// 查询条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions" list`
+	Conditions []*ScdnEventLogConditions `json:"Conditions,omitempty" name:"Conditions"`
 
 	// mainland或overseas
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6416,7 +6416,7 @@ type ScdnWafConfig struct {
 
 	// 类型拦截规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*ScdnWafRule `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*ScdnWafRule `json:"Rules,omitempty" name:"Rules"`
 
 	// waf规则等级，可取100|200|300
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6424,7 +6424,7 @@ type ScdnWafConfig struct {
 
 	// waf子规则开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubRuleSwitch []*WafSubRuleStatus `json:"SubRuleSwitch,omitempty" name:"SubRuleSwitch" list`
+	SubRuleSwitch []*WafSubRuleStatus `json:"SubRuleSwitch,omitempty" name:"SubRuleSwitch"`
 }
 
 type ScdnWafRule struct {
@@ -6580,7 +6580,7 @@ type SimpleCache struct {
 
 	// 缓存过期时间规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CacheRules []*SimpleCacheRule `json:"CacheRules,omitempty" name:"CacheRules" list`
+	CacheRules []*SimpleCacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 
 	// 遵循源站 Cache-Control: max-age 配置
 	// on：开启
@@ -6632,7 +6632,7 @@ type SimpleCacheRule struct {
 	// directory 时填充路径，如 /xxx/test
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
-	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents" list`
+	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents"`
 
 	// 缓存过期时间设置
 	// 单位为秒，最大可设置为 365 天
@@ -6768,7 +6768,7 @@ type StatusCodeCache struct {
 
 	// 状态码缓存过期规则明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CacheRules []*StatusCodeCacheRule `json:"CacheRules,omitempty" name:"CacheRules" list`
+	CacheRules []*StatusCodeCacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 }
 
 type StatusCodeCacheRule struct {
@@ -6920,7 +6920,7 @@ type TopData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 排序结果详情
-	DetailData []*TopDetailData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*TopDetailData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
 type TopDetailData struct {
@@ -7116,7 +7116,7 @@ type UpdateDomainConfigRequest struct {
 	UrlRedirect *UrlRedirect `json:"UrlRedirect,omitempty" name:"UrlRedirect"`
 
 	// 访问端口配置
-	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort" list`
+	AccessPort []*int64 `json:"AccessPort,omitempty" name:"AccessPort"`
 
 	// 时间戳防盗链高级版配置，白名单功能
 	AdvancedAuthentication *AdvancedAuthentication `json:"AdvancedAuthentication,omitempty" name:"AdvancedAuthentication"`
@@ -7420,7 +7420,7 @@ type UrlRedirect struct {
 
 	// URL重定向规则，当Switch为on时必填，规则数量最大为10个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PathRules []*UrlRedirectRule `json:"PathRules,omitempty" name:"PathRules" list`
+	PathRules []*UrlRedirectRule `json:"PathRules,omitempty" name:"PathRules"`
 }
 
 type UrlRedirectRule struct {
@@ -7447,7 +7447,7 @@ type UserAgentFilter struct {
 
 	// UA黑白名单生效规则列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterRules []*UserAgentFilterRule `json:"FilterRules,omitempty" name:"FilterRules" list`
+	FilterRules []*UserAgentFilterRule `json:"FilterRules,omitempty" name:"FilterRules"`
 }
 
 type UserAgentFilterRule struct {
@@ -7462,11 +7462,11 @@ type UserAgentFilterRule struct {
 
 	// 访问路径生效内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// UserAgent列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserAgents []*string `json:"UserAgents,omitempty" name:"UserAgents" list`
+	UserAgents []*string `json:"UserAgents,omitempty" name:"UserAgents"`
 
 	// 黑名单或白名单，blacklist或whitelist
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7562,7 +7562,7 @@ type WafSubRuleStatus struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 规则id列表
-	SubIds []*int64 `json:"SubIds,omitempty" name:"SubIds" list`
+	SubIds []*int64 `json:"SubIds,omitempty" name:"SubIds"`
 }
 
 type WebpAdapter struct {

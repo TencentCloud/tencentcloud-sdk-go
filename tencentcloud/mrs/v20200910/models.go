@@ -32,7 +32,7 @@ type AspectRatio struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 数值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -55,7 +55,7 @@ type BlockInfo struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 阳性
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -97,11 +97,11 @@ type Desc struct {
 
 	// 器官
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Organ []*Organ `json:"Organ,omitempty" name:"Organ" list`
+	Organ []*Organ `json:"Organ,omitempty" name:"Organ"`
 
 	// 结节
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tuber []*TuberInfo `json:"Tuber,omitempty" name:"Tuber" list`
+	Tuber []*TuberInfo `json:"Tuber,omitempty" name:"Tuber"`
 }
 
 type DiagCert struct {
@@ -112,7 +112,7 @@ type DiagCert struct {
 
 	// 诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Diagnosis []*DiagCertItem `json:"Diagnosis,omitempty" name:"Diagnosis" list`
+	Diagnosis []*DiagCertItem `json:"Diagnosis,omitempty" name:"Diagnosis"`
 }
 
 type DiagCertItem struct {
@@ -127,7 +127,7 @@ type DiagCertItem struct {
 
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type DischargeDiagnosis struct {
@@ -180,7 +180,7 @@ type Elastic struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -218,7 +218,7 @@ type FirstPage struct {
 
 	// 出入院诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DischargeDiagnosis []*DischargeDiagnosis `json:"DischargeDiagnosis,omitempty" name:"DischargeDiagnosis" list`
+	DischargeDiagnosis []*DischargeDiagnosis `json:"DischargeDiagnosis,omitempty" name:"DischargeDiagnosis"`
 
 	// 病理诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -264,7 +264,7 @@ type HistologyLevel struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -279,7 +279,7 @@ type HistologyType struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -294,7 +294,7 @@ type IHCInfo struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -324,7 +324,7 @@ type ImageToClassRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
-	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
+	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
@@ -360,7 +360,7 @@ type ImageToClassResponse struct {
 
 		// 分类结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList" list`
+		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -382,7 +382,7 @@ type ImageToObjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
-	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
+	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
@@ -444,7 +444,7 @@ type Indicator struct {
 
 	// 检验指标项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Indicators []*IndicatorItem `json:"Indicators,omitempty" name:"Indicators" list`
+	Indicators []*IndicatorItem `json:"Indicators,omitempty" name:"Indicators"`
 }
 
 type IndicatorItem struct {
@@ -490,7 +490,7 @@ type Invas struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -513,7 +513,7 @@ type Lymph struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -536,7 +536,7 @@ type MedDoc struct {
 
 	// 诊断结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Diagnosis []*DiagCertItem `json:"Diagnosis,omitempty" name:"Diagnosis" list`
+	Diagnosis []*DiagCertItem `json:"Diagnosis,omitempty" name:"Diagnosis"`
 
 	// 疾病史
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -589,7 +589,7 @@ type Multiple struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -635,7 +635,7 @@ type NormSize struct {
 
 	// 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Number []*string `json:"Number,omitempty" name:"Number" list`
+	Number []*string `json:"Number,omitempty" name:"Number"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -665,7 +665,7 @@ type Organ struct {
 
 	// 大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Size []*Size `json:"Size,omitempty" name:"Size" list`
+	Size []*Size `json:"Size,omitempty" name:"Size"`
 
 	// 包膜
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -745,14 +745,14 @@ type Organ struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 }
 
 type Part struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -779,7 +779,7 @@ type PathologyReport struct {
 
 	// 癌症部位大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CancerSize []*Size `json:"CancerSize,omitempty" name:"CancerSize" list`
+	CancerSize []*Size `json:"CancerSize,omitempty" name:"CancerSize"`
 
 	// 描述文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -795,7 +795,7 @@ type PathologyReport struct {
 
 	// IHC信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IHC []*IHCInfo `json:"IHC,omitempty" name:"IHC" list`
+	IHC []*IHCInfo `json:"IHC,omitempty" name:"IHC"`
 
 	// 浸润深度
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -803,11 +803,11 @@ type PathologyReport struct {
 
 	// 肿瘤扩散
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Invasive []*Invas `json:"Invasive,omitempty" name:"Invasive" list`
+	Invasive []*Invas `json:"Invasive,omitempty" name:"Invasive"`
 
 	// 淋巴结
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LymphNodes []*Lymph `json:"LymphNodes,omitempty" name:"LymphNodes" list`
+	LymphNodes []*Lymph `json:"LymphNodes,omitempty" name:"LymphNodes"`
 
 	// PTNM信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -955,7 +955,7 @@ type Size struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 标准大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -974,7 +974,7 @@ type Summary struct {
 
 	// 症状
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Symptom []*SymptomInfo `json:"Symptom,omitempty" name:"Symptom" list`
+	Symptom []*SymptomInfo `json:"Symptom,omitempty" name:"Symptom"`
 
 	// 文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -993,7 +993,7 @@ type SymptomInfo struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 病变
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1001,7 +1001,7 @@ type SymptomInfo struct {
 
 	// 属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Attrs []*BlockInfo `json:"Attrs,omitempty" name:"Attrs" list`
+	Attrs []*BlockInfo `json:"Attrs,omitempty" name:"Attrs"`
 
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1078,7 +1078,7 @@ type TextToClassResponse struct {
 	Response *struct {
 
 		// 分类结果
-		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList" list`
+		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1291,7 +1291,7 @@ type TuberInfo struct {
 
 	// 大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Size []*Size `json:"Size,omitempty" name:"Size" list`
+	Size []*Size `json:"Size,omitempty" name:"Size"`
 
 	// 多发
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1367,7 +1367,7 @@ type TuberInfo struct {
 
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index []*int64 `json:"Index,omitempty" name:"Index" list`
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
 
 	// 大小状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1379,7 +1379,7 @@ type TuberInfo struct {
 
 	// 内部回声类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InnerEchoType []*BlockInfo `json:"InnerEchoType,omitempty" name:"InnerEchoType" list`
+	InnerEchoType []*BlockInfo `json:"InnerEchoType,omitempty" name:"InnerEchoType"`
 
 	// 轮廓
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1422,7 +1422,7 @@ type Value struct {
 
 	// 百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Percent []*float64 `json:"Percent,omitempty" name:"Percent" list`
+	Percent []*float64 `json:"Percent,omitempty" name:"Percent"`
 
 	// 阳性
 	// 注意：此字段可能返回 null，表示取不到有效值。

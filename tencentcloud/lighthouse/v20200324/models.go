@@ -75,10 +75,10 @@ type AssociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 
 	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *AssociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -150,7 +150,7 @@ type Blueprint struct {
 	// 镜像图片 URL。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 镜像所需系统盘大小。
+	// 镜像所需系统盘大小，单位 GB。
 	RequiredSystemDiskSize *int64 `json:"RequiredSystemDiskSize,omitempty" name:"RequiredSystemDiskSize"`
 
 	// 镜像状态。
@@ -177,7 +177,7 @@ type BlueprintInstance struct {
 	Blueprint *Blueprint `json:"Blueprint,omitempty" name:"Blueprint"`
 
 	// 软件列表。
-	SoftwareSet []*Software `json:"SoftwareSet,omitempty" name:"SoftwareSet" list`
+	SoftwareSet []*Software `json:"SoftwareSet,omitempty" name:"SoftwareSet"`
 
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -315,7 +315,7 @@ type CreateFirewallRulesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
-	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules"`
 
 	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
 	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
@@ -468,7 +468,7 @@ type DeleteBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
 	// 镜像ID列表。镜像ID，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
-	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds" list`
+	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds"`
 }
 
 func (r *DeleteBlueprintsRequest) ToJsonString() string {
@@ -517,7 +517,7 @@ type DeleteFirewallRulesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
-	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules"`
 
 	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
 	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
@@ -568,7 +568,7 @@ type DeleteKeyPairsRequest struct {
 	*tchttp.BaseRequest
 
 	// 密钥对 ID 列表，每次请求批量密钥对的上限为 10。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *DeleteKeyPairsRequest) ToJsonString() string {
@@ -614,7 +614,7 @@ type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的快照 ID 列表，可通过 DescribeSnapshots 查询。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 func (r *DeleteSnapshotsRequest) ToJsonString() string {
@@ -672,7 +672,7 @@ type DescribeBlueprintInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表，当前最多支持 1 个。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeBlueprintInstancesRequest) ToJsonString() string {
@@ -702,7 +702,7 @@ type DescribeBlueprintInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 镜像实例列表信息。
-		BlueprintInstanceSet []*BlueprintInstance `json:"BlueprintInstanceSet,omitempty" name:"BlueprintInstanceSet" list`
+		BlueprintInstanceSet []*BlueprintInstance `json:"BlueprintInstanceSet,omitempty" name:"BlueprintInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -724,7 +724,7 @@ type DescribeBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
 	// 镜像 ID 列表。
-	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds" list`
+	BlueprintIds []*string `json:"BlueprintIds,omitempty" name:"BlueprintIds"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -745,7 +745,7 @@ type DescribeBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBlueprintsRequest) ToJsonString() string {
@@ -778,7 +778,7 @@ type DescribeBlueprintsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 镜像详细信息列表。
-		BlueprintSet []*Blueprint `json:"BlueprintSet,omitempty" name:"BlueprintSet" list`
+		BlueprintSet []*Blueprint `json:"BlueprintSet,omitempty" name:"BlueprintSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -830,7 +830,7 @@ type DescribeBundleDiscountResponse struct {
 		Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 		// 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
-		DiscountDetail []*DiscountDetail `json:"DiscountDetail,omitempty" name:"DiscountDetail" list`
+		DiscountDetail []*DiscountDetail `json:"DiscountDetail,omitempty" name:"DiscountDetail"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -852,7 +852,7 @@ type DescribeBundlesRequest struct {
 	*tchttp.BaseRequest
 
 	// 套餐 ID 列表。
-	BundleIds []*string `json:"BundleIds,omitempty" name:"BundleIds" list`
+	BundleIds []*string `json:"BundleIds,omitempty" name:"BundleIds"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -869,7 +869,7 @@ type DescribeBundlesRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBundlesRequest) ToJsonString() string {
@@ -899,7 +899,7 @@ type DescribeBundlesResponse struct {
 	Response *struct {
 
 		// 套餐详细信息列表。
-		BundleSet []*Bundle `json:"BundleSet,omitempty" name:"BundleSet" list`
+		BundleSet []*Bundle `json:"BundleSet,omitempty" name:"BundleSet"`
 
 		// 符合要求的套餐总数，用于分页展示。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -962,7 +962,7 @@ type DescribeFirewallRulesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 防火墙规则详细信息列表。
-		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet" list`
+		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet"`
 
 		// 防火墙版本号。
 		FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
@@ -1013,7 +1013,7 @@ type DescribeFirewallRulesTemplateResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 防火墙规则详细信息列表。
-		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet" list`
+		FirewallRuleSet []*FirewallRuleInfo `json:"FirewallRuleSet,omitempty" name:"FirewallRuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1035,7 +1035,7 @@ type DescribeGeneralResourceQuotasRequest struct {
 	*tchttp.BaseRequest
 
 	// 资源名列表，取值为：USER_KEY_PAIR、INSTANCE、SNAPSHOT。
-	ResourceNames []*string `json:"ResourceNames,omitempty" name:"ResourceNames" list`
+	ResourceNames []*string `json:"ResourceNames,omitempty" name:"ResourceNames"`
 }
 
 func (r *DescribeGeneralResourceQuotasRequest) ToJsonString() string {
@@ -1062,7 +1062,7 @@ type DescribeGeneralResourceQuotasResponse struct {
 	Response *struct {
 
 		// 通用资源配额详细信息列表。
-		GeneralResourceQuotaSet []*GeneralResourceQuota `json:"GeneralResourceQuotaSet,omitempty" name:"GeneralResourceQuotaSet" list`
+		GeneralResourceQuotaSet []*GeneralResourceQuota `json:"GeneralResourceQuotaSet,omitempty" name:"GeneralResourceQuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1182,7 +1182,7 @@ type DescribeInstancesDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstancesDeniedActionsRequest) ToJsonString() string {
@@ -1209,7 +1209,7 @@ type DescribeInstancesDeniedActionsResponse struct {
 	Response *struct {
 
 		// 实例操作限制列表详细信息。
-		InstanceDeniedActionSet []*InstanceDeniedActions `json:"InstanceDeniedActionSet,omitempty" name:"InstanceDeniedActionSet" list`
+		InstanceDeniedActionSet []*InstanceDeniedActions `json:"InstanceDeniedActionSet,omitempty" name:"InstanceDeniedActionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1231,7 +1231,7 @@ type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 过滤器列表。
 	// <li>instance-name</li>按照【实例名称】进行过滤。
@@ -1244,7 +1244,7 @@ type DescribeInstancesRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1283,7 +1283,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息列表。
-		InstanceSet []*Instance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+		InstanceSet []*Instance `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1305,7 +1305,7 @@ type DescribeInstancesReturnableRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1343,7 +1343,7 @@ type DescribeInstancesReturnableResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可退还实例详细信息列表。
-		InstanceReturnableSet []*InstanceReturnable `json:"InstanceReturnableSet,omitempty" name:"InstanceReturnableSet" list`
+		InstanceReturnableSet []*InstanceReturnable `json:"InstanceReturnableSet,omitempty" name:"InstanceReturnableSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1365,7 +1365,7 @@ type DescribeInstancesTrafficPackagesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1403,7 +1403,7 @@ type DescribeInstancesTrafficPackagesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例流量包详情列表。
-		InstanceTrafficPackageSet []*InstanceTrafficPackage `json:"InstanceTrafficPackageSet,omitempty" name:"InstanceTrafficPackageSet" list`
+		InstanceTrafficPackageSet []*InstanceTrafficPackage `json:"InstanceTrafficPackageSet,omitempty" name:"InstanceTrafficPackageSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1425,7 +1425,7 @@ type DescribeKeyPairsRequest struct {
 	*tchttp.BaseRequest
 
 	// 密钥对 ID 列表。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1434,7 +1434,7 @@ type DescribeKeyPairsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，每次请求的 Filters 的上限为10， Filters.Values 的上限为5。参数不可以同时指定 KeyIds 和 Filters 。详细的过滤条件如下： key-id - String - 是否必填： 否 - （过滤条件）按照KeyID进行过滤; key-name - String - 是否必填： 否 - （过滤条件）按照KeyName进行过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeKeyPairsRequest) ToJsonString() string {
@@ -1467,7 +1467,7 @@ type DescribeKeyPairsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 密钥对详细信息列表。
-		KeyPairSet []*KeyPair `json:"KeyPairSet,omitempty" name:"KeyPairSet" list`
+		KeyPairSet []*KeyPair `json:"KeyPairSet,omitempty" name:"KeyPairSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1500,7 +1500,7 @@ type DescribeModifyInstanceBundlesRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1539,7 +1539,7 @@ type DescribeModifyInstanceBundlesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 变更套餐详细信息。
-		ModifyBundleSet []*ModifyBundle `json:"ModifyBundleSet,omitempty" name:"ModifyBundleSet" list`
+		ModifyBundleSet []*ModifyBundle `json:"ModifyBundleSet,omitempty" name:"ModifyBundleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1587,7 +1587,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 地域信息列表。
-		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1630,7 +1630,7 @@ type DescribeResetInstanceBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeResetInstanceBlueprintsRequest) ToJsonString() string {
@@ -1663,7 +1663,7 @@ type DescribeResetInstanceBlueprintsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 镜像重置信息列表
-		ResetInstanceBlueprintSet []*ResetInstanceBlueprint `json:"ResetInstanceBlueprintSet,omitempty" name:"ResetInstanceBlueprintSet" list`
+		ResetInstanceBlueprintSet []*ResetInstanceBlueprint `json:"ResetInstanceBlueprintSet,omitempty" name:"ResetInstanceBlueprintSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1685,7 +1685,7 @@ type DescribeSnapshotsDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 
 	// 快照 ID 列表, 可通过 DescribeSnapshots 查询。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 func (r *DescribeSnapshotsDeniedActionsRequest) ToJsonString() string {
@@ -1712,7 +1712,7 @@ type DescribeSnapshotsDeniedActionsResponse struct {
 	Response *struct {
 
 		// 快照操作限制列表详细信息。
-		SnapshotDeniedActionSet []*SnapshotDeniedActions `json:"SnapshotDeniedActionSet,omitempty" name:"SnapshotDeniedActionSet" list`
+		SnapshotDeniedActionSet []*SnapshotDeniedActions `json:"SnapshotDeniedActionSet,omitempty" name:"SnapshotDeniedActionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1735,7 +1735,7 @@ type DescribeSnapshotsRequest struct {
 
 	// 要查询快照的 ID 列表。
 	// 参数不支持同时指定 SnapshotIds 和 Filters。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 
 	// 过滤器列表。
 	// <li>snapshot-id</li>按照【快照 ID】进行过滤。
@@ -1751,7 +1751,7 @@ type DescribeSnapshotsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1790,7 +1790,7 @@ type DescribeSnapshotsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 快照的详情列表。
-		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet" list`
+		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1812,10 +1812,10 @@ type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 
 	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DisassociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -1885,7 +1885,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FirewallRule struct {
@@ -2106,7 +2106,7 @@ type InquirePriceRenewInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 待续费的实例。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
@@ -2184,11 +2184,11 @@ type Instance struct {
 
 	// 实例主网卡的内网 IP。 
 	// 注意：此字段可能返回 空，表示取不到有效值。
-	PrivateAddresses []*string `json:"PrivateAddresses,omitempty" name:"PrivateAddresses" list`
+	PrivateAddresses []*string `json:"PrivateAddresses,omitempty" name:"PrivateAddresses"`
 
 	// 实例主网卡的公网 IP。 
 	// 注意：此字段可能返回 空，表示取不到有效值。
-	PublicAddresses []*string `json:"PublicAddresses,omitempty" name:"PublicAddresses" list`
+	PublicAddresses []*string `json:"PublicAddresses,omitempty" name:"PublicAddresses"`
 
 	// 实例带宽信息。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
@@ -2263,7 +2263,7 @@ type InstanceDeniedActions struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 操作限制列表。
-	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions" list`
+	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions"`
 }
 
 type InstancePrice struct {
@@ -2302,7 +2302,7 @@ type InstanceTrafficPackage struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 流量包详情列表。
-	TrafficPackageSet []*TrafficPackage `json:"TrafficPackageSet,omitempty" name:"TrafficPackageSet" list`
+	TrafficPackageSet []*TrafficPackage `json:"TrafficPackageSet,omitempty" name:"TrafficPackageSet"`
 }
 
 type InternetAccessible struct {
@@ -2330,7 +2330,7 @@ type KeyPair struct {
 
 	// 密钥对关联的实例 ID 列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitempty" name:"AssociatedInstanceIds" list`
+	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitempty" name:"AssociatedInstanceIds"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2344,7 +2344,7 @@ type KeyPair struct {
 type LoginSettings struct {
 
 	// 密钥 ID 列表。关联密钥后，就可以通过对应的私钥来访问实例。注意：此字段可能返回 []，表示取不到有效值。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds" list`
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 type ModifyBlueprintAttributeRequest struct {
@@ -2477,7 +2477,7 @@ type ModifyFirewallRulesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 防火墙规则列表。
-	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules" list`
+	FirewallRules []*FirewallRule `json:"FirewallRules,omitempty" name:"FirewallRules"`
 
 	// 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
 	FirewallVersion *uint64 `json:"FirewallVersion,omitempty" name:"FirewallVersion"`
@@ -2528,7 +2528,7 @@ type ModifyInstancesAttributeRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例名称。可任意命名，但不得超过 60 个字符。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
@@ -2578,7 +2578,7 @@ type ModifyInstancesLoginKeyPairAttributeRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
 	PermitLogin *string `json:"PermitLogin,omitempty" name:"PermitLogin"`
@@ -2628,7 +2628,7 @@ type ModifyInstancesRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
@@ -2746,7 +2746,7 @@ type RebootInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *RebootInstancesRequest) ToJsonString() string {
@@ -2796,7 +2796,7 @@ type RegionInfo struct {
 	// 地域描述，例如，华南地区(广州)。
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
-	// 地域是否可用状态。
+	// 地域是否可用状态，取值为AVAILABLE。
 	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
 
 	// 是否中国大陆地域
@@ -2869,7 +2869,7 @@ type ResetInstancesPasswordRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
 	// `LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/
@@ -2974,7 +2974,7 @@ type SnapshotDeniedActions struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
 	// 操作限制列表。
-	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions" list`
+	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions"`
 }
 
 type Software struct {
@@ -2992,7 +2992,7 @@ type Software struct {
 	InstallDir *string `json:"InstallDir,omitempty" name:"InstallDir"`
 
 	// 软件详情列表。
-	DetailSet []*SoftwareDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+	DetailSet []*SoftwareDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 }
 
 type SoftwareDetail struct {
@@ -3011,7 +3011,7 @@ type StartInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *StartInstancesRequest) ToJsonString() string {
@@ -3057,7 +3057,7 @@ type StopInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *StopInstancesRequest) ToJsonString() string {
@@ -3118,7 +3118,7 @@ type TerminateInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *TerminateInstancesRequest) ToJsonString() string {

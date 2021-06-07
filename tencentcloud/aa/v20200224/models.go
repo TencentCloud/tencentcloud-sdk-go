@@ -182,7 +182,7 @@ type InputManageMarketingRisk struct {
 	SceneCode *string `json:"SceneCode,omitempty" name:"SceneCode"`
 
 	// 详细信息
-	Details []*InputDetails `json:"Details,omitempty" name:"Details" list`
+	Details []*InputDetails `json:"Details,omitempty" name:"Details"`
 
 	// 设备类型：
 	// 1：Android
@@ -321,7 +321,7 @@ type OutputActivityAntiRushAdvancedValue struct {
 
 	// 风险类型，详情请参见下文RiskType详细说明。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 }
 
 type OutputManageMarketingRisk struct {
@@ -372,7 +372,7 @@ type OutputManageMarketingRiskValue struct {
 
 	// 风险类型，请参考官网风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 }
 
 type QQAccountInfo struct {
@@ -645,7 +645,7 @@ type QueryActivityAntiRushResponse struct {
 	// 201，环境异常，操作ip/设备/环境存在异常。当前ip为非常用ip或恶意ip段；
 	// 205，非公网有效ip，传进来的IP地址为内网ip地址或者ip保留地址；
 	// 206，设备异常，该设备存在异常的使用行为
-		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 
 		// accountType是QQ或微信开放账号时，用于标识QQ或微信用户登录后关联业务自身的账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。

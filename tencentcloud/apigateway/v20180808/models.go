@@ -69,13 +69,13 @@ type APIDocInfo struct {
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
 
 	// 生成API文档的API ID
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 
 	// 生成API文档的API名称
-	ApiNames []*string `json:"ApiNames,omitempty" name:"ApiNames" list`
+	ApiNames []*string `json:"ApiNames,omitempty" name:"ApiNames"`
 }
 
 type APIDocs struct {
@@ -84,7 +84,7 @@ type APIDocs struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// API文档基本信息
-	APIDocSet []*APIDoc `json:"APIDocSet,omitempty" name:"APIDocSet" list`
+	APIDocSet []*APIDoc `json:"APIDocSet,omitempty" name:"APIDocSet"`
 }
 
 type ApiEnvironmentStrategy struct {
@@ -102,7 +102,7 @@ type ApiEnvironmentStrategy struct {
 	Method *string `json:"Method,omitempty" name:"Method"`
 
 	// 环境的限流信息。
-	EnvironmentStrategySet []*EnvironmentStrategy `json:"EnvironmentStrategySet,omitempty" name:"EnvironmentStrategySet" list`
+	EnvironmentStrategySet []*EnvironmentStrategy `json:"EnvironmentStrategySet,omitempty" name:"EnvironmentStrategySet"`
 }
 
 type ApiEnvironmentStrategyStataus struct {
@@ -113,7 +113,7 @@ type ApiEnvironmentStrategyStataus struct {
 
 	// API绑定的限流策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiEnvironmentStrategySet []*ApiEnvironmentStrategy `json:"ApiEnvironmentStrategySet,omitempty" name:"ApiEnvironmentStrategySet" list`
+	ApiEnvironmentStrategySet []*ApiEnvironmentStrategy `json:"ApiEnvironmentStrategySet,omitempty" name:"ApiEnvironmentStrategySet"`
 }
 
 type ApiIdStatus struct {
@@ -173,7 +173,7 @@ type ApiIdStatus struct {
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds" list`
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
 
 	// oauth配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -264,11 +264,11 @@ type ApiInfo struct {
 
 	// 用户自定义错误码配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseErrorCodes []*ErrorCodes `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes" list`
+	ResponseErrorCodes []*ErrorCodes `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
 
 	// 前端请求参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters" list`
+	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
 
 	// API 的后端服务超时时间，单位是秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -284,11 +284,11 @@ type ApiInfo struct {
 
 	// API的后端服务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters" list`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
 
 	// 常量参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters" list`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -352,11 +352,11 @@ type ApiInfo struct {
 
 	// API绑定微服务服务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MicroServices []*MicroService `json:"MicroServices,omitempty" name:"MicroServices" list`
+	MicroServices []*MicroService `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务信息详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MicroServicesInfo []*int64 `json:"MicroServicesInfo,omitempty" name:"MicroServicesInfo" list`
+	MicroServicesInfo []*int64 `json:"MicroServicesInfo,omitempty" name:"MicroServicesInfo"`
 
 	// 微服务的负载均衡配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -372,11 +372,11 @@ type ApiInfo struct {
 
 	// API绑定的tag信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// API已发布的环境信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environments []*string `json:"Environments,omitempty" name:"Environments" list`
+	Environments []*string `json:"Environments,omitempty" name:"Environments"`
 
 	// 是否开启Base64编码，只有后端为scf时才会生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -388,7 +388,7 @@ type ApiInfo struct {
 
 	// Header触发规则，总规则数量不超过10。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules" list`
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
 }
 
 type ApiKey struct {
@@ -423,7 +423,7 @@ type ApiKeysStatus struct {
 
 	// API 密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiKeySet []*ApiKey `json:"ApiKeySet,omitempty" name:"ApiKeySet" list`
+	ApiKeySet []*ApiKey `json:"ApiKeySet,omitempty" name:"ApiKeySet"`
 }
 
 type ApiRequestConfig struct {
@@ -506,7 +506,7 @@ type ApiUsagePlanSet struct {
 
 	// API 绑定使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiUsagePlanList []*ApiUsagePlan `json:"ApiUsagePlanList,omitempty" name:"ApiUsagePlanList" list`
+	ApiUsagePlanList []*ApiUsagePlan `json:"ApiUsagePlanList,omitempty" name:"ApiUsagePlanList"`
 }
 
 type ApisStatus struct {
@@ -515,7 +515,7 @@ type ApisStatus struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// API 接口列表。
-	ApiIdStatusSet []*DesApisStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet" list`
+	ApiIdStatusSet []*DesApisStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
 }
 
 type AttachedApiInfo struct {
@@ -560,14 +560,14 @@ type Base64EncodedTriggerRule struct {
 	//     "application/vnd.ms-project",
 	//     "application/vnd.rn-rn_music_package"
 	// ] 等都是合法的。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type BindEnvironmentRequest struct {
 	*tchttp.BaseRequest
 
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds" list`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
 
 	// 绑定类型，取值为API、SERVICE，默认值为SERVICE。
 	BindType *string `json:"BindType,omitempty" name:"BindType"`
@@ -579,7 +579,7 @@ type BindEnvironmentRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 	// API唯一ID数组，当bindType=API时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *BindEnvironmentRequest) ToJsonString() string {
@@ -642,7 +642,7 @@ type BindIPStrategyRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
 	// IP策略待绑定的API列表。
-	BindApiIds []*string `json:"BindApiIds,omitempty" name:"BindApiIds" list`
+	BindApiIds []*string `json:"BindApiIds,omitempty" name:"BindApiIds"`
 }
 
 func (r *BindIPStrategyRequest) ToJsonString() string {
@@ -698,7 +698,7 @@ type BindSecretIdsRequest struct {
 	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
 
 	// 待绑定的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds" list`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
 }
 
 func (r *BindSecretIdsRequest) ToJsonString() string {
@@ -770,7 +770,7 @@ type BindSubDomainRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
 	// 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet" list`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
 	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
@@ -904,7 +904,7 @@ type CreateAPIDocRequest struct {
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *CreateAPIDocRequest) ToJsonString() string {
@@ -1048,10 +1048,10 @@ type CreateApiRequest struct {
 	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters" list`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*RequestParameter `json:"RequestParameters,omitempty" name:"RequestParameters" list`
+	RequestParameters []*RequestParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api OAUTH：授权API。
 	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
@@ -1060,7 +1060,7 @@ type CreateApiRequest struct {
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices" list`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
 	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
@@ -1069,7 +1069,7 @@ type CreateApiRequest struct {
 	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
 
 	// target类型后端资源信息。（内测阶段）
-	TargetServices []*TargetServicesReq `json:"TargetServices,omitempty" name:"TargetServices" list`
+	TargetServices []*TargetServicesReq `json:"TargetServices,omitempty" name:"TargetServices"`
 
 	// target类型负载均衡配置。（内测阶段）
 	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitempty" name:"TargetServicesLoadBalanceConf"`
@@ -1138,13 +1138,13 @@ type CreateApiRequest struct {
 	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters" list`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
 	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes" list`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
 
 	// tsf serverless 命名空间ID。（内测中）
 	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" name:"TargetNamespaceId"`
@@ -1341,7 +1341,7 @@ type CreateServiceRequest struct {
 	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
+	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 	// IP版本号，支持IPv4和IPv6，默认为IPv4。
 	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
@@ -1353,7 +1353,7 @@ type CreateServiceRequest struct {
 	AppIdType *string `json:"AppIdType,omitempty" name:"AppIdType"`
 
 	// 标签。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 独享实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1410,7 +1410,7 @@ type CreateServiceResponse struct {
 		CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 		// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-		NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
+		NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 		// IP版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1982,11 +1982,11 @@ type DesApisStatus struct {
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds" list`
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
 
 	// API关联的标签信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// API 的路径，如 /path。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2106,7 +2106,7 @@ type DescribeApiEnvironmentStrategyRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames" list`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
 
 	// API唯一ID。
 	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
@@ -2225,7 +2225,7 @@ type DescribeApiKeysStatusRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。支持AccessKeyId、AccessKeySecret、SecretName、NotUsagePlanId、Status、KeyWord（ 可以匹配name或者path）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeApiKeysStatusRequest) ToJsonString() string {
@@ -2397,7 +2397,7 @@ type DescribeApisStatusRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeApisStatusRequest) ToJsonString() string {
@@ -2464,7 +2464,7 @@ type DescribeIPStrategyApisStatusRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。支持 ApiPath、ApiName、KeyWord（模糊查询Path 和Name）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeIPStrategyApisStatusRequest) ToJsonString() string {
@@ -2534,7 +2534,7 @@ type DescribeIPStrategyRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeIPStrategyRequest) ToJsonString() string {
@@ -2592,7 +2592,7 @@ type DescribeIPStrategysStatusRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 	// 过滤条件。支持StrategyName。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeIPStrategysStatusRequest) ToJsonString() string {
@@ -2652,7 +2652,7 @@ type DescribeLogSearchRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 	// 保留字段
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 单次要返回的日志条数，单次返回的最大条数为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2677,7 +2677,7 @@ type DescribeLogSearchRequest struct {
 	// 
 	// 说明：
 	// “:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
-	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys" list`
+	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys"`
 }
 
 func (r *DescribeLogSearchRequest) ToJsonString() string {
@@ -2742,7 +2742,7 @@ type DescribeLogSearchResponse struct {
 	// err_msg： 错误信息。
 	// tcp_rtt： 客户端 TCP 连接信息，RTT（Round Trip Time）由三部分组成：链路的传播时间（propagation delay）、末端系统的处理时间、路由器缓存中的排队和处理时间（queuing delay）。
 	// req_id：请求id。
-		LogSet []*string `json:"LogSet,omitempty" name:"LogSet" list`
+		LogSet []*string `json:"LogSet,omitempty" name:"LogSet"`
 
 		// 单次搜索返回的日志条数，TotalCount <= Limit
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2767,7 +2767,7 @@ type DescribePluginsRequest struct {
 	*tchttp.BaseRequest
 
 	// 要查询的插件列表。
-	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds" list`
+	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
 
 	// 要查询的插件名称。
 	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
@@ -2782,7 +2782,7 @@ type DescribePluginsRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribePluginsRequest) ToJsonString() string {
@@ -3102,7 +3102,7 @@ type DescribeServiceResponse struct {
 		ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 		// 服务 环境列表。
-		AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments" list`
+		AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments"`
 
 		// 服务名称。
 		ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
@@ -3124,7 +3124,7 @@ type DescribeServiceResponse struct {
 		ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
 
 		// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-		NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
+		NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 		// 内网访问子域名。
 		InternalSubDomain *string `json:"InternalSubDomain,omitempty" name:"InternalSubDomain"`
@@ -3143,14 +3143,14 @@ type DescribeServiceResponse struct {
 
 		// API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet" list`
+		ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
 
 		// 使用计划总数量。
 		UsagePlanTotalCount *int64 `json:"UsagePlanTotalCount,omitempty" name:"UsagePlanTotalCount"`
 
 		// 使用计划数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UsagePlanList []*UsagePlan `json:"UsagePlanList,omitempty" name:"UsagePlanList" list`
+		UsagePlanList []*UsagePlan `json:"UsagePlanList,omitempty" name:"UsagePlanList"`
 
 		// IP版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3166,7 +3166,7 @@ type DescribeServiceResponse struct {
 
 		// 服务绑定的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// 独享实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3374,7 +3374,7 @@ type DescribeServicesStatusRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeServicesStatusRequest) ToJsonString() string {
@@ -3602,7 +3602,7 @@ type DescribeUsagePlansStatusRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 使用计划过滤条件。支持UsagePlanId、UsagePlanName、NotServiceId、NotApiId、Environment。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeUsagePlansStatusRequest) ToJsonString() string {
@@ -3736,7 +3736,7 @@ type DomainSets struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 自定义服务域名列表。
-	DomainSet []*DomainSetList `json:"DomainSet,omitempty" name:"DomainSet" list`
+	DomainSet []*DomainSetList `json:"DomainSet,omitempty" name:"DomainSet"`
 }
 
 type EnableApiKeyRequest struct {
@@ -3846,7 +3846,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GenerateApiDocumentRequest struct {
@@ -3957,7 +3957,7 @@ type IPStrategy struct {
 
 	// 绑定的API详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindApis []*DesApisStatus `json:"BindApis,omitempty" name:"BindApis" list`
+	BindApis []*DesApisStatus `json:"BindApis,omitempty" name:"BindApis"`
 }
 
 type IPStrategyApi struct {
@@ -3992,7 +3992,7 @@ type IPStrategyApiStatus struct {
 
 	// 环境绑定API详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiIdStatusSet []*IPStrategyApi `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet" list`
+	ApiIdStatusSet []*IPStrategyApi `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
 }
 
 type IPStrategysStatus struct {
@@ -4003,7 +4003,7 @@ type IPStrategysStatus struct {
 
 	// 策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet" list`
+	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
 }
 
 type LogQuery struct {
@@ -4058,7 +4058,7 @@ type ModifyAPIDocRequest struct {
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *ModifyAPIDocRequest) ToJsonString() string {
@@ -4120,7 +4120,7 @@ type ModifyApiEnvironmentStrategyRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
 	// API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *ModifyApiEnvironmentStrategyRequest) ToJsonString() string {
@@ -4271,10 +4271,10 @@ type ModifyApiRequest struct {
 	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters" list`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters" list`
+	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api   OAUTH：授权API。
 	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
@@ -4283,7 +4283,7 @@ type ModifyApiRequest struct {
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices" list`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
 	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
@@ -4361,13 +4361,13 @@ type ModifyApiRequest struct {
 	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters" list`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
 	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes" list`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
 
 	// 是否开启Base64编码，只有后端为scf时才会生效。
 	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
@@ -4376,7 +4376,7 @@ type ModifyApiRequest struct {
 	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
 
 	// Header触发规则，总规则数不能超过10。
-	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules" list`
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
 }
 
 func (r *ModifyApiRequest) ToJsonString() string {
@@ -4533,7 +4533,7 @@ type ModifyServiceEnvironmentStrategyRequest struct {
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames" list`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
 }
 
 func (r *ModifyServiceEnvironmentStrategyRequest) ToJsonString() string {
@@ -4597,7 +4597,7 @@ type ModifyServiceRequest struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
+	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 }
 
 func (r *ModifyServiceRequest) ToJsonString() string {
@@ -4662,7 +4662,7 @@ type ModifySubDomainRequest struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 修改后的路径映射列表。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet" list`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
 
 	// 网络类型 （'INNER' 或 'OUTER'）
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
@@ -4837,7 +4837,7 @@ type Plugin struct {
 
 	// 插件绑定的API信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis" list`
+	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis"`
 }
 
 type PluginSummary struct {
@@ -4846,7 +4846,7 @@ type PluginSummary struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 插件详情。
-	PluginSet []*Plugin `json:"PluginSet,omitempty" name:"PluginSet" list`
+	PluginSet []*Plugin `json:"PluginSet,omitempty" name:"PluginSet"`
 }
 
 type ReleaseService struct {
@@ -4873,7 +4873,7 @@ type ReleaseServiceRequest struct {
 	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
 
 	// apiId列表，预留字段，默认全量api发布。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *ReleaseServiceRequest) ToJsonString() string {
@@ -5059,7 +5059,7 @@ type Service struct {
 
 	// 服务支持的网络类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes" list`
+	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 	// 独占集群名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5075,7 +5075,7 @@ type Service struct {
 
 	// 已经发布的环境列表。如test、prepub、release。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments" list`
+	AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments"`
 
 	// 用户自定义的服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5103,7 +5103,7 @@ type Service struct {
 
 	// 服务绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 独享实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5140,7 +5140,7 @@ type ServiceEnvironmentSet struct {
 
 	// 服务绑定环境列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*Environment `json:"EnvironmentList,omitempty" name:"EnvironmentList" list`
+	EnvironmentList []*Environment `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
 }
 
 type ServiceEnvironmentStrategy struct {
@@ -5174,7 +5174,7 @@ type ServiceEnvironmentStrategyStatus struct {
 
 	// 限流策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*ServiceEnvironmentStrategy `json:"EnvironmentList,omitempty" name:"EnvironmentList" list`
+	EnvironmentList []*ServiceEnvironmentStrategy `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
 }
 
 type ServiceParameter struct {
@@ -5216,7 +5216,7 @@ type ServiceReleaseHistory struct {
 
 	// 历史版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitempty" name:"VersionList" list`
+	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitempty" name:"VersionList"`
 }
 
 type ServiceReleaseHistoryInfo struct {
@@ -5242,7 +5242,7 @@ type ServiceReleaseVersion struct {
 
 	// 发布版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitempty" name:"VersionList" list`
+	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitempty" name:"VersionList"`
 }
 
 type ServiceSubDomainMappings struct {
@@ -5251,7 +5251,7 @@ type ServiceSubDomainMappings struct {
 	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
 
 	// 自定义路径映射列表。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet" list`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
 }
 
 type ServiceUsagePlanSet struct {
@@ -5262,7 +5262,7 @@ type ServiceUsagePlanSet struct {
 
 	// 服务上绑定的使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceUsagePlanList []*ApiUsagePlan `json:"ServiceUsagePlanList,omitempty" name:"ServiceUsagePlanList" list`
+	ServiceUsagePlanList []*ApiUsagePlan `json:"ServiceUsagePlanList,omitempty" name:"ServiceUsagePlanList"`
 }
 
 type ServicesStatus struct {
@@ -5273,7 +5273,7 @@ type ServicesStatus struct {
 
 	// 服务列表详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceSet []*Service `json:"ServiceSet,omitempty" name:"ServiceSet" list`
+	ServiceSet []*Service `json:"ServiceSet,omitempty" name:"ServiceSet"`
 }
 
 type Tag struct {
@@ -5329,7 +5329,7 @@ type UnBindEnvironmentRequest struct {
 	BindType *string `json:"BindType,omitempty" name:"BindType"`
 
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds" list`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
 
 	// 待解绑的服务环境。
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
@@ -5338,7 +5338,7 @@ type UnBindEnvironmentRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
 	// API 唯一 ID 数组，当 BindType=API 时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *UnBindEnvironmentRequest) ToJsonString() string {
@@ -5401,7 +5401,7 @@ type UnBindIPStrategyRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
 	// 待解绑的 API 列表。
-	UnBindApiIds []*string `json:"UnBindApiIds,omitempty" name:"UnBindApiIds" list`
+	UnBindApiIds []*string `json:"UnBindApiIds,omitempty" name:"UnBindApiIds"`
 }
 
 func (r *UnBindIPStrategyRequest) ToJsonString() string {
@@ -5457,7 +5457,7 @@ type UnBindSecretIdsRequest struct {
 	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
 
 	// 待解绑的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds" list`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
 }
 
 func (r *UnBindSecretIdsRequest) ToJsonString() string {
@@ -5567,7 +5567,7 @@ type UnReleaseServiceRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
 	// 保留字段，待下线的API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 }
 
 func (r *UnReleaseServiceRequest) ToJsonString() string {
@@ -5789,7 +5789,7 @@ type UsagePlanBindSecretStatus struct {
 
 	// 密钥详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessKeyList []*UsagePlanBindSecret `json:"AccessKeyList,omitempty" name:"AccessKeyList" list`
+	AccessKeyList []*UsagePlanBindSecret `json:"AccessKeyList,omitempty" name:"AccessKeyList"`
 }
 
 type UsagePlanEnvironment struct {
@@ -5851,7 +5851,7 @@ type UsagePlanEnvironmentStatus struct {
 
 	// 使用计划已经绑定的各个服务的环境状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*UsagePlanEnvironment `json:"EnvironmentList,omitempty" name:"EnvironmentList" list`
+	EnvironmentList []*UsagePlanEnvironment `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
 }
 
 type UsagePlanInfo struct {
@@ -5898,7 +5898,7 @@ type UsagePlanInfo struct {
 
 	// 绑定密钥的详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindSecretIds []*string `json:"BindSecretIds,omitempty" name:"BindSecretIds" list`
+	BindSecretIds []*string `json:"BindSecretIds,omitempty" name:"BindSecretIds"`
 
 	// 绑定环境数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5906,7 +5906,7 @@ type UsagePlanInfo struct {
 
 	// 绑定环境详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindEnvironments []*UsagePlanBindEnvironment `json:"BindEnvironments,omitempty" name:"BindEnvironments" list`
+	BindEnvironments []*UsagePlanBindEnvironment `json:"BindEnvironments,omitempty" name:"BindEnvironments"`
 }
 
 type UsagePlanStatusInfo struct {
@@ -5948,5 +5948,5 @@ type UsagePlansStatus struct {
 
 	// 使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanStatusSet []*UsagePlanStatusInfo `json:"UsagePlanStatusSet,omitempty" name:"UsagePlanStatusSet" list`
+	UsagePlanStatusSet []*UsagePlanStatusInfo `json:"UsagePlanStatusSet,omitempty" name:"UsagePlanStatusSet"`
 }

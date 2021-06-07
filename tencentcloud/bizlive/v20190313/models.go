@@ -158,7 +158,7 @@ type DescribeStreamPlayInfoListResponse struct {
 	Response *struct {
 
 		// 统计信息列表。
-		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -203,7 +203,7 @@ type DescribeWorkersResponse struct {
 	Response *struct {
 
 		// 各个区域的机器情况
-		RegionDetail []*WorkerRegionInfo `json:"RegionDetail,omitempty" name:"RegionDetail" list`
+		RegionDetail []*WorkerRegionInfo `json:"RegionDetail,omitempty" name:"RegionDetail"`
 
 		// 空闲机器总数量
 		Idle *uint64 `json:"Idle,omitempty" name:"Idle"`

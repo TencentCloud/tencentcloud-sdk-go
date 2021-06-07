@@ -136,7 +136,7 @@ type DescribeExecutionHistoryResponse struct {
 	Response *struct {
 
 		// 执行的事件列表
-		Events []*ExecutionEvent `json:"Events,omitempty" name:"Events" list`
+		Events []*ExecutionEvent `json:"Events,omitempty" name:"Events"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -387,7 +387,7 @@ type DescribeFlowServicesRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeFlowServicesRequest) ToJsonString() string {
@@ -416,7 +416,7 @@ type DescribeFlowServicesResponse struct {
 	Response *struct {
 
 		// 用户的状态机列表
-		FlowServiceSet []*StateMachine `json:"FlowServiceSet,omitempty" name:"FlowServiceSet" list`
+		FlowServiceSet []*StateMachine `json:"FlowServiceSet,omitempty" name:"FlowServiceSet"`
 
 		// 用户的状态机总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -471,7 +471,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤器值的数组
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ModifyFlowServiceRequest struct {

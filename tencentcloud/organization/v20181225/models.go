@@ -278,7 +278,7 @@ type DeleteOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
 
 	// 被删除成员的UIN列表
-	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
 }
 
 func (r *DeleteOrganizationMembersRequest) ToJsonString() string {
@@ -324,7 +324,7 @@ type DeleteOrganizationNodesRequest struct {
 	*tchttp.BaseRequest
 
 	// 组织单元ID列表
-	NodeIds []*uint64 `json:"NodeIds,omitempty" name:"NodeIds" list`
+	NodeIds []*uint64 `json:"NodeIds,omitempty" name:"NodeIds"`
 }
 
 func (r *DeleteOrganizationNodesRequest) ToJsonString() string {
@@ -620,7 +620,7 @@ type ListOrganizationInvitationsResponse struct {
 	Response *struct {
 
 		// 邀请信息列表
-		Invitations []*OrgInvitation `json:"Invitations,omitempty" name:"Invitations" list`
+		Invitations []*OrgInvitation `json:"Invitations,omitempty" name:"Invitations"`
 
 		// 总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -676,7 +676,7 @@ type ListOrganizationMembersResponse struct {
 	Response *struct {
 
 		// 成员列表
-		Members []*OrgMember `json:"Members,omitempty" name:"Members" list`
+		Members []*OrgMember `json:"Members,omitempty" name:"Members"`
 
 		// 总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -739,7 +739,7 @@ type ListOrganizationNodeMembersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 成员列表
-		Members []*OrgMember `json:"Members,omitempty" name:"Members" list`
+		Members []*OrgMember `json:"Members,omitempty" name:"Members"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -784,7 +784,7 @@ type ListOrganizationNodesResponse struct {
 	Response *struct {
 
 		// 企业组织单元列表
-		Nodes []*OrgNode `json:"Nodes,omitempty" name:"Nodes" list`
+		Nodes []*OrgNode `json:"Nodes,omitempty" name:"Nodes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -809,7 +809,7 @@ type MoveOrganizationMembersToNodeRequest struct {
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 
 	// 成员UIN列表
-	Uins []*uint64 `json:"Uins,omitempty" name:"Uins" list`
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
 }
 
 func (r *MoveOrganizationMembersToNodeRequest) ToJsonString() string {

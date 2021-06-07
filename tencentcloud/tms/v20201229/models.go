@@ -34,7 +34,7 @@ type DetailResults struct {
 
 	// 该标签下命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 该标签模型命中的分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -146,7 +146,7 @@ type TextModerationResponse struct {
 		// 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
 	// 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+		Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 		// 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 	// （如：色情 99.99，则该样本属于色情的置信度非常高。）
@@ -154,11 +154,11 @@ type TextModerationResponse struct {
 
 		// 接口识别样本后返回的详细结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults" list`
+		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults"`
 
 		// 接口识别样本中存在违规账号风险的检测结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails" list`
+		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
 
 		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。

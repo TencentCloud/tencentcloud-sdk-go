@@ -175,7 +175,7 @@ type DescribeDbauditInstanceTypeResponse struct {
 	Response *struct {
 
 		// 数据安全审计产品规格信息列表
-		DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitempty" name:"DbauditTypesSet" list`
+		DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitempty" name:"DbauditTypesSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -235,7 +235,7 @@ type DescribeDbauditInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 数据安全审计实例信息列表
-		CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitempty" name:"CdsAuditInstanceSet" list`
+		CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitempty" name:"CdsAuditInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -280,7 +280,7 @@ type DescribeDbauditUsedRegionsResponse struct {
 	Response *struct {
 
 		// 可售卖地域信息列表
-		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

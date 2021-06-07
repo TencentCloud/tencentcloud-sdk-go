@@ -137,7 +137,7 @@ type CameraZones struct {
 	CameraState *int64 `json:"CameraState,omitempty" name:"CameraState"`
 
 	// 点位列表
-	Zones []*BunkZone `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*BunkZone `json:"Zones,omitempty" name:"Zones"`
 
 	// 像素:
 	// 130W(1280*960)
@@ -179,16 +179,16 @@ type Config struct {
 	FaceExpose *int64 `json:"FaceExpose,omitempty" name:"FaceExpose"`
 
 	// 门线标注
-	MallArea []*Point `json:"MallArea,omitempty" name:"MallArea" list`
+	MallArea []*Point `json:"MallArea,omitempty" name:"MallArea"`
 
 	// 店门标注
-	ShopArea []*Point `json:"ShopArea,omitempty" name:"ShopArea" list`
+	ShopArea []*Point `json:"ShopArea,omitempty" name:"ShopArea"`
 
 	// 检测区标注
-	TrackAreas []*Polygon `json:"TrackAreas,omitempty" name:"TrackAreas" list`
+	TrackAreas []*Polygon `json:"TrackAreas,omitempty" name:"TrackAreas"`
 
 	// 点位列表（品类区）
-	Zones []*ZoneArea `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*ZoneArea `json:"Zones,omitempty" name:"Zones"`
 }
 
 type CreateCameraAlertAlert struct {
@@ -237,7 +237,7 @@ type CreateCameraAlertsRequest struct {
 	*tchttp.BaseRequest
 
 	// 告警信息列表
-	Alerts []*CreateCameraAlertAlert `json:"Alerts,omitempty" name:"Alerts" list`
+	Alerts []*CreateCameraAlertAlert `json:"Alerts,omitempty" name:"Alerts"`
 }
 
 func (r *CreateCameraAlertsRequest) ToJsonString() string {
@@ -289,7 +289,7 @@ type CreateCameraStateRequest struct {
 	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
 
 	// 场内所有相机的状态值
-	CameraStates []*CameraState `json:"CameraStates,omitempty" name:"CameraStates" list`
+	CameraStates []*CameraState `json:"CameraStates,omitempty" name:"CameraStates"`
 }
 
 func (r *CreateCameraStateRequest) ToJsonString() string {
@@ -411,7 +411,7 @@ type CreateMultiBizAlertRequest struct {
 	Image *string `json:"Image,omitempty" name:"Image"`
 
 	// 告警列表
-	Warnings []*MultiBizWarning `json:"Warnings,omitempty" name:"Warnings" list`
+	Warnings []*MultiBizWarning `json:"Warnings,omitempty" name:"Warnings"`
 }
 
 func (r *CreateMultiBizAlertRequest) ToJsonString() string {
@@ -467,7 +467,7 @@ type CreateProgramStateRequest struct {
 	GroupCode *string `json:"GroupCode,omitempty" name:"GroupCode"`
 
 	// 进程监控信息列表
-	ProgramStateItems []*ProgramStateItem `json:"ProgramStateItems,omitempty" name:"ProgramStateItems" list`
+	ProgramStateItems []*ProgramStateItem `json:"ProgramStateItems,omitempty" name:"ProgramStateItems"`
 
 	// 商场ID
 	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
@@ -521,7 +521,7 @@ type CreateServerStateRequest struct {
 	GroupCode *string `json:"GroupCode,omitempty" name:"GroupCode"`
 
 	// 服务器监控信息列表
-	ServerStateItems []*ServerStateItem `json:"ServerStateItems,omitempty" name:"ServerStateItems" list`
+	ServerStateItems []*ServerStateItem `json:"ServerStateItems,omitempty" name:"ServerStateItems"`
 
 	// 商场ID
 	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
@@ -730,7 +730,7 @@ type DescribeCamerasResponse struct {
 	Response *struct {
 
 		// 摄像头列表
-		Cameras []*CameraZones `json:"Cameras,omitempty" name:"Cameras" list`
+		Cameras []*CameraZones `json:"Cameras,omitempty" name:"Cameras"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -809,7 +809,7 @@ type DescribeConfigResponse struct {
 		Version *int64 `json:"Version,omitempty" name:"Version"`
 
 		// 摄像头列表
-		Cameras []*CameraConfig `json:"Cameras,omitempty" name:"Cameras" list`
+		Cameras []*CameraConfig `json:"Cameras,omitempty" name:"Cameras"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -985,7 +985,7 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务列表
-		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks" list`
+		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1038,7 +1038,7 @@ type DescribeZonesResponse struct {
 	Response *struct {
 
 		// 点位列表
-		Zones []*ZoneConfig `json:"Zones,omitempty" name:"Zones" list`
+		Zones []*ZoneConfig `json:"Zones,omitempty" name:"Zones"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1081,7 +1081,7 @@ type ModifyMultiBizConfigRequest struct {
 	CameraId *uint64 `json:"CameraId,omitempty" name:"CameraId"`
 
 	// 监控区域
-	MonitoringAreas []*Polygon `json:"MonitoringAreas,omitempty" name:"MonitoringAreas" list`
+	MonitoringAreas []*Polygon `json:"MonitoringAreas,omitempty" name:"MonitoringAreas"`
 }
 
 func (r *ModifyMultiBizConfigRequest) ToJsonString() string {
@@ -1133,10 +1133,10 @@ type MultiBizWarning struct {
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 监控区域
-	MonitoringArea []*Point `json:"MonitoringArea,omitempty" name:"MonitoringArea" list`
+	MonitoringArea []*Point `json:"MonitoringArea,omitempty" name:"MonitoringArea"`
 
 	// 告警列表
-	WarningInfos []*MultiBizWarningInfo `json:"WarningInfos,omitempty" name:"WarningInfos" list`
+	WarningInfos []*MultiBizWarningInfo `json:"WarningInfos,omitempty" name:"WarningInfos"`
 }
 
 type MultiBizWarningInfo struct {
@@ -1154,7 +1154,7 @@ type MultiBizWarningInfo struct {
 	WarningLocation *Point `json:"WarningLocation,omitempty" name:"WarningLocation"`
 
 	// 告警侵占或消失轮廓
-	WarningAreaContour []*Point `json:"WarningAreaContour,omitempty" name:"WarningAreaContour" list`
+	WarningAreaContour []*Point `json:"WarningAreaContour,omitempty" name:"WarningAreaContour"`
 }
 
 type Point struct {
@@ -1169,7 +1169,7 @@ type Point struct {
 type Polygon struct {
 
 	// 标注列表
-	Points []*Point `json:"Points,omitempty" name:"Points" list`
+	Points []*Point `json:"Points,omitempty" name:"Points"`
 }
 
 type ProgramStateItem struct {
@@ -1203,7 +1203,7 @@ type ReportServiceRegisterRequest struct {
 	MallId *uint64 `json:"MallId,omitempty" name:"MallId"`
 
 	// 服务上报当前的服务能力信息
-	ServiceRegisterInfos []*ServiceRegisterInfo `json:"ServiceRegisterInfos,omitempty" name:"ServiceRegisterInfos" list`
+	ServiceRegisterInfos []*ServiceRegisterInfo `json:"ServiceRegisterInfos,omitempty" name:"ServiceRegisterInfos"`
 
 	// 服务内网Ip
 	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
@@ -1305,7 +1305,7 @@ type SearchImageResponse struct {
 		FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
 
 		// 搜索结果列表
-		Results []*SearchResult `json:"Results,omitempty" name:"Results" list`
+		Results []*SearchResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1347,7 +1347,7 @@ type ServerStateItem struct {
 	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
 
 	// 硬盘监控信息列表
-	DiskInfos []*DiskInfo `json:"DiskInfos,omitempty" name:"DiskInfos" list`
+	DiskInfos []*DiskInfo `json:"DiskInfos,omitempty" name:"DiskInfos"`
 }
 
 type ServiceRegisterInfo struct {
@@ -1399,7 +1399,7 @@ type ZoneArea struct {
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 店门标注
-	ShopArea []*Point `json:"ShopArea,omitempty" name:"ShopArea" list`
+	ShopArea []*Point `json:"ShopArea,omitempty" name:"ShopArea"`
 }
 
 type ZoneConfig struct {

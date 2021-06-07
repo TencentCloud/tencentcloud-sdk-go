@@ -206,7 +206,7 @@ type DailyTracePoint struct {
 	TraceDate *string `json:"TraceDate,omitempty" name:"TraceDate"`
 
 	// 轨迹点序列
-	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet" list`
+	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
 }
 
 type DeletePersonFeatureRequest struct {
@@ -334,7 +334,7 @@ type DescribeCameraPersonResponse struct {
 		PosId *string `json:"PosId,omitempty" name:"PosId"`
 
 		// 抓取的顾客信息
-		Infos []*CameraPersonInfo `json:"Infos,omitempty" name:"Infos" list`
+		Infos []*CameraPersonInfo `json:"Infos,omitempty" name:"Infos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -404,7 +404,7 @@ type DescribeClusterPersonArrivedMallResponse struct {
 		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 		// 到场信息
-		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet" list`
+		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -474,7 +474,7 @@ type DescribeClusterPersonTraceResponse struct {
 		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 		// 轨迹序列
-		TracePointSet []*DailyTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet" list`
+		TracePointSet []*DailyTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -761,7 +761,7 @@ type DescribePersonArrivedMallResponse struct {
 		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 		// 到场轨迹
-		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet" list`
+		ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -918,7 +918,7 @@ type DescribePersonInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 用户信息
-		PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet" list`
+		PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -978,7 +978,7 @@ type DescribePersonResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 客户信息
-		PersonSet []*PersonProfile `json:"PersonSet,omitempty" name:"PersonSet" list`
+		PersonSet []*PersonProfile `json:"PersonSet,omitempty" name:"PersonSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1044,7 +1044,7 @@ type DescribePersonTraceDetailResponse struct {
 		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 		// 轨迹点坐标序列
-		CoordinateSet []*PersonCoordinate `json:"CoordinateSet,omitempty" name:"CoordinateSet" list`
+		CoordinateSet []*PersonCoordinate `json:"CoordinateSet,omitempty" name:"CoordinateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1114,7 +1114,7 @@ type DescribePersonTraceResponse struct {
 		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 		// 轨迹列表
-		TraceRouteSet []*PersonTraceRoute `json:"TraceRouteSet,omitempty" name:"TraceRouteSet" list`
+		TraceRouteSet []*PersonTraceRoute `json:"TraceRouteSet,omitempty" name:"TraceRouteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1204,7 +1204,7 @@ type DescribePersonVisitInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 用户到访明细
-		PersonVisitInfoSet []*PersonVisitInfo `json:"PersonVisitInfoSet,omitempty" name:"PersonVisitInfoSet" list`
+		PersonVisitInfoSet []*PersonVisitInfo `json:"PersonVisitInfoSet,omitempty" name:"PersonVisitInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1282,7 +1282,7 @@ type DescribeShopHourTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 分时客流信息
-		ShopHourTrafficInfoSet []*ShopHourTrafficInfo `json:"ShopHourTrafficInfoSet,omitempty" name:"ShopHourTrafficInfoSet" list`
+		ShopHourTrafficInfoSet []*ShopHourTrafficInfo `json:"ShopHourTrafficInfoSet,omitempty" name:"ShopHourTrafficInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1338,7 +1338,7 @@ type DescribeShopInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 门店列表信息
-		ShopInfoSet []*ShopInfo `json:"ShopInfoSet,omitempty" name:"ShopInfoSet" list`
+		ShopInfoSet []*ShopInfo `json:"ShopInfoSet,omitempty" name:"ShopInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1416,7 +1416,7 @@ type DescribeShopTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 客流信息列表
-		ShopDayTrafficInfoSet []*ShopDayTrafficInfo `json:"ShopDayTrafficInfoSet,omitempty" name:"ShopDayTrafficInfoSet" list`
+		ShopDayTrafficInfoSet []*ShopDayTrafficInfo `json:"ShopDayTrafficInfoSet,omitempty" name:"ShopDayTrafficInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1503,7 +1503,7 @@ type DescribeTrajectoryDataResponse struct {
 		Trajectory *int64 `json:"Trajectory,omitempty" name:"Trajectory"`
 
 		// 返回动迹的具体信息
-		Data []*TrajectorySunData `json:"Data,omitempty" name:"Data" list`
+		Data []*TrajectorySunData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1580,7 +1580,7 @@ type DescribeZoneFlowAgeInfoByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 		// 当前年龄段占比
-		Data []*float64 `json:"Data,omitempty" name:"Data" list`
+		Data []*float64 `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1647,7 +1647,7 @@ type DescribeZoneFlowAndStayTimeResponse struct {
 		ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
 
 		// 各区域人流数目和停留时长
-		Data []*ZoneFlowAndAvrStayTime `json:"Data,omitempty" name:"Data" list`
+		Data []*ZoneFlowAndAvrStayTime `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1724,7 +1724,7 @@ type DescribeZoneFlowDailyByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 		// 每日人流量
-		Data []*ZoneDayFlow `json:"Data,omitempty" name:"Data" list`
+		Data []*ZoneDayFlow `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1801,7 +1801,7 @@ type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 		// 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
-		Data []*ZoneAgeGroupAvrStayTime `json:"Data,omitempty" name:"Data" list`
+		Data []*ZoneAgeGroupAvrStayTime `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1958,7 +1958,7 @@ type DescribeZoneFlowHourlyByZoneIdResponse struct {
 		ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
 		// 各个分时人流量
-		Data []*ZoneHourFlow `json:"Data,omitempty" name:"Data" list`
+		Data []*ZoneHourFlow `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2036,7 +2036,7 @@ type DescribeZoneTrafficInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 区域客流信息列表
-		ZoneTrafficInfoSet []*ZoneTrafficInfo `json:"ZoneTrafficInfoSet,omitempty" name:"ZoneTrafficInfoSet" list`
+		ZoneTrafficInfoSet []*ZoneTrafficInfo `json:"ZoneTrafficInfoSet,omitempty" name:"ZoneTrafficInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2141,7 +2141,7 @@ type ModifyPersonFeatureInfoResponse struct {
 		PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
 
 		// 与请求的person_id类型相同、与请求图片特征相似的一个或多个person_id，需要额外确认这些id是否是同一个人
-		SimilarPersonIds []*int64 `json:"SimilarPersonIds,omitempty" name:"SimilarPersonIds" list`
+		SimilarPersonIds []*int64 `json:"SimilarPersonIds,omitempty" name:"SimilarPersonIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2169,7 +2169,7 @@ type ModifyPersonTagInfoRequest struct {
 	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
 
 	// 需要设置的顾客信息，批量设置最大为10个
-	Tags []*PersonTagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*PersonTagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyPersonTagInfoRequest) ToJsonString() string {
@@ -2344,7 +2344,7 @@ type NetworkHistoryInfo struct {
 	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
 
 	// 网络信息
-	Infos []*NetworkInfo `json:"Infos,omitempty" name:"Infos" list`
+	Infos []*NetworkInfo `json:"Infos,omitempty" name:"Infos"`
 }
 
 type NetworkInfo struct {
@@ -2383,7 +2383,7 @@ type NetworkLastInfo struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 网络状态
-	Infos []*NetworkAndShopInfo `json:"Infos,omitempty" name:"Infos" list`
+	Infos []*NetworkAndShopInfo `json:"Infos,omitempty" name:"Infos"`
 }
 
 type PersonCoordinate struct {
@@ -2515,7 +2515,7 @@ type PersonTraceRoute struct {
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 	// 轨迹点序列
-	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet" list`
+	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
 }
 
 type PersonVisitInfo struct {
@@ -2633,7 +2633,7 @@ type ShopDayTrafficInfo struct {
 	DayTrafficTotalCount *uint64 `json:"DayTrafficTotalCount,omitempty" name:"DayTrafficTotalCount"`
 
 	// 性别年龄分组下的客流信息
-	GenderAgeTrafficDetailSet []*GenderAgeTrafficDetail `json:"GenderAgeTrafficDetailSet,omitempty" name:"GenderAgeTrafficDetailSet" list`
+	GenderAgeTrafficDetailSet []*GenderAgeTrafficDetail `json:"GenderAgeTrafficDetailSet,omitempty" name:"GenderAgeTrafficDetailSet"`
 }
 
 type ShopHourTrafficInfo struct {
@@ -2642,7 +2642,7 @@ type ShopHourTrafficInfo struct {
 	Date *string `json:"Date,omitempty" name:"Date"`
 
 	// 分时客流详细信息
-	HourTrafficInfoDetailSet []*HourTrafficInfoDetail `json:"HourTrafficInfoDetailSet,omitempty" name:"HourTrafficInfoDetailSet" list`
+	HourTrafficInfoDetailSet []*HourTrafficInfoDetail `json:"HourTrafficInfoDetailSet,omitempty" name:"HourTrafficInfoDetailSet"`
 }
 
 type ShopInfo struct {
@@ -2729,7 +2729,7 @@ type ZoneTrafficInfo struct {
 	Date *string `json:"Date,omitempty" name:"Date"`
 
 	// 门店区域客流详细信息
-	ZoneTrafficInfoDetailSet []*ZoneTrafficInfoDetail `json:"ZoneTrafficInfoDetailSet,omitempty" name:"ZoneTrafficInfoDetailSet" list`
+	ZoneTrafficInfoDetailSet []*ZoneTrafficInfoDetail `json:"ZoneTrafficInfoDetailSet,omitempty" name:"ZoneTrafficInfoDetailSet"`
 }
 
 type ZoneTrafficInfoDetail struct {

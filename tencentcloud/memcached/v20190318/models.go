@@ -25,10 +25,10 @@ type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID组成的数组，数组下标从0开始
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例名称组成的数组，数组下标从0开始
-	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames" list`
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
 
 	// 实例列表的大小，参数默认值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -43,19 +43,19 @@ type DescribeInstancesRequest struct {
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 
 	// 项目ID组成的数组，数组下标从0开始
-	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
 	// 搜索关键词：支持实例ID、实例名称、完整IP
-	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys" list`
+	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys"`
 
 	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
-	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds" list`
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds"`
 
 	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
-	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds" list`
+	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds"`
 
 	// 实例服务IP组成的数组，数组下标从0开始
-	Vips []*string `json:"Vips,omitempty" name:"Vips" list`
+	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -92,7 +92,7 @@ type DescribeInstancesResponse struct {
 	Response *struct {
 
 		// 实例详细信息列表
-		InstanceList []*InstanceListInfo `json:"InstanceList,omitempty" name:"InstanceList" list`
+		InstanceList []*InstanceListInfo `json:"InstanceList,omitempty" name:"InstanceList"`
 
 		// 实例数量
 		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -116,7 +116,7 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 type InstanceListInfo struct {
 
 	// 实例关联的标签信息
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 实例创建时间
 	AddTimeStamp *string `json:"AddTimeStamp,omitempty" name:"AddTimeStamp"`

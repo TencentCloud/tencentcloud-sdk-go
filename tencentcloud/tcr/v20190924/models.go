@@ -64,7 +64,7 @@ type AutoDelStrategyInfoResp struct {
 
 	// 自动删除策略列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyInfo []*AutoDelStrategyInfo `json:"StrategyInfo,omitempty" name:"StrategyInfo" list`
+	StrategyInfo []*AutoDelStrategyInfo `json:"StrategyInfo,omitempty" name:"StrategyInfo"`
 }
 
 type BatchDeleteImagePersonalRequest struct {
@@ -74,7 +74,7 @@ type BatchDeleteImagePersonalRequest struct {
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
 	// Tag列表
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *BatchDeleteImagePersonalRequest) ToJsonString() string {
@@ -121,7 +121,7 @@ type BatchDeleteRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
 
 	// 仓库名称数组
-	RepoNames []*string `json:"RepoNames,omitempty" name:"RepoNames" list`
+	RepoNames []*string `json:"RepoNames,omitempty" name:"RepoNames"`
 }
 
 func (r *BatchDeleteRepositoryPersonalRequest) ToJsonString() string {
@@ -544,7 +544,7 @@ type CreateMultipleSecurityPolicyRequest struct {
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
 	// 安全组策略
-	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet" list`
+	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
 }
 
 func (r *CreateMultipleSecurityPolicyRequest) ToJsonString() string {
@@ -1543,7 +1543,7 @@ type DeleteMultipleSecurityPolicyRequest struct {
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
 	// 安全组策略
-	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet" list`
+	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
 }
 
 func (r *DeleteMultipleSecurityPolicyRequest) ToJsonString() string {
@@ -1995,7 +1995,7 @@ type DescribeApplicationTriggerLogPersonalResp struct {
 
 	// 触发日志列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogInfo []*TriggerLogResp `json:"LogInfo,omitempty" name:"LogInfo" list`
+	LogInfo []*TriggerLogResp `json:"LogInfo,omitempty" name:"LogInfo"`
 }
 
 type DescribeApplicationTriggerLogPersonalResponse struct {
@@ -2065,7 +2065,7 @@ type DescribeApplicationTriggerPersonalResp struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 触发器列表
-	TriggerInfo []*TriggerResp `json:"TriggerInfo,omitempty" name:"TriggerInfo" list`
+	TriggerInfo []*TriggerResp `json:"TriggerInfo,omitempty" name:"TriggerInfo"`
 }
 
 type DescribeApplicationTriggerPersonalResponse struct {
@@ -2585,7 +2585,7 @@ type DescribeImagesResponse struct {
 	Response *struct {
 
 		// 容器镜像信息列表
-		ImageInfoList []*TcrImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList" list`
+		ImageInfoList []*TcrImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
 		// 容器镜像总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2610,7 +2610,7 @@ type DescribeInstanceStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID的数组
-	RegistryIds []*string `json:"RegistryIds,omitempty" name:"RegistryIds" list`
+	RegistryIds []*string `json:"RegistryIds,omitempty" name:"RegistryIds"`
 }
 
 func (r *DescribeInstanceStatusRequest) ToJsonString() string {
@@ -2638,7 +2638,7 @@ type DescribeInstanceStatusResponse struct {
 
 		// 实例的状态列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RegistryStatusSet []*RegistryStatus `json:"RegistryStatusSet,omitempty" name:"RegistryStatusSet" list`
+		RegistryStatusSet []*RegistryStatus `json:"RegistryStatusSet,omitempty" name:"RegistryStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2698,7 +2698,7 @@ type DescribeInstanceTokenResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 长期访问凭证列表
-		Tokens []*TcrInstanceToken `json:"Tokens,omitempty" name:"Tokens" list`
+		Tokens []*TcrInstanceToken `json:"Tokens,omitempty" name:"Tokens"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2721,7 +2721,7 @@ type DescribeInstancesRequest struct {
 
 	// 实例ID列表(为空时，
 	// 表示获取账号下所有实例)
-	Registryids []*string `json:"Registryids,omitempty" name:"Registryids" list`
+	Registryids []*string `json:"Registryids,omitempty" name:"Registryids"`
 
 	// 偏移量,默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -2730,7 +2730,7 @@ type DescribeInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 获取所有地域的实例，默认为False
 	AllRegion *bool `json:"AllRegion,omitempty" name:"AllRegion"`
@@ -2768,7 +2768,7 @@ type DescribeInstancesResponse struct {
 
 		// 实例信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Registries []*Registry `json:"Registries,omitempty" name:"Registries" list`
+		Registries []*Registry `json:"Registries,omitempty" name:"Registries"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2790,7 +2790,7 @@ type DescribeInternalEndpointDnsStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// vpc列表
-	VpcSet []*VpcAndDomainInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+	VpcSet []*VpcAndDomainInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 }
 
 func (r *DescribeInternalEndpointDnsStatusRequest) ToJsonString() string {
@@ -2818,7 +2818,7 @@ type DescribeInternalEndpointDnsStatusResponse struct {
 
 		// vpc私有域名解析状态列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitempty" name:"VpcSet" list`
+		VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitempty" name:"VpcSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2868,7 +2868,7 @@ type DescribeInternalEndpointsResponse struct {
 
 		// 内网接入信息的列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AccessVpcSet []*AccessVpc `json:"AccessVpcSet,omitempty" name:"AccessVpcSet" list`
+		AccessVpcSet []*AccessVpc `json:"AccessVpcSet,omitempty" name:"AccessVpcSet"`
 
 		// 内网接入总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2989,7 +2989,7 @@ type DescribeNamespacesResponse struct {
 	Response *struct {
 
 		// 命名空间列表信息
-		NamespaceList []*TcrNamespaceInfo `json:"NamespaceList,omitempty" name:"NamespaceList" list`
+		NamespaceList []*TcrNamespaceInfo `json:"NamespaceList,omitempty" name:"NamespaceList"`
 
 		// 总个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3045,7 +3045,7 @@ type DescribeReplicationInstanceCreateTasksResponse struct {
 	Response *struct {
 
 		// 任务详情
-		TaskDetail []*TaskDetail `json:"TaskDetail,omitempty" name:"TaskDetail" list`
+		TaskDetail []*TaskDetail `json:"TaskDetail,omitempty" name:"TaskDetail"`
 
 		// 整体任务状态
 		Status *string `json:"Status,omitempty" name:"Status"`
@@ -3169,7 +3169,7 @@ type DescribeReplicationInstancesResponse struct {
 
 		// 同步实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReplicationRegistries []*ReplicationRegistry `json:"ReplicationRegistries,omitempty" name:"ReplicationRegistries" list`
+		ReplicationRegistries []*ReplicationRegistry `json:"ReplicationRegistries,omitempty" name:"ReplicationRegistries"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3238,7 +3238,7 @@ type DescribeRepositoriesResponse struct {
 	Response *struct {
 
 		// 仓库信息列表
-		RepositoryList []*TcrRepositoryInfo `json:"RepositoryList,omitempty" name:"RepositoryList" list`
+		RepositoryList []*TcrRepositoryInfo `json:"RepositoryList,omitempty" name:"RepositoryList"`
 
 		// 总个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3462,7 +3462,7 @@ type DescribeSecurityPoliciesResponse struct {
 
 		// 实例安全策略组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecurityPolicySet []*SecurityPolicy `json:"SecurityPolicySet,omitempty" name:"SecurityPolicySet" list`
+		SecurityPolicySet []*SecurityPolicy `json:"SecurityPolicySet,omitempty" name:"SecurityPolicySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3523,7 +3523,7 @@ type DescribeTagRetentionExecutionResponse struct {
 	Response *struct {
 
 		// 版本保留执行记录列表
-		RetentionExecutionList []*RetentionExecution `json:"RetentionExecutionList,omitempty" name:"RetentionExecutionList" list`
+		RetentionExecutionList []*RetentionExecution `json:"RetentionExecutionList,omitempty" name:"RetentionExecutionList"`
 
 		// 版本保留执行记录总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3591,7 +3591,7 @@ type DescribeTagRetentionExecutionTaskResponse struct {
 	Response *struct {
 
 		// 版本保留执行任务列表
-		RetentionTaskList []*RetentionTask `json:"RetentionTaskList,omitempty" name:"RetentionTaskList" list`
+		RetentionTaskList []*RetentionTask `json:"RetentionTaskList,omitempty" name:"RetentionTaskList"`
 
 		// 版本保留执行任务总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3655,7 +3655,7 @@ type DescribeTagRetentionRulesResponse struct {
 	Response *struct {
 
 		// 版本保留策略列表
-		RetentionPolicyList []*RetentionPolicy `json:"RetentionPolicyList,omitempty" name:"RetentionPolicyList" list`
+		RetentionPolicyList []*RetentionPolicy `json:"RetentionPolicyList,omitempty" name:"RetentionPolicyList"`
 
 		// 版本保留策略总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3771,7 +3771,7 @@ type DescribeWebhookTriggerLogResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 日志列表
-		Logs []*WebhookTriggerLog `json:"Logs,omitempty" name:"Logs" list`
+		Logs []*WebhookTriggerLog `json:"Logs,omitempty" name:"Logs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3835,7 +3835,7 @@ type DescribeWebhookTriggerResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 触发器列表
-		Triggers []*WebhookTrigger `json:"Triggers,omitempty" name:"Triggers" list`
+		Triggers []*WebhookTrigger `json:"Triggers,omitempty" name:"Triggers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4001,7 +4001,7 @@ type FavorResp struct {
 
 	// 仓库信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RepoInfo []*Favors `json:"RepoInfo,omitempty" name:"RepoInfo" list`
+	RepoInfo []*Favors `json:"RepoInfo,omitempty" name:"RepoInfo"`
 }
 
 type Favors struct {
@@ -4049,7 +4049,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Header struct {
@@ -4058,7 +4058,7 @@ type Header struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// Header Values
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Limit struct {
@@ -4912,7 +4912,7 @@ type NamespaceInfoResp struct {
 	NamespaceCount *int64 `json:"NamespaceCount,omitempty" name:"NamespaceCount"`
 
 	// 命名空间信息
-	NamespaceInfo []*NamespaceInfo `json:"NamespaceInfo,omitempty" name:"NamespaceInfo" list`
+	NamespaceInfo []*NamespaceInfo `json:"NamespaceInfo,omitempty" name:"NamespaceInfo"`
 }
 
 type NamespaceIsExistsResp struct {
@@ -5008,7 +5008,7 @@ type RegistryStatus struct {
 
 	// 附加状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*RegistryCondition `json:"Conditions,omitempty" name:"Conditions" list`
+	Conditions []*RegistryCondition `json:"Conditions,omitempty" name:"Conditions"`
 }
 
 type RenewInstanceRequest struct {
@@ -5110,7 +5110,7 @@ type ReplicationRule struct {
 	Override *bool `json:"Override,omitempty" name:"Override"`
 
 	// 同步过滤条件
-	Filters []*ReplicationFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*ReplicationFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type RepoInfo struct {
@@ -5155,7 +5155,7 @@ type RepoInfoResp struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 仓库信息列表
-	RepoInfo []*RepoInfo `json:"RepoInfo,omitempty" name:"RepoInfo" list`
+	RepoInfo []*RepoInfo `json:"RepoInfo,omitempty" name:"RepoInfo"`
 
 	// Server信息
 	Server *string `json:"Server,omitempty" name:"Server"`
@@ -5204,7 +5204,7 @@ type RepositoryInfoResp struct {
 type RespLimit struct {
 
 	// 配额信息
-	LimitInfo []*Limit `json:"LimitInfo,omitempty" name:"LimitInfo" list`
+	LimitInfo []*Limit `json:"LimitInfo,omitempty" name:"LimitInfo"`
 }
 
 type RetentionExecution struct {
@@ -5234,7 +5234,7 @@ type RetentionPolicy struct {
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 
 	// 规则列表
-	RetentionRuleList []*RetentionRule `json:"RetentionRuleList,omitempty" name:"RetentionRuleList" list`
+	RetentionRuleList []*RetentionRule `json:"RetentionRuleList,omitempty" name:"RetentionRuleList"`
 
 	// 定期执行方式
 	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
@@ -5286,7 +5286,7 @@ type SameImagesResp struct {
 
 	// tag列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SameImages []*string `json:"SameImages,omitempty" name:"SameImages" list`
+	SameImages []*string `json:"SameImages,omitempty" name:"SameImages"`
 }
 
 type SearchUserRepositoryResp struct {
@@ -5295,7 +5295,7 @@ type SearchUserRepositoryResp struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 仓库列表
-	RepoInfo []*RepoInfo `json:"RepoInfo,omitempty" name:"RepoInfo" list`
+	RepoInfo []*RepoInfo `json:"RepoInfo,omitempty" name:"RepoInfo"`
 
 	// Server
 	Server *string `json:"Server,omitempty" name:"Server"`
@@ -5380,7 +5380,7 @@ type TagInfoResp struct {
 	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
 
 	// TagInfo列表
-	TagInfo []*TagInfo `json:"TagInfo,omitempty" name:"TagInfo" list`
+	TagInfo []*TagInfo `json:"TagInfo,omitempty" name:"TagInfo"`
 
 	// Server
 	Server *string `json:"Server,omitempty" name:"Server"`
@@ -5397,7 +5397,7 @@ type TagSpecification struct {
 
 	// 云标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type TaskDetail struct {
@@ -5753,7 +5753,7 @@ type WebhookTarget struct {
 	Address *string `json:"Address,omitempty" name:"Address"`
 
 	// 自定义 Headers
-	Headers []*Header `json:"Headers,omitempty" name:"Headers" list`
+	Headers []*Header `json:"Headers,omitempty" name:"Headers"`
 }
 
 type WebhookTrigger struct {
@@ -5762,10 +5762,10 @@ type WebhookTrigger struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 触发器目标
-	Targets []*WebhookTarget `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*WebhookTarget `json:"Targets,omitempty" name:"Targets"`
 
 	// 触发动作
-	EventTypes []*string `json:"EventTypes,omitempty" name:"EventTypes" list`
+	EventTypes []*string `json:"EventTypes,omitempty" name:"EventTypes"`
 
 	// 触发规则
 	Condition *string `json:"Condition,omitempty" name:"Condition"`

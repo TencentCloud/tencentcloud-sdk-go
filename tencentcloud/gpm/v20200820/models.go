@@ -117,13 +117,13 @@ type CreateMatchRequest struct {
 	ServerSessionData *string `json:"ServerSessionData,omitempty" name:"ServerSessionData"`
 
 	// 游戏属性，key-value结构的数组
-	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 日志开关，0表示关，1表示开
 	LogSwitch *int64 `json:"LogSwitch,omitempty" name:"LogSwitch"`
 
 	// 标签，key-value结构的数组
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateMatchRequest) ToJsonString() string {
@@ -193,7 +193,7 @@ type CreateRuleRequest struct {
 	RuleDesc *string `json:"RuleDesc,omitempty" name:"RuleDesc"`
 
 	// 标签，key-value结构的数组，最多关联50组标签
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -439,7 +439,7 @@ type DescribeMatchCodesResponse struct {
 
 		// 匹配Code
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchCodes []*MatchCodeAttr `json:"MatchCodes,omitempty" name:"MatchCodes" list`
+		MatchCodes []*MatchCodeAttr `json:"MatchCodes,omitempty" name:"MatchCodes"`
 
 		// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -527,7 +527,7 @@ type DescribeMatchesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
 	// 标签列表，用于过滤。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeMatchesRequest) ToJsonString() string {
@@ -559,7 +559,7 @@ type DescribeMatchesResponse struct {
 
 		// 匹配信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchInfoList []*MatchInfo `json:"MatchInfoList,omitempty" name:"MatchInfoList" list`
+		MatchInfoList []*MatchInfo `json:"MatchInfoList,omitempty" name:"MatchInfoList"`
 
 		// 总记录数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -596,7 +596,7 @@ type DescribeMatchingProgressRequest struct {
 	*tchttp.BaseRequest
 
 	// 匹配票据 ID列表, 列表长度 12。
-	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds" list`
+	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds"`
 }
 
 func (r *DescribeMatchingProgressRequest) ToJsonString() string {
@@ -624,7 +624,7 @@ type DescribeMatchingProgressResponse struct {
 
 		// 匹配票据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchTickets []*MatchTicket `json:"MatchTickets,omitempty" name:"MatchTickets" list`
+		MatchTickets []*MatchTicket `json:"MatchTickets,omitempty" name:"MatchTickets"`
 
 		// 错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -712,7 +712,7 @@ type DescribeRulesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
 	// 标签列表，用于过滤。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeRulesRequest) ToJsonString() string {
@@ -744,7 +744,7 @@ type DescribeRulesResponse struct {
 
 		// 规则信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RuleInfoList []*RuleBriefInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList" list`
+		RuleInfoList []*RuleBriefInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList"`
 
 		// 总记录数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -855,10 +855,10 @@ type MatchAttribute struct {
 	StringValue *string `json:"StringValue,omitempty" name:"StringValue"`
 
 	// list 属性值
-	ListValue []*string `json:"ListValue,omitempty" name:"ListValue" list`
+	ListValue []*string `json:"ListValue,omitempty" name:"ListValue"`
 
 	// 字典属性值
-	MapValue []*AttributeMap `json:"MapValue,omitempty" name:"MapValue" list`
+	MapValue []*AttributeMap `json:"MapValue,omitempty" name:"MapValue"`
 }
 
 type MatchCodeAttr struct {
@@ -913,7 +913,7 @@ type MatchInfo struct {
 
 	// 游戏属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 日志开关，0表示关，1表示开
 	LogSwitch *int64 `json:"LogSwitch,omitempty" name:"LogSwitch"`
@@ -936,7 +936,7 @@ type MatchInfo struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 
 	// 地区
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -980,7 +980,7 @@ type MatchTicket struct {
 	MatchType *string `json:"MatchType,omitempty" name:"MatchType"`
 
 	// 玩家信息列表
-	Players []*Player `json:"Players,omitempty" name:"Players" list`
+	Players []*Player `json:"Players,omitempty" name:"Players"`
 
 	// 匹配状态: SEARCHING 匹配中; PLACING 匹配放置中; COMPLETED 匹配完成; CANCELLED 匹配取消; TIMEDOUT 匹配超时; FAILED 匹配失败
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -1038,13 +1038,13 @@ type ModifyMatchRequest struct {
 	ServerSessionData *string `json:"ServerSessionData,omitempty" name:"ServerSessionData"`
 
 	// 游戏属性，key-value结构的数组
-	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 日志开关，0表示关，1表示开
 	LogSwitch *int64 `json:"LogSwitch,omitempty" name:"LogSwitch"`
 
 	// 标签，key-value结构的数组
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyMatchRequest) ToJsonString() string {
@@ -1115,7 +1115,7 @@ type ModifyRuleRequest struct {
 	RuleDesc *string `json:"RuleDesc,omitempty" name:"RuleDesc"`
 
 	// 标签，key-value结构的数组，最多关联50组标签
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -1233,7 +1233,7 @@ type Player struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 玩家匹配属性，最多 10 条
-	MatchAttributes []*MatchAttribute `json:"MatchAttributes,omitempty" name:"MatchAttributes" list`
+	MatchAttributes []*MatchAttribute `json:"MatchAttributes,omitempty" name:"MatchAttributes"`
 
 	// 队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*
 	Team *string `json:"Team,omitempty" name:"Team"`
@@ -1245,7 +1245,7 @@ type Player struct {
 	CustomProfile *string `json:"CustomProfile,omitempty" name:"CustomProfile"`
 
 	// 各区域延迟，最多 20 条
-	RegionLatencies []*RegionLatency `json:"RegionLatencies,omitempty" name:"RegionLatencies" list`
+	RegionLatencies []*RegionLatency `json:"RegionLatencies,omitempty" name:"RegionLatencies"`
 }
 
 type RegionLatency struct {
@@ -1293,22 +1293,22 @@ type ReportOverviewData struct {
 type ReportTrendData struct {
 
 	// 总次数
-	TotalList []*string `json:"TotalList,omitempty" name:"TotalList" list`
+	TotalList []*string `json:"TotalList,omitempty" name:"TotalList"`
 
 	// 被取消次数
-	CancelList []*string `json:"CancelList,omitempty" name:"CancelList" list`
+	CancelList []*string `json:"CancelList,omitempty" name:"CancelList"`
 
 	// 成功次数
-	SuccessList []*string `json:"SuccessList,omitempty" name:"SuccessList" list`
+	SuccessList []*string `json:"SuccessList,omitempty" name:"SuccessList"`
 
 	// 失败次数
-	FailList []*string `json:"FailList,omitempty" name:"FailList" list`
+	FailList []*string `json:"FailList,omitempty" name:"FailList"`
 
 	// 超时次数
-	TimeoutList []*string `json:"TimeoutList,omitempty" name:"TimeoutList" list`
+	TimeoutList []*string `json:"TimeoutList,omitempty" name:"TimeoutList"`
 
 	// 时间数组，单位：秒
-	TimeList []*string `json:"TimeList,omitempty" name:"TimeList" list`
+	TimeList []*string `json:"TimeList,omitempty" name:"TimeList"`
 }
 
 type RuleBriefInfo struct {
@@ -1317,7 +1317,7 @@ type RuleBriefInfo struct {
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 关联匹配
-	MatchCodeList []*StringKV `json:"MatchCodeList,omitempty" name:"MatchCodeList" list`
+	MatchCodeList []*StringKV `json:"MatchCodeList,omitempty" name:"MatchCodeList"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1343,11 +1343,11 @@ type RuleInfo struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*StringKV `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
 
 	// 关联匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MatchCodeList []*StringKV `json:"MatchCodeList,omitempty" name:"MatchCodeList" list`
+	MatchCodeList []*StringKV `json:"MatchCodeList,omitempty" name:"MatchCodeList"`
 
 	// 规则code
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
@@ -1376,7 +1376,7 @@ type StartMatchingBackfillRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
 	// 玩家信息
-	Players []*Player `json:"Players,omitempty" name:"Players" list`
+	Players []*Player `json:"Players,omitempty" name:"Players"`
 
 	// 游戏服务器回话 ID [1-256] 个ASCII 字符
 	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
@@ -1438,7 +1438,7 @@ type StartMatchingRequest struct {
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
 	// 玩家信息 最多 200 条。
-	Players []*Player `json:"Players,omitempty" name:"Players" list`
+	Players []*Player `json:"Players,omitempty" name:"Players"`
 
 	// 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
 	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`

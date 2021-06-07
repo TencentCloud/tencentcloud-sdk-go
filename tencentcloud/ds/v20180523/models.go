@@ -93,7 +93,7 @@ type CreateContractByUploadRequest struct {
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 签署人信息
-	SignInfos []*SignInfo `json:"SignInfos,omitempty" name:"SignInfos" list`
+	SignInfos []*SignInfo `json:"SignInfos,omitempty" name:"SignInfos"`
 
 	// 合同上传链接地址
 	ContractFile *string `json:"ContractFile,omitempty" name:"ContractFile"`
@@ -393,7 +393,7 @@ type DeleteAccountRequest struct {
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
 	// 帐号ID列表
-	AccountList []*string `json:"AccountList,omitempty" name:"AccountList" list`
+	AccountList []*string `json:"AccountList,omitempty" name:"AccountList"`
 }
 
 func (r *DeleteAccountRequest) ToJsonString() string {
@@ -422,10 +422,10 @@ type DeleteAccountResponse struct {
 	Response *struct {
 
 		// 删除成功帐号ID列表
-		DelSuccessList []*string `json:"DelSuccessList,omitempty" name:"DelSuccessList" list`
+		DelSuccessList []*string `json:"DelSuccessList,omitempty" name:"DelSuccessList"`
 
 		// 删除失败帐号ID列表
-		DelFailedList []*string `json:"DelFailedList,omitempty" name:"DelFailedList" list`
+		DelFailedList []*string `json:"DelFailedList,omitempty" name:"DelFailedList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -695,7 +695,7 @@ type SignContractByCoordinateRequest struct {
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 
 	// 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
-	SignLocations []*SignLocation `json:"SignLocations,omitempty" name:"SignLocations" list`
+	SignLocations []*SignLocation `json:"SignLocations,omitempty" name:"SignLocations"`
 
 	// 授权时间（由平台自动填充）
 	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`

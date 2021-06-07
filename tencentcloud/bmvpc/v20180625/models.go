@@ -80,7 +80,7 @@ type AsyncRegisterIpsRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 需要注册的IP列表。
-	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+	Ips []*string `json:"Ips,omitempty" name:"Ips"`
 }
 
 func (r *AsyncRegisterIpsRequest) ToJsonString() string {
@@ -137,7 +137,7 @@ type BindEipsToNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 已分配的EIP列表；AssignedEips和AutoAllocEipNum至少输入一个
-	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips" list`
+	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips"`
 
 	// 新建EIP数目，系统将会按您的要求生产该数目个数EIP；AssignedEips和AutoAllocEipNum至少输入一个
 	AutoAllocEipNum *uint64 `json:"AutoAllocEipNum,omitempty" name:"AutoAllocEipNum"`
@@ -198,7 +198,7 @@ type BindIpsToNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 部分IP信息，子网下只有该部分IP将加入NAT，仅当网关转发模式为IP方式有效
-	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet" list`
+	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet"`
 }
 
 func (r *BindIpsToNatGatewayRequest) ToJsonString() string {
@@ -255,7 +255,7 @@ type BindSubnetsToNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网ID列表，子网下全部IP将加入NAT，不区分网关转发方式
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *BindSubnetsToNatGatewayRequest) ToJsonString() string {
@@ -366,7 +366,7 @@ type CreateDockerSubnetWithVlanRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网信息
-	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 }
 
 func (r *CreateDockerSubnetWithVlanRequest) ToJsonString() string {
@@ -416,7 +416,7 @@ type CreateHostedInterfaceRequest struct {
 	*tchttp.BaseRequest
 
 	// 托管机器唯一ID 数组
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 私有网络ID或者私有网络统一ID，建议使用统一ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -454,7 +454,7 @@ type CreateHostedInterfaceResponse struct {
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 黑石托管机器ID
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -476,7 +476,7 @@ type CreateInterfacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 物理机实例ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 私有网络ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -545,13 +545,13 @@ type CreateNatGatewayRequest struct {
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitempty" name:"MaxConcurrent"`
 
 	// 子网ID列表，子网下全部IP将加入NAT，不区分网关转发方式
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 部分IP信息，子网下只有该部分IP将加入NAT，仅当网关转发模式为IP方式有效；IpInfoSet和SubnetIds中的子网ID不能同时存在
-	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet" list`
+	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet"`
 
 	// 已分配的EIP列表, AssignedEips和AutoAllocEipNum至少输入一个
-	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips" list`
+	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips"`
 
 	// 新建EIP数目，系统将会按您的要求生产该数目个数EIP, AssignedEips和AutoAllocEipNum至少输入一个
 	AutoAllocEipNum *uint64 `json:"AutoAllocEipNum,omitempty" name:"AutoAllocEipNum"`
@@ -617,7 +617,7 @@ type CreateRoutePoliciesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 新增的路由
-	RoutePolicySet []*RoutePolicy `json:"RoutePolicySet,omitempty" name:"RoutePolicySet" list`
+	RoutePolicySet []*RoutePolicy `json:"RoutePolicySet,omitempty" name:"RoutePolicySet"`
 }
 
 func (r *CreateRoutePoliciesRequest) ToJsonString() string {
@@ -670,7 +670,7 @@ type CreateSubnetRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网信息
-	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -723,7 +723,7 @@ type CreateVirtualSubnetWithVlanRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网信息
-	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*SubnetCreateInputInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 }
 
 func (r *CreateVirtualSubnetWithVlanRequest) ToJsonString() string {
@@ -851,7 +851,7 @@ type CreateVpcRequest struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 子网信息
-	SubnetSet []*VpcSubnetCreateInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*VpcSubnetCreateInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 
 	// 是否启用内网监控
 	EnableMonitoring *bool `json:"EnableMonitoring,omitempty" name:"EnableMonitoring"`
@@ -972,7 +972,7 @@ type DeleteHostedInterfaceRequest struct {
 	*tchttp.BaseRequest
 
 	// 托管机器唯一ID 数组
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 私有网络ID或者私有网络统一ID，建议使用统一ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -1010,7 +1010,7 @@ type DeleteHostedInterfaceResponse struct {
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 黑石托管机器ID
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1035,7 +1035,7 @@ type DeleteHostedInterfacesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 物理机ID
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *DeleteHostedInterfacesRequest) ToJsonString() string {
@@ -1088,7 +1088,7 @@ type DeleteInterfacesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 子网的唯一ID列表
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *DeleteInterfacesRequest) ToJsonString() string {
@@ -1300,7 +1300,7 @@ type DeleteVirtualIpRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 退还的IP列表。
-	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+	Ips []*string `json:"Ips,omitempty" name:"Ips"`
 }
 
 func (r *DeleteVirtualIpRequest) ToJsonString() string {
@@ -1549,7 +1549,7 @@ type DeregisterIpsRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 注销指定IP的列表
-	IpSet []*string `json:"IpSet,omitempty" name:"IpSet" list`
+	IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
 
 	// 私有网络子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
@@ -1600,14 +1600,14 @@ type DescribeCustomerGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// 对端网关ID，例如：bmcgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
-	CustomerGatewayIds []*string `json:"CustomerGatewayIds,omitempty" name:"CustomerGatewayIds" list`
+	CustomerGatewayIds []*string `json:"CustomerGatewayIds,omitempty" name:"CustomerGatewayIds"`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
 	// <li>customergateway-name - String - （过滤条件）对端网关名称。</li>
 	// <li>ip-address - String - （过滤条件)对端网关地址。</li>
 	// <li>customergateway-id - String - （过滤条件）对端网关唯一ID。</li>
 	// <li>zone - String - （过滤条件）对端所在可用区，形如：ap-guangzhou-2。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1651,7 +1651,7 @@ type DescribeCustomerGatewaysResponse struct {
 	Response *struct {
 
 		// 对端网关对象列表
-		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet,omitempty" name:"CustomerGatewaySet" list`
+		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet,omitempty" name:"CustomerGatewaySet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1735,7 +1735,7 @@ type DescribeNatGatewaysResponse struct {
 	Response *struct {
 
 		// NAT网关信息列表
-		NatGatewayInfoSet []*NatGatewayInfo `json:"NatGatewayInfoSet,omitempty" name:"NatGatewayInfoSet" list`
+		NatGatewayInfoSet []*NatGatewayInfo `json:"NatGatewayInfoSet,omitempty" name:"NatGatewayInfoSet"`
 
 		// 总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1791,7 +1791,7 @@ type DescribeNatSubnetsResponse struct {
 	Response *struct {
 
 		// NAT子网信息
-		NatSubnetInfoSet []*NatSubnetInfo `json:"NatSubnetInfoSet,omitempty" name:"NatSubnetInfoSet" list`
+		NatSubnetInfoSet []*NatSubnetInfo `json:"NatSubnetInfoSet,omitempty" name:"NatSubnetInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1816,7 +1816,7 @@ type DescribeRoutePoliciesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略实例ID，例如：rti-azd4dt1c。
-	RoutePolicyIds []*string `json:"RoutePolicyIds,omitempty" name:"RoutePolicyIds" list`
+	RoutePolicyIds []*string `json:"RoutePolicyIds,omitempty" name:"RoutePolicyIds"`
 
 	// 过滤条件，参数不支持同时指定RoutePolicyIds和Filters。
 	// route-table-id - String - （过滤条件）路由表实例ID。
@@ -1828,7 +1828,7 @@ type DescribeRoutePoliciesRequest struct {
 	// gateway-id-like - String - （过滤条件）路由项下一跳网关。
 	// gateway-type - String - （过滤条件）路由项下一条网关类型。
 	// enable - Bool - （过滤条件）路由策略是否启用。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 初始行的偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1868,7 +1868,7 @@ type DescribeRoutePoliciesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 路由策略列表
-		RoutePolicySet []*RoutePolicy `json:"RoutePolicySet,omitempty" name:"RoutePolicySet" list`
+		RoutePolicySet []*RoutePolicy `json:"RoutePolicySet,omitempty" name:"RoutePolicySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1890,7 +1890,7 @@ type DescribeRouteTablesRequest struct {
 	*tchttp.BaseRequest
 
 	// 路由表实例ID，例如：rtb-azd4dt1c。
-	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds" list`
+	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds"`
 
 	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
 	// route-table-id - String - （过滤条件）路由表实例ID。
@@ -1899,7 +1899,7 @@ type DescribeRouteTablesRequest struct {
 	// route-table-name-like - String - （模糊过滤条件）路由表名称。
 	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
 	// zone - String - （过滤条件）可用区。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 初始行的偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1946,7 +1946,7 @@ type DescribeRouteTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 路由表列表
-		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1999,7 +1999,7 @@ type DescribeSubnetAvailableIpsResponse struct {
 	Response *struct {
 
 		// 可用IP的范围列表
-		IpSet []*string `json:"IpSet,omitempty" name:"IpSet" list`
+		IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2024,7 +2024,7 @@ type DescribeSubnetByDeviceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 子网类型。0: 物理机子网; 7: DOCKER子网 8: 虚拟子网
-	Types []*uint64 `json:"Types,omitempty" name:"Types" list`
+	Types []*uint64 `json:"Types,omitempty" name:"Types"`
 
 	// 查询的起始位置。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2063,7 +2063,7 @@ type DescribeSubnetByDeviceResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 子网列表
-		Data []*SubnetInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*SubnetInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2088,7 +2088,7 @@ type DescribeSubnetByHostedDeviceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 子网类型。0: 物理机子网; 7: DOCKER子网 8: 虚拟子网
-	Types []*uint64 `json:"Types,omitempty" name:"Types" list`
+	Types []*uint64 `json:"Types,omitempty" name:"Types"`
 
 	// 查询的起始位置。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2127,7 +2127,7 @@ type DescribeSubnetByHostedDeviceResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 子网列表
-		Data []*SubnetInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*SubnetInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2149,7 +2149,7 @@ type DescribeSubnetsRequest struct {
 	*tchttp.BaseRequest
 
 	// 子网实例ID查询。形如：subnet-pxir56ns。参数不支持同时指定SubnetIds和Filters。
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
 	// subnet-id - String - （过滤条件）Subnet实例名称。
@@ -2157,7 +2157,7 @@ type DescribeSubnetsRequest struct {
 	// cidr-block - String - （过滤条件）vpc的cidr。
 	// subnet-name - String - （过滤条件）子网名称。
 	// zone - String - （过滤条件）可用区。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2201,7 +2201,7 @@ type DescribeSubnetsResponse struct {
 	Response *struct {
 
 		// 子网列表信息
-		SubnetSet []*SubnetInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+		SubnetSet []*SubnetInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 
 		// 返回的子网总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2275,12 +2275,12 @@ type DescribeVpcPeerConnectionsRequest struct {
 	*tchttp.BaseRequest
 
 	// 对等连接实例ID
-	VpcPeerConnectionIds []*string `json:"VpcPeerConnectionIds,omitempty" name:"VpcPeerConnectionIds" list`
+	VpcPeerConnectionIds []*string `json:"VpcPeerConnectionIds,omitempty" name:"VpcPeerConnectionIds"`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpcPeerConnectionIds和Filters。
 	// 过滤条件，参数不支持同时指定VpcPeerConnectionIds和Filters。
 	// <li>peer-name - String - （过滤条件）对等连接名称。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2323,7 +2323,7 @@ type DescribeVpcPeerConnectionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 对等连接实例。
-		VpcPeerConnectionSet []*VpcPeerConnection `json:"VpcPeerConnectionSet,omitempty" name:"VpcPeerConnectionSet" list`
+		VpcPeerConnectionSet []*VpcPeerConnection `json:"VpcPeerConnectionSet,omitempty" name:"VpcPeerConnectionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2345,7 +2345,7 @@ type DescribeVpcQuotaRequest struct {
 	*tchttp.BaseRequest
 
 	// 类型
-	TypeIds []*uint64 `json:"TypeIds,omitempty" name:"TypeIds" list`
+	TypeIds []*uint64 `json:"TypeIds,omitempty" name:"TypeIds"`
 }
 
 func (r *DescribeVpcQuotaRequest) ToJsonString() string {
@@ -2372,7 +2372,7 @@ type DescribeVpcQuotaResponse struct {
 	Response *struct {
 
 		// 配额信息
-		VpcQuotaSet []*VpcQuota `json:"VpcQuotaSet,omitempty" name:"VpcQuotaSet" list`
+		VpcQuotaSet []*VpcQuota `json:"VpcQuotaSet,omitempty" name:"VpcQuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2394,14 +2394,14 @@ type DescribeVpcResourceRequest struct {
 	*tchttp.BaseRequest
 
 	// 私有网络实例ID
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
 	// vpc-id - String - （过滤条件）私有网络实例ID，形如：vpc-f49l6u0z。
 	// vpc-name - String - （过滤条件）私有网络名称。
 	// zone - String - （过滤条件）可用区。
 	// state - String - （过滤条件）VPC状态。available: 运营中; pending: 创建中; failed: 创建失败; deleting: 删除中
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2445,7 +2445,7 @@ type DescribeVpcResourceResponse struct {
 	Response *struct {
 
 		// VPC数据
-		VpcResourceSet []*VpcResource `json:"VpcResourceSet,omitempty" name:"VpcResourceSet" list`
+		VpcResourceSet []*VpcResource `json:"VpcResourceSet,omitempty" name:"VpcResourceSet"`
 
 		// VPC个数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2519,7 +2519,7 @@ type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
 	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 过滤条件，参数不支持同时指定VpcIds和Filters。
 	// vpc-name - String - （过滤条件）VPC实例名称。
@@ -2527,7 +2527,7 @@ type DescribeVpcsRequest struct {
 	// cidr-block - String - （过滤条件）vpc的cidr。
 	// state - String - （过滤条件）VPC状态。(pending | available).
 	// zone -  String - （过滤条件）VPC的可用区。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 初始行的偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2563,7 +2563,7 @@ type DescribeVpcsResponse struct {
 	Response *struct {
 
 		// VPC列表
-		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2585,13 +2585,13 @@ type DescribeVpnConnectionsRequest struct {
 	*tchttp.BaseRequest
 
 	// VPN通道实例ID。形如：bmvpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
-	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds" list`
+	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds"`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
 	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2646,7 +2646,7 @@ type DescribeVpnConnectionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// VPN通道实例。
-		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet,omitempty" name:"VpnConnectionSet" list`
+		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet,omitempty" name:"VpnConnectionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2668,14 +2668,14 @@ type DescribeVpnGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// VPN网关实例ID。形如：bmvpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
-	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds" list`
+	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds"`
 
 	// 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>state - String - （过滤条件 VPN状态：creating，available，createfailed，changing，changefailed，deleting，deletefailed。</li>
 	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
 	// <li>vpngw-name - String - （过滤条件）vpn网关名称。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2722,7 +2722,7 @@ type DescribeVpnGatewaysResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// VPN网关实例详细信息列表。
-		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet,omitempty" name:"VpnGatewaySet" list`
+		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet,omitempty" name:"VpnGatewaySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2799,7 +2799,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type IKEOptionsSpecification struct {
@@ -2871,7 +2871,7 @@ type IpInfo struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// IP列表
-	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+	Ips []*string `json:"Ips,omitempty" name:"Ips"`
 }
 
 type ModifyCustomerGatewayAttributeRequest struct {
@@ -3094,7 +3094,7 @@ type ModifySubnetDHCPRelayRequest struct {
 	EnableDHCP *bool `json:"EnableDHCP,omitempty" name:"EnableDHCP"`
 
 	// DHCP服务器IP
-	ServerIps []*string `json:"ServerIps,omitempty" name:"ServerIps" list`
+	ServerIps []*string `json:"ServerIps,omitempty" name:"ServerIps"`
 
 	// 预留IP个数
 	ReservedIpCount *uint64 `json:"ReservedIpCount,omitempty" name:"ReservedIpCount"`
@@ -3270,7 +3270,7 @@ type ModifyVpnConnectionAttributeRequest struct {
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
 
 	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
-	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases" list`
+	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
 
 	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
@@ -3395,7 +3395,7 @@ type NatGatewayInfo struct {
 	ProductionStatus *uint64 `json:"ProductionStatus,omitempty" name:"ProductionStatus"`
 
 	// EIP列表
-	Eips []*string `json:"Eips,omitempty" name:"Eips" list`
+	Eips []*string `json:"Eips,omitempty" name:"Eips"`
 
 	// 并发连接数规格，取值为1000000, 3000000, 10000000
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitempty" name:"MaxConcurrent"`
@@ -3607,7 +3607,7 @@ type SecurityPolicyDatabase struct {
 	LocalCidrBlock *string `json:"LocalCidrBlock,omitempty" name:"LocalCidrBlock"`
 
 	// 对端网段
-	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitempty" name:"RemoteCidrBlock" list`
+	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitempty" name:"RemoteCidrBlock"`
 }
 
 type SubnetCreateInputInfo struct {
@@ -3625,7 +3625,7 @@ type SubnetCreateInputInfo struct {
 	DhcpEnable *uint64 `json:"DhcpEnable,omitempty" name:"DhcpEnable"`
 
 	// DHCP SERVER 的IP地址数组。IP地址为相同VPC的子网内分配的IP
-	DhcpServerIp []*string `json:"DhcpServerIp,omitempty" name:"DhcpServerIp" list`
+	DhcpServerIp []*string `json:"DhcpServerIp,omitempty" name:"DhcpServerIp"`
 
 	// 预留的IP个数。从该子网的最大可分配IP倒序分配N个IP 用于DHCP 动态分配使用的地址段
 	IpReserve *uint64 `json:"IpReserve,omitempty" name:"IpReserve"`
@@ -3679,7 +3679,7 @@ type SubnetInfo struct {
 	DhcpEnable *uint64 `json:"DhcpEnable,omitempty" name:"DhcpEnable"`
 
 	// DHCP SERVER 的IP地址数组。IP地址为相同VPC的子网内分配的IP。
-	DhcpServerIp []*string `json:"DhcpServerIp,omitempty" name:"DhcpServerIp" list`
+	DhcpServerIp []*string `json:"DhcpServerIp,omitempty" name:"DhcpServerIp"`
 
 	// 预留的IP个数。从该子网的最大可分配IP倒序分配N个IP 用于DHCP 动态分配使用的地址段。
 	IpReserve *uint64 `json:"IpReserve,omitempty" name:"IpReserve"`
@@ -3720,7 +3720,7 @@ type UnbindEipsFromNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 已分配的EIP列表
-	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips" list`
+	AssignedEips []*string `json:"AssignedEips,omitempty" name:"AssignedEips"`
 }
 
 func (r *UnbindEipsFromNatGatewayRequest) ToJsonString() string {
@@ -3777,7 +3777,7 @@ type UnbindIpsFromNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 部分IP信息；子网须以部分IP将加入NAT网关
-	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet" list`
+	IpInfoSet []*IpInfo `json:"IpInfoSet,omitempty" name:"IpInfoSet"`
 }
 
 func (r *UnbindIpsFromNatGatewayRequest) ToJsonString() string {
@@ -3834,7 +3834,7 @@ type UnbindSubnetsFromNatGatewayRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网ID列表，子网不区分加入NAT网关的转发方式
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *UnbindSubnetsFromNatGatewayRequest) ToJsonString() string {
@@ -4163,7 +4163,7 @@ type VpcViewInfo struct {
 	NatNum *uint64 `json:"NatNum,omitempty" name:"NatNum"`
 
 	// 子网列表
-	SubnetSet []*VpcSubnetViewInfo `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*VpcSubnetViewInfo `json:"SubnetSet,omitempty" name:"SubnetSet"`
 }
 
 type VpnConnection struct {
@@ -4199,7 +4199,7 @@ type VpnConnection struct {
 	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 
 	// SPD。
-	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet,omitempty" name:"SecurityPolicyDatabaseSet" list`
+	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet,omitempty" name:"SecurityPolicyDatabaseSet"`
 
 	// IKE选项。
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
@@ -4224,11 +4224,11 @@ type VpnConnection struct {
 
 	// IPSEC VPN通道路由策略目的端地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DestinationCidr []*string `json:"DestinationCidr,omitempty" name:"DestinationCidr" list`
+	DestinationCidr []*string `json:"DestinationCidr,omitempty" name:"DestinationCidr"`
 
 	// IPSEC VPN通道路由策略源端地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SourceCidr []*string `json:"SourceCidr,omitempty" name:"SourceCidr" list`
+	SourceCidr []*string `json:"SourceCidr,omitempty" name:"SourceCidr"`
 }
 
 type VpnGateway struct {

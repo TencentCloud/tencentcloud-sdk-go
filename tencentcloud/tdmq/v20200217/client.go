@@ -1143,6 +1143,31 @@ func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessa
     return
 }
 
+func NewSendMsgRequest() (request *SendMsgRequest) {
+    request = &SendMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "SendMsg")
+    return
+}
+
+func NewSendMsgResponse() (response *SendMsgResponse) {
+    response = &SendMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// 此接口仅用于测试发生消息，不能作为现网正式生产使用
+func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, err error) {
+    if request == nil {
+        request = NewSendMsgRequest()
+    }
+    response = NewSendMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindCmqDeadLetterRequest() (request *UnbindCmqDeadLetterRequest) {
     request = &UnbindCmqDeadLetterRequest{
         BaseRequest: &tchttp.BaseRequest{},

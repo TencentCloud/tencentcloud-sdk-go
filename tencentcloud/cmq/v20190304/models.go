@@ -241,10 +241,10 @@ type CreateSubscribeRequest struct {
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" name:"NotifyStrategy"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag" list`
+	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
@@ -553,7 +553,7 @@ type DescribeDeadLetterSourceQueuesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤死信队列源队列名称，目前仅支持SourceQueueName过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDeadLetterSourceQueuesRequest) ToJsonString() string {
@@ -586,7 +586,7 @@ type DescribeDeadLetterSourceQueuesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 死信队列源队列
-		QueueSet []*DeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet" list`
+		QueueSet []*DeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -614,7 +614,7 @@ type DescribeQueueDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 标签搜索
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -654,7 +654,7 @@ type DescribeQueueDetailResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 队列详情列表。
-		QueueSet []*QueueSet `json:"QueueSet,omitempty" name:"QueueSet" list`
+		QueueSet []*QueueSet `json:"QueueSet,omitempty" name:"QueueSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -685,7 +685,7 @@ type DescribeSubscriptionDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 筛选参数，目前只支持SubscriptionName，且仅支持一个关键字。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeSubscriptionDetailRequest) ToJsonString() string {
@@ -719,7 +719,7 @@ type DescribeSubscriptionDetailResponse struct {
 
 		// Subscription属性集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubscriptionSet []*Subscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet" list`
+		SubscriptionSet []*Subscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -747,7 +747,7 @@ type DescribeTopicDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 目前只支持过滤TopicName ， 且只能填一个过滤值。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 标签匹配。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -787,7 +787,7 @@ type DescribeTopicDetailResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 主题详情列表。
-		TopicSet []*TopicSet `json:"TopicSet,omitempty" name:"TopicSet" list`
+		TopicSet []*TopicSet `json:"TopicSet,omitempty" name:"TopicSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -811,7 +811,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ModifyQueueAttributeRequest struct {
@@ -930,10 +930,10 @@ type ModifySubscriptionAttributeRequest struct {
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 }
 
 func (r *ModifySubscriptionAttributeRequest) ToJsonString() string {
@@ -1116,7 +1116,7 @@ type QueueSet struct {
 
 	// 死信队列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeadLetterSource []*DeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource" list`
+	DeadLetterSource []*DeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource"`
 
 	// 死信队列策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1132,7 +1132,7 @@ type QueueSet struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1217,7 +1217,7 @@ type Subscription struct {
 
 	// 表示订阅接收消息的过滤策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1227,7 +1227,7 @@ type Subscription struct {
 	// filterType = 1表示用户使用 filterTag 标签过滤
 	// filterType = 2表示用户使用 bindingKey 过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1301,7 +1301,7 @@ type TopicSet struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -90,7 +90,7 @@ type AttachDisksRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
@@ -168,10 +168,10 @@ type AutoSnapshotPolicy struct {
 	NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
 
 	// 定期快照的执行策略。
-	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
 	// 已绑定当前定期快照策略的云盘ID列表。
-	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet" list`
+	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
 }
 
 type BindAutoSnapshotPolicyRequest struct {
@@ -181,7 +181,7 @@ type BindAutoSnapshotPolicyRequest struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 
 func (r *BindAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -228,7 +228,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 定期快照的执行策略。
-	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
 	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
 	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
@@ -330,7 +330,7 @@ type CreateDisksRequest struct {
 	Encrypt *string `json:"Encrypt,omitempty" name:"Encrypt"`
 
 	// 云盘绑定的标签。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
 	Shareable *bool `json:"Shareable,omitempty" name:"Shareable"`
@@ -375,7 +375,7 @@ type CreateDisksResponse struct {
 	Response *struct {
 
 		// 创建的云硬盘ID列表。
-		DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet" list`
+		DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -454,7 +454,7 @@ type DeleteAutoSnapshotPoliciesRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的定期快照策略ID列表。
-	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
 }
 
 func (r *DeleteAutoSnapshotPoliciesRequest) ToJsonString() string {
@@ -500,7 +500,7 @@ type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 func (r *DeleteSnapshotsRequest) ToJsonString() string {
@@ -546,10 +546,10 @@ type DescribeAutoSnapshotPoliciesRequest struct {
 	*tchttp.BaseRequest
 
 	// 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
-	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
 
 	// 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -596,7 +596,7 @@ type DescribeAutoSnapshotPoliciesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 定期快照策略列表。
-		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet" list`
+		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -648,7 +648,7 @@ type DescribeDiskAssociatedAutoSnapshotPolicyResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 云盘绑定的定期快照列表。
-		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet" list`
+		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -673,19 +673,19 @@ type DescribeDiskConfigQuotaRequest struct {
 	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
 
 	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
-	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
 
 	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
-	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes" list`
+	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
 
 	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
 	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
 
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
-	InstanceFamilies []*string `json:"InstanceFamilies,omitempty" name:"InstanceFamilies" list`
+	InstanceFamilies []*string `json:"InstanceFamilies,omitempty" name:"InstanceFamilies"`
 
 	// 实例CPU核数。
 	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
@@ -725,7 +725,7 @@ type DescribeDiskConfigQuotaResponse struct {
 	Response *struct {
 
 		// 云盘配置列表。
-		DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitempty" name:"DiskConfigSet" list`
+		DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitempty" name:"DiskConfigSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -748,7 +748,7 @@ type DescribeDiskOperationLogsRequest struct {
 
 	// 过滤条件。支持以下条件：
 	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -783,7 +783,7 @@ type DescribeDiskOperationLogsResponse struct {
 	Response *struct {
 
 		// 云盘的操作日志列表。
-		DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet,omitempty" name:"DiskOperationLogSet" list`
+		DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet,omitempty" name:"DiskOperationLogSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -805,10 +805,10 @@ type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -859,7 +859,7 @@ type DescribeDisksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 云硬盘的详细信息列表。
-		DiskSet []*Disk `json:"DiskSet,omitempty" name:"DiskSet" list`
+		DiskSet []*Disk `json:"DiskSet,omitempty" name:"DiskSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -881,7 +881,7 @@ type DescribeInstancesDiskNumRequest struct {
 	*tchttp.BaseRequest
 
 	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstancesDiskNumRequest) ToJsonString() string {
@@ -908,7 +908,7 @@ type DescribeInstancesDiskNumResponse struct {
 	Response *struct {
 
 		// 各个云服务器已挂载和可挂载弹性云盘的数量。
-		AttachDetail []*AttachDetail `json:"AttachDetail,omitempty" name:"AttachDetail" list`
+		AttachDetail []*AttachDetail `json:"AttachDetail,omitempty" name:"AttachDetail"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -931,7 +931,7 @@ type DescribeSnapshotOperationLogsRequest struct {
 
 	// 过滤条件。支持以下条件：
 	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -966,7 +966,7 @@ type DescribeSnapshotOperationLogsResponse struct {
 	Response *struct {
 
 		// 快照操作日志列表。
-		SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet,omitempty" name:"SnapshotOperationLogSet" list`
+		SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet,omitempty" name:"SnapshotOperationLogSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1015,7 +1015,7 @@ type DescribeSnapshotSharePermissionResponse struct {
 	Response *struct {
 
 		// 快照的分享信息的集合
-		SharePermissionSet []*SharePermission `json:"SharePermissionSet,omitempty" name:"SharePermissionSet" list`
+		SharePermissionSet []*SharePermission `json:"SharePermissionSet,omitempty" name:"SharePermissionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1037,12 +1037,12 @@ type DescribeSnapshotsRequest struct {
 	*tchttp.BaseRequest
 
 	// 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 
 	// 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
 	// <li>snapshot-type- Array of String - 是否必填：否 -（过滤条件）根据snapshot-type指定的快照类型查询对应的快照。
 	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1089,7 +1089,7 @@ type DescribeSnapshotsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 快照的详情列表。
-		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet" list`
+		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1111,7 +1111,7 @@ type DetachDisksRequest struct {
 	*tchttp.BaseRequest
 
 	// 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1232,11 +1232,11 @@ type Disk struct {
 
 	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds" list`
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
 
 	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1258,7 +1258,7 @@ type Disk struct {
 	Shareable *bool `json:"Shareable,omitempty" name:"Shareable"`
 
 	// 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 云盘拥有的快照总数。
 	SnapshotCount *int64 `json:"SnapshotCount,omitempty" name:"SnapshotCount"`
@@ -1357,7 +1357,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GetSnapOverviewRequest struct {
@@ -1553,10 +1553,10 @@ type InquiryPriceRenewDisksRequest struct {
 	*tchttp.BaseRequest
 
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
-	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitempty" name:"DiskChargePrepaids" list`
+	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitempty" name:"DiskChargePrepaids"`
 
 	// 指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
 	NewDeadline *string `json:"NewDeadline,omitempty" name:"NewDeadline"`
@@ -1674,7 +1674,7 @@ type ModifyAutoSnapshotPolicyAttributeRequest struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 定期快照的执行策略。
-	Policy []*Policy `json:"Policy,omitempty" name:"Policy" list`
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
 	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
 	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
@@ -1737,7 +1737,7 @@ type ModifyDiskAttributesRequest struct {
 	*tchttp.BaseRequest
 
 	// 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1853,7 +1853,7 @@ type ModifyDisksChargeTypeRequest struct {
 	*tchttp.BaseRequest
 
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
@@ -1907,7 +1907,7 @@ type ModifyDisksRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
 	// 一个或多个待操作的云硬盘ID。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
@@ -2015,13 +2015,13 @@ type ModifySnapshotsSharePermissionRequest struct {
 	*tchttp.BaseRequest
 
 	// 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
-	AccountIds []*string `json:"AccountIds,omitempty" name:"AccountIds" list`
+	AccountIds []*string `json:"AccountIds,omitempty" name:"AccountIds"`
 
 	// 操作，包括 SHARE，CANCEL。其中SHARE代表分享操作，CANCEL代表取消分享操作。
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 
 	// 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
-	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds" list`
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 func (r *ModifySnapshotsSharePermissionRequest) ToJsonString() string {
@@ -2089,10 +2089,10 @@ type Placement struct {
 type Policy struct {
 
 	// 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
-	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek" list`
+	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
 	// 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
-	Hour []*uint64 `json:"Hour,omitempty" name:"Hour" list`
+	Hour []*uint64 `json:"Hour,omitempty" name:"Hour"`
 }
 
 type PrepayPrice struct {
@@ -2321,13 +2321,13 @@ type Snapshot struct {
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
 
 	// 快照正在跨地域复制的目的地域，默认取值为[]。
-	CopyingToRegions []*string `json:"CopyingToRegions,omitempty" name:"CopyingToRegions" list`
+	CopyingToRegions []*string `json:"CopyingToRegions,omitempty" name:"CopyingToRegions"`
 
 	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
 	CopyFromRemote *bool `json:"CopyFromRemote,omitempty" name:"CopyFromRemote"`
 
 	// 快照关联的镜像列表。
-	Images []*Image `json:"Images,omitempty" name:"Images" list`
+	Images []*Image `json:"Images,omitempty" name:"Images"`
 
 	// 快照关联的镜像个数。
 	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
@@ -2387,7 +2387,7 @@ type TerminateDisksRequest struct {
 	*tchttp.BaseRequest
 
 	// 需退还的云盘ID列表。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 
 func (r *TerminateDisksRequest) ToJsonString() string {
@@ -2433,7 +2433,7 @@ type UnbindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 要解绑定期快照策略的云盘ID列表。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds" list`
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 要解绑的定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`

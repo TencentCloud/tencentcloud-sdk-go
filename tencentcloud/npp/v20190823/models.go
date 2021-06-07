@@ -388,7 +388,7 @@ type DescribeCallBackCdrResponse struct {
 
 		// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Cdr []*CallBackCdr `json:"Cdr,omitempty" name:"Cdr" list`
+		Cdr []*CallBackCdr `json:"Cdr,omitempty" name:"Cdr"`
 
 		// 偏移
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -537,7 +537,7 @@ type DescribeCallerDisplayListResponse struct {
 
 		// 主叫显号号码集合，codeList[0...*] 结构体数组，如果业务是主被叫互显，该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeList []*CallBackPhoneCode `json:"CodeList,omitempty" name:"CodeList" list`
+		CodeList []*CallBackPhoneCode `json:"CodeList,omitempty" name:"CodeList"`
 
 		// 错误码
 		ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
@@ -621,7 +621,7 @@ type Get400CdrResponse struct {
 
 		// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Cdr []*VirturalNumCdr `json:"Cdr,omitempty" name:"Cdr" list`
+		Cdr []*VirturalNumCdr `json:"Cdr,omitempty" name:"Cdr"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -652,7 +652,7 @@ type GetVirtualNumRequest struct {
 	Src *string `json:"Src,omitempty" name:"Src"`
 
 	// {“accreditList”:[“008613631686024”,”008612345678910”]}，主要用于 N-1 场景，号码绑定非共享是独占型，指定了 dst 独占中间号绑定，accreditList 表示这个列表成员可以拨打 dst 绑 定的中间号，默认值为空，表示所有号码都可以拨打独占型中间号绑定，最大集合不允许超过 30 个，仅适用于xb模式
-	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList" list`
+	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList"`
 
 	// 指定中间号（格式：008617013541251），如果该中间号已被使用则返回绑定失败。如果不带该字段则由腾讯侧从号码池里自动分配
 	AssignVirtualNum *string `json:"AssignVirtualNum,omitempty" name:"AssignVirtualNum"`
@@ -786,7 +786,7 @@ type RreCallerHandle struct {
 	InterruptPrompt *string `json:"InterruptPrompt,omitempty" name:"InterruptPrompt"`
 
 	// 对应按键操作,如果没有结构体里定义按键操作用户按键以后都从 interruptPrompt 重新播放
-	KeyList []*KeyList `json:"KeyList,omitempty" name:"KeyList" list`
+	KeyList []*KeyList `json:"KeyList,omitempty" name:"KeyList"`
 
 	// 最多重复播放次数，超过该次数拆线
 	RepeatTimes *string `json:"RepeatTimes,omitempty" name:"RepeatTimes"`

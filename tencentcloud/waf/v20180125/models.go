@@ -34,7 +34,7 @@ type AddCustomRuleRequest struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies" list`
+	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
 
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -404,7 +404,7 @@ type DescribeCustomRulesResponse struct {
 	Response *struct {
 
 		// 规则详情
-		RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList" list`
+		RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList"`
 
 		// 规则条数
 		TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -455,7 +455,7 @@ type DescribeCustomRulesRspRuleListItem struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies" list`
+	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
 }
 
 type DescribeFlowTrendRequest struct {
@@ -497,7 +497,7 @@ type DescribeFlowTrendResponse struct {
 	Response *struct {
 
 		// 流量趋势数据
-		Data []*BotStatPointItem `json:"Data,omitempty" name:"Data" list`
+		Data []*BotStatPointItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -543,7 +543,7 @@ type DescribeUserClbWafRegionsResponse struct {
 
 		// 地域（标准的ap-格式）列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

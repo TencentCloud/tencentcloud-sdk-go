@@ -27,10 +27,10 @@ type Container struct {
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 容器启动参数
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 
 	// 容器环境变量
-	EnvironmentVars []*EnvironmentVar `json:"EnvironmentVars,omitempty" name:"EnvironmentVars" list`
+	EnvironmentVars []*EnvironmentVar `json:"EnvironmentVars,omitempty" name:"EnvironmentVars"`
 
 	// 镜像
 	Image *string `json:"Image,omitempty" name:"Image"`
@@ -78,7 +78,7 @@ type ContainerInstance struct {
 	State *string `json:"State,omitempty" name:"State"`
 
 	// 容器列表
-	Containers []*Container `json:"Containers,omitempty" name:"Containers" list`
+	Containers []*Container `json:"Containers,omitempty" name:"Containers"`
 
 	// 重启策略
 	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
@@ -157,7 +157,7 @@ type CreateContainerInstanceRequest struct {
 	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 
 	// 容器列表
-	Containers []*Container `json:"Containers,omitempty" name:"Containers" list`
+	Containers []*Container `json:"Containers,omitempty" name:"Containers"`
 }
 
 func (r *CreateContainerInstanceRequest) ToJsonString() string {
@@ -287,7 +287,7 @@ type DescribeContainerInstanceEventsResponse struct {
 	Response *struct {
 
 		// 容器实例事件列表
-		EventList []*Event `json:"EventList,omitempty" name:"EventList" list`
+		EventList []*Event `json:"EventList,omitempty" name:"EventList"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -367,7 +367,7 @@ type DescribeContainerInstancesRequest struct {
 	// - Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
 	// - VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
 	// - InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeContainerInstancesRequest) ToJsonString() string {
@@ -396,7 +396,7 @@ type DescribeContainerInstancesResponse struct {
 	Response *struct {
 
 		// 容器实例列表
-		ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList" list`
+		ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList"`
 
 		// 容器实例总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -460,7 +460,7 @@ type DescribeContainerLogResponse struct {
 	Response *struct {
 
 		// 容器日志数组
-		ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList" list`
+		ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -514,7 +514,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤值列表
-	ValueList []*string `json:"ValueList,omitempty" name:"ValueList" list`
+	ValueList []*string `json:"ValueList,omitempty" name:"ValueList"`
 }
 
 type InquiryPriceCreateCisRequest struct {

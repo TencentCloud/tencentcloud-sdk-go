@@ -25,7 +25,7 @@ type BindEipAclsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待关联的 EIP 与 ACL关系列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *BindEipAclsRequest) ToJsonString() string {
@@ -314,7 +314,7 @@ type CreateEipRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 指定申请的IP列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *CreateEipRequest) ToJsonString() string {
@@ -347,7 +347,7 @@ type CreateEipResponse struct {
 	Response *struct {
 
 		// EIP列表
-		EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+		EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 		// 任务ID
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -418,7 +418,7 @@ type DeleteEipRequest struct {
 	*tchttp.BaseRequest
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 }
 
 func (r *DeleteEipRequest) ToJsonString() string {
@@ -470,7 +470,7 @@ type DescribeEipAclsRequest struct {
 	AclName *string `json:"AclName,omitempty" name:"AclName"`
 
 	// ACL 实例 ID 列表，数组下标从 0 开始
-	AclIds []*string `json:"AclIds,omitempty" name:"AclIds" list`
+	AclIds []*string `json:"AclIds,omitempty" name:"AclIds"`
 
 	// 分页参数。偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -479,13 +479,13 @@ type DescribeEipAclsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// EIP IP地址列表
-	EipIps []*string `json:"EipIps,omitempty" name:"EipIps" list`
+	EipIps []*string `json:"EipIps,omitempty" name:"EipIps"`
 
 	// EIP名称列表
-	EipNames []*string `json:"EipNames,omitempty" name:"EipNames" list`
+	EipNames []*string `json:"EipNames,omitempty" name:"EipNames"`
 
 	// 排序字段
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -494,7 +494,7 @@ type DescribeEipAclsRequest struct {
 	Order *uint64 `json:"Order,omitempty" name:"Order"`
 
 	// ACL名称列表，支持模糊查找
-	AclNames []*string `json:"AclNames,omitempty" name:"AclNames" list`
+	AclNames []*string `json:"AclNames,omitempty" name:"AclNames"`
 }
 
 func (r *DescribeEipAclsRequest) ToJsonString() string {
@@ -533,7 +533,7 @@ type DescribeEipAclsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// EIPACL列表
-		EipAclList []*EipAcl `json:"EipAclList,omitempty" name:"EipAclList" list`
+		EipAclList []*EipAcl `json:"EipAclList,omitempty" name:"EipAclList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -661,19 +661,19 @@ type DescribeEipsRequest struct {
 	*tchttp.BaseRequest
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// EIP IP 列表
-	Eips []*string `json:"Eips,omitempty" name:"Eips" list`
+	Eips []*string `json:"Eips,omitempty" name:"Eips"`
 
 	// 主机实例ID 列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// EIP名称,模糊匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 状态列表, 默认所有
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -694,7 +694,7 @@ type DescribeEipsRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
-	BindTypes []*int64 `json:"BindTypes,omitempty" name:"BindTypes" list`
+	BindTypes []*int64 `json:"BindTypes,omitempty" name:"BindTypes"`
 
 	// 独占标志，0：共享，1：独占
 	ExclusiveTag *int64 `json:"ExclusiveTag,omitempty" name:"ExclusiveTag"`
@@ -744,7 +744,7 @@ type DescribeEipsResponse struct {
 	Response *struct {
 
 		// 返回EIP信息数组
-		EipSet []*EipInfo `json:"EipSet,omitempty" name:"EipSet" list`
+		EipSet []*EipInfo `json:"EipSet,omitempty" name:"EipSet"`
 
 		// 返回EIP数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -783,10 +783,10 @@ type EipAcl struct {
 	EipNum *int64 `json:"EipNum,omitempty" name:"EipNum"`
 
 	// 出站规则
-	OutRules []*EipAclRule `json:"OutRules,omitempty" name:"OutRules" list`
+	OutRules []*EipAclRule `json:"OutRules,omitempty" name:"OutRules"`
 
 	// 入站规则
-	InRules []*EipAclRule `json:"InRules,omitempty" name:"InRules" list`
+	InRules []*EipAclRule `json:"InRules,omitempty" name:"InRules"`
 }
 
 type EipAclMap struct {
@@ -928,7 +928,7 @@ type ModifyEipAclRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// ACL规则列表
-	Rules []*EipAclRule `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*EipAclRule `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *ModifyEipAclRequest) ToJsonString() string {
@@ -981,7 +981,7 @@ type ModifyEipChargeRequest struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// 带宽设定值（只在带宽计费时生效）
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -1085,7 +1085,7 @@ type UnbindEipAclsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待解关联的 EIP 与 ACL列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *UnbindEipAclsRequest) ToJsonString() string {
@@ -1188,7 +1188,7 @@ type UnbindRsListRequest struct {
 	*tchttp.BaseRequest
 
 	// 物理机绑定的EIP列表
-	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList" list`
+	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList"`
 }
 
 func (r *UnbindRsListRequest) ToJsonString() string {

@@ -24,7 +24,7 @@ import (
 type CodeDetail struct {
 
 	// 二维码在图片中的位置，由边界点的坐标表示
-	CodePosition []*CodePosition `json:"CodePosition,omitempty" name:"CodePosition" list`
+	CodePosition []*CodePosition `json:"CodePosition,omitempty" name:"CodePosition"`
 
 	// 二维码文本的编码格式
 	CodeCharset *string `json:"CodeCharset,omitempty" name:"CodeCharset"`
@@ -39,7 +39,7 @@ type CodeDetail struct {
 type CodeDetect struct {
 
 	// 从图片中检测到的二维码，可能为多个
-	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitempty" name:"ModerationDetail" list`
+	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitempty" name:"ModerationDetail"`
 
 	// 检测是否成功，0：成功，-1：出错
 	ModerationCode *int64 `json:"ModerationCode,omitempty" name:"ModerationCode"`
@@ -73,7 +73,7 @@ type CreateFileSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 文件类型结构数组
-	Contents []*FileSample `json:"Contents,omitempty" name:"Contents" list`
+	Contents []*FileSample `json:"Contents,omitempty" name:"Contents"`
 
 	// 恶意类型
 	// 100：正常
@@ -145,7 +145,7 @@ type CreateTextSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 关键词数组
-	Contents []*string `json:"Contents,omitempty" name:"Contents" list`
+	Contents []*string `json:"Contents,omitempty" name:"Contents"`
 
 	// 恶意类型
 	// 100：正常
@@ -219,7 +219,7 @@ func (r *CreateTextSampleResponse) FromJsonString(s string) error {
 type CustomResult struct {
 
 	// 命中的自定义关键词
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 自定义库id
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
@@ -235,7 +235,7 @@ type DeleteFileSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 唯一标识数组
-	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteFileSampleRequest) ToJsonString() string {
@@ -286,7 +286,7 @@ type DeleteTextSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 唯一标识数组，目前暂时只支持单个删除
-	Ids []*string `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteTextSampleRequest) ToJsonString() string {
@@ -337,7 +337,7 @@ type DescribeFileSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 支持通过标签值进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 数量限制，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -380,7 +380,7 @@ type DescribeFileSampleResponse struct {
 	Response *struct {
 
 		// 符合要求的样本的信息
-		FileSampleSet []*FileSampleInfo `json:"FileSampleSet,omitempty" name:"FileSampleSet" list`
+		FileSampleSet []*FileSampleInfo `json:"FileSampleSet,omitempty" name:"FileSampleSet"`
 
 		// 符合要求的样本的数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -405,7 +405,7 @@ type DescribeTextSampleRequest struct {
 	*tchttp.BaseRequest
 
 	// 支持通过标签值进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 数量限制，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -448,7 +448,7 @@ type DescribeTextSampleResponse struct {
 	Response *struct {
 
 		// 符合要求的样本的信息
-		TextSampleSet []*TextSample `json:"TextSampleSet,omitempty" name:"TextSampleSet" list`
+		TextSampleSet []*TextSample `json:"TextSampleSet,omitempty" name:"TextSampleSet"`
 
 		// 符合要求的样本的数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -485,7 +485,7 @@ type DetailResult struct {
 	EvilType *uint64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 该标签下命中的关键词
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 该标签模型命中的分值
 	Score *uint64 `json:"Score,omitempty" name:"Score"`
@@ -646,10 +646,10 @@ type ImageHotDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 性感标签：性感特征中文描述
-	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
 
 	// 性感分：分值范围 0-100，分数越高性感倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -666,10 +666,10 @@ type ImageIllegalDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 违法标签：返回违法特征中文描述，如赌桌，枪支
-	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
 
 	// 违法分：分值范围 0-100，分数越高违法倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -746,16 +746,16 @@ type ImagePolityDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 命中的logo标签信息
-	PolityLogoDetail []*Logo `json:"PolityLogoDetail,omitempty" name:"PolityLogoDetail" list`
+	PolityLogoDetail []*Logo `json:"PolityLogoDetail,omitempty" name:"PolityLogoDetail"`
 
 	// 命中的人脸名称
-	FaceNames []*string `json:"FaceNames,omitempty" name:"FaceNames" list`
+	FaceNames []*string `json:"FaceNames,omitempty" name:"FaceNames"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的政治物品名称
-	PolityItems []*string `json:"PolityItems,omitempty" name:"PolityItems" list`
+	PolityItems []*string `json:"PolityItems,omitempty" name:"PolityItems"`
 
 	// 政治（人脸）分：分值范围 0-100，分数越高可疑程度越高
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -772,10 +772,10 @@ type ImagePornDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 色情标签：色情特征中文描述
-	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
 
 	// 色情分：分值范围 0-100，分数越高色情倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -792,10 +792,10 @@ type ImageTerrorDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 关键词明细
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 暴恐标签：返回暴恐特征中文描述
-	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
 
 	// 暴恐分：分值范围0--100，分数越高暴恐倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -816,7 +816,7 @@ type Logo struct {
 type LogoDetail struct {
 
 	// 命中的Applogo详情
-	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail" list`
+	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail"`
 }
 
 type ManualReviewContent struct {
@@ -924,7 +924,7 @@ func (r *ManualReviewResponse) FromJsonString(s string) error {
 type OCRDetect struct {
 
 	// 识别到的详细信息
-	Item []*OCRItem `json:"Item,omitempty" name:"Item" list`
+	Item []*OCRItem `json:"Item,omitempty" name:"Item"`
 
 	// 识别到的文本信息
 	TextInfo *string `json:"TextInfo,omitempty" name:"TextInfo"`
@@ -942,7 +942,7 @@ type OCRItem struct {
 	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
 
 	// 文本命中违规的关键词
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 文本涉嫌违规分值
 	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
@@ -962,7 +962,7 @@ type PhoneDetect struct {
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
 	// 特征中文描述
-	Labels []*string `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
 
 	// 分值范围 0-100，分数越高倾向越明显
 	Score *int64 `json:"Score,omitempty" name:"Score"`
@@ -971,7 +971,7 @@ type PhoneDetect struct {
 type RiskDetails struct {
 
 	// 预留字段，暂时不使用
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -1038,10 +1038,10 @@ type TextData struct {
 	Common *TextOutputComm `json:"Common,omitempty" name:"Common"`
 
 	// 返回的自定义词库结果
-	CustomResult []*CustomResult `json:"CustomResult,omitempty" name:"CustomResult" list`
+	CustomResult []*CustomResult `json:"CustomResult,omitempty" name:"CustomResult"`
 
 	// 返回的详细结果
-	DetailResult []*DetailResult `json:"DetailResult,omitempty" name:"DetailResult" list`
+	DetailResult []*DetailResult `json:"DetailResult,omitempty" name:"DetailResult"`
 
 	// 消息类ID信息
 	ID *TextOutputID `json:"ID,omitempty" name:"ID"`
@@ -1050,7 +1050,7 @@ type TextData struct {
 	Res *TextOutputRes `json:"Res,omitempty" name:"Res"`
 
 	// 账号风险检测结果
-	RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails" list`
+	RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
 
 	// 最终使用的BizType
 	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
@@ -1065,7 +1065,7 @@ type TextData struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 命中的关键词
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的模型分值
 	Score *uint64 `json:"Score,omitempty" name:"Score"`

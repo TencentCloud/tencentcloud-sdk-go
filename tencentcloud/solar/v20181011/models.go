@@ -56,7 +56,7 @@ type CheckStaffChUserRequest struct {
 	*tchttp.BaseRequest
 
 	// 员工ID
-	UserId []*string `json:"UserId,omitempty" name:"UserId" list`
+	UserId []*string `json:"UserId,omitempty" name:"UserId"`
 
 	// 渠道状态：checkpass审核通过, checkreject审核拒绝, enableoperate启用, stopoperate停用
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
@@ -112,7 +112,7 @@ type CopyActivityChannelRequest struct {
 	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
 
 	// 目的渠道id
-	ChannelTo []*string `json:"ChannelTo,omitempty" name:"ChannelTo" list`
+	ChannelTo []*string `json:"ChannelTo,omitempty" name:"ChannelTo"`
 }
 
 func (r *CopyActivityChannelRequest) ToJsonString() string {
@@ -434,7 +434,7 @@ type DescribeCustomerResponse struct {
 
 		// 地址列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AddressList []*string `json:"AddressList,omitempty" name:"AddressList" list`
+		AddressList []*string `json:"AddressList,omitempty" name:"AddressList"`
 
 		// 用户id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -462,7 +462,7 @@ type DescribeCustomerResponse struct {
 
 		// 行业
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Industrys []*string `json:"Industrys,omitempty" name:"Industrys" list`
+		Industrys []*string `json:"Industrys,omitempty" name:"Industrys"`
 
 		// 上次登录时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -518,7 +518,7 @@ type DescribeCustomerResponse struct {
 
 		// 关注公众号列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubWechats []*string `json:"SubWechats,omitempty" name:"SubWechats" list`
+		SubWechats []*string `json:"SubWechats,omitempty" name:"SubWechats"`
 
 		// 微信unionid
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -530,7 +530,7 @@ type DescribeCustomerResponse struct {
 
 		// 用户类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserTypes []*string `json:"UserTypes,omitempty" name:"UserTypes" list`
+		UserTypes []*string `json:"UserTypes,omitempty" name:"UserTypes"`
 
 		// 城市
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -647,7 +647,7 @@ type DescribeCustomersResponse struct {
 
 		// 数据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*CustomerInfo `json:"UserList,omitempty" name:"UserList" list`
+		UserList []*CustomerInfo `json:"UserList,omitempty" name:"UserList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -711,7 +711,7 @@ type DescribeProjectResponse struct {
 		ProjectIntroduction *string `json:"ProjectIntroduction,omitempty" name:"ProjectIntroduction"`
 
 		// 子项目列表
-		SubProjectList []*SubProjectInfo `json:"SubProjectList,omitempty" name:"SubProjectList" list`
+		SubProjectList []*SubProjectInfo `json:"SubProjectList,omitempty" name:"SubProjectList"`
 
 		// 项目状态
 		ProjectStatus *string `json:"ProjectStatus,omitempty" name:"ProjectStatus"`
@@ -767,7 +767,7 @@ type DescribeProjectStockResponse struct {
 	Response *struct {
 
 		// 项目库存列表
-		ProjectStocks []*ProjectStock `json:"ProjectStocks,omitempty" name:"ProjectStocks" list`
+		ProjectStocks []*ProjectStock `json:"ProjectStocks,omitempty" name:"ProjectStocks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -832,7 +832,7 @@ type DescribeProjectsResponse struct {
 	Response *struct {
 
 		// 项目列表
-		ProjectList []*ProjectInfo `json:"ProjectList,omitempty" name:"ProjectList" list`
+		ProjectList []*ProjectInfo `json:"ProjectList,omitempty" name:"ProjectList"`
 
 		// 项目数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -888,7 +888,7 @@ type DescribeResourceTemplateHeadersResponse struct {
 
 		// 模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TmplList []*ResourceTemplateHeader `json:"TmplList,omitempty" name:"TmplList" list`
+		TmplList []*ResourceTemplateHeader `json:"TmplList,omitempty" name:"TmplList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1040,10 +1040,10 @@ type Filters struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 指定部门Id, 类型2使用
-	DeptIds []*string `json:"DeptIds,omitempty" name:"DeptIds" list`
+	DeptIds []*string `json:"DeptIds,omitempty" name:"DeptIds"`
 
 	// 用户Id列表
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 type ModifyProjectRequest struct {

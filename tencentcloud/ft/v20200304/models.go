@@ -82,7 +82,7 @@ type ChangeAgePicRequest struct {
 
 	// 人脸变老变年轻信息。 
 	// 您可以输入最多3个 AgeInfo 来实现给一张图中的最多3张人脸变老变年轻。
-	AgeInfos []*AgeInfo `json:"AgeInfos,omitempty" name:"AgeInfos" list`
+	AgeInfos []*AgeInfo `json:"AgeInfos,omitempty" name:"AgeInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -273,7 +273,7 @@ type MorphFaceRequest struct {
 	// 人员人脸总数量至少2张，不可超过5张。 
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
@@ -281,10 +281,10 @@ type MorphFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。 
 	// 人员人脸总数量不可超过5张。 
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
-	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos" list`
+	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos"`
 
 	// 视频帧率，取值[1,25]。默认10
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
@@ -408,7 +408,7 @@ type SwapGenderPicRequest struct {
 
 	// 人脸转化性别信息。 
 	// 您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
-	GenderInfos []*GenderInfo `json:"GenderInfos,omitempty" name:"GenderInfos" list`
+	GenderInfos []*GenderInfo `json:"GenderInfos,omitempty" name:"GenderInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。

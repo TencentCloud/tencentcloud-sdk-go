@@ -82,7 +82,7 @@ type AttachResourcesTagRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -301,7 +301,7 @@ type DescribeResourceTagsByResourceIdsRequest struct {
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 
 	// 资源ID数组，大小不超过50
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 资源所在地域
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
@@ -351,7 +351,7 @@ type DescribeResourceTagsByResourceIdsResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*TagResource `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagResource `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -379,7 +379,7 @@ type DescribeResourceTagsByResourceIdsSeqRequest struct {
 	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 资源所在地域
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
@@ -429,7 +429,7 @@ type DescribeResourceTagsByResourceIdsSeqResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*TagResource `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagResource `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -460,10 +460,10 @@ type DescribeResourceTagsByTagKeysRequest struct {
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 
 	// 资源唯一标识
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 资源标签键
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 每页大小，默认为 400
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -511,7 +511,7 @@ type DescribeResourceTagsByTagKeysResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 资源标签
-		Rows []*ResourceIdTag `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*ResourceIdTag `json:"Rows,omitempty" name:"Rows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -598,7 +598,7 @@ type DescribeResourceTagsResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 资源标签
-		Rows []*TagResource `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*TagResource `json:"Rows,omitempty" name:"Rows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -620,7 +620,7 @@ type DescribeResourcesByTagsRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签过滤数组
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
@@ -685,7 +685,7 @@ type DescribeResourcesByTagsResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 资源标签
-		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -707,7 +707,7 @@ type DescribeResourcesByTagsUnionRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签过滤数组
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 
 	// 创建标签者uin
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
@@ -771,7 +771,7 @@ type DescribeResourcesByTagsUnionResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 资源标签
-		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows" list`
+		Rows []*ResourceTag `json:"Rows,omitempty" name:"Rows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -841,7 +841,7 @@ type DescribeTagKeysResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -863,7 +863,7 @@ type DescribeTagValuesRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签键列表
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
@@ -911,7 +911,7 @@ type DescribeTagValuesResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -933,7 +933,7 @@ type DescribeTagValuesSeqRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签键列表
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
@@ -981,7 +981,7 @@ type DescribeTagValuesSeqResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1018,7 +1018,7 @@ type DescribeTagsRequest struct {
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 是否展现项目标签
 	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
@@ -1063,7 +1063,7 @@ type DescribeTagsResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*TagWithDelete `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagWithDelete `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1100,7 +1100,7 @@ type DescribeTagsSeqRequest struct {
 	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
 
 	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 是否展现项目标签
 	ShowProject *uint64 `json:"ShowProject,omitempty" name:"ShowProject"`
@@ -1145,7 +1145,7 @@ type DescribeTagsSeqResponse struct {
 		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 标签列表
-		Tags []*TagWithDelete `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagWithDelete `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1170,7 +1170,7 @@ type DetachResourcesTagRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 需要解绑的标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -1232,10 +1232,10 @@ type ModifyResourceTagsRequest struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
-	ReplaceTags []*Tag `json:"ReplaceTags,omitempty" name:"ReplaceTags" list`
+	ReplaceTags []*Tag `json:"ReplaceTags,omitempty" name:"ReplaceTags"`
 
 	// 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
-	DeleteTags []*TagKeyObject `json:"DeleteTags,omitempty" name:"DeleteTags" list`
+	DeleteTags []*TagKeyObject `json:"DeleteTags,omitempty" name:"DeleteTags"`
 }
 
 func (r *ModifyResourceTagsRequest) ToJsonString() string {
@@ -1286,7 +1286,7 @@ type ModifyResourcesTagValueRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -1353,7 +1353,7 @@ type ResourceIdTag struct {
 
 	// 标签键值对
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagKeyValues []*Tag `json:"TagKeyValues,omitempty" name:"TagKeyValues" list`
+	TagKeyValues []*Tag `json:"TagKeyValues,omitempty" name:"TagKeyValues"`
 }
 
 type ResourceTag struct {
@@ -1376,7 +1376,7 @@ type ResourceTag struct {
 
 	// 资源标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type Tag struct {
@@ -1394,7 +1394,7 @@ type TagFilter struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值数组 多个值的话是或的关系
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TagKeyObject struct {

@@ -237,7 +237,7 @@ type QueryLoginProtectionResponse struct {
 		Level *int64 `json:"Level,omitempty" name:"Level"`
 
 		// 风险类型。
-		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 
 		// accountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。

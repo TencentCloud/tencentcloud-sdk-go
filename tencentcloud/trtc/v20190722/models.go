@@ -43,7 +43,7 @@ type AbnormalExperience struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
 	// 异常事件数组
-	AbnormalEventList []*AbnormalEvent `json:"AbnormalEventList,omitempty" name:"AbnormalEventList" list`
+	AbnormalEventList []*AbnormalEvent `json:"AbnormalEventList,omitempty" name:"AbnormalEventList"`
 
 	// 异常事件的上报时间
 	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
@@ -300,7 +300,7 @@ type DescribeAbnormalEventResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 异常体验列表
-		AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList" list`
+		AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -334,7 +334,7 @@ type DescribeCallDetailRequest struct {
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
 	// appCpu：APP CPU使用率；
@@ -350,7 +350,7 @@ type DescribeCallDetailRequest struct {
 	// bigvLoss：上/下行视频丢包；
 	// bigvWidth：上/下行分辨率宽；
 	// bigvHeight：上/下行分辨率高
-	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
+	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 
 	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -394,11 +394,11 @@ type DescribeCallDetailResponse struct {
 
 		// 用户信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList" list`
+		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
 
 		// 质量数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*QualityData `json:"Data,omitempty" name:"Data" list`
+		Data []*QualityData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -463,7 +463,7 @@ type DescribeDetailEventResponse struct {
 	Response *struct {
 
 		// 返回的事件列表
-		Data []*EventList `json:"Data,omitempty" name:"Data" list`
+		Data []*EventList `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -524,7 +524,7 @@ type DescribeHistoryScaleResponse struct {
 
 		// 返回的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList" list`
+		ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -588,7 +588,7 @@ type DescribePictureResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 图片信息列表
-		PictureInfo []*PictureInfo `json:"PictureInfo,omitempty" name:"PictureInfo" list`
+		PictureInfo []*PictureInfo `json:"PictureInfo,omitempty" name:"PictureInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -621,7 +621,7 @@ type DescribeRealtimeNetworkRequest struct {
 	// 需查询的数据类型
 	// sendLossRateRaw：上行丢包率
 	// recvLossRateRaw：下行丢包率
-	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
+	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 }
 
 func (r *DescribeRealtimeNetworkRequest) ToJsonString() string {
@@ -651,7 +651,7 @@ type DescribeRealtimeNetworkResponse struct {
 	Response *struct {
 
 		// 查询返回的数据
-		Data []*RealtimeData `json:"Data,omitempty" name:"Data" list`
+		Data []*RealtimeData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -686,7 +686,7 @@ type DescribeRealtimeQualityRequest struct {
 	// fistFreamInSecRate：首帧秒开率
 	// blockPercent：视频卡顿率
 	// audioBlockPercent：音频卡顿率
-	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
+	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 }
 
 func (r *DescribeRealtimeQualityRequest) ToJsonString() string {
@@ -716,7 +716,7 @@ type DescribeRealtimeQualityResponse struct {
 	Response *struct {
 
 		// 返回的数据类型
-		Data []*RealtimeData `json:"Data,omitempty" name:"Data" list`
+		Data []*RealtimeData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -749,7 +749,7 @@ type DescribeRealtimeScaleRequest struct {
 	// 查询的数据类型
 	// UserNum：通话人数；
 	// RoomNum：房间数
-	DataType []*string `json:"DataType,omitempty" name:"DataType" list`
+	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 }
 
 func (r *DescribeRealtimeScaleRequest) ToJsonString() string {
@@ -779,7 +779,7 @@ type DescribeRealtimeScaleResponse struct {
 	Response *struct {
 
 		// 返回的数据数组
-		Data []*RealtimeData `json:"Data,omitempty" name:"Data" list`
+		Data []*RealtimeData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -837,7 +837,7 @@ type DescribeRecordStatisticResponse struct {
 	Response *struct {
 
 		// 应用的用量信息数组。
-		SdkAppIdUsages []*SdkAppIdRecordUsage `json:"SdkAppIdUsages,omitempty" name:"SdkAppIdUsages" list`
+		SdkAppIdUsages []*SdkAppIdRecordUsage `json:"SdkAppIdUsages,omitempty" name:"SdkAppIdUsages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -909,7 +909,7 @@ type DescribeRoomInformationResponse struct {
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 房间信息列表
-		RoomList []*RoomState `json:"RoomList,omitempty" name:"RoomList" list`
+		RoomList []*RoomState `json:"RoomList,omitempty" name:"RoomList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -967,7 +967,7 @@ type DescribeTrtcInteractiveTimeResponse struct {
 	Response *struct {
 
 		// 应用的用量信息数组。
-		Usages []*OneSdkAppIdUsagesInfo `json:"Usages,omitempty" name:"Usages" list`
+		Usages []*OneSdkAppIdUsagesInfo `json:"Usages,omitempty" name:"Usages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1025,7 +1025,7 @@ type DescribeTrtcMcuTranscodeTimeResponse struct {
 	Response *struct {
 
 		// 应用的用量信息数组。
-		Usages []*OneSdkAppIdTranscodeTimeUsagesInfo `json:"Usages,omitempty" name:"Usages" list`
+		Usages []*OneSdkAppIdTranscodeTimeUsagesInfo `json:"Usages,omitempty" name:"Usages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1059,7 +1059,7 @@ type DescribeUserInformationRequest struct {
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -1102,7 +1102,7 @@ type DescribeUserInformationResponse struct {
 
 		// 用户信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList" list`
+		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1266,7 +1266,7 @@ type EncodeParams struct {
 type EventList struct {
 
 	// 数据内容
-	Content []*EventMessage `json:"Content,omitempty" name:"Content" list`
+	Content []*EventMessage `json:"Content,omitempty" name:"Content"`
 
 	// 发送端的userId
 	PeerId *string `json:"PeerId,omitempty" name:"PeerId"`
@@ -1312,10 +1312,10 @@ type LayoutParams struct {
 	MainVideoRightAlign *uint64 `json:"MainVideoRightAlign,omitempty" name:"MainVideoRightAlign"`
 
 	// 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
-	MixVideoUids []*string `json:"MixVideoUids,omitempty" name:"MixVideoUids" list`
+	MixVideoUids []*string `json:"MixVideoUids,omitempty" name:"MixVideoUids"`
 
 	// 自定义模板中有效，指定用户视频在混合画面中的位置。
-	PresetLayoutConfig []*PresetLayoutConfig `json:"PresetLayoutConfig,omitempty" name:"PresetLayoutConfig" list`
+	PresetLayoutConfig []*PresetLayoutConfig `json:"PresetLayoutConfig,omitempty" name:"PresetLayoutConfig"`
 
 	// 自定义模板中有效，设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
 	PlaceHolderMode *uint64 `json:"PlaceHolderMode,omitempty" name:"PlaceHolderMode"`
@@ -1396,7 +1396,7 @@ func (r *ModifyPictureResponse) FromJsonString(s string) error {
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 
 	// 旁路转码时长查询结果数组
-	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages" list`
+	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages"`
 
 	// 查询记录数量
 	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -1411,7 +1411,7 @@ type OneSdkAppIdUsagesInfo struct {
 	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 	// 用量数组
-	SdkAppIdTrtcTimeUsages []*SdkAppIdTrtcUsage `json:"SdkAppIdTrtcTimeUsages,omitempty" name:"SdkAppIdTrtcTimeUsages" list`
+	SdkAppIdTrtcTimeUsages []*SdkAppIdTrtcUsage `json:"SdkAppIdTrtcTimeUsages,omitempty" name:"SdkAppIdTrtcTimeUsages"`
 
 	// 应用ID
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1492,13 +1492,13 @@ type PublishCdnParams struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 第三方CDN转推的目的地址，同时只支持转推一个第三方CDN地址。
-	PublishCdnUrls []*string `json:"PublishCdnUrls,omitempty" name:"PublishCdnUrls" list`
+	PublishCdnUrls []*string `json:"PublishCdnUrls,omitempty" name:"PublishCdnUrls"`
 }
 
 type QualityData struct {
 
 	// 数据内容
-	Content []*TimeValue `json:"Content,omitempty" name:"Content" list`
+	Content []*TimeValue `json:"Content,omitempty" name:"Content"`
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -1515,7 +1515,7 @@ type RealtimeData struct {
 
 	// 返回的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*TimeValue `json:"Content,omitempty" name:"Content" list`
+	Content []*TimeValue `json:"Content,omitempty" name:"Content"`
 
 	// 数据类型字段
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
@@ -1549,7 +1549,7 @@ type RemoveUserByStrRoomIdRequest struct {
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
 	// 要移出的用户列表，最多10个。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 func (r *RemoveUserByStrRoomIdRequest) ToJsonString() string {
@@ -1603,7 +1603,7 @@ type RemoveUserRequest struct {
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 
 	// 要移出的用户列表，最多10个。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds" list`
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 func (r *RemoveUserRequest) ToJsonString() string {
@@ -1692,7 +1692,7 @@ type SdkAppIdRecordUsage struct {
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 统计的时间点数据。
-	Usages []*RecordUsage `json:"Usages,omitempty" name:"Usages" list`
+	Usages []*RecordUsage `json:"Usages,omitempty" name:"Usages"`
 }
 
 type SdkAppIdTrtcMcuTranscodeTimeUsage struct {

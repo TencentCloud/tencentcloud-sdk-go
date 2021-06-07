@@ -25,7 +25,7 @@ type CreateMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -91,7 +91,7 @@ type CreateSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 访问网站的客户端标识
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
@@ -125,7 +125,7 @@ type CreateSitesResponse struct {
 		Number *uint64 `json:"Number,omitempty" name:"Number"`
 
 		// 站点数组
-		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -147,7 +147,7 @@ type CreateSitesScansRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
 	ScannerType *string `json:"ScannerType,omitempty" name:"ScannerType"`
@@ -201,7 +201,7 @@ type CreateVulsMisinformationRequest struct {
 	*tchttp.BaseRequest
 
 	// 漏洞ID列表
-	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds" list`
+	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds"`
 }
 
 func (r *CreateVulsMisinformationRequest) ToJsonString() string {
@@ -300,7 +300,7 @@ type DeleteMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds" list`
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 }
 
 func (r *DeleteMonitorsRequest) ToJsonString() string {
@@ -346,7 +346,7 @@ type DeleteSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 }
 
 func (r *DeleteSitesRequest) ToJsonString() string {
@@ -452,10 +452,10 @@ type DescribeMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds" list`
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -491,7 +491,7 @@ type DescribeMonitorsResponse struct {
 	Response *struct {
 
 		// 监控任务列表。
-		Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors" list`
+		Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors"`
 
 		// 监控任务数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -567,10 +567,10 @@ type DescribeSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -609,7 +609,7 @@ type DescribeSitesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 站点信息列表。
-		Sites []*Site `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*Site `json:"Sites,omitempty" name:"Sites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -631,7 +631,7 @@ type DescribeSitesVerificationRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *DescribeSitesVerificationRequest) ToJsonString() string {
@@ -661,7 +661,7 @@ type DescribeSitesVerificationResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 验证信息列表。
-		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification" list`
+		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -727,10 +727,10 @@ type DescribeVulsNumberResponse struct {
 		PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
 
 		// 已验证的网站列表。
-		Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
 
 		// 受影响的网站列表。
-		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites" list`
+		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -778,7 +778,7 @@ type DescribeVulsNumberTimelineResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 用户漏洞数随时间变化统计数据。
-		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline" list`
+		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -806,7 +806,7 @@ type DescribeVulsRequest struct {
 	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -846,7 +846,7 @@ type DescribeVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 漏洞信息列表。
-		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls" list`
+		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -870,7 +870,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type MiniSite struct {
@@ -935,7 +935,7 @@ type ModifyMonitorAttributeRequest struct {
 	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -1135,13 +1135,13 @@ type MonitorsDetail struct {
 	Basic *Monitor `json:"Basic,omitempty" name:"Basic"`
 
 	// 监控任务包含的站点列表。
-	Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites" list`
+	Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
 
 	// 监控任务包含的站点列表数量。
 	SiteNumber *uint64 `json:"SiteNumber,omitempty" name:"SiteNumber"`
 
 	// 监控任务包含的受漏洞威胁的站点列表。
-	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites" list`
+	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
 
 	// 监控任务包含的受漏洞威胁的站点列表数量。
 	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitempty" name:"ImpactSiteNumber"`
@@ -1313,7 +1313,7 @@ type VerifySitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *VerifySitesRequest) ToJsonString() string {

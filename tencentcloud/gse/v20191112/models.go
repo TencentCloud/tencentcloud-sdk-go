@@ -47,7 +47,7 @@ type Alias struct {
 
 	// 标签列表，最大长度50组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type Asset struct {
@@ -93,7 +93,7 @@ type Asset struct {
 
 	// 标签列表，最大长度50组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AssetCredentials struct {
@@ -225,7 +225,7 @@ type CopyFleetRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 网络配置
-	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
 
 	// 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
@@ -255,19 +255,19 @@ type CopyFleetRequest struct {
 	SelectedCcnType *string `json:"SelectedCcnType,omitempty" name:"SelectedCcnType"`
 
 	// 标签列表，最大长度50组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
 
 	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
-	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
 
 	// 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
 	SelectedTimerType *string `json:"SelectedTimerType,omitempty" name:"SelectedTimerType"`
 
 	// 云联网信息，包含对应的账号信息及所属id
-	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos"`
 
 	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
@@ -317,7 +317,7 @@ type CopyFleetResponse struct {
 
 		// 服务器舰队属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes" list`
+		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes"`
 
 		// 服务器舰队数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -351,7 +351,7 @@ type CreateAliasRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 标签列表，最大长度50组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateAliasRequest) ToJsonString() string {
@@ -421,7 +421,7 @@ type CreateAssetRequest struct {
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 标签列表，最大长度50组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateAssetRequest) ToJsonString() string {
@@ -569,7 +569,7 @@ type CreateFleetRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 网络配置
-	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
 
 	// 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
@@ -599,16 +599,16 @@ type CreateFleetRequest struct {
 	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
 
 	// 标签列表，最大长度50组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
 
 	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
-	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
 
 	// 云联网信息，包含对应的账号信息及所属id
-	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos" list`
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos"`
 
 	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
@@ -680,16 +680,16 @@ type CreateGameServerSessionQueueRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 目的服务器舰队（可为别名）列表
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间（单位秒，默认值为600秒）
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
 
 	// 标签列表，最大长度50组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateGameServerSessionQueueRequest) ToJsonString() string {
@@ -754,7 +754,7 @@ type CreateGameServerSessionRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 游戏属性，最大长度不超过16组
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
 	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
@@ -1251,7 +1251,7 @@ type DescribeAssetSystemsResponse struct {
 	Response *struct {
 
 		// 生成包支持的操作系统类型列表
-		AssetSupportSys []*AssetSupportSys `json:"AssetSupportSys,omitempty" name:"AssetSupportSys" list`
+		AssetSupportSys []*AssetSupportSys `json:"AssetSupportSys,omitempty" name:"AssetSupportSys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1285,7 +1285,7 @@ type DescribeAssetsRequest struct {
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAssetsRequest) ToJsonString() string {
@@ -1319,7 +1319,7 @@ type DescribeAssetsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 生成包列表
-		Assets []*Asset `json:"Assets,omitempty" name:"Assets" list`
+		Assets []*Asset `json:"Assets,omitempty" name:"Assets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1369,7 +1369,7 @@ type DescribeCcnInstancesResponse struct {
 
 		// 云联网实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CcnInstanceSets []*CcnInstanceSets `json:"CcnInstanceSets,omitempty" name:"CcnInstanceSets" list`
+		CcnInstanceSets []*CcnInstanceSets `json:"CcnInstanceSets,omitempty" name:"CcnInstanceSets"`
 
 		// 云联网实例个数，最小值为0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1394,7 +1394,7 @@ type DescribeFleetAttributesRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队 Ids
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 	// 结果返回最大数量，默认值20，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -1430,7 +1430,7 @@ type DescribeFleetAttributesResponse struct {
 
 		// 服务器舰队属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes" list`
+		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes"`
 
 		// 服务器舰队总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1455,7 +1455,7 @@ type DescribeFleetCapacityRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队ID列表
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 	// 结果返回最大数量，最大值 100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -1491,7 +1491,7 @@ type DescribeFleetCapacityResponse struct {
 
 		// 服务器舰队的容量配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetCapacity []*FleetCapacity `json:"FleetCapacity,omitempty" name:"FleetCapacity" list`
+		FleetCapacity []*FleetCapacity `json:"FleetCapacity,omitempty" name:"FleetCapacity"`
 
 		// 结果返回最大数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1564,7 +1564,7 @@ type DescribeFleetEventsResponse struct {
 	Response *struct {
 
 		// 返回的事件列表
-		Events []*Event `json:"Events,omitempty" name:"Events" list`
+		Events []*Event `json:"Events,omitempty" name:"Events"`
 
 		// 返回的事件总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1617,7 +1617,7 @@ type DescribeFleetPortSettingsResponse struct {
 
 		// 安全组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+		InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1667,7 +1667,7 @@ type DescribeFleetRelatedResourcesResponse struct {
 
 		// 与服务器舰队关联的资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Resources []*FleetRelatedResource `json:"Resources,omitempty" name:"Resources" list`
+		Resources []*FleetRelatedResource `json:"Resources,omitempty" name:"Resources"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1733,7 +1733,7 @@ type DescribeFleetStatisticDetailsResponse struct {
 
 		// 服务部署统计详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailList []*FleetStatisticDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*FleetStatisticDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1807,11 +1807,11 @@ type DescribeFleetStatisticFlowsResponse struct {
 
 		// 流量统计列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UsedFlowList []*FleetStatisticFlows `json:"UsedFlowList,omitempty" name:"UsedFlowList" list`
+		UsedFlowList []*FleetStatisticFlows `json:"UsedFlowList,omitempty" name:"UsedFlowList"`
 
 		// 时长统计列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UsedTimeList []*FleetStatisticTimes `json:"UsedTimeList,omitempty" name:"UsedTimeList" list`
+		UsedTimeList []*FleetStatisticTimes `json:"UsedTimeList,omitempty" name:"UsedTimeList"`
 
 		// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1903,7 +1903,7 @@ type DescribeFleetUtilizationRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队 Ids
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 }
 
 func (r *DescribeFleetUtilizationRequest) ToJsonString() string {
@@ -1931,7 +1931,7 @@ type DescribeFleetUtilizationResponse struct {
 
 		// 服务器舰队利用率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetUtilization []*FleetUtilization `json:"FleetUtilization,omitempty" name:"FleetUtilization" list`
+		FleetUtilization []*FleetUtilization `json:"FleetUtilization,omitempty" name:"FleetUtilization"`
 
 		// 总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2004,7 +2004,7 @@ type DescribeGameServerSessionDetailsResponse struct {
 
 		// 游戏服务器会话详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessionDetails []*GameServerSessionDetail `json:"GameServerSessionDetails,omitempty" name:"GameServerSessionDetails" list`
+		GameServerSessionDetails []*GameServerSessionDetail `json:"GameServerSessionDetails,omitempty" name:"GameServerSessionDetails"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2079,7 +2079,7 @@ type DescribeGameServerSessionQueuesRequest struct {
 	*tchttp.BaseRequest
 
 	// 游戏服务器会话队列名称数组，单个名字长度1~128
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 结果返回最大数量，最小值0，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2088,7 +2088,7 @@ type DescribeGameServerSessionQueuesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeGameServerSessionQueuesRequest) ToJsonString() string {
@@ -2119,7 +2119,7 @@ type DescribeGameServerSessionQueuesResponse struct {
 
 		// 游戏服务器会话队列数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessionQueues []*GameServerSessionQueue `json:"GameServerSessionQueues,omitempty" name:"GameServerSessionQueues" list`
+		GameServerSessionQueues []*GameServerSessionQueue `json:"GameServerSessionQueues,omitempty" name:"GameServerSessionQueues"`
 
 		// 游戏服务器会话队列总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2192,7 +2192,7 @@ type DescribeGameServerSessionsResponse struct {
 
 		// 游戏服务器会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
+		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2244,7 +2244,7 @@ type DescribeInstanceLimitResponse struct {
 		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 详细信息
-		ExtraInfos []*ExtraInfos `json:"ExtraInfos,omitempty" name:"ExtraInfos" list`
+		ExtraInfos []*ExtraInfos `json:"ExtraInfos,omitempty" name:"ExtraInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2289,7 +2289,7 @@ type DescribeInstanceTypesResponse struct {
 	Response *struct {
 
 		// 服务器实例类型列表
-		InstanceTypeList []*InstanceTypeInfo `json:"InstanceTypeList,omitempty" name:"InstanceTypeList" list`
+		InstanceTypeList []*InstanceTypeInfo `json:"InstanceTypeList,omitempty" name:"InstanceTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2351,7 +2351,7 @@ type DescribeInstancesExtendResponse struct {
 
 		// 实例信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Instances []*InstanceExtend `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*InstanceExtend `json:"Instances,omitempty" name:"Instances"`
 
 		// 梳理信息总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2421,7 +2421,7 @@ type DescribeInstancesResponse struct {
 
 		// 实例信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*Instance `json:"Instances,omitempty" name:"Instances"`
 
 		// 结果返回最大数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2495,7 +2495,7 @@ type DescribePlayerSessionsResponse struct {
 
 		// 玩家会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions" list`
+		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2611,7 +2611,7 @@ type DescribeScalingPoliciesResponse struct {
 
 		// 动态扩缩容配置策略数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" name:"ScalingPolicies" list`
+		ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" name:"ScalingPolicies"`
 
 		// 动态扩缩容配置策略总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2685,7 +2685,7 @@ type DescribeTimerScalingPoliciesResponse struct {
 
 		// 定时器扩缩容策略配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TimerScalingPolicies []*TimerScalingPolicy `json:"TimerScalingPolicies,omitempty" name:"TimerScalingPolicies" list`
+		TimerScalingPolicies []*TimerScalingPolicy `json:"TimerScalingPolicies,omitempty" name:"TimerScalingPolicies"`
 
 		// 定时器总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2785,7 +2785,7 @@ type DescribeUserQuotasResponse struct {
 
 		// 配额信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		QuotaResource []*QuotaResource `json:"QuotaResource,omitempty" name:"QuotaResource" list`
+		QuotaResource []*QuotaResource `json:"QuotaResource,omitempty" name:"QuotaResource"`
 
 		// 配额信息列表总数，最小值0
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2986,7 +2986,7 @@ type Filter struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 过滤属性的 values 值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FleetAttributes struct {
@@ -3038,7 +3038,7 @@ type FleetAttributes struct {
 
 	// 服务器舰队停止状态，为空时表示自动扩缩容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StoppedActions []*string `json:"StoppedActions,omitempty" name:"StoppedActions" list`
+	StoppedActions []*string `json:"StoppedActions,omitempty" name:"StoppedActions"`
 
 	// 服务器舰队终止时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3054,11 +3054,11 @@ type FleetAttributes struct {
 
 	// 标签列表，最大长度50组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo" list`
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
 
 	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3066,7 +3066,7 @@ type FleetAttributes struct {
 
 	// 云联网相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelatedCcnInfos []*RelatedCcnInfo `json:"RelatedCcnInfos,omitempty" name:"RelatedCcnInfos" list`
+	RelatedCcnInfos []*RelatedCcnInfo `json:"RelatedCcnInfos,omitempty" name:"RelatedCcnInfos"`
 
 	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3215,7 +3215,7 @@ type GameServerSession struct {
 
 	// 游戏属性，最大长度不超过16组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3297,7 +3297,7 @@ type GameServerSessionPlacement struct {
 
 	// 玩家延迟
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
+	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies"`
 
 	// 服务部署状态
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -3320,7 +3320,7 @@ type GameServerSessionPlacement struct {
 
 	// 游戏属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
 	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
@@ -3343,7 +3343,7 @@ type GameServerSessionPlacement struct {
 
 	// 部署的玩家游戏数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlacedPlayerSessions []*PlacedPlayerSession `json:"PlacedPlayerSessions,omitempty" name:"PlacedPlayerSessions" list`
+	PlacedPlayerSessions []*PlacedPlayerSession `json:"PlacedPlayerSessions,omitempty" name:"PlacedPlayerSessions"`
 
 	// 开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -3363,18 +3363,18 @@ type GameServerSessionQueue struct {
 
 	// 目的fleet（可为别名）列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
 
 	// 标签列表，最大长度50组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type GameServerSessionQueueDestination struct {
@@ -3436,7 +3436,7 @@ type GetGameServerInstanceLogUrlResponse struct {
 
 		// 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PresignedUrls []*string `json:"PresignedUrls,omitempty" name:"PresignedUrls" list`
+		PresignedUrls []*string `json:"PresignedUrls,omitempty" name:"PresignedUrls"`
 
 		// 总条数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -3871,7 +3871,7 @@ type JoinGameServerSessionBatchRequest struct {
 	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
 
 	// 玩家ID列表，最小1组，最大25组
-	PlayerIds []*string `json:"PlayerIds,omitempty" name:"PlayerIds" list`
+	PlayerIds []*string `json:"PlayerIds,omitempty" name:"PlayerIds"`
 
 	// 玩家自定义数据
 	PlayerDataMap *PlayerDataMap `json:"PlayerDataMap,omitempty" name:"PlayerDataMap"`
@@ -3904,7 +3904,7 @@ type JoinGameServerSessionBatchResponse struct {
 
 		// 玩家会话列表，最大25组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions" list`
+		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4002,7 +4002,7 @@ type ListAliasesRequest struct {
 	OrderWay *string `json:"OrderWay,omitempty" name:"OrderWay"`
 
 	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListAliasesRequest) ToJsonString() string {
@@ -4036,7 +4036,7 @@ type ListAliasesResponse struct {
 
 		// 别名对象数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases" list`
+		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases"`
 
 		// 总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4070,7 +4070,7 @@ type ListFleetsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListFleetsRequest) ToJsonString() string {
@@ -4101,7 +4101,7 @@ type ListFleetsResponse struct {
 
 		// 服务器舰队 Id 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+		FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 		// 服务器舰队 Id 总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4453,7 +4453,7 @@ type RuntimeConfiguration struct {
 	MaxConcurrentGameServerSessionActivations *uint64 `json:"MaxConcurrentGameServerSessionActivations,omitempty" name:"MaxConcurrentGameServerSessionActivations"`
 
 	// 服务进程配置，至少有一个进程配置
-	ServerProcesses []*ServerProcesse `json:"ServerProcesses,omitempty" name:"ServerProcesses" list`
+	ServerProcesses []*ServerProcesse `json:"ServerProcesses,omitempty" name:"ServerProcesses"`
 }
 
 type ScalingPolicy struct {
@@ -4597,7 +4597,7 @@ type SearchGameServerSessionsResponse struct {
 
 		// 游戏服务器会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
+		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4746,7 +4746,7 @@ type StartFleetActionsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 服务器舰队扩展策略，值为["AUTO_SCALING"]
-	Actions []*string `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*string `json:"Actions,omitempty" name:"Actions"`
 }
 
 func (r *StartFleetActionsRequest) ToJsonString() string {
@@ -4806,10 +4806,10 @@ type StartGameServerSessionPlacementRequest struct {
 	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
 
 	// 玩家游戏会话信息
-	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions" list`
+	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions"`
 
 	// 玩家游戏会话属性
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话数据，最大长度不超过4096个ASCII字符
 	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
@@ -4818,7 +4818,7 @@ type StartGameServerSessionPlacementRequest struct {
 	GameServerSessionName *string `json:"GameServerSessionName,omitempty" name:"GameServerSessionName"`
 
 	// 玩家延迟
-	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
+	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies"`
 }
 
 func (r *StartGameServerSessionPlacementRequest) ToJsonString() string {
@@ -4877,7 +4877,7 @@ type StopFleetActionsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 服务器舰队扩展策略，值为["AUTO_SCALING"]
-	Actions []*string `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*string `json:"Actions,omitempty" name:"Actions"`
 }
 
 func (r *StopFleetActionsRequest) ToJsonString() string {
@@ -5078,7 +5078,7 @@ type TimerValue struct {
 
 	// 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WeekDays []*int64 `json:"WeekDays,omitempty" name:"WeekDays" list`
+	WeekDays []*int64 `json:"WeekDays,omitempty" name:"WeekDays"`
 }
 
 type UpdateAliasRequest struct {
@@ -5247,19 +5247,19 @@ type UpdateBucketCORSOptRequest struct {
 	*tchttp.BaseRequest
 
 	// 允许的访问来源;具体参见 [cos文档](https://cloud.tencent.com/document/product/436/8279)
-	AllowedOrigins []*string `json:"AllowedOrigins,omitempty" name:"AllowedOrigins" list`
+	AllowedOrigins []*string `json:"AllowedOrigins,omitempty" name:"AllowedOrigins"`
 
 	// 允许的 HTTP 操作方法;可以配置多个:PUT、GET、POST、HEAD。[cos文档](https://cloud.tencent.com/document/product/436/8279)
-	AllowedMethods []*string `json:"AllowedMethods,omitempty" name:"AllowedMethods" list`
+	AllowedMethods []*string `json:"AllowedMethods,omitempty" name:"AllowedMethods"`
 
 	// 用于指定允许浏览器发送 CORS 请求时携带的自定义 HTTP 请求头部;可以配置*，代表允许所有头部，为了避免遗漏，推荐配置为*。[cos文档](https://cloud.tencent.com/document/product/436/8279)
-	AllowedHeaders []*string `json:"AllowedHeaders,omitempty" name:"AllowedHeaders" list`
+	AllowedHeaders []*string `json:"AllowedHeaders,omitempty" name:"AllowedHeaders"`
 
 	// 跨域资源共享配置的有效时间，单位为秒。[cos文档](https://cloud.tencent.com/document/product/436/8279)
 	MaxAgeSeconds *int64 `json:"MaxAgeSeconds,omitempty" name:"MaxAgeSeconds"`
 
 	// 允许浏览器获取的 CORS 请求响应中的头部，不区分大小写；默认情况下浏览器只能访问简单响应头部：Cache-Control、Content-Type、Expires、Last-Modified，如果需要访问其他响应头部，需要添加 ExposeHeader 配置。[cos文档](https://cloud.tencent.com/document/product/436/8279)
-	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" name:"ExposeHeaders" list`
+	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" name:"ExposeHeaders"`
 }
 
 func (r *UpdateBucketCORSOptRequest) ToJsonString() string {
@@ -5498,10 +5498,10 @@ type UpdateFleetPortSettingsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 新增安全组
-	InboundPermissionAuthorizations []*InboundPermissionAuthorization `json:"InboundPermissionAuthorizations,omitempty" name:"InboundPermissionAuthorizations" list`
+	InboundPermissionAuthorizations []*InboundPermissionAuthorization `json:"InboundPermissionAuthorizations,omitempty" name:"InboundPermissionAuthorizations"`
 
 	// 移除安全组
-	InboundPermissionRevocations []*InboundPermissionRevocations `json:"InboundPermissionRevocations,omitempty" name:"InboundPermissionRevocations" list`
+	InboundPermissionRevocations []*InboundPermissionRevocations `json:"InboundPermissionRevocations,omitempty" name:"InboundPermissionRevocations"`
 }
 
 func (r *UpdateFleetPortSettingsRequest) ToJsonString() string {
@@ -5556,10 +5556,10 @@ type UpdateGameServerSessionQueueRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 目的服务器舰队（可为别名）列表
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`

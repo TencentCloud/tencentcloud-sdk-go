@@ -139,7 +139,7 @@ type ClassificationTaskResult struct {
 
 	// 视频分类识别结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*ClassificationTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*ClassificationTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type ClassificationTaskResultItem struct {
@@ -225,7 +225,7 @@ type CoverTaskResult struct {
 
 	// 智能封面结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*CoverTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*CoverTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type CoverTaskResultItem struct {
@@ -305,13 +305,13 @@ type CreateMediaProcessTaskRequest struct {
 	MediaProcessInfo *MediaProcessInfo `json:"MediaProcessInfo,omitempty" name:"MediaProcessInfo"`
 
 	// 编辑处理任务输入源列表。
-	SourceInfoSet []*MediaSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet" list`
+	SourceInfoSet []*MediaSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet"`
 
 	// 结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
-	SaveInfoSet []*SaveInfo `json:"SaveInfoSet,omitempty" name:"SaveInfoSet" list`
+	SaveInfoSet []*SaveInfo `json:"SaveInfoSet,omitempty" name:"SaveInfoSet"`
 
 	// 任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
-	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet" list`
+	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet"`
 }
 
 func (r *CreateMediaProcessTaskRequest) ToJsonString() string {
@@ -367,7 +367,7 @@ type CreateMediaQualityRestorationTaskRequest struct {
 	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
 
 	// 画质重生任务参数信息。
-	TransInfo []*SubTaskTranscodeInfo `json:"TransInfo,omitempty" name:"TransInfo" list`
+	TransInfo []*SubTaskTranscodeInfo `json:"TransInfo,omitempty" name:"TransInfo"`
 
 	// 任务结束后文件存储信息。
 	SaveInfo *SaveInfo `json:"SaveInfo,omitempty" name:"SaveInfo"`
@@ -822,12 +822,12 @@ type FileInfo struct {
 	// 任务结束后生成的文件视频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoInfoResult []*VideoInfoResultItem `json:"VideoInfoResult,omitempty" name:"VideoInfoResult" list`
+	VideoInfoResult []*VideoInfoResultItem `json:"VideoInfoResult,omitempty" name:"VideoInfoResult"`
 
 	// 任务结束后生成的文件音频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult" list`
+	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult"`
 }
 
 type FrameTagItem struct {
@@ -842,7 +842,7 @@ type FrameTagItem struct {
 	Period *string `json:"Period,omitempty" name:"Period"`
 
 	// 标签数组
-	TagItems []*TagItem `json:"TagItems,omitempty" name:"TagItems" list`
+	TagItems []*TagItem `json:"TagItems,omitempty" name:"TagItems"`
 }
 
 type FrameTagRec struct {
@@ -865,7 +865,7 @@ type FrameTagRec struct {
 type FrameTagResult struct {
 
 	// 帧标签结果数组
-	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems" list`
+	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems"`
 }
 
 type HiddenMarkInfo struct {
@@ -907,7 +907,7 @@ type HighlightsTaskResult struct {
 
 	// 智能集锦结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*HighlightsTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*HighlightsTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type HighlightsTaskResultItem struct {
@@ -925,7 +925,7 @@ type HighlightsTaskResultItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 智能集锦子片段结果集，集锦片段由这些子片段拼接生成。
-	SegmentSet []*HighlightsTaskResultItemSegment `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*HighlightsTaskResultItemSegment `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type HighlightsTaskResultItemSegment struct {
@@ -1041,13 +1041,13 @@ type MediaCuttingTimeInfo struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 截取时间点集合，单位毫秒，Type=PointSet时必选。
-	PointSet []*int64 `json:"PointSet,omitempty" name:"PointSet" list`
+	PointSet []*int64 `json:"PointSet,omitempty" name:"PointSet"`
 
 	// 周期采样点信息，Type=IntervalPoint时必选。
 	IntervalPoint *IntervalTime `json:"IntervalPoint,omitempty" name:"IntervalPoint"`
 
 	// 时间区间集合信息，Type=SectionSet时必选。
-	SectionSet []*SectionTime `json:"SectionSet,omitempty" name:"SectionSet" list`
+	SectionSet []*SectionTime `json:"SectionSet,omitempty" name:"SectionSet"`
 }
 
 type MediaJoiningInfo struct {
@@ -1136,7 +1136,7 @@ type MediaQualityRestorationTaskResult struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 画质重生处理后文件的详细信息。
-	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult" list`
+	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult"`
 }
 
 type MediaRecognitionInfo struct {
@@ -1167,11 +1167,11 @@ type MediaResultInfo struct {
 
 	// 视频流信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultVideoInfoSet []*ResultVideoInfo `json:"ResultVideoInfoSet,omitempty" name:"ResultVideoInfoSet" list`
+	ResultVideoInfoSet []*ResultVideoInfo `json:"ResultVideoInfoSet,omitempty" name:"ResultVideoInfoSet"`
 
 	// 音频流信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultAudioInfoSet []*ResultAudioInfo `json:"ResultAudioInfoSet,omitempty" name:"ResultAudioInfoSet" list`
+	ResultAudioInfoSet []*ResultAudioInfo `json:"ResultAudioInfoSet,omitempty" name:"ResultAudioInfoSet"`
 }
 
 type MediaSourceInfo struct {
@@ -1363,43 +1363,43 @@ type QualityControlInfoTaskResult struct {
 
 	// 视频画面无参考评分低于阈值的时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QualityEvaluationResults []*QualityControlResultItems `json:"QualityEvaluationResults,omitempty" name:"QualityEvaluationResults" list`
+	QualityEvaluationResults []*QualityControlResultItems `json:"QualityEvaluationResults,omitempty" name:"QualityEvaluationResults"`
 
 	// 视频画面抖动时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JitterResults []*QualityControlResultItems `json:"JitterResults,omitempty" name:"JitterResults" list`
+	JitterResults []*QualityControlResultItems `json:"JitterResults,omitempty" name:"JitterResults"`
 
 	// 视频画面模糊时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlurResults []*QualityControlResultItems `json:"BlurResults,omitempty" name:"BlurResults" list`
+	BlurResults []*QualityControlResultItems `json:"BlurResults,omitempty" name:"BlurResults"`
 
 	// 视频画面低光、过曝时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AbnormalLightingResults []*QualityControlResultItems `json:"AbnormalLightingResults,omitempty" name:"AbnormalLightingResults" list`
+	AbnormalLightingResults []*QualityControlResultItems `json:"AbnormalLightingResults,omitempty" name:"AbnormalLightingResults"`
 
 	// 视频画面花屏时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CrashScreenResults []*QualityControlResultItems `json:"CrashScreenResults,omitempty" name:"CrashScreenResults" list`
+	CrashScreenResults []*QualityControlResultItems `json:"CrashScreenResults,omitempty" name:"CrashScreenResults"`
 
 	// 视频画面黑边、白边、黑屏、白屏、纯色屏时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlackWhiteEdgeResults []*QualityControlResultItems `json:"BlackWhiteEdgeResults,omitempty" name:"BlackWhiteEdgeResults" list`
+	BlackWhiteEdgeResults []*QualityControlResultItems `json:"BlackWhiteEdgeResults,omitempty" name:"BlackWhiteEdgeResults"`
 
 	// 视频画面有噪点时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoiseResults []*QualityControlResultItems `json:"NoiseResults,omitempty" name:"NoiseResults" list`
+	NoiseResults []*QualityControlResultItems `json:"NoiseResults,omitempty" name:"NoiseResults"`
 
 	// 视频画面有马赛克时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MosaicResults []*QualityControlResultItems `json:"MosaicResults,omitempty" name:"MosaicResults" list`
+	MosaicResults []*QualityControlResultItems `json:"MosaicResults,omitempty" name:"MosaicResults"`
 
 	// 视频画面有二维码的时间段，包括小程序码、条形码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QRCodeResults []*QualityControlResultItems `json:"QRCodeResults,omitempty" name:"QRCodeResults" list`
+	QRCodeResults []*QualityControlResultItems `json:"QRCodeResults,omitempty" name:"QRCodeResults"`
 
 	// 视频音频异常时间段，包括静音、低音、爆音
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VoiceResults []*QualityControlResultItems `json:"VoiceResults,omitempty" name:"VoiceResults" list`
+	VoiceResults []*QualityControlResultItems `json:"VoiceResults,omitempty" name:"VoiceResults"`
 
 	// 任务错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1424,7 +1424,7 @@ type QualityControlItem struct {
 
 	// 区域坐标(px)，即左上角坐标、右下角坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AreaCoordsSet []*uint64 `json:"AreaCoordsSet,omitempty" name:"AreaCoordsSet" list`
+	AreaCoordsSet []*uint64 `json:"AreaCoordsSet,omitempty" name:"AreaCoordsSet"`
 }
 
 type QualityControlResultItems struct {
@@ -1434,7 +1434,7 @@ type QualityControlResultItems struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 质检结果项
-	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems" list`
+	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems"`
 }
 
 type RemoveReverb struct {
@@ -1644,7 +1644,7 @@ type StripTaskResult struct {
 
 	// 智能拆条结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*StripTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*StripTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type StripTaskResultItem struct {
@@ -1772,7 +1772,7 @@ type SubtitleRec struct {
 type SubtitleResult struct {
 
 	// 语音字幕数组
-	SubtitleItems []*SubtitleItem `json:"SubtitleItems,omitempty" name:"SubtitleItems" list`
+	SubtitleItems []*SubtitleItem `json:"SubtitleItems,omitempty" name:"SubtitleItems"`
 }
 
 type TagEditingInfo struct {
@@ -1794,7 +1794,7 @@ type TagItem struct {
 
 	// 分级数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Categorys []*string `json:"Categorys,omitempty" name:"Categorys" list`
+	Categorys []*string `json:"Categorys,omitempty" name:"Categorys"`
 
 	// 标签备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1816,7 +1816,7 @@ type TagTaskResult struct {
 
 	// 视频标签识别结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*TagTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*TagTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type TagTaskResultItem struct {
@@ -1966,7 +1966,7 @@ type VideoInfo struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" name:"VideoCodec"`
 
 	// 图片水印。
-	PicMarkInfo []*PicMarkInfoItem `json:"PicMarkInfo,omitempty" name:"PicMarkInfo" list`
+	PicMarkInfo []*PicMarkInfoItem `json:"PicMarkInfo,omitempty" name:"PicMarkInfo"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。
 	DarInfo *DarInfo `json:"DarInfo,omitempty" name:"DarInfo"`

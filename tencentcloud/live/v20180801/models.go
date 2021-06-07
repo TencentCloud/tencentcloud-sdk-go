@@ -249,7 +249,7 @@ type BillAreaInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 国家明细数据
-	Countrys []*BillCountryInfo `json:"Countrys,omitempty" name:"Countrys" list`
+	Countrys []*BillCountryInfo `json:"Countrys,omitempty" name:"Countrys"`
 }
 
 type BillCountryInfo struct {
@@ -258,7 +258,7 @@ type BillCountryInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 带宽明细数据信息。
-	BandInfoList []*BillDataInfo `json:"BandInfoList,omitempty" name:"BandInfoList" list`
+	BandInfoList []*BillDataInfo `json:"BandInfoList,omitempty" name:"BandInfoList"`
 }
 
 type BillDataInfo struct {
@@ -496,7 +496,7 @@ type CertInfo struct {
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
 
 	// 使用此证书的域名列表。
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 }
 
 type ClientIpPlaySumInfo struct {
@@ -679,7 +679,7 @@ type CreateCommonMixStreamRequest struct {
 	MixStreamSessionId *string `json:"MixStreamSessionId,omitempty" name:"MixStreamSessionId"`
 
 	// 混流输入流列表。
-	InputStreamList []*CommonMixInputParam `json:"InputStreamList,omitempty" name:"InputStreamList" list`
+	InputStreamList []*CommonMixInputParam `json:"InputStreamList,omitempty" name:"InputStreamList"`
 
 	// 混流输出流参数。
 	OutputParams *CommonMixOutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
@@ -970,7 +970,7 @@ type CreateLivePullStreamTaskRequest struct {
 	// SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 	// 当前支持的文件格式：flv，mp4，hls。
 	// 当前支持的拉流协议：http，https，rtmp。
-	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。
 	// 将拉取过来的流推到该域名。
@@ -1015,7 +1015,7 @@ type CreateLivePullStreamTaskRequest struct {
 	// VodSourceFileStart：从点播源文件开始拉流回调，
 	// VodSourceFileFinish：从点播源文件拉流结束回调，
 	// ResetTaskConfig：任务更新回调。
-	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents"`
 
 	// 点播拉流转推循环次数。默认：-1。
 	// -1：无限循环，直到任务结束。
@@ -2799,7 +2799,7 @@ type DescribeAllStreamPlayInfoListRequest struct {
 	QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
 
 	// 播放域名列表，若不填，表示总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 }
 
 func (r *DescribeAllStreamPlayInfoListRequest) ToJsonString() string {
@@ -2830,7 +2830,7 @@ type DescribeAllStreamPlayInfoListResponse struct {
 		QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
 
 		// 数据信息列表。
-		DataInfoList []*MonitorStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*MonitorStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2858,7 +2858,7 @@ type DescribeAreaBillBandwidthAndFluxListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 直播播放域名，若不填，表示总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 }
 
 func (r *DescribeAreaBillBandwidthAndFluxListRequest) ToJsonString() string {
@@ -2887,7 +2887,7 @@ type DescribeAreaBillBandwidthAndFluxListResponse struct {
 	Response *struct {
 
 		// 明细数据信息。
-		DataInfoList []*BillAreaInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*BillAreaInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2915,7 +2915,7 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 直播播放域名，若不填，表示总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 可选值：
 	// Mainland：查询国内数据，
@@ -2979,7 +2979,7 @@ type DescribeBillBandwidthAndFluxListResponse struct {
 		SumFlux *float64 `json:"SumFlux,omitempty" name:"SumFlux"`
 
 		// 明细数据信息。
-		DataInfoList []*BillDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*BillDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3055,7 +3055,7 @@ type DescribeCallbackRecordsListResponse struct {
 	Response *struct {
 
 		// 回调事件列表
-		DataInfoList []*CallbackEventInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*CallbackEventInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 页码
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -3104,7 +3104,7 @@ type DescribeConcurrentRecordStreamNumRequest struct {
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 
 	// 推流域名列表，不填表示总体数据。
-	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains" list`
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
 }
 
 func (r *DescribeConcurrentRecordStreamNumRequest) ToJsonString() string {
@@ -3135,7 +3135,7 @@ type DescribeConcurrentRecordStreamNumResponse struct {
 	Response *struct {
 
 		// 统计信息列表。
-		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3188,7 +3188,7 @@ type DescribeDeliverBandwidthListResponse struct {
 	Response *struct {
 
 		// 转推计费带宽数据
-		DataInfoList []*BandwidthInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*BandwidthInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3217,13 +3217,13 @@ type DescribeGroupProIspPlayInfoListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，默认为不填，表示求总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 省份列表，默认不填，则返回各省份的数据。
-	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames" list`
+	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames"`
 
 	// 运营商列表，默认不填，则返回整个运营商的数据。
-	IspNames []*string `json:"IspNames,omitempty" name:"IspNames" list`
+	IspNames []*string `json:"IspNames,omitempty" name:"IspNames"`
 
 	// 国内还是国外，如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
@@ -3258,7 +3258,7 @@ type DescribeGroupProIspPlayInfoListResponse struct {
 	Response *struct {
 
 		// 数据内容。
-		DataInfoList []*GroupProIspDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*GroupProIspDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3289,7 +3289,7 @@ type DescribeHttpStatusInfoListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名列表。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 }
 
 func (r *DescribeHttpStatusInfoListRequest) ToJsonString() string {
@@ -3318,7 +3318,7 @@ type DescribeHttpStatusInfoListResponse struct {
 	Response *struct {
 
 		// 播放状态码列表。
-		DataInfoList []*HttpStatusData `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*HttpStatusData `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3363,7 +3363,7 @@ type DescribeLiveCallbackRulesResponse struct {
 	Response *struct {
 
 		// 规则信息列表。
-		Rules []*CallBackRuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*CallBackRuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3459,7 +3459,7 @@ type DescribeLiveCallbackTemplatesResponse struct {
 	Response *struct {
 
 		// 模板信息列表。
-		Templates []*CallBackTemplateInfo `json:"Templates,omitempty" name:"Templates" list`
+		Templates []*CallBackTemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3553,7 +3553,7 @@ type DescribeLiveCertsResponse struct {
 	Response *struct {
 
 		// 证书信息列表。
-		CertInfoSet []*CertInfo `json:"CertInfoSet,omitempty" name:"CertInfoSet" list`
+		CertInfoSet []*CertInfo `json:"CertInfoSet,omitempty" name:"CertInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3598,7 +3598,7 @@ type DescribeLiveDelayInfoListResponse struct {
 	Response *struct {
 
 		// 延播信息列表。
-		DelayInfoList []*DelayInfo `json:"DelayInfoList,omitempty" name:"DelayInfoList" list`
+		DelayInfoList []*DelayInfo `json:"DelayInfoList,omitempty" name:"DelayInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3669,7 +3669,7 @@ type DescribeLiveDomainPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 
 	// 播放域名列表。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 }
 
 func (r *DescribeLiveDomainPlayInfoListRequest) ToJsonString() string {
@@ -3711,7 +3711,7 @@ type DescribeLiveDomainPlayInfoListResponse struct {
 		TotalOnline *uint64 `json:"TotalOnline,omitempty" name:"TotalOnline"`
 
 		// 分域名的数据情况。
-		DomainInfoList []*DomainInfoList `json:"DomainInfoList,omitempty" name:"DomainInfoList" list`
+		DomainInfoList []*DomainInfoList `json:"DomainInfoList,omitempty" name:"DomainInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3882,7 +3882,7 @@ type DescribeLiveDomainsResponse struct {
 		AllCount *uint64 `json:"AllCount,omitempty" name:"AllCount"`
 
 		// 域名详细信息列表。
-		DomainList []*DomainInfo `json:"DomainList,omitempty" name:"DomainList" list`
+		DomainList []*DomainInfo `json:"DomainList,omitempty" name:"DomainList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3953,7 +3953,7 @@ type DescribeLiveForbidStreamListResponse struct {
 		PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
 		// 禁推流列表。
-		ForbidStreamList []*ForbidStreamInfo `json:"ForbidStreamList,omitempty" name:"ForbidStreamList" list`
+		ForbidStreamList []*ForbidStreamInfo `json:"ForbidStreamList,omitempty" name:"ForbidStreamList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4026,7 +4026,7 @@ type DescribeLivePackageInfoResponse struct {
 
 		// 套餐包信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LivePackageInfoList []*LivePackageInfo `json:"LivePackageInfoList,omitempty" name:"LivePackageInfoList" list`
+		LivePackageInfoList []*LivePackageInfo `json:"LivePackageInfoList,omitempty" name:"LivePackageInfoList"`
 
 		// 套餐包当前计费方式:
 	// -1: 无计费方式或获取失败
@@ -4164,7 +4164,7 @@ type DescribeLivePullStreamTasksResponse struct {
 	Response *struct {
 
 		// 直播拉流任务信息列表。
-		TaskInfos []*PullStreamTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*PullStreamTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 分页的页码。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -4273,7 +4273,7 @@ type DescribeLiveRecordRulesResponse struct {
 	Response *struct {
 
 		// 规则列表。
-		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4373,7 +4373,7 @@ type DescribeLiveRecordTemplatesResponse struct {
 	Response *struct {
 
 		// 录制模板信息列表。
-		Templates []*RecordTemplateInfo `json:"Templates,omitempty" name:"Templates" list`
+		Templates []*RecordTemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4418,7 +4418,7 @@ type DescribeLiveSnapshotRulesResponse struct {
 	Response *struct {
 
 		// 规则列表。
-		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4513,7 +4513,7 @@ type DescribeLiveSnapshotTemplatesResponse struct {
 	Response *struct {
 
 		// 截图模板列表。
-		Templates []*SnapshotTemplateInfo `json:"Templates,omitempty" name:"Templates" list`
+		Templates []*SnapshotTemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4616,7 +4616,7 @@ type DescribeLiveStreamEventListResponse struct {
 	Response *struct {
 
 		// 推断流事件列表。
-		EventList []*StreamEventInfo `json:"EventList,omitempty" name:"EventList" list`
+		EventList []*StreamEventInfo `json:"EventList,omitempty" name:"EventList"`
 
 		// 分页的页码。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -4707,7 +4707,7 @@ type DescribeLiveStreamOnlineListResponse struct {
 		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 		// 正在推送流的信息列表。
-		OnlineInfo []*StreamOnlineInfo `json:"OnlineInfo,omitempty" name:"OnlineInfo" list`
+		OnlineInfo []*StreamOnlineInfo `json:"OnlineInfo,omitempty" name:"OnlineInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4789,7 +4789,7 @@ type DescribeLiveStreamPublishedListResponse struct {
 	Response *struct {
 
 		// 推流记录信息。
-		PublishInfo []*StreamName `json:"PublishInfo,omitempty" name:"PublishInfo" list`
+		PublishInfo []*StreamName `json:"PublishInfo,omitempty" name:"PublishInfo"`
 
 		// 分页的页码。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -4866,7 +4866,7 @@ type DescribeLiveStreamPushInfoListResponse struct {
 	Response *struct {
 
 		// 直播流的统计信息列表。
-		DataInfoList []*PushDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*PushDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 所有在线流的总数量。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -5019,7 +5019,7 @@ type DescribeLiveTranscodeDetailInfoResponse struct {
 	Response *struct {
 
 		// 统计数据列表。
-		DataInfoList []*TranscodeDetailInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*TranscodeDetailInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 页码。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -5053,10 +5053,10 @@ type DescribeLiveTranscodeRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 要筛选的模板ID数组。
-	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds" list`
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
 
 	// 要筛选的域名数组。
-	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames" list`
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
 }
 
 func (r *DescribeLiveTranscodeRulesRequest) ToJsonString() string {
@@ -5084,7 +5084,7 @@ type DescribeLiveTranscodeRulesResponse struct {
 	Response *struct {
 
 		// 转码规则列表。
-		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5179,7 +5179,7 @@ type DescribeLiveTranscodeTemplatesResponse struct {
 	Response *struct {
 
 		// 转码模板列表。
-		Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates" list`
+		Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5273,7 +5273,7 @@ type DescribeLiveWatermarkRulesResponse struct {
 	Response *struct {
 
 		// 水印规则列表。
-		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5321,7 +5321,7 @@ type DescribeLiveWatermarksResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 水印信息列表。
-		WatermarkList []*WatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList" list`
+		WatermarkList []*WatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5352,7 +5352,7 @@ type DescribeLogDownloadListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 域名列表。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 }
 
 func (r *DescribeLogDownloadListRequest) ToJsonString() string {
@@ -5381,7 +5381,7 @@ type DescribeLogDownloadListResponse struct {
 	Response *struct {
 
 		// 日志信息列表。
-		LogInfoList []*LogInfo `json:"LogInfoList,omitempty" name:"LogInfoList" list`
+		LogInfoList []*LogInfo `json:"LogInfoList,omitempty" name:"LogInfoList"`
 
 		// 总条数。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -5422,7 +5422,7 @@ type DescribePlayErrorCodeDetailInfoListRequest struct {
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 	// 播放域名列表。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
@@ -5457,7 +5457,7 @@ type DescribePlayErrorCodeDetailInfoListResponse struct {
 	Response *struct {
 
 		// 统计信息列表。
-		HttpCodeList []*HttpCodeInfo `json:"HttpCodeList,omitempty" name:"HttpCodeList" list`
+		HttpCodeList []*HttpCodeInfo `json:"HttpCodeList,omitempty" name:"HttpCodeList"`
 
 		// 统计类型。
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
@@ -5491,7 +5491,7 @@ type DescribePlayErrorCodeSumInfoListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名列表，不填表示总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 页数，范围[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -5540,7 +5540,7 @@ type DescribePlayErrorCodeSumInfoListResponse struct {
 	Response *struct {
 
 		// 分省份分运营商错误码为2或3或4或5开头的状态码数据信息。
-		ProIspInfoList []*ProIspPlayCodeDataInfo `json:"ProIspInfoList,omitempty" name:"ProIspInfoList" list`
+		ProIspInfoList []*ProIspPlayCodeDataInfo `json:"ProIspInfoList,omitempty" name:"ProIspInfoList"`
 
 		// 所有状态码的加和的次数。
 		TotalCodeAll *uint64 `json:"TotalCodeAll,omitempty" name:"TotalCodeAll"`
@@ -5552,7 +5552,7 @@ type DescribePlayErrorCodeSumInfoListResponse struct {
 		TotalCode5xx *uint64 `json:"TotalCode5xx,omitempty" name:"TotalCode5xx"`
 
 		// 各状态码的总次数。
-		TotalCodeList []*PlayCodeTotalInfo `json:"TotalCodeList,omitempty" name:"TotalCodeList" list`
+		TotalCodeList []*PlayCodeTotalInfo `json:"TotalCodeList,omitempty" name:"TotalCodeList"`
 
 		// 页号。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -5604,7 +5604,7 @@ type DescribeProIspPlaySumInfoListRequest struct {
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 	// 播放域名列表，不填则为全部。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 页号，范围是[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -5671,7 +5671,7 @@ type DescribeProIspPlaySumInfoListResponse struct {
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
 		// 省份，运营商，国家或地区汇总数据列表。
-		DataInfoList []*ProIspPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*ProIspPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 下载速度，单位：MB/s，计算方式：总流量/总时长。
 		AvgFluxPerSecond *float64 `json:"AvgFluxPerSecond,omitempty" name:"AvgFluxPerSecond"`
@@ -5717,13 +5717,13 @@ type DescribeProvinceIspPlayInfoListRequest struct {
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 	// 播放域名列表。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 要查询的省份（地区）英文名称列表，如 Beijing。
-	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames" list`
+	ProvinceNames []*string `json:"ProvinceNames,omitempty" name:"ProvinceNames"`
 
 	// 要查询的运营商英文名称列表，如 China Mobile ，如果为空，查询所有运营商的数据。
-	IspNames []*string `json:"IspNames,omitempty" name:"IspNames" list`
+	IspNames []*string `json:"IspNames,omitempty" name:"IspNames"`
 
 	// 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
@@ -5766,7 +5766,7 @@ type DescribeProvinceIspPlayInfoListResponse struct {
 	Response *struct {
 
 		// 播放信息列表。
-		DataInfoList []*PlayStatInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*PlayStatInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 统计的类型，和输入参数保持一致。
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
@@ -5819,7 +5819,7 @@ type DescribePullStreamConfigsResponse struct {
 	Response *struct {
 
 		// 拉流配置。
-		PullStreamConfigs []*PullStreamConfig `json:"PullStreamConfigs,omitempty" name:"PullStreamConfigs" list`
+		PullStreamConfigs []*PullStreamConfig `json:"PullStreamConfigs,omitempty" name:"PullStreamConfigs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5891,7 +5891,7 @@ type DescribeRecordTaskResponse struct {
 		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
 
 		// 录制任务列表。当该字段为空，说明已返回所有数据。
-		TaskList []*RecordTask `json:"TaskList,omitempty" name:"TaskList" list`
+		TaskList []*RecordTask `json:"TaskList,omitempty" name:"TaskList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5922,7 +5922,7 @@ type DescribeScreenShotSheetNumListRequest struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 推流域名（支持查询2019年11 月1日之后的域名维度数据）。
-	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains" list`
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
 
 	// 数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，最大支持查询时间范围是186天当天）。
 	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
@@ -5956,7 +5956,7 @@ type DescribeScreenShotSheetNumListResponse struct {
 	Response *struct {
 
 		// 数据信息列表。
-		DataInfoList []*TimeValue `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*TimeValue `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6029,7 +6029,7 @@ type DescribeStreamDayPlayInfoListResponse struct {
 	Response *struct {
 
 		// 播放数据信息列表。
-		DataInfoList []*PlayDataInfoByStream `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*PlayDataInfoByStream `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 总数量。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -6115,7 +6115,7 @@ type DescribeStreamPlayInfoListResponse struct {
 	Response *struct {
 
 		// 统计信息列表，时间粒度是1分钟。
-		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6180,7 +6180,7 @@ type DescribeStreamPushInfoListResponse struct {
 	Response *struct {
 
 		// 返回的数据列表。
-		DataInfoList []*PushQualityData `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*PushQualityData `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6209,7 +6209,7 @@ type DescribeTopClientIpSumInfoListRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，默认为不填，表示求总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 页号，范围是[1,1000]，默认值是1。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
@@ -6273,7 +6273,7 @@ type DescribeTopClientIpSumInfoListResponse struct {
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
 		// 数据内容。
-		DataInfoList []*ClientIpPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*ClientIpPlaySumInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6301,7 +6301,7 @@ type DescribeUploadStreamNumsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 直播域名，若不填，表示总体数据。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 数据粒度，支持如下粒度：
 	// 5：5分钟粒度，（跨度不支持超过1天），
@@ -6337,7 +6337,7 @@ type DescribeUploadStreamNumsResponse struct {
 	Response *struct {
 
 		// 明细数据信息
-		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*ConcurrentRecordStreamNum `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6369,7 +6369,7 @@ type DescribeVisitTopSumInfoListRequest struct {
 	TopIndex *string `json:"TopIndex,omitempty" name:"TopIndex"`
 
 	// 播放域名，默认为不填，表示求总体数据。
-	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains" list`
+	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
 
 	// 页号，
 	// 范围是[1,1000]，
@@ -6435,7 +6435,7 @@ type DescribeVisitTopSumInfoListResponse struct {
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
 		// 数据内容。
-		DataInfoList []*PlaySumStatInfo `json:"DataInfoList,omitempty" name:"DataInfoList" list`
+		DataInfoList []*PlaySumStatInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6487,7 +6487,7 @@ type DomainCertInfo struct {
 	// 证书本身标识的域名列表。
 	// 比如: ["*.x.com"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertDomains []*string `json:"CertDomains,omitempty" name:"CertDomains" list`
+	CertDomains []*string `json:"CertDomains,omitempty" name:"CertDomains"`
 
 	// 腾讯云ssl的证书Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6572,7 +6572,7 @@ type DomainInfoList struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 明细信息。
-	DetailInfoList []*DomainDetailInfo `json:"DetailInfoList,omitempty" name:"DetailInfoList" list`
+	DetailInfoList []*DomainDetailInfo `json:"DetailInfoList,omitempty" name:"DetailInfoList"`
 }
 
 type DropLiveStreamRequest struct {
@@ -6809,7 +6809,7 @@ type GroupProIspDataInfo struct {
 	IspName *string `json:"IspName,omitempty" name:"IspName"`
 
 	// 分钟维度的明细数据。
-	DetailInfoList []*CdnPlayStatData `json:"DetailInfoList,omitempty" name:"DetailInfoList" list`
+	DetailInfoList []*CdnPlayStatData `json:"DetailInfoList,omitempty" name:"DetailInfoList"`
 }
 
 type HlsSpecialParam struct {
@@ -6826,7 +6826,7 @@ type HttpCodeInfo struct {
 	HttpCode *string `json:"HttpCode,omitempty" name:"HttpCode"`
 
 	// 统计信息，对于无数据的时间点，会补0。
-	ValueList []*HttpCodeValue `json:"ValueList,omitempty" name:"ValueList" list`
+	ValueList []*HttpCodeValue `json:"ValueList,omitempty" name:"ValueList"`
 }
 
 type HttpCodeValue struct {
@@ -6848,7 +6848,7 @@ type HttpStatusData struct {
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 播放状态码详细信息。
-	HttpStatusInfoList []*HttpStatusInfo `json:"HttpStatusInfoList,omitempty" name:"HttpStatusInfoList" list`
+	HttpStatusInfoList []*HttpStatusInfo `json:"HttpStatusInfoList,omitempty" name:"HttpStatusInfoList"`
 }
 
 type HttpStatusInfo struct {
@@ -7309,7 +7309,7 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 拉流源url列表。
 	// SourceType为直播（PullLivePushLive）只可以填1个，
 	// SourceType为点播（PullVodPushLive）可以填多个，上限30个。
-	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 开始时间。
 	// 使用UTC格式时间，
@@ -7350,7 +7350,7 @@ type ModifyLivePullStreamTaskRequest struct {
 	// VodSourceFileStart：从点播源文件开始拉流回调，
 	// VodSourceFileFinish：从点播源文件拉流结束回调，
 	// ResetTaskConfig：任务更新回调。
-	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents"`
 
 	// 自定义回调地址。
 	// 相关事件会回调到该地址。
@@ -7907,7 +7907,7 @@ type ModifyPullStreamStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 配置 ID 列表。
-	ConfigIds []*string `json:"ConfigIds,omitempty" name:"ConfigIds" list`
+	ConfigIds []*string `json:"ConfigIds,omitempty" name:"ConfigIds"`
 
 	// 目标状态。0无效，2正在运行，4暂停。
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -8139,7 +8139,7 @@ type PullStreamTaskInfo struct {
 	// 拉流源url列表。
 	// SourceType为直播（PullLiveToLive）只可以填1个，
 	// SourceType为点播（PullVodToLive）可以填多个，上限10个。
-	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls" list`
+	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。
 	// 将拉到的源推到该域名。
@@ -8220,7 +8220,7 @@ type PullStreamTaskInfo struct {
 	// VodSourceFileStart：从点播源文件开始拉流回调，
 	// VodSourceFileFinish：从点播源文件拉流结束回调，
 	// ResetTaskConfig：任务更新回调。
-	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents" list`
+	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents"`
 
 	// 注意：该信息暂不返回。
 	// 最后一次回调信息。
@@ -8856,7 +8856,7 @@ type StreamOnlineInfo struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 推流时间列表
-	PublishTimeList []*PublishTime `json:"PublishTimeList,omitempty" name:"PublishTimeList" list`
+	PublishTimeList []*PublishTime `json:"PublishTimeList,omitempty" name:"PublishTimeList"`
 
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`

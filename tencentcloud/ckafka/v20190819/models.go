@@ -51,7 +51,7 @@ type AclResponse struct {
 
 	// ACL列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AclList []*Acl `json:"AclList,omitempty" name:"AclList" list`
+	AclList []*Acl `json:"AclList,omitempty" name:"AclList"`
 }
 
 type AppIdResponse struct {
@@ -61,7 +61,7 @@ type AppIdResponse struct {
 
 	// 符合要求的App Id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppIdList []*int64 `json:"AppIdList,omitempty" name:"AppIdList" list`
+	AppIdList []*int64 `json:"AppIdList,omitempty" name:"AppIdList"`
 }
 
 type Assignment struct {
@@ -71,7 +71,7 @@ type Assignment struct {
 
 	// topic信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Topics []*GroupInfoTopics `json:"Topics,omitempty" name:"Topics" list`
+	Topics []*GroupInfoTopics `json:"Topics,omitempty" name:"Topics"`
 }
 
 type ClusterInfo struct {
@@ -104,7 +104,7 @@ type ClusterInfo struct {
 
 	// 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 }
 
 type Config struct {
@@ -145,7 +145,7 @@ type ConsumerGroup struct {
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
 
 	// 订阅信息实体
-	SubscribedInfo []*SubscribedInfo `json:"SubscribedInfo,omitempty" name:"SubscribedInfo" list`
+	SubscribedInfo []*SubscribedInfo `json:"SubscribedInfo,omitempty" name:"SubscribedInfo"`
 }
 
 type ConsumerGroupResponse struct {
@@ -155,11 +155,11 @@ type ConsumerGroupResponse struct {
 
 	// 主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*ConsumerGroupTopic `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*ConsumerGroupTopic `json:"TopicList,omitempty" name:"TopicList"`
 
 	// 消费分组List
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupList []*ConsumerGroup `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*ConsumerGroup `json:"GroupList,omitempty" name:"GroupList"`
 
 	// 所有分区数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -167,7 +167,7 @@ type ConsumerGroupResponse struct {
 
 	// 监控的分区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PartitionListForMonitor []*Partition `json:"PartitionListForMonitor,omitempty" name:"PartitionListForMonitor" list`
+	PartitionListForMonitor []*Partition `json:"PartitionListForMonitor,omitempty" name:"PartitionListForMonitor"`
 
 	// 主题总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -175,11 +175,11 @@ type ConsumerGroupResponse struct {
 
 	// 监控的主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicListForMonitor []*ConsumerGroupTopic `json:"TopicListForMonitor,omitempty" name:"TopicListForMonitor" list`
+	TopicListForMonitor []*ConsumerGroupTopic `json:"TopicListForMonitor,omitempty" name:"TopicListForMonitor"`
 
 	// 监控的组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupListForMonitor []*Group `json:"GroupListForMonitor,omitempty" name:"GroupListForMonitor" list`
+	GroupListForMonitor []*Group `json:"GroupListForMonitor,omitempty" name:"GroupListForMonitor"`
 }
 
 type ConsumerGroupTopic struct {
@@ -272,7 +272,7 @@ type CreateInstancePreData struct {
 
 	// 订单号列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 type CreateInstancePreRequest struct {
@@ -427,7 +427,7 @@ type CreateTopicIpWhiteListRequest struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// ip白名单列表
-	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
 }
 
 func (r *CreateTopicIpWhiteListRequest) ToJsonString() string {
@@ -493,7 +493,7 @@ type CreateTopicRequest struct {
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitempty" name:"EnableWhiteList"`
 
 	// Ip白名单列表，配额限制，enableWhileList=1时必选
-	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
 
 	// 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitempty" name:"CleanUpPolicy"`
@@ -766,7 +766,7 @@ type DeleteTopicIpWhiteListRequest struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// ip白名单列表
-	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
 }
 
 func (r *DeleteTopicIpWhiteListRequest) ToJsonString() string {
@@ -1167,7 +1167,7 @@ type DescribeGroupInfoRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// Kafka 消费分组，Consumer-group，这里是数组形式，格式：GroupList.0=xxx&GroupList.1=yyy。
-	GroupList []*string `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*string `json:"GroupList,omitempty" name:"GroupList"`
 }
 
 func (r *DescribeGroupInfoRequest) ToJsonString() string {
@@ -1196,7 +1196,7 @@ type DescribeGroupInfoResponse struct {
 
 		// 返回的结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*GroupInfoResponse `json:"Result,omitempty" name:"Result" list`
+		Result []*GroupInfoResponse `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1224,7 +1224,7 @@ type DescribeGroupOffsetsRequest struct {
 	Group *string `json:"Group,omitempty" name:"Group"`
 
 	// group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息
-	Topics []*string `json:"Topics,omitempty" name:"Topics" list`
+	Topics []*string `json:"Topics,omitempty" name:"Topics"`
 
 	// 模糊匹配 topicName
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
@@ -1403,7 +1403,7 @@ type DescribeInstancesDetailRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
 	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1415,7 +1415,7 @@ type DescribeInstancesDetailRequest struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 过滤器
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeInstancesDetailRequest) ToJsonString() string {
@@ -1476,7 +1476,7 @@ type DescribeInstancesRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
 	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1575,7 +1575,7 @@ type DescribeRegionResponse struct {
 
 		// 返回地域枚举结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*Region `json:"Result,omitempty" name:"Result" list`
+		Result []*Region `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1904,7 +1904,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Group struct {
@@ -1948,7 +1948,7 @@ type GroupInfoResponse struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 仅当 state 为 Stable 且 protocol_type 为 consumer 时， 该数组才包含信息
-	Members []*GroupInfoMember `json:"Members,omitempty" name:"Members" list`
+	Members []*GroupInfoMember `json:"Members,omitempty" name:"Members"`
 
 	// Kafka 消费分组
 	Group *string `json:"Group,omitempty" name:"Group"`
@@ -1961,7 +1961,7 @@ type GroupInfoTopics struct {
 
 	// 分配的 partition 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions []*int64 `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*int64 `json:"Partitions,omitempty" name:"Partitions"`
 }
 
 type GroupOffsetPartition struct {
@@ -1993,7 +1993,7 @@ type GroupOffsetResponse struct {
 
 	// 该主题分区数组，其中每个元素为一个 json object
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*GroupOffsetTopic `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*GroupOffsetTopic `json:"TopicList,omitempty" name:"TopicList"`
 }
 
 type GroupOffsetTopic struct {
@@ -2003,7 +2003,7 @@ type GroupOffsetTopic struct {
 
 	// 该主题分区数组，其中每个元素为一个 json object
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions []*GroupOffsetPartition `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*GroupOffsetPartition `json:"Partitions,omitempty" name:"Partitions"`
 }
 
 type GroupResponse struct {
@@ -2014,7 +2014,7 @@ type GroupResponse struct {
 
 	// GroupList
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList"`
 }
 
 type Instance struct {
@@ -2042,7 +2042,7 @@ type InstanceAttributesResponse struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 接入点 VIP 列表信息
-	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList"`
 
 	// 虚拟IP
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
@@ -2097,7 +2097,7 @@ type InstanceAttributesResponse struct {
 
 	// 标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2105,7 +2105,7 @@ type InstanceAttributesResponse struct {
 
 	// 跨可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// kafka版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2125,7 +2125,7 @@ type InstanceAttributesResponse struct {
 
 	// 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Features []*string `json:"Features,omitempty" name:"Features" list`
+	Features []*string `json:"Features,omitempty" name:"Features"`
 
 	// 动态消息保留策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2159,7 +2159,7 @@ type InstanceDetail struct {
 	Vport *string `json:"Vport,omitempty" name:"Vport"`
 
 	// 虚拟IP列表
-	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList"`
 
 	// 实例的状态。0：创建中，1：运行中，2：删除中：5隔离中， -1 创建失败
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -2201,7 +2201,7 @@ type InstanceDetail struct {
 	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
 
 	// 标识tag
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// kafka版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2209,7 +2209,7 @@ type InstanceDetail struct {
 
 	// 跨可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds" list`
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// ckafka售卖类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2242,14 +2242,14 @@ type InstanceDetailResponse struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 符合条件的实例详情列表
-	InstanceList []*InstanceDetail `json:"InstanceList,omitempty" name:"InstanceList" list`
+	InstanceList []*InstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
 }
 
 type InstanceResponse struct {
 
 	// 符合条件的实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*Instance `json:"InstanceList,omitempty" name:"InstanceList" list`
+	InstanceList []*Instance `json:"InstanceList,omitempty" name:"InstanceList"`
 
 	// 符合条件的结果总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2282,7 +2282,7 @@ type ModifyGroupOffsetsRequest struct {
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 表示需要重置的topics， 不填表示全部
-	Topics []*string `json:"Topics,omitempty" name:"Topics" list`
+	Topics []*string `json:"Topics,omitempty" name:"Topics"`
 
 	// 当strategy为0时，必须包含该字段，可以大于零代表会把offset向后移动shift条，小于零则将offset向前回溯shift条数。正确重置后新的offset应该是(old_offset + shift)，需要注意的是如果新的offset小于partition的earliest则会设置为earliest，如果大于partition 的latest则会设置为latest
 	Shift *int64 `json:"Shift,omitempty" name:"Shift"`
@@ -2294,7 +2294,7 @@ type ModifyGroupOffsetsRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 需要重新设置的partition的列表，如果没有指定Topics参数。则重置全部topics的对应的Partition列表里的partition。指定Topics时则重置指定的topic列表的对应的Partitions列表的partition。
-	Partitions []*int64 `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*int64 `json:"Partitions,omitempty" name:"Partitions"`
 }
 
 func (r *ModifyGroupOffsetsRequest) ToJsonString() string {
@@ -2654,7 +2654,7 @@ type Route struct {
 	VipType *int64 `json:"VipType,omitempty" name:"VipType"`
 
 	// 虚拟IP列表
-	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList" list`
+	VipList []*VipEntity `json:"VipList,omitempty" name:"VipList"`
 
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2669,7 +2669,7 @@ type RouteResponse struct {
 
 	// 路由信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Routers []*Route `json:"Routers,omitempty" name:"Routers" list`
+	Routers []*Route `json:"Routers,omitempty" name:"Routers"`
 }
 
 type SubscribedInfo struct {
@@ -2679,11 +2679,11 @@ type SubscribedInfo struct {
 
 	// 订阅的分区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partition []*int64 `json:"Partition,omitempty" name:"Partition" list`
+	Partition []*int64 `json:"Partition,omitempty" name:"Partition"`
 
 	// 分区offset信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PartitionOffset []*PartitionOffset `json:"PartitionOffset,omitempty" name:"PartitionOffset" list`
+	PartitionOffset []*PartitionOffset `json:"PartitionOffset,omitempty" name:"PartitionOffset"`
 
 	// 订阅的主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2731,13 +2731,13 @@ type TopicAttributesResponse struct {
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitempty" name:"EnableWhiteList"`
 
 	// IP 白名单列表
-	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList" list`
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
 
 	// topic 配置数组
 	Config *Config `json:"Config,omitempty" name:"Config"`
 
 	// 分区详情
-	Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions"`
 }
 
 type TopicDetail struct {
@@ -2790,7 +2790,7 @@ type TopicDetailResponse struct {
 
 	// 返回的主题详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*TopicDetail `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*TopicDetail `json:"TopicList,omitempty" name:"TopicList"`
 
 	// 符合条件的所有主题详情数量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2815,7 +2815,7 @@ type TopicResult struct {
 
 	// 返回的主题信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*Topic `json:"TopicList,omitempty" name:"TopicList" list`
+	TopicList []*Topic `json:"TopicList,omitempty" name:"TopicList"`
 
 	// 符合条件的 topic 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2856,7 +2856,7 @@ type UserResponse struct {
 
 	// 符合条件的用户列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Users []*User `json:"Users,omitempty" name:"Users" list`
+	Users []*User `json:"Users,omitempty" name:"Users"`
 
 	// 符合条件的总用户数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2901,7 +2901,7 @@ type ZoneInfo struct {
 type ZoneResponse struct {
 
 	// zone列表
-	ZoneList []*ZoneInfo `json:"ZoneList,omitempty" name:"ZoneList" list`
+	ZoneList []*ZoneInfo `json:"ZoneList,omitempty" name:"ZoneList"`
 
 	// 最大购买实例个数
 	MaxBuyInstanceNum *int64 `json:"MaxBuyInstanceNum,omitempty" name:"MaxBuyInstanceNum"`
@@ -2917,7 +2917,7 @@ type ZoneResponse struct {
 
 	// 用户独占集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo" list`
+	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo"`
 
 	// 购买标准版配置
 	// 注意：此字段可能返回 null，表示取不到有效值。

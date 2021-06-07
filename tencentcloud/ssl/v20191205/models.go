@@ -262,7 +262,7 @@ type Certificates struct {
 
 	// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -298,7 +298,7 @@ type Certificates struct {
 
 	// 关联的云资源，暂不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource" list`
+	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource"`
 
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -306,7 +306,7 @@ type Certificates struct {
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CheckCertificateChainRequest struct {
@@ -346,7 +346,7 @@ type CheckCertificateChainResponse struct {
 		IsTrustedCA *bool `json:"IsTrustedCA,omitempty" name:"IsTrustedCA"`
 
 		// 包含证书链中每一段证书的通用名称。
-		Chains []*string `json:"Chains,omitempty" name:"Chains" list`
+		Chains []*string `json:"Chains,omitempty" name:"Chains"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -528,10 +528,10 @@ type CreateCertificateResponse struct {
 	Response *struct {
 
 		// 证书ID列表
-		CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds" list`
+		CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
 
 		// 订单号列表
-		DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
+		DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -779,7 +779,7 @@ type DescribeCertificateDetailResponse struct {
 
 		// 证书包含的多个域名（包含主域名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 		// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -811,7 +811,7 @@ type DescribeCertificateDetailResponse struct {
 
 		// 关联标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -879,7 +879,7 @@ type DescribeCertificateOperateLogsResponse struct {
 
 		// 证书操作日志列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		OperateLogs []*OperationLog `json:"OperateLogs,omitempty" name:"OperateLogs" list`
+		OperateLogs []*OperationLog `json:"OperateLogs,omitempty" name:"OperateLogs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1021,7 +1021,7 @@ type DescribeCertificateResponse struct {
 
 		// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 		// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1053,7 +1053,7 @@ type DescribeCertificateResponse struct {
 
 		// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tags `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1093,7 +1093,7 @@ type DescribeCertificatesRequest struct {
 	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
 
 	// 证书状态。
-	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus" list`
+	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
 	Deployable *uint64 `json:"Deployable,omitempty" name:"Deployable"`
@@ -1135,7 +1135,7 @@ type DescribeCertificatesResponse struct {
 
 		// 列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Certificates []*Certificates `json:"Certificates,omitempty" name:"Certificates" list`
+		Certificates []*Certificates `json:"Certificates,omitempty" name:"Certificates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1321,7 +1321,7 @@ type DescribeManagersResponse struct {
 	Response *struct {
 
 		// 公司管理人列表
-		Managers []*ManagerInfo `json:"Managers,omitempty" name:"Managers" list`
+		Managers []*ManagerInfo `json:"Managers,omitempty" name:"Managers"`
 
 		// 公司管理人总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1420,7 +1420,7 @@ type DvAuthDetail struct {
 
 	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths" list`
+	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths"`
 }
 
 type DvAuths struct {
@@ -1556,7 +1556,7 @@ type ModifyCertificateProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要修改所属项目的证书 ID 集合，最多100个证书。
-	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList" list`
+	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList"`
 
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1588,11 +1588,11 @@ type ModifyCertificateProjectResponse struct {
 
 		// 修改所属项目成功的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates" list`
+		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates"`
 
 		// 修改所属项目失败的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates" list`
+		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1751,7 +1751,7 @@ type RevokeCertificateResponse struct {
 
 		// 吊销证书域名验证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitempty" name:"RevokeDomainValidateAuths" list`
+		RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitempty" name:"RevokeDomainValidateAuths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1853,7 +1853,7 @@ type SubmitCertificateInformationRequest struct {
 	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
 
 	// 上传的域名数组（多域名证书可以上传）。
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 
 	// 私钥密码（非必填）。
 	KeyPassword *string `json:"KeyPassword,omitempty" name:"KeyPassword"`
@@ -2002,7 +2002,7 @@ type SubmittedData struct {
 
 	// DNS 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 
 	// 私钥密码。
 	// 注意：此字段可能返回 null，表示取不到有效值。

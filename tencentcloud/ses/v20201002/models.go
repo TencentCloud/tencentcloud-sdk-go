@@ -126,7 +126,7 @@ type CreateEmailIdentityResponse struct {
 		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
 
 		// 需要配置的DNS信息
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes" list`
+		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -216,7 +216,7 @@ type DeleteBlackListRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要清除的黑名单邮箱列表，数组长度至少为1
-	EmailAddressList []*string `json:"EmailAddressList,omitempty" name:"EmailAddressList" list`
+	EmailAddressList []*string `json:"EmailAddressList,omitempty" name:"EmailAddressList"`
 }
 
 func (r *DeleteBlackListRequest) ToJsonString() string {
@@ -459,7 +459,7 @@ type GetEmailIdentityResponse struct {
 		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
 
 		// DNS配置详情
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes" list`
+		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -573,7 +573,7 @@ type GetSendEmailStatusResponse struct {
 	Response *struct {
 
 		// 邮件发送状态列表
-		EmailStatusList []*SendEmailStatus `json:"EmailStatusList,omitempty" name:"EmailStatusList" list`
+		EmailStatusList []*SendEmailStatus `json:"EmailStatusList,omitempty" name:"EmailStatusList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -634,7 +634,7 @@ type GetStatisticsReportResponse struct {
 	Response *struct {
 
 		// 发信统计报告，按天
-		DailyVolumes []*Volume `json:"DailyVolumes,omitempty" name:"DailyVolumes" list`
+		DailyVolumes []*Volume `json:"DailyVolumes,omitempty" name:"DailyVolumes"`
 
 		// 发信统计报告，总览
 		OverallVolume *Volume `json:"OverallVolume,omitempty" name:"OverallVolume"`
@@ -706,7 +706,7 @@ type ListBlackEmailAddressResponse struct {
 	Response *struct {
 
 		// 黑名单列表
-		BlackList []*BlackEmailAddress `json:"BlackList,omitempty" name:"BlackList" list`
+		BlackList []*BlackEmailAddress `json:"BlackList,omitempty" name:"BlackList"`
 
 		// 黑名单总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -755,7 +755,7 @@ type ListEmailAddressResponse struct {
 
 		// 发信地址列表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		EmailSenders []*EmailSender `json:"EmailSenders,omitempty" name:"EmailSenders" list`
+		EmailSenders []*EmailSender `json:"EmailSenders,omitempty" name:"EmailSenders"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -800,7 +800,7 @@ type ListEmailIdentitiesResponse struct {
 	Response *struct {
 
 		// 发信域名列表
-		EmailIdentities []*EmailIdentity `json:"EmailIdentities,omitempty" name:"EmailIdentities" list`
+		EmailIdentities []*EmailIdentity `json:"EmailIdentities,omitempty" name:"EmailIdentities"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -853,7 +853,7 @@ type ListEmailTemplatesResponse struct {
 	Response *struct {
 
 		// 邮件模板列表
-		TemplatesMetadata []*TemplatesMetadata `json:"TemplatesMetadata,omitempty" name:"TemplatesMetadata" list`
+		TemplatesMetadata []*TemplatesMetadata `json:"TemplatesMetadata,omitempty" name:"TemplatesMetadata"`
 
 		// 模版总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -883,7 +883,7 @@ type SendEmailRequest struct {
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
 	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-	Destination []*string `json:"Destination,omitempty" name:"Destination" list`
+	Destination []*string `json:"Destination,omitempty" name:"Destination"`
 
 	// 邮件主题
 	Subject *string `json:"Subject,omitempty" name:"Subject"`
@@ -898,7 +898,7 @@ type SendEmailRequest struct {
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数。
-	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments" list`
+	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
 }
 
 func (r *SendEmailRequest) ToJsonString() string {
@@ -1097,7 +1097,7 @@ type UpdateEmailIdentityResponse struct {
 		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
 
 		// 需要配置的DNS信息
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes" list`
+		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

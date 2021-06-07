@@ -206,7 +206,7 @@ type QueryRegisterProtectionResponse struct {
 		Level *int64 `json:"Level,omitempty" name:"Level"`
 
 		// 风险类型。
-		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

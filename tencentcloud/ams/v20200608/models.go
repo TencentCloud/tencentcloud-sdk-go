@@ -24,7 +24,7 @@ import (
 type AmsDetailInfo struct {
 
 	// 标签
-	Label []*string `json:"Label,omitempty" name:"Label" list`
+	Label []*string `json:"Label,omitempty" name:"Label"`
 
 	// 时长(秒/s)
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
@@ -45,7 +45,7 @@ type AmsDetailInfo struct {
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
 	// 原始命中标签
-	OriginalLabel []*string `json:"OriginalLabel,omitempty" name:"OriginalLabel" list`
+	OriginalLabel []*string `json:"OriginalLabel,omitempty" name:"OriginalLabel"`
 
 	// 操作时间
 	OperateTime *string `json:"OperateTime,omitempty" name:"OperateTime"`
@@ -106,13 +106,13 @@ type AudioResult struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 文本识别结果
-	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults" list`
+	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults"`
 
 	// 音频呻吟检测结果
-	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults" list`
+	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
 
 	// 音频语言检测结果
-	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults" list`
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -165,7 +165,7 @@ type AudioResultDetailTextResult struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的LibId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -274,7 +274,7 @@ type CreateAudioModerationTaskRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
 }
 
 func (r *CreateAudioModerationTaskRequest) ToJsonString() string {
@@ -306,7 +306,7 @@ type CreateAudioModerationTaskResponse struct {
 
 		// 任务创建结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results" list`
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -337,7 +337,7 @@ type CreateBizConfigRequest struct {
 	BizName *string `json:"BizName,omitempty" name:"BizName"`
 
 	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
-	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories"`
 }
 
 func (r *CreateBizConfigRequest) ToJsonString() string {
@@ -395,7 +395,7 @@ type DescribeAmsListRequest struct {
 	PageDirection *string `json:"PageDirection,omitempty" name:"PageDirection"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAmsListRequest) ToJsonString() string {
@@ -425,7 +425,7 @@ type DescribeAmsListResponse struct {
 	Response *struct {
 
 		// 返回列表数据----非必选，该参数暂未对外开放
-		AmsDetailSet []*AmsDetailInfo `json:"AmsDetailSet,omitempty" name:"AmsDetailSet" list`
+		AmsDetailSet []*AmsDetailInfo `json:"AmsDetailSet,omitempty" name:"AmsDetailSet"`
 
 		// 总条数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -456,7 +456,7 @@ type DescribeAudioStatRequest struct {
 	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
 
 	// 查询条件
-	Filters []*Filters `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAudioStatRequest) ToJsonString() string {
@@ -487,10 +487,10 @@ type DescribeAudioStatResponse struct {
 		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
 
 		// 识别量统计
-		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount" list`
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
 
 		// 违规数据分布
-		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount" list`
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -546,7 +546,7 @@ type DescribeBizConfigResponse struct {
 		BizName *string `json:"BizName,omitempty" name:"BizName"`
 
 		// 审核范围
-		ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+		ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories"`
 
 		// 多媒体审核配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -648,7 +648,7 @@ type DescribeTaskDetailResponse struct {
 		// 智能审核服务对于内容违规类型的判断，详见返回值列表
 	// 如：Label：Porn（色情）；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 		// 传入媒体的解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -672,11 +672,11 @@ type DescribeTaskDetailResponse struct {
 
 		// 视频/音频审核中的音频结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
+		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
 		// 视频审核中的图片结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
+		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
 
 		// 音频识别总文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -725,7 +725,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Filters struct {
@@ -737,7 +737,7 @@ type Filters struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 查询值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ImageResult struct {
@@ -761,7 +761,7 @@ type ImageResult struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 画面截帧图片结果集
-	Results []*ImageResultResult `json:"Results,omitempty" name:"Results" list`
+	Results []*ImageResultResult `json:"Results,omitempty" name:"Results"`
 
 	// 图片URL地址
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -805,21 +805,21 @@ type ImageResultResult struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 如果命中场景为涉政，则该数据为人物姓名列表，否则null
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 图片OCR文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 其他详情
-	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type ImageResultsResultDetail struct {
 
 	// 位置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Location []*ImageResultsResultDetailLocation `json:"Location,omitempty" name:"Location" list`
+	Location []*ImageResultsResultDetailLocation `json:"Location,omitempty" name:"Location"`
 
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -842,7 +842,7 @@ type ImageResultsResultDetail struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。

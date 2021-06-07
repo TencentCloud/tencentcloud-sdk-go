@@ -25,7 +25,7 @@ type AssociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 绑定的关系数组。
-	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations" list`
+	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations"`
 }
 
 func (r *AssociateTargetGroupsRequest) ToJsonString() string {
@@ -110,13 +110,13 @@ type AutoRewriteRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 重定向状态码，可取值301,302,307。
-	RewriteCodes []*int64 `json:"RewriteCodes,omitempty" name:"RewriteCodes" list`
+	RewriteCodes []*int64 `json:"RewriteCodes,omitempty" name:"RewriteCodes"`
 
 	// 重定向是否携带匹配的URL。
-	TakeUrls []*bool `json:"TakeUrls,omitempty" name:"TakeUrls" list`
+	TakeUrls []*bool `json:"TakeUrls,omitempty" name:"TakeUrls"`
 }
 
 func (r *AutoRewriteRequest) ToJsonString() string {
@@ -178,11 +178,11 @@ type Backend struct {
 
 	// 后端服务的外网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -213,7 +213,7 @@ type BatchDeregisterTargetsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 解绑目标。
-	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets"`
 }
 
 func (r *BatchDeregisterTargetsRequest) ToJsonString() string {
@@ -241,7 +241,7 @@ type BatchDeregisterTargetsResponse struct {
 	Response *struct {
 
 		// 解绑失败的监听器ID。
-		FailListenerIdSet []*string `json:"FailListenerIdSet,omitempty" name:"FailListenerIdSet" list`
+		FailListenerIdSet []*string `json:"FailListenerIdSet,omitempty" name:"FailListenerIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -266,7 +266,7 @@ type BatchModifyTargetWeightRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 要批量修改权重的列表。
-	ModifyList []*RsWeightRule `json:"ModifyList,omitempty" name:"ModifyList" list`
+	ModifyList []*RsWeightRule `json:"ModifyList,omitempty" name:"ModifyList"`
 }
 
 func (r *BatchModifyTargetWeightRequest) ToJsonString() string {
@@ -316,7 +316,7 @@ type BatchRegisterTargetsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 绑定目标。
-	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*BatchTarget `json:"Targets,omitempty" name:"Targets"`
 }
 
 func (r *BatchRegisterTargetsRequest) ToJsonString() string {
@@ -345,7 +345,7 @@ type BatchRegisterTargetsResponse struct {
 
 		// 绑定失败的监听器ID，如为空表示全部绑定成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailListenerIdSet []*string `json:"FailListenerIdSet,omitempty" name:"FailListenerIdSet" list`
+		FailListenerIdSet []*string `json:"FailListenerIdSet,omitempty" name:"FailListenerIdSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -403,7 +403,7 @@ type CertIdRelatedWithLoadBalancers struct {
 
 	// 与证书关联的负载均衡实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancers []*LoadBalancer `json:"LoadBalancers,omitempty" name:"LoadBalancers" list`
+	LoadBalancers []*LoadBalancer `json:"LoadBalancers,omitempty" name:"LoadBalancers"`
 }
 
 type CertificateInput struct {
@@ -528,7 +528,7 @@ type ClassicalLoadBalancerInfo struct {
 
 	// 负载均衡实例ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 }
 
 type ClassicalTarget struct {
@@ -544,11 +544,11 @@ type ClassicalTarget struct {
 
 	// 后端服务的外网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -692,11 +692,11 @@ type ClustersZone struct {
 
 	// 集群所在的主可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MasterZone []*string `json:"MasterZone,omitempty" name:"MasterZone" list`
+	MasterZone []*string `json:"MasterZone,omitempty" name:"MasterZone"`
 
 	// 集群所在的备可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SlaveZone []*string `json:"SlaveZone,omitempty" name:"SlaveZone" list`
+	SlaveZone []*string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 }
 
 type CreateClsLogSetRequest struct {
@@ -763,13 +763,13 @@ type CreateListenerRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
-	Ports []*int64 `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
 
 	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。
-	ListenerNames []*string `json:"ListenerNames,omitempty" name:"ListenerNames" list`
+	ListenerNames []*string `json:"ListenerNames,omitempty" name:"ListenerNames"`
 
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
@@ -840,7 +840,7 @@ type CreateListenerResponse struct {
 	Response *struct {
 
 		// 创建的监听器的唯一标识数组。
-		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -901,7 +901,7 @@ type CreateLoadBalancerRequest struct {
 	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
 
 	// 购买负载均衡同时，给负载均衡打上标签。
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 指定Vip申请负载均衡。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
@@ -919,7 +919,7 @@ type CreateLoadBalancerRequest struct {
 	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
 
 	// 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
-	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
 
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
@@ -977,7 +977,7 @@ type CreateLoadBalancerResponse struct {
 	Response *struct {
 
 		// 由负载均衡实例唯一 ID 组成的数组。
-		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1002,7 +1002,7 @@ type CreateLoadBalancerSnatIpsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 添加SnatIp信息，可指定IP申请，或者指定子网自动申请。
-	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
 }
 
 func (r *CreateLoadBalancerSnatIpsRequest) ToJsonString() string {
@@ -1055,7 +1055,7 @@ type CreateRuleRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 新建转发规则的信息。
-	Rules []*RuleInput `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*RuleInput `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -1084,7 +1084,7 @@ type CreateRuleResponse struct {
 	Response *struct {
 
 		// 创建的转发规则的唯一标识数组。
-		LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
+		LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1115,7 +1115,7 @@ type CreateTargetGroupRequest struct {
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
 	// 目标组绑定的后端服务器
-	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
+	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -1277,7 +1277,7 @@ type DeleteLoadBalancerListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DeleteLoadBalancerListenersRequest) ToJsonString() string {
@@ -1324,7 +1324,7 @@ type DeleteLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的负载均衡实例 ID数组，数组大小最大支持20。
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 }
 
 func (r *DeleteLoadBalancerRequest) ToJsonString() string {
@@ -1373,7 +1373,7 @@ type DeleteLoadBalancerSnatIpsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 删除SnatIp地址数组。
-	Ips []*string `json:"Ips,omitempty" name:"Ips" list`
+	Ips []*string `json:"Ips,omitempty" name:"Ips"`
 }
 
 func (r *DeleteLoadBalancerSnatIpsRequest) ToJsonString() string {
@@ -1429,7 +1429,7 @@ type DeleteRewriteRequest struct {
 	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
 
 	// 转发规则之间的重定向关系。
-	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
+	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos"`
 }
 
 func (r *DeleteRewriteRequest) ToJsonString() string {
@@ -1484,7 +1484,7 @@ type DeleteRuleRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 要删除的转发规则的ID组成的数组。
-	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
+	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds"`
 
 	// 要删除的转发规则的域名，已提供LocationIds参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -1544,7 +1544,7 @@ type DeleteTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 目标组的ID数组。
-	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
+	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds"`
 }
 
 func (r *DeleteTargetGroupsRequest) ToJsonString() string {
@@ -1593,7 +1593,7 @@ type DeregisterTargetGroupInstancesRequest struct {
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
 	// 待解绑的服务器信息。
-	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
+	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances"`
 }
 
 func (r *DeregisterTargetGroupInstancesRequest) ToJsonString() string {
@@ -1643,7 +1643,7 @@ type DeregisterTargetsFromClassicalLBRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 后端服务的实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DeregisterTargetsFromClassicalLBRequest) ToJsonString() string {
@@ -1696,7 +1696,7 @@ type DeregisterTargetsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 要解绑的后端服务列表，数组长度最大支持20。
-	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Target `json:"Targets,omitempty" name:"Targets"`
 
 	// 转发规则的ID，格式如 loc-12345678，当从七层转发规则解绑机器时，必须提供此参数或Domain+URL两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
@@ -1797,7 +1797,7 @@ type DescribeBlockIPListResponse struct {
 		ClientIPField *string `json:"ClientIPField,omitempty" name:"ClientIPField"`
 
 		// 加入了12360黑名单的IP列表
-		BlockedIPList []*BlockedIP `json:"BlockedIPList,omitempty" name:"BlockedIPList" list`
+		BlockedIPList []*BlockedIP `json:"BlockedIPList,omitempty" name:"BlockedIPList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1868,7 +1868,7 @@ type DescribeClassicalLBByInstanceIdRequest struct {
 	*tchttp.BaseRequest
 
 	// 后端实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeClassicalLBByInstanceIdRequest) ToJsonString() string {
@@ -1895,7 +1895,7 @@ type DescribeClassicalLBByInstanceIdResponse struct {
 	Response *struct {
 
 		// 负载均衡相关信息列表。
-		LoadBalancerInfoList []*ClassicalLoadBalancerInfo `json:"LoadBalancerInfoList,omitempty" name:"LoadBalancerInfoList" list`
+		LoadBalancerInfoList []*ClassicalLoadBalancerInfo `json:"LoadBalancerInfoList,omitempty" name:"LoadBalancerInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1949,7 +1949,7 @@ type DescribeClassicalLBHealthStatusResponse struct {
 
 		// 后端健康状态列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		HealthList []*ClassicalHealth `json:"HealthList,omitempty" name:"HealthList" list`
+		HealthList []*ClassicalHealth `json:"HealthList,omitempty" name:"HealthList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1974,7 +1974,7 @@ type DescribeClassicalLBListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 负载均衡监听器ID列表。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 负载均衡监听的协议：'TCP', 'UDP', 'HTTP', 'HTTPS'。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -2015,7 +2015,7 @@ type DescribeClassicalLBListenersResponse struct {
 
 		// 监听器列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Listeners []*ClassicalListener `json:"Listeners,omitempty" name:"Listeners" list`
+		Listeners []*ClassicalListener `json:"Listeners,omitempty" name:"Listeners"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2065,7 +2065,7 @@ type DescribeClassicalLBTargetsResponse struct {
 
 		// 后端服务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Targets []*ClassicalTarget `json:"Targets,omitempty" name:"Targets" list`
+		Targets []*ClassicalTarget `json:"Targets,omitempty" name:"Targets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2145,7 +2145,7 @@ type DescribeClusterResourcesRequest struct {
 	// <li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
 	// <li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
 	// <li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClusterResourcesRequest) ToJsonString() string {
@@ -2174,7 +2174,7 @@ type DescribeClusterResourcesResponse struct {
 	Response *struct {
 
 		// 集群中资源列表。
-		ClusterResourceSet []*ClusterResource `json:"ClusterResourceSet,omitempty" name:"ClusterResourceSet" list`
+		ClusterResourceSet []*ClusterResource `json:"ClusterResourceSet,omitempty" name:"ClusterResourceSet"`
 
 		// 集群中资源总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2214,7 +2214,7 @@ type DescribeExclusiveClustersRequest struct {
 	// <li> network - String - 是否必填：否 - （过滤条件）按照 集群 的网络类型过滤，如："Public","Private"。</li>
 	// <li> zone - String - 是否必填：否 - （过滤条件）按照 集群 所在可用区过滤，如："ap-guangzhou-1"（广州一区）。</li>
 	// <li> isp -- String - 是否必填：否 - （过滤条件）按照TGW集群的 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeExclusiveClustersRequest) ToJsonString() string {
@@ -2243,7 +2243,7 @@ type DescribeExclusiveClustersResponse struct {
 	Response *struct {
 
 		// 集群列表。
-		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet" list`
+		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
 
 		// 集群总数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2271,7 +2271,7 @@ type DescribeListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 要查询的负载均衡监听器ID数组。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -2307,7 +2307,7 @@ type DescribeListenersResponse struct {
 	Response *struct {
 
 		// 监听器列表。
-		Listeners []*Listener `json:"Listeners,omitempty" name:"Listeners" list`
+		Listeners []*Listener `json:"Listeners,omitempty" name:"Listeners"`
 
 		// 总的监听器个数（根据端口、协议、监听器ID过滤后）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2333,7 +2333,7 @@ type DescribeLoadBalancerListByCertIdRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务端证书的ID，或客户端证书的ID
-	CertIds []*string `json:"CertIds,omitempty" name:"CertIds" list`
+	CertIds []*string `json:"CertIds,omitempty" name:"CertIds"`
 }
 
 func (r *DescribeLoadBalancerListByCertIdRequest) ToJsonString() string {
@@ -2360,7 +2360,7 @@ type DescribeLoadBalancerListByCertIdResponse struct {
 	Response *struct {
 
 		// 证书ID，以及与该证书ID关联的负载均衡实例列表
-		CertSet []*CertIdRelatedWithLoadBalancers `json:"CertSet,omitempty" name:"CertSet" list`
+		CertSet []*CertIdRelatedWithLoadBalancers `json:"CertSet,omitempty" name:"CertSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2410,7 +2410,7 @@ type DescribeLoadBalancerTrafficResponse struct {
 
 		// 按出带宽从高到低排序后的负载均衡信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LoadBalancerTraffic []*LoadBalancerTraffic `json:"LoadBalancerTraffic,omitempty" name:"LoadBalancerTraffic" list`
+		LoadBalancerTraffic []*LoadBalancerTraffic `json:"LoadBalancerTraffic,omitempty" name:"LoadBalancerTraffic"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2438,7 +2438,7 @@ type DescribeLoadBalancersDetailRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 选择返回的Fields列表，默认添加LoadBalancerId和LoadBalancerName。
-	Fields []*string `json:"Fields,omitempty" name:"Fields" list`
+	Fields []*string `json:"Fields,omitempty" name:"Fields"`
 
 	// 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
 	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
@@ -2454,7 +2454,7 @@ type DescribeLoadBalancersDetailRequest struct {
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 负载均衡标签的标签键 过滤，如："name"。</li>
 	// <li> tag:* - String - 是否必填：否 - （过滤条件）按照 负载均衡的标签 过滤，':' 后面跟的是标签键。如：过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。</li>
 	// <li> fuzzy-search - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip，负载均衡名称 模糊搜索，如："1.1"。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeLoadBalancersDetailRequest) ToJsonString() string {
@@ -2489,7 +2489,7 @@ type DescribeLoadBalancersDetailResponse struct {
 
 		// 负载均衡详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LoadBalancerDetailSet []*LoadBalancerDetail `json:"LoadBalancerDetailSet,omitempty" name:"LoadBalancerDetailSet" list`
+		LoadBalancerDetailSet []*LoadBalancerDetail `json:"LoadBalancerDetailSet,omitempty" name:"LoadBalancerDetailSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2511,7 +2511,7 @@ type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 
 	// 负载均衡实例ID。
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 负载均衡实例的网络类型：
 	// OPEN：公网属性， INTERNAL：内网属性。
@@ -2527,13 +2527,13 @@ type DescribeLoadBalancersRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 负载均衡实例的 VIP 地址，支持多个。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡绑定的后端服务的外网 IP。
-	BackendPublicIps []*string `json:"BackendPublicIps,omitempty" name:"BackendPublicIps" list`
+	BackendPublicIps []*string `json:"BackendPublicIps,omitempty" name:"BackendPublicIps"`
 
 	// 负载均衡绑定的后端服务的内网 IP。
-	BackendPrivateIps []*string `json:"BackendPrivateIps,omitempty" name:"BackendPrivateIps" list`
+	BackendPrivateIps []*string `json:"BackendPrivateIps,omitempty" name:"BackendPrivateIps"`
 
 	// 数据偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -2574,7 +2574,7 @@ type DescribeLoadBalancersRequest struct {
 	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
 	// <li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeLoadBalancersRequest) ToJsonString() string {
@@ -2622,7 +2622,7 @@ type DescribeLoadBalancersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回的负载均衡实例数组。
-		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet" list`
+		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2667,7 +2667,7 @@ type DescribeQuotaResponse struct {
 	Response *struct {
 
 		// 配额列表
-		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2692,10 +2692,10 @@ type DescribeRewriteRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 负载均衡监听器ID数组。
-	SourceListenerIds []*string `json:"SourceListenerIds,omitempty" name:"SourceListenerIds" list`
+	SourceListenerIds []*string `json:"SourceListenerIds,omitempty" name:"SourceListenerIds"`
 
 	// 负载均衡转发规则的ID数组。
-	SourceLocationIds []*string `json:"SourceLocationIds,omitempty" name:"SourceLocationIds" list`
+	SourceLocationIds []*string `json:"SourceLocationIds,omitempty" name:"SourceLocationIds"`
 }
 
 func (r *DescribeRewriteRequest) ToJsonString() string {
@@ -2724,7 +2724,7 @@ type DescribeRewriteResponse struct {
 	Response *struct {
 
 		// 重定向转发规则构成的数组，若无重定向规则，则返回空数组。
-		RewriteSet []*RuleOutput `json:"RewriteSet,omitempty" name:"RewriteSet" list`
+		RewriteSet []*RuleOutput `json:"RewriteSet,omitempty" name:"RewriteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2746,7 +2746,7 @@ type DescribeTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 显示数量限制，默认20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2784,7 +2784,7 @@ type DescribeTargetGroupInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 绑定的服务器信息
-		TargetGroupInstanceSet []*TargetGroupBackend `json:"TargetGroupInstanceSet,omitempty" name:"TargetGroupInstanceSet" list`
+		TargetGroupInstanceSet []*TargetGroupBackend `json:"TargetGroupInstanceSet,omitempty" name:"TargetGroupInstanceSet"`
 
 		// 实际统计数量，不受Limit，Offset，CAM的影响
 		RealCount *uint64 `json:"RealCount,omitempty" name:"RealCount"`
@@ -2809,10 +2809,10 @@ type DescribeTargetGroupListRequest struct {
 	*tchttp.BaseRequest
 
 	// 目标组ID数组。
-	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
+	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds"`
 
 	// 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 显示的偏移起始量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2851,7 +2851,7 @@ type DescribeTargetGroupListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 显示的目标组信息集合。
-		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet" list`
+		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2873,7 +2873,7 @@ type DescribeTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 目标组ID，与Filters互斥。
-	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds" list`
+	TargetGroupIds []*string `json:"TargetGroupIds,omitempty" name:"TargetGroupIds"`
 
 	// 显示条数限制，默认为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2882,7 +2882,7 @@ type DescribeTargetGroupsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTargetGroupsRequest) ToJsonString() string {
@@ -2915,7 +2915,7 @@ type DescribeTargetGroupsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 显示的目标组信息集合。
-		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet" list`
+		TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitempty" name:"TargetGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2937,7 +2937,7 @@ type DescribeTargetHealthRequest struct {
 	*tchttp.BaseRequest
 
 	// 要查询的负载均衡实例ID列表。
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 }
 
 func (r *DescribeTargetHealthRequest) ToJsonString() string {
@@ -2965,7 +2965,7 @@ type DescribeTargetHealthResponse struct {
 
 		// 负载均衡实例列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitempty" name:"LoadBalancers" list`
+		LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitempty" name:"LoadBalancers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2990,7 +2990,7 @@ type DescribeTargetsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 监听器ID列表。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 监听器协议类型。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -3027,7 +3027,7 @@ type DescribeTargetsResponse struct {
 
 		// 监听器后端绑定的机器信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Listeners []*ListenerBackend `json:"Listeners,omitempty" name:"Listeners" list`
+		Listeners []*ListenerBackend `json:"Listeners,omitempty" name:"Listeners"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3098,7 +3098,7 @@ type DisassociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待解绑的规则关系数组。
-	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations" list`
+	Associations []*TargetGroupAssociation `json:"Associations,omitempty" name:"Associations"`
 }
 
 func (r *DisassociateTargetGroupsRequest) ToJsonString() string {
@@ -3144,11 +3144,11 @@ type ExclusiveCluster struct {
 
 	// 4层独占集群列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	L4Clusters []*ClusterItem `json:"L4Clusters,omitempty" name:"L4Clusters" list`
+	L4Clusters []*ClusterItem `json:"L4Clusters,omitempty" name:"L4Clusters"`
 
 	// 7层独占集群列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	L7Clusters []*ClusterItem `json:"L7Clusters,omitempty" name:"L7Clusters" list`
+	L7Clusters []*ClusterItem `json:"L7Clusters,omitempty" name:"L7Clusters"`
 
 	// vpcgw集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3172,7 +3172,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤器的值数组
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type HealthCheck struct {
@@ -3298,7 +3298,7 @@ type Listener struct {
 
 	// 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*RuleOutput `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*RuleOutput `json:"Rules,omitempty" name:"Rules"`
 
 	// 监听器的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3350,11 +3350,11 @@ type ListenerBackend struct {
 
 	// 监听器下的规则信息（仅适用于HTTP/HTTPS监听器）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*RuleTargets `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*RuleTargets `json:"Rules,omitempty" name:"Rules"`
 
 	// 监听器上绑定的后端服务列表（仅适用于TCP/UDP/TCP_SSL监听器）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Backend `json:"Targets,omitempty" name:"Targets"`
 
 	// 若支持端口段，则为端口段结束端口；若不支持端口段，则为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3378,7 +3378,7 @@ type ListenerHealth struct {
 
 	// 监听器的转发规则列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rules []*RuleHealth `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*RuleHealth `json:"Rules,omitempty" name:"Rules"`
 }
 
 type LoadBalancer struct {
@@ -3402,7 +3402,7 @@ type LoadBalancer struct {
 
 	// 负载均衡实例的 VIP 列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡实例的状态，包括
 	// 0：创建中，1：正常运行。
@@ -3446,11 +3446,11 @@ type LoadBalancer struct {
 
 	// 负载均衡实例的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 负载均衡实例的安全组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecureGroups []*string `json:"SecureGroups,omitempty" name:"SecureGroups" list`
+	SecureGroups []*string `json:"SecureGroups,omitempty" name:"SecureGroups"`
 
 	// 负载均衡实例绑定的后端设备的基本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3478,7 +3478,7 @@ type LoadBalancer struct {
 
 	// 备可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BackupZoneSet []*ZoneInfo `json:"BackupZoneSet,omitempty" name:"BackupZoneSet" list`
+	BackupZoneSet []*ZoneInfo `json:"BackupZoneSet,omitempty" name:"BackupZoneSet"`
 
 	// 负载均衡实例被隔离的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3542,7 +3542,7 @@ type LoadBalancer struct {
 
 	// 开启SnatPro负载均衡后，SnatIp列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps" list`
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
 
 	// 性能保障规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3570,7 +3570,7 @@ type LoadBalancer struct {
 
 	// 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// CLB是否为NFV，空：不是，l7nfv：七层是NFV。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3661,7 +3661,7 @@ type LoadBalancerDetail struct {
 
 	// 负载均衡实例的标签信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 负载均衡监听器 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3709,7 +3709,7 @@ type LoadBalancerDetail struct {
 
 	// 负载均衡绑定的安全组列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
 	// 负载均衡安全组上移特性是否开启标识。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3727,7 +3727,7 @@ type LoadBalancerHealth struct {
 
 	// 监听器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Listeners []*ListenerHealth `json:"Listeners,omitempty" name:"Listeners" list`
+	Listeners []*ListenerHealth `json:"Listeners,omitempty" name:"Listeners"`
 }
 
 type LoadBalancerTraffic struct {
@@ -3761,7 +3761,7 @@ type ManualRewriteRequest struct {
 	TargetListenerId *string `json:"TargetListenerId,omitempty" name:"TargetListenerId"`
 
 	// 转发规则之间的重定向关系。
-	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos" list`
+	RewriteInfos []*RewriteLocationMap `json:"RewriteInfos,omitempty" name:"RewriteInfos"`
 }
 
 func (r *ManualRewriteRequest) ToJsonString() string {
@@ -3810,7 +3810,7 @@ type ModifyBlockIPListRequest struct {
 	*tchttp.BaseRequest
 
 	// 负载均衡实例ID
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 操作类型，可取：
 	// <li> add_customized_field（首次设置header，开启黑名单功能）</li>
@@ -3825,7 +3825,7 @@ type ModifyBlockIPListRequest struct {
 	ClientIPField *string `json:"ClientIPField,omitempty" name:"ClientIPField"`
 
 	// 封禁IP列表，单次操作数组最大长度支持200000
-	BlockIPList []*string `json:"BlockIPList,omitempty" name:"BlockIPList" list`
+	BlockIPList []*string `json:"BlockIPList,omitempty" name:"BlockIPList"`
 
 	// 过期时间，单位秒，默认值3600
 	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
@@ -4310,7 +4310,7 @@ type ModifyTargetGroupInstancesPortRequest struct {
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
 	// 待修改端口的服务器数组。
-	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
+	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances"`
 }
 
 func (r *ModifyTargetGroupInstancesPortRequest) ToJsonString() string {
@@ -4360,7 +4360,7 @@ type ModifyTargetGroupInstancesWeightRequest struct {
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
 	// 待修改权重的服务器数组。
-	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
+	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances"`
 }
 
 func (r *ModifyTargetGroupInstancesWeightRequest) ToJsonString() string {
@@ -4413,7 +4413,7 @@ type ModifyTargetPortRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 要修改端口的后端服务列表。
-	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Target `json:"Targets,omitempty" name:"Targets"`
 
 	// 后端服务绑定到监听器或转发规则的新端口。
 	NewPort *int64 `json:"NewPort,omitempty" name:"NewPort"`
@@ -4492,7 +4492,7 @@ type ModifyTargetWeightRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 要修改权重的后端服务列表。
-	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Target `json:"Targets,omitempty" name:"Targets"`
 
 	// 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
@@ -4568,7 +4568,7 @@ type RegisterTargetGroupInstancesRequest struct {
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
 	// 服务器实例数组
-	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances" list`
+	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitempty" name:"TargetGroupInstances"`
 }
 
 func (r *RegisterTargetGroupInstancesRequest) ToJsonString() string {
@@ -4621,7 +4621,7 @@ type RegisterTargetsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待绑定的后端服务列表，数组长度最大支持20。
-	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Target `json:"Targets,omitempty" name:"Targets"`
 
 	// 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
@@ -4684,7 +4684,7 @@ type RegisterTargetsWithClassicalLBRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 后端服务信息。
-	Targets []*ClassicalTargetInfo `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*ClassicalTargetInfo `json:"Targets,omitempty" name:"Targets"`
 }
 
 func (r *RegisterTargetsWithClassicalLBRequest) ToJsonString() string {
@@ -4826,7 +4826,7 @@ type RsWeightRule struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 要修改权重的后端机器列表。
-	Targets []*Target `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Target `json:"Targets,omitempty" name:"Targets"`
 
 	// 转发规则的ID，七层规则时需要此参数，4层规则不需要。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
@@ -4856,7 +4856,7 @@ type RuleHealth struct {
 
 	// 本规则上绑定的后端服务的健康检查状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Targets []*TargetHealth `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*TargetHealth `json:"Targets,omitempty" name:"Targets"`
 }
 
 type RuleInput struct {
@@ -4991,7 +4991,7 @@ type RuleTargets struct {
 
 	// 后端服务的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Targets []*Backend `json:"Targets,omitempty" name:"Targets" list`
+	Targets []*Backend `json:"Targets,omitempty" name:"Targets"`
 }
 
 type SetLoadBalancerClsLogRequest struct {
@@ -5059,7 +5059,7 @@ type SetLoadBalancerSecurityGroupsRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组。
-	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups" list`
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
 }
 
 func (r *SetLoadBalancerSecurityGroupsRequest) ToJsonString() string {
@@ -5113,7 +5113,7 @@ type SetSecurityGroupForLoadbalancersRequest struct {
 	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
 	// 负载均衡实例ID数组
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 }
 
 func (r *SetSecurityGroupForLoadbalancersRequest) ToJsonString() string {
@@ -5234,11 +5234,11 @@ type TargetGroupBackend struct {
 
 	// 后端服务的外网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5280,7 +5280,7 @@ type TargetGroupInfo struct {
 
 	// 关联到的规则数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitempty" name:"AssociatedRule" list`
+	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitempty" name:"AssociatedRule"`
 }
 
 type TargetGroupInstance struct {

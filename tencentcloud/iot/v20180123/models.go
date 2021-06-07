@@ -145,7 +145,7 @@ type AddProductRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 数据模版
-	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate" list`
+	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate"`
 
 	// 产品版本（native表示基础版，template表示高级版，默认值为template）
 	DataProtocol *string `json:"DataProtocol,omitempty" name:"DataProtocol"`
@@ -221,7 +221,7 @@ type AddRuleRequest struct {
 	Query *RuleQuery `json:"Query,omitempty" name:"Query"`
 
 	// 转发动作列表
-	Actions []*Action `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
 
 	// 数据类型（0：文本，1：二进制）
 	DataType *uint64 `json:"DataType,omitempty" name:"DataType"`
@@ -484,7 +484,7 @@ type AppDeviceDetail struct {
 	DeviceInfo *string `json:"DeviceInfo,omitempty" name:"DeviceInfo"`
 
 	// 数据模板
-	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate" list`
+	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate"`
 }
 
 type AppGetDeviceDataRequest struct {
@@ -608,7 +608,7 @@ type AppGetDeviceStatusesRequest struct {
 	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
 
 	// 设备Id列表（单次限制1000个设备）
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds" list`
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
 }
 
 func (r *AppGetDeviceStatusesRequest) ToJsonString() string {
@@ -636,7 +636,7 @@ type AppGetDeviceStatusesResponse struct {
 	Response *struct {
 
 		// 设备状态
-		DeviceStatuses []*DeviceStatus `json:"DeviceStatuses,omitempty" name:"DeviceStatuses" list`
+		DeviceStatuses []*DeviceStatus `json:"DeviceStatuses,omitempty" name:"DeviceStatuses"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -685,7 +685,7 @@ type AppGetDevicesResponse struct {
 	Response *struct {
 
 		// 绑定设备列表
-		Devices []*AppDevice `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*AppDevice `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1172,7 +1172,7 @@ type BoolData struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
 	// 取值列表
-	Range []*bool `json:"Range,omitempty" name:"Range" list`
+	Range []*bool `json:"Range,omitempty" name:"Range"`
 }
 
 type CkafkaAction struct {
@@ -1599,7 +1599,7 @@ type EnumData struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
 	// 取值列表
-	Range []*string `json:"Range,omitempty" name:"Range" list`
+	Range []*string `json:"Range,omitempty" name:"Range"`
 }
 
 type GetDataHistoryRequest struct {
@@ -1609,7 +1609,7 @@ type GetDataHistoryRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称列表，允许最多一次100台
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 查询开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -1657,7 +1657,7 @@ type GetDataHistoryResponse struct {
 	Response *struct {
 
 		// 数据历史
-		DataHistory []*DataHistoryEntry `json:"DataHistory,omitempty" name:"DataHistory" list`
+		DataHistory []*DataHistoryEntry `json:"DataHistory,omitempty" name:"DataHistory"`
 
 		// 查询游标
 		ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
@@ -1688,7 +1688,7 @@ type GetDebugLogRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称列表，最大支持100台
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 查询开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -1740,7 +1740,7 @@ type GetDebugLogResponse struct {
 	Response *struct {
 
 		// 调试日志
-		DebugLog []*DebugLogEntry `json:"DebugLog,omitempty" name:"DebugLog" list`
+		DebugLog []*DebugLogEntry `json:"DebugLog,omitempty" name:"DebugLog"`
 
 		// 查询游标
 		ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
@@ -1824,7 +1824,7 @@ type GetDeviceLogRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称列表，最大支持100台
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 查询开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -1876,7 +1876,7 @@ type GetDeviceLogResponse struct {
 	Response *struct {
 
 		// 设备日志
-		DeviceLog []*DeviceLogEntry `json:"DeviceLog,omitempty" name:"DeviceLog" list`
+		DeviceLog []*DeviceLogEntry `json:"DeviceLog,omitempty" name:"DeviceLog"`
 
 		// 查询游标
 		ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
@@ -1960,7 +1960,7 @@ type GetDeviceSignaturesRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称列表（单次限制1000个设备）
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 过期时间
 	Expire *uint64 `json:"Expire,omitempty" name:"Expire"`
@@ -1992,7 +1992,7 @@ type GetDeviceSignaturesResponse struct {
 	Response *struct {
 
 		// 设备绑定签名列表
-		DeviceSignatures []*DeviceSignature `json:"DeviceSignatures,omitempty" name:"DeviceSignatures" list`
+		DeviceSignatures []*DeviceSignature `json:"DeviceSignatures,omitempty" name:"DeviceSignatures"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2014,7 +2014,7 @@ type GetDeviceStatisticsRequest struct {
 	*tchttp.BaseRequest
 
 	// 产品Id列表
-	Products []*string `json:"Products,omitempty" name:"Products" list`
+	Products []*string `json:"Products,omitempty" name:"Products"`
 
 	// 开始日期
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
@@ -2049,7 +2049,7 @@ type GetDeviceStatisticsResponse struct {
 	Response *struct {
 
 		// 统计数据
-		DeviceStatistics []*DeviceStatData `json:"DeviceStatistics,omitempty" name:"DeviceStatistics" list`
+		DeviceStatistics []*DeviceStatData `json:"DeviceStatistics,omitempty" name:"DeviceStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2074,7 +2074,7 @@ type GetDeviceStatusesRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称列表（单次限制1000个设备）
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 }
 
 func (r *GetDeviceStatusesRequest) ToJsonString() string {
@@ -2102,7 +2102,7 @@ type GetDeviceStatusesResponse struct {
 	Response *struct {
 
 		// 设备状态列表
-		DeviceStatuses []*DeviceStatus `json:"DeviceStatuses,omitempty" name:"DeviceStatuses" list`
+		DeviceStatuses []*DeviceStatus `json:"DeviceStatuses,omitempty" name:"DeviceStatuses"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2163,7 +2163,7 @@ type GetDevicesResponse struct {
 	Response *struct {
 
 		// 设备列表
-		Devices []*DeviceEntry `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceEntry `json:"Devices,omitempty" name:"Devices"`
 
 		// 设备总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2268,7 +2268,7 @@ type GetProductsResponse struct {
 	Response *struct {
 
 		// Product列表
-		Products []*ProductEntry `json:"Products,omitempty" name:"Products" list`
+		Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
 
 		// Product总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2373,7 +2373,7 @@ type GetRulesResponse struct {
 	Response *struct {
 
 		// 规则列表
-		Rules []*Rule `json:"Rules,omitempty" name:"Rules" list`
+		Rules []*Rule `json:"Rules,omitempty" name:"Rules"`
 
 		// 规则总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2486,7 +2486,7 @@ type GetTopicsResponse struct {
 	Response *struct {
 
 		// Topic列表
-		Topics []*Topic `json:"Topics,omitempty" name:"Topics" list`
+		Topics []*Topic `json:"Topics,omitempty" name:"Topics"`
 
 		// Topic总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -2577,7 +2577,7 @@ type NumberData struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
 	// 取值范围
-	Range []*float64 `json:"Range,omitempty" name:"Range" list`
+	Range []*float64 `json:"Range,omitempty" name:"Range"`
 }
 
 type Product struct {
@@ -2619,7 +2619,7 @@ type Product struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 数据模版
-	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate" list`
+	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate"`
 
 	// 数据协议（native/template）
 	DataProtocol *string `json:"DataProtocol,omitempty" name:"DataProtocol"`
@@ -2643,7 +2643,7 @@ type Product struct {
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 关联的产品列表
-	AssociatedProducts []*string `json:"AssociatedProducts,omitempty" name:"AssociatedProducts" list`
+	AssociatedProducts []*string `json:"AssociatedProducts,omitempty" name:"AssociatedProducts"`
 }
 
 type ProductEntry struct {
@@ -2816,7 +2816,7 @@ type Rule struct {
 	Query *RuleQuery `json:"Query,omitempty" name:"Query"`
 
 	// 转发
-	Actions []*Action `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
 
 	// 已启动
 	Active *uint64 `json:"Active,omitempty" name:"Active"`
@@ -2872,7 +2872,7 @@ type StringData struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
 	// 长度范围
-	Range []*uint64 `json:"Range,omitempty" name:"Range" list`
+	Range []*uint64 `json:"Range,omitempty" name:"Range"`
 }
 
 type Topic struct {
@@ -2977,7 +2977,7 @@ type UpdateProductRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 数据模版
-	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate" list`
+	DataTemplate []*DataTemplate `json:"DataTemplate,omitempty" name:"DataTemplate"`
 }
 
 func (r *UpdateProductRequest) ToJsonString() string {
@@ -3041,7 +3041,7 @@ type UpdateRuleRequest struct {
 	Query *RuleQuery `json:"Query,omitempty" name:"Query"`
 
 	// 转发动作列表
-	Actions []*Action `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
 
 	// 数据类型（0：文本，1：二进制）
 	DataType *uint64 `json:"DataType,omitempty" name:"DataType"`

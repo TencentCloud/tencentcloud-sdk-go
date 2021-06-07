@@ -93,7 +93,7 @@ type BillDetail struct {
 	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 组件列表
-	ComponentSet []*BillDetailComponent `json:"ComponentSet,omitempty" name:"ComponentSet" list`
+	ComponentSet []*BillDetailComponent `json:"ComponentSet,omitempty" name:"ComponentSet"`
 
 	// 支付者UIN
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
@@ -106,7 +106,7 @@ type BillDetail struct {
 
 	// Tag 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 商品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -273,7 +273,7 @@ type BillResourceSummary struct {
 
 	// Tag 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 付款方uin
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
@@ -439,22 +439,22 @@ type Conditions struct {
 	ResourceKeyword *string `json:"ResourceKeyword,omitempty" name:"ResourceKeyword"`
 
 	// 产品编码
-	BusinessCodes []*string `json:"BusinessCodes,omitempty" name:"BusinessCodes" list`
+	BusinessCodes []*string `json:"BusinessCodes,omitempty" name:"BusinessCodes"`
 
 	// 子产品编码
-	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes" list`
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
 
 	// 地域ID
-	RegionIds []*int64 `json:"RegionIds,omitempty" name:"RegionIds" list`
+	RegionIds []*int64 `json:"RegionIds,omitempty" name:"RegionIds"`
 
 	// 项目ID
-	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
 	// 付费模式，可选prePay和postPay
-	PayModes []*string `json:"PayModes,omitempty" name:"PayModes" list`
+	PayModes []*string `json:"PayModes,omitempty" name:"PayModes"`
 
 	// 交易类型
-	ActionTypes []*string `json:"ActionTypes,omitempty" name:"ActionTypes" list`
+	ActionTypes []*string `json:"ActionTypes,omitempty" name:"ActionTypes"`
 
 	// 是否隐藏0元流水
 	HideFreeCost *int64 `json:"HideFreeCost,omitempty" name:"HideFreeCost"`
@@ -463,19 +463,19 @@ type Conditions struct {
 	OrderByCost *string `json:"OrderByCost,omitempty" name:"OrderByCost"`
 
 	// 交易ID
-	BillIds []*string `json:"BillIds,omitempty" name:"BillIds" list`
+	BillIds []*string `json:"BillIds,omitempty" name:"BillIds"`
 
 	// 组件编码
-	ComponentCodes []*string `json:"ComponentCodes,omitempty" name:"ComponentCodes" list`
+	ComponentCodes []*string `json:"ComponentCodes,omitempty" name:"ComponentCodes"`
 
 	// 文件ID
-	FileIds []*string `json:"FileIds,omitempty" name:"FileIds" list`
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 文件类型
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes" list`
+	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
 
 	// 状态
-	Status []*uint64 `json:"Status,omitempty" name:"Status" list`
+	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ConsumptionBusinessSummaryDataItem struct {
@@ -508,7 +508,7 @@ type ConsumptionProjectSummaryDataItem struct {
 	Trend *ConsumptionSummaryTrend `json:"Trend,omitempty" name:"Trend"`
 
 	// 产品消耗详情
-	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business" list`
+	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business"`
 }
 
 type ConsumptionRegionSummaryDataItem struct {
@@ -526,22 +526,22 @@ type ConsumptionRegionSummaryDataItem struct {
 	Trend *ConsumptionSummaryTrend `json:"Trend,omitempty" name:"Trend"`
 
 	// 产品消费详情
-	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business" list`
+	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitempty" name:"Business"`
 }
 
 type ConsumptionResourceSummaryConditionValue struct {
 
 	// 产品列表
-	Business []*ConditionBusiness `json:"Business,omitempty" name:"Business" list`
+	Business []*ConditionBusiness `json:"Business,omitempty" name:"Business"`
 
 	// 项目列表
-	Project []*ConditionProject `json:"Project,omitempty" name:"Project" list`
+	Project []*ConditionProject `json:"Project,omitempty" name:"Project"`
 
 	// 地域列表
-	Region []*ConditionRegion `json:"Region,omitempty" name:"Region" list`
+	Region []*ConditionRegion `json:"Region,omitempty" name:"Region"`
 
 	// 付费模式列表
-	PayMode []*ConditionPayMode `json:"PayMode,omitempty" name:"PayMode" list`
+	PayMode []*ConditionPayMode `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 type ConsumptionResourceSummaryDataItem struct {
@@ -711,7 +711,7 @@ type CostDetail struct {
 	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 组件明细
-	ComponentSet []*CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet" list`
+	ComponentSet []*CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet"`
 
 	// 产品代码
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
@@ -747,7 +747,7 @@ type Deal struct {
 	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitempty" name:"GoodsCategoryId"`
 
 	// 产品详情
-	ProductInfo []*ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo" list`
+	ProductInfo []*ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
 
 	// 时长
 	TimeSpan *float64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
@@ -946,7 +946,7 @@ type DescribeBillDetailResponse struct {
 	Response *struct {
 
 		// 详情列表
-		DetailSet []*BillDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+		DetailSet []*BillDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 
 		// 总记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -984,10 +984,10 @@ type DescribeBillListRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
-	PayType []*string `json:"PayType,omitempty" name:"PayType" list`
+	PayType []*string `json:"PayType,omitempty" name:"PayType"`
 
 	// 扣费模式，当所选的交易类型中包含扣费deduct时有意义： all所有扣费类型，trade预付费支付，hour_h按量小时结，hour_d按量日结，hour_m按量月结，decompensate调账扣费，other其他扣费
-	SubPayType []*string `json:"SubPayType,omitempty" name:"SubPayType" list`
+	SubPayType []*string `json:"SubPayType,omitempty" name:"SubPayType"`
 
 	// 是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回
 	WithZeroAmount *uint64 `json:"WithZeroAmount,omitempty" name:"WithZeroAmount"`
@@ -1023,7 +1023,7 @@ type DescribeBillListResponse struct {
 	Response *struct {
 
 		// 收支明细列表
-		TransactionList []*BillTransactionInfo `json:"TransactionList,omitempty" name:"TransactionList" list`
+		TransactionList []*BillTransactionInfo `json:"TransactionList,omitempty" name:"TransactionList"`
 
 		// 总条数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -1126,7 +1126,7 @@ type DescribeBillResourceSummaryResponse struct {
 	Response *struct {
 
 		// 资源汇总列表
-		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet,omitempty" name:"ResourceSummarySet" list`
+		ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet,omitempty" name:"ResourceSummarySet"`
 
 		// 资源汇总列表总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1191,7 +1191,7 @@ type DescribeBillSummaryByPayModeResponse struct {
 
 		// 各付费模式花费分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SummaryOverview []*PayModeSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview" list`
+		SummaryOverview []*PayModeSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1256,7 +1256,7 @@ type DescribeBillSummaryByProductResponse struct {
 
 		// 各产品花费分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SummaryOverview []*BusinessSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview" list`
+		SummaryOverview []*BusinessSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1317,7 +1317,7 @@ type DescribeBillSummaryByProjectResponse struct {
 
 		// 各项目花费分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SummaryOverview []*ProjectSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview" list`
+		SummaryOverview []*ProjectSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1378,7 +1378,7 @@ type DescribeBillSummaryByRegionResponse struct {
 
 		// 各地域花费分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SummaryOverview []*RegionSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview" list`
+		SummaryOverview []*RegionSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1443,7 +1443,7 @@ type DescribeBillSummaryByTagResponse struct {
 
 		// 各标签值花费分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SummaryOverview []*TagSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview" list`
+		SummaryOverview []*TagSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1526,7 +1526,7 @@ type DescribeCostDetailResponse struct {
 
 		// 消耗明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailSet []*CostDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+		DetailSet []*CostDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 
 		// 记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1606,7 +1606,7 @@ type DescribeCostSummaryByProductResponse struct {
 
 		// 消耗按产品汇总详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*ConsumptionBusinessSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*ConsumptionBusinessSummaryDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 记录数量，NeedRecordNum为0是返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1685,7 +1685,7 @@ type DescribeCostSummaryByProjectResponse struct {
 		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
 
 		// 消耗按业务汇总详情
-		Data []*ConsumptionProjectSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*ConsumptionProjectSummaryDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 记录数量，NeedRecordNum为0是返回null
 		RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
@@ -1763,7 +1763,7 @@ type DescribeCostSummaryByRegionResponse struct {
 		Total *ConsumptionSummaryTotal `json:"Total,omitempty" name:"Total"`
 
 		// 消耗按地域汇总详情
-		Data []*ConsumptionRegionSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*ConsumptionRegionSummaryDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 记录数量，NeedRecordNum为0是返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1860,7 +1860,7 @@ type DescribeCostSummaryByResourceResponse struct {
 
 		// 资源消耗详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*ConsumptionResourceSummaryDataItem `json:"Data,omitempty" name:"Data" list`
+		Data []*ConsumptionResourceSummaryDataItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1945,7 +1945,7 @@ type DescribeDealsByCondResponse struct {
 	Response *struct {
 
 		// 订单列表
-		Deals []*Deal `json:"Deals,omitempty" name:"Deals" list`
+		Deals []*Deal `json:"Deals,omitempty" name:"Deals"`
 
 		// 订单总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2005,7 +2005,7 @@ type DescribeDosageCosDetailByDateResponse struct {
 	Response *struct {
 
 		// 用量数组
-		DetailSets []*CosDetailSets `json:"DetailSets,omitempty" name:"DetailSets" list`
+		DetailSets []*CosDetailSets `json:"DetailSets,omitempty" name:"DetailSets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2096,7 +2096,7 @@ type DescribeDosageDetailByDateResponse struct {
 
 		// 用量数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailSets []*DetailSet `json:"DetailSets,omitempty" name:"DetailSets" list`
+		DetailSets []*DetailSet `json:"DetailSets,omitempty" name:"DetailSets"`
 
 		// 错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2137,7 +2137,7 @@ type DetailSet struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 使用数据明细
-	DetailPoints []*DetailPoint `json:"DetailPoints,omitempty" name:"DetailPoints" list`
+	DetailPoints []*DetailPoint `json:"DetailPoints,omitempty" name:"DetailPoints"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2148,16 +2148,16 @@ type PayDealsRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要支付的一个或者多个子订单号，与BigDealIds字段两者必须且仅传一个参数
-	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 
 	// 是否自动使用代金券,1:是,0否,默认0
 	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表,目前仅支持指定一张代金券
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 需要支付的一个或者多个大订单号，与OrderIds字段两者必须且仅传一个参数
-	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 }
 
 func (r *PayDealsRequest) ToJsonString() string {
@@ -2187,13 +2187,13 @@ type PayDealsResponse struct {
 	Response *struct {
 
 		// 此次操作支付成功的子订单号数组
-		OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+		OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 
 		// 此次操作支付成功的资源Id数组
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 此次操作支付成功的大订单号数组
-		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds" list`
+		BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2226,7 +2226,7 @@ type PayModeSummaryOverviewItem struct {
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
 	// 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
-	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail" list`
+	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail"`
 
 	// 现金金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`

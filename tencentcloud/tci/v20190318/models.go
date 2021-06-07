@@ -34,7 +34,7 @@ type AIAssistantRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -43,7 +43,7 @@ type AIAssistantRequest struct {
 	Template *int64 `json:"Template,omitempty" name:"Template"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -84,7 +84,7 @@ type AIAssistantResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -201,13 +201,13 @@ type ActionInfo struct {
 type ActionStatistic struct {
 
 	// 数量统计
-	ActionCount []*ActionCountStatistic `json:"ActionCount,omitempty" name:"ActionCount" list`
+	ActionCount []*ActionCountStatistic `json:"ActionCount,omitempty" name:"ActionCount"`
 
 	// 时长统计
-	ActionDuration []*ActionDurationStatistic `json:"ActionDuration,omitempty" name:"ActionDuration" list`
+	ActionDuration []*ActionDurationStatistic `json:"ActionDuration,omitempty" name:"ActionDuration"`
 
 	// 时长比例统计
-	ActionDurationRatio []*ActionDurationRatioStatistic `json:"ActionDurationRatio,omitempty" name:"ActionDurationRatio" list`
+	ActionDurationRatio []*ActionDurationRatioStatistic `json:"ActionDurationRatio,omitempty" name:"ActionDurationRatio"`
 }
 
 type ActionType struct {
@@ -222,7 +222,7 @@ type ActionType struct {
 type AllMuteSlice struct {
 
 	// 所有静音片段。
-	MuteSlice []*MuteSlice `json:"MuteSlice,omitempty" name:"MuteSlice" list`
+	MuteSlice []*MuteSlice `json:"MuteSlice,omitempty" name:"MuteSlice"`
 
 	// 静音时长占比。
 	MuteRatio *float64 `json:"MuteRatio,omitempty" name:"MuteRatio"`
@@ -374,13 +374,13 @@ type CreateFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片数据 base64 字符串，与 Urls 参数选择一个输入
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 人员库唯一标识符
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
 	// 图片下载地址，与 Images 参数选择一个输入
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *CreateFaceRequest) ToJsonString() string {
@@ -410,7 +410,7 @@ type CreateFaceResponse struct {
 	Response *struct {
 
 		// 人脸操作结果信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -494,7 +494,7 @@ type CreatePersonRequest struct {
 	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 
 	// 图片数据 base64 字符串，与 Urls 参数选择一个输入
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 人员工作号码
 	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
@@ -515,7 +515,7 @@ type CreatePersonRequest struct {
 	StudentNumber *string `json:"StudentNumber,omitempty" name:"StudentNumber"`
 
 	// 图片下载地址，与 Images 参数选择一个输入
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -551,7 +551,7 @@ type CreatePersonResponse struct {
 	Response *struct {
 
 		// 人脸操作结果信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -631,7 +631,7 @@ type CreateVocabRequest struct {
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
 
 	// 要添加的词汇列表
-	VocabList []*string `json:"VocabList,omitempty" name:"VocabList" list`
+	VocabList []*string `json:"VocabList,omitempty" name:"VocabList"`
 }
 
 func (r *CreateVocabRequest) ToJsonString() string {
@@ -678,7 +678,7 @@ type DeleteFaceRequest struct {
 	*tchttp.BaseRequest
 
 	// 人脸标识符数组
-	FaceIdSet []*string `json:"FaceIdSet,omitempty" name:"FaceIdSet" list`
+	FaceIdSet []*string `json:"FaceIdSet,omitempty" name:"FaceIdSet"`
 
 	// 人员唯一标识符
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
@@ -713,7 +713,7 @@ type DeleteFaceResponse struct {
 	Response *struct {
 
 		// 人脸操作结果
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -818,7 +818,7 @@ type DeletePersonResponse struct {
 	Response *struct {
 
 		// 人脸信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -898,7 +898,7 @@ type DeleteVocabRequest struct {
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
 
 	// 要删除的词汇列表
-	VocabList []*string `json:"VocabList,omitempty" name:"VocabList" list`
+	VocabList []*string `json:"VocabList,omitempty" name:"VocabList"`
 }
 
 func (r *DeleteVocabRequest) ToJsonString() string {
@@ -1041,16 +1041,16 @@ type DescribeAttendanceResultResponse struct {
 	Response *struct {
 
 		// 缺失人员的ID列表(只针对请求中的libids字段)
-		AbsenceSetInLibs []*AbsenceInfo `json:"AbsenceSetInLibs,omitempty" name:"AbsenceSetInLibs" list`
+		AbsenceSetInLibs []*AbsenceInfo `json:"AbsenceSetInLibs,omitempty" name:"AbsenceSetInLibs"`
 
 		// 确定出勤人员列表
-		AttendanceSet []*AttendanceInfo `json:"AttendanceSet,omitempty" name:"AttendanceSet" list`
+		AttendanceSet []*AttendanceInfo `json:"AttendanceSet,omitempty" name:"AttendanceSet"`
 
 		// 疑似出勤人员列表
-		SuspectedSet []*SuspectedInfo `json:"SuspectedSet,omitempty" name:"SuspectedSet" list`
+		SuspectedSet []*SuspectedInfo `json:"SuspectedSet,omitempty" name:"SuspectedSet"`
 
 		// 缺失人员的ID列表(只针对请求中的personids字段)
-		AbsenceSet []*string `json:"AbsenceSet,omitempty" name:"AbsenceSet" list`
+		AbsenceSet []*string `json:"AbsenceSet,omitempty" name:"AbsenceSet"`
 
 		// 请求处理进度
 		Progress *int64 `json:"Progress,omitempty" name:"Progress"`
@@ -1116,13 +1116,13 @@ type DescribeAudioTaskResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 返回音频全部文本。
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -1198,13 +1198,13 @@ type DescribeConversationTaskResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 整个音频流的全部文本
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -1265,7 +1265,7 @@ type DescribeHighlightResultResponse struct {
 	Response *struct {
 
 		// 精彩集锦详细信息。
-		HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo" list`
+		HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo"`
 
 		// 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -1328,7 +1328,7 @@ type DescribeImageTaskResponse struct {
 	Response *struct {
 
 		// 任务处理结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务唯一标识
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -1434,7 +1434,7 @@ type DescribeLibrariesResponse struct {
 	Response *struct {
 
 		// 人员库列表
-		LibrarySet []*Library `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+		LibrarySet []*Library `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 		// 人员库总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1490,7 +1490,7 @@ type DescribePersonResponse struct {
 	Response *struct {
 
 		// 人员人脸列表
-		FaceSet []*Face `json:"FaceSet,omitempty" name:"FaceSet" list`
+		FaceSet []*Face `json:"FaceSet,omitempty" name:"FaceSet"`
 
 		// 创建时间
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1577,7 +1577,7 @@ type DescribePersonsResponse struct {
 	Response *struct {
 
 		// 人员列表
-		PersonSet []*Person `json:"PersonSet,omitempty" name:"PersonSet" list`
+		PersonSet []*Person `json:"PersonSet,omitempty" name:"PersonSet"`
 
 		// 人员总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1625,7 +1625,7 @@ type DescribeVocabLibResponse struct {
 	Response *struct {
 
 		// 返回该appid下的所有词汇库名
-		VocabLibNameSet []*string `json:"VocabLibNameSet,omitempty" name:"VocabLibNameSet" list`
+		VocabLibNameSet []*string `json:"VocabLibNameSet,omitempty" name:"VocabLibNameSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1674,7 +1674,7 @@ type DescribeVocabResponse struct {
 	Response *struct {
 
 		// 词汇列表
-		VocabNameSet []*string `json:"VocabNameSet,omitempty" name:"VocabNameSet" list`
+		VocabNameSet []*string `json:"VocabNameSet,omitempty" name:"VocabNameSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1695,7 +1695,7 @@ func (r *DescribeVocabResponse) FromJsonString(s string) error {
 type DetailInfo struct {
 
 	// 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
-	Value []*WordTimePair `json:"Value,omitempty" name:"Value" list`
+	Value []*WordTimePair `json:"Value,omitempty" name:"Value"`
 
 	// 词汇库中的单词
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
@@ -1776,7 +1776,7 @@ type FaceExpressStatistic struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 表情统计结果
-	ExpressRatio []*ExpressRatioStatistic `json:"ExpressRatio,omitempty" name:"ExpressRatio" list`
+	ExpressRatio []*ExpressRatioStatistic `json:"ExpressRatio,omitempty" name:"ExpressRatio"`
 }
 
 type FaceExpressionResult struct {
@@ -1971,10 +1971,10 @@ type HandTrackingResult struct {
 type HighlightsInfomation struct {
 
 	// 专注的起始与终止时间信息。
-	Concentration []*TimeType `json:"Concentration,omitempty" name:"Concentration" list`
+	Concentration []*TimeType `json:"Concentration,omitempty" name:"Concentration"`
 
 	// 微笑的起始与终止时间信息。
-	Smile []*TimeType `json:"Smile,omitempty" name:"Smile" list`
+	Smile []*TimeType `json:"Smile,omitempty" name:"Smile"`
 
 	// 高光集锦视频地址，保存剪辑好的视频地址。
 	HighlightsUrl *string `json:"HighlightsUrl,omitempty" name:"HighlightsUrl"`
@@ -2061,13 +2061,13 @@ type ImageTaskResult struct {
 type ImageTaskStatistic struct {
 
 	// 人员检测统计信息
-	FaceDetect []*FaceDetectStatistic `json:"FaceDetect,omitempty" name:"FaceDetect" list`
+	FaceDetect []*FaceDetectStatistic `json:"FaceDetect,omitempty" name:"FaceDetect"`
 
 	// 人脸表情统计信息
-	FaceExpression []*FaceExpressStatistic `json:"FaceExpression,omitempty" name:"FaceExpression" list`
+	FaceExpression []*FaceExpressStatistic `json:"FaceExpression,omitempty" name:"FaceExpression"`
 
 	// 人脸检索统计信息
-	FaceIdentify []*FaceIdentifyStatistic `json:"FaceIdentify,omitempty" name:"FaceIdentify" list`
+	FaceIdentify []*FaceIdentifyStatistic `json:"FaceIdentify,omitempty" name:"FaceIdentify"`
 
 	// 姿势识别统计信息
 	Gesture *ActionStatistic `json:"Gesture,omitempty" name:"Gesture"`
@@ -2136,16 +2136,16 @@ type LightStandard struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 范围
-	Range []*float64 `json:"Range,omitempty" name:"Range" list`
+	Range []*float64 `json:"Range,omitempty" name:"Range"`
 }
 
 type LightStatistic struct {
 
 	// 各个时间点的光线值
-	LightDistribution []*LightDistributionStatistic `json:"LightDistribution,omitempty" name:"LightDistribution" list`
+	LightDistribution []*LightDistributionStatistic `json:"LightDistribution,omitempty" name:"LightDistribution"`
 
 	// 光照程度比例统计结果
-	LightLevelRatio []*LightLevelRatioStatistic `json:"LightLevelRatio,omitempty" name:"LightLevelRatio" list`
+	LightLevelRatio []*LightLevelRatioStatistic `json:"LightLevelRatio,omitempty" name:"LightLevelRatio"`
 }
 
 type ModifyLibraryRequest struct {
@@ -2263,7 +2263,7 @@ type ModifyPersonResponse struct {
 	Response *struct {
 
 		// 人脸信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员所属人员库标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -2350,13 +2350,13 @@ type StandardAudioResult struct {
 	AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 	// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-	Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+	Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 	// 返回词汇库中的单词出现的详细时间信息。
-	VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+	VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 	// 返回词汇库中的单词出现的次数信息。
-	VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+	VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 	// 状态描述
 	Message *string `json:"Message,omitempty" name:"Message"`
@@ -2371,7 +2371,7 @@ type StandardAudioResult struct {
 type StandardImageResult struct {
 
 	// 详细结果
-	ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 	// 分析完成后的统计结果
 	Statistic *ImageTaskStatistic `json:"Statistic,omitempty" name:"Statistic"`
@@ -2389,7 +2389,7 @@ type StandardImageResult struct {
 type StandardVideoResult struct {
 
 	// 分析完成后的统计结果
-	HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo" list`
+	HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo"`
 
 	// 状态描述
 	Message *string `json:"Message,omitempty" name:"Message"`
@@ -2465,7 +2465,7 @@ type SubmitAudioTaskRequest struct {
 	MuteThreshold *int64 `json:"MuteThreshold,omitempty" name:"MuteThreshold"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *SubmitAudioTaskRequest) ToJsonString() string {
@@ -2521,13 +2521,13 @@ type SubmitCheckAttendanceTaskPlusRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入数据
-	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 人员库 ID列表
-	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
 
 	// 确定出勤阈值；默认为0.92
 	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
@@ -2613,7 +2613,7 @@ type SubmitCheckAttendanceTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 人员库 ID列表
-	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
 
 	// 确定出勤阈值；默认为0.92
 	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
@@ -2671,7 +2671,7 @@ type SubmitCheckAttendanceTaskResponse struct {
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
 
 		// 没有注册的人的ID列表
-		NotRegisteredSet []*string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet" list`
+		NotRegisteredSet []*string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2711,7 +2711,7 @@ type SubmitConversationTaskRequest struct {
 	Functions *Function `json:"Functions,omitempty" name:"Functions"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *SubmitConversationTaskRequest) ToJsonString() string {
@@ -2769,19 +2769,19 @@ type SubmitDoubleVideoHighlightsRequest struct {
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦；目前仅支持输入一个人脸库。
-	LibIds []*string `json:"LibIds,omitempty" name:"LibIds" list`
+	LibIds []*string `json:"LibIds,omitempty" name:"LibIds"`
 
 	// 详细功能开关配置项
 	Functions *DoubleVideoFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 需要匹配的人员信息列表。
-	PersonInfoList []*PersonInfo `json:"PersonInfoList,omitempty" name:"PersonInfoList" list`
+	PersonInfoList []*PersonInfo `json:"PersonInfoList,omitempty" name:"PersonInfoList"`
 
 	// 视频处理的抽帧间隔，单位毫秒。建议留空。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 旧版本需要匹配的人员信息列表。
-	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
+	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds"`
 
 	// 人脸检索的相似度阈值，默认值0.89。建议留空。
 	SimThreshold *float64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
@@ -2824,7 +2824,7 @@ type SubmitDoubleVideoHighlightsResponse struct {
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
 
 		// 未注册的人员ID列表。若出现此项，代表评估出现了问题，输入的PersonId中有不在库中的人员ID。
-		NotRegistered []*string `json:"NotRegistered,omitempty" name:"NotRegistered" list`
+		NotRegistered []*string `json:"NotRegistered,omitempty" name:"NotRegistered"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2855,13 +2855,13 @@ type SubmitFullBodyClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写老师的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -2901,7 +2901,7 @@ type SubmitFullBodyClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2935,7 +2935,7 @@ type SubmitHighlightsRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦。
-	LibIds []*string `json:"LibIds,omitempty" name:"LibIds" list`
+	LibIds []*string `json:"LibIds,omitempty" name:"LibIds"`
 
 	// 视频处理的抽帧间隔，单位毫秒。建议留空。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
@@ -2944,7 +2944,7 @@ type SubmitHighlightsRequest struct {
 	KeywordsLanguage *int64 `json:"KeywordsLanguage,omitempty" name:"KeywordsLanguage"`
 
 	// 关键词数组，当且仅当Funtions中的EnableKeywordWonderfulTime为true时有意义，匹配相应的关键字。
-	KeywordsStrings []*string `json:"KeywordsStrings,omitempty" name:"KeywordsStrings" list`
+	KeywordsStrings []*string `json:"KeywordsStrings,omitempty" name:"KeywordsStrings"`
 
 	// 处理视频的总时长，单位毫秒。该值为0或未设置时，默认值两小时生效；当该值大于视频实际时长时，视频实际时长生效；当该值小于视频实际时长时，该值生效；当获取视频实际时长失败时，若该值设置则生效，否则默认值生效。建议留空。
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -3007,7 +3007,7 @@ type SubmitImageTaskPlusRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入分析对象内容，输入数据格式参考FileType参数释义
-	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
@@ -3016,13 +3016,13 @@ type SubmitImageTaskPlusRequest struct {
 	Functions *ImageTaskFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 光照标准列表
-	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet"`
 
 	// 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -3062,7 +3062,7 @@ type SubmitImageTaskPlusResponse struct {
 	Response *struct {
 
 		// 识别结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务标识符
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -3102,7 +3102,7 @@ type SubmitImageTaskRequest struct {
 	Functions *ImageTaskFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 光照标准列表
-	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet"`
 
 	// 结果更新回调地址。
 	EventsCallBack *string `json:"EventsCallBack,omitempty" name:"EventsCallBack"`
@@ -3111,7 +3111,7 @@ type SubmitImageTaskRequest struct {
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -3152,7 +3152,7 @@ type SubmitImageTaskResponse struct {
 	Response *struct {
 
 		// 识别结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务标识符
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -3192,13 +3192,13 @@ type SubmitOneByOneClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写学生的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -3238,7 +3238,7 @@ type SubmitOneByOneClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -3269,7 +3269,7 @@ type SubmitOpenClassTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 查询人员库列表，可填写学生们的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -3302,7 +3302,7 @@ type SubmitOpenClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -3336,13 +3336,13 @@ type SubmitPartialBodyClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写老师的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -3382,7 +3382,7 @@ type SubmitPartialBodyClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -3413,7 +3413,7 @@ type SubmitTraditionalClassTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 查询人员库列表，可填写学生们的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -3446,7 +3446,7 @@ type SubmitTraditionalClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -3470,7 +3470,7 @@ func (r *SubmitTraditionalClassTaskResponse) FromJsonString(s string) error {
 type SuspectedInfo struct {
 
 	// TopN匹配信息列表
-	FaceSet []*FrameInfo `json:"FaceSet,omitempty" name:"FaceSet" list`
+	FaceSet []*FrameInfo `json:"FaceSet,omitempty" name:"FaceSet"`
 
 	// 识别到的人员id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
@@ -3498,7 +3498,7 @@ type TeacherOutScreenResult struct {
 type TextItem struct {
 
 	// 当前句子包含的所有单词信息
-	Words []*Word `json:"Words,omitempty" name:"Words" list`
+	Words []*Word `json:"Words,omitempty" name:"Words"`
 
 	// 当前句子的置信度
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -3571,7 +3571,7 @@ type TransmitAudioStreamRequest struct {
 	StorageMode *int64 `json:"StorageMode,omitempty" name:"StorageMode"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *TransmitAudioStreamRequest) ToJsonString() string {
@@ -3610,13 +3610,13 @@ type TransmitAudioStreamResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 音频全部文本。
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -3643,7 +3643,7 @@ func (r *TransmitAudioStreamResponse) FromJsonString(s string) error {
 type VocabDetailInfomation struct {
 
 	// 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
-	VocabDetailInfo []*DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo" list`
+	VocabDetailInfo []*DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo"`
 
 	// 词汇库名
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
@@ -3652,7 +3652,7 @@ type VocabDetailInfomation struct {
 type VocabStatInfomation struct {
 
 	// 单词出现在该音频中总次数
-	VocabDetailInfo []*StatInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo" list`
+	VocabDetailInfo []*StatInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo"`
 
 	// 词汇库名称
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`

@@ -28,7 +28,7 @@ type Album struct {
 
 	// 专辑图片大小及类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap" list`
+	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap"`
 }
 
 type Artist struct {
@@ -123,7 +123,7 @@ type DescribeAuthInfoResponse struct {
 	Response *struct {
 
 		// 授权项目列表
-		AuthInfo []*AuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo" list`
+		AuthInfo []*AuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo"`
 
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -176,7 +176,7 @@ type DescribeCloudMusicPurchasedResponse struct {
 
 		// 云音乐列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitempty" name:"MusicOpenDetail" list`
+		MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitempty" name:"MusicOpenDetail"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -251,7 +251,7 @@ type DescribeCloudMusicResponse struct {
 
 		// 歌手列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Singers []*string `json:"Singers,omitempty" name:"Singers" list`
+		Singers []*string `json:"Singers,omitempty" name:"Singers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -301,7 +301,7 @@ type DescribeItemByIdResponse struct {
 
 		// 歌曲信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items" list`
+		Items []*Item `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -376,7 +376,7 @@ type DescribeItemsResponse struct {
 
 		// Items 歌曲列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items" list`
+		Items []*Item `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -604,7 +604,7 @@ type DescribePackageItemsResponse struct {
 
 		// 已核销歌曲信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems" list`
+		PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -658,7 +658,7 @@ type DescribePackagesResponse struct {
 
 		// 已购曲库包列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Packages []*Package `json:"Packages,omitempty" name:"Packages" list`
+		Packages []*Package `json:"Packages,omitempty" name:"Packages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -724,7 +724,7 @@ type DescribeStationsResponse struct {
 
 		// Stations 素材库列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Stations []*Station `json:"Stations,omitempty" name:"Stations" list`
+		Stations []*Station `json:"Stations,omitempty" name:"Stations"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -768,7 +768,7 @@ type Item struct {
 
 	// 多个歌手集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Artists []*Artist `json:"Artists,omitempty" name:"Artists" list`
+	Artists []*Artist `json:"Artists,omitempty" name:"Artists"`
 
 	// 歌曲状态，1:添加进购物车；2:核销进曲库包
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -784,16 +784,16 @@ type KTVMusicBaseInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 演唱者列表
-	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet" list`
+	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet"`
 
 	// 作词者列表
-	LyricistSet []*string `json:"LyricistSet,omitempty" name:"LyricistSet" list`
+	LyricistSet []*string `json:"LyricistSet,omitempty" name:"LyricistSet"`
 
 	// 作曲者列表
-	ComposerSet []*string `json:"ComposerSet,omitempty" name:"ComposerSet" list`
+	ComposerSet []*string `json:"ComposerSet,omitempty" name:"ComposerSet"`
 
 	// 标签列表
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type Lyric struct {
@@ -891,10 +891,10 @@ type MusicDetailInfo struct {
 	AmeId *string `json:"AmeId,omitempty" name:"AmeId"`
 
 	// 分类标签
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 关键词
-	HitWords []*string `json:"HitWords,omitempty" name:"HitWords" list`
+	HitWords []*string `json:"HitWords,omitempty" name:"HitWords"`
 
 	// 节奏信息
 	Bpm *int64 `json:"Bpm,omitempty" name:"Bpm"`
@@ -903,10 +903,10 @@ type MusicDetailInfo struct {
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
 	// 场景信息
-	Scene []*string `json:"Scene,omitempty" name:"Scene" list`
+	Scene []*string `json:"Scene,omitempty" name:"Scene"`
 
 	// 应用地域
-	Region []*string `json:"Region,omitempty" name:"Region" list`
+	Region []*string `json:"Region,omitempty" name:"Region"`
 
 	// 授权期限
 	AuthPeriod *string `json:"AuthPeriod,omitempty" name:"AuthPeriod"`
@@ -945,7 +945,7 @@ type MusicOpenDetail struct {
 
 	// 歌手
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Singers []*string `json:"Singers,omitempty" name:"Singers" list`
+	Singers []*string `json:"Singers,omitempty" name:"Singers"`
 
 	// 播放时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -953,7 +953,7 @@ type MusicOpenDetail struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 歌词url
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -993,7 +993,7 @@ type Package struct {
 	UsedCount *int64 `json:"UsedCount,omitempty" name:"UsedCount"`
 
 	// 曲库包用途信息
-	UseRanges []*UseRange `json:"UseRanges,omitempty" name:"UseRanges" list`
+	UseRanges []*UseRange `json:"UseRanges,omitempty" name:"UseRanges"`
 }
 
 type PackageItem struct {
@@ -1024,7 +1024,7 @@ type PutMusicOnTheShelvesRequest struct {
 	*tchttp.BaseRequest
 
 	// 资源方歌曲Id
-	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds" list`
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
 }
 
 func (r *PutMusicOnTheShelvesRequest) ToJsonString() string {
@@ -1058,7 +1058,7 @@ type PutMusicOnTheShelvesResponse struct {
 
 		// 失败歌曲Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds" list`
+		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1176,7 +1176,7 @@ type SearchKTVMusicsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// KTV 曲目列表
-		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet" list`
+		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1213,7 +1213,7 @@ type Station struct {
 
 	// station图片集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap" list`
+	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap"`
 }
 
 type TakeMusicOffShelves struct {
@@ -1229,7 +1229,7 @@ type TakeMusicOffShelvesRequest struct {
 	*tchttp.BaseRequest
 
 	// 资源方下架必传结构
-	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves" list`
+	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves"`
 }
 
 func (r *TakeMusicOffShelvesRequest) ToJsonString() string {
@@ -1263,7 +1263,7 @@ type TakeMusicOffShelvesResponse struct {
 
 		// 返回失败歌曲musicId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds" list`
+		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

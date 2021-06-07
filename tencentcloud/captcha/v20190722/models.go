@@ -52,19 +52,19 @@ type CaptchaOperDataRes struct {
 
 	// 验证码加载耗时数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataLoadTimeUnitArray []*CaptchaOperDataLoadTimeUnit `json:"OperDataLoadTimeUnitArray,omitempty" name:"OperDataLoadTimeUnitArray" list`
+	OperDataLoadTimeUnitArray []*CaptchaOperDataLoadTimeUnit `json:"OperDataLoadTimeUnitArray,omitempty" name:"OperDataLoadTimeUnitArray"`
 
 	// 验证码拦截情况数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataInterceptUnitArray []*CaptchaOperDataInterceptUnit `json:"OperDataInterceptUnitArray,omitempty" name:"OperDataInterceptUnitArray" list`
+	OperDataInterceptUnitArray []*CaptchaOperDataInterceptUnit `json:"OperDataInterceptUnitArray,omitempty" name:"OperDataInterceptUnitArray"`
 
 	// 验证码尝试次数数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataTryTimesUnitArray []*CaptchaOperDataTryTimesUnit `json:"OperDataTryTimesUnitArray,omitempty" name:"OperDataTryTimesUnitArray" list`
+	OperDataTryTimesUnitArray []*CaptchaOperDataTryTimesUnit `json:"OperDataTryTimesUnitArray,omitempty" name:"OperDataTryTimesUnitArray"`
 
 	// 验证码尝试次数分布数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataTryTimesDistributeUnitArray []*CaptchaOperDataTryTimesDistributeUnit `json:"OperDataTryTimesDistributeUnitArray,omitempty" name:"OperDataTryTimesDistributeUnitArray" list`
+	OperDataTryTimesDistributeUnitArray []*CaptchaOperDataTryTimesDistributeUnit `json:"OperDataTryTimesDistributeUnitArray,omitempty" name:"OperDataTryTimesDistributeUnitArray"`
 }
 
 type CaptchaOperDataTryTimesDistributeUnit struct {
@@ -82,7 +82,7 @@ type CaptchaOperDataTryTimesUnit struct {
 	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
 
 	// 平均尝试次数
-	CntPerPass []*float64 `json:"CntPerPass,omitempty" name:"CntPerPass" list`
+	CntPerPass []*float64 `json:"CntPerPass,omitempty" name:"CntPerPass"`
 
 	// market平均尝试次数
 	MarketCntPerPass *float64 `json:"MarketCntPerPass,omitempty" name:"MarketCntPerPass"`
@@ -100,13 +100,13 @@ type CaptchaQueryData struct {
 type CaptchaTicketDataRes struct {
 
 	// 票据验证总量返回
-	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitempty" name:"TicketAmountArray" list`
+	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitempty" name:"TicketAmountArray"`
 
 	// 票据验证通过量返回
-	TicketThroughArray []*TicketThroughUnit `json:"TicketThroughArray,omitempty" name:"TicketThroughArray" list`
+	TicketThroughArray []*TicketThroughUnit `json:"TicketThroughArray,omitempty" name:"TicketThroughArray"`
 
 	// 票据验证拦截量返回
-	TicketInterceptArray []*TicketInterceptUnit `json:"TicketInterceptArray,omitempty" name:"TicketInterceptArray" list`
+	TicketInterceptArray []*TicketInterceptUnit `json:"TicketInterceptArray,omitempty" name:"TicketInterceptArray"`
 }
 
 type CaptchaUserAllAppId struct {
@@ -183,7 +183,7 @@ type DescribeCaptchaAppIdInfoResponse struct {
 
 		// 邮件告警
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MailAlarm []*string `json:"MailAlarm,omitempty" name:"MailAlarm" list`
+		MailAlarm []*string `json:"MailAlarm,omitempty" name:"MailAlarm"`
 
 		// 流量控制
 		TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
@@ -264,7 +264,7 @@ type DescribeCaptchaDataResponse struct {
 
 		// 数据数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data" list`
+		Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data"`
 
 		// 返回信息描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -409,7 +409,7 @@ type DescribeCaptchaMiniDataResponse struct {
 
 		// 数据数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data" list`
+		Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data"`
 
 		// 返回信息描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1064,7 +1064,7 @@ type DescribeCaptchaUserAllAppIdResponse struct {
 
 		// 用户注册的所有Appid和应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*CaptchaUserAllAppId `json:"Data,omitempty" name:"Data" list`
+		Data []*CaptchaUserAllAppId `json:"Data,omitempty" name:"Data"`
 
 		// 成功返回 0  其它失败
 		CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
@@ -1144,7 +1144,7 @@ type OutputManageMarketingRiskValue struct {
 	// 	疑似 IP 异常 	2012	使用 idc 机房 ip 或 使用代理 ip 或 使用恶意 ip 
 	// 	非公网有效 ip 	205	传进来的 IP 地址为内网 ip 地址或者 ip 保留地
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 }
 
 type TicketAmountUnit struct {

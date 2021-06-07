@@ -166,7 +166,7 @@ func (r *DeleteQosResponse) FromJsonString(s string) error {
 type DestAddressInfo struct {
 
 	// 加速业务目标 ip 地址数组
-	DestIp []*string `json:"DestIp,omitempty" name:"DestIp" list`
+	DestIp []*string `json:"DestIp,omitempty" name:"DestIp"`
 }
 
 type DeviceInfo struct {

@@ -334,7 +334,7 @@ func NewVerifyEvidenceBlockChainTxHashResponse() (response *VerifyEvidenceBlockC
     return
 }
 
-// 用户向BTOE核验存证结果中的区块链交易hash
+// 用户向BTOE核验存证结果中的区块链交易hash的真实性
 func (c *Client) VerifyEvidenceBlockChainTxHash(request *VerifyEvidenceBlockChainTxHashRequest) (response *VerifyEvidenceBlockChainTxHashResponse, err error) {
     if request == nil {
         request = NewVerifyEvidenceBlockChainTxHashRequest()

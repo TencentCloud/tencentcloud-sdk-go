@@ -42,10 +42,10 @@ type AccessRegionDetial struct {
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 可选的并发量取值数组
-	ConcurrentList []*int64 `json:"ConcurrentList,omitempty" name:"ConcurrentList" list`
+	ConcurrentList []*int64 `json:"ConcurrentList,omitempty" name:"ConcurrentList"`
 
 	// 可选的带宽取值数组
-	BandwidthList []*int64 `json:"BandwidthList,omitempty" name:"BandwidthList" list`
+	BandwidthList []*int64 `json:"BandwidthList,omitempty" name:"BandwidthList"`
 }
 
 type AccessRegionDomainConf struct {
@@ -54,7 +54,7 @@ type AccessRegionDomainConf struct {
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 
 	// 就近接入区域国家内部编码，编码列表可通过DescribeCountryAreaMapping接口获取。
-	NationCountryInnerList []*string `json:"NationCountryInnerList,omitempty" name:"NationCountryInnerList" list`
+	NationCountryInnerList []*string `json:"NationCountryInnerList,omitempty" name:"NationCountryInnerList"`
 }
 
 type AddRealServersRequest struct {
@@ -64,13 +64,13 @@ type AddRealServersRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 源站对应的IP或域名
-	RealServerIP []*string `json:"RealServerIP,omitempty" name:"RealServerIP" list`
+	RealServerIP []*string `json:"RealServerIP,omitempty" name:"RealServerIP"`
 
 	// 源站名称
 	RealServerName *string `json:"RealServerName,omitempty" name:"RealServerName"`
 
 	// 标签列表
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 func (r *AddRealServersRequest) ToJsonString() string {
@@ -100,7 +100,7 @@ type AddRealServersResponse struct {
 	Response *struct {
 
 		// 源站信息列表
-		RealServerSet []*NewRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+		RealServerSet []*NewRealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -121,7 +121,7 @@ func (r *AddRealServersResponse) FromJsonString(s string) error {
 type BandwidthPriceGradient struct {
 
 	// 带宽范围。
-	BandwidthRange []*int64 `json:"BandwidthRange,omitempty" name:"BandwidthRange" list`
+	BandwidthRange []*int64 `json:"BandwidthRange,omitempty" name:"BandwidthRange"`
 
 	// 在对应带宽范围内的单宽单价，单位：元/Mbps/天。
 	BandwidthUnitPrice *float64 `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice"`
@@ -137,7 +137,7 @@ type BindListenerRealServersRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
-	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
+	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet"`
 }
 
 func (r *BindListenerRealServersRequest) ToJsonString() string {
@@ -203,7 +203,7 @@ type BindRealServer struct {
 	RealServerPort *int64 `json:"RealServerPort,omitempty" name:"RealServerPort"`
 
 	// 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
-	DownIPList []*string `json:"DownIPList,omitempty" name:"DownIPList" list`
+	DownIPList []*string `json:"DownIPList,omitempty" name:"DownIPList"`
 }
 
 type BindRealServerInfo struct {
@@ -222,7 +222,7 @@ type BindRealServerInfo struct {
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type BindRuleRealServersRequest struct {
@@ -235,7 +235,7 @@ type BindRuleRealServersRequest struct {
 	// 如果已经存在绑定的源站，则会覆盖更新成这个源站列表。
 	// 当不带该字段时，表示解绑该规则上的所有源站。
 	// 如果该规则的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
-	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet" list`
+	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitempty" name:"RealServerBindSet"`
 }
 
 func (r *BindRuleRealServersRequest) ToJsonString() string {
@@ -431,14 +431,14 @@ type CloseProxiesRequest struct {
 	*tchttp.BaseRequest
 
 	// （旧参数，请切换到ProxyIds）通道的实例ID。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	// 更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// （新参数）通道的实例ID。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *CloseProxiesRequest) ToJsonString() string {
@@ -467,10 +467,10 @@ type CloseProxiesResponse struct {
 	Response *struct {
 
 		// 非运行状态下的通道实例ID列表，不可开启。
-		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet" list`
+		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet"`
 
 		// 开启操作失败的通道实例ID列表。
-		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet" list`
+		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -519,10 +519,10 @@ type CloseProxyGroupResponse struct {
 	Response *struct {
 
 		// 非运行状态下的通道实例ID列表，不可开启。
-		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet" list`
+		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet"`
 
 		// 开启操作失败的通道实例ID列表。
-		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet" list`
+		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -692,7 +692,7 @@ type CreateDomainErrorPageInfoRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 原始错误码
-	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos" list`
+	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos"`
 
 	// 新的响应包体
 	Body *string `json:"Body,omitempty" name:"Body"`
@@ -701,10 +701,10 @@ type CreateDomainErrorPageInfoRequest struct {
 	NewErrorNo *int64 `json:"NewErrorNo,omitempty" name:"NewErrorNo"`
 
 	// 需要删除的响应头
-	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders" list`
+	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders"`
 
 	// 需要设置的响应头
-	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
+	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders"`
 }
 
 func (r *CreateDomainErrorPageInfoRequest) ToJsonString() string {
@@ -773,7 +773,7 @@ type CreateDomainRequest struct {
 
 	// 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
 	// 仅当采用双向认证的方式时，需要设置该字段或ClientCertificateId字段。
-	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -908,7 +908,7 @@ type CreateHTTPSListenerRequest struct {
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
 
 	// 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
-	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
 
 	// 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
@@ -1026,10 +1026,10 @@ type CreateProxyGroupRequest struct {
 	RealServerRegion *string `json:"RealServerRegion,omitempty" name:"RealServerRegion"`
 
 	// 标签列表
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
-	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitempty" name:"AccessRegionSet" list`
+	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitempty" name:"AccessRegionSet"`
 }
 
 func (r *CreateProxyGroupRequest) ToJsonString() string {
@@ -1107,7 +1107,7 @@ type CreateProxyRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 通道需要添加的标签列表。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 被复制的通道ID。只有处于运行中状态的通道可以被复制。
 	// 当设置该参数时，表示复制该通道。
@@ -1315,7 +1315,7 @@ type CreateSecurityRulesRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 访问规则列表
-	RuleList []*SecurityPolicyRuleIn `json:"RuleList,omitempty" name:"RuleList" list`
+	RuleList []*SecurityPolicyRuleIn `json:"RuleList,omitempty" name:"RuleList"`
 }
 
 func (r *CreateSecurityRulesRequest) ToJsonString() string {
@@ -1343,7 +1343,7 @@ type CreateSecurityRulesResponse struct {
 	Response *struct {
 
 		// 规则ID列表
-		RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+		RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1368,7 +1368,7 @@ type CreateTCPListenersRequest struct {
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
 	// 监听器端口列表。
-	Ports []*uint64 `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
 	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
@@ -1392,7 +1392,7 @@ type CreateTCPListenersRequest struct {
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
 
 	// 源站端口列表，该参数仅支持v1版本监听器和通道组监听器。
-	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts" list`
+	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts"`
 
 	// 监听器获取客户端 IP 的方式，0表示 TOA, 1表示Proxy Protocol
 	ClientIPMethod *int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
@@ -1436,7 +1436,7 @@ type CreateTCPListenersResponse struct {
 	Response *struct {
 
 		// 返回监听器ID
-		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1461,7 +1461,7 @@ type CreateUDPListenersRequest struct {
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
 	// 监听器端口列表
-	Ports []*uint64 `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
 	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
@@ -1476,7 +1476,7 @@ type CreateUDPListenersRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 源站端口列表，该参数仅支持v1版本监听器和通道组监听器
-	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts" list`
+	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts"`
 }
 
 func (r *CreateUDPListenersRequest) ToJsonString() string {
@@ -1509,7 +1509,7 @@ type CreateUDPListenersResponse struct {
 	Response *struct {
 
 		// 返回监听器ID
-		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1678,7 +1678,7 @@ type DeleteListenersRequest struct {
 	*tchttp.BaseRequest
 
 	// 待删除的监听器ID列表
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 已绑定源站的监听器是否允许强制删除，1：允许， 0：不允许
 	Force *uint64 `json:"Force,omitempty" name:"Force"`
@@ -1717,13 +1717,13 @@ type DeleteListenersResponse struct {
 	Response *struct {
 
 		// 删除操作失败的监听器ID列表
-		OperationFailedListenerSet []*string `json:"OperationFailedListenerSet,omitempty" name:"OperationFailedListenerSet" list`
+		OperationFailedListenerSet []*string `json:"OperationFailedListenerSet,omitempty" name:"OperationFailedListenerSet"`
 
 		// 删除操作成功的监听器ID列表
-		OperationSucceedListenerSet []*string `json:"OperationSucceedListenerSet,omitempty" name:"OperationSucceedListenerSet" list`
+		OperationSucceedListenerSet []*string `json:"OperationSucceedListenerSet,omitempty" name:"OperationSucceedListenerSet"`
 
 		// 无效的监听器ID列表，如：监听器不存在，监听器对应实例不匹配
-		InvalidStatusListenerSet []*string `json:"InvalidStatusListenerSet,omitempty" name:"InvalidStatusListenerSet" list`
+		InvalidStatusListenerSet []*string `json:"InvalidStatusListenerSet,omitempty" name:"InvalidStatusListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1901,7 +1901,7 @@ type DeleteSecurityRulesRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 访问规则ID列表
-	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList" list`
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DeleteSecurityRulesRequest) ToJsonString() string {
@@ -1978,7 +1978,7 @@ type DescribeAccessRegionsByDestRegionResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可用加速区域信息列表
-		AccessRegionSet []*AccessRegionDetial `json:"AccessRegionSet,omitempty" name:"AccessRegionSet" list`
+		AccessRegionSet []*AccessRegionDetial `json:"AccessRegionSet,omitempty" name:"AccessRegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2026,7 +2026,7 @@ type DescribeAccessRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 加速区域详情列表
-		AccessRegionSet []*RegionDetail `json:"AccessRegionSet,omitempty" name:"AccessRegionSet" list`
+		AccessRegionSet []*RegionDetail `json:"AccessRegionSet,omitempty" name:"AccessRegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2139,7 +2139,7 @@ type DescribeCertificatesResponse struct {
 	Response *struct {
 
 		// 服务器证书列表，包括证书ID 和证书名称。
-		CertificateSet []*Certificate `json:"CertificateSet,omitempty" name:"CertificateSet" list`
+		CertificateSet []*Certificate `json:"CertificateSet,omitempty" name:"CertificateSet"`
 
 		// 满足查询条件的服务器证书总数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2187,7 +2187,7 @@ type DescribeCountryAreaMappingResponse struct {
 	Response *struct {
 
 		// 国家地区编码映射表。
-		CountryAreaMappingList []*CountryAreaMap `json:"CountryAreaMappingList,omitempty" name:"CountryAreaMappingList" list`
+		CountryAreaMappingList []*CountryAreaMap `json:"CountryAreaMappingList,omitempty" name:"CountryAreaMappingList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2235,7 +2235,7 @@ type DescribeDestRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 源站区域详情列表
-		DestRegionSet []*RegionDetail `json:"DestRegionSet,omitempty" name:"DestRegionSet" list`
+		DestRegionSet []*RegionDetail `json:"DestRegionSet,omitempty" name:"DestRegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2257,7 +2257,7 @@ type DescribeDomainErrorPageInfoByIdsRequest struct {
 	*tchttp.BaseRequest
 
 	// 定制错误ID列表,最多支持10个
-	ErrorPageIds []*string `json:"ErrorPageIds,omitempty" name:"ErrorPageIds" list`
+	ErrorPageIds []*string `json:"ErrorPageIds,omitempty" name:"ErrorPageIds"`
 }
 
 func (r *DescribeDomainErrorPageInfoByIdsRequest) ToJsonString() string {
@@ -2285,7 +2285,7 @@ type DescribeDomainErrorPageInfoByIdsResponse struct {
 
 		// 定制错误响应配置集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet" list`
+		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2339,7 +2339,7 @@ type DescribeDomainErrorPageInfoResponse struct {
 
 		// 定制错误响应配置集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet" list`
+		ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitempty" name:"ErrorPageSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2388,7 +2388,7 @@ type DescribeGroupAndStatisticsProxyResponse struct {
 	Response *struct {
 
 		// 可以统计的通道组信息
-		GroupSet []*GroupStatisticsInfo `json:"GroupSet,omitempty" name:"GroupSet" list`
+		GroupSet []*GroupStatisticsInfo `json:"GroupSet,omitempty" name:"GroupSet"`
 
 		// 通道组数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2440,7 +2440,7 @@ type DescribeGroupDomainConfigResponse struct {
 	Response *struct {
 
 		// 域名解析就近接入配置列表。
-		AccessRegionList []*DomainAccessRegionDict `json:"AccessRegionList,omitempty" name:"AccessRegionList" list`
+		AccessRegionList []*DomainAccessRegionDict `json:"AccessRegionList,omitempty" name:"AccessRegionList"`
 
 		// 默认访问Ip。
 		DefaultDnsIp *string `json:"DefaultDnsIp,omitempty" name:"DefaultDnsIp"`
@@ -2529,7 +2529,7 @@ type DescribeHTTPListenersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// HTTP监听器列表
-		ListenerSet []*HTTPListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*HTTPListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2609,7 +2609,7 @@ type DescribeHTTPSListenersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// HTTPS监听器列表
-		ListenerSet []*HTTPSListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*HTTPSListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2661,13 +2661,13 @@ type DescribeListenerRealServersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 源站信息列表
-		RealServerSet []*RealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+		RealServerSet []*RealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 		// 已绑定源站的个数
 		BindRealServerTotalCount *uint64 `json:"BindRealServerTotalCount,omitempty" name:"BindRealServerTotalCount"`
 
 		// 已绑定源站信息列表
-		BindRealServerSet []*BindRealServer `json:"BindRealServerSet,omitempty" name:"BindRealServerSet" list`
+		BindRealServerSet []*BindRealServer `json:"BindRealServerSet,omitempty" name:"BindRealServerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2698,7 +2698,7 @@ type DescribeListenerStatisticsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets。
-	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 监控粒度，目前支持300，3600，86400，单位：秒。
 	// 查询时间范围不超过1天，支持最小粒度300秒；
@@ -2735,7 +2735,7 @@ type DescribeListenerStatisticsResponse struct {
 	Response *struct {
 
 		// 通道组统计数据
-		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData" list`
+		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2757,7 +2757,7 @@ type DescribeProxiesRequest struct {
 	*tchttp.BaseRequest
 
 	// （旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2771,14 +2771,14 @@ type DescribeProxiesRequest struct {
 	// AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
 	// RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 	// GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 
 	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
 	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 当该字段为1时，仅拉取非通道组的通道，
 	// 当该字段为0时，仅拉取通道组的通道，
@@ -2819,10 +2819,10 @@ type DescribeProxiesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// （旧参数，请切换到ProxySet）通道实例信息列表。
-		InstanceSet []*ProxyInfo `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+		InstanceSet []*ProxyInfo `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 		// （新参数）通道实例信息列表。
-		ProxySet []*ProxyInfo `json:"ProxySet,omitempty" name:"ProxySet" list`
+		ProxySet []*ProxyInfo `json:"ProxySet,omitempty" name:"ProxySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2844,10 +2844,10 @@ type DescribeProxiesStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// （旧参数，请切换到ProxyIds）通道ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// （新参数）通道ID列表。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *DescribeProxiesStatusRequest) ToJsonString() string {
@@ -2875,7 +2875,7 @@ type DescribeProxiesStatusResponse struct {
 	Response *struct {
 
 		// 通道状态列表。
-		InstanceStatusSet []*ProxyStatus `json:"InstanceStatusSet,omitempty" name:"InstanceStatusSet" list`
+		InstanceStatusSet []*ProxyStatus `json:"InstanceStatusSet,omitempty" name:"InstanceStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2924,7 +2924,7 @@ type DescribeProxyAndStatisticsListenersResponse struct {
 	Response *struct {
 
 		// 可以统计的通道信息
-		ProxySet []*ProxySimpleInfo `json:"ProxySet,omitempty" name:"ProxySet" list`
+		ProxySet []*ProxySimpleInfo `json:"ProxySet,omitempty" name:"ProxySet"`
 
 		// 通道数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3060,12 +3060,12 @@ type DescribeProxyGroupListRequest struct {
 
 	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
 	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 过滤条件。   
 	// 每次请求的Filter.Values的上限为5。
 	// RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeProxyGroupListRequest) ToJsonString() string {
@@ -3100,7 +3100,7 @@ type DescribeProxyGroupListResponse struct {
 
 		// 通道组列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProxyGroupList []*ProxyGroupInfo `json:"ProxyGroupList,omitempty" name:"ProxyGroupList" list`
+		ProxyGroupList []*ProxyGroupInfo `json:"ProxyGroupList,omitempty" name:"ProxyGroupList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3131,7 +3131,7 @@ type DescribeProxyGroupStatisticsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets
-	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
 	// 当时间范围不超过1天，支持最小粒度60秒；
@@ -3168,7 +3168,7 @@ type DescribeProxyGroupStatisticsResponse struct {
 	Response *struct {
 
 		// 通道组统计数据
-		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData" list`
+		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3199,7 +3199,7 @@ type DescribeProxyStatisticsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets, 丢包率:PacketLoss, 延迟:Latency，http请求量：HttpQPS, Https请求量：HttpsQPS
-	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames" list`
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
 	// 当时间范围不超过3天，支持最小粒度60秒；
@@ -3236,7 +3236,7 @@ type DescribeProxyStatisticsResponse struct {
 	Response *struct {
 
 		// 通道统计数据
-		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData" list`
+		StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitempty" name:"StatisticsData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3309,10 +3309,10 @@ type DescribeRealServerStatisticsResponse struct {
 	Response *struct {
 
 		// 指定监听器的源站状态统计数据
-		StatisticsData []*StatisticsDataInfo `json:"StatisticsData,omitempty" name:"StatisticsData" list`
+		StatisticsData []*StatisticsDataInfo `json:"StatisticsData,omitempty" name:"StatisticsData"`
 
 		// 多个源站状态统计数据
-		RsStatisticsData []*MetricStatisticsInfo `json:"RsStatisticsData,omitempty" name:"RsStatisticsData" list`
+		RsStatisticsData []*MetricStatisticsInfo `json:"RsStatisticsData,omitempty" name:"RsStatisticsData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3347,10 +3347,10 @@ type DescribeRealServersRequest struct {
 
 	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
 	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，源站会被拉取出来。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 过滤条件。filter的name取值(RealServerName,RealServerIP)
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeRealServersRequest) ToJsonString() string {
@@ -3382,7 +3382,7 @@ type DescribeRealServersResponse struct {
 	Response *struct {
 
 		// 源站信息列表
-		RealServerSet []*BindRealServerInfo `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+		RealServerSet []*BindRealServerInfo `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 		// 查询得到的源站数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3407,7 +3407,7 @@ type DescribeRealServersStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 源站ID列表
-	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds" list`
+	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds"`
 }
 
 func (r *DescribeRealServersStatusRequest) ToJsonString() string {
@@ -3437,7 +3437,7 @@ type DescribeRealServersStatusResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 源站被绑定状态列表
-		RealServerStatusSet []*RealServerStatus `json:"RealServerStatusSet,omitempty" name:"RealServerStatusSet" list`
+		RealServerStatusSet []*RealServerStatus `json:"RealServerStatusSet,omitempty" name:"RealServerStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3485,10 +3485,10 @@ type DescribeRegionAndPriceResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 源站区域详情列表
-		DestRegionSet []*RegionDetail `json:"DestRegionSet,omitempty" name:"DestRegionSet" list`
+		DestRegionSet []*RegionDetail `json:"DestRegionSet,omitempty" name:"DestRegionSet"`
 
 		// 通道带宽费用梯度价格
-		BandwidthUnitPrice []*BandwidthPriceGradient `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice" list`
+		BandwidthUnitPrice []*BandwidthPriceGradient `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice"`
 
 		// 带宽价格货币类型：
 	// CNY 人民币
@@ -3557,7 +3557,7 @@ type DescribeResourcesByTagResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 标签对应的资源列表
-		ResourceSet []*TagResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*TagResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3617,13 +3617,13 @@ type DescribeRuleRealServersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可绑定的源站信息列表
-		RealServerSet []*RealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+		RealServerSet []*RealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 		// 已绑定的源站个数
 		BindRealServerTotalCount *uint64 `json:"BindRealServerTotalCount,omitempty" name:"BindRealServerTotalCount"`
 
 		// 已绑定的源站信息列表
-		BindRealServerSet []*BindRealServer `json:"BindRealServerSet,omitempty" name:"BindRealServerSet" list`
+		BindRealServerSet []*BindRealServer `json:"BindRealServerSet,omitempty" name:"BindRealServerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3645,7 +3645,7 @@ type DescribeRulesByRuleIdsRequest struct {
 	*tchttp.BaseRequest
 
 	// 规则ID列表。最多支持10个规则。
-	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds" list`
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
 }
 
 func (r *DescribeRulesByRuleIdsRequest) ToJsonString() string {
@@ -3675,7 +3675,7 @@ type DescribeRulesByRuleIdsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回的规则列表。
-		RuleSet []*RuleInfo `json:"RuleSet,omitempty" name:"RuleSet" list`
+		RuleSet []*RuleInfo `json:"RuleSet,omitempty" name:"RuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3724,7 +3724,7 @@ type DescribeRulesResponse struct {
 	Response *struct {
 
 		// 按照域名分类的规则信息列表
-		DomainRuleSet []*DomainRuleSet `json:"DomainRuleSet,omitempty" name:"DomainRuleSet" list`
+		DomainRuleSet []*DomainRuleSet `json:"DomainRuleSet,omitempty" name:"DomainRuleSet"`
 
 		// 该监听器下的域名总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3793,7 +3793,7 @@ type DescribeSecurityPolicyDetailResponse struct {
 		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 		// 规则列表
-		RuleList []*SecurityPolicyRuleOut `json:"RuleList,omitempty" name:"RuleList" list`
+		RuleList []*SecurityPolicyRuleOut `json:"RuleList,omitempty" name:"RuleList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3815,7 +3815,7 @@ type DescribeSecurityRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 安全规则ID列表。总数不能超过20个。
-	SecurityRuleIds []*string `json:"SecurityRuleIds,omitempty" name:"SecurityRuleIds" list`
+	SecurityRuleIds []*string `json:"SecurityRuleIds,omitempty" name:"SecurityRuleIds"`
 }
 
 func (r *DescribeSecurityRulesRequest) ToJsonString() string {
@@ -3845,7 +3845,7 @@ type DescribeSecurityRulesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回的安全规则详情列表。
-		SecurityRuleSet []*SecurityPolicyRuleOut `json:"SecurityRuleSet,omitempty" name:"SecurityRuleSet" list`
+		SecurityRuleSet []*SecurityPolicyRuleOut `json:"SecurityRuleSet,omitempty" name:"SecurityRuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3927,7 +3927,7 @@ type DescribeTCPListenersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// TCP监听器列表
-		ListenerSet []*TCPListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*TCPListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4009,7 +4009,7 @@ type DescribeUDPListenersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// UDP监听器列表
-		ListenerSet []*UDPListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*UDPListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4037,14 +4037,14 @@ type DestroyProxiesRequest struct {
 	Force *int64 `json:"Force,omitempty" name:"Force"`
 
 	// （旧参数，请切换到ProxyIds）通道实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	// 更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// （新参数）通道实例ID列表。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *DestroyProxiesRequest) ToJsonString() string {
@@ -4074,10 +4074,10 @@ type DestroyProxiesResponse struct {
 	Response *struct {
 
 		// 处于不可销毁状态下的通道实例ID列表。
-		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet" list`
+		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet"`
 
 		// 销毁操作失败的通道实例ID列表。
-		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet" list`
+		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4098,10 +4098,10 @@ func (r *DestroyProxiesResponse) FromJsonString(s string) error {
 type DomainAccessRegionDict struct {
 
 	// 就近接入区域
-	NationCountryInnerList []*NationCountryInnerInfo `json:"NationCountryInnerList,omitempty" name:"NationCountryInnerList" list`
+	NationCountryInnerList []*NationCountryInnerInfo `json:"NationCountryInnerList,omitempty" name:"NationCountryInnerList"`
 
 	// 加速区域通道列表
-	ProxyList []*ProxyIdDict `json:"ProxyList,omitempty" name:"ProxyList" list`
+	ProxyList []*ProxyIdDict `json:"ProxyList,omitempty" name:"ProxyList"`
 
 	// 加速区域ID
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
@@ -4128,7 +4128,7 @@ type DomainErrorPageInfo struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 原始错误码
-	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos" list`
+	ErrorNos []*int64 `json:"ErrorNos,omitempty" name:"ErrorNos"`
 
 	// 新的错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4136,11 +4136,11 @@ type DomainErrorPageInfo struct {
 
 	// 需要清理的响应头
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders" list`
+	ClearHeaders []*string `json:"ClearHeaders,omitempty" name:"ClearHeaders"`
 
 	// 需要设置的响应头
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders" list`
+	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitempty" name:"SetHeaders"`
 
 	// 设置的响应体(不包括 HTTP头)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4157,7 +4157,7 @@ type DomainRuleSet struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 该域名对应的转发规则列表。
-	RuleSet []*RuleInfo `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*RuleInfo `json:"RuleSet,omitempty" name:"RuleSet"`
 
 	// 该域名对应的服务器证书ID，值为default时，表示使用默认证书（监听器配置的证书）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4223,11 +4223,11 @@ type DomainRuleSet struct {
 
 	// 多客户端证书时，返回多个证书的id和别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo" list`
+	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo"`
 
 	// 多源站证书时，返回多个证书的id和别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolyRealServerCertificateAliasInfo []*CertificateAliasInfo `json:"PolyRealServerCertificateAliasInfo,omitempty" name:"PolyRealServerCertificateAliasInfo" list`
+	PolyRealServerCertificateAliasInfo []*CertificateAliasInfo `json:"PolyRealServerCertificateAliasInfo,omitempty" name:"PolyRealServerCertificateAliasInfo"`
 
 	// 域名的状态。
 	// 0表示运行中，
@@ -4243,7 +4243,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GroupStatisticsInfo struct {
@@ -4255,7 +4255,7 @@ type GroupStatisticsInfo struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 通道组下通道列表
-	ProxySet []*ProxySimpleInfo `json:"ProxySet,omitempty" name:"ProxySet" list`
+	ProxySet []*ProxySimpleInfo `json:"ProxySet,omitempty" name:"ProxySet"`
 }
 
 type HTTPListener struct {
@@ -4335,7 +4335,7 @@ type HTTPSListener struct {
 
 	// 多客户端CA证书别名信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo" list`
+	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo"`
 }
 
 type HttpHeaderParam struct {
@@ -4406,7 +4406,7 @@ type InquiryPriceCreateProxyResponse struct {
 
 		// 通道带宽费用梯度价格。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BandwidthUnitPrice []*BandwidthPriceGradient `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice" list`
+		BandwidthUnitPrice []*BandwidthPriceGradient `json:"BandwidthUnitPrice,omitempty" name:"BandwidthUnitPrice"`
 
 		// 通道基础费用折扣价格，单位：元/天。
 		DiscountProxyDailyPrice *float64 `json:"DiscountProxyDailyPrice,omitempty" name:"DiscountProxyDailyPrice"`
@@ -4459,7 +4459,7 @@ type MetricStatisticsInfo struct {
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 指标统计数据
-	MetricData []*StatisticsDataInfo `json:"MetricData,omitempty" name:"MetricData" list`
+	MetricData []*StatisticsDataInfo `json:"MetricData,omitempty" name:"MetricData"`
 }
 
 type ModifyCertificateAttributesRequest struct {
@@ -4532,7 +4532,7 @@ type ModifyCertificateRequest struct {
 
 	// 新的多客户端证书ID列表。其中：
 	// 仅当采用双向认证方式时，需要设置该参数或ClientCertificateId参数。
-	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
 }
 
 func (r *ModifyCertificateRequest) ToJsonString() string {
@@ -4606,7 +4606,7 @@ type ModifyDomainRequest struct {
 	// 不带该字段和ClientCertificateId时，表示使用原证书；
 	// 携带该字段时并且ClientCertificateId=default，表示使用监听器证书；
 	// 其他情况，使用该ClientCertificateId或PolyClientCertificateIds指定的证书。
-	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
 }
 
 func (r *ModifyDomainRequest) ToJsonString() string {
@@ -4663,7 +4663,7 @@ type ModifyGroupDomainConfigRequest struct {
 	DefaultDnsIp *string `json:"DefaultDnsIp,omitempty" name:"DefaultDnsIp"`
 
 	// 就近接入区域配置。
-	AccessRegionList []*AccessRegionDomainConf `json:"AccessRegionList,omitempty" name:"AccessRegionList" list`
+	AccessRegionList []*AccessRegionDomainConf `json:"AccessRegionList,omitempty" name:"AccessRegionList"`
 }
 
 func (r *ModifyGroupDomainConfigRequest) ToJsonString() string {
@@ -4783,7 +4783,7 @@ type ModifyHTTPSListenerAttributeRequest struct {
 	ClientCertificateId *string `json:"ClientCertificateId,omitempty" name:"ClientCertificateId"`
 
 	// 新字段,修改后的监听器客户端证书ID
-	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds" list`
+	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
 }
 
 func (r *ModifyHTTPSListenerAttributeRequest) ToJsonString() string {
@@ -4835,7 +4835,7 @@ type ModifyProxiesAttributeRequest struct {
 	*tchttp.BaseRequest
 
 	// （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 通道名称。可任意命名，但不得超过30个字符。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
@@ -4845,7 +4845,7 @@ type ModifyProxiesAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// （新参数）一个或多个待操作的通道ID。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *ModifyProxiesAttributeRequest) ToJsonString() string {
@@ -4897,14 +4897,14 @@ type ModifyProxiesProjectRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// （旧参数，请切换到ProxyIds）一个或多个待操作的通道ID。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	// 更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// （新参数）一个或多个待操作的通道ID。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *ModifyProxiesProjectRequest) ToJsonString() string {
@@ -5439,14 +5439,14 @@ type OpenProxiesRequest struct {
 	*tchttp.BaseRequest
 
 	// （旧参数，请切换到ProxyIds）通道的实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	// 更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// （新参数）通道的实例ID列表。
-	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds" list`
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *OpenProxiesRequest) ToJsonString() string {
@@ -5475,10 +5475,10 @@ type OpenProxiesResponse struct {
 	Response *struct {
 
 		// 非关闭状态下的通道实例ID列表，不可开启。
-		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet" list`
+		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet"`
 
 		// 开启操作失败的通道实例ID列表。
-		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet" list`
+		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5527,10 +5527,10 @@ type OpenProxyGroupResponse struct {
 	Response *struct {
 
 		// 非关闭状态下的通道实例ID列表，不可开启。
-		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet" list`
+		InvalidStatusInstanceSet []*string `json:"InvalidStatusInstanceSet,omitempty" name:"InvalidStatusInstanceSet"`
 
 		// 开启操作失败的通道实例ID列表。
-		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet" list`
+		OperationFailedInstanceSet []*string `json:"OperationFailedInstanceSet,omitempty" name:"OperationFailedInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5646,7 +5646,7 @@ type ProxyGroupDetail struct {
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 安全策略ID，当设置了安全策略时，存在该字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5658,7 +5658,7 @@ type ProxyGroupDetail struct {
 
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod" list`
+	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
 }
 
 type ProxyGroupInfo struct {
@@ -5689,7 +5689,7 @@ type ProxyGroupInfo struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 标签列表。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 通道组版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5768,7 +5768,7 @@ type ProxyInfo struct {
 	Scalarable *int64 `json:"Scalarable,omitempty" name:"Scalarable"`
 
 	// 支持的协议类型。
-	SupportProtocols []*string `json:"SupportProtocols,omitempty" name:"SupportProtocols" list`
+	SupportProtocols []*string `json:"SupportProtocols,omitempty" name:"SupportProtocols"`
 
 	// 通道组ID，当通道归属于某一通道组时，存在该字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5791,7 +5791,7 @@ type ProxyInfo struct {
 
 	// 标签列表，不存在标签时，该字段为空列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 是否支持安全组配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5803,7 +5803,7 @@ type ProxyInfo struct {
 
 	// 关联了解析的域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelatedGlobalDomains []*string `json:"RelatedGlobalDomains,omitempty" name:"RelatedGlobalDomains" list`
+	RelatedGlobalDomains []*string `json:"RelatedGlobalDomains,omitempty" name:"RelatedGlobalDomains"`
 
 	// 配置变更时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5815,7 +5815,7 @@ type ProxyInfo struct {
 
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod" list`
+	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
 }
 
 type ProxySimpleInfo struct {
@@ -5827,7 +5827,7 @@ type ProxySimpleInfo struct {
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 监听器列表
-	ListenerList []*ListenerInfo `json:"ListenerList,omitempty" name:"ListenerList" list`
+	ListenerList []*ListenerInfo `json:"ListenerList,omitempty" name:"ListenerList"`
 }
 
 type ProxyStatus struct {
@@ -5908,7 +5908,7 @@ type RemoveRealServersRequest struct {
 	*tchttp.BaseRequest
 
 	// 源站Id列表
-	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds" list`
+	RealServerIds []*string `json:"RealServerIds,omitempty" name:"RealServerIds"`
 }
 
 func (r *RemoveRealServersRequest) ToJsonString() string {
@@ -5965,7 +5965,7 @@ type RuleCheckParams struct {
 	Method *string `json:"Method,omitempty" name:"Method"`
 
 	// 确认源站正常的返回码，可选范围[100, 200, 300, 400, 500]
-	StatusCode []*uint64 `json:"StatusCode,omitempty" name:"StatusCode" list`
+	StatusCode []*uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
 
 	// 健康检查的检查域名。
 	// 当调用ModifyRuleAttribute时，不支持修改该参数。
@@ -6014,7 +6014,7 @@ type RuleInfo struct {
 	CheckParams *RuleCheckParams `json:"CheckParams,omitempty" name:"CheckParams"`
 
 	// 已绑定的源站相关信息
-	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 	// 源站的服务状态，0表示异常，1表示正常。
 	// 未开启健康检查时，该状态始终未正常。
@@ -6115,7 +6115,7 @@ type SetAuthenticationRequest struct {
 	RealServerCertificateDomain *string `json:"RealServerCertificateDomain,omitempty" name:"RealServerCertificateDomain"`
 
 	// 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
-	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitempty" name:"PolyRealServerCertificateIds" list`
+	PolyRealServerCertificateIds []*string `json:"PolyRealServerCertificateIds,omitempty" name:"PolyRealServerCertificateIds"`
 }
 
 func (r *SetAuthenticationRequest) ToJsonString() string {
@@ -6229,7 +6229,7 @@ type TCPListener struct {
 
 	// 监听器绑定的源站信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 	// 监听器创建时间，Unix时间戳
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -6296,7 +6296,7 @@ type UDPListener struct {
 	BindStatus *uint64 `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 监听器绑定的源站信息
-	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet" list`
+	RealServerSet []*BindRealServer `json:"RealServerSet,omitempty" name:"RealServerSet"`
 
 	// 监听器创建时间，Unix时间戳
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`

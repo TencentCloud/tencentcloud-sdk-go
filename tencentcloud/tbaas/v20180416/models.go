@@ -241,7 +241,7 @@ type ChannelDetailForUser struct {
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 当前组织加入通道的节点列表
-	PeerList []*PeerDetailForUser `json:"PeerList,omitempty" name:"PeerList" list`
+	PeerList []*PeerDetailForUser `json:"PeerList,omitempty" name:"PeerList"`
 }
 
 type ClusterDetailForUser struct {
@@ -250,7 +250,7 @@ type ClusterDetailForUser struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 组织列表
-	GroupList []*GroupDetailForUser `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*GroupDetailForUser `json:"GroupList,omitempty" name:"GroupList"`
 
 	// 网络名称
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
@@ -429,7 +429,7 @@ type DeployDynamicContractHandlerRequest struct {
 	ByteCodeBin *string `json:"ByteCodeBin,omitempty" name:"ByteCodeBin"`
 
 	// 构造函数入参
-	ConstructorParams []*string `json:"ConstructorParams,omitempty" name:"ConstructorParams" list`
+	ConstructorParams []*string `json:"ConstructorParams,omitempty" name:"ConstructorParams"`
 }
 
 func (r *DeployDynamicContractHandlerRequest) ToJsonString() string {
@@ -558,7 +558,7 @@ type EndorserGroup struct {
 	EndorserGroupName *string `json:"EndorserGroupName,omitempty" name:"EndorserGroupName"`
 
 	// 背书节点列表
-	EndorserPeerList []*string `json:"EndorserPeerList,omitempty" name:"EndorserPeerList" list`
+	EndorserPeerList []*string `json:"EndorserPeerList,omitempty" name:"EndorserPeerList"`
 }
 
 type GetBcosBlockByNumberRequest struct {
@@ -672,7 +672,7 @@ type GetBcosBlockListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回数据列表
-		List []*BcosBlockObj `json:"List,omitempty" name:"List" list`
+		List []*BcosBlockObj `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -801,7 +801,7 @@ type GetBcosTransListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回数据列表
-		List []*BcosTransInfo `json:"List,omitempty" name:"List" list`
+		List []*BcosTransInfo `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -876,7 +876,7 @@ type GetBlockListHandlerResponse struct {
 		GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
 
 		// 返回数据列表
-		List []*BcosBlockObj `json:"List,omitempty" name:"List" list`
+		List []*BcosBlockObj `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -960,7 +960,7 @@ type GetBlockListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 区块列表
-		BlockList []*Block `json:"BlockList,omitempty" name:"BlockList" list`
+		BlockList []*Block `json:"BlockList,omitempty" name:"BlockList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1040,7 +1040,7 @@ type GetBlockTransactionListForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 交易列表
-		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList" list`
+		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1124,7 +1124,7 @@ type GetChaincodeCompileLogForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 日志列表
-		CompileLogList []*LogDetailForUser `json:"CompileLogList,omitempty" name:"CompileLogList" list`
+		CompileLogList []*LogDetailForUser `json:"CompileLogList,omitempty" name:"CompileLogList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1288,7 +1288,7 @@ type GetChaincodeLogForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 日志列表
-		ChaincodeLogList []*LogDetailForUser `json:"ChaincodeLogList,omitempty" name:"ChaincodeLogList" list`
+		ChaincodeLogList []*LogDetailForUser `json:"ChaincodeLogList,omitempty" name:"ChaincodeLogList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1360,7 +1360,7 @@ type GetChannelListForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 通道列表
-		ChannelList []*ChannelDetailForUser `json:"ChannelList,omitempty" name:"ChannelList" list`
+		ChannelList []*ChannelDetailForUser `json:"ChannelList,omitempty" name:"ChannelList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1424,7 +1424,7 @@ type GetClusterListForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 网络列表
-		ClusterList []*ClusterDetailForUser `json:"ClusterList,omitempty" name:"ClusterList" list`
+		ClusterList []*ClusterDetailForUser `json:"ClusterList,omitempty" name:"ClusterList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1702,7 +1702,7 @@ type GetLatesdTransactionListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 交易列表
-		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList" list`
+		TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1778,7 +1778,7 @@ type GetPeerLogForUserResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 日志列表
-		PeerLogList []*LogDetailForUser `json:"PeerLogList,omitempty" name:"PeerLogList" list`
+		PeerLogList []*LogDetailForUser `json:"PeerLogList,omitempty" name:"PeerLogList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1914,7 +1914,7 @@ type GetTransListHandlerResponse struct {
 		GroupPk *string `json:"GroupPk,omitempty" name:"GroupPk"`
 
 		// 返回数据列表
-		List []*BcosTransInfo `json:"List,omitempty" name:"List" list`
+		List []*BcosTransInfo `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2023,7 +2023,7 @@ type GetTransactionDetailForUserResponse struct {
 		ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
 
 		// 背书组织列表
-		EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitempty" name:"EndorserOrgList" list`
+		EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitempty" name:"EndorserOrgList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2078,7 +2078,7 @@ type InitializeChaincodeForUserRequest struct {
 	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 
 	// 实例化的函数参数列表
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 }
 
 func (r *InitializeChaincodeForUserRequest) ToJsonString() string {
@@ -2223,7 +2223,7 @@ type InvokeRequest struct {
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers" list`
+	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
 
 	// 该笔交易需要调用的智能合约中的函数名称
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
@@ -2232,7 +2232,7 @@ type InvokeRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 被调用的函数参数列表，参数列表大小总和要求小于2M
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 
 	// 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
 	AsyncFlag *uint64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
@@ -2335,7 +2335,7 @@ type QueryRequest struct {
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers" list`
+	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
 
 	// 该笔交易查询需要调用的智能合约中的函数名称
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
@@ -2344,7 +2344,7 @@ type QueryRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 被调用的函数参数列表
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 }
 
 func (r *QueryRequest) ToJsonString() string {
@@ -2379,7 +2379,7 @@ type QueryResponse struct {
 	Response *struct {
 
 		// 查询结果数据
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2416,7 +2416,7 @@ type SendTransactionHandlerRequest struct {
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
 
 	// 合约方法入参
-	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
+	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam"`
 }
 
 func (r *SendTransactionHandlerRequest) ToJsonString() string {
@@ -2554,7 +2554,7 @@ type TransByDynamicContractHandlerRequest struct {
 	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
 
 	// 合约被调用方法的入参
-	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam" list`
+	FuncParam []*string `json:"FuncParam,omitempty" name:"FuncParam"`
 }
 
 func (r *TransByDynamicContractHandlerRequest) ToJsonString() string {

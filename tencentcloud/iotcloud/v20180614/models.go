@@ -24,7 +24,7 @@ import (
 type Attribute struct {
 
 	// 属性列表
-	Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type BatchPublishMessage struct {
@@ -61,7 +61,7 @@ type BatchUpdateFirmwareRequest struct {
 	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
 
 	// 需要升级的设备名称列表
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
 	TimeoutInterval *uint64 `json:"TimeoutInterval,omitempty" name:"TimeoutInterval"`
@@ -136,7 +136,7 @@ type BindDevicesRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 被绑定的多个设备名
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 中兴CLAA设备的绑定需要skey，普通的设备不需要
 	Skey *string `json:"Skey,omitempty" name:"Skey"`
@@ -497,7 +497,7 @@ type CreateMultiDeviceRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 批量创建的设备名数组，单次最多创建 100 个设备。命名规则：[a-zA-Z0-9:_-]{1,48}
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 }
 
 func (r *CreateMultiDeviceRequest) ToJsonString() string {
@@ -1142,7 +1142,7 @@ type DescribeAllDevicesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询的设备列表信息。
-		Devices []*DeviceProperty `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceProperty `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1355,7 +1355,7 @@ type DescribeDeviceResourcesResponse struct {
 
 		// 资源列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*DeviceResourceInfo `json:"Result,omitempty" name:"Result" list`
+		Result []*DeviceResourceInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1399,7 +1399,7 @@ type DescribeDeviceResponse struct {
 		DevicePsk *string `json:"DevicePsk,omitempty" name:"DevicePsk"`
 
 		// 设备属性
-		Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags"`
 
 		// 设备类型
 		DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
@@ -1448,7 +1448,7 @@ type DescribeDeviceResponse struct {
 
 		// 设备标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels"`
 
 		// MQTT客户端IP地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1581,7 +1581,7 @@ type DescribeDevicesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 设备详细信息列表
-		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1687,7 +1687,7 @@ type DescribeFirmwareTaskDevicesRequest struct {
 	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
 
 	// 筛选条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1729,7 +1729,7 @@ type DescribeFirmwareTaskDevicesResponse struct {
 
 		// 固件升级任务的设备列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Devices []*DeviceUpdateStatus `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*DeviceUpdateStatus `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1786,7 +1786,7 @@ type DescribeFirmwareTaskDistributionResponse struct {
 	Response *struct {
 
 		// 固件升级任务状态分布信息
-		StatusInfos []*StatusStatistic `json:"StatusInfos,omitempty" name:"StatusInfos" list`
+		StatusInfos []*StatusStatistic `json:"StatusInfos,omitempty" name:"StatusInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1964,7 +1964,7 @@ type DescribeFirmwareTasksRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索过滤条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeFirmwareTasksRequest) ToJsonString() string {
@@ -1996,7 +1996,7 @@ type DescribeFirmwareTasksResponse struct {
 
 		// 固件升级任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 固件升级任务总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2188,7 +2188,7 @@ type DescribeMultiDevicesResponse struct {
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 设备详细信息列表
-		DevicesInfo []*MultiDevicesInfo `json:"DevicesInfo,omitempty" name:"DevicesInfo" list`
+		DevicesInfo []*MultiDevicesInfo `json:"DevicesInfo,omitempty" name:"DevicesInfo"`
 
 		// 该任务创建设备的总数
 		TotalDevNum *uint64 `json:"TotalDevNum,omitempty" name:"TotalDevNum"`
@@ -2310,7 +2310,7 @@ type DescribeProductResourcesResponse struct {
 
 		// 资源详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*ProductResourceInfo `json:"Result,omitempty" name:"Result" list`
+		Result []*ProductResourceInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2423,7 +2423,7 @@ type DescribeProductTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务详细信息列表
-		TaskInfos []*ProductTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*ProductTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2479,7 +2479,7 @@ type DescribeProductsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 产品详细信息列表
-		Products []*ProductInfo `json:"Products,omitempty" name:"Products" list`
+		Products []*ProductInfo `json:"Products,omitempty" name:"Products"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2575,7 +2575,7 @@ type DescribeResourceTasksRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索过滤条件
-	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeResourceTasksRequest) ToJsonString() string {
@@ -2607,7 +2607,7 @@ type DescribeResourceTasksResponse struct {
 
 		// 资源任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+		TaskInfos []*FirmwareTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 		// 资源任务总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2752,7 +2752,7 @@ type DescribeTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 此页任务对象的数组，按创建时间排序
-		Tasks []*TaskInfo `json:"Tasks,omitempty" name:"Tasks" list`
+		Tasks []*TaskInfo `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2791,7 +2791,7 @@ type DeviceInfo struct {
 	DevicePsk *string `json:"DevicePsk,omitempty" name:"DevicePsk"`
 
 	// 设备属性
-	Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*DeviceTag `json:"Tags,omitempty" name:"Tags"`
 
 	// 设备类型
 	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
@@ -2843,7 +2843,7 @@ type DeviceInfo struct {
 
 	// 设备标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*DeviceLabel `json:"Labels,omitempty" name:"Labels"`
 
 	// MQTT客户端IP地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3770,7 +3770,7 @@ type ResetDeviceStateRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 设备名称
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 }
 
 func (r *ResetDeviceStateRequest) ToJsonString() string {
@@ -3801,7 +3801,7 @@ type ResetDeviceStateResponse struct {
 		SuccessCount *uint64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
 
 		// 批量重置设备结果
-		ResetDeviceResults []*ResetDeviceResult `json:"ResetDeviceResults,omitempty" name:"ResetDeviceResults" list`
+		ResetDeviceResults []*ResetDeviceResult `json:"ResetDeviceResults,omitempty" name:"ResetDeviceResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4010,7 +4010,7 @@ type UnbindDevicesRequest struct {
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 多个设备名
-	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames" list`
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
 
 	// 中兴CLAA设备的解绑需要Skey，普通设备不需要
 	Skey *string `json:"Skey,omitempty" name:"Skey"`

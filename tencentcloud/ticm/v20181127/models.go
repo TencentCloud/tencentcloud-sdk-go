@@ -154,7 +154,7 @@ type FaceResult struct {
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
 
 	// 候选人列表。当前返回相似度最高的候选人。
-	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 }
 
 type ImageModerationRequest struct {
@@ -166,7 +166,7 @@ type ImageModerationRequest struct {
 	// 3. POLITICS，即政治敏感识别
 	// 
 	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["PORN", "TERRORISM"]，即对一张图片同时进行色情识别和暴恐识别。
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 图片URL地址。 
 	// 图片限制： 
@@ -286,7 +286,7 @@ type PoliticsResult struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。
-	FaceResults []*FaceResult `json:"FaceResults,omitempty" name:"FaceResults" list`
+	FaceResults []*FaceResult `json:"FaceResults,omitempty" name:"FaceResults"`
 
 	// 取值'DNA' 或‘FACE’。DNA表示结论和置信度来自图像指纹，FACE表示结论和置信度来自人脸识别。
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -353,7 +353,7 @@ type TerrorismResult struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// Type取值为‘FACE’时，人脸识别的结果列表。基于图片中实际检测到的人脸数，返回数组最大值不超过5个。
-	FaceResults []*FaceResult `json:"FaceResults,omitempty" name:"FaceResults" list`
+	FaceResults []*FaceResult `json:"FaceResults,omitempty" name:"FaceResults"`
 
 	// 暴恐识别返回的详细标签后期开放。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
@@ -447,7 +447,7 @@ type VodAsrTextSegmentItem struct {
 
 	// 嫌疑关键词列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 }
 
 type VodAudioStreamItem struct {
@@ -497,11 +497,11 @@ type VodMetaData struct {
 
 	// 视频流信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoStreamSet []*VodVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+	VideoStreamSet []*VodVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
 
 	// 音频流信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioStreamSet []*VodAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+	AudioStreamSet []*VodAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 
 	// 视频时长，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -536,11 +536,11 @@ type VodOcrTextSegmentItem struct {
 
 	// 嫌疑关键词列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 
 	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type VodPoliticalAsrReviewResult struct {
@@ -575,7 +575,7 @@ type VodPoliticalAsrReviewResult struct {
 
 	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPoliticalOcrReviewResult struct {
@@ -602,7 +602,7 @@ type VodPoliticalOcrReviewResult struct {
 
 	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPoliticalReviewResult struct {
@@ -639,7 +639,7 @@ type VodPoliticalReviewResult struct {
 
 	// 有涉政嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodPoliticalReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodPoliticalReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPoliticalReviewSegmentItem struct {
@@ -683,7 +683,7 @@ type VodPoliticalReviewSegmentItem struct {
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type VodPornAsrReviewResult struct {
@@ -713,7 +713,7 @@ type VodPornAsrReviewResult struct {
 
 	// Asr 文字有涉黄嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPornOcrResult struct {
@@ -743,7 +743,7 @@ type VodPornOcrResult struct {
 
 	// Ocr 文字有涉黄嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPornReviewResult struct {
@@ -782,7 +782,7 @@ type VodPornReviewResult struct {
 
 	// 有涉黄嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodPornReviewSegmentItem struct {
@@ -861,7 +861,7 @@ type VodTerrorismReviewResult struct {
 
 	// 有暴恐嫌疑的视频片段列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*VodPornReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type VodVideoStreamItem struct {

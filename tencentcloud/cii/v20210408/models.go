@@ -54,7 +54,7 @@ type CreateStructureTaskInfo struct {
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
-	FileList []*string `json:"FileList,omitempty" name:"FileList" list`
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
 
 	// 客户号
 	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
@@ -63,7 +63,7 @@ type CreateStructureTaskInfo struct {
 	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
 
 	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
-	ImageList []*string `json:"ImageList,omitempty" name:"ImageList" list`
+	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
 
 	// 报告年份
 	Year *string `json:"Year,omitempty" name:"Year"`
@@ -78,7 +78,7 @@ type CreateStructureTaskRequest struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
-	TaskInfos []*CreateStructureTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos" list`
+	TaskInfos []*CreateStructureTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 	// 保单号
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
@@ -92,7 +92,7 @@ type CreateStructureTaskRequest struct {
 	// CriticalDiseaseInsurance:重疾险
 	// LifeInsurance：寿险
 	// AccidentInsurance：意外险
-	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes" list`
+	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
 }
 
 func (r *CreateStructureTaskRequest) ToJsonString() string {
@@ -211,7 +211,7 @@ type DescribeStructCompareDataResponse struct {
 		SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
 
 		// 所有的子任务
-		AllTasks []*ReviewDataTaskInfo `json:"AllTasks,omitempty" name:"AllTasks" list`
+		AllTasks []*ReviewDataTaskInfo `json:"AllTasks,omitempty" name:"AllTasks"`
 
 		// 任务类型
 		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
@@ -270,7 +270,7 @@ type DescribeStructureTaskResultResponse struct {
 
 		// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*ResultObject `json:"Results,omitempty" name:"Results" list`
+		Results []*ResultObject `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

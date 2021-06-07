@@ -312,7 +312,7 @@ type ModifyRoomRequest struct {
 	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
 
 	// 需要修改的房间选项，0表示房间名称，1表示房主，2表示是否允许观战，3表示是否支持邀请码/密码，4表示是否私有，5表示是否自定义房间属性，6表示是否禁止加人。
-	ChangeRoomOptionList []*int64 `json:"ChangeRoomOptionList,omitempty" name:"ChangeRoomOptionList" list`
+	ChangeRoomOptionList []*int64 `json:"ChangeRoomOptionList,omitempty" name:"ChangeRoomOptionList"`
 
 	// 房间名称。
 	RoomName *string `json:"RoomName,omitempty" name:"RoomName"`
@@ -480,10 +480,10 @@ type Room struct {
 	IsPrivate *bool `json:"IsPrivate,omitempty" name:"IsPrivate"`
 
 	// 表示玩家详情列表。
-	Players []*Player `json:"Players,omitempty" name:"Players" list`
+	Players []*Player `json:"Players,omitempty" name:"Players"`
 
 	// 表示团队属性列表。
-	Teams []*Team `json:"Teams,omitempty" name:"Teams" list`
+	Teams []*Team `json:"Teams,omitempty" name:"Teams"`
 
 	// 表示房间 ID。出参用，由后端返回。
 	Id *string `json:"Id,omitempty" name:"Id"`

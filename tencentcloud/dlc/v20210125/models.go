@@ -312,7 +312,7 @@ type DatabaseInfo struct {
 
 	// 数据库属性列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 }
 
 type DatabaseResponseInfo struct {
@@ -326,7 +326,7 @@ type DatabaseResponseInfo struct {
 
 	// 数据库属性列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
 	// 数据库创建时间戳，单位：s。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -341,7 +341,7 @@ type DeleteScriptRequest struct {
 	*tchttp.BaseRequest
 
 	// 脚本id，其可以通过DescribeScripts接口提取
-	ScriptIds []*string `json:"ScriptIds,omitempty" name:"ScriptIds" list`
+	ScriptIds []*string `json:"ScriptIds,omitempty" name:"ScriptIds"`
 }
 
 func (r *DeleteScriptRequest) ToJsonString() string {
@@ -425,7 +425,7 @@ type DescribeDatabasesResponse struct {
 	Response *struct {
 
 		// 数据库对象列表。
-		DatabaseList []*DatabaseResponseInfo `json:"DatabaseList,omitempty" name:"DatabaseList" list`
+		DatabaseList []*DatabaseResponseInfo `json:"DatabaseList,omitempty" name:"DatabaseList"`
 
 		// 实例总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -464,7 +464,7 @@ type DescribeScriptsRequest struct {
 	// 过滤条件，如下支持的过滤类型，传参Name应为其一
 	// script-id - String - （过滤条件）script-id取值形如：157de0d1-26b4-4df2-a2d0-b64afc406c25。
 	// script-name-keyword - String - （过滤条件）数据表名称,形如：script-test。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeScriptsRequest) ToJsonString() string {
@@ -496,7 +496,7 @@ type DescribeScriptsResponse struct {
 
 		// Script列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Scripts []*Script `json:"Scripts,omitempty" name:"Scripts" list`
+		Scripts []*Script `json:"Scripts,omitempty" name:"Scripts"`
 
 		// 实例总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -585,7 +585,7 @@ type DescribeTablesRequest struct {
 	// 过滤条件，如下支持的过滤类型，传参Name应为其一
 	// table-name - String - （过滤条件）数据表名称,形如：table-001。
 	// table-id - String - （过滤条件）table id形如：12342。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -615,7 +615,7 @@ type DescribeTablesResponse struct {
 	Response *struct {
 
 		// 数据表对象列表。
-		TableList []*TableResponseInfo `json:"TableList,omitempty" name:"TableList" list`
+		TableList []*TableResponseInfo `json:"TableList,omitempty" name:"TableList"`
 
 		// 实例总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -649,7 +649,7 @@ type DescribeTasksRequest struct {
 	// task-id - String - （任务ID过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 	// task-sql-keyword - String - （SQL语句关键字）取值形如：DROP TABLE。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
@@ -694,7 +694,7 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务对象列表。
-		TaskList []*TaskResponseInfo `json:"TaskList,omitempty" name:"TaskList" list`
+		TaskList []*TaskResponseInfo `json:"TaskList,omitempty" name:"TaskList"`
 
 		// 实例总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -730,7 +730,7 @@ type DescribeViewsRequest struct {
 	// 过滤条件，如下支持的过滤类型，传参Name应为其一
 	// view-name - String - （过滤条件）数据表名称,形如：view-001。
 	// view-id - String - （过滤条件）view id形如：12342。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeViewsRequest) ToJsonString() string {
@@ -760,7 +760,7 @@ type DescribeViewsResponse struct {
 	Response *struct {
 
 		// 视图对象列表。
-		ViewList []*ViewResponseInfo `json:"ViewList,omitempty" name:"ViewList" list`
+		ViewList []*ViewResponseInfo `json:"ViewList,omitempty" name:"ViewList"`
 
 		// 实例总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -793,7 +793,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Other struct {
@@ -874,10 +874,10 @@ type TableInfo struct {
 	DataFormat *DataFormat `json:"DataFormat,omitempty" name:"DataFormat"`
 
 	// 数据表列信息。
-	Columns []*Column `json:"Columns,omitempty" name:"Columns" list`
+	Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 
 	// 数据表分块信息。
-	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 数据存储路径。当前仅支持cos路径，格式如下：cosn://bucket-name/filepath。
 	Location *string `json:"Location,omitempty" name:"Location"`
@@ -890,11 +890,11 @@ type TableResponseInfo struct {
 
 	// 数据表列信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Columns []*Column `json:"Columns,omitempty" name:"Columns" list`
+	Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 
 	// 数据表分块信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions" list`
+	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 数据存储路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -902,7 +902,7 @@ type TableResponseInfo struct {
 
 	// 数据表属性信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
 	// 数据表更新时间, 单位: ms。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -998,11 +998,11 @@ type ViewResponseInfo struct {
 
 	// 视图列信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Columns []*Column `json:"Columns,omitempty" name:"Columns" list`
+	Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 
 	// 视图属性信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
 	// 视图创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`

@@ -319,7 +319,7 @@ type DescribeEventsRequest struct {
 	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
 
 	// 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码）
-	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
+	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes"`
 }
 
 func (r *DescribeEventsRequest) ToJsonString() string {
@@ -357,7 +357,7 @@ type DescribeEventsResponse struct {
 
 		// 日志集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Events []*Event `json:"Events,omitempty" name:"Events" list`
+		Events []*Event `json:"Events,omitempty" name:"Events"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -462,7 +462,7 @@ type GetAttributeKeyResponse struct {
 	Response *struct {
 
 		// AttributeKey的有效取值范围
-		AttributeKeyDetails []*AttributeKeyDetail `json:"AttributeKeyDetails,omitempty" name:"AttributeKeyDetails" list`
+		AttributeKeyDetails []*AttributeKeyDetail `json:"AttributeKeyDetails,omitempty" name:"AttributeKeyDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -562,7 +562,7 @@ type ListAuditsResponse struct {
 
 		// 查询跟踪集概要集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AuditSummarys []*AuditSummary `json:"AuditSummarys,omitempty" name:"AuditSummarys" list`
+		AuditSummarys []*AuditSummary `json:"AuditSummarys,omitempty" name:"AuditSummarys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -611,7 +611,7 @@ type ListCmqEnableRegionResponse struct {
 	Response *struct {
 
 		// 云审计支持的cmq的可用区
-		EnableRegions []*CmqRegionInfo `json:"EnableRegions,omitempty" name:"EnableRegions" list`
+		EnableRegions []*CmqRegionInfo `json:"EnableRegions,omitempty" name:"EnableRegions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -660,7 +660,7 @@ type ListCosEnableRegionResponse struct {
 	Response *struct {
 
 		// 云审计支持的cos可用区
-		EnableRegions []*CosRegionInfo `json:"EnableRegions,omitempty" name:"EnableRegions" list`
+		EnableRegions []*CosRegionInfo `json:"EnableRegions,omitempty" name:"EnableRegions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -720,7 +720,7 @@ type ListKeyAliasByRegionResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 密钥别名
-		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas" list`
+		KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -748,7 +748,7 @@ type LookUpEventsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 检索条件
-	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes" list`
+	LookupAttributes []*LookupAttribute `json:"LookupAttributes,omitempty" name:"LookupAttributes"`
 
 	// 查看更多日志的凭证
 	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
@@ -794,7 +794,7 @@ type LookUpEventsResponse struct {
 
 		// 日志集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Events []*Event `json:"Events,omitempty" name:"Events" list`
+		Events []*Event `json:"Events,omitempty" name:"Events"`
 
 		// 日志集合是否结束
 	// 注意：此字段可能返回 null，表示取不到有效值。

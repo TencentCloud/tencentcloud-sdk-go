@@ -40,7 +40,7 @@ type AssociateSecurityGroupsRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 被绑定的实例ID，类似tdsql-lesecurk，支持指定多个实例。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *AssociateSecurityGroupsRequest) ToJsonString() string {
@@ -218,7 +218,7 @@ type ColumnPrivilege struct {
 	Column *string `json:"Column,omitempty" name:"Column"`
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type ConstraintRange struct {
@@ -386,7 +386,7 @@ type CreateDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
-	Zones []*string `json:"Zones,omitempty" name:"Zones" list`
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 节点个数大小，可以通过 DescribeDBInstanceSpecs
 	//  查询实例规格获得。
@@ -410,7 +410,7 @@ type CreateDBInstanceRequest struct {
 	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
 	// 虚拟私有网络 ID，不传表示创建为基础网络
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -428,7 +428,7 @@ type CreateDBInstanceRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 安全组ID列表
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 自动续费标志，1:自动续费，2:不自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
@@ -437,10 +437,10 @@ type CreateDBInstanceRequest struct {
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
-	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags" list`
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
-	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams" list`
+	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -489,7 +489,7 @@ type CreateDBInstanceResponse struct {
 
 		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -511,7 +511,7 @@ type CreateTmpInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 回档实例的ID列表，形如：tdsql-ow728lmc。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 回档时间点
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
@@ -782,7 +782,7 @@ type Database struct {
 type DatabasePrivilege struct {
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 
 	// 数据库名
 	Database *string `json:"Database,omitempty" name:"Database"`
@@ -840,7 +840,7 @@ type Deal struct {
 
 	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 付费模式，0后付费/1预付费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
@@ -958,7 +958,7 @@ type DescribeAccountPrivilegesResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 权限列表。
-		Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+		Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 
 		// 数据库账号用户名
 		UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -1016,7 +1016,7 @@ type DescribeAccountsResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 实例用户列表。
-		Users []*DBAccount `json:"Users,omitempty" name:"Users" list`
+		Users []*DBAccount `json:"Users,omitempty" name:"Users"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1038,7 +1038,7 @@ type DescribeBackupTimeRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeBackupTimeRequest) ToJsonString() string {
@@ -1069,7 +1069,7 @@ type DescribeBackupTimeResponse struct {
 
 		// 实例备份时间配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*DBBackupTimeConfig `json:"Items,omitempty" name:"Items" list`
+		Items []*DBBackupTimeConfig `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1114,7 +1114,7 @@ type DescribeDBInstanceSpecsResponse struct {
 	Response *struct {
 
 		// 按机型分类的可售卖规格列表
-		Specs []*InstanceSpec `json:"Specs,omitempty" name:"Specs" list`
+		Specs []*InstanceSpec `json:"Specs,omitempty" name:"Specs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1136,7 +1136,7 @@ type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照一个或者多个实例 ID 查询。实例 ID 形如：tdsql-ow728lmc。每次请求的实例的上限为100。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 搜索的字段名，当前支持的值有：instancename、vip、all。传 instancename 表示按实例名进行搜索；传 vip 表示按内网IP进行搜索；传 all 将会按实例ID、实例名和内网IP进行搜索。
 	SearchName *string `json:"SearchName,omitempty" name:"SearchName"`
@@ -1145,7 +1145,7 @@ type DescribeDBInstancesRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 按项目 ID 查询
-	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds" list`
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
 	// 是否根据 VPC 网络来搜索
 	IsFilterVpc *bool `json:"IsFilterVpc,omitempty" name:"IsFilterVpc"`
@@ -1169,7 +1169,7 @@ type DescribeDBInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 按 OriginSerialId 查询
-	OriginSerialIds []*string `json:"OriginSerialIds,omitempty" name:"OriginSerialIds" list`
+	OriginSerialIds []*string `json:"OriginSerialIds,omitempty" name:"OriginSerialIds"`
 
 	// 标识是否使用ExclusterType字段, false不使用，true使用
 	IsFilterExcluster *bool `json:"IsFilterExcluster,omitempty" name:"IsFilterExcluster"`
@@ -1178,19 +1178,19 @@ type DescribeDBInstancesRequest struct {
 	ExclusterType *int64 `json:"ExclusterType,omitempty" name:"ExclusterType"`
 
 	// 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9
-	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds" list`
+	ExclusterIds []*string `json:"ExclusterIds,omitempty" name:"ExclusterIds"`
 
 	// 按标签key查询
-	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 	// 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
 	FilterInstanceType *string `json:"FilterInstanceType,omitempty" name:"FilterInstanceType"`
 
 	// 按照实例状态进行筛选
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 排除实例状态
-	ExcludeStatus []*int64 `json:"ExcludeStatus,omitempty" name:"ExcludeStatus" list`
+	ExcludeStatus []*int64 `json:"ExcludeStatus,omitempty" name:"ExcludeStatus"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1238,7 +1238,7 @@ type DescribeDBInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息列表
-		Instances []*DBInstance `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*DBInstance `json:"Instances,omitempty" name:"Instances"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1300,7 +1300,7 @@ type DescribeDBLogFilesResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 包含uri、length、mtime（修改时间）等信息
-		Files []*LogFileInfo `json:"Files,omitempty" name:"Files" list`
+		Files []*LogFileInfo `json:"Files,omitempty" name:"Files"`
 
 		// 如果是VPC网络的实例，做用本前缀加上URI为下载地址
 		VpcPrefix *string `json:"VpcPrefix,omitempty" name:"VpcPrefix"`
@@ -1358,7 +1358,7 @@ type DescribeDBParametersResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 请求DB的当前参数值
-		Params []*ParamDesc `json:"Params,omitempty" name:"Params" list`
+		Params []*ParamDesc `json:"Params,omitempty" name:"Params"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1707,7 +1707,7 @@ type DescribeDBSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组详情。
-		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
 		// 实例VIP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1796,7 +1796,7 @@ type DescribeDBSlowLogsResponse struct {
 	Response *struct {
 
 		// 慢查询日志数据
-		Data []*SlowLogData `json:"Data,omitempty" name:"Data" list`
+		Data []*SlowLogData `json:"Data,omitempty" name:"Data"`
 
 		// 所有语句锁时间总和
 		LockTimeSum *float64 `json:"LockTimeSum,omitempty" name:"LockTimeSum"`
@@ -1857,7 +1857,7 @@ type DescribeDatabasesResponse struct {
 	Response *struct {
 
 		// 该实例上的数据库列表。
-		Databases []*Database `json:"Databases,omitempty" name:"Databases" list`
+		Databases []*Database `json:"Databases,omitempty" name:"Databases"`
 
 		// 透传入参。
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1909,7 +1909,7 @@ type DescribeDcnDetailResponse struct {
 	Response *struct {
 
 		// DCN同步详情
-		DcnDetails []*DcnDetailItem `json:"DcnDetails,omitempty" name:"DcnDetails" list`
+		DcnDetails []*DcnDetailItem `json:"DcnDetails,omitempty" name:"DcnDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2018,7 +2018,7 @@ type DescribeInstanceNodeInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 节点信息
-		NodesInfo []*NodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo" list`
+		NodesInfo []*NodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2092,7 +2092,7 @@ type DescribeOrdersRequest struct {
 	*tchttp.BaseRequest
 
 	// 待查询的长订单号列表，创建实例、续费实例、扩容实例接口返回。
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeOrdersRequest) ToJsonString() string {
@@ -2119,10 +2119,10 @@ type DescribeOrdersResponse struct {
 	Response *struct {
 
 		// 返回的订单数量。
-		TotalCount []*int64 `json:"TotalCount,omitempty" name:"TotalCount" list`
+		TotalCount []*int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 订单信息列表。
-		Deals []*Deal `json:"Deals,omitempty" name:"Deals" list`
+		Deals []*Deal `json:"Deals,omitempty" name:"Deals"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2254,7 +2254,7 @@ type DescribeProjectSecurityGroupsResponse struct {
 	Response *struct {
 
 		// 安全组详情。
-		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups" list`
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2355,7 +2355,7 @@ type DescribeSaleInfoResponse struct {
 	Response *struct {
 
 		// 可售卖地域信息列表
-		RegionList []*RegionInfo `json:"RegionList,omitempty" name:"RegionList" list`
+		RegionList []*RegionInfo `json:"RegionList,omitempty" name:"RegionList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2427,7 +2427,7 @@ type DescribeSqlLogsResponse struct {
 		Count *uint64 `json:"Count,omitempty" name:"Count"`
 
 		// Sql日志列表。
-		SqlItems []*SqlLogItem `json:"SqlItems,omitempty" name:"SqlItems" list`
+		SqlItems []*SqlLogItem `json:"SqlItems,omitempty" name:"SqlItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2569,7 +2569,7 @@ type DisassociateSecurityGroupsRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 实例ID列表，一个或者多个实例Id组成的数组。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DisassociateSecurityGroupsRequest) ToJsonString() string {
@@ -2668,7 +2668,7 @@ type FunctionPrivilege struct {
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type GrantAccountPrivilegesRequest struct {
@@ -2691,7 +2691,7 @@ type GrantAccountPrivilegesRequest struct {
 	// 表/视图权限： SELECT，INSERT，UPDATE，DELETE，CREATE，DROP，REFERENCES，INDEX，ALTER，CREATE VIEW，SHOW VIEW，TRIGGER 
 	// 存储过程/函数权限： ALTER ROUTINE，EXECUTE 
 	// 字段权限： INSERT，REFERENCES，SELECT，UPDATE
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 
 	// 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -2753,10 +2753,10 @@ type InitDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 待初始化的实例ID列表，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步）。
-	Params []*DBParamValue `json:"Params,omitempty" name:"Params" list`
+	Params []*DBParamValue `json:"Params,omitempty" name:"Params"`
 }
 
 func (r *InitDBInstancesRequest) ToJsonString() string {
@@ -2787,7 +2787,7 @@ type InitDBInstancesResponse struct {
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 透传入参。
-		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2811,7 +2811,7 @@ type InstanceSpec struct {
 	Machine *string `json:"Machine,omitempty" name:"Machine"`
 
 	// 该机型对应的可售卖规格列表
-	SpecInfos []*SpecConfigInfo `json:"SpecInfos,omitempty" name:"SpecInfos" list`
+	SpecInfos []*SpecConfigInfo `json:"SpecInfos,omitempty" name:"SpecInfos"`
 }
 
 type KillSessionRequest struct {
@@ -2821,7 +2821,7 @@ type KillSessionRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 会话ID列表
-	SessionId []*int64 `json:"SessionId,omitempty" name:"SessionId" list`
+	SessionId []*int64 `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 func (r *KillSessionRequest) ToJsonString() string {
@@ -2947,35 +2947,35 @@ type ModifyAccountPrivilegesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 数据库的账号，包括用户名和域名。
-	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts" list`
+	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
 
 	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
 	// 注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
-	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges" list`
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges"`
 
 	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges" list`
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges"`
 
 	// 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges" list`
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges"`
 
 	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges" list`
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges"`
 
 	// 数据库视图的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	ViewPrivileges []*ViewPrivileges `json:"ViewPrivileges,omitempty" name:"ViewPrivileges" list`
+	ViewPrivileges []*ViewPrivileges `json:"ViewPrivileges,omitempty" name:"ViewPrivileges"`
 
 	// 数据库函数的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	FunctionPrivileges []*FunctionPrivilege `json:"FunctionPrivileges,omitempty" name:"FunctionPrivileges" list`
+	FunctionPrivileges []*FunctionPrivilege `json:"FunctionPrivileges,omitempty" name:"FunctionPrivileges"`
 
 	// 数据库存储过程的权限。Privileges 权限的可选值为：权限的可选值为："ALTER ROUTINE"，"EXECUTE"。
 	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
-	ProcedurePrivileges []*ProcedurePrivilege `json:"ProcedurePrivileges,omitempty" name:"ProcedurePrivileges" list`
+	ProcedurePrivileges []*ProcedurePrivilege `json:"ProcedurePrivileges,omitempty" name:"ProcedurePrivileges"`
 }
 
 func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
@@ -3148,7 +3148,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
@@ -3196,7 +3196,7 @@ type ModifyDBInstancesProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 待修改的实例ID列表。实例 ID 形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 要分配的项目 ID，可以通过 DescribeProjects 查询项目列表接口获取。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -3249,7 +3249,7 @@ type ModifyDBParametersRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 参数列表，每一个元素是Param和Value的组合
-	Params []*DBParamValue `json:"Params,omitempty" name:"Params" list`
+	Params []*DBParamValue `json:"Params,omitempty" name:"Params"`
 }
 
 func (r *ModifyDBParametersRequest) ToJsonString() string {
@@ -3280,7 +3280,7 @@ type ModifyDBParametersResponse struct {
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 		// 参数修改结果
-		Result []*ParamModifyResult `json:"Result,omitempty" name:"Result" list`
+		Result []*ParamModifyResult `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3360,7 +3360,7 @@ type MonitorData struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 监控数据
-	Data []*float64 `json:"Data,omitempty" name:"Data" list`
+	Data []*float64 `json:"Data,omitempty" name:"Data"`
 }
 
 type NodeInfo struct {
@@ -3514,7 +3514,7 @@ type ProcedurePrivilege struct {
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type RegionInfo struct {
@@ -3529,10 +3529,10 @@ type RegionInfo struct {
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 可用区列表
-	ZoneList []*ZonesInfo `json:"ZoneList,omitempty" name:"ZoneList" list`
+	ZoneList []*ZonesInfo `json:"ZoneList,omitempty" name:"ZoneList"`
 
 	// 可选择的主可用区和从可用区
-	AvailableChoice []*ZoneChooseInfo `json:"AvailableChoice,omitempty" name:"AvailableChoice" list`
+	AvailableChoice []*ZoneChooseInfo `json:"AvailableChoice,omitempty" name:"AvailableChoice"`
 }
 
 type RenewDBInstanceRequest struct {
@@ -3548,7 +3548,7 @@ type RenewDBInstanceRequest struct {
 	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 }
 
 func (r *RenewDBInstanceRequest) ToJsonString() string {
@@ -3683,7 +3683,7 @@ type RestartDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID的数组
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 重启时间
 	RestartTime *string `json:"RestartTime,omitempty" name:"RestartTime"`
@@ -3750,10 +3750,10 @@ type SecurityGroup struct {
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitempty" name:"SecurityGroupRemark"`
 
 	// 入站规则
-	Inbound []*SecurityGroupBound `json:"Inbound,omitempty" name:"Inbound" list`
+	Inbound []*SecurityGroupBound `json:"Inbound,omitempty" name:"Inbound"`
 
 	// 出站规则
-	Outbound []*SecurityGroupBound `json:"Outbound,omitempty" name:"Outbound" list`
+	Outbound []*SecurityGroupBound `json:"Outbound,omitempty" name:"Outbound"`
 }
 
 type SecurityGroupBound struct {
@@ -3901,7 +3901,7 @@ type TablePrivilege struct {
 	Table *string `json:"Table,omitempty" name:"Table"`
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -3922,7 +3922,7 @@ type UpgradeDBInstanceRequest struct {
 	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
-	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds" list`
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -3981,7 +3981,7 @@ type ViewPrivileges struct {
 	View *string `json:"View,omitempty" name:"View"`
 
 	// 权限信息
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges" list`
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type ZoneChooseInfo struct {
@@ -3990,7 +3990,7 @@ type ZoneChooseInfo struct {
 	MasterZone *ZonesInfo `json:"MasterZone,omitempty" name:"MasterZone"`
 
 	// 可选的从可用区
-	SlaveZones []*ZonesInfo `json:"SlaveZones,omitempty" name:"SlaveZones" list`
+	SlaveZones []*ZonesInfo `json:"SlaveZones,omitempty" name:"SlaveZones"`
 }
 
 type ZonesInfo struct {

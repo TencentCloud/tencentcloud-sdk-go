@@ -39,7 +39,7 @@ type ResponseMessage struct {
 
 	// 消息组列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupList []*Group `json:"GroupList,omitempty" name:"GroupList" list`
+	GroupList []*Group `json:"GroupList,omitempty" name:"GroupList"`
 }
 
 type SlotInfo struct {
@@ -121,7 +121,7 @@ type TextProcessResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -215,7 +215,7 @@ type TextResetResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。

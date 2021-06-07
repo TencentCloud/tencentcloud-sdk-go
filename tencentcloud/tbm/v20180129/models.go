@@ -33,7 +33,7 @@ type AgePortrait struct {
 type AgePortraitInfo struct {
 
 	// 用户年龄画像数组
-	PortraitSet []*AgePortrait `json:"PortraitSet,omitempty" name:"PortraitSet" list`
+	PortraitSet []*AgePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type BrandReportArticle struct {
@@ -135,7 +135,7 @@ type DescribeBrandCommentCountResponse struct {
 	Response *struct {
 
 		// 按天统计好评/差评数
-		CommentSet []*Comment `json:"CommentSet,omitempty" name:"CommentSet" list`
+		CommentSet []*Comment `json:"CommentSet,omitempty" name:"CommentSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -195,7 +195,7 @@ type DescribeBrandExposureResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 按天计算的统计数据
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
+		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -255,7 +255,7 @@ type DescribeBrandMediaReportResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 按天计算的每天文章数
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
+		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -320,7 +320,7 @@ type DescribeBrandNegCommentsResponse struct {
 	Response *struct {
 
 		// 评论列表
-		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet" list`
+		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
 
 		// 总的差评个数
 		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
@@ -388,7 +388,7 @@ type DescribeBrandPosCommentsResponse struct {
 	Response *struct {
 
 		// 评论列表
-		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet" list`
+		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
 
 		// 总的好评个数
 		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
@@ -469,7 +469,7 @@ type DescribeBrandSocialOpinionResponse struct {
 		AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
 
 		// 文章列表详情
-		ArticleSet []*BrandReportArticle `json:"ArticleSet,omitempty" name:"ArticleSet" list`
+		ArticleSet []*BrandReportArticle `json:"ArticleSet,omitempty" name:"ArticleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -529,7 +529,7 @@ type DescribeBrandSocialReportResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 按天计算的统计数据
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
+		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -607,10 +607,10 @@ type DescribeIndustryNewsResponse struct {
 		AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
 
 		// 文章列表
-		NewsSet []*IndustryNews `json:"NewsSet,omitempty" name:"NewsSet" list`
+		NewsSet []*IndustryNews `json:"NewsSet,omitempty" name:"NewsSet"`
 
 		// 按天统计的数量列表
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet" list`
+		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -701,7 +701,7 @@ type GenderPortrait struct {
 type GenderPortraitInfo struct {
 
 	// 用户性别画像数组
-	PortraitSet []*GenderPortrait `json:"PortraitSet,omitempty" name:"PortraitSet" list`
+	PortraitSet []*GenderPortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type IndustryNews struct {
@@ -746,7 +746,7 @@ type MoviePortrait struct {
 type MoviePortraitInfo struct {
 
 	// 用户喜好电影画像数组
-	PortraitSet []*MoviePortrait `json:"PortraitSet,omitempty" name:"PortraitSet" list`
+	PortraitSet []*MoviePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type ProvincePortrait struct {
@@ -761,7 +761,7 @@ type ProvincePortrait struct {
 type ProvincePortraitInfo struct {
 
 	// 用户省份画像数组
-	PortraitSet []*ProvincePortrait `json:"PortraitSet,omitempty" name:"PortraitSet" list`
+	PortraitSet []*ProvincePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type StarPortrait struct {
@@ -776,5 +776,5 @@ type StarPortrait struct {
 type StarPortraitInfo struct {
 
 	// 用户喜好的明星画像数组
-	PortraitSet []*StarPortrait `json:"PortraitSet,omitempty" name:"PortraitSet" list`
+	PortraitSet []*StarPortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }

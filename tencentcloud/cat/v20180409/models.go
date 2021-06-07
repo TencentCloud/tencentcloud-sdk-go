@@ -36,7 +36,7 @@ type AgentGroup struct {
 	TaskNum *uint64 `json:"TaskNum,omitempty" name:"TaskNum"`
 
 	// 拨测结点列表
-	GroupDetail []*CatAgent `json:"GroupDetail,omitempty" name:"GroupDetail" list`
+	GroupDetail []*CatAgent `json:"GroupDetail,omitempty" name:"GroupDetail"`
 
 	// 最大拨测分组数
 	MaxGroupNum *uint64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
@@ -376,7 +376,7 @@ type CreateAgentGroupRequest struct {
 	IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
-	Agents []*CatAgent `json:"Agents,omitempty" name:"Agents" list`
+	Agents []*CatAgent `json:"Agents,omitempty" name:"Agents"`
 }
 
 func (r *CreateAgentGroupRequest) ToJsonString() string {
@@ -602,7 +602,7 @@ type DataPointMetric struct {
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 数据点的时间和值
-	Points []*DataPoint `json:"Points,omitempty" name:"Points" list`
+	Points []*DataPoint `json:"Points,omitempty" name:"Points"`
 }
 
 type DeleteAgentGroupRequest struct {
@@ -655,7 +655,7 @@ type DeleteTasksRequest struct {
 	*tchttp.BaseRequest
 
 	// 拨测任务id
-	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds"`
 }
 
 func (r *DeleteTasksRequest) ToJsonString() string {
@@ -727,7 +727,7 @@ type DescribeAgentGroupsResponse struct {
 		SysDefaultGroup *AgentGroup `json:"SysDefaultGroup,omitempty" name:"SysDefaultGroup"`
 
 		// 用户创建的拨测分组列表
-		CustomGroups []*AgentGroup `json:"CustomGroups,omitempty" name:"CustomGroups" list`
+		CustomGroups []*AgentGroup `json:"CustomGroups,omitempty" name:"CustomGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -772,7 +772,7 @@ type DescribeAgentsResponse struct {
 	Response *struct {
 
 		// 本用户可选的拨测点列表
-		Agents []*CatAgent `json:"Agents,omitempty" name:"Agents" list`
+		Agents []*CatAgent `json:"Agents,omitempty" name:"Agents"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -824,7 +824,7 @@ type DescribeAlarmTopicResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 主题列表
-		Topics []*AlarmTopic `json:"Topics,omitempty" name:"Topics" list`
+		Topics []*AlarmTopic `json:"Topics,omitempty" name:"Topics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -905,7 +905,7 @@ type DescribeAlarmsByTaskResponse struct {
 	Response *struct {
 
 		// 告警信息列表
-		AlarmInfos []*AlarmInfo `json:"AlarmInfos,omitempty" name:"AlarmInfos" list`
+		AlarmInfos []*AlarmInfo `json:"AlarmInfos,omitempty" name:"AlarmInfos"`
 
 		// 故障率
 		FaultRatio *float64 `json:"FaultRatio,omitempty" name:"FaultRatio"`
@@ -991,7 +991,7 @@ type DescribeAlarmsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 本批告警信息列表
-		AlarmInfos []*AlarmInfo `json:"AlarmInfos,omitempty" name:"AlarmInfos" list`
+		AlarmInfos []*AlarmInfo `json:"AlarmInfos,omitempty" name:"AlarmInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1063,7 +1063,7 @@ type DescribeCatLogsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 拨测记录列表
-		CatLogs []*CatLog `json:"CatLogs,omitempty" name:"CatLogs" list`
+		CatLogs []*CatLog `json:"CatLogs,omitempty" name:"CatLogs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1085,7 +1085,7 @@ type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
 	// 拨测任务id 数组
-	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds"`
 }
 
 func (r *DescribeTaskDetailRequest) ToJsonString() string {
@@ -1112,7 +1112,7 @@ type DescribeTaskDetailResponse struct {
 	Response *struct {
 
 		// 拨测任务列表
-		Tasks []*CatTaskDetail `json:"Tasks,omitempty" name:"Tasks" list`
+		Tasks []*CatTaskDetail `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1172,7 +1172,7 @@ type DescribeTasksByTypeResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务列表
-		Tasks []*TaskAlarm `json:"Tasks,omitempty" name:"Tasks" list`
+		Tasks []*TaskAlarm `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1247,10 +1247,10 @@ func (r *DescribeUserLimitResponse) FromJsonString(s string) error {
 type DimensionsDetail struct {
 
 	// 运营商列表
-	Isp []*string `json:"Isp,omitempty" name:"Isp" list`
+	Isp []*string `json:"Isp,omitempty" name:"Isp"`
 
 	// 省份列表
-	Province []*string `json:"Province,omitempty" name:"Province" list`
+	Province []*string `json:"Province,omitempty" name:"Province"`
 }
 
 type GetAvailRatioHistoryRequest struct {
@@ -1300,7 +1300,7 @@ type GetAvailRatioHistoryResponse struct {
 		LowestIsp *string `json:"LowestIsp,omitempty" name:"LowestIsp"`
 
 		// 分省份的可用率数据
-		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData" list`
+		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData"`
 
 		// 国内平均耗时，单位毫秒
 		AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`
@@ -1321,7 +1321,7 @@ type GetAvailRatioHistoryResponse struct {
 		LowestIsp2 *string `json:"LowestIsp2,omitempty" name:"LowestIsp2"`
 
 		// 国外分区域的可用率数据
-		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2" list`
+		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1379,7 +1379,7 @@ type GetDailyAvailRatioResponse struct {
 		LowestProvince *string `json:"LowestProvince,omitempty" name:"LowestProvince"`
 
 		// 分省份的可用率数据
-		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData" list`
+		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData"`
 
 		// 国内平均耗时，单位毫秒
 		AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`
@@ -1397,7 +1397,7 @@ type GetDailyAvailRatioResponse struct {
 		LowestProvince2 *string `json:"LowestProvince2,omitempty" name:"LowestProvince2"`
 
 		// 国外分区域的可用率数据
-		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2" list`
+		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1458,7 +1458,7 @@ type GetRealAvailRatioResponse struct {
 		LowestIsp *string `json:"LowestIsp,omitempty" name:"LowestIsp"`
 
 		// 分省份的可用率数据
-		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData" list`
+		ProvinceData []*ProvinceDetail `json:"ProvinceData,omitempty" name:"ProvinceData"`
 
 		// 国内平均耗时，单位毫秒
 		AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`
@@ -1479,7 +1479,7 @@ type GetRealAvailRatioResponse struct {
 		LowestIsp2 *string `json:"LowestIsp2,omitempty" name:"LowestIsp2"`
 
 		// 国外分区域的可用率数据
-		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2" list`
+		ProvinceData2 []*ProvinceDetail `json:"ProvinceData2,omitempty" name:"ProvinceData2"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1544,7 +1544,7 @@ type GetRespTimeTrendExResponse struct {
 	Response *struct {
 
 		// 数据点集合，时延等走势数据
-		DataPoints []*DataPointMetric `json:"DataPoints,omitempty" name:"DataPoints" list`
+		DataPoints []*DataPointMetric `json:"DataPoints,omitempty" name:"DataPoints"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1566,7 +1566,7 @@ type GetResultSummaryRequest struct {
 	*tchttp.BaseRequest
 
 	// 任务Id列表
-	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*uint64 `json:"TaskIds,omitempty" name:"TaskIds"`
 }
 
 func (r *GetResultSummaryRequest) ToJsonString() string {
@@ -1593,10 +1593,10 @@ type GetResultSummaryResponse struct {
 	Response *struct {
 
 		// 实时统计数据
-		RealData []*ResultSummary `json:"RealData,omitempty" name:"RealData" list`
+		RealData []*ResultSummary `json:"RealData,omitempty" name:"RealData"`
 
 		// 按天的统计数据
-		DayData []*ResultSummary `json:"DayData,omitempty" name:"DayData" list`
+		DayData []*ResultSummary `json:"DayData,omitempty" name:"DayData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1657,10 +1657,10 @@ type GetReturnCodeHistoryResponse struct {
 	Response *struct {
 
 		// 拨测失败详情列表
-		Details []*CatReturnDetail `json:"Details,omitempty" name:"Details" list`
+		Details []*CatReturnDetail `json:"Details,omitempty" name:"Details"`
 
 		// 拨测失败汇总列表
-		Summary []*CatReturnSummary `json:"Summary,omitempty" name:"Summary" list`
+		Summary []*CatReturnSummary `json:"Summary,omitempty" name:"Summary"`
 
 		// 开始时间
 		BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -1727,10 +1727,10 @@ type GetReturnCodeInfoResponse struct {
 	Response *struct {
 
 		// 拨测失败详情列表
-		Details []*CatReturnDetail `json:"Details,omitempty" name:"Details" list`
+		Details []*CatReturnDetail `json:"Details,omitempty" name:"Details"`
 
 		// 拨测失败汇总列表
-		Summary []*CatReturnSummary `json:"Summary,omitempty" name:"Summary" list`
+		Summary []*CatReturnSummary `json:"Summary,omitempty" name:"Summary"`
 
 		// 开始时间
 		BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -1825,7 +1825,7 @@ type ModifyAgentGroupRequest struct {
 	IsDefault *int64 `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// Province, Isp 需要成对地进行选择。参数对的取值范围。参见：DescribeAgents 的返回结果。
-	Agents []*CatAgent `json:"Agents,omitempty" name:"Agents" list`
+	Agents []*CatAgent `json:"Agents,omitempty" name:"Agents"`
 }
 
 func (r *ModifyAgentGroupRequest) ToJsonString() string {
@@ -2088,7 +2088,7 @@ type ProvinceDetail struct {
 	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
 
 	// 分运营商可用率
-	IspDetail []*IspDetail `json:"IspDetail,omitempty" name:"IspDetail" list`
+	IspDetail []*IspDetail `json:"IspDetail,omitempty" name:"IspDetail"`
 
 	// 平均耗时，单位毫秒
 	AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`

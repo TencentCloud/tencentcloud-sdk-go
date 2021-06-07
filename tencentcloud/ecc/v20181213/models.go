@@ -63,14 +63,14 @@ type CorrectData struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 句子点评
-	SentenceComments []*SentenceCom `json:"SentenceComments,omitempty" name:"SentenceComments" list`
+	SentenceComments []*SentenceCom `json:"SentenceComments,omitempty" name:"SentenceComments"`
 }
 
 type CorrectMultiImageRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的url链接或base64数据。每张图片数据作为数组的一个元素，数组个数与图片个数保持一致。存放类别依据InputType而定，url与base64编码不能混合使用。
-	Image []*string `json:"Image,omitempty" name:"Image" list`
+	Image []*string `json:"Image,omitempty" name:"Image"`
 
 	// 输出图片类型，0 表示 Image 字段是图片所在的 url，1 表示 Image 字段是 base64 编码后的图像数据。
 	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
@@ -394,7 +394,7 @@ func (r *EHOCRResponse) FromJsonString(s string) error {
 type ErrorCoordinate struct {
 
 	// 维度单词坐标
-	Coordinate []*int64 `json:"Coordinate,omitempty" name:"Coordinate" list`
+	Coordinate []*int64 `json:"Coordinate,omitempty" name:"Coordinate"`
 }
 
 type ScoreCategory struct {
@@ -421,7 +421,7 @@ type ScoreCategory struct {
 type SentenceCom struct {
 
 	// 句子错误纠正信息
-	Suggestions []*SentenceSuggest `json:"Suggestions,omitempty" name:"Suggestions" list`
+	Suggestions []*SentenceSuggest `json:"Suggestions,omitempty" name:"Suggestions"`
 
 	// 句子信息
 	Sentence *SentenceItem `json:"Sentence,omitempty" name:"Sentence"`
@@ -457,8 +457,8 @@ type SentenceSuggest struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 维度单词位置，在句子的第几个到第几个单词之间
-	ErrorPosition []*int64 `json:"ErrorPosition,omitempty" name:"ErrorPosition" list`
+	ErrorPosition []*int64 `json:"ErrorPosition,omitempty" name:"ErrorPosition"`
 
 	// 维度单词坐标，错误单词在图片中的坐标，只有传图片时正常返回，传文字时返回[ ]
-	ErrorCoordinates []*ErrorCoordinate `json:"ErrorCoordinates,omitempty" name:"ErrorCoordinates" list`
+	ErrorCoordinates []*ErrorCoordinate `json:"ErrorCoordinates,omitempty" name:"ErrorCoordinates"`
 }

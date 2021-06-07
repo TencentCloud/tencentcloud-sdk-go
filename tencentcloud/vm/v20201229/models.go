@@ -68,15 +68,15 @@ type AudioResult struct {
 
 	// 文本审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults" list`
+	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults"`
 
 	// 音频呻吟审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults" list`
+	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
 
 	// 音频语言类别检测结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults" list`
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -129,7 +129,7 @@ type AudioResultDetailTextResult struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的LibId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -230,7 +230,7 @@ type CreateVideoModerationTaskRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 业务类型, 定义 模版策略，输出存储配置。默认为default，客户可以在视频审核控制台创建自己的 BizType
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
@@ -275,7 +275,7 @@ type CreateVideoModerationTaskResponse struct {
 
 		// 任务创建结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results" list`
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -366,7 +366,7 @@ type DescribeTaskDetailResponse struct {
 
 		// 审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 		// 媒体解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -387,12 +387,12 @@ type DescribeTaskDetailResponse struct {
 		// 视频中截帧审核的结果。
 	// 数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
+		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
 
 		// 视频中音频审核的结果。
 	// 数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
+		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
 		// 如果返回的状态为ERROR，该字段会标记错误类型。
 	// 可选值：：
@@ -474,7 +474,7 @@ type DescribeTasksResponse struct {
 
 		// 当前页数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*TaskData `json:"Data,omitempty" name:"Data" list`
+		Data []*TaskData `json:"Data,omitempty" name:"Data"`
 
 		// 翻页Token，当已经到最后一页时，该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -527,7 +527,7 @@ type ImageResult struct {
 
 	// 画面截帧图片结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*ImageResultResult `json:"Results,omitempty" name:"Results" list`
+	Results []*ImageResultResult `json:"Results,omitempty" name:"Results"`
 
 	// 图片URL地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -577,7 +577,7 @@ type ImageResultResult struct {
 
 	// 适应特定场景，则该数据为名称列表，否则为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 图片OCR文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -585,7 +585,7 @@ type ImageResultResult struct {
 
 	// 其他详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type ImageResultsResultDetail struct {
@@ -616,7 +616,7 @@ type ImageResultsResultDetail struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -730,7 +730,7 @@ type TaskData struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 任务违规标签
-	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 	// 媒体信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -748,7 +748,7 @@ type TaskFilter struct {
 
 	// 任务业务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BizType []*string `json:"BizType,omitempty" name:"BizType" list`
+	BizType []*string `json:"BizType,omitempty" name:"BizType"`
 
 	// 任务类型，可选：VIDEO，AUDIO， LIVE_VIDEO, LIVE_AUDIO
 	Type *string `json:"Type,omitempty" name:"Type"`

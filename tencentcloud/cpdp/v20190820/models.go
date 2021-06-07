@@ -1652,7 +1652,7 @@ type ContractInfo struct {
 
 	// 第三方渠道用户信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExternalContractUserInfoList []*ExternalContractUserInfo `json:"ExternalContractUserInfoList,omitempty" name:"ExternalContractUserInfoList" list`
+	ExternalContractUserInfoList []*ExternalContractUserInfo `json:"ExternalContractUserInfoList,omitempty" name:"ExternalContractUserInfoList"`
 
 	// 签约方式，如 wechat_app ，使用app方式下的微信签
 	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
@@ -1758,7 +1758,7 @@ type ContractOrderRequest struct {
 
 	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
 	// 注：接入银行或其他支付渠道服务商模式下，必传
-	SubOrderList []*ContractOrderInSubOrder `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+	SubOrderList []*ContractOrderInSubOrder `json:"SubOrderList,omitempty" name:"SubOrderList"`
 
 	// 结算应收金额，单位：分
 	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
@@ -1895,7 +1895,7 @@ type ContractSyncInfo struct {
 	ExternalReturnContractInfo *ExternalReturnContractInfo `json:"ExternalReturnContractInfo,omitempty" name:"ExternalReturnContractInfo"`
 
 	// 第三方渠道用户信息
-	ExternalContractUserInfo []*ExternalContractUserInfo `json:"ExternalContractUserInfo,omitempty" name:"ExternalContractUserInfo" list`
+	ExternalContractUserInfo []*ExternalContractUserInfo `json:"ExternalContractUserInfo,omitempty" name:"ExternalContractUserInfo"`
 
 	// 签约方式，枚举值，
 	// <br/>CONTRACT_METHOD_WECHAT_INVALID: 无效
@@ -2085,7 +2085,7 @@ type CreateAgentTaxPaymentInfosRequest struct {
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 完税信息
-	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos" list`
+	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos"`
 
 	// 接入环境。沙箱环境填sandbox
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -2405,7 +2405,7 @@ type CreateInvoiceRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 项目商品明细
-	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items" list`
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items"`
 
 	// 接入环境。沙箱环境填sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -2631,7 +2631,7 @@ type CreateInvoiceV2Request struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 项目商品明细
-	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items" list`
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items"`
 
 	// 接入环境。沙箱环境填sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -2919,7 +2919,7 @@ type CreateRedInvoiceRequest struct {
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 红冲明细
-	Invoices []*CreateRedInvoiceItem `json:"Invoices,omitempty" name:"Invoices" list`
+	Invoices []*CreateRedInvoiceItem `json:"Invoices,omitempty" name:"Invoices"`
 
 	// 接入环境。沙箱环境填 sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -2983,7 +2983,7 @@ type CreateRedInvoiceResult struct {
 
 	// 红票数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CreateRedInvoiceResultData `json:"Data,omitempty" name:"Data" list`
+	Data []*CreateRedInvoiceResultData `json:"Data,omitempty" name:"Data"`
 }
 
 type CreateRedInvoiceResultData struct {
@@ -3230,7 +3230,7 @@ type CreateTransferBatchRequest struct {
 
 	// 转账明细列表。
 	// 发起批量转账的明细列表，最多三千笔
-	TransferDetails []*TransferDetailRequest `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+	TransferDetails []*TransferDetailRequest `json:"TransferDetails,omitempty" name:"TransferDetails"`
 
 	// 直连商户appId。
 	// 即商户号绑定的appid。
@@ -4023,7 +4023,7 @@ type MerchantManagementResult struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 商户列表。
-	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
+	List []*MerchantManagementList `json:"List,omitempty" name:"List"`
 }
 
 type MigrateOrderRefundQueryRequest struct {
@@ -4379,7 +4379,7 @@ type Order struct {
 
 	// 明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*OrderItem `json:"Items,omitempty" name:"Items" list`
+	Items []*OrderItem `json:"Items,omitempty" name:"Items"`
 }
 
 type OrderItem struct {
@@ -4503,7 +4503,7 @@ type QueryAcctBindingResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 银行卡信息列表
-		BankCardItems []*BankCardItem `json:"BankCardItems,omitempty" name:"BankCardItems" list`
+		BankCardItems []*BankCardItem `json:"BankCardItems,omitempty" name:"BankCardItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4593,7 +4593,7 @@ type QueryAcctInfoListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询结果项 [object,object]
-		QueryAcctItems []*QueryAcctItem `json:"QueryAcctItems,omitempty" name:"QueryAcctItems" list`
+		QueryAcctItems []*QueryAcctItem `json:"QueryAcctItems,omitempty" name:"QueryAcctItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4916,7 +4916,7 @@ type QueryAnchorContractInfoResponse struct {
 	Response *struct {
 
 		// 签约主播数据
-		AnchorContractInfoList []*AnchorContractInfo `json:"AnchorContractInfoList,omitempty" name:"AnchorContractInfoList" list`
+		AnchorContractInfoList []*AnchorContractInfo `json:"AnchorContractInfoList,omitempty" name:"AnchorContractInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5059,7 +5059,7 @@ type QueryBalanceResponse struct {
 		TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询结果项
-		QueryItems []*QueryItem `json:"QueryItems,omitempty" name:"QueryItems" list`
+		QueryItems []*QueryItem `json:"QueryItems,omitempty" name:"QueryItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5158,7 +5158,7 @@ type QueryBankClearResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*ClearItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*ClearItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5269,7 +5269,7 @@ type QueryBankTransactionDetailsResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5380,7 +5380,7 @@ type QueryBankWithdrawCashDetailsResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*WithdrawItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*WithdrawItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5561,7 +5561,7 @@ type QueryCommonTransferRechargeResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TransferItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TransferItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5769,7 +5769,7 @@ type QueryCustAcctIdBalanceResponse struct {
 
 		// 账户信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AcctArray []*Acct `json:"AcctArray,omitempty" name:"AcctArray" list`
+		AcctArray []*Acct `json:"AcctArray,omitempty" name:"AcctArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5921,7 +5921,7 @@ type QueryExchangerateResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 查询汇率数据数组
-	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data" list`
+	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data"`
 }
 
 type QueryInvoiceRequest struct {
@@ -6233,7 +6233,7 @@ type QueryMemberBindResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TranItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TranItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6603,7 +6603,7 @@ type QueryOrderOutOrderList struct {
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 调用下单接口传进来的 SubOutTradeNoList
-	SubOrderList []*QueryOrderOutSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+	SubOrderList []*QueryOrderOutSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList"`
 
 	// 支付机构订单号
 	ChannelExternalOrderId *string `json:"ChannelExternalOrderId,omitempty" name:"ChannelExternalOrderId"`
@@ -6725,7 +6725,7 @@ type QueryOrderResponse struct {
 		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 查询结果的订单列表
-		OrderList []*QueryOrderOutOrderList `json:"OrderList,omitempty" name:"OrderList" list`
+		OrderList []*QueryOrderOutOrderList `json:"OrderList,omitempty" name:"OrderList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7023,7 +7023,7 @@ type QueryReconciliationDocumentResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*FileItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*FileItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7204,7 +7204,7 @@ type QuerySinglePayResult struct {
 
 	// 支付明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items" list`
+	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items"`
 }
 
 type QuerySingleTransactionStatusRequest struct {
@@ -7686,7 +7686,7 @@ type QueryTransferBatchResponse struct {
 		// 转账明细列表。
 	// 返回明细详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TransferDetails []*TransferDetailResponse `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+		TransferDetails []*TransferDetailResponse `json:"TransferDetails,omitempty" name:"TransferDetails"`
 
 		// 批次类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8457,7 +8457,7 @@ type RefundRequest struct {
 	PlatformRefundAmt *int64 `json:"PlatformRefundAmt,omitempty" name:"PlatformRefundAmt"`
 
 	// 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
-	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList" list`
+	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList"`
 
 	// 环境名:
 	// release: 现网环境
@@ -10151,7 +10151,7 @@ type UnifiedOrderRequest struct {
 
 	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
 	// 注：接入银行或其他支付渠道服务商模式下，必传
-	SubOrderList []*UnifiedOrderInSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+	SubOrderList []*UnifiedOrderInSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList"`
 
 	// 结算应收金额，单位：分
 	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`

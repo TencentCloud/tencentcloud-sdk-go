@@ -121,7 +121,7 @@ type CarTagItem struct {
 	Year *int64 `json:"Year,omitempty" name:"Year"`
 
 	// 车辆在图片中的坐标信息
-	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation" list`
+	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation"`
 }
 
 type Coord struct {
@@ -275,7 +275,7 @@ type DetectCelebrityResponse struct {
 	Response *struct {
 
 		// 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
-		Faces []*Face `json:"Faces,omitempty" name:"Faces" list`
+		Faces []*Face `json:"Faces,omitempty" name:"Faces"`
 
 		// 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
 	// FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
@@ -404,7 +404,7 @@ type DetectLabelRequest struct {
 	// 如果不传此参数，则默认为WEB。
 	// 
 	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 }
 
 func (r *DetectLabelRequest) ToJsonString() string {
@@ -434,20 +434,20 @@ type DetectLabelResponse struct {
 
 		// Web网络版标签结果数组。如未选择WEB场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
 
 		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels" list`
+		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
 
 		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels" list`
+		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
 
 		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
 	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels" list`
+		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -568,7 +568,7 @@ type DetectProductBetaResponse struct {
 		// 检测到的图片中的商品位置和品类预测。 
 	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 	// 最多可以输出__3组__检测结果。
-		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected" list`
+		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
 
 		// 图像识别出的商品的详细信息。 
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
@@ -633,7 +633,7 @@ type DetectProductResponse struct {
 	Response *struct {
 
 		// 商品识别结果数组
-		Products []*Product `json:"Products,omitempty" name:"Products" list`
+		Products []*Product `json:"Products,omitempty" name:"Products"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -718,7 +718,7 @@ type Face struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 公众人物身份标签的数组，一个公众人物可能有多个身份标签。
-	Labels []*Labels `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*Labels `json:"Labels,omitempty" name:"Labels"`
 
 	// 对人物的简介。
 	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
@@ -868,10 +868,10 @@ type RecognizeCarResponse struct {
 	Response *struct {
 
 		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
-		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords" list`
+		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
 
 		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
-		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags" list`
+		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

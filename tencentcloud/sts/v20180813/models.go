@@ -296,7 +296,7 @@ type QueryApiKeyResponse struct {
 	Response *struct {
 
 		// 密钥ID列表
-		IdKeys []*ApiKey `json:"IdKeys,omitempty" name:"IdKeys" list`
+		IdKeys []*ApiKey `json:"IdKeys,omitempty" name:"IdKeys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

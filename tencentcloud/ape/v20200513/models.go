@@ -43,7 +43,7 @@ type BatchDescribeOrderCertificateRequest struct {
 	*tchttp.BaseRequest
 
 	// 要下载授权书的订单id
-	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
 func (r *BatchDescribeOrderCertificateRequest) ToJsonString() string {
@@ -70,7 +70,7 @@ type BatchDescribeOrderCertificateResponse struct {
 	Response *struct {
 
 		// 授权书的下载地址
-		CertificateUrls []*string `json:"CertificateUrls,omitempty" name:"CertificateUrls" list`
+		CertificateUrls []*string `json:"CertificateUrls,omitempty" name:"CertificateUrls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -92,7 +92,7 @@ type BatchDescribeOrderImageRequest struct {
 	*tchttp.BaseRequest
 
 	// 要下载图片的订单id
-	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
 func (r *BatchDescribeOrderImageRequest) ToJsonString() string {
@@ -119,7 +119,7 @@ type BatchDescribeOrderImageResponse struct {
 	Response *struct {
 
 		// 图片的下载地址
-		ImageUrls []*string `json:"ImageUrls,omitempty" name:"ImageUrls" list`
+		ImageUrls []*string `json:"ImageUrls,omitempty" name:"ImageUrls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -141,7 +141,7 @@ type CreateOrderAndDownloadsRequest struct {
 	*tchttp.BaseRequest
 
 	// ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
-	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos" list`
+	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
 }
 
 func (r *CreateOrderAndDownloadsRequest) ToJsonString() string {
@@ -169,7 +169,7 @@ type CreateOrderAndDownloadsResponse struct {
 
 		// 成功核销后可以获取图片基本信息和原图地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos" list`
+		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
 
 		// 可下载图片数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -283,7 +283,7 @@ type DescribeAuthUsersResponse struct {
 
 		// 授权人信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Users []*AuthInfo `json:"Users,omitempty" name:"Users" list`
+		Users []*AuthInfo `json:"Users,omitempty" name:"Users"`
 
 		// 总记录数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -323,7 +323,7 @@ type DescribeDownloadInfosRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 无效值，过滤结果为空
-	ImageIds []*int64 `json:"ImageIds,omitempty" name:"ImageIds" list`
+	ImageIds []*int64 `json:"ImageIds,omitempty" name:"ImageIds"`
 }
 
 func (r *DescribeDownloadInfosRequest) ToJsonString() string {
@@ -355,7 +355,7 @@ type DescribeDownloadInfosResponse struct {
 
 		// 核销下载记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos" list`
+		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
 
 		// 总记录数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -425,7 +425,7 @@ type DescribeImageResponse struct {
 		Vendor *string `json:"Vendor,omitempty" name:"Vendor"`
 
 		// 图片售卖组合信息
-		Marshals []*ImageMarshal `json:"Marshals,omitempty" name:"Marshals" list`
+		Marshals []*ImageMarshal `json:"Marshals,omitempty" name:"Marshals"`
 
 		// 宽
 		Width *int64 `json:"Width,omitempty" name:"Width"`
@@ -483,7 +483,7 @@ type DescribeImagesRequest struct {
 	ImageSenseType *string `json:"ImageSenseType,omitempty" name:"ImageSenseType"`
 
 	// 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
-	LayeredGalleryIds []*int64 `json:"LayeredGalleryIds,omitempty" name:"LayeredGalleryIds" list`
+	LayeredGalleryIds []*int64 `json:"LayeredGalleryIds,omitempty" name:"LayeredGalleryIds"`
 }
 
 func (r *DescribeImagesRequest) ToJsonString() string {
@@ -527,7 +527,7 @@ type DescribeImagesResponse struct {
 		HaveMore *bool `json:"HaveMore,omitempty" name:"HaveMore"`
 
 		// 图片信息数组
-		Items []*ImageItem `json:"Items,omitempty" name:"Items" list`
+		Items []*ImageItem `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

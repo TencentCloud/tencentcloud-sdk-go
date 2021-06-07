@@ -67,7 +67,7 @@ type AssociateAccessGroupsRequest struct {
 	MountPointId *string `json:"MountPointId,omitempty" name:"MountPointId"`
 
 	// 权限组ID列表
-	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds" list`
+	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds"`
 }
 
 func (r *AssociateAccessGroupsRequest) ToJsonString() string {
@@ -175,7 +175,7 @@ type CreateAccessRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules" list`
+	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules"`
 
 	// 权限组ID
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
@@ -237,7 +237,7 @@ type CreateFileSystemRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 超级用户名列表，默认为空数组
-	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers" list`
+	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers"`
 
 	// 根目录Inode用户名，默认为hadoop
 	RootInodeUser *string `json:"RootInodeUser,omitempty" name:"RootInodeUser"`
@@ -301,7 +301,7 @@ type CreateLifeCycleRulesRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules"`
 }
 
 func (r *CreateLifeCycleRulesRequest) ToJsonString() string {
@@ -408,7 +408,7 @@ type CreateRestoreTasksRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
 	// 多个回热任务，上限为10
-	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks" list`
+	RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks"`
 }
 
 func (r *CreateRestoreTasksRequest) ToJsonString() string {
@@ -501,7 +501,7 @@ type DeleteAccessRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 多个权限规则ID，上限为10
-	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitempty" name:"AccessRuleIds" list`
+	AccessRuleIds []*uint64 `json:"AccessRuleIds,omitempty" name:"AccessRuleIds"`
 }
 
 func (r *DeleteAccessRulesRequest) ToJsonString() string {
@@ -593,7 +593,7 @@ type DeleteLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 多个生命周期规则ID，上限为10
-	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitempty" name:"LifeCycleRuleIds" list`
+	LifeCycleRuleIds []*uint64 `json:"LifeCycleRuleIds,omitempty" name:"LifeCycleRuleIds"`
 }
 
 func (r *DeleteLifeCycleRulesRequest) ToJsonString() string {
@@ -766,7 +766,7 @@ type DescribeAccessGroupsResponse struct {
 	Response *struct {
 
 		// 权限组列表
-		AccessGroups []*AccessGroup `json:"AccessGroups,omitempty" name:"AccessGroups" list`
+		AccessGroups []*AccessGroup `json:"AccessGroups,omitempty" name:"AccessGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -815,7 +815,7 @@ type DescribeAccessRulesResponse struct {
 	Response *struct {
 
 		// 权限规则列表
-		AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules" list`
+		AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -917,7 +917,7 @@ type DescribeFileSystemsResponse struct {
 	Response *struct {
 
 		// 文件系统列表
-		FileSystems []*FileSystem `json:"FileSystems,omitempty" name:"FileSystems" list`
+		FileSystems []*FileSystem `json:"FileSystems,omitempty" name:"FileSystems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -966,7 +966,7 @@ type DescribeLifeCycleRulesResponse struct {
 	Response *struct {
 
 		// 生命周期规则列表
-		LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+		LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1073,7 +1073,7 @@ type DescribeMountPointsResponse struct {
 	Response *struct {
 
 		// 挂载点列表
-		MountPoints []*MountPoint `json:"MountPoints,omitempty" name:"MountPoints" list`
+		MountPoints []*MountPoint `json:"MountPoints,omitempty" name:"MountPoints"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1122,7 +1122,7 @@ type DescribeResourceTagsResponse struct {
 	Response *struct {
 
 		// 资源标签列表
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1171,7 +1171,7 @@ type DescribeRestoreTasksResponse struct {
 	Response *struct {
 
 		// 回热任务列表
-		RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks" list`
+		RestoreTasks []*RestoreTask `json:"RestoreTasks,omitempty" name:"RestoreTasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1196,7 +1196,7 @@ type DisassociateAccessGroupsRequest struct {
 	MountPointId *string `json:"MountPointId,omitempty" name:"MountPointId"`
 
 	// 权限组ID列表
-	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds" list`
+	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds"`
 }
 
 func (r *DisassociateAccessGroupsRequest) ToJsonString() string {
@@ -1269,7 +1269,7 @@ type FileSystem struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 超级用户名列表
-	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers" list`
+	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers"`
 
 	// POSIX权限控制
 	PosixAcl *bool `json:"PosixAcl,omitempty" name:"PosixAcl"`
@@ -1287,7 +1287,7 @@ type LifeCycleRule struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 
 	// 生命周期规则转换列表
-	Transitions []*Transition `json:"Transitions,omitempty" name:"Transitions" list`
+	Transitions []*Transition `json:"Transitions,omitempty" name:"Transitions"`
 
 	// 生命周期规则状态（1：打开；2：关闭）
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
@@ -1354,7 +1354,7 @@ type ModifyAccessRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 多个权限规则，上限为10
-	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules" list`
+	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules"`
 }
 
 func (r *ModifyAccessRulesRequest) ToJsonString() string {
@@ -1413,7 +1413,7 @@ type ModifyFileSystemRequest struct {
 	CapacityQuota *uint64 `json:"CapacityQuota,omitempty" name:"CapacityQuota"`
 
 	// 超级用户名列表，可以为空数组
-	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers" list`
+	SuperUsers []*string `json:"SuperUsers,omitempty" name:"SuperUsers"`
 
 	// 是否校验POSIX ACL
 	PosixAcl *bool `json:"PosixAcl,omitempty" name:"PosixAcl"`
@@ -1467,7 +1467,7 @@ type ModifyLifeCycleRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// 多个生命周期规则，上限为10
-	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules" list`
+	LifeCycleRules []*LifeCycleRule `json:"LifeCycleRules,omitempty" name:"LifeCycleRules"`
 }
 
 func (r *ModifyLifeCycleRulesRequest) ToJsonString() string {
@@ -1570,7 +1570,7 @@ type ModifyResourceTagsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
 	// 多个资源标签，可以为空数组
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyResourceTagsRequest) ToJsonString() string {
@@ -1631,7 +1631,7 @@ type MountPoint struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 绑定的权限组ID列表
-	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds" list`
+	AccessGroupIds []*string `json:"AccessGroupIds,omitempty" name:"AccessGroupIds"`
 }
 
 type RestoreTask struct {

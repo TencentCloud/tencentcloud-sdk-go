@@ -71,7 +71,7 @@ type BindGroupDevicesRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 设备唯一标识列表
-	DeviceList []*string `json:"DeviceList,omitempty" name:"DeviceList" list`
+	DeviceList []*string `json:"DeviceList,omitempty" name:"DeviceList"`
 }
 
 func (r *BindGroupDevicesRequest) ToJsonString() string {
@@ -324,7 +324,7 @@ type CreateRecordPlanRequest struct {
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
 	// 该录制计划绑定的设备列表
-	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices" list`
+	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
 }
 
 func (r *CreateRecordPlanRequest) ToJsonString() string {
@@ -382,7 +382,7 @@ type CreateTimeTemplateRequest struct {
 	IsAllWeek *int64 `json:"IsAllWeek,omitempty" name:"IsAllWeek"`
 
 	// 当IsAllWeek为0时必选，用于描述模板的各个时间片段
-	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs" list`
+	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs"`
 }
 
 func (r *CreateTimeTemplateRequest) ToJsonString() string {
@@ -641,7 +641,7 @@ type DescribeAllDeviceListRequest struct {
 	NickName *string `json:"NickName,omitempty" name:"NickName"`
 
 	// DeviceId列表，需要精确查找设备时为必填
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds" list`
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
 }
 
 func (r *DescribeAllDeviceListRequest) ToJsonString() string {
@@ -676,7 +676,7 @@ type DescribeAllDeviceListResponse struct {
 
 		// 设备详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Devices []*AllDeviceInfo `json:"Devices,omitempty" name:"Devices" list`
+		Devices []*AllDeviceInfo `json:"Devices,omitempty" name:"Devices"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -698,7 +698,7 @@ type DescribeDeviceGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备唯一标识列表
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds" list`
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
 }
 
 func (r *DescribeDeviceGroupRequest) ToJsonString() string {
@@ -726,7 +726,7 @@ type DescribeDeviceGroupResponse struct {
 
 		// 设备所在分组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DevGroups []*DevGroupInfo `json:"DevGroups,omitempty" name:"DevGroups" list`
+		DevGroups []*DevGroupInfo `json:"DevGroups,omitempty" name:"DevGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1013,7 +1013,7 @@ type DescribeGroupDevicesResponse struct {
 
 		// 设备详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DeviceList []*GroupDeviceItem `json:"DeviceList,omitempty" name:"DeviceList" list`
+		DeviceList []*GroupDeviceItem `json:"DeviceList,omitempty" name:"DeviceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1035,7 +1035,7 @@ type DescribeGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 分组ID列表
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *DescribeGroupsRequest) ToJsonString() string {
@@ -1063,7 +1063,7 @@ type DescribeGroupsResponse struct {
 
 		// 分组详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups" list`
+		Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1253,7 +1253,7 @@ type DescribeStatisticDetailsResponse struct {
 
 		// 统计详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*StatisticItem `json:"Data,omitempty" name:"Data" list`
+		Data []*StatisticItem `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1381,7 +1381,7 @@ type DescribeSubGroupsResponse struct {
 
 		// 子分组详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GroupList []*GroupItem `json:"GroupList,omitempty" name:"GroupList" list`
+		GroupList []*GroupItem `json:"GroupList,omitempty" name:"GroupList"`
 
 		// 子分组总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1456,7 +1456,7 @@ type DescribeVideoListResponse struct {
 		VideoList *RecordTaskItem `json:"VideoList,omitempty" name:"VideoList"`
 
 		// 录像详情列表
-		RecordList []*RecordTaskItem `json:"RecordList,omitempty" name:"RecordList" list`
+		RecordList []*RecordTaskItem `json:"RecordList,omitempty" name:"RecordList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1539,7 +1539,7 @@ type GetRecordDatesByDevResponse struct {
 
 		// 含有录像文件的日期列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Dates []*string `json:"Dates,omitempty" name:"Dates" list`
+		Dates []*string `json:"Dates,omitempty" name:"Dates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1685,7 +1685,7 @@ type GetRecordPlansResponse struct {
 
 		// 录制计划详情·列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Plans []*RecordPlanItem `json:"Plans,omitempty" name:"Plans" list`
+		Plans []*RecordPlanItem `json:"Plans,omitempty" name:"Plans"`
 
 		// 录制计划总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1785,7 +1785,7 @@ type GetTimeTemplatesResponse struct {
 
 		// 时间模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Templates []*TimeTemplateItem `json:"Templates,omitempty" name:"Templates" list`
+		Templates []*TimeTemplateItem `json:"Templates,omitempty" name:"Templates"`
 
 		// 时间模板总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1855,7 +1855,7 @@ type GetVideoListByConResponse struct {
 
 		// 录像详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		VideoList []*RecordTaskItem `json:"VideoList,omitempty" name:"VideoList" list`
+		VideoList []*RecordTaskItem `json:"VideoList,omitempty" name:"VideoList"`
 
 		// 录像总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2076,7 +2076,7 @@ type RecordPlanItem struct {
 
 	// 绑定的设备列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices" list`
+	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
 }
 
 type RecordTaskItem struct {
@@ -2156,7 +2156,7 @@ type TimeTemplateItem struct {
 
 	// 时间片段详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs" list`
+	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs"`
 }
 
 type TimeTemplateSpec struct {
@@ -2302,7 +2302,7 @@ type UpdateRecordPlanRequest struct {
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
 	// 录制设备列表
-	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices" list`
+	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
 
 	// 是否更新绑定此录制计划的设备列表
 	// 0 - 不更新
@@ -2371,7 +2371,7 @@ type UpdateTimeTemplateRequest struct {
 	IsAllWeek *int64 `json:"IsAllWeek,omitempty" name:"IsAllWeek"`
 
 	// 录制时间片段
-	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs" list`
+	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitempty" name:"TimeTemplateSpecs"`
 }
 
 func (r *UpdateTimeTemplateRequest) ToJsonString() string {

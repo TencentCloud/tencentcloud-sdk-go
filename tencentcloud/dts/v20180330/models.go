@@ -302,7 +302,7 @@ type CreateSubscribeRequest struct {
 	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 实例资源标签
-	Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateSubscribeRequest) ToJsonString() string {
@@ -335,7 +335,7 @@ type CreateSubscribeResponse struct {
 
 		// 数据订阅实例的ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubscribeIds []*string `json:"SubscribeIds,omitempty" name:"SubscribeIds" list`
+		SubscribeIds []*string `json:"SubscribeIds,omitempty" name:"SubscribeIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -741,7 +741,7 @@ type DescribeMigrateJobsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务详情数组
-		JobList []*MigrateJobInfo `json:"JobList,omitempty" name:"JobList" list`
+		JobList []*MigrateJobInfo `json:"JobList,omitempty" name:"JobList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -789,7 +789,7 @@ type DescribeRegionConfResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 可售卖地域详情
-		Items []*SubscribeRegionConf `json:"Items,omitempty" name:"Items" list`
+		Items []*SubscribeRegionConf `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -901,7 +901,7 @@ type DescribeSubscribeConfResponse struct {
 		SubscribeObjectType *int64 `json:"SubscribeObjectType,omitempty" name:"SubscribeObjectType"`
 
 		// 订阅对象，当SubscribeObjectType 为0时，此字段为空数组
-		SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitempty" name:"SubscribeObjects" list`
+		SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitempty" name:"SubscribeObjects"`
 
 		// 修改时间
 		ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
@@ -911,7 +911,7 @@ type DescribeSubscribeConfResponse struct {
 
 		// 订阅实例的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 
 		// 自动续费标识,0-不自动续费，1-自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -955,10 +955,10 @@ type DescribeSubscribesRequest struct {
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 数据订阅实例的状态，creating - 创建中，normal - 正常运行，isolating - 隔离中，isolated - 已隔离，offlining - 下线中
-	Status []*string `json:"Status,omitempty" name:"Status" list`
+	Status []*string `json:"Status,omitempty" name:"Status"`
 
 	// 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
-	SubsStatus []*string `json:"SubsStatus,omitempty" name:"SubsStatus" list`
+	SubsStatus []*string `json:"SubsStatus,omitempty" name:"SubsStatus"`
 
 	// 返回记录的起始偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -970,7 +970,7 @@ type DescribeSubscribesRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 
 	// 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
 	SubscribeVersion *string `json:"SubscribeVersion,omitempty" name:"SubscribeVersion"`
@@ -1015,7 +1015,7 @@ type DescribeSubscribesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 数据订阅实例的信息列表
-		Items []*SubscribeInfo `json:"Items,omitempty" name:"Items" list`
+		Items []*SubscribeInfo `json:"Items,omitempty" name:"Items"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1073,7 +1073,7 @@ type DescribeSyncCheckJobResponse struct {
 		ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
 
 		// 任务执行步骤描述
-		StepInfo []*SyncCheckStepInfo `json:"StepInfo,omitempty" name:"StepInfo" list`
+		StepInfo []*SyncCheckStepInfo `json:"StepInfo,omitempty" name:"StepInfo"`
 
 		// 校验标志：0（尚未校验成功） ， 1（校验成功）
 		CheckFlag *int64 `json:"CheckFlag,omitempty" name:"CheckFlag"`
@@ -1148,7 +1148,7 @@ type DescribeSyncJobsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务详情数组
-		JobList []*SyncJobInfo `json:"JobList,omitempty" name:"JobList" list`
+		JobList []*SyncJobInfo `json:"JobList,omitempty" name:"JobList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1266,7 +1266,7 @@ type MigrateDetailInfo struct {
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitempty" name:"SecondsBehindMaster"`
 
 	// 步骤信息
-	StepInfo []*MigrateStepDetailInfo `json:"StepInfo,omitempty" name:"StepInfo" list`
+	StepInfo []*MigrateStepDetailInfo `json:"StepInfo,omitempty" name:"StepInfo"`
 }
 
 type MigrateJobInfo struct {
@@ -1317,7 +1317,7 @@ type MigrateJobInfo struct {
 	Detail *MigrateDetailInfo `json:"Detail,omitempty" name:"Detail"`
 
 	// 任务错误信息提示，当任务发生错误时，不为null或者空值
-	ErrorInfo []*ErrorInfo `json:"ErrorInfo,omitempty" name:"ErrorInfo" list`
+	ErrorInfo []*ErrorInfo `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
 }
 
 type MigrateOption struct {
@@ -1622,7 +1622,7 @@ type ModifySubscribeObjectsRequest struct {
 	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitempty" name:"SubscribeObjectType"`
 
 	// 订阅的数据库表信息
-	Objects []*SubscribeObject `json:"Objects,omitempty" name:"Objects" list`
+	Objects []*SubscribeObject `json:"Objects,omitempty" name:"Objects"`
 }
 
 func (r *ModifySubscribeObjectsRequest) ToJsonString() string {
@@ -2136,7 +2136,7 @@ type SubscribeInfo struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagItem `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 
 	// 自动续费标识。0-不自动续费，1-自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2159,7 +2159,7 @@ type SubscribeObject struct {
 
 	// 订阅数据库中表名称数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableNames []*string `json:"TableNames,omitempty" name:"TableNames" list`
+	TableNames []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
 
 type SubscribeRegionConf struct {
@@ -2274,7 +2274,7 @@ type SyncDetailInfo struct {
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitempty" name:"SecondsBehindMaster"`
 
 	// 步骤信息
-	StepInfo []*SyncStepDetailInfo `json:"StepInfo,omitempty" name:"StepInfo" list`
+	StepInfo []*SyncStepDetailInfo `json:"StepInfo,omitempty" name:"StepInfo"`
 }
 
 type SyncInstanceInfo struct {
@@ -2370,7 +2370,7 @@ type TagFilter struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TagItem struct {

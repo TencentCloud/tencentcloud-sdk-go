@@ -158,7 +158,7 @@ type CardList struct {
 
 	// 卡片列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*CardInfo `json:"List,omitempty" name:"List" list`
+	List []*CardInfo `json:"List,omitempty" name:"List"`
 }
 
 type DescribeAppRequest struct {
@@ -383,7 +383,7 @@ type RenewCardsRequest struct {
 	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 续费的iccid
-	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
 
 	// 续费的周期（单位：月）
 	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
@@ -438,7 +438,7 @@ type ResRenew struct {
 
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
 type SendMultiSmsRequest struct {
@@ -448,7 +448,7 @@ type SendMultiSmsRequest struct {
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 卡片列表
-	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
 
 	// 短信内容 长度限制 70
 	Content *string `json:"Content,omitempty" name:"Content"`
@@ -481,7 +481,7 @@ type SendMultiSmsResponse struct {
 
 		// 短信流水数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*SmsRet `json:"Data,omitempty" name:"Data" list`
+		Data []*SmsRet `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

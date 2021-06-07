@@ -25,7 +25,7 @@ type AssignProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 项目ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -56,7 +56,7 @@ type AssignProjectResponse struct {
 	Response *struct {
 
 		// 返回的异步任务ID列表
-		FlowIds []*uint64 `json:"FlowIds,omitempty" name:"FlowIds" list`
+		FlowIds []*uint64 `json:"FlowIds,omitempty" name:"FlowIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -129,7 +129,7 @@ type CreateDBInstanceHourRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -173,7 +173,7 @@ type CreateDBInstanceHourResponse struct {
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 创建的实例ID列表
-		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -225,7 +225,7 @@ type CreateDBInstanceRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组参数
-	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup" list`
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
 	// 私有网络ID，如果不传则默认选择基础网络
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
@@ -273,7 +273,7 @@ type CreateDBInstanceResponse struct {
 		DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 		// 创建的实例ID列表
-		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -323,7 +323,7 @@ type DescribeClientConnectionsResponse struct {
 
 		// 客户端连接信息，包括客户端IP和对应IP的连接数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients" list`
+		Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -345,7 +345,7 @@ type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
@@ -354,7 +354,7 @@ type DescribeDBInstancesRequest struct {
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
 	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 私有网络的ID，基础网络则不传该参数
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -415,7 +415,7 @@ type DescribeDBInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 实例详细信息
-		InstanceDetails []*MongoDBInstanceDetail `json:"InstanceDetails,omitempty" name:"InstanceDetails" list`
+		InstanceDetails []*MongoDBInstanceDetail `json:"InstanceDetails,omitempty" name:"InstanceDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -487,7 +487,7 @@ type DescribeSlowLogResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合查询条件的慢查询日志详情。
-		SlowLogList []*string `json:"SlowLogList,omitempty" name:"SlowLogList" list`
+		SlowLogList []*string `json:"SlowLogList,omitempty" name:"SlowLogList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -536,7 +536,7 @@ type DescribeSpecInfoResponse struct {
 	Response *struct {
 
 		// 实例售卖规格信息列表
-		SpecInfoList []*SpecificationInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList" list`
+		SpecInfoList []*SpecificationInfo `json:"SpecInfoList,omitempty" name:"SpecInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -644,19 +644,19 @@ type MongoDBInstanceDetail struct {
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitempty" name:"MaintenanceEnd"`
 
 	// 分片信息
-	ReplicaSets []*MongodbShardInfo `json:"ReplicaSets,omitempty" name:"ReplicaSets" list`
+	ReplicaSets []*MongodbShardInfo `json:"ReplicaSets,omitempty" name:"ReplicaSets"`
 
 	// 只读实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReadonlyInstances []*MongoDBInstance `json:"ReadonlyInstances,omitempty" name:"ReadonlyInstances" list`
+	ReadonlyInstances []*MongoDBInstance `json:"ReadonlyInstances,omitempty" name:"ReadonlyInstances"`
 
 	// 灾备实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StandbyInstances []*MongoDBInstance `json:"StandbyInstances,omitempty" name:"StandbyInstances" list`
+	StandbyInstances []*MongoDBInstance `json:"StandbyInstances,omitempty" name:"StandbyInstances"`
 
 	// 临时实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CloneInstances []*MongoDBInstance `json:"CloneInstances,omitempty" name:"CloneInstances" list`
+	CloneInstances []*MongoDBInstance `json:"CloneInstances,omitempty" name:"CloneInstances"`
 
 	// 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -664,7 +664,7 @@ type MongoDBInstanceDetail struct {
 
 	// 实例标签信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 实例标记
 	InstanceVer *uint64 `json:"InstanceVer,omitempty" name:"InstanceVer"`
@@ -766,7 +766,7 @@ type SetAutoRenewRequest struct {
 	*tchttp.BaseRequest
 
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
@@ -944,7 +944,7 @@ type SpecificationInfo struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 售卖规格信息
-	SpecItems []*SpecItem `json:"SpecItems,omitempty" name:"SpecItems" list`
+	SpecItems []*SpecItem `json:"SpecItems,omitempty" name:"SpecItems"`
 }
 
 type TagInfo struct {

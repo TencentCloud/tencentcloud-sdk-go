@@ -95,7 +95,7 @@ type DataManipulationResult struct {
 
 	// 操作结果明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*DataManipulationResultItem `json:"Result,omitempty" name:"Result" list`
+	Result []*DataManipulationResultItem `json:"Result,omitempty" name:"Result"`
 
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -184,7 +184,7 @@ type DataSearchRequest struct {
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
 	// 分类过滤并集
-	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter" list`
+	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter"`
 }
 
 func (r *DataSearchRequest) ToJsonString() string {
@@ -270,11 +270,11 @@ type SearchResult struct {
 
 	// 检索结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultList []*SearchResultItem `json:"ResultList,omitempty" name:"ResultList" list`
+	ResultList []*SearchResultItem `json:"ResultList,omitempty" name:"ResultList"`
 
 	// 检索的分词结果，array类型，可包含多个
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegList []*SearchResultSeg `json:"SegList,omitempty" name:"SegList" list`
+	SegList []*SearchResultSeg `json:"SegList,omitempty" name:"SegList"`
 }
 
 type SearchResultItem struct {

@@ -98,7 +98,7 @@ type DescribeMigrationTaskResponse struct {
 	Response *struct {
 
 		// 迁移详情列表
-		TaskStatus []*TaskStatus `json:"TaskStatus,omitempty" name:"TaskStatus" list`
+		TaskStatus []*TaskStatus `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -166,7 +166,7 @@ type ListMigrationProjectResponse struct {
 	Response *struct {
 
 		// 项目列表
-		Projects []*Project `json:"Projects,omitempty" name:"Projects" list`
+		Projects []*Project `json:"Projects,omitempty" name:"Projects"`
 
 		// 项目总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -229,7 +229,7 @@ type ListMigrationTaskResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 迁移任务列表
-		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks" list`
+		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

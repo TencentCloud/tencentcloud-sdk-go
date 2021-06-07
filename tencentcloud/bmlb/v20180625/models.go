@@ -46,7 +46,7 @@ type BindL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待绑定的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
-	BackendSet []*BindL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*BindL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机 1：虚拟机 2：半托管机器
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
@@ -125,7 +125,7 @@ type BindL7BackendsRequest struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 待绑定的主机信息。可以绑定多个主机端口。目前一个七层转发路径下面最多允许绑定255个主机端口。
-	BackendSet []*BindL7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*BindL7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机，1：虚拟机 2：半托管机器。
 	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
@@ -185,7 +185,7 @@ type BindTrafficMirrorListenersRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *BindTrafficMirrorListenersRequest) ToJsonString() string {
@@ -250,7 +250,7 @@ type BindTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 待绑定的黑石物理机信息数组。
-	ReceiverSet []*BindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*BindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *BindTrafficMirrorReceiversRequest) ToJsonString() string {
@@ -369,7 +369,7 @@ type CreateL4ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 监听器信息数组，可以创建多个监听器。目前一个负载均衡下面最多允许创建50个监听器
-	ListenerSet []*CreateL4Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*CreateL4Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *CreateL4ListenersRequest) ToJsonString() string {
@@ -464,7 +464,7 @@ type CreateL7ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 七层监听器信息数组，可以创建多个七层监听器。目前一个负载均衡下面最多允许创建50个七层监听器。
-	ListenerSet []*CreateL7Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*CreateL7Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *CreateL7ListenersRequest) ToJsonString() string {
@@ -492,7 +492,7 @@ type CreateL7ListenersResponse struct {
 	Response *struct {
 
 		// 新建的负载均衡七层监听器的唯一ID列表。
-		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -534,7 +534,7 @@ type CreateL7Rule struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 健康检查检查路径。
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
@@ -556,7 +556,7 @@ type CreateL7RulesRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 七层转发规则信息数组，可以创建多个七层转发规则。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。目前只能单条创建，不能批量创建。
-	RuleSet []*CreateL7Rule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*CreateL7Rule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 func (r *CreateL7RulesRequest) ToJsonString() string {
@@ -643,7 +643,7 @@ type CreateLoadBalancersRequest struct {
 	Exclusive *int64 `json:"Exclusive,omitempty" name:"Exclusive"`
 
 	// 指定的VIP，如果指定，则数量必须与goodsNum一致。如果不指定，则由后台分配随机VIP。
-	SpecifiedVips []*string `json:"SpecifiedVips,omitempty" name:"SpecifiedVips" list`
+	SpecifiedVips []*string `json:"SpecifiedVips,omitempty" name:"SpecifiedVips"`
 
 	// （未全地域开放）保障型负载均衡设定参数，如果类别选择保障型则需传入此参数。
 	BzConf *CreateLoadBalancerBzConf `json:"BzConf,omitempty" name:"BzConf"`
@@ -686,7 +686,7 @@ type CreateLoadBalancersResponse struct {
 	Response *struct {
 
 		// 创建的黑石负载均衡实例ID。
-		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 		// 创建负载均衡的异步任务ID。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -770,7 +770,7 @@ type DeleteL7DomainsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 转发域名实例ID列表，可通过接口DescribeL7Rules查询。
-	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds" list`
+	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds"`
 }
 
 func (r *DeleteL7DomainsRequest) ToJsonString() string {
@@ -830,7 +830,7 @@ type DeleteL7RulesRequest struct {
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 转发路径实例ID列表，可通过接口DescribeL7Rules查询。
-	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
+	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds"`
 }
 
 func (r *DeleteL7RulesRequest) ToJsonString() string {
@@ -885,7 +885,7 @@ type DeleteListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 待删除的负载均衡四层和七层监听器ID列表，可通过接口DescribeL4Listeners和DescribeL7Listeners查询。目前同时只能删除一种类型的监听器，并且删除七层监听器的数量上限为一个。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DeleteListenersRequest) ToJsonString() string {
@@ -984,7 +984,7 @@ type DeleteTrafficMirrorRequest struct {
 	*tchttp.BaseRequest
 
 	// 流量镜像实例ID数组，可以批量删除，每次删除上限为20
-	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds" list`
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds"`
 }
 
 func (r *DeleteTrafficMirrorRequest) ToJsonString() string {
@@ -1075,7 +1075,7 @@ type DescribeCertDetailResponse struct {
 		CertDomain *string `json:"CertDomain,omitempty" name:"CertDomain"`
 
 		// 证书子域名列表。
-		CertSubjectDomain []*string `json:"CertSubjectDomain,omitempty" name:"CertSubjectDomain" list`
+		CertSubjectDomain []*string `json:"CertSubjectDomain,omitempty" name:"CertSubjectDomain"`
 
 		// 证书上传时间。
 		CertUploadTime *string `json:"CertUploadTime,omitempty" name:"CertUploadTime"`
@@ -1087,7 +1087,7 @@ type DescribeCertDetailResponse struct {
 		CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
 
 		// 该证书关联的黑石负载均衡对象列表。
-		CertLoadBalancerSet []*CertDetailLoadBalancer `json:"CertLoadBalancerSet,omitempty" name:"CertLoadBalancerSet" list`
+		CertLoadBalancerSet []*CertDetailLoadBalancer `json:"CertLoadBalancerSet,omitempty" name:"CertLoadBalancerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1112,7 +1112,7 @@ type DescribeDevicesBindInfoRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的负载均衡列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeDevicesBindInfoRequest) ToJsonString() string {
@@ -1140,7 +1140,7 @@ type DescribeDevicesBindInfoResponse struct {
 	Response *struct {
 
 		// 返回的负载均衡绑定信息。
-		LoadBalancerSet []*DevicesBindInfoLoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet" list`
+		LoadBalancerSet []*DevicesBindInfoLoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1177,7 +1177,7 @@ type DescribeL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待查询的主机信息。
-	BackendSet []*DescribeL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DescribeL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 func (r *DescribeL4BackendsRequest) ToJsonString() string {
@@ -1206,7 +1206,7 @@ type DescribeL4BackendsResponse struct {
 	Response *struct {
 
 		// 返回的绑定关系列表。
-		BackendSet []*L4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+		BackendSet []*L4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1234,7 +1234,7 @@ type DescribeL4ListenerInfoRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeL4ListenerInfoRequest) ToJsonString() string {
@@ -1263,7 +1263,7 @@ type DescribeL4ListenerInfoResponse struct {
 	Response *struct {
 
 		// 返回的四层监听器列表。
-		ListenerSet []*L4ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L4ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1288,7 +1288,7 @@ type DescribeL4ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 四层监听器实例ID数组，可通过接口DescribeL4Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DescribeL4ListenersRequest) ToJsonString() string {
@@ -1316,7 +1316,7 @@ type DescribeL4ListenersResponse struct {
 	Response *struct {
 
 		// 监听器信息数组。
-		ListenerSet []*L4Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L4Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1381,7 +1381,7 @@ type DescribeL7BackendsResponse struct {
 	Response *struct {
 
 		// 返回的绑定关系列表。
-		BackendSet []*L7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+		BackendSet []*L7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1409,7 +1409,7 @@ type DescribeL7ListenerInfoRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 是否获取转发规则下的主机信息。默认为0，不获取。
 	IfGetBackendInfo *int64 `json:"IfGetBackendInfo,omitempty" name:"IfGetBackendInfo"`
@@ -1442,7 +1442,7 @@ type DescribeL7ListenerInfoResponse struct {
 	Response *struct {
 
 		// 返回的七层监听器列表。
-		ListenerSet []*L7ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1483,7 +1483,7 @@ type DescribeL7ListenersExRequest struct {
 	// ListenerName -  String - （过滤条件）监听器名称。
 	// Protocol -  String - （过滤条件）七层协议。
 	// LoadBalancerPort -  String - （过滤条件）监听器端口。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeL7ListenersExRequest) ToJsonString() string {
@@ -1517,7 +1517,7 @@ type DescribeL7ListenersExResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合条件的监听器。
-		ListenerSet []*L7ExListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7ExListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1542,7 +1542,7 @@ type DescribeL7ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 七层监听器实例ID列表，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DescribeL7ListenersRequest) ToJsonString() string {
@@ -1570,7 +1570,7 @@ type DescribeL7ListenersResponse struct {
 	Response *struct {
 
 		// 返回的七层监听器列表。
-		ListenerSet []*L7Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1598,7 +1598,7 @@ type DescribeL7RulesRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 转发域名ID列表，可通过接口DescribeL7Rules查询。
-	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds" list`
+	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds"`
 }
 
 func (r *DescribeL7RulesRequest) ToJsonString() string {
@@ -1627,7 +1627,7 @@ type DescribeL7RulesResponse struct {
 	Response *struct {
 
 		// 返回的转发规则列表。
-		RuleSet []*L7Rule `json:"RuleSet,omitempty" name:"RuleSet" list`
+		RuleSet []*L7Rule `json:"RuleSet,omitempty" name:"RuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1676,7 +1676,7 @@ type DescribeLoadBalancerPortInfoResponse struct {
 	Response *struct {
 
 		// 返回的监听器列表（四层和七层）。
-		ListenerSet []*LoadBalancerPortInfoListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*LoadBalancerPortInfoListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1747,7 +1747,7 @@ type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 
 	// 负载均衡器ID数组
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 负载均衡的类型 : open表示公网LB类型，internal表示内网LB类型
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
@@ -1759,7 +1759,7 @@ type DescribeLoadBalancersRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 负载均衡获得的公网IP地址,支持多个
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 数据偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1834,7 +1834,7 @@ type DescribeLoadBalancersResponse struct {
 	Response *struct {
 
 		// 返回负载均衡信息列表。
-		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet" list`
+		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
 
 		// 符合条件的负载均衡总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1868,25 +1868,25 @@ type DescribeTrafficMirrorListenersRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 待搜索的负载均衡Id。
-	SearchLoadBalancerIds []*string `json:"SearchLoadBalancerIds,omitempty" name:"SearchLoadBalancerIds" list`
+	SearchLoadBalancerIds []*string `json:"SearchLoadBalancerIds,omitempty" name:"SearchLoadBalancerIds"`
 
 	// 待搜索的负载均衡名称。
-	SearchLoadBalancerNames []*string `json:"SearchLoadBalancerNames,omitempty" name:"SearchLoadBalancerNames" list`
+	SearchLoadBalancerNames []*string `json:"SearchLoadBalancerNames,omitempty" name:"SearchLoadBalancerNames"`
 
 	// 待搜索的Vip。
-	SearchVips []*string `json:"SearchVips,omitempty" name:"SearchVips" list`
+	SearchVips []*string `json:"SearchVips,omitempty" name:"SearchVips"`
 
 	// 待搜索的监听器ID。
-	SearchListenerIds []*string `json:"SearchListenerIds,omitempty" name:"SearchListenerIds" list`
+	SearchListenerIds []*string `json:"SearchListenerIds,omitempty" name:"SearchListenerIds"`
 
 	// 待搜索的监听器名称。
-	SearchListenerNames []*string `json:"SearchListenerNames,omitempty" name:"SearchListenerNames" list`
+	SearchListenerNames []*string `json:"SearchListenerNames,omitempty" name:"SearchListenerNames"`
 
 	// 待搜索的协议名称。
-	SearchProtocols []*string `json:"SearchProtocols,omitempty" name:"SearchProtocols" list`
+	SearchProtocols []*string `json:"SearchProtocols,omitempty" name:"SearchProtocols"`
 
 	// 待搜索的端口。
-	SearchLoadBalancerPorts []*uint64 `json:"SearchLoadBalancerPorts,omitempty" name:"SearchLoadBalancerPorts" list`
+	SearchLoadBalancerPorts []*uint64 `json:"SearchLoadBalancerPorts,omitempty" name:"SearchLoadBalancerPorts"`
 }
 
 func (r *DescribeTrafficMirrorListenersRequest) ToJsonString() string {
@@ -1922,7 +1922,7 @@ type DescribeTrafficMirrorListenersResponse struct {
 	Response *struct {
 
 		// 监听器列表。
-		ListenerSet []*TrafficMirrorListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*TrafficMirrorListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 监听器总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1959,7 +1959,7 @@ type DescribeTrafficMirrorReceiverHealthStatusRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 流量镜像接收机实例ID和端口数组。
-	ReceiverSet []*DescribeTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*DescribeTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *DescribeTrafficMirrorReceiverHealthStatusRequest) ToJsonString() string {
@@ -1987,7 +1987,7 @@ type DescribeTrafficMirrorReceiverHealthStatusResponse struct {
 	Response *struct {
 
 		// 内网IP和端口对应的状态。
-		ReceiversStatusSet []*TrafficMirrorReciversStatus `json:"ReceiversStatusSet,omitempty" name:"ReceiversStatusSet" list`
+		ReceiversStatusSet []*TrafficMirrorReciversStatus `json:"ReceiversStatusSet,omitempty" name:"ReceiversStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2012,13 +2012,13 @@ type DescribeTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 接收机黑石物理机实例ID数组。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 接收机接收端口数组。
-	Ports []*int64 `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
 
 	// 接收机实例权重数组。
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights" list`
+	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
 
 	// 分页的偏移量，也即从第几条记录开始查询
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -2064,7 +2064,7 @@ type DescribeTrafficMirrorReceiversResponse struct {
 	Response *struct {
 
 		// 接收机列表，具体结构描述如data结构所示。
-		ReceiverSet []*TrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+		ReceiverSet []*TrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 
 		// 接收机总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2089,13 +2089,13 @@ type DescribeTrafficMirrorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 流量镜像实例ID的数组，支持批量查询
-	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds" list`
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds"`
 
 	// 流量镜像实例别名数组。
-	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
 	// 流量镜像实例所属的私有网络ID数组，形如：vpc-xxx。
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 分页的偏移量，也即从第几条记录开始查询
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -2147,7 +2147,7 @@ type DescribeTrafficMirrorsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 对象数组。数组元素为流量镜像信息，具体结构描述如list结构所示。
-		TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitempty" name:"TrafficMirrorSet" list`
+		TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitempty" name:"TrafficMirrorSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2186,7 +2186,7 @@ type DevicesBindInfoL4Listener struct {
 	LoadBalancerPort *int64 `json:"LoadBalancerPort,omitempty" name:"LoadBalancerPort"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type DevicesBindInfoL7Listener struct {
@@ -2201,7 +2201,7 @@ type DevicesBindInfoL7Listener struct {
 	LoadBalancerPort *int64 `json:"LoadBalancerPort,omitempty" name:"LoadBalancerPort"`
 
 	// 返回的转发规则列表。
-	RuleSet []*DevicesBindInfoRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*DevicesBindInfoRule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 type DevicesBindInfoLoadBalancer struct {
@@ -2228,10 +2228,10 @@ type DevicesBindInfoLoadBalancer struct {
 	Exclusive *int64 `json:"Exclusive,omitempty" name:"Exclusive"`
 
 	// 具有该绑定关系的四层监听器列表。
-	L4ListenerSet []*DevicesBindInfoL4Listener `json:"L4ListenerSet,omitempty" name:"L4ListenerSet" list`
+	L4ListenerSet []*DevicesBindInfoL4Listener `json:"L4ListenerSet,omitempty" name:"L4ListenerSet"`
 
 	// 具有该绑定关系的七层监听器列表。
-	L7ListenerSet []*DevicesBindInfoL7Listener `json:"L7ListenerSet,omitempty" name:"L7ListenerSet" list`
+	L7ListenerSet []*DevicesBindInfoL7Listener `json:"L7ListenerSet,omitempty" name:"L7ListenerSet"`
 }
 
 type DevicesBindInfoLocation struct {
@@ -2243,7 +2243,7 @@ type DevicesBindInfoLocation struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type DevicesBindInfoRule struct {
@@ -2255,7 +2255,7 @@ type DevicesBindInfoRule struct {
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 转发路径列表。
-	LocationSet []*DevicesBindInfoLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*DevicesBindInfoLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type Filter struct {
@@ -2264,7 +2264,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type L4Backend struct {
@@ -2291,7 +2291,7 @@ type L4Backend struct {
 	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
 
 	// 黑石物理机当前可以执行的操作。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 
 	// 主机探测端口。
 	ProbePort *int64 `json:"ProbePort,omitempty" name:"ProbePort"`
@@ -2456,7 +2456,7 @@ type L7Backend struct {
 	MgtIp *string `json:"MgtIp,omitempty" name:"MgtIp"`
 
 	// 黑石物理机当前可以执行的操作。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 }
 
 type L7ExListener struct {
@@ -2504,13 +2504,13 @@ type L7ExListener struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 支持的IP协议类型。ipv4或者是ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -2594,7 +2594,7 @@ type L7ListenerInfo struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 返回的转发规则列表。
-	RuleSet []*L7ListenerInfoRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*L7ListenerInfoRule `json:"RuleSet,omitempty" name:"RuleSet"`
 
 	// https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
 	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
@@ -2654,7 +2654,7 @@ type L7ListenerInfoLocation struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 均衡方式。
 	BalanceMode *string `json:"BalanceMode,omitempty" name:"BalanceMode"`
@@ -2666,7 +2666,7 @@ type L7ListenerInfoLocation struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*L7ListenerInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*L7ListenerInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type L7ListenerInfoRule struct {
@@ -2684,7 +2684,7 @@ type L7ListenerInfoRule struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发域名下面的转发路径列表。
-	LocationSet []*L7ListenerInfoLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*L7ListenerInfoLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type L7Rule struct {
@@ -2702,7 +2702,7 @@ type L7Rule struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发域名下面的转发路径列表。
-	LocationSet []*L7RulesLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*L7RulesLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type L7RulesLocation struct {
@@ -2735,7 +2735,7 @@ type L7RulesLocation struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 均衡方式。
 	BalanceMode *string `json:"BalanceMode,omitempty" name:"BalanceMode"`
@@ -2798,10 +2798,10 @@ type LoadBalancer struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的IPV4的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 无
-	SupportListenerTypes []*string `json:"SupportListenerTypes,omitempty" name:"SupportListenerTypes" list`
+	SupportListenerTypes []*string `json:"SupportListenerTypes,omitempty" name:"SupportListenerTypes"`
 
 	// 无
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -2813,7 +2813,7 @@ type LoadBalancer struct {
 	ConfName *string `json:"ConfName,omitempty" name:"ConfName"`
 
 	// 负载均衡的IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 负载均衡IP协议类型。ipv4或者ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -2832,7 +2832,7 @@ type LoadBalancer struct {
 
 	// 负载均衡的IPV6或者IPV4的VIP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CurVips []*string `json:"CurVips,omitempty" name:"CurVips" list`
+	CurVips []*string `json:"CurVips,omitempty" name:"CurVips"`
 }
 
 type LoadBalancerPortInfoListener struct {
@@ -3457,7 +3457,7 @@ type ModifyL7LocationRule struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 健康检查检查路径。
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
@@ -3482,7 +3482,7 @@ type ModifyL7LocationsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待更新的七层转发规则信息数组。
-	RuleSet []*ModifyL7LocationRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*ModifyL7LocationRule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 func (r *ModifyL7LocationsRequest) ToJsonString() string {
@@ -3551,7 +3551,7 @@ type ModifyLoadBalancerChargeModeRequest struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 监听器信息，当计费方式选为 bandwidth 且此负载均衡实例下存在监听器时需填入此字段，可以自定义每个监听器带宽上限。
-	ListenerSet []*ModifyLoadBalancerChargeModeListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*ModifyLoadBalancerChargeModeListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *ModifyLoadBalancerChargeModeRequest) ToJsonString() string {
@@ -3795,7 +3795,7 @@ type SetTrafficMirrorHealthSwitchRequest struct {
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 }
 
 func (r *SetTrafficMirrorHealthSwitchRequest) ToJsonString() string {
@@ -3880,7 +3880,7 @@ type TrafficMirror struct {
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
 
 	// 健康检查返回码。 1：1xx，2：2xx，3：3xx，4：4xx，5：5xx。
-	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -3937,13 +3937,13 @@ type TrafficMirrorListener struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡的IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 支持的IP协议类型。ipv4或者是ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -4000,7 +4000,7 @@ type TrafficMirrorReceiver struct {
 	HealthStatus *string `json:"HealthStatus,omitempty" name:"HealthStatus"`
 
 	// 接收机的可以执行的操作集合。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 }
 
 type TrafficMirrorReciversStatus struct {
@@ -4009,7 +4009,7 @@ type TrafficMirrorReciversStatus struct {
 	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
 
 	// 端口及对应的状态。
-	ReceiversPortStatusSet []*TrafficMirrorPortStatus `json:"ReceiversPortStatusSet,omitempty" name:"ReceiversPortStatusSet" list`
+	ReceiversPortStatusSet []*TrafficMirrorPortStatus `json:"ReceiversPortStatusSet,omitempty" name:"ReceiversPortStatusSet"`
 }
 
 type UnbindL4Backend struct {
@@ -4031,7 +4031,7 @@ type UnbindL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待解绑的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
-	BackendSet []*UnbindL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*UnbindL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机 1：虚拟机 2：半托管机器
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
@@ -4107,7 +4107,7 @@ type UnbindL7BackendsRequest struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 待绑定的主机信息。
-	BackendSet []*UnbindL7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*UnbindL7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机  1：虚拟机 2：半托管机器
 	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
@@ -4167,7 +4167,7 @@ type UnbindTrafficMirrorListenersRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *UnbindTrafficMirrorListenersRequest) ToJsonString() string {
@@ -4229,7 +4229,7 @@ type UnbindTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 待绑定的主机实例ID和端口数组。
-	ReceiverSet []*UnbindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*UnbindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *UnbindTrafficMirrorReceiversRequest) ToJsonString() string {

@@ -454,7 +454,7 @@ type CreateBaselineStrategyRequest struct {
 	ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
 
 	// 该策略下选择的基线id数组. 示例: [1,3,5,7]
-	CategoryIds []*uint64 `json:"CategoryIds,omitempty" name:"CategoryIds" list`
+	CategoryIds []*uint64 `json:"CategoryIds,omitempty" name:"CategoryIds"`
 
 	// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
 	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
@@ -466,7 +466,7 @@ type CreateBaselineStrategyRequest struct {
 	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
 
 	// 主机id数组. 示例: ["quuid1","quuid2"]
-	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids"`
 }
 
 func (r *CreateBaselineStrategyRequest) ToJsonString() string {
@@ -611,10 +611,10 @@ type CreateUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 云镜客户端UUID数组。
-	Uuids []*string `json:"Uuids,omitempty" name:"Uuids" list`
+	Uuids []*string `json:"Uuids,omitempty" name:"Uuids"`
 
 	// 登录地域信息数组。
-	Places []*Place `json:"Places,omitempty" name:"Places" list`
+	Places []*Place `json:"Places,omitempty" name:"Places"`
 }
 
 func (r *CreateUsualLoginPlacesRequest) ToJsonString() string {
@@ -706,7 +706,7 @@ type DeleteAttackLogsRequest struct {
 	*tchttp.BaseRequest
 
 	// 日志ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteAttackLogsRequest) ToJsonString() string {
@@ -752,7 +752,7 @@ type DeleteBashEventsRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBashEventsRequest) ToJsonString() string {
@@ -798,7 +798,7 @@ type DeleteBashRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBashRulesRequest) ToJsonString() string {
@@ -844,7 +844,7 @@ type DeleteBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 
 	// 暴力破解事件Id数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteBruteAttacksRequest) ToJsonString() string {
@@ -890,7 +890,7 @@ type DeleteLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 
 	// 白名单ID
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteLoginWhiteListRequest) ToJsonString() string {
@@ -1028,7 +1028,7 @@ type DeleteMaliciousRequestsRequest struct {
 	*tchttp.BaseRequest
 
 	// 恶意请求记录ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteMaliciousRequestsRequest) ToJsonString() string {
@@ -1074,7 +1074,7 @@ type DeleteMalwaresRequest struct {
 	*tchttp.BaseRequest
 
 	// 木马记录ID数组
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteMalwaresRequest) ToJsonString() string {
@@ -1120,7 +1120,7 @@ type DeleteNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 异地登录事件ID数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -1166,7 +1166,7 @@ type DeletePrivilegeEventsRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeletePrivilegeEventsRequest) ToJsonString() string {
@@ -1212,7 +1212,7 @@ type DeletePrivilegeRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeletePrivilegeRulesRequest) ToJsonString() string {
@@ -1258,7 +1258,7 @@ type DeleteReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteReverseShellEventsRequest) ToJsonString() string {
@@ -1304,7 +1304,7 @@ type DeleteReverseShellRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteReverseShellRulesRequest) ToJsonString() string {
@@ -1350,7 +1350,7 @@ type DeleteTagsRequest struct {
 	*tchttp.BaseRequest
 
 	// 标签ID
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DeleteTagsRequest) ToJsonString() string {
@@ -1399,7 +1399,7 @@ type DeleteUsualLoginPlacesRequest struct {
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 已添加常用登录地城市ID数组
-	CityIds []*uint64 `json:"CityIds,omitempty" name:"CityIds" list`
+	CityIds []*uint64 `json:"CityIds,omitempty" name:"CityIds"`
 }
 
 func (r *DeleteUsualLoginPlacesRequest) ToJsonString() string {
@@ -1453,7 +1453,7 @@ type DescribeAccountStatisticsRequest struct {
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号用户名</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccountStatisticsRequest) ToJsonString() string {
@@ -1485,7 +1485,7 @@ type DescribeAccountStatisticsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 帐号统计列表。
-		AccountStatistics []*AccountStatistics `json:"AccountStatistics,omitempty" name:"AccountStatistics" list`
+		AccountStatistics []*AccountStatistics `json:"AccountStatistics,omitempty" name:"AccountStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1522,7 +1522,7 @@ type DescribeAccountsRequest struct {
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
 	// <li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -1556,7 +1556,7 @@ type DescribeAccountsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 帐号数据列表。
-		Accounts []*Account `json:"Accounts,omitempty" name:"Accounts" list`
+		Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1594,7 +1594,7 @@ type DescribeAgentVulsRequest struct {
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAgentVulsRequest) ToJsonString() string {
@@ -1628,7 +1628,7 @@ type DescribeAgentVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 主机漏洞信息
-		AgentVuls []*AgentVul `json:"AgentVuls,omitempty" name:"AgentVuls" list`
+		AgentVuls []*AgentVul `json:"AgentVuls,omitempty" name:"AgentVuls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1815,7 +1815,7 @@ type DescribeAttackLogsRequest struct {
 	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 主机安全客户端ID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
@@ -1853,7 +1853,7 @@ type DescribeAttackLogsResponse struct {
 
 		// 日志列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AttackLogs []*DefendAttackLog `json:"AttackLogs,omitempty" name:"AttackLogs" list`
+		AttackLogs []*DefendAttackLog `json:"AttackLogs,omitempty" name:"AttackLogs"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1885,7 +1885,7 @@ type DescribeBashEventsRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBashEventsRequest) ToJsonString() string {
@@ -1917,7 +1917,7 @@ type DescribeBashEventsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 高危命令事件列表
-		List []*BashEvent `json:"List,omitempty" name:"List" list`
+		List []*BashEvent `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1949,7 +1949,7 @@ type DescribeBashRulesRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(规则名称)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeBashRulesRequest) ToJsonString() string {
@@ -1979,7 +1979,7 @@ type DescribeBashRulesResponse struct {
 	Response *struct {
 
 		// 列表内容
-		List []*BashRule `json:"List,omitempty" name:"List" list`
+		List []*BashRule `json:"List,omitempty" name:"List"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2012,7 +2012,7 @@ type DescribeBruteAttacksRequest struct {
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  查询状态（FAILED：破解失败 |SUCCESS：破解成功）</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -2048,7 +2048,7 @@ type DescribeBruteAttacksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 暴力破解事件列表
-		BruteAttacks []*BruteAttack `json:"BruteAttacks,omitempty" name:"BruteAttacks" list`
+		BruteAttacks []*BruteAttack `json:"BruteAttacks,omitempty" name:"BruteAttacks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2140,7 +2140,7 @@ type DescribeComponentStatisticsRequest struct {
 
 	// 过滤条件。
 	// ComponentName - String - 是否必填：否 - 组件名称
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeComponentStatisticsRequest) ToJsonString() string {
@@ -2172,7 +2172,7 @@ type DescribeComponentStatisticsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 组件统计列表数据数组。
-		ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics,omitempty" name:"ComponentStatistics" list`
+		ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics,omitempty" name:"ComponentStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2208,7 +2208,7 @@ type DescribeComponentsRequest struct {
 	// 过滤条件。
 	// <li>ComponentVersion - String - 是否必填：否 - 组件版本号</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeComponentsRequest) ToJsonString() string {
@@ -2242,7 +2242,7 @@ type DescribeComponentsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 组件列表数据。
-		Components []*Component `json:"Components,omitempty" name:"Components" list`
+		Components []*Component `json:"Components,omitempty" name:"Components"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2274,7 +2274,7 @@ type DescribeHistoryAccountsRequest struct {
 
 	// 过滤条件。
 	// <li>Username - String - 是否必填：否 - 帐号名</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeHistoryAccountsRequest) ToJsonString() string {
@@ -2307,7 +2307,7 @@ type DescribeHistoryAccountsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 帐号变更历史数据数组。
-		HistoryAccounts []*HistoryAccount `json:"HistoryAccounts,omitempty" name:"HistoryAccounts" list`
+		HistoryAccounts []*HistoryAccount `json:"HistoryAccounts,omitempty" name:"HistoryAccounts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2339,7 +2339,7 @@ type DescribeImpactedHostsRequest struct {
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED：待处理 | FIXED：已修复）</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeImpactedHostsRequest) ToJsonString() string {
@@ -2372,7 +2372,7 @@ type DescribeImpactedHostsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 漏洞影响机器列表数组
-		ImpactedHosts []*ImpactedHost `json:"ImpactedHosts,omitempty" name:"ImpactedHosts" list`
+		ImpactedHosts []*ImpactedHost `json:"ImpactedHosts,omitempty" name:"ImpactedHosts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2401,7 +2401,7 @@ type DescribeLoginWhiteListRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeLoginWhiteListRequest) ToJsonString() string {
@@ -2433,7 +2433,7 @@ type DescribeLoginWhiteListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 异地登录白名单数组
-		LoginWhiteLists []*LoginWhiteLists `json:"LoginWhiteLists,omitempty" name:"LoginWhiteLists" list`
+		LoginWhiteLists []*LoginWhiteLists `json:"LoginWhiteLists,omitempty" name:"LoginWhiteLists"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2575,7 +2575,7 @@ type DescribeMachinesRequest struct {
 	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeMachinesRequest) ToJsonString() string {
@@ -2606,7 +2606,7 @@ type DescribeMachinesResponse struct {
 	Response *struct {
 
 		// 主机列表
-		Machines []*Machine `json:"Machines,omitempty" name:"Machines" list`
+		Machines []*Machine `json:"Machines,omitempty" name:"Machines"`
 
 		// 主机数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2640,7 +2640,7 @@ type DescribeMaliciousRequestsRequest struct {
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | TRUSTED：已信任 | UN_TRUSTED：已取消信任）</li>
 	// <li>Domain - String - 是否必填：否 - 恶意请求的域名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 云镜客户端唯一UUID。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
@@ -2676,7 +2676,7 @@ type DescribeMaliciousRequestsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 恶意请求记录数组。
-		MaliciousRequests []*MaliciousRequest `json:"MaliciousRequests,omitempty" name:"MaliciousRequests" list`
+		MaliciousRequests []*MaliciousRequest `json:"MaliciousRequests,omitempty" name:"MaliciousRequests"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2710,7 +2710,7 @@ type DescribeMalwaresRequest struct {
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 木马状态（UN_OPERATED: 未处理 | SEGREGATED: 已隔离|TRUSTED：信任）</li>
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeMalwaresRequest) ToJsonString() string {
@@ -2743,7 +2743,7 @@ type DescribeMalwaresResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// Malware数组。
-		Malwares []*Malware `json:"Malwares,omitempty" name:"Malwares" list`
+		Malwares []*Malware `json:"Malwares,omitempty" name:"Malwares"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2776,7 +2776,7 @@ type DescribeNonlocalLoginPlacesRequest struct {
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 -  查询关键字</li>
 	// <li>Status - String - 是否必填：否 -  登录状态（NON_LOCAL_LOGIN: 异地登录 | NORMAL_LOGIN : 正常登录）</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -2809,7 +2809,7 @@ type DescribeNonlocalLoginPlacesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 异地登录信息数组。
-		NonLocalLoginPlaces []*NonLocalLoginPlace `json:"NonLocalLoginPlaces,omitempty" name:"NonLocalLoginPlaces" list`
+		NonLocalLoginPlaces []*NonLocalLoginPlace `json:"NonLocalLoginPlaces,omitempty" name:"NonLocalLoginPlaces"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2838,7 +2838,7 @@ type DescribeOpenPortStatisticsRequest struct {
 
 	// 过滤条件。
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOpenPortStatisticsRequest) ToJsonString() string {
@@ -2870,7 +2870,7 @@ type DescribeOpenPortStatisticsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 端口统计数据列表
-		OpenPortStatistics []*OpenPortStatistics `json:"OpenPortStatistics,omitempty" name:"OpenPortStatistics" list`
+		OpenPortStatistics []*OpenPortStatistics `json:"OpenPortStatistics,omitempty" name:"OpenPortStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2960,7 +2960,7 @@ type DescribeOpenPortsRequest struct {
 	// <li>Port - Uint64 - 是否必填：否 - 端口号</li>
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOpenPortsRequest) ToJsonString() string {
@@ -2994,7 +2994,7 @@ type DescribeOpenPortsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 端口列表。
-		OpenPorts []*OpenPort `json:"OpenPorts,omitempty" name:"OpenPorts" list`
+		OpenPorts []*OpenPort `json:"OpenPorts,omitempty" name:"OpenPorts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3086,7 +3086,7 @@ type DescribePrivilegeEventsRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivilegeEventsRequest) ToJsonString() string {
@@ -3115,7 +3115,7 @@ type DescribePrivilegeEventsResponse struct {
 	Response *struct {
 
 		// 数据列表
-		List []*PrivilegeEscalationProcess `json:"List,omitempty" name:"List" list`
+		List []*PrivilegeEscalationProcess `json:"List,omitempty" name:"List"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3147,7 +3147,7 @@ type DescribePrivilegeRulesRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivilegeRulesRequest) ToJsonString() string {
@@ -3176,7 +3176,7 @@ type DescribePrivilegeRulesResponse struct {
 	Response *struct {
 
 		// 列表内容
-		List []*PrivilegeRule `json:"List,omitempty" name:"List" list`
+		List []*PrivilegeRule `json:"List,omitempty" name:"List"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3259,7 +3259,7 @@ type DescribeProcessStatisticsRequest struct {
 
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeProcessStatisticsRequest) ToJsonString() string {
@@ -3291,7 +3291,7 @@ type DescribeProcessStatisticsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 进程统计列表数据数组。
-		ProcessStatistics []*ProcessStatistics `json:"ProcessStatistics,omitempty" name:"ProcessStatistics" list`
+		ProcessStatistics []*ProcessStatistics `json:"ProcessStatistics,omitempty" name:"ProcessStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3380,7 +3380,7 @@ type DescribeProcessesRequest struct {
 	// 过滤条件。
 	// <li>ProcessName - String - 是否必填：否 - 进程名</li>
 	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeProcessesRequest) ToJsonString() string {
@@ -3414,7 +3414,7 @@ type DescribeProcessesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 进程列表数据数组。
-		Processes []*Process `json:"Processes,omitempty" name:"Processes" list`
+		Processes []*Process `json:"Processes,omitempty" name:"Processes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3443,7 +3443,7 @@ type DescribeReverseShellEventsRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeReverseShellEventsRequest) ToJsonString() string {
@@ -3472,7 +3472,7 @@ type DescribeReverseShellEventsResponse struct {
 	Response *struct {
 
 		// 列表内容
-		List []*ReverseShell `json:"List,omitempty" name:"List" list`
+		List []*ReverseShell `json:"List,omitempty" name:"List"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3504,7 +3504,7 @@ type DescribeReverseShellRulesRequest struct {
 
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeReverseShellRulesRequest) ToJsonString() string {
@@ -3533,7 +3533,7 @@ type DescribeReverseShellRulesResponse struct {
 	Response *struct {
 
 		// 列表内容
-		List []*ReverseShellRule `json:"List,omitempty" name:"List" list`
+		List []*ReverseShellRule `json:"List,omitempty" name:"List"`
 
 		// 总条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3589,7 +3589,7 @@ type DescribeSecurityDynamicsResponse struct {
 	Response *struct {
 
 		// 安全事件消息数组。
-		SecurityDynamics []*SecurityDynamic `json:"SecurityDynamics,omitempty" name:"SecurityDynamics" list`
+		SecurityDynamics []*SecurityDynamic `json:"SecurityDynamics,omitempty" name:"SecurityDynamics"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3645,34 +3645,34 @@ type DescribeSecurityTrendsResponse struct {
 	Response *struct {
 
 		// 木马事件统计数据数组。
-		Malwares []*SecurityTrend `json:"Malwares,omitempty" name:"Malwares" list`
+		Malwares []*SecurityTrend `json:"Malwares,omitempty" name:"Malwares"`
 
 		// 异地登录事件统计数据数组。
-		NonLocalLoginPlaces []*SecurityTrend `json:"NonLocalLoginPlaces,omitempty" name:"NonLocalLoginPlaces" list`
+		NonLocalLoginPlaces []*SecurityTrend `json:"NonLocalLoginPlaces,omitempty" name:"NonLocalLoginPlaces"`
 
 		// 密码破解事件统计数据数组。
-		BruteAttacks []*SecurityTrend `json:"BruteAttacks,omitempty" name:"BruteAttacks" list`
+		BruteAttacks []*SecurityTrend `json:"BruteAttacks,omitempty" name:"BruteAttacks"`
 
 		// 漏洞统计数据数组。
-		Vuls []*SecurityTrend `json:"Vuls,omitempty" name:"Vuls" list`
+		Vuls []*SecurityTrend `json:"Vuls,omitempty" name:"Vuls"`
 
 		// 基线统计数据数组。
-		BaseLines []*SecurityTrend `json:"BaseLines,omitempty" name:"BaseLines" list`
+		BaseLines []*SecurityTrend `json:"BaseLines,omitempty" name:"BaseLines"`
 
 		// 恶意请求统计数据数组。
-		MaliciousRequests []*SecurityTrend `json:"MaliciousRequests,omitempty" name:"MaliciousRequests" list`
+		MaliciousRequests []*SecurityTrend `json:"MaliciousRequests,omitempty" name:"MaliciousRequests"`
 
 		// 高危命令统计数据数组。
-		HighRiskBashs []*SecurityTrend `json:"HighRiskBashs,omitempty" name:"HighRiskBashs" list`
+		HighRiskBashs []*SecurityTrend `json:"HighRiskBashs,omitempty" name:"HighRiskBashs"`
 
 		// 反弹shell统计数据数组。
-		ReverseShells []*SecurityTrend `json:"ReverseShells,omitempty" name:"ReverseShells" list`
+		ReverseShells []*SecurityTrend `json:"ReverseShells,omitempty" name:"ReverseShells"`
 
 		// 本地提权统计数据数组。
-		PrivilegeEscalations []*SecurityTrend `json:"PrivilegeEscalations,omitempty" name:"PrivilegeEscalations" list`
+		PrivilegeEscalations []*SecurityTrend `json:"PrivilegeEscalations,omitempty" name:"PrivilegeEscalations"`
 
 		// 网络攻击统计数据数组。
-		CyberAttacks []*SecurityTrend `json:"CyberAttacks,omitempty" name:"CyberAttacks" list`
+		CyberAttacks []*SecurityTrend `json:"CyberAttacks,omitempty" name:"CyberAttacks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3721,7 +3721,7 @@ type DescribeTagMachinesResponse struct {
 	Response *struct {
 
 		// 列表数据
-		List []*TagMachine `json:"List,omitempty" name:"List" list`
+		List []*TagMachine `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3776,7 +3776,7 @@ type DescribeTagsResponse struct {
 	Response *struct {
 
 		// 列表信息
-		List []*Tag `json:"List,omitempty" name:"List" list`
+		List []*Tag `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3825,7 +3825,7 @@ type DescribeUsualLoginPlacesResponse struct {
 	Response *struct {
 
 		// 常用登录地数组
-		UsualLoginPlaces []*UsualPlace `json:"UsualLoginPlaces,omitempty" name:"UsualLoginPlaces" list`
+		UsualLoginPlaces []*UsualPlace `json:"UsualLoginPlaces,omitempty" name:"UsualLoginPlaces"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3989,7 +3989,7 @@ type DescribeVulsRequest struct {
 	// <li>Status - String - 是否必填：否 - 状态筛选（UN_OPERATED: 待处理 | FIXED：已修复）
 	// 
 	// Status过滤条件值只能取其一，不能是“或”逻辑。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeVulsRequest) ToJsonString() string {
@@ -4022,7 +4022,7 @@ type DescribeVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 漏洞列表数组。
-		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls" list`
+		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4079,7 +4079,7 @@ type DescribeWeeklyReportBruteAttacksResponse struct {
 	Response *struct {
 
 		// 专业周报密码破解数组。
-		WeeklyReportBruteAttacks []*WeeklyReportBruteAttack `json:"WeeklyReportBruteAttacks,omitempty" name:"WeeklyReportBruteAttacks" list`
+		WeeklyReportBruteAttacks []*WeeklyReportBruteAttack `json:"WeeklyReportBruteAttacks,omitempty" name:"WeeklyReportBruteAttacks"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4227,7 +4227,7 @@ type DescribeWeeklyReportMalwaresResponse struct {
 	Response *struct {
 
 		// 专业周报木马数据。
-		WeeklyReportMalwares []*WeeklyReportMalware `json:"WeeklyReportMalwares,omitempty" name:"WeeklyReportMalwares" list`
+		WeeklyReportMalwares []*WeeklyReportMalware `json:"WeeklyReportMalwares,omitempty" name:"WeeklyReportMalwares"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4287,7 +4287,7 @@ type DescribeWeeklyReportNonlocalLoginPlacesResponse struct {
 	Response *struct {
 
 		// 专业周报异地登录数据。
-		WeeklyReportNonlocalLoginPlaces []*WeeklyReportNonlocalLoginPlace `json:"WeeklyReportNonlocalLoginPlaces,omitempty" name:"WeeklyReportNonlocalLoginPlaces" list`
+		WeeklyReportNonlocalLoginPlaces []*WeeklyReportNonlocalLoginPlace `json:"WeeklyReportNonlocalLoginPlaces,omitempty" name:"WeeklyReportNonlocalLoginPlaces"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4347,7 +4347,7 @@ type DescribeWeeklyReportVulsResponse struct {
 	Response *struct {
 
 		// 专业周报漏洞数据数组。
-		WeeklyReportVuls []*WeeklyReportVul `json:"WeeklyReportVuls,omitempty" name:"WeeklyReportVuls" list`
+		WeeklyReportVuls []*WeeklyReportVul `json:"WeeklyReportVuls,omitempty" name:"WeeklyReportVuls"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4403,7 +4403,7 @@ type DescribeWeeklyReportsResponse struct {
 	Response *struct {
 
 		// 专业周报列表数组。
-		WeeklyReports []*WeeklyReport `json:"WeeklyReports,omitempty" name:"WeeklyReports" list`
+		WeeklyReports []*WeeklyReport `json:"WeeklyReports,omitempty" name:"WeeklyReports"`
 
 		// 记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -4640,7 +4640,7 @@ type EditTagsRequest struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// CVM主机ID
-	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids"`
 }
 
 func (r *EditTagsRequest) ToJsonString() string {
@@ -5056,7 +5056,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type HistoryAccount struct {
@@ -5090,7 +5090,7 @@ type IgnoreImpactedHostsRequest struct {
 	*tchttp.BaseRequest
 
 	// 漏洞ID数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *IgnoreImpactedHostsRequest) ToJsonString() string {
@@ -5172,7 +5172,7 @@ type InquiryPriceOpenProVersionPrepaidRequest struct {
 	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版机器列表数组。
-	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines" list`
+	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines"`
 }
 
 func (r *InquiryPriceOpenProVersionPrepaidRequest) ToJsonString() string {
@@ -5230,7 +5230,7 @@ type LoginWhiteLists struct {
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 白名单地域
-	Places []*Place `json:"Places,omitempty" name:"Places" list`
+	Places []*Place `json:"Places,omitempty" name:"Places"`
 
 	// 白名单用户（多个用户逗号隔开）
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -5263,7 +5263,7 @@ type LoginWhiteLists struct {
 type LoginWhiteListsRule struct {
 
 	// 加白地域
-	Places []*Place `json:"Places,omitempty" name:"Places" list`
+	Places []*Place `json:"Places,omitempty" name:"Places"`
 
 	// 加白源IP，支持网段，多个IP以逗号隔开
 	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
@@ -5330,7 +5330,7 @@ type Machine struct {
 	MalwareNum *int64 `json:"MalwareNum,omitempty" name:"MalwareNum"`
 
 	// 标签信息
-	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag" list`
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
 
 	// 基线风险数。
 	BaselineNum *int64 `json:"BaselineNum,omitempty" name:"BaselineNum"`
@@ -5451,7 +5451,7 @@ type MisAlarmNonlocalLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 异地登录事件Id数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *MisAlarmNonlocalLoginPlacesRequest) ToJsonString() string {
@@ -5780,7 +5780,7 @@ type OpenProVersionPrepaidRequest struct {
 	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitempty" name:"ChargePrepaid"`
 
 	// 需要开通专业版主机信息数组。
-	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines" list`
+	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines"`
 }
 
 func (r *OpenProVersionPrepaidRequest) ToJsonString() string {
@@ -5808,7 +5808,7 @@ type OpenProVersionPrepaidResponse struct {
 	Response *struct {
 
 		// 订单ID列表。
-		DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
+		DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5840,7 +5840,7 @@ type OpenProVersionRequest struct {
 
 	// 主机唯一标识Uuid数组。
 	// 黑石的InstanceId，CVM的Uuid
-	Quuids []*string `json:"Quuids,omitempty" name:"Quuids" list`
+	Quuids []*string `json:"Quuids,omitempty" name:"Quuids"`
 
 	// 活动ID。
 	ActivityId *uint64 `json:"ActivityId,omitempty" name:"ActivityId"`
@@ -6059,7 +6059,7 @@ type RecoverMalwaresRequest struct {
 	*tchttp.BaseRequest
 
 	// 木马Id数组,单次最大删除不能超过200条
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *RecoverMalwaresRequest) ToJsonString() string {
@@ -6086,10 +6086,10 @@ type RecoverMalwaresResponse struct {
 	Response *struct {
 
 		// 恢复成功id数组
-		SuccessIds []*uint64 `json:"SuccessIds,omitempty" name:"SuccessIds" list`
+		SuccessIds []*uint64 `json:"SuccessIds,omitempty" name:"SuccessIds"`
 
 		// 恢复失败id数组
-		FailedIds []*uint64 `json:"FailedIds,omitempty" name:"FailedIds" list`
+		FailedIds []*uint64 `json:"FailedIds,omitempty" name:"FailedIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6354,7 +6354,7 @@ type SeparateMalwaresRequest struct {
 	*tchttp.BaseRequest
 
 	// 木马事件ID数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *SeparateMalwaresRequest) ToJsonString() string {
@@ -6381,10 +6381,10 @@ type SeparateMalwaresResponse struct {
 	Response *struct {
 
 		// 隔离成功的id数组。
-		SuccessIds []*uint64 `json:"SuccessIds,omitempty" name:"SuccessIds" list`
+		SuccessIds []*uint64 `json:"SuccessIds,omitempty" name:"SuccessIds"`
 
 		// 隔离失败的id数组。
-		FailedIds []*uint64 `json:"FailedIds,omitempty" name:"FailedIds" list`
+		FailedIds []*uint64 `json:"FailedIds,omitempty" name:"FailedIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6406,7 +6406,7 @@ type SetBashEventsStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// ID数组，最大100条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 
 	// 新状态(0-待处理 1-高危 2-正常)
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
@@ -6588,7 +6588,7 @@ type TrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 
 	// 木马ID数组。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *TrustMalwaresRequest) ToJsonString() string {
@@ -6680,7 +6680,7 @@ type UntrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 
 	// 木马ID数组，单次最大处理不能超过200条。
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids" list`
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *UntrustMalwaresRequest) ToJsonString() string {

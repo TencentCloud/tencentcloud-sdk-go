@@ -133,7 +133,7 @@ type AddUserToGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 添加的子用户 UID 和用户组 ID 关联关系
-	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info" list`
+	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
 
 func (r *AddUserToGroupRequest) ToJsonString() string {
@@ -289,7 +289,7 @@ type AttachPolicyInfo struct {
 
 	// 已下线的产品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail"`
 }
 
 type AttachRolePolicyRequest struct {
@@ -424,7 +424,7 @@ type AttachedPolicyOfRole struct {
 
 	// 已下线的产品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail"`
 
 	// 策略描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -772,7 +772,7 @@ type CreateServiceLinkedRoleRequest struct {
 	*tchttp.BaseRequest
 
 	// 授权服务，附加了此角色的腾讯云服务主体。
-	QCSServiceName []*string `json:"QCSServiceName,omitempty" name:"QCSServiceName" list`
+	QCSServiceName []*string `json:"QCSServiceName,omitempty" name:"QCSServiceName"`
 
 	// 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
 	CustomSuffix *string `json:"CustomSuffix,omitempty" name:"CustomSuffix"`
@@ -875,7 +875,7 @@ type DeletePolicyRequest struct {
 	*tchttp.BaseRequest
 
 	// 数组，数组成员是策略 id，支持批量删除策略
-	PolicyId []*uint64 `json:"PolicyId,omitempty" name:"PolicyId" list`
+	PolicyId []*uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 func (r *DeletePolicyRequest) ToJsonString() string {
@@ -924,7 +924,7 @@ type DeletePolicyVersionRequest struct {
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 策略版本号
-	VersionId []*uint64 `json:"VersionId,omitempty" name:"VersionId" list`
+	VersionId []*uint64 `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 func (r *DeletePolicyVersionRequest) ToJsonString() string {
@@ -1294,7 +1294,7 @@ type DescribeRoleListResponse struct {
 
 		// 角色详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*RoleInfo `json:"List,omitempty" name:"List" list`
+		List []*RoleInfo `json:"List,omitempty" name:"List"`
 
 		// 角色总数
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -1425,7 +1425,7 @@ type DescribeSubAccountsRequest struct {
 	*tchttp.BaseRequest
 
 	// 子用户UIN列表，最多支持50个UIN
-	FilterSubAccountUin []*uint64 `json:"FilterSubAccountUin,omitempty" name:"FilterSubAccountUin" list`
+	FilterSubAccountUin []*uint64 `json:"FilterSubAccountUin,omitempty" name:"FilterSubAccountUin"`
 }
 
 func (r *DescribeSubAccountsRequest) ToJsonString() string {
@@ -1452,7 +1452,7 @@ type DescribeSubAccountsResponse struct {
 	Response *struct {
 
 		// 子用户列表
-		SubAccounts []*SubAccountUser `json:"SubAccounts,omitempty" name:"SubAccounts" list`
+		SubAccounts []*SubAccountUser `json:"SubAccounts,omitempty" name:"SubAccounts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1723,7 +1723,7 @@ type GetGroupResponse struct {
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 		// 用户组成员信息
-		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo" list`
+		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2209,7 +2209,7 @@ type ListAccessKeysResponse struct {
 
 		// 访问密钥列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AccessKeys []*AccessKey `json:"AccessKeys,omitempty" name:"AccessKeys" list`
+		AccessKeys []*AccessKey `json:"AccessKeys,omitempty" name:"AccessKeys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2269,7 +2269,7 @@ type ListAttachedGroupPoliciesResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 策略列表
-		List []*AttachPolicyInfo `json:"List,omitempty" name:"List" list`
+		List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2334,7 +2334,7 @@ type ListAttachedRolePoliciesResponse struct {
 	Response *struct {
 
 		// 角色关联的策略列表
-		List []*AttachedPolicyOfRole `json:"List,omitempty" name:"List" list`
+		List []*AttachedPolicyOfRole `json:"List,omitempty" name:"List"`
 
 		// 角色关联的策略总数
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -2397,7 +2397,7 @@ type ListAttachedUserPoliciesResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 策略列表
-		List []*AttachPolicyInfo `json:"List,omitempty" name:"List" list`
+		List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2453,7 +2453,7 @@ type ListCollaboratorsResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 协作者信息
-		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2519,7 +2519,7 @@ type ListEntitiesForPolicyResponse struct {
 
 		// 实体列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*AttachEntityOfPolicy `json:"List,omitempty" name:"List" list`
+		List []*AttachEntityOfPolicy `json:"List,omitempty" name:"List"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2583,7 +2583,7 @@ type ListGroupsForUserResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 用户组信息
-		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo" list`
+		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2643,7 +2643,7 @@ type ListGroupsResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 用户组数组信息。
-		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo" list`
+		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2716,11 +2716,11 @@ type ListPoliciesResponse struct {
 	// Attachments: 关联的用户数
 	// ServiceType: 策略关联的产品
 	// IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
-		List []*StrategyInfo `json:"List,omitempty" name:"List" list`
+		List []*StrategyInfo `json:"List,omitempty" name:"List"`
 
 		// 保留字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServiceTypeList []*string `json:"ServiceTypeList,omitempty" name:"ServiceTypeList" list`
+		ServiceTypeList []*string `json:"ServiceTypeList,omitempty" name:"ServiceTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2770,7 +2770,7 @@ type ListPolicyVersionsResponse struct {
 
 		// 策略版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Versions []*PolicyVersionItem `json:"Versions,omitempty" name:"Versions" list`
+		Versions []*PolicyVersionItem `json:"Versions,omitempty" name:"Versions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2818,7 +2818,7 @@ type ListSAMLProvidersResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// SAML身份提供商列表
-		SAMLProviderSet []*SAMLProviderInfo `json:"SAMLProviderSet,omitempty" name:"SAMLProviderSet" list`
+		SAMLProviderSet []*SAMLProviderInfo `json:"SAMLProviderSet,omitempty" name:"SAMLProviderSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2878,7 +2878,7 @@ type ListUsersForGroupResponse struct {
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 子用户信息。
-		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo" list`
+		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2923,7 +2923,7 @@ type ListUsersResponse struct {
 	Response *struct {
 
 		// 子用户信息
-		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2976,7 +2976,7 @@ type ListWeChatWorkSubAccountsResponse struct {
 	Response *struct {
 
 		// 企业微信子用户列表。
-		Data []*WeChatWorkSubAccount `json:"Data,omitempty" name:"Data" list`
+		Data []*WeChatWorkSubAccount `json:"Data,omitempty" name:"Data"`
 
 		// 总数目。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3187,7 +3187,7 @@ type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 要删除的用户 UID和用户组 ID对应数组
-	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info" list`
+	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
 
 func (r *RemoveUserFromGroupRequest) ToJsonString() string {
@@ -3423,7 +3423,7 @@ type StrategyInfo struct {
 
 	// 已下线产品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail" list`
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail"`
 
 	// 是否是服务相关角色策略
 	// 注意：此字段可能返回 null，表示取不到有效值。

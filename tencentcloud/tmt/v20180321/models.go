@@ -24,7 +24,7 @@ import (
 type ImageRecord struct {
 
 	// 图片翻译结果
-	Value []*ItemValue `json:"Value,omitempty" name:"Value" list`
+	Value []*ItemValue `json:"Value,omitempty" name:"Value"`
 }
 
 type ImageTranslateRequest struct {
@@ -351,7 +351,7 @@ type TextTranslateBatchRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于2000。
-	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList" list`
+	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList"`
 }
 
 func (r *TextTranslateBatchRequest) ToJsonString() string {
@@ -387,7 +387,7 @@ type TextTranslateBatchResponse struct {
 		Target *string `json:"Target,omitempty" name:"Target"`
 
 		// 翻译后的文本列表
-		TargetTextList []*string `json:"TargetTextList,omitempty" name:"TargetTextList" list`
+		TargetTextList []*string `json:"TargetTextList,omitempty" name:"TargetTextList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

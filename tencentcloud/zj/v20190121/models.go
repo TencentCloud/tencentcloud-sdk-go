@@ -213,13 +213,13 @@ type AddSmsTemplateRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams" list`
+	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams" list`
+	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
 }
 
 func (r *AddSmsTemplateRequest) ToJsonString() string {
@@ -345,7 +345,7 @@ type CreateCampaignRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 发送策略
-	Strategies []*PaasStrategy `json:"Strategies,omitempty" name:"Strategies" list`
+	Strategies []*PaasStrategy `json:"Strategies,omitempty" name:"Strategies"`
 
 	// 废弃
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -430,19 +430,19 @@ type CreateMmsInstanceRequest struct {
 	Sign *string `json:"Sign,omitempty" name:"Sign"`
 
 	// 素材内容
-	Contents []*CreateMmsInstanceItem `json:"Contents,omitempty" name:"Contents" list`
+	Contents []*CreateMmsInstanceItem `json:"Contents,omitempty" name:"Contents"`
 
 	// 样例中链接动态变量对应的链接，和占位符顺序一致
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 机型列表
-	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType" list`
+	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType"`
 
 	// 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams" list`
+	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams"`
 
 	// 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
-	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams" list`
+	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams"`
 }
 
 func (r *CreateMmsInstanceRequest) ToJsonString() string {
@@ -875,7 +875,7 @@ type DescribeSmsSignListRequest struct {
 	License *string `json:"License,omitempty" name:"License"`
 
 	// 签名ID数组
-	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet" list`
+	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
@@ -909,7 +909,7 @@ type DescribeSmsSignListResponse struct {
 	Response *struct {
 
 		// 返回数据
-		Data []*DescribeSmsSignListDataStruct `json:"Data,omitempty" name:"Data" list`
+		Data []*DescribeSmsSignListDataStruct `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -959,7 +959,7 @@ type DescribeSmsTemplateListRequest struct {
 	License *string `json:"License,omitempty" name:"License"`
 
 	// 短信模板id数组
-	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet" list`
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
@@ -993,7 +993,7 @@ type DescribeSmsTemplateListResponse struct {
 	Response *struct {
 
 		// 返回数据信息
-		Data []*DescribeSmsTemplateListDataStruct `json:"Data,omitempty" name:"Data" list`
+		Data []*DescribeSmsTemplateListDataStruct `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1244,7 +1244,7 @@ type MmsInstanceInfo struct {
 
 	// 实例审核状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusInfo []*MmsInstanceStateInfo `json:"StatusInfo,omitempty" name:"StatusInfo" list`
+	StatusInfo []*MmsInstanceStateInfo `json:"StatusInfo,omitempty" name:"StatusInfo"`
 
 	// 业务码
 	AppSubId *string `json:"AppSubId,omitempty" name:"AppSubId"`
@@ -1263,19 +1263,19 @@ type MmsInstanceInfo struct {
 
 	// 样例配置的链接地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 机型列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType" list`
+	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType"`
 
 	// 普通参数序号数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams" list`
+	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams"`
 
 	// 链接参数序号数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams" list`
+	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams"`
 }
 
 type MmsInstanceInfoList struct {
@@ -1284,7 +1284,7 @@ type MmsInstanceInfoList struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 彩信实例状态信息列表
-	List []*MmsInstanceInfo `json:"List,omitempty" name:"List" list`
+	List []*MmsInstanceInfo `json:"List,omitempty" name:"List"`
 }
 
 type MmsInstanceStateInfo struct {
@@ -1333,13 +1333,13 @@ type ModifySmsTemplateRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams" list`
+	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams" list`
+	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
 }
 
 func (r *ModifySmsTemplateRequest) ToJsonString() string {
@@ -1412,7 +1412,7 @@ type PaasStrategy struct {
 	CrowdID *int64 `json:"CrowdID,omitempty" name:"CrowdID"`
 
 	// 待选素材数组
-	Items []*PaasStrategyItem `json:"Items,omitempty" name:"Items" list`
+	Items []*PaasStrategyItem `json:"Items,omitempty" name:"Items"`
 }
 
 type PaasStrategyItem struct {
@@ -1440,10 +1440,10 @@ type PushMmsContentRequest struct {
 	Session *string `json:"Session,omitempty" name:"Session"`
 
 	// 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
-	DynamicParaKey []*string `json:"DynamicParaKey,omitempty" name:"DynamicParaKey" list`
+	DynamicParaKey []*string `json:"DynamicParaKey,omitempty" name:"DynamicParaKey"`
 
 	// 动态参数值,和DynamicParaKey对应
-	DynamicParaValue []*string `json:"DynamicParaValue,omitempty" name:"DynamicParaValue" list`
+	DynamicParaValue []*string `json:"DynamicParaValue,omitempty" name:"DynamicParaValue"`
 }
 
 func (r *PushMmsContentRequest) ToJsonString() string {
@@ -1530,13 +1530,13 @@ type SendSmsRequest struct {
 	License *string `json:"License,omitempty" name:"License"`
 
 	// 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
-	Phone []*string `json:"Phone,omitempty" name:"Phone" list`
+	Phone []*string `json:"Phone,omitempty" name:"Phone"`
 
 	// 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 模板参数，若无模板参数，则设置为空。
-	Params []*string `json:"Params,omitempty" name:"Params" list`
+	Params []*string `json:"Params,omitempty" name:"Params"`
 
 	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
 	Sign *string `json:"Sign,omitempty" name:"Sign"`
@@ -1588,7 +1588,7 @@ type SendSmsResponse struct {
 	Response *struct {
 
 		// 出参数据
-		Data []*SendSmsPaasDataStruct `json:"Data,omitempty" name:"Data" list`
+		Data []*SendSmsPaasDataStruct `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1651,7 +1651,7 @@ type SmsCampaignStatisticsCrowdData struct {
 	CrowdCount *uint64 `json:"CrowdCount,omitempty" name:"CrowdCount"`
 
 	// 模板列表
-	TemplateList []*SmsCampaignStatisticsTemplateData `json:"TemplateList,omitempty" name:"TemplateList" list`
+	TemplateList []*SmsCampaignStatisticsTemplateData `json:"TemplateList,omitempty" name:"TemplateList"`
 }
 
 type SmsCampaignStatisticsData struct {
@@ -1660,7 +1660,7 @@ type SmsCampaignStatisticsData struct {
 	CampaignId *uint64 `json:"CampaignId,omitempty" name:"CampaignId"`
 
 	// 统计数据
-	Statistics []*SmsCampaignStatisticsCrowdData `json:"Statistics,omitempty" name:"Statistics" list`
+	Statistics []*SmsCampaignStatisticsCrowdData `json:"Statistics,omitempty" name:"Statistics"`
 }
 
 type SmsCampaignStatisticsTemplateData struct {
@@ -1721,7 +1721,7 @@ type SmsGetCrowdPackListResponse struct {
 
 	// 人群包返回数据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*SmsGetCrowdPackList `json:"List,omitempty" name:"List" list`
+	List []*SmsGetCrowdPackList `json:"List,omitempty" name:"List"`
 }
 
 type SmsGetCrowdUploadInfoResponse struct {

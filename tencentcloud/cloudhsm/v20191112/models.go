@@ -172,7 +172,7 @@ type DescribeSubnetResponse struct {
 
 		// 返回的子网实例列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetList []*Subnet `json:"SubnetList,omitempty" name:"SubnetList" list`
+		SubnetList []*Subnet `json:"SubnetList,omitempty" name:"SubnetList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -217,7 +217,7 @@ type DescribeSupportedHsmResponse struct {
 	Response *struct {
 
 		// 当前地域所支持的设备列表
-		DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes" list`
+		DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -275,7 +275,7 @@ type DescribeUsgResponse struct {
 
 		// 用户的安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgList []*SgUnit `json:"SgList,omitempty" name:"SgList" list`
+		SgList []*SgUnit `json:"SgList,omitempty" name:"SgList"`
 
 		// 返回的安全组数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -300,7 +300,7 @@ type DescribeUsgRuleRequest struct {
 	*tchttp.BaseRequest
 
 	// 根据安全组Id获取安全组详情
-	SgIds []*string `json:"SgIds,omitempty" name:"SgIds" list`
+	SgIds []*string `json:"SgIds,omitempty" name:"SgIds"`
 }
 
 func (r *DescribeUsgRuleRequest) ToJsonString() string {
@@ -328,7 +328,7 @@ type DescribeUsgRuleResponse struct {
 
 		// 安全组详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgRules []*UsgRuleDetail `json:"SgRules,omitempty" name:"SgRules" list`
+		SgRules []*UsgRuleDetail `json:"SgRules,omitempty" name:"SgRules"`
 
 		// 安全组详情数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -393,7 +393,7 @@ type DescribeVpcResponse struct {
 
 		// Vpc对象列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcList []*Vpc `json:"VpcList,omitempty" name:"VpcList" list`
+		VpcList []*Vpc `json:"VpcList,omitempty" name:"VpcList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -476,7 +476,7 @@ type DescribeVsmAttributesResponse struct {
 
 		// 安全组详情信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgList []*UsgRuleDetail `json:"SgList,omitempty" name:"SgList" list`
+		SgList []*UsgRuleDetail `json:"SgList,omitempty" name:"SgList"`
 
 		// 子网名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -512,7 +512,7 @@ type DescribeVsmAttributesResponse struct {
 
 		// 资源所关联的Tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -551,7 +551,7 @@ type DescribeVsmsRequest struct {
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters" list`
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 
 	// 设备所属的厂商名称，根据厂商来进行筛选
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
@@ -589,7 +589,7 @@ type DescribeVsmsResponse struct {
 
 		// 资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		VsmList []*ResourceInfo `json:"VsmList,omitempty" name:"VsmList" list`
+		VsmList []*ResourceInfo `json:"VsmList,omitempty" name:"VsmList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -613,7 +613,7 @@ type DeviceInfo struct {
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
 
 	// 此厂商旗下的设备信息列表
-	HsmTypes []*HsmInfo `json:"HsmTypes,omitempty" name:"HsmTypes" list`
+	HsmTypes []*HsmInfo `json:"HsmTypes,omitempty" name:"HsmTypes"`
 }
 
 type HsmInfo struct {
@@ -622,7 +622,7 @@ type HsmInfo struct {
 	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 此类型的加密机所支持的VSM类型列表
-	VsmTypes []*VsmInfo `json:"VsmTypes,omitempty" name:"VsmTypes" list`
+	VsmTypes []*VsmInfo `json:"VsmTypes,omitempty" name:"VsmTypes"`
 }
 
 type InquiryPriceBuyVsmRequest struct {
@@ -721,13 +721,13 @@ type ModifyVsmAttributesRequest struct {
 	// UpdateSgIds-修改安全组名称,
 	// UpdateNetWork-修改网络,
 	// Default-默认不修改
-	Type []*string `json:"Type,omitempty" name:"Type" list`
+	Type []*string `json:"Type,omitempty" name:"Type"`
 
 	// 资源名称
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
 	// 安全组Id
-	SgIds []*string `json:"SgIds,omitempty" name:"SgIds" list`
+	SgIds []*string `json:"SgIds,omitempty" name:"SgIds"`
 
 	// 虚拟专网Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -836,7 +836,7 @@ type ResourceInfo struct {
 
 	// 实例的安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SgList []*SgUnit `json:"SgList,omitempty" name:"SgList" list`
+	SgList []*SgUnit `json:"SgList,omitempty" name:"SgList"`
 
 	// 子网名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -864,7 +864,7 @@ type ResourceInfo struct {
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 厂商
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -944,7 +944,7 @@ type TagFilter struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue" list`
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UsgPolicy struct {
@@ -986,11 +986,11 @@ type UsgRuleDetail struct {
 
 	// 入站规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InBound []*UsgPolicy `json:"InBound,omitempty" name:"InBound" list`
+	InBound []*UsgPolicy `json:"InBound,omitempty" name:"InBound"`
 
 	// 出站规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OutBound []*UsgPolicy `json:"OutBound,omitempty" name:"OutBound" list`
+	OutBound []*UsgPolicy `json:"OutBound,omitempty" name:"OutBound"`
 
 	// 安全组Id
 	// 注意：此字段可能返回 null，表示取不到有效值。

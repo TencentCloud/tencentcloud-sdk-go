@@ -37,13 +37,13 @@ type CreateJobConfigRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 资源引用数组
-	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitempty" name:"ResourceRefs" list`
+	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitempty" name:"ResourceRefs"`
 
 	// 作业默认并行度
 	DefaultParallelism *uint64 `json:"DefaultParallelism,omitempty" name:"DefaultParallelism"`
 
 	// 系统参数
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
 	// 1: 作业配置达到上限之后，自动删除可删除的最早版本
 	AutoDelete *int64 `json:"AutoDelete,omitempty" name:"AutoDelete"`
@@ -311,7 +311,7 @@ type DeleteResourceConfigsRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 资源版本数组
-	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions" list`
+	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions"`
 }
 
 func (r *DeleteResourceConfigsRequest) ToJsonString() string {
@@ -358,7 +358,7 @@ type DeleteResourcesRequest struct {
 	*tchttp.BaseRequest
 
 	// 待删除资源ID列表
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
 func (r *DeleteResourcesRequest) ToJsonString() string {
@@ -461,7 +461,7 @@ type DescribeJobConfigsRequest struct {
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 作业配置版本
-	JobConfigVersions []*uint64 `json:"JobConfigVersions,omitempty" name:"JobConfigVersions" list`
+	JobConfigVersions []*uint64 `json:"JobConfigVersions,omitempty" name:"JobConfigVersions"`
 
 	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -470,7 +470,7 @@ type DescribeJobConfigsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// true 表示只展示草稿
 	OnlyDraft *bool `json:"OnlyDraft,omitempty" name:"OnlyDraft"`
@@ -508,7 +508,7 @@ type DescribeJobConfigsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 作业配置列表
-		JobConfigSet []*JobConfig `json:"JobConfigSet,omitempty" name:"JobConfigSet" list`
+		JobConfigSet []*JobConfig `json:"JobConfigSet,omitempty" name:"JobConfigSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -530,10 +530,10 @@ type DescribeJobsRequest struct {
 	*tchttp.BaseRequest
 
 	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
-	JobIds []*string `json:"JobIds,omitempty" name:"JobIds" list`
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
 
 	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -572,7 +572,7 @@ type DescribeJobsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 作业列表
-		JobSet []*JobV1 `json:"JobSet,omitempty" name:"JobSet" list`
+		JobSet []*JobV1 `json:"JobSet,omitempty" name:"JobSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -603,7 +603,7 @@ type DescribeResourceConfigsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 资源配置Versions集合
-	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions" list`
+	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions"`
 
 	// 作业配置版本
 	JobConfigVersion *int64 `json:"JobConfigVersion,omitempty" name:"JobConfigVersion"`
@@ -641,7 +641,7 @@ type DescribeResourceConfigsResponse struct {
 	Response *struct {
 
 		// 资源配置描述数组
-		ResourceConfigSet []*ResourceConfigItem `json:"ResourceConfigSet,omitempty" name:"ResourceConfigSet" list`
+		ResourceConfigSet []*ResourceConfigItem `json:"ResourceConfigSet,omitempty" name:"ResourceConfigSet"`
 
 		// 资源配置数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -708,7 +708,7 @@ type DescribeResourceRelatedJobsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 关联作业信息
-		RefJobInfos []*ResourceRefJobInfo `json:"RefJobInfos,omitempty" name:"RefJobInfos" list`
+		RefJobInfos []*ResourceRefJobInfo `json:"RefJobInfos,omitempty" name:"RefJobInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -730,7 +730,7 @@ type DescribeResourcesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询的资源ID数组
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 偏移量，仅当设置 Limit 参数时有效
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -739,7 +739,7 @@ type DescribeResourcesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeResourcesRequest) ToJsonString() string {
@@ -769,7 +769,7 @@ type DescribeResourcesResponse struct {
 	Response *struct {
 
 		// 资源详细信息集合
-		ResourceSet []*ResourceItem `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*ResourceItem `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 总数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -794,7 +794,7 @@ type DescribeSystemResourcesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询的资源ID数组
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 偏移量，仅当设置 Limit 参数时有效
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -803,7 +803,7 @@ type DescribeSystemResourcesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -837,7 +837,7 @@ type DescribeSystemResourcesResponse struct {
 	Response *struct {
 
 		// 资源详细信息集合
-		ResourceSet []*SystemResourceItem `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*SystemResourceItem `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 总数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -864,7 +864,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type JobConfig struct {
@@ -896,11 +896,11 @@ type JobConfig struct {
 
 	// 系统参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Properties []*Property `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
 	// 引用资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRefDetails []*ResourceRefDetail `json:"ResourceRefDetails,omitempty" name:"ResourceRefDetails" list`
+	ResourceRefDetails []*ResourceRefDetail `json:"ResourceRefDetails,omitempty" name:"ResourceRefDetails"`
 
 	// 创建者uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1215,7 +1215,7 @@ type RunJobsRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量启动作业的描述信息
-	RunJobDescriptions []*RunJobDescription `json:"RunJobDescriptions,omitempty" name:"RunJobDescriptions" list`
+	RunJobDescriptions []*RunJobDescription `json:"RunJobDescriptions,omitempty" name:"RunJobDescriptions"`
 }
 
 func (r *RunJobsRequest) ToJsonString() string {
@@ -1270,7 +1270,7 @@ type StopJobsRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量停止作业的描述信息
-	StopJobDescriptions []*StopJobDescription `json:"StopJobDescriptions,omitempty" name:"StopJobDescriptions" list`
+	StopJobDescriptions []*StopJobDescription `json:"StopJobDescriptions,omitempty" name:"StopJobDescriptions"`
 }
 
 func (r *StopJobsRequest) ToJsonString() string {

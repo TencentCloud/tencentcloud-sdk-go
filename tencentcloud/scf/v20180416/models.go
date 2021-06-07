@@ -79,7 +79,7 @@ type AsyncEvent struct {
 type AsyncTriggerConfig struct {
 
 	// 用户错误的异步重试重试配置
-	RetryConfig []*RetryConfig `json:"RetryConfig,omitempty" name:"RetryConfig" list`
+	RetryConfig []*RetryConfig `json:"RetryConfig,omitempty" name:"RetryConfig"`
 
 	// 消息保留时间
 	MsgTTL *int64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
@@ -88,7 +88,7 @@ type AsyncTriggerConfig struct {
 type CfsConfig struct {
 
 	// 文件系统信息列表
-	CfsInsList []*CfsInsInfo `json:"CfsInsList,omitempty" name:"CfsInsList" list`
+	CfsInsList []*CfsInsInfo `json:"CfsInsList,omitempty" name:"CfsInsList"`
 }
 
 type CfsInsInfo struct {
@@ -366,7 +366,7 @@ type CreateFunctionRequest struct {
 	CodeSource *string `json:"CodeSource,omitempty" name:"CodeSource"`
 
 	// 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
-	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
+	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers"`
 
 	// 死信队列参数
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
@@ -381,7 +381,7 @@ type CreateFunctionRequest struct {
 	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 
 	// 函数 Tag 参数，以键值对数组形式传入
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启异步属性，TRUE 为开启，FALSE为关闭
 	AsyncRunEnable *string `json:"AsyncRunEnable,omitempty" name:"AsyncRunEnable"`
@@ -977,7 +977,7 @@ type EipConfigOut struct {
 
 	// IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EipAddress []*string `json:"EipAddress,omitempty" name:"EipAddress" list`
+	EipAddress []*string `json:"EipAddress,omitempty" name:"EipAddress"`
 }
 
 type EipOutConfig struct {
@@ -986,13 +986,13 @@ type EipOutConfig struct {
 	EipFixed *string `json:"EipFixed,omitempty" name:"EipFixed"`
 
 	// IP列表
-	Eips []*string `json:"Eips,omitempty" name:"Eips" list`
+	Eips []*string `json:"Eips,omitempty" name:"Eips"`
 }
 
 type Environment struct {
 
 	// 环境变量数组
-	Variables []*Variable `json:"Variables,omitempty" name:"Variables" list`
+	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
 }
 
 type Filter struct {
@@ -1001,7 +1001,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Function struct {
@@ -1034,13 +1034,13 @@ type Function struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 函数标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 函数类型，取值为 HTTP 或者 Event
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 函数状态失败原因
-	StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons" list`
+	StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons"`
 
 	// 函数所有版本预置并发内存总和
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1431,7 +1431,7 @@ type GetFunctionLogsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 函数日志信息
-		Data []*FunctionLog `json:"Data,omitempty" name:"Data" list`
+		Data []*FunctionLog `json:"Data,omitempty" name:"Data"`
 
 		// 该字段已下线
 		SearchContext *LogSearchContext `json:"SearchContext,omitempty" name:"SearchContext"`
@@ -1504,7 +1504,7 @@ type GetFunctionResponse struct {
 		Description *string `json:"Description,omitempty" name:"Description"`
 
 		// 函数的触发器列表
-		Triggers []*Trigger `json:"Triggers,omitempty" name:"Triggers" list`
+		Triggers []*Trigger `json:"Triggers,omitempty" name:"Triggers"`
 
 		// 函数的入口
 		Handler *string `json:"Handler,omitempty" name:"Handler"`
@@ -1570,7 +1570,7 @@ type GetFunctionResponse struct {
 		FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
 
 		// 函数的标签列表
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 		// EipConfig配置
 		EipConfig *EipOutConfig `json:"EipConfig,omitempty" name:"EipConfig"`
@@ -1585,7 +1585,7 @@ type GetFunctionResponse struct {
 		L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
 
 		// 函数关联的Layer版本信息
-		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers" list`
+		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers"`
 
 		// 函数关联的死信队列信息
 		DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
@@ -1618,7 +1618,7 @@ type GetFunctionResponse struct {
 
 		// 函数状态失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons" list`
+		StatusReasons []*StatusReason `json:"StatusReasons,omitempty" name:"StatusReasons"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1671,7 +1671,7 @@ type GetLayerVersionResponse struct {
 	Response *struct {
 
 		// 适配的运行时
-		CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+		CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes"`
 
 		// 层中版本文件的SHA256编码
 		CodeSha256 *string `json:"CodeSha256,omitempty" name:"CodeSha256"`
@@ -1759,7 +1759,7 @@ type GetProvisionedConcurrencyConfigResponse struct {
 		UnallocatedConcurrencyNum *uint64 `json:"UnallocatedConcurrencyNum,omitempty" name:"UnallocatedConcurrencyNum"`
 
 		// 函数已预置的并发配置详情。
-		Allocated []*VersionProvisionedConcurrencyInfo `json:"Allocated,omitempty" name:"Allocated" list`
+		Allocated []*VersionProvisionedConcurrencyInfo `json:"Allocated,omitempty" name:"Allocated"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1908,7 +1908,7 @@ type LayerVersionInfo struct {
 
 	// 版本适用的运行时
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes"`
 
 	// 创建时间
 	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
@@ -1946,7 +1946,7 @@ type LimitsInfo struct {
 	NamespacesCount *int64 `json:"NamespacesCount,omitempty" name:"NamespacesCount"`
 
 	// 命名空间限制信息
-	Namespace []*NamespaceLimit `json:"Namespace,omitempty" name:"Namespace" list`
+	Namespace []*NamespaceLimit `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 type ListAliasesRequest struct {
@@ -1996,7 +1996,7 @@ type ListAliasesResponse struct {
 	Response *struct {
 
 		// 别名列表
-		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases" list`
+		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases"`
 
 		// 别名总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2031,10 +2031,10 @@ type ListAsyncEventsRequest struct {
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 过滤条件，调用类型列表
-	InvokeType []*string `json:"InvokeType,omitempty" name:"InvokeType" list`
+	InvokeType []*string `json:"InvokeType,omitempty" name:"InvokeType"`
 
 	// 过滤条件，事件状态列表
-	Status []*string `json:"Status,omitempty" name:"Status" list`
+	Status []*string `json:"Status,omitempty" name:"Status"`
 
 	// 过滤条件，开始执行时间左闭右开区间
 	StartTimeInterval *TimeInterval `json:"StartTimeInterval,omitempty" name:"StartTimeInterval"`
@@ -2096,7 +2096,7 @@ type ListAsyncEventsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 异步事件列表
-		EventList []*AsyncEvent `json:"EventList,omitempty" name:"EventList" list`
+		EventList []*AsyncEvent `json:"EventList,omitempty" name:"EventList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2142,7 +2142,7 @@ type ListFunctionsRequest struct {
 	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListFunctionsRequest) ToJsonString() string {
@@ -2176,7 +2176,7 @@ type ListFunctionsResponse struct {
 	Response *struct {
 
 		// 函数列表
-		Functions []*Function `json:"Functions,omitempty" name:"Functions" list`
+		Functions []*Function `json:"Functions,omitempty" name:"Functions"`
 
 		// 总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2204,7 +2204,7 @@ type ListLayerVersionsRequest struct {
 	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
 
 	// 适配的运行时
-	CompatibleRuntime []*string `json:"CompatibleRuntime,omitempty" name:"CompatibleRuntime" list`
+	CompatibleRuntime []*string `json:"CompatibleRuntime,omitempty" name:"CompatibleRuntime"`
 }
 
 func (r *ListLayerVersionsRequest) ToJsonString() string {
@@ -2232,7 +2232,7 @@ type ListLayerVersionsResponse struct {
 	Response *struct {
 
 		// 层版本列表
-		LayerVersions []*LayerVersionInfo `json:"LayerVersions,omitempty" name:"LayerVersions" list`
+		LayerVersions []*LayerVersionInfo `json:"LayerVersions,omitempty" name:"LayerVersions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2293,7 +2293,7 @@ type ListLayersResponse struct {
 	Response *struct {
 
 		// 层列表
-		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers" list`
+		Layers []*LayerVersionInfo `json:"Layers,omitempty" name:"Layers"`
 
 		// 层总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2357,7 +2357,7 @@ type ListNamespacesResponse struct {
 	Response *struct {
 
 		// namespace详情
-		Namespaces []*Namespace `json:"Namespaces,omitempty" name:"Namespaces" list`
+		Namespaces []*Namespace `json:"Namespaces,omitempty" name:"Namespaces"`
 
 		// 返回的namespace数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2401,7 +2401,7 @@ type ListTriggersRequest struct {
 
 	// * Qualifier:
 	// 函数版本，别名
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListTriggersRequest) ToJsonString() string {
@@ -2437,7 +2437,7 @@ type ListTriggersResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 触发器列表
-		Triggers []*TriggerInfo `json:"Triggers,omitempty" name:"Triggers" list`
+		Triggers []*TriggerInfo `json:"Triggers,omitempty" name:"Triggers"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2506,11 +2506,11 @@ type ListVersionByFunctionResponse struct {
 	Response *struct {
 
 		// 函数版本。
-		FunctionVersion []*string `json:"FunctionVersion,omitempty" name:"FunctionVersion" list`
+		FunctionVersion []*string `json:"FunctionVersion,omitempty" name:"FunctionVersion"`
 
 		// 函数版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Versions []*FunctionVersion `json:"Versions,omitempty" name:"Versions" list`
+		Versions []*FunctionVersion `json:"Versions,omitempty" name:"Versions"`
 
 		// 函数版本总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2614,7 +2614,7 @@ type NamespaceLimit struct {
 type NamespaceUsage struct {
 
 	// 函数数组
-	Functions []*string `json:"Functions,omitempty" name:"Functions" list`
+	Functions []*string `json:"Functions,omitempty" name:"Functions"`
 
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
@@ -2648,7 +2648,7 @@ type PublishLayerVersionRequest struct {
 	LayerName *string `json:"LayerName,omitempty" name:"LayerName"`
 
 	// 层适用的运行时，可多选，可选的值对应函数的 Runtime 可选值。
-	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes" list`
+	CompatibleRuntimes []*string `json:"CompatibleRuntimes,omitempty" name:"CompatibleRuntimes"`
 
 	// 层的文件来源或文件内容
 	Content *Code `json:"Content,omitempty" name:"Content"`
@@ -2982,10 +2982,10 @@ type RetryConfig struct {
 type RoutingConfig struct {
 
 	// 随机权重路由附加版本
-	AdditionalVersionWeights []*VersionWeight `json:"AdditionalVersionWeights,omitempty" name:"AdditionalVersionWeights" list`
+	AdditionalVersionWeights []*VersionWeight `json:"AdditionalVersionWeights,omitempty" name:"AdditionalVersionWeights"`
 
 	// 规则路由附加版本
-	AddtionVersionMatchs []*VersionMatch `json:"AddtionVersionMatchs,omitempty" name:"AddtionVersionMatchs" list`
+	AddtionVersionMatchs []*VersionMatch `json:"AddtionVersionMatchs,omitempty" name:"AddtionVersionMatchs"`
 }
 
 type StatusReason struct {
@@ -3379,7 +3379,7 @@ type UpdateFunctionConfigurationRequest struct {
 	L5Enable *string `json:"L5Enable,omitempty" name:"L5Enable"`
 
 	// 函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。
-	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers" list`
+	Layers []*LayerVersionSimple `json:"Layers,omitempty" name:"Layers"`
 
 	// 函数关联的死信队列信息
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitempty" name:"DeadLetterConfig"`
@@ -3560,7 +3560,7 @@ type UsageInfo struct {
 	NamespacesCount *int64 `json:"NamespacesCount,omitempty" name:"NamespacesCount"`
 
 	// 命名空间详情
-	Namespace []*NamespaceUsage `json:"Namespace,omitempty" name:"Namespace" list`
+	Namespace []*NamespaceUsage `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 当前地域用户并发内存配额上限
 	TotalConcurrencyMem *int64 `json:"TotalConcurrencyMem,omitempty" name:"TotalConcurrencyMem"`

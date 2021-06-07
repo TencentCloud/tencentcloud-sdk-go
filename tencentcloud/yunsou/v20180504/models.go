@@ -152,7 +152,7 @@ type DataSearchRequest struct {
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
 	// 分类过滤并集
-	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter" list`
+	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter"`
 }
 
 func (r *DataSearchRequest) ToJsonString() string {

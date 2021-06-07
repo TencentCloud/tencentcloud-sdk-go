@@ -105,7 +105,7 @@ type DescribeRelationResponse struct {
 	Response *struct {
 
 		// 返回查询实体间的关系
-		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content" list`
+		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -154,7 +154,7 @@ type DescribeTripleResponse struct {
 	Response *struct {
 
 		// 返回三元组信息
-		Content []*TripleContent `json:"Content,omitempty" name:"Content" list`
+		Content []*TripleContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -175,10 +175,10 @@ func (r *DescribeTripleResponse) FromJsonString(s string) error {
 type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的object
-	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
+	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object"`
 
 	// 实体关系查询返回关系的subject
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject"`
 
 	// 实体关系查询返回的关系名称
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
@@ -187,25 +187,25 @@ type EntityRelationContent struct {
 type EntityRelationObject struct {
 
 	// object对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// object对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 
 	// object对应popular值
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
 type EntityRelationSubject struct {
 
 	// Subject对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// Subject对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 
 	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
 type TripleContent struct {

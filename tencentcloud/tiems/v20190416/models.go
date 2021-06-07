@@ -789,7 +789,7 @@ type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -839,7 +839,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 资源组下节点列表
-		Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*Instance `json:"Instances,omitempty" name:"Instances"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -861,7 +861,7 @@ type DescribeResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -908,7 +908,7 @@ type DescribeResourceGroupsResponse struct {
 
 		// 资源组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" name:"ResourceGroups" list`
+		ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" name:"ResourceGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -939,7 +939,7 @@ type DescribeRsgAsGroupActivitiesRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -986,7 +986,7 @@ type DescribeRsgAsGroupActivitiesResponse struct {
 
 		// 伸缩组活动数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RsgAsGroupActivitySet []*RsgAsGroupActivity `json:"RsgAsGroupActivitySet,omitempty" name:"RsgAsGroupActivitySet" list`
+		RsgAsGroupActivitySet []*RsgAsGroupActivity `json:"RsgAsGroupActivitySet,omitempty" name:"RsgAsGroupActivitySet"`
 
 		// 所查询的伸缩组活动总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1011,7 +1011,7 @@ type DescribeRsgAsGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1054,7 +1054,7 @@ type DescribeRsgAsGroupsResponse struct {
 	Response *struct {
 
 		// 所查询的伸缩组数组
-		RsgAsGroupSet []*RsgAsGroup `json:"RsgAsGroupSet,omitempty" name:"RsgAsGroupSet" list`
+		RsgAsGroupSet []*RsgAsGroup `json:"RsgAsGroupSet,omitempty" name:"RsgAsGroupSet"`
 
 		// 伸缩组数组总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1102,7 +1102,7 @@ type DescribeRuntimesResponse struct {
 	Response *struct {
 
 		// TIEMS支持的运行环境列表
-		Runtimes []*Runtime `json:"Runtimes,omitempty" name:"Runtimes" list`
+		Runtimes []*Runtime `json:"Runtimes,omitempty" name:"Runtimes"`
 
 		// 用户对runtime对权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1128,7 +1128,7 @@ type DescribeServiceConfigsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项，支持按照name等进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1175,7 +1175,7 @@ type DescribeServiceConfigsResponse struct {
 	Response *struct {
 
 		// 服务配置
-		ServiceConfigs []*Config `json:"ServiceConfigs,omitempty" name:"ServiceConfigs" list`
+		ServiceConfigs []*Config `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
 
 		// 服务配置总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1200,7 +1200,7 @@ type DescribeServicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项，支持筛选的字段：id, region, zone, cluster, status, runtime, rsg_id
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1243,7 +1243,7 @@ type DescribeServicesResponse struct {
 	Response *struct {
 
 		// 服务列表
-		Services []*ModelService `json:"Services,omitempty" name:"Services" list`
+		Services []*ModelService `json:"Services,omitempty" name:"Services"`
 
 		// 服务总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1452,7 +1452,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 取值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Instance struct {
@@ -1632,11 +1632,11 @@ type JobStatus struct {
 
 	// 副本名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Replicas []*string `json:"Replicas,omitempty" name:"Replicas" list`
+	Replicas []*string `json:"Replicas,omitempty" name:"Replicas"`
 
 	// 副本实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos"`
 }
 
 type ModelService struct {
@@ -1707,7 +1707,7 @@ type ModelService struct {
 
 	// 暴露方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Exposes []*ExposeInfo `json:"Exposes,omitempty" name:"Exposes" list`
+	Exposes []*ExposeInfo `json:"Exposes,omitempty" name:"Exposes"`
 
 	// Region 名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1874,7 +1874,7 @@ type ResourceGroup struct {
 
 	// Gpu类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GpuType []*string `json:"GpuType,omitempty" name:"GpuType" list`
+	GpuType []*string `json:"GpuType,omitempty" name:"GpuType"`
 
 	// 该资源组下是否有预付费资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1972,7 +1972,7 @@ type RsgAsGroupActivity struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 活动相关联的节点
-	RsgAsActivityRelatedInstance []*RsgAsActivityRelatedInstance `json:"RsgAsActivityRelatedInstance,omitempty" name:"RsgAsActivityRelatedInstance" list`
+	RsgAsActivityRelatedInstance []*RsgAsActivityRelatedInstance `json:"RsgAsActivityRelatedInstance,omitempty" name:"RsgAsActivityRelatedInstance"`
 
 	// 简略的状态消息
 	StatusMessageSimplified *string `json:"StatusMessageSimplified,omitempty" name:"StatusMessageSimplified"`
@@ -2018,7 +2018,7 @@ type Scaler struct {
 	StartReplicas *uint64 `json:"StartReplicas,omitempty" name:"StartReplicas"`
 
 	// 扩缩容指标，选择自动扩缩容时至少需要选择一个指标，支持CPU-UTIL、MEMORY-UTIL
-	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics" list`
+	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics"`
 }
 
 type ServiceStatus struct {
@@ -2034,11 +2034,11 @@ type ServiceStatus struct {
 
 	// 服务处于当前状态的原因集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*Conditions `json:"Conditions,omitempty" name:"Conditions" list`
+	Conditions []*Conditions `json:"Conditions,omitempty" name:"Conditions"`
 
 	// 副本名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Replicas []*string `json:"Replicas,omitempty" name:"Replicas" list`
+	Replicas []*string `json:"Replicas,omitempty" name:"Replicas"`
 
 	// 运行状态对额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2046,7 +2046,7 @@ type ServiceStatus struct {
 
 	// 副本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos"`
 }
 
 type UpdateJobRequest struct {

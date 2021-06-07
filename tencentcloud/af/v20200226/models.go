@@ -159,7 +159,7 @@ type QueryAntiFraudResponse struct {
 		RiskScore *uint64 `json:"RiskScore,omitempty" name:"RiskScore"`
 
 		// 扩展字段，对风险类型的说明
-		RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo" list`
+		RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
 		// 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。

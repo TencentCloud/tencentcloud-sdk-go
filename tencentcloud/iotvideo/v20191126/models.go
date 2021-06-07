@@ -50,7 +50,7 @@ type ClearDeviceActiveCodeRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表，0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *ClearDeviceActiveCodeRequest) ToJsonString() string {
@@ -305,7 +305,7 @@ type CreateDevTokenRequest struct {
 	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
 
 	// 设备TID列表,0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 
 	// Token的TTL(time to alive)分钟数
 	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
@@ -338,7 +338,7 @@ type CreateDevTokenResponse struct {
 
 		// 返回的用户token列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*DevTokenInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*DevTokenInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -399,7 +399,7 @@ type CreateDevicesResponse struct {
 	Response *struct {
 
 		// 新创建设备的认证信息
-		Data []*DeviceCertificate `json:"Data,omitempty" name:"Data" list`
+		Data []*DeviceCertificate `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -582,7 +582,7 @@ type CreateProductRequest struct {
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
 	// 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
-	Features []*string `json:"Features,omitempty" name:"Features" list`
+	Features []*string `json:"Features,omitempty" name:"Features"`
 
 	// 主芯片产商ID
 	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
@@ -818,7 +818,7 @@ type CreateStorageServiceResponse struct {
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 新增的云存定单列表
-		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -840,7 +840,7 @@ type CreateTraceIdsRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *CreateTraceIdsRequest) ToJsonString() string {
@@ -1133,7 +1133,7 @@ type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *DeleteDeviceRequest) ToJsonString() string {
@@ -1371,7 +1371,7 @@ type DeleteTraceIdsRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *DeleteTraceIdsRequest) ToJsonString() string {
@@ -1487,7 +1487,7 @@ type DeliverStorageServiceResponse struct {
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 新增的云存定单列表
-		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1599,7 +1599,7 @@ type DescribeBindDevResponse struct {
 
 		// 绑定的设备列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*BindDevInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*BindDevInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1653,7 +1653,7 @@ type DescribeBindUsrResponse struct {
 
 		// 具有绑定关系的终端用户信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*BindUsrInfo `json:"Data,omitempty" name:"Data" list`
+		Data []*BindUsrInfo `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1828,7 +1828,7 @@ type DescribeDevicesResponse struct {
 
 		// 设备信息 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*DevicesData `json:"Data,omitempty" name:"Data" list`
+		Data []*DevicesData `json:"Data,omitempty" name:"Data"`
 
 		// 设备总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1881,7 +1881,7 @@ type DescribeIotDataTypeResponse struct {
 
 		// 自定义数据类型，json格式的字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*string `json:"Data,omitempty" name:"Data" list`
+		Data []*string `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1985,7 +1985,7 @@ type DescribeIotModelsResponse struct {
 
 		// 历史版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*IotModelData `json:"Data,omitempty" name:"Data" list`
+		Data []*IotModelData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2059,7 +2059,7 @@ type DescribeLogsResponse struct {
 
 		// 设备日志信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*LogData `json:"Data,omitempty" name:"Data" list`
+		Data []*LogData `json:"Data,omitempty" name:"Data"`
 
 		// Data数组所包含的信息条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2277,7 +2277,7 @@ type DescribeOtaVersionsResponse struct {
 
 		// 版本详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*VersionData `json:"Data,omitempty" name:"Data" list`
+		Data []*VersionData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2393,7 +2393,7 @@ type DescribeProductsResponse struct {
 
 		// 产品详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*ProductData `json:"Data,omitempty" name:"Data" list`
+		Data []*ProductData `json:"Data,omitempty" name:"Data"`
 
 		// 产品总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2446,7 +2446,7 @@ type DescribePubVersionsResponse struct {
 
 		// 历史发布的版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*OtaPubHistory `json:"Data,omitempty" name:"Data" list`
+		Data []*OtaPubHistory `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2508,7 +2508,7 @@ type DescribeRechargeRecordsResponse struct {
 
 		// 充值记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Records []*RechargeRecord `json:"Records,omitempty" name:"Records" list`
+		Records []*RechargeRecord `json:"Records,omitempty" name:"Records"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2530,7 +2530,7 @@ type DescribeRegistrationStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 终端用户的唯一ID列表，0<元素数量<=100
-	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds" list`
+	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds"`
 }
 
 func (r *DescribeRegistrationStatusRequest) ToJsonString() string {
@@ -2557,7 +2557,7 @@ type DescribeRegistrationStatusResponse struct {
 	Response *struct {
 
 		// 终端用户注册状态列表
-		Data []*RegisteredStatus `json:"Data,omitempty" name:"Data" list`
+		Data []*RegisteredStatus `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2688,7 +2688,7 @@ type DescribeStorageServiceResponse struct {
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 云存定单列表
-		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2822,7 +2822,7 @@ type DescribeTraceStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *DescribeTraceStatusRequest) ToJsonString() string {
@@ -2850,7 +2850,7 @@ type DescribeTraceStatusResponse struct {
 
 		// 设备追踪状态列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*TraceStatus `json:"Data,omitempty" name:"Data" list`
+		Data []*TraceStatus `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2997,7 +2997,7 @@ type DisableDeviceRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *DisableDeviceRequest) ToJsonString() string {
@@ -3043,7 +3043,7 @@ type DisableDeviceStreamRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *DisableDeviceStreamRequest) ToJsonString() string {
@@ -3549,7 +3549,7 @@ type ProductBase struct {
 	// Alexa : Alexa接入;
 	// Google : Google接入;
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FuncCode []*string `json:"FuncCode,omitempty" name:"FuncCode" list`
+	FuncCode []*string `json:"FuncCode,omitempty" name:"FuncCode"`
 
 	// 产品类别，0 : 普通视频设备；1 : NVR设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3594,7 +3594,7 @@ type ProductData struct {
 
 	// 设备功能码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Features []*string `json:"Features,omitempty" name:"Features" list`
+	Features []*string `json:"Features,omitempty" name:"Features"`
 
 	// 产器型号(APP产品,为APP包名)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3713,7 +3713,7 @@ type RefundStorageServiceResponse struct {
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
 		// 有效云存定单列表
-		Data []*StorageOrder `json:"Data,omitempty" name:"Data" list`
+		Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3744,7 +3744,7 @@ type RunDeviceRequest struct {
 	*tchttp.BaseRequest
 
 	// TID列表 ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *RunDeviceRequest) ToJsonString() string {
@@ -3790,7 +3790,7 @@ type RunDeviceStreamRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备TID 列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 }
 
 func (r *RunDeviceStreamRequest) ToJsonString() string {
@@ -3895,7 +3895,7 @@ type RunOtaVersionRequest struct {
 	GrayValue *uint64 `json:"GrayValue,omitempty" name:"GrayValue"`
 
 	// 指定的旧版本
-	OldVersions []*string `json:"OldVersions,omitempty" name:"OldVersions" list`
+	OldVersions []*string `json:"OldVersions,omitempty" name:"OldVersions"`
 
 	// 操作人
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -3962,7 +3962,7 @@ type RunTestOtaVersionRequest struct {
 	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
 
 	// 指定可升级的设备TID
-	Tids []*string `json:"Tids,omitempty" name:"Tids" list`
+	Tids []*string `json:"Tids,omitempty" name:"Tids"`
 
 	// 操作人
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -4186,15 +4186,15 @@ type SystemType struct {
 
 	// 安卓系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Android []*OsData `json:"Android,omitempty" name:"Android" list`
+	Android []*OsData `json:"Android,omitempty" name:"Android"`
 
 	// linux系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Linux []*OsData `json:"Linux,omitempty" name:"Linux" list`
+	Linux []*OsData `json:"Linux,omitempty" name:"Linux"`
 
 	// LiteOs系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LiteOs []*OsData `json:"LiteOs,omitempty" name:"LiteOs" list`
+	LiteOs []*OsData `json:"LiteOs,omitempty" name:"LiteOs"`
 }
 
 type TraceStatus struct {

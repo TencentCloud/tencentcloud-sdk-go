@@ -83,7 +83,7 @@ type Command struct {
 	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
 
 	// 命令关联的标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CommandDocument struct {
@@ -135,7 +135,7 @@ type CreateCommandRequest struct {
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
 
 	// 为命令关联的标签，列表长度不超过10。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateCommandRequest) ToJsonString() string {
@@ -238,10 +238,10 @@ type DescribeAutomationAgentStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 待查询的实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 过滤条件。<br> <li> agent-status - String - 是否必填：否 -（过滤条件）按照agent状态过滤，取值：Online 在线，Offline 离线。<br> <li> environment - String - 是否必填：否 -（过滤条件）按照agent运行环境查询，取值：Linux。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InstanceIds` 和 `Filters` 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -277,7 +277,7 @@ type DescribeAutomationAgentStatusResponse struct {
 	Response *struct {
 
 		// Agent 信息列表。
-		AutomationAgentSet []*AutomationAgentInfo `json:"AutomationAgentSet,omitempty" name:"AutomationAgentSet" list`
+		AutomationAgentSet []*AutomationAgentInfo `json:"AutomationAgentSet,omitempty" name:"AutomationAgentSet"`
 
 		// 符合条件的 Agent 总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -302,7 +302,7 @@ type DescribeCommandsRequest struct {
 	*tchttp.BaseRequest
 
 	// 命令ID列表，每次请求的上限为100。参数不支持同时指定 `CommandIds` 和 `Filters` 。
-	CommandIds []*string `json:"CommandIds,omitempty" name:"CommandIds" list`
+	CommandIds []*string `json:"CommandIds,omitempty" name:"CommandIds"`
 
 	// 过滤条件。
 	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。
@@ -313,7 +313,7 @@ type DescribeCommandsRequest struct {
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>
 	// 
 	// 每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `CommandIds` 和 `Filters` 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -352,7 +352,7 @@ type DescribeCommandsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 命令详情列表。
-		CommandSet []*Command `json:"CommandSet,omitempty" name:"CommandSet" list`
+		CommandSet []*Command `json:"CommandSet,omitempty" name:"CommandSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -374,10 +374,10 @@ type DescribeInvocationTasksRequest struct {
 	*tchttp.BaseRequest
 
 	// 执行任务ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationTaskIds` 和 `Filters`。
-	InvocationTaskIds []*string `json:"InvocationTaskIds,omitempty" name:"InvocationTaskIds" list`
+	InvocationTaskIds []*string `json:"InvocationTaskIds,omitempty" name:"InvocationTaskIds"`
 
 	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> invocation-task-id - String - 是否必填：否 -（过滤条件）按照执行任务ID过滤。<br> <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationTaskIds` 和 `Filters` 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -420,7 +420,7 @@ type DescribeInvocationTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 执行任务列表。
-		InvocationTaskSet []*InvocationTask `json:"InvocationTaskSet,omitempty" name:"InvocationTaskSet" list`
+		InvocationTaskSet []*InvocationTask `json:"InvocationTaskSet,omitempty" name:"InvocationTaskSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -442,10 +442,10 @@ type DescribeInvocationsRequest struct {
 	*tchttp.BaseRequest
 
 	// 执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
-	InvocationIds []*string `json:"InvocationIds,omitempty" name:"InvocationIds" list`
+	InvocationIds []*string `json:"InvocationIds,omitempty" name:"InvocationIds"`
 
 	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -484,7 +484,7 @@ type DescribeInvocationsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 执行活动列表。
-		InvocationSet []*Invocation `json:"InvocationSet,omitempty" name:"InvocationSet" list`
+		InvocationSet []*Invocation `json:"InvocationSet,omitempty" name:"InvocationSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -532,7 +532,7 @@ type DescribeRegionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 地域信息列表
-		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet" list`
+		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -556,7 +556,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Invocation struct {
@@ -577,7 +577,7 @@ type Invocation struct {
 	InvocationStatus *string `json:"InvocationStatus,omitempty" name:"InvocationStatus"`
 
 	// 执行任务信息列表。
-	InvocationTaskBasicInfoSet []*InvocationTaskBasicInfo `json:"InvocationTaskBasicInfoSet,omitempty" name:"InvocationTaskBasicInfoSet" list`
+	InvocationTaskBasicInfoSet []*InvocationTaskBasicInfo `json:"InvocationTaskBasicInfoSet,omitempty" name:"InvocationTaskBasicInfoSet"`
 
 	// 执行活动描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -674,7 +674,7 @@ type InvokeCommandRequest struct {
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
 
 	// 待执行命令的实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 	// key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
@@ -891,7 +891,7 @@ type RunCommandRequest struct {
 	// 待执行命令的实例ID列表。 支持实例类型：
 	// <li> CVM
 	// <li> LIGHTHOUSE
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
 	CommandName *string `json:"CommandName,omitempty" name:"CommandName"`
@@ -934,7 +934,7 @@ type RunCommandRequest struct {
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 如果保存命令，可为命令设置标签。列表长度不超过10。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *RunCommandRequest) ToJsonString() string {

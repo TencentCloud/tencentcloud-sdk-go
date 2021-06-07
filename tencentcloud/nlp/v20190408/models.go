@@ -249,7 +249,7 @@ type CreateWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 
 	// 待添加的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *CreateWordItemsRequest) ToJsonString() string {
@@ -345,7 +345,7 @@ type DeleteWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 
 	// 待删除的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *DeleteWordItemsRequest) ToJsonString() string {
@@ -434,7 +434,7 @@ type DependencyParsingResponse struct {
 	// <li>独立结构，eg: 两个单句在结构上彼此独立
 	// <li>标点符号，eg: 。
 	// <li>核心关系，eg: 整个句子的核心
-		DpTokens []*DpToken `json:"DpTokens,omitempty" name:"DpTokens" list`
+		DpTokens []*DpToken `json:"DpTokens,omitempty" name:"DpTokens"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -488,7 +488,7 @@ type DescribeDictResponse struct {
 
 		// 查询到的词库信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -545,7 +545,7 @@ type DescribeDictsResponse struct {
 
 		// 自定义词库信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -647,7 +647,7 @@ type DescribeRelationResponse struct {
 	Response *struct {
 
 		// 返回查询实体间的关系
-		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content" list`
+		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -696,7 +696,7 @@ type DescribeTripleResponse struct {
 	Response *struct {
 
 		// 返回三元组信息
-		Content []*TripleContent `json:"Content,omitempty" name:"Content" list`
+		Content []*TripleContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -761,7 +761,7 @@ type DescribeWordItemsResponse struct {
 
 		// 词条信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -823,7 +823,7 @@ type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的object
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
+	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object"`
 
 	// 实体关系查询返回的关系名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -831,34 +831,34 @@ type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的subject
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject"`
 }
 
 type EntityRelationObject struct {
 
 	// object对应popular值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 
 	// object对应id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// object对应name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 }
 
 type EntityRelationSubject struct {
 
 	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 
 	// Subject对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// Subject对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 }
 
 type Keyword struct {
@@ -906,7 +906,7 @@ type KeywordsExtractionResponse struct {
 
 		// 关键词提取结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords" list`
+		Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -970,10 +970,10 @@ type LexicalAnalysisResponse struct {
 	// <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
 	// <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens" list`
+		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens"`
 
 		// 分词&词性标注结果（词性表请参见附录）
-		PosTokens []*PosToken `json:"PosTokens,omitempty" name:"PosTokens" list`
+		PosTokens []*PosToken `json:"PosTokens,omitempty" name:"PosTokens"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1045,7 +1045,7 @@ type SearchWordItemsRequest struct {
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 
 	// 待检索的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *SearchWordItemsRequest) ToJsonString() string {
@@ -1074,7 +1074,7 @@ type SearchWordItemsResponse struct {
 
 		// 词条检索结果集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*SearchResult `json:"Results,omitempty" name:"Results" list`
+		Results []*SearchResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1123,7 +1123,7 @@ type SentenceEmbeddingResponse struct {
 	Response *struct {
 
 		// 句向量数组
-		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
+		Vector []*float64 `json:"Vector,omitempty" name:"Vector"`
 
 		// 句向量的维度
 		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
@@ -1255,7 +1255,7 @@ type SimilarWordsResponse struct {
 	Response *struct {
 
 		// 相似词数组
-		SimilarWords []*string `json:"SimilarWords,omitempty" name:"SimilarWords" list`
+		SimilarWords []*string `json:"SimilarWords,omitempty" name:"SimilarWords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1319,7 +1319,7 @@ type TextClassificationResponse struct {
 	Response *struct {
 
 		// 文本分类结果（文本分类映射表请参见附录）
-		Classes []*ClassificationResult `json:"Classes,omitempty" name:"Classes" list`
+		Classes []*ClassificationResult `json:"Classes,omitempty" name:"Classes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1369,7 +1369,7 @@ type TextCorrectionResponse struct {
 
 		// 纠错详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CCITokens []*CCIToken `json:"CCITokens,omitempty" name:"CCITokens" list`
+		CCITokens []*CCIToken `json:"CCITokens,omitempty" name:"CCITokens"`
 
 		// 纠错后的文本
 		ResultText *string `json:"ResultText,omitempty" name:"ResultText"`
@@ -1397,7 +1397,7 @@ type TextSimilarityRequest struct {
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
 	// 目标句子
-	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
+	TargetText []*string `json:"TargetText,omitempty" name:"TargetText"`
 }
 
 func (r *TextSimilarityRequest) ToJsonString() string {
@@ -1425,7 +1425,7 @@ type TextSimilarityResponse struct {
 	Response *struct {
 
 		// 每个目标句子与源句子的相似度分值，按照分值降序排列
-		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity" list`
+		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1547,7 +1547,7 @@ type WordEmbeddingResponse struct {
 	Response *struct {
 
 		// 词向量数组
-		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
+		Vector []*float64 `json:"Vector,omitempty" name:"Vector"`
 
 		// 词向量的维度
 		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`

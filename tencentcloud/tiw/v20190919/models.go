@@ -206,7 +206,7 @@ type CustomLayout struct {
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
 
 	// 流布局参数，每路流的布局不能超出画布区域
-	InputStreamList []*StreamLayout `json:"InputStreamList,omitempty" name:"InputStreamList" list`
+	InputStreamList []*StreamLayout `json:"InputStreamList,omitempty" name:"InputStreamList"`
 }
 
 type DescribeOnlineRecordCallbackRequest struct {
@@ -335,10 +335,10 @@ type DescribeOnlineRecordResponse struct {
 		ExceptionCnt *int64 `json:"ExceptionCnt,omitempty" name:"ExceptionCnt"`
 
 		// 拼接视频中被忽略的时间段，只有开启视频拼接功能的时候，这个参数才是有效的
-		OmittedDurations []*OmittedDuration `json:"OmittedDurations,omitempty" name:"OmittedDurations" list`
+		OmittedDurations []*OmittedDuration `json:"OmittedDurations,omitempty" name:"OmittedDurations"`
 
 		// 录制视频列表
-		VideoInfos []*VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos" list`
+		VideoInfos []*VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos"`
 
 		// 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -421,7 +421,7 @@ type DescribeQualityMetricsResponse struct {
 		Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 		// 时间序列
-		Content []*TimeValue `json:"Content,omitempty" name:"Content" list`
+		Content []*TimeValue `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -691,7 +691,7 @@ type DescribeVideoGenerationTaskResponse struct {
 		VideoInfos *VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos"`
 
 		// 录制视频生成视频列表
-		VideoInfoList []*VideoInfo `json:"VideoInfoList,omitempty" name:"VideoInfoList" list`
+		VideoInfoList []*VideoInfo `json:"VideoInfoList,omitempty" name:"VideoInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -984,7 +984,7 @@ type RecordControl struct {
 	PullSmallVideo *bool `json:"PullSmallVideo,omitempty" name:"PullSmallVideo"`
 
 	// 针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
-	StreamControls []*StreamControl `json:"StreamControls,omitempty" name:"StreamControls" list`
+	StreamControls []*StreamControl `json:"StreamControls,omitempty" name:"StreamControls"`
 }
 
 type ResumeOnlineRecordRequest struct {
@@ -1472,7 +1472,7 @@ type StartOnlineRecordRequest struct {
 	// 使用到的高级功能列表
 	// 可以选值列表：
 	// MIX_STREAM - 混流功能
-	Extras []*string `json:"Extras,omitempty" name:"Extras" list`
+	Extras []*string `json:"Extras,omitempty" name:"Extras"`
 
 	// 是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
 	AudioFileNeeded *bool `json:"AudioFileNeeded,omitempty" name:"AudioFileNeeded"`

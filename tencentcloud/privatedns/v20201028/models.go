@@ -33,7 +33,7 @@ type AuditLog struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 日志列表
-	DataSet []*AuditLogInfo `json:"DataSet,omitempty" name:"DataSet" list`
+	DataSet []*AuditLogInfo `json:"DataSet,omitempty" name:"DataSet"`
 }
 
 type AuditLogInfo struct {
@@ -128,10 +128,10 @@ type CreatePrivateZoneRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 创建私有域的同时，为其打上标签
-	TagSet []*TagInfo `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*TagInfo `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 创建私有域的同时，将其关联至VPC
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -140,7 +140,7 @@ type CreatePrivateZoneRequest struct {
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
-	Vpcs []*VpcInfo `json:"Vpcs,omitempty" name:"Vpcs" list`
+	Vpcs []*VpcInfo `json:"Vpcs,omitempty" name:"Vpcs"`
 }
 
 func (r *CreatePrivateZoneRequest) ToJsonString() string {
@@ -212,7 +212,7 @@ type DeletePrivateZoneRecordRequest struct {
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 记录ID数组，RecordId 优先
-	RecordIdSet []*string `json:"RecordIdSet,omitempty" name:"RecordIdSet" list`
+	RecordIdSet []*string `json:"RecordIdSet,omitempty" name:"RecordIdSet"`
 }
 
 func (r *DeletePrivateZoneRecordRequest) ToJsonString() string {
@@ -263,7 +263,7 @@ type DeletePrivateZoneRequest struct {
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 私有域ID数组，ZoneId 优先
-	ZoneIdSet []*string `json:"ZoneIdSet,omitempty" name:"ZoneIdSet" list`
+	ZoneIdSet []*string `json:"ZoneIdSet,omitempty" name:"ZoneIdSet"`
 }
 
 func (r *DeletePrivateZoneRequest) ToJsonString() string {
@@ -313,7 +313,7 @@ type DescribeAuditLogRequest struct {
 	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
 
 	// 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 请求量统计结束时间
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
@@ -353,7 +353,7 @@ type DescribeAuditLogResponse struct {
 	Response *struct {
 
 		// 操作日志列表
-		Data []*AuditLog `json:"Data,omitempty" name:"Data" list`
+		Data []*AuditLog `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -407,7 +407,7 @@ type DescribeDashboardResponse struct {
 		RequestTotalCount *int64 `json:"RequestTotalCount,omitempty" name:"RequestTotalCount"`
 
 		// 流量包用量
-		FlowUsage []*FlowUsage `json:"FlowUsage,omitempty" name:"FlowUsage" list`
+		FlowUsage []*FlowUsage `json:"FlowUsage,omitempty" name:"FlowUsage"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -435,7 +435,7 @@ type DescribePrivateZoneListRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribePrivateZoneListRequest) ToJsonString() string {
@@ -467,7 +467,7 @@ type DescribePrivateZoneListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 私有域列表
-		PrivateZoneSet []*PrivateZone `json:"PrivateZoneSet,omitempty" name:"PrivateZoneSet" list`
+		PrivateZoneSet []*PrivateZone `json:"PrivateZoneSet,omitempty" name:"PrivateZoneSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -492,7 +492,7 @@ type DescribePrivateZoneRecordListRequest struct {
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页偏移量，从0开始
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -531,7 +531,7 @@ type DescribePrivateZoneRecordListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 解析记录列表
-		RecordSet []*PrivateZoneRecord `json:"RecordSet,omitempty" name:"RecordSet" list`
+		RecordSet []*PrivateZoneRecord `json:"RecordSet,omitempty" name:"RecordSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -650,7 +650,7 @@ type DescribeRequestDataRequest struct {
 	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
 
 	// 筛选参数：
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 请求量统计结束时间，格式：2020-11-22 23:59:59
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
@@ -682,7 +682,7 @@ type DescribeRequestDataResponse struct {
 	Response *struct {
 
 		// 请求量统计表
-		Data []*MetricData `json:"Data,omitempty" name:"Data" list`
+		Data []*MetricData `json:"Data,omitempty" name:"Data"`
 
 		// 请求量单位时间: Day：天，Hour：小时
 		Interval *string `json:"Interval,omitempty" name:"Interval"`
@@ -709,7 +709,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 参数值数组
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FlowUsage struct {
@@ -733,7 +733,7 @@ type MetricData struct {
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 表数据
-	DataSet []*DatePoint `json:"DataSet,omitempty" name:"DataSet" list`
+	DataSet []*DatePoint `json:"DataSet,omitempty" name:"DataSet"`
 }
 
 type ModifyPrivateZoneRecordRequest struct {
@@ -871,7 +871,7 @@ type ModifyPrivateZoneVpcRequest struct {
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 私有域关联的全部VPC列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 }
 
 func (r *ModifyPrivateZoneVpcRequest) ToJsonString() string {
@@ -902,7 +902,7 @@ type ModifyPrivateZoneVpcResponse struct {
 		ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 		// 解析域关联的VPC列表
-		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -945,7 +945,7 @@ type PrivateZone struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 绑定的Vpc列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet" list`
+	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 
 	// 私有域状态：正常解析：ENABLED, 暂停解析：SUSPEND, 锁定：FROZEN
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -954,7 +954,7 @@ type PrivateZone struct {
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
 
 	// 标签键值对集合
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 type PrivateZoneRecord struct {

@@ -207,10 +207,10 @@ type BuyDevicesRequest struct {
 	HyperThreading *uint64 `json:"HyperThreading,omitempty" name:"HyperThreading"`
 
 	// 指定的内网IP列表，不指定时自动分配
-	LanIps []*string `json:"LanIps,omitempty" name:"LanIps" list`
+	LanIps []*string `json:"LanIps,omitempty" name:"LanIps"`
 
 	// 设备名称列表
-	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
 	// CPU型号ID，自定义机型需要传入，取值：
 	// <br/><li>1: E5-2620v3 (6核) &#42; 2</li><li>2: E5-2680v4 (14核) &#42; 2</li><li>3: E5-2670v3 (12核) &#42; 2</li><li>4: E5-2620v4 (8核) &#42; 2</li><li>5: 4110 (8核) &#42; 2</li><li>6: 6133 (20核) &#42; 2</li><br/>
@@ -235,7 +235,7 @@ type BuyDevicesRequest struct {
 	DataDiskCount *uint64 `json:"DataDiskCount,omitempty" name:"DataDiskCount"`
 
 	// 绑定的标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 指定数据盘的文件系统格式，当前支持 EXT4和XFS选项， 默认为EXT4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效
 	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
@@ -313,7 +313,7 @@ type BuyDevicesResponse struct {
 	Response *struct {
 
 		// 购买的物理机实例ID列表
-		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -343,7 +343,7 @@ type CpuInfo struct {
 	Series *uint64 `json:"Series,omitempty" name:"Series"`
 
 	// 支持的RAID方式，0：有RAID卡，1：没有RAID卡
-	ContainRaidCard []*uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard" list`
+	ContainRaidCard []*uint64 `json:"ContainRaidCard,omitempty" name:"ContainRaidCard"`
 }
 
 type CreateCustomImageRequest struct {
@@ -413,7 +413,7 @@ type CreatePsaRegulationRequest struct {
 	PsaName *string `json:"PsaName,omitempty" name:"PsaName"`
 
 	// 关联的故障类型ID列表
-	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds" list`
+	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
 
 	// 维修实例上限，默认为5
 	RepairLimit *uint64 `json:"RepairLimit,omitempty" name:"RepairLimit"`
@@ -530,7 +530,7 @@ type CreateSpotDeviceResponse struct {
 	Response *struct {
 
 		// 创建的服务器ID
-		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 		// 任务ID
 		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
@@ -635,7 +635,7 @@ type CustomImage struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 分区信息
-	PartitionInfoSet []*PartitionInfo `json:"PartitionInfoSet,omitempty" name:"PartitionInfoSet" list`
+	PartitionInfoSet []*PartitionInfo `json:"PartitionInfoSet,omitempty" name:"PartitionInfoSet"`
 
 	// 适用机型
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
@@ -663,7 +663,7 @@ type DeleteCustomImagesRequest struct {
 	*tchttp.BaseRequest
 
 	// 准备删除的镜像ID列表
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds" list`
+	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
 }
 
 func (r *DeleteCustomImagesRequest) ToJsonString() string {
@@ -758,7 +758,7 @@ type DeleteUserCmdsRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要删除的脚本ID
-	CmdIds []*string `json:"CmdIds,omitempty" name:"CmdIds" list`
+	CmdIds []*string `json:"CmdIds,omitempty" name:"CmdIds"`
 }
 
 func (r *DeleteUserCmdsRequest) ToJsonString() string {
@@ -831,7 +831,7 @@ type DescribeCustomImageProcessResponse struct {
 	Response *struct {
 
 		// 镜像制作进度
-		CustomImageProcessSet []*CustomImageProcess `json:"CustomImageProcessSet,omitempty" name:"CustomImageProcessSet" list`
+		CustomImageProcessSet []*CustomImageProcess `json:"CustomImageProcessSet,omitempty" name:"CustomImageProcessSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -877,7 +877,7 @@ type DescribeCustomImagesRequest struct {
 	// <li>3：正常</li>
 	// <li>4：删除中</li>
 	// </ul>
-	ImageStatus []*uint64 `json:"ImageStatus,omitempty" name:"ImageStatus" list`
+	ImageStatus []*uint64 `json:"ImageStatus,omitempty" name:"ImageStatus"`
 }
 
 func (r *DescribeCustomImagesRequest) ToJsonString() string {
@@ -913,7 +913,7 @@ type DescribeCustomImagesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 镜像信息列表
-		CustomImageSet []*CustomImage `json:"CustomImageSet,omitempty" name:"CustomImageSet" list`
+		CustomImageSet []*CustomImage `json:"CustomImageSet,omitempty" name:"CustomImageSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -994,7 +994,7 @@ type DescribeDeviceClassPartitionResponse struct {
 	Response *struct {
 
 		// 支持的RAID格式列表
-		DeviceClassPartitionInfoSet []*DeviceClassPartitionInfo `json:"DeviceClassPartitionInfoSet,omitempty" name:"DeviceClassPartitionInfoSet" list`
+		DeviceClassPartitionInfoSet []*DeviceClassPartitionInfo `json:"DeviceClassPartitionInfoSet,omitempty" name:"DeviceClassPartitionInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1047,7 +1047,7 @@ type DescribeDeviceClassResponse struct {
 	Response *struct {
 
 		// 物理机设备类型列表
-		DeviceClassSet []*DeviceClass `json:"DeviceClassSet,omitempty" name:"DeviceClassSet" list`
+		DeviceClassSet []*DeviceClass `json:"DeviceClassSet,omitempty" name:"DeviceClassSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1069,7 +1069,7 @@ type DescribeDeviceHardwareInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备 ID 列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeDeviceHardwareInfoRequest) ToJsonString() string {
@@ -1096,7 +1096,7 @@ type DescribeDeviceHardwareInfoResponse struct {
 	Response *struct {
 
 		// 设备硬件配置信息
-		DeviceHardwareInfoSet []*DeviceHardwareInfo `json:"DeviceHardwareInfoSet,omitempty" name:"DeviceHardwareInfoSet" list`
+		DeviceHardwareInfoSet []*DeviceHardwareInfo `json:"DeviceHardwareInfoSet,omitempty" name:"DeviceHardwareInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1250,7 +1250,7 @@ type DescribeDeviceOperationLogResponse struct {
 	Response *struct {
 
 		// 操作日志列表
-		DeviceOperationLogSet []*DeviceOperationLog `json:"DeviceOperationLogSet,omitempty" name:"DeviceOperationLogSet" list`
+		DeviceOperationLogSet []*DeviceOperationLog `json:"DeviceOperationLogSet,omitempty" name:"DeviceOperationLogSet"`
 
 		// 返回数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1336,7 +1336,7 @@ type DescribeDevicePositionRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例别名
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
@@ -1374,7 +1374,7 @@ type DescribeDevicePositionResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 设备所在机架信息
-		DevicePositionInfoSet []*DevicePositionInfo `json:"DevicePositionInfoSet,omitempty" name:"DevicePositionInfoSet" list`
+		DevicePositionInfoSet []*DevicePositionInfo `json:"DevicePositionInfoSet,omitempty" name:"DevicePositionInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1396,7 +1396,7 @@ type DescribeDevicePriceInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询的实例列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 购买时长单位，当前只支持取值为m
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
@@ -1431,7 +1431,7 @@ type DescribeDevicePriceInfoResponse struct {
 	Response *struct {
 
 		// 服务器价格信息列表
-		DevicePriceInfoSet []*DevicePriceInfo `json:"DevicePriceInfoSet,omitempty" name:"DevicePriceInfoSet" list`
+		DevicePriceInfoSet []*DevicePriceInfo `json:"DevicePriceInfoSet,omitempty" name:"DevicePriceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1462,13 +1462,13 @@ type DescribeDevicesRequest struct {
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 设备ID数组
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 外网IP数组
-	WanIps []*string `json:"WanIps,omitempty" name:"WanIps" list`
+	WanIps []*string `json:"WanIps,omitempty" name:"WanIps"`
 
 	// 内网IP数组
-	LanIps []*string `json:"LanIps,omitempty" name:"LanIps" list`
+	LanIps []*string `json:"LanIps,omitempty" name:"LanIps"`
 
 	// 设备名称
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
@@ -1492,7 +1492,7 @@ type DescribeDevicesRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 设备类型，取值有: compute(计算型), standard(标准型), storage(存储型) 等
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
@@ -1551,7 +1551,7 @@ type DescribeDevicesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 物理机信息列表
-		DeviceInfoSet []*DeviceInfo `json:"DeviceInfoSet,omitempty" name:"DeviceInfoSet" list`
+		DeviceInfoSet []*DeviceInfo `json:"DeviceInfoSet,omitempty" name:"DeviceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1596,13 +1596,13 @@ type DescribeHardwareSpecificationResponse struct {
 	Response *struct {
 
 		// CPU型号列表
-		CpuInfoSet []*CpuInfo `json:"CpuInfoSet,omitempty" name:"CpuInfoSet" list`
+		CpuInfoSet []*CpuInfo `json:"CpuInfoSet,omitempty" name:"CpuInfoSet"`
 
 		// 内存的取值，单位为G
-		MemSet []*uint64 `json:"MemSet,omitempty" name:"MemSet" list`
+		MemSet []*uint64 `json:"MemSet,omitempty" name:"MemSet"`
 
 		// 硬盘型号列表
-		DiskInfoSet []*DiskInfo `json:"DiskInfoSet,omitempty" name:"DiskInfoSet" list`
+		DiskInfoSet []*DiskInfo `json:"DiskInfoSet,omitempty" name:"DiskInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1624,7 +1624,7 @@ type DescribeHostedDeviceOutBandInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 托管设备的唯一ID数组,数组个数不超过20
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 可用区ID
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -1655,7 +1655,7 @@ type DescribeHostedDeviceOutBandInfoResponse struct {
 	Response *struct {
 
 		// 托管设备带外信息
-		HostedDeviceOutBandInfoSet []*HostedDeviceOutBandInfo `json:"HostedDeviceOutBandInfoSet,omitempty" name:"HostedDeviceOutBandInfoSet" list`
+		HostedDeviceOutBandInfoSet []*HostedDeviceOutBandInfo `json:"HostedDeviceOutBandInfoSet,omitempty" name:"HostedDeviceOutBandInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1714,7 +1714,7 @@ type DescribeOperationResultResponse struct {
 		TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 		// 各实例对应任务的状态ID
-		SubtaskStatusSet []*SubtaskStatus `json:"SubtaskStatusSet,omitempty" name:"SubtaskStatusSet" list`
+		SubtaskStatusSet []*SubtaskStatus `json:"SubtaskStatusSet,omitempty" name:"SubtaskStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1763,7 +1763,7 @@ type DescribeOsInfoResponse struct {
 	Response *struct {
 
 		// 操作系统信息列表
-		OsInfoSet []*OsInfo `json:"OsInfoSet,omitempty" name:"OsInfoSet" list`
+		OsInfoSet []*OsInfo `json:"OsInfoSet,omitempty" name:"OsInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1791,13 +1791,13 @@ type DescribePsaRegulationsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 规则ID过滤，支持模糊查询
-	PsaIds []*string `json:"PsaIds,omitempty" name:"PsaIds" list`
+	PsaIds []*string `json:"PsaIds,omitempty" name:"PsaIds"`
 
 	// 规则别名过滤，支持模糊查询
-	PsaNames []*string `json:"PsaNames,omitempty" name:"PsaNames" list`
+	PsaNames []*string `json:"PsaNames,omitempty" name:"PsaNames"`
 
 	// 标签过滤
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 排序字段，取值支持：CreateTime
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -1839,7 +1839,7 @@ type DescribePsaRegulationsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 返回规则列表
-		PsaRegulations []*PsaRegulation `json:"PsaRegulations,omitempty" name:"PsaRegulations" list`
+		PsaRegulations []*PsaRegulation `json:"PsaRegulations,omitempty" name:"PsaRegulations"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1888,7 +1888,7 @@ type DescribeRegionsResponse struct {
 	Response *struct {
 
 		// 地域信息
-		RegionInfoSet []*RegionInfo `json:"RegionInfoSet,omitempty" name:"RegionInfoSet" list`
+		RegionInfoSet []*RegionInfo `json:"RegionInfoSet,omitempty" name:"RegionInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1933,7 +1933,7 @@ type DescribeRepairTaskConstantResponse struct {
 	Response *struct {
 
 		// 故障类型ID与对应中文名列表
-		TaskTypeSet []*TaskType `json:"TaskTypeSet,omitempty" name:"TaskTypeSet" list`
+		TaskTypeSet []*TaskType `json:"TaskTypeSet,omitempty" name:"TaskTypeSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1967,7 +1967,7 @@ type DescribeTaskInfoRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 任务状态ID过滤
-	TaskStatus []*uint64 `json:"TaskStatus,omitempty" name:"TaskStatus" list`
+	TaskStatus []*uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 排序字段，目前支持：CreateTime，AuthTime，EndTime
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -1976,16 +1976,16 @@ type DescribeTaskInfoRequest struct {
 	Order *uint64 `json:"Order,omitempty" name:"Order"`
 
 	// 任务ID过滤
-	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds" list`
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 实例ID过滤
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例别名过滤
-	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
 	// 故障类型ID过滤
-	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds" list`
+	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
 }
 
 func (r *DescribeTaskInfoRequest) ToJsonString() string {
@@ -2025,7 +2025,7 @@ type DescribeTaskInfoResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 任务信息列表
-		TaskInfoSet []*TaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet" list`
+		TaskInfoSet []*TaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2082,7 +2082,7 @@ type DescribeTaskOperationLogResponse struct {
 	Response *struct {
 
 		// 操作日志
-		TaskOperationLogSet []*TaskOperationLog `json:"TaskOperationLogSet,omitempty" name:"TaskOperationLogSet" list`
+		TaskOperationLogSet []*TaskOperationLog `json:"TaskOperationLogSet,omitempty" name:"TaskOperationLogSet"`
 
 		// 日志条数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2157,7 +2157,7 @@ type DescribeUserCmdTaskInfoResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 自定义脚本任务详细信息列表
-		UserCmdTaskInfoSet []*UserCmdTaskInfo `json:"UserCmdTaskInfoSet,omitempty" name:"UserCmdTaskInfoSet" list`
+		UserCmdTaskInfoSet []*UserCmdTaskInfo `json:"UserCmdTaskInfoSet,omitempty" name:"UserCmdTaskInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2221,7 +2221,7 @@ type DescribeUserCmdTasksResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 脚本任务信息列表
-		UserCmdTasks []*UserCmdTask `json:"UserCmdTasks,omitempty" name:"UserCmdTasks" list`
+		UserCmdTasks []*UserCmdTask `json:"UserCmdTasks,omitempty" name:"UserCmdTasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2293,7 +2293,7 @@ type DescribeUserCmdsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 脚本信息列表
-		UserCmds []*UserCmd `json:"UserCmds,omitempty" name:"UserCmds" list`
+		UserCmds []*UserCmd `json:"UserCmds,omitempty" name:"UserCmds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2451,7 +2451,7 @@ type DeviceClassPartitionInfo struct {
 	DataDiskSize *uint64 `json:"DataDiskSize,omitempty" name:"DataDiskSize"`
 
 	// 硬盘列表
-	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet" list`
+	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet"`
 }
 
 type DeviceDiskSizeInfo struct {
@@ -2569,7 +2569,7 @@ type DeviceInfo struct {
 	DeviceClassCode *string `json:"DeviceClassCode,omitempty" name:"DeviceClassCode"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 计费模式。1: 预付费; 2: 后付费; 3:预付费转后付费中
 	CpmPayMode *uint64 `json:"CpmPayMode,omitempty" name:"CpmPayMode"`
@@ -2650,7 +2650,7 @@ type DevicePartition struct {
 	SysDataSpace *uint64 `json:"SysDataSpace,omitempty" name:"SysDataSpace"`
 
 	// 硬盘大小详情
-	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet" list`
+	DeviceDiskSizeInfoSet []*DeviceDiskSizeInfo `json:"DeviceDiskSizeInfoSet,omitempty" name:"DeviceDiskSizeInfoSet"`
 }
 
 type DevicePositionInfo struct {
@@ -2837,7 +2837,7 @@ type ModifyDeviceAliasesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要改名的设备与别名列表
-	DeviceAliases []*DeviceAlias `json:"DeviceAliases,omitempty" name:"DeviceAliases" list`
+	DeviceAliases []*DeviceAlias `json:"DeviceAliases,omitempty" name:"DeviceAliases"`
 }
 
 func (r *ModifyDeviceAliasesRequest) ToJsonString() string {
@@ -2886,7 +2886,7 @@ type ModifyDeviceAutoRenewFlagRequest struct {
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 需要修改的设备ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *ModifyDeviceAutoRenewFlagRequest) ToJsonString() string {
@@ -2998,7 +2998,7 @@ type ModifyPayModePre2PostRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要修改的设备ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *ModifyPayModePre2PostRequest) ToJsonString() string {
@@ -3056,7 +3056,7 @@ type ModifyPsaRegulationRequest struct {
 	PsaDescription *string `json:"PsaDescription,omitempty" name:"PsaDescription"`
 
 	// 预授权规则关联故障类型ID列表
-	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds" list`
+	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
 }
 
 func (r *ModifyPsaRegulationRequest) ToJsonString() string {
@@ -3164,7 +3164,7 @@ type OfflineDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要退还的物理机ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *OfflineDevicesRequest) ToJsonString() string {
@@ -3277,17 +3277,17 @@ type PsaRegulation struct {
 	PsaDescription *string `json:"PsaDescription,omitempty" name:"PsaDescription"`
 
 	// 关联标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 关联故障类型id
-	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds" list`
+	TaskTypeIds []*uint64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
 }
 
 type RebootDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要重启的设备ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *RebootDevicesRequest) ToJsonString() string {
@@ -3336,7 +3336,7 @@ type RecoverDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要恢复的物理机ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *RecoverDevicesRequest) ToJsonString() string {
@@ -3393,7 +3393,7 @@ type RegionInfo struct {
 	RegionDescription *string `json:"RegionDescription,omitempty" name:"RegionDescription"`
 
 	// 该地域下的可用区信息
-	ZoneInfoSet []*ZoneInfo `json:"ZoneInfoSet,omitempty" name:"ZoneInfoSet" list`
+	ZoneInfoSet []*ZoneInfo `json:"ZoneInfoSet,omitempty" name:"ZoneInfoSet"`
 }
 
 type ReloadDeviceOsRequest struct {
@@ -3579,7 +3579,7 @@ type ResetDevicePasswordRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要重置密码的服务器ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 新密码
 	Password *string `json:"Password,omitempty" name:"Password"`
@@ -3632,7 +3632,7 @@ type ReturnDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要退还的物理机ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *ReturnDevicesRequest) ToJsonString() string {
@@ -3690,7 +3690,7 @@ type RunUserCmdRequest struct {
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 执行脚本的服务器实例
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 执行脚本的参数，必须经过base64编码
 	CmdParam *string `json:"CmdParam,omitempty" name:"CmdParam"`
@@ -3724,10 +3724,10 @@ type RunUserCmdResponse struct {
 	Response *struct {
 
 		// 运行成功的任务信息列表
-		SuccessTaskInfoSet []*SuccessTaskInfo `json:"SuccessTaskInfoSet,omitempty" name:"SuccessTaskInfoSet" list`
+		SuccessTaskInfoSet []*SuccessTaskInfo `json:"SuccessTaskInfoSet,omitempty" name:"SuccessTaskInfoSet"`
 
 		// 运行失败的任务信息列表
-		FailedTaskInfoSet []*FailedTaskInfo `json:"FailedTaskInfoSet,omitempty" name:"FailedTaskInfoSet" list`
+		FailedTaskInfoSet []*FailedTaskInfo `json:"FailedTaskInfoSet,omitempty" name:"FailedTaskInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3799,7 +3799,7 @@ type ShutdownDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要关闭的设备ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *ShutdownDevicesRequest) ToJsonString() string {
@@ -3848,7 +3848,7 @@ type StartDevicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要开机的设备ID列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *StartDevicesRequest) ToJsonString() string {
@@ -3927,7 +3927,7 @@ type Tag struct {
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签键对应的值
-	TagValues []*string `json:"TagValues,omitempty" name:"TagValues" list`
+	TagValues []*string `json:"TagValues,omitempty" name:"TagValues"`
 }
 
 type TaskInfo struct {

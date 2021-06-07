@@ -33,7 +33,7 @@ type BootstrapAction struct {
 	WhenRun *string `json:"WhenRun,omitempty" name:"WhenRun"`
 
 	// 脚本参数
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 }
 
 type COSSettings struct {
@@ -238,7 +238,7 @@ type ClusterInstancesInfo struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// Hive元数据信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -268,7 +268,7 @@ type ClusterSetting struct {
 	SupportHA *bool `json:"SupportHA,omitempty" name:"SupportHA"`
 
 	// 集群所使用的安全组，目前仅支持一个。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 实例位置。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
@@ -280,7 +280,7 @@ type ClusterSetting struct {
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
 	// 实例标签。
-	TagSpecification []*string `json:"TagSpecification,omitempty" name:"TagSpecification" list`
+	TagSpecification []*string `json:"TagSpecification,omitempty" name:"TagSpecification"`
 
 	// 元数据库配置。
 	MetaDB *MetaDbInfo `json:"MetaDB,omitempty" name:"MetaDB"`
@@ -331,7 +331,7 @@ type CreateInstanceRequest struct {
 	// <li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
 	// <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
 	// <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
-	Software []*string `json:"Software,omitempty" name:"Software" list`
+	Software []*string `json:"Software,omitempty" name:"Software"`
 
 	// 节点资源的规格。
 	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
@@ -376,7 +376,7 @@ type CreateInstanceRequest struct {
 	SgId *string `json:"SgId,omitempty" name:"SgId"`
 
 	// 引导操作脚本设置。
-	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings" list`
+	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings"`
 
 	// 包年包月实例是否自动续费。取值范围：
 	// <li>0：表示不自动续费。</li>
@@ -401,10 +401,10 @@ type CreateInstanceRequest struct {
 	ExtendFsField *string `json:"ExtendFsField,omitempty" name:"ExtendFsField"`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的实例。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 分散置放群组ID列表，当前只支持指定一个。
-	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds" list`
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 
 	// 集群维度CBS加密盘，默认0表示不加密，1表示加密
 	CbsEncrypt *uint64 `json:"CbsEncrypt,omitempty" name:"CbsEncrypt"`
@@ -531,7 +531,7 @@ type DescribeClusterNodesRequest struct {
 	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
 
 	// 支持搜索的字段
-	SearchFields []*SearchItem `json:"SearchFields,omitempty" name:"SearchFields" list`
+	SearchFields []*SearchItem `json:"SearchFields,omitempty" name:"SearchFields"`
 }
 
 func (r *DescribeClusterNodesRequest) ToJsonString() string {
@@ -567,15 +567,15 @@ type DescribeClusterNodesResponse struct {
 
 		// 节点详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NodeList []*NodeHardwareInfo `json:"NodeList,omitempty" name:"NodeList" list`
+		NodeList []*NodeHardwareInfo `json:"NodeList,omitempty" name:"NodeList"`
 
 		// 用户所有的标签键列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 		// 资源类型列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		HardwareResourceTypeList []*string `json:"HardwareResourceTypeList,omitempty" name:"HardwareResourceTypeList" list`
+		HardwareResourceTypeList []*string `json:"HardwareResourceTypeList,omitempty" name:"HardwareResourceTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -628,11 +628,11 @@ type DescribeInstanceRenewNodesResponse struct {
 
 		// 节点详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NodeList []*RenewInstancesInfo `json:"NodeList,omitempty" name:"NodeList" list`
+		NodeList []*RenewInstancesInfo `json:"NodeList,omitempty" name:"NodeList"`
 
 		// 用户所有的标签键列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MetaInfo []*string `json:"MetaInfo,omitempty" name:"MetaInfo" list`
+		MetaInfo []*string `json:"MetaInfo,omitempty" name:"MetaInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -660,7 +660,7 @@ type DescribeInstancesRequest struct {
 	DisplayStrategy *string `json:"DisplayStrategy,omitempty" name:"DisplayStrategy"`
 
 	// 按照一个或者多个实例ID查询。实例ID形如: emr-xxxxxxxx 。(此参数的具体格式可参考API[简介](https://cloud.tencent.com/document/api/213/15688)的 Ids.N 一节)。如果不填写实例ID，返回该APPID下所有实例列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 页编号，默认值为0，表示第一页。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -719,11 +719,11 @@ type DescribeInstancesResponse struct {
 
 		// EMR实例详细信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ClusterList []*ClusterInstancesInfo `json:"ClusterList,omitempty" name:"ClusterList" list`
+		ClusterList []*ClusterInstancesInfo `json:"ClusterList,omitempty" name:"ClusterList"`
 
 		// 实例关联的标签键列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys" list`
+		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -782,7 +782,7 @@ type DescribeJobFlowResponse struct {
 		State *string `json:"State,omitempty" name:"State"`
 
 		// 流程任务步骤结果。
-		Details []*JobResult `json:"Details,omitempty" name:"Details" list`
+		Details []*JobResult `json:"Details,omitempty" name:"Details"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -843,7 +843,7 @@ type EmrProductConfigOutter struct {
 
 	// 软件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SoftInfo []*string `json:"SoftInfo,omitempty" name:"SoftInfo" list`
+	SoftInfo []*string `json:"SoftInfo,omitempty" name:"SoftInfo"`
 
 	// Master节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -915,7 +915,7 @@ type Execution struct {
 	JobType *string `json:"JobType,omitempty" name:"JobType"`
 
 	// 任务参数，提供除提交指令以外的参数。
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 }
 
 type HostVolumeContext struct {
@@ -1045,7 +1045,7 @@ type InquiryPriceCreateInstanceRequest struct {
 	// <li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
 	// <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
 	// <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
-	Software []*string `json:"Software,omitempty" name:"Software" list`
+	Software []*string `json:"Software,omitempty" name:"Software"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
@@ -1149,7 +1149,7 @@ type InquiryPriceRenewInstanceRequest struct {
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
@@ -1444,10 +1444,10 @@ type JobFlowResource struct {
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 标签KV对。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 磁盘描述列表。
-	DiskGroups []*DiskGroup `json:"DiskGroups,omitempty" name:"DiskGroups" list`
+	DiskGroups []*DiskGroup `json:"DiskGroups,omitempty" name:"DiskGroups"`
 }
 
 type JobFlowResourceSpec struct {
@@ -1699,7 +1699,7 @@ type NodeHardwareInfo struct {
 
 	// 多云盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MCMultiDisk []*MultiDiskMC `json:"MCMultiDisk,omitempty" name:"MCMultiDisk" list`
+	MCMultiDisk []*MultiDiskMC `json:"MCMultiDisk,omitempty" name:"MCMultiDisk"`
 
 	// 数据库信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1715,7 +1715,7 @@ type NodeHardwareInfo struct {
 
 	// 节点绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1827,13 +1827,13 @@ type PodSpec struct {
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。弃用
-	DataVolumes []*string `json:"DataVolumes,omitempty" name:"DataVolumes" list`
+	DataVolumes []*string `json:"DataVolumes,omitempty" name:"DataVolumes"`
 
 	// Eks集群-CPU类型，当前支持"intel"和"amd"
 	CpuType *string `json:"CpuType,omitempty" name:"CpuType"`
 
 	// Pod节点数据目录挂载信息。
-	PodVolumes []*PodVolume `json:"PodVolumes,omitempty" name:"PodVolumes" list`
+	PodVolumes []*PodVolume `json:"PodVolumes,omitempty" name:"PodVolumes"`
 
 	// 是否浮动规格，1是，0否
 	IsDynamicSpec *uint64 `json:"IsDynamicSpec,omitempty" name:"IsDynamicSpec"`
@@ -1864,7 +1864,7 @@ type PreExecuteFileSettings struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 
 	// 执行脚本参数
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 
 	// COS的Bucket名称，已废弃
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
@@ -1929,7 +1929,7 @@ type PriceResource struct {
 
 	// 云盘列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
+	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks"`
 
 	// 磁盘数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1941,7 +1941,7 @@ type PriceResource struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 磁盘数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2015,11 +2015,11 @@ type Resource struct {
 
 	// 云盘列表，当数据盘为一块云盘时，直接使用DiskType和DiskSize参数，超出部分使用MultiDisks
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks" list`
+	MultiDisks []*MultiDisk `json:"MultiDisks,omitempty" name:"MultiDisks"`
 
 	// 需要绑定的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 规格类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2046,7 +2046,7 @@ type RunJobFlowRequest struct {
 	CreateCluster *bool `json:"CreateCluster,omitempty" name:"CreateCluster"`
 
 	// 作业流程执行步骤。
-	Steps []*Step `json:"Steps,omitempty" name:"Steps" list`
+	Steps []*Step `json:"Steps,omitempty" name:"Steps"`
 
 	// 作业流程正常完成时，集群的处理方式，可选择:
 	// Terminate 销毁集群。
@@ -2062,13 +2062,13 @@ type RunJobFlowRequest struct {
 
 	// 只在CreateCluster为true时生效。
 	// 新建集群时，要安装的软件列表。
-	Software []*string `json:"Software,omitempty" name:"Software" list`
+	Software []*string `json:"Software,omitempty" name:"Software"`
 
 	// 引导脚本。
-	BootstrapActions []*BootstrapAction `json:"BootstrapActions,omitempty" name:"BootstrapActions" list`
+	BootstrapActions []*BootstrapAction `json:"BootstrapActions,omitempty" name:"BootstrapActions"`
 
 	// 指定配置创建集群。
-	Configurations []*Configuration `json:"Configurations,omitempty" name:"Configurations" list`
+	Configurations []*Configuration `json:"Configurations,omitempty" name:"Configurations"`
 
 	// 作业日志保存地址。
 	LogUri *string `json:"LogUri,omitempty" name:"LogUri"`
@@ -2166,7 +2166,7 @@ type ScaleOutInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 引导操作脚本设置。
-	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings" list`
+	PreExecutedFileSettings []*PreExecuteFileSettings `json:"PreExecutedFileSettings,omitempty" name:"PreExecutedFileSettings"`
 
 	// 扩容的Task节点数量。
 	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
@@ -2175,7 +2175,7 @@ type ScaleOutInstanceRequest struct {
 	CoreCount *uint64 `json:"CoreCount,omitempty" name:"CoreCount"`
 
 	// 扩容时不需要安装的进程。
-	UnNecessaryNodeList []*uint64 `json:"UnNecessaryNodeList,omitempty" name:"UnNecessaryNodeList" list`
+	UnNecessaryNodeList []*uint64 `json:"UnNecessaryNodeList,omitempty" name:"UnNecessaryNodeList"`
 
 	// 扩容的Router节点数量。
 	RouterCount *uint64 `json:"RouterCount,omitempty" name:"RouterCount"`
@@ -2183,16 +2183,16 @@ type ScaleOutInstanceRequest struct {
 	// 部署的服务。
 	// <li>SoftDeployInfo和ServiceNodeInfo是同组参数，和UnNecessaryNodeList参数互斥。</li>
 	// <li>建议使用SoftDeployInfo和ServiceNodeInfo组合。</li>
-	SoftDeployInfo []*uint64 `json:"SoftDeployInfo,omitempty" name:"SoftDeployInfo" list`
+	SoftDeployInfo []*uint64 `json:"SoftDeployInfo,omitempty" name:"SoftDeployInfo"`
 
 	// 启动的进程。
-	ServiceNodeInfo []*uint64 `json:"ServiceNodeInfo,omitempty" name:"ServiceNodeInfo" list`
+	ServiceNodeInfo []*uint64 `json:"ServiceNodeInfo,omitempty" name:"ServiceNodeInfo"`
 
 	// 分散置放群组ID列表，当前仅支持指定一个。
-	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds" list`
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 
 	// 扩容节点绑定标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群提供的资源
 	HardwareResourceType *string `json:"HardwareResourceType,omitempty" name:"HardwareResourceType"`
@@ -2264,7 +2264,7 @@ type ScaleOutInstanceResponse struct {
 
 		// 订单号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 		// 客户端Token。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2337,7 +2337,7 @@ type TerminateInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 销毁节点ID。该参数为预留参数，用户无需配置。
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
 func (r *TerminateInstanceRequest) ToJsonString() string {
@@ -2387,7 +2387,7 @@ type TerminateTasksRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
 func (r *TerminateTasksRequest) ToJsonString() string {

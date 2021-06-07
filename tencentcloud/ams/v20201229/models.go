@@ -58,13 +58,13 @@ type AudioResult struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 文本识别结果
-	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults" list`
+	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults"`
 
 	// 音频呻吟检测结果
-	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults" list`
+	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
 
 	// 音频语言检测结果
-	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults" list`
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -117,7 +117,7 @@ type AudioResultDetailTextResult struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的LibId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -210,11 +210,114 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAudioModerationSyncTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 音频文件资源格式，当前为mp3，wav，请按照实际文件格式填入
+	FileFormat *string `json:"FileFormat,omitempty" name:"FileFormat"`
+
+	// 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据Base64编码，短音频同步接口仅传入可音频内容；
+	// 支持范围：文件大小不能超过5M，时长不可超过60s，码率范围为8-16Kbps；
+	// 支持格式：wav、mp3
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 音频资源访问链接，与FileContent参数必须二选一输入；
+	// 支持范围：同FileContent；
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+func (r *CreateAudioModerationSyncTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAudioModerationSyncTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "FileFormat")
+	delete(f, "Name")
+	delete(f, "FileContent")
+	delete(f, "FileUrl")
+	if len(f) > 0 {
+		return errors.New("CreateAudioModerationSyncTaskRequest has unknown keys!")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAudioModerationSyncTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求接口时传入的数据标识
+		DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+		// 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+		BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+		// 智能审核服务对于内容违规类型的等级，可选值：
+	// Pass 建议通过；
+	// Reveiw 建议复审；
+	// Block 建议屏蔽；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+		// 智能审核服务对于内容违规类型的判断，详见返回值列表
+	// 如：Label：Porn（色情）；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Label *string `json:"Label,omitempty" name:"Label"`
+
+		// 音频文本，备注：这里的文本最大只返回前1000个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsrText *string `json:"AsrText,omitempty" name:"AsrText"`
+
+		// 音频中对话内容审核结果；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TextResults []*TextResult `json:"TextResults,omitempty" name:"TextResults"`
+
+		// 音频中低俗内容审核结果；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MoanResults []*MoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAudioModerationSyncTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAudioModerationSyncTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAudioModerationTaskRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 默认为：default，客户可以在音频审核控制台配置自己的BizType
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
@@ -258,7 +361,7 @@ type CreateAudioModerationTaskResponse struct {
 
 		// 任务创建结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results" list`
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -349,7 +452,7 @@ type DescribeTaskDetailResponse struct {
 		// 智能审核服务对于内容违规类型的判断，详见返回值列表
 	// 如：Label：Porn（色情）；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 		// 输入的媒体信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -361,7 +464,7 @@ type DescribeTaskDetailResponse struct {
 
 		// 音频片段审核信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
+		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
 		// 错误类型，如果任务状态为Error，则该字段不为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -447,7 +550,7 @@ type DescribeTasksResponse struct {
 
 		// 当前页数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*TaskData `json:"Data,omitempty" name:"Data" list`
+		Data []*TaskData `json:"Data,omitempty" name:"Data"`
 
 		// 翻页Token，当已经到最后一页时，该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -503,6 +606,27 @@ type MediaInfo struct {
 	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
 }
 
+type MoanResult struct {
+
+	// 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+	// （如：Moan 99，则该样本属于呻吟/娇喘的置信度非常高。）
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 违规事件开始时间，单位为毫秒（ms）；
+	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 违规事件结束时间，单位为毫秒（ms）；
+	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type StorageInfo struct {
 
 	// 类型 可选：
@@ -551,7 +675,7 @@ type TaskData struct {
 
 	// 任务违规标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 	// 创建时间（ iso 8601 格式）
 	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
@@ -622,4 +746,43 @@ type TaskResult struct {
 	// 如果错误，该字段表示错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type TextResult struct {
+
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及其他令人反感、不安全或不适宜的内容类型。
+	// 
+	// 如音频中无复杂类型「TextResults」的返回则代表改音频中无相关违规内容；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 命中的关键词，为空则代表该违规内容出自于模型的判断；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 命中关键词库的库标识；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibId *string `json:"LibId,omitempty" name:"LibId"`
+
+	// 命中关键词库的名字；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibName *string `json:"LibName,omitempty" name:"LibName"`
+
+	// 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+	// （如：Porn 99，则该样本属于色情的置信度非常高。）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
+	// 
+	// 1：自定义黑白库；
+	// 
+	// 2：自定义库；
+	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
 }

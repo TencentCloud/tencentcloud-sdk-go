@@ -28,7 +28,7 @@ type AddClusterInstancesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 云主机ID列表
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 操作系统名称
 	OsName *string `json:"OsName,omitempty" name:"OsName"`
@@ -52,13 +52,13 @@ type AddClusterInstancesRequest struct {
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 
 	// 镜像特征ID列表
-	FeatureIdList []*string `json:"FeatureIdList,omitempty" name:"FeatureIdList" list`
+	FeatureIdList []*string `json:"FeatureIdList,omitempty" name:"FeatureIdList"`
 
 	// 实例额外需要设置参数信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
 
 	// 安全组 ID 列表
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *AddClusterInstancesRequest) ToJsonString() string {
@@ -119,19 +119,19 @@ type AddInstanceResult struct {
 
 	// 添加集群失败的节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds" list`
+	FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" name:"FailedInstanceIds"`
 
 	// 添加集群成功的节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuccInstanceIds []*string `json:"SuccInstanceIds,omitempty" name:"SuccInstanceIds" list`
+	SuccInstanceIds []*string `json:"SuccInstanceIds,omitempty" name:"SuccInstanceIds"`
 
 	// 添加集群超时的节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds" list`
+	TimeoutInstanceIds []*string `json:"TimeoutInstanceIds,omitempty" name:"TimeoutInstanceIds"`
 
 	// 失败的节点的失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedReasons []*string `json:"FailedReasons,omitempty" name:"FailedReasons" list`
+	FailedReasons []*string `json:"FailedReasons,omitempty" name:"FailedReasons"`
 }
 
 type AddInstancesRequest struct {
@@ -141,7 +141,7 @@ type AddInstancesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 云主机ID列表
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 操作系统名称
 	OsName *string `json:"OsName,omitempty" name:"OsName"`
@@ -224,7 +224,7 @@ type ApiDefinitionDescr struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 对象属性列表
-	Properties []*PropertyField `json:"Properties,omitempty" name:"Properties" list`
+	Properties []*PropertyField `json:"Properties,omitempty" name:"Properties"`
 }
 
 type ApiDetailInfo struct {
@@ -317,14 +317,14 @@ type ApiDetailInfo struct {
 type ApiDetailResponse struct {
 
 	// API 请求参数
-	Request []*ApiRequestDescr `json:"Request,omitempty" name:"Request" list`
+	Request []*ApiRequestDescr `json:"Request,omitempty" name:"Request"`
 
 	// API 响应参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Response []*ApiResponseDescr `json:"Response,omitempty" name:"Response" list`
+	Response []*ApiResponseDescr `json:"Response,omitempty" name:"Response"`
 
 	// API 复杂结构定义
-	Definitions []*ApiDefinitionDescr `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*ApiDefinitionDescr `json:"Definitions,omitempty" name:"Definitions"`
 
 	// API 的 content type
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -375,7 +375,7 @@ type ApiGroupInfo struct {
 
 	// api分组已绑定的网关部署组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindedGatewayDeployGroups []*GatewayDeployGroup `json:"BindedGatewayDeployGroups,omitempty" name:"BindedGatewayDeployGroups" list`
+	BindedGatewayDeployGroups []*GatewayDeployGroup `json:"BindedGatewayDeployGroups,omitempty" name:"BindedGatewayDeployGroups"`
 
 	// api 个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -597,14 +597,14 @@ type ApplicationForPage struct {
 
 	// 服务配置信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList" list`
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList"`
 }
 
 type BindApiGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 分组绑定网关列表
-	GroupGatewayList []*GatewayGroupIds `json:"GroupGatewayList,omitempty" name:"GroupGatewayList" list`
+	GroupGatewayList []*GatewayGroupIds `json:"GroupGatewayList,omitempty" name:"GroupGatewayList"`
 }
 
 func (r *BindApiGroupRequest) ToJsonString() string {
@@ -653,7 +653,7 @@ type BindPluginRequest struct {
 	*tchttp.BaseRequest
 
 	// 分组/API绑定插件列表
-	PluginInstanceList []*GatewayPluginBoundParam `json:"PluginInstanceList,omitempty" name:"PluginInstanceList" list`
+	PluginInstanceList []*GatewayPluginBoundParam `json:"PluginInstanceList,omitempty" name:"PluginInstanceList"`
 }
 
 func (r *BindPluginRequest) ToJsonString() string {
@@ -1110,7 +1110,7 @@ type ContainGroupResult struct {
 
 	// 部署组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ContainGroup `json:"Content,omitempty" name:"Content" list`
+	Content []*ContainGroup `json:"Content,omitempty" name:"Content"`
 
 	// 总记录数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1243,11 +1243,11 @@ type ContainerGroupDetail struct {
 
 	// 端口数组对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts" list`
+	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
 
 	// 环境变量数组对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Envs []*Env `json:"Envs,omitempty" name:"Envs" list`
+	Envs []*Env `json:"Envs,omitempty" name:"Envs"`
 
 	// 应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1627,7 +1627,7 @@ type CreateApplicationRequest struct {
 	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
 
 	// 服务配置信息列表
-	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList" list`
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -1867,7 +1867,7 @@ type CreateContainGroupRequest struct {
 	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
 
 	// 数组对象，见下方定义
-	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts" list`
+	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1996,7 +1996,7 @@ type CreateGatewayApiRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// Api信息
-	ApiList []*ApiInfo `json:"ApiList,omitempty" name:"ApiList" list`
+	ApiList []*ApiInfo `json:"ApiList,omitempty" name:"ApiList"`
 }
 
 func (r *CreateGatewayApiRequest) ToJsonString() string {
@@ -2126,7 +2126,7 @@ type CreateLaneRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 泳道部署组信息
-	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList" list`
+	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList"`
 }
 
 func (r *CreateLaneRequest) ToJsonString() string {
@@ -2184,7 +2184,7 @@ type CreateLaneRuleRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 泳道规则标签列表
-	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList"`
 
 	// 泳道规则标签关系
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitempty" name:"RuleTagRelationship"`
@@ -2638,7 +2638,7 @@ type CreateTaskFlowRequest struct {
 	TriggerRule *TaskRule `json:"TriggerRule,omitempty" name:"TriggerRule"`
 
 	// 工作流任务节点列表
-	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitempty" name:"FlowEdges" list`
+	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitempty" name:"FlowEdges"`
 
 	// 工作流执行超时时间
 	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
@@ -2723,7 +2723,7 @@ type CreateTaskRequest struct {
 	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
 
 	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments"`
 
 	// 判断任务成功的操作符
 	SuccessOperator *string `json:"SuccessOperator,omitempty" name:"SuccessOperator"`
@@ -2807,7 +2807,7 @@ type CreateUnitRuleRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 规则项列表
-	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList"`
 }
 
 func (r *CreateUnitRuleRequest) ToJsonString() string {
@@ -3122,7 +3122,7 @@ type DeleteImageTagsRequest struct {
 	*tchttp.BaseRequest
 
 	// 镜像版本数组
-	ImageTags []*DeleteImageTag `json:"ImageTags,omitempty" name:"ImageTags" list`
+	ImageTags []*DeleteImageTag `json:"ImageTags,omitempty" name:"ImageTags"`
 }
 
 func (r *DeleteImageTagsRequest) ToJsonString() string {
@@ -3328,7 +3328,7 @@ type DeletePathRewritesRequest struct {
 	*tchttp.BaseRequest
 
 	// 路径重写规则IDs
-	PathRewriteIds []*string `json:"PathRewriteIds,omitempty" name:"PathRewriteIds" list`
+	PathRewriteIds []*string `json:"PathRewriteIds,omitempty" name:"PathRewriteIds"`
 }
 
 func (r *DeletePathRewritesRequest) ToJsonString() string {
@@ -3380,7 +3380,7 @@ type DeletePkgsRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 需要删除的程序包ID列表
-	PkgIds []*string `json:"PkgIds,omitempty" name:"PkgIds" list`
+	PkgIds []*string `json:"PkgIds,omitempty" name:"PkgIds"`
 
 	// 程序包仓库类型
 	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
@@ -3636,7 +3636,7 @@ type DeleteUnitNamespacesRequest struct {
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
 
 	// 单元化命名空间ID数组
-	UnitNamespaceList []*string `json:"UnitNamespaceList,omitempty" name:"UnitNamespaceList" list`
+	UnitNamespaceList []*string `json:"UnitNamespaceList,omitempty" name:"UnitNamespaceList"`
 }
 
 func (r *DeleteUnitNamespacesRequest) ToJsonString() string {
@@ -3812,7 +3812,7 @@ type DeployContainerGroupRequest struct {
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
 
 	// 部署组应用运行的环境变量。若不指定该参数，则默认不设置额外的环境变量。
-	Envs []*Env `json:"Envs,omitempty" name:"Envs" list`
+	Envs []*Env `json:"Envs,omitempty" name:"Envs"`
 
 	// 容器部署组的网络设置。
 	ServiceSetting *ServiceSetting `json:"ServiceSetting,omitempty" name:"ServiceSetting"`
@@ -3927,7 +3927,7 @@ type DeployGroupRequest struct {
 	DeployBetaEnable *bool `json:"DeployBetaEnable,omitempty" name:"DeployBetaEnable"`
 
 	// 滚动发布每个批次参与的实例比率
-	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch" list`
+	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch"`
 
 	// 滚动发布的执行方式
 	DeployExeMode *string `json:"DeployExeMode,omitempty" name:"DeployExeMode"`
@@ -4289,7 +4289,7 @@ type DescribeApiRateLimitRulesResponse struct {
 	Response *struct {
 
 		// 限流结果
-		Result []*ApiRateLimitRule `json:"Result,omitempty" name:"Result" list`
+		Result []*ApiRateLimitRule `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4407,7 +4407,7 @@ type DescribeApiVersionsResponse struct {
 	Response *struct {
 
 		// API版本列表
-		Result []*ApiVersionArray `json:"Result,omitempty" name:"Result" list`
+		Result []*ApiVersionArray `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4549,10 +4549,10 @@ type DescribeApplicationsRequest struct {
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
 
 	// 应用资源类型数组
-	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
+	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList"`
 
 	// IdList
-	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList" list`
+	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList"`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -4997,7 +4997,7 @@ type DescribeConfigsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 配置项ID列表，不传入时查询全量，低优先级
-	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList" list`
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
 
 	// 配置项名称，精确查询，不传入时查询全量
 	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
@@ -5897,7 +5897,7 @@ type DescribeGroupsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 部署组资源类型列表
-	GroupResourceTypeList []*string `json:"GroupResourceTypeList,omitempty" name:"GroupResourceTypeList" list`
+	GroupResourceTypeList []*string `json:"GroupResourceTypeList,omitempty" name:"GroupResourceTypeList"`
 
 	// 部署组状态过滤字段
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -6279,7 +6279,7 @@ type DescribeMicroserviceRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 可选，根据部署组ID进行过滤
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *DescribeMicroserviceRequest) ToJsonString() string {
@@ -6350,10 +6350,10 @@ type DescribeMicroservicesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 状态过滤，online、offline、single_online
-	Status []*string `json:"Status,omitempty" name:"Status" list`
+	Status []*string `json:"Status,omitempty" name:"Status"`
 
 	// IdList
-	MicroserviceIdList []*string `json:"MicroserviceIdList,omitempty" name:"MicroserviceIdList" list`
+	MicroserviceIdList []*string `json:"MicroserviceIdList,omitempty" name:"MicroserviceIdList"`
 }
 
 func (r *DescribeMicroservicesRequest) ToJsonString() string {
@@ -6605,7 +6605,7 @@ type DescribePkgsRequest struct {
 	RepositoryId *string `json:"RepositoryId,omitempty" name:"RepositoryId"`
 
 	// 程序包类型数组支持（fatjar jar war tar.gz zip）
-	PackageTypeList []*string `json:"PackageTypeList,omitempty" name:"PackageTypeList" list`
+	PackageTypeList []*string `json:"PackageTypeList,omitempty" name:"PackageTypeList"`
 }
 
 func (r *DescribePkgsRequest) ToJsonString() string {
@@ -6740,7 +6740,7 @@ type DescribePodInstancesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤字段
-	PodNameList []*string `json:"PodNameList,omitempty" name:"PodNameList" list`
+	PodNameList []*string `json:"PodNameList,omitempty" name:"PodNameList"`
 }
 
 func (r *DescribePodInstancesRequest) ToJsonString() string {
@@ -7033,7 +7033,7 @@ type DescribePublicConfigsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 配置项ID列表，不传入时查询全量，低优先级
-	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList" list`
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
 
 	// 配置项名称，精确查询，不传入时查询全量
 	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
@@ -7383,7 +7383,7 @@ type DescribeSimpleApplicationsRequest struct {
 	*tchttp.BaseRequest
 
 	// 应用ID列表
-	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList" list`
+	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList"`
 
 	// 应用类型
 	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
@@ -7398,7 +7398,7 @@ type DescribeSimpleApplicationsRequest struct {
 	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
 
 	// 资源类型数组
-	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList" list`
+	ApplicationResourceTypeList []*string `json:"ApplicationResourceTypeList,omitempty" name:"ApplicationResourceTypeList"`
 
 	// 通过id和name进行关键词过滤
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
@@ -7457,7 +7457,7 @@ type DescribeSimpleClustersRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要查询的集群ID列表，不填或不传入时查询所有内容
-	ClusterIdList []*string `json:"ClusterIdList,omitempty" name:"ClusterIdList" list`
+	ClusterIdList []*string `json:"ClusterIdList,omitempty" name:"ClusterIdList"`
 
 	// 需要查询的集群类型，不填或不传入时查询所有内容
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
@@ -7523,7 +7523,7 @@ type DescribeSimpleGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 部署组ID列表，不填写时查询全量
-	GroupIdList []*string `json:"GroupIdList,omitempty" name:"GroupIdList" list`
+	GroupIdList []*string `json:"GroupIdList,omitempty" name:"GroupIdList"`
 
 	// 应用ID，不填写时查询全量
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -7605,7 +7605,7 @@ type DescribeSimpleNamespacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 命名空间ID列表，不传入时查询全量
-	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList" list`
+	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList"`
 
 	// 集群ID，不传入时查询全量
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -7620,13 +7620,13 @@ type DescribeSimpleNamespacesRequest struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
 	// 查询资源类型列表
-	NamespaceResourceTypeList []*string `json:"NamespaceResourceTypeList,omitempty" name:"NamespaceResourceTypeList" list`
+	NamespaceResourceTypeList []*string `json:"NamespaceResourceTypeList,omitempty" name:"NamespaceResourceTypeList"`
 
 	// 通过id和name进行过滤
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
 	// 查询的命名空间类型列表
-	NamespaceTypeList []*string `json:"NamespaceTypeList,omitempty" name:"NamespaceTypeList" list`
+	NamespaceTypeList []*string `json:"NamespaceTypeList,omitempty" name:"NamespaceTypeList"`
 
 	// 通过命名空间名精确过滤
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
@@ -8103,7 +8103,7 @@ type DescribeUnitRulesResponse struct {
 
 		// 分页列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*TsfPageUnitRule `json:"Result,omitempty" name:"Result" list`
+		Result []*TsfPageUnitRule `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8815,7 +8815,7 @@ type ExpandGroupRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 扩容的机器实例ID列表
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 func (r *ExpandGroupRequest) ToJsonString() string {
@@ -8885,7 +8885,7 @@ type GatewayApiGroupVo struct {
 
 	// 分组API列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupApis []*GatewayGroupApiVo `json:"GroupApis,omitempty" name:"GroupApis" list`
+	GroupApis []*GatewayGroupApiVo `json:"GroupApis,omitempty" name:"GroupApis"`
 
 	// 网关实例的类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9015,18 +9015,18 @@ type GatewayVo struct {
 
 	// API 分组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Groups []*GatewayApiGroupVo `json:"Groups,omitempty" name:"Groups" list`
+	Groups []*GatewayApiGroupVo `json:"Groups,omitempty" name:"Groups"`
 }
 
 type GroupApiUseStatistics struct {
 
 	// 总调用数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopStatusCode []*ApiUseStatisticsEntity `json:"TopStatusCode,omitempty" name:"TopStatusCode" list`
+	TopStatusCode []*ApiUseStatisticsEntity `json:"TopStatusCode,omitempty" name:"TopStatusCode"`
 
 	// 平均错误率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopTimeCost []*ApiUseStatisticsEntity `json:"TopTimeCost,omitempty" name:"TopTimeCost" list`
+	TopTimeCost []*ApiUseStatisticsEntity `json:"TopTimeCost,omitempty" name:"TopTimeCost"`
 
 	// 分位值对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9036,13 +9036,13 @@ type GroupApiUseStatistics struct {
 type GroupDailyUseStatistics struct {
 
 	// 总调用数
-	TopReqAmount []*GroupUseStatisticsEntity `json:"TopReqAmount,omitempty" name:"TopReqAmount" list`
+	TopReqAmount []*GroupUseStatisticsEntity `json:"TopReqAmount,omitempty" name:"TopReqAmount"`
 
 	// 平均错误率
-	TopFailureRate []*GroupUseStatisticsEntity `json:"TopFailureRate,omitempty" name:"TopFailureRate" list`
+	TopFailureRate []*GroupUseStatisticsEntity `json:"TopFailureRate,omitempty" name:"TopFailureRate"`
 
 	// 平均响应耗时
-	TopAvgTimeCost []*GroupUseStatisticsEntity `json:"TopAvgTimeCost,omitempty" name:"TopAvgTimeCost" list`
+	TopAvgTimeCost []*GroupUseStatisticsEntity `json:"TopAvgTimeCost,omitempty" name:"TopAvgTimeCost"`
 }
 
 type GroupPod struct {
@@ -9112,7 +9112,7 @@ type GroupPodResult struct {
 
 	// 列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*GroupPod `json:"Content,omitempty" name:"Content" list`
+	Content []*GroupPod `json:"Content,omitempty" name:"Content"`
 }
 
 type GroupUnitApiDailyUseStatistics struct {
@@ -9136,10 +9136,10 @@ type GroupUnitApiDailyUseStatistics struct {
 	MetricDataPointMap *MetricDataPointMap `json:"MetricDataPointMap,omitempty" name:"MetricDataPointMap"`
 
 	// 状态码分布详情
-	TopStatusCode []*ApiUseStatisticsEntity `json:"TopStatusCode,omitempty" name:"TopStatusCode" list`
+	TopStatusCode []*ApiUseStatisticsEntity `json:"TopStatusCode,omitempty" name:"TopStatusCode"`
 
 	// 耗时分布详情
-	TopTimeCost []*ApiUseStatisticsEntity `json:"TopTimeCost,omitempty" name:"TopTimeCost" list`
+	TopTimeCost []*ApiUseStatisticsEntity `json:"TopTimeCost,omitempty" name:"TopTimeCost"`
 
 	// 分位值对象
 	Quantile *QuantileEntity `json:"Quantile,omitempty" name:"Quantile"`
@@ -9151,7 +9151,7 @@ type GroupUnitApiUseStatistics struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 查询网关API监控明细对象集合
-	Content []*GroupUnitApiDailyUseStatistics `json:"Content,omitempty" name:"Content" list`
+	Content []*GroupUnitApiDailyUseStatistics `json:"Content,omitempty" name:"Content"`
 }
 
 type GroupUseStatisticsEntity struct {
@@ -9220,7 +9220,7 @@ type HealthCheckSetting struct {
 
 	// 执行命令检查方式，执行的命令。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Command []*string `json:"Command,omitempty" name:"Command" list`
+	Command []*string `json:"Command,omitempty" name:"Command"`
 
 	// TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9297,7 +9297,7 @@ type ImageRepositoryResult struct {
 
 	// 列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ImageRepository `json:"Content,omitempty" name:"Content" list`
+	Content []*ImageRepository `json:"Content,omitempty" name:"Content"`
 }
 
 type ImageTag struct {
@@ -9355,7 +9355,7 @@ type ImageTagsResult struct {
 	Server *string `json:"Server,omitempty" name:"Server"`
 
 	// 列表信息
-	Content []*ImageTag `json:"Content,omitempty" name:"Content" list`
+	Content []*ImageTag `json:"Content,omitempty" name:"Content"`
 }
 
 type Instance struct {
@@ -9600,7 +9600,7 @@ type LaneInfo struct {
 
 	// 泳道部署组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList" list`
+	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList"`
 
 	// 是否入口应用
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9608,7 +9608,7 @@ type LaneInfo struct {
 
 	// 泳道已经关联部署组的命名空间列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList" list`
+	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList"`
 }
 
 type LaneInfos struct {
@@ -9619,7 +9619,7 @@ type LaneInfos struct {
 
 	// 泳道信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*LaneInfo `json:"Content,omitempty" name:"Content" list`
+	Content []*LaneInfo `json:"Content,omitempty" name:"Content"`
 }
 
 type LaneRule struct {
@@ -9642,7 +9642,7 @@ type LaneRule struct {
 
 	// 泳道规则标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList"`
 
 	// 泳道规则标签关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9702,7 +9702,7 @@ type LaneRules struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 泳道规则列表
-	Content []*LaneRule `json:"Content,omitempty" name:"Content" list`
+	Content []*LaneRule `json:"Content,omitempty" name:"Content"`
 }
 
 type MetricDataPoint struct {
@@ -9723,13 +9723,13 @@ type MetricDataPoint struct {
 type MetricDataPointMap struct {
 
 	// 总调用次数监控数据点集合
-	SumReqAmount []*MetricDataPoint `json:"SumReqAmount,omitempty" name:"SumReqAmount" list`
+	SumReqAmount []*MetricDataPoint `json:"SumReqAmount,omitempty" name:"SumReqAmount"`
 
 	// 平均错误率监控数据点集合
-	AvgFailureRate []*MetricDataPoint `json:"AvgFailureRate,omitempty" name:"AvgFailureRate" list`
+	AvgFailureRate []*MetricDataPoint `json:"AvgFailureRate,omitempty" name:"AvgFailureRate"`
 
 	// 平均响应时间监控数据点集合
-	AvgTimeCost []*MetricDataPoint `json:"AvgTimeCost,omitempty" name:"AvgTimeCost" list`
+	AvgTimeCost []*MetricDataPoint `json:"AvgTimeCost,omitempty" name:"AvgTimeCost"`
 }
 
 type Microservice struct {
@@ -9777,7 +9777,7 @@ type ModifyContainerGroupRequest struct {
 	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
 
 	// ProtocolPorts数组
-	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts" list`
+	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
 
 	// 更新方式：0:快速更新 1:滚动更新
 	UpdateType *int64 `json:"UpdateType,omitempty" name:"UpdateType"`
@@ -9966,7 +9966,7 @@ type ModifyLaneRuleRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 泳道规则标签列表
-	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList" list`
+	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitempty" name:"RuleTagList"`
 
 	// 泳道规则标签关系
 	RuleTagRelationship *string `json:"RuleTagRelationship,omitempty" name:"RuleTagRelationship"`
@@ -10178,7 +10178,7 @@ type ModifyTaskRequest struct {
 	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
 
 	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments"`
 
 	// 高级设置
 	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
@@ -10513,7 +10513,7 @@ type Namespace struct {
 
 	// 集群数组，仅携带集群ID，集群名称，集群类型等基础信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList" list`
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
 
 	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10630,7 +10630,7 @@ type PathRewritePage struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 路径重写规则列表
-	Content []*PathRewrite `json:"Content,omitempty" name:"Content" list`
+	Content []*PathRewrite `json:"Content,omitempty" name:"Content"`
 }
 
 type PkgBind struct {
@@ -10680,7 +10680,7 @@ type PkgInfo struct {
 
 	// 程序包关联关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgBindInfo []*PkgBind `json:"PkgBindInfo,omitempty" name:"PkgBindInfo" list`
+	PkgBindInfo []*PkgBind `json:"PkgBindInfo,omitempty" name:"PkgBindInfo"`
 }
 
 type PkgList struct {
@@ -10690,7 +10690,7 @@ type PkgList struct {
 
 	// 程序包信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*PkgInfo `json:"Content,omitempty" name:"Content" list`
+	Content []*PkgInfo `json:"Content,omitempty" name:"Content"`
 
 	// 程序包仓库id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11141,7 +11141,7 @@ type RemoveInstancesRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 云主机 ID 列表
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 func (r *RemoveInstancesRequest) ToJsonString() string {
@@ -11233,7 +11233,7 @@ type RepositoryList struct {
 
 	// 仓库信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*RepositoryInfo `json:"Content,omitempty" name:"Content" list`
+	Content []*RepositoryInfo `json:"Content,omitempty" name:"Content"`
 }
 
 type ResourceFieldRef struct {
@@ -11478,7 +11478,7 @@ type ServerlessGroup struct {
 
 	// 应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApplicationName []*string `json:"ApplicationName,omitempty" name:"ApplicationName" list`
+	ApplicationName []*string `json:"ApplicationName,omitempty" name:"ApplicationName"`
 }
 
 type ServerlessGroupPage struct {
@@ -11489,7 +11489,7 @@ type ServerlessGroupPage struct {
 
 	// 列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ServerlessGroup `json:"Content,omitempty" name:"Content" list`
+	Content []*ServerlessGroup `json:"Content,omitempty" name:"Content"`
 }
 
 type ServiceConfig struct {
@@ -11498,7 +11498,7 @@ type ServiceConfig struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 端口信息列表
-	Ports []*Ports `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*Ports `json:"Ports,omitempty" name:"Ports"`
 
 	// 健康检查配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11513,7 +11513,7 @@ type ServiceSetting struct {
 
 	// 容器端口映射
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts" list`
+	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
 
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11587,7 +11587,7 @@ type ShrinkInstancesRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 下线机器实例ID列表
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList" list`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 func (r *ShrinkInstancesRequest) ToJsonString() string {
@@ -12188,11 +12188,11 @@ type TaskRecord struct {
 
 	// 分片参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments" list`
+	ShardArguments []*ShardArgument `json:"ShardArguments,omitempty" name:"ShardArguments"`
 
 	// 所属工作流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BelongFlowIds []*string `json:"BelongFlowIds,omitempty" name:"BelongFlowIds" list`
+	BelongFlowIds []*string `json:"BelongFlowIds,omitempty" name:"BelongFlowIds"`
 
 	// 任务历史ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12213,7 +12213,7 @@ type TaskRecordPage struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 任务记录列表
-	Content []*TaskRecord `json:"Content,omitempty" name:"Content" list`
+	Content []*TaskRecord `json:"Content,omitempty" name:"Content"`
 }
 
 type TaskRule struct {
@@ -12287,7 +12287,7 @@ type TsfApiListResponse struct {
 
 	// API 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*MsApiArray `json:"Content,omitempty" name:"Content" list`
+	Content []*MsApiArray `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageApiGroupInfo struct {
@@ -12296,7 +12296,7 @@ type TsfPageApiGroupInfo struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// API分组信息
-	Content []*ApiGroupInfo `json:"Content,omitempty" name:"Content" list`
+	Content []*ApiGroupInfo `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageApplication struct {
@@ -12307,7 +12307,7 @@ type TsfPageApplication struct {
 
 	// 应用信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ApplicationForPage `json:"Content,omitempty" name:"Content" list`
+	Content []*ApplicationForPage `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageCluster struct {
@@ -12318,7 +12318,7 @@ type TsfPageCluster struct {
 
 	// 集群列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*Cluster `json:"Content,omitempty" name:"Content" list`
+	Content []*Cluster `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageConfig struct {
@@ -12327,7 +12327,7 @@ type TsfPageConfig struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 配置项列表
-	Content []*Config `json:"Content,omitempty" name:"Content" list`
+	Content []*Config `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageConfigRelease struct {
@@ -12338,7 +12338,7 @@ type TsfPageConfigRelease struct {
 
 	// 配置项发布信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ConfigRelease `json:"Content,omitempty" name:"Content" list`
+	Content []*ConfigRelease `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageConfigReleaseLog struct {
@@ -12349,7 +12349,7 @@ type TsfPageConfigReleaseLog struct {
 
 	// 配置项发布日志数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*ConfigReleaseLog `json:"Content,omitempty" name:"Content" list`
+	Content []*ConfigReleaseLog `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageContainerEvent struct {
@@ -12358,7 +12358,7 @@ type TsfPageContainerEvent struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// events 数组
-	Content []*ContainerEvent `json:"Content,omitempty" name:"Content" list`
+	Content []*ContainerEvent `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageGatewayDeployGroup struct {
@@ -12367,7 +12367,7 @@ type TsfPageGatewayDeployGroup struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
-	Content []*GatewayDeployGroup `json:"Content,omitempty" name:"Content" list`
+	Content []*GatewayDeployGroup `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageGatewayPlugin struct {
@@ -12378,7 +12378,7 @@ type TsfPageGatewayPlugin struct {
 
 	// 记录实体列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*GatewayPlugin `json:"Content,omitempty" name:"Content" list`
+	Content []*GatewayPlugin `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageInstance struct {
@@ -12389,7 +12389,7 @@ type TsfPageInstance struct {
 
 	// 机器实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*Instance `json:"Content,omitempty" name:"Content" list`
+	Content []*Instance `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageMicroservice struct {
@@ -12400,7 +12400,7 @@ type TsfPageMicroservice struct {
 
 	// 微服务列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*Microservice `json:"Content,omitempty" name:"Content" list`
+	Content []*Microservice `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageMsInstance struct {
@@ -12411,7 +12411,7 @@ type TsfPageMsInstance struct {
 
 	// 微服务实例列表内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*MsInstance `json:"Content,omitempty" name:"Content" list`
+	Content []*MsInstance `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageNamespace struct {
@@ -12422,7 +12422,7 @@ type TsfPageNamespace struct {
 
 	// 命名空间列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*Namespace `json:"Content,omitempty" name:"Content" list`
+	Content []*Namespace `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageSimpleApplication struct {
@@ -12433,7 +12433,7 @@ type TsfPageSimpleApplication struct {
 
 	// 简单应用列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*SimpleApplication `json:"Content,omitempty" name:"Content" list`
+	Content []*SimpleApplication `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageSimpleGroup struct {
@@ -12444,7 +12444,7 @@ type TsfPageSimpleGroup struct {
 
 	// 简单部署组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*SimpleGroup `json:"Content,omitempty" name:"Content" list`
+	Content []*SimpleGroup `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageUnitNamespace struct {
@@ -12453,7 +12453,7 @@ type TsfPageUnitNamespace struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
-	Content []*UnitNamespace `json:"Content,omitempty" name:"Content" list`
+	Content []*UnitNamespace `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageUnitRule struct {
@@ -12462,7 +12462,7 @@ type TsfPageUnitRule struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
-	Content []*UnitRule `json:"Content,omitempty" name:"Content" list`
+	Content []*UnitRule `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageVmGroup struct {
@@ -12473,14 +12473,14 @@ type TsfPageVmGroup struct {
 
 	// 虚拟机部署组列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content []*VmGroupSimple `json:"Content,omitempty" name:"Content" list`
+	Content []*VmGroupSimple `json:"Content,omitempty" name:"Content"`
 }
 
 type UnbindApiGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 分组网关id列表
-	GroupGatewayList []*GatewayGroupIds `json:"GroupGatewayList,omitempty" name:"GroupGatewayList" list`
+	GroupGatewayList []*GatewayGroupIds `json:"GroupGatewayList,omitempty" name:"GroupGatewayList"`
 }
 
 func (r *UnbindApiGroupRequest) ToJsonString() string {
@@ -12561,7 +12561,7 @@ type UnitRule struct {
 
 	// 规则项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList"`
 }
 
 type UnitRuleItem struct {
@@ -12596,7 +12596,7 @@ type UnitRuleItem struct {
 
 	// 规则标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitRuleTagList []*UnitRuleTag `json:"UnitRuleTagList,omitempty" name:"UnitRuleTagList" list`
+	UnitRuleTagList []*UnitRuleTag `json:"UnitRuleTagList,omitempty" name:"UnitRuleTagList"`
 }
 
 type UnitRuleTag struct {
@@ -12748,7 +12748,7 @@ type UpdateApiRateLimitRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// API ID 列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 
 	// 开启/禁用，enabled/disabled
 	UsableStatus *string `json:"UsableStatus,omitempty" name:"UsableStatus"`
@@ -12805,7 +12805,7 @@ type UpdateApiTimeoutsRequest struct {
 	*tchttp.BaseRequest
 
 	// API ID 列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds" list`
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
 
 	// 开启/禁用，enabled/disabled
 	UsableStatus *string `json:"UsableStatus,omitempty" name:"UsableStatus"`
@@ -13054,7 +13054,7 @@ type UpdateUnitRuleRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 规则项列表
-	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList" list`
+	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList"`
 }
 
 func (r *UpdateUnitRuleRequest) ToJsonString() string {
@@ -13222,7 +13222,7 @@ type VmGroup struct {
 
 	// 滚动发布的批次比例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch" list`
+	DeployBatch []*float64 `json:"DeployBatch,omitempty" name:"DeployBatch"`
 
 	// 滚动发布的批次执行方式
 	// 注意：此字段可能返回 null，表示取不到有效值。

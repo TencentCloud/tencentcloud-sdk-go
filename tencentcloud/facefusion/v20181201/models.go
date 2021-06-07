@@ -64,7 +64,7 @@ type DescribeMaterialListResponse struct {
 	Response *struct {
 
 		// 素材列表数据
-		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos" list`
+		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos"`
 
 		// 素材条数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
@@ -95,7 +95,7 @@ type FaceFusionLiteRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。
-	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
 
 	// 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
@@ -140,7 +140,7 @@ type FaceFusionLiteResponse struct {
 
 		// 鉴政结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -213,7 +213,7 @@ type FaceFusionResponse struct {
 		Image *string `json:"Image,omitempty" name:"Image"`
 
 		// 不适宜内容识别结果
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -274,7 +274,7 @@ type FuseFaceRequest struct {
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。
-	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 	// 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
@@ -323,7 +323,7 @@ type FuseFaceResponse struct {
 
 		// 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -380,7 +380,7 @@ type FuseFaceReviewResult struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 审核详细内容
-	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 }
 
 type MaterialFaceList struct {
@@ -437,5 +437,5 @@ type PublicMaterialInfos struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 人脸信息
-	MaterialFaceList []*MaterialFaceList `json:"MaterialFaceList,omitempty" name:"MaterialFaceList" list`
+	MaterialFaceList []*MaterialFaceList `json:"MaterialFaceList,omitempty" name:"MaterialFaceList"`
 }

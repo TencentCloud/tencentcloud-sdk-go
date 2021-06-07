@@ -189,7 +189,7 @@ type CreateNamespaceRequest struct {
 	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
 
 	// 子网列表
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 命名空间描述
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -343,7 +343,7 @@ type CreateServiceV2Request struct {
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
 	// 服务所在子网
-	SubnetList []*string `json:"SubnetList,omitempty" name:"SubnetList" list`
+	SubnetList []*string `json:"SubnetList,omitempty" name:"SubnetList"`
 
 	// 编程语言 
 	// - JAVA
@@ -504,16 +504,16 @@ type DeployServiceV2Request struct {
 	EsInfo *EsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
 
 	// 环境变量配置
-	EnvConf []*Pair `json:"EnvConf,omitempty" name:"EnvConf" list`
+	EnvConf []*Pair `json:"EnvConf,omitempty" name:"EnvConf"`
 
 	// 日志配置
-	LogConfs []*string `json:"LogConfs,omitempty" name:"LogConfs" list`
+	LogConfs []*string `json:"LogConfs,omitempty" name:"LogConfs"`
 
 	// 数据卷配置
-	StorageConfs []*StorageConf `json:"StorageConfs,omitempty" name:"StorageConfs" list`
+	StorageConfs []*StorageConf `json:"StorageConfs,omitempty" name:"StorageConfs"`
 
 	// 数据卷挂载配置
-	StorageMountConfs []*StorageMountConf `json:"StorageMountConfs,omitempty" name:"StorageMountConfs" list`
+	StorageMountConfs []*StorageMountConf `json:"StorageMountConfs,omitempty" name:"StorageMountConfs"`
 
 	// 部署类型。
 	// - JAR：通过 jar 包部署
@@ -534,7 +534,7 @@ type DeployServiceV2Request struct {
 	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
 
 	// 安全组ID s
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 日志输出配置
 	LogOutputConf *LogOutputConf `json:"LogOutputConf,omitempty" name:"LogOutputConf"`
@@ -549,10 +549,10 @@ type DeployServiceV2Request struct {
 	ImageCommand *string `json:"ImageCommand,omitempty" name:"ImageCommand"`
 
 	// 镜像命令参数
-	ImageArgs []*string `json:"ImageArgs,omitempty" name:"ImageArgs" list`
+	ImageArgs []*string `json:"ImageArgs,omitempty" name:"ImageArgs"`
 
 	// 服务端口映射
-	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings" list`
+	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings"`
 
 	// 是否添加默认注册中心配置
 	UseRegistryDefaultConfig *bool `json:"UseRegistryDefaultConfig,omitempty" name:"UseRegistryDefaultConfig"`
@@ -699,7 +699,7 @@ type DescribeIngressesRequest struct {
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
 	// ingress 规则名列表
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 }
 
 func (r *DescribeIngressesRequest) ToJsonString() string {
@@ -730,7 +730,7 @@ type DescribeIngressesResponse struct {
 
 		// ingress 数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*IngressInfo `json:"Result,omitempty" name:"Result" list`
+		Result []*IngressInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -849,7 +849,7 @@ type DescribeRelatedIngressesResponse struct {
 
 		// ingress 数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result []*IngressInfo `json:"Result,omitempty" name:"Result" list`
+		Result []*IngressInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -882,7 +882,7 @@ type DescribeRunPodPage struct {
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 
 	// 条目
-	PodList []*RunVersionPod `json:"PodList,omitempty" name:"PodList" list`
+	PodList []*RunVersionPod `json:"PodList,omitempty" name:"PodList"`
 }
 
 type DescribeServiceRunPodListV2Request struct {
@@ -995,7 +995,7 @@ type IngressInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// rules 配置
-	Rules []*IngressRule `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*IngressRule `json:"Rules,omitempty" name:"Rules"`
 
 	// clb ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1003,7 +1003,7 @@ type IngressInfo struct {
 
 	// tls 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tls []*IngressTls `json:"Tls,omitempty" name:"Tls" list`
+	Tls []*IngressTls `json:"Tls,omitempty" name:"Tls"`
 
 	// eks clusterId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1055,13 +1055,13 @@ type IngressRulePath struct {
 type IngressRuleValue struct {
 
 	// rule 整体配置
-	Paths []*IngressRulePath `json:"Paths,omitempty" name:"Paths" list`
+	Paths []*IngressRulePath `json:"Paths,omitempty" name:"Paths"`
 }
 
 type IngressTls struct {
 
 	// host 数组, 空数组表示全部域名的默认证书
-	Hosts []*string `json:"Hosts,omitempty" name:"Hosts" list`
+	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
 
 	// secret name，如使用证书，则填空字符串
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
@@ -1158,7 +1158,7 @@ type ModifyNamespaceRequest struct {
 	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
 
 	// 子网网络
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
@@ -1273,7 +1273,7 @@ func (r *ModifyServiceInfoResponse) FromJsonString(s string) error {
 type NamespacePage struct {
 
 	// 分页内容
-	Records []*TemNamespaceInfo `json:"Records,omitempty" name:"Records" list`
+	Records []*TemNamespaceInfo `json:"Records,omitempty" name:"Records"`
 
 	// 总数
 	Total *int64 `json:"Total,omitempty" name:"Total"`

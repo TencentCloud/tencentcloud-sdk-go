@@ -83,7 +83,7 @@ type AnalyzeDenseLandmarksResponse struct {
 		ImageHeight *int64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 稠密人脸关键点具体信息。
-		DenseFaceShapeSet []*DenseFaceShape `json:"DenseFaceShapeSet,omitempty" name:"DenseFaceShapeSet" list`
+		DenseFaceShapeSet []*DenseFaceShape `json:"DenseFaceShapeSet,omitempty" name:"DenseFaceShapeSet"`
 
 		// 人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -172,7 +172,7 @@ type AnalyzeFaceResponse struct {
 		ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 五官定位（人脸关键点）具体信息。
-		FaceShapeSet []*FaceShape `json:"FaceShapeSet,omitempty" name:"FaceShapeSet" list`
+		FaceShapeSet []*FaceShape `json:"FaceShapeSet,omitempty" name:"FaceShapeSet"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -229,7 +229,7 @@ type Candidate struct {
 
 	// 包含此人员的人员库及描述字段内容列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
+	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos"`
 }
 
 type CheckSimilarPersonRequest struct {
@@ -238,7 +238,7 @@ type CheckSimilarPersonRequest struct {
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
 	// 数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 人员查重整理力度的控制。
 	// 1：力度较高的档案整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
@@ -510,7 +510,7 @@ type CopyPersonRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 待加入的人员库列表，数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *CopyPersonRequest) ToJsonString() string {
@@ -541,7 +541,7 @@ type CopyPersonResponse struct {
 		SucGroupNum *uint64 `json:"SucGroupNum,omitempty" name:"SucGroupNum"`
 
 		// 成功加入的人员库列表
-		SucGroupIds []*string `json:"SucGroupIds,omitempty" name:"SucGroupIds" list`
+		SucGroupIds []*string `json:"SucGroupIds,omitempty" name:"SucGroupIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -570,7 +570,7 @@ type CreateFaceRequest struct {
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -580,7 +580,7 @@ type CreateFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
 	// 默认值60分。取值范围[0,100] 。
@@ -632,20 +632,20 @@ type CreateFaceResponse struct {
 		SucFaceNum *uint64 `json:"SucFaceNum,omitempty" name:"SucFaceNum"`
 
 		// 加入成功的人脸ID列表
-		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds" list`
+		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds"`
 
 		// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
 	// -1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
 	// 其他非 0 值代表算法服务异常。 
 	// RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
-		RetCode []*int64 `json:"RetCode,omitempty" name:"RetCode" list`
+		RetCode []*int64 `json:"RetCode,omitempty" name:"RetCode"`
 
 		// 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
 	// 例， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
-		SucIndexes []*uint64 `json:"SucIndexes,omitempty" name:"SucIndexes" list`
+		SucIndexes []*uint64 `json:"SucIndexes,omitempty" name:"SucIndexes"`
 
 		// 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
-		SucFaceRects []*FaceRect `json:"SucFaceRects,omitempty" name:"SucFaceRects" list`
+		SucFaceRects []*FaceRect `json:"SucFaceRects,omitempty" name:"SucFaceRects"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -682,7 +682,7 @@ type CreateGroupRequest struct {
 	// 例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 
 	// 则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 
 	// 可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
-	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 	// 人员库信息备注，[0，40]个字符。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
@@ -761,7 +761,7 @@ type CreatePersonRequest struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 	// 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
-	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
+	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -871,7 +871,7 @@ type DeleteFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 待删除的人脸ID列表，数组元素取值为增加人脸接口返回的FaceId
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 }
 
 func (r *DeleteFaceRequest) ToJsonString() string {
@@ -902,7 +902,7 @@ type DeleteFaceResponse struct {
 		SucDeletedNum *uint64 `json:"SucDeletedNum,omitempty" name:"SucDeletedNum"`
 
 		// 删除成功的人脸ID列表
-		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds" list`
+		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1077,46 +1077,46 @@ type DenseFaceShape struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 描述左侧眼睛轮廓的 XX 点。
-	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye" list`
+	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye"`
 
 	// 描述右侧眼睛轮廓的 XX 点。
-	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye" list`
+	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye"`
 
 	// 描述左侧眉毛轮廓的 XX 点。
-	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow" list`
+	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow"`
 
 	// 描述右侧眉毛轮廓的 XX 点。
-	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow" list`
+	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow"`
 
 	// 描述外嘴巴轮廓的 XX 点， 从左侧开始逆时针返回。
-	MouthOutside []*Point `json:"MouthOutside,omitempty" name:"MouthOutside" list`
+	MouthOutside []*Point `json:"MouthOutside,omitempty" name:"MouthOutside"`
 
 	// 描述内嘴巴轮廓的 XX 点，从左侧开始逆时针返回。
-	MouthInside []*Point `json:"MouthInside,omitempty" name:"MouthInside" list`
+	MouthInside []*Point `json:"MouthInside,omitempty" name:"MouthInside"`
 
 	// 描述鼻子轮廓的 XX 点。
-	Nose []*Point `json:"Nose,omitempty" name:"Nose" list`
+	Nose []*Point `json:"Nose,omitempty" name:"Nose"`
 
 	// 左瞳孔轮廓的 XX 个点。
-	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil" list`
+	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil"`
 
 	// 右瞳孔轮廓的 XX 个点。
-	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil" list`
+	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil"`
 
 	// 中轴线轮廓的 XX 个点。
-	CentralAxis []*Point `json:"CentralAxis,omitempty" name:"CentralAxis" list`
+	CentralAxis []*Point `json:"CentralAxis,omitempty" name:"CentralAxis"`
 
 	// 下巴轮廓的 XX 个点。
-	Chin []*Point `json:"Chin,omitempty" name:"Chin" list`
+	Chin []*Point `json:"Chin,omitempty" name:"Chin"`
 
 	// 左眼袋的 XX 个点。
-	LeftEyeBags []*Point `json:"LeftEyeBags,omitempty" name:"LeftEyeBags" list`
+	LeftEyeBags []*Point `json:"LeftEyeBags,omitempty" name:"LeftEyeBags"`
 
 	// 右眼袋的 XX 个点。
-	RightEyeBags []*Point `json:"RightEyeBags,omitempty" name:"RightEyeBags" list`
+	RightEyeBags []*Point `json:"RightEyeBags,omitempty" name:"RightEyeBags"`
 
 	// 额头的 XX 个点。
-	Forehead []*Point `json:"Forehead,omitempty" name:"Forehead" list`
+	Forehead []*Point `json:"Forehead,omitempty" name:"Forehead"`
 }
 
 type DetectFaceAttributesRequest struct {
@@ -1192,7 +1192,7 @@ type DetectFaceAttributesResponse struct {
 		ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 人脸信息列表。
-		FaceDetailInfos []*FaceDetailInfo `json:"FaceDetailInfos,omitempty" name:"FaceDetailInfos" list`
+		FaceDetailInfos []*FaceDetailInfo `json:"FaceDetailInfos,omitempty" name:"FaceDetailInfos"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -1302,7 +1302,7 @@ type DetectFaceResponse struct {
 		ImageHeight *int64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
-		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos" list`
+		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -1480,7 +1480,7 @@ type EstimateCheckSimilarPersonCostTimeRequest struct {
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
 	// 数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
@@ -1815,31 +1815,31 @@ type FaceRect struct {
 type FaceShape struct {
 
 	// 描述脸型轮廓的 21 点。
-	FaceProfile []*Point `json:"FaceProfile,omitempty" name:"FaceProfile" list`
+	FaceProfile []*Point `json:"FaceProfile,omitempty" name:"FaceProfile"`
 
 	// 描述左侧眼睛轮廓的 8 点。
-	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye" list`
+	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye"`
 
 	// 描述右侧眼睛轮廓的 8 点。
-	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye" list`
+	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye"`
 
 	// 描述左侧眉毛轮廓的 8 点。
-	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow" list`
+	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow"`
 
 	// 描述右侧眉毛轮廓的 8 点。
-	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow" list`
+	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow"`
 
 	// 描述嘴巴轮廓的 22 点。
-	Mouth []*Point `json:"Mouth,omitempty" name:"Mouth" list`
+	Mouth []*Point `json:"Mouth,omitempty" name:"Mouth"`
 
 	// 描述鼻子轮廓的 13 点。
-	Nose []*Point `json:"Nose,omitempty" name:"Nose" list`
+	Nose []*Point `json:"Nose,omitempty" name:"Nose"`
 
 	// 左瞳孔轮廓的 1 个点。
-	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil" list`
+	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil"`
 
 	// 右瞳孔轮廓的 1 个点。
-	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil" list`
+	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil"`
 }
 
 type GetCheckSimilarPersonJobIdListRequest struct {
@@ -1877,7 +1877,7 @@ type GetCheckSimilarPersonJobIdListResponse struct {
 	Response *struct {
 
 		// 人员查重任务信息列表。
-		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos" list`
+		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos"`
 
 		// 查重任务总数量。
 		JobIdNum *uint64 `json:"JobIdNum,omitempty" name:"JobIdNum"`
@@ -1935,7 +1935,7 @@ type GetGroupInfoResponse struct {
 		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 		// 人员库自定义描述字段
-		GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+		GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 		// 人员库信息备注
 		Tag *string `json:"Tag,omitempty" name:"Tag"`
@@ -1997,7 +1997,7 @@ type GetGroupListResponse struct {
 	Response *struct {
 
 		// 返回的人员库信息
-		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos" list`
+		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos"`
 
 		// 人员库总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2056,7 +2056,7 @@ type GetPersonBaseInfoResponse struct {
 		Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 		// 包含的人脸 ID 列表
-		FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+		FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2113,7 +2113,7 @@ type GetPersonGroupInfoResponse struct {
 	Response *struct {
 
 		// 包含此人员的人员库及描述字段内容列表
-		PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
+		PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos"`
 
 		// 人员库总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2230,7 +2230,7 @@ type GetPersonListResponse struct {
 	Response *struct {
 
 		// 返回的人员信息
-		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos" list`
+		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos"`
 
 		// 该人员库的人员数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2348,7 +2348,7 @@ type GetUpgradeGroupFaceModelVersionJobListResponse struct {
 	Response *struct {
 
 		// 人员库升级任务信息列表。
-		JobInfos []*UpgradeJobInfo `json:"JobInfos,omitempty" name:"JobInfos" list`
+		JobInfos []*UpgradeJobInfo `json:"JobInfos,omitempty" name:"JobInfos"`
 
 		// 升级任务总数量。
 		JobNum *uint64 `json:"JobNum,omitempty" name:"JobNum"`
@@ -2450,7 +2450,7 @@ type GroupCandidate struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 识别出的最相似候选人。
-	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 }
 
 type GroupExDescriptionInfo struct {
@@ -2473,7 +2473,7 @@ type GroupInfo struct {
 
 	// 人员库自定义描述字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 	// 人员库信息备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2552,7 +2552,7 @@ type ModifyGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 需要修改的人员库自定义描述字段，key-value
-	GroupExDescriptionInfos []*GroupExDescriptionInfo `json:"GroupExDescriptionInfos,omitempty" name:"GroupExDescriptionInfos" list`
+	GroupExDescriptionInfos []*GroupExDescriptionInfo `json:"GroupExDescriptionInfos,omitempty" name:"GroupExDescriptionInfos"`
 
 	// 人员库信息备注
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
@@ -2664,7 +2664,7 @@ type ModifyPersonGroupInfoRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 需要修改的人员描述字段内容，key-value
-	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
+	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos"`
 }
 
 func (r *ModifyPersonGroupInfoRequest) ToJsonString() string {
@@ -2731,7 +2731,7 @@ type PersonGroupInfo struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 人员描述字段内容
-	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions" list`
+	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions"`
 }
 
 type PersonInfo struct {
@@ -2746,10 +2746,10 @@ type PersonInfo struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 	// 人员描述字段内容
-	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions" list`
+	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions"`
 
 	// 包含的人脸照片列表
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 	// 人员的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Person创建时间的毫秒数。 
 	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
@@ -2768,7 +2768,7 @@ type Point struct {
 type Result struct {
 
 	// 识别出的最相似候选人
-	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 
 	// 检测出的人脸框位置
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
@@ -2784,7 +2784,7 @@ type ResultsReturnsByGroup struct {
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
 
 	// 识别结果。
-	GroupCandidates []*GroupCandidate `json:"GroupCandidates,omitempty" name:"GroupCandidates" list`
+	GroupCandidates []*GroupCandidate `json:"GroupCandidates,omitempty" name:"GroupCandidates"`
 
 	// 检测出的人脸图片状态返回码。0 表示正常。 
 	// -1601代表不符合图片质量控制要求，此时Candidate内容为空。
@@ -2842,7 +2842,7 @@ type SearchFacesRequest struct {
 
 	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
 	// 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -2923,7 +2923,7 @@ type SearchFacesResponse struct {
 	Response *struct {
 
 		// 识别结果。
-		Results []*Result `json:"Results,omitempty" name:"Results" list`
+		Results []*Result `json:"Results,omitempty" name:"Results"`
 
 		// 搜索的人员库中包含的人脸数。
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
@@ -2952,7 +2952,7 @@ type SearchFacesReturnsByGroupRequest struct {
 
 	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
 	// 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -3037,7 +3037,7 @@ type SearchFacesReturnsByGroupResponse struct {
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
 
 		// 识别结果。
-		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -3062,7 +3062,7 @@ type SearchPersonsRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -3144,7 +3144,7 @@ type SearchPersonsResponse struct {
 	Response *struct {
 
 		// 识别结果。
-		Results []*Result `json:"Results,omitempty" name:"Results" list`
+		Results []*Result `json:"Results,omitempty" name:"Results"`
 
 		// 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
@@ -3173,7 +3173,7 @@ type SearchPersonsReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -3256,7 +3256,7 @@ type SearchPersonsReturnsByGroupResponse struct {
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
 
 		// 识别结果。
-		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`

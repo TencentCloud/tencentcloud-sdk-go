@@ -27,7 +27,7 @@ type AlarmInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTargetInfo `json:"AlarmTargets,omitempty" name:"AlarmTargets" list`
+	AlarmTargets []*AlarmTargetInfo `json:"AlarmTargets,omitempty" name:"AlarmTargets"`
 
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
@@ -42,7 +42,7 @@ type AlarmInfo struct {
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds" list`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds"`
 
 	// 开启状态。
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -78,11 +78,11 @@ type AlarmNotice struct {
 
 	// 告警通知模板接收者信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers" list`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
 
 	// 告警通知模板回调信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks" list`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
 
 	// 告警通知模板ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -152,7 +152,7 @@ type CallBackInfo struct {
 
 	// 回调时的Headers
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Headers []*string `json:"Headers,omitempty" name:"Headers" list`
+	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -168,10 +168,10 @@ type CreateAlarmNoticeRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 告警模板接收者信息。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers" list`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
 
 	// 告警模板回调信息。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks" list`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -226,7 +226,7 @@ type CreateAlarmRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitempty" name:"AlarmTargets" list`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitempty" name:"AlarmTargets"`
 
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
@@ -241,7 +241,7 @@ type CreateAlarmRequest struct {
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds" list`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds"`
 
 	// 是否开启告警策略。默认值为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -433,7 +433,7 @@ type CreateMachineGroupRequest struct {
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的机器组。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
 	AutoUpdate *bool `json:"AutoUpdate,omitempty" name:"AutoUpdate"`
@@ -509,7 +509,7 @@ type CreateTopicRequest struct {
 	PartitionCount *int64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启自动分裂，默认值为false
 	AutoSplit *bool `json:"AutoSplit,omitempty" name:"AutoSplit"`
@@ -879,7 +879,7 @@ type DescribeAlarmNoticesRequest struct {
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -915,7 +915,7 @@ type DescribeAlarmNoticesResponse struct {
 
 		// 告警通知模板列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AlarmNotices []*AlarmNotice `json:"AlarmNotices,omitempty" name:"AlarmNotices" list`
+		AlarmNotices []*AlarmNotice `json:"AlarmNotices,omitempty" name:"AlarmNotices"`
 
 		// 符合条件的告警通知模板总数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -970,7 +970,7 @@ type DescribeAlarmsRequest struct {
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1005,7 +1005,7 @@ type DescribeAlarmsResponse struct {
 	Response *struct {
 
 		// 告警策略列表。
-		Alarms []*AlarmInfo `json:"Alarms,omitempty" name:"Alarms" list`
+		Alarms []*AlarmInfo `json:"Alarms,omitempty" name:"Alarms"`
 
 		// 符合查询条件的告警策略数目。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1065,7 +1065,7 @@ type DescribeExportsResponse struct {
 	Response *struct {
 
 		// 日志导出列表
-		Exports []*ExportInfo `json:"Exports,omitempty" name:"Exports" list`
+		Exports []*ExportInfo `json:"Exports,omitempty" name:"Exports"`
 
 		// 总数目
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1196,7 +1196,7 @@ type DescribeLogContextResponse struct {
 	Response *struct {
 
 		// 日志上下文信息集合
-		LogContextInfos []*LogContextInfo `json:"LogContextInfos,omitempty" name:"LogContextInfos" list`
+		LogContextInfos []*LogContextInfo `json:"LogContextInfos,omitempty" name:"LogContextInfos"`
 
 		// 上文日志是否已经返回
 		PrevOver *bool `json:"PrevOver,omitempty" name:"PrevOver"`
@@ -1254,7 +1254,7 @@ type DescribeMachineGroupsRequest struct {
 	// 
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1290,7 +1290,7 @@ type DescribeMachineGroupsResponse struct {
 
 		// 机器组信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitempty" name:"MachineGroups" list`
+		MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitempty" name:"MachineGroups"`
 
 		// 分页的总数目
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1342,7 +1342,7 @@ type DescribeMachinesResponse struct {
 	Response *struct {
 
 		// 机器状态信息组
-		Machines []*MachineInfo `json:"Machines,omitempty" name:"Machines" list`
+		Machines []*MachineInfo `json:"Machines,omitempty" name:"Machines"`
 
 		// 机器组是否开启自动升级功能
 		AutoUpdate *int64 `json:"AutoUpdate,omitempty" name:"AutoUpdate"`
@@ -1406,7 +1406,7 @@ type DescribePartitionsResponse struct {
 	Response *struct {
 
 		// 分区列表
-		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions" list`
+		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1467,7 +1467,7 @@ type DescribeTopicsRequest struct {
 	// 
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1502,7 +1502,7 @@ type DescribeTopicsResponse struct {
 	Response *struct {
 
 		// 日志主题列表
-		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics" list`
+		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics"`
 
 		// 总数目
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1571,7 +1571,7 @@ type Filter struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 需要过滤的值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FullTextInfo struct {
@@ -1644,15 +1644,15 @@ type GetAlarmLogResponse struct {
 
 		// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ColNames []*string `json:"ColNames,omitempty" name:"ColNames" list`
+		ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
 
 		// 日志查询结果；当Analysis为True时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*LogInfo `json:"Results,omitempty" name:"Results" list`
+		Results []*LogInfo `json:"Results,omitempty" name:"Results"`
 
 		// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults" list`
+		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1740,7 +1740,7 @@ type LogItem struct {
 type LogItems struct {
 
 	// 分析结果返回的KV数据对
-	Data []*LogItem `json:"Data,omitempty" name:"Data" list`
+	Data []*LogItem `json:"Data,omitempty" name:"Data"`
 }
 
 type MachineGroupInfo struct {
@@ -1759,7 +1759,7 @@ type MachineGroupInfo struct {
 
 	// 机器组绑定的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1784,7 +1784,7 @@ type MachineGroupTypeInfo struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 机器描述列表
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type MachineInfo struct {
@@ -1849,7 +1849,7 @@ type MergePartitionResponse struct {
 	Response *struct {
 
 		// 合并结果集
-		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions" list`
+		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1883,10 +1883,10 @@ type ModifyAlarmNoticeRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 告警模板接收者信息。
-	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers" list`
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
 
 	// 告警模板回调信息。
-	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks" list`
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -1954,10 +1954,10 @@ type ModifyAlarmRequest struct {
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitempty" name:"AlarmPeriod"`
 
 	// 关联的告警通知模板列表。
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds" list`
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds"`
 
 	// 监控对象列表。
-	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitempty" name:"AlarmTargets" list`
+	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitempty" name:"AlarmTargets"`
 
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -2077,7 +2077,7 @@ type ModifyMachineGroupRequest struct {
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启机器组自动更新
 	AutoUpdate *bool `json:"AutoUpdate,omitempty" name:"AutoUpdate"`
@@ -2148,7 +2148,7 @@ type ModifyTopicRequest struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，并且不能有重复的键值对。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 该日志主题是否开始采集
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -2224,14 +2224,14 @@ type NoticeReceiver struct {
 	ReceiverType *string `json:"ReceiverType,omitempty" name:"ReceiverType"`
 
 	// 接收者。
-	ReceiverIds []*int64 `json:"ReceiverIds,omitempty" name:"ReceiverIds" list`
+	ReceiverIds []*int64 `json:"ReceiverIds,omitempty" name:"ReceiverIds"`
 
 	// 通知接收渠道。
 	// <br><li> Email - 邮件
 	// <br><li> Sms - 短信
 	// <br><li> WeChat - 微信
 	// <br><li> Phone - 电话
-	ReceiverChannels []*string `json:"ReceiverChannels,omitempty" name:"ReceiverChannels" list`
+	ReceiverChannels []*string `json:"ReceiverChannels,omitempty" name:"ReceiverChannels"`
 
 	// 允许接收信息的开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -2286,7 +2286,7 @@ type RuleKeyValueInfo struct {
 	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
 
 	// 需要建立索引的键值对信息；最大只能配置100个键值对
-	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues" list`
+	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
 }
 
 type RuleTagInfo struct {
@@ -2295,7 +2295,7 @@ type RuleTagInfo struct {
 	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
 
 	// 标签索引配置中的字段信息
-	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues" list`
+	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
 }
 
 type SearchLogRequest struct {
@@ -2363,15 +2363,15 @@ type SearchLogResponse struct {
 
 		// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ColNames []*string `json:"ColNames,omitempty" name:"ColNames" list`
+		ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
 
 		// 日志查询结果；当Analysis为True时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*LogInfo `json:"Results,omitempty" name:"Results" list`
+		Results []*LogInfo `json:"Results,omitempty" name:"Results"`
 
 		// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults" list`
+		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2432,7 +2432,7 @@ type SplitPartitionResponse struct {
 	Response *struct {
 
 		// 分裂结果集
-		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions" list`
+		Partitions []*PartitionInfo `json:"Partitions,omitempty" name:"Partitions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2484,7 +2484,7 @@ type TopicInfo struct {
 
 	// 日志主题绑定的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 该主题是否开启自动分裂
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2530,7 +2530,7 @@ type WebCallback struct {
 
 	// 请求头。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Headers []*string `json:"Headers,omitempty" name:"Headers" list`
+	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 
 	// 请求内容。CallbackType为Http时为必选。
 	// 注意：此字段可能返回 null，表示取不到有效值。

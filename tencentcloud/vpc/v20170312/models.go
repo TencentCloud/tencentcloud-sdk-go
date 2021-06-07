@@ -28,7 +28,7 @@ type AcceptAttachCcnInstancesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 接受关联实例列表。
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *AcceptAttachCcnInstancesRequest) ToJsonString() string {
@@ -77,14 +77,14 @@ type AccountAttribute struct {
 	AttributeName *string `json:"AttributeName,omitempty" name:"AttributeName"`
 
 	// 属性值
-	AttributeValues []*string `json:"AttributeValues,omitempty" name:"AttributeValues" list`
+	AttributeValues []*string `json:"AttributeValues,omitempty" name:"AttributeValues"`
 }
 
 type AddBandwidthPackageResourcesRequest struct {
 	*tchttp.BaseRequest
 
 	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 带宽包唯一标识ID，形如'bwp-xxxx'
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
@@ -149,7 +149,7 @@ type AddIp6RulesRequest struct {
 	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
 
 	// IPV6转换规则信息
-	Ip6RuleInfos []*Ip6RuleInfo `json:"Ip6RuleInfos,omitempty" name:"Ip6RuleInfos" list`
+	Ip6RuleInfos []*Ip6RuleInfo `json:"Ip6RuleInfos,omitempty" name:"Ip6RuleInfos"`
 
 	// IPV6转换规则名称
 	Ip6RuleName *string `json:"Ip6RuleName,omitempty" name:"Ip6RuleName"`
@@ -181,7 +181,7 @@ type AddIp6RulesResponse struct {
 	Response *struct {
 
 		// IPV6转换规则唯一ID数组，形如rule6-xxxxxxxx
-		Ip6RuleSet []*string `json:"Ip6RuleSet,omitempty" name:"Ip6RuleSet" list`
+		Ip6RuleSet []*string `json:"Ip6RuleSet,omitempty" name:"Ip6RuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -259,7 +259,7 @@ type Address struct {
 
 	// 弹性公网IP关联的标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type AddressChargePrepaid struct {
@@ -280,7 +280,7 @@ type AddressTemplate struct {
 	AddressTemplateId *string `json:"AddressTemplateId,omitempty" name:"AddressTemplateId"`
 
 	// IP地址信息。
-	AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet" list`
+	AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet"`
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
@@ -295,13 +295,13 @@ type AddressTemplateGroup struct {
 	AddressTemplateGroupId *string `json:"AddressTemplateGroupId,omitempty" name:"AddressTemplateGroupId"`
 
 	// IP地址模板ID。
-	AddressTemplateIdSet []*string `json:"AddressTemplateIdSet,omitempty" name:"AddressTemplateIdSet" list`
+	AddressTemplateIdSet []*string `json:"AddressTemplateIdSet,omitempty" name:"AddressTemplateIdSet"`
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// IP地址模板实例。
-	AddressTemplateSet []*AddressTemplateItem `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet" list`
+	AddressTemplateSet []*AddressTemplateItem `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet"`
 }
 
 type AddressTemplateItem struct {
@@ -378,7 +378,7 @@ type AllocateAddressesRequest struct {
 	ApplicableForCLB *bool `json:"ApplicableForCLB,omitempty" name:"ApplicableForCLB"`
 
 	// 需要关联的标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
@@ -421,7 +421,7 @@ type AllocateAddressesResponse struct {
 	Response *struct {
 
 		// 申请到的 EIP 的唯一 ID 列表。
-		AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet" list`
+		AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet"`
 
 		// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -446,7 +446,7 @@ type AllocateIp6AddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要开通公网访问能力的IPV6地址
-	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses" list`
+	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses"`
 
 	// 带宽，单位Mbps。默认是1Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
@@ -485,7 +485,7 @@ type AllocateIp6AddressesBandwidthResponse struct {
 	Response *struct {
 
 		// 弹性公网 IPV6 的唯一 ID 列表。
-		AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet" list`
+		AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet"`
 
 		// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -513,7 +513,7 @@ type AssignIpv6AddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
-	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
 
 	// 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
 	Ipv6AddressCount *uint64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
@@ -545,7 +545,7 @@ type AssignIpv6AddressesResponse struct {
 	Response *struct {
 
 		// 分配给弹性网卡的`IPv6`地址列表。
-		Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+		Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -619,7 +619,7 @@ type AssignIpv6SubnetCidrBlockRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 分配 `IPv6` 子网段列表。
-	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks" list`
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
 }
 
 func (r *AssignIpv6SubnetCidrBlockRequest) ToJsonString() string {
@@ -647,7 +647,7 @@ type AssignIpv6SubnetCidrBlockResponse struct {
 	Response *struct {
 
 		// 分配 `IPv6` 子网段列表。
-		Ipv6SubnetCidrBlockSet []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlockSet,omitempty" name:"Ipv6SubnetCidrBlockSet" list`
+		Ipv6SubnetCidrBlockSet []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlockSet,omitempty" name:"Ipv6SubnetCidrBlockSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -672,7 +672,7 @@ type AssignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
-	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
@@ -704,7 +704,7 @@ type AssignPrivateIpAddressesResponse struct {
 	Response *struct {
 
 		// 内网IP详细信息。
-		PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitempty" name:"PrivateIpAddressSet" list`
+		PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitempty" name:"PrivateIpAddressSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -735,7 +735,7 @@ type AssistantCidr struct {
 
 	// 辅助CIDR拆分的子网。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet"`
 }
 
 type AssociateAddressRequest struct {
@@ -913,7 +913,7 @@ type AssociateNatGatewayAddressRequest struct {
 	AddressCount *uint64 `json:"AddressCount,omitempty" name:"AddressCount"`
 
 	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 弹性IP可用区，自动分配弹性IP时传递。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -968,7 +968,7 @@ type AssociateNetworkAclSubnetsRequest struct {
 	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
 
 	// 子网实例ID数组。例如：[subnet-12345678]
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *AssociateNetworkAclSubnetsRequest) ToJsonString() string {
@@ -1015,10 +1015,10 @@ type AssociateNetworkInterfaceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
-	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds"`
 
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *AssociateNetworkInterfaceSecurityGroupsRequest) ToJsonString() string {
@@ -1068,7 +1068,7 @@ type AttachCcnInstancesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 关联网络实例列表
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 
 	// CCN所属UIN（根账号），默认当前账号所属UIN
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
@@ -1122,7 +1122,7 @@ type AttachClassicLinkVpcRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// CVM实例ID
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *AttachClassicLinkVpcRequest) ToJsonString() string {
@@ -1294,7 +1294,7 @@ type BandwidthPackage struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 带宽包资源信息
-	ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+	ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 	// 带宽包限速大小。单位：Mbps，-1表示不限速。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -1338,7 +1338,7 @@ type CCN struct {
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 是否支持云联网路由优先级的功能。False：不支持，True：支持。
 	RoutePriorityFlag *bool `json:"RoutePriorityFlag,omitempty" name:"RoutePriorityFlag"`
@@ -1368,7 +1368,7 @@ type CcnAttachedInstance struct {
 	InstanceUin *string `json:"InstanceUin,omitempty" name:"InstanceUin"`
 
 	// 关联实例CIDR。
-	CidrBlock []*string `json:"CidrBlock,omitempty" name:"CidrBlock" list`
+	CidrBlock []*string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// 关联实例状态：
 	// <li>`PENDING`：申请中</li>
@@ -1509,10 +1509,10 @@ type CheckAssistantCidrRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
-	NewCidrBlocks []*string `json:"NewCidrBlocks,omitempty" name:"NewCidrBlocks" list`
+	NewCidrBlocks []*string `json:"NewCidrBlocks,omitempty" name:"NewCidrBlocks"`
 
 	// 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
-	OldCidrBlocks []*string `json:"OldCidrBlocks,omitempty" name:"OldCidrBlocks" list`
+	OldCidrBlocks []*string `json:"OldCidrBlocks,omitempty" name:"OldCidrBlocks"`
 }
 
 func (r *CheckAssistantCidrRequest) ToJsonString() string {
@@ -1541,7 +1541,7 @@ type CheckAssistantCidrResponse struct {
 	Response *struct {
 
 		// 冲突资源信息数组。
-		ConflictSourceSet []*ConflictSource `json:"ConflictSourceSet,omitempty" name:"ConflictSourceSet" list`
+		ConflictSourceSet []*ConflictSource `json:"ConflictSourceSet,omitempty" name:"ConflictSourceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1612,7 +1612,7 @@ type CheckNetDetectStateRequest struct {
 	*tchttp.BaseRequest
 
 	// 探测目的IPv4地址数组，最多两个。
-	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp" list`
+	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp"`
 
 	// 下一跳类型，目前我们支持的类型有：
 	// VPN：VPN网关；
@@ -1673,7 +1673,7 @@ type CheckNetDetectStateResponse struct {
 	Response *struct {
 
 		// 网络探测验证结果对象数组。
-		NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet" list`
+		NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1795,7 +1795,7 @@ type ConflictSource struct {
 	SourceItem *string `json:"SourceItem,omitempty" name:"SourceItem"`
 
 	// 冲突资源条目信息
-	ConflictItemSet []*ConflictItem `json:"ConflictItemSet,omitempty" name:"ConflictItemSet" list`
+	ConflictItemSet []*ConflictItem `json:"ConflictItemSet,omitempty" name:"ConflictItemSet"`
 }
 
 type CreateAddressTemplateGroupRequest struct {
@@ -1805,7 +1805,7 @@ type CreateAddressTemplateGroupRequest struct {
 	AddressTemplateGroupName *string `json:"AddressTemplateGroupName,omitempty" name:"AddressTemplateGroupName"`
 
 	// IP地址模版实例ID，例如：ipm-mdunqeb6。
-	AddressTemplateIds []*string `json:"AddressTemplateIds,omitempty" name:"AddressTemplateIds" list`
+	AddressTemplateIds []*string `json:"AddressTemplateIds,omitempty" name:"AddressTemplateIds"`
 }
 
 func (r *CreateAddressTemplateGroupRequest) ToJsonString() string {
@@ -1858,7 +1858,7 @@ type CreateAddressTemplateRequest struct {
 	AddressTemplateName *string `json:"AddressTemplateName,omitempty" name:"AddressTemplateName"`
 
 	// 地址信息，支持 IP、CIDR、IP 范围。
-	Addresses []*string `json:"Addresses,omitempty" name:"Addresses" list`
+	Addresses []*string `json:"Addresses,omitempty" name:"Addresses"`
 }
 
 func (r *CreateAddressTemplateRequest) ToJsonString() string {
@@ -1920,19 +1920,19 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
-	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 绑定类型：0 标准型 1 扩展型。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
@@ -1996,7 +1996,7 @@ type CreateAssistantCidrRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
-	CidrBlocks []*string `json:"CidrBlocks,omitempty" name:"CidrBlocks" list`
+	CidrBlocks []*string `json:"CidrBlocks,omitempty" name:"CidrBlocks"`
 }
 
 func (r *CreateAssistantCidrRequest) ToJsonString() string {
@@ -2025,7 +2025,7 @@ type CreateAssistantCidrResponse struct {
 
 		// 辅助CIDR数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2062,7 +2062,7 @@ type CreateBandwidthPackageRequest struct {
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
@@ -2101,7 +2101,7 @@ type CreateBandwidthPackageResponse struct {
 		BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 
 		// 带宽包唯一ID列表(申请数量大于1时有效)
-		BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitempty" name:"BandwidthPackageIds" list`
+		BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitempty" name:"BandwidthPackageIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2138,7 +2138,7 @@ type CreateCcnRequest struct {
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateCcnRequest) ToJsonString() string {
@@ -2198,7 +2198,7 @@ type CreateCustomerGatewayRequest struct {
 	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateCustomerGatewayRequest) ToJsonString() string {
@@ -2390,7 +2390,7 @@ type CreateDhcpIpResponse struct {
 	Response *struct {
 
 		// 新创建的`DhcpIp`信息
-		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet" list`
+		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2415,7 +2415,7 @@ type CreateDirectConnectGatewayCcnRoutesRequest struct {
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
 
 	// 需要连通的IDC网段列表
-	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *CreateDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -2557,7 +2557,7 @@ type CreateFlowLogRequest struct {
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateFlowLogRequest) ToJsonString() string {
@@ -2591,7 +2591,7 @@ type CreateFlowLogResponse struct {
 	Response *struct {
 
 		// 创建的流日志信息
-		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2709,7 +2709,7 @@ type CreateIp6TranslatorsResponse struct {
 	Response *struct {
 
 		// 转换实例的唯一ID数组，形如"ip6-xxxxxxxx"
-		Ip6TranslatorSet []*string `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet" list`
+		Ip6TranslatorSet []*string `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2791,7 +2791,7 @@ type CreateNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
 	// NAT网关的端口转换规则。
-	DestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRules,omitempty" name:"DestinationIpPortTranslationNatRules" list`
+	DestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRules,omitempty" name:"DestinationIpPortTranslationNatRules"`
 }
 
 func (r *CreateNatGatewayDestinationIpPortTranslationNatRuleRequest) ToJsonString() string {
@@ -2853,13 +2853,13 @@ type CreateNatGatewayRequest struct {
 	AddressCount *uint64 `json:"AddressCount,omitempty" name:"AddressCount"`
 
 	// 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 可用区，形如：`ap-guangzhou-1`。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// NAT网关所属子网
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
@@ -2897,7 +2897,7 @@ type CreateNatGatewayResponse struct {
 	Response *struct {
 
 		// NAT网关对象数组。
-		NatGatewaySet []*NatGateway `json:"NatGatewaySet,omitempty" name:"NatGatewaySet" list`
+		NatGatewaySet []*NatGateway `json:"NatGatewaySet,omitempty" name:"NatGatewaySet"`
 
 		// 符合条件的 NAT网关对象数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2925,7 +2925,7 @@ type CreateNatGatewaySourceIpTranslationNatRuleRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
 	// NAT网关的SNAT转换规则
-	SourceIpTranslationNatRules []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRules,omitempty" name:"SourceIpTranslationNatRules" list`
+	SourceIpTranslationNatRules []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRules,omitempty" name:"SourceIpTranslationNatRules"`
 }
 
 func (r *CreateNatGatewaySourceIpTranslationNatRuleRequest) ToJsonString() string {
@@ -2981,7 +2981,7 @@ type CreateNetDetectRequest struct {
 	NetDetectName *string `json:"NetDetectName,omitempty" name:"NetDetectName"`
 
 	// 探测目的IPv4地址数组。最多两个。
-	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp" list`
+	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp"`
 
 	// 下一跳类型，目前我们支持的类型有：
 	// VPN：VPN网关；
@@ -3125,13 +3125,13 @@ type CreateNetworkInterfaceRequest struct {
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 指定的内网IP信息，单次最多指定10个。
-	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateNetworkInterfaceRequest) ToJsonString() string {
@@ -3193,7 +3193,7 @@ type CreateRouteTableRequest struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateRouteTableRequest) ToJsonString() string {
@@ -3247,7 +3247,7 @@ type CreateRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略对象。
-	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*Route `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *CreateRoutesRequest) ToJsonString() string {
@@ -3278,7 +3278,7 @@ type CreateRoutesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 路由表对象。
-		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3359,7 +3359,7 @@ type CreateSecurityGroupRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateSecurityGroupRequest) ToJsonString() string {
@@ -3475,7 +3475,7 @@ type CreateServiceTemplateGroupRequest struct {
 	ServiceTemplateGroupName *string `json:"ServiceTemplateGroupName,omitempty" name:"ServiceTemplateGroupName"`
 
 	// 协议端口模板实例ID，例如：ppm-4dw6agho。
-	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitempty" name:"ServiceTemplateIds" list`
+	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitempty" name:"ServiceTemplateIds"`
 }
 
 func (r *CreateServiceTemplateGroupRequest) ToJsonString() string {
@@ -3528,7 +3528,7 @@ type CreateServiceTemplateRequest struct {
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" name:"ServiceTemplateName"`
 
 	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
-	Services []*string `json:"Services,omitempty" name:"Services" list`
+	Services []*string `json:"Services,omitempty" name:"Services"`
 }
 
 func (r *CreateServiceTemplateRequest) ToJsonString() string {
@@ -3590,7 +3590,7 @@ type CreateSubnetRequest struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// CDC实例ID。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
@@ -3650,10 +3650,10 @@ type CreateSubnetsRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网对象列表。
-	Subnets []*SubnetInput `json:"Subnets,omitempty" name:"Subnets" list`
+	Subnets []*SubnetInput `json:"Subnets,omitempty" name:"Subnets"`
 
 	// 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 需要增加到的CDC实例ID。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
@@ -3686,7 +3686,7 @@ type CreateSubnetsResponse struct {
 	Response *struct {
 
 		// 新创建的子网列表。
-		SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+		SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3905,13 +3905,13 @@ type CreateVpcRequest struct {
 	EnableMulticast *string `json:"EnableMulticast,omitempty" name:"EnableMulticast"`
 
 	// DNS地址，最多支持4个。
-	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers" list`
+	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 
 	// DHCP使用的域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -3980,7 +3980,7 @@ type CreateVpnConnectionRequest struct {
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
 
 	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
-	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases" list`
+	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
 
 	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
@@ -3989,7 +3989,7 @@ type CreateVpnConnectionRequest struct {
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否支持隧道内健康检查
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
@@ -4079,7 +4079,7 @@ type CreateVpnGatewayRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {
@@ -4374,7 +4374,7 @@ type DeleteAssistantCidrRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
-	CidrBlocks []*string `json:"CidrBlocks,omitempty" name:"CidrBlocks" list`
+	CidrBlocks []*string `json:"CidrBlocks,omitempty" name:"CidrBlocks"`
 }
 
 func (r *DeleteAssistantCidrRequest) ToJsonString() string {
@@ -4608,7 +4608,7 @@ type DeleteDirectConnectGatewayCcnRoutesRequest struct {
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
 
 	// 路由ID。形如：ccnr-f49l6u0z。
-	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 }
 
 func (r *DeleteDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -4797,7 +4797,7 @@ type DeleteIp6TranslatorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待释放的IPV6转换实例的唯一ID，形如‘ip6-xxxxxxxx’
-	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds"`
 }
 
 func (r *DeleteIp6TranslatorsRequest) ToJsonString() string {
@@ -4900,7 +4900,7 @@ type DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
 	// NAT网关的端口转换规则。
-	DestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRules,omitempty" name:"DestinationIpPortTranslationNatRules" list`
+	DestinationIpPortTranslationNatRules []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRules,omitempty" name:"DestinationIpPortTranslationNatRules"`
 }
 
 func (r *DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest) ToJsonString() string {
@@ -4996,7 +4996,7 @@ type DeleteNatGatewaySourceIpTranslationNatRuleRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
 	// NAT网关的SNAT ID列表，形如：`snat-df43254`。
-	NatGatewaySnatIds []*string `json:"NatGatewaySnatIds,omitempty" name:"NatGatewaySnatIds" list`
+	NatGatewaySnatIds []*string `json:"NatGatewaySnatIds,omitempty" name:"NatGatewaySnatIds"`
 }
 
 func (r *DeleteNatGatewaySourceIpTranslationNatRuleRequest) ToJsonString() string {
@@ -5230,7 +5230,7 @@ type DeleteRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略对象，删除路由策略时，仅需使用Route的RouteId字段。
-	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*Route `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *DeleteRoutesRequest) ToJsonString() string {
@@ -5258,7 +5258,7 @@ type DeleteRoutesResponse struct {
 	Response *struct {
 
 		// 已删除的路由策略详情。
-		RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet" list`
+		RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5606,7 +5606,7 @@ type DeleteVpcEndPointServiceWhiteListRequest struct {
 	*tchttp.BaseRequest
 
 	// 用户UIN数组。
-	UserUin []*string `json:"UserUin,omitempty" name:"UserUin" list`
+	UserUin []*string `json:"UserUin,omitempty" name:"UserUin"`
 
 	// 终端节点服务ID。
 	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
@@ -5821,7 +5821,7 @@ type DescribeAccountAttributesResponse struct {
 	Response *struct {
 
 		// 用户账号属性对象
-		AccountAttributeSet []*AccountAttribute `json:"AccountAttributeSet,omitempty" name:"AccountAttributeSet" list`
+		AccountAttributeSet []*AccountAttribute `json:"AccountAttributeSet,omitempty" name:"AccountAttributeSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5866,7 +5866,7 @@ type DescribeAddressQuotaResponse struct {
 	Response *struct {
 
 		// 账户 EIP 配额信息。
-		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5890,7 +5890,7 @@ type DescribeAddressTemplateGroupsRequest struct {
 	// 过滤条件。
 	// <li>address-template-group-name - String - （过滤条件）IP地址模板集合名称。</li>
 	// <li>address-template-group-id - String - （过滤条件）IP地址模板实集合例ID，例如：ipmg-mdunqeb6。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -5928,7 +5928,7 @@ type DescribeAddressTemplateGroupsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// IP地址模板。
-		AddressTemplateGroupSet []*AddressTemplateGroup `json:"AddressTemplateGroupSet,omitempty" name:"AddressTemplateGroupSet" list`
+		AddressTemplateGroupSet []*AddressTemplateGroup `json:"AddressTemplateGroupSet,omitempty" name:"AddressTemplateGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5952,7 +5952,7 @@ type DescribeAddressTemplatesRequest struct {
 	// 过滤条件。
 	// <li>address-template-name - String - （过滤条件）IP地址模板名称。</li>
 	// <li>address-template-id - String - （过滤条件）IP地址模板实例ID，例如：ipm-mdunqeb6。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -5990,7 +5990,7 @@ type DescribeAddressTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// IP地址模版。
-		AddressTemplateSet []*AddressTemplate `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet" list`
+		AddressTemplateSet []*AddressTemplate `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6012,7 +6012,7 @@ type DescribeAddressesRequest struct {
 	*tchttp.BaseRequest
 
 	// 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`AddressIds`和`Filters.address-id`。
-	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
+	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
 	// <li> address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的唯一 ID 过滤。EIP 唯一 ID 形如：eip-11112222。</li>
@@ -6029,7 +6029,7 @@ type DescribeAddressesRequest struct {
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -6068,7 +6068,7 @@ type DescribeAddressesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// EIP 详细信息列表。
-		AddressSet []*Address `json:"AddressSet,omitempty" name:"AddressSet" list`
+		AddressSet []*Address `json:"AddressSet,omitempty" name:"AddressSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6090,11 +6090,11 @@ type DescribeAssistantCidrRequest struct {
 	*tchttp.BaseRequest
 
 	// `VPC`实例`ID`数组。形如：[`vpc-6v2ht8q5`]
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6131,7 +6131,7 @@ type DescribeAssistantCidrResponse struct {
 
 		// 符合条件的辅助CIDR数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -6183,7 +6183,7 @@ type DescribeBandwidthPackageBillUsageResponse struct {
 	Response *struct {
 
 		// 当前计费用量
-		BandwidthPackageBillBandwidthSet []*BandwidthPackageBillBandwidth `json:"BandwidthPackageBillBandwidthSet,omitempty" name:"BandwidthPackageBillBandwidthSet" list`
+		BandwidthPackageBillBandwidthSet []*BandwidthPackageBillBandwidth `json:"BandwidthPackageBillBandwidthSet,omitempty" name:"BandwidthPackageBillBandwidthSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6228,7 +6228,7 @@ type DescribeBandwidthPackageQuotaResponse struct {
 	Response *struct {
 
 		// 带宽包配额详细信息
-		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6255,7 +6255,7 @@ type DescribeBandwidthPackageResourcesRequest struct {
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
 	// <li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
 	// <li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -6294,7 +6294,7 @@ type DescribeBandwidthPackageResourcesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 共享带宽包内资源 详细信息列表。
-		ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet" list`
+		ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6316,7 +6316,7 @@ type DescribeBandwidthPackagesRequest struct {
 	*tchttp.BaseRequest
 
 	// 带宽包唯一ID列表
-	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitempty" name:"BandwidthPackageIds" list`
+	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitempty" name:"BandwidthPackageIds"`
 
 	// 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 	// <li> bandwidth-package_id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
@@ -6329,7 +6329,7 @@ type DescribeBandwidthPackagesRequest struct {
 	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询带宽包偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6368,7 +6368,7 @@ type DescribeBandwidthPackagesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 描述带宽包详细信息
-		BandwidthPackageSet []*BandwidthPackage `json:"BandwidthPackageSet,omitempty" name:"BandwidthPackageSet" list`
+		BandwidthPackageSet []*BandwidthPackage `json:"BandwidthPackageSet,omitempty" name:"BandwidthPackageSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6400,7 +6400,7 @@ type DescribeCcnAttachedInstancesRequest struct {
 	// <li>instance-type - String -（过滤条件）关联实例类型。</li>
 	// <li>instance-region - String -（过滤条件）关联实例所属地域。</li>
 	// <li>instance-id - String -（过滤条件）关联实例实例ID。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 云联网实例ID
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
@@ -6444,7 +6444,7 @@ type DescribeCcnAttachedInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 关联实例列表。
-		InstanceSet []*CcnAttachedInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+		InstanceSet []*CcnAttachedInstance `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6493,7 +6493,7 @@ type DescribeCcnRegionBandwidthLimitsResponse struct {
 	Response *struct {
 
 		// 云联网（CCN）各地域出带宽上限
-		CcnRegionBandwidthLimitSet []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimitSet,omitempty" name:"CcnRegionBandwidthLimitSet" list`
+		CcnRegionBandwidthLimitSet []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimitSet,omitempty" name:"CcnRegionBandwidthLimitSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6518,7 +6518,7 @@ type DescribeCcnRoutesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
-	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 
 	// 过滤条件，参数不支持同时指定RouteIds和Filters。
 	// <li>route-id - String -（过滤条件）路由策略ID。</li>
@@ -6526,7 +6526,7 @@ type DescribeCcnRoutesRequest struct {
 	// <li>instance-type - String -（过滤条件）下一跳类型。</li>
 	// <li>instance-region - String -（过滤条件）下一跳所属地域。</li>
 	// <li>instance-id - String -（过滤条件）下一跳实例ID。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6566,7 +6566,7 @@ type DescribeCcnRoutesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// CCN路由策略对象。
-		RouteSet []*CcnRoute `json:"RouteSet,omitempty" name:"RouteSet" list`
+		RouteSet []*CcnRoute `json:"RouteSet,omitempty" name:"RouteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6588,7 +6588,7 @@ type DescribeCcnsRequest struct {
 	*tchttp.BaseRequest
 
 	// CCN实例ID。形如：ccn-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定CcnIds和Filters。
-	CcnIds []*string `json:"CcnIds,omitempty" name:"CcnIds" list`
+	CcnIds []*string `json:"CcnIds,omitempty" name:"CcnIds"`
 
 	// 过滤条件，参数不支持同时指定CcnIds和Filters。
 	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
@@ -6597,7 +6597,7 @@ type DescribeCcnsRequest struct {
 	// <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例：查询绑定了标签的CCN列表。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6644,7 +6644,7 @@ type DescribeCcnsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// CCN对象。
-		CcnSet []*CCN `json:"CcnSet,omitempty" name:"CcnSet" list`
+		CcnSet []*CCN `json:"CcnSet,omitempty" name:"CcnSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6668,7 +6668,7 @@ type DescribeClassicLinkInstancesRequest struct {
 	// 过滤条件。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID。</li>
 	// <li>vm-ip - String - （过滤条件）基础网络云服务器IP。</li>
-	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -6706,7 +6706,7 @@ type DescribeClassicLinkInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 私有网络和基础网络互通设备。
-		ClassicLinkInstanceSet []*ClassicLinkInstance `json:"ClassicLinkInstanceSet,omitempty" name:"ClassicLinkInstanceSet" list`
+		ClassicLinkInstanceSet []*ClassicLinkInstance `json:"ClassicLinkInstanceSet,omitempty" name:"ClassicLinkInstanceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6815,7 +6815,7 @@ type DescribeCrossBorderComplianceResponse struct {
 	Response *struct {
 
 		// 合规化审批单列表。
-		CrossBorderComplianceSet []*CrossBorderCompliance `json:"CrossBorderComplianceSet,omitempty" name:"CrossBorderComplianceSet" list`
+		CrossBorderComplianceSet []*CrossBorderCompliance `json:"CrossBorderComplianceSet,omitempty" name:"CrossBorderComplianceSet"`
 
 		// 合规化审批单总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -6863,7 +6863,7 @@ type DescribeCustomerGatewayVendorsResponse struct {
 	Response *struct {
 
 		// 对端网关厂商信息对象。
-		CustomerGatewayVendorSet []*CustomerGatewayVendor `json:"CustomerGatewayVendorSet,omitempty" name:"CustomerGatewayVendorSet" list`
+		CustomerGatewayVendorSet []*CustomerGatewayVendor `json:"CustomerGatewayVendorSet,omitempty" name:"CustomerGatewayVendorSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6885,13 +6885,13 @@ type DescribeCustomerGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// 对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
-	CustomerGatewayIds []*string `json:"CustomerGatewayIds,omitempty" name:"CustomerGatewayIds" list`
+	CustomerGatewayIds []*string `json:"CustomerGatewayIds,omitempty" name:"CustomerGatewayIds"`
 
 	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
 	// <li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：`cgw-mgp33pll`。</li>
 	// <li>customer-gateway-name - String - （过滤条件）用户网关名称形如：`test-cgw`。</li>
 	// <li>ip-address - String - （过滤条件）公网地址形如：`58.211.1.12`。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6927,7 +6927,7 @@ type DescribeCustomerGatewaysResponse struct {
 	Response *struct {
 
 		// 对端网关对象列表
-		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet,omitempty" name:"CustomerGatewaySet" list`
+		CustomerGatewaySet []*CustomerGateway `json:"CustomerGatewaySet,omitempty" name:"CustomerGatewaySet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -6952,7 +6952,7 @@ type DescribeDhcpIpsRequest struct {
 	*tchttp.BaseRequest
 
 	// DhcpIp实例ID。形如：dhcpip-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定DhcpIpIds和Filters。
-	DhcpIpIds []*string `json:"DhcpIpIds,omitempty" name:"DhcpIpIds" list`
+	DhcpIpIds []*string `json:"DhcpIpIds,omitempty" name:"DhcpIpIds"`
 
 	// 过滤条件，参数不支持同时指定DhcpIpIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
@@ -6960,7 +6960,7 @@ type DescribeDhcpIpsRequest struct {
 	// <li>dhcpip-id - String - （过滤条件）DhcpIp实例ID，形如：dhcpip-pxir56ns。</li>
 	// <li>dhcpip-name - String - （过滤条件）DhcpIp实例名称。</li>
 	// <li>address-ip - String - （过滤条件）DhcpIp实例的IP，根据IP精确查找。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -6996,7 +6996,7 @@ type DescribeDhcpIpsResponse struct {
 	Response *struct {
 
 		// 实例详细信息列表。
-		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet" list`
+		DhcpIpSet []*DhcpIp `json:"DhcpIpSet,omitempty" name:"DhcpIpSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -7065,7 +7065,7 @@ type DescribeDirectConnectGatewayCcnRoutesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 云联网路由（IDC网段）列表。
-		RouteSet []*DirectConnectGatewayCcnRoute `json:"RouteSet,omitempty" name:"RouteSet" list`
+		RouteSet []*DirectConnectGatewayCcnRoute `json:"RouteSet,omitempty" name:"RouteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7087,7 +7087,7 @@ type DescribeDirectConnectGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// 专线网关唯一`ID`，形如：`dcg-9o233uri`。
-	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitempty" name:"DirectConnectGatewayIds" list`
+	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitempty" name:"DirectConnectGatewayIds"`
 
 	// 过滤条件，参数不支持同时指定`DirectConnectGatewayIds`和`Filters`。
 	// <li>direct-connect-gateway-id - String - 专线网关唯一`ID`，形如：`dcg-9o233uri`。</li>
@@ -7097,7 +7097,7 @@ type DescribeDirectConnectGatewaysRequest struct {
 	// <li>network-type- String - 网络类型，可选值：`VPC`（私有网络类型）、`CCN`（云联网类型）。</li>
 	// <li>ccn-id - String - 专线网关所在云联网`ID`。</li>
 	// <li>vpc-id - String - 专线网关所在私有网络`ID`。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -7136,7 +7136,7 @@ type DescribeDirectConnectGatewaysResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 专线网关对象数组。
-		DirectConnectGatewaySet []*DirectConnectGateway `json:"DirectConnectGatewaySet,omitempty" name:"DirectConnectGatewaySet" list`
+		DirectConnectGatewaySet []*DirectConnectGateway `json:"DirectConnectGatewaySet,omitempty" name:"DirectConnectGatewaySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7189,7 +7189,7 @@ type DescribeFlowLogResponse struct {
 	Response *struct {
 
 		// 流日志信息
-		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7288,7 +7288,7 @@ type DescribeFlowLogsResponse struct {
 	Response *struct {
 
 		// 流日志实例集合
-		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog" list`
+		FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog"`
 
 		// 流日志总数目
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -7375,7 +7375,7 @@ type DescribeGatewayFlowMonitorDetailResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 网关流量监控明细。
-		GatewayFlowMonitorDetailSet []*GatewayFlowMonitorDetail `json:"GatewayFlowMonitorDetailSet,omitempty" name:"GatewayFlowMonitorDetailSet" list`
+		GatewayFlowMonitorDetailSet []*GatewayFlowMonitorDetail `json:"GatewayFlowMonitorDetailSet,omitempty" name:"GatewayFlowMonitorDetailSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7403,7 +7403,7 @@ type DescribeGatewayFlowQosRequest struct {
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
 	// 限流的云服务器内网IP。
-	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses" list`
+	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -7439,7 +7439,7 @@ type DescribeGatewayFlowQosResponse struct {
 	Response *struct {
 
 		// 实例详细信息列表。
-		GatewayQosSet []*GatewayQos `json:"GatewayQosSet,omitempty" name:"GatewayQosSet" list`
+		GatewayQosSet []*GatewayQos `json:"GatewayQosSet,omitempty" name:"GatewayQosSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -7464,7 +7464,7 @@ type DescribeHaVipsRequest struct {
 	*tchttp.BaseRequest
 
 	// `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
-	HaVipIds []*string `json:"HaVipIds,omitempty" name:"HaVipIds" list`
+	HaVipIds []*string `json:"HaVipIds,omitempty" name:"HaVipIds"`
 
 	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
 	// <li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li>
@@ -7473,7 +7473,7 @@ type DescribeHaVipsRequest struct {
 	// <li>subnet-id - String - `HAVIP`所在子网`ID`。</li>
 	// <li>vip - String - `HAVIP`的地址`VIP`。</li>
 	// <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -7512,7 +7512,7 @@ type DescribeHaVipsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// `HAVIP`对象数组。
-		HaVipSet []*HaVip `json:"HaVipSet,omitempty" name:"HaVipSet" list`
+		HaVipSet []*HaVip `json:"HaVipSet,omitempty" name:"HaVipSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7534,12 +7534,12 @@ type DescribeIp6AddressesRequest struct {
 	*tchttp.BaseRequest
 
 	// 标识 IPV6 的唯一 ID 列表。IPV6 唯一 ID 形如：`eip-11112222`。参数不支持同时指定`Ip6AddressIds`和`Filters`。
-	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds" list`
+	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
 	// <li> address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。</li>
 	// <li> network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -7578,7 +7578,7 @@ type DescribeIp6AddressesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// IPV6 详细信息列表。
-		AddressSet []*Address `json:"AddressSet,omitempty" name:"AddressSet" list`
+		AddressSet []*Address `json:"AddressSet,omitempty" name:"AddressSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7600,7 +7600,7 @@ type DescribeIp6TranslatorQuotaRequest struct {
 	*tchttp.BaseRequest
 
 	// 待查询IPV6转换实例的唯一ID列表，形如ip6-xxxxxxxx
-	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds"`
 }
 
 func (r *DescribeIp6TranslatorQuotaRequest) ToJsonString() string {
@@ -7628,7 +7628,7 @@ type DescribeIp6TranslatorQuotaResponse struct {
 
 		// 账户在指定地域的IPV6转换实例及规则配额信息
 	// QUOTAID属性是TOTAL_TRANSLATOR_QUOTA，表示账户在指定地域的IPV6转换实例配额信息；QUOTAID属性是IPV6转换实例唯一ID（形如ip6-xxxxxxxx），表示账户在该转换实例允许创建的转换规则配额
-		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet" list`
+		QuotaSet []*Quota `json:"QuotaSet,omitempty" name:"QuotaSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7650,14 +7650,14 @@ type DescribeIp6TranslatorsRequest struct {
 	*tchttp.BaseRequest
 
 	// IPV6转换实例唯一ID数组，形如ip6-xxxxxxxx
-	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds" list`
+	Ip6TranslatorIds []*string `json:"Ip6TranslatorIds,omitempty" name:"Ip6TranslatorIds"`
 
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`Ip6TranslatorIds`和`Filters`。详细的过滤条件如下：
 	// <li> ip6-translator-id - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的唯一ID过滤,形如ip6-xxxxxxx。</li>
 	// <li> ip6-translator-vip6 - String - 是否必填：否 - （过滤条件）按照IPV6地址过滤。不支持模糊过滤。</li>
 	// <li> ip6-translator-name - String - 是否必填：否 - （过滤条件）按照IPV6转换实例名称过滤。不支持模糊过滤。</li>
 	// <li> ip6-translator-status - String - 是否必填：否 - （过滤条件）按照IPV6转换实例的状态过滤。状态取值范围为"CREATING","RUNNING","DELETING","MODIFYING"
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -7696,7 +7696,7 @@ type DescribeIp6TranslatorsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合过滤条件的IPV6转换实例详细信息
-		Ip6TranslatorSet []*Ip6Translator `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet" list`
+		Ip6TranslatorSet []*Ip6Translator `json:"Ip6TranslatorSet,omitempty" name:"Ip6TranslatorSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7770,7 +7770,7 @@ type DescribeIpGeolocationInfosRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询IP地址列表，支持IPv4和IPv6。
-	AddressIps []*string `json:"AddressIps,omitempty" name:"AddressIps" list`
+	AddressIps []*string `json:"AddressIps,omitempty" name:"AddressIps"`
 
 	// 查询IP地址的字段信息，包括"Country","Province","City","Region","Isp","AsName","AsId"
 	Fields *IpField `json:"Fields,omitempty" name:"Fields"`
@@ -7801,7 +7801,7 @@ type DescribeIpGeolocationInfosResponse struct {
 	Response *struct {
 
 		// IP地址信息列表
-		AddressInfo []*IpGeolocationInfo `json:"AddressInfo,omitempty" name:"AddressInfo" list`
+		AddressInfo []*IpGeolocationInfo `json:"AddressInfo,omitempty" name:"AddressInfo"`
 
 		// IP地址信息个数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
@@ -7827,7 +7827,7 @@ type DescribeLocalGatewayRequest struct {
 
 	// 查询条件：
 	// vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤，名称支持模糊搜索，local-gateway-id：按照本地网关实例ID过滤，cdc-id：按照cdc实例ID过滤查询。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -7862,7 +7862,7 @@ type DescribeLocalGatewayResponse struct {
 	Response *struct {
 
 		// 本地网关信息集合
-		LocalGatewaySet []*LocalGateway `json:"LocalGatewaySet,omitempty" name:"LocalGatewaySet" list`
+		LocalGatewaySet []*LocalGateway `json:"LocalGatewaySet,omitempty" name:"LocalGatewaySet"`
 
 		// 本地网关总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -7887,7 +7887,7 @@ type DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest struct {
 	*tchttp.BaseRequest
 
 	// NAT网关ID。
-	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds" list`
+	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件:
 	// 参数不支持同时指定NatGatewayIds和Filters。
@@ -7898,7 +7898,7 @@ type DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest struct {
 	// <li>private-ip-address， 内网IP，如`10.0.0.1`。</li>
 	// <li>private-port， 内网端口。</li>
 	// <li>description，规则描述。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -7934,7 +7934,7 @@ type DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse struct {
 	Response *struct {
 
 		// NAT网关端口转发规则对象数组。
-		NatGatewayDestinationIpPortTranslationNatRuleSet []*NatGatewayDestinationIpPortTranslationNatRule `json:"NatGatewayDestinationIpPortTranslationNatRuleSet,omitempty" name:"NatGatewayDestinationIpPortTranslationNatRuleSet" list`
+		NatGatewayDestinationIpPortTranslationNatRuleSet []*NatGatewayDestinationIpPortTranslationNatRule `json:"NatGatewayDestinationIpPortTranslationNatRuleSet,omitempty" name:"NatGatewayDestinationIpPortTranslationNatRuleSet"`
 
 		// 符合条件的NAT网关端口转发规则对象数目。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -7965,7 +7965,7 @@ type DescribeNatGatewaySourceIpTranslationNatRulesRequest struct {
 	// <li> resource-id，Subnet的ID或者Cvm ID，如`subnet-0yi4hekt`</li>
 	// <li> public-ip-address，弹性IP，如`139.199.232.238`</li>
 	// <li>description，规则描述。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -8002,7 +8002,7 @@ type DescribeNatGatewaySourceIpTranslationNatRulesResponse struct {
 
 		// NAT网关SNAT规则对象数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitempty" name:"SourceIpTranslationNatRuleSet" list`
+		SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitempty" name:"SourceIpTranslationNatRuleSet"`
 
 		// 符合条件的NAT网关端口转发规则对象数目。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8027,14 +8027,14 @@ type DescribeNatGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// NAT网关统一 ID，形如：`nat-123xx454`。
-	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds" list`
+	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。
 	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
 	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
 	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
 	// <li>tag-key - String - （过滤条件）标签键，形如：`test-key`。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -8070,7 +8070,7 @@ type DescribeNatGatewaysResponse struct {
 	Response *struct {
 
 		// NAT网关对象数组。
-		NatGatewaySet []*NatGateway `json:"NatGatewaySet,omitempty" name:"NatGatewaySet" list`
+		NatGatewaySet []*NatGateway `json:"NatGatewaySet,omitempty" name:"NatGatewaySet"`
 
 		// 符合条件的NAT网关对象个数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8095,11 +8095,11 @@ type DescribeNetDetectStatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
-	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds" list`
+	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
 	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -8136,7 +8136,7 @@ type DescribeNetDetectStatesResponse struct {
 
 		// 符合条件的网络探测验证结果对象数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NetDetectStateSet []*NetDetectState `json:"NetDetectStateSet,omitempty" name:"NetDetectStateSet" list`
+		NetDetectStateSet []*NetDetectState `json:"NetDetectStateSet,omitempty" name:"NetDetectStateSet"`
 
 		// 符合条件的网络探测验证结果对象数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8162,14 +8162,14 @@ type DescribeNetDetectsRequest struct {
 	*tchttp.BaseRequest
 
 	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
-	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds" list`
+	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678</li>
 	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
 	// <li>subnet-id - String - （过滤条件）子网实例ID，形如：subnet-12345678</li>
 	// <li>net-detect-name - String - （过滤条件）网络探测名称</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -8206,7 +8206,7 @@ type DescribeNetDetectsResponse struct {
 
 		// 符合条件的网络探测对象数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NetDetectSet []*NetDetect `json:"NetDetectSet,omitempty" name:"NetDetectSet" list`
+		NetDetectSet []*NetDetect `json:"NetDetectSet,omitempty" name:"NetDetectSet"`
 
 		// 符合条件的网络探测对象数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8235,10 +8235,10 @@ type DescribeNetworkAclsRequest struct {
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
 	// <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
 	// <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
-	NetworkAclIds []*string `json:"NetworkAclIds,omitempty" name:"NetworkAclIds" list`
+	NetworkAclIds []*string `json:"NetworkAclIds,omitempty" name:"NetworkAclIds"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -8274,7 +8274,7 @@ type DescribeNetworkAclsResponse struct {
 	Response *struct {
 
 		// 实例详细信息列表。
-		NetworkAclSet []*NetworkAcl `json:"NetworkAclSet,omitempty" name:"NetworkAclSet" list`
+		NetworkAclSet []*NetworkAcl `json:"NetworkAclSet,omitempty" name:"NetworkAclSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8359,7 +8359,7 @@ type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
-	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds"`
 
 	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
@@ -8374,7 +8374,7 @@ type DescribeNetworkInterfacesRequest struct {
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -8410,7 +8410,7 @@ type DescribeNetworkInterfacesResponse struct {
 	Response *struct {
 
 		// 实例详细信息列表。
-		NetworkInterfaceSet []*NetworkInterface `json:"NetworkInterfaceSet,omitempty" name:"NetworkInterfaceSet" list`
+		NetworkInterfaceSet []*NetworkInterface `json:"NetworkInterfaceSet,omitempty" name:"NetworkInterfaceSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8462,7 +8462,7 @@ type DescribeProductQuotaResponse struct {
 	Response *struct {
 
 		// ProductQuota对象数组
-		ProductQuotaSet []*ProductQuota `json:"ProductQuotaSet,omitempty" name:"ProductQuotaSet" list`
+		ProductQuotaSet []*ProductQuota `json:"ProductQuotaSet,omitempty" name:"ProductQuotaSet"`
 
 		// 符合条件的产品类型个数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8490,7 +8490,7 @@ type DescribeRouteConflictsRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 要检查的与之冲突的目的端列表
-	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" name:"DestinationCidrBlocks" list`
+	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" name:"DestinationCidrBlocks"`
 }
 
 func (r *DescribeRouteConflictsRequest) ToJsonString() string {
@@ -8518,7 +8518,7 @@ type DescribeRouteConflictsResponse struct {
 	Response *struct {
 
 		// 路由策略冲突列表
-		RouteConflictSet []*RouteConflict `json:"RouteConflictSet,omitempty" name:"RouteConflictSet" list`
+		RouteConflictSet []*RouteConflict `json:"RouteConflictSet,omitempty" name:"RouteConflictSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8546,10 +8546,10 @@ type DescribeRouteTablesRequest struct {
 	// <li>association.main - String - （过滤条件）是否主路由表。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 路由表实例ID，例如：rtb-azd4dt1c。
-	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds" list`
+	RouteTableIds []*string `json:"RouteTableIds,omitempty" name:"RouteTableIds"`
 
 	// 偏移量。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -8588,7 +8588,7 @@ type DescribeRouteTablesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 路由表对象。
-		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet" list`
+		RouteTableSet []*RouteTable `json:"RouteTableSet,omitempty" name:"RouteTableSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8610,7 +8610,7 @@ type DescribeSecurityGroupAssociationStatisticsRequest struct {
 	*tchttp.BaseRequest
 
 	// 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *DescribeSecurityGroupAssociationStatisticsRequest) ToJsonString() string {
@@ -8637,7 +8637,7 @@ type DescribeSecurityGroupAssociationStatisticsResponse struct {
 	Response *struct {
 
 		// 安全组关联实例统计。
-		SecurityGroupAssociationStatisticsSet []*SecurityGroupAssociationStatistics `json:"SecurityGroupAssociationStatisticsSet,omitempty" name:"SecurityGroupAssociationStatisticsSet" list`
+		SecurityGroupAssociationStatisticsSet []*SecurityGroupAssociationStatistics `json:"SecurityGroupAssociationStatisticsSet,omitempty" name:"SecurityGroupAssociationStatisticsSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8753,7 +8753,7 @@ type DescribeSecurityGroupReferencesRequest struct {
 	*tchttp.BaseRequest
 
 	// 安全组实例ID数组。格式如：['sg-12345678']
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *DescribeSecurityGroupReferencesRequest) ToJsonString() string {
@@ -8780,7 +8780,7 @@ type DescribeSecurityGroupReferencesResponse struct {
 	Response *struct {
 
 		// 安全组被引用信息。
-		ReferredSecurityGroupSet []*ReferredSecurityGroup `json:"ReferredSecurityGroupSet,omitempty" name:"ReferredSecurityGroupSet" list`
+		ReferredSecurityGroupSet []*ReferredSecurityGroup `json:"ReferredSecurityGroupSet,omitempty" name:"ReferredSecurityGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8802,7 +8802,7 @@ type DescribeSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
 	// <li>security-group-id - String - （过滤条件）安全组ID。</li>
@@ -8810,7 +8810,7 @@ type DescribeSecurityGroupsRequest struct {
 	// <li>security-group-name - String - （过滤条件）安全组名称。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -8847,7 +8847,7 @@ type DescribeSecurityGroupsResponse struct {
 
 		// 安全组对象。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
+		SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
 
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -8874,7 +8874,7 @@ type DescribeServiceTemplateGroupsRequest struct {
 	// 过滤条件。
 	// <li>service-template-group-name - String - （过滤条件）协议端口模板集合名称。</li>
 	// <li>service-template-group-id - String - （过滤条件）协议端口模板集合实例ID，例如：ppmg-e6dy460g。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -8912,7 +8912,7 @@ type DescribeServiceTemplateGroupsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 协议端口模板集合。
-		ServiceTemplateGroupSet []*ServiceTemplateGroup `json:"ServiceTemplateGroupSet,omitempty" name:"ServiceTemplateGroupSet" list`
+		ServiceTemplateGroupSet []*ServiceTemplateGroup `json:"ServiceTemplateGroupSet,omitempty" name:"ServiceTemplateGroupSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8936,7 +8936,7 @@ type DescribeServiceTemplatesRequest struct {
 	// 过滤条件。
 	// <li>service-template-name - String - （过滤条件）协议端口模板名称。</li>
 	// <li>service-template-id - String - （过滤条件）协议端口模板实例ID，例如：ppm-e6dy460g。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -8974,7 +8974,7 @@ type DescribeServiceTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 协议端口模板对象。
-		ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitempty" name:"ServiceTemplateSet" list`
+		ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitempty" name:"ServiceTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8996,7 +8996,7 @@ type DescribeSubnetsRequest struct {
 	*tchttp.BaseRequest
 
 	// 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
 	// <li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
@@ -9010,7 +9010,7 @@ type DescribeSubnetsRequest struct {
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	// <li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
 	// <li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -9049,7 +9049,7 @@ type DescribeSubnetsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 子网对象。
-		SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+		SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9176,7 +9176,7 @@ type DescribeVpcEndPointRequest struct {
 	// <li>end-point-name - String - （过滤条件）终端节点实例名称。</li>
 	// <li> end-point-id- String - （过滤条件）终端节点实例ID。</li>
 	// <li> vpc-id- String - （过滤条件）VPC实例ID。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9185,7 +9185,7 @@ type DescribeVpcEndPointRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 终端节点ID列表。
-	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId" list`
+	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId"`
 }
 
 func (r *DescribeVpcEndPointRequest) ToJsonString() string {
@@ -9215,7 +9215,7 @@ type DescribeVpcEndPointResponse struct {
 	Response *struct {
 
 		// 终端节点对象。
-		EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet" list`
+		EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet"`
 
 		// 符合查询条件的终端节点个数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9243,7 +9243,7 @@ type DescribeVpcEndPointServiceRequest struct {
 	// <li> service-id- String - （过滤条件）终端节点服务唯一ID。</li>
 	// <li>service-name - String - （过滤条件）终端节点实例名称。</li>
 	// <li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9252,7 +9252,7 @@ type DescribeVpcEndPointServiceRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 终端节点服务ID。
-	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds" list`
+	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds"`
 }
 
 func (r *DescribeVpcEndPointServiceRequest) ToJsonString() string {
@@ -9282,7 +9282,7 @@ type DescribeVpcEndPointServiceResponse struct {
 	Response *struct {
 
 		// 终端节点服务对象数组。
-		EndPointServiceSet []*EndPointService `json:"EndPointServiceSet,omitempty" name:"EndPointServiceSet" list`
+		EndPointServiceSet []*EndPointService `json:"EndPointServiceSet,omitempty" name:"EndPointServiceSet"`
 
 		// 符合查询条件的个数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9315,7 +9315,7 @@ type DescribeVpcEndPointServiceWhiteListRequest struct {
 	// 过滤条件。
 	// <li> user-uin String - （过滤条件）用户UIN。</li>
 	// <li> end-point-service-id String - （过滤条件）终端节点服务ID。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeVpcEndPointServiceWhiteListRequest) ToJsonString() string {
@@ -9344,7 +9344,7 @@ type DescribeVpcEndPointServiceWhiteListResponse struct {
 	Response *struct {
 
 		// 白名单对象数组。
-		VpcEndpointServiceUserSet []*VpcEndPointServiceUser `json:"VpcEndpointServiceUserSet,omitempty" name:"VpcEndpointServiceUserSet" list`
+		VpcEndpointServiceUserSet []*VpcEndPointServiceUser `json:"VpcEndpointServiceUserSet,omitempty" name:"VpcEndpointServiceUserSet"`
 
 		// 符合条件的白名单个数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9372,7 +9372,7 @@ type DescribeVpcInstancesRequest struct {
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	// <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 	// <li>instance-name - String - （过滤条件）云主机名称。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9407,7 +9407,7 @@ type DescribeVpcInstancesResponse struct {
 	Response *struct {
 
 		// 云主机实例列表。
-		InstanceSet []*CvmInstance `json:"InstanceSet,omitempty" name:"InstanceSet" list`
+		InstanceSet []*CvmInstance `json:"InstanceSet,omitempty" name:"InstanceSet"`
 
 		// 满足条件的云主机实例个数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9435,7 +9435,7 @@ type DescribeVpcIpv6AddressesRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// `IP`地址列表，批量查询单次请求最多支持`10`个。
-	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9471,7 +9471,7 @@ type DescribeVpcIpv6AddressesResponse struct {
 	Response *struct {
 
 		// `IPv6`地址列表。
-		Ipv6AddressSet []*VpcIpv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+		Ipv6AddressSet []*VpcIpv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet"`
 
 		// `IPv6`地址总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9496,7 +9496,7 @@ type DescribeVpcLimitsRequest struct {
 	*tchttp.BaseRequest
 
 	// 配额名称。每次最大查询100个配额类型。
-	LimitTypes []*string `json:"LimitTypes,omitempty" name:"LimitTypes" list`
+	LimitTypes []*string `json:"LimitTypes,omitempty" name:"LimitTypes"`
 }
 
 func (r *DescribeVpcLimitsRequest) ToJsonString() string {
@@ -9523,7 +9523,7 @@ type DescribeVpcLimitsResponse struct {
 	Response *struct {
 
 		// 私有网络配额
-		VpcLimitSet []*VpcLimit `json:"VpcLimitSet,omitempty" name:"VpcLimitSet" list`
+		VpcLimitSet []*VpcLimit `json:"VpcLimitSet,omitempty" name:"VpcLimitSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9548,7 +9548,7 @@ type DescribeVpcPrivateIpAddressesRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 内网`IP`地址列表，批量查询单次请求最多支持`10`个。
-	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 }
 
 func (r *DescribeVpcPrivateIpAddressesRequest) ToJsonString() string {
@@ -9576,7 +9576,7 @@ type DescribeVpcPrivateIpAddressesResponse struct {
 	Response *struct {
 
 		// 内网`IP`地址信息列表。
-		VpcPrivateIpAddressSet []*VpcPrivateIpAddress `json:"VpcPrivateIpAddressSet,omitempty" name:"VpcPrivateIpAddressSet" list`
+		VpcPrivateIpAddressSet []*VpcPrivateIpAddress `json:"VpcPrivateIpAddressSet,omitempty" name:"VpcPrivateIpAddressSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9598,7 +9598,7 @@ type DescribeVpcResourceDashboardRequest struct {
 	*tchttp.BaseRequest
 
 	// Vpc实例ID，例如：vpc-f1xjkw1b。
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 }
 
 func (r *DescribeVpcResourceDashboardRequest) ToJsonString() string {
@@ -9625,7 +9625,7 @@ type DescribeVpcResourceDashboardResponse struct {
 	Response *struct {
 
 		// 资源对象列表。
-		ResourceDashboardSet []*ResourceDashboard `json:"ResourceDashboardSet,omitempty" name:"ResourceDashboardSet" list`
+		ResourceDashboardSet []*ResourceDashboard `json:"ResourceDashboardSet,omitempty" name:"ResourceDashboardSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9647,7 +9647,7 @@ type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 
 	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 过滤条件，参数不支持同时指定VpcIds和Filters。
 	// <li>vpc-name - String - （过滤条件）VPC实例名称。</li>
@@ -9656,7 +9656,7 @@ type DescribeVpcsRequest struct {
 	// <li>cidr-block - String - （过滤条件）vpc的cidr。</li>
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
@@ -9695,7 +9695,7 @@ type DescribeVpcsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// VPC对象。
-		VpcSet []*Vpc `json:"VpcSet,omitempty" name:"VpcSet" list`
+		VpcSet []*Vpc `json:"VpcSet,omitempty" name:"VpcSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9717,7 +9717,7 @@ type DescribeVpnConnectionsRequest struct {
 	*tchttp.BaseRequest
 
 	// VPN通道实例ID。形如：vpnx-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnConnectionIds和Filters。
-	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds" list`
+	VpnConnectionIds []*string `json:"VpnConnectionIds,omitempty" name:"VpnConnectionIds"`
 
 	// 过滤条件。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定VpnConnectionIds和Filters。
 	// <li>vpc-id - String - VPC实例ID，形如：`vpc-0a36uwkr`。</li>
@@ -9725,7 +9725,7 @@ type DescribeVpnConnectionsRequest struct {
 	// <li>customer-gateway-id - String - 对端网关实例ID，形如：`cgw-l4rblw63`。</li>
 	// <li>vpn-connection-name - String - 通道名称，形如：`test-vpn`。</li>
 	// <li>vpn-connection-id - String - 通道实例ID，形如：`vpnx-5p7vkch8"`。</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9764,7 +9764,7 @@ type DescribeVpnConnectionsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// VPN通道实例。
-		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet,omitempty" name:"VpnConnectionSet" list`
+		VpnConnectionSet []*VpnConnection `json:"VpnConnectionSet,omitempty" name:"VpnConnectionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9821,7 +9821,7 @@ type DescribeVpnGatewayCcnRoutesResponse struct {
 	Response *struct {
 
 		// 云联网路由（IDC网段）列表。
-		RouteSet []*VpngwCcnRoutes `json:"RouteSet,omitempty" name:"RouteSet" list`
+		RouteSet []*VpngwCcnRoutes `json:"RouteSet,omitempty" name:"RouteSet"`
 
 		// 符合条件的对象数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -9846,7 +9846,7 @@ type DescribeVpnGatewaysRequest struct {
 	*tchttp.BaseRequest
 
 	// VPN网关实例ID。形如：vpngw-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpnGatewayIds和Filters。
-	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds" list`
+	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds"`
 
 	// 过滤条件，参数不支持同时指定VpnGatewayIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
@@ -9856,7 +9856,7 @@ type DescribeVpnGatewaysRequest struct {
 	// <li>public-ip-address- String - （过滤条件）公网IP。</li>
 	// <li>renew-flag - String - （过滤条件）网关续费类型，手动续费：'NOTIFY_AND_MANUAL_RENEW'、自动续费：'NOTIFY_AND_AUTO_RENEW'。</li>
 	// <li>zone - String - （过滤条件）VPN所在可用区，形如：ap-guangzhou-2。</li>
-	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -9895,7 +9895,7 @@ type DescribeVpnGatewaysResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// VPN网关实例详细信息列表。
-		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet,omitempty" name:"VpnGatewaySet" list`
+		VpnGatewaySet []*VpnGateway `json:"VpnGatewaySet,omitempty" name:"VpnGatewaySet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9941,7 +9941,7 @@ type DetachCcnInstancesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 要解关联网络实例列表
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *DetachCcnInstancesRequest) ToJsonString() string {
@@ -9991,7 +9991,7 @@ type DetachClassicLinkVpcRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// CVM实例ID查询。形如：ins-r8hr2upy。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DetachClassicLinkVpcRequest) ToJsonString() string {
@@ -10172,7 +10172,7 @@ type DirectConnectGateway struct {
 
 	// 专线网关是否支持VXLAN架构
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VXLANSupport []*bool `json:"VXLANSupport,omitempty" name:"VXLANSupport" list`
+	VXLANSupport []*bool `json:"VXLANSupport,omitempty" name:"VXLANSupport"`
 
 	// 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10196,7 +10196,7 @@ type DirectConnectGatewayCcnRoute struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
 
 	// `BGP`的`AS-Path`属性。
-	ASPath []*string `json:"ASPath,omitempty" name:"ASPath" list`
+	ASPath []*string `json:"ASPath,omitempty" name:"ASPath"`
 }
 
 type DisableCcnRoutesRequest struct {
@@ -10206,7 +10206,7 @@ type DisableCcnRoutesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
-	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 }
 
 func (r *DisableCcnRoutesRequest) ToJsonString() string {
@@ -10305,10 +10305,10 @@ type DisableRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
-	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds"`
 
 	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
-	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds"`
 }
 
 func (r *DisableRoutesRequest) ToJsonString() string {
@@ -10512,7 +10512,7 @@ type DisassociateNatGatewayAddressRequest struct {
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
 	// 待解绑NAT网关的弹性IP数组。
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 }
 
 func (r *DisassociateNatGatewayAddressRequest) ToJsonString() string {
@@ -10562,7 +10562,7 @@ type DisassociateNetworkAclSubnetsRequest struct {
 	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
 
 	// 子网实例ID数组。例如：[subnet-12345678]
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *DisassociateNetworkAclSubnetsRequest) ToJsonString() string {
@@ -10609,10 +10609,10 @@ type DisassociateNetworkInterfaceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。
-	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds"`
 
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *DisassociateNetworkInterfaceSecurityGroupsRequest) ToJsonString() string {
@@ -10659,7 +10659,7 @@ type DisassociateVpcEndPointSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 安全组ID数组。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 终端节点ID。
 	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
@@ -10773,7 +10773,7 @@ type EnableCcnRoutesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
-	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 }
 
 func (r *EnableCcnRoutesRequest) ToJsonString() string {
@@ -10872,10 +10872,10 @@ type EnableRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
-	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds" list`
+	RouteIds []*uint64 `json:"RouteIds,omitempty" name:"RouteIds"`
 
 	// 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
-	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds"`
 }
 
 func (r *EnableRoutesRequest) ToJsonString() string {
@@ -10926,7 +10926,7 @@ type EnableVpcEndPointConnectRequest struct {
 	EndPointServiceId *string `json:"EndPointServiceId,omitempty" name:"EndPointServiceId"`
 
 	// 终端节点ID。
-	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId" list`
+	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId"`
 
 	// 是否接受终端节点连接请求。
 	AcceptFlag *bool `json:"AcceptFlag,omitempty" name:"AcceptFlag"`
@@ -11009,7 +11009,7 @@ type EndPoint struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 终端节点绑定的安全组实例ID列表。
-	GroupSet []*string `json:"GroupSet,omitempty" name:"GroupSet" list`
+	GroupSet []*string `json:"GroupSet,omitempty" name:"GroupSet"`
 
 	// 终端节点服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11045,7 +11045,7 @@ type EndPointService struct {
 
 	// 终端节点对象数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet" list`
+	EndPointSet []*EndPoint `json:"EndPointSet,omitempty" name:"EndPointSet"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -11057,7 +11057,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FilterObject struct {
@@ -11066,7 +11066,7 @@ type FilterObject struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FlowLog struct {
@@ -11102,7 +11102,7 @@ type FlowLog struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type GatewayFlowMonitorDetail struct {
@@ -11147,7 +11147,7 @@ type GetCcnRegionBandwidthLimitsRequest struct {
 	// 过滤条件。
 	// <li>sregion - String - （过滤条件）源地域，形如：ap-guangzhou。</li>
 	// <li>dregion - String - （过滤条件）目的地域，形如：ap-shanghai-bm</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序条件，目前支持带宽（BandwidthLimit）和过期时间（ExpireTime）
 	SortedBy *string `json:"SortedBy,omitempty" name:"SortedBy"`
@@ -11192,7 +11192,7 @@ type GetCcnRegionBandwidthLimitsResponse struct {
 
 		// 云联网（CCN）各地域出带宽带宽详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CcnBandwidthSet []*CcnBandwidthInfo `json:"CcnBandwidthSet,omitempty" name:"CcnBandwidthSet" list`
+		CcnBandwidthSet []*CcnBandwidthInfo `json:"CcnBandwidthSet,omitempty" name:"CcnBandwidthSet"`
 
 		// 符合条件的对象数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11705,7 +11705,7 @@ type Ip6Translator struct {
 	Ip6RuleCount *int64 `json:"Ip6RuleCount,omitempty" name:"Ip6RuleCount"`
 
 	// IPV6转换规则信息
-	IP6RuleSet []*Ip6Rule `json:"IP6RuleSet,omitempty" name:"IP6RuleSet" list`
+	IP6RuleSet []*Ip6Rule `json:"IP6RuleSet,omitempty" name:"IP6RuleSet"`
 }
 
 type IpField struct {
@@ -12078,7 +12078,7 @@ type ModifyAddressTemplateAttributeRequest struct {
 	AddressTemplateName *string `json:"AddressTemplateName,omitempty" name:"AddressTemplateName"`
 
 	// 地址信息，支持 IP、CIDR、IP 范围。
-	Addresses []*string `json:"Addresses,omitempty" name:"Addresses" list`
+	Addresses []*string `json:"Addresses,omitempty" name:"Addresses"`
 }
 
 func (r *ModifyAddressTemplateAttributeRequest) ToJsonString() string {
@@ -12132,7 +12132,7 @@ type ModifyAddressTemplateGroupAttributeRequest struct {
 	AddressTemplateGroupName *string `json:"AddressTemplateGroupName,omitempty" name:"AddressTemplateGroupName"`
 
 	// IP地址模板实例ID， 例如：ipm-mdunqeb6。
-	AddressTemplateIds []*string `json:"AddressTemplateIds,omitempty" name:"AddressTemplateIds" list`
+	AddressTemplateIds []*string `json:"AddressTemplateIds,omitempty" name:"AddressTemplateIds"`
 }
 
 func (r *ModifyAddressTemplateGroupAttributeRequest) ToJsonString() string {
@@ -12180,7 +12180,7 @@ type ModifyAddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 
 	// EIP唯一标识ID列表，形如'eip-xxxx'
-	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
+	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds"`
 
 	// 调整带宽目标值
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
@@ -12244,10 +12244,10 @@ type ModifyAssistantCidrRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 待添加的辅助CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
-	NewCidrBlocks []*string `json:"NewCidrBlocks,omitempty" name:"NewCidrBlocks" list`
+	NewCidrBlocks []*string `json:"NewCidrBlocks,omitempty" name:"NewCidrBlocks"`
 
 	// 待删除的辅助CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
-	OldCidrBlocks []*string `json:"OldCidrBlocks,omitempty" name:"OldCidrBlocks" list`
+	OldCidrBlocks []*string `json:"OldCidrBlocks,omitempty" name:"OldCidrBlocks"`
 }
 
 func (r *ModifyAssistantCidrRequest) ToJsonString() string {
@@ -12277,7 +12277,7 @@ type ModifyAssistantCidrResponse struct {
 
 		// 辅助CIDR数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+		AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -12356,7 +12356,7 @@ type ModifyCcnAttachedInstancesAttributeRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 关联网络实例列表
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *ModifyCcnAttachedInstancesAttributeRequest) ToJsonString() string {
@@ -12732,7 +12732,7 @@ type ModifyGatewayFlowQosRequest struct {
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
 	// 限流的云服务器内网IP。
-	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses" list`
+	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
 }
 
 func (r *ModifyGatewayFlowQosRequest) ToJsonString() string {
@@ -12833,10 +12833,10 @@ type ModifyIp6AddressesBandwidthRequest struct {
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// IPV6地址。Ip6Addresses和Ip6AddressId必须且只能传一个
-	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses" list`
+	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses"`
 
 	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressId必须且只能传一个
-	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds" list`
+	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds"`
 }
 
 func (r *ModifyIp6AddressesBandwidthRequest) ToJsonString() string {
@@ -12999,7 +12999,7 @@ type ModifyIpv6AddressesAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IPv6`地址信息。
-	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
 }
 
 func (r *ModifyIpv6AddressesAttributeRequest) ToJsonString() string {
@@ -13116,7 +13116,7 @@ type ModifyNatGatewayAttributeRequest struct {
 	ModifySecurityGroup *bool `json:"ModifySecurityGroup,omitempty" name:"ModifySecurityGroup"`
 
 	// NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *ModifyNatGatewayAttributeRequest) ToJsonString() string {
@@ -13276,7 +13276,7 @@ type ModifyNetDetectRequest struct {
 	NetDetectName *string `json:"NetDetectName,omitempty" name:"NetDetectName"`
 
 	// 探测目的IPv4地址数组，最多两个。
-	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp" list`
+	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp"`
 
 	// 下一跳类型，目前我们支持的类型有：
 	// VPN：VPN网关；
@@ -13455,7 +13455,7 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
 	// 指定绑定的安全组，例如:['sg-1dd51d']。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *ModifyNetworkInterfaceAttributeRequest) ToJsonString() string {
@@ -13504,7 +13504,7 @@ type ModifyNetworkInterfaceQosRequest struct {
 	*tchttp.BaseRequest
 
 	// 弹性网卡ID，支持批量修改。
-	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds" list`
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds"`
 
 	// 服务质量，可选值：AU、AG、PT，分别代表金、银、白金三个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
@@ -13557,7 +13557,7 @@ type ModifyPrivateIpAddressesAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息。
-	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 }
 
 func (r *ModifyPrivateIpAddressesAttributeRequest) ToJsonString() string {
@@ -13768,7 +13768,7 @@ type ModifyServiceTemplateAttributeRequest struct {
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" name:"ServiceTemplateName"`
 
 	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
-	Services []*string `json:"Services,omitempty" name:"Services" list`
+	Services []*string `json:"Services,omitempty" name:"Services"`
 }
 
 func (r *ModifyServiceTemplateAttributeRequest) ToJsonString() string {
@@ -13822,7 +13822,7 @@ type ModifyServiceTemplateGroupAttributeRequest struct {
 	ServiceTemplateGroupName *string `json:"ServiceTemplateGroupName,omitempty" name:"ServiceTemplateGroupName"`
 
 	// 协议端口模板实例ID，例如：ppm-4dw6agho。
-	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitempty" name:"ServiceTemplateIds" list`
+	ServiceTemplateIds []*string `json:"ServiceTemplateIds,omitempty" name:"ServiceTemplateIds"`
 }
 
 func (r *ModifyServiceTemplateGroupAttributeRequest) ToJsonString() string {
@@ -13933,7 +13933,7 @@ type ModifyVpcAttributeRequest struct {
 	EnableMulticast *string `json:"EnableMulticast,omitempty" name:"EnableMulticast"`
 
 	// DNS地址，最多支持4个，第1个默认为主，其余为备
-	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers" list`
+	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 
 	// 域名
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -13992,7 +13992,7 @@ type ModifyVpcEndPointAttributeRequest struct {
 	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
 
 	// 安全组ID列表。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *ModifyVpcEndPointAttributeRequest) ToJsonString() string {
@@ -14165,7 +14165,7 @@ type ModifyVpnConnectionAttributeRequest struct {
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
 
 	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
-	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases" list`
+	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
 
 	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
@@ -14291,7 +14291,7 @@ type ModifyVpnGatewayCcnRoutesRequest struct {
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
 	// 云联网路由（IDC网段）列表
-	Routes []*VpngwCcnRoutes `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*VpngwCcnRoutes `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *ModifyVpnGatewayCcnRoutesRequest) ToJsonString() string {
@@ -14357,13 +14357,13 @@ type NatGateway struct {
 	MaxConcurrentConnection *uint64 `json:"MaxConcurrentConnection,omitempty" name:"MaxConcurrentConnection"`
 
 	// 绑定NAT网关的公网IP对象数组。
-	PublicIpAddressSet []*NatGatewayAddress `json:"PublicIpAddressSet,omitempty" name:"PublicIpAddressSet" list`
+	PublicIpAddressSet []*NatGatewayAddress `json:"PublicIpAddressSet,omitempty" name:"PublicIpAddressSet"`
 
 	// NAT网关网络状态。“AVAILABLE”:运行中, “UNAVAILABLE”:不可用, “INSUFFICIENT”:欠费停服。
 	NetworkState *string `json:"NetworkState,omitempty" name:"NetworkState"`
 
 	// NAT网关的端口转发规则。
-	DestinationIpPortTranslationNatRuleSet []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRuleSet,omitempty" name:"DestinationIpPortTranslationNatRuleSet" list`
+	DestinationIpPortTranslationNatRuleSet []*DestinationIpPortTranslationNatRule `json:"DestinationIpPortTranslationNatRuleSet,omitempty" name:"DestinationIpPortTranslationNatRuleSet"`
 
 	// VPC实例ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -14373,18 +14373,18 @@ type NatGateway struct {
 
 	// 绑定的专线网关ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitempty" name:"DirectConnectGatewayIds" list`
+	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitempty" name:"DirectConnectGatewayIds"`
 
 	// 所属子网ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// NAT网关绑定的安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityGroupSet []*string `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet" list`
+	SecurityGroupSet []*string `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
 }
 
 type NatGatewayAddress struct {
@@ -14453,10 +14453,10 @@ type NetDetect struct {
 	NetDetectName *string `json:"NetDetectName,omitempty" name:"NetDetectName"`
 
 	// 探测目的IPv4地址数组，最多两个。
-	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp" list`
+	DetectDestinationIp []*string `json:"DetectDestinationIp,omitempty" name:"DetectDestinationIp"`
 
 	// 系统自动分配的探测源IPv4数组。长度为2。
-	DetectSourceIp []*string `json:"DetectSourceIp,omitempty" name:"DetectSourceIp" list`
+	DetectSourceIp []*string `json:"DetectSourceIp,omitempty" name:"DetectSourceIp"`
 
 	// 下一跳类型，目前我们支持的类型有：
 	// VPN：VPN网关；
@@ -14515,7 +14515,7 @@ type NetDetectState struct {
 	NetDetectId *string `json:"NetDetectId,omitempty" name:"NetDetectId"`
 
 	// 网络探测目的IP验证结果对象数组。
-	NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet" list`
+	NetDetectIpStateSet []*NetDetectIpState `json:"NetDetectIpStateSet,omitempty" name:"NetDetectIpStateSet"`
 }
 
 type NetworkAcl struct {
@@ -14533,13 +14533,13 @@ type NetworkAcl struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 网络ACL关联的子网数组。
-	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet" list`
+	SubnetSet []*Subnet `json:"SubnetSet,omitempty" name:"SubnetSet"`
 
 	// 网络ACl入站规则。
-	IngressEntries []*NetworkAclEntry `json:"IngressEntries,omitempty" name:"IngressEntries" list`
+	IngressEntries []*NetworkAclEntry `json:"IngressEntries,omitempty" name:"IngressEntries"`
 
 	// 网络ACL出站规则。
-	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitempty" name:"EgressEntries" list`
+	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitempty" name:"EgressEntries"`
 }
 
 type NetworkAclEntry struct {
@@ -14569,10 +14569,10 @@ type NetworkAclEntry struct {
 type NetworkAclEntrySet struct {
 
 	// 入站规则。
-	Ingress []*NetworkAclEntry `json:"Ingress,omitempty" name:"Ingress" list`
+	Ingress []*NetworkAclEntry `json:"Ingress,omitempty" name:"Ingress"`
 
 	// 出站规则。
-	Egress []*NetworkAclEntry `json:"Egress,omitempty" name:"Egress" list`
+	Egress []*NetworkAclEntry `json:"Egress,omitempty" name:"Egress"`
 }
 
 type NetworkInterface struct {
@@ -14593,7 +14593,7 @@ type NetworkInterface struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 绑定的安全组。
-	GroupSet []*string `json:"GroupSet,omitempty" name:"GroupSet" list`
+	GroupSet []*string `json:"GroupSet,omitempty" name:"GroupSet"`
 
 	// 是否是主网卡。
 	Primary *bool `json:"Primary,omitempty" name:"Primary"`
@@ -14610,7 +14610,7 @@ type NetworkInterface struct {
 	State *string `json:"State,omitempty" name:"State"`
 
 	// 内网IP信息。
-	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitempty" name:"PrivateIpAddressSet" list`
+	PrivateIpAddressSet []*PrivateIpAddressSpecification `json:"PrivateIpAddressSet,omitempty" name:"PrivateIpAddressSet"`
 
 	// 绑定的云服务器对象。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14623,10 +14623,10 @@ type NetworkInterface struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// `IPv6`地址列表。
-	Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet" list`
+	Ipv6AddressSet []*Ipv6Address `json:"Ipv6AddressSet,omitempty" name:"Ipv6AddressSet"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
 	EniType *uint64 `json:"EniType,omitempty" name:"EniType"`
@@ -14666,7 +14666,7 @@ type NotifyRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略唯一ID。
-	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds"`
 }
 
 func (r *NotifyRoutesRequest) ToJsonString() string {
@@ -14782,7 +14782,7 @@ type ReferredSecurityGroup struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 引用安全组实例ID（SecurityGroupId）的所有安全组实例ID。
-	ReferredSecurityGroupIds []*string `json:"ReferredSecurityGroupIds,omitempty" name:"ReferredSecurityGroupIds" list`
+	ReferredSecurityGroupIds []*string `json:"ReferredSecurityGroupIds,omitempty" name:"ReferredSecurityGroupIds"`
 }
 
 type RejectAttachCcnInstancesRequest struct {
@@ -14792,7 +14792,7 @@ type RejectAttachCcnInstancesRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 拒绝关联实例列表。
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *RejectAttachCcnInstancesRequest) ToJsonString() string {
@@ -14839,7 +14839,7 @@ type ReleaseAddressesRequest struct {
 	*tchttp.BaseRequest
 
 	// 标识 EIP 的唯一 ID 列表。EIP 唯一 ID 形如：`eip-11112222`。
-	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
+	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds"`
 }
 
 func (r *ReleaseAddressesRequest) ToJsonString() string {
@@ -14888,10 +14888,10 @@ type ReleaseIp6AddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 
 	// IPV6地址。Ip6Addresses和Ip6AddressIds必须且只能传一个
-	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses" list`
+	Ip6Addresses []*string `json:"Ip6Addresses,omitempty" name:"Ip6Addresses"`
 
 	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ip6Addresses和Ip6AddressIds必须且只能传一个。
-	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds" list`
+	Ip6AddressIds []*string `json:"Ip6AddressIds,omitempty" name:"Ip6AddressIds"`
 }
 
 func (r *ReleaseIp6AddressesBandwidthRequest) ToJsonString() string {
@@ -14947,7 +14947,7 @@ type RemoveBandwidthPackageResourcesRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds" list`
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
 func (r *RemoveBandwidthPackageResourcesRequest) ToJsonString() string {
@@ -14998,7 +14998,7 @@ type RemoveIp6RulesRequest struct {
 	Ip6TranslatorId *string `json:"Ip6TranslatorId,omitempty" name:"Ip6TranslatorId"`
 
 	// 待删除IPV6转换规则，形如rule6-xxxxxxxx
-	Ip6RuleIds []*string `json:"Ip6RuleIds,omitempty" name:"Ip6RuleIds" list`
+	Ip6RuleIds []*string `json:"Ip6RuleIds,omitempty" name:"Ip6RuleIds"`
 }
 
 func (r *RemoveIp6RulesRequest) ToJsonString() string {
@@ -15045,7 +15045,7 @@ type RenewAddressesRequest struct {
 	*tchttp.BaseRequest
 
 	// EIP唯一标识ID列表，形如'eip-xxxx'
-	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds" list`
+	AddressIds []*string `json:"AddressIds,omitempty" name:"AddressIds"`
 
 	// 续费参数
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitempty" name:"AddressChargePrepaid"`
@@ -15148,7 +15148,7 @@ type ReplaceDirectConnectGatewayCcnRoutesRequest struct {
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
 
 	// 需要连通的IDC网段列表
-	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*DirectConnectGatewayCcnRoute `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *ReplaceDirectConnectGatewayCcnRoutesRequest) ToJsonString() string {
@@ -15248,7 +15248,7 @@ type ReplaceRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略对象。需要指定路由策略ID（RouteId）。
-	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*Route `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *ReplaceRoutesRequest) ToJsonString() string {
@@ -15276,10 +15276,10 @@ type ReplaceRoutesResponse struct {
 	Response *struct {
 
 		// 原路由策略信息。
-		OldRouteSet []*Route `json:"OldRouteSet,omitempty" name:"OldRouteSet" list`
+		OldRouteSet []*Route `json:"OldRouteSet,omitempty" name:"OldRouteSet"`
 
 		// 修改后的路由策略信息。
-		NewRouteSet []*Route `json:"NewRouteSet,omitempty" name:"NewRouteSet" list`
+		NewRouteSet []*Route `json:"NewRouteSet,omitempty" name:"NewRouteSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -15361,7 +15361,7 @@ type ResetAttachCcnInstancesRequest struct {
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 
 	// 重新申请关联网络实例列表。
-	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances" list`
+	Instances []*CcnInstance `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *ResetAttachCcnInstancesRequest) ToJsonString() string {
@@ -15465,7 +15465,7 @@ type ResetRoutesRequest struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
 
 	// 路由策略。
-	Routes []*Route `json:"Routes,omitempty" name:"Routes" list`
+	Routes []*Route `json:"Routes,omitempty" name:"Routes"`
 }
 
 func (r *ResetRoutesRequest) ToJsonString() string {
@@ -15813,7 +15813,7 @@ type RouteConflict struct {
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
 
 	// 冲突的路由策略列表
-	ConflictSet []*Route `json:"ConflictSet,omitempty" name:"ConflictSet" list`
+	ConflictSet []*Route `json:"ConflictSet,omitempty" name:"ConflictSet"`
 }
 
 type RouteTable struct {
@@ -15828,10 +15828,10 @@ type RouteTable struct {
 	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
 
 	// 路由表关联关系。
-	AssociationSet []*RouteTableAssociation `json:"AssociationSet,omitempty" name:"AssociationSet" list`
+	AssociationSet []*RouteTableAssociation `json:"AssociationSet,omitempty" name:"AssociationSet"`
 
 	// IPv4路由策略集合。
-	RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet" list`
+	RouteSet []*Route `json:"RouteSet,omitempty" name:"RouteSet"`
 
 	// 是否默认路由表。
 	Main *bool `json:"Main,omitempty" name:"Main"`
@@ -15840,11 +15840,11 @@ type RouteTable struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// local路由是否发布云联网。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LocalCidrForCcn []*CidrForCcn `json:"LocalCidrForCcn,omitempty" name:"LocalCidrForCcn" list`
+	LocalCidrForCcn []*CidrForCcn `json:"LocalCidrForCcn,omitempty" name:"LocalCidrForCcn"`
 }
 
 type RouteTableAssociation struct {
@@ -15877,7 +15877,7 @@ type SecurityGroup struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type SecurityGroupAssociationStatistics struct {
@@ -15901,7 +15901,7 @@ type SecurityGroupAssociationStatistics struct {
 	CLB *uint64 `json:"CLB,omitempty" name:"CLB"`
 
 	// 全量实例的绑定统计。
-	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics" list`
+	InstanceStatistics []*InstanceStatistic `json:"InstanceStatistics,omitempty" name:"InstanceStatistics"`
 
 	// 所有资源的总计数（不包含被安全组引用数）。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -15967,10 +15967,10 @@ type SecurityGroupPolicySet struct {
 	Version *string `json:"Version,omitempty" name:"Version"`
 
 	// 出站规则。
-	Egress []*SecurityGroupPolicy `json:"Egress,omitempty" name:"Egress" list`
+	Egress []*SecurityGroupPolicy `json:"Egress,omitempty" name:"Egress"`
 
 	// 入站规则。
-	Ingress []*SecurityGroupPolicy `json:"Ingress,omitempty" name:"Ingress" list`
+	Ingress []*SecurityGroupPolicy `json:"Ingress,omitempty" name:"Ingress"`
 }
 
 type SecurityPolicyDatabase struct {
@@ -15979,7 +15979,7 @@ type SecurityPolicyDatabase struct {
 	LocalCidrBlock *string `json:"LocalCidrBlock,omitempty" name:"LocalCidrBlock"`
 
 	// 对端网段
-	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitempty" name:"RemoteCidrBlock" list`
+	RemoteCidrBlock []*string `json:"RemoteCidrBlock,omitempty" name:"RemoteCidrBlock"`
 }
 
 type ServiceTemplate struct {
@@ -15991,7 +15991,7 @@ type ServiceTemplate struct {
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" name:"ServiceTemplateName"`
 
 	// 协议端口信息。
-	ServiceSet []*string `json:"ServiceSet,omitempty" name:"ServiceSet" list`
+	ServiceSet []*string `json:"ServiceSet,omitempty" name:"ServiceSet"`
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
@@ -16006,13 +16006,13 @@ type ServiceTemplateGroup struct {
 	ServiceTemplateGroupName *string `json:"ServiceTemplateGroupName,omitempty" name:"ServiceTemplateGroupName"`
 
 	// 协议端口模板实例ID。
-	ServiceTemplateIdSet []*string `json:"ServiceTemplateIdSet,omitempty" name:"ServiceTemplateIdSet" list`
+	ServiceTemplateIdSet []*string `json:"ServiceTemplateIdSet,omitempty" name:"ServiceTemplateIdSet"`
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 协议端口模板实例信息。
-	ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitempty" name:"ServiceTemplateSet" list`
+	ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitempty" name:"ServiceTemplateSet"`
 }
 
 type ServiceTemplateSpecification struct {
@@ -16031,7 +16031,7 @@ type SetCcnRegionBandwidthLimitsRequest struct {
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 云联网（CCN）各地域出带宽上限。
-	CcnRegionBandwidthLimits []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimits,omitempty" name:"CcnRegionBandwidthLimits" list`
+	CcnRegionBandwidthLimits []*CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimits,omitempty" name:"CcnRegionBandwidthLimits"`
 
 	// 是否恢复云联网地域出口/地域间带宽限速为默认值（1Gbps）。false表示不恢复；true表示恢复。恢复默认值后，限速实例将不在控制台展示。该参数默认为 false，不恢复。
 	SetDefaultLimitFlag *bool `json:"SetDefaultLimitFlag,omitempty" name:"SetDefaultLimitFlag"`
@@ -16091,7 +16091,7 @@ type SourceIpTranslationNatRule struct {
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 
 	// 弹性IP地址池
-	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses" list`
+	PublicIpAddresses []*string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
 
 	// 描述
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -16157,7 +16157,7 @@ type Subnet struct {
 	TotalIpAddressCount *uint64 `json:"TotalIpAddressCount,omitempty" name:"TotalIpAddressCount"`
 
 	// 标签键值对。
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// CDC实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16262,7 +16262,7 @@ type UnassignIpv6AddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。
-	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses" list`
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
 }
 
 func (r *UnassignIpv6AddressesRequest) ToJsonString() string {
@@ -16362,7 +16362,7 @@ type UnassignIpv6SubnetCidrBlockRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// `IPv6` 子网段列表。
-	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks" list`
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
 }
 
 func (r *UnassignIpv6SubnetCidrBlockRequest) ToJsonString() string {
@@ -16412,7 +16412,7 @@ type UnassignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
-	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses" list`
+	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 }
 
 func (r *UnassignPrivateIpAddressesRequest) ToJsonString() string {
@@ -16476,7 +16476,7 @@ type Vpc struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// `DNS`列表。
-	DnsServerSet []*string `json:"DnsServerSet,omitempty" name:"DnsServerSet" list`
+	DnsServerSet []*string `json:"DnsServerSet,omitempty" name:"DnsServerSet"`
 
 	// `DHCP`域名选项值。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -16491,11 +16491,11 @@ type Vpc struct {
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 
 	// 标签键值对
-	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 辅助CIDR
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet" list`
+	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitempty" name:"AssistantCidrSet"`
 }
 
 type VpcEndPointServiceUser struct {
@@ -16594,7 +16594,7 @@ type VpnConnection struct {
 	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 
 	// SPD。
-	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet,omitempty" name:"SecurityPolicyDatabaseSet" list`
+	SecurityPolicyDatabaseSet []*SecurityPolicyDatabase `json:"SecurityPolicyDatabaseSet,omitempty" name:"SecurityPolicyDatabaseSet"`
 
 	// IKE选项。
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitempty" name:"IKEOptionsSpecification"`
@@ -16663,7 +16663,7 @@ type VpnGateway struct {
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 网关带宽配额信息
-	VpnGatewayQuotaSet []*VpnGatewayQuota `json:"VpnGatewayQuotaSet,omitempty" name:"VpnGatewayQuotaSet" list`
+	VpnGatewayQuotaSet []*VpnGatewayQuota `json:"VpnGatewayQuotaSet,omitempty" name:"VpnGatewayQuotaSet"`
 
 	// 网关实例版本信息
 	Version *string `json:"Version,omitempty" name:"Version"`
@@ -16702,7 +16702,7 @@ type WithdrawNotifyRoutesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 
 	// 路由策略唯一ID。
-	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds" list`
+	RouteItemIds []*string `json:"RouteItemIds,omitempty" name:"RouteItemIds"`
 }
 
 func (r *WithdrawNotifyRoutesRequest) ToJsonString() string {

@@ -255,7 +255,7 @@ type AgentDealElem struct {
 
 	// 产品详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo" list`
+	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
 }
 
 type AgentDealNewElem struct {
@@ -358,7 +358,7 @@ type AgentDealNewElem struct {
 
 	// 产品详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo" list`
+	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
 }
 
 type AgentPayDealsRequest struct {
@@ -371,7 +371,7 @@ type AgentPayDealsRequest struct {
 	AgentPay *uint64 `json:"AgentPay,omitempty" name:"AgentPay"`
 
 	// 订单号数组
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *AgentPayDealsRequest) ToJsonString() string {
@@ -638,7 +638,7 @@ type DescribeAgentAuditedClientsRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
 	// 客户账号ID列表
-	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins" list`
+	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins"`
 
 	// 是否欠费。0：不欠费；1：欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
@@ -701,7 +701,7 @@ type DescribeAgentAuditedClientsResponse struct {
 	Response *struct {
 
 		// 已审核代客列表
-		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet" list`
+		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -780,7 +780,7 @@ type DescribeAgentBillsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 业务明细列表
-		AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet" list`
+		AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -915,7 +915,7 @@ type DescribeAgentClientsResponse struct {
 	Response *struct {
 
 		// 待审核代客列表
-		AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet" list`
+		AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -958,10 +958,10 @@ type DescribeAgentDealsByCacheRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 	// 支付方式，0：自付；1：代付
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
@@ -999,7 +999,7 @@ type DescribeAgentDealsByCacheResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitempty" name:"AgentDealSet" list`
+		AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1042,10 +1042,10 @@ type DescribeAgentDealsCacheRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 	// 支付方式，0：自付；1：代付
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
@@ -1083,7 +1083,7 @@ type DescribeAgentDealsCacheResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet" list`
+		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1126,10 +1126,10 @@ type DescribeAgentPayDealsRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentPayDealsRequest) ToJsonString() string {
@@ -1163,7 +1163,7 @@ type DescribeAgentPayDealsResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1206,10 +1206,10 @@ type DescribeAgentPayDealsV2Request struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentPayDealsV2Request) ToJsonString() string {
@@ -1243,7 +1243,7 @@ type DescribeAgentPayDealsV2Response struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1289,7 +1289,7 @@ type DescribeAgentSelfPayDealsRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentSelfPayDealsRequest) ToJsonString() string {
@@ -1323,7 +1323,7 @@ type DescribeAgentSelfPayDealsResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1369,7 +1369,7 @@ type DescribeAgentSelfPayDealsV2Request struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentSelfPayDealsV2Request) ToJsonString() string {
@@ -1403,7 +1403,7 @@ type DescribeAgentSelfPayDealsV2Response struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1507,7 +1507,7 @@ type DescribeClientBaseInfoResponse struct {
 	Response *struct {
 
 		// 代客基础信息数组
-		ClientBaseSet []*ClientBaseElem `json:"ClientBaseSet,omitempty" name:"ClientBaseSet" list`
+		ClientBaseSet []*ClientBaseElem `json:"ClientBaseSet,omitempty" name:"ClientBaseSet"`
 
 		// 符合条件的代客数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1567,7 +1567,7 @@ type DescribeRebateInfosResponse struct {
 	Response *struct {
 
 		// 返佣信息列表
-		RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet" list`
+		RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet"`
 
 		// 符合查询条件返佣信息数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1635,7 +1635,7 @@ type DescribeSalesmansResponse struct {
 	Response *struct {
 
 		// 业务员列表
-		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet" list`
+		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1714,7 +1714,7 @@ type DescribeUnbindClientListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合条件的解绑客户列表
-		UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList" list`
+		UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

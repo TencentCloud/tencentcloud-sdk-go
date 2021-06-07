@@ -95,11 +95,11 @@ type CloudBaseCapabilities struct {
 
 	// 启用安全能力项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Add []*string `json:"Add,omitempty" name:"Add" list`
+	Add []*string `json:"Add,omitempty" name:"Add"`
 
 	// 禁用安全能力向列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Drop []*string `json:"Drop,omitempty" name:"Drop" list`
+	Drop []*string `json:"Drop,omitempty" name:"Drop"`
 }
 
 type CloudBaseCodeRepoDetail struct {
@@ -187,7 +187,7 @@ type CloudBaseProjectVersion struct {
 
 	// 环境变量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters" list`
+	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 项目类型, 枚举值:
 	// "framework-oneclick" 控制台一键部署
@@ -226,7 +226,7 @@ type CloudBaseProjectVersion struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 网络配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -366,7 +366,7 @@ type CloudBaseRunSideSpec struct {
 
 	// 挂载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos" list`
+	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -381,7 +381,7 @@ type CloudBaseRunVolumeMount struct {
 	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
 
 	// Nfs挂载信息
-	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitempty" name:"NfsVolumes" list`
+	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitempty" name:"NfsVolumes"`
 }
 
 type CloudBaseRunVpcInfo struct {
@@ -392,7 +392,7 @@ type CloudBaseRunVpcInfo struct {
 
 	// 子网id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 创建类型(0=继承; 1=新建; 2=指定)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -683,7 +683,7 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 环境变量
-	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters" list`
+	Parameters []*KVPair `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 环境别名。要以a-z开头，不能包含a-zA-z0-9-以外的字符
 	EnvAlias *string `json:"EnvAlias,omitempty" name:"EnvAlias"`
@@ -695,7 +695,7 @@ type CreateAndDeployCloudBaseProjectRequest struct {
 	AddonConfig *string `json:"AddonConfig,omitempty" name:"AddonConfig"`
 
 	// 标签
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 网络配置
 	NetworkConfig *string `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
@@ -772,7 +772,7 @@ type CreateAuthDomainRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
 	// 安全域名
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 func (r *CreateAuthDomainRequest) ToJsonString() string {
@@ -825,7 +825,7 @@ type CreateCloudBaseRunResourceRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网ID列表，当VpcId不为空，SubnetIds也不能为空
-	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 func (r *CreateCloudBaseRunResourceRequest) ToJsonString() string {
@@ -955,7 +955,7 @@ type CreateCloudBaseRunServerVersionRequest struct {
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
 
 	// cfs挂载信息
-	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo" list`
+	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo"`
 
 	// 4 代表只能微信链路访问
 	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
@@ -976,19 +976,19 @@ type CreateCloudBaseRunServerVersionRequest struct {
 	ImageReuseKey *string `json:"ImageReuseKey,omitempty" name:"ImageReuseKey"`
 
 	// 容器的描述文件
-	SidecarSpecs []*CloudBaseRunSideSpec `json:"SidecarSpecs,omitempty" name:"SidecarSpecs" list`
+	SidecarSpecs []*CloudBaseRunSideSpec `json:"SidecarSpecs,omitempty" name:"SidecarSpecs"`
 
 	// 安全特性
 	Security *CloudBaseSecurityContext `json:"Security,omitempty" name:"Security"`
 
 	// 服务磁盘挂载
-	ServiceVolumes []*CloudRunServiceVolume `json:"ServiceVolumes,omitempty" name:"ServiceVolumes" list`
+	ServiceVolumes []*CloudRunServiceVolume `json:"ServiceVolumes,omitempty" name:"ServiceVolumes"`
 
 	// 是否创建JnsGw 0未传默认创建 1创建 2不创建
 	IsCreateJnsGw *int64 `json:"IsCreateJnsGw,omitempty" name:"IsCreateJnsGw"`
 
 	// 数据卷挂载参数
-	ServiceVolumeMounts []*CloudBaseRunServiceVolumeMount `json:"ServiceVolumeMounts,omitempty" name:"ServiceVolumeMounts" list`
+	ServiceVolumeMounts []*CloudBaseRunServiceVolumeMount `json:"ServiceVolumeMounts,omitempty" name:"ServiceVolumeMounts"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1303,7 +1303,7 @@ type CreateWxCloudBaseRunEnvRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网列表
-	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds" list`
+	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds"`
 }
 
 func (r *CreateWxCloudBaseRunEnvRequest) ToJsonString() string {
@@ -1484,7 +1484,7 @@ type DeleteEndUserRequest struct {
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
 	// 用户列表，每一项都是uuid
-	UserList []*string `json:"UserList,omitempty" name:"UserList" list`
+	UserList []*string `json:"UserList,omitempty" name:"UserList"`
 }
 
 func (r *DeleteEndUserRequest) ToJsonString() string {
@@ -1608,7 +1608,7 @@ type DescribeAuthDomainsResponse struct {
 	Response *struct {
 
 		// 安全域名列表列表
-		Domains []*AuthDomain `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*AuthDomain `json:"Domains,omitempty" name:"Domains"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1672,7 +1672,7 @@ type DescribeCloudBaseBuildServiceResponse struct {
 		UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
 
 		// 上传heder
-		UploadHeaders []*KVPair `json:"UploadHeaders,omitempty" name:"UploadHeaders" list`
+		UploadHeaders []*KVPair `json:"UploadHeaders,omitempty" name:"UploadHeaders"`
 
 		// 包名
 		PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
@@ -1686,7 +1686,7 @@ type DescribeCloudBaseBuildServiceResponse struct {
 
 		// 下载Httpheader
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DownloadHeaders []*KVPair `json:"DownloadHeaders,omitempty" name:"DownloadHeaders" list`
+		DownloadHeaders []*KVPair `json:"DownloadHeaders,omitempty" name:"DownloadHeaders"`
 
 		// 下载链接是否过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1727,7 +1727,7 @@ type DescribeCloudBaseProjectLatestVersionListRequest struct {
 	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
 
 	// 标签
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeCloudBaseProjectLatestVersionListRequest) ToJsonString() string {
@@ -1760,7 +1760,7 @@ type DescribeCloudBaseProjectLatestVersionListResponse struct {
 
 		// 项目列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProjectList []*CloudBaseProjectVersion `json:"ProjectList,omitempty" name:"ProjectList" list`
+		ProjectList []*CloudBaseProjectVersion `json:"ProjectList,omitempty" name:"ProjectList"`
 
 		// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1834,7 +1834,7 @@ type DescribeCloudBaseProjectVersionListResponse struct {
 
 		// 版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProjectVersions []*CloudBaseProjectVersion `json:"ProjectVersions,omitempty" name:"ProjectVersions" list`
+		ProjectVersions []*CloudBaseProjectVersion `json:"ProjectVersions,omitempty" name:"ProjectVersions"`
 
 		// 总个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1904,7 +1904,7 @@ type DescribeCloudBaseRunResourceForExtendResponse struct {
 
 		// 子网信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1970,7 +1970,7 @@ type DescribeCloudBaseRunResourceResponse struct {
 
 		// 子网信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+		SubnetIds []*CloudBaseRunVpcSubnet `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2119,7 +2119,7 @@ type DescribeCloudBaseRunServerVersionResponse struct {
 
 		// 子网实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+		SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 		// 日志采集路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2286,7 +2286,7 @@ type DescribeCloudBaseRunVersionResponse struct {
 
 		// 子网实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds" list`
+		SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 		// 日志采集路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2380,7 +2380,7 @@ type DescribeCloudBaseRunVersionSnapshotResponse struct {
 
 		// 版本历史
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Snapshots []*CloudRunServiceSimpleVersionSnapshot `json:"Snapshots,omitempty" name:"Snapshots" list`
+		Snapshots []*CloudRunServiceSimpleVersionSnapshot `json:"Snapshots,omitempty" name:"Snapshots"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2551,7 +2551,7 @@ type DescribeEndUserLoginStatisticResponse struct {
 
 		// 环境终端用户新增与登录统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LoginStatistics []*LoginStatistic `json:"LoginStatistics,omitempty" name:"LoginStatistics" list`
+		LoginStatistics []*LoginStatistic `json:"LoginStatistics,omitempty" name:"LoginStatistics"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2601,7 +2601,7 @@ type DescribeEndUserStatisticResponse struct {
 
 		// 终端用户各平台统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PlatformStatistics []*PlatformStatistic `json:"PlatformStatistics,omitempty" name:"PlatformStatistics" list`
+		PlatformStatistics []*PlatformStatistic `json:"PlatformStatistics,omitempty" name:"PlatformStatistics"`
 
 		// 终端用户总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2635,7 +2635,7 @@ type DescribeEndUsersRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 按照 uuid 列表过滤，最大个数为100
-	UUIds []*string `json:"UUIds,omitempty" name:"UUIds" list`
+	UUIds []*string `json:"UUIds,omitempty" name:"UUIds"`
 }
 
 func (r *DescribeEndUsersRequest) ToJsonString() string {
@@ -2668,7 +2668,7 @@ type DescribeEndUsersResponse struct {
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 用户列表
-		Users []*EndUserInfo `json:"Users,omitempty" name:"Users" list`
+		Users []*EndUserInfo `json:"Users,omitempty" name:"Users"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2694,7 +2694,7 @@ type DescribeEnvFreeQuotaRequest struct {
 
 	// 资源类型：可选值：CDN, COS, FLEXDB, HOSTING, SCF
 	// 不传则返回全部资源指标
-	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes" list`
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
 }
 
 func (r *DescribeEnvFreeQuotaRequest) ToJsonString() string {
@@ -2723,7 +2723,7 @@ type DescribeEnvFreeQuotaResponse struct {
 
 		// 免费抵扣配额详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		QuotaItems []*PostpayEnvQuota `json:"QuotaItems,omitempty" name:"QuotaItems" list`
+		QuotaItems []*PostpayEnvQuota `json:"QuotaItems,omitempty" name:"QuotaItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2824,7 +2824,7 @@ type DescribeEnvsRequest struct {
 	IsVisible *bool `json:"IsVisible,omitempty" name:"IsVisible"`
 
 	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
-	Channels []*string `json:"Channels,omitempty" name:"Channels" list`
+	Channels []*string `json:"Channels,omitempty" name:"Channels"`
 }
 
 func (r *DescribeEnvsRequest) ToJsonString() string {
@@ -2853,7 +2853,7 @@ type DescribeEnvsResponse struct {
 	Response *struct {
 
 		// 环境信息列表
-		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList" list`
+		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2875,7 +2875,7 @@ type DescribeExtensionUploadInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 待上传的文件
-	ExtensionFiles []*ExtensionFile `json:"ExtensionFiles,omitempty" name:"ExtensionFiles" list`
+	ExtensionFiles []*ExtensionFile `json:"ExtensionFiles,omitempty" name:"ExtensionFiles"`
 }
 
 func (r *DescribeExtensionUploadInfoRequest) ToJsonString() string {
@@ -2902,7 +2902,7 @@ type DescribeExtensionUploadInfoResponse struct {
 	Response *struct {
 
 		// 待上传文件的信息数组
-		FilesData []*ExtensionFileInfo `json:"FilesData,omitempty" name:"FilesData" list`
+		FilesData []*ExtensionFileInfo `json:"FilesData,omitempty" name:"FilesData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2951,7 +2951,7 @@ type DescribeExtraPkgBillingInfoResponse struct {
 	Response *struct {
 
 		// 增值包计费信息列表
-		EnvInfoList []*EnvBillingInfoItem `json:"EnvInfoList,omitempty" name:"EnvInfoList" list`
+		EnvInfoList []*EnvBillingInfoItem `json:"EnvInfoList,omitempty" name:"EnvInfoList"`
 
 		// 增值包数目
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -3004,7 +3004,7 @@ type DescribePostpayFreeQuotasResponse struct {
 
 		// 免费量资源信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FreequotaInfoList []*FreequotaInfo `json:"FreequotaInfoList,omitempty" name:"FreequotaInfoList" list`
+		FreequotaInfoList []*FreequotaInfo `json:"FreequotaInfoList,omitempty" name:"FreequotaInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3058,7 +3058,7 @@ type DescribePostpayPackageFreeQuotasResponse struct {
 
 		// 免费量资源信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PackageFreeQuotaInfos []*PackageFreeQuotaInfo `json:"PackageFreeQuotaInfos,omitempty" name:"PackageFreeQuotaInfos" list`
+		PackageFreeQuotaInfos []*PackageFreeQuotaInfo `json:"PackageFreeQuotaInfos,omitempty" name:"PackageFreeQuotaInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3199,7 +3199,7 @@ type DescribeSmsQuotasResponse struct {
 
 		// 短信免费量信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SmsFreeQuotaList []*SmsFreeQuota `json:"SmsFreeQuotaList,omitempty" name:"SmsFreeQuotaList" list`
+		SmsFreeQuotaList []*SmsFreeQuota `json:"SmsFreeQuotaList,omitempty" name:"SmsFreeQuotaList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3248,7 +3248,7 @@ type DescribeWxCloudBaseRunEnvsResponse struct {
 	Response *struct {
 
 		// env列表
-		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList" list`
+		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3301,7 +3301,7 @@ type DescribeWxCloudBaseRunSubNetsResponse struct {
 	Response *struct {
 
 		// 子网Id列表
-		SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds" list`
+		SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3548,13 +3548,13 @@ type EnvInfo struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 数据库列表
-	Databases []*DatabasesInfo `json:"Databases,omitempty" name:"Databases" list`
+	Databases []*DatabasesInfo `json:"Databases,omitempty" name:"Databases"`
 
 	// 存储列表
-	Storages []*StorageInfo `json:"Storages,omitempty" name:"Storages" list`
+	Storages []*StorageInfo `json:"Storages,omitempty" name:"Storages"`
 
 	// 函数列表
-	Functions []*FunctionInfo `json:"Functions,omitempty" name:"Functions" list`
+	Functions []*FunctionInfo `json:"Functions,omitempty" name:"Functions"`
 
 	// tcb产品套餐ID，参考DescribePackages接口的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3566,11 +3566,11 @@ type EnvInfo struct {
 
 	// 云日志服务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogServices []*LogServiceInfo `json:"LogServices,omitempty" name:"LogServices" list`
+	LogServices []*LogServiceInfo `json:"LogServices,omitempty" name:"LogServices"`
 
 	// 静态资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitempty" name:"StaticStorages" list`
+	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitempty" name:"StaticStorages"`
 
 	// 是否到期自动降为免费版
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3596,7 +3596,7 @@ type EnvInfo struct {
 
 	// 环境标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type EstablishCloudBaseRunServerRequest struct {
@@ -3636,7 +3636,7 @@ type EstablishCloudBaseRunServerRequest struct {
 	PublicAccess *int64 `json:"PublicAccess,omitempty" name:"PublicAccess"`
 
 	// OA PUBLIC MINIAPP VPC
-	OpenAccessTypes []*string `json:"OpenAccessTypes,omitempty" name:"OpenAccessTypes" list`
+	OpenAccessTypes []*string `json:"OpenAccessTypes,omitempty" name:"OpenAccessTypes"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
@@ -4269,7 +4269,7 @@ type RollUpdateCloudBaseRunServerVersionRequest struct {
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
 
 	// cfs挂载信息
-	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo" list`
+	MountVolumeInfo []*CloudBaseRunVolumeMount `json:"MountVolumeInfo,omitempty" name:"MountVolumeInfo"`
 
 	// 是否回滚
 	Rollback *bool `json:"Rollback,omitempty" name:"Rollback"`

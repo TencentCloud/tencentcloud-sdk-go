@@ -154,7 +154,7 @@ type KeywordEvaluateRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 关键词列表
-	Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。
 	SoeAppId *string `json:"SoeAppId,omitempty" name:"SoeAppId"`
@@ -195,7 +195,7 @@ type KeywordEvaluateResponse struct {
 	Response *struct {
 
 		// 关键词得分
-		KeywordScores []*KeywordScore `json:"KeywordScores,omitempty" name:"KeywordScores" list`
+		KeywordScores []*KeywordScore `json:"KeywordScores,omitempty" name:"KeywordScores"`
 
 		// 语音段唯一标识，一段语音一个SessionId
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -232,7 +232,7 @@ type KeywordScore struct {
 
 	// 详细发音评估结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
+	Words []*WordRsp `json:"Words,omitempty" name:"Words"`
 
 	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
@@ -271,7 +271,7 @@ type SentenceInfo struct {
 	SentenceId *int64 `json:"SentenceId,omitempty" name:"SentenceId"`
 
 	// 详细发音评估结果
-	Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
+	Words []*WordRsp `json:"Words,omitempty" name:"Words"`
 
 	// 发音精准度，取值范围[-1, 100]，当取-1时指完全不匹配，当为句子模式时，是所有已识别单词准确度的加权平均值，在reftext中但未识别出来的词不计入分数中。
 	PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
@@ -358,7 +358,7 @@ type TransmitOralProcessResponse struct {
 		PronCompletion *float64 `json:"PronCompletion,omitempty" name:"PronCompletion"`
 
 		// 详细发音评估结果
-		Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
+		Words []*WordRsp `json:"Words,omitempty" name:"Words"`
 
 		// 语音段唯一标识，一段语音一个SessionId
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -367,7 +367,7 @@ type TransmitOralProcessResponse struct {
 		AudioUrl *string `json:"AudioUrl,omitempty" name:"AudioUrl"`
 
 		// 断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
-		SentenceInfoSet []*SentenceInfo `json:"SentenceInfoSet,omitempty" name:"SentenceInfoSet" list`
+		SentenceInfoSet []*SentenceInfo `json:"SentenceInfoSet,omitempty" name:"SentenceInfoSet"`
 
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
@@ -535,7 +535,7 @@ type TransmitOralProcessWithInitResponse struct {
 		PronCompletion *float64 `json:"PronCompletion,omitempty" name:"PronCompletion"`
 
 		// 详细发音评估结果
-		Words []*WordRsp `json:"Words,omitempty" name:"Words" list`
+		Words []*WordRsp `json:"Words,omitempty" name:"Words"`
 
 		// 语音段唯一标识，一段语音一个SessionId
 		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -544,7 +544,7 @@ type TransmitOralProcessWithInitResponse struct {
 		AudioUrl *string `json:"AudioUrl,omitempty" name:"AudioUrl"`
 
 		// 断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。
-		SentenceInfoSet []*SentenceInfo `json:"SentenceInfoSet,omitempty" name:"SentenceInfoSet" list`
+		SentenceInfoSet []*SentenceInfo `json:"SentenceInfoSet,omitempty" name:"SentenceInfoSet"`
 
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
@@ -589,7 +589,7 @@ type WordRsp struct {
 	MatchTag *int64 `json:"MatchTag,omitempty" name:"MatchTag"`
 
 	// 音节评估详情
-	PhoneInfos []*PhoneInfo `json:"PhoneInfos,omitempty" name:"PhoneInfos" list`
+	PhoneInfos []*PhoneInfo `json:"PhoneInfos,omitempty" name:"PhoneInfos"`
 
 	// 参考词，目前为保留字段。
 	ReferenceWord *string `json:"ReferenceWord,omitempty" name:"ReferenceWord"`
