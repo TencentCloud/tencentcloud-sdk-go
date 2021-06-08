@@ -2307,7 +2307,9 @@ type InstanceTrafficPackage struct {
 
 type InternetAccessible struct {
 
-	// 网络计费类型。
+	// 网络计费类型,，取值范围：
+	// <li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
+	// <li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
 	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
 
 	// 公网出带宽上限，单位：Mbps。

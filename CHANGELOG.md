@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 音频内容检测(ams) 版本：2020-12-29
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 2 次发布
+### 第 63 次发布
 
-发布时间：2021-06-04 16:38:43
+发布时间：2021-06-08 08:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：DeviceType, Cpu
+
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 1 次发布
+
+发布时间：2021-06-07 14:33:31
 
 本次发布包含了以下内容：
 
@@ -12,32 +31,11 @@
 
 新增接口：
 
-* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
+* [QueryActivityLiveCodeList](https://cloud.tencent.com/document/api/1318/56790)
 
 新增数据结构：
 
-* [MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult)
-* [TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult)
-
-
-
-## 音频内容检测(ams) 版本：2020-06-08
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 8 次发布
-
-发布时间：2021-06-07 08:10:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SendMsg](https://cloud.tencent.com/document/api/1179/56772)
+* [LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail)
 
 
 
@@ -652,12 +650,12 @@
 
 新增接口：
 
-* [[CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
 
 新增数据结构：
 
-* [[MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult)](https://cloud.tencent.com/document/api/1219/53259#[MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult))
-* [[TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult)](https://cloud.tencent.com/document/api/1219/53259#[TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult))
+* [MoanResult](https://cloud.tencent.com/document/api/1219/53259#MoanResult)
+* [TextResult](https://cloud.tencent.com/document/api/1219/53259#TextResult)
 
 ### 第 1 次发布
 
@@ -6721,6 +6719,21 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 63 次发布
+
+发布时间：2021-06-08 08:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：DeviceType, Cpu
+
+
 ### 第 62 次发布
 
 发布时间：2021-05-25 08:03:54
@@ -10126,16 +10139,16 @@
 
 新增接口：
 
-* [CreateStructureTask](https://cloud.tencent.com/document/api/#/#)
-* [DescribeStructCompareData](https://cloud.tencent.com/document/api/#/#)
-* [DescribeStructureTaskResult](https://cloud.tencent.com/document/api/#/#)
+* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/56852)
+* [DescribeStructCompareData](https://cloud.tencent.com/document/api/1368/56849)
+* [DescribeStructureTaskResult](https://cloud.tencent.com/document/api/1368/56851)
 
 新增数据结构：
 
-* [CompareMetricsData](https://cloud.tencent.com/document/api/#/##CompareMetricsData)
-* [CreateStructureTaskInfo](https://cloud.tencent.com/document/api/#/##CreateStructureTaskInfo)
-* [ResultObject](https://cloud.tencent.com/document/api/#/##ResultObject)
-* [ReviewDataTaskInfo](https://cloud.tencent.com/document/api/#/##ReviewDataTaskInfo)
+* [CompareMetricsData](https://cloud.tencent.com/document/api/1368/56853#CompareMetricsData)
+* [CreateStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateStructureTaskInfo)
+* [ResultObject](https://cloud.tencent.com/document/api/1368/56853#ResultObject)
+* [ReviewDataTaskInfo](https://cloud.tencent.com/document/api/1368/56853#ReviewDataTaskInfo)
 
 
 
@@ -41172,7 +41185,7 @@
 
 新增接口：
 
-* [[SendMsg](https://cloud.tencent.com/document/api/1179/56772)](https://cloud.tencent.com/document/api/#/#)
+* [SendMsg](https://cloud.tencent.com/document/api/1179/56772)
 
 ### 第 7 次发布
 
@@ -51436,6 +51449,27 @@
 * [DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)
 * [ResponseCode](https://cloud.tencent.com/document/api/627/53609#ResponseCode)
 * [Strategy](https://cloud.tencent.com/document/api/627/53609#Strategy)
+
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 1 次发布
+
+发布时间：2021-06-07 14:33:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryActivityLiveCodeList](https://cloud.tencent.com/document/api/1318/56790)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail)](https://cloud.tencent.com/document/api/1318/56791#[LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail))
 
 
 

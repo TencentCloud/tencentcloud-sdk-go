@@ -8624,6 +8624,12 @@ type UpgradeDBInstanceRequest struct {
 
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
+
+	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -8648,6 +8654,8 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "WaitSwitch")
 	delete(f, "BackupZone")
 	delete(f, "InstanceRole")
+	delete(f, "DeviceType")
+	delete(f, "Cpu")
 	if len(f) > 0 {
 		return errors.New("UpgradeDBInstanceRequest has unknown keys!")
 	}

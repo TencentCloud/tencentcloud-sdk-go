@@ -365,22 +365,23 @@ func (r *BatchRegisterTargetsResponse) FromJsonString(s string) error {
 
 type BatchTarget struct {
 
-	// 监听器ID
+	// 监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 绑定端口
+	// 绑定端口。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
-	// 子机ID。表示绑定主网卡主IP
+	// 子机 ID。表示绑定主网卡主 IP。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 弹性网卡ip或其他内网IP。如果是双栈IPV6子机，必须传该参数。
+	// 绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
+	// 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。
 	EniIp *string `json:"EniIp,omitempty" name:"EniIp"`
 
-	// 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10
+	// 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 七层规则ID
+	// 七层规则 ID。
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 }
 

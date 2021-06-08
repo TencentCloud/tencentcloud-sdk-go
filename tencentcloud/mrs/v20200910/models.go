@@ -1102,10 +1102,10 @@ type TextToObjectRequest struct {
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 报告类型
+	// 报告类型，目前支持12（检查报告单），15（病理报告），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 是否使用分类引擎
+	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
 }
 
