@@ -16,8 +16,7 @@ package v20190313
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -66,7 +65,7 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Resolution")
 	if len(f) > 0 {
-		return errors.New("CreateSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -148,7 +147,7 @@ func (r *DescribeStreamPlayInfoListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DescribeStreamPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -193,7 +192,7 @@ func (r *DescribeWorkersRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeWorkersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -261,7 +260,7 @@ func (r *ForbidLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "ResumeTime")
 	if len(f) > 0 {
-		return errors.New("ForbidLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForbidLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -319,7 +318,7 @@ func (r *RegisterIMRequest) FromJsonString(s string) error {
 	delete(f, "HeadImgUrl")
 	delete(f, "Level")
 	if len(f) > 0 {
-		return errors.New("RegisterIMRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterIMRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -368,7 +367,7 @@ func (r *StopGameRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	if len(f) > 0 {
-		return errors.New("StopGameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopGameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

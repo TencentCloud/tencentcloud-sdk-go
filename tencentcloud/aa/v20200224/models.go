@@ -16,8 +16,7 @@ package v20200224
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -211,7 +210,7 @@ func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BusinessSecurityData")
 	if len(f) > 0 {
-		return errors.New("ManageMarketingRiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageMarketingRiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -414,7 +413,7 @@ func (r *QueryActivityAntiRushAdvancedRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BusinessSecurityData")
 	if len(f) > 0 {
-		return errors.New("QueryActivityAntiRushAdvancedRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryActivityAntiRushAdvancedRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -605,7 +604,7 @@ func (r *QueryActivityAntiRushRequest) FromJsonString(s string) error {
 	delete(f, "WxToken")
 	delete(f, "CheckDevice")
 	if len(f) > 0 {
-		return errors.New("QueryActivityAntiRushRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryActivityAntiRushRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

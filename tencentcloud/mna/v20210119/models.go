@@ -16,8 +16,7 @@ package v20210119
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -80,7 +79,7 @@ func (r *CreateQosRequest) FromJsonString(s string) error {
 	delete(f, "Duration")
 	delete(f, "Capacity")
 	if len(f) > 0 {
-		return errors.New("CreateQosRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQosRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -132,7 +131,7 @@ func (r *DeleteQosRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SessionId")
 	if len(f) > 0 {
-		return errors.New("DeleteQosRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQosRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

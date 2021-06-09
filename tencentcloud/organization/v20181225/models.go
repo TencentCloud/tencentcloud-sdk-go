@@ -16,8 +16,7 @@ package v20181225
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *AcceptOrganizationInvitationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("AcceptOrganizationInvitationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcceptOrganizationInvitationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -92,7 +91,7 @@ func (r *AddOrganizationNodeRequest) FromJsonString(s string) error {
 	delete(f, "ParentNodeId")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("AddOrganizationNodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOrganizationNodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -141,7 +140,7 @@ func (r *CancelOrganizationInvitationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("CancelOrganizationInvitationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelOrganizationInvitationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -187,7 +186,7 @@ func (r *CreateOrganizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OrgType")
 	if len(f) > 0 {
-		return errors.New("CreateOrganizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -249,7 +248,7 @@ func (r *DeleteOrganizationMemberFromNodeRequest) FromJsonString(s string) error
 	delete(f, "MemberUin")
 	delete(f, "NodeId")
 	if len(f) > 0 {
-		return errors.New("DeleteOrganizationMemberFromNodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationMemberFromNodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -295,7 +294,7 @@ func (r *DeleteOrganizationMembersRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Uins")
 	if len(f) > 0 {
-		return errors.New("DeleteOrganizationMembersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationMembersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -341,7 +340,7 @@ func (r *DeleteOrganizationNodesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NodeIds")
 	if len(f) > 0 {
-		return errors.New("DeleteOrganizationNodesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationNodesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -383,7 +382,7 @@ func (r *DeleteOrganizationRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DeleteOrganizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -429,7 +428,7 @@ func (r *DenyOrganizationInvitationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("DenyOrganizationInvitationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DenyOrganizationInvitationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -475,7 +474,7 @@ func (r *GetOrganizationMemberRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MemberUin")
 	if len(f) > 0 {
-		return errors.New("GetOrganizationMemberRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOrganizationMemberRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -538,7 +537,7 @@ func (r *GetOrganizationRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetOrganizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -610,7 +609,7 @@ func (r *ListOrganizationInvitationsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListOrganizationInvitationsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationInvitationsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -666,7 +665,7 @@ func (r *ListOrganizationMembersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListOrganizationMembersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationMembersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -726,7 +725,7 @@ func (r *ListOrganizationNodeMembersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListOrganizationNodeMembersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationNodeMembersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -774,7 +773,7 @@ func (r *ListOrganizationNodesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("ListOrganizationNodesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationNodesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -827,7 +826,7 @@ func (r *MoveOrganizationMembersToNodeRequest) FromJsonString(s string) error {
 	delete(f, "NodeId")
 	delete(f, "Uins")
 	if len(f) > 0 {
-		return errors.New("MoveOrganizationMembersToNodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MoveOrganizationMembersToNodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -939,7 +938,7 @@ func (r *QuitOrganizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OrgId")
 	if len(f) > 0 {
-		return errors.New("QuitOrganizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuitOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -993,7 +992,7 @@ func (r *SendOrganizationInvitationRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Remark")
 	if len(f) > 0 {
-		return errors.New("SendOrganizationInvitationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendOrganizationInvitationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1047,7 +1046,7 @@ func (r *UpdateOrganizationMemberRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Remark")
 	if len(f) > 0 {
-		return errors.New("UpdateOrganizationMemberRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOrganizationMemberRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1101,7 +1100,7 @@ func (r *UpdateOrganizationNodeRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ParentNodeId")
 	if len(f) > 0 {
-		return errors.New("UpdateOrganizationNodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOrganizationNodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

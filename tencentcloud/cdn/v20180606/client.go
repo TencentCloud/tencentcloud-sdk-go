@@ -1280,6 +1280,31 @@ func (c *Client) ManageClsTopicDomains(request *ManageClsTopicDomainsRequest) (r
     return
 }
 
+func NewModifyPurgeFetchTaskStatusRequest() (request *ModifyPurgeFetchTaskStatusRequest) {
+    request = &ModifyPurgeFetchTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ModifyPurgeFetchTaskStatus")
+    return
+}
+
+func NewModifyPurgeFetchTaskStatusResponse() (response *ModifyPurgeFetchTaskStatusResponse) {
+    response = &ModifyPurgeFetchTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPurgeFetchTaskStatus 用于上报定时刷新预热任务执行状态
+func (c *Client) ModifyPurgeFetchTaskStatus(request *ModifyPurgeFetchTaskStatusRequest) (response *ModifyPurgeFetchTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyPurgeFetchTaskStatusRequest()
+    }
+    response = NewModifyPurgeFetchTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPurgePathCacheRequest() (request *PurgePathCacheRequest) {
     request = &PurgePathCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},

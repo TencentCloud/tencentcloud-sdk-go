@@ -16,8 +16,7 @@ package v20201002
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -64,7 +63,7 @@ func (r *CreateEmailAddressRequest) FromJsonString(s string) error {
 	delete(f, "EmailAddress")
 	delete(f, "EmailSenderName")
 	if len(f) > 0 {
-		return errors.New("CreateEmailAddressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmailAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -110,7 +109,7 @@ func (r *CreateEmailIdentityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailIdentity")
 	if len(f) > 0 {
-		return errors.New("CreateEmailIdentityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmailIdentityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -169,7 +168,7 @@ func (r *CreateEmailTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TemplateName")
 	delete(f, "TemplateContent")
 	if len(f) > 0 {
-		return errors.New("CreateEmailTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmailTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -233,7 +232,7 @@ func (r *DeleteBlackListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailAddressList")
 	if len(f) > 0 {
-		return errors.New("DeleteBlackListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlackListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -279,7 +278,7 @@ func (r *DeleteEmailAddressRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailAddress")
 	if len(f) > 0 {
-		return errors.New("DeleteEmailAddressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEmailAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -325,7 +324,7 @@ func (r *DeleteEmailIdentityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailIdentity")
 	if len(f) > 0 {
-		return errors.New("DeleteEmailIdentityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEmailIdentityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -371,7 +370,7 @@ func (r *DeleteEmailTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateID")
 	if len(f) > 0 {
-		return errors.New("DeleteEmailTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEmailTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -443,7 +442,7 @@ func (r *GetEmailIdentityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailIdentity")
 	if len(f) > 0 {
-		return errors.New("GetEmailIdentityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEmailIdentityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -498,7 +497,7 @@ func (r *GetEmailTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateID")
 	if len(f) > 0 {
-		return errors.New("GetEmailTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEmailTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -563,7 +562,7 @@ func (r *GetSendEmailStatusRequest) FromJsonString(s string) error {
 	delete(f, "MessageId")
 	delete(f, "ToEmailAddress")
 	if len(f) > 0 {
-		return errors.New("GetSendEmailStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSendEmailStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -624,7 +623,7 @@ func (r *GetStatisticsReportRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "ReceivingMailboxType")
 	if len(f) > 0 {
-		return errors.New("GetStatisticsReportRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetStatisticsReportRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -696,7 +695,7 @@ func (r *ListBlackEmailAddressRequest) FromJsonString(s string) error {
 	delete(f, "EmailAddress")
 	delete(f, "TaskID")
 	if len(f) > 0 {
-		return errors.New("ListBlackEmailAddressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListBlackEmailAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -744,7 +743,7 @@ func (r *ListEmailAddressRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("ListEmailAddressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -790,7 +789,7 @@ func (r *ListEmailIdentitiesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("ListEmailIdentitiesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailIdentitiesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -843,7 +842,7 @@ func (r *ListEmailTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("ListEmailTemplatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailTemplatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -921,7 +920,7 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 	delete(f, "Simple")
 	delete(f, "Attachments")
 	if len(f) > 0 {
-		return errors.New("SendEmailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendEmailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1081,7 +1080,7 @@ func (r *UpdateEmailIdentityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailIdentity")
 	if len(f) > 0 {
-		return errors.New("UpdateEmailIdentityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEmailIdentityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1144,7 +1143,7 @@ func (r *UpdateEmailTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TemplateID")
 	delete(f, "TemplateName")
 	if len(f) > 0 {
-		return errors.New("UpdateEmailTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEmailTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

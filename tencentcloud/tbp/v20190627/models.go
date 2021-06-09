@@ -16,8 +16,7 @@ package v20190627
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -98,7 +97,7 @@ func (r *TextProcessRequest) FromJsonString(s string) error {
 	delete(f, "PlatformType")
 	delete(f, "PlatformId")
 	if len(f) > 0 {
-		return errors.New("TextProcessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextProcessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -192,7 +191,7 @@ func (r *TextResetRequest) FromJsonString(s string) error {
 	delete(f, "PlatformType")
 	delete(f, "PlatformId")
 	if len(f) > 0 {
-		return errors.New("TextResetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextResetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

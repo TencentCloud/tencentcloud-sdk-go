@@ -16,8 +16,7 @@ package v20191118
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -106,7 +105,7 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	delete(f, "Role")
 	delete(f, "GameContext")
 	if len(f) > 0 {
-		return errors.New("CreateSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -165,7 +164,7 @@ func (r *DescribeInstancesCountRequest) FromJsonString(s string) error {
 	delete(f, "GameId")
 	delete(f, "GroupId")
 	if len(f) > 0 {
-		return errors.New("DescribeInstancesCountRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesCountRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -221,7 +220,7 @@ func (r *SaveGameArchiveRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "GameId")
 	if len(f) > 0 {
-		return errors.New("SaveGameArchiveRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveGameArchiveRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -271,7 +270,7 @@ func (r *StopGameRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "HostUserId")
 	if len(f) > 0 {
-		return errors.New("StopGameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopGameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -329,7 +328,7 @@ func (r *SwitchGameArchiveRequest) FromJsonString(s string) error {
 	delete(f, "GameArchiveUrl")
 	delete(f, "GameContext")
 	if len(f) > 0 {
-		return errors.New("SwitchGameArchiveRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchGameArchiveRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -395,7 +394,7 @@ func (r *TrylockWorkerRequest) FromJsonString(s string) error {
 	delete(f, "UserIp")
 	delete(f, "GroupId")
 	if len(f) > 0 {
-		return errors.New("TrylockWorkerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TrylockWorkerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20180408
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -228,7 +227,7 @@ func (r *CreateBindInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "AppPkgName")
 	if len(f) > 0 {
-		return errors.New("CreateBindInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBindInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -281,7 +280,7 @@ func (r *CreateCosSecKeyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CosRegion")
 	delete(f, "Duration")
 	if len(f) > 0 {
-		return errors.New("CreateCosSecKeyInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosSecKeyInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -363,7 +362,7 @@ func (r *CreateResourceInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TimeSpan")
 	delete(f, "ResourceNum")
 	if len(f) > 0 {
-		return errors.New("CreateResourceInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -416,7 +415,7 @@ func (r *CreateScanInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AppInfos")
 	delete(f, "ScanInfo")
 	if len(f) > 0 {
-		return errors.New("CreateScanInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -481,7 +480,7 @@ func (r *CreateShieldInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AppInfo")
 	delete(f, "ServiceInfo")
 	if len(f) > 0 {
-		return errors.New("CreateShieldInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShieldInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -541,7 +540,7 @@ func (r *CreateShieldPlanInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PlanName")
 	delete(f, "PlanInfo")
 	if len(f) > 0 {
-		return errors.New("CreateShieldPlanInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShieldPlanInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -593,7 +592,7 @@ func (r *DeleteScanInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AppSids")
 	if len(f) > 0 {
-		return errors.New("DeleteScanInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScanInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -642,7 +641,7 @@ func (r *DeleteShieldInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ItemIds")
 	if len(f) > 0 {
-		return errors.New("DeleteShieldInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteShieldInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -711,7 +710,7 @@ func (r *DescribeResourceInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "OrderDirection")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -783,7 +782,7 @@ func (r *DescribeScanInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "OrderDirection")
 	if len(f) > 0 {
-		return errors.New("DescribeScanInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -839,7 +838,7 @@ func (r *DescribeScanResultsRequest) FromJsonString(s string) error {
 	delete(f, "ItemId")
 	delete(f, "AppMd5s")
 	if len(f) > 0 {
-		return errors.New("DescribeScanResultsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanResultsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -911,7 +910,7 @@ func (r *DescribeShieldInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "OrderDirection")
 	if len(f) > 0 {
-		return errors.New("DescribeShieldInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShieldInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -967,7 +966,7 @@ func (r *DescribeShieldPlanInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceId")
 	delete(f, "Pid")
 	if len(f) > 0 {
-		return errors.New("DescribeShieldPlanInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShieldPlanInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1022,7 +1021,7 @@ func (r *DescribeShieldResultRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ItemId")
 	if len(f) > 0 {
-		return errors.New("DescribeShieldResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShieldResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1079,7 +1078,7 @@ func (r *DescribeUserBaseInfoInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeUserBaseInfoInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserBaseInfoInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

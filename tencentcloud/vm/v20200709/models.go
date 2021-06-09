@@ -16,8 +16,7 @@ package v20200709
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -199,7 +198,7 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("CancelTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -257,7 +256,7 @@ func (r *CreateBizConfigRequest) FromJsonString(s string) error {
 	delete(f, "BizName")
 	delete(f, "ModerationCategories")
 	if len(f) > 0 {
-		return errors.New("CreateBizConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBizConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -323,7 +322,7 @@ func (r *CreateVideoModerationTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Priority")
 	if len(f) > 0 {
-		return errors.New("CreateVideoModerationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoModerationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -377,7 +376,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "ShowAllSegments")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -508,7 +507,7 @@ func (r *DescribeVideoStatRequest) FromJsonString(s string) error {
 	delete(f, "AuditType")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeVideoStatRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoStatRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

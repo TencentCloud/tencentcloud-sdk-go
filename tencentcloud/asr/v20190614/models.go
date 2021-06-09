@@ -16,8 +16,7 @@ package v20190614
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -58,7 +57,7 @@ func (r *CloseAsyncRecognitionTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("CloseAsyncRecognitionTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseAsyncRecognitionTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -117,7 +116,7 @@ func (r *CreateAsrVocabRequest) FromJsonString(s string) error {
 	delete(f, "WordWeights")
 	delete(f, "WordWeightStr")
 	if len(f) > 0 {
-		return errors.New("CreateAsrVocabRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsrVocabRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -206,7 +205,7 @@ func (r *CreateAsyncRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "WordInfo")
 	delete(f, "HotwordId")
 	if len(f) > 0 {
-		return errors.New("CreateAsyncRecognitionTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsyncRecognitionTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -267,7 +266,7 @@ func (r *CreateCustomizationRequest) FromJsonString(s string) error {
 	delete(f, "ModelType")
 	delete(f, "TagInfos")
 	if len(f) > 0 {
-		return errors.New("CreateCustomizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -390,7 +389,7 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "FilterPunc")
 	if len(f) > 0 {
-		return errors.New("CreateRecTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -439,7 +438,7 @@ func (r *DeleteAsrVocabRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VocabId")
 	if len(f) > 0 {
-		return errors.New("DeleteAsrVocabRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAsrVocabRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -485,7 +484,7 @@ func (r *DeleteCustomizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ModelId")
 	if len(f) > 0 {
-		return errors.New("DeleteCustomizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -527,7 +526,7 @@ func (r *DescribeAsyncRecognitionTasksRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeAsyncRecognitionTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncRecognitionTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -577,7 +576,7 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -626,7 +625,7 @@ func (r *DownloadAsrVocabRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VocabId")
 	if len(f) > 0 {
-		return errors.New("DownloadAsrVocabRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadAsrVocabRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -678,7 +677,7 @@ func (r *DownloadCustomizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ModelId")
 	if len(f) > 0 {
-		return errors.New("DownloadCustomizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadCustomizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -735,7 +734,7 @@ func (r *GetAsrVocabListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetAsrVocabListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAsrVocabListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -787,7 +786,7 @@ func (r *GetAsrVocabRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VocabId")
 	if len(f) > 0 {
-		return errors.New("GetAsrVocabRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAsrVocabRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -862,7 +861,7 @@ func (r *GetCustomizationListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("GetCustomizationListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCustomizationListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -965,7 +964,7 @@ func (r *ModifyCustomizationRequest) FromJsonString(s string) error {
 	delete(f, "ModelType")
 	delete(f, "TextUrl")
 	if len(f) > 0 {
-		return errors.New("ModifyCustomizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1015,7 +1014,7 @@ func (r *ModifyCustomizationStateRequest) FromJsonString(s string) error {
 	delete(f, "ModelId")
 	delete(f, "ToState")
 	if len(f) > 0 {
-		return errors.New("ModifyCustomizationStateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizationStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1161,7 +1160,7 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "ConvertNumMode")
 	delete(f, "WordInfo")
 	if len(f) > 0 {
-		return errors.New("SentenceRecognitionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1252,7 +1251,7 @@ func (r *SetVocabStateRequest) FromJsonString(s string) error {
 	delete(f, "VocabId")
 	delete(f, "State")
 	if len(f) > 0 {
-		return errors.New("SetVocabStateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVocabStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1346,7 +1345,7 @@ func (r *UpdateAsrVocabRequest) FromJsonString(s string) error {
 	delete(f, "WordWeightStr")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateAsrVocabRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAsrVocabRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

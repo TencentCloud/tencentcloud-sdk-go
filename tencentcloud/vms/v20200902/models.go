@@ -16,8 +16,7 @@ package v20200902
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -59,7 +58,7 @@ func (r *SendCodeVoiceRequest) FromJsonString(s string) error {
 	delete(f, "PlayTimes")
 	delete(f, "SessionContext")
 	if len(f) > 0 {
-		return errors.New("SendCodeVoiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendCodeVoiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -140,7 +139,7 @@ func (r *SendTtsVoiceRequest) FromJsonString(s string) error {
 	delete(f, "PlayTimes")
 	delete(f, "SessionContext")
 	if len(f) > 0 {
-		return errors.New("SendTtsVoiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTtsVoiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

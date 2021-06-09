@@ -16,8 +16,7 @@ package v20200713
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *DescribeImageStatRequest) FromJsonString(s string) error {
 	delete(f, "AuditType")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeImageStatRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageStatRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -110,7 +109,7 @@ func (r *DescribeImsListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeImsListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImsListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -248,7 +247,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	if len(f) > 0 {
-		return errors.New("ImageModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

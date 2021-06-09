@@ -16,8 +16,7 @@ package v20180301
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *BankCard2EVerificationRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "BankCard")
 	if len(f) > 0 {
-		return errors.New("BankCard2EVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCard2EVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -138,7 +137,7 @@ func (r *BankCard4EVerificationRequest) FromJsonString(s string) error {
 	delete(f, "CertType")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("BankCard4EVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCard4EVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -228,7 +227,7 @@ func (r *BankCardVerificationRequest) FromJsonString(s string) error {
 	delete(f, "CertType")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("BankCardVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCardVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -300,7 +299,7 @@ func (r *CheckBankCardInformationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BankCard")
 	if len(f) > 0 {
-		return errors.New("CheckBankCardInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckBankCardInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -391,7 +390,7 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("CheckIdCardInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIdCardInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -486,7 +485,7 @@ func (r *CheckPhoneAndNameRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("CheckPhoneAndNameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckPhoneAndNameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -575,7 +574,7 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("DetectAuthRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAuthRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -847,7 +846,7 @@ func (r *EncryptedPhoneVerificationRequest) FromJsonString(s string) error {
 	delete(f, "Phone")
 	delete(f, "EncryptionMode")
 	if len(f) > 0 {
-		return errors.New("EncryptedPhoneVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EncryptedPhoneVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -919,7 +918,7 @@ func (r *GetActionSequenceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ActionType")
 	if len(f) > 0 {
-		return errors.New("GetActionSequenceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetActionSequenceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -994,7 +993,7 @@ func (r *GetDetectInfoEnhancedRequest) FromJsonString(s string) error {
 	delete(f, "IsNeedIdCardAvatar")
 	delete(f, "IsEncrypt")
 	if len(f) > 0 {
-		return errors.New("GetDetectInfoEnhancedRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDetectInfoEnhancedRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1070,7 +1069,7 @@ func (r *GetDetectInfoRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "InfoType")
 	if len(f) > 0 {
-		return errors.New("GetDetectInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDetectInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1177,7 +1176,7 @@ func (r *GetEidResultRequest) FromJsonString(s string) error {
 	delete(f, "InfoType")
 	delete(f, "BestFramesCount")
 	if len(f) > 0 {
-		return errors.New("GetEidResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEidResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1268,7 +1267,7 @@ func (r *GetEidTokenRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("GetEidTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEidTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1326,7 +1325,7 @@ func (r *GetFaceIdResultRequest) FromJsonString(s string) error {
 	delete(f, "IsNeedVideo")
 	delete(f, "IsNeedBestFrame")
 	if len(f) > 0 {
-		return errors.New("GetFaceIdResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1420,7 +1419,7 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 	delete(f, "Meta")
 	delete(f, "Extra")
 	if len(f) > 0 {
-		return errors.New("GetFaceIdTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1465,7 +1464,7 @@ func (r *GetLiveCodeRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetLiveCodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLiveCodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1514,7 +1513,7 @@ func (r *GetRealNameAuthResultRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AuthToken")
 	if len(f) > 0 {
-		return errors.New("GetRealNameAuthResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRealNameAuthResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1579,7 +1578,7 @@ func (r *GetRealNameAuthTokenRequest) FromJsonString(s string) error {
 	delete(f, "IDCard")
 	delete(f, "CallbackURL")
 	if len(f) > 0 {
-		return errors.New("GetRealNameAuthTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRealNameAuthTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1654,7 +1653,7 @@ func (r *IdCardOCRVerificationRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("IdCardOCRVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IdCardOCRVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1740,7 +1739,7 @@ func (r *IdCardVerificationRequest) FromJsonString(s string) error {
 	delete(f, "IdCard")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("IdCardVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IdCardVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1814,7 +1813,7 @@ func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Optional")
 	if len(f) > 0 {
-		return errors.New("ImageRecognitionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1895,7 +1894,7 @@ func (r *LivenessCompareRequest) FromJsonString(s string) error {
 	delete(f, "ValidateData")
 	delete(f, "Optional")
 	if len(f) > 0 {
-		return errors.New("LivenessCompareRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LivenessCompareRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1985,7 +1984,7 @@ func (r *LivenessRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "ValidateData")
 	delete(f, "Optional")
 	if len(f) > 0 {
-		return errors.New("LivenessRecognitionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LivenessRecognitionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2067,7 +2066,7 @@ func (r *LivenessRequest) FromJsonString(s string) error {
 	delete(f, "ValidateData")
 	delete(f, "Optional")
 	if len(f) > 0 {
-		return errors.New("LivenessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LivenessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2147,7 +2146,7 @@ func (r *MinorsVerificationRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("MinorsVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MinorsVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2222,7 +2221,7 @@ func (r *MobileNetworkTimeVerificationRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("MobileNetworkTimeVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MobileNetworkTimeVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2289,7 +2288,7 @@ func (r *MobileStatusRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "Encryption")
 	if len(f) > 0 {
-		return errors.New("MobileStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MobileStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2376,7 +2375,7 @@ func (r *PhoneVerificationRequest) FromJsonString(s string) error {
 	delete(f, "EncryptList")
 	delete(f, "Iv")
 	if len(f) > 0 {
-		return errors.New("PhoneVerificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PhoneVerificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20181203
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *DescribeStatusRequest) FromJsonString(s string) error {
 	delete(f, "Pk")
 	delete(f, "Md5")
 	if len(f) > 0 {
-		return errors.New("DescribeStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -109,7 +108,7 @@ func (r *StartAnalyseRequest) FromJsonString(s string) error {
 	delete(f, "Md5")
 	delete(f, "DlUrl")
 	if len(f) > 0 {
-		return errors.New("StartAnalyseRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAnalyseRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

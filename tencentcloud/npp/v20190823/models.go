@@ -16,8 +16,7 @@ package v20190823
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -162,7 +161,7 @@ func (r *CreateCallBackRequest) FromJsonString(s string) error {
 	delete(f, "PreCallerHandle")
 	delete(f, "OrderId")
 	if len(f) > 0 {
-		return errors.New("CreateCallBackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCallBackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -235,7 +234,7 @@ func (r *DelVirtualNumRequest) FromJsonString(s string) error {
 	delete(f, "BindId")
 	delete(f, "BizId")
 	if len(f) > 0 {
-		return errors.New("DelVirtualNumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DelVirtualNumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -304,7 +303,7 @@ func (r *DeleteCallBackRequest) FromJsonString(s string) error {
 	delete(f, "CallId")
 	delete(f, "CancelFlag")
 	if len(f) > 0 {
-		return errors.New("DeleteCallBackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCallBackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -377,7 +376,7 @@ func (r *DescribeCallBackCdrRequest) FromJsonString(s string) error {
 	delete(f, "StartTimeStamp")
 	delete(f, "EndTimeStamp")
 	if len(f) > 0 {
-		return errors.New("DescribeCallBackCdrRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallBackCdrRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -455,7 +454,7 @@ func (r *DescribeCallBackStatusRequest) FromJsonString(s string) error {
 	delete(f, "Dst")
 	delete(f, "CallStatus")
 	if len(f) > 0 {
-		return errors.New("DescribeCallBackStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallBackStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -522,7 +521,7 @@ func (r *DescribeCallerDisplayListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BizAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeCallerDisplayListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallerDisplayListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -599,7 +598,7 @@ func (r *Get400CdrRequest) FromJsonString(s string) error {
 	delete(f, "StartTimeStamp")
 	delete(f, "EndTimeStamp")
 	if len(f) > 0 {
-		return errors.New("Get400CdrRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "Get400CdrRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -724,7 +723,7 @@ func (r *GetVirtualNumRequest) FromJsonString(s string) error {
 	delete(f, "HangupUrl")
 	delete(f, "RecordUrl")
 	if len(f) > 0 {
-		return errors.New("GetVirtualNumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVirtualNumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

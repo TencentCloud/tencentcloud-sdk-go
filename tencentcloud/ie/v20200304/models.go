@@ -16,8 +16,7 @@ package v20200304
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -30,8 +29,7 @@ type ArtifactReduction struct {
 	// edaf,
 	// wdaf，
 	// 默认edaf。
-	// 注意：edaf：速度快，去毛刺效果强，保护边缘效果较弱；
-	// wdaf：速度慢，保护边缘效果好
+	// 注意：此参数已经弃用
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 }
 
@@ -270,7 +268,7 @@ func (r *CreateEditingTaskRequest) FromJsonString(s string) error {
 	delete(f, "SaveInfo")
 	delete(f, "CallbackInfo")
 	if len(f) > 0 {
-		return errors.New("CreateEditingTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEditingTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -331,7 +329,7 @@ func (r *CreateMediaProcessTaskRequest) FromJsonString(s string) error {
 	delete(f, "SaveInfoSet")
 	delete(f, "CallbackInfoSet")
 	if len(f) > 0 {
-		return errors.New("CreateMediaProcessTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMediaProcessTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -393,7 +391,7 @@ func (r *CreateMediaQualityRestorationTaskRequest) FromJsonString(s string) erro
 	delete(f, "SaveInfo")
 	delete(f, "CallbackInfo")
 	if len(f) > 0 {
-		return errors.New("CreateMediaQualityRestorationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMediaQualityRestorationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -450,7 +448,7 @@ func (r *CreateQualityControlTaskRequest) FromJsonString(s string) error {
 	delete(f, "DownInfo")
 	delete(f, "CallbackInfo")
 	if len(f) > 0 {
-		return errors.New("CreateQualityControlTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityControlTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -537,7 +535,7 @@ func (r *DescribeEditingTaskResultRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeEditingTaskResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEditingTaskResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -586,7 +584,7 @@ func (r *DescribeMediaProcessTaskResultRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeMediaProcessTaskResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaProcessTaskResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -636,7 +634,7 @@ func (r *DescribeMediaQualityRestorationTaskRusultRequest) FromJsonString(s stri
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeMediaQualityRestorationTaskRusultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaQualityRestorationTaskRusultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -685,7 +683,7 @@ func (r *DescribeQualityControlTaskResultRequest) FromJsonString(s string) error
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeQualityControlTaskResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityControlTaskResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1549,7 +1547,7 @@ func (r *StopMediaProcessTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopMediaProcessTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMediaProcessTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1595,7 +1593,7 @@ func (r *StopMediaQualityRestorationTaskRequest) FromJsonString(s string) error 
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopMediaQualityRestorationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMediaQualityRestorationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1895,6 +1893,7 @@ type VideoEnhance struct {
 	Sharp *Sharp `json:"Sharp,omitempty" name:"Sharp"`
 
 	// 超分参数，可选项：2，目前仅支持2倍超分。
+	// 注意：此参数已经弃用，超分可以使用VideoSuperResolution参数
 	WdSuperResolution *int64 `json:"WdSuperResolution,omitempty" name:"WdSuperResolution"`
 
 	// 人脸保护信息。
@@ -1909,6 +1908,12 @@ type VideoEnhance struct {
 
 	// 低光照增强参数
 	LowLightEnhance *LowLightEnhance `json:"LowLightEnhance,omitempty" name:"LowLightEnhance"`
+
+	// 视频超分参数
+	VideoSuperResolution *VideoSuperResolution `json:"VideoSuperResolution,omitempty" name:"VideoSuperResolution"`
+
+	// 视频画质修复参数
+	VideoRepair *VideoRepair `json:"VideoRepair,omitempty" name:"VideoRepair"`
 }
 
 type VideoInfo struct {
@@ -2028,4 +2033,24 @@ type VideoInfoResultItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PixFormat *string `json:"PixFormat,omitempty" name:"PixFormat"`
+}
+
+type VideoRepair struct {
+
+	// 画质修复类型，可选值：weak，normal，strong;
+	// 默认值: weak
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type VideoSuperResolution struct {
+
+	// 超分视频类型：可选值：lq,hq
+	// lq: 针对低清晰度有较多噪声视频的超分;
+	// hq: 针对高清晰度视频超分;
+	// 默认取值：lq。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 超分倍数，可选值：2。
+	// 注意：当前只支持两倍超分。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }

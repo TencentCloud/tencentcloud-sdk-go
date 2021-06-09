@@ -16,8 +16,7 @@ package v20190311
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *CreateBotRequest) FromJsonString(s string) error {
 	delete(f, "BotName")
 	delete(f, "BotCnName")
 	if len(f) > 0 {
-		return errors.New("CreateBotRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBotRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -110,7 +109,7 @@ func (r *ResetRequest) FromJsonString(s string) error {
 	delete(f, "BotVersion")
 	delete(f, "BotEnv")
 	if len(f) > 0 {
-		return errors.New("ResetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -218,7 +217,7 @@ func (r *TextProcessRequest) FromJsonString(s string) error {
 	delete(f, "BotEnv")
 	delete(f, "SessionAttributes")
 	if len(f) > 0 {
-		return errors.New("TextProcessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextProcessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -300,7 +299,7 @@ func (r *TextResetRequest) FromJsonString(s string) error {
 	delete(f, "TerminalId")
 	delete(f, "BotEnv")
 	if len(f) > 0 {
-		return errors.New("TextResetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextResetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

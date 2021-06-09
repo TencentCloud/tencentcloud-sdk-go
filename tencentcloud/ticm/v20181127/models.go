@@ -16,8 +16,7 @@ package v20181127
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -51,7 +50,7 @@ func (r *DescribeVideoTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VodTaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeVideoTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -205,7 +204,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("ImageModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -395,7 +394,7 @@ func (r *VideoModerationRequest) FromJsonString(s string) error {
 	delete(f, "CBUrl")
 	delete(f, "Extra")
 	if len(f) > 0 {
-		return errors.New("VideoModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VideoModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

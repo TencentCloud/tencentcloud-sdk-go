@@ -16,8 +16,7 @@ package v20200224
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -184,7 +183,7 @@ func (r *QueryLoginProtectionRequest) FromJsonString(s string) error {
 	delete(f, "RandNum")
 	delete(f, "WxToken")
 	if len(f) > 0 {
-		return errors.New("QueryLoginProtectionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryLoginProtectionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

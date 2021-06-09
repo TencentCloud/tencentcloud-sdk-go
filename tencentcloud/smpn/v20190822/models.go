@@ -16,8 +16,7 @@ package v20190822
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -69,7 +68,7 @@ func (r *CreateSmpnEpaRequest) FromJsonString(s string) error {
 	delete(f, "RequestData")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("CreateSmpnEpaRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmpnEpaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -122,7 +121,7 @@ func (r *DescribeSmpnChpRequest) FromJsonString(s string) error {
 	delete(f, "ResourceId")
 	delete(f, "RequestData")
 	if len(f) > 0 {
-		return errors.New("DescribeSmpnChpRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmpnChpRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -175,7 +174,7 @@ func (r *DescribeSmpnFnrRequest) FromJsonString(s string) error {
 	delete(f, "RequestData")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeSmpnFnrRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmpnFnrRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -228,7 +227,7 @@ func (r *DescribeSmpnMhmRequest) FromJsonString(s string) error {
 	delete(f, "RequestData")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeSmpnMhmRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmpnMhmRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -281,7 +280,7 @@ func (r *DescribeSmpnMrlRequest) FromJsonString(s string) error {
 	delete(f, "RequestData")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeSmpnMrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmpnMrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

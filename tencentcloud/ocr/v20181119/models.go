@@ -16,8 +16,7 @@ package v20181119
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -50,7 +49,7 @@ func (r *AdvertiseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("AdvertiseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AdvertiseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -150,7 +149,7 @@ func (r *ArithmeticOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnablePdfRecognize")
 	delete(f, "PdfPageIndex")
 	if len(f) > 0 {
-		return errors.New("ArithmeticOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ArithmeticOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -228,7 +227,7 @@ func (r *BankCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnableReshootCheck")
 	delete(f, "EnableBorderCheck")
 	if len(f) > 0 {
-		return errors.New("BankCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -318,7 +317,7 @@ func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("BizLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BizLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -445,7 +444,7 @@ func (r *BusInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("BusInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -533,7 +532,7 @@ func (r *BusinessCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("BusinessCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusinessCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -623,7 +622,7 @@ func (r *CarInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("CarInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CarInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -729,7 +728,7 @@ func (r *ClassifyDetectOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "DiscernType")
 	if len(f) > 0 {
-		return errors.New("ClassifyDetectOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClassifyDetectOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -808,7 +807,7 @@ func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
 	if len(f) > 0 {
-		return errors.New("DriverLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DriverLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -931,7 +930,7 @@ func (r *DutyPaidProofOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("DutyPaidProofOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DutyPaidProofOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1004,7 +1003,7 @@ func (r *EduPaperOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("EduPaperOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EduPaperOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1080,7 +1079,7 @@ func (r *EnglishOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnableCoordPoint")
 	delete(f, "EnableCandWord")
 	if len(f) > 0 {
-		return errors.New("EnglishOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnglishOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1153,7 +1152,7 @@ func (r *EnterpriseLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("EnterpriseLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnterpriseLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1216,7 +1215,7 @@ func (r *EstateCertOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("EstateCertOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstateCertOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1324,7 +1323,7 @@ func (r *FinanBillOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("FinanBillOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1394,7 +1393,7 @@ func (r *FinanBillSliceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("FinanBillSliceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillSliceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1467,7 +1466,7 @@ func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("FlightInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlightInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1527,7 +1526,7 @@ func (r *FormulaOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("FormulaOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FormulaOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1587,7 +1586,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("GeneralAccurateOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1677,7 +1676,7 @@ func (r *GeneralBasicOCRRequest) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
-		return errors.New("GeneralBasicOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralBasicOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1743,7 +1742,7 @@ func (r *GeneralEfficientOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("GeneralEfficientOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralEfficientOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1814,7 +1813,7 @@ func (r *GeneralFastOCRRequest) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
-		return errors.New("GeneralFastOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralFastOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1893,7 +1892,7 @@ func (r *GeneralHandwritingOCRRequest) FromJsonString(s string) error {
 	delete(f, "Scene")
 	delete(f, "EnableWordPolygon")
 	if len(f) > 0 {
-		return errors.New("GeneralHandwritingOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralHandwritingOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1963,7 +1962,7 @@ func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("HKIDCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HKIDCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2077,7 +2076,7 @@ func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
 	if len(f) > 0 {
-		return errors.New("HmtResidentPermitOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HmtResidentPermitOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2186,7 +2185,7 @@ func (r *IDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "CardSide")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("IDCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IDCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2285,7 +2284,7 @@ func (r *InstitutionOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("InstitutionOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstitutionOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2374,7 +2373,7 @@ func (r *InsuranceBillOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("InsuranceBillOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InsuranceBillOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2479,7 +2478,7 @@ func (r *InvoiceGeneralOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("InvoiceGeneralOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvoiceGeneralOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2557,7 +2556,7 @@ func (r *LicensePlateOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("LicensePlateOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LicensePlateOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2626,7 +2625,7 @@ func (r *MLIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "RetImage")
 	if len(f) > 0 {
-		return errors.New("MLIDCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MLIDCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2721,7 +2720,7 @@ func (r *MLIDPassportOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "RetImage")
 	if len(f) > 0 {
-		return errors.New("MLIDPassportOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MLIDPassportOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2823,7 +2822,7 @@ func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "RetProfile")
 	if len(f) > 0 {
-		return errors.New("MainlandPermitOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MainlandPermitOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2917,7 +2916,7 @@ func (r *MixedInvoiceDetectRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("MixedInvoiceDetectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceDetectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3025,7 +3024,7 @@ func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Types")
 	if len(f) > 0 {
-		return errors.New("MixedInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3085,7 +3084,7 @@ func (r *OrgCodeCertOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("OrgCodeCertOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OrgCodeCertOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3154,7 +3153,7 @@ func (r *PassportOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("PassportOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PassportOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3256,7 +3255,7 @@ func (r *PermitOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("PermitOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PermitOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3419,7 +3418,7 @@ func (r *PropOwnerCertOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("PropOwnerCertOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PropOwnerCertOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3498,7 +3497,7 @@ func (r *QrcodeOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("QrcodeOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QrcodeOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3577,7 +3576,7 @@ func (r *QueryBarCodeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BarCode")
 	if len(f) > 0 {
-		return errors.New("QueryBarCodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBarCodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3673,7 +3672,7 @@ func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("QuotaInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuotaInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3766,7 +3765,7 @@ func (r *RecognizeTableOCRRequest) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "TableLanguage")
 	if len(f) > 0 {
-		return errors.New("RecognizeTableOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTableOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3830,7 +3829,7 @@ func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("RecognizeThaiIDCardOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeThaiIDCardOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3926,7 +3925,7 @@ func (r *ResidenceBookletOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("ResidenceBookletOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResidenceBookletOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4014,7 +4013,7 @@ func (r *RideHailingDriverLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("RideHailingDriverLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RideHailingDriverLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4081,7 +4080,7 @@ func (r *RideHailingTransportLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("RideHailingTransportLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RideHailingTransportLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4151,7 +4150,7 @@ func (r *SealOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("SealOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SealOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4230,7 +4229,7 @@ func (r *ShipInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("ShipInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShipInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4358,7 +4357,7 @@ func (r *TableOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("TableOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TableOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4428,7 +4427,7 @@ func (r *TaxiInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("TaxiInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TaxiInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4562,7 +4561,7 @@ func (r *TextDetectRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("TextDetectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextDetectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4878,7 +4877,7 @@ func (r *TollInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("TollInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TollInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4941,7 +4940,7 @@ func (r *TrainTicketOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("TrainTicketOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TrainTicketOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5182,7 +5181,7 @@ func (r *VatInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
-		return errors.New("VatInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5272,7 +5271,7 @@ func (r *VatInvoiceVerifyRequest) FromJsonString(s string) error {
 	delete(f, "InvoiceDate")
 	delete(f, "Additional")
 	if len(f) > 0 {
-		return errors.New("VatInvoiceVerifyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceVerifyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5345,7 +5344,7 @@ func (r *VatRollInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("VatRollInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatRollInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5409,7 +5408,7 @@ func (r *VehicleLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
 	if len(f) > 0 {
-		return errors.New("VehicleLicenseOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VehicleLicenseOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5508,7 +5507,7 @@ func (r *VehicleRegCertOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("VehicleRegCertOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VehicleRegCertOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5595,7 +5594,7 @@ func (r *VerifyBasicBizLicenseRequest) FromJsonString(s string) error {
 	delete(f, "RegCapital")
 	delete(f, "EstablishTime")
 	if len(f) > 0 {
-		return errors.New("VerifyBasicBizLicenseRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyBasicBizLicenseRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5725,7 +5724,7 @@ func (r *VerifyBizLicenseRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Address")
 	if len(f) > 0 {
-		return errors.New("VerifyBizLicenseRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyBizLicenseRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5885,7 +5884,7 @@ func (r *VerifyEnterpriseFourFactorsRequest) FromJsonString(s string) error {
 	delete(f, "EnterpriseName")
 	delete(f, "EnterpriseMark")
 	if len(f) > 0 {
-		return errors.New("VerifyEnterpriseFourFactorsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyEnterpriseFourFactorsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5943,7 +5942,7 @@ func (r *VerifyOfdVatInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "OfdFileUrl")
 	delete(f, "OfdFileBase64")
 	if len(f) > 0 {
-		return errors.New("VerifyOfdVatInvoiceOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyOfdVatInvoiceOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6053,7 +6052,7 @@ func (r *VinOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	if len(f) > 0 {
-		return errors.New("VinOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VinOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6117,7 +6116,7 @@ func (r *WaybillOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "EnablePreDetect")
 	if len(f) > 0 {
-		return errors.New("WaybillOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WaybillOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

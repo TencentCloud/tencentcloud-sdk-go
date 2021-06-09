@@ -1,29 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 63 次发布
+### 第 29 次发布
 
-发布时间：2021-06-08 08:03:57
+发布时间：2021-06-09 08:03:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
 
-	* 新增入参：DeviceType, Cpu
+	* 新增成员：AttachMode
+
+* [Placement](https://cloud.tencent.com/document/api/362/15669#Placement)
+
+	* 新增成员：DedicatedClusterId
 
 
 
 
-## 企业微信汽车行业版(wav) 版本：2021-01-29
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 1 次发布
+### 第 67 次发布
 
-发布时间：2021-06-07 14:33:31
+发布时间：2021-06-09 08:03:50
 
 本次发布包含了以下内容：
 
@@ -31,11 +35,77 @@
 
 新增接口：
 
-* [QueryActivityLiveCodeList](https://cloud.tencent.com/document/api/1318/56790)
+* [ModifyPurgeFetchTaskStatus](https://cloud.tencent.com/document/api/228/56898)
+
+
+
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 10 次发布
+
+发布时间：2021-06-09 08:01:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail)
+* [VideoRepair](https://cloud.tencent.com/document/api/1186/42824#VideoRepair)
+* [VideoSuperResolution](https://cloud.tencent.com/document/api/1186/42824#VideoSuperResolution)
+
+修改数据结构：
+
+* [VideoEnhance](https://cloud.tencent.com/document/api/1186/42824#VideoEnhance)
+
+	* 新增成员：VideoSuperResolution, VideoRepair
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 24 次发布
+
+发布时间：2021-06-09 08:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBinding](https://cloud.tencent.com/document/api/1131/42367)
+
+	* 新增入参：BindToken
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 32 次发布
+
+发布时间：2021-06-09 08:07:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)
+
+	* 新增成员：Role
+
+* [RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)
+
+	* 新增成员：ZoneId
+
 
 
 
@@ -5925,6 +5995,25 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 29 次发布
+
+发布时间：2021-06-09 08:03:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：AttachMode
+
+* [Placement](https://cloud.tencent.com/document/api/362/15669#Placement)
+
+	* 新增成员：DedicatedClusterId
+
+
 ### 第 28 次发布
 
 发布时间：2021-06-04 08:03:35
@@ -8077,6 +8166,18 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 67 次发布
+
+发布时间：2021-06-09 08:03:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyPurgeFetchTaskStatus](https://cloud.tencent.com/document/api/228/56898)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 66 次发布
 
@@ -24845,6 +24946,26 @@
 
 ## 智能编辑(ie) 版本：2020-03-04
 
+### 第 10 次发布
+
+发布时间：2021-06-09 08:01:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[VideoRepair](https://cloud.tencent.com/document/api/1186/42824#VideoRepair)](https://cloud.tencent.com/document/api/1186/42824#[VideoRepair](https://cloud.tencent.com/document/api/1186/42824#VideoRepair))
+* [[VideoSuperResolution](https://cloud.tencent.com/document/api/1186/42824#VideoSuperResolution)](https://cloud.tencent.com/document/api/1186/42824#[VideoSuperResolution](https://cloud.tencent.com/document/api/1186/42824#VideoSuperResolution))
+
+修改数据结构：
+
+* [VideoEnhance](https://cloud.tencent.com/document/api/1186/42824#VideoEnhance)
+
+	* 新增成员：VideoSuperResolution, VideoRepair
+
+
 ### 第 9 次发布
 
 发布时间：2021-05-13 08:01:13
@@ -26704,6 +26825,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+### 第 24 次发布
+
+发布时间：2021-06-09 08:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBinding](https://cloud.tencent.com/document/api/1131/42367)
+
+	* 新增入参：BindToken
+
 
 ### 第 23 次发布
 
@@ -34909,6 +35045,25 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 32 次发布
+
+发布时间：2021-06-09 08:07:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RedisNode](https://cloud.tencent.com/document/api/239/20022#RedisNode)
+
+	* 新增成员：Role
+
+* [RedisNodes](https://cloud.tencent.com/document/api/239/20022#RedisNodes)
+
+	* 新增成员：ZoneId
+
 
 ### 第 31 次发布
 
@@ -51465,11 +51620,11 @@
 
 新增接口：
 
-* [[QueryActivityLiveCodeList](https://cloud.tencent.com/document/api/1318/56790)](https://cloud.tencent.com/document/api/#/#)
+* [QueryActivityLiveCodeList](https://cloud.tencent.com/document/api/1318/56790)
 
 新增数据结构：
 
-* [[LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail)](https://cloud.tencent.com/document/api/1318/56791#[LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail))
+* [LiveCodeDetail](https://cloud.tencent.com/document/api/1318/56791#LiveCodeDetail)
 
 
 

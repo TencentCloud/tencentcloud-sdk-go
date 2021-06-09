@@ -16,8 +16,7 @@ package v20200910
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -349,7 +348,7 @@ func (r *ImageToClassRequest) FromJsonString(s string) error {
 	delete(f, "HandleParam")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("ImageToClassRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToClassRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -411,7 +410,7 @@ func (r *ImageToObjectRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "IsUsedClassify")
 	if len(f) > 0 {
-		return errors.New("ImageToObjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToObjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1068,7 +1067,7 @@ func (r *TextToClassRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("TextToClassRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToClassRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1125,7 +1124,7 @@ func (r *TextToObjectRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "IsUsedClassify")
 	if len(f) > 0 {
-		return errors.New("TextToObjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToObjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

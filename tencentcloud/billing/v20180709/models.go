@@ -16,8 +16,7 @@ package v20180709
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -806,7 +805,7 @@ func (r *DescribeAccountBalanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeAccountBalanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountBalanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -936,7 +935,7 @@ func (r *DescribeBillDetailRequest) FromJsonString(s string) error {
 	delete(f, "ActionType")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("DescribeBillDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1013,7 +1012,7 @@ func (r *DescribeBillListRequest) FromJsonString(s string) error {
 	delete(f, "SubPayType")
 	delete(f, "WithZeroAmount")
 	if len(f) > 0 {
-		return errors.New("DescribeBillListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1116,7 +1115,7 @@ func (r *DescribeBillResourceSummaryRequest) FromJsonString(s string) error {
 	delete(f, "NeedRecordNum")
 	delete(f, "ActionType")
 	if len(f) > 0 {
-		return errors.New("DescribeBillResourceSummaryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillResourceSummaryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1177,7 +1176,7 @@ func (r *DescribeBillSummaryByPayModeRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PayerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeBillSummaryByPayModeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByPayModeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1238,7 +1237,7 @@ func (r *DescribeBillSummaryByProductRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PayerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeBillSummaryByProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1303,7 +1302,7 @@ func (r *DescribeBillSummaryByProjectRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PayerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeBillSummaryByProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1364,7 +1363,7 @@ func (r *DescribeBillSummaryByRegionRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PayerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeBillSummaryByRegionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByRegionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1429,7 +1428,7 @@ func (r *DescribeBillSummaryByTagRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "PayerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeBillSummaryByTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1515,7 +1514,7 @@ func (r *DescribeCostDetailRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeCostDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1589,7 +1588,7 @@ func (r *DescribeCostSummaryByProductRequest) FromJsonString(s string) error {
 	delete(f, "PayerUin")
 	delete(f, "NeedRecordNum")
 	if len(f) > 0 {
-		return errors.New("DescribeCostSummaryByProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostSummaryByProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1669,7 +1668,7 @@ func (r *DescribeCostSummaryByProjectRequest) FromJsonString(s string) error {
 	delete(f, "PayerUin")
 	delete(f, "NeedRecordNum")
 	if len(f) > 0 {
-		return errors.New("DescribeCostSummaryByProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostSummaryByProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1747,7 +1746,7 @@ func (r *DescribeCostSummaryByRegionRequest) FromJsonString(s string) error {
 	delete(f, "PayerUin")
 	delete(f, "NeedRecordNum")
 	if len(f) > 0 {
-		return errors.New("DescribeCostSummaryByRegionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostSummaryByRegionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1834,7 +1833,7 @@ func (r *DescribeCostSummaryByResourceRequest) FromJsonString(s string) error {
 	delete(f, "NeedConditionValue")
 	delete(f, "Conditions")
 	if len(f) > 0 {
-		return errors.New("DescribeCostSummaryByResourceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostSummaryByResourceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1935,7 +1934,7 @@ func (r *DescribeDealsByCondRequest) FromJsonString(s string) error {
 	delete(f, "OrderId")
 	delete(f, "BigDealId")
 	if len(f) > 0 {
-		return errors.New("DescribeDealsByCondRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDealsByCondRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1995,7 +1994,7 @@ func (r *DescribeDosageCosDetailByDateRequest) FromJsonString(s string) error {
 	delete(f, "EndDate")
 	delete(f, "BucketName")
 	if len(f) > 0 {
-		return errors.New("DescribeDosageCosDetailByDateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDosageCosDetailByDateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2081,7 +2080,7 @@ func (r *DescribeDosageDetailByDateRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "InstanceID")
 	if len(f) > 0 {
-		return errors.New("DescribeDosageDetailByDateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDosageDetailByDateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2177,7 +2176,7 @@ func (r *PayDealsRequest) FromJsonString(s string) error {
 	delete(f, "VoucherIds")
 	delete(f, "BigDealIds")
 	if len(f) > 0 {
-		return errors.New("PayDealsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PayDealsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

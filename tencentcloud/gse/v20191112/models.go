@@ -16,8 +16,7 @@ package v20191112
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -152,7 +151,7 @@ func (r *AttachCcnInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AccountId")
 	delete(f, "CcnId")
 	if len(f) > 0 {
-		return errors.New("AttachCcnInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachCcnInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -306,7 +305,7 @@ func (r *CopyFleetRequest) FromJsonString(s string) error {
 	delete(f, "CcnInfos")
 	delete(f, "InternetMaxBandwidthOut")
 	if len(f) > 0 {
-		return errors.New("CopyFleetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyFleetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -371,7 +370,7 @@ func (r *CreateAliasRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -444,7 +443,7 @@ func (r *CreateAssetRequest) FromJsonString(s string) error {
 	delete(f, "ImageId")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateAssetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -528,7 +527,7 @@ func (r *CreateAssetWithImageRequest) FromJsonString(s string) error {
 	delete(f, "ImageType")
 	delete(f, "OsBit")
 	if len(f) > 0 {
-		return errors.New("CreateAssetWithImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetWithImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -644,7 +643,7 @@ func (r *CreateFleetRequest) FromJsonString(s string) error {
 	delete(f, "CcnInfos")
 	delete(f, "InternetMaxBandwidthOut")
 	if len(f) > 0 {
-		return errors.New("CreateFleetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFleetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -710,7 +709,7 @@ func (r *CreateGameServerSessionQueueRequest) FromJsonString(s string) error {
 	delete(f, "TimeoutInSeconds")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateGameServerSessionQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGameServerSessionQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -791,7 +790,7 @@ func (r *CreateGameServerSessionRequest) FromJsonString(s string) error {
 	delete(f, "IdempotencyToken")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("CreateGameServerSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGameServerSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -850,7 +849,7 @@ func (r *DeleteAliasRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AliasId")
 	if len(f) > 0 {
-		return errors.New("DeleteAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -896,7 +895,7 @@ func (r *DeleteAssetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AssetId")
 	if len(f) > 0 {
-		return errors.New("DeleteAssetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAssetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -942,7 +941,7 @@ func (r *DeleteFleetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DeleteFleetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFleetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -988,7 +987,7 @@ func (r *DeleteGameServerSessionQueueRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DeleteGameServerSessionQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGameServerSessionQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1038,7 +1037,7 @@ func (r *DeleteScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DeleteScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1092,7 +1091,7 @@ func (r *DeleteTimerScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "TimerName")
 	if len(f) > 0 {
-		return errors.New("DeleteTimerScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTimerScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1138,7 +1137,7 @@ func (r *DescribeAliasRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AliasId")
 	if len(f) > 0 {
-		return errors.New("DescribeAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1188,7 +1187,7 @@ func (r *DescribeAssetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AssetId")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1241,7 +1240,7 @@ func (r *DescribeAssetSystemsRequest) FromJsonString(s string) error {
 	delete(f, "OsType")
 	delete(f, "OsBit")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetSystemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSystemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1306,7 +1305,7 @@ func (r *DescribeAssetsRequest) FromJsonString(s string) error {
 	delete(f, "Filter")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1358,7 +1357,7 @@ func (r *DescribeCcnInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DescribeCcnInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcnInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1419,7 +1418,7 @@ func (r *DescribeFleetAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1480,7 +1479,7 @@ func (r *DescribeFleetCapacityRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetCapacityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetCapacityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1554,7 +1553,7 @@ func (r *DescribeFleetEventsRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetEventsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetEventsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1606,7 +1605,7 @@ func (r *DescribeFleetPortSettingsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetPortSettingsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetPortSettingsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1656,7 +1655,7 @@ func (r *DescribeFleetRelatedResourcesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetRelatedResourcesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetRelatedResourcesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1722,7 +1721,7 @@ func (r *DescribeFleetStatisticDetailsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetStatisticDetailsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticDetailsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1796,7 +1795,7 @@ func (r *DescribeFleetStatisticFlowsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetStatisticFlowsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticFlowsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1866,7 +1865,7 @@ func (r *DescribeFleetStatisticSummaryRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetStatisticSummaryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticSummaryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1920,7 +1919,7 @@ func (r *DescribeFleetUtilizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetIds")
 	if len(f) > 0 {
-		return errors.New("DescribeFleetUtilizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetUtilizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1993,7 +1992,7 @@ func (r *DescribeGameServerSessionDetailsRequest) FromJsonString(s string) error
 	delete(f, "NextToken")
 	delete(f, "StatusFilter")
 	if len(f) > 0 {
-		return errors.New("DescribeGameServerSessionDetailsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionDetailsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2047,7 +2046,7 @@ func (r *DescribeGameServerSessionPlacementRequest) FromJsonString(s string) err
 	}
 	delete(f, "PlacementId")
 	if len(f) > 0 {
-		return errors.New("DescribeGameServerSessionPlacementRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionPlacementRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2108,7 +2107,7 @@ func (r *DescribeGameServerSessionQueuesRequest) FromJsonString(s string) error 
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeGameServerSessionQueuesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionQueuesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2181,7 +2180,7 @@ func (r *DescribeGameServerSessionsRequest) FromJsonString(s string) error {
 	delete(f, "NextToken")
 	delete(f, "StatusFilter")
 	if len(f) > 0 {
-		return errors.New("DescribeGameServerSessionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2231,7 +2230,7 @@ func (r *DescribeInstanceLimitRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeInstanceLimitRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLimitRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2279,7 +2278,7 @@ func (r *DescribeInstanceTypesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeInstanceTypesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceTypesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2340,7 +2339,7 @@ func (r *DescribeInstancesExtendRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "IpAddress")
 	if len(f) > 0 {
-		return errors.New("DescribeInstancesExtendRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesExtendRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2410,7 +2409,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "IpAddress")
 	if len(f) > 0 {
-		return errors.New("DescribeInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2484,7 +2483,7 @@ func (r *DescribePlayerSessionsRequest) FromJsonString(s string) error {
 	delete(f, "PlayerSessionId")
 	delete(f, "PlayerSessionStatusFilter")
 	if len(f) > 0 {
-		return errors.New("DescribePlayerSessionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayerSessionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2538,7 +2537,7 @@ func (r *DescribeRuntimeConfigurationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DescribeRuntimeConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuntimeConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2600,7 +2599,7 @@ func (r *DescribeScalingPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeScalingPoliciesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScalingPoliciesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2674,7 +2673,7 @@ func (r *DescribeTimerScalingPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeTimerScalingPoliciesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimerScalingPoliciesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2728,7 +2727,7 @@ func (r *DescribeUserQuotaRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ResourceType")
 	if len(f) > 0 {
-		return errors.New("DescribeUserQuotaRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2774,7 +2773,7 @@ func (r *DescribeUserQuotasRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeUserQuotasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2836,7 +2835,7 @@ func (r *DetachCcnInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FleetId")
 	if len(f) > 0 {
-		return errors.New("DetachCcnInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachCcnInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2899,7 +2898,7 @@ func (r *EndGameServerSessionAndProcessRequest) FromJsonString(s string) error {
 	delete(f, "IpAddress")
 	delete(f, "Port")
 	if len(f) > 0 {
-		return errors.New("EndGameServerSessionAndProcessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EndGameServerSessionAndProcessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3425,7 +3424,7 @@ func (r *GetGameServerInstanceLogUrlRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Size")
 	if len(f) > 0 {
-		return errors.New("GetGameServerInstanceLogUrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGameServerInstanceLogUrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3481,7 +3480,7 @@ func (r *GetGameServerSessionLogUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GameServerSessionId")
 	if len(f) > 0 {
-		return errors.New("GetGameServerSessionLogUrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGameServerSessionLogUrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3535,7 +3534,7 @@ func (r *GetInstanceAccessRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return errors.New("GetInstanceAccessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetInstanceAccessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3588,7 +3587,7 @@ func (r *GetUploadCredentialsRequest) FromJsonString(s string) error {
 	delete(f, "AssetRegion")
 	delete(f, "BucketKey")
 	if len(f) > 0 {
-		return errors.New("GetUploadCredentialsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUploadCredentialsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3639,7 +3638,7 @@ func (r *GetUploadFederationTokenRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetUploadFederationTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUploadFederationTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3893,7 +3892,7 @@ func (r *JoinGameServerSessionBatchRequest) FromJsonString(s string) error {
 	delete(f, "PlayerIds")
 	delete(f, "PlayerDataMap")
 	if len(f) > 0 {
-		return errors.New("JoinGameServerSessionBatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "JoinGameServerSessionBatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3951,7 +3950,7 @@ func (r *JoinGameServerSessionRequest) FromJsonString(s string) error {
 	delete(f, "PlayerId")
 	delete(f, "PlayerData")
 	if len(f) > 0 {
-		return errors.New("JoinGameServerSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "JoinGameServerSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4025,7 +4024,7 @@ func (r *ListAliasesRequest) FromJsonString(s string) error {
 	delete(f, "OrderWay")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("ListAliasesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAliasesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4090,7 +4089,7 @@ func (r *ListFleetsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("ListFleetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFleetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4265,7 +4264,7 @@ func (r *PutScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "PolicyType")
 	delete(f, "TargetConfiguration")
 	if len(f) > 0 {
-		return errors.New("PutScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4315,7 +4314,7 @@ func (r *PutTimerScalingPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TimerScalingPolicy")
 	if len(f) > 0 {
-		return errors.New("PutTimerScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutTimerScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4392,7 +4391,7 @@ func (r *ResolveAliasRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AliasId")
 	if len(f) > 0 {
-		return errors.New("ResolveAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResolveAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4586,7 +4585,7 @@ func (r *SearchGameServerSessionsRequest) FromJsonString(s string) error {
 	delete(f, "FilterExpression")
 	delete(f, "SortExpression")
 	if len(f) > 0 {
-		return errors.New("SearchGameServerSessionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchGameServerSessionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4660,7 +4659,7 @@ func (r *SetServerReservedRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "ReserveValue")
 	if len(f) > 0 {
-		return errors.New("SetServerReservedRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetServerReservedRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4714,7 +4713,7 @@ func (r *SetServerWeightRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Weight")
 	if len(f) > 0 {
-		return errors.New("SetServerWeightRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetServerWeightRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4764,7 +4763,7 @@ func (r *StartFleetActionsRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "Actions")
 	if len(f) > 0 {
-		return errors.New("StartFleetActionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartFleetActionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4842,7 +4841,7 @@ func (r *StartGameServerSessionPlacementRequest) FromJsonString(s string) error 
 	delete(f, "GameServerSessionName")
 	delete(f, "PlayerLatencies")
 	if len(f) > 0 {
-		return errors.New("StartGameServerSessionPlacementRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartGameServerSessionPlacementRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4895,7 +4894,7 @@ func (r *StopFleetActionsRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "Actions")
 	if len(f) > 0 {
-		return errors.New("StopFleetActionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopFleetActionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4945,7 +4944,7 @@ func (r *StopGameServerSessionPlacementRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PlacementId")
 	if len(f) > 0 {
-		return errors.New("StopGameServerSessionPlacementRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopGameServerSessionPlacementRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5114,7 +5113,7 @@ func (r *UpdateAliasRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "RoutingStrategy")
 	if len(f) > 0 {
-		return errors.New("UpdateAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5172,7 +5171,7 @@ func (r *UpdateAssetRequest) FromJsonString(s string) error {
 	delete(f, "AssetName")
 	delete(f, "AssetVersion")
 	if len(f) > 0 {
-		return errors.New("UpdateAssetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5218,7 +5217,7 @@ func (r *UpdateBucketAccelerateOptRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Allowed")
 	if len(f) > 0 {
-		return errors.New("UpdateBucketAccelerateOptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateBucketAccelerateOptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5280,7 +5279,7 @@ func (r *UpdateBucketCORSOptRequest) FromJsonString(s string) error {
 	delete(f, "MaxAgeSeconds")
 	delete(f, "ExposeHeaders")
 	if len(f) > 0 {
-		return errors.New("UpdateBucketCORSOptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateBucketCORSOptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5346,7 +5345,7 @@ func (r *UpdateFleetAttributesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceCreationLimitPolicy")
 	delete(f, "GameServerSessionProtectionTimeLimit")
 	if len(f) > 0 {
-		return errors.New("UpdateFleetAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5412,7 +5411,7 @@ func (r *UpdateFleetCapacityRequest) FromJsonString(s string) error {
 	delete(f, "MaxSize")
 	delete(f, "ScalingInterval")
 	if len(f) > 0 {
-		return errors.New("UpdateFleetCapacityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetCapacityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5466,7 +5465,7 @@ func (r *UpdateFleetNameRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("UpdateFleetNameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetNameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5520,7 +5519,7 @@ func (r *UpdateFleetPortSettingsRequest) FromJsonString(s string) error {
 	delete(f, "InboundPermissionAuthorizations")
 	delete(f, "InboundPermissionRevocations")
 	if len(f) > 0 {
-		return errors.New("UpdateFleetPortSettingsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetPortSettingsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5582,7 +5581,7 @@ func (r *UpdateGameServerSessionQueueRequest) FromJsonString(s string) error {
 	delete(f, "PlayerLatencyPolicies")
 	delete(f, "TimeoutInSeconds")
 	if len(f) > 0 {
-		return errors.New("UpdateGameServerSessionQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGameServerSessionQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5647,7 +5646,7 @@ func (r *UpdateGameServerSessionRequest) FromJsonString(s string) error {
 	delete(f, "PlayerSessionCreationPolicy")
 	delete(f, "ProtectionPolicy")
 	if len(f) > 0 {
-		return errors.New("UpdateGameServerSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGameServerSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5700,7 +5699,7 @@ func (r *UpdateRuntimeConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "FleetId")
 	delete(f, "RuntimeConfiguration")
 	if len(f) > 0 {
-		return errors.New("UpdateRuntimeConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRuntimeConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20201229
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -123,7 +122,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	if len(f) > 0 {
-		return errors.New("TextModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

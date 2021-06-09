@@ -16,8 +16,7 @@ package v20201028
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -93,7 +92,7 @@ func (r *CreatePrivateZoneRecordRequest) FromJsonString(s string) error {
 	delete(f, "MX")
 	delete(f, "TTL")
 	if len(f) > 0 {
-		return errors.New("CreatePrivateZoneRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -162,7 +161,7 @@ func (r *CreatePrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "DnsForwardStatus")
 	delete(f, "Vpcs")
 	if len(f) > 0 {
-		return errors.New("CreatePrivateZoneRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -231,7 +230,7 @@ func (r *DeletePrivateZoneRecordRequest) FromJsonString(s string) error {
 	delete(f, "RecordId")
 	delete(f, "RecordIdSet")
 	if len(f) > 0 {
-		return errors.New("DeletePrivateZoneRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateZoneRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -281,7 +280,7 @@ func (r *DeletePrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "ZoneIdSet")
 	if len(f) > 0 {
-		return errors.New("DeletePrivateZoneRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateZoneRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -343,7 +342,7 @@ func (r *DescribeAuditLogRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeAuditLogRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditLogRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -388,7 +387,7 @@ func (r *DescribeDashboardRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeDashboardRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDashboardRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -454,7 +453,7 @@ func (r *DescribePrivateZoneListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribePrivateZoneListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateZoneListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -518,7 +517,7 @@ func (r *DescribePrivateZoneRecordListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribePrivateZoneRecordListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateZoneRecordListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -570,7 +569,7 @@ func (r *DescribePrivateZoneRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	if len(f) > 0 {
-		return errors.New("DescribePrivateZoneRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateZoneRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -615,7 +614,7 @@ func (r *DescribePrivateZoneServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribePrivateZoneServiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateZoneServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -672,7 +671,7 @@ func (r *DescribeRequestDataRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "TimeRangeEnd")
 	if len(f) > 0 {
-		return errors.New("DescribeRequestDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRequestDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -785,7 +784,7 @@ func (r *ModifyPrivateZoneRecordRequest) FromJsonString(s string) error {
 	delete(f, "MX")
 	delete(f, "TTL")
 	if len(f) > 0 {
-		return errors.New("ModifyPrivateZoneRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -839,7 +838,7 @@ func (r *ModifyPrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "DnsForwardStatus")
 	if len(f) > 0 {
-		return errors.New("ModifyPrivateZoneRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -889,7 +888,7 @@ func (r *ModifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "VpcSet")
 	if len(f) > 0 {
-		return errors.New("ModifyPrivateZoneVpcRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneVpcRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1016,7 +1015,7 @@ func (r *SubscribePrivateZoneServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("SubscribePrivateZoneServiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubscribePrivateZoneServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

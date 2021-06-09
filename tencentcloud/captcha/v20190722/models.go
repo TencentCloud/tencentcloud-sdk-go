@@ -16,8 +16,7 @@ package v20190722
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -145,7 +144,7 @@ func (r *DescribeCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CaptchaAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaAppIdInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaAppIdInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -250,7 +249,7 @@ func (r *DescribeCaptchaDataRequest) FromJsonString(s string) error {
 	delete(f, "End")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -315,7 +314,7 @@ func (r *DescribeCaptchaDataSumRequest) FromJsonString(s string) error {
 	delete(f, "Start")
 	delete(f, "End")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaDataSumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaDataSumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -395,7 +394,7 @@ func (r *DescribeCaptchaMiniDataRequest) FromJsonString(s string) error {
 	delete(f, "End")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaMiniDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -460,7 +459,7 @@ func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
 	delete(f, "Start")
 	delete(f, "End")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaMiniDataSumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniDataSumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -550,7 +549,7 @@ func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
 	delete(f, "Start")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaMiniOperDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniOperDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -639,7 +638,7 @@ func (r *DescribeCaptchaMiniResultRequest) FromJsonString(s string) error {
 	delete(f, "MacAddress")
 	delete(f, "Imei")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaMiniResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -740,7 +739,7 @@ func (r *DescribeCaptchaMiniRiskResultRequest) FromJsonString(s string) error {
 	delete(f, "SceneCode")
 	delete(f, "WeChatOpenId")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaMiniRiskResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniRiskResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -816,7 +815,7 @@ func (r *DescribeCaptchaOperDataRequest) FromJsonString(s string) error {
 	delete(f, "Start")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaOperDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaOperDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -913,7 +912,7 @@ func (r *DescribeCaptchaResultRequest) FromJsonString(s string) error {
 	delete(f, "Imei")
 	delete(f, "NeedGetCaptchaTime")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1000,7 +999,7 @@ func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
 	delete(f, "CaptchaAppId")
 	delete(f, "Start")
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaTicketDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaTicketDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1053,7 +1052,7 @@ func (r *DescribeCaptchaUserAllAppIdRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeCaptchaUserAllAppIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaUserAllAppIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1243,7 +1242,7 @@ func (r *UpdateCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 	delete(f, "TopFullScreen")
 	delete(f, "TrafficThreshold")
 	if len(f) > 0 {
-		return errors.New("UpdateCaptchaAppIdInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCaptchaAppIdInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

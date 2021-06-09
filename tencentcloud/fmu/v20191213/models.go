@@ -16,8 +16,7 @@ package v20191213
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -71,7 +70,7 @@ func (r *BeautifyPicRequest) FromJsonString(s string) error {
 	delete(f, "EyeEnlarging")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("BeautifyPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BeautifyPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -162,7 +161,7 @@ func (r *BeautifyVideoRequest) FromJsonString(s string) error {
 	delete(f, "BeautyParam")
 	delete(f, "OutputVideoType")
 	if len(f) > 0 {
-		return errors.New("BeautifyVideoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BeautifyVideoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -229,7 +228,7 @@ func (r *CancelBeautifyVideoJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("CancelBeautifyVideoJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelBeautifyVideoJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -279,7 +278,7 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 	delete(f, "LUTFile")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateModelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -328,7 +327,7 @@ func (r *DeleteModelRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ModelId")
 	if len(f) > 0 {
-		return errors.New("DeleteModelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -393,7 +392,7 @@ func (r *GetModelListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetModelListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetModelListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -475,7 +474,7 @@ func (r *QueryBeautifyVideoJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("QueryBeautifyVideoJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBeautifyVideoJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -565,7 +564,7 @@ func (r *StyleImageProRequest) FromJsonString(s string) error {
 	delete(f, "FilterDegree")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("StyleImageProRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StyleImageProRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -641,7 +640,7 @@ func (r *StyleImageRequest) FromJsonString(s string) error {
 	delete(f, "FilterDegree")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("StyleImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StyleImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -713,7 +712,7 @@ func (r *TryLipstickPicRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("TryLipstickPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TryLipstickPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

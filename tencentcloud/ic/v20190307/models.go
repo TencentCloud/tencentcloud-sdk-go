@@ -16,8 +16,7 @@ package v20190307
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -182,7 +181,7 @@ func (r *DescribeAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Sdkappid")
 	if len(f) > 0 {
-		return errors.New("DescribeAppRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -236,7 +235,7 @@ func (r *DescribeCardRequest) FromJsonString(s string) error {
 	delete(f, "Sdkappid")
 	delete(f, "Iccid")
 	if len(f) > 0 {
-		return errors.New("DescribeCardRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCardRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -294,7 +293,7 @@ func (r *DescribeCardsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeCardsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCardsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -351,7 +350,7 @@ func (r *ModifyUserCardRemarkRequest) FromJsonString(s string) error {
 	delete(f, "Iccid")
 	delete(f, "Remark")
 	if len(f) > 0 {
-		return errors.New("ModifyUserCardRemarkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserCardRemarkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -405,7 +404,7 @@ func (r *RenewCardsRequest) FromJsonString(s string) error {
 	delete(f, "Iccids")
 	delete(f, "RenewNum")
 	if len(f) > 0 {
-		return errors.New("RenewCardsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewCardsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -470,7 +469,7 @@ func (r *SendMultiSmsRequest) FromJsonString(s string) error {
 	delete(f, "Iccids")
 	delete(f, "Content")
 	if len(f) > 0 {
-		return errors.New("SendMultiSmsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMultiSmsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -528,7 +527,7 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 	delete(f, "Iccid")
 	delete(f, "Content")
 	if len(f) > 0 {
-		return errors.New("SendSmsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendSmsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

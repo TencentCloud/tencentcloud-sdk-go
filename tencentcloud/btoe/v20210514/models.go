@@ -16,8 +16,7 @@ package v20210514
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -66,7 +65,7 @@ func (r *CreateAudioDepositRequest) FromJsonString(s string) error {
 	delete(f, "HashType")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateAudioDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -135,7 +134,7 @@ func (r *CreateDataDepositRequest) FromJsonString(s string) error {
 	delete(f, "HashType")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateDataDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -212,7 +211,7 @@ func (r *CreateDocDepositRequest) FromJsonString(s string) error {
 	delete(f, "HashType")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateDocDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -273,7 +272,7 @@ func (r *CreateHashDepositNoCertRequest) FromJsonString(s string) error {
 	delete(f, "BusinessId")
 	delete(f, "EvidenceInfo")
 	if len(f) > 0 {
-		return errors.New("CreateHashDepositNoCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHashDepositNoCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -334,7 +333,7 @@ func (r *CreateHashDepositNoSealRequest) FromJsonString(s string) error {
 	delete(f, "BusinessId")
 	delete(f, "EvidenceInfo")
 	if len(f) > 0 {
-		return errors.New("CreateHashDepositNoSealRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHashDepositNoSealRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -399,7 +398,7 @@ func (r *CreateHashDepositRequest) FromJsonString(s string) error {
 	delete(f, "BusinessId")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateHashDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHashDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -476,7 +475,7 @@ func (r *CreateImageDepositRequest) FromJsonString(s string) error {
 	delete(f, "HashType")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateImageDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -553,7 +552,7 @@ func (r *CreateVideoDepositRequest) FromJsonString(s string) error {
 	delete(f, "HashType")
 	delete(f, "EvidenceDescription")
 	if len(f) > 0 {
-		return errors.New("CreateVideoDepositRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoDepositRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -606,7 +605,7 @@ func (r *GetDepositCertRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EvidenceId")
 	if len(f) > 0 {
-		return errors.New("GetDepositCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDepositCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -658,7 +657,7 @@ func (r *GetDepositFileRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EvidenceId")
 	if len(f) > 0 {
-		return errors.New("GetDepositFileRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDepositFileRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -710,7 +709,7 @@ func (r *GetDepositInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EvidenceId")
 	if len(f) > 0 {
-		return errors.New("GetDepositInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDepositInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -765,7 +764,7 @@ func (r *VerifyEvidenceBlockChainTxHashRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EvidenceTxHash")
 	if len(f) > 0 {
-		return errors.New("VerifyEvidenceBlockChainTxHashRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyEvidenceBlockChainTxHashRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -822,7 +821,7 @@ func (r *VerifyEvidenceHashRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EvidenceHash")
 	if len(f) > 0 {
-		return errors.New("VerifyEvidenceHashRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyEvidenceHashRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

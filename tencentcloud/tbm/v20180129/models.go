@@ -16,8 +16,7 @@ package v20180129
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -125,7 +124,7 @@ func (r *DescribeBrandCommentCountRequest) FromJsonString(s string) error {
 	delete(f, "StartDate")
 	delete(f, "EndDate")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandCommentCountRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandCommentCountRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -182,7 +181,7 @@ func (r *DescribeBrandExposureRequest) FromJsonString(s string) error {
 	delete(f, "StartDate")
 	delete(f, "EndDate")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandExposureRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandExposureRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -242,7 +241,7 @@ func (r *DescribeBrandMediaReportRequest) FromJsonString(s string) error {
 	delete(f, "StartDate")
 	delete(f, "EndDate")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandMediaReportRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandMediaReportRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -310,7 +309,7 @@ func (r *DescribeBrandNegCommentsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandNegCommentsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandNegCommentsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -378,7 +377,7 @@ func (r *DescribeBrandPosCommentsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandPosCommentsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandPosCommentsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -450,7 +449,7 @@ func (r *DescribeBrandSocialOpinionRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ShowList")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandSocialOpinionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandSocialOpinionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -516,7 +515,7 @@ func (r *DescribeBrandSocialReportRequest) FromJsonString(s string) error {
 	delete(f, "StartDate")
 	delete(f, "EndDate")
 	if len(f) > 0 {
-		return errors.New("DescribeBrandSocialReportRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBrandSocialReportRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -588,7 +587,7 @@ func (r *DescribeIndustryNewsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeIndustryNewsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndustryNewsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -649,7 +648,7 @@ func (r *DescribeUserPortraitRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BrandId")
 	if len(f) > 0 {
-		return errors.New("DescribeUserPortraitRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserPortraitRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

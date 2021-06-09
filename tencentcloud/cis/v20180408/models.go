@@ -16,8 +16,7 @@ package v20180408
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -179,7 +178,7 @@ func (r *CreateContainerInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RestartPolicy")
 	delete(f, "Containers")
 	if len(f) > 0 {
-		return errors.New("CreateContainerInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContainerInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -228,7 +227,7 @@ func (r *DeleteContainerInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceName")
 	if len(f) > 0 {
-		return errors.New("DeleteContainerInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteContainerInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -277,7 +276,7 @@ func (r *DescribeContainerInstanceEventsRequest) FromJsonString(s string) error 
 	}
 	delete(f, "InstanceName")
 	if len(f) > 0 {
-		return errors.New("DescribeContainerInstanceEventsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstanceEventsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -326,7 +325,7 @@ func (r *DescribeContainerInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceName")
 	if len(f) > 0 {
-		return errors.New("DescribeContainerInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -386,7 +385,7 @@ func (r *DescribeContainerInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeContainerInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -450,7 +449,7 @@ func (r *DescribeContainerLogRequest) FromJsonString(s string) error {
 	delete(f, "Tail")
 	delete(f, "SinceTime")
 	if len(f) > 0 {
-		return errors.New("DescribeContainerLogRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerLogRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -546,7 +545,7 @@ func (r *InquiryPriceCreateCisRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "Memory")
 	if len(f) > 0 {
-		return errors.New("InquiryPriceCreateCisRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateCisRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20191209
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -74,7 +73,7 @@ func (r *GetOpenIdRequest) FromJsonString(s string) error {
 	delete(f, "Platform")
 	delete(f, "Option")
 	if len(f) > 0 {
-		return errors.New("GetOpenIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOpenIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -148,7 +147,7 @@ func (r *GetTokenRequest) FromJsonString(s string) error {
 	delete(f, "ExpireTime")
 	delete(f, "OldToken")
 	if len(f) > 0 {
-		return errors.New("GetTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -292,7 +291,7 @@ func (r *QueryDevAndRiskRequest) FromJsonString(s string) error {
 	delete(f, "Fingerprint")
 	delete(f, "SerialId")
 	if len(f) > 0 {
-		return errors.New("QueryDevAndRiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDevAndRiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20190118
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *GetLocalEngineRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Key")
 	if len(f) > 0 {
-		return errors.New("GetLocalEngineRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLocalEngineRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -101,7 +100,7 @@ func (r *GetScanResultRequest) FromJsonString(s string) error {
 	delete(f, "Key")
 	delete(f, "Md5")
 	if len(f) > 0 {
-		return errors.New("GetScanResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetScanResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -169,7 +168,7 @@ func (r *ScanFileHashRequest) FromJsonString(s string) error {
 	delete(f, "WithCategory")
 	delete(f, "SensitiveLevel")
 	if len(f) > 0 {
-		return errors.New("ScanFileHashRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanFileHashRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -234,7 +233,7 @@ func (r *ScanFileRequest) FromJsonString(s string) error {
 	delete(f, "Sample")
 	delete(f, "Md5")
 	if len(f) > 0 {
-		return errors.New("ScanFileRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanFileRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

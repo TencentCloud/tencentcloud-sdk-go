@@ -16,8 +16,7 @@ package v20190411
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *DescribeEntityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EntityName")
 	if len(f) > 0 {
-		return errors.New("DescribeEntityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEntityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -95,7 +94,7 @@ func (r *DescribeRelationRequest) FromJsonString(s string) error {
 	delete(f, "LeftEntityName")
 	delete(f, "RightEntityName")
 	if len(f) > 0 {
-		return errors.New("DescribeRelationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -144,7 +143,7 @@ func (r *DescribeTripleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TripleCondition")
 	if len(f) > 0 {
-		return errors.New("DescribeTripleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTripleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

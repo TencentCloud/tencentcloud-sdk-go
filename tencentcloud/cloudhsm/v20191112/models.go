@@ -16,8 +16,7 @@ package v20191112
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *DescribeHSMBySubnetIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubnetId")
 	if len(f) > 0 {
-		return errors.New("DescribeHSMBySubnetIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHSMBySubnetIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -94,7 +93,7 @@ func (r *DescribeHSMByVpcIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VpcId")
 	if len(f) > 0 {
-		return errors.New("DescribeHSMByVpcIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHSMByVpcIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -158,7 +157,7 @@ func (r *DescribeSubnetRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SearchWord")
 	if len(f) > 0 {
-		return errors.New("DescribeSubnetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubnetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -207,7 +206,7 @@ func (r *DescribeSupportedHsmRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeSupportedHsmRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSupportedHsmRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -264,7 +263,7 @@ func (r *DescribeUsgRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchWord")
 	if len(f) > 0 {
-		return errors.New("DescribeUsgRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsgRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -317,7 +316,7 @@ func (r *DescribeUsgRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SgIds")
 	if len(f) > 0 {
-		return errors.New("DescribeUsgRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsgRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -379,7 +378,7 @@ func (r *DescribeVpcRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchWord")
 	if len(f) > 0 {
-		return errors.New("DescribeVpcRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -432,7 +431,7 @@ func (r *DescribeVsmAttributesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeVsmAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVsmAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -575,7 +574,7 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 	delete(f, "TagFilters")
 	delete(f, "Manufacturer")
 	if len(f) > 0 {
-		return errors.New("DescribeVsmsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVsmsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -666,7 +665,7 @@ func (r *InquiryPriceBuyVsmRequest) FromJsonString(s string) error {
 	delete(f, "Currency")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("InquiryPriceBuyVsmRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceBuyVsmRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -755,7 +754,7 @@ func (r *ModifyVsmAttributesRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	if len(f) > 0 {
-		return errors.New("ModifyVsmAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVsmAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

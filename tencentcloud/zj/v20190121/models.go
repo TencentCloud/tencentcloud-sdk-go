@@ -16,8 +16,7 @@ package v20190121
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -62,7 +61,7 @@ func (r *AddCrowdPackInfoRequest) FromJsonString(s string) error {
 	delete(f, "CosUrl")
 	delete(f, "PhoneNum")
 	if len(f) > 0 {
-		return errors.New("AddCrowdPackInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCrowdPackInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -152,7 +151,7 @@ func (r *AddSmsSignRequest) FromJsonString(s string) error {
 	delete(f, "SignName")
 	delete(f, "Remark")
 	if len(f) > 0 {
-		return errors.New("AddSmsSignRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSmsSignRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -245,7 +244,7 @@ func (r *AddSmsTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CommonParams")
 	delete(f, "UrlParams")
 	if len(f) > 0 {
-		return errors.New("AddSmsTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSmsTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -304,7 +303,7 @@ func (r *CancelCampaignRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "CampaignId")
 	if len(f) > 0 {
-		return errors.New("CancelCampaignRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelCampaignRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -377,7 +376,7 @@ func (r *CreateCampaignRequest) FromJsonString(s string) error {
 	delete(f, "CrowdID")
 	delete(f, "SmsType")
 	if len(f) > 0 {
-		return errors.New("CreateCampaignRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCampaignRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -467,7 +466,7 @@ func (r *CreateMmsInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CommonParams")
 	delete(f, "UrlParams")
 	if len(f) > 0 {
-		return errors.New("CreateMmsInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMmsInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -532,7 +531,7 @@ func (r *DelCrowdPackRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "ID")
 	if len(f) > 0 {
-		return errors.New("DelCrowdPackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DelCrowdPackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -591,7 +590,7 @@ func (r *DelTemplateRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "TemplateID")
 	if len(f) > 0 {
-		return errors.New("DelTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DelTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -644,7 +643,7 @@ func (r *DeleteMmsInstanceRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return errors.New("DeleteMmsInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMmsInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -697,7 +696,7 @@ func (r *DescribeMmsInstanceInfoRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return errors.New("DescribeMmsInstanceInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMmsInstanceInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -762,7 +761,7 @@ func (r *DescribeMmsInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "AppSubId")
 	delete(f, "Title")
 	if len(f) > 0 {
-		return errors.New("DescribeMmsInstanceListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMmsInstanceListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -815,7 +814,7 @@ func (r *DescribeSmsCampaignStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "CampaignId")
 	delete(f, "License")
 	if len(f) > 0 {
-		return errors.New("DescribeSmsCampaignStatisticsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmsCampaignStatisticsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -899,7 +898,7 @@ func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
 	delete(f, "SignIdSet")
 	delete(f, "International")
 	if len(f) > 0 {
-		return errors.New("DescribeSmsSignListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmsSignListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -983,7 +982,7 @@ func (r *DescribeSmsTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "TemplateIdSet")
 	delete(f, "International")
 	if len(f) > 0 {
-		return errors.New("DescribeSmsTemplateListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmsTemplateListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1048,7 +1047,7 @@ func (r *GetCrowdPackListRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("GetCrowdPackListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCrowdPackListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1101,7 +1100,7 @@ func (r *GetCrowdUploadInfoRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "FileName")
 	if len(f) > 0 {
-		return errors.New("GetCrowdUploadInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCrowdUploadInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1150,7 +1149,7 @@ func (r *GetSmsAmountInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "License")
 	if len(f) > 0 {
-		return errors.New("GetSmsAmountInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSmsAmountInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1203,7 +1202,7 @@ func (r *GetSmsCampaignStatusRequest) FromJsonString(s string) error {
 	delete(f, "License")
 	delete(f, "CampaignId")
 	if len(f) > 0 {
-		return errors.New("GetSmsCampaignStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSmsCampaignStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1366,7 +1365,7 @@ func (r *ModifySmsTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CommonParams")
 	delete(f, "UrlParams")
 	if len(f) > 0 {
-		return errors.New("ModifySmsTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmsTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1465,7 +1464,7 @@ func (r *PushMmsContentRequest) FromJsonString(s string) error {
 	delete(f, "DynamicParaKey")
 	delete(f, "DynamicParaValue")
 	if len(f) > 0 {
-		return errors.New("PushMmsContentRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushMmsContentRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1578,7 +1577,7 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 	delete(f, "International")
 	delete(f, "Content")
 	if len(f) > 0 {
-		return errors.New("SendSmsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendSmsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20200713
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -66,7 +65,7 @@ func (r *AccountTipoffAccessRequest) FromJsonString(s string) error {
 	delete(f, "SenderIP")
 	delete(f, "EvilContent")
 	if len(f) > 0 {
-		return errors.New("AccountTipoffAccessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AccountTipoffAccessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -116,7 +115,7 @@ func (r *DescribeTextLibRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StrategyType")
 	if len(f) > 0 {
-		return errors.New("DescribeTextLibRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextLibRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -169,7 +168,7 @@ func (r *DescribeTextStatRequest) FromJsonString(s string) error {
 	delete(f, "AuditType")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeTextStatRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextStatRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -363,7 +362,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	if len(f) > 0 {
-		return errors.New("TextModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

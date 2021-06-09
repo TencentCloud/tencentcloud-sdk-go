@@ -16,8 +16,7 @@ package v20200722
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -74,7 +73,7 @@ func (r *CreateFlowServiceRequest) FromJsonString(s string) error {
 	delete(f, "EnableCLS")
 	delete(f, "Input")
 	if len(f) > 0 {
-		return errors.New("CreateFlowServiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -126,7 +125,7 @@ func (r *DescribeExecutionHistoryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ExecutionResourceName")
 	if len(f) > 0 {
-		return errors.New("DescribeExecutionHistoryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExecutionHistoryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -175,7 +174,7 @@ func (r *DescribeExecutionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ExecutionResourceName")
 	if len(f) > 0 {
-		return errors.New("DescribeExecutionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExecutionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -266,7 +265,7 @@ func (r *DescribeExecutionsRequest) FromJsonString(s string) error {
 	delete(f, "FilterExecutionStatus")
 	delete(f, "FilterExecutionResourceName")
 	if len(f) > 0 {
-		return errors.New("DescribeExecutionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExecutionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -312,7 +311,7 @@ func (r *DescribeFlowServiceDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FlowServiceResource")
 	if len(f) > 0 {
-		return errors.New("DescribeFlowServiceDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowServiceDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -406,7 +405,7 @@ func (r *DescribeFlowServicesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeFlowServicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowServicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -527,7 +526,7 @@ func (r *ModifyFlowServiceRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "EnableCLS")
 	if len(f) > 0 {
-		return errors.New("ModifyFlowServiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlowServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -587,7 +586,7 @@ func (r *StartExecutionRequest) FromJsonString(s string) error {
 	delete(f, "Input")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("StartExecutionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartExecutionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -680,7 +679,7 @@ func (r *StopExecutionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ExecutionQrn")
 	if len(f) > 0 {
-		return errors.New("StopExecutionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopExecutionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20190529
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -54,7 +53,7 @@ func (r *AssessQualityRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("AssessQualityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssessQualityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -178,7 +177,7 @@ func (r *CropImageRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("CropImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CropImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -265,7 +264,7 @@ func (r *DetectCelebrityRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("DetectCelebrityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectCelebrityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -333,7 +332,7 @@ func (r *DetectDisgustRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("DetectDisgustRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectDisgustRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -423,7 +422,7 @@ func (r *DetectLabelRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Scenes")
 	if len(f) > 0 {
-		return errors.New("DetectLabelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectLabelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -498,7 +497,7 @@ func (r *DetectMisbehaviorRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("DetectMisbehaviorRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectMisbehaviorRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -556,7 +555,7 @@ func (r *DetectProductBetaRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("DetectProductBetaRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductBetaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -623,7 +622,7 @@ func (r *DetectProductRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("DetectProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -684,7 +683,7 @@ func (r *EnhanceImageRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("EnhanceImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -858,7 +857,7 @@ func (r *RecognizeCarRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("RecognizeCarRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeCarRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

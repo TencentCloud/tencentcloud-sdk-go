@@ -16,8 +16,7 @@ package v20180801
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -61,7 +60,7 @@ func (r *AddDelayLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "DelayTime")
 	delete(f, "ExpireTime")
 	if len(f) > 0 {
-		return errors.New("AddDelayLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDelayLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -135,7 +134,7 @@ func (r *AddLiveDomainRequest) FromJsonString(s string) error {
 	delete(f, "IsDelayLive")
 	delete(f, "IsMiniProgramLive")
 	if len(f) > 0 {
-		return errors.New("AddLiveDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLiveDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -204,7 +203,7 @@ func (r *AddLiveWatermarkRequest) FromJsonString(s string) error {
 	delete(f, "Width")
 	delete(f, "Height")
 	if len(f) > 0 {
-		return errors.New("AddLiveWatermarkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLiveWatermarkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -305,7 +304,7 @@ func (r *BindLiveDomainCertRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("BindLiveDomainCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindLiveDomainCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -427,7 +426,7 @@ func (r *CancelCommonMixStreamRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MixStreamSessionId")
 	if len(f) > 0 {
-		return errors.New("CancelCommonMixStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelCommonMixStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -715,7 +714,7 @@ func (r *CreateCommonMixStreamRequest) FromJsonString(s string) error {
 	delete(f, "MixStreamTemplateId")
 	delete(f, "ControlParams")
 	if len(f) > 0 {
-		return errors.New("CreateCommonMixStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCommonMixStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -769,7 +768,7 @@ func (r *CreateLiveCallbackRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("CreateLiveCallbackRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCallbackRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -858,7 +857,7 @@ func (r *CreateLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CallbackKey")
 	delete(f, "StreamMixNotifyUrl")
 	if len(f) > 0 {
-		return errors.New("CreateLiveCallbackTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCallbackTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -929,7 +928,7 @@ func (r *CreateLiveCertRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "CloudCertId")
 	if len(f) > 0 {
-		return errors.New("CreateLiveCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1071,7 +1070,7 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "ExtraCmd")
 	delete(f, "Comment")
 	if len(f) > 0 {
-		return errors.New("CreateLivePullStreamTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePullStreamTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1173,7 +1172,7 @@ func (r *CreateLiveRecordRequest) FromJsonString(s string) error {
 	delete(f, "MixStream")
 	delete(f, "StreamParam")
 	if len(f) > 0 {
-		return errors.New("CreateLiveRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1235,7 +1234,7 @@ func (r *CreateLiveRecordRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("CreateLiveRecordRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1315,7 +1314,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
 	if len(f) > 0 {
-		return errors.New("CreateLiveRecordTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1377,7 +1376,7 @@ func (r *CreateLiveSnapshotRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("CreateLiveSnapshotRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveSnapshotRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1475,7 +1474,7 @@ func (r *CreateLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CosPrefix")
 	delete(f, "CosFileName")
 	if len(f) > 0 {
-		return errors.New("CreateLiveSnapshotTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveSnapshotTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1536,7 +1535,7 @@ func (r *CreateLiveTranscodeRuleRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("CreateLiveTranscodeRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTranscodeRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1685,7 +1684,7 @@ func (r *CreateLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AdaptBitratePercent")
 	delete(f, "ShortEdgeAsHeight")
 	if len(f) > 0 {
-		return errors.New("CreateLiveTranscodeTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTranscodeTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1746,7 +1745,7 @@ func (r *CreateLiveWatermarkRuleRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("CreateLiveWatermarkRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveWatermarkRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1835,7 +1834,7 @@ func (r *CreatePullStreamConfigRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("CreatePullStreamConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePullStreamConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1914,7 +1913,7 @@ func (r *CreateRecordTaskRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "Extension")
 	if len(f) > 0 {
-		return errors.New("CreateRecordTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2016,7 +2015,7 @@ func (r *DeleteLiveCallbackRuleRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "AppName")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveCallbackRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveCallbackRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2064,7 +2063,7 @@ func (r *DeleteLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveCallbackTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveCallbackTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2110,7 +2109,7 @@ func (r *DeleteLiveCertRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2160,7 +2159,7 @@ func (r *DeleteLiveDomainRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "DomainType")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2210,7 +2209,7 @@ func (r *DeleteLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "Operator")
 	if len(f) > 0 {
-		return errors.New("DeleteLivePullStreamTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLivePullStreamTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2260,7 +2259,7 @@ func (r *DeleteLiveRecordRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2317,7 +2316,7 @@ func (r *DeleteLiveRecordRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveRecordRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveRecordRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2363,7 +2362,7 @@ func (r *DeleteLiveRecordTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveRecordTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveRecordTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2417,7 +2416,7 @@ func (r *DeleteLiveSnapshotRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveSnapshotRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveSnapshotRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2465,7 +2464,7 @@ func (r *DeleteLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveSnapshotTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveSnapshotTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2523,7 +2522,7 @@ func (r *DeleteLiveTranscodeRuleRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveTranscodeRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveTranscodeRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2571,7 +2570,7 @@ func (r *DeleteLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveTranscodeTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveTranscodeTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2619,7 +2618,7 @@ func (r *DeleteLiveWatermarkRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WatermarkId")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveWatermarkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveWatermarkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2673,7 +2672,7 @@ func (r *DeleteLiveWatermarkRuleRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DeleteLiveWatermarkRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveWatermarkRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2721,7 +2720,7 @@ func (r *DeletePullStreamConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ConfigId")
 	if len(f) > 0 {
-		return errors.New("DeletePullStreamConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePullStreamConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2767,7 +2766,7 @@ func (r *DeleteRecordTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DeleteRecordTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2817,7 +2816,7 @@ func (r *DescribeAllStreamPlayInfoListRequest) FromJsonString(s string) error {
 	delete(f, "QueryTime")
 	delete(f, "PlayDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeAllStreamPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllStreamPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2877,7 +2876,7 @@ func (r *DescribeAreaBillBandwidthAndFluxListRequest) FromJsonString(s string) e
 	delete(f, "EndTime")
 	delete(f, "PlayDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeAreaBillBandwidthAndFluxListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAreaBillBandwidthAndFluxListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2954,7 +2953,7 @@ func (r *DescribeBillBandwidthAndFluxListRequest) FromJsonString(s string) error
 	delete(f, "Granularity")
 	delete(f, "ServiceName")
 	if len(f) > 0 {
-		return errors.New("DescribeBillBandwidthAndFluxListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillBandwidthAndFluxListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3045,7 +3044,7 @@ func (r *DescribeCallbackRecordsListRequest) FromJsonString(s string) error {
 	delete(f, "EventType")
 	delete(f, "ResultCode")
 	if len(f) > 0 {
-		return errors.New("DescribeCallbackRecordsListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallbackRecordsListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3125,7 +3124,7 @@ func (r *DescribeConcurrentRecordStreamNumRequest) FromJsonString(s string) erro
 	delete(f, "MainlandOrOversea")
 	delete(f, "PushDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeConcurrentRecordStreamNumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrentRecordStreamNumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3178,7 +3177,7 @@ func (r *DescribeDeliverBandwidthListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeDeliverBandwidthListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliverBandwidthListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3248,7 +3247,7 @@ func (r *DescribeGroupProIspPlayInfoListRequest) FromJsonString(s string) error 
 	delete(f, "IspNames")
 	delete(f, "MainlandOrOversea")
 	if len(f) > 0 {
-		return errors.New("DescribeGroupProIspPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupProIspPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3308,7 +3307,7 @@ func (r *DescribeHttpStatusInfoListRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PlayDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeHttpStatusInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHttpStatusInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3353,7 +3352,7 @@ func (r *DescribeLiveCallbackRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveCallbackRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCallbackRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3404,7 +3403,7 @@ func (r *DescribeLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveCallbackTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCallbackTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3449,7 +3448,7 @@ func (r *DescribeLiveCallbackTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveCallbackTemplatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCallbackTemplatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3498,7 +3497,7 @@ func (r *DescribeLiveCertRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3543,7 +3542,7 @@ func (r *DescribeLiveCertsRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveCertsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCertsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3588,7 +3587,7 @@ func (r *DescribeLiveDelayInfoListRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDelayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDelayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3637,7 +3636,7 @@ func (r *DescribeLiveDomainCertRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDomainCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3686,7 +3685,7 @@ func (r *DescribeLiveDomainPlayInfoListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PlayDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDomainPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3750,7 +3749,7 @@ func (r *DescribeLiveDomainRefererRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDomainRefererRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainRefererRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3799,7 +3798,7 @@ func (r *DescribeLiveDomainRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3869,7 +3868,7 @@ func (r *DescribeLiveDomainsRequest) FromJsonString(s string) error {
 	delete(f, "IsDelayLive")
 	delete(f, "DomainPrefix")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveDomainsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3931,7 +3930,7 @@ func (r *DescribeLiveForbidStreamListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveForbidStreamListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveForbidStreamListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4015,7 +4014,7 @@ func (r *DescribeLivePackageInfoRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeLivePackageInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePackageInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4094,7 +4093,7 @@ func (r *DescribeLivePlayAuthKeyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("DescribeLivePlayAuthKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePlayAuthKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4154,7 +4153,7 @@ func (r *DescribeLivePullStreamTasksRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeLivePullStreamTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePullStreamTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4218,7 +4217,7 @@ func (r *DescribeLivePushAuthKeyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("DescribeLivePushAuthKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePushAuthKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4263,7 +4262,7 @@ func (r *DescribeLiveRecordRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveRecordRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveRecordRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4312,7 +4311,7 @@ func (r *DescribeLiveRecordTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveRecordTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveRecordTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4363,7 +4362,7 @@ func (r *DescribeLiveRecordTemplatesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "IsDelayLive")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveRecordTemplatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveRecordTemplatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4408,7 +4407,7 @@ func (r *DescribeLiveSnapshotRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveSnapshotRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSnapshotRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4458,7 +4457,7 @@ func (r *DescribeLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveSnapshotTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSnapshotTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4503,7 +4502,7 @@ func (r *DescribeLiveSnapshotTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveSnapshotTemplatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveSnapshotTemplatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4606,7 +4605,7 @@ func (r *DescribeLiveStreamEventListRequest) FromJsonString(s string) error {
 	delete(f, "IsStrict")
 	delete(f, "IsAsc")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveStreamEventListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamEventListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4685,7 +4684,7 @@ func (r *DescribeLiveStreamOnlineListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveStreamOnlineListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamOnlineListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4779,7 +4778,7 @@ func (r *DescribeLiveStreamPublishedListRequest) FromJsonString(s string) error 
 	delete(f, "PageSize")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveStreamPublishedListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamPublishedListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4856,7 +4855,7 @@ func (r *DescribeLiveStreamPushInfoListRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveStreamPushInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamPushInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4925,7 +4924,7 @@ func (r *DescribeLiveStreamStateRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveStreamStateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5009,7 +5008,7 @@ func (r *DescribeLiveTranscodeDetailInfoRequest) FromJsonString(s string) error 
 	delete(f, "StartDayTime")
 	delete(f, "EndDayTime")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveTranscodeDetailInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeDetailInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5074,7 +5073,7 @@ func (r *DescribeLiveTranscodeRulesRequest) FromJsonString(s string) error {
 	delete(f, "TemplateIds")
 	delete(f, "DomainNames")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveTranscodeRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5124,7 +5123,7 @@ func (r *DescribeLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TemplateId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveTranscodeTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5169,7 +5168,7 @@ func (r *DescribeLiveTranscodeTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveTranscodeTemplatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeTemplatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5218,7 +5217,7 @@ func (r *DescribeLiveWatermarkRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WatermarkId")
 	if len(f) > 0 {
-		return errors.New("DescribeLiveWatermarkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveWatermarkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5263,7 +5262,7 @@ func (r *DescribeLiveWatermarkRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveWatermarkRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveWatermarkRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5308,7 +5307,7 @@ func (r *DescribeLiveWatermarksRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeLiveWatermarksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveWatermarksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5371,7 +5370,7 @@ func (r *DescribeLogDownloadListRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "PlayDomains")
 	if len(f) > 0 {
-		return errors.New("DescribeLogDownloadListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogDownloadListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5447,7 +5446,7 @@ func (r *DescribePlayErrorCodeDetailInfoListRequest) FromJsonString(s string) er
 	delete(f, "PlayDomains")
 	delete(f, "MainlandOrOversea")
 	if len(f) > 0 {
-		return errors.New("DescribePlayErrorCodeDetailInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayErrorCodeDetailInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5530,7 +5529,7 @@ func (r *DescribePlayErrorCodeSumInfoListRequest) FromJsonString(s string) error
 	delete(f, "GroupType")
 	delete(f, "OutLanguage")
 	if len(f) > 0 {
-		return errors.New("DescribePlayErrorCodeSumInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayErrorCodeSumInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5640,7 +5639,7 @@ func (r *DescribeProIspPlaySumInfoListRequest) FromJsonString(s string) error {
 	delete(f, "MainlandOrOversea")
 	delete(f, "OutLanguage")
 	if len(f) > 0 {
-		return errors.New("DescribeProIspPlaySumInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProIspPlaySumInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5756,7 +5755,7 @@ func (r *DescribeProvinceIspPlayInfoListRequest) FromJsonString(s string) error 
 	delete(f, "MainlandOrOversea")
 	delete(f, "IpType")
 	if len(f) > 0 {
-		return errors.New("DescribeProvinceIspPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProvinceIspPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5809,7 +5808,7 @@ func (r *DescribePullStreamConfigsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ConfigId")
 	if len(f) > 0 {
-		return errors.New("DescribePullStreamConfigsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePullStreamConfigsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5878,7 +5877,7 @@ func (r *DescribeRecordTaskRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "ScrollToken")
 	if len(f) > 0 {
-		return errors.New("DescribeRecordTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5946,7 +5945,7 @@ func (r *DescribeScreenShotSheetNumListRequest) FromJsonString(s string) error {
 	delete(f, "PushDomains")
 	delete(f, "Granularity")
 	if len(f) > 0 {
-		return errors.New("DescribeScreenShotSheetNumListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScreenShotSheetNumListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6019,7 +6018,7 @@ func (r *DescribeStreamDayPlayInfoListRequest) FromJsonString(s string) error {
 	delete(f, "MainlandOrOversea")
 	delete(f, "ServiceName")
 	if len(f) > 0 {
-		return errors.New("DescribeStreamDayPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamDayPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6105,7 +6104,7 @@ func (r *DescribeStreamPlayInfoListRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "ServiceName")
 	if len(f) > 0 {
-		return errors.New("DescribeStreamPlayInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPlayInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6170,7 +6169,7 @@ func (r *DescribeStreamPushInfoListRequest) FromJsonString(s string) error {
 	delete(f, "PushDomain")
 	delete(f, "AppName")
 	if len(f) > 0 {
-		return errors.New("DescribeStreamPushInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPushInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6248,7 +6247,7 @@ func (r *DescribeTopClientIpSumInfoListRequest) FromJsonString(s string) error {
 	delete(f, "MainlandOrOversea")
 	delete(f, "OutLanguage")
 	if len(f) > 0 {
-		return errors.New("DescribeTopClientIpSumInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopClientIpSumInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6327,7 +6326,7 @@ func (r *DescribeUploadStreamNumsRequest) FromJsonString(s string) error {
 	delete(f, "Domains")
 	delete(f, "Granularity")
 	if len(f) > 0 {
-		return errors.New("DescribeUploadStreamNumsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUploadStreamNumsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6404,7 +6403,7 @@ func (r *DescribeVisitTopSumInfoListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "OrderParam")
 	if len(f) > 0 {
-		return errors.New("DescribeVisitTopSumInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVisitTopSumInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6604,7 +6603,7 @@ func (r *DropLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "AppName")
 	if len(f) > 0 {
-		return errors.New("DropLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6650,7 +6649,7 @@ func (r *EnableLiveDomainRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("EnableLiveDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableLiveDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6696,7 +6695,7 @@ func (r *ForbidLiveDomainRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("ForbidLiveDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForbidLiveDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6763,7 +6762,7 @@ func (r *ForbidLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "ResumeTime")
 	delete(f, "Reason")
 	if len(f) > 0 {
-		return errors.New("ForbidLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForbidLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -6974,7 +6973,7 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveCallbackTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveCallbackTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7040,7 +7039,7 @@ func (r *ModifyLiveCertRequest) FromJsonString(s string) error {
 	delete(f, "HttpsKey")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7094,7 +7093,7 @@ func (r *ModifyLiveDomainCertRequest) FromJsonString(s string) error {
 	delete(f, "CertId")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveDomainCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveDomainCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7156,7 +7155,7 @@ func (r *ModifyLiveDomainRefererRequest) FromJsonString(s string) error {
 	delete(f, "AllowEmpty")
 	delete(f, "Rules")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveDomainRefererRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveDomainRefererRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7222,7 +7221,7 @@ func (r *ModifyLivePlayAuthKeyRequest) FromJsonString(s string) error {
 	delete(f, "AuthDelta")
 	delete(f, "AuthBackKey")
 	if len(f) > 0 {
-		return errors.New("ModifyLivePlayAuthKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePlayAuthKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7272,7 +7271,7 @@ func (r *ModifyLivePlayDomainRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "PlayType")
 	if len(f) > 0 {
-		return errors.New("ModifyLivePlayDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePlayDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7400,7 +7399,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "OffsetTime")
 	delete(f, "Comment")
 	if len(f) > 0 {
-		return errors.New("ModifyLivePullStreamTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePullStreamTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7465,7 +7464,7 @@ func (r *ModifyLivePushAuthKeyRequest) FromJsonString(s string) error {
 	delete(f, "BackupAuthKey")
 	delete(f, "AuthDelta")
 	if len(f) > 0 {
-		return errors.New("ModifyLivePushAuthKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePushAuthKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7543,7 +7542,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveRecordTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRecordTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7639,7 +7638,7 @@ func (r *ModifyLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CosPrefix")
 	delete(f, "CosFileName")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveSnapshotTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveSnapshotTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7778,7 +7777,7 @@ func (r *ModifyLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AdaptBitratePercent")
 	delete(f, "ShortEdgeAsHeight")
 	if len(f) > 0 {
-		return errors.New("ModifyLiveTranscodeTemplateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveTranscodeTemplateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7878,7 +7877,7 @@ func (r *ModifyPullStreamConfigRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("ModifyPullStreamConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPullStreamConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -7928,7 +7927,7 @@ func (r *ModifyPullStreamStatusRequest) FromJsonString(s string) error {
 	delete(f, "ConfigIds")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("ModifyPullStreamStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPullStreamStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -8547,7 +8546,7 @@ func (r *ResumeDelayLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("ResumeDelayLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeDelayLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -8601,7 +8600,7 @@ func (r *ResumeLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "StreamName")
 	if len(f) > 0 {
-		return errors.New("ResumeLiveStreamRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeLiveStreamRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -8715,7 +8714,7 @@ func (r *StopLiveRecordRequest) FromJsonString(s string) error {
 	delete(f, "StreamName")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopLiveRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLiveRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -8761,7 +8760,7 @@ func (r *StopRecordTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopRecordTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopRecordTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -9022,7 +9021,7 @@ func (r *UnBindLiveDomainCertRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainName")
 	if len(f) > 0 {
-		return errors.New("UnBindLiveDomainCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnBindLiveDomainCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -9096,7 +9095,7 @@ func (r *UpdateLiveWatermarkRequest) FromJsonString(s string) error {
 	delete(f, "Width")
 	delete(f, "Height")
 	if len(f) > 0 {
-		return errors.New("UpdateLiveWatermarkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLiveWatermarkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

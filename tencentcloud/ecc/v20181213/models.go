@@ -16,8 +16,7 @@ package v20181213
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -127,7 +126,7 @@ func (r *CorrectMultiImageRequest) FromJsonString(s string) error {
 	delete(f, "ModelContent")
 	delete(f, "IsAsync")
 	if len(f) > 0 {
-		return errors.New("CorrectMultiImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CorrectMultiImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -180,7 +179,7 @@ func (r *DescribeTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "EccAppid")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -269,7 +268,7 @@ func (r *ECCRequest) FromJsonString(s string) error {
 	delete(f, "IsAsync")
 	delete(f, "SessionId")
 	if len(f) > 0 {
-		return errors.New("ECCRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ECCRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -363,7 +362,7 @@ func (r *EHOCRRequest) FromJsonString(s string) error {
 	delete(f, "ModelContent")
 	delete(f, "IsAsync")
 	if len(f) > 0 {
-		return errors.New("EHOCRRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EHOCRRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

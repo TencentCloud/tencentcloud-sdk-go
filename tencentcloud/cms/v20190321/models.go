@@ -16,8 +16,7 @@ package v20190321
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -111,7 +110,7 @@ func (r *CreateFileSampleRequest) FromJsonString(s string) error {
 	delete(f, "FileType")
 	delete(f, "Label")
 	if len(f) > 0 {
-		return errors.New("CreateFileSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -183,7 +182,7 @@ func (r *CreateTextSampleRequest) FromJsonString(s string) error {
 	delete(f, "Label")
 	delete(f, "Test")
 	if len(f) > 0 {
-		return errors.New("CreateTextSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTextSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -252,7 +251,7 @@ func (r *DeleteFileSampleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Ids")
 	if len(f) > 0 {
-		return errors.New("DeleteFileSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFileSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -303,7 +302,7 @@ func (r *DeleteTextSampleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Ids")
 	if len(f) > 0 {
-		return errors.New("DeleteTextSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTextSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -370,7 +369,7 @@ func (r *DescribeFileSampleRequest) FromJsonString(s string) error {
 	delete(f, "OrderDirection")
 	delete(f, "OrderField")
 	if len(f) > 0 {
-		return errors.New("DescribeFileSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -438,7 +437,7 @@ func (r *DescribeTextSampleRequest) FromJsonString(s string) error {
 	delete(f, "OrderDirection")
 	delete(f, "OrderField")
 	if len(f) > 0 {
-		return errors.New("DescribeTextSampleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextSampleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -704,7 +703,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "FileMD5")
 	delete(f, "FileUrl")
 	if len(f) > 0 {
-		return errors.New("ImageModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -893,7 +892,7 @@ func (r *ManualReviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ReviewContent")
 	if len(f) > 0 {
-		return errors.New("ManualReviewRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManualReviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1115,7 +1114,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "DataId")
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("TextModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

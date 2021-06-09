@@ -16,8 +16,7 @@ package v20180226
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -94,7 +93,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "Debug")
 	delete(f, "RuntimeConf")
 	if len(f) > 0 {
-		return errors.New("CreateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -175,7 +174,7 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 	delete(f, "ServType")
 	delete(f, "RuntimeConf")
 	if len(f) > 0 {
-		return errors.New("CreateModelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -228,7 +227,7 @@ func (r *DeleteJobRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Cluster")
 	if len(f) > 0 {
-		return errors.New("DeleteJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -282,7 +281,7 @@ func (r *DeleteModelRequest) FromJsonString(s string) error {
 	delete(f, "Cluster")
 	delete(f, "ServType")
 	if len(f) > 0 {
-		return errors.New("DeleteModelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -332,7 +331,7 @@ func (r *DescribeJobRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Cluster")
 	if len(f) > 0 {
-		return errors.New("DescribeJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -389,7 +388,7 @@ func (r *DescribeModelRequest) FromJsonString(s string) error {
 	delete(f, "Cluster")
 	delete(f, "ServType")
 	if len(f) > 0 {
-		return errors.New("DescribeModelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -446,7 +445,7 @@ func (r *InstallAgentRequest) FromJsonString(s string) error {
 	delete(f, "TiaVersion")
 	delete(f, "Update")
 	if len(f) > 0 {
-		return errors.New("InstallAgentRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAgentRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -575,7 +574,7 @@ func (r *ListJobsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("ListJobsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListJobsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -636,7 +635,7 @@ func (r *ListModelsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "ServType")
 	if len(f) > 0 {
-		return errors.New("ListModelsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListModelsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -777,7 +776,7 @@ func (r *QueryLogsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Context")
 	if len(f) > 0 {
-		return errors.New("QueryLogsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryLogsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

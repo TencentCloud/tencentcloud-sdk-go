@@ -16,8 +16,7 @@ package v20181115
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -63,7 +62,7 @@ func (r *AddFairPlayPemRequest) FromJsonString(s string) error {
 	delete(f, "BailorId")
 	delete(f, "Priority")
 	if len(f) > 0 {
-		return errors.New("AddFairPlayPemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddFairPlayPemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -129,7 +128,7 @@ func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
 	delete(f, "ContentId")
 	delete(f, "ContentType")
 	if len(f) > 0 {
-		return errors.New("CreateEncryptKeysRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEncryptKeysRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -192,7 +191,7 @@ func (r *CreateLicenseRequest) FromJsonString(s string) error {
 	delete(f, "Tracks")
 	delete(f, "PlaybackPolicy")
 	if len(f) > 0 {
-		return errors.New("CreateLicenseRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLicenseRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -249,7 +248,7 @@ func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
 	delete(f, "BailorId")
 	delete(f, "FairPlayPemId")
 	if len(f) > 0 {
-		return errors.New("DeleteFairPlayPemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFairPlayPemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -308,7 +307,7 @@ func (r *DescribeAllKeysRequest) FromJsonString(s string) error {
 	delete(f, "ContentId")
 	delete(f, "ContentType")
 	if len(f) > 0 {
-		return errors.New("DescribeAllKeysRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllKeysRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -373,7 +372,7 @@ func (r *DescribeFairPlayPemRequest) FromJsonString(s string) error {
 	delete(f, "BailorId")
 	delete(f, "FairPlayPemId")
 	if len(f) > 0 {
-		return errors.New("DescribeFairPlayPemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFairPlayPemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -441,7 +440,7 @@ func (r *DescribeKeysRequest) FromJsonString(s string) error {
 	delete(f, "RsaPublicKey")
 	delete(f, "ContentId")
 	if len(f) > 0 {
-		return errors.New("DescribeKeysRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKeysRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -615,7 +614,7 @@ func (r *ModifyFairPlayPemRequest) FromJsonString(s string) error {
 	delete(f, "BailorId")
 	delete(f, "Priority")
 	if len(f) > 0 {
-		return errors.New("ModifyFairPlayPemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFairPlayPemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -698,7 +697,7 @@ func (r *StartEncryptionRequest) FromJsonString(s string) error {
 	delete(f, "SourceObject")
 	delete(f, "OutputObjects")
 	if len(f) > 0 {
-		return errors.New("StartEncryptionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartEncryptionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

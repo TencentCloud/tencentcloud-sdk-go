@@ -16,8 +16,7 @@ package v20200820
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -55,7 +54,7 @@ func (r *CancelMatchingRequest) FromJsonString(s string) error {
 	delete(f, "MatchCode")
 	delete(f, "MatchTicketId")
 	if len(f) > 0 {
-		return errors.New("CancelMatchingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelMatchingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -152,7 +151,7 @@ func (r *CreateMatchRequest) FromJsonString(s string) error {
 	delete(f, "LogSwitch")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateMatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -213,7 +212,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleDesc")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -262,7 +261,7 @@ func (r *DeleteMatchRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MatchCode")
 	if len(f) > 0 {
-		return errors.New("DeleteMatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -308,7 +307,7 @@ func (r *DeleteRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleCode")
 	if len(f) > 0 {
-		return errors.New("DeleteRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -366,7 +365,7 @@ func (r *DescribeDataRequest) FromJsonString(s string) error {
 	delete(f, "TimeType")
 	delete(f, "MatchCode")
 	if len(f) > 0 {
-		return errors.New("DescribeDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -428,7 +427,7 @@ func (r *DescribeMatchCodesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "MatchCode")
 	if len(f) > 0 {
-		return errors.New("DescribeMatchCodesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMatchCodesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -482,7 +481,7 @@ func (r *DescribeMatchRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MatchCode")
 	if len(f) > 0 {
-		return errors.New("DescribeMatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -548,7 +547,7 @@ func (r *DescribeMatchesRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("DescribeMatchesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMatchesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -613,7 +612,7 @@ func (r *DescribeMatchingProgressRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MatchTicketIds")
 	if len(f) > 0 {
-		return errors.New("DescribeMatchingProgressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMatchingProgressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -667,7 +666,7 @@ func (r *DescribeRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleCode")
 	if len(f) > 0 {
-		return errors.New("DescribeRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -733,7 +732,7 @@ func (r *DescribeRulesRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("DescribeRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -798,7 +797,7 @@ func (r *DescribeTokenRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MatchCode")
 	if len(f) > 0 {
-		return errors.New("DescribeTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1074,7 +1073,7 @@ func (r *ModifyMatchRequest) FromJsonString(s string) error {
 	delete(f, "LogSwitch")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("ModifyMatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1135,7 +1134,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleDesc")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("ModifyRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1192,7 +1191,7 @@ func (r *ModifyTokenRequest) FromJsonString(s string) error {
 	delete(f, "CompatibleSpan")
 	delete(f, "MatchToken")
 	if len(f) > 0 {
-		return errors.New("ModifyTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1402,7 +1401,7 @@ func (r *StartMatchingBackfillRequest) FromJsonString(s string) error {
 	delete(f, "GameServerSessionId")
 	delete(f, "MatchTicketId")
 	if len(f) > 0 {
-		return errors.New("StartMatchingBackfillRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMatchingBackfillRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1460,7 +1459,7 @@ func (r *StartMatchingRequest) FromJsonString(s string) error {
 	delete(f, "Players")
 	delete(f, "MatchTicketId")
 	if len(f) > 0 {
-		return errors.New("StartMatchingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMatchingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

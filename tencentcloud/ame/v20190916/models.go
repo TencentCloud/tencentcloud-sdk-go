@@ -16,8 +16,7 @@ package v20190916
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -113,7 +112,7 @@ func (r *DescribeAuthInfoRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Key")
 	if len(f) > 0 {
-		return errors.New("DescribeAuthInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuthInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -165,7 +164,7 @@ func (r *DescribeCloudMusicPurchasedRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AuthInfoId")
 	if len(f) > 0 {
-		return errors.New("DescribeCloudMusicPurchasedRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudMusicPurchasedRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -223,7 +222,7 @@ func (r *DescribeCloudMusicRequest) FromJsonString(s string) error {
 	delete(f, "MusicId")
 	delete(f, "MusicType")
 	if len(f) > 0 {
-		return errors.New("DescribeCloudMusicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudMusicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -290,7 +289,7 @@ func (r *DescribeItemByIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ItemIDs")
 	if len(f) > 0 {
-		return errors.New("DescribeItemByIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeItemByIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -352,7 +351,7 @@ func (r *DescribeItemsRequest) FromJsonString(s string) error {
 	delete(f, "CategoryId")
 	delete(f, "CategoryCode")
 	if len(f) > 0 {
-		return errors.New("DescribeItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -415,7 +414,7 @@ func (r *DescribeKTVMusicDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MusicId")
 	if len(f) > 0 {
-		return errors.New("DescribeKTVMusicDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -471,7 +470,7 @@ func (r *DescribeLyricRequest) FromJsonString(s string) error {
 	delete(f, "ItemId")
 	delete(f, "SubItemType")
 	if len(f) > 0 {
-		return errors.New("DescribeLyricRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLyricRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -535,7 +534,7 @@ func (r *DescribeMusicRequest) FromJsonString(s string) error {
 	delete(f, "SubItemType")
 	delete(f, "Ssl")
 	if len(f) > 0 {
-		return errors.New("DescribeMusicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMusicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -593,7 +592,7 @@ func (r *DescribePackageItemsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Length")
 	if len(f) > 0 {
-		return errors.New("DescribePackageItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePackageItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -647,7 +646,7 @@ func (r *DescribePackagesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Length")
 	if len(f) > 0 {
-		return errors.New("DescribePackagesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePackagesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -701,7 +700,7 @@ func (r *DescribeStationsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeStationsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStationsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -833,7 +832,7 @@ func (r *ModifyMusicOnShelvesRequest) FromJsonString(s string) error {
 	delete(f, "MusicDetailInfos")
 	delete(f, "AmeKey")
 	if len(f) > 0 {
-		return errors.New("ModifyMusicOnShelvesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMusicOnShelvesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1041,7 +1040,7 @@ func (r *PutMusicOnTheShelvesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MusicIds")
 	if len(f) > 0 {
-		return errors.New("PutMusicOnTheShelvesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutMusicOnTheShelvesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1091,7 +1090,7 @@ type ReportDataRequest struct {
 	// 不同的report_type对应的data数据结构不一样。
 	// 
 	// 详细说明请参考文档reportdata.docx：
-	// https://github.com/ame-demo/doc
+	// https://github.com/tencentyun/ame-documents
 	ReportData *string `json:"ReportData,omitempty" name:"ReportData"`
 }
 
@@ -1109,7 +1108,7 @@ func (r *ReportDataRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ReportData")
 	if len(f) > 0 {
-		return errors.New("ReportDataRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportDataRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1163,7 +1162,7 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("SearchKTVMusicsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKTVMusicsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1246,7 +1245,7 @@ func (r *TakeMusicOffShelvesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TakeMusicOffShelves")
 	if len(f) > 0 {
-		return errors.New("TakeMusicOffShelvesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TakeMusicOffShelvesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

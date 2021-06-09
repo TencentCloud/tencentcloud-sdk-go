@@ -16,8 +16,7 @@ package v20200608
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -233,7 +232,7 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("CancelTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -295,7 +294,7 @@ func (r *CreateAudioModerationTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Tasks")
 	if len(f) > 0 {
-		return errors.New("CreateAudioModerationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioModerationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -357,7 +356,7 @@ func (r *CreateBizConfigRequest) FromJsonString(s string) error {
 	delete(f, "BizName")
 	delete(f, "ModerationCategories")
 	if len(f) > 0 {
-		return errors.New("CreateBizConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBizConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -415,7 +414,7 @@ func (r *DescribeAmsListRequest) FromJsonString(s string) error {
 	delete(f, "PageDirection")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeAmsListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAmsListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -474,7 +473,7 @@ func (r *DescribeAudioStatRequest) FromJsonString(s string) error {
 	delete(f, "AuditType")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeAudioStatRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAudioStatRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -529,7 +528,7 @@ func (r *DescribeBizConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BizType")
 	if len(f) > 0 {
-		return errors.New("DescribeBizConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -599,7 +598,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "ShowAllSegments")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20200513
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -60,7 +59,7 @@ func (r *BatchDescribeOrderCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OrderIds")
 	if len(f) > 0 {
-		return errors.New("BatchDescribeOrderCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeOrderCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -109,7 +108,7 @@ func (r *BatchDescribeOrderImageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OrderIds")
 	if len(f) > 0 {
-		return errors.New("BatchDescribeOrderImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeOrderImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -158,7 +157,7 @@ func (r *CreateOrderAndDownloadsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageInfos")
 	if len(f) > 0 {
-		return errors.New("CreateOrderAndDownloadsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrderAndDownloadsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -219,7 +218,7 @@ func (r *CreateOrderAndPayRequest) FromJsonString(s string) error {
 	delete(f, "AuthUserId")
 	delete(f, "MarshalId")
 	if len(f) > 0 {
-		return errors.New("CreateOrderAndPayRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrderAndPayRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -272,7 +271,7 @@ func (r *DescribeAuthUsersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeAuthUsersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuthUsersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -344,7 +343,7 @@ func (r *DescribeDownloadInfosRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "ImageIds")
 	if len(f) > 0 {
-		return errors.New("DescribeDownloadInfosRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDownloadInfosRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -397,7 +396,7 @@ func (r *DescribeImageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageId")
 	if len(f) > 0 {
-		return errors.New("DescribeImageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -505,7 +504,7 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	delete(f, "ImageSenseType")
 	delete(f, "LayeredGalleryIds")
 	if len(f) > 0 {
-		return errors.New("DescribeImagesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

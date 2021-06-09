@@ -16,8 +16,7 @@ package v20201229
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -97,7 +96,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	if len(f) > 0 {
-		return errors.New("ImageModerationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -237,7 +236,7 @@ func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "CustomSubAccountUin")
 	delete(f, "StreamId")
 	if len(f) > 0 {
-		return errors.New("ImageRecognitionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

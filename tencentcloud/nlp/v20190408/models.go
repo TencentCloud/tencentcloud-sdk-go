@@ -16,8 +16,7 @@ package v20190408
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -47,7 +46,7 @@ func (r *AutoSummarizationRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "Length")
 	if len(f) > 0 {
-		return errors.New("AutoSummarizationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AutoSummarizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -116,7 +115,7 @@ func (r *ChatBotRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "Flag")
 	if len(f) > 0 {
-		return errors.New("ChatBotRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatBotRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -213,7 +212,7 @@ func (r *CreateDictRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateDictRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDictRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -267,7 +266,7 @@ func (r *CreateWordItemsRequest) FromJsonString(s string) error {
 	delete(f, "DictId")
 	delete(f, "WordItems")
 	if len(f) > 0 {
-		return errors.New("CreateWordItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWordItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -313,7 +312,7 @@ func (r *DeleteDictRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DictId")
 	if len(f) > 0 {
-		return errors.New("DeleteDictRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDictRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -363,7 +362,7 @@ func (r *DeleteWordItemsRequest) FromJsonString(s string) error {
 	delete(f, "DictId")
 	delete(f, "WordItems")
 	if len(f) > 0 {
-		return errors.New("DeleteWordItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWordItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -409,7 +408,7 @@ func (r *DependencyParsingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("DependencyParsingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DependencyParsingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -477,7 +476,7 @@ func (r *DescribeDictRequest) FromJsonString(s string) error {
 	delete(f, "DictId")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribeDictRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDictRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -531,7 +530,7 @@ func (r *DescribeDictsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeDictsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDictsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -584,7 +583,7 @@ func (r *DescribeEntityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EntityName")
 	if len(f) > 0 {
-		return errors.New("DescribeEntityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEntityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -637,7 +636,7 @@ func (r *DescribeRelationRequest) FromJsonString(s string) error {
 	delete(f, "LeftEntityName")
 	delete(f, "RightEntityName")
 	if len(f) > 0 {
-		return errors.New("DescribeRelationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -686,7 +685,7 @@ func (r *DescribeTripleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TripleCondition")
 	if len(f) > 0 {
-		return errors.New("DescribeTripleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTripleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -747,7 +746,7 @@ func (r *DescribeWordItemsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("DescribeWordItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWordItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -895,7 +894,7 @@ func (r *KeywordsExtractionRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "Num")
 	if len(f) > 0 {
-		return errors.New("KeywordsExtractionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KeywordsExtractionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -955,7 +954,7 @@ func (r *LexicalAnalysisRequest) FromJsonString(s string) error {
 	delete(f, "DictId")
 	delete(f, "Flag")
 	if len(f) > 0 {
-		return errors.New("LexicalAnalysisRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LexicalAnalysisRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1063,7 +1062,7 @@ func (r *SearchWordItemsRequest) FromJsonString(s string) error {
 	delete(f, "DictId")
 	delete(f, "WordItems")
 	if len(f) > 0 {
-		return errors.New("SearchWordItemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchWordItemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1113,7 +1112,7 @@ func (r *SentenceEmbeddingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("SentenceEmbeddingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceEmbeddingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1179,7 +1178,7 @@ func (r *SentimentAnalysisRequest) FromJsonString(s string) error {
 	delete(f, "Flag")
 	delete(f, "Mode")
 	if len(f) > 0 {
-		return errors.New("SentimentAnalysisRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentimentAnalysisRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1245,7 +1244,7 @@ func (r *SimilarWordsRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "WordNumber")
 	if len(f) > 0 {
-		return errors.New("SimilarWordsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimilarWordsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1309,7 +1308,7 @@ func (r *TextClassificationRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "Flag")
 	if len(f) > 0 {
-		return errors.New("TextClassificationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextClassificationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1358,7 +1357,7 @@ func (r *TextCorrectionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("TextCorrectionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextCorrectionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1415,7 +1414,7 @@ func (r *TextSimilarityRequest) FromJsonString(s string) error {
 	delete(f, "SrcText")
 	delete(f, "TargetText")
 	if len(f) > 0 {
-		return errors.New("TextSimilarityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextSimilarityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1491,7 +1490,7 @@ func (r *UpdateDictRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("UpdateDictRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDictRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1537,7 +1536,7 @@ func (r *WordEmbeddingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Text")
 	if len(f) > 0 {
-		return errors.New("WordEmbeddingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WordEmbeddingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1606,7 +1605,7 @@ func (r *WordSimilarityRequest) FromJsonString(s string) error {
 	delete(f, "SrcWord")
 	delete(f, "TargetWord")
 	if len(f) > 0 {
-		return errors.New("WordSimilarityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WordSimilarityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

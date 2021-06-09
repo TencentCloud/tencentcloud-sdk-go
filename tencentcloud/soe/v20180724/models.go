@@ -16,8 +16,7 @@ package v20180724
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -86,7 +85,7 @@ func (r *InitOralProcessRequest) FromJsonString(s string) error {
 	delete(f, "IsAsync")
 	delete(f, "TextMode")
 	if len(f) > 0 {
-		return errors.New("InitOralProcessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitOralProcessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -185,7 +184,7 @@ func (r *KeywordEvaluateRequest) FromJsonString(s string) error {
 	delete(f, "SoeAppId")
 	delete(f, "IsQuery")
 	if len(f) > 0 {
-		return errors.New("KeywordEvaluateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KeywordEvaluateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -339,7 +338,7 @@ func (r *TransmitOralProcessRequest) FromJsonString(s string) error {
 	delete(f, "IsLongLifeSession")
 	delete(f, "IsQuery")
 	if len(f) > 0 {
-		return errors.New("TransmitOralProcessRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransmitOralProcessRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -516,7 +515,7 @@ func (r *TransmitOralProcessWithInitRequest) FromJsonString(s string) error {
 	delete(f, "IsQuery")
 	delete(f, "TextMode")
 	if len(f) > 0 {
-		return errors.New("TransmitOralProcessWithInitRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransmitOralProcessWithInitRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20180614
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -89,7 +88,7 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "DeviceNames")
 	delete(f, "TimeoutInterval")
 	if len(f) > 0 {
-		return errors.New("BatchUpdateFirmwareRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -160,7 +159,7 @@ func (r *BindDevicesRequest) FromJsonString(s string) error {
 	delete(f, "DeviceNames")
 	delete(f, "Skey")
 	if len(f) > 0 {
-		return errors.New("BindDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -227,7 +226,7 @@ func (r *CancelDeviceFirmwareTaskRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("CancelDeviceFirmwareTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelDeviceFirmwareTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -273,7 +272,7 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("CancelTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -355,7 +354,7 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Skey")
 	delete(f, "LoraAppKey")
 	if len(f) > 0 {
-		return errors.New("CreateDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -453,7 +452,7 @@ func (r *CreateLoraDeviceRequest) FromJsonString(s string) error {
 	delete(f, "AuthKey")
 	delete(f, "Memo")
 	if len(f) > 0 {
-		return errors.New("CreateLoraDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoraDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -515,7 +514,7 @@ func (r *CreateMultiDeviceRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceNames")
 	if len(f) > 0 {
-		return errors.New("CreateMultiDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -584,7 +583,7 @@ func (r *CreateMultiDevicesTaskRequest) FromJsonString(s string) error {
 	delete(f, "BatchCount")
 	delete(f, "Hash")
 	if len(f) > 0 {
-		return errors.New("CreateMultiDevicesTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiDevicesTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -641,7 +640,7 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 	delete(f, "ProductProperties")
 	delete(f, "Skey")
 	if len(f) > 0 {
-		return errors.New("CreateProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -696,7 +695,7 @@ func (r *CreateTaskFileUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductId")
 	if len(f) > 0 {
-		return errors.New("CreateTaskFileUrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFileUrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -768,7 +767,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "Tasks")
 	delete(f, "MaxExecutionTimeInSeconds")
 	if len(f) > 0 {
-		return errors.New("CreateTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -829,7 +828,7 @@ func (r *CreateTopicPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Privilege")
 	delete(f, "BrokerSubscribe")
 	if len(f) > 0 {
-		return errors.New("CreateTopicPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -879,7 +878,7 @@ func (r *CreateTopicRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleName")
 	delete(f, "TopicRulePayload")
 	if len(f) > 0 {
-		return errors.New("CreateTopicRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -933,7 +932,7 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Skey")
 	if len(f) > 0 {
-		return errors.New("DeleteDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -983,7 +982,7 @@ func (r *DeleteLoraDeviceRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	if len(f) > 0 {
-		return errors.New("DeleteLoraDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoraDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1033,7 +1032,7 @@ func (r *DeleteProductRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "Skey")
 	if len(f) > 0 {
-		return errors.New("DeleteProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1079,7 +1078,7 @@ func (r *DeleteTopicRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleName")
 	if len(f) > 0 {
-		return errors.New("DeleteTopicRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTopicRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1129,7 +1128,7 @@ func (r *DescribeAllDevicesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeAllDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1185,7 +1184,7 @@ func (r *DescribeDeviceClientKeyRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	if len(f) > 0 {
-		return errors.New("DescribeDeviceClientKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceClientKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1238,7 +1237,7 @@ func (r *DescribeDeviceRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "DeviceName")
 	if len(f) > 0 {
-		return errors.New("DescribeDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1272,7 +1271,7 @@ func (r *DescribeDeviceResourceRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribeDeviceResourceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceResourceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1341,7 +1340,7 @@ func (r *DescribeDeviceResourcesRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeDeviceResourcesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceResourcesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1499,7 +1498,7 @@ func (r *DescribeDeviceShadowRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	if len(f) > 0 {
-		return errors.New("DescribeDeviceShadowRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceShadowRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1568,7 +1567,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "EnableState")
 	if len(f) > 0 {
-		return errors.New("DescribeDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1624,7 +1623,7 @@ func (r *DescribeFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "FirmwareVersion")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1714,7 +1713,7 @@ func (r *DescribeFirmwareTaskDevicesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareTaskDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTaskDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1776,7 +1775,7 @@ func (r *DescribeFirmwareTaskDistributionRequest) FromJsonString(s string) error
 	delete(f, "FirmwareVersion")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareTaskDistributionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTaskDistributionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1833,7 +1832,7 @@ func (r *DescribeFirmwareTaskRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1911,7 +1910,7 @@ func (r *DescribeFirmwareTaskStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "FirmwareVersion")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareTaskStatisticsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTaskStatisticsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1985,7 +1984,7 @@ func (r *DescribeFirmwareTasksRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeFirmwareTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirmwareTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2043,7 +2042,7 @@ func (r *DescribeLoraDeviceRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	if len(f) > 0 {
-		return errors.New("DescribeLoraDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoraDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2111,7 +2110,7 @@ func (r *DescribeMultiDevTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "ProductId")
 	if len(f) > 0 {
-		return errors.New("DescribeMultiDevTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiDevTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2175,7 +2174,7 @@ func (r *DescribeMultiDevicesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeMultiDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2234,7 +2233,7 @@ func (r *DescribeProductResourceRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribeProductResourceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductResourceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2296,7 +2295,7 @@ func (r *DescribeProductResourcesRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribeProductResourcesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductResourcesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2353,7 +2352,7 @@ func (r *DescribeProductTaskRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeProductTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2410,7 +2409,7 @@ func (r *DescribeProductTasksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeProductTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2466,7 +2465,7 @@ func (r *DescribeProductsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeProductsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2522,7 +2521,7 @@ func (r *DescribePushResourceTaskStatisticsRequest) FromJsonString(s string) err
 	delete(f, "ProductID")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribePushResourceTaskStatisticsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePushResourceTaskStatisticsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2596,7 +2595,7 @@ func (r *DescribeResourceTasksRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2650,7 +2649,7 @@ func (r *DescribeTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2739,7 +2738,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2982,7 +2981,7 @@ func (r *DisableTopicRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleName")
 	if len(f) > 0 {
-		return errors.New("DisableTopicRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableTopicRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3044,7 +3043,7 @@ func (r *EditFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareDescription")
 	delete(f, "FwType")
 	if len(f) > 0 {
-		return errors.New("EditFirmwareRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditFirmwareRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3090,7 +3089,7 @@ func (r *EnableTopicRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuleName")
 	if len(f) > 0 {
-		return errors.New("EnableTopicRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTopicRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3159,7 +3158,7 @@ func (r *GetCOSURLRequest) FromJsonString(s string) error {
 	delete(f, "ProductID")
 	delete(f, "FirmwareVersion")
 	if len(f) > 0 {
-		return errors.New("GetCOSURLRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCOSURLRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3204,7 +3203,7 @@ func (r *GetUserResourceInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetUserResourceInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUserResourceInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3422,7 +3421,7 @@ func (r *PublishAsDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "Payload")
 	if len(f) > 0 {
-		return errors.New("PublishAsDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishAsDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3480,7 +3479,7 @@ func (r *PublishBroadcastMessageRequest) FromJsonString(s string) error {
 	delete(f, "Qos")
 	delete(f, "PayloadEncoding")
 	if len(f) > 0 {
-		return errors.New("PublishBroadcastMessageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishBroadcastMessageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3549,7 +3548,7 @@ func (r *PublishMessageRequest) FromJsonString(s string) error {
 	delete(f, "Qos")
 	delete(f, "PayloadEncoding")
 	if len(f) > 0 {
-		return errors.New("PublishMessageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishMessageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3603,7 +3602,7 @@ func (r *PublishRRPCMessageRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Payload")
 	if len(f) > 0 {
-		return errors.New("PublishRRPCMessageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishRRPCMessageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3667,7 +3666,7 @@ func (r *PublishToDeviceRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "Payload")
 	if len(f) > 0 {
-		return errors.New("PublishToDeviceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishToDeviceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3725,7 +3724,7 @@ func (r *ReplaceTopicRuleRequest) FromJsonString(s string) error {
 	delete(f, "ModifyType")
 	delete(f, "ActionIndex")
 	if len(f) > 0 {
-		return errors.New("ReplaceTopicRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceTopicRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3788,7 +3787,7 @@ func (r *ResetDeviceStateRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceNames")
 	if len(f) > 0 {
-		return errors.New("ResetDeviceStateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetDeviceStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3852,7 +3851,7 @@ func (r *RetryDeviceFirmwareTaskRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareVersion")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("RetryDeviceFirmwareTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryDeviceFirmwareTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4034,7 +4033,7 @@ func (r *UnbindDevicesRequest) FromJsonString(s string) error {
 	delete(f, "DeviceNames")
 	delete(f, "Skey")
 	if len(f) > 0 {
-		return errors.New("UnbindDevicesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindDevicesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4088,7 +4087,7 @@ func (r *UpdateDeviceAvailableStateRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "EnableState")
 	if len(f) > 0 {
-		return errors.New("UpdateDeviceAvailableStateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceAvailableStateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4150,7 +4149,7 @@ func (r *UpdateDeviceShadowRequest) FromJsonString(s string) error {
 	delete(f, "ShadowVersion")
 	delete(f, "Prefix")
 	if len(f) > 0 {
-		return errors.New("UpdateDeviceShadowRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceShadowRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4215,7 +4214,7 @@ func (r *UpdateTopicPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Privilege")
 	delete(f, "BrokerSubscribe")
 	if len(f) > 0 {
-		return errors.New("UpdateTopicPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTopicPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4285,7 +4284,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FirmwareDescription")
 	delete(f, "FwType")
 	if len(f) > 0 {
-		return errors.New("UploadFirmwareRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFirmwareRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

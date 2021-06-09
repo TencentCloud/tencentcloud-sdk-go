@@ -16,8 +16,7 @@ package v20200417
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -95,7 +94,7 @@ func (r *RecognizeProductRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	if len(f) > 0 {
-		return errors.New("RecognizeProductRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeProductRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

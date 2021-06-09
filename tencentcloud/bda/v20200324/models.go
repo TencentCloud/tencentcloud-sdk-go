@@ -16,8 +16,7 @@ package v20200324
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -201,7 +200,7 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 	delete(f, "Tag")
 	delete(f, "BodyModelVersion")
 	if len(f) > 0 {
-		return errors.New("CreateGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -260,7 +259,7 @@ func (r *CreatePersonRequest) FromJsonString(s string) error {
 	delete(f, "PersonId")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("CreatePersonRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -332,7 +331,7 @@ func (r *CreateSegmentationTaskRequest) FromJsonString(s string) error {
 	delete(f, "BackgroundImageUrl")
 	delete(f, "Config")
 	if len(f) > 0 {
-		return errors.New("CreateSegmentationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSegmentationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -388,7 +387,7 @@ func (r *CreateTraceRequest) FromJsonString(s string) error {
 	delete(f, "PersonId")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("CreateTraceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTraceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -449,7 +448,7 @@ func (r *DeleteGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GroupId")
 	if len(f) > 0 {
-		return errors.New("DeleteGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -495,7 +494,7 @@ func (r *DeletePersonRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PersonId")
 	if len(f) > 0 {
-		return errors.New("DeletePersonRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePersonRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -541,7 +540,7 @@ func (r *DescribeSegmentationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskID")
 	if len(f) > 0 {
-		return errors.New("DescribeSegmentationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSegmentationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -618,7 +617,7 @@ func (r *DetectBodyJointsRequest) FromJsonString(s string) error {
 	delete(f, "Image")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("DetectBodyJointsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectBodyJointsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -693,7 +692,7 @@ func (r *DetectBodyRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "AttributesOptions")
 	if len(f) > 0 {
-		return errors.New("DetectBodyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectBodyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -758,7 +757,7 @@ func (r *GetGroupListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetGroupListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGroupListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -818,7 +817,7 @@ func (r *GetPersonListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetPersonListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPersonListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -969,7 +968,7 @@ func (r *ModifyGroupRequest) FromJsonString(s string) error {
 	delete(f, "GroupName")
 	delete(f, "Tag")
 	if len(f) > 0 {
-		return errors.New("ModifyGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1019,7 +1018,7 @@ func (r *ModifyPersonInfoRequest) FromJsonString(s string) error {
 	delete(f, "PersonId")
 	delete(f, "PersonName")
 	if len(f) > 0 {
-		return errors.New("ModifyPersonInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1101,7 +1100,7 @@ func (r *SearchTraceRequest) FromJsonString(s string) error {
 	delete(f, "MaxPersonNum")
 	delete(f, "TraceMatchThreshold")
 	if len(f) > 0 {
-		return errors.New("SearchTraceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchTraceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1177,7 +1176,7 @@ func (r *SegmentCustomizedPortraitPicRequest) FromJsonString(s string) error {
 	delete(f, "Image")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("SegmentCustomizedPortraitPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SegmentCustomizedPortraitPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1244,7 +1243,7 @@ func (r *SegmentPortraitPicRequest) FromJsonString(s string) error {
 	delete(f, "Image")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("SegmentPortraitPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SegmentPortraitPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1362,7 +1361,7 @@ func (r *TerminateSegmentationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskID")
 	if len(f) > 0 {
-		return errors.New("TerminateSegmentationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateSegmentationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

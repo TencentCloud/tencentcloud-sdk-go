@@ -16,8 +16,7 @@ package v20180321
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -82,7 +81,7 @@ func (r *ImageTranslateRequest) FromJsonString(s string) error {
 	delete(f, "Target")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("ImageTranslateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageTranslateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -165,7 +164,7 @@ func (r *LanguageDetectRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("LanguageDetectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LanguageDetectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -251,7 +250,7 @@ func (r *SpeechTranslateRequest) FromJsonString(s string) error {
 	delete(f, "Mode")
 	delete(f, "TransType")
 	if len(f) > 0 {
-		return errors.New("SpeechTranslateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SpeechTranslateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -371,7 +370,7 @@ func (r *TextTranslateBatchRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "SourceTextList")
 	if len(f) > 0 {
-		return errors.New("TextTranslateBatchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextTranslateBatchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -480,7 +479,7 @@ func (r *TextTranslateRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "UntranslatedText")
 	if len(f) > 0 {
-		return errors.New("TextTranslateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextTranslateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

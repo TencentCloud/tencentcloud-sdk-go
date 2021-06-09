@@ -16,8 +16,7 @@ package v20180317
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *AssociateTargetGroupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Associations")
 	if len(f) > 0 {
-		return errors.New("AssociateTargetGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateTargetGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -137,7 +136,7 @@ func (r *AutoRewriteRequest) FromJsonString(s string) error {
 	delete(f, "RewriteCodes")
 	delete(f, "TakeUrls")
 	if len(f) > 0 {
-		return errors.New("AutoRewriteRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AutoRewriteRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -231,7 +230,7 @@ func (r *BatchDeregisterTargetsRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "Targets")
 	if len(f) > 0 {
-		return errors.New("BatchDeregisterTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeregisterTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -284,7 +283,7 @@ func (r *BatchModifyTargetWeightRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "ModifyList")
 	if len(f) > 0 {
-		return errors.New("BatchModifyTargetWeightRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchModifyTargetWeightRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -334,7 +333,7 @@ func (r *BatchRegisterTargetsRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "Targets")
 	if len(f) > 0 {
-		return errors.New("BatchRegisterTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchRegisterTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -729,7 +728,7 @@ func (r *CreateClsLogSetRequest) FromJsonString(s string) error {
 	delete(f, "LogsetName")
 	delete(f, "LogsetType")
 	if len(f) > 0 {
-		return errors.New("CreateClsLogSetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClsLogSetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -831,7 +830,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "EndPort")
 	delete(f, "DeregisterTargetRst")
 	if len(f) > 0 {
-		return errors.New("CreateListenerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -968,7 +967,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "SlaveZoneId")
 	delete(f, "EipAddressId")
 	if len(f) > 0 {
-		return errors.New("CreateLoadBalancerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1021,7 +1020,7 @@ func (r *CreateLoadBalancerSnatIpsRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "SnatIps")
 	if len(f) > 0 {
-		return errors.New("CreateLoadBalancerSnatIpsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerSnatIpsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1075,7 +1074,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "ListenerId")
 	delete(f, "Rules")
 	if len(f) > 0 {
-		return errors.New("CreateRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1136,7 +1135,7 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "TargetGroupInstances")
 	if len(f) > 0 {
-		return errors.New("CreateTargetGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1193,7 +1192,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "PartitionCount")
 	delete(f, "TopicType")
 	if len(f) > 0 {
-		return errors.New("CreateTopicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1246,7 +1245,7 @@ func (r *DeleteListenerRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "ListenerId")
 	if len(f) > 0 {
-		return errors.New("DeleteListenerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteListenerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1296,7 +1295,7 @@ func (r *DeleteLoadBalancerListenersRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "ListenerIds")
 	if len(f) > 0 {
-		return errors.New("DeleteLoadBalancerListenersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerListenersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1342,7 +1341,7 @@ func (r *DeleteLoadBalancerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LoadBalancerIds")
 	if len(f) > 0 {
-		return errors.New("DeleteLoadBalancerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1392,7 +1391,7 @@ func (r *DeleteLoadBalancerSnatIpsRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "Ips")
 	if len(f) > 0 {
-		return errors.New("DeleteLoadBalancerSnatIpsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerSnatIpsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1450,7 +1449,7 @@ func (r *DeleteRewriteRequest) FromJsonString(s string) error {
 	delete(f, "TargetListenerId")
 	delete(f, "RewriteInfos")
 	if len(f) > 0 {
-		return errors.New("DeleteRewriteRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRewriteRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1516,7 +1515,7 @@ func (r *DeleteRuleRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "NewDefaultServerDomain")
 	if len(f) > 0 {
-		return errors.New("DeleteRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1562,7 +1561,7 @@ func (r *DeleteTargetGroupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TargetGroupIds")
 	if len(f) > 0 {
-		return errors.New("DeleteTargetGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTargetGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1612,7 +1611,7 @@ func (r *DeregisterTargetGroupInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupInstances")
 	if len(f) > 0 {
-		return errors.New("DeregisterTargetGroupInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterTargetGroupInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1662,7 +1661,7 @@ func (r *DeregisterTargetsFromClassicalLBRequest) FromJsonString(s string) error
 	delete(f, "LoadBalancerId")
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("DeregisterTargetsFromClassicalLBRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterTargetsFromClassicalLBRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1728,7 +1727,7 @@ func (r *DeregisterTargetsRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("DeregisterTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1782,7 +1781,7 @@ func (r *DescribeBlockIPListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeBlockIPListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockIPListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1837,7 +1836,7 @@ func (r *DescribeBlockIPTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeBlockIPTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockIPTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1886,7 +1885,7 @@ func (r *DescribeClassicalLBByInstanceIdRequest) FromJsonString(s string) error 
 	}
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("DescribeClassicalLBByInstanceIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClassicalLBByInstanceIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1939,7 +1938,7 @@ func (r *DescribeClassicalLBHealthStatusRequest) FromJsonString(s string) error 
 	delete(f, "LoadBalancerId")
 	delete(f, "ListenerId")
 	if len(f) > 0 {
-		return errors.New("DescribeClassicalLBHealthStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClassicalLBHealthStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2005,7 +2004,7 @@ func (r *DescribeClassicalLBListenersRequest) FromJsonString(s string) error {
 	delete(f, "ListenerPort")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("DescribeClassicalLBListenersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClassicalLBListenersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2055,7 +2054,7 @@ func (r *DescribeClassicalLBTargetsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LoadBalancerId")
 	if len(f) > 0 {
-		return errors.New("DescribeClassicalLBTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClassicalLBTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2101,7 +2100,7 @@ func (r *DescribeClsLogSetRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeClsLogSetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClsLogSetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2165,7 +2164,7 @@ func (r *DescribeClusterResourcesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeClusterResourcesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterResourcesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2234,7 +2233,7 @@ func (r *DescribeExclusiveClustersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeExclusiveClustersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExclusiveClustersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2298,7 +2297,7 @@ func (r *DescribeListenersRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "Port")
 	if len(f) > 0 {
-		return errors.New("DescribeListenersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListenersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2351,7 +2350,7 @@ func (r *DescribeLoadBalancerListByCertIdRequest) FromJsonString(s string) error
 	}
 	delete(f, "CertIds")
 	if len(f) > 0 {
-		return errors.New("DescribeLoadBalancerListByCertIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancerListByCertIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2400,7 +2399,7 @@ func (r *DescribeLoadBalancerTrafficRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LoadBalancerRegion")
 	if len(f) > 0 {
-		return errors.New("DescribeLoadBalancerTrafficRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancerTrafficRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2476,7 +2475,7 @@ func (r *DescribeLoadBalancersDetailRequest) FromJsonString(s string) error {
 	delete(f, "TargetType")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeLoadBalancersDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancersDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2610,7 +2609,7 @@ func (r *DescribeLoadBalancersRequest) FromJsonString(s string) error {
 	delete(f, "MasterZone")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeLoadBalancersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2658,7 +2657,7 @@ func (r *DescribeQuotaRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeQuotaRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuotaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2715,7 +2714,7 @@ func (r *DescribeRewriteRequest) FromJsonString(s string) error {
 	delete(f, "SourceListenerIds")
 	delete(f, "SourceLocationIds")
 	if len(f) > 0 {
-		return errors.New("DescribeRewriteRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRewriteRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2772,7 +2771,7 @@ func (r *DescribeTargetGroupInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeTargetGroupInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetGroupInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2839,7 +2838,7 @@ func (r *DescribeTargetGroupListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeTargetGroupListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetGroupListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2903,7 +2902,7 @@ func (r *DescribeTargetGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeTargetGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2955,7 +2954,7 @@ func (r *DescribeTargetHealthRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LoadBalancerIds")
 	if len(f) > 0 {
-		return errors.New("DescribeTargetHealthRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetHealthRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3017,7 +3016,7 @@ func (r *DescribeTargetsRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "Port")
 	if len(f) > 0 {
-		return errors.New("DescribeTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3067,7 +3066,7 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3116,7 +3115,7 @@ func (r *DisassociateTargetGroupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Associations")
 	if len(f) > 0 {
-		return errors.New("DisassociateTargetGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateTargetGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3782,7 +3781,7 @@ func (r *ManualRewriteRequest) FromJsonString(s string) error {
 	delete(f, "TargetListenerId")
 	delete(f, "RewriteInfos")
 	if len(f) > 0 {
-		return errors.New("ManualRewriteRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManualRewriteRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3854,7 +3853,7 @@ func (r *ModifyBlockIPListRequest) FromJsonString(s string) error {
 	delete(f, "ExpireTime")
 	delete(f, "AddStrategy")
 	if len(f) > 0 {
-		return errors.New("ModifyBlockIPListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockIPListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3931,7 +3930,7 @@ func (r *ModifyDomainAttributesRequest) FromJsonString(s string) error {
 	delete(f, "DefaultServer")
 	delete(f, "NewDefaultServerDomain")
 	if len(f) > 0 {
-		return errors.New("ModifyDomainAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3989,7 +3988,7 @@ func (r *ModifyDomainRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "NewDomain")
 	if len(f) > 0 {
-		return errors.New("ModifyDomainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4072,7 +4071,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "KeepaliveEnable")
 	delete(f, "DeregisterTargetRst")
 	if len(f) > 0 {
-		return errors.New("ModifyListenerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4138,7 +4137,7 @@ func (r *ModifyLoadBalancerAttributesRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerPassToTarget")
 	delete(f, "SnatPro")
 	if len(f) > 0 {
-		return errors.New("ModifyLoadBalancerAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4225,7 +4224,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "TrpcCallee")
 	delete(f, "TrpcFunc")
 	if len(f) > 0 {
-		return errors.New("ModifyRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4279,7 +4278,7 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupName")
 	delete(f, "Port")
 	if len(f) > 0 {
-		return errors.New("ModifyTargetGroupAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4329,7 +4328,7 @@ func (r *ModifyTargetGroupInstancesPortRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupInstances")
 	if len(f) > 0 {
-		return errors.New("ModifyTargetGroupInstancesPortRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupInstancesPortRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4379,7 +4378,7 @@ func (r *ModifyTargetGroupInstancesWeightRequest) FromJsonString(s string) error
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupInstances")
 	if len(f) > 0 {
-		return errors.New("ModifyTargetGroupInstancesWeightRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupInstancesWeightRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4449,7 +4448,7 @@ func (r *ModifyTargetPortRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("ModifyTargetPortRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetPortRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4519,7 +4518,7 @@ func (r *ModifyTargetWeightRequest) FromJsonString(s string) error {
 	delete(f, "Targets")
 	delete(f, "Weight")
 	if len(f) > 0 {
-		return errors.New("ModifyTargetWeightRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetWeightRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4587,7 +4586,7 @@ func (r *RegisterTargetGroupInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupInstances")
 	if len(f) > 0 {
-		return errors.New("RegisterTargetGroupInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterTargetGroupInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4653,7 +4652,7 @@ func (r *RegisterTargetsRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Url")
 	if len(f) > 0 {
-		return errors.New("RegisterTargetsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterTargetsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4703,7 +4702,7 @@ func (r *RegisterTargetsWithClassicalLBRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "Targets")
 	if len(f) > 0 {
-		return errors.New("RegisterTargetsWithClassicalLBRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterTargetsWithClassicalLBRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -4753,7 +4752,7 @@ func (r *ReplaceCertForLoadBalancersRequest) FromJsonString(s string) error {
 	delete(f, "OldCertificateId")
 	delete(f, "Certificate")
 	if len(f) > 0 {
-		return errors.New("ReplaceCertForLoadBalancersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertForLoadBalancersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5028,7 +5027,7 @@ func (r *SetLoadBalancerClsLogRequest) FromJsonString(s string) error {
 	delete(f, "LogTopicId")
 	delete(f, "LogType")
 	if len(f) > 0 {
-		return errors.New("SetLoadBalancerClsLogRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetLoadBalancerClsLogRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5078,7 +5077,7 @@ func (r *SetLoadBalancerSecurityGroupsRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "SecurityGroups")
 	if len(f) > 0 {
-		return errors.New("SetLoadBalancerSecurityGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetLoadBalancerSecurityGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -5133,7 +5132,7 @@ func (r *SetSecurityGroupForLoadbalancersRequest) FromJsonString(s string) error
 	delete(f, "OperationType")
 	delete(f, "LoadBalancerIds")
 	if len(f) > 0 {
-		return errors.New("SetSecurityGroupForLoadbalancersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetSecurityGroupForLoadbalancersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

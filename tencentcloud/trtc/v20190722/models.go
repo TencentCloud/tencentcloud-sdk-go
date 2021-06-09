@@ -16,8 +16,7 @@ package v20190722
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -94,7 +93,7 @@ func (r *CreatePictureRequest) FromJsonString(s string) error {
 	delete(f, "XPosition")
 	delete(f, "YPosition")
 	if len(f) > 0 {
-		return errors.New("CreatePictureRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePictureRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -179,7 +178,7 @@ func (r *CreateTroubleInfoRequest) FromJsonString(s string) error {
 	delete(f, "TroubleTime")
 	delete(f, "TroubleMsg")
 	if len(f) > 0 {
-		return errors.New("CreateTroubleInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTroubleInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -229,7 +228,7 @@ func (r *DeletePictureRequest) FromJsonString(s string) error {
 	delete(f, "PictureId")
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DeletePictureRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePictureRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -287,7 +286,7 @@ func (r *DescribeAbnormalEventRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DescribeAbnormalEventRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalEventRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -380,7 +379,7 @@ func (r *DescribeCallDetailRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeCallDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -453,7 +452,7 @@ func (r *DescribeDetailEventRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DescribeDetailEventRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailEventRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -510,7 +509,7 @@ func (r *DescribeHistoryScaleRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeHistoryScaleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHistoryScaleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -575,7 +574,7 @@ func (r *DescribePictureRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNo")
 	if len(f) > 0 {
-		return errors.New("DescribePictureRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePictureRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -641,7 +640,7 @@ func (r *DescribeRealtimeNetworkRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "DataType")
 	if len(f) > 0 {
-		return errors.New("DescribeRealtimeNetworkRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealtimeNetworkRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -706,7 +705,7 @@ func (r *DescribeRealtimeQualityRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "DataType")
 	if len(f) > 0 {
-		return errors.New("DescribeRealtimeQualityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealtimeQualityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -769,7 +768,7 @@ func (r *DescribeRealtimeScaleRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "DataType")
 	if len(f) > 0 {
-		return errors.New("DescribeRealtimeScaleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealtimeScaleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -827,7 +826,7 @@ func (r *DescribeRecordStatisticRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeRecordStatisticRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordStatisticRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -896,7 +895,7 @@ func (r *DescribeRoomInformationRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeRoomInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -957,7 +956,7 @@ func (r *DescribeTrtcInteractiveTimeRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeTrtcInteractiveTimeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrtcInteractiveTimeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1015,7 +1014,7 @@ func (r *DescribeTrtcMcuTranscodeTimeRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeTrtcMcuTranscodeTimeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrtcMcuTranscodeTimeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1088,7 +1087,7 @@ func (r *DescribeUserInformationRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	if len(f) > 0 {
-		return errors.New("DescribeUserInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1145,7 +1144,7 @@ func (r *DismissRoomByStrRoomIdRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DismissRoomByStrRoomIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DismissRoomByStrRoomIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1195,7 +1194,7 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DismissRoomRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DismissRoomRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1368,7 +1367,7 @@ func (r *ModifyPictureRequest) FromJsonString(s string) error {
 	delete(f, "XPosition")
 	delete(f, "YPosition")
 	if len(f) > 0 {
-		return errors.New("ModifyPictureRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPictureRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1568,7 +1567,7 @@ func (r *RemoveUserByStrRoomIdRequest) FromJsonString(s string) error {
 	delete(f, "RoomId")
 	delete(f, "UserIds")
 	if len(f) > 0 {
-		return errors.New("RemoveUserByStrRoomIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveUserByStrRoomIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1622,7 +1621,7 @@ func (r *RemoveUserRequest) FromJsonString(s string) error {
 	delete(f, "RoomId")
 	delete(f, "UserIds")
 	if len(f) > 0 {
-		return errors.New("RemoveUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1797,7 +1796,7 @@ func (r *StartMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error 
 	delete(f, "LayoutParams")
 	delete(f, "PublishCdnParams")
 	if len(f) > 0 {
-		return errors.New("StartMCUMixTranscodeByStrRoomIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMCUMixTranscodeByStrRoomIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1863,7 +1862,7 @@ func (r *StartMCUMixTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "LayoutParams")
 	delete(f, "PublishCdnParams")
 	if len(f) > 0 {
-		return errors.New("StartMCUMixTranscodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMCUMixTranscodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1913,7 +1912,7 @@ func (r *StopMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "StrRoomId")
 	if len(f) > 0 {
-		return errors.New("StopMCUMixTranscodeByStrRoomIdRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMCUMixTranscodeByStrRoomIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1963,7 +1962,7 @@ func (r *StopMCUMixTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("StopMCUMixTranscodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMCUMixTranscodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

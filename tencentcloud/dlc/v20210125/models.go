@@ -16,8 +16,7 @@ package v20210125
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -85,7 +84,7 @@ func (r *CreateDatabaseRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DatabaseInfo")
 	if len(f) > 0 {
-		return errors.New("CreateDatabaseRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatabaseRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -146,7 +145,7 @@ func (r *CreateScriptRequest) FromJsonString(s string) error {
 	delete(f, "ScriptDesc")
 	delete(f, "DatabaseName")
 	if len(f) > 0 {
-		return errors.New("CreateScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -192,7 +191,7 @@ func (r *CreateTableRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TableInfo")
 	if len(f) > 0 {
-		return errors.New("CreateTableRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTableRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -245,7 +244,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "Task")
 	delete(f, "DatabaseName")
 	if len(f) > 0 {
-		return errors.New("CreateTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -358,7 +357,7 @@ func (r *DeleteScriptRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ScriptIds")
 	if len(f) > 0 {
-		return errors.New("DeleteScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -415,7 +414,7 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "KeyWord")
 	if len(f) > 0 {
-		return errors.New("DescribeDatabasesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -485,7 +484,7 @@ func (r *DescribeScriptsRequest) FromJsonString(s string) error {
 	delete(f, "Sorting")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeScriptsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScriptsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -542,7 +541,7 @@ func (r *DescribeTableRequest) FromJsonString(s string) error {
 	delete(f, "TableName")
 	delete(f, "DatabaseName")
 	if len(f) > 0 {
-		return errors.New("DescribeTableRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -605,7 +604,7 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeTablesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -684,7 +683,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -750,7 +749,7 @@ func (r *DescribeViewsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeViewsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeViewsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

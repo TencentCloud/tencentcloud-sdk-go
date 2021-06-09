@@ -16,8 +16,7 @@ package v20201014
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -50,7 +49,7 @@ func (r *ChangeRoomPlayerProfileRequest) FromJsonString(s string) error {
 	delete(f, "PlayerId")
 	delete(f, "CustomProfile")
 	if len(f) > 0 {
-		return errors.New("ChangeRoomPlayerProfileRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeRoomPlayerProfileRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -107,7 +106,7 @@ func (r *ChangeRoomPlayerStatusRequest) FromJsonString(s string) error {
 	delete(f, "CustomStatus")
 	delete(f, "PlayerId")
 	if len(f) > 0 {
-		return errors.New("ChangeRoomPlayerStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeRoomPlayerStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -164,7 +163,7 @@ func (r *DescribePlayerRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "PlayerId")
 	if len(f) > 0 {
-		return errors.New("DescribePlayerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -221,7 +220,7 @@ func (r *DescribeRoomRequest) FromJsonString(s string) error {
 	delete(f, "PlayerId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DescribeRoomRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -274,7 +273,7 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 	delete(f, "GameId")
 	delete(f, "RoomId")
 	if len(f) > 0 {
-		return errors.New("DismissRoomRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DismissRoomRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -360,7 +359,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "CustomProperties")
 	delete(f, "IsForbidJoin")
 	if len(f) > 0 {
-		return errors.New("ModifyRoomRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -437,7 +436,7 @@ func (r *RemoveRoomPlayerRequest) FromJsonString(s string) error {
 	delete(f, "GameId")
 	delete(f, "RemovePlayerId")
 	if len(f) > 0 {
-		return errors.New("RemoveRoomPlayerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveRoomPlayerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20191022
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -130,7 +129,7 @@ func (r *CreateCodeRepositoryRequest) FromJsonString(s string) error {
 	delete(f, "GitConfig")
 	delete(f, "GitSecret")
 	if len(f) > 0 {
-		return errors.New("CreateCodeRepositoryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeRepositoryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -243,7 +242,7 @@ func (r *CreateNotebookInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoStopping")
 	delete(f, "ClsConfig")
 	if len(f) > 0 {
-		return errors.New("CreateNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -302,7 +301,7 @@ func (r *CreateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	delete(f, "CreateScript")
 	delete(f, "StartScript")
 	if len(f) > 0 {
-		return errors.New("CreateNotebookLifecycleScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookLifecycleScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -356,7 +355,7 @@ func (r *CreatePresignedNotebookInstanceUrlRequest) FromJsonString(s string) err
 	delete(f, "NotebookInstanceName")
 	delete(f, "SessionExpirationDurationInSeconds")
 	if len(f) > 0 {
-		return errors.New("CreatePresignedNotebookInstanceUrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePresignedNotebookInstanceUrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -446,7 +445,7 @@ func (r *CreateTrainingJobRequest) FromJsonString(s string) error {
 	delete(f, "RoleName")
 	delete(f, "RetryWhenResourceInsufficient")
 	if len(f) > 0 {
-		return errors.New("CreateTrainingJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -506,7 +505,7 @@ func (r *DeleteCodeRepositoryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CodeRepositoryName")
 	if len(f) > 0 {
-		return errors.New("DeleteCodeRepositoryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCodeRepositoryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -555,7 +554,7 @@ func (r *DeleteNotebookInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NotebookInstanceName")
 	if len(f) > 0 {
-		return errors.New("DeleteNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -605,7 +604,7 @@ func (r *DeleteNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	delete(f, "NotebookLifecycleScriptsName")
 	delete(f, "Forcible")
 	if len(f) > 0 {
-		return errors.New("DeleteNotebookLifecycleScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookLifecycleScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -667,7 +666,7 @@ func (r *DescribeCodeRepositoriesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "SortOrder")
 	if len(f) > 0 {
-		return errors.New("DescribeCodeRepositoriesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeRepositoriesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -720,7 +719,7 @@ func (r *DescribeCodeRepositoryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CodeRepositoryName")
 	if len(f) > 0 {
-		return errors.New("DescribeCodeRepositoryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeRepositoryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -782,7 +781,7 @@ func (r *DescribeNotebookInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NotebookInstanceName")
 	if len(f) > 0 {
-		return errors.New("DescribeNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -945,7 +944,7 @@ func (r *DescribeNotebookInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "SortBy")
 	if len(f) > 0 {
-		return errors.New("DescribeNotebookInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -997,7 +996,7 @@ func (r *DescribeNotebookLifecycleScriptRequest) FromJsonString(s string) error 
 	}
 	delete(f, "NotebookLifecycleScriptsName")
 	if len(f) > 0 {
-		return errors.New("DescribeNotebookLifecycleScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookLifecycleScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1076,7 +1075,7 @@ func (r *DescribeNotebookLifecycleScriptsRequest) FromJsonString(s string) error
 	delete(f, "Filters")
 	delete(f, "SortOrder")
 	if len(f) > 0 {
-		return errors.New("DescribeNotebookLifecycleScriptsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookLifecycleScriptsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1124,7 +1123,7 @@ func (r *DescribeNotebookSummaryRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeNotebookSummaryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSummaryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1182,7 +1181,7 @@ func (r *DescribeTrainingJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TrainingJobName")
 	if len(f) > 0 {
-		return errors.New("DescribeTrainingJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1335,7 +1334,7 @@ func (r *DescribeTrainingJobsRequest) FromJsonString(s string) error {
 	delete(f, "StatusEquals")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeTrainingJobsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingJobsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1602,7 +1601,7 @@ func (r *StartNotebookInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoStopping")
 	delete(f, "StoppingCondition")
 	if len(f) > 0 {
-		return errors.New("StartNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1648,7 +1647,7 @@ func (r *StopNotebookInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NotebookInstanceName")
 	if len(f) > 0 {
-		return errors.New("StopNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1694,7 +1693,7 @@ func (r *StopTrainingJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TrainingJobName")
 	if len(f) > 0 {
-		return errors.New("StopTrainingJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTrainingJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1791,7 +1790,7 @@ func (r *UpdateCodeRepositoryRequest) FromJsonString(s string) error {
 	delete(f, "CodeRepositoryName")
 	delete(f, "GitSecret")
 	if len(f) > 0 {
-		return errors.New("UpdateCodeRepositoryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCodeRepositoryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1904,7 +1903,7 @@ func (r *UpdateNotebookInstanceRequest) FromJsonString(s string) error {
 	delete(f, "StoppingCondition")
 	delete(f, "ClsConfig")
 	if len(f) > 0 {
-		return errors.New("UpdateNotebookInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNotebookInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1960,7 +1959,7 @@ func (r *UpdateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	delete(f, "CreateScript")
 	delete(f, "StartScript")
 	if len(f) > 0 {
-		return errors.New("UpdateNotebookLifecycleScriptRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNotebookLifecycleScriptRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

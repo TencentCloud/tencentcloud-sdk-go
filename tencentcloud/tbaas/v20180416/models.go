@@ -16,8 +16,7 @@ package v20180416
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -74,7 +73,7 @@ func (r *ApplyUserCertRequest) FromJsonString(s string) error {
 	delete(f, "CsrData")
 	delete(f, "Notes")
 	if len(f) > 0 {
-		return errors.New("ApplyUserCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyUserCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -207,7 +206,7 @@ func (r *BlockByNumberHandlerRequest) FromJsonString(s string) error {
 	delete(f, "GroupPk")
 	delete(f, "BlockNumber")
 	if len(f) > 0 {
-		return errors.New("BlockByNumberHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BlockByNumberHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -313,7 +312,7 @@ func (r *CreateChaincodeAndInstallForUserRequest) FromJsonString(s string) error
 	delete(f, "ChaincodeFileType")
 	delete(f, "Chaincode")
 	if len(f) > 0 {
-		return errors.New("CreateChaincodeAndInstallForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChaincodeAndInstallForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -379,7 +378,7 @@ func (r *DeployDynamicBcosContractRequest) FromJsonString(s string) error {
 	delete(f, "SignUserId")
 	delete(f, "ConstructorParams")
 	if len(f) > 0 {
-		return errors.New("DeployDynamicBcosContractRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployDynamicBcosContractRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -452,7 +451,7 @@ func (r *DeployDynamicContractHandlerRequest) FromJsonString(s string) error {
 	delete(f, "ByteCodeBin")
 	delete(f, "ConstructorParams")
 	if len(f) > 0 {
-		return errors.New("DeployDynamicContractHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployDynamicContractHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -521,7 +520,7 @@ func (r *DownloadUserCertRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "GroupName")
 	if len(f) > 0 {
-		return errors.New("DownloadUserCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadUserCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -590,7 +589,7 @@ func (r *GetBcosBlockByNumberRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "BlockNumber")
 	if len(f) > 0 {
-		return errors.New("GetBcosBlockByNumberRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBcosBlockByNumberRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -659,7 +658,7 @@ func (r *GetBcosBlockListRequest) FromJsonString(s string) error {
 	delete(f, "BlockNumber")
 	delete(f, "BlockHash")
 	if len(f) > 0 {
-		return errors.New("GetBcosBlockListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBcosBlockListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -719,7 +718,7 @@ func (r *GetBcosTransByHashRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "TransHash")
 	if len(f) > 0 {
-		return errors.New("GetBcosTransByHashRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBcosTransByHashRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -788,7 +787,7 @@ func (r *GetBcosTransListRequest) FromJsonString(s string) error {
 	delete(f, "BlockNumber")
 	delete(f, "TransHash")
 	if len(f) > 0 {
-		return errors.New("GetBcosTransListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBcosTransListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -860,7 +859,7 @@ func (r *GetBlockListHandlerRequest) FromJsonString(s string) error {
 	delete(f, "GroupPk")
 	delete(f, "BlockHash")
 	if len(f) > 0 {
-		return errors.New("GetBlockListHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBlockListHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -947,7 +946,7 @@ func (r *GetBlockListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetBlockListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBlockListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1027,7 +1026,7 @@ func (r *GetBlockTransactionListForUserRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetBlockTransactionListForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBlockTransactionListForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1111,7 +1110,7 @@ func (r *GetChaincodeCompileLogForUserRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("GetChaincodeCompileLogForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetChaincodeCompileLogForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1191,7 +1190,7 @@ func (r *GetChaincodeInitializeResultForUserRequest) FromJsonString(s string) er
 	delete(f, "ChaincodeVersion")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("GetChaincodeInitializeResultForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetChaincodeInitializeResultForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1275,7 +1274,7 @@ func (r *GetChaincodeLogForUserRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "RowNum")
 	if len(f) > 0 {
-		return errors.New("GetChaincodeLogForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetChaincodeLogForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1347,7 +1346,7 @@ func (r *GetChannelListForUserRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("GetChannelListForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetChannelListForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1411,7 +1410,7 @@ func (r *GetClusterListForUserRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("GetClusterListForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetClusterListForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1479,7 +1478,7 @@ func (r *GetClusterSummaryRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "GroupName")
 	if len(f) > 0 {
-		return errors.New("GetClusterSummaryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetClusterSummaryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1598,7 +1597,7 @@ func (r *GetInvokeTxRequest) FromJsonString(s string) error {
 	delete(f, "TxId")
 	delete(f, "GroupName")
 	if len(f) > 0 {
-		return errors.New("GetInvokeTxRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetInvokeTxRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1689,7 +1688,7 @@ func (r *GetLatesdTransactionListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("GetLatesdTransactionListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLatesdTransactionListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1765,7 +1764,7 @@ func (r *GetPeerLogForUserRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "RowNum")
 	if len(f) > 0 {
-		return errors.New("GetPeerLogForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPeerLogForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1829,7 +1828,7 @@ func (r *GetTransByHashHandlerRequest) FromJsonString(s string) error {
 	delete(f, "GroupPk")
 	delete(f, "TransHash")
 	if len(f) > 0 {
-		return errors.New("GetTransByHashHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTransByHashHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1898,7 +1897,7 @@ func (r *GetTransListHandlerRequest) FromJsonString(s string) error {
 	delete(f, "GroupPk")
 	delete(f, "TransHash")
 	if len(f) > 0 {
-		return errors.New("GetTransListHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTransListHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1977,7 +1976,7 @@ func (r *GetTransactionDetailForUserRequest) FromJsonString(s string) error {
 	delete(f, "BlockId")
 	delete(f, "TransactionId")
 	if len(f) > 0 {
-		return errors.New("GetTransactionDetailForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTransactionDetailForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2103,7 +2102,7 @@ func (r *InitializeChaincodeForUserRequest) FromJsonString(s string) error {
 	delete(f, "PeerName")
 	delete(f, "Args")
 	if len(f) > 0 {
-		return errors.New("InitializeChaincodeForUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitializeChaincodeForUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2176,7 +2175,7 @@ func (r *InvokeBcosTransRequest) FromJsonString(s string) error {
 	delete(f, "SignUserId")
 	delete(f, "FuncParam")
 	if len(f) > 0 {
-		return errors.New("InvokeBcosTransRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeBcosTransRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2261,7 +2260,7 @@ func (r *InvokeRequest) FromJsonString(s string) error {
 	delete(f, "Args")
 	delete(f, "AsyncFlag")
 	if len(f) > 0 {
-		return errors.New("InvokeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2369,7 +2368,7 @@ func (r *QueryRequest) FromJsonString(s string) error {
 	delete(f, "GroupName")
 	delete(f, "Args")
 	if len(f) > 0 {
-		return errors.New("QueryRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2438,7 +2437,7 @@ func (r *SendTransactionHandlerRequest) FromJsonString(s string) error {
 	delete(f, "FuncName")
 	delete(f, "FuncParam")
 	if len(f) > 0 {
-		return errors.New("SendTransactionHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTransactionHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2495,7 +2494,7 @@ func (r *SrvInvokeRequest) FromJsonString(s string) error {
 	delete(f, "Method")
 	delete(f, "Param")
 	if len(f) > 0 {
-		return errors.New("SrvInvokeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SrvInvokeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2578,7 +2577,7 @@ func (r *TransByDynamicContractHandlerRequest) FromJsonString(s string) error {
 	delete(f, "FuncName")
 	delete(f, "FuncParam")
 	if len(f) > 0 {
-		return errors.New("TransByDynamicContractHandlerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransByDynamicContractHandlerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

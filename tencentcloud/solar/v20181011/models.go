@@ -16,8 +16,7 @@ package v20181011
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -77,7 +76,7 @@ func (r *CheckStaffChUserRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "OperateType")
 	if len(f) > 0 {
-		return errors.New("CheckStaffChUserRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckStaffChUserRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -131,7 +130,7 @@ func (r *CopyActivityChannelRequest) FromJsonString(s string) error {
 	delete(f, "ChannelFrom")
 	delete(f, "ChannelTo")
 	if len(f) > 0 {
-		return errors.New("CopyActivityChannelRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyActivityChannelRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -193,7 +192,7 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	delete(f, "ProjectIntroduction")
 	delete(f, "ProjectOrgId")
 	if len(f) > 0 {
-		return errors.New("CreateProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -246,7 +245,7 @@ func (r *CreateSubProjectRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "SubProjectName")
 	if len(f) > 0 {
-		return errors.New("CreateSubProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -377,7 +376,7 @@ func (r *DeleteProjectRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("DeleteProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -423,7 +422,7 @@ func (r *DescribeCustomerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserId")
 	if len(f) > 0 {
-		return errors.New("DescribeCustomerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -633,7 +632,7 @@ func (r *DescribeCustomersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SubProjectId")
 	if len(f) > 0 {
-		return errors.New("DescribeCustomersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -686,7 +685,7 @@ func (r *DescribeProjectRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("DescribeProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -757,7 +756,7 @@ func (r *DescribeProjectStockRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubProjectId")
 	if len(f) > 0 {
-		return errors.New("DescribeProjectStockRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectStockRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -822,7 +821,7 @@ func (r *DescribeProjectsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "ProjectStatus")
 	if len(f) > 0 {
-		return errors.New("DescribeProjectsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -874,7 +873,7 @@ func (r *DescribeResourceTemplateHeadersRequest) FromJsonString(s string) error 
 	}
 	delete(f, "WxAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTemplateHeadersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTemplateHeadersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -927,7 +926,7 @@ func (r *DescribeSubProjectRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubProjectId")
 	if len(f) > 0 {
-		return errors.New("DescribeSubProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1009,7 +1008,7 @@ func (r *ExpireFlowRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FlowId")
 	if len(f) > 0 {
-		return errors.New("ExpireFlowRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpireFlowRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1087,7 +1086,7 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	delete(f, "ProjectIntroduction")
 	delete(f, "ProjectOrgId")
 	if len(f) > 0 {
-		return errors.New("ModifyProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1133,7 +1132,7 @@ func (r *OffLineProjectRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("OffLineProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OffLineProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1278,7 +1277,7 @@ func (r *ReplenishProjectStockRequest) FromJsonString(s string) error {
 	delete(f, "PoolIndex")
 	delete(f, "PoolName")
 	if len(f) > 0 {
-		return errors.New("ReplenishProjectStockRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplenishProjectStockRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1390,7 +1389,7 @@ func (r *SendWxTouchTaskRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "WxAppId")
 	if len(f) > 0 {
-		return errors.New("SendWxTouchTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendWxTouchTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20190318
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -38,7 +37,7 @@ func (r *DescribeSdkAppidRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeSdkAppidRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSdkAppidRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

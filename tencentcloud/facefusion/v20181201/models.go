@@ -16,8 +16,7 @@ package v20181201
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -54,7 +53,7 @@ func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeMaterialListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaterialListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -126,7 +125,7 @@ func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
 	delete(f, "CelebrityIdentify")
 	delete(f, "Engine")
 	if len(f) > 0 {
-		return errors.New("FaceFusionLiteRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionLiteRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -200,7 +199,7 @@ func (r *FaceFusionRequest) FromJsonString(s string) error {
 	delete(f, "PornDetect")
 	delete(f, "CelebrityIdentify")
 	if len(f) > 0 {
-		return errors.New("FaceFusionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -309,7 +308,7 @@ func (r *FuseFaceRequest) FromJsonString(s string) error {
 	delete(f, "FuseFaceDegree")
 	delete(f, "CelebrityIdentify")
 	if len(f) > 0 {
-		return errors.New("FuseFaceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FuseFaceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

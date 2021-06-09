@@ -16,8 +16,7 @@ package v20180608
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -828,7 +827,7 @@ func (r *DescribeAssetDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Params")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -878,7 +877,7 @@ func (r *DescribeAssetListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Params")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -933,7 +932,7 @@ func (r *DescribeAssetsMappingListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Params")
 	if len(f) > 0 {
-		return errors.New("DescribeAssetsMappingListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetsMappingListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1005,7 +1004,7 @@ func (r *DescribeCheckConfigAssetListRequest) FromJsonString(s string) error {
 	delete(f, "Search")
 	delete(f, "Filter")
 	if len(f) > 0 {
-		return errors.New("DescribeCheckConfigAssetListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCheckConfigAssetListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1058,7 +1057,7 @@ func (r *DescribeCheckConfigDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("DescribeCheckConfigDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCheckConfigDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1123,7 +1122,7 @@ func (r *DescribeComplianceAssetListRequest) FromJsonString(s string) error {
 	delete(f, "Filter")
 	delete(f, "Search")
 	if len(f) > 0 {
-		return errors.New("DescribeComplianceAssetListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceAssetListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1175,7 +1174,7 @@ func (r *DescribeComplianceDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("DescribeComplianceDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1224,7 +1223,7 @@ func (r *DescribeComplianceListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filter")
 	if len(f) > 0 {
-		return errors.New("DescribeComplianceListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1281,7 +1280,7 @@ func (r *DescribeConfigListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filter")
 	if len(f) > 0 {
-		return errors.New("DescribeConfigListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1346,7 +1345,7 @@ func (r *DescribeEventDetailRequest) FromJsonString(s string) error {
 	delete(f, "SubEventType")
 	delete(f, "Name")
 	if len(f) > 0 {
-		return errors.New("DescribeEventDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1411,7 +1410,7 @@ func (r *DescribeLeakDetectionListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeLeakDetectionListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLeakDetectionListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1491,7 +1490,7 @@ func (r *DescribeSafetyEventListRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "IsFilterResponseTime")
 	if len(f) > 0 {
-		return errors.New("DescribeSafetyEventListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSafetyEventListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1547,7 +1546,7 @@ func (r *DescribeVulDetailRequest) FromJsonString(s string) error {
 	delete(f, "UniqId")
 	delete(f, "Source")
 	if len(f) > 0 {
-		return errors.New("DescribeVulDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1677,7 +1676,7 @@ func (r *DescribeVulListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Params")
 	if len(f) > 0 {
-		return errors.New("DescribeVulListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1842,7 +1841,7 @@ func (r *SaDivulgeDataQueryPubRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("SaDivulgeDataQueryPubRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaDivulgeDataQueryPubRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

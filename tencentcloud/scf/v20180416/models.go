@@ -16,8 +16,7 @@ package v20180416
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -226,7 +225,7 @@ func (r *CopyFunctionRequest) FromJsonString(s string) error {
 	delete(f, "Override")
 	delete(f, "CopyConfiguration")
 	if len(f) > 0 {
-		return errors.New("CopyFunctionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyFunctionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -292,7 +291,7 @@ func (r *CreateAliasRequest) FromJsonString(s string) error {
 	delete(f, "RoutingConfig")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -426,7 +425,7 @@ func (r *CreateFunctionRequest) FromJsonString(s string) error {
 	delete(f, "AsyncRunEnable")
 	delete(f, "TraceEnable")
 	if len(f) > 0 {
-		return errors.New("CreateFunctionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -476,7 +475,7 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateNamespaceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNamespaceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -550,7 +549,7 @@ func (r *CreateTriggerRequest) FromJsonString(s string) error {
 	delete(f, "Enable")
 	delete(f, "CustomArgument")
 	if len(f) > 0 {
-		return errors.New("CreateTriggerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -619,7 +618,7 @@ func (r *DeleteAliasRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("DeleteAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -673,7 +672,7 @@ func (r *DeleteFunctionRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Qualifier")
 	if len(f) > 0 {
-		return errors.New("DeleteFunctionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFunctionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -723,7 +722,7 @@ func (r *DeleteLayerVersionRequest) FromJsonString(s string) error {
 	delete(f, "LayerName")
 	delete(f, "LayerVersion")
 	if len(f) > 0 {
-		return errors.New("DeleteLayerVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLayerVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -769,7 +768,7 @@ func (r *DeleteNamespaceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("DeleteNamespaceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNamespaceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -823,7 +822,7 @@ func (r *DeleteProvisionedConcurrencyConfigRequest) FromJsonString(s string) err
 	delete(f, "Qualifier")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("DeleteProvisionedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProvisionedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -873,7 +872,7 @@ func (r *DeleteReservedConcurrencyConfigRequest) FromJsonString(s string) error 
 	delete(f, "FunctionName")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("DeleteReservedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReservedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -939,7 +938,7 @@ func (r *DeleteTriggerRequest) FromJsonString(s string) error {
 	delete(f, "TriggerDesc")
 	delete(f, "Qualifier")
 	if len(f) > 0 {
-		return errors.New("DeleteTriggerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTriggerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1128,7 +1127,7 @@ func (r *GetAccountRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetAccountRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAccountRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1188,7 +1187,7 @@ func (r *GetAliasRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("GetAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1263,7 +1262,7 @@ func (r *GetFunctionAddressRequest) FromJsonString(s string) error {
 	delete(f, "Qualifier")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("GetFunctionAddressRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFunctionAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1323,7 +1322,7 @@ func (r *GetFunctionEventInvokeConfigRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Qualifier")
 	if len(f) > 0 {
-		return errors.New("GetFunctionEventInvokeConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFunctionEventInvokeConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1418,7 +1417,7 @@ func (r *GetFunctionLogsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "SearchContext")
 	if len(f) > 0 {
-		return errors.New("GetFunctionLogsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFunctionLogsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1485,7 +1484,7 @@ func (r *GetFunctionRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "ShowCode")
 	if len(f) > 0 {
-		return errors.New("GetFunctionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFunctionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1661,7 +1660,7 @@ func (r *GetLayerVersionRequest) FromJsonString(s string) error {
 	delete(f, "LayerName")
 	delete(f, "LayerVersion")
 	if len(f) > 0 {
-		return errors.New("GetLayerVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLayerVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1746,7 +1745,7 @@ func (r *GetProvisionedConcurrencyConfigRequest) FromJsonString(s string) error 
 	delete(f, "Namespace")
 	delete(f, "Qualifier")
 	if len(f) > 0 {
-		return errors.New("GetProvisionedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetProvisionedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1802,7 +1801,7 @@ func (r *GetReservedConcurrencyConfigRequest) FromJsonString(s string) error {
 	delete(f, "FunctionName")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("GetReservedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetReservedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1876,7 +1875,7 @@ func (r *InvokeRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "RoutingKey")
 	if len(f) > 0 {
-		return errors.New("InvokeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1986,7 +1985,7 @@ func (r *ListAliasesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListAliasesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAliasesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2083,7 +2082,7 @@ func (r *ListAsyncEventsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "InvokeRequestId")
 	if len(f) > 0 {
-		return errors.New("ListAsyncEventsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAsyncEventsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2166,7 +2165,7 @@ func (r *ListFunctionsRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("ListFunctionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFunctionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2222,7 +2221,7 @@ func (r *ListLayerVersionsRequest) FromJsonString(s string) error {
 	delete(f, "LayerName")
 	delete(f, "CompatibleRuntime")
 	if len(f) > 0 {
-		return errors.New("ListLayerVersionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLayerVersionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2283,7 +2282,7 @@ func (r *ListLayersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchKey")
 	if len(f) > 0 {
-		return errors.New("ListLayersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLayersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2347,7 +2346,7 @@ func (r *ListNamespacesRequest) FromJsonString(s string) error {
 	delete(f, "Orderby")
 	delete(f, "Order")
 	if len(f) > 0 {
-		return errors.New("ListNamespacesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListNamespacesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2424,7 +2423,7 @@ func (r *ListTriggersRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("ListTriggersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2496,7 +2495,7 @@ func (r *ListVersionByFunctionRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "OrderBy")
 	if len(f) > 0 {
-		return errors.New("ListVersionByFunctionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVersionByFunctionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2678,7 +2677,7 @@ func (r *PublishLayerVersionRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "LicenseInfo")
 	if len(f) > 0 {
-		return errors.New("PublishLayerVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishLayerVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2735,7 +2734,7 @@ func (r *PublishVersionRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("PublishVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2817,7 +2816,7 @@ func (r *PutProvisionedConcurrencyConfigRequest) FromJsonString(s string) error 
 	delete(f, "VersionProvisionedConcurrencyNum")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("PutProvisionedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutProvisionedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2871,7 +2870,7 @@ func (r *PutReservedConcurrencyConfigRequest) FromJsonString(s string) error {
 	delete(f, "ReservedConcurrencyMem")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("PutReservedConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutReservedConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2921,7 +2920,7 @@ func (r *PutTotalConcurrencyConfigRequest) FromJsonString(s string) error {
 	delete(f, "TotalConcurrencyMem")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("PutTotalConcurrencyConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutTotalConcurrencyConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3035,7 +3034,7 @@ func (r *TerminateAsyncEventRequest) FromJsonString(s string) error {
 	delete(f, "InvokeRequestId")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("TerminateAsyncEventRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateAsyncEventRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3225,7 +3224,7 @@ func (r *UpdateAliasRequest) FromJsonString(s string) error {
 	delete(f, "RoutingConfig")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3311,7 +3310,7 @@ func (r *UpdateFunctionCodeRequest) FromJsonString(s string) error {
 	delete(f, "Code")
 	delete(f, "CodeSource")
 	if len(f) > 0 {
-		return errors.New("UpdateFunctionCodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionCodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3425,7 +3424,7 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "CfsConfig")
 	delete(f, "InitTimeout")
 	if len(f) > 0 {
-		return errors.New("UpdateFunctionConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3479,7 +3478,7 @@ func (r *UpdateFunctionEventInvokeConfigRequest) FromJsonString(s string) error 
 	delete(f, "FunctionName")
 	delete(f, "Namespace")
 	if len(f) > 0 {
-		return errors.New("UpdateFunctionEventInvokeConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionEventInvokeConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3529,7 +3528,7 @@ func (r *UpdateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateNamespaceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNamespaceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20180419
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -110,7 +109,7 @@ func (r *AttachInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("AttachInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -271,7 +270,7 @@ func (r *ClearLaunchConfigurationAttributesRequest) FromJsonString(s string) err
 	delete(f, "LaunchConfigurationId")
 	delete(f, "ClearDataDisks")
 	if len(f) > 0 {
-		return errors.New("ClearLaunchConfigurationAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -329,7 +328,7 @@ func (r *CompleteLifecycleActionRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "LifecycleActionToken")
 	if len(f) > 0 {
-		return errors.New("CompleteLifecycleActionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompleteLifecycleActionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -395,7 +394,7 @@ func (r *CreateAutoScalingGroupFromInstanceRequest) FromJsonString(s string) err
 	delete(f, "DesiredCapacity")
 	delete(f, "InheritInstanceTag")
 	if len(f) > 0 {
-		return errors.New("CreateAutoScalingGroupFromInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoScalingGroupFromInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -534,7 +533,7 @@ func (r *CreateAutoScalingGroupRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6AddressCount")
 	delete(f, "MultiZoneSubnetPolicy")
 	if len(f) > 0 {
-		return errors.New("CreateAutoScalingGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoScalingGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -677,7 +676,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DiskTypePolicy")
 	if len(f) > 0 {
-		return errors.New("CreateLaunchConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -754,7 +753,7 @@ func (r *CreateLifecycleHookRequest) FromJsonString(s string) error {
 	delete(f, "NotificationTarget")
 	delete(f, "LifecycleTransitionType")
 	if len(f) > 0 {
-		return errors.New("CreateLifecycleHookRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecycleHookRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -817,7 +816,7 @@ func (r *CreateNotificationConfigurationRequest) FromJsonString(s string) error 
 	delete(f, "NotificationTypes")
 	delete(f, "NotificationUserGroupIds")
 	if len(f) > 0 {
-		return errors.New("CreateNotificationConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotificationConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -906,7 +905,7 @@ func (r *CreatePaiInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
 	if len(f) > 0 {
-		return errors.New("CreatePaiInstanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePaiInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -979,7 +978,7 @@ func (r *CreateScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Cooldown")
 	delete(f, "NotificationUserGroupIds")
 	if len(f) > 0 {
-		return errors.New("CreateScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1056,7 +1055,7 @@ func (r *CreateScheduledActionRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Recurrence")
 	if len(f) > 0 {
-		return errors.New("CreateScheduledActionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduledActionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1120,7 +1119,7 @@ func (r *DeleteAutoScalingGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoScalingGroupId")
 	if len(f) > 0 {
-		return errors.New("DeleteAutoScalingGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoScalingGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1166,7 +1165,7 @@ func (r *DeleteLaunchConfigurationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LaunchConfigurationId")
 	if len(f) > 0 {
-		return errors.New("DeleteLaunchConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLaunchConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1212,7 +1211,7 @@ func (r *DeleteLifecycleHookRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LifecycleHookId")
 	if len(f) > 0 {
-		return errors.New("DeleteLifecycleHookRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLifecycleHookRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1258,7 +1257,7 @@ func (r *DeleteNotificationConfigurationRequest) FromJsonString(s string) error 
 	}
 	delete(f, "AutoScalingNotificationId")
 	if len(f) > 0 {
-		return errors.New("DeleteNotificationConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotificationConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1304,7 +1303,7 @@ func (r *DeleteScalingPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoScalingPolicyId")
 	if len(f) > 0 {
-		return errors.New("DeleteScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1350,7 +1349,7 @@ func (r *DeleteScheduledActionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ScheduledActionId")
 	if len(f) > 0 {
-		return errors.New("DeleteScheduledActionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScheduledActionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1392,7 +1391,7 @@ func (r *DescribeAccountLimitsRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeAccountLimitsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountLimitsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1475,7 +1474,7 @@ func (r *DescribeAutoScalingActivitiesRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeAutoScalingActivitiesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingActivitiesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1527,7 +1526,7 @@ func (r *DescribeAutoScalingGroupLastActivitiesRequest) FromJsonString(s string)
 	}
 	delete(f, "AutoScalingGroupIds")
 	if len(f) > 0 {
-		return errors.New("DescribeAutoScalingGroupLastActivitiesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingGroupLastActivitiesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1596,7 +1595,7 @@ func (r *DescribeAutoScalingGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeAutoScalingGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1663,7 +1662,7 @@ func (r *DescribeAutoScalingInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeAutoScalingInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1731,7 +1730,7 @@ func (r *DescribeLaunchConfigurationsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeLaunchConfigurationsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLaunchConfigurationsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1803,7 +1802,7 @@ func (r *DescribeLifecycleHooksRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeLifecycleHooksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLifecycleHooksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1870,7 +1869,7 @@ func (r *DescribeNotificationConfigurationsRequest) FromJsonString(s string) err
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeNotificationConfigurationsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotificationConfigurationsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1934,7 +1933,7 @@ func (r *DescribePaiInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribePaiInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePaiInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2002,7 +2001,7 @@ func (r *DescribeScalingPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeScalingPoliciesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScalingPoliciesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2069,7 +2068,7 @@ func (r *DescribeScheduledActionsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeScheduledActionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledActionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2125,7 +2124,7 @@ func (r *DetachInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("DetachInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2174,7 +2173,7 @@ func (r *DisableAutoScalingGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoScalingGroupId")
 	if len(f) > 0 {
-		return errors.New("DisableAutoScalingGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableAutoScalingGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2220,7 +2219,7 @@ func (r *EnableAutoScalingGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoScalingGroupId")
 	if len(f) > 0 {
-		return errors.New("EnableAutoScalingGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableAutoScalingGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2283,7 +2282,7 @@ func (r *ExecuteScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "HonorCooldown")
 	delete(f, "TriggerSource")
 	if len(f) > 0 {
-		return errors.New("ExecuteScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2760,7 +2759,7 @@ func (r *ModifyAutoScalingGroupRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6AddressCount")
 	delete(f, "MultiZoneSubnetPolicy")
 	if len(f) > 0 {
-		return errors.New("ModifyAutoScalingGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoScalingGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2810,7 +2809,7 @@ func (r *ModifyDesiredCapacityRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "DesiredCapacity")
 	if len(f) > 0 {
-		return errors.New("ModifyDesiredCapacityRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDesiredCapacityRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2925,7 +2924,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "SystemDisk")
 	delete(f, "DataDisks")
 	if len(f) > 0 {
-		return errors.New("ModifyLaunchConfigurationAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2985,7 +2984,7 @@ func (r *ModifyLoadBalancersRequest) FromJsonString(s string) error {
 	delete(f, "ForwardLoadBalancers")
 	delete(f, "LoadBalancersCheckPolicy")
 	if len(f) > 0 {
-		return errors.New("ModifyLoadBalancersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3048,7 +3047,7 @@ func (r *ModifyNotificationConfigurationRequest) FromJsonString(s string) error 
 	delete(f, "NotificationTypes")
 	delete(f, "NotificationUserGroupIds")
 	if len(f) > 0 {
-		return errors.New("ModifyNotificationConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotificationConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3119,7 +3118,7 @@ func (r *ModifyScalingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "MetricAlarm")
 	delete(f, "NotificationUserGroupIds")
 	if len(f) > 0 {
-		return errors.New("ModifyScalingPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScalingPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3193,7 +3192,7 @@ func (r *ModifyScheduledActionRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Recurrence")
 	if len(f) > 0 {
-		return errors.New("ModifyScheduledActionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduledActionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3265,7 +3264,7 @@ func (r *PreviewPaiDomainNameRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DomainNameType")
 	if len(f) > 0 {
-		return errors.New("PreviewPaiDomainNameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewPaiDomainNameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3318,7 +3317,7 @@ func (r *RemoveInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("RemoveInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3385,7 +3384,7 @@ func (r *ScaleInInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "ScaleInNumber")
 	if len(f) > 0 {
-		return errors.New("ScaleInInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleInInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3438,7 +3437,7 @@ func (r *ScaleOutInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "ScaleOutNumber")
 	if len(f) > 0 {
-		return errors.New("ScaleOutInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3567,7 +3566,7 @@ func (r *SetInstancesProtectionRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "ProtectedFromScaleIn")
 	if len(f) > 0 {
-		return errors.New("SetInstancesProtectionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetInstancesProtectionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3627,7 +3626,7 @@ func (r *StartAutoScalingInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoScalingGroupId")
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("StartAutoScalingInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAutoScalingInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3687,7 +3686,7 @@ func (r *StopAutoScalingInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "StoppedMode")
 	if len(f) > 0 {
-		return errors.New("StopAutoScalingInstancesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopAutoScalingInstancesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3859,7 +3858,7 @@ func (r *UpgradeLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DiskTypePolicy")
 	if len(f) > 0 {
-		return errors.New("UpgradeLaunchConfigurationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeLaunchConfigurationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -3933,7 +3932,7 @@ func (r *UpgradeLifecycleHookRequest) FromJsonString(s string) error {
 	delete(f, "NotificationTarget")
 	delete(f, "LifecycleTransitionType")
 	if len(f) > 0 {
-		return errors.New("UpgradeLifecycleHookRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeLifecycleHookRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

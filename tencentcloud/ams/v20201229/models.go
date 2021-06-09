@@ -16,8 +16,7 @@ package v20201229
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -185,7 +184,7 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("CancelTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -254,7 +253,7 @@ func (r *CreateAudioModerationSyncTaskRequest) FromJsonString(s string) error {
 	delete(f, "FileContent")
 	delete(f, "FileUrl")
 	if len(f) > 0 {
-		return errors.New("CreateAudioModerationSyncTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioModerationSyncTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -350,7 +349,7 @@ func (r *CreateAudioModerationTaskRequest) FromJsonString(s string) error {
 	delete(f, "Seed")
 	delete(f, "CallbackUrl")
 	if len(f) > 0 {
-		return errors.New("CreateAudioModerationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioModerationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -404,7 +403,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "ShowAllSegments")
 	if len(f) > 0 {
-		return errors.New("DescribeTaskDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -535,7 +534,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

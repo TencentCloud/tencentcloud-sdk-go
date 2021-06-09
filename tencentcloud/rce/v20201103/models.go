@@ -16,8 +16,7 @@ package v20201103
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -207,7 +206,7 @@ func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BusinessSecurityData")
 	if len(f) > 0 {
-		return errors.New("ManageMarketingRiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageMarketingRiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

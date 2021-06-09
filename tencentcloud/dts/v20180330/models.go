@@ -16,8 +16,7 @@ package v20180330
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -62,7 +61,7 @@ func (r *ActivateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "UniqSubnetId")
 	delete(f, "Vport")
 	if len(f) > 0 {
-		return errors.New("ActivateSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -111,7 +110,7 @@ func (r *CompleteMigrateJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("CompleteMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompleteMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -169,7 +168,7 @@ func (r *CreateMigrateCheckJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("CreateMigrateCheckJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrateCheckJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -255,7 +254,7 @@ func (r *CreateMigrateJobRequest) FromJsonString(s string) error {
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
 	if len(f) > 0 {
-		return errors.New("CreateMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -324,7 +323,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenew")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -374,7 +373,7 @@ func (r *CreateSyncCheckJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("CreateSyncCheckJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSyncCheckJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -454,7 +453,7 @@ func (r *CreateSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
 	if len(f) > 0 {
-		return errors.New("CreateSyncJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSyncJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -503,7 +502,7 @@ func (r *DeleteMigrateJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("DeleteMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -549,7 +548,7 @@ func (r *DeleteSyncJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("DeleteSyncJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSyncJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -595,7 +594,7 @@ func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AsyncRequestId")
 	if len(f) > 0 {
-		return errors.New("DescribeAsyncRequestInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncRequestInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -647,7 +646,7 @@ func (r *DescribeMigrateCheckJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("DescribeMigrateCheckJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrateCheckJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -728,7 +727,7 @@ func (r *DescribeMigrateJobsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeMigrateJobsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrateJobsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -776,7 +775,7 @@ func (r *DescribeRegionConfRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeRegionConfRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionConfRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -828,7 +827,7 @@ func (r *DescribeSubscribeConfRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubscribeId")
 	if len(f) > 0 {
-		return errors.New("DescribeSubscribeConfRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribeConfRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1002,7 +1001,7 @@ func (r *DescribeSubscribesRequest) FromJsonString(s string) error {
 	delete(f, "TagFilters")
 	delete(f, "SubscribeVersion")
 	if len(f) > 0 {
-		return errors.New("DescribeSubscribesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscribesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1054,7 +1053,7 @@ func (r *DescribeSyncCheckJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("DescribeSyncCheckJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncCheckJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1135,7 +1134,7 @@ func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeSyncJobsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncJobsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1220,7 +1219,7 @@ func (r *IsolateSubscribeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubscribeId")
 	if len(f) > 0 {
-		return errors.New("IsolateSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1437,7 +1436,7 @@ func (r *ModifyMigrateJobRequest) FromJsonString(s string) error {
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
 	if len(f) > 0 {
-		return errors.New("ModifyMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1487,7 +1486,7 @@ func (r *ModifySubscribeAutoRenewFlagRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "AutoRenewFlag")
 	if len(f) > 0 {
-		return errors.New("ModifySubscribeAutoRenewFlagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeAutoRenewFlagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1537,7 +1536,7 @@ func (r *ModifySubscribeConsumeTimeRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "ConsumeStartTime")
 	if len(f) > 0 {
-		return errors.New("ModifySubscribeConsumeTimeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeConsumeTimeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1587,7 +1586,7 @@ func (r *ModifySubscribeNameRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "SubscribeName")
 	if len(f) > 0 {
-		return errors.New("ModifySubscribeNameRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeNameRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1641,7 +1640,7 @@ func (r *ModifySubscribeObjectsRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeObjectType")
 	delete(f, "Objects")
 	if len(f) > 0 {
-		return errors.New("ModifySubscribeObjectsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeObjectsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1702,7 +1701,7 @@ func (r *ModifySubscribeVipVportRequest) FromJsonString(s string) error {
 	delete(f, "DstIp")
 	delete(f, "DstPort")
 	if len(f) > 0 {
-		return errors.New("ModifySubscribeVipVportRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscribeVipVportRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1762,7 +1761,7 @@ func (r *ModifySyncJobRequest) FromJsonString(s string) error {
 	delete(f, "SyncOption")
 	delete(f, "DatabaseInfo")
 	if len(f) > 0 {
-		return errors.New("ModifySyncJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1808,7 +1807,7 @@ func (r *OfflineIsolatedSubscribeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubscribeId")
 	if len(f) > 0 {
-		return errors.New("OfflineIsolatedSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OfflineIsolatedSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1854,7 +1853,7 @@ func (r *ResetSubscribeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubscribeId")
 	if len(f) > 0 {
-		return errors.New("ResetSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1952,7 +1951,7 @@ func (r *StartMigrateJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("StartMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1998,7 +1997,7 @@ func (r *StartSyncJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("StartSyncJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSyncJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2044,7 +2043,7 @@ func (r *StopMigrateJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("StopMigrateJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMigrateJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2210,7 +2209,7 @@ func (r *SwitchDrToMasterRequest) FromJsonString(s string) error {
 	delete(f, "DstInfo")
 	delete(f, "DatabaseType")
 	if len(f) > 0 {
-		return errors.New("SwitchDrToMasterRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDrToMasterRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

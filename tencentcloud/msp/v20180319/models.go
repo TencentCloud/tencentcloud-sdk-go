@@ -16,8 +16,7 @@ package v20180319
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *DeregisterMigrationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DeregisterMigrationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterMigrationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -88,7 +87,7 @@ func (r *DescribeMigrationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeMigrationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -156,7 +155,7 @@ func (r *ListMigrationProjectRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListMigrationProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListMigrationProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -216,7 +215,7 @@ func (r *ListMigrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("ListMigrationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListMigrationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -272,7 +271,7 @@ func (r *ModifyMigrationTaskBelongToProjectRequest) FromJsonString(s string) err
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("ModifyMigrationTaskBelongToProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrationTaskBelongToProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -322,7 +321,7 @@ func (r *ModifyMigrationTaskStatusRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("ModifyMigrationTaskStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrationTaskStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -421,7 +420,7 @@ func (r *RegisterMigrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "DstAccessType")
 	delete(f, "DstDatabaseType")
 	if len(f) > 0 {
-		return errors.New("RegisterMigrationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterMigrationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

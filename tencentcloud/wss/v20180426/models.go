@@ -16,8 +16,7 @@ package v20180426
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *DeleteCertRequest) FromJsonString(s string) error {
 	delete(f, "Id")
 	delete(f, "ModuleType")
 	if len(f) > 0 {
-		return errors.New("DeleteCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -120,7 +119,7 @@ func (r *DescribeCertListRequest) FromJsonString(s string) error {
 	delete(f, "WithCert")
 	delete(f, "AltDomain")
 	if len(f) > 0 {
-		return errors.New("DescribeCertListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -326,7 +325,7 @@ func (r *UploadCertRequest) FromJsonString(s string) error {
 	delete(f, "Key")
 	delete(f, "Alias")
 	if len(f) > 0 {
-		return errors.New("UploadCertRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

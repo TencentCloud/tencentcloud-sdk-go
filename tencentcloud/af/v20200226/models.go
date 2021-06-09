@@ -16,8 +16,7 @@ package v20200226
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -140,7 +139,7 @@ func (r *QueryAntiFraudRequest) FromJsonString(s string) error {
 	delete(f, "PhoneCryptoType")
 	delete(f, "NameCryptoType")
 	if len(f) > 0 {
-		return errors.New("QueryAntiFraudRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAntiFraudRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

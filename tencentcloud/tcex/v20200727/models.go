@@ -16,8 +16,7 @@ package v20200727
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -84,7 +83,7 @@ func (r *DescribeInvocationResultRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InvokeId")
 	if len(f) > 0 {
-		return errors.New("DescribeInvocationResultRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvocationResultRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -150,7 +149,7 @@ func (r *InvokeServiceRequest) FromJsonString(s string) error {
 	delete(f, "FileUrl")
 	delete(f, "Input")
 	if len(f) > 0 {
-		return errors.New("InvokeServiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

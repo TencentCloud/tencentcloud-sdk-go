@@ -16,8 +16,7 @@ package v20170312
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotId")
 	delete(f, "DiskId")
 	if len(f) > 0 {
-		return errors.New("ApplySnapshotRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplySnapshotRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -116,7 +115,7 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 	delete(f, "DeleteWithInstance")
 	delete(f, "AttachMode")
 	if len(f) > 0 {
-		return errors.New("AttachDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -199,7 +198,7 @@ func (r *BindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	delete(f, "AutoSnapshotPolicyId")
 	delete(f, "DiskIds")
 	if len(f) > 0 {
-		return errors.New("BindAutoSnapshotPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -265,7 +264,7 @@ func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	delete(f, "RetentionDays")
 	delete(f, "DryRun")
 	if len(f) > 0 {
-		return errors.New("CreateAutoSnapshotPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -365,7 +364,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "Shareable")
 	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
-		return errors.New("CreateDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -422,7 +421,7 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotName")
 	delete(f, "Deadline")
 	if len(f) > 0 {
-		return errors.New("CreateSnapshotRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -471,7 +470,7 @@ func (r *DeleteAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoSnapshotPolicyIds")
 	if len(f) > 0 {
-		return errors.New("DeleteAutoSnapshotPoliciesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoSnapshotPoliciesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -517,7 +516,7 @@ func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SnapshotIds")
 	if len(f) > 0 {
-		return errors.New("DeleteSnapshotsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -583,7 +582,7 @@ func (r *DescribeAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "OrderField")
 	if len(f) > 0 {
-		return errors.New("DescribeAutoSnapshotPoliciesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoSnapshotPoliciesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -635,7 +634,7 @@ func (r *DescribeDiskAssociatedAutoSnapshotPolicyRequest) FromJsonString(s strin
 	}
 	delete(f, "DiskId")
 	if len(f) > 0 {
-		return errors.New("DescribeDiskAssociatedAutoSnapshotPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskAssociatedAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -715,7 +714,7 @@ func (r *DescribeDiskConfigQuotaRequest) FromJsonString(s string) error {
 	delete(f, "CPU")
 	delete(f, "Memory")
 	if len(f) > 0 {
-		return errors.New("DescribeDiskConfigQuotaRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskConfigQuotaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -773,7 +772,7 @@ func (r *DescribeDiskOperationLogsRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeDiskOperationLogsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskOperationLogsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -804,26 +803,26 @@ func (r *DescribeDiskOperationLogsResponse) FromJsonString(s string) error {
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
-
 	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitempty" name:"Order"`
-
 	// 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
 	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy,omitempty" name:"ReturnBindAutoSnapshotPolicy"`
+
+	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeDisksRequest) ToJsonString() string {
@@ -838,15 +837,15 @@ func (r *DescribeDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskIds")
 	delete(f, "Filters")
-	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Order")
 	delete(f, "OrderField")
+	delete(f, "Offset")
 	delete(f, "ReturnBindAutoSnapshotPolicy")
+	delete(f, "DiskIds")
+	delete(f, "Order")
 	if len(f) > 0 {
-		return errors.New("DescribeDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -898,7 +897,7 @@ func (r *DescribeInstancesDiskNumRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceIds")
 	if len(f) > 0 {
-		return errors.New("DescribeInstancesDiskNumRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesDiskNumRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -956,7 +955,7 @@ func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeSnapshotOperationLogsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotOperationLogsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1005,7 +1004,7 @@ func (r *DescribeSnapshotSharePermissionRequest) FromJsonString(s string) error 
 	}
 	delete(f, "SnapshotId")
 	if len(f) > 0 {
-		return errors.New("DescribeSnapshotSharePermissionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotSharePermissionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1076,7 +1075,7 @@ func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "OrderField")
 	if len(f) > 0 {
-		return errors.New("DescribeSnapshotsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1132,7 +1131,7 @@ func (r *DetachDisksRequest) FromJsonString(s string) error {
 	delete(f, "DiskIds")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return errors.New("DetachDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1159,8 +1158,90 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 
 type Disk struct {
 
+	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
+	DiskState *string `json:"DiskState,omitempty" name:"DiskState"`
+
+	// 云盘拥有的快照总数。
+	SnapshotCount *int64 `json:"SnapshotCount,omitempty" name:"SnapshotCount"`
+
+	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlagError *bool `json:"AutoRenewFlagError,omitempty" name:"AutoRenewFlagError"`
+
+	// 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
+	Rollbacking *bool `json:"Rollbacking,omitempty" name:"Rollbacking"`
+
+	// 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
+
+	// 云硬盘名称。
+	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
+
+	// 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
+	BackupDisk *bool `json:"BackupDisk,omitempty" name:"BackupDisk"`
+
+	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 云硬盘挂载的云主机ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 云盘的挂载类型。取值范围：<br><li>PF: PF挂载<br><li>VF: VF挂载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachMode *string `json:"AttachMode,omitempty" name:"AttachMode"`
+
+	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
+
+	// 云硬盘额外性能值，单位MB/s。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Migrating *bool `json:"Migrating,omitempty" name:"Migrating"`
+
 	// 云硬盘ID。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云盘拥有的快照总容量，单位为MB。
+	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
+
+	// 云硬盘所在的位置。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReturnable *bool `json:"IsReturnable,omitempty" name:"IsReturnable"`
+
+	// 云硬盘的到期时间。
+	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
+
+	// 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
+	Attached *bool `json:"Attached,omitempty" name:"Attached"`
+
+	// 云硬盘大小，单位GB。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云盘类型变更的迁移进度，取值0到100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigratePercent *uint64 `json:"MigratePercent,omitempty" name:"MigratePercent"`
 
 	// 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
 	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
@@ -1171,107 +1252,29 @@ type Disk struct {
 	// 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
 	Portable *bool `json:"Portable,omitempty" name:"Portable"`
 
-	// 云硬盘所在的位置。
-	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
-
 	// 云盘是否具备创建快照的能力。取值范围：<br><li>false表示不具备<br><li>true表示具备。
 	SnapshotAbility *bool `json:"SnapshotAbility,omitempty" name:"SnapshotAbility"`
-
-	// 云硬盘名称。
-	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
-
-	// 云硬盘大小，单位GB。
-	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
-
-	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
-	DiskState *string `json:"DiskState,omitempty" name:"DiskState"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
-
-	// 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
-	Attached *bool `json:"Attached,omitempty" name:"Attached"`
-
-	// 云硬盘挂载的云主机ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 云硬盘的创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 云硬盘的到期时间。
-	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
-
-	// 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
-	Rollbacking *bool `json:"Rollbacking,omitempty" name:"Rollbacking"`
-
-	// 云盘快照回滚的进度。
-	RollbackPercent *uint64 `json:"RollbackPercent,omitempty" name:"RollbackPercent"`
-
-	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
-	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
-
-	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoRenewFlagError *bool `json:"AutoRenewFlagError,omitempty" name:"AutoRenewFlagError"`
-
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineError *bool `json:"DeadlineError,omitempty" name:"DeadlineError"`
 
-	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsReturnable *bool `json:"IsReturnable,omitempty" name:"IsReturnable"`
-
-	// 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReturnFailCode *int64 `json:"ReturnFailCode,omitempty" name:"ReturnFailCode"`
-
-	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
-
-	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
-
-	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+	// 云盘快照回滚的进度。
+	RollbackPercent *uint64 `json:"RollbackPercent,omitempty" name:"RollbackPercent"`
 
 	// 当前时间距离盘到期的天数（仅对预付费盘有意义）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline,omitempty" name:"DifferDaysOfDeadline"`
 
-	// 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
+	// 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Migrating *bool `json:"Migrating,omitempty" name:"Migrating"`
-
-	// 云盘类型变更的迁移进度，取值0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MigratePercent *uint64 `json:"MigratePercent,omitempty" name:"MigratePercent"`
+	ReturnFailCode *int64 `json:"ReturnFailCode,omitempty" name:"ReturnFailCode"`
 
 	// 云盘是否为共享型云盘。
 	Shareable *bool `json:"Shareable,omitempty" name:"Shareable"`
 
-	// 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
-	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
-
-	// 云盘拥有的快照总数。
-	SnapshotCount *int64 `json:"SnapshotCount,omitempty" name:"SnapshotCount"`
-
-	// 云盘拥有的快照总容量，单位为MB。
-	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
-
-	// 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
-	BackupDisk *bool `json:"BackupDisk,omitempty" name:"BackupDisk"`
-
-	// 云硬盘额外性能值，单位MB/s。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+	// 云硬盘的创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type DiskChargePrepaid struct {
@@ -1353,11 +1356,11 @@ type DiskOperationLog struct {
 
 type Filter struct {
 
-	// 过滤键的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type GetSnapOverviewRequest struct {
@@ -1377,7 +1380,7 @@ func (r *GetSnapOverviewRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetSnapOverviewRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSnapOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1448,7 +1451,7 @@ func (r *InquirePriceModifyDiskExtraPerformanceRequest) FromJsonString(s string)
 	delete(f, "DiskId")
 	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
-		return errors.New("InquirePriceModifyDiskExtraPerformanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceModifyDiskExtraPerformanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1521,7 +1524,7 @@ func (r *InquiryPriceCreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
-		return errors.New("InquiryPriceCreateDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1582,7 +1585,7 @@ func (r *InquiryPriceRenewDisksRequest) FromJsonString(s string) error {
 	delete(f, "NewDeadline")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("InquiryPriceRenewDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRenewDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1639,7 +1642,7 @@ func (r *InquiryPriceResizeDiskRequest) FromJsonString(s string) error {
 	delete(f, "DiskSize")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("InquiryPriceResizeDiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceResizeDiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1708,7 +1711,7 @@ func (r *ModifyAutoSnapshotPolicyAttributeRequest) FromJsonString(s string) erro
 	delete(f, "IsPermanent")
 	delete(f, "RetentionDays")
 	if len(f) > 0 {
-		return errors.New("ModifyAutoSnapshotPolicyAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoSnapshotPolicyAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1774,7 +1777,7 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 	delete(f, "DeleteWithInstance")
 	delete(f, "DiskType")
 	if len(f) > 0 {
-		return errors.New("ModifyDiskAttributesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDiskAttributesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1824,7 +1827,7 @@ func (r *ModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
 	delete(f, "DiskId")
 	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
-		return errors.New("ModifyDiskExtraPerformanceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDiskExtraPerformanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1878,7 +1881,7 @@ func (r *ModifyDisksChargeTypeRequest) FromJsonString(s string) error {
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DiskChargePostpaid")
 	if len(f) > 0 {
-		return errors.New("ModifyDisksChargeTypeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDisksChargeTypeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1928,7 +1931,7 @@ func (r *ModifyDisksRenewFlagRequest) FromJsonString(s string) error {
 	delete(f, "DiskIds")
 	delete(f, "RenewFlag")
 	if len(f) > 0 {
-		return errors.New("ModifyDisksRenewFlagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDisksRenewFlagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1986,7 +1989,7 @@ func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
 	delete(f, "IsPermanent")
 	delete(f, "Deadline")
 	if len(f) > 0 {
-		return errors.New("ModifySnapshotAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapshotAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2040,7 +2043,7 @@ func (r *ModifySnapshotsSharePermissionRequest) FromJsonString(s string) error {
 	delete(f, "Permission")
 	delete(f, "SnapshotIds")
 	if len(f) > 0 {
-		return errors.New("ModifySnapshotsSharePermissionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapshotsSharePermissionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2070,20 +2073,23 @@ type Placement struct {
 	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
+	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
 
 	// 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 
-	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CageId *string `json:"CageId,omitempty" name:"CageId"`
-
-	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
+	// 独享集群id。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 }
 
 type Policy struct {
@@ -2198,7 +2204,7 @@ func (r *RenewDiskRequest) FromJsonString(s string) error {
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DiskId")
 	if len(f) > 0 {
-		return errors.New("RenewDiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewDiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2248,7 +2254,7 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 	delete(f, "DiskId")
 	delete(f, "DiskSize")
 	if len(f) > 0 {
-		return errors.New("ResizeDiskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDiskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2404,7 +2410,7 @@ func (r *TerminateDisksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskIds")
 	if len(f) > 0 {
-		return errors.New("TerminateDisksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateDisksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2454,7 +2460,7 @@ func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	delete(f, "DiskIds")
 	delete(f, "AutoSnapshotPolicyId")
 	if len(f) > 0 {
-		return errors.New("UnbindAutoSnapshotPolicyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

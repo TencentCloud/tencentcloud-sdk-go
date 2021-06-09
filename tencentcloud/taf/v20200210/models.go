@@ -16,8 +16,7 @@ package v20200210
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("DetectFraudKOLRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFraudKOLRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -92,7 +91,7 @@ func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("EnhanceTaDegreeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceTaDegreeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -501,7 +500,7 @@ func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("RecognizeCustomizedAudienceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeCustomizedAudienceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -551,7 +550,7 @@ func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BusinessSecurityData")
 	if len(f) > 0 {
-		return errors.New("RecognizeEffectiveFlowRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeEffectiveFlowRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -600,7 +599,7 @@ func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("RecognizePreciseTargetAudienceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePreciseTargetAudienceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -650,7 +649,7 @@ func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("RecognizeTargetAudienceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTargetAudienceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -700,7 +699,7 @@ func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BspData")
 	if len(f) > 0 {
-		return errors.New("SendTrafficSecuritySmsMessageRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTrafficSecuritySmsMessageRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

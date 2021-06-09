@@ -16,8 +16,7 @@ package v20200304
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -52,7 +51,7 @@ func (r *CancelFaceMorphJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("CancelFaceMorphJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelFaceMorphJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -116,7 +115,7 @@ func (r *ChangeAgePicRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("ChangeAgePicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeAgePicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -185,7 +184,7 @@ func (r *FaceCartoonPicRequest) FromJsonString(s string) error {
 	delete(f, "RspImgType")
 	delete(f, "DisableGlobalEffect")
 	if len(f) > 0 {
-		return errors.New("FaceCartoonPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceCartoonPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -319,7 +318,7 @@ func (r *MorphFaceRequest) FromJsonString(s string) error {
 	delete(f, "OutputWidth")
 	delete(f, "OutputHeight")
 	if len(f) > 0 {
-		return errors.New("MorphFaceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MorphFaceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -371,7 +370,7 @@ func (r *QueryFaceMorphJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	if len(f) > 0 {
-		return errors.New("QueryFaceMorphJobRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFaceMorphJobRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -442,7 +441,7 @@ func (r *SwapGenderPicRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "RspImgType")
 	if len(f) > 0 {
-		return errors.New("SwapGenderPicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwapGenderPicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

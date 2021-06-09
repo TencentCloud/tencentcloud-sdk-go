@@ -16,8 +16,7 @@ package v20210129
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -82,7 +81,7 @@ func (r *QueryActivityLiveCodeListRequest) FromJsonString(s string) error {
 	delete(f, "Cursor")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("QueryActivityLiveCodeListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryActivityLiveCodeListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

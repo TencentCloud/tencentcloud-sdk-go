@@ -16,8 +16,7 @@ package v20200720
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *CreateWeappQRUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SessionKey")
 	if len(f) > 0 {
-		return errors.New("CreateWeappQRUrlRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWeappQRUrlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20191205
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -86,7 +85,7 @@ func (r *ApplyCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Alias")
 	delete(f, "OldCertificateId")
 	if len(f) > 0 {
-		return errors.New("ApplyCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -135,7 +134,7 @@ func (r *CancelCertificateOrderRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("CancelCertificateOrderRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelCertificateOrderRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -330,7 +329,7 @@ func (r *CheckCertificateChainRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateChain")
 	if len(f) > 0 {
-		return errors.New("CheckCertificateChainRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckCertificateChainRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -385,7 +384,7 @@ func (r *CommitCertificateInformationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("CommitCertificateInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitCertificateInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -461,7 +460,7 @@ func (r *CompleteCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("CompleteCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompleteCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -518,7 +517,7 @@ func (r *CreateCertificateRequest) FromJsonString(s string) error {
 	delete(f, "DomainNum")
 	delete(f, "TimeSpan")
 	if len(f) > 0 {
-		return errors.New("CreateCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -570,7 +569,7 @@ func (r *DeleteCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("DeleteCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -619,7 +618,7 @@ func (r *DeleteManagerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ManagerId")
 	if len(f) > 0 {
-		return errors.New("DeleteManagerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteManagerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -668,7 +667,7 @@ func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("DescribeCertificateDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -862,7 +861,7 @@ func (r *DescribeCertificateOperateLogsRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("DescribeCertificateOperateLogsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateOperateLogsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -918,7 +917,7 @@ func (r *DescribeCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("DescribeCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1120,7 +1119,7 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "CertificateStatus")
 	delete(f, "Deployable")
 	if len(f) > 0 {
-		return errors.New("DescribeCertificatesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1182,7 +1181,7 @@ func (r *DescribeManagerDetailRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeManagerDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagerDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1311,7 +1310,7 @@ func (r *DescribeManagersRequest) FromJsonString(s string) error {
 	delete(f, "ManagerMail")
 	delete(f, "Status")
 	if len(f) > 0 {
-		return errors.New("DescribeManagersRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1363,7 +1362,7 @@ func (r *DownloadCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CertificateId")
 	if len(f) > 0 {
-		return errors.New("DownloadCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1524,7 +1523,7 @@ func (r *ModifyCertificateAliasRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "Alias")
 	if len(f) > 0 {
-		return errors.New("ModifyCertificateAliasRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificateAliasRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1577,7 +1576,7 @@ func (r *ModifyCertificateProjectRequest) FromJsonString(s string) error {
 	delete(f, "CertificateIdList")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
-		return errors.New("ModifyCertificateProjectRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificateProjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1687,7 +1686,7 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CsrkeyPassword")
 	delete(f, "Reason")
 	if len(f) > 0 {
-		return errors.New("ReplaceCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1740,7 +1739,7 @@ func (r *RevokeCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "Reason")
 	if len(f) > 0 {
-		return errors.New("RevokeCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1809,7 +1808,7 @@ func (r *SubmitAuditManagerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ManagerId")
 	if len(f) > 0 {
-		return errors.New("SubmitAuditManagerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitAuditManagerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1958,7 +1957,7 @@ func (r *SubmitCertificateInformationRequest) FromJsonString(s string) error {
 	delete(f, "ContactNumber")
 	delete(f, "ContactPosition")
 	if len(f) > 0 {
-		return errors.New("SubmitCertificateInformationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCertificateInformationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2139,7 +2138,7 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "CertificateUse")
 	if len(f) > 0 {
-		return errors.New("UploadCertificateRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2192,7 +2191,7 @@ func (r *UploadConfirmLetterRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "ConfirmLetter")
 	if len(f) > 0 {
-		return errors.New("UploadConfirmLetterRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadConfirmLetterRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2248,7 +2247,7 @@ func (r *UploadRevokeLetterRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "RevokeLetter")
 	if len(f) > 0 {
-		return errors.New("UploadRevokeLetterRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadRevokeLetterRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2300,7 +2299,7 @@ func (r *VerifyManagerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ManagerId")
 	if len(f) > 0 {
-		return errors.New("VerifyManagerRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyManagerRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

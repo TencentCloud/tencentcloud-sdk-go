@@ -16,8 +16,7 @@ package v20200924
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -73,7 +72,7 @@ func (r *DescribeAgentShellRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeAgentShellRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentShellRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20190919
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -91,7 +90,7 @@ func (r *CreateTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "CompressFileType")
 	delete(f, "ExtraData")
 	if len(f) > 0 {
-		return errors.New("CreateTranscodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -172,7 +171,7 @@ func (r *CreateVideoGenerationTaskRequest) FromJsonString(s string) error {
 	delete(f, "RecordControl")
 	delete(f, "ExtraData")
 	if len(f) > 0 {
-		return errors.New("CreateVideoGenerationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoGenerationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -230,7 +229,7 @@ func (r *DescribeOnlineRecordCallbackRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeOnlineRecordCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnlineRecordCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -286,7 +285,7 @@ func (r *DescribeOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeOnlineRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnlineRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -408,7 +407,7 @@ func (r *DescribeQualityMetricsRequest) FromJsonString(s string) error {
 	delete(f, "Metric")
 	delete(f, "Interval")
 	if len(f) > 0 {
-		return errors.New("DescribeQualityMetricsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityMetricsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -460,7 +459,7 @@ func (r *DescribeTranscodeCallbackRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeTranscodeCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -516,7 +515,7 @@ func (r *DescribeTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeTranscodeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -601,7 +600,7 @@ func (r *DescribeVideoGenerationTaskCallbackRequest) FromJsonString(s string) er
 	}
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeVideoGenerationTaskCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoGenerationTaskCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -657,7 +656,7 @@ func (r *DescribeVideoGenerationTaskRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeVideoGenerationTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoGenerationTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -730,7 +729,7 @@ func (r *DescribeWhiteboardPushCallbackRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	if len(f) > 0 {
-		return errors.New("DescribeWhiteboardPushCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWhiteboardPushCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -786,7 +785,7 @@ func (r *DescribeWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("DescribeWhiteboardPushRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWhiteboardPushRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -929,7 +928,7 @@ func (r *PauseOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("PauseOnlineRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseOnlineRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1012,7 +1011,7 @@ func (r *ResumeOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("ResumeOnlineRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeOnlineRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1062,7 +1061,7 @@ func (r *SetOnlineRecordCallbackKeyRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "CallbackKey")
 	if len(f) > 0 {
-		return errors.New("SetOnlineRecordCallbackKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetOnlineRecordCallbackKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1112,7 +1111,7 @@ func (r *SetOnlineRecordCallbackRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
 	if len(f) > 0 {
-		return errors.New("SetOnlineRecordCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetOnlineRecordCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1162,7 +1161,7 @@ func (r *SetTranscodeCallbackKeyRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "CallbackKey")
 	if len(f) > 0 {
-		return errors.New("SetTranscodeCallbackKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTranscodeCallbackKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1213,7 +1212,7 @@ func (r *SetTranscodeCallbackRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
 	if len(f) > 0 {
-		return errors.New("SetTranscodeCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTranscodeCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1263,7 +1262,7 @@ func (r *SetVideoGenerationTaskCallbackKeyRequest) FromJsonString(s string) erro
 	delete(f, "SdkAppId")
 	delete(f, "CallbackKey")
 	if len(f) > 0 {
-		return errors.New("SetVideoGenerationTaskCallbackKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVideoGenerationTaskCallbackKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1313,7 +1312,7 @@ func (r *SetVideoGenerationTaskCallbackRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
 	if len(f) > 0 {
-		return errors.New("SetVideoGenerationTaskCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVideoGenerationTaskCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1363,7 +1362,7 @@ func (r *SetWhiteboardPushCallbackKeyRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "CallbackKey")
 	if len(f) > 0 {
-		return errors.New("SetWhiteboardPushCallbackKeyRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetWhiteboardPushCallbackKeyRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1413,7 +1412,7 @@ func (r *SetWhiteboardPushCallbackRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
 	if len(f) > 0 {
-		return errors.New("SetWhiteboardPushCallbackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetWhiteboardPushCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1528,7 +1527,7 @@ func (r *StartOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "AutoStopTimeout")
 	delete(f, "ExtraData")
 	if len(f) > 0 {
-		return errors.New("StartOnlineRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartOnlineRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1673,7 +1672,7 @@ func (r *StartWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "UserDefinedStreamId")
 	delete(f, "ExtraData")
 	if len(f) > 0 {
-		return errors.New("StartWhiteboardPushRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWhiteboardPushRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1730,7 +1729,7 @@ func (r *StopOnlineRecordRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopOnlineRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopOnlineRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1780,7 +1779,7 @@ func (r *StopWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
 	if len(f) > 0 {
-		return errors.New("StopWhiteboardPushRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopWhiteboardPushRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

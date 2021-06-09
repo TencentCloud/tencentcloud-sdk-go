@@ -16,8 +16,7 @@ package v20190904
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -166,7 +165,7 @@ func (r *CreateAcRulesRequest) FromJsonString(s string) error {
 	delete(f, "From")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("CreateAcRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAcRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -231,7 +230,7 @@ func (r *CreateSecurityGroupApiRulesRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("CreateSecurityGroupApiRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecurityGroupApiRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -292,7 +291,7 @@ func (r *DeleteAcRuleRequest) FromJsonString(s string) error {
 	delete(f, "EdgeId")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("DeleteAcRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAcRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -353,7 +352,7 @@ func (r *DeleteAllAccessControlRuleRequest) FromJsonString(s string) error {
 	delete(f, "EdgeId")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("DeleteAllAccessControlRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAllAccessControlRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -410,7 +409,7 @@ func (r *DeleteSecurityGroupAllRuleRequest) FromJsonString(s string) error {
 	delete(f, "Direction")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("DeleteSecurityGroupAllRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecurityGroupAllRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -475,7 +474,7 @@ func (r *DeleteSecurityGroupRuleRequest) FromJsonString(s string) error {
 	delete(f, "Direction")
 	delete(f, "IsDelReverse")
 	if len(f) > 0 {
-		return errors.New("DeleteSecurityGroupRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecurityGroupRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -564,7 +563,7 @@ func (r *DescribeAcListsRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return errors.New("DescribeAcListsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAcListsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -651,7 +650,7 @@ func (r *DescribeAssociatedInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroupId")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeAssociatedInstanceListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssociatedInstanceListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -713,7 +712,7 @@ func (r *DescribeCfwEipsRequest) FromJsonString(s string) error {
 	delete(f, "NatGatewayId")
 	delete(f, "CfwInstance")
 	if len(f) > 0 {
-		return errors.New("DescribeCfwEipsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwEipsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -758,7 +757,7 @@ func (r *DescribeGuideScanInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeGuideScanInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGuideScanInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -826,7 +825,7 @@ func (r *DescribeNatRuleOverviewRequest) FromJsonString(s string) error {
 	delete(f, "Direction")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("DescribeNatRuleOverviewRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatRuleOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -896,7 +895,7 @@ func (r *DescribeRuleOverviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Direction")
 	if len(f) > 0 {
-		return errors.New("DescribeRuleOverviewRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -986,7 +985,7 @@ func (r *DescribeSecurityGroupListRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Filter")
 	if len(f) > 0 {
-		return errors.New("DescribeSecurityGroupListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1073,7 +1072,7 @@ func (r *DescribeSwitchListsRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "By")
 	if len(f) > 0 {
-		return errors.New("DescribeSwitchListsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSwitchListsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1136,7 +1135,7 @@ func (r *DescribeSyncAssetStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeSyncAssetStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncAssetStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1197,7 +1196,7 @@ func (r *DescribeTableStatusRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "Direction")
 	if len(f) > 0 {
-		return errors.New("DescribeTableStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1247,7 +1246,7 @@ func (r *DescribeVpcRuleOverviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EdgeId")
 	if len(f) > 0 {
-		return errors.New("DescribeVpcRuleOverviewRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcRuleOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1309,7 +1308,7 @@ func (r *ExpandCfwVerticalRequest) FromJsonString(s string) error {
 	delete(f, "Width")
 	delete(f, "CfwInstance")
 	if len(f) > 0 {
-		return errors.New("ExpandCfwVerticalRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCfwVerticalRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1379,7 +1378,7 @@ func (r *ModifyAcRuleRequest) FromJsonString(s string) error {
 	delete(f, "Enable")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("ModifyAcRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAcRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1444,7 +1443,7 @@ func (r *ModifyAllRuleStatusRequest) FromJsonString(s string) error {
 	delete(f, "EdgeId")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("ModifyAllRuleStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAllRuleStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1510,7 +1509,7 @@ func (r *ModifyAllSwitchStatusRequest) FromJsonString(s string) error {
 	delete(f, "ChangeType")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("ModifyAllSwitchStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAllSwitchStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1575,7 +1574,7 @@ func (r *ModifyBlockIgnoreListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {
-		return errors.New("ModifyBlockIgnoreListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockIgnoreListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1635,7 +1634,7 @@ func (r *ModifyItemSwitchStatusRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("ModifyItemSwitchStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyItemSwitchStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1696,7 +1695,7 @@ func (r *ModifySecurityGroupAllRuleStatusRequest) FromJsonString(s string) error
 	delete(f, "EdgeId")
 	delete(f, "Area")
 	if len(f) > 0 {
-		return errors.New("ModifySecurityGroupAllRuleStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecurityGroupAllRuleStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1758,7 +1757,7 @@ func (r *ModifySequenceRulesRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "Direction")
 	if len(f) > 0 {
-		return errors.New("ModifySequenceRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySequenceRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1820,7 +1819,7 @@ func (r *ModifyTableStatusRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "Direction")
 	if len(f) > 0 {
-		return errors.New("ModifyTableStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTableStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1941,7 +1940,7 @@ func (r *RunSyncAssetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("RunSyncAssetRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunSyncAssetRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -2154,7 +2153,7 @@ func (r *SetNatFwDnatRuleRequest) FromJsonString(s string) error {
 	delete(f, "OriginDnat")
 	delete(f, "NewDnat")
 	if len(f) > 0 {
-		return errors.New("SetNatFwDnatRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetNatFwDnatRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

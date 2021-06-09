@@ -16,8 +16,7 @@ package v20191115
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -54,7 +53,7 @@ func (r *DataManipulationRequest) FromJsonString(s string) error {
 	delete(f, "Contents")
 	delete(f, "ResourceId")
 	if len(f) > 0 {
-		return errors.New("DataManipulationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DataManipulationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -223,7 +222,7 @@ func (r *DataSearchRequest) FromJsonString(s string) error {
 	delete(f, "Latitude")
 	delete(f, "MultiFilter")
 	if len(f) > 0 {
-		return errors.New("DataSearchRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DataSearchRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

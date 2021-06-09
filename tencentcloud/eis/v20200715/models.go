@@ -16,8 +16,7 @@ package v20200715
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *DescribeEisConnectorConfigRequest) FromJsonString(s string) error {
 	delete(f, "ConnectorName")
 	delete(f, "ConnectorVersion")
 	if len(f) > 0 {
-		return errors.New("DescribeEisConnectorConfigRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEisConnectorConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -276,7 +275,7 @@ func (r *ListEisConnectorOperationsRequest) FromJsonString(s string) error {
 	delete(f, "ConnectorName")
 	delete(f, "ConnectorVersion")
 	if len(f) > 0 {
-		return errors.New("ListEisConnectorOperationsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEisConnectorOperationsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -333,7 +332,7 @@ func (r *ListEisConnectorsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("ListEisConnectorsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEisConnectorsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,8 +16,7 @@ package v20180813
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -50,7 +49,7 @@ func (r *AddResourceTagRequest) FromJsonString(s string) error {
 	delete(f, "TagValue")
 	delete(f, "Resource")
 	if len(f) > 0 {
-		return errors.New("AddResourceTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddResourceTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -116,7 +115,7 @@ func (r *AttachResourcesTagRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "ResourcePrefix")
 	if len(f) > 0 {
-		return errors.New("AttachResourcesTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachResourcesTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -166,7 +165,7 @@ func (r *CreateTagRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "TagValue")
 	if len(f) > 0 {
-		return errors.New("CreateTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -216,7 +215,7 @@ func (r *DeleteResourceTagRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "Resource")
 	if len(f) > 0 {
-		return errors.New("DeleteResourceTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteResourceTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -266,7 +265,7 @@ func (r *DeleteTagRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "TagValue")
 	if len(f) > 0 {
-		return errors.New("DeleteTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -332,7 +331,7 @@ func (r *DescribeResourceTagsByResourceIdsRequest) FromJsonString(s string) erro
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTagsByResourceIdsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsByResourceIdsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -410,7 +409,7 @@ func (r *DescribeResourceTagsByResourceIdsSeqRequest) FromJsonString(s string) e
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTagsByResourceIdsSeqRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsByResourceIdsSeqRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -492,7 +491,7 @@ func (r *DescribeResourceTagsByTagKeysRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTagsByTagKeysRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsByTagKeysRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -578,7 +577,7 @@ func (r *DescribeResourceTagsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "CosResourceId")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -665,7 +664,7 @@ func (r *DescribeResourcesByTagsRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "ServiceType")
 	if len(f) > 0 {
-		return errors.New("DescribeResourcesByTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesByTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -752,7 +751,7 @@ func (r *DescribeResourcesByTagsUnionRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "ServiceType")
 	if len(f) > 0 {
-		return errors.New("DescribeResourcesByTagsUnionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesByTagsUnionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -822,7 +821,7 @@ func (r *DescribeTagKeysRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ShowProject")
 	if len(f) > 0 {
-		return errors.New("DescribeTagKeysRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagKeysRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -892,7 +891,7 @@ func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeTagValuesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagValuesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -962,7 +961,7 @@ func (r *DescribeTagValuesSeqRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeTagValuesSeqRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagValuesSeqRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1044,7 +1043,7 @@ func (r *DescribeTagsRequest) FromJsonString(s string) error {
 	delete(f, "TagKeys")
 	delete(f, "ShowProject")
 	if len(f) > 0 {
-		return errors.New("DescribeTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1126,7 +1125,7 @@ func (r *DescribeTagsSeqRequest) FromJsonString(s string) error {
 	delete(f, "TagKeys")
 	delete(f, "ShowProject")
 	if len(f) > 0 {
-		return errors.New("DescribeTagsSeqRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagsSeqRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1200,7 +1199,7 @@ func (r *DetachResourcesTagRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "ResourcePrefix")
 	if len(f) > 0 {
-		return errors.New("DetachResourcesTagRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachResourcesTagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1254,7 +1253,7 @@ func (r *ModifyResourceTagsRequest) FromJsonString(s string) error {
 	delete(f, "ReplaceTags")
 	delete(f, "DeleteTags")
 	if len(f) > 0 {
-		return errors.New("ModifyResourceTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1320,7 +1319,7 @@ func (r *ModifyResourcesTagValueRequest) FromJsonString(s string) error {
 	delete(f, "ResourceRegion")
 	delete(f, "ResourcePrefix")
 	if len(f) > 0 {
-		return errors.New("ModifyResourcesTagValueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcesTagValueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1466,7 +1465,7 @@ func (r *UpdateResourceTagValueRequest) FromJsonString(s string) error {
 	delete(f, "TagValue")
 	delete(f, "Resource")
 	if len(f) > 0 {
-		return errors.New("UpdateResourceTagValueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateResourceTagValueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

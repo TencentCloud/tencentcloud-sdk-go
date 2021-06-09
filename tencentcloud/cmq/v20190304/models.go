@@ -16,8 +16,7 @@ package v20190304
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,7 +41,7 @@ func (r *ClearQueueRequest) FromJsonString(s string) error {
 	}
 	delete(f, "QueueName")
 	if len(f) > 0 {
-		return errors.New("ClearQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -92,7 +91,7 @@ func (r *ClearSubscriptionFilterTagsRequest) FromJsonString(s string) error {
 	delete(f, "TopicName")
 	delete(f, "SubscriptionName")
 	if len(f) > 0 {
-		return errors.New("ClearSubscriptionFilterTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearSubscriptionFilterTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -194,7 +193,7 @@ func (r *CreateQueueRequest) FromJsonString(s string) error {
 	delete(f, "MaxTimeToLive")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("CreateQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -271,7 +270,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "BindingKey")
 	delete(f, "NotifyContentFormat")
 	if len(f) > 0 {
-		return errors.New("CreateSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -336,7 +335,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "MsgRetentionSeconds")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("CreateTopicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -419,7 +418,7 @@ func (r *DeleteQueueRequest) FromJsonString(s string) error {
 	}
 	delete(f, "QueueName")
 	if len(f) > 0 {
-		return errors.New("DeleteQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -469,7 +468,7 @@ func (r *DeleteSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "TopicName")
 	delete(f, "SubscriptionName")
 	if len(f) > 0 {
-		return errors.New("DeleteSubscribeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSubscribeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -515,7 +514,7 @@ func (r *DeleteTopicRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TopicName")
 	if len(f) > 0 {
-		return errors.New("DeleteTopicRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTopicRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -573,7 +572,7 @@ func (r *DescribeDeadLetterSourceQueuesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeDeadLetterSourceQueuesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeadLetterSourceQueuesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -641,7 +640,7 @@ func (r *DescribeQueueDetailRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "QueueName")
 	if len(f) > 0 {
-		return errors.New("DescribeQueueDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueueDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -705,7 +704,7 @@ func (r *DescribeSubscriptionDetailRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeSubscriptionDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscriptionDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -774,7 +773,7 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "TopicName")
 	if len(f) > 0 {
-		return errors.New("DescribeTopicDetailRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -887,7 +886,7 @@ func (r *ModifyQueueAttributeRequest) FromJsonString(s string) error {
 	delete(f, "Policy")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("ModifyQueueAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQueueAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -955,7 +954,7 @@ func (r *ModifySubscriptionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "FilterTags")
 	delete(f, "BindingKey")
 	if len(f) > 0 {
-		return errors.New("ModifySubscriptionAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscriptionAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1013,7 +1012,7 @@ func (r *ModifyTopicAttributeRequest) FromJsonString(s string) error {
 	delete(f, "MsgRetentionSeconds")
 	delete(f, "Trace")
 	if len(f) > 0 {
-		return errors.New("ModifyTopicAttributeRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1164,7 +1163,7 @@ func (r *RewindQueueRequest) FromJsonString(s string) error {
 	delete(f, "QueueName")
 	delete(f, "StartConsumeTime")
 	if len(f) > 0 {
-		return errors.New("RewindQueueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RewindQueueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1340,7 +1339,7 @@ func (r *UnbindDeadLetterRequest) FromJsonString(s string) error {
 	}
 	delete(f, "QueueName")
 	if len(f) > 0 {
-		return errors.New("UnbindDeadLetterRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindDeadLetterRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

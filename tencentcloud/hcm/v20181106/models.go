@@ -16,8 +16,7 @@ package v20181106
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -90,7 +89,7 @@ func (r *EvaluationRequest) FromJsonString(s string) error {
 	delete(f, "LaTex")
 	delete(f, "RejectVagueArithmetic")
 	if len(f) > 0 {
-		return errors.New("EvaluationRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EvaluationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

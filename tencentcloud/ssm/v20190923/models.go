@@ -16,8 +16,7 @@ package v20190923
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -66,7 +65,7 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 	delete(f, "SecretString")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("CreateSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -130,7 +129,7 @@ func (r *DeleteSecretRequest) FromJsonString(s string) error {
 	delete(f, "SecretName")
 	delete(f, "RecoveryWindowInDays")
 	if len(f) > 0 {
-		return errors.New("DeleteSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -186,7 +185,7 @@ func (r *DeleteSecretVersionRequest) FromJsonString(s string) error {
 	delete(f, "SecretName")
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("DeleteSecretVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecretVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -238,7 +237,7 @@ func (r *DescribeSecretRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	if len(f) > 0 {
-		return errors.New("DescribeSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -305,7 +304,7 @@ func (r *DisableSecretRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	if len(f) > 0 {
-		return errors.New("DisableSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -354,7 +353,7 @@ func (r *EnableSecretRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	if len(f) > 0 {
-		return errors.New("EnableSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -399,7 +398,7 @@ func (r *GetRegionsRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetRegionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRegionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -452,7 +451,7 @@ func (r *GetSecretValueRequest) FromJsonString(s string) error {
 	delete(f, "SecretName")
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("GetSecretValueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSecretValueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -506,7 +505,7 @@ func (r *GetServiceStatusRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("GetServiceStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetServiceStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -558,7 +557,7 @@ func (r *ListSecretVersionIdsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	if len(f) > 0 {
-		return errors.New("ListSecretVersionIdsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSecretVersionIdsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -631,7 +630,7 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 	delete(f, "SearchSecretName")
 	delete(f, "TagFilters")
 	if len(f) > 0 {
-		return errors.New("ListSecretsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSecretsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -695,7 +694,7 @@ func (r *PutSecretValueRequest) FromJsonString(s string) error {
 	delete(f, "SecretBinary")
 	delete(f, "SecretString")
 	if len(f) > 0 {
-		return errors.New("PutSecretValueRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutSecretValueRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -747,7 +746,7 @@ func (r *RestoreSecretRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	if len(f) > 0 {
-		return errors.New("RestoreSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -845,7 +844,7 @@ func (r *UpdateDescriptionRequest) FromJsonString(s string) error {
 	delete(f, "SecretName")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateDescriptionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDescriptionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -906,7 +905,7 @@ func (r *UpdateSecretRequest) FromJsonString(s string) error {
 	delete(f, "SecretBinary")
 	delete(f, "SecretString")
 	if len(f) > 0 {
-		return errors.New("UpdateSecretRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSecretRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

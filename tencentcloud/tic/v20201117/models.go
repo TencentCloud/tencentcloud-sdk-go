@@ -16,8 +16,7 @@ package v20201117
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *ApplyStackRequest) FromJsonString(s string) error {
 	delete(f, "StackId")
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("ApplyStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -107,7 +106,7 @@ func (r *CreateStackRequest) FromJsonString(s string) error {
 	delete(f, "TemplateUrl")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -171,7 +170,7 @@ func (r *CreateStackVersionRequest) FromJsonString(s string) error {
 	delete(f, "VersionName")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateStackVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStackVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -220,7 +219,7 @@ func (r *DeleteStackRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StackId")
 	if len(f) > 0 {
-		return errors.New("DeleteStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -266,7 +265,7 @@ func (r *DeleteStackVersionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("DeleteStackVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStackVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -312,7 +311,7 @@ func (r *DescribeStackEventRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EventId")
 	if len(f) > 0 {
-		return errors.New("DescribeStackEventRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStackEventRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -408,7 +407,7 @@ func (r *DescribeStackEventsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeStackEventsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStackEventsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -482,7 +481,7 @@ func (r *DescribeStackVersionsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	if len(f) > 0 {
-		return errors.New("DescribeStackVersionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStackVersionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -542,7 +541,7 @@ func (r *DescribeStacksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeStacksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStacksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -598,7 +597,7 @@ func (r *DestroyStackRequest) FromJsonString(s string) error {
 	delete(f, "StackId")
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("DestroyStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -684,7 +683,7 @@ func (r *PlanStackRequest) FromJsonString(s string) error {
 	delete(f, "StackId")
 	delete(f, "VersionId")
 	if len(f) > 0 {
-		return errors.New("PlanStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PlanStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -762,7 +761,7 @@ func (r *UpdateStackRequest) FromJsonString(s string) error {
 	delete(f, "StackName")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateStackRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -820,7 +819,7 @@ func (r *UpdateStackVersionRequest) FromJsonString(s string) error {
 	delete(f, "VersionName")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("UpdateStackVersionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStackVersionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

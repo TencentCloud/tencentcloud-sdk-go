@@ -16,8 +16,7 @@ package v20180125
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -74,7 +73,7 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "Bypass")
 	if len(f) > 0 {
-		return errors.New("AddCustomRuleRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomRuleRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -174,7 +173,7 @@ func (r *CreateAttackDownloadTaskRequest) FromJsonString(s string) error {
 	delete(f, "AttackIp")
 	delete(f, "AttackType")
 	if len(f) > 0 {
-		return errors.New("CreateAttackDownloadTaskRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAttackDownloadTaskRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -223,7 +222,7 @@ func (r *DeleteAttackDownloadRecordRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	if len(f) > 0 {
-		return errors.New("DeleteAttackDownloadRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAttackDownloadRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -269,7 +268,7 @@ func (r *DeleteDownloadRecordRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Flow")
 	if len(f) > 0 {
-		return errors.New("DeleteDownloadRecordRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDownloadRecordRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -319,7 +318,7 @@ func (r *DeleteSessionRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Edition")
 	if len(f) > 0 {
-		return errors.New("DeleteSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -394,7 +393,7 @@ func (r *DescribeCustomRulesRequest) FromJsonString(s string) error {
 	delete(f, "ActionType")
 	delete(f, "Search")
 	if len(f) > 0 {
-		return errors.New("DescribeCustomRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -487,7 +486,7 @@ func (r *DescribeFlowTrendRequest) FromJsonString(s string) error {
 	delete(f, "StartTs")
 	delete(f, "EndTs")
 	if len(f) > 0 {
-		return errors.New("DescribeFlowTrendRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTrendRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -532,7 +531,7 @@ func (r *DescribeUserClbWafRegionsRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeUserClbWafRegionsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserClbWafRegionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -594,7 +593,7 @@ func (r *ModifyCustomRuleStatusRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Edition")
 	if len(f) > 0 {
-		return errors.New("ModifyCustomRuleStatusRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

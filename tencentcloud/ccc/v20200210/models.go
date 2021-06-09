@@ -16,8 +16,7 @@ package v20200210
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *CreateSDKLoginTokenRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "SeatUserId")
 	if len(f) > 0 {
-		return errors.New("CreateSDKLoginTokenRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSDKLoginTokenRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -105,7 +104,7 @@ func (r *CreateStaffRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "Staffs")
 	if len(f) > 0 {
-		return errors.New("CreateStaffRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStaffRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -171,7 +170,7 @@ func (r *DescribeChatMessagesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Order")
 	if len(f) > 0 {
-		return errors.New("DescribeChatMessagesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChatMessagesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -247,7 +246,7 @@ func (r *DescribeIMCdrsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Type")
 	if len(f) > 0 {
-		return errors.New("DescribeIMCdrsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIMCdrsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -307,7 +306,7 @@ func (r *DescribePSTNActiveSessionListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribePSTNActiveSessionListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePSTNActiveSessionListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -367,7 +366,7 @@ func (r *DescribeSeatUserListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
-		return errors.New("DescribeSeatUserListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSeatUserListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -435,7 +434,7 @@ func (r *DescribeSkillGroupInfoListRequest) FromJsonString(s string) error {
 	delete(f, "SkillGroupId")
 	delete(f, "ModifiedTime")
 	if len(f) > 0 {
-		return errors.New("DescribeSkillGroupInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillGroupInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -503,7 +502,7 @@ func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
 	delete(f, "StaffMail")
 	delete(f, "ModifiedTime")
 	if len(f) > 0 {
-		return errors.New("DescribeStaffInfoListRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStaffInfoListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -563,7 +562,7 @@ func (r *DescribeTelCallInfoRequest) FromJsonString(s string) error {
 	delete(f, "EndTimeStamp")
 	delete(f, "SdkAppIdList")
 	if len(f) > 0 {
-		return errors.New("DescribeTelCallInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelCallInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -646,7 +645,7 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	if len(f) > 0 {
-		return errors.New("DescribeTelCdrRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelCdrRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -702,7 +701,7 @@ func (r *DescribeTelSessionRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "SessionId")
 	if len(f) > 0 {
-		return errors.New("DescribeTelSessionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelSessionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

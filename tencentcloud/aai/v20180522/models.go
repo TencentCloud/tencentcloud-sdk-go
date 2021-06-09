@@ -16,8 +16,7 @@ package v20180522
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -50,7 +49,7 @@ func (r *ChatRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "User")
 	if len(f) > 0 {
-		return errors.New("ChatRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -131,7 +130,7 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "Data")
 	delete(f, "DataLen")
 	if len(f) > 0 {
-		return errors.New("SentenceRecognitionRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -224,7 +223,7 @@ func (r *SimultaneousInterpretingRequest) FromJsonString(s string) error {
 	delete(f, "TargetLanguage")
 	delete(f, "Seq")
 	if len(f) > 0 {
-		return errors.New("SimultaneousInterpretingRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimultaneousInterpretingRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -314,7 +313,7 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "SampleRate")
 	delete(f, "Codec")
 	if len(f) > 0 {
-		return errors.New("TextToVoiceRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

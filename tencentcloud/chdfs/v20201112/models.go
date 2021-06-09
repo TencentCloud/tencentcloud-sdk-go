@@ -16,8 +16,7 @@ package v20201112
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -85,7 +84,7 @@ func (r *AssociateAccessGroupsRequest) FromJsonString(s string) error {
 	delete(f, "MountPointId")
 	delete(f, "AccessGroupIds")
 	if len(f) > 0 {
-		return errors.New("AssociateAccessGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateAccessGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -143,7 +142,7 @@ func (r *CreateAccessGroupRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("CreateAccessGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -196,7 +195,7 @@ func (r *CreateAccessRulesRequest) FromJsonString(s string) error {
 	delete(f, "AccessRules")
 	delete(f, "AccessGroupId")
 	if len(f) > 0 {
-		return errors.New("CreateAccessRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -266,7 +265,7 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "RootInodeUser")
 	delete(f, "RootInodeGroup")
 	if len(f) > 0 {
-		return errors.New("CreateFileSystemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSystemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -319,7 +318,7 @@ func (r *CreateLifeCycleRulesRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "LifeCycleRules")
 	if len(f) > 0 {
-		return errors.New("CreateLifeCycleRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifeCycleRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -373,7 +372,7 @@ func (r *CreateMountPointRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "MountPointStatus")
 	if len(f) > 0 {
-		return errors.New("CreateMountPointRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMountPointRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -426,7 +425,7 @@ func (r *CreateRestoreTasksRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "RestoreTasks")
 	if len(f) > 0 {
-		return errors.New("CreateRestoreTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRestoreTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -472,7 +471,7 @@ func (r *DeleteAccessGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AccessGroupId")
 	if len(f) > 0 {
-		return errors.New("DeleteAccessGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccessGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -518,7 +517,7 @@ func (r *DeleteAccessRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AccessRuleIds")
 	if len(f) > 0 {
-		return errors.New("DeleteAccessRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccessRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -564,7 +563,7 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	if len(f) > 0 {
-		return errors.New("DeleteFileSystemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFileSystemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -610,7 +609,7 @@ func (r *DeleteLifeCycleRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LifeCycleRuleIds")
 	if len(f) > 0 {
-		return errors.New("DeleteLifeCycleRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLifeCycleRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -656,7 +655,7 @@ func (r *DeleteMountPointRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MountPointId")
 	if len(f) > 0 {
-		return errors.New("DeleteMountPointRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMountPointRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -702,7 +701,7 @@ func (r *DescribeAccessGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AccessGroupId")
 	if len(f) > 0 {
-		return errors.New("DescribeAccessGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -756,7 +755,7 @@ func (r *DescribeAccessGroupsRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "OwnerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeAccessGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -805,7 +804,7 @@ func (r *DescribeAccessRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AccessGroupId")
 	if len(f) > 0 {
-		return errors.New("DescribeAccessRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -854,7 +853,7 @@ func (r *DescribeFileSystemRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	if len(f) > 0 {
-		return errors.New("DescribeFileSystemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSystemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -907,7 +906,7 @@ func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.New("DescribeFileSystemsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSystemsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -956,7 +955,7 @@ func (r *DescribeLifeCycleRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	if len(f) > 0 {
-		return errors.New("DescribeLifeCycleRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLifeCycleRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1005,7 +1004,7 @@ func (r *DescribeMountPointRequest) FromJsonString(s string) error {
 	}
 	delete(f, "MountPointId")
 	if len(f) > 0 {
-		return errors.New("DescribeMountPointRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountPointRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1063,7 +1062,7 @@ func (r *DescribeMountPointsRequest) FromJsonString(s string) error {
 	delete(f, "AccessGroupId")
 	delete(f, "OwnerUin")
 	if len(f) > 0 {
-		return errors.New("DescribeMountPointsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountPointsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1112,7 +1111,7 @@ func (r *DescribeResourceTagsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	if len(f) > 0 {
-		return errors.New("DescribeResourceTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1161,7 +1160,7 @@ func (r *DescribeRestoreTasksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	if len(f) > 0 {
-		return errors.New("DescribeRestoreTasksRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRestoreTasksRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1214,7 +1213,7 @@ func (r *DisassociateAccessGroupsRequest) FromJsonString(s string) error {
 	delete(f, "MountPointId")
 	delete(f, "AccessGroupIds")
 	if len(f) > 0 {
-		return errors.New("DisassociateAccessGroupsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateAccessGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1325,7 +1324,7 @@ func (r *ModifyAccessGroupRequest) FromJsonString(s string) error {
 	delete(f, "AccessGroupName")
 	delete(f, "Description")
 	if len(f) > 0 {
-		return errors.New("ModifyAccessGroupRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1371,7 +1370,7 @@ func (r *ModifyAccessRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AccessRules")
 	if len(f) > 0 {
-		return errors.New("ModifyAccessRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1438,7 +1437,7 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "SuperUsers")
 	delete(f, "PosixAcl")
 	if len(f) > 0 {
-		return errors.New("ModifyFileSystemRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFileSystemRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1484,7 +1483,7 @@ func (r *ModifyLifeCycleRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LifeCycleRules")
 	if len(f) > 0 {
-		return errors.New("ModifyLifeCycleRulesRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLifeCycleRulesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1538,7 +1537,7 @@ func (r *ModifyMountPointRequest) FromJsonString(s string) error {
 	delete(f, "MountPointName")
 	delete(f, "MountPointStatus")
 	if len(f) > 0 {
-		return errors.New("ModifyMountPointRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMountPointRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -1588,7 +1587,7 @@ func (r *ModifyResourceTagsRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "Tags")
 	if len(f) > 0 {
-		return errors.New("ModifyResourceTagsRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }

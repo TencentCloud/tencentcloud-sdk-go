@@ -16,8 +16,7 @@ package v20181115
 
 import (
     "encoding/json"
-    "errors"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -46,7 +45,7 @@ func (r *DescribeDomainInfoRequest) FromJsonString(s string) error {
 	delete(f, "Key")
 	delete(f, "Option")
 	if len(f) > 0 {
-		return errors.New("DescribeDomainInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -133,7 +132,7 @@ func (r *DescribeFileInfoRequest) FromJsonString(s string) error {
 	delete(f, "Key")
 	delete(f, "Option")
 	if len(f) > 0 {
-		return errors.New("DescribeFileInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -206,7 +205,7 @@ func (r *DescribeIpInfoRequest) FromJsonString(s string) error {
 	delete(f, "Key")
 	delete(f, "Option")
 	if len(f) > 0 {
-		return errors.New("DescribeIpInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
@@ -297,7 +296,7 @@ func (r *DescribeThreatInfoRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Option")
 	if len(f) > 0 {
-		return errors.New("DescribeThreatInfoRequest has unknown keys!")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeThreatInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
