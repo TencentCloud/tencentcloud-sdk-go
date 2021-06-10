@@ -58,7 +58,13 @@ func NewAddTimeWindowResponse() (response *AddTimeWindowResponse) {
     return
 }
 
+// AddTimeWindow
 // 本接口(AddTimeWindow)用于添加云数据库实例的维护时间窗口，以指定实例在哪些时间段可以自动执行切换访问操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
 func (c *Client) AddTimeWindow(request *AddTimeWindowRequest) (response *AddTimeWindowResponse, err error) {
     if request == nil {
         request = NewAddTimeWindowRequest()
@@ -83,7 +89,17 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
     return
 }
 
+// AssociateSecurityGroups
 // 本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTMATCH = "InternalError.ResourceNotMatch"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
@@ -108,7 +124,15 @@ func NewBalanceRoGroupLoadResponse() (response *BalanceRoGroupLoadResponse) {
     return
 }
 
+// BalanceRoGroupLoad
 // 本接口(BalanceRoGroupLoad)用于重新均衡 RO 组内实例的负载。注意，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库，谨慎操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) BalanceRoGroupLoad(request *BalanceRoGroupLoadRequest) (response *BalanceRoGroupLoadResponse, err error) {
     if request == nil {
         request = NewBalanceRoGroupLoadRequest()
@@ -133,7 +157,16 @@ func NewCloseWanServiceResponse() (response *CloseWanServiceResponse) {
     return
 }
 
+// CloseWanService
 // 本接口(CloseWanService)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) CloseWanService(request *CloseWanServiceRequest) (response *CloseWanServiceResponse, err error) {
     if request == nil {
         request = NewCloseWanServiceRequest()
@@ -158,7 +191,41 @@ func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
     return
 }
 
+// CreateAccounts
 // 本接口(CreateAccounts)用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息以及最大可用连接数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *CreateAccountsResponse, err error) {
     if request == nil {
         request = NewCreateAccountsRequest()
@@ -183,7 +250,23 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
     return
 }
 
+// CreateAuditLogFile
 // 本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITCREATELOGFILEERROR = "InternalError.AuditCreateLogFileError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_AUDITFILEOVERQUOTAERROR = "OperationDenied.AuditFileOverQuotaError"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
+//  OPERATIONDENIED_OVERQUOTA = "OperationDenied.OverQuota"
+//  OVERQUOTA = "OverQuota"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (response *CreateAuditLogFileResponse, err error) {
     if request == nil {
         request = NewCreateAuditLogFileRequest()
@@ -208,7 +291,42 @@ func NewCreateAuditPolicyResponse() (response *CreateAuditPolicyResponse) {
     return
 }
 
+// CreateAuditPolicy
 // 本接口(CreateAuditPolicy)用于创建云数据库实例的审计策略，即将审计规则绑定到具体的云数据库实例上。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  FAILEDOPERATION_TYPEINCONFLICT = "FailedOperation.TypeInConflict"
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_AUDITOSSLOGICERROR = "InternalError.AuditOssLogicError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_AUDITPOLICYCONFLICTERROR = "OperationDenied.AuditPolicyConflictError"
+//  OPERATIONDENIED_AUDITPOLICYEXISTERROR = "OperationDenied.AuditPolicyExistError"
+//  OPERATIONDENIED_AUDITRULEHASBIND = "OperationDenied.AuditRuleHasBind"
+//  OPERATIONDENIED_AUDITRULENOTEXISTERROR = "OperationDenied.AuditRuleNotExistError"
+//  OPERATIONDENIED_AUDITSTATUSERROR = "OperationDenied.AuditStatusError"
+//  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
+//  OPERATIONDENIED_DBBRAINPOLICYCONFLICT = "OperationDenied.DBBrainPolicyConflict"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAuditPolicy(request *CreateAuditPolicyRequest) (response *CreateAuditPolicyResponse, err error) {
     if request == nil {
         request = NewCreateAuditPolicyRequest()
@@ -233,7 +351,22 @@ func NewCreateAuditRuleResponse() (response *CreateAuditRuleResponse) {
     return
 }
 
+// CreateAuditRule
 // 本接口(CreateAuditRule)用于创建用户在当前地域的审计规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_AUDITRULEEXISTERROR = "OperationDenied.AuditRuleExistError"
 func (c *Client) CreateAuditRule(request *CreateAuditRuleRequest) (response *CreateAuditRuleResponse, err error) {
     if request == nil {
         request = NewCreateAuditRuleRequest()
@@ -258,7 +391,21 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
     return
 }
 
+// CreateBackup
 // 本接口(CreateBackup)用于创建数据库备份。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OVERQUOTA = "OverQuota"
 func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBackupResponse, err error) {
     if request == nil {
         request = NewCreateBackupRequest()
@@ -283,7 +430,18 @@ func NewCreateCloneInstanceResponse() (response *CreateCloneInstanceResponse) {
     return
 }
 
+// CreateCloneInstance
 // 本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_OTHERODERINPROCESS = "OperationDenied.OtherOderInProcess"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) CreateCloneInstance(request *CreateCloneInstanceRequest) (response *CreateCloneInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCloneInstanceRequest()
@@ -308,9 +466,22 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
     return
 }
 
+// CreateDBImportJob
 // 本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
+//
 // 
+//
 // 注意，用户进行数据导入任务的文件，必须提前上传到腾讯云。用户须在控制台进行文件导入。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response *CreateDBImportJobResponse, err error) {
     if request == nil {
         request = NewCreateDBImportJobRequest()
@@ -335,16 +506,42 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
     return
 }
 
+// CreateDBInstance
 // 本接口(CreateDBInstance)用于创建包年包月的云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、MySQL 版本号、购买时长和数量等信息创建云数据库实例。
+//
 // 
+//
 // 该接口为异步接口，您还可以使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询该实例的详细信息。当该实例的 Status 为1，且 TaskStatus 为0，表示实例已经发货成功。
+//
 // 
+//
 // 1. 首先请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口查询可创建的实例规格信息，然后请使用 [查询数据库价格](https://cloud.tencent.com/document/api/236/18566) 接口查询可创建实例的售卖价格；
+//
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
+//
 // 3. 支持创建 MySQL 5.5 、 MySQL 5.6 、 MySQL 5.7 、 MySQL 8.0 版本；
+//
 // 4. 支持创建主实例、只读实例、灾备实例；
+//
 // 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（不支持基础版实例）；
+//
 // 6. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_OTHERODERINPROCESS = "OperationDenied.OtherOderInProcess"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -369,15 +566,39 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
     return
 }
 
+// CreateDBInstanceHour
 // 本接口(CreateDBInstanceHour)用于创建按量计费的实例，可通过传入实例规格、MySQL 版本号和数量等信息创建云数据库实例，支持主实例、灾备实例和只读实例的创建。
+//
 // 
+//
 // 该接口为异步接口，您还可以使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询该实例的详细信息。当该实例的 Status 为 1，且 TaskStatus 为 0，表示实例已经发货成功。
+//
 // 
+//
 // 1. 首先请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口查询可创建的实例规格信息，然后请使用 [查询数据库价格](https://cloud.tencent.com/document/api/236/18566) 接口查询可创建实例的售卖价格；
+//
 // 2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
+//
 // 3. 支持创建 MySQL 5.5、MySQL 5.6 、MySQL 5.7 和 MySQL 8.0 版本；
+//
 // 4. 支持创建主实例、灾备实例和只读实例；
+//
 // 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（暂不支持基础版实例）；
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_OTHERODERINPROCESS = "OperationDenied.OtherOderInProcess"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
@@ -402,7 +623,17 @@ func NewCreateDeployGroupResponse() (response *CreateDeployGroupResponse) {
     return
 }
 
+// CreateDeployGroup
 // 本接口(CreateDeployGroup)用于创建放置实例的置放群组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = "InvalidParameter.DeployGroupNotEmpty"
+//  INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = "InvalidParameter.OverDeployGroupQuota"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) CreateDeployGroup(request *CreateDeployGroupRequest) (response *CreateDeployGroupResponse, err error) {
     if request == nil {
         request = NewCreateDeployGroupRequest()
@@ -427,7 +658,16 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
     return
 }
 
+// CreateParamTemplate
 // 该接口（CreateParamTemplate）用于创建参数模板。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (response *CreateParamTemplateResponse, err error) {
     if request == nil {
         request = NewCreateParamTemplateRequest()
@@ -452,7 +692,23 @@ func NewCreateRoInstanceIpResponse() (response *CreateRoInstanceIpResponse) {
     return
 }
 
+// CreateRoInstanceIp
 // 本接口(CreateRoInstanceIp)用于创建云数据库只读实例的独立VIP。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) CreateRoInstanceIp(request *CreateRoInstanceIpRequest) (response *CreateRoInstanceIpResponse, err error) {
     if request == nil {
         request = NewCreateRoInstanceIpRequest()
@@ -477,7 +733,37 @@ func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
     return
 }
 
+// DeleteAccounts
 // 本接口(DeleteAccounts)用于删除云数据库的账户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DeleteAccounts(request *DeleteAccountsRequest) (response *DeleteAccountsResponse, err error) {
     if request == nil {
         request = NewDeleteAccountsRequest()
@@ -502,7 +788,13 @@ func NewDeleteAuditLogFileResponse() (response *DeleteAuditLogFileResponse) {
     return
 }
 
+// DeleteAuditLogFile
 // 本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITDELETELOGFILEERROR = "InternalError.AuditDeleteLogFileError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAuditLogFile(request *DeleteAuditLogFileRequest) (response *DeleteAuditLogFileResponse, err error) {
     if request == nil {
         request = NewDeleteAuditLogFileRequest()
@@ -527,7 +819,21 @@ func NewDeleteAuditPolicyResponse() (response *DeleteAuditPolicyResponse) {
     return
 }
 
+// DeleteAuditPolicy
 // 本接口(DeleteAuditPolicy)用于删除用户的审计策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITDELETEPOLICYERROR = "InternalError.AuditDeletePolicyError"
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
+//  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteAuditPolicy(request *DeleteAuditPolicyRequest) (response *DeleteAuditPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteAuditPolicyRequest()
@@ -552,7 +858,19 @@ func NewDeleteAuditRuleResponse() (response *DeleteAuditRuleResponse) {
     return
 }
 
+// DeleteAuditRule
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED_AUDITRULEDELETEERROR = "OperationDenied.AuditRuleDeleteError"
+//  OPERATIONDENIED_AUDITRULEHASBIND = "OperationDenied.AuditRuleHasBind"
+//  OPERATIONDENIED_AUDITRULENOTEXISTERROR = "OperationDenied.AuditRuleNotExistError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAuditRule(request *DeleteAuditRuleRequest) (response *DeleteAuditRuleResponse, err error) {
     if request == nil {
         request = NewDeleteAuditRuleRequest()
@@ -577,7 +895,16 @@ func NewDeleteBackupResponse() (response *DeleteBackupResponse) {
     return
 }
 
+// DeleteBackup
 // 本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
+//
+// 可能返回的错误码:
+//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBackupResponse, err error) {
     if request == nil {
         request = NewDeleteBackupRequest()
@@ -602,7 +929,16 @@ func NewDeleteDeployGroupsResponse() (response *DeleteDeployGroupsResponse) {
     return
 }
 
+// DeleteDeployGroups
 // 根据置放群组ID删除置放群组（置放群组中有资源存在时不能删除该置放群组）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = "InvalidParameter.DeployGroupNotEmpty"
+//  INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = "InvalidParameter.OverDeployGroupQuota"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 func (c *Client) DeleteDeployGroups(request *DeleteDeployGroupsRequest) (response *DeleteDeployGroupsResponse, err error) {
     if request == nil {
         request = NewDeleteDeployGroupsRequest()
@@ -627,7 +963,12 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
     return
 }
 
+// DeleteParamTemplate
 // 该接口（DeleteParamTemplate）用于删除参数模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (response *DeleteParamTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteParamTemplateRequest()
@@ -652,7 +993,12 @@ func NewDeleteTimeWindowResponse() (response *DeleteTimeWindowResponse) {
     return
 }
 
+// DeleteTimeWindow
 // 本接口(DeleteTimeWindow)用于删除云数据库实例的维护时间窗口。删除实例维护时间窗口之后，默认的维护时间窗为 03:00-04:00，即当选择在维护时间窗口内切换访问新实例时，默认会在 03:00-04:00 点进行切换访问新实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DeleteTimeWindow(request *DeleteTimeWindowRequest) (response *DeleteTimeWindowResponse, err error) {
     if request == nil {
         request = NewDeleteTimeWindowRequest()
@@ -677,7 +1023,40 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
     return
 }
 
+// DescribeAccountPrivileges
 // 本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewDescribeAccountPrivilegesRequest()
@@ -702,7 +1081,42 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     return
 }
 
+// DescribeAccounts
 // 本接口(DescribeAccounts)用于查询云数据库的所有账户信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountsRequest()
@@ -727,7 +1141,17 @@ func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoRe
     return
 }
 
+// DescribeAsyncRequestInfo
 // 本接口(DescribeAsyncRequestInfo)用于查询云数据库实例异步任务的执行结果。
+//
+// 可能返回的错误码:
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDASYNCREQUESTID = "InvalidParameter.InvalidAsyncRequestId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
@@ -752,7 +1176,14 @@ func NewDescribeAuditConfigResponse() (response *DescribeAuditConfigResponse) {
     return
 }
 
+// DescribeAuditConfig
 // 本接口(DescribeAuditConfig)用于查询云数据库审计策略的服务配置，包括审计日志保存时长等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAuditConfig(request *DescribeAuditConfigRequest) (response *DescribeAuditConfigResponse, err error) {
     if request == nil {
         request = NewDescribeAuditConfigRequest()
@@ -777,7 +1208,13 @@ func NewDescribeAuditLogFilesResponse() (response *DescribeAuditLogFilesResponse
     return
 }
 
+// DescribeAuditLogFiles
 // 本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 func (c *Client) DescribeAuditLogFiles(request *DescribeAuditLogFilesRequest) (response *DescribeAuditLogFilesResponse, err error) {
     if request == nil {
         request = NewDescribeAuditLogFilesRequest()
@@ -802,7 +1239,18 @@ func NewDescribeAuditPoliciesResponse() (response *DescribeAuditPoliciesResponse
     return
 }
 
+// DescribeAuditPolicies
 // 本接口(DescribeAuditPolicies)用于查询云数据库实例的审计策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INNERCOMMONERROR = "InternalError.InnerCommonError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 func (c *Client) DescribeAuditPolicies(request *DescribeAuditPoliciesRequest) (response *DescribeAuditPoliciesResponse, err error) {
     if request == nil {
         request = NewDescribeAuditPoliciesRequest()
@@ -827,7 +1275,15 @@ func NewDescribeAuditRulesResponse() (response *DescribeAuditRulesResponse) {
     return
 }
 
+// DescribeAuditRules
 // 本接口(DescribeAuditRules)用于查询用户在当前地域的审计规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INNERCOMMONERROR = "InternalError.InnerCommonError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeAuditRules(request *DescribeAuditRulesRequest) (response *DescribeAuditRulesResponse, err error) {
     if request == nil {
         request = NewDescribeAuditRulesRequest()
@@ -852,7 +1308,16 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
     return
 }
 
+// DescribeBackupConfig
 // 本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (response *DescribeBackupConfigResponse, err error) {
     if request == nil {
         request = NewDescribeBackupConfigRequest()
@@ -877,9 +1342,20 @@ func NewDescribeBackupDatabasesResponse() (response *DescribeBackupDatabasesResp
     return
 }
 
+// DescribeBackupDatabases
 // 本接口(DescribeBackupDatabases)用于查询备份文件包含的库 (已废弃)。
+//
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
+//
 // 新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest) (response *DescribeBackupDatabasesResponse, err error) {
     if request == nil {
         request = NewDescribeBackupDatabasesRequest()
@@ -904,7 +1380,13 @@ func NewDescribeBackupOverviewResponse() (response *DescribeBackupOverviewRespon
     return
 }
 
+// DescribeBackupOverview
 // 本接口(DescribeBackupOverview)用于查询用户的备份概览。返回用户当前备份总个数、备份总的占用容量、赠送的免费容量、计费容量（容量单位为字节）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeBackupOverview(request *DescribeBackupOverviewRequest) (response *DescribeBackupOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeBackupOverviewRequest()
@@ -929,7 +1411,13 @@ func NewDescribeBackupSummariesResponse() (response *DescribeBackupSummariesResp
     return
 }
 
+// DescribeBackupSummaries
 // 本接口(DescribeBackupSummaries)用于查询备份的统计情况，返回以实例为维度的备份占用容量，以及每个实例的数据备份和日志备份的个数和容量（容量单位为字节）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeBackupSummaries(request *DescribeBackupSummariesRequest) (response *DescribeBackupSummariesResponse, err error) {
     if request == nil {
         request = NewDescribeBackupSummariesRequest()
@@ -954,9 +1442,20 @@ func NewDescribeBackupTablesResponse() (response *DescribeBackupTablesResponse) 
     return
 }
 
+// DescribeBackupTables
 // 本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
+//
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
+//
 // 新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeBackupTables(request *DescribeBackupTablesRequest) (response *DescribeBackupTablesResponse, err error) {
     if request == nil {
         request = NewDescribeBackupTablesRequest()
@@ -981,7 +1480,19 @@ func NewDescribeBackupsResponse() (response *DescribeBackupsResponse) {
     return
 }
 
+// DescribeBackups
 // 本接口(DescribeBackups)用于查询云数据库实例的备份数据。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) DescribeBackups(request *DescribeBackupsRequest) (response *DescribeBackupsResponse, err error) {
     if request == nil {
         request = NewDescribeBackupsRequest()
@@ -1006,7 +1517,11 @@ func NewDescribeBinlogBackupOverviewResponse() (response *DescribeBinlogBackupOv
     return
 }
 
+// DescribeBinlogBackupOverview
 // 本接口(DescribeBinlogBackupOverview)用于查询用户在当前地域总的日志备份概览。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 func (c *Client) DescribeBinlogBackupOverview(request *DescribeBinlogBackupOverviewRequest) (response *DescribeBinlogBackupOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeBinlogBackupOverviewRequest()
@@ -1031,7 +1546,15 @@ func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
     return
 }
 
+// DescribeBinlogs
 // 本接口(DescribeBinlogs)用于查询云数据库实例的 binlog 文件列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
     if request == nil {
         request = NewDescribeBinlogsRequest()
@@ -1056,7 +1579,12 @@ func NewDescribeCloneListResponse() (response *DescribeCloneListResponse) {
     return
 }
 
+// DescribeCloneList
 // 本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 func (c *Client) DescribeCloneList(request *DescribeCloneListRequest) (response *DescribeCloneListResponse, err error) {
     if request == nil {
         request = NewDescribeCloneListRequest()
@@ -1081,7 +1609,13 @@ func NewDescribeDBImportRecordsResponse() (response *DescribeDBImportRecordsResp
     return
 }
 
+// DescribeDBImportRecords
 // 本接口(DescribeDBImportRecords)用于查询云数据库导入任务操作日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDASYNCREQUESTID = "InvalidParameter.InvalidAsyncRequestId"
 func (c *Client) DescribeDBImportRecords(request *DescribeDBImportRecordsRequest) (response *DescribeDBImportRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeDBImportRecordsRequest()
@@ -1106,7 +1640,17 @@ func NewDescribeDBInstanceCharsetResponse() (response *DescribeDBInstanceCharset
     return
 }
 
+// DescribeDBInstanceCharset
 // 本接口(DescribeDBInstanceCharset)用于查询云数据库实例的字符集，获取字符集的名称。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceCharset(request *DescribeDBInstanceCharsetRequest) (response *DescribeDBInstanceCharsetResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceCharsetRequest()
@@ -1131,7 +1675,16 @@ func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigRe
     return
 }
 
+// DescribeDBInstanceConfig
 // 本接口(DescribeDBInstanceConfig)用于云数据库实例的配置信息，包括同步模式，部署模式等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (response *DescribeDBInstanceConfigResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceConfigRequest()
@@ -1156,7 +1709,14 @@ func NewDescribeDBInstanceGTIDResponse() (response *DescribeDBInstanceGTIDRespon
     return
 }
 
+// DescribeDBInstanceGTID
 // 本接口(DescribeDBInstanceGTID)用于查询云数据库实例是否开通了 GTID，不支持版本为 5.5 以及以下的实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceGTID(request *DescribeDBInstanceGTIDRequest) (response *DescribeDBInstanceGTIDResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceGTIDRequest()
@@ -1181,7 +1741,12 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
     return
 }
 
+// DescribeDBInstanceInfo
 // 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceInfoRequest()
@@ -1206,7 +1771,11 @@ func NewDescribeDBInstanceRebootTimeResponse() (response *DescribeDBInstanceRebo
     return
 }
 
+// DescribeDBInstanceRebootTime
 // 本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBInstanceRebootTime(request *DescribeDBInstanceRebootTimeRequest) (response *DescribeDBInstanceRebootTimeResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceRebootTimeRequest()
@@ -1231,7 +1800,23 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     return
 }
 
+// DescribeDBInstances
 // 本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目 ID、实例 ID、访问地址、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstancesRequest()
@@ -1256,9 +1841,19 @@ func NewDescribeDBPriceResponse() (response *DescribeDBPriceResponse) {
     return
 }
 
+// DescribeDBPrice
 // 本接口(DescribeDBPrice)用于查询购买或续费云数据库实例的价格，支持查询按量计费或者包年包月的价格。可传入实例类型、购买时长、购买数量、内存大小、硬盘大小和可用区信息等来查询实例价格。可传入实例名称来查询实例续费价格。
+//
 // 
+//
 // 注意：对某个地域进行询价，请使用对应地域的接入点，接入点信息请参照 <a href="https://cloud.tencent.com/document/api/236/15832">服务地址</a> 文档。例如：对广州地域进行询价，请把请求发到：cdb.ap-guangzhou.tencentcloudapi.com。同理对上海地域询价，把请求发到：cdb.ap-shanghai.tencentcloudapi.com。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBPrice(request *DescribeDBPriceRequest) (response *DescribeDBPriceResponse, err error) {
     if request == nil {
         request = NewDescribeDBPriceRequest()
@@ -1283,7 +1878,21 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
     return
 }
 
+// DescribeDBSecurityGroups
 // 本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
@@ -1308,7 +1917,13 @@ func NewDescribeDBSwitchRecordsResponse() (response *DescribeDBSwitchRecordsResp
     return
 }
 
+// DescribeDBSwitchRecords
 // 本接口(DescribeDBSwitchRecords)用于查询云数据库实例切换记录。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBSwitchRecords(request *DescribeDBSwitchRecordsRequest) (response *DescribeDBSwitchRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeDBSwitchRecordsRequest()
@@ -1333,7 +1948,12 @@ func NewDescribeDBZoneConfigResponse() (response *DescribeDBZoneConfigResponse) 
     return
 }
 
+// DescribeDBZoneConfig
 // 本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBZoneConfig(request *DescribeDBZoneConfigRequest) (response *DescribeDBZoneConfigResponse, err error) {
     if request == nil {
         request = NewDescribeDBZoneConfigRequest()
@@ -1358,7 +1978,12 @@ func NewDescribeDataBackupOverviewResponse() (response *DescribeDataBackupOvervi
     return
 }
 
+// DescribeDataBackupOverview
 // 本接口(DescribeDataBackupOverview)用于查询用户在当前地域总的数据备份概览。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeDataBackupOverview(request *DescribeDataBackupOverviewRequest) (response *DescribeDataBackupOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDataBackupOverviewRequest()
@@ -1383,7 +2008,19 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
     return
 }
 
+// DescribeDatabases
 // 本接口(DescribeDatabases)用于查询云数据库实例的数据库信息，仅支持主实例和灾备实例，不支持只读实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
     if request == nil {
         request = NewDescribeDatabasesRequest()
@@ -1408,7 +2045,14 @@ func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse
     return
 }
 
+// DescribeDefaultParams
 // 该接口（DescribeDefaultParams）用于查询默认的可设置参数列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
     if request == nil {
         request = NewDescribeDefaultParamsRequest()
@@ -1433,7 +2077,17 @@ func NewDescribeDeployGroupListResponse() (response *DescribeDeployGroupListResp
     return
 }
 
+// DescribeDeployGroupList
 // 本接口(DescribeDeployGroupList)用于查询用户的置放群组列表，可以指定置放群组 ID 或置放群组名称。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = "InvalidParameter.DeployGroupNotEmpty"
+//  INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = "InvalidParameter.OverDeployGroupQuota"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) DescribeDeployGroupList(request *DescribeDeployGroupListRequest) (response *DescribeDeployGroupListResponse, err error) {
     if request == nil {
         request = NewDescribeDeployGroupListRequest()
@@ -1458,7 +2112,22 @@ func NewDescribeDeviceMonitorInfoResponse() (response *DescribeDeviceMonitorInfo
     return
 }
 
+// DescribeDeviceMonitorInfo
 // 本接口（DescribeDeviceMonitorInfo）用于查询云数据库物理机当天的监控信息，暂只支持内存488G、硬盘6T的实例查询。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_FUNCTIONDENIED = "OperationDenied.FunctionDenied"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeDeviceMonitorInfo(request *DescribeDeviceMonitorInfoRequest) (response *DescribeDeviceMonitorInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceMonitorInfoRequest()
@@ -1483,7 +2152,19 @@ func NewDescribeErrorLogDataResponse() (response *DescribeErrorLogDataResponse) 
     return
 }
 
+// DescribeErrorLogData
 // 根据检索条件查询实例错误日志详情。只能查询一个月之内的错误日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeErrorLogData(request *DescribeErrorLogDataRequest) (response *DescribeErrorLogDataResponse, err error) {
     if request == nil {
         request = NewDescribeErrorLogDataRequest()
@@ -1508,7 +2189,14 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
     return
 }
 
+// DescribeInstanceParamRecords
 // 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
+//
+// 可能返回的错误码:
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
 func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceParamRecordsRequest()
@@ -1533,7 +2221,15 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
     return
 }
 
+// DescribeInstanceParams
 // 该接口（DescribeInstanceParams）用于查询实例的参数列表。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceParamsRequest()
@@ -1558,7 +2254,13 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
     return
 }
 
+// DescribeParamTemplateInfo
 // 该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoRequest) (response *DescribeParamTemplateInfoResponse, err error) {
     if request == nil {
         request = NewDescribeParamTemplateInfoRequest()
@@ -1583,7 +2285,13 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
     return
 }
 
+// DescribeParamTemplates
 // 该接口（DescribeParamTemplates）查询参数模板列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeParamTemplatesRequest()
@@ -1608,7 +2316,16 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
     return
 }
 
+// DescribeProjectSecurityGroups
 // 本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
@@ -1633,7 +2350,18 @@ func NewDescribeRoGroupsResponse() (response *DescribeRoGroupsResponse) {
     return
 }
 
+// DescribeRoGroups
 // 本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 func (c *Client) DescribeRoGroups(request *DescribeRoGroupsRequest) (response *DescribeRoGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeRoGroupsRequest()
@@ -1658,7 +2386,14 @@ func NewDescribeRoMinScaleResponse() (response *DescribeRoMinScaleResponse) {
     return
 }
 
+// DescribeRoMinScale
 // 本接口(DescribeRoMinScale)用于获取只读实例购买、升级时的最小规格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 func (c *Client) DescribeRoMinScale(request *DescribeRoMinScaleRequest) (response *DescribeRoMinScaleResponse, err error) {
     if request == nil {
         request = NewDescribeRoMinScaleRequest()
@@ -1683,7 +2418,14 @@ func NewDescribeRollbackRangeTimeResponse() (response *DescribeRollbackRangeTime
     return
 }
 
+// DescribeRollbackRangeTime
 // 本接口(DescribeRollbackRangeTime)用于查询云数据库实例可回档的时间范围。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeRollbackRangeTime(request *DescribeRollbackRangeTimeRequest) (response *DescribeRollbackRangeTimeResponse, err error) {
     if request == nil {
         request = NewDescribeRollbackRangeTimeRequest()
@@ -1708,7 +2450,14 @@ func NewDescribeRollbackTaskDetailResponse() (response *DescribeRollbackTaskDeta
     return
 }
 
+// DescribeRollbackTaskDetail
 // 本接口(DescribeRollbackTaskDetail)用于查询云数据库实例回档任务详情。
+//
+// 可能返回的错误码:
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeRollbackTaskDetail(request *DescribeRollbackTaskDetailRequest) (response *DescribeRollbackTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeRollbackTaskDetailRequest()
@@ -1733,7 +2482,19 @@ func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
     return
 }
 
+// DescribeSlowLogData
 // 条件检索实例的慢日志。只允许查看一个月之内的慢日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeSlowLogData(request *DescribeSlowLogDataRequest) (response *DescribeSlowLogDataResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogDataRequest()
@@ -1758,7 +2519,18 @@ func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
     return
 }
 
+// DescribeSlowLogs
 // 本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *DescribeSlowLogsResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogsRequest()
@@ -1783,7 +2555,36 @@ func NewDescribeSupportedPrivilegesResponse() (response *DescribeSupportedPrivil
     return
 }
 
+// DescribeSupportedPrivileges
 // 本接口(DescribeSupportedPrivileges)用于查询云数据库的支持的权限信息，包括全局权限，数据库权限，表权限以及列权限。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeSupportedPrivileges(request *DescribeSupportedPrivilegesRequest) (response *DescribeSupportedPrivilegesResponse, err error) {
     if request == nil {
         request = NewDescribeSupportedPrivilegesRequest()
@@ -1808,7 +2609,15 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
     return
 }
 
+// DescribeTables
 // 本接口(DescribeTables)用于查询云数据库实例的数据库表信息，仅支持主实例和灾备实例，不支持只读实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
     if request == nil {
         request = NewDescribeTablesRequest()
@@ -1833,7 +2642,19 @@ func NewDescribeTagsOfInstanceIdsResponse() (response *DescribeTagsOfInstanceIds
     return
 }
 
+// DescribeTagsOfInstanceIds
 // 本接口(DescribeTagsOfInstanceIds)用于获取云数据库实例的标签信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_TASKERROR = "InternalError.TaskError"
+//  INTERNALERROR_TIMEWINDOWERROR = "InternalError.TimeWindowError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeTagsOfInstanceIds(request *DescribeTagsOfInstanceIdsRequest) (response *DescribeTagsOfInstanceIdsResponse, err error) {
     if request == nil {
         request = NewDescribeTagsOfInstanceIdsRequest()
@@ -1858,7 +2679,18 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     return
 }
 
+// DescribeTasks
 // 本接口(DescribeTasks)用于查询云数据库实例任务列表。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -1883,7 +2715,12 @@ func NewDescribeTimeWindowResponse() (response *DescribeTimeWindowResponse) {
     return
 }
 
+// DescribeTimeWindow
 // 本接口(DescribeTimeWindow)用于查询云数据库实例的维护时间窗口。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeTimeWindow(request *DescribeTimeWindowRequest) (response *DescribeTimeWindowResponse, err error) {
     if request == nil {
         request = NewDescribeTimeWindowRequest()
@@ -1908,7 +2745,12 @@ func NewDescribeUploadedFilesResponse() (response *DescribeUploadedFilesResponse
     return
 }
 
+// DescribeUploadedFiles
 // 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeUploadedFiles(request *DescribeUploadedFilesRequest) (response *DescribeUploadedFilesResponse, err error) {
     if request == nil {
         request = NewDescribeUploadedFilesRequest()
@@ -1933,7 +2775,15 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
     return
 }
 
+// DisassociateSecurityGroups
 // 本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTMATCH = "InternalError.ResourceNotMatch"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
@@ -1958,7 +2808,14 @@ func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
     return
 }
 
+// InitDBInstances
 // 本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
 func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *InitDBInstancesResponse, err error) {
     if request == nil {
         request = NewInitDBInstancesRequest()
@@ -1983,7 +2840,16 @@ func NewInquiryPriceUpgradeInstancesResponse() (response *InquiryPriceUpgradeIns
     return
 }
 
+// InquiryPriceUpgradeInstances
 // 本接口(InquiryPriceUpgradeInstances)用于查询云数据库实例升级的价格，支持查询按量计费或者包年包月实例的升级价格，实例类型支持主实例、灾备实例和只读实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) InquiryPriceUpgradeInstances(request *InquiryPriceUpgradeInstancesRequest) (response *InquiryPriceUpgradeInstancesResponse, err error) {
     if request == nil {
         request = NewInquiryPriceUpgradeInstancesRequest()
@@ -2008,7 +2874,21 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
     return
 }
 
+// IsolateDBInstance
 // 本接口(IsolateDBInstance)用于隔离云数据库实例，隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_UNSUPPORTREFUNDERROR = "OperationDenied.UnSupportRefundError"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response *IsolateDBInstanceResponse, err error) {
     if request == nil {
         request = NewIsolateDBInstanceRequest()
@@ -2033,7 +2913,37 @@ func NewModifyAccountDescriptionResponse() (response *ModifyAccountDescriptionRe
     return
 }
 
+// ModifyAccountDescription
 // 本接口(ModifyAccountDescription)用于修改云数据库账户的备注信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (response *ModifyAccountDescriptionResponse, err error) {
     if request == nil {
         request = NewModifyAccountDescriptionRequest()
@@ -2058,7 +2968,14 @@ func NewModifyAccountMaxUserConnectionsResponse() (response *ModifyAccountMaxUse
     return
 }
 
+// ModifyAccountMaxUserConnections
 // 本接口(ModifyAccountMaxUserConnections)用于修改云数据库账户最大可用连接数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCTASKSTATUSERROR = "FailedOperation.AsyncTaskStatusError"
+//  FAILEDOPERATION_JSONUNMARSHALERROR = "FailedOperation.JsonUnmarshalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ModifyAccountMaxUserConnections(request *ModifyAccountMaxUserConnectionsRequest) (response *ModifyAccountMaxUserConnectionsResponse, err error) {
     if request == nil {
         request = NewModifyAccountMaxUserConnectionsRequest()
@@ -2083,7 +3000,40 @@ func NewModifyAccountPasswordResponse() (response *ModifyAccountPasswordResponse
     return
 }
 
+// ModifyAccountPassword
 // 本接口(ModifyAccountPassword)用于修改云数据库账户的密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) ModifyAccountPassword(request *ModifyAccountPasswordRequest) (response *ModifyAccountPasswordResponse, err error) {
     if request == nil {
         request = NewModifyAccountPasswordRequest()
@@ -2108,10 +3058,46 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
     return
 }
 
+// ModifyAccountPrivileges
 // 本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
+//
 // 
+//
 // 注意，修改账号权限时，需要传入该账号下的全量权限信息。用户可以先通过 [查询云数据库账户的权限信息
+//
 // ](https://cloud.tencent.com/document/api/236/17500) 查询该账号下的全量权限信息，然后进行权限修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewModifyAccountPrivilegesRequest()
@@ -2136,7 +3122,20 @@ func NewModifyAuditConfigResponse() (response *ModifyAuditConfigResponse) {
     return
 }
 
+// ModifyAuditConfig
 // 本接口(ModifyAuditConfig)用于修改云数据库审计策略的服务配置，包括审计日志保存时长等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_AUDITMODIFYSTATUSERROR = "InternalError.AuditModifyStatusError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
+//  OPERATIONDENIED_MODIFYAUDITSTATUSERROR = "OperationDenied.ModifyAuditStatusError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyAuditConfig(request *ModifyAuditConfigRequest) (response *ModifyAuditConfigResponse, err error) {
     if request == nil {
         request = NewModifyAuditConfigRequest()
@@ -2161,7 +3160,20 @@ func NewModifyAuditRuleResponse() (response *ModifyAuditRuleResponse) {
     return
 }
 
+// ModifyAuditRule
 // 本接口(ModifyAuditRule)用于修改用户的审计规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_AUDITRULEEXISTERROR = "OperationDenied.AuditRuleExistError"
+//  OPERATIONDENIED_AUDITRULENOTEXISTERROR = "OperationDenied.AuditRuleNotExistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAuditRule(request *ModifyAuditRuleRequest) (response *ModifyAuditRuleResponse, err error) {
     if request == nil {
         request = NewModifyAuditRuleRequest()
@@ -2186,7 +3198,13 @@ func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
     return
 }
 
+// ModifyAutoRenewFlag
 // 本接口(ModifyAutoRenewFlag)用于修改云数据库实例的自动续费标记。仅支持包年包月的实例设置自动续费标记。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyAutoRenewFlagRequest()
@@ -2211,7 +3229,15 @@ func NewModifyBackupConfigResponse() (response *ModifyBackupConfigResponse) {
     return
 }
 
+// ModifyBackupConfig
 // 本接口(ModifyBackupConfig)用于修改数据库备份配置信息。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (response *ModifyBackupConfigResponse, err error) {
     if request == nil {
         request = NewModifyBackupConfigRequest()
@@ -2236,7 +3262,14 @@ func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) 
     return
 }
 
+// ModifyDBInstanceName
 // 本接口(ModifyDBInstanceName)用于修改云数据库实例的名称。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceNameRequest()
@@ -2261,7 +3294,12 @@ func NewModifyDBInstanceProjectResponse() (response *ModifyDBInstanceProjectResp
     return
 }
 
+// ModifyDBInstanceProject
 // 本接口(ModifyDBInstanceProject)用于修改云数据库实例的所属项目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyDBInstanceProject(request *ModifyDBInstanceProjectRequest) (response *ModifyDBInstanceProjectResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceProjectRequest()
@@ -2286,7 +3324,15 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
     return
 }
 
+// ModifyDBInstanceSecurityGroups
 // 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
@@ -2311,7 +3357,14 @@ func NewModifyDBInstanceVipVportResponse() (response *ModifyDBInstanceVipVportRe
     return
 }
 
+// ModifyDBInstanceVipVport
 // 本接口(ModifyDBInstanceVipVport)用于修改云数据库实例的IP和端口号，也可进行基础网络转 VPC 网络和 VPC 网络下的子网变更。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyDBInstanceVipVport(request *ModifyDBInstanceVipVportRequest) (response *ModifyDBInstanceVipVportResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceVipVportRequest()
@@ -2336,7 +3389,18 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
     return
 }
 
+// ModifyInstanceParam
 // 本接口(ModifyInstanceParam)用于修改云数据库实例的参数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
     if request == nil {
         request = NewModifyInstanceParamRequest()
@@ -2361,7 +3425,22 @@ func NewModifyInstanceTagResponse() (response *ModifyInstanceTagResponse) {
     return
 }
 
+// ModifyInstanceTag
 // 本接口(ModifyInstanceTag)用于对实例标签进行添加、修改或者删除。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) ModifyInstanceTag(request *ModifyInstanceTagRequest) (response *ModifyInstanceTagResponse, err error) {
     if request == nil {
         request = NewModifyInstanceTagRequest()
@@ -2386,7 +3465,16 @@ func NewModifyNameOrDescByDpIdResponse() (response *ModifyNameOrDescByDpIdRespon
     return
 }
 
+// ModifyNameOrDescByDpId
 // 修改置放群组的名称或者描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEPLOYGROUPNOTEMPTY = "InvalidParameter.DeployGroupNotEmpty"
+//  INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = "InvalidParameter.OverDeployGroupQuota"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 func (c *Client) ModifyNameOrDescByDpId(request *ModifyNameOrDescByDpIdRequest) (response *ModifyNameOrDescByDpIdResponse, err error) {
     if request == nil {
         request = NewModifyNameOrDescByDpIdRequest()
@@ -2411,7 +3499,15 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
     return
 }
 
+// ModifyParamTemplate
 // 该接口（ModifyParamTemplate）用于修改参数模板。
+//
+// 可能返回的错误码:
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
 func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (response *ModifyParamTemplateResponse, err error) {
     if request == nil {
         request = NewModifyParamTemplateRequest()
@@ -2436,7 +3532,18 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
     return
 }
 
+// ModifyRoGroupInfo
 // 本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
     if request == nil {
         request = NewModifyRoGroupInfoRequest()
@@ -2461,7 +3568,18 @@ func NewModifyRoReplicationDelayResponse() (response *ModifyRoReplicationDelayRe
     return
 }
 
+// ModifyRoReplicationDelay
 // 修改延迟只读实例的延迟复制时间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
+//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
+//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
+//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
+//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
 func (c *Client) ModifyRoReplicationDelay(request *ModifyRoReplicationDelayRequest) (response *ModifyRoReplicationDelayResponse, err error) {
     if request == nil {
         request = NewModifyRoReplicationDelayRequest()
@@ -2486,7 +3604,18 @@ func NewModifyRoTypeResponse() (response *ModifyRoTypeResponse) {
     return
 }
 
+// ModifyRoType
 // 修改只读实例类型，可以将普通只读实例变为延迟只读实例，或者将延迟只读实例变为普通只读实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
+//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
+//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
+//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
+//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
 func (c *Client) ModifyRoType(request *ModifyRoTypeRequest) (response *ModifyRoTypeResponse, err error) {
     if request == nil {
         request = NewModifyRoTypeRequest()
@@ -2511,7 +3640,15 @@ func NewModifyTimeWindowResponse() (response *ModifyTimeWindowResponse) {
     return
 }
 
+// ModifyTimeWindow
 // 本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyTimeWindow(request *ModifyTimeWindowRequest) (response *ModifyTimeWindowResponse, err error) {
     if request == nil {
         request = NewModifyTimeWindowRequest()
@@ -2536,11 +3673,20 @@ func NewOfflineIsolatedInstancesResponse() (response *OfflineIsolatedInstancesRe
     return
 }
 
+// OfflineIsolatedInstances
 // 本接口(OfflineIsolatedInstances)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态，即通过 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询到 Status 值为 5 的实例。
+//
 // 
+//
 // 该接口为异步操作，部分资源的回收可能存在延迟。您可以通过使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口，指定实例 InstanceId 和状态 Status 为 [5,6,7] 进行查询，若返回实例为空，则实例资源已全部释放。
+//
 // 
+//
 // 注意，实例下线后，相关资源和数据将无法找回，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) OfflineIsolatedInstances(request *OfflineIsolatedInstancesRequest) (response *OfflineIsolatedInstancesResponse, err error) {
     if request == nil {
         request = NewOfflineIsolatedInstancesRequest()
@@ -2565,7 +3711,13 @@ func NewOpenDBInstanceGTIDResponse() (response *OpenDBInstanceGTIDResponse) {
     return
 }
 
+// OpenDBInstanceGTID
 // 本接口(OpenDBInstanceGTID)用于开启云数据库实例的 GTID，只支持版本为 5.6 以及以上的实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) OpenDBInstanceGTID(request *OpenDBInstanceGTIDRequest) (response *OpenDBInstanceGTIDResponse, err error) {
     if request == nil {
         request = NewOpenDBInstanceGTIDRequest()
@@ -2590,9 +3742,21 @@ func NewOpenWanServiceResponse() (response *OpenWanServiceResponse) {
     return
 }
 
+// OpenWanService
 // 本接口(OpenWanService)用于开通实例外网访问。
+//
 // 
+//
 // 注意，实例开通外网访问之前，需要先将实例进行 [实例初始化](https://cloud.tencent.com/document/api/236/15873) 操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) OpenWanService(request *OpenWanServiceRequest) (response *OpenWanServiceResponse, err error) {
     if request == nil {
         request = NewOpenWanServiceRequest()
@@ -2617,7 +3781,15 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
     return
 }
 
+// ReleaseIsolatedDBInstances
 // 本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesRequest) (response *ReleaseIsolatedDBInstancesResponse, err error) {
     if request == nil {
         request = NewReleaseIsolatedDBInstancesRequest()
@@ -2642,7 +3814,17 @@ func NewRenewDBInstanceResponse() (response *RenewDBInstanceResponse) {
     return
 }
 
+// RenewDBInstance
 // 本接口(RenewDBInstance)用于续费云数据库实例，支持付费模式为包年包月的实例。按量计费实例可通过该接口续费为包年包月的实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) RenewDBInstance(request *RenewDBInstanceRequest) (response *RenewDBInstanceResponse, err error) {
     if request == nil {
         request = NewRenewDBInstanceRequest()
@@ -2667,11 +3849,24 @@ func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
     return
 }
 
+// RestartDBInstances
 // 本接口(RestartDBInstances)用于重启云数据库实例。
+//
 // 
+//
 // 注意：
+//
 // 1、本接口只支持主实例进行重启操作；
+//
 // 2、实例状态必须为正常，并且没有其他异步任务在执行中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
     if request == nil {
         request = NewRestartDBInstancesRequest()
@@ -2696,7 +3891,18 @@ func NewStartBatchRollbackResponse() (response *StartBatchRollbackResponse) {
     return
 }
 
+// StartBatchRollback
 // 该接口（StartBatchRollback）用于批量回档云数据库实例的库表。
+//
+// 可能返回的错误码:
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+//  OVERQUOTA = "OverQuota"
 func (c *Client) StartBatchRollback(request *StartBatchRollbackRequest) (response *StartBatchRollbackResponse, err error) {
     if request == nil {
         request = NewStartBatchRollbackRequest()
@@ -2721,7 +3927,19 @@ func NewStartDelayReplicationResponse() (response *StartDelayReplicationResponse
     return
 }
 
+// StartDelayReplication
 // 启动延迟只读实例的延迟复制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
+//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
+//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
+//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
+//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) StartDelayReplication(request *StartDelayReplicationRequest) (response *StartDelayReplicationResponse, err error) {
     if request == nil {
         request = NewStartDelayReplicationRequest()
@@ -2746,7 +3964,14 @@ func NewStopDBImportJobResponse() (response *StopDBImportJobResponse) {
     return
 }
 
+// StopDBImportJob
 // 本接口(StopDBImportJob)用于终止数据导入任务。
+//
+// 可能返回的错误码:
+//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
+//  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDASYNCREQUESTID = "InvalidParameter.InvalidAsyncRequestId"
 func (c *Client) StopDBImportJob(request *StopDBImportJobRequest) (response *StopDBImportJobResponse, err error) {
     if request == nil {
         request = NewStopDBImportJobRequest()
@@ -2771,7 +3996,18 @@ func NewStopDelayReplicationResponse() (response *StopDelayReplicationResponse) 
     return
 }
 
+// StopDelayReplication
 // 停止延迟只读实例的延迟复制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
+//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
+//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
+//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
+//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
 func (c *Client) StopDelayReplication(request *StopDelayReplicationRequest) (response *StopDelayReplicationResponse, err error) {
     if request == nil {
         request = NewStopDelayReplicationRequest()
@@ -2796,7 +4032,17 @@ func NewStopRollbackResponse() (response *StopRollbackResponse) {
     return
 }
 
+// StopRollback
 // 本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeAsyncRequestInfo 查询任务的执行情况。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) StopRollback(request *StopRollbackRequest) (response *StopRollbackResponse, err error) {
     if request == nil {
         request = NewStopRollbackRequest()
@@ -2821,7 +4067,15 @@ func NewSwitchDBInstanceMasterSlaveResponse() (response *SwitchDBInstanceMasterS
     return
 }
 
+// SwitchDBInstanceMasterSlave
 // 该接口 (SwitchDBInstanceMasterSlave) 支持用户主动切换实例主从角色。
+//
+// 可能返回的错误码:
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) SwitchDBInstanceMasterSlave(request *SwitchDBInstanceMasterSlaveRequest) (response *SwitchDBInstanceMasterSlaveResponse, err error) {
     if request == nil {
         request = NewSwitchDBInstanceMasterSlaveRequest()
@@ -2846,7 +4100,14 @@ func NewSwitchDrInstanceToMasterResponse() (response *SwitchDrInstanceToMasterRe
     return
 }
 
+// SwitchDrInstanceToMaster
 // 本接口(SwitchDrInstanceToMaster)用于将云数据库灾备实例切换为主实例，注意请求必须发到灾备实例所在的地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) SwitchDrInstanceToMaster(request *SwitchDrInstanceToMasterRequest) (response *SwitchDrInstanceToMasterResponse, err error) {
     if request == nil {
         request = NewSwitchDrInstanceToMasterRequest()
@@ -2871,7 +4132,14 @@ func NewSwitchForUpgradeResponse() (response *SwitchForUpgradeResponse) {
     return
 }
 
+// SwitchForUpgrade
 // 本接口(SwitchForUpgrade)用于切换访问新实例，针对主升级中的实例处于待切换状态时，用户可主动发起该流程。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) SwitchForUpgrade(request *SwitchForUpgradeRequest) (response *SwitchForUpgradeResponse, err error) {
     if request == nil {
         request = NewSwitchForUpgradeRequest()
@@ -2896,7 +4164,18 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
     return
 }
 
+// UpgradeDBInstance
 // 本接口(UpgradeDBInstance)用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
     if request == nil {
         request = NewUpgradeDBInstanceRequest()
@@ -2921,7 +4200,16 @@ func NewUpgradeDBInstanceEngineVersionResponse() (response *UpgradeDBInstanceEng
     return
 }
 
+// UpgradeDBInstanceEngineVersion
 // 本接口(UpgradeDBInstanceEngineVersion)用于升级云数据库实例版本，实例类型支持主实例、灾备实例和只读实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceEngineVersionRequest) (response *UpgradeDBInstanceEngineVersionResponse, err error) {
     if request == nil {
         request = NewUpgradeDBInstanceEngineVersionRequest()
@@ -2946,7 +4234,38 @@ func NewVerifyRootAccountResponse() (response *VerifyRootAccountResponse) {
     return
 }
 
+// VerifyRootAccount
 // 本接口(VerifyRootAccount)用于校验云数据库实例的 ROOT 账号是否有足够的权限进行授权操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
+//  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
+//  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
+//  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPASSWORDERROR = "InvalidParameterValue.VerifyAccountPasswordError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTPRIVERROR = "InvalidParameterValue.VerifyAccountPrivError"
+//  MISSINGPARAMETER_ACCOUNTMISSINGPARAMETERERROR = "MissingParameter.AccountMissingParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DELETEROOTACCOUNTERROR = "OperationDenied.DeleteRootAccountError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) VerifyRootAccount(request *VerifyRootAccountRequest) (response *VerifyRootAccountResponse, err error) {
     if request == nil {
         request = NewVerifyRootAccountRequest()

@@ -58,7 +58,12 @@ func NewDescribeAssetDetailResponse() (response *DescribeAssetDetailResponse) {
     return
 }
 
+// DescribeAssetDetail
 // 资产安全页资产详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (response *DescribeAssetDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAssetDetailRequest()
@@ -83,7 +88,13 @@ func NewDescribeAssetListResponse() (response *DescribeAssetListResponse) {
     return
 }
 
+// DescribeAssetList
 // 资产安全资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAssetList(request *DescribeAssetListRequest) (response *DescribeAssetListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetListRequest()
@@ -108,7 +119,13 @@ func NewDescribeAssetsMappingListResponse() (response *DescribeAssetsMappingList
     return
 }
 
+// DescribeAssetsMappingList
 // 资产测绘-测绘列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetsMappingListRequest()
@@ -133,7 +150,13 @@ func NewDescribeCheckConfigAssetListResponse() (response *DescribeCheckConfigAss
     return
 }
 
+// DescribeCheckConfigAssetList
 // 云安全配置管理资产组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCheckConfigAssetList(request *DescribeCheckConfigAssetListRequest) (response *DescribeCheckConfigAssetListResponse, err error) {
     if request == nil {
         request = NewDescribeCheckConfigAssetListRequest()
@@ -158,7 +181,13 @@ func NewDescribeCheckConfigDetailResponse() (response *DescribeCheckConfigDetail
     return
 }
 
+// DescribeCheckConfigDetail
 // 云安全配置检查项详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailRequest) (response *DescribeCheckConfigDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCheckConfigDetailRequest()
@@ -183,7 +212,12 @@ func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAsset
     return
 }
 
+// DescribeComplianceAssetList
 // 合规管理-资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
@@ -208,7 +242,13 @@ func NewDescribeComplianceDetailResponse() (response *DescribeComplianceDetailRe
     return
 }
 
+// DescribeComplianceDetail
 // 合规管理检查项详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceDetail(request *DescribeComplianceDetailRequest) (response *DescribeComplianceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeComplianceDetailRequest()
@@ -233,7 +273,14 @@ func NewDescribeComplianceListResponse() (response *DescribeComplianceListRespon
     return
 }
 
+// DescribeComplianceList
 // 合规管理总览页检查项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceList(request *DescribeComplianceListRequest) (response *DescribeComplianceListResponse, err error) {
     if request == nil {
         request = NewDescribeComplianceListRequest()
@@ -258,7 +305,12 @@ func NewDescribeConfigListResponse() (response *DescribeConfigListResponse) {
     return
 }
 
+// DescribeConfigList
 // 云配置检查项总览页检查项列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConfigList(request *DescribeConfigListRequest) (response *DescribeConfigListResponse, err error) {
     if request == nil {
         request = NewDescribeConfigListRequest()
@@ -283,7 +335,11 @@ func NewDescribeEventDetailResponse() (response *DescribeEventDetailResponse) {
     return
 }
 
+// DescribeEventDetail
 // 获取安全事件详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (response *DescribeEventDetailResponse, err error) {
     if request == nil {
         request = NewDescribeEventDetailRequest()
@@ -308,7 +364,12 @@ func NewDescribeLeakDetectionListResponse() (response *DescribeLeakDetectionList
     return
 }
 
+// DescribeLeakDetectionList
 // 获取泄露列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeLeakDetectionList(request *DescribeLeakDetectionListRequest) (response *DescribeLeakDetectionListResponse, err error) {
     if request == nil {
         request = NewDescribeLeakDetectionListRequest()
@@ -333,7 +394,13 @@ func NewDescribeSafetyEventListResponse() (response *DescribeSafetyEventListResp
     return
 }
 
+// DescribeSafetyEventList
 // 获取安全事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest) (response *DescribeSafetyEventListResponse, err error) {
     if request == nil {
         request = NewDescribeSafetyEventListRequest()
@@ -358,7 +425,11 @@ func NewDescribeVulDetailResponse() (response *DescribeVulDetailResponse) {
     return
 }
 
+// DescribeVulDetail
 // 漏洞列表页，获取漏洞详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeVulDetail(request *DescribeVulDetailRequest) (response *DescribeVulDetailResponse, err error) {
     if request == nil {
         request = NewDescribeVulDetailRequest()
@@ -383,7 +454,13 @@ func NewDescribeVulListResponse() (response *DescribeVulListResponse) {
     return
 }
 
+// DescribeVulList
 // 漏洞管理页，获取漏洞列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *DescribeVulListResponse, err error) {
     if request == nil {
         request = NewDescribeVulListRequest()
@@ -408,7 +485,13 @@ func NewSaDivulgeDataQueryPubResponse() (response *SaDivulgeDataQueryPubResponse
     return
 }
 
+// SaDivulgeDataQueryPub
 // 查询【通用字段】【泄露监测数据列表】
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) SaDivulgeDataQueryPub(request *SaDivulgeDataQueryPubRequest) (response *SaDivulgeDataQueryPubResponse, err error) {
     if request == nil {
         request = NewSaDivulgeDataQueryPubRequest()

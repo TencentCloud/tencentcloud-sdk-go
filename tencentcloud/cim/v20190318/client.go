@@ -58,7 +58,13 @@ func NewDescribeSdkAppidResponse() (response *DescribeSdkAppidResponse) {
     return
 }
 
+// DescribeSdkAppid
 // 获取云通信IM中腾讯云账号对应的SDKAppID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *DescribeSdkAppidResponse, err error) {
     if request == nil {
         request = NewDescribeSdkAppidRequest()

@@ -58,7 +58,17 @@ func NewTextProcessResponse() (response *TextProcessResponse) {
     return
 }
 
+// TextProcess
 // 接收调用侧的文本输入，返回应答文本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcessResponse, err error) {
     if request == nil {
         request = NewTextProcessRequest()
@@ -83,7 +93,17 @@ func NewTextResetResponse() (response *TextResetResponse) {
     return
 }
 
+// TextReset
 // 会话重置接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
     if request == nil {
         request = NewTextResetRequest()

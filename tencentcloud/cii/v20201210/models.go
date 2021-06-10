@@ -77,7 +77,7 @@ func (r *CreateStructureTaskRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStructureTaskRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -115,7 +115,7 @@ func (r *CreateStructureTaskResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStructureTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -133,7 +133,7 @@ func (r *DescribeStructCompareDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStructCompareDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -191,7 +191,7 @@ func (r *DescribeStructCompareDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStructCompareDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -209,7 +209,7 @@ func (r *DescribeStructureTaskResultRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStructureTaskResultRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -247,7 +247,7 @@ func (r *DescribeStructureTaskResultResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

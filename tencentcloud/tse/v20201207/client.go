@@ -58,7 +58,11 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     return
 }
 
+// DescribeConfig
 // 查看配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeConfigRequest()
@@ -83,7 +87,13 @@ func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanc
     return
 }
 
+// DescribeSREInstanceAccessAddress
 // 查询微服务注册引擎实例访问地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAccessAddressRequest) (response *DescribeSREInstanceAccessAddressResponse, err error) {
     if request == nil {
         request = NewDescribeSREInstanceAccessAddressRequest()
@@ -108,7 +118,13 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
     return
 }
 
+// DescribeSREInstances
 // 用于查询微服务注册中心实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeSREInstancesRequest()
@@ -133,7 +149,12 @@ func NewManageConfigResponse() (response *ManageConfigResponse) {
     return
 }
 
+// ManageConfig
 // 管理配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_KEYNOTEXIST = "InvalidParameterValue.KeyNotExist"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 func (c *Client) ManageConfig(request *ManageConfigRequest) (response *ManageConfigResponse, err error) {
     if request == nil {
         request = NewManageConfigRequest()

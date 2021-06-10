@@ -58,7 +58,37 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
     return
 }
 
+// AssociateSecurityGroups
 // 本接口 (AssociateSecurityGroups) 用于安全组批量绑定云资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
+//  FAILEDOPERATION_ASSOCIATESECURITYGROUPSFAILED = "FailedOperation.AssociateSecurityGroupsFailed"
+//  FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
+//  FAILEDOPERATION_CLEARINSTANCEINFOFAILED = "FailedOperation.ClearInstanceInfoFailed"
+//  FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
+//  FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
+//  FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
+//  INTERNALERROR_DBROWSAFFECTEDERROR = "InternalError.DBRowsAffectedError"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  INTERNALERROR_GETUSGQUOTAERROR = "InternalError.GetUsgQuotaError"
+//  INTERNALERROR_INSERTFAIL = "InternalError.InsertFail"
+//  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+//  INTERNALERROR_INSTANCESGOVERLIMITERROR = "InternalError.InstanceSGOverLimitError"
+//  INTERNALERROR_LISTINSTANCERESPRESOURCECOUNTNOTMATCHERROR = "InternalError.ListInstanceRespResourceCountNotMatchError"
+//  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_READDATABASEFAILED = "InternalError.ReadDatabaseFailed"
+//  INTERNALERROR_SETSVCLOCATIONFAILED = "InternalError.SetSvcLocationFailed"
+//  INTERNALERROR_UPDATEDATABASEFAILED = "InternalError.UpdateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETER_SGCHECKFAIL = "InvalidParameter.SGCheckFail"
+//  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
@@ -83,7 +113,21 @@ func NewCloneAccountResponse() (response *CloneAccountResponse) {
     return
 }
 
+// CloneAccount
 // 本接口（CloneAccount）用于克隆实例账户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = "InvalidParameterValue.AccountAlreadyExists"
+//  INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = "InvalidParameterValue.SuperUserForbidden"
+//  RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = "ResourceNotFound.AccountDoesNotExist"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
 func (c *Client) CloneAccount(request *CloneAccountRequest) (response *CloneAccountResponse, err error) {
     if request == nil {
         request = NewCloneAccountRequest()
@@ -108,7 +152,18 @@ func NewCloseDBExtranetAccessResponse() (response *CloseDBExtranetAccessResponse
     return
 }
 
+// CloseDBExtranetAccess
 // 本接口(CloseDBExtranetAccess)用于关闭云数据库实例的外网访问。关闭外网访问后，外网地址将不可访问，查询实例列表接口将不返回对应实例的外网域名和端口信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CloseDBExtranetAccess(request *CloseDBExtranetAccessRequest) (response *CloseDBExtranetAccessResponse, err error) {
     if request == nil {
         request = NewCloseDBExtranetAccessRequest()
@@ -133,8 +188,21 @@ func NewCopyAccountPrivilegesResponse() (response *CopyAccountPrivilegesResponse
     return
 }
 
+// CopyAccountPrivileges
 // 本接口（CopyAccountPrivileges）用于复制云数据库账号的权限。
+//
 // 注意：相同用户名，不同Host是不同的账号，Readonly属性相同的账号之间才能复制权限。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COPYRIGHTERROR = "FailedOperation.CopyRightError"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_BADUSERTYPE = "InvalidParameterValue.BadUserType"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CopyAccountPrivileges(request *CopyAccountPrivilegesRequest) (response *CopyAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewCopyAccountPrivilegesRequest()
@@ -159,7 +227,24 @@ func NewCreateAccountResponse() (response *CreateAccountResponse) {
     return
 }
 
+// CreateAccount
 // 本接口（CreateAccount）用于创建云数据库账号。一个实例可以创建多个不同的账号，相同的用户名+不同的host是不同的账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEUSERFAILED = "FailedOperation.CreateUserFailed"
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER_CHARACTERERROR = "InvalidParameter.CharacterError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = "InvalidParameterValue.AccountAlreadyExists"
+//  INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = "InvalidParameterValue.SuperUserForbidden"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_OLDPROXYVERSION = "UnsupportedOperation.OldProxyVersion"
 func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
     if request == nil {
         request = NewCreateAccountRequest()
@@ -184,7 +269,25 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
     return
 }
 
+// CreateDBInstance
 // 本接口（CreateDBInstance）用于创建包年包月的云数据库实例，可通过传入实例规格、数据库版本号、购买时长和数量等信息创建云数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
+//  FAILEDOPERATION_TAGDRYRUNERROR = "FailedOperation.TagDryRunError"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_SUBNETNOTFOUND = "InvalidParameter.SubnetNotFound"
+//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALCOUNT = "InvalidParameterValue.IllegalCount"
+//  INVALIDPARAMETERVALUE_ILLEGALQUANTITY = "InvalidParameterValue.IllegalQuantity"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -209,7 +312,23 @@ func NewCreateTmpInstancesResponse() (response *CreateTmpInstancesResponse) {
     return
 }
 
+// CreateTmpInstances
 // 本接口（CreateTmpInstances）用于创建临时实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_RETREATETIME = "InternalError.RetreateTime"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCEINUSE_TEMPINSTANCEEXIST = "ResourceInUse.TempInstanceExist"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateTmpInstances(request *CreateTmpInstancesRequest) (response *CreateTmpInstancesResponse, err error) {
     if request == nil {
         request = NewCreateTmpInstancesRequest()
@@ -234,7 +353,19 @@ func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
     return
 }
 
+// DeleteAccount
 // 本接口（DeleteAccount）用于删除云数据库账号。用户名+host唯一确定一个账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEUSERFAILED = "FailedOperation.DeleteUserFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = "InvalidParameterValue.SuperUserForbidden"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
     if request == nil {
         request = NewDeleteAccountRequest()
@@ -259,8 +390,19 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
     return
 }
 
+// DescribeAccountPrivileges
 // 本接口（DescribeAccountPrivileges）用于查询云数据库账号权限。
+//
 // 注意：注意：相同用户名，不同Host是不同的账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETRIGHTFAILED = "InternalError.GetRightFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewDescribeAccountPrivilegesRequest()
@@ -285,7 +427,17 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     return
 }
 
+// DescribeAccounts
 // 本接口（DescribeAccounts）用于查询指定云数据库实例的账号列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountsRequest()
@@ -310,7 +462,17 @@ func NewDescribeBackupTimeResponse() (response *DescribeBackupTimeResponse) {
     return
 }
 
+// DescribeBackupTime
 // 本接口（DescribeBackupTime）用于获取云数据库的备份时间。后台系统将根据此配置定期进行实例备份。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupTime(request *DescribeBackupTimeRequest) (response *DescribeBackupTimeResponse, err error) {
     if request == nil {
         request = NewDescribeBackupTimeRequest()
@@ -335,7 +497,14 @@ func NewDescribeDBInstanceSpecsResponse() (response *DescribeDBInstanceSpecsResp
     return
 }
 
+// DescribeDBInstanceSpecs
 // 本接口(DescribeDBInstanceSpecs)用于查询可创建的云数据库可售卖的规格配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstanceSpecs(request *DescribeDBInstanceSpecsRequest) (response *DescribeDBInstanceSpecsResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceSpecsRequest()
@@ -360,8 +529,21 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     return
 }
 
+// DescribeDBInstances
 // 本接口（DescribeDBInstances）用于查询云数据库实例列表，支持通过项目ID、实例ID、内网地址、实例名称等来筛选实例。
+//
 // 如果不指定任何筛选条件，则默认返回20条实例记录，单次请求最多支持返回100条实例记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_SUBNETNOTFOUND = "InvalidParameter.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstancesRequest()
@@ -386,7 +568,22 @@ func NewDescribeDBLogFilesResponse() (response *DescribeDBLogFilesResponse) {
     return
 }
 
+// DescribeDBLogFiles
 // 本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_COSCONFIGURATION = "InternalError.CosConfiguration"
+//  INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INTERNALERROR_HDFSERROR = "InternalError.HDFSError"
+//  INTERNALERROR_INNERCONFIGURATIONMISSING = "InternalError.InnerConfigurationMissing"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_COSAPIFAILED = "ResourceUnavailable.CosApiFailed"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBLogFiles(request *DescribeDBLogFilesRequest) (response *DescribeDBLogFilesResponse, err error) {
     if request == nil {
         request = NewDescribeDBLogFilesRequest()
@@ -411,7 +608,18 @@ func NewDescribeDBParametersResponse() (response *DescribeDBParametersResponse) 
     return
 }
 
+// DescribeDBParameters
 // 本接口(DescribeDBParameters)用于获取数据库的当前参数设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETDBCONFIGFAILED = "InternalError.GetDbConfigFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBParameters(request *DescribeDBParametersRequest) (response *DescribeDBParametersResponse, err error) {
     if request == nil {
         request = NewDescribeDBParametersRequest()
@@ -436,7 +644,20 @@ func NewDescribeDBPerformanceResponse() (response *DescribeDBPerformanceResponse
     return
 }
 
+// DescribeDBPerformance
 // 本接口(DescribeDBPerformance)用于查看数据库实例当前性能数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBPerformance(request *DescribeDBPerformanceRequest) (response *DescribeDBPerformanceResponse, err error) {
     if request == nil {
         request = NewDescribeDBPerformanceRequest()
@@ -461,7 +682,18 @@ func NewDescribeDBPerformanceDetailsResponse() (response *DescribeDBPerformanceD
     return
 }
 
+// DescribeDBPerformanceDetails
 // 本接口(DescribeDBPerformanceDetails)用于查看实例性能数据详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBPerformanceDetails(request *DescribeDBPerformanceDetailsRequest) (response *DescribeDBPerformanceDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeDBPerformanceDetailsRequest()
@@ -486,7 +718,20 @@ func NewDescribeDBResourceUsageResponse() (response *DescribeDBResourceUsageResp
     return
 }
 
+// DescribeDBResourceUsage
 // 本接口(DescribeDBResourceUsage)用于查看数据库实例资源的使用情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBResourceUsage(request *DescribeDBResourceUsageRequest) (response *DescribeDBResourceUsageResponse, err error) {
     if request == nil {
         request = NewDescribeDBResourceUsageRequest()
@@ -511,7 +756,18 @@ func NewDescribeDBResourceUsageDetailsResponse() (response *DescribeDBResourceUs
     return
 }
 
+// DescribeDBResourceUsageDetails
 // 本接口(DescribeDBResourceUsageDetails)用于查看数据库实例当前性能数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBResourceUsageDetails(request *DescribeDBResourceUsageDetailsRequest) (response *DescribeDBResourceUsageDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeDBResourceUsageDetailsRequest()
@@ -536,7 +792,26 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
     return
 }
 
+// DescribeDBSecurityGroups
 // 本接口（DescribeDBSecurityGroups）用于查询实例安全组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+//  INTERNALERROR_LISTINSTANCERESPRESOURCECOUNTNOTMATCHERROR = "InternalError.ListInstanceRespResourceCountNotMatchError"
+//  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_READDATABASEFAILED = "InternalError.ReadDatabaseFailed"
+//  INTERNALERROR_ROUTENOTFOUND = "InternalError.RouteNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
@@ -561,7 +836,20 @@ func NewDescribeDBSlowLogsResponse() (response *DescribeDBSlowLogsResponse) {
     return
 }
 
+// DescribeDBSlowLogs
 // 本接口(DescribeDBSlowLogs)用于查询慢查询日志列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INTERNALERROR_GETSLOWLOGFAILED = "InternalError.GetSlowLogFailed"
+//  INTERNALERROR_LOGDBFAILED = "InternalError.LogDBFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_ILLEGALTIME = "InvalidParameter.IllegalTime"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBSlowLogs(request *DescribeDBSlowLogsRequest) (response *DescribeDBSlowLogsResponse, err error) {
     if request == nil {
         request = NewDescribeDBSlowLogsRequest()
@@ -586,7 +874,14 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
     return
 }
 
+// DescribeDatabases
 // 本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETDBLISTFAILED = "InternalError.GetDbListFailed"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
     if request == nil {
         request = NewDescribeDatabasesRequest()
@@ -611,7 +906,14 @@ func NewDescribeDcnDetailResponse() (response *DescribeDcnDetailResponse) {
     return
 }
 
+// DescribeDcnDetail
 // 获取实例灾备详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response *DescribeDcnDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDcnDetailRequest()
@@ -636,7 +938,15 @@ func NewDescribeFlowResponse() (response *DescribeFlowResponse) {
     return
 }
 
+// DescribeFlow
 // 本接口（DescribeFlow）用于查询流程状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_FLOWNOTFOUND = "InvalidParameter.FlowNotFound"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
     if request == nil {
         request = NewDescribeFlowRequest()
@@ -661,7 +971,13 @@ func NewDescribeInstanceNodeInfoResponse() (response *DescribeInstanceNodeInfoRe
     return
 }
 
+// DescribeInstanceNodeInfo
 // 本接口（DescribeInstanceNodeInfo）用于获取数据库实例主备节点信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) DescribeInstanceNodeInfo(request *DescribeInstanceNodeInfoRequest) (response *DescribeInstanceNodeInfoResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceNodeInfoRequest()
@@ -686,7 +1002,17 @@ func NewDescribeLogFileRetentionPeriodResponse() (response *DescribeLogFileReten
     return
 }
 
+// DescribeLogFileRetentionPeriod
 // 本接口(DescribeLogFileRetentionPeriod)用于查看数据库备份日志的备份天数的设置情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeLogFileRetentionPeriod(request *DescribeLogFileRetentionPeriodRequest) (response *DescribeLogFileRetentionPeriodResponse, err error) {
     if request == nil {
         request = NewDescribeLogFileRetentionPeriodRequest()
@@ -711,7 +1037,15 @@ func NewDescribeOrdersResponse() (response *DescribeOrdersResponse) {
     return
 }
 
+// DescribeOrders
 // 本接口（DescribeOrders）用于查询云数据库订单信息。传入订单ID来查询订单关联的云数据库实例，和对应的任务流程ID。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_QUERYORDERFAILED = "InternalError.QueryOrderFailed"
+//  INVALIDPARAMETER_DEALNAMENOTGIVEN = "InvalidParameter.DealNameNotGiven"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeOrders(request *DescribeOrdersRequest) (response *DescribeOrdersResponse, err error) {
     if request == nil {
         request = NewDescribeOrdersRequest()
@@ -736,7 +1070,18 @@ func NewDescribePriceResponse() (response *DescribePriceResponse) {
     return
 }
 
+// DescribePrice
 // 本接口（DescribePrice）用于在购买实例前，查询实例的价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALCOUNT = "InvalidParameterValue.IllegalCount"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribePrice(request *DescribePriceRequest) (response *DescribePriceResponse, err error) {
     if request == nil {
         request = NewDescribePriceRequest()
@@ -761,7 +1106,12 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
     return
 }
 
+// DescribeProjectSecurityGroups
 // 本接口（DescribeProjectSecurityGroups）用于查询项目安全组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
@@ -786,7 +1136,16 @@ func NewDescribeRenewalPriceResponse() (response *DescribeRenewalPriceResponse) 
     return
 }
 
+// DescribeRenewalPrice
 // 本接口（DescribeRenewalPrice）用于在续费云数据库实例时，查询续费的价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest) (response *DescribeRenewalPriceResponse, err error) {
     if request == nil {
         request = NewDescribeRenewalPriceRequest()
@@ -811,7 +1170,14 @@ func NewDescribeSaleInfoResponse() (response *DescribeSaleInfoResponse) {
     return
 }
 
+// DescribeSaleInfo
 // 本接口(DescribeSaleInfo)用于查询云数据库可售卖的地域和可用区信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeSaleInfo(request *DescribeSaleInfoRequest) (response *DescribeSaleInfoResponse, err error) {
     if request == nil {
         request = NewDescribeSaleInfoRequest()
@@ -836,7 +1202,16 @@ func NewDescribeSqlLogsResponse() (response *DescribeSqlLogsResponse) {
     return
 }
 
+// DescribeSqlLogs
 // 本接口（DescribeSqlLogs）用于获取实例SQL日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MSGQUEUEOPERATIONFAILED = "FailedOperation.MsgQueueOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *DescribeSqlLogsResponse, err error) {
     if request == nil {
         request = NewDescribeSqlLogsRequest()
@@ -861,7 +1236,18 @@ func NewDescribeUpgradePriceResponse() (response *DescribeUpgradePriceResponse) 
     return
 }
 
+// DescribeUpgradePrice
 // 本接口（DescribeUpgradePrice）用于在扩容云数据库实例时，查询扩容的价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeUpgradePrice(request *DescribeUpgradePriceRequest) (response *DescribeUpgradePriceResponse, err error) {
     if request == nil {
         request = NewDescribeUpgradePriceRequest()
@@ -886,7 +1272,17 @@ func NewDestroyHourDBInstanceResponse() (response *DestroyHourDBInstanceResponse
     return
 }
 
+// DestroyHourDBInstance
 // 本接口（DestroyHourDBInstance）用于销毁按量计费实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DestroyHourDBInstance(request *DestroyHourDBInstanceRequest) (response *DestroyHourDBInstanceResponse, err error) {
     if request == nil {
         request = NewDestroyHourDBInstanceRequest()
@@ -911,7 +1307,27 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
     return
 }
 
+// DisassociateSecurityGroups
 // 本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
+//  FAILEDOPERATION_ASSOCIATESECURITYGROUPSFAILED = "FailedOperation.AssociateSecurityGroupsFailed"
+//  FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
+//  FAILEDOPERATION_CLEARINSTANCEINFOFAILED = "FailedOperation.ClearInstanceInfoFailed"
+//  FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
+//  FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
+//  FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
+//  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_READDATABASEFAILED = "InternalError.ReadDatabaseFailed"
+//  INTERNALERROR_ROUTENOTFOUND = "InternalError.RouteNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
@@ -936,7 +1352,19 @@ func NewFlushBinlogResponse() (response *FlushBinlogResponse) {
     return
 }
 
+// FlushBinlog
 // 相当于在mysqld中执行flush logs，完成切分的binlog将展示在实例控制台binlog列表里。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  LIMITEXCEEDED_TOOFREQUENTLYCALLED = "LimitExceeded.TooFrequentlyCalled"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) FlushBinlog(request *FlushBinlogRequest) (response *FlushBinlogResponse, err error) {
     if request == nil {
         request = NewFlushBinlogRequest()
@@ -961,8 +1389,25 @@ func NewGrantAccountPrivilegesResponse() (response *GrantAccountPrivilegesRespon
     return
 }
 
+// GrantAccountPrivileges
 // 本接口（GrantAccountPrivileges）用于给云数据库账号赋权。
+//
 // 注意：相同用户名，不同Host是不同的账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYRIGHTFAILED = "FailedOperation.ModifyRightFailed"
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETRIGHTFAILED = "InternalError.GetRightFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_BADUSERRIGHT = "InvalidParameterValue.BadUserRight"
+//  INVALIDPARAMETERVALUE_ILLEGALRIGHTPARAM = "InvalidParameterValue.IllegalRightParam"
+//  INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = "InvalidParameterValue.SuperUserForbidden"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) GrantAccountPrivileges(request *GrantAccountPrivilegesRequest) (response *GrantAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewGrantAccountPrivilegesRequest()
@@ -987,7 +1432,19 @@ func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
     return
 }
 
+// InitDBInstances
 // 本接口(InitDBInstances)用于初始化云数据库实例，包括设置默认字符集、表名大小写敏感等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_ILLEGALINITPARAM = "InvalidParameterValue.IllegalInitParam"
+//  RESOURCEUNAVAILABLE_BADINSTANCESTATUS = "ResourceUnavailable.BadInstanceStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *InitDBInstancesResponse, err error) {
     if request == nil {
         request = NewInitDBInstancesRequest()
@@ -1012,7 +1469,14 @@ func NewKillSessionResponse() (response *KillSessionResponse) {
     return
 }
 
+// KillSession
 // 本接口（KillSession）用于杀死指定会话。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) KillSession(request *KillSessionRequest) (response *KillSessionResponse, err error) {
     if request == nil {
         request = NewKillSessionRequest()
@@ -1037,8 +1501,17 @@ func NewModifyAccountDescriptionResponse() (response *ModifyAccountDescriptionRe
     return
 }
 
+// ModifyAccountDescription
 // 本接口（ModifyAccountDescription）用于修改云数据库账号备注。
+//
 // 注意：相同用户名，不同Host是不同的账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = "ResourceNotFound.AccountDoesNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (response *ModifyAccountDescriptionResponse, err error) {
     if request == nil {
         request = NewModifyAccountDescriptionRequest()
@@ -1063,12 +1536,23 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
     return
 }
 
+// ModifyAccountPrivileges
 // 本接口(ModifyAccountPrivileges)用于修改云数据库的账户的权限信息。
+//
 // 
+//
 // **注意**
+//
 // - 系统保留库："mysql"，只开放["SELECT"]权限
+//
 // - 只读账号授予读写权限会报错
+//
 // - 不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
     if request == nil {
         request = NewModifyAccountPrivilegesRequest()
@@ -1093,7 +1577,17 @@ func NewModifyBackupTimeResponse() (response *ModifyBackupTimeResponse) {
     return
 }
 
+// ModifyBackupTime
 // 本接口（ModifyBackupTime）用于设置云数据库实例的备份时间。后台系统将根据此配置定期进行实例备份。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyBackupTime(request *ModifyBackupTimeRequest) (response *ModifyBackupTimeResponse, err error) {
     if request == nil {
         request = NewModifyBackupTimeRequest()
@@ -1118,7 +1612,17 @@ func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) 
     return
 }
 
+// ModifyDBInstanceName
 // 本接口（ModifyDBInstanceName）用于修改云数据库实例的名称。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = "InvalidParameterValue.InstanceNameIllegal"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceNameRequest()
@@ -1143,7 +1647,31 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
     return
 }
 
+// ModifyDBInstanceSecurityGroups
 // 本接口（ModifyDBInstanceSecurityGroups）用于修改云数据库安全组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
+//  FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
+//  FAILEDOPERATION_CLEARINSTANCEINFOFAILED = "FailedOperation.ClearInstanceInfoFailed"
+//  FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
+//  FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
+//  FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+//  INTERNALERROR_INSTANCESGOVERLIMITERROR = "InternalError.InstanceSGOverLimitError"
+//  INTERNALERROR_LISTINSTANCERESPRESOURCECOUNTNOTMATCHERROR = "InternalError.ListInstanceRespResourceCountNotMatchError"
+//  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_READDATABASEFAILED = "InternalError.ReadDatabaseFailed"
+//  INTERNALERROR_SETSVCLOCATIONFAILED = "InternalError.SetSvcLocationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
@@ -1168,7 +1696,15 @@ func NewModifyDBInstancesProjectResponse() (response *ModifyDBInstancesProjectRe
     return
 }
 
+// ModifyDBInstancesProject
 // 本接口（ModifyDBInstancesProject）用于修改云数据库实例所属项目。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstancesProject(request *ModifyDBInstancesProjectRequest) (response *ModifyDBInstancesProjectResponse, err error) {
     if request == nil {
         request = NewModifyDBInstancesProjectRequest()
@@ -1193,7 +1729,18 @@ func NewModifyDBParametersResponse() (response *ModifyDBParametersResponse) {
     return
 }
 
+// ModifyDBParameters
 // 本接口(ModifyDBParameters)用于修改数据库参数。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETDBCONFIGFAILED = "InternalError.GetDbConfigFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBParameters(request *ModifyDBParametersRequest) (response *ModifyDBParametersResponse, err error) {
     if request == nil {
         request = NewModifyDBParametersRequest()
@@ -1218,7 +1765,18 @@ func NewModifyLogFileRetentionPeriodResponse() (response *ModifyLogFileRetention
     return
 }
 
+// ModifyLogFileRetentionPeriod
 // 本接口(ModifyLogFileRetentionPeriod)用于修改数据库备份日志保存天数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETERVALUE_ILLEGALLOGSAVEDAYS = "InvalidParameterValue.IllegalLogSaveDays"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyLogFileRetentionPeriod(request *ModifyLogFileRetentionPeriodRequest) (response *ModifyLogFileRetentionPeriodResponse, err error) {
     if request == nil {
         request = NewModifyLogFileRetentionPeriodRequest()
@@ -1243,7 +1801,18 @@ func NewOpenDBExtranetAccessResponse() (response *OpenDBExtranetAccessResponse) 
     return
 }
 
+// OpenDBExtranetAccess
 // 本接口（OpenDBExtranetAccess）用于开通云数据库实例的外网访问。开通外网访问后，您可通过外网域名和端口访问实例，可使用查询实例列表接口获取外网域名和端口信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OpenDBExtranetAccess(request *OpenDBExtranetAccessRequest) (response *OpenDBExtranetAccessResponse, err error) {
     if request == nil {
         request = NewOpenDBExtranetAccessRequest()
@@ -1268,7 +1837,19 @@ func NewRenewDBInstanceResponse() (response *RenewDBInstanceResponse) {
     return
 }
 
+// RenewDBInstance
 // 本接口（RenewDBInstance）用于续费云数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RenewDBInstance(request *RenewDBInstanceRequest) (response *RenewDBInstanceResponse, err error) {
     if request == nil {
         request = NewRenewDBInstanceRequest()
@@ -1293,8 +1874,21 @@ func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) 
     return
 }
 
+// ResetAccountPassword
 // 本接口（ResetAccountPassword）用于重置云数据库账号的密码。
+//
 // 注意：相同用户名，不同Host是不同的账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESETPASSWORDFAILED = "FailedOperation.ResetPasswordFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_CHARACTERERROR = "InvalidParameter.CharacterError"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (response *ResetAccountPasswordResponse, err error) {
     if request == nil {
         request = NewResetAccountPasswordRequest()
@@ -1319,7 +1913,16 @@ func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
     return
 }
 
+// RestartDBInstances
 // 本接口（RestartDBInstances）用于重启数据库实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
     if request == nil {
         request = NewRestartDBInstancesRequest()
@@ -1344,7 +1947,18 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
     return
 }
 
+// UpgradeDBInstance
 // 本接口(UpgradeDBInstance)用于扩容云数据库实例。本接口完成下单和支付两个动作，如果发生支付失败的错误，调用用户账户相关接口中的支付订单接口（PayDeals）重新支付即可。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
     if request == nil {
         request = NewUpgradeDBInstanceRequest()

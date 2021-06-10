@@ -58,7 +58,12 @@ func NewAcceptOrganizationInvitationResponse() (response *AcceptOrganizationInvi
     return
 }
 
+// AcceptOrganizationInvitation
 // 接受加入企业组织邀请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INORGANIZATIONALREADY = "FailedOperation.InOrganizationAlready"
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) AcceptOrganizationInvitation(request *AcceptOrganizationInvitationRequest) (response *AcceptOrganizationInvitationResponse, err error) {
     if request == nil {
         request = NewAcceptOrganizationInvitationRequest()
@@ -83,7 +88,15 @@ func NewAddOrganizationNodeResponse() (response *AddOrganizationNodeResponse) {
     return
 }
 
+// AddOrganizationNode
 // 添加企业组织单元
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
+//  LIMITEXCEEDED_NODEEXCEEDLIMIT = "LimitExceeded.NodeExceedLimit"
+//  RESOURCEINUSE_NODENAME = "ResourceInUse.NodeName"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) AddOrganizationNode(request *AddOrganizationNodeRequest) (response *AddOrganizationNodeResponse, err error) {
     if request == nil {
         request = NewAddOrganizationNodeRequest()
@@ -108,7 +121,11 @@ func NewCancelOrganizationInvitationResponse() (response *CancelOrganizationInvi
     return
 }
 
+// CancelOrganizationInvitation
 // 取消企业组织邀请
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) CancelOrganizationInvitation(request *CancelOrganizationInvitationRequest) (response *CancelOrganizationInvitationResponse, err error) {
     if request == nil {
         request = NewCancelOrganizationInvitationRequest()
@@ -133,7 +150,12 @@ func NewCreateOrganizationResponse() (response *CreateOrganizationResponse) {
     return
 }
 
+// CreateOrganization
 // 创建企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONEXISTALREADY = "FailedOperation.OrganizationExistAlready"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (response *CreateOrganizationResponse, err error) {
     if request == nil {
         request = NewCreateOrganizationRequest()
@@ -158,7 +180,13 @@ func NewDeleteOrganizationResponse() (response *DeleteOrganizationResponse) {
     return
 }
 
+// DeleteOrganization
 // 删除企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONNOTEMPTY = "FailedOperation.OrganizationNotEmpty"
+//  FAILEDOPERATION_SHAREUNITNOTEMPTY = "FailedOperation.ShareUnitNotEmpty"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (response *DeleteOrganizationResponse, err error) {
     if request == nil {
         request = NewDeleteOrganizationRequest()
@@ -183,7 +211,13 @@ func NewDeleteOrganizationMemberFromNodeResponse() (response *DeleteOrganization
     return
 }
 
+// DeleteOrganizationMemberFromNode
 // 删除企业组织成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISABLEDELETEMEMBERFROMROOTNODE = "FailedOperation.DisableDeleteMemberFromRootNode"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationMemberFromNode(request *DeleteOrganizationMemberFromNodeRequest) (response *DeleteOrganizationMemberFromNodeResponse, err error) {
     if request == nil {
         request = NewDeleteOrganizationMemberFromNodeRequest()
@@ -208,7 +242,12 @@ func NewDeleteOrganizationMembersResponse() (response *DeleteOrganizationMembers
     return
 }
 
+// DeleteOrganizationMembers
 // 批量删除企业组织成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUITSHAREUINTERROR = "FailedOperation.QuitShareUintError"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationMembers(request *DeleteOrganizationMembersRequest) (response *DeleteOrganizationMembersResponse, err error) {
     if request == nil {
         request = NewDeleteOrganizationMembersRequest()
@@ -233,7 +272,12 @@ func NewDeleteOrganizationNodesResponse() (response *DeleteOrganizationNodesResp
     return
 }
 
+// DeleteOrganizationNodes
 // 批量删除企业组织单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODENOTEMPTY = "FailedOperation.NodeNotEmpty"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationNodes(request *DeleteOrganizationNodesRequest) (response *DeleteOrganizationNodesResponse, err error) {
     if request == nil {
         request = NewDeleteOrganizationNodesRequest()
@@ -258,7 +302,11 @@ func NewDenyOrganizationInvitationResponse() (response *DenyOrganizationInvitati
     return
 }
 
+// DenyOrganizationInvitation
 // 拒绝企业组织邀请
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) DenyOrganizationInvitation(request *DenyOrganizationInvitationRequest) (response *DenyOrganizationInvitationResponse, err error) {
     if request == nil {
         request = NewDenyOrganizationInvitationRequest()
@@ -283,7 +331,12 @@ func NewGetOrganizationResponse() (response *GetOrganizationResponse) {
     return
 }
 
+// GetOrganization
 // 获取企业组织信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetOrganization(request *GetOrganizationRequest) (response *GetOrganizationResponse, err error) {
     if request == nil {
         request = NewGetOrganizationRequest()
@@ -308,7 +361,12 @@ func NewGetOrganizationMemberResponse() (response *GetOrganizationMemberResponse
     return
 }
 
+// GetOrganizationMember
 // 获取企业组织成员
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) GetOrganizationMember(request *GetOrganizationMemberRequest) (response *GetOrganizationMemberResponse, err error) {
     if request == nil {
         request = NewGetOrganizationMemberRequest()
@@ -333,7 +391,11 @@ func NewListOrganizationInvitationsResponse() (response *ListOrganizationInvitat
     return
 }
 
+// ListOrganizationInvitations
 // 获取邀请信息列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ListOrganizationInvitations(request *ListOrganizationInvitationsRequest) (response *ListOrganizationInvitationsResponse, err error) {
     if request == nil {
         request = NewListOrganizationInvitationsRequest()
@@ -358,7 +420,11 @@ func NewListOrganizationMembersResponse() (response *ListOrganizationMembersResp
     return
 }
 
+// ListOrganizationMembers
 // 获取企业组织成员列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationMembers(request *ListOrganizationMembersRequest) (response *ListOrganizationMembersResponse, err error) {
     if request == nil {
         request = NewListOrganizationMembersRequest()
@@ -383,7 +449,12 @@ func NewListOrganizationNodeMembersResponse() (response *ListOrganizationNodeMem
     return
 }
 
+// ListOrganizationNodeMembers
 // 获取企业组织单元成员列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationNodeMembers(request *ListOrganizationNodeMembersRequest) (response *ListOrganizationNodeMembersResponse, err error) {
     if request == nil {
         request = NewListOrganizationNodeMembersRequest()
@@ -408,7 +479,11 @@ func NewListOrganizationNodesResponse() (response *ListOrganizationNodesResponse
     return
 }
 
+// ListOrganizationNodes
 // 获取企业组织单元列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationNodes(request *ListOrganizationNodesRequest) (response *ListOrganizationNodesResponse, err error) {
     if request == nil {
         request = NewListOrganizationNodesRequest()
@@ -433,7 +508,13 @@ func NewMoveOrganizationMembersToNodeResponse() (response *MoveOrganizationMembe
     return
 }
 
+// MoveOrganizationMembersToNode
 // 移动成员到指定企业组织单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SOMEUINSNOTINORGANIZATION = "FailedOperation.SomeUinsNotInOrganization"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) MoveOrganizationMembersToNode(request *MoveOrganizationMembersToNodeRequest) (response *MoveOrganizationMembersToNodeResponse, err error) {
     if request == nil {
         request = NewMoveOrganizationMembersToNodeRequest()
@@ -458,7 +539,12 @@ func NewQuitOrganizationResponse() (response *QuitOrganizationResponse) {
     return
 }
 
+// QuitOrganization
 // 退出企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) QuitOrganization(request *QuitOrganizationRequest) (response *QuitOrganizationResponse, err error) {
     if request == nil {
         request = NewQuitOrganizationRequest()
@@ -483,7 +569,18 @@ func NewSendOrganizationInvitationResponse() (response *SendOrganizationInvitati
     return
 }
 
+// SendOrganizationInvitation
 // 发送企业组织邀请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERNAMEUSED = "FailedOperation.MemberNameUsed"
+//  FAILEDOPERATION_NOTSAMEREGION = "FailedOperation.NotSameRegion"
+//  FAILEDOPERATION_RESENTINVITATION = "FailedOperation.ReSentInvitation"
+//  FAILEDOPERATION_USERINORGANIZATION = "FailedOperation.UserInOrganization"
+//  FAILEDOPERATION_USERNOTREGISTER = "FailedOperation.UserNotRegister"
+//  LIMITEXCEEDED_MEMBERS = "LimitExceeded.Members"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SendOrganizationInvitation(request *SendOrganizationInvitationRequest) (response *SendOrganizationInvitationResponse, err error) {
     if request == nil {
         request = NewSendOrganizationInvitationRequest()
@@ -508,7 +605,13 @@ func NewUpdateOrganizationMemberResponse() (response *UpdateOrganizationMemberRe
     return
 }
 
+// UpdateOrganizationMember
 // 更新企业成员信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERNAMEUSED = "FailedOperation.MemberNameUsed"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) UpdateOrganizationMember(request *UpdateOrganizationMemberRequest) (response *UpdateOrganizationMemberResponse, err error) {
     if request == nil {
         request = NewUpdateOrganizationMemberRequest()
@@ -533,7 +636,14 @@ func NewUpdateOrganizationNodeResponse() (response *UpdateOrganizationNodeRespon
     return
 }
 
+// UpdateOrganizationNode
 // 更新企业组织单元
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
+//  RESOURCEINUSE_NODENAMEUSED = "ResourceInUse.NodeNameUsed"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) UpdateOrganizationNode(request *UpdateOrganizationNodeRequest) (response *UpdateOrganizationNodeResponse, err error) {
     if request == nil {
         request = NewUpdateOrganizationNodeRequest()

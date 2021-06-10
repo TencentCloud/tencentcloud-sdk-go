@@ -58,7 +58,31 @@ func NewQueryRegisterProtectionResponse() (response *QueryRegisterProtectionResp
     return
 }
 
+// QueryRegisterProtection
 // 注册保护服务（RegisterProtection，RP）针对网站、APP 的线上注册场景，遇到 “恶意注册” 、“小号注册” 、“注册器注册” 等恶意行为，提供基于天御 DNA 算法的恶意防护引擎，从账号、设备、行为三个维度有效识别 “恶意注册”，从“源头”上防范业务风险。  
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryRegisterProtection(request *QueryRegisterProtectionRequest) (response *QueryRegisterProtectionResponse, err error) {
     if request == nil {
         request = NewQueryRegisterProtectionRequest()

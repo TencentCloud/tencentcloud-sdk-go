@@ -58,7 +58,21 @@ func NewDescribeAuthInfoResponse() (response *DescribeAuthInfoResponse) {
     return
 }
 
+// DescribeAuthInfo
 // 获取授权项目信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAuthInfo(request *DescribeAuthInfoRequest) (response *DescribeAuthInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAuthInfoRequest()
@@ -83,7 +97,16 @@ func NewDescribeCloudMusicResponse() (response *DescribeCloudMusicResponse) {
     return
 }
 
+// DescribeCloudMusic
 // 获取云音乐播放信息接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCloudMusic(request *DescribeCloudMusicRequest) (response *DescribeCloudMusicResponse, err error) {
     if request == nil {
         request = NewDescribeCloudMusicRequest()
@@ -108,7 +131,26 @@ func NewDescribeCloudMusicPurchasedResponse() (response *DescribeCloudMusicPurch
     return
 }
 
+// DescribeCloudMusicPurchased
 // 获取授权项目下已购云音乐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudMusicPurchased(request *DescribeCloudMusicPurchasedRequest) (response *DescribeCloudMusicPurchasedResponse, err error) {
     if request == nil {
         request = NewDescribeCloudMusicPurchasedRequest()
@@ -133,7 +175,13 @@ func NewDescribeItemByIdResponse() (response *DescribeItemByIdResponse) {
     return
 }
 
+// DescribeItemById
 // 根据歌曲ID查询歌曲信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeItemById(request *DescribeItemByIdRequest) (response *DescribeItemByIdResponse, err error) {
     if request == nil {
         request = NewDescribeItemByIdRequest()
@@ -158,7 +206,16 @@ func NewDescribeItemsResponse() (response *DescribeItemsResponse) {
     return
 }
 
+// DescribeItems
 // 该服务后续会停用，不再建议使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *DescribeItemsResponse, err error) {
     if request == nil {
         request = NewDescribeItemsRequest()
@@ -183,7 +240,13 @@ func NewDescribeKTVMusicDetailResponse() (response *DescribeKTVMusicDetailRespon
     return
 }
 
+// DescribeKTVMusicDetail
 // 根据 Id 查询歌曲的详细信息，包含基础信息及播放信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
     if request == nil {
         request = NewDescribeKTVMusicDetailRequest()
@@ -208,7 +271,13 @@ func NewDescribeLyricResponse() (response *DescribeLyricResponse) {
     return
 }
 
+// DescribeLyric
 // 根据接口的模式及歌曲ID来取得歌词信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLyric(request *DescribeLyricRequest) (response *DescribeLyricResponse, err error) {
     if request == nil {
         request = NewDescribeLyricRequest()
@@ -233,7 +302,16 @@ func NewDescribeMusicResponse() (response *DescribeMusicResponse) {
     return
 }
 
+// DescribeMusic
 // 获取曲库包歌曲播放信息接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *DescribeMusicResponse, err error) {
     if request == nil {
         request = NewDescribeMusicRequest()
@@ -258,7 +336,17 @@ func NewDescribePackageItemsResponse() (response *DescribePackageItemsResponse) 
     return
 }
 
+// DescribePackageItems
 // 获取曲库包下已核销歌曲列表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (response *DescribePackageItemsResponse, err error) {
     if request == nil {
         request = NewDescribePackageItemsRequest()
@@ -283,7 +371,17 @@ func NewDescribePackagesResponse() (response *DescribePackagesResponse) {
     return
 }
 
+// DescribePackages
 // 获取已购曲库包列表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
     if request == nil {
         request = NewDescribePackagesRequest()
@@ -308,7 +406,16 @@ func NewDescribeStationsResponse() (response *DescribeStationsResponse) {
     return
 }
 
+// DescribeStations
 // 该服务后续会停用，不再建议使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *DescribeStationsResponse, err error) {
     if request == nil {
         request = NewDescribeStationsRequest()
@@ -333,7 +440,20 @@ func NewModifyMusicOnShelvesResponse() (response *ModifyMusicOnShelvesResponse) 
     return
 }
 
+// ModifyMusicOnShelves
 // 根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMusicOnShelves(request *ModifyMusicOnShelvesRequest) (response *ModifyMusicOnShelvesResponse, err error) {
     if request == nil {
         request = NewModifyMusicOnShelvesRequest()
@@ -358,7 +478,20 @@ func NewPutMusicOnTheShelvesResponse() (response *PutMusicOnTheShelvesResponse) 
     return
 }
 
+// PutMusicOnTheShelves
 // 根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PutMusicOnTheShelves(request *PutMusicOnTheShelvesRequest) (response *PutMusicOnTheShelvesResponse, err error) {
     if request == nil {
         request = NewPutMusicOnTheShelvesRequest()
@@ -383,7 +516,13 @@ func NewReportDataResponse() (response *ReportDataResponse) {
     return
 }
 
+// ReportData
 // 客户上报用户数据功能，为了更好地为用户提供优质服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataResponse, err error) {
     if request == nil {
         request = NewReportDataRequest()
@@ -408,7 +547,13 @@ func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
     return
 }
 
+// SearchKTVMusics
 // 根据搜索条件，返回匹配的歌曲列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
     if request == nil {
         request = NewSearchKTVMusicsRequest()
@@ -433,7 +578,20 @@ func NewTakeMusicOffShelvesResponse() (response *TakeMusicOffShelvesResponse) {
     return
 }
 
+// TakeMusicOffShelves
 // 根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TakeMusicOffShelves(request *TakeMusicOffShelvesRequest) (response *TakeMusicOffShelvesResponse, err error) {
     if request == nil {
         request = NewTakeMusicOffShelvesRequest()

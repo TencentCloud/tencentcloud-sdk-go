@@ -58,7 +58,11 @@ func NewBindEipAclsResponse() (response *BindEipAclsResponse) {
     return
 }
 
+// BindEipAcls
 // 此接口用于为某个 EIP 关联 ACL。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindEipAcls(request *BindEipAclsRequest) (response *BindEipAclsResponse, err error) {
     if request == nil {
         request = NewBindEipAclsRequest()
@@ -83,7 +87,13 @@ func NewBindHostedResponse() (response *BindHostedResponse) {
     return
 }
 
+// BindHosted
 // BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindHosted(request *BindHostedRequest) (response *BindHostedResponse, err error) {
     if request == nil {
         request = NewBindHostedRequest()
@@ -108,7 +118,13 @@ func NewBindRsResponse() (response *BindRsResponse) {
     return
 }
 
+// BindRs
 // 绑定黑石EIP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindRs(request *BindRsRequest) (response *BindRsResponse, err error) {
     if request == nil {
         request = NewBindRsRequest()
@@ -133,7 +149,11 @@ func NewBindVpcIpResponse() (response *BindVpcIpResponse) {
     return
 }
 
+// BindVpcIp
 // 黑石EIP绑定VPCIP
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindVpcIp(request *BindVpcIpRequest) (response *BindVpcIpResponse, err error) {
     if request == nil {
         request = NewBindVpcIpRequest()
@@ -158,7 +178,12 @@ func NewCreateEipResponse() (response *CreateEipResponse) {
     return
 }
 
+// CreateEip
 // 创建黑石弹性公网IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEip(request *CreateEipRequest) (response *CreateEipResponse, err error) {
     if request == nil {
         request = NewCreateEipRequest()
@@ -183,7 +208,12 @@ func NewCreateEipAclResponse() (response *CreateEipAclResponse) {
     return
 }
 
+// CreateEipAcl
 // 创建黑石弹性公网 EIPACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEipAcl(request *CreateEipAclRequest) (response *CreateEipAclResponse, err error) {
     if request == nil {
         request = NewCreateEipAclRequest()
@@ -208,7 +238,12 @@ func NewDeleteEipResponse() (response *DeleteEipResponse) {
     return
 }
 
+// DeleteEip
 // 释放黑石弹性公网IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteEip(request *DeleteEipRequest) (response *DeleteEipResponse, err error) {
     if request == nil {
         request = NewDeleteEipRequest()
@@ -233,7 +268,12 @@ func NewDeleteEipAclResponse() (response *DeleteEipAclResponse) {
     return
 }
 
+// DeleteEipAcl
 // 删除弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteEipAcl(request *DeleteEipAclRequest) (response *DeleteEipAclResponse, err error) {
     if request == nil {
         request = NewDeleteEipAclRequest()
@@ -258,7 +298,12 @@ func NewDescribeEipAclsResponse() (response *DescribeEipAclsResponse) {
     return
 }
 
+// DescribeEipAcls
 // 查询弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEipAcls(request *DescribeEipAclsRequest) (response *DescribeEipAclsResponse, err error) {
     if request == nil {
         request = NewDescribeEipAclsRequest()
@@ -283,7 +328,11 @@ func NewDescribeEipQuotaResponse() (response *DescribeEipQuotaResponse) {
     return
 }
 
+// DescribeEipQuota
 // 查询黑石EIP 限额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipQuota(request *DescribeEipQuotaRequest) (response *DescribeEipQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeEipQuotaRequest()
@@ -308,7 +357,11 @@ func NewDescribeEipTaskResponse() (response *DescribeEipTaskResponse) {
     return
 }
 
+// DescribeEipTask
 // 黑石EIP查询任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipTask(request *DescribeEipTaskRequest) (response *DescribeEipTaskResponse, err error) {
     if request == nil {
         request = NewDescribeEipTaskRequest()
@@ -333,7 +386,11 @@ func NewDescribeEipsResponse() (response *DescribeEipsResponse) {
     return
 }
 
+// DescribeEips
 // 黑石EIP查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEips(request *DescribeEipsRequest) (response *DescribeEipsResponse, err error) {
     if request == nil {
         request = NewDescribeEipsRequest()
@@ -358,7 +415,12 @@ func NewModifyEipAclResponse() (response *ModifyEipAclResponse) {
     return
 }
 
+// ModifyEipAcl
 // 修改弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipAcl(request *ModifyEipAclRequest) (response *ModifyEipAclResponse, err error) {
     if request == nil {
         request = NewModifyEipAclRequest()
@@ -383,7 +445,12 @@ func NewModifyEipChargeResponse() (response *ModifyEipChargeResponse) {
     return
 }
 
+// ModifyEipCharge
 // 黑石EIP修改计费方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipCharge(request *ModifyEipChargeRequest) (response *ModifyEipChargeResponse, err error) {
     if request == nil {
         request = NewModifyEipChargeRequest()
@@ -408,7 +475,12 @@ func NewModifyEipNameResponse() (response *ModifyEipNameResponse) {
     return
 }
 
+// ModifyEipName
 // 更新黑石EIP名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipName(request *ModifyEipNameRequest) (response *ModifyEipNameResponse, err error) {
     if request == nil {
         request = NewModifyEipNameRequest()
@@ -433,7 +505,13 @@ func NewUnbindEipAclsResponse() (response *UnbindEipAclsResponse) {
     return
 }
 
+// UnbindEipAcls
 // 解绑弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindEipAcls(request *UnbindEipAclsRequest) (response *UnbindEipAclsResponse, err error) {
     if request == nil {
         request = NewUnbindEipAclsRequest()
@@ -458,7 +536,13 @@ func NewUnbindHostedResponse() (response *UnbindHostedResponse) {
     return
 }
 
+// UnbindHosted
 // UnbindHosted接口用于解绑托管机器上的EIP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindHosted(request *UnbindHostedRequest) (response *UnbindHostedResponse, err error) {
     if request == nil {
         request = NewUnbindHostedRequest()
@@ -483,7 +567,13 @@ func NewUnbindRsResponse() (response *UnbindRsResponse) {
     return
 }
 
+// UnbindRs
 // 解绑黑石EIP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindRs(request *UnbindRsRequest) (response *UnbindRsResponse, err error) {
     if request == nil {
         request = NewUnbindRsRequest()
@@ -508,7 +598,12 @@ func NewUnbindRsListResponse() (response *UnbindRsListResponse) {
     return
 }
 
+// UnbindRsList
 // 批量解绑物理机弹性公网IP接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnbindRsList(request *UnbindRsListRequest) (response *UnbindRsListResponse, err error) {
     if request == nil {
         request = NewUnbindRsListRequest()
@@ -533,7 +628,11 @@ func NewUnbindVpcIpResponse() (response *UnbindVpcIpResponse) {
     return
 }
 
+// UnbindVpcIp
 // 黑石EIP解绑VPCIP
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindVpcIp(request *UnbindVpcIpRequest) (response *UnbindVpcIpResponse, err error) {
     if request == nil {
         request = NewUnbindVpcIpRequest()

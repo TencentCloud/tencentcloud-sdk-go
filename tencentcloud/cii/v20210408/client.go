@@ -58,7 +58,17 @@ func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
     return
 }
 
+// CreateStructureTask
 // 基于提供的客户及保单信息，启动结构化识别任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (response *CreateStructureTaskResponse, err error) {
     if request == nil {
         request = NewCreateStructureTaskRequest()
@@ -83,7 +93,13 @@ func NewDescribeStructCompareDataResponse() (response *DescribeStructCompareData
     return
 }
 
+// DescribeStructCompareData
 // 结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataRequest) (response *DescribeStructCompareDataResponse, err error) {
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
@@ -108,7 +124,16 @@ func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskRe
     return
 }
 
+// DescribeStructureTaskResult
 // 依据任务ID获取结构化结果接口。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()

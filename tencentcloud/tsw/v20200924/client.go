@@ -58,6 +58,7 @@ func NewDescribeAgentShellResponse() (response *DescribeAgentShellResponse) {
     return
 }
 
+// DescribeAgentShell
 // 获取服务接入信息
 func (c *Client) DescribeAgentShell(request *DescribeAgentShellRequest) (response *DescribeAgentShellResponse, err error) {
     if request == nil {

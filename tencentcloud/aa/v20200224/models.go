@@ -201,7 +201,7 @@ func (r *ManageMarketingRiskRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -233,7 +233,7 @@ func (r *ManageMarketingRiskResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -404,7 +404,7 @@ func (r *QueryActivityAntiRushAdvancedRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushAdvancedRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -435,7 +435,7 @@ func (r *QueryActivityAntiRushAdvancedResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushAdvancedResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -565,7 +565,7 @@ func (r *QueryActivityAntiRushRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -674,7 +674,7 @@ func (r *QueryActivityAntiRushResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryActivityAntiRushResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

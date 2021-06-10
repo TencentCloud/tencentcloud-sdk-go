@@ -49,7 +49,7 @@ func (r *AddFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddFairPlayPemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -89,7 +89,7 @@ func (r *AddFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddFairPlayPemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -116,7 +116,7 @@ func (r *CreateEncryptKeysRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -147,7 +147,7 @@ func (r *CreateEncryptKeysResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEncryptKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -178,7 +178,7 @@ func (r *CreateLicenseRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateLicenseRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -216,7 +216,7 @@ func (r *CreateLicenseResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -238,7 +238,7 @@ func (r *DeleteFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -267,7 +267,7 @@ func (r *DeleteFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFairPlayPemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -295,7 +295,7 @@ func (r *DescribeAllKeysRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllKeysRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -340,7 +340,7 @@ func (r *DescribeAllKeysResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -362,7 +362,7 @@ func (r *DescribeFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFairPlayPemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -395,7 +395,7 @@ func (r *DescribeFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFairPlayPemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -427,7 +427,7 @@ func (r *DescribeKeysRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKeysRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -474,7 +474,7 @@ func (r *DescribeKeysResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -600,7 +600,7 @@ func (r *ModifyFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFairPlayPemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -641,7 +641,7 @@ func (r *ModifyFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFairPlayPemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -683,7 +683,7 @@ func (r *StartEncryptionRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartEncryptionRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -716,7 +716,7 @@ func (r *StartEncryptionResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartEncryptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

@@ -58,7 +58,11 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
     return
 }
 
+// AddCustomRule
 // 增加自定义策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCustomRuleResponse, err error) {
     if request == nil {
         request = NewAddCustomRuleRequest()
@@ -83,7 +87,11 @@ func NewCreateAttackDownloadTaskResponse() (response *CreateAttackDownloadTaskRe
     return
 }
 
+// CreateAttackDownloadTask
 // 创建攻击日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateAttackDownloadTask(request *CreateAttackDownloadTaskRequest) (response *CreateAttackDownloadTaskResponse, err error) {
     if request == nil {
         request = NewCreateAttackDownloadTaskRequest()
@@ -108,7 +116,12 @@ func NewDeleteAttackDownloadRecordResponse() (response *DeleteAttackDownloadReco
     return
 }
 
+// DeleteAttackDownloadRecord
 // 删除攻击日志下载任务记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordRequest) (response *DeleteAttackDownloadRecordResponse, err error) {
     if request == nil {
         request = NewDeleteAttackDownloadRecordRequest()
@@ -133,7 +146,11 @@ func NewDeleteDownloadRecordResponse() (response *DeleteDownloadRecordResponse) 
     return
 }
 
+// DeleteDownloadRecord
 // 删除访问日志下载记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (response *DeleteDownloadRecordResponse, err error) {
     if request == nil {
         request = NewDeleteDownloadRecordRequest()
@@ -158,7 +175,11 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
     return
 }
 
+// DeleteSession
 // 删除CC攻击的session设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     if request == nil {
         request = NewDeleteSessionRequest()
@@ -183,7 +204,11 @@ func NewDescribeCustomRulesResponse() (response *DescribeCustomRulesResponse) {
     return
 }
 
+// DescribeCustomRules
 // 获取防护配置中的自定义策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
     if request == nil {
         request = NewDescribeCustomRulesRequest()
@@ -208,7 +233,14 @@ func NewDescribeFlowTrendResponse() (response *DescribeFlowTrendResponse) {
     return
 }
 
+// DescribeFlowTrend
 // 获取waf流量访问趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
     if request == nil {
         request = NewDescribeFlowTrendRequest()
@@ -233,7 +265,25 @@ func NewDescribeUserClbWafRegionsResponse() (response *DescribeUserClbWafRegions
     return
 }
 
+// DescribeUserClbWafRegions
 // 在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeUserClbWafRegions(request *DescribeUserClbWafRegionsRequest) (response *DescribeUserClbWafRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeUserClbWafRegionsRequest()
@@ -258,7 +308,11 @@ func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusRespon
     return
 }
 
+// ModifyCustomRuleStatus
 // 开启或禁用自定义策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()

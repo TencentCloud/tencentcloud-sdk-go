@@ -58,7 +58,19 @@ func NewCreateSecretResponse() (response *CreateSecretResponse) {
     return
 }
 
+// CreateSecret
 // 创建新的凭据信息，通过KMS进行加密保护。每个Region最多可创建存储1000个凭据信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TAGKEYSDUPLICATED = "InvalidParameterValue.TagKeysDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSNOTEXISTED = "InvalidParameterValue.TagsNotExisted"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE_SECRETEXISTS = "ResourceInUse.SecretExists"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSecret(request *CreateSecretRequest) (response *CreateSecretResponse, err error) {
     if request == nil {
         request = NewCreateSecretRequest()
@@ -83,7 +95,16 @@ func NewDeleteSecretResponse() (response *DeleteSecretResponse) {
     return
 }
 
+// DeleteSecret
 // 删除指定的凭据信息，可以通过RecoveryWindowInDays参数设置立即删除或者计划删除。对于计划删除的凭据，在删除日期到达之前状态为 PendingDelete，并可以通过RestoreSecret 进行恢复，超出指定删除日期之后会被彻底删除。您必须先通过 DisableSecret 停用凭据后才可以进行（计划）删除操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecret(request *DeleteSecretRequest) (response *DeleteSecretResponse, err error) {
     if request == nil {
         request = NewDeleteSecretRequest()
@@ -108,7 +129,15 @@ func NewDeleteSecretVersionResponse() (response *DeleteSecretVersionResponse) {
     return
 }
 
+// DeleteSecretVersion
 // 该接口用于直接删除指定凭据下的单个版本凭据，删除操作立即生效，对所有状态下的凭据版本都可以删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecretVersion(request *DeleteSecretVersionRequest) (response *DeleteSecretVersionResponse, err error) {
     if request == nil {
         request = NewDeleteSecretVersionRequest()
@@ -133,7 +162,15 @@ func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
     return
 }
 
+// DescribeSecret
 // 获取凭据的详细属性信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *DescribeSecretResponse, err error) {
     if request == nil {
         request = NewDescribeSecretRequest()
@@ -158,7 +195,16 @@ func NewDisableSecretResponse() (response *DisableSecretResponse) {
     return
 }
 
+// DisableSecret
 // 停用指定的凭据，停用后状态为 Disabled，无法通过接口获取该凭据的明文。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisableSecret(request *DisableSecretRequest) (response *DisableSecretResponse, err error) {
     if request == nil {
         request = NewDisableSecretRequest()
@@ -183,7 +229,16 @@ func NewEnableSecretResponse() (response *EnableSecretResponse) {
     return
 }
 
+// EnableSecret
 // 该接口用于开启凭据，状态为Enabled。可以通过 GetSecretValue 接口获取凭据明文。处于PendingDelete状态的凭据不能直接开启，需要通过RestoreSecret 恢复后再开启使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) EnableSecret(request *EnableSecretRequest) (response *EnableSecretResponse, err error) {
     if request == nil {
         request = NewEnableSecretRequest()
@@ -208,7 +263,12 @@ func NewGetRegionsResponse() (response *GetRegionsResponse) {
     return
 }
 
+// GetRegions
 // 获取控制台展示region列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsResponse, err error) {
     if request == nil {
         request = NewGetRegionsRequest()
@@ -233,7 +293,18 @@ func NewGetSecretValueResponse() (response *GetSecretValueResponse) {
     return
 }
 
+// GetSecretValue
 // 获取指定凭据名称和版本的凭据明文信息，只能获取启用状态的凭据明文。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  RESOURCEUNAVAILABLE_RESOURCEDISABLED = "ResourceUnavailable.ResourceDisabled"
+//  RESOURCEUNAVAILABLE_RESOURCEPENDINGDELETED = "ResourceUnavailable.ResourcePendingDeleted"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetSecretValue(request *GetSecretValueRequest) (response *GetSecretValueResponse, err error) {
     if request == nil {
         request = NewGetSecretValueRequest()
@@ -258,7 +329,12 @@ func NewGetServiceStatusResponse() (response *GetServiceStatusResponse) {
     return
 }
 
+// GetServiceStatus
 // 该接口用户获取用户SecretsManager服务开通状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
     if request == nil {
         request = NewGetServiceStatusRequest()
@@ -283,7 +359,15 @@ func NewListSecretVersionIdsResponse() (response *ListSecretVersionIdsResponse) 
     return
 }
 
+// ListSecretVersionIds
 // 该接口用于获取指定凭据下的版本列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest) (response *ListSecretVersionIdsResponse, err error) {
     if request == nil {
         request = NewListSecretVersionIdsRequest()
@@ -308,7 +392,14 @@ func NewListSecretsResponse() (response *ListSecretsResponse) {
     return
 }
 
+// ListSecrets
 // 该接口用于获取所有凭据的详细列表，可以指定过滤字段、排序方式等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListSecrets(request *ListSecretsRequest) (response *ListSecretsResponse, err error) {
     if request == nil {
         request = NewListSecretsRequest()
@@ -333,7 +424,19 @@ func NewPutSecretValueResponse() (response *PutSecretValueResponse) {
     return
 }
 
+// PutSecretValue
 // 该接口在指定名称的凭据下增加新版本的凭据内容，一个凭据下最多可以支持10个版本。只能对处于Enabled 和 Disabled 状态的凭据添加新的版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE_VERSIONIDEXISTS = "ResourceInUse.VersionIdExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutSecretValue(request *PutSecretValueRequest) (response *PutSecretValueResponse, err error) {
     if request == nil {
         request = NewPutSecretValueRequest()
@@ -358,7 +461,16 @@ func NewRestoreSecretResponse() (response *RestoreSecretResponse) {
     return
 }
 
+// RestoreSecret
 // 该接口用于恢复计划删除（PendingDelete状态）中的凭据，取消计划删除。取消计划删除的凭据将处于Disabled 状态，如需恢复使用，通过EnableSecret 接口开启凭据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RestoreSecret(request *RestoreSecretRequest) (response *RestoreSecretResponse, err error) {
     if request == nil {
         request = NewRestoreSecretRequest()
@@ -383,7 +495,15 @@ func NewUpdateDescriptionResponse() (response *UpdateDescriptionResponse) {
     return
 }
 
+// UpdateDescription
 // 该接口用于修改指定凭据的描述信息，仅能修改Enabled 和 Disabled 状态的凭据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateDescription(request *UpdateDescriptionRequest) (response *UpdateDescriptionResponse, err error) {
     if request == nil {
         request = NewUpdateDescriptionRequest()
@@ -408,7 +528,17 @@ func NewUpdateSecretResponse() (response *UpdateSecretResponse) {
     return
 }
 
+// UpdateSecret
 // 该接口用于更新指定凭据名称和版本号的内容，调用该接口会对新的凭据内容加密后覆盖旧的内容。仅允许更新Enabled 和 Disabled 状态的凭据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateSecret(request *UpdateSecretRequest) (response *UpdateSecretResponse, err error) {
     if request == nil {
         request = NewUpdateSecretRequest()

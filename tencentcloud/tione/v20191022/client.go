@@ -58,7 +58,20 @@ func NewCreateCodeRepositoryResponse() (response *CreateCodeRepositoryResponse) 
     return
 }
 
+// CreateCodeRepository
 // 创建存储库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_KMSKEYNOTFOUND = "InvalidParameterValue.KmsKeyNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateCodeRepository(request *CreateCodeRepositoryRequest) (response *CreateCodeRepositoryResponse, err error) {
     if request == nil {
         request = NewCreateCodeRepositoryRequest()
@@ -83,7 +96,27 @@ func NewCreateNotebookInstanceResponse() (response *CreateNotebookInstanceRespon
     return
 }
 
+// CreateNotebookInstance
 // 创建Notebook实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = "InvalidParameterValue.ClsConfigRequired"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_LOGSETNOTFOUND = "InvalidParameterValue.LogSetNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateNotebookInstance(request *CreateNotebookInstanceRequest) (response *CreateNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewCreateNotebookInstanceRequest()
@@ -108,7 +141,16 @@ func NewCreateNotebookLifecycleScriptResponse() (response *CreateNotebookLifecyc
     return
 }
 
+// CreateNotebookLifecycleScript
 // 创建Notebook生命周期脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 func (c *Client) CreateNotebookLifecycleScript(request *CreateNotebookLifecycleScriptRequest) (response *CreateNotebookLifecycleScriptResponse, err error) {
     if request == nil {
         request = NewCreateNotebookLifecycleScriptRequest()
@@ -133,7 +175,16 @@ func NewCreatePresignedNotebookInstanceUrlResponse() (response *CreatePresignedN
     return
 }
 
+// CreatePresignedNotebookInstanceUrl
 // 创建Notebook授权Url
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTALIVE = "ResourceUnavailable.NotAlive"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreatePresignedNotebookInstanceUrl(request *CreatePresignedNotebookInstanceUrlRequest) (response *CreatePresignedNotebookInstanceUrlResponse, err error) {
     if request == nil {
         request = NewCreatePresignedNotebookInstanceUrlRequest()
@@ -158,7 +209,27 @@ func NewCreateTrainingJobResponse() (response *CreateTrainingJobResponse) {
     return
 }
 
+// CreateTrainingJob
 // 创建训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_FILESYSTEMNEEDVPCCONFIGSUPPORT = "InvalidParameterValue.FileSystemNeedVpcConfigSupport"
+//  INVALIDPARAMETERVALUE_FILESYSTEMNUMLIMIT = "InvalidParameterValue.FileSystemNumLimit"
+//  INVALIDPARAMETERVALUE_FILESYSTEMVPCNOTMATCH = "InvalidParameterValue.FileSystemVpcNotMatch"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = "InvalidParameterValue.InvalidInstanceType"
+//  INVALIDPARAMETERVALUE_INVALIDTRAININGIMAGENAME = "InvalidParameterValue.InvalidTrainingImageName"
+//  INVALIDPARAMETERVALUE_MPIPROCESSESPERHOSTTOOMUCH = "InvalidParameterValue.MpiProcessesPerHostTooMuch"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TRAINCODENOTFOUND = "InvalidParameterValue.TrainCodeNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (response *CreateTrainingJobResponse, err error) {
     if request == nil {
         request = NewCreateTrainingJobRequest()
@@ -183,7 +254,18 @@ func NewDeleteCodeRepositoryResponse() (response *DeleteCodeRepositoryResponse) 
     return
 }
 
+// DeleteCodeRepository
 // 删除存储库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DeleteCodeRepository(request *DeleteCodeRepositoryRequest) (response *DeleteCodeRepositoryResponse, err error) {
     if request == nil {
         request = NewDeleteCodeRepositoryRequest()
@@ -208,7 +290,15 @@ func NewDeleteNotebookInstanceResponse() (response *DeleteNotebookInstanceRespon
     return
 }
 
+// DeleteNotebookInstance
 // 删除notebook实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNotebookInstance(request *DeleteNotebookInstanceRequest) (response *DeleteNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteNotebookInstanceRequest()
@@ -233,7 +323,16 @@ func NewDeleteNotebookLifecycleScriptResponse() (response *DeleteNotebookLifecyc
     return
 }
 
+// DeleteNotebookLifecycleScript
 // 删除Notebook生命周期脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNotebookLifecycleScript(request *DeleteNotebookLifecycleScriptRequest) (response *DeleteNotebookLifecycleScriptResponse, err error) {
     if request == nil {
         request = NewDeleteNotebookLifecycleScriptRequest()
@@ -258,7 +357,17 @@ func NewDescribeCodeRepositoriesResponse() (response *DescribeCodeRepositoriesRe
     return
 }
 
+// DescribeCodeRepositories
 // 查询存储库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepositories(request *DescribeCodeRepositoriesRequest) (response *DescribeCodeRepositoriesResponse, err error) {
     if request == nil {
         request = NewDescribeCodeRepositoriesRequest()
@@ -283,7 +392,17 @@ func NewDescribeCodeRepositoryResponse() (response *DescribeCodeRepositoryRespon
     return
 }
 
+// DescribeCodeRepository
 // 查询存储库详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) (response *DescribeCodeRepositoryResponse, err error) {
     if request == nil {
         request = NewDescribeCodeRepositoryRequest()
@@ -308,7 +427,17 @@ func NewDescribeNotebookInstanceResponse() (response *DescribeNotebookInstanceRe
     return
 }
 
+// DescribeNotebookInstance
 // 查询Notebook实例详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeNotebookInstance(request *DescribeNotebookInstanceRequest) (response *DescribeNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookInstanceRequest()
@@ -333,7 +462,15 @@ func NewDescribeNotebookInstancesResponse() (response *DescribeNotebookInstances
     return
 }
 
+// DescribeNotebookInstances
 // 查询Notebook实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeNotebookInstances(request *DescribeNotebookInstancesRequest) (response *DescribeNotebookInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookInstancesRequest()
@@ -358,7 +495,14 @@ func NewDescribeNotebookLifecycleScriptResponse() (response *DescribeNotebookLif
     return
 }
 
+// DescribeNotebookLifecycleScript
 // 查看notebook生命周期脚本详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNotebookLifecycleScript(request *DescribeNotebookLifecycleScriptRequest) (response *DescribeNotebookLifecycleScriptResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptRequest()
@@ -383,7 +527,14 @@ func NewDescribeNotebookLifecycleScriptsResponse() (response *DescribeNotebookLi
     return
 }
 
+// DescribeNotebookLifecycleScripts
 // 查看notebook生命周期脚本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNotebookLifecycleScripts(request *DescribeNotebookLifecycleScriptsRequest) (response *DescribeNotebookLifecycleScriptsResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptsRequest()
@@ -408,7 +559,11 @@ func NewDescribeNotebookSummaryResponse() (response *DescribeNotebookSummaryResp
     return
 }
 
+// DescribeNotebookSummary
 // 查询Notebook概览数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeNotebookSummary(request *DescribeNotebookSummaryRequest) (response *DescribeNotebookSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeNotebookSummaryRequest()
@@ -433,7 +588,14 @@ func NewDescribeTrainingJobResponse() (response *DescribeTrainingJobResponse) {
     return
 }
 
+// DescribeTrainingJob
 // 查询训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTrainingJob(request *DescribeTrainingJobRequest) (response *DescribeTrainingJobResponse, err error) {
     if request == nil {
         request = NewDescribeTrainingJobRequest()
@@ -458,7 +620,14 @@ func NewDescribeTrainingJobsResponse() (response *DescribeTrainingJobsResponse) 
     return
 }
 
+// DescribeTrainingJobs
 // 查询训练任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTrainingJobs(request *DescribeTrainingJobsRequest) (response *DescribeTrainingJobsResponse, err error) {
     if request == nil {
         request = NewDescribeTrainingJobsRequest()
@@ -483,7 +652,14 @@ func NewStartNotebookInstanceResponse() (response *StartNotebookInstanceResponse
     return
 }
 
+// StartNotebookInstance
 // 启动Notebook实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) StartNotebookInstance(request *StartNotebookInstanceRequest) (response *StartNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewStartNotebookInstanceRequest()
@@ -508,7 +684,15 @@ func NewStopNotebookInstanceResponse() (response *StopNotebookInstanceResponse) 
     return
 }
 
+// StopNotebookInstance
 // 停止Notebook实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopNotebookInstance(request *StopNotebookInstanceRequest) (response *StopNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewStopNotebookInstanceRequest()
@@ -533,7 +717,13 @@ func NewStopTrainingJobResponse() (response *StopTrainingJobResponse) {
     return
 }
 
+// StopTrainingJob
 // 停止训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopTrainingJob(request *StopTrainingJobRequest) (response *StopTrainingJobResponse, err error) {
     if request == nil {
         request = NewStopTrainingJobRequest()
@@ -558,7 +748,18 @@ func NewUpdateCodeRepositoryResponse() (response *UpdateCodeRepositoryResponse) 
     return
 }
 
+// UpdateCodeRepository
 // 更新存储库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_KMSKEYNOTFOUND = "InvalidParameterValue.KmsKeyNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) UpdateCodeRepository(request *UpdateCodeRepositoryRequest) (response *UpdateCodeRepositoryResponse, err error) {
     if request == nil {
         request = NewUpdateCodeRepositoryRequest()
@@ -583,7 +784,24 @@ func NewUpdateNotebookInstanceResponse() (response *UpdateNotebookInstanceRespon
     return
 }
 
+// UpdateNotebookInstance
 // 更新Notebook实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = "InvalidParameterValue.ClsConfigRequired"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_LOGSETNOTFOUND = "InvalidParameterValue.LogSetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) UpdateNotebookInstance(request *UpdateNotebookInstanceRequest) (response *UpdateNotebookInstanceResponse, err error) {
     if request == nil {
         request = NewUpdateNotebookInstanceRequest()
@@ -608,7 +826,15 @@ func NewUpdateNotebookLifecycleScriptResponse() (response *UpdateNotebookLifecyc
     return
 }
 
+// UpdateNotebookLifecycleScript
 // 更新notebook生命周期脚本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateNotebookLifecycleScript(request *UpdateNotebookLifecycleScriptRequest) (response *UpdateNotebookLifecycleScriptResponse, err error) {
     if request == nil {
         request = NewUpdateNotebookLifecycleScriptRequest()

@@ -58,6 +58,7 @@ func NewGetLocalEngineResponse() (response *GetLocalEngineResponse) {
     return
 }
 
+// GetLocalEngine
 // 获取TAV本地引擎
 func (c *Client) GetLocalEngine(request *GetLocalEngineRequest) (response *GetLocalEngineResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewGetScanResultResponse() (response *GetScanResultResponse) {
     return
 }
 
+// GetScanResult
 // tav文件上传扫描结果查询
 func (c *Client) GetScanResult(request *GetScanResultRequest) (response *GetScanResultResponse, err error) {
     if request == nil {
@@ -108,6 +110,7 @@ func NewScanFileResponse() (response *ScanFileResponse) {
     return
 }
 
+// ScanFile
 // tav文件上传扫描
 func (c *Client) ScanFile(request *ScanFileRequest) (response *ScanFileResponse, err error) {
     if request == nil {
@@ -133,6 +136,7 @@ func NewScanFileHashResponse() (response *ScanFileHashResponse) {
     return
 }
 
+// ScanFileHash
 // 通过文件哈希值获取文件黑白属性
 func (c *Client) ScanFileHash(request *ScanFileHashRequest) (response *ScanFileHashResponse, err error) {
     if request == nil {

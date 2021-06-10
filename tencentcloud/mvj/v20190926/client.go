@@ -58,9 +58,19 @@ func NewMarketingValueJudgementResponse() (response *MarketingValueJudgementResp
     return
 }
 
+// MarketingValueJudgement
 // 欢迎使用营销价值判断（Marketing Value Judgement，简称 MVJ）。
+//
 // 
+//
 // 营销价值判断（MVJ）是针对零售场景的风控服务，通过识别高价值顾客，以帮助零售商保障营销资金
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRTIMEOUT = "InternalError.ErrTimeOut"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTFOUND = "InvalidParameterValue.AccountNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDIP = "InvalidParameterValue.InvalidIp"
+//  INVALIDPARAMETERVALUE_INVALIDMOBILENUMBER = "InvalidParameterValue.InvalidMobileNumber"
 func (c *Client) MarketingValueJudgement(request *MarketingValueJudgementRequest) (response *MarketingValueJudgementResponse, err error) {
     if request == nil {
         request = NewMarketingValueJudgementRequest()

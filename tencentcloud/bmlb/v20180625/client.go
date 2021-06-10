@@ -58,7 +58,15 @@ func NewBindL4BackendsResponse() (response *BindL4BackendsResponse) {
     return
 }
 
+// BindL4Backends
 // 绑定黑石服务器到四层监听器。服务器包括物理服务器、虚拟机以及半托管机器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindL4Backends(request *BindL4BackendsRequest) (response *BindL4BackendsResponse, err error) {
     if request == nil {
         request = NewBindL4BackendsRequest()
@@ -83,7 +91,15 @@ func NewBindL7BackendsResponse() (response *BindL7BackendsResponse) {
     return
 }
 
+// BindL7Backends
 // 绑定黑石物理服务器或半托管服务器到七层转发路径。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindL7Backends(request *BindL7BackendsRequest) (response *BindL7BackendsResponse, err error) {
     if request == nil {
         request = NewBindL7BackendsRequest()
@@ -108,7 +124,15 @@ func NewBindTrafficMirrorListenersResponse() (response *BindTrafficMirrorListene
     return
 }
 
+// BindTrafficMirrorListeners
 // 绑定黑石服务器七层监听器到流量镜像实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindTrafficMirrorListeners(request *BindTrafficMirrorListenersRequest) (response *BindTrafficMirrorListenersResponse, err error) {
     if request == nil {
         request = NewBindTrafficMirrorListenersRequest()
@@ -133,7 +157,15 @@ func NewBindTrafficMirrorReceiversResponse() (response *BindTrafficMirrorReceive
     return
 }
 
+// BindTrafficMirrorReceivers
 // 绑定黑石物理服务器成为流量镜像接收机。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindTrafficMirrorReceivers(request *BindTrafficMirrorReceiversRequest) (response *BindTrafficMirrorReceiversResponse, err error) {
     if request == nil {
         request = NewBindTrafficMirrorReceiversRequest()
@@ -158,7 +190,15 @@ func NewCreateL4ListenersResponse() (response *CreateL4ListenersResponse) {
     return
 }
 
+// CreateL4Listeners
 // 创建黑石四层负载均衡监听器功能。黑石负载均衡四层监听器提供了转发用户请求的具体规则，包括端口、协议、会话保持、健康检查等参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL4Listeners(request *CreateL4ListenersRequest) (response *CreateL4ListenersResponse, err error) {
     if request == nil {
         request = NewCreateL4ListenersRequest()
@@ -183,7 +223,15 @@ func NewCreateL7ListenersResponse() (response *CreateL7ListenersResponse) {
     return
 }
 
+// CreateL7Listeners
 // 创建黑石负载均衡七层监听器功能。负载均衡七层监听器提供了转发用户请求的具体规则，包括端口、协议等参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL7Listeners(request *CreateL7ListenersRequest) (response *CreateL7ListenersResponse, err error) {
     if request == nil {
         request = NewCreateL7ListenersRequest()
@@ -208,7 +256,15 @@ func NewCreateL7RulesResponse() (response *CreateL7RulesResponse) {
     return
 }
 
+// CreateL7Rules
 // 创建黑石负载均衡七层转发规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL7Rules(request *CreateL7RulesRequest) (response *CreateL7RulesResponse, err error) {
     if request == nil {
         request = NewCreateL7RulesRequest()
@@ -233,7 +289,15 @@ func NewCreateLoadBalancersResponse() (response *CreateLoadBalancersResponse) {
     return
 }
 
+// CreateLoadBalancers
 // 用来创建黑石负载均衡。为了使用黑石负载均衡服务，您必须要创建一个或者多个负载均衡实例。通过成功调用该接口，会返回负载均衡实例的唯一ID。用户可以购买的黑石负载均衡实例类型分为：公网类型、内网类型。公网类型负载均衡对应一个BGP VIP，可用于快速访问公网负载均衡绑定的物理服务器；内网类型负载均衡对应一个腾讯云内部的VIP，不能通过Internet访问，可快速访问内网负载均衡绑定的物理服务器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLoadBalancers(request *CreateLoadBalancersRequest) (response *CreateLoadBalancersResponse, err error) {
     if request == nil {
         request = NewCreateLoadBalancersRequest()
@@ -258,7 +322,15 @@ func NewCreateTrafficMirrorResponse() (response *CreateTrafficMirrorResponse) {
     return
 }
 
+// CreateTrafficMirror
 // 创建流量镜像实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTrafficMirror(request *CreateTrafficMirrorRequest) (response *CreateTrafficMirrorResponse, err error) {
     if request == nil {
         request = NewCreateTrafficMirrorRequest()
@@ -283,7 +355,15 @@ func NewDeleteL7DomainsResponse() (response *DeleteL7DomainsResponse) {
     return
 }
 
+// DeleteL7Domains
 // 删除黑石负载均衡七层转发域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteL7Domains(request *DeleteL7DomainsRequest) (response *DeleteL7DomainsResponse, err error) {
     if request == nil {
         request = NewDeleteL7DomainsRequest()
@@ -308,7 +388,15 @@ func NewDeleteL7RulesResponse() (response *DeleteL7RulesResponse) {
     return
 }
 
+// DeleteL7Rules
 // 删除黑石负载均衡七层转发规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteL7Rules(request *DeleteL7RulesRequest) (response *DeleteL7RulesResponse, err error) {
     if request == nil {
         request = NewDeleteL7RulesRequest()
@@ -333,7 +421,15 @@ func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
     return
 }
 
+// DeleteListeners
 // 删除黑石负载均衡监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteListeners(request *DeleteListenersRequest) (response *DeleteListenersResponse, err error) {
     if request == nil {
         request = NewDeleteListenersRequest()
@@ -358,7 +454,15 @@ func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
     return
 }
 
+// DeleteLoadBalancer
 // 删除用户指定的黑石负载均衡实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (response *DeleteLoadBalancerResponse, err error) {
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
@@ -383,7 +487,15 @@ func NewDeleteTrafficMirrorResponse() (response *DeleteTrafficMirrorResponse) {
     return
 }
 
+// DeleteTrafficMirror
 // 删除已创建的黑石流量镜像实例，删除过程是异步执行的，因此需要使用查询任务接口获取删除的结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTrafficMirror(request *DeleteTrafficMirrorRequest) (response *DeleteTrafficMirrorResponse, err error) {
     if request == nil {
         request = NewDeleteTrafficMirrorRequest()
@@ -408,7 +520,15 @@ func NewDescribeCertDetailResponse() (response *DescribeCertDetailResponse) {
     return
 }
 
+// DescribeCertDetail
 // 获取黑石负载均衡证书详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCertDetail(request *DescribeCertDetailRequest) (response *DescribeCertDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCertDetailRequest()
@@ -433,7 +553,15 @@ func NewDescribeDevicesBindInfoResponse() (response *DescribeDevicesBindInfoResp
     return
 }
 
+// DescribeDevicesBindInfo
 // 查询黑石物理机和虚机以及托管服务器绑定的黑石负载均衡详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDevicesBindInfo(request *DescribeDevicesBindInfoRequest) (response *DescribeDevicesBindInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesBindInfoRequest()
@@ -458,7 +586,15 @@ func NewDescribeL4BackendsResponse() (response *DescribeL4BackendsResponse) {
     return
 }
 
+// DescribeL4Backends
 // 获取黑石负载均衡四层监听器绑定的主机列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4Backends(request *DescribeL4BackendsRequest) (response *DescribeL4BackendsResponse, err error) {
     if request == nil {
         request = NewDescribeL4BackendsRequest()
@@ -483,7 +619,15 @@ func NewDescribeL4ListenerInfoResponse() (response *DescribeL4ListenerInfoRespon
     return
 }
 
+// DescribeL4ListenerInfo
 // 查找绑定了某主机或者指定监听器名称的黑石负载均衡四层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4ListenerInfo(request *DescribeL4ListenerInfoRequest) (response *DescribeL4ListenerInfoResponse, err error) {
     if request == nil {
         request = NewDescribeL4ListenerInfoRequest()
@@ -508,7 +652,15 @@ func NewDescribeL4ListenersResponse() (response *DescribeL4ListenersResponse) {
     return
 }
 
+// DescribeL4Listeners
 // 获取黑石负载均衡四层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4Listeners(request *DescribeL4ListenersRequest) (response *DescribeL4ListenersResponse, err error) {
     if request == nil {
         request = NewDescribeL4ListenersRequest()
@@ -533,7 +685,15 @@ func NewDescribeL7BackendsResponse() (response *DescribeL7BackendsResponse) {
     return
 }
 
+// DescribeL7Backends
 // 获取黑石负载均衡七层监听器绑定的主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Backends(request *DescribeL7BackendsRequest) (response *DescribeL7BackendsResponse, err error) {
     if request == nil {
         request = NewDescribeL7BackendsRequest()
@@ -558,7 +718,15 @@ func NewDescribeL7ListenerInfoResponse() (response *DescribeL7ListenerInfoRespon
     return
 }
 
+// DescribeL7ListenerInfo
 // 查找绑定了某主机或者有某转发域名黑石负载均衡七层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7ListenerInfo(request *DescribeL7ListenerInfoRequest) (response *DescribeL7ListenerInfoResponse, err error) {
     if request == nil {
         request = NewDescribeL7ListenerInfoRequest()
@@ -583,7 +751,15 @@ func NewDescribeL7ListenersResponse() (response *DescribeL7ListenersResponse) {
     return
 }
 
+// DescribeL7Listeners
 // 获取黑石负载均衡七层监听器列表信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Listeners(request *DescribeL7ListenersRequest) (response *DescribeL7ListenersResponse, err error) {
     if request == nil {
         request = NewDescribeL7ListenersRequest()
@@ -608,7 +784,15 @@ func NewDescribeL7ListenersExResponse() (response *DescribeL7ListenersExResponse
     return
 }
 
+// DescribeL7ListenersEx
 // 获取指定VPC下的7层监听器(支持模糊匹配)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7ListenersEx(request *DescribeL7ListenersExRequest) (response *DescribeL7ListenersExResponse, err error) {
     if request == nil {
         request = NewDescribeL7ListenersExRequest()
@@ -633,7 +817,15 @@ func NewDescribeL7RulesResponse() (response *DescribeL7RulesResponse) {
     return
 }
 
+// DescribeL7Rules
 // 获取黑石负载均衡七层转发规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Rules(request *DescribeL7RulesRequest) (response *DescribeL7RulesResponse, err error) {
     if request == nil {
         request = NewDescribeL7RulesRequest()
@@ -658,7 +850,15 @@ func NewDescribeLoadBalancerPortInfoResponse() (response *DescribeLoadBalancerPo
     return
 }
 
+// DescribeLoadBalancerPortInfo
 // 获取黑石负载均衡端口相关信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancerPortInfo(request *DescribeLoadBalancerPortInfoRequest) (response *DescribeLoadBalancerPortInfoResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancerPortInfoRequest()
@@ -683,7 +883,15 @@ func NewDescribeLoadBalancerTaskResultResponse() (response *DescribeLoadBalancer
     return
 }
 
+// DescribeLoadBalancerTaskResult
 // 查询负载均衡实例异步任务的执行情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancerTaskResult(request *DescribeLoadBalancerTaskResultRequest) (response *DescribeLoadBalancerTaskResultResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancerTaskResultRequest()
@@ -708,7 +916,15 @@ func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse
     return
 }
 
+// DescribeLoadBalancers
 // 获取黑石负载均衡实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
@@ -733,7 +949,15 @@ func NewDescribeTrafficMirrorListenersResponse() (response *DescribeTrafficMirro
     return
 }
 
+// DescribeTrafficMirrorListeners
 // 获取流量镜像的监听器列表信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorListeners(request *DescribeTrafficMirrorListenersRequest) (response *DescribeTrafficMirrorListenersResponse, err error) {
     if request == nil {
         request = NewDescribeTrafficMirrorListenersRequest()
@@ -758,7 +982,15 @@ func NewDescribeTrafficMirrorReceiverHealthStatusResponse() (response *DescribeT
     return
 }
 
+// DescribeTrafficMirrorReceiverHealthStatus
 // 获取流量镜像接收机健康状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorReceiverHealthStatus(request *DescribeTrafficMirrorReceiverHealthStatusRequest) (response *DescribeTrafficMirrorReceiverHealthStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTrafficMirrorReceiverHealthStatusRequest()
@@ -783,7 +1015,15 @@ func NewDescribeTrafficMirrorReceiversResponse() (response *DescribeTrafficMirro
     return
 }
 
+// DescribeTrafficMirrorReceivers
 // 获取指定流量镜像实例的接收机信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorReceivers(request *DescribeTrafficMirrorReceiversRequest) (response *DescribeTrafficMirrorReceiversResponse, err error) {
     if request == nil {
         request = NewDescribeTrafficMirrorReceiversRequest()
@@ -808,7 +1048,15 @@ func NewDescribeTrafficMirrorsResponse() (response *DescribeTrafficMirrorsRespon
     return
 }
 
+// DescribeTrafficMirrors
 // 获取流量镜像实例的列表信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrors(request *DescribeTrafficMirrorsRequest) (response *DescribeTrafficMirrorsResponse, err error) {
     if request == nil {
         request = NewDescribeTrafficMirrorsRequest()
@@ -833,7 +1081,15 @@ func NewModifyL4BackendPortResponse() (response *ModifyL4BackendPortResponse) {
     return
 }
 
+// ModifyL4BackendPort
 // 修改黑石负载均衡四层监听器后端实例端口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendPort(request *ModifyL4BackendPortRequest) (response *ModifyL4BackendPortResponse, err error) {
     if request == nil {
         request = NewModifyL4BackendPortRequest()
@@ -858,7 +1114,15 @@ func NewModifyL4BackendProbePortResponse() (response *ModifyL4BackendProbePortRe
     return
 }
 
+// ModifyL4BackendProbePort
 // 修改黑石负载均衡四层监听器后端探测端口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendProbePort(request *ModifyL4BackendProbePortRequest) (response *ModifyL4BackendProbePortResponse, err error) {
     if request == nil {
         request = NewModifyL4BackendProbePortRequest()
@@ -883,7 +1147,15 @@ func NewModifyL4BackendWeightResponse() (response *ModifyL4BackendWeightResponse
     return
 }
 
+// ModifyL4BackendWeight
 // 修改黑石负载均衡四层监听器后端实例权重功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendWeight(request *ModifyL4BackendWeightRequest) (response *ModifyL4BackendWeightResponse, err error) {
     if request == nil {
         request = NewModifyL4BackendWeightRequest()
@@ -908,7 +1180,15 @@ func NewModifyL4ListenerResponse() (response *ModifyL4ListenerResponse) {
     return
 }
 
+// ModifyL4Listener
 // 修改黑石负载均衡四层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4Listener(request *ModifyL4ListenerRequest) (response *ModifyL4ListenerResponse, err error) {
     if request == nil {
         request = NewModifyL4ListenerRequest()
@@ -933,7 +1213,15 @@ func NewModifyL7BackendPortResponse() (response *ModifyL7BackendPortResponse) {
     return
 }
 
+// ModifyL7BackendPort
 // 修改黑石负载均衡七层转发路径后端实例端口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7BackendPort(request *ModifyL7BackendPortRequest) (response *ModifyL7BackendPortResponse, err error) {
     if request == nil {
         request = NewModifyL7BackendPortRequest()
@@ -958,7 +1246,15 @@ func NewModifyL7BackendWeightResponse() (response *ModifyL7BackendWeightResponse
     return
 }
 
+// ModifyL7BackendWeight
 // 修改黑石负载均衡七层转发路径后端实例权重。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7BackendWeight(request *ModifyL7BackendWeightRequest) (response *ModifyL7BackendWeightResponse, err error) {
     if request == nil {
         request = NewModifyL7BackendWeightRequest()
@@ -983,7 +1279,15 @@ func NewModifyL7ListenerResponse() (response *ModifyL7ListenerResponse) {
     return
 }
 
+// ModifyL7Listener
 // 修改黑石负载均衡七层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7Listener(request *ModifyL7ListenerRequest) (response *ModifyL7ListenerResponse, err error) {
     if request == nil {
         request = NewModifyL7ListenerRequest()
@@ -1008,7 +1312,15 @@ func NewModifyL7LocationsResponse() (response *ModifyL7LocationsResponse) {
     return
 }
 
+// ModifyL7Locations
 // 修改黑石负载均衡七层转发路径。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7Locations(request *ModifyL7LocationsRequest) (response *ModifyL7LocationsResponse, err error) {
     if request == nil {
         request = NewModifyL7LocationsRequest()
@@ -1033,7 +1345,15 @@ func NewModifyLoadBalancerResponse() (response *ModifyLoadBalancerResponse) {
     return
 }
 
+// ModifyLoadBalancer
 // 根据输入参数来修改黑石负载均衡实例的基本配置信息。可能的信息包括负载均衡实例的名称，域名前缀。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLoadBalancer(request *ModifyLoadBalancerRequest) (response *ModifyLoadBalancerResponse, err error) {
     if request == nil {
         request = NewModifyLoadBalancerRequest()
@@ -1058,7 +1378,15 @@ func NewModifyLoadBalancerChargeModeResponse() (response *ModifyLoadBalancerChar
     return
 }
 
+// ModifyLoadBalancerChargeMode
 // 更改黑石负载均衡的计费方式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLoadBalancerChargeMode(request *ModifyLoadBalancerChargeModeRequest) (response *ModifyLoadBalancerChargeModeResponse, err error) {
     if request == nil {
         request = NewModifyLoadBalancerChargeModeRequest()
@@ -1083,7 +1411,15 @@ func NewReplaceCertResponse() (response *ReplaceCertResponse) {
     return
 }
 
+// ReplaceCert
 // 更新黑石负载均衡证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReplaceCert(request *ReplaceCertRequest) (response *ReplaceCertResponse, err error) {
     if request == nil {
         request = NewReplaceCertRequest()
@@ -1108,7 +1444,15 @@ func NewSetTrafficMirrorAliasResponse() (response *SetTrafficMirrorAliasResponse
     return
 }
 
+// SetTrafficMirrorAlias
 // 设置流量镜像的别名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTrafficMirrorAlias(request *SetTrafficMirrorAliasRequest) (response *SetTrafficMirrorAliasResponse, err error) {
     if request == nil {
         request = NewSetTrafficMirrorAliasRequest()
@@ -1133,7 +1477,15 @@ func NewSetTrafficMirrorHealthSwitchResponse() (response *SetTrafficMirrorHealth
     return
 }
 
+// SetTrafficMirrorHealthSwitch
 // 设置流量镜像的健康检查参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTrafficMirrorHealthSwitch(request *SetTrafficMirrorHealthSwitchRequest) (response *SetTrafficMirrorHealthSwitchResponse, err error) {
     if request == nil {
         request = NewSetTrafficMirrorHealthSwitchRequest()
@@ -1158,7 +1510,15 @@ func NewUnbindL4BackendsResponse() (response *UnbindL4BackendsResponse) {
     return
 }
 
+// UnbindL4Backends
 // 解绑黑石负载均衡四层监听器物理服务器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindL4Backends(request *UnbindL4BackendsRequest) (response *UnbindL4BackendsResponse, err error) {
     if request == nil {
         request = NewUnbindL4BackendsRequest()
@@ -1183,7 +1543,15 @@ func NewUnbindL7BackendsResponse() (response *UnbindL7BackendsResponse) {
     return
 }
 
+// UnbindL7Backends
 // 解绑黑石物理服务器或者托管服务器到七层转发路径功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindL7Backends(request *UnbindL7BackendsRequest) (response *UnbindL7BackendsResponse, err error) {
     if request == nil {
         request = NewUnbindL7BackendsRequest()
@@ -1208,7 +1576,15 @@ func NewUnbindTrafficMirrorListenersResponse() (response *UnbindTrafficMirrorLis
     return
 }
 
+// UnbindTrafficMirrorListeners
 // 解绑流量镜像监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindTrafficMirrorListeners(request *UnbindTrafficMirrorListenersRequest) (response *UnbindTrafficMirrorListenersResponse, err error) {
     if request == nil {
         request = NewUnbindTrafficMirrorListenersRequest()
@@ -1233,7 +1609,15 @@ func NewUnbindTrafficMirrorReceiversResponse() (response *UnbindTrafficMirrorRec
     return
 }
 
+// UnbindTrafficMirrorReceivers
 // 从流量镜像实例上解绑流量镜像接收机。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindTrafficMirrorReceivers(request *UnbindTrafficMirrorReceiversRequest) (response *UnbindTrafficMirrorReceiversResponse, err error) {
     if request == nil {
         request = NewUnbindTrafficMirrorReceiversRequest()
@@ -1258,7 +1642,15 @@ func NewUploadCertResponse() (response *UploadCertResponse) {
     return
 }
 
+// UploadCert
 // 创建黑石负载均衡证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UploadCert(request *UploadCertRequest) (response *UploadCertResponse, err error) {
     if request == nil {
         request = NewUploadCertRequest()

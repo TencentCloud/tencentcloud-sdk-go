@@ -58,7 +58,17 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
     return
 }
 
+// CreateJob
 // 创建训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
     if request == nil {
         request = NewCreateJobRequest()
@@ -83,7 +93,31 @@ func NewCreateModelResponse() (response *CreateModelResponse) {
     return
 }
 
+// CreateModel
 // 部署模型，用以对外提供服务。有两种部署模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CODE = "InvalidParameterValue.Code"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_ENVIRONMENT = "InvalidParameterValue.Environment"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  MISSINGPARAMETER_CODE = "MissingParameter.Code"
+//  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModelResponse, err error) {
     if request == nil {
         request = NewCreateModelRequest()
@@ -108,7 +142,13 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
     return
 }
 
+// DeleteJob
 // 删除训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
     if request == nil {
         request = NewDeleteJobRequest()
@@ -133,7 +173,20 @@ func NewDeleteModelResponse() (response *DeleteModelResponse) {
     return
 }
 
+// DeleteModel
 // 删除指定的部署模型。模型有两种部署模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
     if request == nil {
         request = NewDeleteModelRequest()
@@ -158,7 +211,17 @@ func NewDescribeJobResponse() (response *DescribeJobResponse) {
     return
 }
 
+// DescribeJob
 // 获取训练任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) DescribeJob(request *DescribeJobRequest) (response *DescribeJobResponse, err error) {
     if request == nil {
         request = NewDescribeJobRequest()
@@ -183,7 +246,18 @@ func NewDescribeModelResponse() (response *DescribeModelResponse) {
     return
 }
 
+// DescribeModel
 // 描述已经部署的某个模型。而模型部署有两种模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) DescribeModel(request *DescribeModelRequest) (response *DescribeModelResponse, err error) {
     if request == nil {
         request = NewDescribeModelRequest()
@@ -208,7 +282,15 @@ func NewInstallAgentResponse() (response *InstallAgentResponse) {
     return
 }
 
+// InstallAgent
 // 安装agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) InstallAgent(request *InstallAgentRequest) (response *InstallAgentResponse, err error) {
     if request == nil {
         request = NewInstallAgentRequest()
@@ -233,7 +315,16 @@ func NewListJobsResponse() (response *ListJobsResponse) {
     return
 }
 
+// ListJobs
 // 列举训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) ListJobs(request *ListJobsRequest) (response *ListJobsResponse, err error) {
     if request == nil {
         request = NewListJobsRequest()
@@ -258,7 +349,22 @@ func NewListModelsResponse() (response *ListModelsResponse) {
     return
 }
 
+// ListModels
 // 用以列举已经部署的模型。而部署有两种模式：`无服务器模式` 和 `集群模式`。`无服务器模式` 下，模型文件被部署到无服务器云函数，即 [SCF](https://cloud.tencent.com/product/scf)，用户可以在其控制台上进一步操作。`集群模式` 下，模型文件被部署到 TI-A 的计算集群中。不同部署模式下的模型分开列出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) ListModels(request *ListModelsRequest) (response *ListModelsResponse, err error) {
     if request == nil {
         request = NewListModelsRequest()
@@ -283,7 +389,17 @@ func NewQueryLogsResponse() (response *QueryLogsResponse) {
     return
 }
 
+// QueryLogs
 // 查询 TI-A 训练任务的日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.TimeOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) QueryLogs(request *QueryLogsRequest) (response *QueryLogsResponse, err error) {
     if request == nil {
         request = NewQueryLogsRequest()

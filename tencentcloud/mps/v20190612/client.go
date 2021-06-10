@@ -58,7 +58,21 @@ func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateRe
     return
 }
 
+// CreateAIAnalysisTemplate
 // 创建用户自定义内容分析模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = "InvalidParameterValue.ClassifcationConfigure"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = "InvalidParameterValue.FrameTagConfigure"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TAGCONFIGURE = "InvalidParameterValue.TagConfigure"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateRequest) (response *CreateAIAnalysisTemplateResponse, err error) {
     if request == nil {
         request = NewCreateAIAnalysisTemplateRequest()
@@ -83,7 +97,24 @@ func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemp
     return
 }
 
+// CreateAIRecognitionTemplate
 // 创建用户自定义内容识别模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = "InvalidParameterValue.DefaultLibraryLabelSet"
+//  INVALIDPARAMETERVALUE_FACELIBRARY = "InvalidParameterValue.FaceLibrary"
+//  INVALIDPARAMETERVALUE_FACESCORE = "InvalidParameterValue.FaceScore"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_OBJECTLIBRARY = "InvalidParameterValue.ObjectLibrary"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = "InvalidParameterValue.UserDefineLibraryLabelSet"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplateRequest) (response *CreateAIRecognitionTemplateResponse, err error) {
     if request == nil {
         request = NewCreateAIRecognitionTemplateRequest()
@@ -108,7 +139,29 @@ func NewCreateAdaptiveDynamicStreamingTemplateResponse() (response *CreateAdapti
     return
 }
 
+// CreateAdaptiveDynamicStreamingTemplate
 // 创建转自适应码流模板，数量上限：100。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateAdaptiveDynamicStreamingTemplate(request *CreateAdaptiveDynamicStreamingTemplateRequest) (response *CreateAdaptiveDynamicStreamingTemplateResponse, err error) {
     if request == nil {
         request = NewCreateAdaptiveDynamicStreamingTemplateRequest()
@@ -133,7 +186,21 @@ func NewCreateAnimatedGraphicsTemplateResponse() (response *CreateAnimatedGraphi
     return
 }
 
+// CreateAnimatedGraphicsTemplate
 // 创建用户自定义转动图模板，数量上限：16。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FORMATWEBPLACKWIDTHANDHEIGHT = "InvalidParameterValue.FormatWebpLackWidthAndHeight"
+//  INVALIDPARAMETERVALUE_FORMATWEBPWIDTHANDHEIGHTBOTHZERO = "InvalidParameterValue.FormatWebpWidthAndHeightBothZero"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_QUALITY = "InvalidParameterValue.Quality"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateAnimatedGraphicsTemplate(request *CreateAnimatedGraphicsTemplateRequest) (response *CreateAnimatedGraphicsTemplateResponse, err error) {
     if request == nil {
         request = NewCreateAnimatedGraphicsTemplateRequest()
@@ -158,7 +225,20 @@ func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemp
     return
 }
 
+// CreateContentReviewTemplate
 // 创建用户自定义内容智能识别模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplateRequest) (response *CreateContentReviewTemplateResponse, err error) {
     if request == nil {
         request = NewCreateContentReviewTemplateRequest()
@@ -183,7 +263,21 @@ func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplate
     return
 }
 
+// CreateImageSpriteTemplate
 // 创建用户自定义雪碧图模板，数量上限：16。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_ROWCOUNT = "InvalidParameterValue.RowCount"
+//  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
+//  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateImageSpriteTemplate(request *CreateImageSpriteTemplateRequest) (response *CreateImageSpriteTemplateResponse, err error) {
     if request == nil {
         request = NewCreateImageSpriteTemplateRequest()
@@ -208,7 +302,15 @@ func NewCreatePersonSampleResponse() (response *CreatePersonSampleResponse) {
     return
 }
 
+// CreatePersonSample
 // 该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
+//  INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
 func (c *Client) CreatePersonSample(request *CreatePersonSampleRequest) (response *CreatePersonSampleResponse, err error) {
     if request == nil {
         request = NewCreatePersonSampleRequest()
@@ -233,7 +335,21 @@ func NewCreateSampleSnapshotTemplateResponse() (response *CreateSampleSnapshotTe
     return
 }
 
+// CreateSampleSnapshotTemplate
 // 创建用户自定义采样截图模板，数量上限：16。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
+//  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateSampleSnapshotTemplate(request *CreateSampleSnapshotTemplateRequest) (response *CreateSampleSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewCreateSampleSnapshotTemplateRequest()
@@ -258,7 +374,19 @@ func NewCreateSnapshotByTimeOffsetTemplateResponse() (response *CreateSnapshotBy
     return
 }
 
+// CreateSnapshotByTimeOffsetTemplate
 // 创建用户自定义指定时间点截图模板，数量上限：16。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateSnapshotByTimeOffsetTemplate(request *CreateSnapshotByTimeOffsetTemplateRequest) (response *CreateSnapshotByTimeOffsetTemplateResponse, err error) {
     if request == nil {
         request = NewCreateSnapshotByTimeOffsetTemplateRequest()
@@ -283,7 +411,28 @@ func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResp
     return
 }
 
+// CreateTranscodeTemplate
 // 创建用户自定义转码模板，数量上限：1000。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
+//  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
+//  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
+//  INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest) (response *CreateTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewCreateTranscodeTemplateRequest()
@@ -308,7 +457,31 @@ func NewCreateWatermarkTemplateResponse() (response *CreateWatermarkTemplateResp
     return
 }
 
+// CreateWatermarkTemplate
 // 创建用户自定义水印模板，数量上限：1000。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INTERNALERROR_UPLOADWATERMARKERROR = "InternalError.UploadWatermarkError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COORDINATEORIGIN = "InvalidParameterValue.CoordinateOrigin"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_IMAGECONTENT = "InvalidParameterValue.ImageContent"
+//  INVALIDPARAMETERVALUE_IMAGETEMPLATE = "InvalidParameterValue.ImageTemplate"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REPEATTYPE = "InvalidParameterValue.RepeatType"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATE = "InvalidParameterValue.SvgTemplate"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATEHEIGHT = "InvalidParameterValue.SvgTemplateHeight"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATEWIDTH = "InvalidParameterValue.SvgTemplateWidth"
+//  INVALIDPARAMETERVALUE_TEXTALPHA = "InvalidParameterValue.TextAlpha"
+//  INVALIDPARAMETERVALUE_TEXTTEMPLATE = "InvalidParameterValue.TextTemplate"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  INVALIDPARAMETERVALUE_XPOS = "InvalidParameterValue.XPos"
+//  INVALIDPARAMETERVALUE_YPOS = "InvalidParameterValue.YPos"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 func (c *Client) CreateWatermarkTemplate(request *CreateWatermarkTemplateRequest) (response *CreateWatermarkTemplateResponse, err error) {
     if request == nil {
         request = NewCreateWatermarkTemplateRequest()
@@ -333,7 +506,13 @@ func NewCreateWordSamplesResponse() (response *CreateWordSamplesResponse) {
     return
 }
 
+// CreateWordSamples
 // 该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行不适宜内容识别、内容识别等视频处理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateWordSamples(request *CreateWordSamplesRequest) (response *CreateWordSamplesResponse, err error) {
     if request == nil {
         request = NewCreateWordSamplesRequest()
@@ -358,18 +537,39 @@ func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
     return
 }
 
+// CreateWorkflow
 // 对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+//
 // 1. 视频转码（带水印）；
+//
 // 2. 视频转动图；
+//
 // 3. 对视频按指定时间点截图；
+//
 // 4. 对视频采样截图；
+//
 // 5. 对视频截图雪碧图；
+//
 // 6. 对视频转自适应码流；
+//
 // 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+//
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
+//
 // 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+//
 // 
+//
 // 注意：创建工作流成功后是禁用状态，需要手动启用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
 func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *CreateWorkflowResponse, err error) {
     if request == nil {
         request = NewCreateWorkflowRequest()
@@ -394,9 +594,18 @@ func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateRe
     return
 }
 
+// DeleteAIAnalysisTemplate
 // 删除用户自定义内容分析模板。
+//
 // 
+//
 // 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateRequest) (response *DeleteAIAnalysisTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteAIAnalysisTemplateRequest()
@@ -421,7 +630,15 @@ func NewDeleteAIRecognitionTemplateResponse() (response *DeleteAIRecognitionTemp
     return
 }
 
+// DeleteAIRecognitionTemplate
 // 删除用户自定义内容识别模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplateRequest) (response *DeleteAIRecognitionTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteAIRecognitionTemplateRequest()
@@ -446,7 +663,13 @@ func NewDeleteAdaptiveDynamicStreamingTemplateResponse() (response *DeleteAdapti
     return
 }
 
+// DeleteAdaptiveDynamicStreamingTemplate
 // 删除转自适应码流模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteAdaptiveDynamicStreamingTemplate(request *DeleteAdaptiveDynamicStreamingTemplateRequest) (response *DeleteAdaptiveDynamicStreamingTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteAdaptiveDynamicStreamingTemplateRequest()
@@ -471,7 +694,13 @@ func NewDeleteAnimatedGraphicsTemplateResponse() (response *DeleteAnimatedGraphi
     return
 }
 
+// DeleteAnimatedGraphicsTemplate
 // 删除用户自定义转动图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteAnimatedGraphicsTemplate(request *DeleteAnimatedGraphicsTemplateRequest) (response *DeleteAnimatedGraphicsTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteAnimatedGraphicsTemplateRequest()
@@ -496,7 +725,14 @@ func NewDeleteContentReviewTemplateResponse() (response *DeleteContentReviewTemp
     return
 }
 
+// DeleteContentReviewTemplate
 // 删除用户自定义内容智能识别模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplateRequest) (response *DeleteContentReviewTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteContentReviewTemplateRequest()
@@ -521,7 +757,13 @@ func NewDeleteImageSpriteTemplateResponse() (response *DeleteImageSpriteTemplate
     return
 }
 
+// DeleteImageSpriteTemplate
 // 删除雪碧图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteImageSpriteTemplate(request *DeleteImageSpriteTemplateRequest) (response *DeleteImageSpriteTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteImageSpriteTemplateRequest()
@@ -546,7 +788,12 @@ func NewDeletePersonSampleResponse() (response *DeletePersonSampleResponse) {
     return
 }
 
+// DeletePersonSample
 // 该接口用于根据素材 ID，删除素材样本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
 func (c *Client) DeletePersonSample(request *DeletePersonSampleRequest) (response *DeletePersonSampleResponse, err error) {
     if request == nil {
         request = NewDeletePersonSampleRequest()
@@ -571,7 +818,13 @@ func NewDeleteSampleSnapshotTemplateResponse() (response *DeleteSampleSnapshotTe
     return
 }
 
+// DeleteSampleSnapshotTemplate
 // 删除用户自定义采样截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteSampleSnapshotTemplate(request *DeleteSampleSnapshotTemplateRequest) (response *DeleteSampleSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteSampleSnapshotTemplateRequest()
@@ -596,7 +849,13 @@ func NewDeleteSnapshotByTimeOffsetTemplateResponse() (response *DeleteSnapshotBy
     return
 }
 
+// DeleteSnapshotByTimeOffsetTemplate
 // 删除用户自定义指定时间点截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteSnapshotByTimeOffsetTemplate(request *DeleteSnapshotByTimeOffsetTemplateRequest) (response *DeleteSnapshotByTimeOffsetTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteSnapshotByTimeOffsetTemplateRequest()
@@ -621,7 +880,14 @@ func NewDeleteTranscodeTemplateResponse() (response *DeleteTranscodeTemplateResp
     return
 }
 
+// DeleteTranscodeTemplate
 // 删除用户自定义转码模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteTranscodeTemplate(request *DeleteTranscodeTemplateRequest) (response *DeleteTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteTranscodeTemplateRequest()
@@ -646,7 +912,14 @@ func NewDeleteWatermarkTemplateResponse() (response *DeleteWatermarkTemplateResp
     return
 }
 
+// DeleteWatermarkTemplate
 // 删除用户自定义水印模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteWatermarkTemplate(request *DeleteWatermarkTemplateRequest) (response *DeleteWatermarkTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteWatermarkTemplateRequest()
@@ -671,7 +944,12 @@ func NewDeleteWordSamplesResponse() (response *DeleteWordSamplesResponse) {
     return
 }
 
+// DeleteWordSamples
 // 该接口用于批量删除关键词样本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteWordSamples(request *DeleteWordSamplesRequest) (response *DeleteWordSamplesResponse, err error) {
     if request == nil {
         request = NewDeleteWordSamplesRequest()
@@ -696,7 +974,14 @@ func NewDeleteWorkflowResponse() (response *DeleteWorkflowResponse) {
     return
 }
 
+// DeleteWorkflow
 // 删除工作流。对于已启用的工作流，需要禁用后才能删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (response *DeleteWorkflowResponse, err error) {
     if request == nil {
         request = NewDeleteWorkflowRequest()
@@ -721,7 +1006,16 @@ func NewDescribeAIAnalysisTemplatesResponse() (response *DescribeAIAnalysisTempl
     return
 }
 
+// DescribeAIAnalysisTemplates
 // 根据内容分析模板唯一标识，获取内容分析模板详情列表。返回结果包含符合条件的所有用户自定义内容分析模板及系统预置视频内容分析模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeAIAnalysisTemplates(request *DescribeAIAnalysisTemplatesRequest) (response *DescribeAIAnalysisTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAIAnalysisTemplatesRequest()
@@ -746,7 +1040,16 @@ func NewDescribeAIRecognitionTemplatesResponse() (response *DescribeAIRecognitio
     return
 }
 
+// DescribeAIRecognitionTemplates
 // 根据内容识别模板唯一标识，获取内容识别模板详情列表。返回结果包含符合条件的所有用户自定义内容识别模板及系统预置视频内容识别模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTemplatesRequest) (response *DescribeAIRecognitionTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAIRecognitionTemplatesRequest()
@@ -771,7 +1074,16 @@ func NewDescribeAdaptiveDynamicStreamingTemplatesResponse() (response *DescribeA
     return
 }
 
+// DescribeAdaptiveDynamicStreamingTemplates
 // 查询转自适应码流模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAdaptiveDynamicStreamingTemplates(request *DescribeAdaptiveDynamicStreamingTemplatesRequest) (response *DescribeAdaptiveDynamicStreamingTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAdaptiveDynamicStreamingTemplatesRequest()
@@ -796,7 +1108,13 @@ func NewDescribeAnimatedGraphicsTemplatesResponse() (response *DescribeAnimatedG
     return
 }
 
+// DescribeAnimatedGraphicsTemplates
 // 查询转动图模板列表，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGraphicsTemplatesRequest) (response *DescribeAnimatedGraphicsTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAnimatedGraphicsTemplatesRequest()
@@ -821,7 +1139,16 @@ func NewDescribeContentReviewTemplatesResponse() (response *DescribeContentRevie
     return
 }
 
+// DescribeContentReviewTemplates
 // 根据内容智能识别模板唯一标识，获取内容智能识别模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容智能识别模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTemplatesRequest) (response *DescribeContentReviewTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeContentReviewTemplatesRequest()
@@ -846,7 +1173,13 @@ func NewDescribeImageSpriteTemplatesResponse() (response *DescribeImageSpriteTem
     return
 }
 
+// DescribeImageSpriteTemplates
 // 查询雪碧图模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTemplatesRequest) (response *DescribeImageSpriteTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeImageSpriteTemplatesRequest()
@@ -871,7 +1204,14 @@ func NewDescribeMediaMetaDataResponse() (response *DescribeMediaMetaDataResponse
     return
 }
 
+// DescribeMediaMetaData
 // 获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 func (c *Client) DescribeMediaMetaData(request *DescribeMediaMetaDataRequest) (response *DescribeMediaMetaDataResponse, err error) {
     if request == nil {
         request = NewDescribeMediaMetaDataRequest()
@@ -896,7 +1236,13 @@ func NewDescribePersonSamplesResponse() (response *DescribePersonSamplesResponse
     return
 }
 
+// DescribePersonSamples
 // 该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribePersonSamples(request *DescribePersonSamplesRequest) (response *DescribePersonSamplesResponse, err error) {
     if request == nil {
         request = NewDescribePersonSamplesRequest()
@@ -921,7 +1267,13 @@ func NewDescribeSampleSnapshotTemplatesResponse() (response *DescribeSampleSnaps
     return
 }
 
+// DescribeSampleSnapshotTemplates
 // 查询采样截图模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeSampleSnapshotTemplates(request *DescribeSampleSnapshotTemplatesRequest) (response *DescribeSampleSnapshotTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeSampleSnapshotTemplatesRequest()
@@ -946,7 +1298,13 @@ func NewDescribeSnapshotByTimeOffsetTemplatesResponse() (response *DescribeSnaps
     return
 }
 
+// DescribeSnapshotByTimeOffsetTemplates
 // 查询指定时间点截图模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeSnapshotByTimeOffsetTemplates(request *DescribeSnapshotByTimeOffsetTemplatesRequest) (response *DescribeSnapshotByTimeOffsetTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeSnapshotByTimeOffsetTemplatesRequest()
@@ -971,7 +1329,15 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     return
 }
 
+// DescribeTaskDetail
 // 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
@@ -996,9 +1362,17 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     return
 }
 
+// DescribeTasks
 // * 该接口用于查询任务列表；
+//
 // * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
+//
 // * 只能查询到最近三天（72 小时）内的任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -1023,7 +1397,18 @@ func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplat
     return
 }
 
+// DescribeTranscodeTemplates
 // 根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CONTAINERTYPE = "InvalidParameterValue.ContainerType"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesRequest) (response *DescribeTranscodeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeTranscodeTemplatesRequest()
@@ -1048,7 +1433,16 @@ func NewDescribeWatermarkTemplatesResponse() (response *DescribeWatermarkTemplat
     return
 }
 
+// DescribeWatermarkTemplates
 // 查询用户自定义水印模板，支持根据条件，分页查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeWatermarkTemplates(request *DescribeWatermarkTemplatesRequest) (response *DescribeWatermarkTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeWatermarkTemplatesRequest()
@@ -1073,7 +1467,13 @@ func NewDescribeWordSamplesResponse() (response *DescribeWordSamplesResponse) {
     return
 }
 
+// DescribeWordSamples
 // 该接口用于根据应用场景、关键词、标签，分页查询关键词样本信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeWordSamples(request *DescribeWordSamplesRequest) (response *DescribeWordSamplesResponse, err error) {
     if request == nil {
         request = NewDescribeWordSamplesRequest()
@@ -1098,7 +1498,13 @@ func NewDescribeWorkflowsResponse() (response *DescribeWorkflowsResponse) {
     return
 }
 
+// DescribeWorkflows
 // 根据工作流 ID，获取工作流详情列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeWorkflows(request *DescribeWorkflowsRequest) (response *DescribeWorkflowsResponse, err error) {
     if request == nil {
         request = NewDescribeWorkflowsRequest()
@@ -1123,7 +1529,16 @@ func NewDisableWorkflowResponse() (response *DisableWorkflowResponse) {
     return
 }
 
+// DisableWorkflow
 // 禁用工作流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DisableWorkflow(request *DisableWorkflowRequest) (response *DisableWorkflowResponse, err error) {
     if request == nil {
         request = NewDisableWorkflowRequest()
@@ -1148,11 +1563,21 @@ func NewEditMediaResponse() (response *EditMediaResponse) {
     return
 }
 
+// EditMedia
 // 对视频进行编辑（剪辑、拼接等），生成一个新的点播视频。编辑的功能包括：
+//
 // 
+//
 // 1. 对一个文件进行剪辑，生成一个新的视频；
+//
 // 2. 对多个文件进行拼接，生成一个新的视频；
+//
 // 3. 对多个文件进行剪辑，然后再拼接，生成一个新的视频。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) EditMedia(request *EditMediaRequest) (response *EditMediaResponse, err error) {
     if request == nil {
         request = NewEditMediaRequest()
@@ -1177,7 +1602,18 @@ func NewEnableWorkflowResponse() (response *EnableWorkflowResponse) {
     return
 }
 
+// EnableWorkflow
 // 启用工作流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) EnableWorkflow(request *EnableWorkflowRequest) (response *EnableWorkflowResponse, err error) {
     if request == nil {
         request = NewEnableWorkflowRequest()
@@ -1202,7 +1638,15 @@ func NewExecuteFunctionResponse() (response *ExecuteFunctionResponse) {
     return
 }
 
+// ExecuteFunction
 // 本接口仅用于定制开发的特殊场景，除非云视频处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ExecuteFunction(request *ExecuteFunctionRequest) (response *ExecuteFunctionResponse, err error) {
     if request == nil {
         request = NewExecuteFunctionRequest()
@@ -1227,7 +1671,16 @@ func NewManageTaskResponse() (response *ManageTaskResponse) {
     return
 }
 
+// ManageTask
 // 对已发起的任务进行管理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDOPERATIONTYPE = "InvalidParameterValue.InvalidOperationType"
+//  INVALIDPARAMETERVALUE_NOTPROCESSINGTASK = "InvalidParameterValue.NotProcessingTask"
+//  INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
 func (c *Client) ManageTask(request *ManageTaskRequest) (response *ManageTaskResponse, err error) {
     if request == nil {
         request = NewManageTaskRequest()
@@ -1252,9 +1705,24 @@ func NewModifyAIAnalysisTemplateResponse() (response *ModifyAIAnalysisTemplateRe
     return
 }
 
+// ModifyAIAnalysisTemplate
 // 修改用户自定义内容分析模板。
+//
 // 
+//
 // 注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = "InvalidParameterValue.ClassifcationConfigure"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
+//  INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = "InvalidParameterValue.FrameTagConfigure"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TAGCONFIGURE = "InvalidParameterValue.TagConfigure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyAIAnalysisTemplate(request *ModifyAIAnalysisTemplateRequest) (response *ModifyAIAnalysisTemplateResponse, err error) {
     if request == nil {
         request = NewModifyAIAnalysisTemplateRequest()
@@ -1279,7 +1747,25 @@ func NewModifyAIRecognitionTemplateResponse() (response *ModifyAIRecognitionTemp
     return
 }
 
+// ModifyAIRecognitionTemplate
 // 修改用户自定义内容识别模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = "InvalidParameterValue.DefaultLibraryLabelSet"
+//  INVALIDPARAMETERVALUE_FACELIBRARY = "InvalidParameterValue.FaceLibrary"
+//  INVALIDPARAMETERVALUE_FACESCORE = "InvalidParameterValue.FaceScore"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = "InvalidParameterValue.ModifyDefaultTemplate"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_OBJECTLIBRARY = "InvalidParameterValue.ObjectLibrary"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = "InvalidParameterValue.UserDefineLibraryLabelSet"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplateRequest) (response *ModifyAIRecognitionTemplateResponse, err error) {
     if request == nil {
         request = NewModifyAIRecognitionTemplateRequest()
@@ -1304,7 +1790,35 @@ func NewModifyAdaptiveDynamicStreamingTemplateResponse() (response *ModifyAdapti
     return
 }
 
+// ModifyAdaptiveDynamicStreamingTemplate
 // 修改转自适应码流模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
+//  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
+//  INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
 func (c *Client) ModifyAdaptiveDynamicStreamingTemplate(request *ModifyAdaptiveDynamicStreamingTemplateRequest) (response *ModifyAdaptiveDynamicStreamingTemplateResponse, err error) {
     if request == nil {
         request = NewModifyAdaptiveDynamicStreamingTemplateRequest()
@@ -1329,7 +1843,21 @@ func NewModifyAnimatedGraphicsTemplateResponse() (response *ModifyAnimatedGraphi
     return
 }
 
+// ModifyAnimatedGraphicsTemplate
 // 修改用户自定义转动图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FORMATWEBPLACKWIDTHANDHEIGHT = "InvalidParameterValue.FormatWebpLackWidthAndHeight"
+//  INVALIDPARAMETERVALUE_FORMATWEBPWIDTHANDHEIGHTBOTHZERO = "InvalidParameterValue.FormatWebpWidthAndHeightBothZero"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_QUALITY = "InvalidParameterValue.Quality"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyAnimatedGraphicsTemplate(request *ModifyAnimatedGraphicsTemplateRequest) (response *ModifyAnimatedGraphicsTemplateResponse, err error) {
     if request == nil {
         request = NewModifyAnimatedGraphicsTemplateRequest()
@@ -1354,7 +1882,19 @@ func NewModifyContentReviewTemplateResponse() (response *ModifyContentReviewTemp
     return
 }
 
+// ModifyContentReviewTemplate
 // 修改用户自定义内容智能识别模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyContentReviewTemplate(request *ModifyContentReviewTemplateRequest) (response *ModifyContentReviewTemplateResponse, err error) {
     if request == nil {
         request = NewModifyContentReviewTemplateRequest()
@@ -1379,7 +1919,20 @@ func NewModifyImageSpriteTemplateResponse() (response *ModifyImageSpriteTemplate
     return
 }
 
+// ModifyImageSpriteTemplate
 // 修改用户自定义雪碧图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_ROWCOUNT = "InvalidParameterValue.RowCount"
+//  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
+//  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyImageSpriteTemplate(request *ModifyImageSpriteTemplateRequest) (response *ModifyImageSpriteTemplateResponse, err error) {
     if request == nil {
         request = NewModifyImageSpriteTemplateRequest()
@@ -1404,7 +1957,16 @@ func NewModifyPersonSampleResponse() (response *ModifyPersonSampleResponse) {
     return
 }
 
+// ModifyPersonSample
 // 该接口用于根据素材 ID，修改素材样本信息，包括名称、描述的修改，以及五官、标签的添加、删除、重置操作。五官删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
+//  INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
+//  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
 func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (response *ModifyPersonSampleResponse, err error) {
     if request == nil {
         request = NewModifyPersonSampleRequest()
@@ -1429,7 +1991,20 @@ func NewModifySampleSnapshotTemplateResponse() (response *ModifySampleSnapshotTe
     return
 }
 
+// ModifySampleSnapshotTemplate
 // 修改用户自定义采样截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
+//  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifySampleSnapshotTemplate(request *ModifySampleSnapshotTemplateRequest) (response *ModifySampleSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewModifySampleSnapshotTemplateRequest()
@@ -1454,7 +2029,18 @@ func NewModifySnapshotByTimeOffsetTemplateResponse() (response *ModifySnapshotBy
     return
 }
 
+// ModifySnapshotByTimeOffsetTemplate
 // 修改用户自定义指定时间点截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifySnapshotByTimeOffsetTemplate(request *ModifySnapshotByTimeOffsetTemplateRequest) (response *ModifySnapshotByTimeOffsetTemplateResponse, err error) {
     if request == nil {
         request = NewModifySnapshotByTimeOffsetTemplateRequest()
@@ -1479,7 +2065,28 @@ func NewModifyTranscodeTemplateResponse() (response *ModifyTranscodeTemplateResp
     return
 }
 
+// ModifyTranscodeTemplate
 // 修改用户自定义转码模板信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
+//  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
+//  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
+//  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
+//  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
+//  INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = "InvalidParameterValue.ResolutionAdaptive"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VIDEOBITRATE = "InvalidParameterValue.VideoBitrate"
+//  INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyTranscodeTemplate(request *ModifyTranscodeTemplateRequest) (response *ModifyTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewModifyTranscodeTemplateRequest()
@@ -1504,7 +2111,27 @@ func NewModifyWatermarkTemplateResponse() (response *ModifyWatermarkTemplateResp
     return
 }
 
+// ModifyWatermarkTemplate
 // 修改用户自定义水印模板，水印类型不允许修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UPLOADWATERMARKERROR = "InternalError.UploadWatermarkError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COORDINATEORIGIN = "InvalidParameterValue.CoordinateOrigin"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_IMAGECONTENT = "InvalidParameterValue.ImageContent"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REPEATTYPE = "InvalidParameterValue.RepeatType"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATEHEIGHT = "InvalidParameterValue.SvgTemplateHeight"
+//  INVALIDPARAMETERVALUE_SVGTEMPLATEWIDTH = "InvalidParameterValue.SvgTemplateWidth"
+//  INVALIDPARAMETERVALUE_TEXTALPHA = "InvalidParameterValue.TextAlpha"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  INVALIDPARAMETERVALUE_XPOS = "InvalidParameterValue.XPos"
+//  INVALIDPARAMETERVALUE_YPOS = "InvalidParameterValue.YPos"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyWatermarkTemplate(request *ModifyWatermarkTemplateRequest) (response *ModifyWatermarkTemplateResponse, err error) {
     if request == nil {
         request = NewModifyWatermarkTemplateRequest()
@@ -1529,7 +2156,14 @@ func NewModifyWordSampleResponse() (response *ModifyWordSampleResponse) {
     return
 }
 
+// ModifyWordSample
 // 该接口用于修改关键词的应用场景、标签，关键词本身不可修改，如需修改，可删除重建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_WORD = "ResourceNotFound.Word"
 func (c *Client) ModifyWordSample(request *ModifyWordSampleRequest) (response *ModifyWordSampleResponse, err error) {
     if request == nil {
         request = NewModifyWordSampleRequest()
@@ -1554,8 +2188,14 @@ func NewParseLiveStreamProcessNotificationResponse() (response *ParseLiveStreamP
     return
 }
 
+// ParseLiveStreamProcessNotification
 // 从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 直播流处理事件通知的内容。
+//
 // 该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
 func (c *Client) ParseLiveStreamProcessNotification(request *ParseLiveStreamProcessNotificationRequest) (response *ParseLiveStreamProcessNotificationResponse, err error) {
     if request == nil {
         request = NewParseLiveStreamProcessNotificationRequest()
@@ -1580,8 +2220,16 @@ func NewParseNotificationResponse() (response *ParseNotificationResponse) {
     return
 }
 
+// ParseNotification
 // 从 CMQ 获取到消息后，从消息的 msgBody 字段中解析出 MPS 事件通知的内容。
+//
 // 该接口不用于发起网络调用，而是用来帮助生成各个语言平台的 SDK，您可以参考 SDK 的中解析函数的实现事件通知的解析。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
 func (c *Client) ParseNotification(request *ParseNotificationRequest) (response *ParseNotificationResponse, err error) {
     if request == nil {
         request = NewParseNotificationRequest()
@@ -1606,12 +2254,26 @@ func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
     return
 }
 
+// ProcessLiveStream
 // 对直播流媒体发起处理任务，功能包括：
+//
 // 
+//
 // * 智能内容审核（画面鉴黄、鉴政、鉴暴、声音鉴黄）；
+//
 // * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+//
 // 
+//
 // 直播流处理事件通知实时写入用户指定的消息队列 CMQ 中，用户需要从消息队列 CMQ 中获取事件通知结果，同时处理过程中存在输出文件的，会写入用户指定的输出文件的目标存储中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 func (c *Client) ProcessLiveStream(request *ProcessLiveStreamRequest) (response *ProcessLiveStreamResponse, err error) {
     if request == nil {
         request = NewProcessLiveStreamRequest()
@@ -1636,16 +2298,34 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
     return
 }
 
+// ProcessMedia
 // 对 COS 中的媒体文件发起处理任务，功能包括：
+//
 // 1. 视频转码（带水印）；
+//
 // 2. 视频转动图；
+//
 // 3. 对视频按指定时间点截图；
+//
 // 4. 对视频采样截图；
+//
 // 5. 对视频截图雪碧图；
+//
 // 6. 对视频转自适应码流；
+//
 // 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+//
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
+//
 // 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMediaResponse, err error) {
     if request == nil {
         request = NewProcessMediaRequest()
@@ -1670,7 +2350,13 @@ func NewRecognizeMediaForZhiXueResponse() (response *RecognizeMediaForZhiXueResp
     return
 }
 
+// RecognizeMediaForZhiXue
 // 智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) RecognizeMediaForZhiXue(request *RecognizeMediaForZhiXueRequest) (response *RecognizeMediaForZhiXueResponse, err error) {
     if request == nil {
         request = NewRecognizeMediaForZhiXueRequest()
@@ -1695,7 +2381,14 @@ func NewResetWorkflowResponse() (response *ResetWorkflowResponse) {
     return
 }
 
+// ResetWorkflow
 // 重新设置一个已经存在且处于禁用状态的工作流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ResetWorkflow(request *ResetWorkflowRequest) (response *ResetWorkflowResponse, err error) {
     if request == nil {
         request = NewResetWorkflowRequest()

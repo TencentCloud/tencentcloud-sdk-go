@@ -58,7 +58,34 @@ func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
     return
 }
 
+// AllocateAddresses
 // 申请一个或多个弹性公网IP（简称 EIP）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_INVALIDSTATUS = "FailedOperation.InvalidStatus"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  FAILEDOPERATION_PRIVATEIPADDRESSBINDED = "FailedOperation.PrivateIpAddressBinded"
+//  FAILEDOPERATION_PRIVATEIPADDRESSUNAVAILABLE = "FailedOperation.PrivateIpAddressUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_INVALIDPARAMETERCONFLICT = "InvalidParameter.InvalidParameterConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDRESSQUOTALIMITEXCEEDED = "InvalidParameterValue.AddressQuotaLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDADDRESSCOUNT = "InvalidParameterValue.InvalidAddressCount"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDEDDAILYALLOCATE = "LimitExceeded.AddressQuotaLimitExceededDailyAllocate"
+//  MISSINGPARAMETER_MISSINGPRIVATEIPADDRESS = "MissingParameter.MissingPrivateIpAddress"
+//  RESOURCEINSUFFICIENT_IPQUOTANOTENOUGH = "ResourceInsufficient.IPQuotaNotEnough"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_INVALIDPRIVATEIPADDRESSALREADYBINDEIP = "UnsupportedOperation.InvalidPrivateIpAddressAlreadyBindEip"
 func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response *AllocateAddressesResponse, err error) {
     if request == nil {
         request = NewAllocateAddressesRequest()
@@ -83,7 +110,22 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
     return
 }
 
+// AssignIpv6Addresses
 // 本接口（AssignIpv6Addresses）用于弹性网卡申请IPv6地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
     if request == nil {
         request = NewAssignIpv6AddressesRequest()
@@ -108,7 +150,22 @@ func NewAssignPrivateIpAddressesResponse() (response *AssignPrivateIpAddressesRe
     return
 }
 
+// AssignPrivateIpAddresses
 // 弹性网卡申请内网 IP
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED_PRIVATEIPQUOTALIMITEXCEEDED = "LimitExceeded.PrivateIPQuotaLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesRequest) (response *AssignPrivateIpAddressesResponse, err error) {
     if request == nil {
         request = NewAssignPrivateIpAddressesRequest()
@@ -133,10 +190,43 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
     return
 }
 
+// AssociateAddress
 // 将弹性公网IP（简称 EIP）绑定到实例或弹性网卡的指定内网 IP 上。
+//
 // 将 EIP 绑定到实例（ECM）上，其本质是将 EIP 绑定到实例上主网卡的主内网 IP 上。
+//
 // 将 EIP 绑定到指定网卡的内网 IP上，内网IP已经绑定了EIP或普通公网IP，则反馈失败。必须先解绑该 EIP，才能再绑定新的。
+//
 // 只有状态为 UNBIND 的 EIP 才能够绑定内网IP。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  FAILEDOPERATION_PRIVATEIPADDRESSUNAVAILABLE = "FailedOperation.PrivateIpAddressUnavailable"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_INVALIDPARAMETERCONFLICT = "InvalidParameter.InvalidParameterConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVAILDENIID = "InvalidParameterValue.InvaildEniID"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGASSOCIATEENTITY = "MissingParameter.MissingAssociateEntity"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
+//  UNSUPPORTEDOPERATION_ALREADYBINDEIP = "UnsupportedOperation.AlreadyBindEip"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTFOUND = "UnsupportedOperation.InstanceIdNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDNETWORKINTERFACEIDNOTFOUND = "UnsupportedOperation.InvalidNetworkInterfaceIdNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDPRIVATEIPADDRESSALREADYBINDEIP = "UnsupportedOperation.InvalidPrivateIpAddressAlreadyBindEip"
+//  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
+//  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
     if request == nil {
         request = NewAssociateAddressRequest()
@@ -161,7 +251,18 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
     return
 }
 
+// AssociateSecurityGroups
 // 绑定安全组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = "LimitExceeded.SecurityGroupInstanceLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
@@ -186,7 +287,29 @@ func NewAttachNetworkInterfaceResponse() (response *AttachNetworkInterfaceRespon
     return
 }
 
+// AttachNetworkInterface
 // 弹性网卡绑定云主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVAILDENIID = "InvalidParameterValue.InvaildEniID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDEDDAILYALLOCATE = "LimitExceeded.AddressQuotaLimitExceededDailyAllocate"
+//  LIMITEXCEEDED_ENIQUOTALIMITEXCEEDED = "LimitExceeded.EniQuotaLimitExceeded"
+//  LIMITEXCEEDED_PRIVATEIPQUOTALIMITEXCEEDED = "LimitExceeded.PrivateIPQuotaLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = "UnsupportedOperation.AttachmentAlreadyExists"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) (response *AttachNetworkInterfaceResponse, err error) {
     if request == nil {
         request = NewAttachNetworkInterfaceRequest()
@@ -211,7 +334,24 @@ func NewBatchDeregisterTargetsResponse() (response *BatchDeregisterTargetsRespon
     return
 }
 
+// BatchDeregisterTargets
 // 批量解绑后端服务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchDeregisterTargets(request *BatchDeregisterTargetsRequest) (response *BatchDeregisterTargetsResponse, err error) {
     if request == nil {
         request = NewBatchDeregisterTargetsRequest()
@@ -236,7 +376,16 @@ func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResp
     return
 }
 
+// BatchModifyTargetWeight
 // 批量修改监听器绑定的后端机器的转发权重。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest) (response *BatchModifyTargetWeightResponse, err error) {
     if request == nil {
         request = NewBatchModifyTargetWeightRequest()
@@ -261,7 +410,22 @@ func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) 
     return
 }
 
+// BatchRegisterTargets
 // 批量绑定后端目标。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (response *BatchRegisterTargetsResponse, err error) {
     if request == nil {
         request = NewBatchRegisterTargetsRequest()
@@ -286,7 +450,20 @@ func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
     return
 }
 
+// CreateHaVip
 // 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_OBJECTNOTCURRENTSUBNET = "InvalidParameterValue.ObjectNotCurrentSubnet"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVipResponse, err error) {
     if request == nil {
         request = NewCreateHaVipRequest()
@@ -311,7 +488,24 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
     return
 }
 
+// CreateImage
 // 本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTALLSTOPPED = "FailedOperation.InstanceNotAllStopped"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_IMAGENAMEDUPLICATE = "InvalidParameterValue.ImageNameDuplicate"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
+//  RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = "ResourceInsufficient.InvaildPrivateImageNum"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTFOUND = "UnsupportedOperation.InstanceIdNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
     if request == nil {
         request = NewCreateImageRequest()
@@ -336,7 +530,17 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
     return
 }
 
+// CreateListener
 // 创建负载均衡监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     if request == nil {
         request = NewCreateListenerRequest()
@@ -361,7 +565,31 @@ func NewCreateLoadBalancerResponse() (response *CreateLoadBalancerResponse) {
     return
 }
 
+// CreateLoadBalancer
 // 购买负载均衡实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_INVALIDISPINNODE = "InvalidParameterValue.InvalidISPInNode"
+//  INVALIDPARAMETERVALUE_INVALIDLOADBALANCERNUM = "InvalidParameterValue.InvalidLoadBalancerNum"
+//  INVALIDPARAMETERVALUE_INVALIDLOADBALANCERTYPE = "InvalidParameterValue.InvalidLoadBalancerType"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TAGNUMOUTOFRANGE = "InvalidParameterValue.TagNumOutOfRange"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_LBLIMITEXCEEDED = "LimitExceeded.LBLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCESSOLDOUT_LOADBALANCERSOLDOUT = "ResourcesSoldOut.LoadBalancerSoldOut"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (response *CreateLoadBalancerResponse, err error) {
     if request == nil {
         request = NewCreateLoadBalancerRequest()
@@ -386,7 +614,30 @@ func NewCreateModuleResponse() (response *CreateModuleResponse) {
     return
 }
 
+// CreateModule
 // 创建模块
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODULENUM = "InvalidParameterValue.InvaildModuleNum"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHIN = "InvalidParameterValue.InvalidBandwidthIn"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHINANDOUT = "InvalidParameterValue.InvalidBandwidthInAndOut"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKSIZE = "InvalidParameterValue.InvalidDataDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDEIPDIRECTSERVICE = "InvalidParameterValue.InvalidEIPDirectService"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEARCHITECTURE = "InvalidParameterValue.InvalidImageArchitecture"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPECONFIGID = "InvalidParameterValue.InvalidInstanceTypeConfigID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULENAME = "InvalidParameterValue.InvalidModuleName"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKSIZE = "InvalidParameterValue.InvalidSystemDiskSize"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  LIMITEXCEEDED_MODULESECURITYGROUPLIMITEXCEEDED = "LimitExceeded.ModuleSecurityGroupLimitExceeded"
+//  LIMITEXCEEDED_SECURITYGROUPMODULELIMITEXCEEDED = "LimitExceeded.SecurityGroupModuleLimitExceeded"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) CreateModule(request *CreateModuleRequest) (response *CreateModuleResponse, err error) {
     if request == nil {
         request = NewCreateModuleRequest()
@@ -411,7 +662,24 @@ func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceRespon
     return
 }
 
+// CreateNetworkInterface
 // 创建弹性网卡
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESERVED = "InvalidParameterValue.Reserved"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ENIQUOTALIMITEXCEEDED = "LimitExceeded.EniQuotaLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (response *CreateNetworkInterfaceResponse, err error) {
     if request == nil {
         request = NewCreateNetworkInterfaceRequest()
@@ -436,7 +704,20 @@ func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
     return
 }
 
+// CreateRouteTable
 // 创建了VPC后，系统会创建一个默认路由表，所有新建的子网都会关联到默认路由表。默认情况下您可以直接使用默认路由表来管理您的路由策略。当您的路由策略较多时，您可以调用创建路由表接口创建更多路由表管理您的路由策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *CreateRouteTableResponse, err error) {
     if request == nil {
         request = NewCreateRouteTableRequest()
@@ -461,7 +742,24 @@ func NewCreateRoutesResponse() (response *CreateRoutesResponse) {
     return
 }
 
+// CreateRoutes
 // 创建路由策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CIDRNOTINPEERVPC = "InvalidParameterValue.CidrNotInPeerVpc"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+//  UNSUPPORTEDOPERATION_ECMPWITHCCNROUTE = "UnsupportedOperation.EcmpWithCcnRoute"
+//  UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
+//  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) CreateRoutes(request *CreateRoutesRequest) (response *CreateRoutesResponse, err error) {
     if request == nil {
         request = NewCreateRoutesRequest()
@@ -486,7 +784,18 @@ func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
     return
 }
 
+// CreateSecurityGroup
 // 创建安全组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (response *CreateSecurityGroupResponse, err error) {
     if request == nil {
         request = NewCreateSecurityGroupRequest()
@@ -511,20 +820,49 @@ func NewCreateSecurityGroupPoliciesResponse() (response *CreateSecurityGroupPoli
     return
 }
 
+// CreateSecurityGroupPolicies
 // <p>本接口（CreateSecurityGroupPolicies）用于创建安全组规则（SecurityGroupPolicy）。</p>
+//
 // <p>在 SecurityGroupPolicySet 参数中：</p>
+//
 // <ul>
+//
 // <li>Version 安全组规则版本号，用户每次更新安全规则版本会自动加1，防止您更新的路由规则已过期，不填不考虑冲突。</li>
+//
 // <li>在创建出站和入站规则（Egress 和 Ingress）时：<ul>
+//
 // <li>Protocol 字段支持输入TCP, UDP, ICMP, GRE, ALL。</li>
+//
 // <li>CidrBlock 字段允许输入符合cidr格式标准的任意字符串。在基础网络中，如果 CidrBlock 包含您的账户内的云服务器之外的设备在腾讯云的内网 IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。</li>
+//
 // <li>SecurityGroupId 字段允许输入与待修改的安全组位于相同项目中的安全组 ID，包括这个安全组 ID 本身，代表安全组下所有云服务器的内网 IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个 ID 所关联的云服务器变化而变化，不需要重新修改。</li>
+//
 // <li>Port 字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当 Protocol 字段是 TCP 或 UDP 时，Port 字段才被接受，即 Protocol 字段不是 TCP 或 UDP 时，Protocol 和 Port 排他关系，不允许同时输入，否则会接口报错。</li>
+//
 // <li>Action 字段只允许输入 ACCEPT 或 DROP。</li>
+//
 // <li>CidrBlock, SecurityGroupId, AddressTemplate 是排他关系，不允许同时输入，Protocol + Port 和 ServiceTemplate 二者是排他关系，不允许同时输入。</li>
+//
 // <li>一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。</li>
+//
 // </ul></li></ul>
+//
 // <p>默认接口请求频率限制：20次/秒。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
+//  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) CreateSecurityGroupPolicies(request *CreateSecurityGroupPoliciesRequest) (response *CreateSecurityGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewCreateSecurityGroupPoliciesRequest()
@@ -549,7 +887,22 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
     return
 }
 
+// CreateSubnet
 // 创建子网，若创建成功，则此子网会成为此可用区的默认子网。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
     if request == nil {
         request = NewCreateSubnetRequest()
@@ -574,7 +927,20 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
     return
 }
 
+// CreateVpc
 // 创建私有网络
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
     if request == nil {
         request = NewCreateVpcRequest()
@@ -599,7 +965,15 @@ func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
     return
 }
 
+// DeleteHaVip
 // 用于删除高可用虚拟IP（HAVIP）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
     if request == nil {
         request = NewDeleteHaVipRequest()
@@ -624,7 +998,17 @@ func NewDeleteImageResponse() (response *DeleteImageResponse) {
     return
 }
 
+// DeleteImage
 // 删除镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEINUSE = "FailedOperation.ImageInUse"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImageResponse, err error) {
     if request == nil {
         request = NewDeleteImageRequest()
@@ -649,7 +1033,17 @@ func NewDeleteListenerResponse() (response *DeleteListenerResponse) {
     return
 }
 
+// DeleteListener
 // 删除负载均衡监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
     if request == nil {
         request = NewDeleteListenerRequest()
@@ -674,7 +1068,23 @@ func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
     return
 }
 
+// DeleteLoadBalancer
 // 删除负载均衡实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (response *DeleteLoadBalancerResponse, err error) {
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
@@ -699,7 +1109,14 @@ func NewDeleteLoadBalancerListenersResponse() (response *DeleteLoadBalancerListe
     return
 }
 
+// DeleteLoadBalancerListeners
 // 删除负载均衡多个监听器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteLoadBalancerListeners(request *DeleteLoadBalancerListenersRequest) (response *DeleteLoadBalancerListenersResponse, err error) {
     if request == nil {
         request = NewDeleteLoadBalancerListenersRequest()
@@ -724,7 +1141,17 @@ func NewDeleteModuleResponse() (response *DeleteModuleResponse) {
     return
 }
 
+// DeleteModule
 // 删除业务模块
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEINMODULE = "FailedOperation.InstanceInModule"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteModule(request *DeleteModuleRequest) (response *DeleteModuleResponse, err error) {
     if request == nil {
         request = NewDeleteModuleRequest()
@@ -749,7 +1176,21 @@ func NewDeleteNetworkInterfaceResponse() (response *DeleteNetworkInterfaceRespon
     return
 }
 
+// DeleteNetworkInterface
 // 删除弹性网卡
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER_MISSINGNETWORKINTERFACEPARAMETER = "MissingParameter.MissingNetworkInterfaceParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) (response *DeleteNetworkInterfaceResponse, err error) {
     if request == nil {
         request = NewDeleteNetworkInterfaceRequest()
@@ -774,7 +1215,16 @@ func NewDeleteRouteTableResponse() (response *DeleteRouteTableResponse) {
     return
 }
 
+// DeleteRouteTable
 // 删除路由表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
+//  UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = "UnsupportedOperation.DelRouteWithSubnet"
 func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (response *DeleteRouteTableResponse, err error) {
     if request == nil {
         request = NewDeleteRouteTableRequest()
@@ -799,7 +1249,12 @@ func NewDeleteRoutesResponse() (response *DeleteRoutesResponse) {
     return
 }
 
+// DeleteRoutes
 // 对某个路由表批量删除路由策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRoutes(request *DeleteRoutesRequest) (response *DeleteRoutesResponse, err error) {
     if request == nil {
         request = NewDeleteRoutesRequest()
@@ -824,9 +1279,20 @@ func NewDeleteSecurityGroupResponse() (response *DeleteSecurityGroupResponse) {
     return
 }
 
+// DeleteSecurityGroup
 // 只有当前账号下的安全组允许被删除。
+//
 // 安全组实例ID如果在其他安全组的规则中被引用，则无法直接删除。这种情况下，需要先进行规则修改，再删除安全组。
+//
 // 删除的安全组无法再找回，请谨慎调用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (response *DeleteSecurityGroupResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityGroupRequest()
@@ -851,7 +1317,16 @@ func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoli
     return
 }
 
+// DeleteSecurityGroupPolicies
 // SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityGroupPoliciesRequest()
@@ -876,7 +1351,21 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
     return
 }
 
+// DeleteSubnet
 // 删除子网，若子网为可用区下的默认子网，则默认子网会回退到系统自动创建的默认子网，非用户最新创建的子网。若默认子网不满足需求，可调用设置默认子网接口设置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
     if request == nil {
         request = NewDeleteSubnetRequest()
@@ -901,7 +1390,18 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
     return
 }
 
+// DeleteVpc
 // 删除私有网络
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     if request == nil {
         request = NewDeleteVpcRequest()
@@ -926,7 +1426,16 @@ func NewDescribeAddressQuotaResponse() (response *DescribeAddressQuotaResponse) 
     return
 }
 
+// DescribeAddressQuota
 // 查询您账户的弹性公网IP（简称 EIP）在当前地域的配额信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (response *DescribeAddressQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeAddressQuotaRequest()
@@ -951,7 +1460,18 @@ func NewDescribeAddressesResponse() (response *DescribeAddressesResponse) {
     return
 }
 
+// DescribeAddresses
 // 查询弹性公网IP列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
 func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) (response *DescribeAddressesResponse, err error) {
     if request == nil {
         request = NewDescribeAddressesRequest()
@@ -976,7 +1496,14 @@ func NewDescribeBaseOverviewResponse() (response *DescribeBaseOverviewResponse) 
     return
 }
 
+// DescribeBaseOverview
 // 获取概览页统计的基本数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeBaseOverview(request *DescribeBaseOverviewRequest) (response *DescribeBaseOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeBaseOverviewRequest()
@@ -1001,7 +1528,15 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     return
 }
 
+// DescribeConfig
 // 获取带宽硬盘等数据的限制
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  MISSINGPARAMETER_MISSINGBASECONFIGPARAMETER = "MissingParameter.MissingBaseConfigParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeConfigRequest()
@@ -1026,7 +1561,15 @@ func NewDescribeCustomImageTaskResponse() (response *DescribeCustomImageTaskResp
     return
 }
 
+// DescribeCustomImageTask
 // 查询导入镜像任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCustomImageTask(request *DescribeCustomImageTaskRequest) (response *DescribeCustomImageTaskResponse, err error) {
     if request == nil {
         request = NewDescribeCustomImageTaskRequest()
@@ -1051,7 +1594,15 @@ func NewDescribeDefaultSubnetResponse() (response *DescribeDefaultSubnetResponse
     return
 }
 
+// DescribeDefaultSubnet
 // 查询可用区的默认子网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeDefaultSubnet(request *DescribeDefaultSubnetRequest) (response *DescribeDefaultSubnetResponse, err error) {
     if request == nil {
         request = NewDescribeDefaultSubnetRequest()
@@ -1076,7 +1627,16 @@ func NewDescribeHaVipsResponse() (response *DescribeHaVipsResponse) {
     return
 }
 
+// DescribeHaVips
 // 用于查询高可用虚拟IP（HAVIP）列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_INVAILDPAGEPARAM = "InvalidParameterValue.InvaildPageParam"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *DescribeHaVipsResponse, err error) {
     if request == nil {
         request = NewDescribeHaVipsRequest()
@@ -1101,7 +1661,19 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
     return
 }
 
+// DescribeImage
 // 展示镜像列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEINUSE = "FailedOperation.ImageInUse"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDPAGEPARAM = "InvalidParameterValue.InvaildPageParam"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeImage(request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
     if request == nil {
         request = NewDescribeImageRequest()
@@ -1126,7 +1698,11 @@ func NewDescribeImportImageOsResponse() (response *DescribeImportImageOsResponse
     return
 }
 
+// DescribeImportImageOs
 // 查询外部导入镜像支持的OS列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
 func (c *Client) DescribeImportImageOs(request *DescribeImportImageOsRequest) (response *DescribeImportImageOsResponse, err error) {
     if request == nil {
         request = NewDescribeImportImageOsRequest()
@@ -1151,7 +1727,14 @@ func NewDescribeInstanceTypeConfigResponse() (response *DescribeInstanceTypeConf
     return
 }
 
+// DescribeInstanceTypeConfig
 // 获取机型配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER_MISSINGINSTANCETYPECONFIGPARAMETER = "MissingParameter.MissingInstanceTypeConfigParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstanceTypeConfig(request *DescribeInstanceTypeConfigRequest) (response *DescribeInstanceTypeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceTypeConfigRequest()
@@ -1176,7 +1759,16 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
     return
 }
 
+// DescribeInstanceVncUrl
 // 查询实例管理终端地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER_MISSINGINSTANCESPARAMETER = "MissingParameter.MissingInstancesParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceVncUrlRequest()
@@ -1201,7 +1793,20 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 获取实例的相关信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDDESCRIBEINSTANCE = "InvalidParameterValue.InvaildDescribeInstance"
+//  INVALIDPARAMETERVALUE_INVAILDPAGEPARAM = "InvalidParameterValue.InvaildPageParam"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDORDERBYFIELD = "InvalidParameterValue.InvalidOrderByField"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -1226,7 +1831,15 @@ func NewDescribeInstancesDeniedActionsResponse() (response *DescribeInstancesDen
     return
 }
 
+// DescribeInstancesDeniedActions
 // 通过实例id获取当前禁止的操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER_MISSINGINSTANCESPARAMETER = "MissingParameter.MissingInstancesParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstancesDeniedActions(request *DescribeInstancesDeniedActionsRequest) (response *DescribeInstancesDeniedActionsResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesDeniedActionsRequest()
@@ -1251,7 +1864,16 @@ func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
     return
 }
 
+// DescribeListeners
 // 查询负载均衡的监听器列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
     if request == nil {
         request = NewDescribeListenersRequest()
@@ -1276,7 +1898,14 @@ func NewDescribeLoadBalanceTaskStatusResponse() (response *DescribeLoadBalanceTa
     return
 }
 
+// DescribeLoadBalanceTaskStatus
 // 查询负载均衡相关的任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeLoadBalanceTaskStatus(request *DescribeLoadBalanceTaskStatusRequest) (response *DescribeLoadBalanceTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalanceTaskStatusRequest()
@@ -1301,7 +1930,20 @@ func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse
     return
 }
 
+// DescribeLoadBalancers
 // 查询负载均衡实例列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
@@ -1326,7 +1968,18 @@ func NewDescribeModuleResponse() (response *DescribeModuleResponse) {
     return
 }
 
+// DescribeModule
 // 获取模块列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDPAGEPARAM = "InvalidParameterValue.InvaildPageParam"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeModule(request *DescribeModuleRequest) (response *DescribeModuleResponse, err error) {
     if request == nil {
         request = NewDescribeModuleRequest()
@@ -1351,7 +2004,16 @@ func NewDescribeModuleDetailResponse() (response *DescribeModuleDetailResponse) 
     return
 }
 
+// DescribeModuleDetail
 // 展示模块详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeModuleDetail(request *DescribeModuleDetailRequest) (response *DescribeModuleDetailResponse, err error) {
     if request == nil {
         request = NewDescribeModuleDetailRequest()
@@ -1376,7 +2038,20 @@ func NewDescribeMonthPeakNetworkResponse() (response *DescribeMonthPeakNetworkRe
     return
 }
 
+// DescribeMonthPeakNetwork
 // 获取客户节点上的出入带宽月峰和计费带宽信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDISPINNODE = "InvalidParameterValue.InvalidISPInNode"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMonthPeakNetwork(request *DescribeMonthPeakNetworkRequest) (response *DescribeMonthPeakNetworkResponse, err error) {
     if request == nil {
         request = NewDescribeMonthPeakNetworkRequest()
@@ -1401,7 +2076,22 @@ func NewDescribeNetworkInterfacesResponse() (response *DescribeNetworkInterfaces
     return
 }
 
+// DescribeNetworkInterfaces
 // 查询弹性网卡列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesRequest) (response *DescribeNetworkInterfacesResponse, err error) {
     if request == nil {
         request = NewDescribeNetworkInterfacesRequest()
@@ -1426,7 +2116,14 @@ func NewDescribeNodeResponse() (response *DescribeNodeResponse) {
     return
 }
 
+// DescribeNode
 // 获取节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER_MISSINGNODEPARAMETER = "MissingParameter.MissingNodeParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeNode(request *DescribeNodeRequest) (response *DescribeNodeResponse, err error) {
     if request == nil {
         request = NewDescribeNodeRequest()
@@ -1451,7 +2148,15 @@ func NewDescribePeakBaseOverviewResponse() (response *DescribePeakBaseOverviewRe
     return
 }
 
+// DescribePeakBaseOverview
 // CPU 内存 硬盘等基础信息峰值数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribePeakBaseOverview(request *DescribePeakBaseOverviewRequest) (response *DescribePeakBaseOverviewResponse, err error) {
     if request == nil {
         request = NewDescribePeakBaseOverviewRequest()
@@ -1476,7 +2181,16 @@ func NewDescribePeakNetworkOverviewResponse() (response *DescribePeakNetworkOver
     return
 }
 
+// DescribePeakNetworkOverview
 // 获取网络峰值数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOverviewRequest) (response *DescribePeakNetworkOverviewResponse, err error) {
     if request == nil {
         request = NewDescribePeakNetworkOverviewRequest()
@@ -1501,7 +2215,15 @@ func NewDescribeRouteConflictsResponse() (response *DescribeRouteConflictsRespon
     return
 }
 
+// DescribeRouteConflicts
 // 查询自定义路由策略与云联网路由策略冲突列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) (response *DescribeRouteConflictsResponse, err error) {
     if request == nil {
         request = NewDescribeRouteConflictsRequest()
@@ -1526,7 +2248,20 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
     return
 }
 
+// DescribeRouteTables
 // 查询路由表对象列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (response *DescribeRouteTablesResponse, err error) {
     if request == nil {
         request = NewDescribeRouteTablesRequest()
@@ -1551,7 +2286,16 @@ func NewDescribeSecurityGroupAssociationStatisticsResponse() (response *Describe
     return
 }
 
+// DescribeSecurityGroupAssociationStatistics
 // 查询安全组关联实例统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSecurityGroupAssociationStatisticsRequest) (response *DescribeSecurityGroupAssociationStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityGroupAssociationStatisticsRequest()
@@ -1576,7 +2320,14 @@ func NewDescribeSecurityGroupLimitsResponse() (response *DescribeSecurityGroupLi
     return
 }
 
+// DescribeSecurityGroupLimits
 // 查询用户安全组配额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSecurityGroupLimits(request *DescribeSecurityGroupLimitsRequest) (response *DescribeSecurityGroupLimitsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityGroupLimitsRequest()
@@ -1601,7 +2352,16 @@ func NewDescribeSecurityGroupPoliciesResponse() (response *DescribeSecurityGroup
     return
 }
 
+// DescribeSecurityGroupPolicies
 // 查询安全组规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityGroupPolicies(request *DescribeSecurityGroupPoliciesRequest) (response *DescribeSecurityGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityGroupPoliciesRequest()
@@ -1626,7 +2386,18 @@ func NewDescribeSecurityGroupsResponse() (response *DescribeSecurityGroupsRespon
     return
 }
 
+// DescribeSecurityGroups
 // 查看安全组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (response *DescribeSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityGroupsRequest()
@@ -1651,7 +2422,22 @@ func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
     return
 }
 
+// DescribeSubnets
 // 查询子网列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILTERLIMITEXCEEDED = "InvalidParameterValue.FilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *DescribeSubnetsResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetsRequest()
@@ -1676,7 +2462,18 @@ func NewDescribeTargetHealthResponse() (response *DescribeTargetHealthResponse) 
     return
 }
 
+// DescribeTargetHealth
 // 获取负载均衡后端服务的健康检查状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTargetHealth(request *DescribeTargetHealthRequest) (response *DescribeTargetHealthResponse, err error) {
     if request == nil {
         request = NewDescribeTargetHealthRequest()
@@ -1701,7 +2498,16 @@ func NewDescribeTargetsResponse() (response *DescribeTargetsResponse) {
     return
 }
 
+// DescribeTargets
 // 查询负载均衡绑定的后端服务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTargets(request *DescribeTargetsRequest) (response *DescribeTargetsResponse, err error) {
     if request == nil {
         request = NewDescribeTargetsRequest()
@@ -1726,7 +2532,18 @@ func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
     return
 }
 
+// DescribeTaskResult
 // 查询EIP异步任务执行结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
     if request == nil {
         request = NewDescribeTaskResultRequest()
@@ -1751,7 +2568,13 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     return
 }
 
+// DescribeTaskStatus
 // 本接口(DescribeTaskStatus)用于获取异步任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TASKNOTFOUND = "InvalidParameterValue.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskStatusRequest()
@@ -1776,7 +2599,21 @@ func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
     return
 }
 
+// DescribeVpcs
 // 查询私有网络列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILTERLIMITEXCEEDED = "InvalidParameterValue.FilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDZONEINSTANCECOUNT = "InvalidParameterValue.InvalidZoneInstanceCount"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeVpcsResponse, err error) {
     if request == nil {
         request = NewDescribeVpcsRequest()
@@ -1801,7 +2638,20 @@ func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceRespon
     return
 }
 
+// DetachNetworkInterface
 // 弹性网卡解绑云主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (response *DetachNetworkInterfaceResponse, err error) {
     if request == nil {
         request = NewDetachNetworkInterfaceRequest()
@@ -1826,7 +2676,18 @@ func NewDisableRoutesResponse() (response *DisableRoutesResponse) {
     return
 }
 
+// DisableRoutes
 // 禁用已启用的子网路由
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) DisableRoutes(request *DisableRoutesRequest) (response *DisableRoutesResponse, err error) {
     if request == nil {
         request = NewDisableRoutesRequest()
@@ -1851,9 +2712,31 @@ func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
     return
 }
 
+// DisassociateAddress
 // 解绑弹性公网IP（简称 EIP）
+//
 // 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
+//
 // EIP 如果被封堵，则不能进行解绑定操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVAILDADDRESSID = "InvalidParameterValue.InvaildAddressId"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTFOUND = "UnsupportedOperation.InstanceIdNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
+//  UNSUPPORTEDOPERATION_QUOTALIMITEXCEEDED = "UnsupportedOperation.QuotaLimitExceeded"
+//  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (response *DisassociateAddressResponse, err error) {
     if request == nil {
         request = NewDisassociateAddressRequest()
@@ -1878,7 +2761,14 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
     return
 }
 
+// DisassociateSecurityGroups
 // 解绑安全组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
@@ -1903,8 +2793,24 @@ func NewEnableRoutesResponse() (response *EnableRoutesResponse) {
     return
 }
 
+// EnableRoutes
 // 启用已禁用的子网路由。
+//
 // 本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+//  UNSUPPORTEDOPERATION_ECMPWITHCCNROUTE = "UnsupportedOperation.EcmpWithCcnRoute"
+//  UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
+//  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRoutesResponse, err error) {
     if request == nil {
         request = NewEnableRoutesRequest()
@@ -1929,7 +2835,20 @@ func NewImportCustomImageResponse() (response *ImportCustomImageResponse) {
     return
 }
 
+// ImportCustomImage
 // 导入自定义镜像，支持 RAW、VHD、QCOW2、VMDK 镜像格式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_IMAGENAMEDUPLICATE = "InvalidParameterValue.ImageNameDuplicate"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = "ResourceInsufficient.InvaildPrivateImageNum"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNAUTHORIZEDOPERATION_WINDOWSIMAGE = "UnauthorizedOperation.WindowsImage"
 func (c *Client) ImportCustomImage(request *ImportCustomImageRequest) (response *ImportCustomImageResponse, err error) {
     if request == nil {
         request = NewImportCustomImageRequest()
@@ -1954,7 +2873,19 @@ func NewImportImageResponse() (response *ImportImageResponse) {
     return
 }
 
+// ImportImage
 // 从CVM产品导入镜像到ECM
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_IMAGEDUPLICATE = "InvalidParameterValue.ImageDuplicate"
+//  INVALIDPARAMETERVALUE_IMAGENAMEDUPLICATE = "InvalidParameterValue.ImageNameDuplicate"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
+//  RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = "ResourceInsufficient.InvaildPrivateImageNum"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
     if request == nil {
         request = NewImportImageRequest()
@@ -1979,7 +2910,18 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
     return
 }
 
+// MigrateNetworkInterface
 // 弹性网卡迁移
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
     if request == nil {
         request = NewMigrateNetworkInterfaceRequest()
@@ -2004,9 +2946,22 @@ func NewMigratePrivateIpAddressResponse() (response *MigratePrivateIpAddressResp
     return
 }
 
+// MigratePrivateIpAddress
 // 弹性网卡内网IP迁移。
+//
 // 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
+//
 // 迁移前后的弹性网卡必须在同一个子网内。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) MigratePrivateIpAddress(request *MigratePrivateIpAddressRequest) (response *MigratePrivateIpAddressResponse, err error) {
     if request == nil {
         request = NewMigratePrivateIpAddressRequest()
@@ -2031,7 +2986,22 @@ func NewModifyAddressAttributeResponse() (response *ModifyAddressAttributeRespon
     return
 }
 
+// ModifyAddressAttribute
 // 修改弹性公网IP属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
+//  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
+//  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ModifyAddressAttribute(request *ModifyAddressAttributeRequest) (response *ModifyAddressAttributeResponse, err error) {
     if request == nil {
         request = NewModifyAddressAttributeRequest()
@@ -2056,7 +3026,20 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
     return
 }
 
+// ModifyAddressesBandwidth
 // 调整弹性公网IP带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BANDWIDTHOUTOFRANGE = "InvalidParameterValue.BandwidthOutOfRange"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
@@ -2081,7 +3064,15 @@ func NewModifyDefaultSubnetResponse() (response *ModifyDefaultSubnetResponse) {
     return
 }
 
+// ModifyDefaultSubnet
 // 修改在一个可用区下创建实例时使用的默认子网（创建实例时，未填写VPC参数时使用的sunbetId）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyDefaultSubnet(request *ModifyDefaultSubnetRequest) (response *ModifyDefaultSubnetResponse, err error) {
     if request == nil {
         request = NewModifyDefaultSubnetRequest()
@@ -2106,7 +3097,15 @@ func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) 
     return
 }
 
+// ModifyHaVipAttribute
 // 用于修改高可用虚拟IP（HAVIP）属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
     if request == nil {
         request = NewModifyHaVipAttributeRequest()
@@ -2131,7 +3130,17 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
     return
 }
 
+// ModifyImageAttribute
 // 本接口（ModifyImageAttribute）用于修改镜像属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IMAGENAMEDUPLICATE = "InvalidParameterValue.ImageNameDuplicate"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
     if request == nil {
         request = NewModifyImageAttributeRequest()
@@ -2156,7 +3165,19 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
     return
 }
 
+// ModifyInstancesAttribute
 // 修改实例的属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEOWNERCHECKFAILED = "FailedOperation.InstanceOwnerCheckFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = "LimitExceeded.SecurityGroupInstanceLimitExceeded"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeRequest) (response *ModifyInstancesAttributeResponse, err error) {
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
@@ -2181,7 +3202,17 @@ func NewModifyIpv6AddressesAttributeResponse() (response *ModifyIpv6AddressesAtt
     return
 }
 
+// ModifyIpv6AddressesAttribute
 // 本接口（ModifyIpv6AddressesAttribute）用于修改弹性网卡IPv6地址属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 func (c *Client) ModifyIpv6AddressesAttribute(request *ModifyIpv6AddressesAttributeRequest) (response *ModifyIpv6AddressesAttributeResponse, err error) {
     if request == nil {
         request = NewModifyIpv6AddressesAttributeRequest()
@@ -2206,7 +3237,16 @@ func NewModifyListenerResponse() (response *ModifyListenerResponse) {
     return
 }
 
+// ModifyListener
 // 修改负载均衡监听器属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     if request == nil {
         request = NewModifyListenerRequest()
@@ -2231,7 +3271,20 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
     return
 }
 
+// ModifyLoadBalancerAttributes
 // 修改负载均衡实例的属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttributesRequest) (response *ModifyLoadBalancerAttributesResponse, err error) {
     if request == nil {
         request = NewModifyLoadBalancerAttributesRequest()
@@ -2256,7 +3309,21 @@ func NewModifyModuleConfigResponse() (response *ModifyModuleConfigResponse) {
     return
 }
 
+// ModifyModuleConfig
 // 修改模块配置，已关联实例的模块不支持调整配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKSIZE = "InvalidParameterValue.InvalidDataDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEARCHITECTURE = "InvalidParameterValue.InvalidImageArchitecture"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = "InvalidParameterValue.InvalidInstanceType"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPECONFIGID = "InvalidParameterValue.InvalidInstanceTypeConfigID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_MODULENOTALLOWCHANGE = "InvalidParameterValue.ModuleNotAllowChange"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleConfig(request *ModifyModuleConfigRequest) (response *ModifyModuleConfigResponse, err error) {
     if request == nil {
         request = NewModifyModuleConfigRequest()
@@ -2281,7 +3348,14 @@ func NewModifyModuleDisableWanIpResponse() (response *ModifyModuleDisableWanIpRe
     return
 }
 
+// ModifyModuleDisableWanIp
 // 修改模块是否禁止分配外网ip的属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleDisableWanIp(request *ModifyModuleDisableWanIpRequest) (response *ModifyModuleDisableWanIpResponse, err error) {
     if request == nil {
         request = NewModifyModuleDisableWanIpRequest()
@@ -2306,7 +3380,19 @@ func NewModifyModuleImageResponse() (response *ModifyModuleImageResponse) {
     return
 }
 
+// ModifyModuleImage
 // 修改模块的默认镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEARCHITECTURE = "InvalidParameterValue.InvalidImageArchitecture"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) ModifyModuleImage(request *ModifyModuleImageRequest) (response *ModifyModuleImageResponse, err error) {
     if request == nil {
         request = NewModifyModuleImageRequest()
@@ -2331,7 +3417,15 @@ func NewModifyModuleIpDirectResponse() (response *ModifyModuleIpDirectResponse) 
     return
 }
 
+// ModifyModuleIpDirect
 // 修改模块IP直通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDEIPDIRECTSERVICE = "InvalidParameterValue.InvalidEIPDirectService"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleIpDirect(request *ModifyModuleIpDirectRequest) (response *ModifyModuleIpDirectResponse, err error) {
     if request == nil {
         request = NewModifyModuleIpDirectRequest()
@@ -2356,7 +3450,16 @@ func NewModifyModuleNameResponse() (response *ModifyModuleNameResponse) {
     return
 }
 
+// ModifyModuleName
 // 修改模块名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULENAME = "InvalidParameterValue.InvalidModuleName"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleName(request *ModifyModuleNameRequest) (response *ModifyModuleNameResponse, err error) {
     if request == nil {
         request = NewModifyModuleNameRequest()
@@ -2381,7 +3484,20 @@ func NewModifyModuleNetworkResponse() (response *ModifyModuleNetworkResponse) {
     return
 }
 
+// ModifyModuleNetwork
 // 修改模块默认带宽上限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHIN = "InvalidParameterValue.InvalidBandwidthIn"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHINANDOUT = "InvalidParameterValue.InvalidBandwidthInAndOut"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyModuleNetwork(request *ModifyModuleNetworkRequest) (response *ModifyModuleNetworkResponse, err error) {
     if request == nil {
         request = NewModifyModuleNetworkRequest()
@@ -2406,7 +3522,17 @@ func NewModifyModuleSecurityGroupsResponse() (response *ModifyModuleSecurityGrou
     return
 }
 
+// ModifyModuleSecurityGroups
 // 修改模块默认安全组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  LIMITEXCEEDED_MODULESECURITYGROUPLIMITEXCEEDED = "LimitExceeded.ModuleSecurityGroupLimitExceeded"
+//  LIMITEXCEEDED_SECURITYGROUPMODULELIMITEXCEEDED = "LimitExceeded.SecurityGroupModuleLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyModuleSecurityGroups(request *ModifyModuleSecurityGroupsRequest) (response *ModifyModuleSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyModuleSecurityGroupsRequest()
@@ -2431,7 +3557,15 @@ func NewModifyPrivateIpAddressesAttributeResponse() (response *ModifyPrivateIpAd
     return
 }
 
+// ModifyPrivateIpAddressesAttribute
 // 用于修改弹性网卡内网IP属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) ModifyPrivateIpAddressesAttribute(request *ModifyPrivateIpAddressesAttributeRequest) (response *ModifyPrivateIpAddressesAttributeResponse, err error) {
     if request == nil {
         request = NewModifyPrivateIpAddressesAttributeRequest()
@@ -2456,7 +3590,14 @@ func NewModifyRouteTableAttributeResponse() (response *ModifyRouteTableAttribute
     return
 }
 
+// ModifyRouteTableAttribute
 // 修改路由表属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRouteTableAttribute(request *ModifyRouteTableAttributeRequest) (response *ModifyRouteTableAttributeResponse, err error) {
     if request == nil {
         request = NewModifyRouteTableAttributeRequest()
@@ -2481,7 +3622,17 @@ func NewModifySecurityGroupAttributeResponse() (response *ModifySecurityGroupAtt
     return
 }
 
+// ModifySecurityGroupAttribute
 // 修改安全组属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttributeRequest) (response *ModifySecurityGroupAttributeResponse, err error) {
     if request == nil {
         request = NewModifySecurityGroupAttributeRequest()
@@ -2506,7 +3657,16 @@ func NewModifySecurityGroupPoliciesResponse() (response *ModifySecurityGroupPoli
     return
 }
 
+// ModifySecurityGroupPolicies
 // 修改安全组出站和入站规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySecurityGroupPolicies(request *ModifySecurityGroupPoliciesRequest) (response *ModifySecurityGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewModifySecurityGroupPoliciesRequest()
@@ -2531,7 +3691,21 @@ func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse
     return
 }
 
+// ModifySubnetAttribute
 // 修改子网属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (response *ModifySubnetAttributeResponse, err error) {
     if request == nil {
         request = NewModifySubnetAttributeRequest()
@@ -2556,7 +3730,16 @@ func NewModifyTargetPortResponse() (response *ModifyTargetPortResponse) {
     return
 }
 
+// ModifyTargetPort
 // 修改监听器绑定的后端机器的端口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyTargetPort(request *ModifyTargetPortRequest) (response *ModifyTargetPortResponse, err error) {
     if request == nil {
         request = NewModifyTargetPortRequest()
@@ -2581,7 +3764,18 @@ func NewModifyTargetWeightResponse() (response *ModifyTargetWeightResponse) {
     return
 }
 
+// ModifyTargetWeight
 // 修改监听器绑定的后端机器的转发权重。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyTargetWeight(request *ModifyTargetWeightRequest) (response *ModifyTargetWeightResponse, err error) {
     if request == nil {
         request = NewModifyTargetWeightRequest()
@@ -2606,7 +3800,19 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
     return
 }
 
+// ModifyVpcAttribute
 // 修改私有网络（VPC）的相关属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpcAttributeRequest()
@@ -2631,7 +3837,20 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
     return
 }
 
+// RebootInstances
 // 只有状态为RUNNING的实例才可以进行此操作；接口调用成功时，实例会进入REBOOTING状态；重启实例成功时，实例会进入RUNNING状态；支持强制重启，强制重启的效果等同于关闭物理计算机的电源开关再重新启动。强制重启可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常重启时使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKTYPE = "InvalidParameterValue.InvalidDataDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDISPINNODE = "InvalidParameterValue.InvalidISPInNode"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = "ResourceUnavailable.InstanceNotRunning"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *RebootInstancesResponse, err error) {
     if request == nil {
         request = NewRebootInstancesRequest()
@@ -2656,9 +3875,25 @@ func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
     return
 }
 
+// ReleaseAddresses
 // 释放一个或多个弹性公网IP（简称 EIP）。
+//
 // 该操作不可逆，释放后 EIP 关联的 IP 地址将不再属于您的名下。
+//
 // 只有状态为 UNBIND 的 EIP 才能进行释放操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
+//  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
+//  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
     if request == nil {
         request = NewReleaseAddressesRequest()
@@ -2683,7 +3918,16 @@ func NewReleaseIpv6AddressesResponse() (response *ReleaseIpv6AddressesResponse) 
     return
 }
 
+// ReleaseIpv6Addresses
 // 本接口（UnassignIpv6Addresses）用于释放弹性网卡IPv6地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReleaseIpv6Addresses(request *ReleaseIpv6AddressesRequest) (response *ReleaseIpv6AddressesResponse, err error) {
     if request == nil {
         request = NewReleaseIpv6AddressesRequest()
@@ -2708,8 +3952,22 @@ func NewRemovePrivateIpAddressesResponse() (response *RemovePrivateIpAddressesRe
     return
 }
 
+// RemovePrivateIpAddresses
 // 弹性网卡退还内网 IP。
+//
 // 退还弹性网卡上的辅助内网IP，接口自动解关联弹性公网 IP。不能退还弹性网卡的主内网IP。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) RemovePrivateIpAddresses(request *RemovePrivateIpAddressesRequest) (response *RemovePrivateIpAddressesResponse, err error) {
     if request == nil {
         request = NewRemovePrivateIpAddressesRequest()
@@ -2734,7 +3992,17 @@ func NewReplaceRouteTableAssociationResponse() (response *ReplaceRouteTableAssoc
     return
 }
 
+// ReplaceRouteTableAssociation
 // 修改子网关联的路由表，一个子网只能关联一个路由表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) ReplaceRouteTableAssociation(request *ReplaceRouteTableAssociationRequest) (response *ReplaceRouteTableAssociationResponse, err error) {
     if request == nil {
         request = NewReplaceRouteTableAssociationRequest()
@@ -2759,7 +4027,21 @@ func NewReplaceRoutesResponse() (response *ReplaceRoutesResponse) {
     return
 }
 
+// ReplaceRoutes
 // 替换路由策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CIDRNOTINPEERVPC = "InvalidParameterValue.CidrNotInPeerVpc"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
+//  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *ReplaceRoutesResponse, err error) {
     if request == nil {
         request = NewReplaceRoutesRequest()
@@ -2784,7 +4066,15 @@ func NewReplaceSecurityGroupPolicyResponse() (response *ReplaceSecurityGroupPoli
     return
 }
 
+// ReplaceSecurityGroupPolicy
 // 替换单条安全组路由规则, 单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyRequest) (response *ReplaceSecurityGroupPolicyResponse, err error) {
     if request == nil {
         request = NewReplaceSecurityGroupPolicyRequest()
@@ -2809,7 +4099,20 @@ func NewResetInstancesResponse() (response *ResetInstancesResponse) {
     return
 }
 
+// ResetInstances
 // 重装实例，若指定了ImageId参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装；若未指定密码，则密码通过站内信形式随后发送。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDPASSWORD = "InvalidParameterValue.InvaildPassword"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEARCHITECTURE = "InvalidParameterValue.InvalidImageArchitecture"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstances(request *ResetInstancesRequest) (response *ResetInstancesResponse, err error) {
     if request == nil {
         request = NewResetInstancesRequest()
@@ -2834,7 +4137,20 @@ func NewResetInstancesMaxBandwidthResponse() (response *ResetInstancesMaxBandwid
     return
 }
 
+// ResetInstancesMaxBandwidth
 // 重置实例的最大带宽上限。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHIN = "InvalidParameterValue.InvalidBandwidthIn"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHINANDOUT = "InvalidParameterValue.InvalidBandwidthInAndOut"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstancesMaxBandwidth(request *ResetInstancesMaxBandwidthRequest) (response *ResetInstancesMaxBandwidthResponse, err error) {
     if request == nil {
         request = NewResetInstancesMaxBandwidthRequest()
@@ -2859,7 +4175,20 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
     return
 }
 
+// ResetInstancesPassword
 // 重置处于运行中状态的实例的密码，需要显式指定强制关机参数ForceStop。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTALLSTOPPED = "FailedOperation.InstanceNotAllStopped"
+//  FAILEDOPERATION_INSTANCEOWNERCHECKFAILED = "FailedOperation.InstanceOwnerCheckFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVAILDPASSWORD = "InvalidParameterValue.InvaildPassword"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
     if request == nil {
         request = NewResetInstancesPasswordRequest()
@@ -2884,7 +4213,17 @@ func NewResetRoutesResponse() (response *ResetRoutesResponse) {
     return
 }
 
+// ResetRoutes
 // 对某个路由表名称和所有路由策略（Route）进行重新设置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CIDRNOTINPEERVPC = "InvalidParameterValue.CidrNotInPeerVpc"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutesResponse, err error) {
     if request == nil {
         request = NewResetRoutesRequest()
@@ -2909,7 +4248,66 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
     return
 }
 
+// RunInstances
 // 创建ECM实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BLOCKBALANCE = "FailedOperation.BlockBalance"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDRESSQUOTALIMITEXCEEDED = "InvalidParameterValue.AddressQuotaLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_FILTERLIMITEXCEEDED = "InvalidParameterValue.FilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_IMAGESIZELARGETHANSYSDISKSIZE = "InvalidParameterValue.ImageSizeLargeThanSysDiskSize"
+//  INVALIDPARAMETERVALUE_INSTANCECONFIGNOTMATCH = "InvalidParameterValue.InstanceConfigNotMatch"
+//  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
+//  INVALIDPARAMETERVALUE_INSTANCETYPENOTMATCHPID = "InvalidParameterValue.InstanceTypeNotMatchPid"
+//  INVALIDPARAMETERVALUE_INVAILDHOSTNAME = "InvalidParameterValue.InvaildHostName"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVAILDPASSWORD = "InvalidParameterValue.InvaildPassword"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHIN = "InvalidParameterValue.InvalidBandwidthIn"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHINANDOUT = "InvalidParameterValue.InvalidBandwidthInAndOut"
+//  INVALIDPARAMETERVALUE_INVALIDBILLINGTYPE = "InvalidParameterValue.InvalidBillingType"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKNUM = "InvalidParameterValue.InvalidDataDiskNum"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKSIZE = "InvalidParameterValue.InvalidDataDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDDATADISKTYPE = "InvalidParameterValue.InvalidDataDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDEIPDIRECTSERVICE = "InvalidParameterValue.InvalidEIPDirectService"
+//  INVALIDPARAMETERVALUE_INVALIDISPINNODE = "InvalidParameterValue.InvalidISPInNode"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEARCHITECTURE = "InvalidParameterValue.InvalidImageArchitecture"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageID"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCECHARGETYPE = "InvalidParameterValue.InvalidInstanceChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPECONFIGID = "InvalidParameterValue.InvalidInstanceTypeConfigID"
+//  INVALIDPARAMETERVALUE_INVALIDINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInternetChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEIDANDINSTANCETYPECONFIGID = "InvalidParameterValue.InvalidModuleIDAndInstanceTypeConfigID"
+//  INVALIDPARAMETERVALUE_INVALIDMODULEIDANDINSTANCETYPEID = "InvalidParameterValue.InvalidModuleIDAndInstanceTypeID"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDSECURITYGROUPID = "InvalidParameterValue.InvalidSecurityGroupID"
+//  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKSIZE = "InvalidParameterValue.InvalidSystemDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKTYPE = "InvalidParameterValue.InvalidSystemDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_INVALIDZONEINSTANCECOUNT = "InvalidParameterValue.InvalidZoneInstanceCount"
+//  INVALIDPARAMETERVALUE_INVALIDZONEINSTANCETYPE = "InvalidParameterValue.InvalidZoneInstanceType"
+//  INVALIDPARAMETERVALUE_NODENOTSUPPORTIPV6 = "InvalidParameterValue.NodeNotSupportIPv6"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_UNMATCHEDBILLINGTYPE = "InvalidParameterValue.UnmatchedBillingType"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  LIMITEXCEEDED_ENIQUOTALIMITEXCEEDED = "LimitExceeded.EniQuotaLimitExceeded"
+//  LIMITEXCEEDED_INSTANCESECURITYGROUPLIMITEXCEEDED = "LimitExceeded.InstanceSecurityGroupLimitExceeded"
+//  LIMITEXCEEDED_NICORIPLIMITEXCEEDED = "LimitExceeded.NicOrIPLimitExceeded"
+//  LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = "LimitExceeded.SecurityGroupInstanceLimitExceeded"
+//  LIMITEXCEEDED_VCPULIMITEXCEEDED = "LimitExceeded.VcpuLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_IPQUOTANOTENOUGH = "ResourceInsufficient.IPQuotaNotEnough"
+//  RESOURCEINSUFFICIENT_INSTANCEQUOTANOTENOUGH = "ResourceInsufficient.InstanceQuotaNotEnough"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+//  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     if request == nil {
         request = NewRunInstancesRequest()
@@ -2934,7 +4332,21 @@ func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecuri
     return
 }
 
+// SetLoadBalancerSecurityGroups
 // 设置负载均衡实例的安全组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityGroupsRequest) (response *SetLoadBalancerSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewSetLoadBalancerSecurityGroupsRequest()
@@ -2959,7 +4371,21 @@ func NewSetSecurityGroupForLoadbalancersResponse() (response *SetSecurityGroupFo
     return
 }
 
+// SetSecurityGroupForLoadbalancers
 // 绑定或解绑一个安全组到多个负载均衡实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) SetSecurityGroupForLoadbalancers(request *SetSecurityGroupForLoadbalancersRequest) (response *SetSecurityGroupForLoadbalancersResponse, err error) {
     if request == nil {
         request = NewSetSecurityGroupForLoadbalancersRequest()
@@ -2984,7 +4410,18 @@ func NewStartInstancesResponse() (response *StartInstancesResponse) {
     return
 }
 
+// StartInstances
 // 只有状态为STOPPED的实例才可以进行此操作；接口调用成功时，实例会进入STARTING状态；启动实例成功时，实例会进入RUNNING状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTALLSTOPPED = "FailedOperation.InstanceNotAllStopped"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) StartInstances(request *StartInstancesRequest) (response *StartInstancesResponse, err error) {
     if request == nil {
         request = NewStartInstancesRequest()
@@ -3009,9 +4446,23 @@ func NewStopInstancesResponse() (response *StopInstancesResponse) {
     return
 }
 
+// StopInstances
 // 只有处于"RUNNING"状态的实例才能够进行关机操作；
+//
 // 调用成功时，实例会进入STOPPING状态；关闭实例成功时，实例会进入STOPPED状态；
+//
 // 支持强制关闭，强制关机的效果等同于关闭物理计算机的电源开关，强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEOWNERCHECKFAILED = "FailedOperation.InstanceOwnerCheckFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVAILDMODIFYPARAM = "InvalidParameterValue.InvaildModifyParam"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = "ResourceUnavailable.InstanceNotRunning"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopInstancesResponse, err error) {
     if request == nil {
         request = NewStopInstancesRequest()
@@ -3036,7 +4487,19 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
     return
 }
 
+// TerminateInstances
 // 销毁实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
+//  INVALIDPARAMETERVALUE_TERMINATETIMESMALLER = "InvalidParameterValue.TerminateTimeSmaller"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
     if request == nil {
         request = NewTerminateInstancesRequest()

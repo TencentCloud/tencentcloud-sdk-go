@@ -35,7 +35,7 @@ func (r *DeleteCertRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCertRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -64,7 +64,7 @@ func (r *DeleteCertResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -103,7 +103,7 @@ func (r *DescribeCertListRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCertListRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -144,7 +144,7 @@ func (r *DescribeCertListResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCertListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -311,7 +311,7 @@ func (r *UploadCertRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UploadCertRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -347,7 +347,7 @@ func (r *UploadCertResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UploadCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

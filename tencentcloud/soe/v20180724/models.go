@@ -65,7 +65,7 @@ func (r *InitOralProcessRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InitOralProcessRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -107,7 +107,7 @@ func (r *InitOralProcessResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InitOralProcessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -167,7 +167,7 @@ func (r *KeywordEvaluateRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *KeywordEvaluateRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -209,7 +209,7 @@ func (r *KeywordEvaluateResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *KeywordEvaluateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -321,7 +321,7 @@ func (r *TransmitOralProcessRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransmitOralProcessRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -384,7 +384,7 @@ func (r *TransmitOralProcessResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransmitOralProcessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -490,7 +490,7 @@ func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransmitOralProcessWithInitRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -561,7 +561,7 @@ func (r *TransmitOralProcessWithInitResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransmitOralProcessWithInitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

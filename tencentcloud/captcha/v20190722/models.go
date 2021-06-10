@@ -135,7 +135,7 @@ func (r *DescribeCaptchaAppIdInfoRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -210,7 +210,7 @@ func (r *DescribeCaptchaAppIdInfoResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaAppIdInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -237,7 +237,7 @@ func (r *DescribeCaptchaDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -279,7 +279,7 @@ func (r *DescribeCaptchaDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -303,7 +303,7 @@ func (r *DescribeCaptchaDataSumRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataSumRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -355,7 +355,7 @@ func (r *DescribeCaptchaDataSumResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaDataSumResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -382,7 +382,7 @@ func (r *DescribeCaptchaMiniDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -424,7 +424,7 @@ func (r *DescribeCaptchaMiniDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -448,7 +448,7 @@ func (r *DescribeCaptchaMiniDataSumRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -514,7 +514,7 @@ func (r *DescribeCaptchaMiniDataSumResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniDataSumResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -538,7 +538,7 @@ func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -579,7 +579,7 @@ func (r *DescribeCaptchaMiniOperDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -621,7 +621,7 @@ func (r *DescribeCaptchaMiniResultRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniResultRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -672,7 +672,7 @@ func (r *DescribeCaptchaMiniResultResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -720,7 +720,7 @@ func (r *DescribeCaptchaMiniRiskResultRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniRiskResultRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -780,7 +780,7 @@ func (r *DescribeCaptchaMiniRiskResultResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaMiniRiskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -804,7 +804,7 @@ func (r *DescribeCaptchaOperDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaOperDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -845,7 +845,7 @@ func (r *DescribeCaptchaOperDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -893,7 +893,7 @@ func (r *DescribeCaptchaResultRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaResultRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -968,7 +968,7 @@ func (r *DescribeCaptchaResultResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -989,7 +989,7 @@ func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1029,7 +1029,7 @@ func (r *DescribeCaptchaTicketDataResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaTicketDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1044,7 +1044,7 @@ func (r *DescribeCaptchaUserAllAppIdRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaUserAllAppIdRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1082,7 +1082,7 @@ func (r *DescribeCaptchaUserAllAppIdResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1221,7 +1221,7 @@ func (r *UpdateCaptchaAppIdInfoRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1268,7 +1268,7 @@ func (r *UpdateCaptchaAppIdInfoResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCaptchaAppIdInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

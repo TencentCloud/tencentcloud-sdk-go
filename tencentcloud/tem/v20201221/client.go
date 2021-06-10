@@ -58,6 +58,7 @@ func NewCreateCosTokenResponse() (response *CreateCosTokenResponse) {
     return
 }
 
+// CreateCosToken
 // 生成Cos临时秘钥
 func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewCreateCosTokenV2Response() (response *CreateCosTokenV2Response) {
     return
 }
 
+// CreateCosTokenV2
 // 生成Cos临时秘钥
 func (c *Client) CreateCosTokenV2(request *CreateCosTokenV2Request) (response *CreateCosTokenV2Response, err error) {
     if request == nil {
@@ -108,6 +110,7 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     return
 }
 
+// CreateNamespace
 // 创建环境
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
     if request == nil {
@@ -133,6 +136,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
     return
 }
 
+// CreateResource
 // 绑定云资源
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
     if request == nil {
@@ -158,7 +162,11 @@ func NewCreateServiceV2Response() (response *CreateServiceV2Response) {
     return
 }
 
+// CreateServiceV2
 // 创建服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) CreateServiceV2(request *CreateServiceV2Request) (response *CreateServiceV2Response, err error) {
     if request == nil {
         request = NewCreateServiceV2Request()
@@ -183,7 +191,11 @@ func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
     return
 }
 
+// DeleteIngress
 // 删除 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     if request == nil {
         request = NewDeleteIngressRequest()
@@ -208,7 +220,11 @@ func NewDeployServiceV2Response() (response *DeployServiceV2Response) {
     return
 }
 
+// DeployServiceV2
 // 服务部署
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DeployServiceV2(request *DeployServiceV2Request) (response *DeployServiceV2Response, err error) {
     if request == nil {
         request = NewDeployServiceV2Request()
@@ -233,7 +249,11 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
     return
 }
 
+// DescribeIngress
 // 查询 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {
         request = NewDescribeIngressRequest()
@@ -258,7 +278,11 @@ func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
     return
 }
 
+// DescribeIngresses
 // 查询 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()
@@ -283,7 +307,11 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
     return
 }
 
+// DescribeNamespaces
 // 获取租户环境列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
     if request == nil {
         request = NewDescribeNamespacesRequest()
@@ -308,7 +336,11 @@ func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesRe
     return
 }
 
+// DescribeRelatedIngresses
 // 查询服务关联的 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedIngressesRequest()
@@ -333,7 +365,11 @@ func NewDescribeServiceRunPodListV2Response() (response *DescribeServiceRunPodLi
     return
 }
 
+// DescribeServiceRunPodListV2
 // 获取服务下面运行pod列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) DescribeServiceRunPodListV2(request *DescribeServiceRunPodListV2Request) (response *DescribeServiceRunPodListV2Response, err error) {
     if request == nil {
         request = NewDescribeServiceRunPodListV2Request()
@@ -358,7 +394,11 @@ func NewModifyIngressResponse() (response *ModifyIngressResponse) {
     return
 }
 
+// ModifyIngress
 // 创建或者更新 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
     if request == nil {
         request = NewModifyIngressRequest()
@@ -383,7 +423,11 @@ func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
     return
 }
 
+// ModifyNamespace
 // 编辑环境
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
     if request == nil {
         request = NewModifyNamespaceRequest()
@@ -408,7 +452,11 @@ func NewModifyServiceInfoResponse() (response *ModifyServiceInfoResponse) {
     return
 }
 
+// ModifyServiceInfo
 // 修改服务基本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (response *ModifyServiceInfoResponse, err error) {
     if request == nil {
         request = NewModifyServiceInfoRequest()
@@ -433,7 +481,11 @@ func NewRestartServiceRunPodResponse() (response *RestartServiceRunPodResponse) 
     return
 }
 
+// RestartServiceRunPod
 // 重启实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 func (c *Client) RestartServiceRunPod(request *RestartServiceRunPodRequest) (response *RestartServiceRunPodResponse, err error) {
     if request == nil {
         request = NewRestartServiceRunPodRequest()

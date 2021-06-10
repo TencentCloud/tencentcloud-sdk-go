@@ -60,7 +60,7 @@ func (r *GetOpenIdRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetOpenIdRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -100,7 +100,7 @@ func (r *GetOpenIdResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetOpenIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -133,7 +133,7 @@ func (r *GetTokenRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTokenRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -172,7 +172,7 @@ func (r *GetTokenResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -259,7 +259,7 @@ func (r *QueryDevAndRiskRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryDevAndRiskRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -321,7 +321,7 @@ func (r *QueryDevAndRiskResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryDevAndRiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

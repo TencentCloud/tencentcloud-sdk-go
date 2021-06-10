@@ -58,9 +58,15 @@ func NewCreateFileSampleResponse() (response *CreateFileSampleResponse) {
     return
 }
 
+// CreateFileSample
 // 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 通过该接口可以将图片新增到样本库。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
     if request == nil {
         request = NewCreateFileSampleRequest()
@@ -85,9 +91,15 @@ func NewCreateTextSampleResponse() (response *CreateTextSampleResponse) {
     return
 }
 
+// CreateTextSample
 // 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 通过该接口可以将文本新增到样本库。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
     if request == nil {
         request = NewCreateTextSampleRequest()
@@ -112,9 +124,15 @@ func NewDeleteFileSampleResponse() (response *DeleteFileSampleResponse) {
     return
 }
 
+// DeleteFileSample
 // 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 删除图片样本库，支持批量删除，一次提交不超过20个。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
     if request == nil {
         request = NewDeleteFileSampleRequest()
@@ -139,9 +157,15 @@ func NewDeleteTextSampleResponse() (response *DeleteTextSampleResponse) {
     return
 }
 
+// DeleteTextSample
 // 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 删除文本样本库，暂时只支持单个删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
     if request == nil {
         request = NewDeleteTextSampleRequest()
@@ -166,9 +190,15 @@ func NewDescribeFileSampleResponse() (response *DescribeFileSampleResponse) {
     return
 }
 
+// DescribeFileSample
 // 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 查询图片样本库，支持批量查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
     if request == nil {
         request = NewDescribeFileSampleRequest()
@@ -193,9 +223,15 @@ func NewDescribeTextSampleResponse() (response *DescribeTextSampleResponse) {
     return
 }
 
+// DescribeTextSample
 // 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
+//
 // <br>
+//
 // 支持批量查询文本样本库。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
     if request == nil {
         request = NewDescribeTextSampleRequest()
@@ -220,7 +256,22 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
     return
 }
 
+// ImageModeration
 // 图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别涉黄、涉恐、涉政、涉毒等有害内容，同时支持用户配置图片黑名单，打击自定义的违规图片。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONTENT = "InvalidParameterValue.InvalidImageContent"
+//  MISSINGPARAMETER_ERRFILEURL = "MissingParameter.ErrFileUrl"
+//  RESOURCENOTFOUND_ERRDOWDOWNINTERNALERROR = "ResourceNotFound.ErrDowdownInternalError"
+//  RESOURCENOTFOUND_ERRDOWDOWNPARAMSERROR = "ResourceNotFound.ErrDowdownParamsError"
+//  RESOURCENOTFOUND_ERRDOWDOWNSOURCEERROR = "ResourceNotFound.ErrDowdownSourceError"
+//  RESOURCENOTFOUND_ERRDOWDOWNTIMEOUT = "ResourceNotFound.ErrDowdownTimeOut"
+//  RESOURCEUNAVAILABLE_ERRIMAGETIMEOUT = "ResourceUnavailable.ErrImageTimeOut"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
         request = NewImageModerationRequest()
@@ -245,7 +296,26 @@ func NewManualReviewResponse() (response *ManualReviewResponse) {
     return
 }
 
+// ManualReview
 // 人工审核对外接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CUSTOMAPPID = "InvalidParameterValue.CustomAppId"
+//  INVALIDPARAMETERVALUE_DUPLICATECONTENTID = "InvalidParameterValue.DuplicateContentID"
+//  INVALIDPARAMETERVALUE_ERRACTION = "InvalidParameterValue.ErrAction"
+//  INVALIDPARAMETERVALUE_ERRAPPID = "InvalidParameterValue.ErrAppId"
+//  INVALIDPARAMETERVALUE_ERRREQUESTID = "InvalidParameterValue.ErrRequestID"
+//  INVALIDPARAMETERVALUE_ERRREQUESTSOURCE = "InvalidParameterValue.ErrRequestSource"
+//  INVALIDPARAMETERVALUE_ERRUIN = "InvalidParameterValue.ErrUin"
+//  INVALIDPARAMETERVALUE_INVALIDBATCHID = "InvalidParameterValue.InvalidBatchId"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENTID = "InvalidParameterValue.InvalidContentID"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
+//  INVALIDPARAMETERVALUE_INVALIDCUSTOMAPPID = "InvalidParameterValue.InvalidCustomAppId"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDTITLE = "InvalidParameterValue.InvalidTitle"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 func (c *Client) ManualReview(request *ManualReviewRequest) (response *ManualReviewResponse, err error) {
     if request == nil {
         request = NewManualReviewRequest()
@@ -270,7 +340,16 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
     return
 }
 
+// TextModeration
 // 文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
+//  RESOURCEUNAVAILABLE_ERRTEXTTIMEOUT = "ResourceUnavailable.ErrTextTimeOut"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
     if request == nil {
         request = NewTextModerationRequest()

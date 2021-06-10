@@ -58,7 +58,13 @@ func NewQueryActivityLiveCodeListResponse() (response *QueryActivityLiveCodeList
     return
 }
 
+// QueryActivityLiveCodeList
 // 根据游标拉取活动活码列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityLiveCodeList(request *QueryActivityLiveCodeListRequest) (response *QueryActivityLiveCodeListResponse, err error) {
     if request == nil {
         request = NewQueryActivityLiveCodeListRequest()

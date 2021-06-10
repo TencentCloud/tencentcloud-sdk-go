@@ -58,6 +58,7 @@ func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) 
     return
 }
 
+// DescribeDasbImageIds
 // 获取镜像列表
 func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewDescribeDbauditInstanceTypeResponse() (response *DescribeDbauditInstance
     return
 }
 
+// DescribeDbauditInstanceType
 // 本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 func (c *Client) DescribeDbauditInstanceType(request *DescribeDbauditInstanceTypeRequest) (response *DescribeDbauditInstanceTypeResponse, err error) {
     if request == nil {
@@ -108,6 +110,7 @@ func NewDescribeDbauditInstancesResponse() (response *DescribeDbauditInstancesRe
     return
 }
 
+// DescribeDbauditInstances
 // 本接口 (DescribeDbauditInstances) 用于查询数据安全审计实例列表
 func (c *Client) DescribeDbauditInstances(request *DescribeDbauditInstancesRequest) (response *DescribeDbauditInstancesResponse, err error) {
     if request == nil {
@@ -133,6 +136,7 @@ func NewDescribeDbauditUsedRegionsResponse() (response *DescribeDbauditUsedRegio
     return
 }
 
+// DescribeDbauditUsedRegions
 // 本接口 (DescribeDbauditUsedRegions) 用于查询可售卖地域列表。
 func (c *Client) DescribeDbauditUsedRegions(request *DescribeDbauditUsedRegionsRequest) (response *DescribeDbauditUsedRegionsResponse, err error) {
     if request == nil {
@@ -158,6 +162,7 @@ func NewInquiryPriceDbauditInstanceResponse() (response *InquiryPriceDbauditInst
     return
 }
 
+// InquiryPriceDbauditInstance
 // 用于查询数据安全审计产品实例价格
 func (c *Client) InquiryPriceDbauditInstance(request *InquiryPriceDbauditInstanceRequest) (response *InquiryPriceDbauditInstanceResponse, err error) {
     if request == nil {
@@ -183,7 +188,12 @@ func NewModifyDbauditInstancesRenewFlagResponse() (response *ModifyDbauditInstan
     return
 }
 
+// ModifyDbauditInstancesRenewFlag
 // 本接口 (ModifyDbauditInstancesRenewFlag) 用于修改数据安全审计产品实例续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DBAUDITRESOURCEIDINVAILD = "InvalidParameter.DbauditResourceIdInvaild"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstancesRenewFlagRequest) (response *ModifyDbauditInstancesRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyDbauditInstancesRenewFlagRequest()

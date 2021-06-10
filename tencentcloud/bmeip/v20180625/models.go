@@ -32,7 +32,7 @@ func (r *BindEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindEipAclsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -60,7 +60,7 @@ func (r *BindEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindEipAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -81,7 +81,7 @@ func (r *BindHostedRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindHostedRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -113,7 +113,7 @@ func (r *BindHostedResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindHostedResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -134,7 +134,7 @@ func (r *BindRsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindRsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -166,7 +166,7 @@ func (r *BindRsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindRsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -190,7 +190,7 @@ func (r *BindVpcIpRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindVpcIpRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -223,7 +223,7 @@ func (r *BindVpcIpResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BindVpcIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -244,7 +244,7 @@ func (r *CreateEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEipAclRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -285,7 +285,7 @@ func (r *CreateEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEipAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -321,7 +321,7 @@ func (r *CreateEipRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEipRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -361,7 +361,7 @@ func (r *CreateEipResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -379,7 +379,7 @@ func (r *DeleteEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEipAclRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -407,7 +407,7 @@ func (r *DeleteEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEipAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -425,7 +425,7 @@ func (r *DeleteEipRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEipRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -456,7 +456,7 @@ func (r *DeleteEipResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -501,7 +501,7 @@ func (r *DescribeEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipAclsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -544,7 +544,7 @@ func (r *DescribeEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -559,7 +559,7 @@ func (r *DescribeEipQuotaRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipQuotaRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -601,7 +601,7 @@ func (r *DescribeEipQuotaResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -619,7 +619,7 @@ func (r *DescribeEipTaskRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipTaskRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -650,7 +650,7 @@ func (r *DescribeEipTaskResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -710,7 +710,7 @@ func (r *DescribeEipsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -758,7 +758,7 @@ func (r *DescribeEipsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEipsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -935,7 +935,7 @@ func (r *ModifyEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipAclRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -967,7 +967,7 @@ func (r *ModifyEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -991,7 +991,7 @@ func (r *ModifyEipChargeRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipChargeRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1024,7 +1024,7 @@ func (r *ModifyEipChargeResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipChargeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1045,7 +1045,7 @@ func (r *ModifyEipNameRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipNameRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1074,7 +1074,7 @@ func (r *ModifyEipNameResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEipNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1092,7 +1092,7 @@ func (r *UnbindEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindEipAclsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1120,7 +1120,7 @@ func (r *UnbindEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindEipAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1144,7 +1144,7 @@ func (r *UnbindHostedRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindHostedRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1177,7 +1177,7 @@ func (r *UnbindHostedResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindHostedResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1195,7 +1195,7 @@ func (r *UnbindRsListRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindRsListRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1226,7 +1226,7 @@ func (r *UnbindRsListResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindRsListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1247,7 +1247,7 @@ func (r *UnbindRsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindRsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1279,7 +1279,7 @@ func (r *UnbindRsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindRsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1303,7 +1303,7 @@ func (r *UnbindVpcIpRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindVpcIpRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1336,7 +1336,7 @@ func (r *UnbindVpcIpResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindVpcIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

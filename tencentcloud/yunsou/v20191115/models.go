@@ -41,7 +41,7 @@ func (r *DataManipulationRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DataManipulationRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -75,7 +75,7 @@ func (r *DataManipulationResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DataManipulationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -191,7 +191,7 @@ func (r *DataSearchRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DataSearchRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -244,7 +244,7 @@ func (r *DataSearchResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DataSearchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

@@ -35,7 +35,7 @@ func (r *DescribeEisConnectorConfigRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEisConnectorConfigRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -211,7 +211,7 @@ func (r *DescribeEisConnectorConfigResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEisConnectorConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -265,7 +265,7 @@ func (r *ListEisConnectorOperationsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListEisConnectorOperationsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -297,7 +297,7 @@ func (r *ListEisConnectorOperationsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListEisConnectorOperationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -321,7 +321,7 @@ func (r *ListEisConnectorsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListEisConnectorsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -357,7 +357,7 @@ func (r *ListEisConnectorsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListEisConnectorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

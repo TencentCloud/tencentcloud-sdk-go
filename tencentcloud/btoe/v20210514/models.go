@@ -50,7 +50,7 @@ func (r *CreateAudioDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAudioDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -91,7 +91,7 @@ func (r *CreateAudioDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAudioDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -121,7 +121,7 @@ func (r *CreateDataDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDataDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -160,7 +160,7 @@ func (r *CreateDataDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDataDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -196,7 +196,7 @@ func (r *CreateDocDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDocDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -237,7 +237,7 @@ func (r *CreateDocDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDocDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -261,7 +261,7 @@ func (r *CreateHashDepositNoCertRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositNoCertRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -298,7 +298,7 @@ func (r *CreateHashDepositNoCertResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositNoCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -322,7 +322,7 @@ func (r *CreateHashDepositNoSealRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositNoSealRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -359,7 +359,7 @@ func (r *CreateHashDepositNoSealResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositNoSealResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -386,7 +386,7 @@ func (r *CreateHashDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -424,7 +424,7 @@ func (r *CreateHashDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateHashDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -460,7 +460,7 @@ func (r *CreateImageDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateImageDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -501,7 +501,7 @@ func (r *CreateImageDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateImageDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -537,7 +537,7 @@ func (r *CreateVideoDepositRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateVideoDepositRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -578,7 +578,7 @@ func (r *CreateVideoDepositResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateVideoDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -596,7 +596,7 @@ func (r *GetDepositCertRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositCertRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -630,7 +630,7 @@ func (r *GetDepositCertResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -648,7 +648,7 @@ func (r *GetDepositFileRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositFileRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -682,7 +682,7 @@ func (r *GetDepositFileResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -700,7 +700,7 @@ func (r *GetDepositInfoRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositInfoRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -737,7 +737,7 @@ func (r *GetDepositInfoResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDepositInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -755,7 +755,7 @@ func (r *VerifyEvidenceBlockChainTxHashRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyEvidenceBlockChainTxHashRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -794,7 +794,7 @@ func (r *VerifyEvidenceBlockChainTxHashResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyEvidenceBlockChainTxHashResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -812,7 +812,7 @@ func (r *VerifyEvidenceHashRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyEvidenceHashRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -843,7 +843,7 @@ func (r *VerifyEvidenceHashResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyEvidenceHashResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

@@ -58,7 +58,32 @@ func NewSendCodeVoiceResponse() (response *SendCodeVoiceResponse) {
     return
 }
 
+// SendCodeVoice
 // 给用户发语音验证码（仅支持数字）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
+//  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
+//  FAILEDOPERATION_INSUFFICIENTBALANCEINVOICEPACKAGE = "FailedOperation.InsufficientBalanceInVoicePackage"
+//  FAILEDOPERATION_INVALIDJSONPARAMETERS = "FailedOperation.InvalidJsonParameters"
+//  FAILEDOPERATION_INVALIDPARAMETERS = "FailedOperation.InvalidParameters"
+//  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
+//  FAILEDOPERATION_PARAMETERSOTHERERROR = "FailedOperation.ParametersOtherError"
+//  FAILEDOPERATION_PHONENUMBERUNAPPLIEDOREXPIRED = "FailedOperation.PhonenumberUnappliedOrExpired"
+//  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  INTERNALERROR_ACCESSUPSTREAMTIMEOUT = "InternalError.AccessUpstreamTimeout"
+//  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
+//  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
+//  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+//  INTERNALERROR_UPSTREAMERROR = "InternalError.UpstreamError"
+//  INVALIDPARAMETERVALUE_CALLEDNUMBERVERIFYFAIL = "InvalidParameterValue.CalledNumberVerifyFail"
+//  INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppidNotExist"
+//  LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
+//  UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppidIsDisabled"
+//  UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = "UnauthorizedOperation.ServiceSuspendDueToArrears"
+//  UNAUTHORIZEDOPERATION_VOICESDKAPPIDVERIFYFAIL = "UnauthorizedOperation.VoiceSdkAppidVerifyFail"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendCodeVoice(request *SendCodeVoiceRequest) (response *SendCodeVoiceResponse, err error) {
     if request == nil {
         request = NewSendCodeVoiceRequest()
@@ -83,7 +108,32 @@ func NewSendTtsVoiceResponse() (response *SendTtsVoiceResponse) {
     return
 }
 
+// SendTtsVoice
 // 给用户发送指定模板的语音通知。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
+//  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
+//  FAILEDOPERATION_INSUFFICIENTBALANCEINVOICEPACKAGE = "FailedOperation.InsufficientBalanceInVoicePackage"
+//  FAILEDOPERATION_INVALIDJSONPARAMETERS = "FailedOperation.InvalidJsonParameters"
+//  FAILEDOPERATION_INVALIDPARAMETERS = "FailedOperation.InvalidParameters"
+//  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
+//  FAILEDOPERATION_PARAMETERSOTHERERROR = "FailedOperation.ParametersOtherError"
+//  FAILEDOPERATION_PHONENUMBERUNAPPLIEDOREXPIRED = "FailedOperation.PhonenumberUnappliedOrExpired"
+//  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  INTERNALERROR_ACCESSUPSTREAMTIMEOUT = "InternalError.AccessUpstreamTimeout"
+//  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
+//  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
+//  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+//  INTERNALERROR_UPSTREAMERROR = "InternalError.UpstreamError"
+//  INVALIDPARAMETERVALUE_CALLEDNUMBERVERIFYFAIL = "InvalidParameterValue.CalledNumberVerifyFail"
+//  INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppidNotExist"
+//  LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
+//  UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppidIsDisabled"
+//  UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = "UnauthorizedOperation.ServiceSuspendDueToArrears"
+//  UNAUTHORIZEDOPERATION_VOICESDKAPPIDVERIFYFAIL = "UnauthorizedOperation.VoiceSdkAppidVerifyFail"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendTtsVoice(request *SendTtsVoiceRequest) (response *SendTtsVoiceResponse, err error) {
     if request == nil {
         request = NewSendTtsVoiceRequest()

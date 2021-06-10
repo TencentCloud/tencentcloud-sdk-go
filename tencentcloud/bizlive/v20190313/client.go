@@ -58,7 +58,14 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
     return
 }
 
+// CreateSession
 // 创建会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LACKBANDWIDTH = "FailedOperation.LackBandwidth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     if request == nil {
         request = NewCreateSessionRequest()
@@ -83,7 +90,14 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
     return
 }
 
+// DescribeStreamPlayInfoList
 // 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
@@ -108,7 +122,11 @@ func NewDescribeWorkersResponse() (response *DescribeWorkersResponse) {
     return
 }
 
+// DescribeWorkers
 // 查询空闲机器数量
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *DescribeWorkersResponse, err error) {
     if request == nil {
         request = NewDescribeWorkersRequest()
@@ -133,7 +151,22 @@ func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
     return
 }
 
+// ForbidLiveStream
 // 禁止某条流的推送，可以预设某个时刻将流恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
     if request == nil {
         request = NewForbidLiveStreamRequest()
@@ -158,7 +191,15 @@ func NewRegisterIMResponse() (response *RegisterIMResponse) {
     return
 }
 
+// RegisterIM
 // 注册聊天室
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  LIMITEXCEEDED_NOIMABILITY = "LimitExceeded.NoIMAbility"
 func (c *Client) RegisterIM(request *RegisterIMRequest) (response *RegisterIMResponse, err error) {
     if request == nil {
         request = NewRegisterIMRequest()
@@ -183,7 +224,12 @@ func NewStopGameResponse() (response *StopGameResponse) {
     return
 }
 
+// StopGame
 // 强制退出游戏
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
     if request == nil {
         request = NewStopGameRequest()

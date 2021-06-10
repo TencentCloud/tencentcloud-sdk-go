@@ -58,7 +58,22 @@ func NewGetOpenIdResponse() (response *GetOpenIdResponse) {
     return
 }
 
+// GetOpenId
 // 根据DevicceToken查询OpenID。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEVTOKENINVALID = "InvalidParameter.DevTokenInvalid"
+//  INVALIDPARAMETER_TOKENINVALID = "InvalidParameter.TokenInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTALLREADY = "ResourceUnavailable.NotAllready"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) GetOpenId(request *GetOpenIdRequest) (response *GetOpenIdResponse, err error) {
     if request == nil {
         request = NewGetOpenIdRequest()
@@ -83,7 +98,21 @@ func NewGetTokenResponse() (response *GetTokenResponse) {
     return
 }
 
+// GetToken
 // 获取token接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DEVTOKENINVALID = "InvalidParameter.DevTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TOKENINVALID = "InvalidParameter.TokenInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTALLREADY = "ResourceUnavailable.NotAllready"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) GetToken(request *GetTokenRequest) (response *GetTokenResponse, err error) {
     if request == nil {
         request = NewGetTokenRequest()
@@ -108,7 +137,35 @@ func NewQueryDevAndRiskResponse() (response *QueryDevAndRiskResponse) {
     return
 }
 
+// QueryDevAndRisk
 // 腾讯天御设备风险查询接口，输入由客户应用自主采集的设备信息， 通过腾讯大数据风控能力，可以准确根据输入设备信息，还原设备库中的设备ID，并且识别设备的风险，解决客户业务过程中的设备风险，降低企业损失。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_DEVTOKENINVALID = "InvalidParameter.DevTokenInvalid"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TOKENINVALID = "InvalidParameter.TokenInvalid"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_NOTALLREADY = "ResourceUnavailable.NotAllready"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryDevAndRisk(request *QueryDevAndRiskRequest) (response *QueryDevAndRiskResponse, err error) {
     if request == nil {
         request = NewQueryDevAndRiskRequest()

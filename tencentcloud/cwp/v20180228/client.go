@@ -58,7 +58,15 @@ func NewAddLoginWhiteListResponse() (response *AddLoginWhiteListResponse) {
     return
 }
 
+// AddLoginWhiteList
 // 本接口用于新增异地登录白名单规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddLoginWhiteList(request *AddLoginWhiteListRequest) (response *AddLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewAddLoginWhiteListRequest()
@@ -83,7 +91,14 @@ func NewAddMachineTagResponse() (response *AddMachineTagResponse) {
     return
 }
 
+// AddMachineTag
 // 增加机器关联标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddMachineTag(request *AddMachineTagRequest) (response *AddMachineTagResponse, err error) {
     if request == nil {
         request = NewAddMachineTagRequest()
@@ -108,7 +123,18 @@ func NewCloseProVersionResponse() (response *CloseProVersionResponse) {
     return
 }
 
+// CloseProVersion
 // 本接口 (CloseProVersion) 用于关闭专业版。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOSEPROVERSION = "FailedOperation.CloseProVersion"
+//  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
+//  FAILEDOPERATION_PREPAYMODE = "FailedOperation.PrePayMode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *CloseProVersionResponse, err error) {
     if request == nil {
         request = NewCloseProVersionRequest()
@@ -133,7 +159,18 @@ func NewCreateBaselineStrategyResponse() (response *CreateBaselineStrategyRespon
     return
 }
 
+// CreateBaselineStrategy
 // 根据策略信息创建基线策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  FAILEDOPERATION_TOOMANYSTRATEGY = "FailedOperation.TooManyStrategy"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) (response *CreateBaselineStrategyResponse, err error) {
     if request == nil {
         request = NewCreateBaselineStrategyRequest()
@@ -158,7 +195,15 @@ func NewCreateOpenPortTaskResponse() (response *CreateOpenPortTaskResponse) {
     return
 }
 
+// CreateOpenPortTask
 // 本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPENPORTTASK = "FailedOperation.CreateOpenPortTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOpenPortTask(request *CreateOpenPortTaskRequest) (response *CreateOpenPortTaskResponse, err error) {
     if request == nil {
         request = NewCreateOpenPortTaskRequest()
@@ -183,7 +228,17 @@ func NewCreateProcessTaskResponse() (response *CreateProcessTaskResponse) {
     return
 }
 
+// CreateProcessTask
 // 本接口 (CreateProcessTask) 用于创建实时拉取进程任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPROCESSTASK = "FailedOperation.CreateProcessTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateProcessTask(request *CreateProcessTaskRequest) (response *CreateProcessTaskResponse, err error) {
     if request == nil {
         request = NewCreateProcessTaskRequest()
@@ -208,7 +263,12 @@ func NewCreateSearchLogResponse() (response *CreateSearchLogResponse) {
     return
 }
 
+// CreateSearchLog
 // 添加历史搜索记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) CreateSearchLog(request *CreateSearchLogRequest) (response *CreateSearchLogResponse, err error) {
     if request == nil {
         request = NewCreateSearchLogRequest()
@@ -233,7 +293,15 @@ func NewCreateSearchTemplateResponse() (response *CreateSearchTemplateResponse) 
     return
 }
 
+// CreateSearchTemplate
 // 添加检索模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_NAMEHASREPETITION = "InvalidParameter.NameHasRepetition"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateSearchTemplate(request *CreateSearchTemplateRequest) (response *CreateSearchTemplateResponse, err error) {
     if request == nil {
         request = NewCreateSearchTemplateRequest()
@@ -258,7 +326,15 @@ func NewCreateUsualLoginPlacesResponse() (response *CreateUsualLoginPlacesRespon
     return
 }
 
+// CreateUsualLoginPlaces
 // 此接口（CreateUsualLoginPlaces）用于添加常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateUsualLoginPlaces(request *CreateUsualLoginPlacesRequest) (response *CreateUsualLoginPlacesResponse, err error) {
     if request == nil {
         request = NewCreateUsualLoginPlacesRequest()
@@ -283,7 +359,16 @@ func NewDeleteAttackLogsResponse() (response *DeleteAttackLogsResponse) {
     return
 }
 
+// DeleteAttackLogs
 // 删除网络攻击日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 func (c *Client) DeleteAttackLogs(request *DeleteAttackLogsRequest) (response *DeleteAttackLogsResponse, err error) {
     if request == nil {
         request = NewDeleteAttackLogsRequest()
@@ -308,7 +393,18 @@ func NewDeleteBashEventsResponse() (response *DeleteBashEventsResponse) {
     return
 }
 
+// DeleteBashEvents
 // 根据Ids删除高危命令事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteBashEvents(request *DeleteBashEventsRequest) (response *DeleteBashEventsResponse, err error) {
     if request == nil {
         request = NewDeleteBashEventsRequest()
@@ -333,7 +429,20 @@ func NewDeleteBashRulesResponse() (response *DeleteBashRulesResponse) {
     return
 }
 
+// DeleteBashRules
 // 删除高危命令规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteBashRules(request *DeleteBashRulesRequest) (response *DeleteBashRulesResponse, err error) {
     if request == nil {
         request = NewDeleteBashRulesRequest()
@@ -358,7 +467,14 @@ func NewDeleteBruteAttacksResponse() (response *DeleteBruteAttacksResponse) {
     return
 }
 
+// DeleteBruteAttacks
 // 本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DeleteBruteAttacks(request *DeleteBruteAttacksRequest) (response *DeleteBruteAttacksResponse, err error) {
     if request == nil {
         request = NewDeleteBruteAttacksRequest()
@@ -383,7 +499,14 @@ func NewDeleteLoginWhiteListResponse() (response *DeleteLoginWhiteListResponse) 
     return
 }
 
+// DeleteLoginWhiteList
 // 本接口用于删除异地登录白名单规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DeleteLoginWhiteList(request *DeleteLoginWhiteListRequest) (response *DeleteLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewDeleteLoginWhiteListRequest()
@@ -408,7 +531,19 @@ func NewDeleteMachineResponse() (response *DeleteMachineResponse) {
     return
 }
 
+// DeleteMachine
 // 本接口（DeleteMachine）用于卸载云镜客户端。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  FAILEDOPERATION_MACHINEDELETE = "FailedOperation.MachineDelete"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteMachineResponse, err error) {
     if request == nil {
         request = NewDeleteMachineRequest()
@@ -433,7 +568,14 @@ func NewDeleteMachineTagResponse() (response *DeleteMachineTagResponse) {
     return
 }
 
+// DeleteMachineTag
 // 删除服务器关联的标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMachineTag(request *DeleteMachineTagRequest) (response *DeleteMachineTagResponse, err error) {
     if request == nil {
         request = NewDeleteMachineTagRequest()
@@ -458,7 +600,13 @@ func NewDeleteMaliciousRequestsResponse() (response *DeleteMaliciousRequestsResp
     return
 }
 
+// DeleteMaliciousRequests
 // 本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 func (c *Client) DeleteMaliciousRequests(request *DeleteMaliciousRequestsRequest) (response *DeleteMaliciousRequestsResponse, err error) {
     if request == nil {
         request = NewDeleteMaliciousRequestsRequest()
@@ -483,7 +631,14 @@ func NewDeleteMalwaresResponse() (response *DeleteMalwaresResponse) {
     return
 }
 
+// DeleteMalwares
 // 本接口 (DeleteMalwares) 用于删除木马记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DeleteMalwares(request *DeleteMalwaresRequest) (response *DeleteMalwaresResponse, err error) {
     if request == nil {
         request = NewDeleteMalwaresRequest()
@@ -508,7 +663,17 @@ func NewDeleteNonlocalLoginPlacesResponse() (response *DeleteNonlocalLoginPlaces
     return
 }
 
+// DeleteNonlocalLoginPlaces
 // 本接口 (DeleteNonlocalLoginPlaces) 用于删除异地登录记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 func (c *Client) DeleteNonlocalLoginPlaces(request *DeleteNonlocalLoginPlacesRequest) (response *DeleteNonlocalLoginPlacesResponse, err error) {
     if request == nil {
         request = NewDeleteNonlocalLoginPlacesRequest()
@@ -533,7 +698,16 @@ func NewDeletePrivilegeEventsResponse() (response *DeletePrivilegeEventsResponse
     return
 }
 
+// DeletePrivilegeEvents
 // 根据Ids删除本地提权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeletePrivilegeEvents(request *DeletePrivilegeEventsRequest) (response *DeletePrivilegeEventsResponse, err error) {
     if request == nil {
         request = NewDeletePrivilegeEventsRequest()
@@ -558,7 +732,20 @@ func NewDeletePrivilegeRulesResponse() (response *DeletePrivilegeRulesResponse) 
     return
 }
 
+// DeletePrivilegeRules
 // 删除本地提权规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePrivilegeRules(request *DeletePrivilegeRulesRequest) (response *DeletePrivilegeRulesResponse, err error) {
     if request == nil {
         request = NewDeletePrivilegeRulesRequest()
@@ -583,7 +770,17 @@ func NewDeleteReverseShellEventsResponse() (response *DeleteReverseShellEventsRe
     return
 }
 
+// DeleteReverseShellEvents
 // 根据Ids删除反弹Shell事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteReverseShellEvents(request *DeleteReverseShellEventsRequest) (response *DeleteReverseShellEventsResponse, err error) {
     if request == nil {
         request = NewDeleteReverseShellEventsRequest()
@@ -608,7 +805,21 @@ func NewDeleteReverseShellRulesResponse() (response *DeleteReverseShellRulesResp
     return
 }
 
+// DeleteReverseShellRules
 // 删除反弹Shell规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteReverseShellRules(request *DeleteReverseShellRulesRequest) (response *DeleteReverseShellRulesResponse, err error) {
     if request == nil {
         request = NewDeleteReverseShellRulesRequest()
@@ -633,7 +844,13 @@ func NewDeleteSearchTemplateResponse() (response *DeleteSearchTemplateResponse) 
     return
 }
 
+// DeleteSearchTemplate
 // 删除检索模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSearchTemplate(request *DeleteSearchTemplateRequest) (response *DeleteSearchTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteSearchTemplateRequest()
@@ -658,7 +875,14 @@ func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
     return
 }
 
+// DeleteTags
 // 删除标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsResponse, err error) {
     if request == nil {
         request = NewDeleteTagsRequest()
@@ -683,7 +907,14 @@ func NewDeleteUsualLoginPlacesResponse() (response *DeleteUsualLoginPlacesRespon
     return
 }
 
+// DeleteUsualLoginPlaces
 // 本接口（DeleteUsualLoginPlaces）用于删除常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteUsualLoginPlaces(request *DeleteUsualLoginPlacesRequest) (response *DeleteUsualLoginPlacesResponse, err error) {
     if request == nil {
         request = NewDeleteUsualLoginPlacesRequest()
@@ -708,7 +939,15 @@ func NewDescribeAccountStatisticsResponse() (response *DescribeAccountStatistics
     return
 }
 
+// DescribeAccountStatistics
 // 本接口 (DescribeAccountStatistics) 用于获取帐号统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAccountStatistics(request *DescribeAccountStatisticsRequest) (response *DescribeAccountStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountStatisticsRequest()
@@ -733,7 +972,14 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     return
 }
 
+// DescribeAccounts
 // 本接口 (DescribeAccounts) 用于获取帐号列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountsRequest()
@@ -758,7 +1004,14 @@ func NewDescribeAgentVulsResponse() (response *DescribeAgentVulsResponse) {
     return
 }
 
+// DescribeAgentVuls
 // 本接口 (DescribeAgentVuls) 用于获取单台主机的漏洞列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAgentVuls(request *DescribeAgentVulsRequest) (response *DescribeAgentVulsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentVulsRequest()
@@ -783,7 +1036,11 @@ func NewDescribeAlarmAttributeResponse() (response *DescribeAlarmAttributeRespon
     return
 }
 
+// DescribeAlarmAttribute
 // 本接口 (DescribeAlarmAttribute) 用于获取告警设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeAlarmAttribute(request *DescribeAlarmAttributeRequest) (response *DescribeAlarmAttributeResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmAttributeRequest()
@@ -808,7 +1065,16 @@ func NewDescribeAttackLogInfoResponse() (response *DescribeAttackLogInfoResponse
     return
 }
 
+// DescribeAttackLogInfo
 // 网络攻击日志详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackLogInfo(request *DescribeAttackLogInfoRequest) (response *DescribeAttackLogInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAttackLogInfoRequest()
@@ -833,7 +1099,16 @@ func NewDescribeAttackLogsResponse() (response *DescribeAttackLogsResponse) {
     return
 }
 
+// DescribeAttackLogs
 // 按分页形式展示网络攻击日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (response *DescribeAttackLogsResponse, err error) {
     if request == nil {
         request = NewDescribeAttackLogsRequest()
@@ -858,7 +1133,15 @@ func NewDescribeAttackVulTypeListResponse() (response *DescribeAttackVulTypeList
     return
 }
 
+// DescribeAttackVulTypeList
 // 获取网络攻击威胁类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeAttackVulTypeList(request *DescribeAttackVulTypeListRequest) (response *DescribeAttackVulTypeListResponse, err error) {
     if request == nil {
         request = NewDescribeAttackVulTypeListRequest()
@@ -883,7 +1166,18 @@ func NewDescribeBashEventsResponse() (response *DescribeBashEventsResponse) {
     return
 }
 
+// DescribeBashEvents
 // 获取高危命令列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBashEvents(request *DescribeBashEventsRequest) (response *DescribeBashEventsResponse, err error) {
     if request == nil {
         request = NewDescribeBashEventsRequest()
@@ -908,7 +1202,17 @@ func NewDescribeBashRulesResponse() (response *DescribeBashRulesResponse) {
     return
 }
 
+// DescribeBashRules
 // 获取高危命令规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBashRules(request *DescribeBashRulesRequest) (response *DescribeBashRulesResponse, err error) {
     if request == nil {
         request = NewDescribeBashRulesRequest()
@@ -933,7 +1237,15 @@ func NewDescribeBruteAttackListResponse() (response *DescribeBruteAttackListResp
     return
 }
 
+// DescribeBruteAttackList
 // 获取密码破解列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest) (response *DescribeBruteAttackListResponse, err error) {
     if request == nil {
         request = NewDescribeBruteAttackListRequest()
@@ -958,7 +1270,14 @@ func NewDescribeBruteAttacksResponse() (response *DescribeBruteAttacksResponse) 
     return
 }
 
+// DescribeBruteAttacks
 // 本接口{DescribeBruteAttacks}用于获取暴力破解事件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeBruteAttacks(request *DescribeBruteAttacksRequest) (response *DescribeBruteAttacksResponse, err error) {
     if request == nil {
         request = NewDescribeBruteAttacksRequest()
@@ -983,7 +1302,16 @@ func NewDescribeComponentInfoResponse() (response *DescribeComponentInfoResponse
     return
 }
 
+// DescribeComponentInfo
 // 本接口 (DescribeComponentInfo) 用于获取组件信息数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeComponentInfo(request *DescribeComponentInfoRequest) (response *DescribeComponentInfoResponse, err error) {
     if request == nil {
         request = NewDescribeComponentInfoRequest()
@@ -1008,7 +1336,15 @@ func NewDescribeComponentStatisticsResponse() (response *DescribeComponentStatis
     return
 }
 
+// DescribeComponentStatistics
 // 本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeComponentStatistics(request *DescribeComponentStatisticsRequest) (response *DescribeComponentStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeComponentStatisticsRequest()
@@ -1033,7 +1369,14 @@ func NewDescribeComponentsResponse() (response *DescribeComponentsResponse) {
     return
 }
 
+// DescribeComponents
 // 本接口 (DescribeComponents) 用于获取组件列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (response *DescribeComponentsResponse, err error) {
     if request == nil {
         request = NewDescribeComponentsRequest()
@@ -1058,7 +1401,12 @@ func NewDescribeESAggregationsResponse() (response *DescribeESAggregationsRespon
     return
 }
 
+// DescribeESAggregations
 // 获取ES字段聚合结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeESAggregations(request *DescribeESAggregationsRequest) (response *DescribeESAggregationsResponse, err error) {
     if request == nil {
         request = NewDescribeESAggregationsRequest()
@@ -1083,7 +1431,13 @@ func NewDescribeESHitsResponse() (response *DescribeESHitsResponse) {
     return
 }
 
+// DescribeESHits
 // 获取ES查询文档列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 func (c *Client) DescribeESHits(request *DescribeESHitsRequest) (response *DescribeESHitsResponse, err error) {
     if request == nil {
         request = NewDescribeESHitsRequest()
@@ -1108,7 +1462,17 @@ func NewDescribeExportMachinesResponse() (response *DescribeExportMachinesRespon
     return
 }
 
+// DescribeExportMachines
 // 本接口 (DescribeExportMachines) 用于导出区域主机列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeExportMachines(request *DescribeExportMachinesRequest) (response *DescribeExportMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeExportMachinesRequest()
@@ -1133,7 +1497,13 @@ func NewDescribeGeneralStatResponse() (response *DescribeGeneralStatResponse) {
     return
 }
 
+// DescribeGeneralStat
 // 获取主机安全相关统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeGeneralStat(request *DescribeGeneralStatRequest) (response *DescribeGeneralStatResponse, err error) {
     if request == nil {
         request = NewDescribeGeneralStatRequest()
@@ -1158,7 +1528,15 @@ func NewDescribeHistoryAccountsResponse() (response *DescribeHistoryAccountsResp
     return
 }
 
+// DescribeHistoryAccounts
 // 本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeHistoryAccounts(request *DescribeHistoryAccountsRequest) (response *DescribeHistoryAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeHistoryAccountsRequest()
@@ -1183,7 +1561,13 @@ func NewDescribeHistoryServiceResponse() (response *DescribeHistoryServiceRespon
     return
 }
 
+// DescribeHistoryService
 // 查询日志检索服务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 func (c *Client) DescribeHistoryService(request *DescribeHistoryServiceRequest) (response *DescribeHistoryServiceResponse, err error) {
     if request == nil {
         request = NewDescribeHistoryServiceRequest()
@@ -1208,7 +1592,14 @@ func NewDescribeImpactedHostsResponse() (response *DescribeImpactedHostsResponse
     return
 }
 
+// DescribeImpactedHosts
 // 本接口 (DescribeImpactedHosts) 用于获取漏洞受影响机器列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeImpactedHosts(request *DescribeImpactedHostsRequest) (response *DescribeImpactedHostsResponse, err error) {
     if request == nil {
         request = NewDescribeImpactedHostsRequest()
@@ -1233,7 +1624,14 @@ func NewDescribeImportMachineInfoResponse() (response *DescribeImportMachineInfo
     return
 }
 
+// DescribeImportMachineInfo
 // 查询批量导入机器信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoRequest) (response *DescribeImportMachineInfoResponse, err error) {
     if request == nil {
         request = NewDescribeImportMachineInfoRequest()
@@ -1258,7 +1656,12 @@ func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
     return
 }
 
+// DescribeIndexList
 // 获取索引列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
     if request == nil {
         request = NewDescribeIndexListRequest()
@@ -1283,7 +1686,12 @@ func NewDescribeLogStorageStatisticResponse() (response *DescribeLogStorageStati
     return
 }
 
+// DescribeLogStorageStatistic
 // 获取日志检索容量使用统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeLogStorageStatistic(request *DescribeLogStorageStatisticRequest) (response *DescribeLogStorageStatisticResponse, err error) {
     if request == nil {
         request = NewDescribeLogStorageStatisticRequest()
@@ -1308,7 +1716,14 @@ func NewDescribeLoginWhiteListResponse() (response *DescribeLoginWhiteListRespon
     return
 }
 
+// DescribeLoginWhiteList
 // 获取异地登录白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeLoginWhiteList(request *DescribeLoginWhiteListRequest) (response *DescribeLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewDescribeLoginWhiteListRequest()
@@ -1333,7 +1748,17 @@ func NewDescribeMachineInfoResponse() (response *DescribeMachineInfoResponse) {
     return
 }
 
+// DescribeMachineInfo
 // 本接口（DescribeMachineInfo）用于获取机器详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMachineInfo(request *DescribeMachineInfoRequest) (response *DescribeMachineInfoResponse, err error) {
     if request == nil {
         request = NewDescribeMachineInfoRequest()
@@ -1358,7 +1783,17 @@ func NewDescribeMachineListResponse() (response *DescribeMachineListResponse) {
     return
 }
 
+// DescribeMachineList
 // 本接口 (DescribeMachineList) 用于网页防篡改获取区域主机列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeMachineList(request *DescribeMachineListRequest) (response *DescribeMachineListResponse, err error) {
     if request == nil {
         request = NewDescribeMachineListRequest()
@@ -1383,7 +1818,12 @@ func NewDescribeMachineOsListResponse() (response *DescribeMachineOsListResponse
     return
 }
 
+// DescribeMachineOsList
 // 查询可筛选操作系统列表.
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeMachineOsList(request *DescribeMachineOsListRequest) (response *DescribeMachineOsListResponse, err error) {
     if request == nil {
         request = NewDescribeMachineOsListRequest()
@@ -1408,7 +1848,14 @@ func NewDescribeMachineRegionsResponse() (response *DescribeMachineRegionsRespon
     return
 }
 
+// DescribeMachineRegions
 // 获取机器地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeMachineRegions(request *DescribeMachineRegionsRequest) (response *DescribeMachineRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeMachineRegionsRequest()
@@ -1433,7 +1880,17 @@ func NewDescribeMachinesResponse() (response *DescribeMachinesResponse) {
     return
 }
 
+// DescribeMachines
 // 本接口 (DescribeMachines) 用于获取区域主机列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *DescribeMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeMachinesRequest()
@@ -1458,7 +1915,12 @@ func NewDescribeMaliciousRequestsResponse() (response *DescribeMaliciousRequests
     return
 }
 
+// DescribeMaliciousRequests
 // 本接口 (DescribeMaliciousRequests) 用于获取恶意请求数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 func (c *Client) DescribeMaliciousRequests(request *DescribeMaliciousRequestsRequest) (response *DescribeMaliciousRequestsResponse, err error) {
     if request == nil {
         request = NewDescribeMaliciousRequestsRequest()
@@ -1483,7 +1945,18 @@ func NewDescribeMalwareInfoResponse() (response *DescribeMalwareInfoResponse) {
     return
 }
 
+// DescribeMalwareInfo
 // 查看恶意文件详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMalwareInfo(request *DescribeMalwareInfoRequest) (response *DescribeMalwareInfoResponse, err error) {
     if request == nil {
         request = NewDescribeMalwareInfoRequest()
@@ -1508,7 +1981,14 @@ func NewDescribeMalwaresResponse() (response *DescribeMalwaresResponse) {
     return
 }
 
+// DescribeMalwares
 // 本接口（DescribeMalwares）用于获取木马事件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeMalwares(request *DescribeMalwaresRequest) (response *DescribeMalwaresResponse, err error) {
     if request == nil {
         request = NewDescribeMalwaresRequest()
@@ -1533,7 +2013,14 @@ func NewDescribeNonlocalLoginPlacesResponse() (response *DescribeNonlocalLoginPl
     return
 }
 
+// DescribeNonlocalLoginPlaces
 // 本接口(DescribeNonlocalLoginPlaces)用于获取异地登录事件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeNonlocalLoginPlaces(request *DescribeNonlocalLoginPlacesRequest) (response *DescribeNonlocalLoginPlacesResponse, err error) {
     if request == nil {
         request = NewDescribeNonlocalLoginPlacesRequest()
@@ -1558,7 +2045,13 @@ func NewDescribeOpenPortStatisticsResponse() (response *DescribeOpenPortStatisti
     return
 }
 
+// DescribeOpenPortStatistics
 // 本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeOpenPortStatistics(request *DescribeOpenPortStatisticsRequest) (response *DescribeOpenPortStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeOpenPortStatisticsRequest()
@@ -1583,7 +2076,15 @@ func NewDescribeOpenPortTaskStatusResponse() (response *DescribeOpenPortTaskStat
     return
 }
 
+// DescribeOpenPortTaskStatus
 // 本接口 (DescribeOpenPortTaskStatus) 用于获取实时拉取端口任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AGENTOFFLINE = "FailedOperation.AgentOffline"
+//  FAILEDOPERATION_OPENPORTTASKNOTFOUND = "FailedOperation.OpenPortTaskNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeOpenPortTaskStatus(request *DescribeOpenPortTaskStatusRequest) (response *DescribeOpenPortTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeOpenPortTaskStatusRequest()
@@ -1608,7 +2109,14 @@ func NewDescribeOpenPortsResponse() (response *DescribeOpenPortsResponse) {
     return
 }
 
+// DescribeOpenPorts
 // 本接口 (DescribeOpenPorts) 用于获取端口列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeOpenPorts(request *DescribeOpenPortsRequest) (response *DescribeOpenPortsResponse, err error) {
     if request == nil {
         request = NewDescribeOpenPortsRequest()
@@ -1633,7 +2141,14 @@ func NewDescribeOverviewStatisticsResponse() (response *DescribeOverviewStatisti
     return
 }
 
+// DescribeOverviewStatistics
 // 本接口用于（DescribeOverviewStatistics）获取概览统计数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeOverviewStatistics(request *DescribeOverviewStatisticsRequest) (response *DescribeOverviewStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeOverviewStatisticsRequest()
@@ -1658,7 +2173,17 @@ func NewDescribePrivilegeEventsResponse() (response *DescribePrivilegeEventsResp
     return
 }
 
+// DescribePrivilegeEvents
 // 获取本地提权事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePrivilegeEvents(request *DescribePrivilegeEventsRequest) (response *DescribePrivilegeEventsResponse, err error) {
     if request == nil {
         request = NewDescribePrivilegeEventsRequest()
@@ -1683,7 +2208,17 @@ func NewDescribePrivilegeRulesResponse() (response *DescribePrivilegeRulesRespon
     return
 }
 
+// DescribePrivilegeRules
 // 获取本地提权规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePrivilegeRules(request *DescribePrivilegeRulesRequest) (response *DescribePrivilegeRulesResponse, err error) {
     if request == nil {
         request = NewDescribePrivilegeRulesRequest()
@@ -1708,7 +2243,11 @@ func NewDescribeProVersionInfoResponse() (response *DescribeProVersionInfoRespon
     return
 }
 
+// DescribeProVersionInfo
 // 本接口 (DescribeProVersionInfo) 用于获取专业版信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) (response *DescribeProVersionInfoResponse, err error) {
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
@@ -1733,7 +2272,15 @@ func NewDescribeProcessStatisticsResponse() (response *DescribeProcessStatistics
     return
 }
 
+// DescribeProcessStatistics
 // 本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeProcessStatistics(request *DescribeProcessStatisticsRequest) (response *DescribeProcessStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeProcessStatisticsRequest()
@@ -1758,7 +2305,17 @@ func NewDescribeProcessTaskStatusResponse() (response *DescribeProcessTaskStatus
     return
 }
 
+// DescribeProcessTaskStatus
 // 本接口 (DescribeProcessTaskStatus) 用于获取实时拉取进程任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTASKNOTFOUND = "FailedOperation.ProcessTaskNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeProcessTaskStatus(request *DescribeProcessTaskStatusRequest) (response *DescribeProcessTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeProcessTaskStatusRequest()
@@ -1783,7 +2340,15 @@ func NewDescribeProcessesResponse() (response *DescribeProcessesResponse) {
     return
 }
 
+// DescribeProcesses
 // 本接口 (DescribeProcesses) 用于获取进程列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeProcesses(request *DescribeProcessesRequest) (response *DescribeProcessesResponse, err error) {
     if request == nil {
         request = NewDescribeProcessesRequest()
@@ -1808,7 +2373,17 @@ func NewDescribeReverseShellEventsResponse() (response *DescribeReverseShellEven
     return
 }
 
+// DescribeReverseShellEvents
 // 获取反弹Shell列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
@@ -1833,7 +2408,20 @@ func NewDescribeReverseShellRulesResponse() (response *DescribeReverseShellRules
     return
 }
 
+// DescribeReverseShellRules
 // 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesRequest) (response *DescribeReverseShellRulesResponse, err error) {
     if request == nil {
         request = NewDescribeReverseShellRulesRequest()
@@ -1858,7 +2446,15 @@ func NewDescribeRiskDnsListResponse() (response *DescribeRiskDnsListResponse) {
     return
 }
 
+// DescribeRiskDnsList
 // 入侵检测，获取恶意请求列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeRiskDnsList(request *DescribeRiskDnsListRequest) (response *DescribeRiskDnsListResponse, err error) {
     if request == nil {
         request = NewDescribeRiskDnsListRequest()
@@ -1883,7 +2479,14 @@ func NewDescribeScanMalwareScheduleResponse() (response *DescribeScanMalwareSche
     return
 }
 
+// DescribeScanMalwareSchedule
 // 查询木马扫描进度
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeScanMalwareSchedule(request *DescribeScanMalwareScheduleRequest) (response *DescribeScanMalwareScheduleResponse, err error) {
     if request == nil {
         request = NewDescribeScanMalwareScheduleRequest()
@@ -1908,7 +2511,11 @@ func NewDescribeSearchExportListResponse() (response *DescribeSearchExportListRe
     return
 }
 
+// DescribeSearchExportList
 // 导出ES查询文档列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeSearchExportList(request *DescribeSearchExportListRequest) (response *DescribeSearchExportListResponse, err error) {
     if request == nil {
         request = NewDescribeSearchExportListRequest()
@@ -1933,7 +2540,12 @@ func NewDescribeSearchLogsResponse() (response *DescribeSearchLogsResponse) {
     return
 }
 
+// DescribeSearchLogs
 // 获取历史搜索记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeSearchLogs(request *DescribeSearchLogsRequest) (response *DescribeSearchLogsResponse, err error) {
     if request == nil {
         request = NewDescribeSearchLogsRequest()
@@ -1958,7 +2570,12 @@ func NewDescribeSearchTemplatesResponse() (response *DescribeSearchTemplatesResp
     return
 }
 
+// DescribeSearchTemplates
 // 获取快速检索列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeSearchTemplates(request *DescribeSearchTemplatesRequest) (response *DescribeSearchTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeSearchTemplatesRequest()
@@ -1983,7 +2600,13 @@ func NewDescribeSecurityDynamicsResponse() (response *DescribeSecurityDynamicsRe
     return
 }
 
+// DescribeSecurityDynamics
 // 本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeSecurityDynamics(request *DescribeSecurityDynamicsRequest) (response *DescribeSecurityDynamicsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityDynamicsRequest()
@@ -2008,7 +2631,14 @@ func NewDescribeSecurityEventsCntResponse() (response *DescribeSecurityEventsCnt
     return
 }
 
+// DescribeSecurityEventsCnt
 // 概览页抽屉侧边弹窗：安全概览“立即处理”页面中的相关事件数统计接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntRequest) (response *DescribeSecurityEventsCntResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityEventsCntRequest()
@@ -2033,7 +2663,15 @@ func NewDescribeSecurityTrendsResponse() (response *DescribeSecurityTrendsRespon
     return
 }
 
+// DescribeSecurityTrends
 // 本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeSecurityTrends(request *DescribeSecurityTrendsRequest) (response *DescribeSecurityTrendsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityTrendsRequest()
@@ -2058,7 +2696,14 @@ func NewDescribeTagMachinesResponse() (response *DescribeTagMachinesResponse) {
     return
 }
 
+// DescribeTagMachines
 // 获取指定标签关联的服务器信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTagMachines(request *DescribeTagMachinesRequest) (response *DescribeTagMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeTagMachinesRequest()
@@ -2083,7 +2728,17 @@ func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
     return
 }
 
+// DescribeTags
 // 获取所有主机标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeTagsResponse, err error) {
     if request == nil {
         request = NewDescribeTagsRequest()
@@ -2108,7 +2763,15 @@ func NewDescribeUsualLoginPlacesResponse() (response *DescribeUsualLoginPlacesRe
     return
 }
 
+// DescribeUsualLoginPlaces
 // 此接口（DescribeUsualLoginPlaces）用于查询常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeUsualLoginPlaces(request *DescribeUsualLoginPlacesRequest) (response *DescribeUsualLoginPlacesResponse, err error) {
     if request == nil {
         request = NewDescribeUsualLoginPlacesRequest()
@@ -2133,7 +2796,15 @@ func NewDescribeVulInfoResponse() (response *DescribeVulInfoResponse) {
     return
 }
 
+// DescribeVulInfo
 // 本接口 (DescribeVulInfo) 用于获取漏洞详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVulInfo(request *DescribeVulInfoRequest) (response *DescribeVulInfoResponse, err error) {
     if request == nil {
         request = NewDescribeVulInfoRequest()
@@ -2158,7 +2829,14 @@ func NewDescribeVulScanResultResponse() (response *DescribeVulScanResultResponse
     return
 }
 
+// DescribeVulScanResult
 // 本接口 (DescribeVulScanResult) 用于获取漏洞检测结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeVulScanResult(request *DescribeVulScanResultRequest) (response *DescribeVulScanResultResponse, err error) {
     if request == nil {
         request = NewDescribeVulScanResultRequest()
@@ -2183,7 +2861,13 @@ func NewDescribeVulsResponse() (response *DescribeVulsResponse) {
     return
 }
 
+// DescribeVuls
 // 本接口 (DescribeVuls) 用于获取漏洞列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeVulsResponse, err error) {
     if request == nil {
         request = NewDescribeVulsRequest()
@@ -2208,7 +2892,13 @@ func NewDescribeWeeklyReportBruteAttacksResponse() (response *DescribeWeeklyRepo
     return
 }
 
+// DescribeWeeklyReportBruteAttacks
 // 本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeWeeklyReportBruteAttacks(request *DescribeWeeklyReportBruteAttacksRequest) (response *DescribeWeeklyReportBruteAttacksResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportBruteAttacksRequest()
@@ -2233,7 +2923,12 @@ func NewDescribeWeeklyReportInfoResponse() (response *DescribeWeeklyReportInfoRe
     return
 }
 
+// DescribeWeeklyReportInfo
 // 本接口 (DescribeWeeklyReportInfo) 用于获取专业周报详情数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 func (c *Client) DescribeWeeklyReportInfo(request *DescribeWeeklyReportInfoRequest) (response *DescribeWeeklyReportInfoResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportInfoRequest()
@@ -2258,7 +2953,13 @@ func NewDescribeWeeklyReportMalwaresResponse() (response *DescribeWeeklyReportMa
     return
 }
 
+// DescribeWeeklyReportMalwares
 // 本接口 (DescribeWeeklyReportMalwares) 用于获取专业周报木马数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeWeeklyReportMalwares(request *DescribeWeeklyReportMalwaresRequest) (response *DescribeWeeklyReportMalwaresResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportMalwaresRequest()
@@ -2283,7 +2984,13 @@ func NewDescribeWeeklyReportNonlocalLoginPlacesResponse() (response *DescribeWee
     return
 }
 
+// DescribeWeeklyReportNonlocalLoginPlaces
 // 本接口 (DescribeWeeklyReportNonlocalLoginPlaces) 用于获取专业周报异地登录数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeWeeklyReportNonlocalLoginPlaces(request *DescribeWeeklyReportNonlocalLoginPlacesRequest) (response *DescribeWeeklyReportNonlocalLoginPlacesResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportNonlocalLoginPlacesRequest()
@@ -2308,7 +3015,13 @@ func NewDescribeWeeklyReportVulsResponse() (response *DescribeWeeklyReportVulsRe
     return
 }
 
+// DescribeWeeklyReportVuls
 // 本接口 (DescribeWeeklyReportVuls) 用于专业版周报漏洞数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) DescribeWeeklyReportVuls(request *DescribeWeeklyReportVulsRequest) (response *DescribeWeeklyReportVulsResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportVulsRequest()
@@ -2333,7 +3046,12 @@ func NewDescribeWeeklyReportsResponse() (response *DescribeWeeklyReportsResponse
     return
 }
 
+// DescribeWeeklyReports
 // 本接口 (DescribeWeeklyReports) 用于获取周报列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 func (c *Client) DescribeWeeklyReports(request *DescribeWeeklyReportsRequest) (response *DescribeWeeklyReportsResponse, err error) {
     if request == nil {
         request = NewDescribeWeeklyReportsRequest()
@@ -2358,7 +3076,19 @@ func NewEditBashRuleResponse() (response *EditBashRuleResponse) {
     return
 }
 
+// EditBashRule
 // 新增或修改高危命令规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EditBashRule(request *EditBashRuleRequest) (response *EditBashRuleResponse, err error) {
     if request == nil {
         request = NewEditBashRuleRequest()
@@ -2383,7 +3113,21 @@ func NewEditPrivilegeRuleResponse() (response *EditPrivilegeRuleResponse) {
     return
 }
 
+// EditPrivilegeRule
 // 新增或修改本地提权规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EditPrivilegeRule(request *EditPrivilegeRuleRequest) (response *EditPrivilegeRuleResponse, err error) {
     if request == nil {
         request = NewEditPrivilegeRuleRequest()
@@ -2408,7 +3152,24 @@ func NewEditReverseShellRuleResponse() (response *EditReverseShellRuleResponse) 
     return
 }
 
+// EditReverseShellRule
 // 编辑反弹Shell规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EditReverseShellRule(request *EditReverseShellRuleRequest) (response *EditReverseShellRuleResponse, err error) {
     if request == nil {
         request = NewEditReverseShellRuleRequest()
@@ -2433,7 +3194,17 @@ func NewEditTagsResponse() (response *EditTagsResponse) {
     return
 }
 
+// EditTags
 // 新增或编辑标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = "InvalidParameterValue.TagNameLengthLimit"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse, err error) {
     if request == nil {
         request = NewEditTagsRequest()
@@ -2458,7 +3229,15 @@ func NewExportAssetCoreModuleListResponse() (response *ExportAssetCoreModuleList
     return
 }
 
+// ExportAssetCoreModuleList
 // 导出资产管理内核模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportAssetCoreModuleList(request *ExportAssetCoreModuleListRequest) (response *ExportAssetCoreModuleListResponse, err error) {
     if request == nil {
         request = NewExportAssetCoreModuleListRequest()
@@ -2483,7 +3262,12 @@ func NewExportAttackLogsResponse() (response *ExportAttackLogsResponse) {
     return
 }
 
+// ExportAttackLogs
 // 导出网络攻击日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ExportAttackLogs(request *ExportAttackLogsRequest) (response *ExportAttackLogsResponse, err error) {
     if request == nil {
         request = NewExportAttackLogsRequest()
@@ -2508,7 +3292,12 @@ func NewExportBashEventsResponse() (response *ExportBashEventsResponse) {
     return
 }
 
+// ExportBashEvents
 // 导出高危命令事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ExportBashEvents(request *ExportBashEventsRequest) (response *ExportBashEventsResponse, err error) {
     if request == nil {
         request = NewExportBashEventsRequest()
@@ -2533,7 +3322,12 @@ func NewExportBruteAttacksResponse() (response *ExportBruteAttacksResponse) {
     return
 }
 
+// ExportBruteAttacks
 // 本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ExportBruteAttacks(request *ExportBruteAttacksRequest) (response *ExportBruteAttacksResponse, err error) {
     if request == nil {
         request = NewExportBruteAttacksRequest()
@@ -2558,7 +3352,12 @@ func NewExportMaliciousRequestsResponse() (response *ExportMaliciousRequestsResp
     return
 }
 
+// ExportMaliciousRequests
 // 本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) ExportMaliciousRequests(request *ExportMaliciousRequestsRequest) (response *ExportMaliciousRequestsResponse, err error) {
     if request == nil {
         request = NewExportMaliciousRequestsRequest()
@@ -2583,7 +3382,13 @@ func NewExportMalwaresResponse() (response *ExportMalwaresResponse) {
     return
 }
 
+// ExportMalwares
 // 本接口 (ExportMalwares) 用于导出木马记录CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportMalwares(request *ExportMalwaresRequest) (response *ExportMalwaresResponse, err error) {
     if request == nil {
         request = NewExportMalwaresRequest()
@@ -2608,7 +3413,12 @@ func NewExportNonlocalLoginPlacesResponse() (response *ExportNonlocalLoginPlaces
     return
 }
 
+// ExportNonlocalLoginPlaces
 // 本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ExportNonlocalLoginPlaces(request *ExportNonlocalLoginPlacesRequest) (response *ExportNonlocalLoginPlacesResponse, err error) {
     if request == nil {
         request = NewExportNonlocalLoginPlacesRequest()
@@ -2633,7 +3443,12 @@ func NewExportPrivilegeEventsResponse() (response *ExportPrivilegeEventsResponse
     return
 }
 
+// ExportPrivilegeEvents
 // 导出本地提权事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ExportPrivilegeEvents(request *ExportPrivilegeEventsRequest) (response *ExportPrivilegeEventsResponse, err error) {
     if request == nil {
         request = NewExportPrivilegeEventsRequest()
@@ -2658,7 +3473,16 @@ func NewExportReverseShellEventsResponse() (response *ExportReverseShellEventsRe
     return
 }
 
+// ExportReverseShellEvents
 // 导出反弹Shell事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsRequest) (response *ExportReverseShellEventsResponse, err error) {
     if request == nil {
         request = NewExportReverseShellEventsRequest()
@@ -2683,7 +3507,12 @@ func NewExportTasksResponse() (response *ExportTasksResponse) {
     return
 }
 
+// ExportTasks
 // 用于异步导出数据量大的日志文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportTasks(request *ExportTasksRequest) (response *ExportTasksResponse, err error) {
     if request == nil {
         request = NewExportTasksRequest()
@@ -2708,7 +3537,14 @@ func NewExportVulDetectionExcelResponse() (response *ExportVulDetectionExcelResp
     return
 }
 
+// ExportVulDetectionExcel
 // 导出本次漏洞检测Excel
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportVulDetectionExcel(request *ExportVulDetectionExcelRequest) (response *ExportVulDetectionExcelResponse, err error) {
     if request == nil {
         request = NewExportVulDetectionExcelRequest()
@@ -2733,7 +3569,14 @@ func NewExportVulDetectionReportResponse() (response *ExportVulDetectionReportRe
     return
 }
 
+// ExportVulDetectionReport
 // 导出漏洞检测报告。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportVulDetectionReport(request *ExportVulDetectionReportRequest) (response *ExportVulDetectionReportResponse, err error) {
     if request == nil {
         request = NewExportVulDetectionReportRequest()
@@ -2758,7 +3601,15 @@ func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
     return
 }
 
+// IgnoreImpactedHosts
 // 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
@@ -2783,7 +3634,13 @@ func NewInquiryPriceOpenProVersionPrepaidResponse() (response *InquiryPriceOpenP
     return
 }
 
+// InquiryPriceOpenProVersionPrepaid
 // 本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYPRICE = "FailedOperation.InquiryPrice"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) InquiryPriceOpenProVersionPrepaid(request *InquiryPriceOpenProVersionPrepaidRequest) (response *InquiryPriceOpenProVersionPrepaidResponse, err error) {
     if request == nil {
         request = NewInquiryPriceOpenProVersionPrepaidRequest()
@@ -2808,7 +3665,14 @@ func NewMisAlarmNonlocalLoginPlacesResponse() (response *MisAlarmNonlocalLoginPl
     return
 }
 
+// MisAlarmNonlocalLoginPlaces
 // 本接口{MisAlarmNonlocalLoginPlaces}将设置当前地点为常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) MisAlarmNonlocalLoginPlaces(request *MisAlarmNonlocalLoginPlacesRequest) (response *MisAlarmNonlocalLoginPlacesResponse, err error) {
     if request == nil {
         request = NewMisAlarmNonlocalLoginPlacesRequest()
@@ -2833,7 +3697,14 @@ func NewModifyAlarmAttributeResponse() (response *ModifyAlarmAttributeResponse) 
     return
 }
 
+// ModifyAlarmAttribute
 // 本接口（ModifyAlarmAttribute）用于修改告警设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAlarmAttribute(request *ModifyAlarmAttributeRequest) (response *ModifyAlarmAttributeResponse, err error) {
     if request == nil {
         request = NewModifyAlarmAttributeRequest()
@@ -2858,7 +3729,12 @@ func NewModifyAutoOpenProVersionConfigResponse() (response *ModifyAutoOpenProVer
     return
 }
 
+// ModifyAutoOpenProVersionConfig
 // 本接口 (ModifyAutoOpenProVersionConfig) 用于设置新增主机自动开通专业版配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersionConfigRequest) (response *ModifyAutoOpenProVersionConfigResponse, err error) {
     if request == nil {
         request = NewModifyAutoOpenProVersionConfigRequest()
@@ -2883,7 +3759,14 @@ func NewModifyLoginWhiteListResponse() (response *ModifyLoginWhiteListResponse) 
     return
 }
 
+// ModifyLoginWhiteList
 // 本接口用于编辑异地登录白名单规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) ModifyLoginWhiteList(request *ModifyLoginWhiteListRequest) (response *ModifyLoginWhiteListResponse, err error) {
     if request == nil {
         request = NewModifyLoginWhiteListRequest()
@@ -2908,7 +3791,19 @@ func NewModifyMalwareTimingScanSettingsResponse() (response *ModifyMalwareTiming
     return
 }
 
+// ModifyMalwareTimingScanSettings
 // 定时扫描设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyMalwareTimingScanSettings(request *ModifyMalwareTimingScanSettingsRequest) (response *ModifyMalwareTimingScanSettingsResponse, err error) {
     if request == nil {
         request = NewModifyMalwareTimingScanSettingsRequest()
@@ -2933,7 +3828,13 @@ func NewModifyProVersionRenewFlagResponse() (response *ModifyProVersionRenewFlag
     return
 }
 
+// ModifyProVersionRenewFlag
 // 本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagRequest) (response *ModifyProVersionRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyProVersionRenewFlagRequest()
@@ -2958,7 +3859,17 @@ func NewOpenProVersionResponse() (response *OpenProVersionResponse) {
     return
 }
 
+// OpenProVersion
 // 本接口 (OpenProVersion) 用于开通专业版。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenProVersionResponse, err error) {
     if request == nil {
         request = NewOpenProVersionRequest()
@@ -2983,7 +3894,13 @@ func NewOpenProVersionPrepaidResponse() (response *OpenProVersionPrepaidResponse
     return
 }
 
+// OpenProVersionPrepaid
 // 本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) OpenProVersionPrepaid(request *OpenProVersionPrepaidRequest) (response *OpenProVersionPrepaidResponse, err error) {
     if request == nil {
         request = NewOpenProVersionPrepaidRequest()
@@ -3008,7 +3925,15 @@ func NewRecoverMalwaresResponse() (response *RecoverMalwaresResponse) {
     return
 }
 
+// RecoverMalwares
 // 本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECOVER = "FailedOperation.Recover"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) RecoverMalwares(request *RecoverMalwaresRequest) (response *RecoverMalwaresResponse, err error) {
     if request == nil {
         request = NewRecoverMalwaresRequest()
@@ -3033,7 +3958,14 @@ func NewRenewProVersionResponse() (response *RenewProVersionResponse) {
     return
 }
 
+// RenewProVersion
 // 本接口 (RenewProVersion) 用于续费专业版(包年包月)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RenewProVersion(request *RenewProVersionRequest) (response *RenewProVersionResponse, err error) {
     if request == nil {
         request = NewRenewProVersionRequest()
@@ -3058,7 +3990,17 @@ func NewRescanImpactedHostResponse() (response *RescanImpactedHostResponse) {
     return
 }
 
+// RescanImpactedHost
 // 本接口 (RescanImpactedHost) 用于漏洞重新检测。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AGENTOFFLINE = "FailedOperation.AgentOffline"
+//  FAILEDOPERATION_RESCANVUL = "FailedOperation.RescanVul"
+//  FAILEDOPERATION_RESCANVULPROCESSINUSE = "FailedOperation.RescanVulProcessInUse"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RescanImpactedHost(request *RescanImpactedHostRequest) (response *RescanImpactedHostResponse, err error) {
     if request == nil {
         request = NewRescanImpactedHostRequest()
@@ -3083,7 +4025,16 @@ func NewSeparateMalwaresResponse() (response *SeparateMalwaresResponse) {
     return
 }
 
+// SeparateMalwares
 // 本接口（SeparateMalwares）用于隔离木马。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PARTSEPARATE = "FailedOperation.PartSeparate"
+//  FAILEDOPERATION_SINGLESEPARATE = "FailedOperation.SingleSeparate"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) SeparateMalwares(request *SeparateMalwaresRequest) (response *SeparateMalwaresResponse, err error) {
     if request == nil {
         request = NewSeparateMalwaresRequest()
@@ -3108,7 +4059,16 @@ func NewSetBashEventsStatusResponse() (response *SetBashEventsStatusResponse) {
     return
 }
 
+// SetBashEventsStatus
 // 设置高危命令事件状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetBashEventsStatus(request *SetBashEventsStatusRequest) (response *SetBashEventsStatusResponse, err error) {
     if request == nil {
         request = NewSetBashEventsStatusRequest()
@@ -3133,7 +4093,20 @@ func NewSwitchBashRulesResponse() (response *SwitchBashRulesResponse) {
     return
 }
 
+// SwitchBashRules
 // 切换高危命令规则状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SwitchBashRules(request *SwitchBashRulesRequest) (response *SwitchBashRulesResponse, err error) {
     if request == nil {
         request = NewSwitchBashRulesRequest()
@@ -3158,7 +4131,12 @@ func NewTrustMaliciousRequestResponse() (response *TrustMaliciousRequestResponse
     return
 }
 
+// TrustMaliciousRequest
 // 本接口 (TrustMaliciousRequest) 用于恶意请求添加信任。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) TrustMaliciousRequest(request *TrustMaliciousRequestRequest) (response *TrustMaliciousRequestResponse, err error) {
     if request == nil {
         request = NewTrustMaliciousRequestRequest()
@@ -3183,7 +4161,15 @@ func NewTrustMalwaresResponse() (response *TrustMalwaresResponse) {
     return
 }
 
+// TrustMalwares
 // 本接口(TrustMalwares)将被识别木马文件设为信任。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMalwaresResponse, err error) {
     if request == nil {
         request = NewTrustMalwaresRequest()
@@ -3208,7 +4194,13 @@ func NewUntrustMaliciousRequestResponse() (response *UntrustMaliciousRequestResp
     return
 }
 
+// UntrustMaliciousRequest
 // 本接口 (UntrustMaliciousRequest) 用于取消信任恶意请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UntrustMaliciousRequest(request *UntrustMaliciousRequestRequest) (response *UntrustMaliciousRequestResponse, err error) {
     if request == nil {
         request = NewUntrustMaliciousRequestRequest()
@@ -3233,7 +4225,14 @@ func NewUntrustMalwaresResponse() (response *UntrustMalwaresResponse) {
     return
 }
 
+// UntrustMalwares
 // 本接口（UntrustMalwares）用于取消信任木马文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *UntrustMalwaresResponse, err error) {
     if request == nil {
         request = NewUntrustMalwaresRequest()
@@ -3258,7 +4257,15 @@ func NewUpdateBaselineStrategyResponse() (response *UpdateBaselineStrategyRespon
     return
 }
 
+// UpdateBaselineStrategy
 // 根据基线策略id更新策略信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) UpdateBaselineStrategy(request *UpdateBaselineStrategyRequest) (response *UpdateBaselineStrategyResponse, err error) {
     if request == nil {
         request = NewUpdateBaselineStrategyRequest()

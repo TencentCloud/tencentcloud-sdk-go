@@ -58,11 +58,40 @@ func NewCreateAuditResponse() (response *CreateAuditResponse) {
     return
 }
 
+// CreateAudit
 // 参数要求：
+//
 // 1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
+//
 // 2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
+//
 // 3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
+//
 // 4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
+//  INTERNALERROR_CMQERROR = "InternalError.CmqError"
+//  INTERNALERROR_CREATEAUDITERROR = "InternalError.CreateAuditError"
+//  INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
+//  INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
+//  INVALIDPARAMETERVALUE_COSNAMEERROR = "InvalidParameterValue.CosNameError"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  INVALIDPARAMETERVALUE_ISCREATENEWBUCKETERROR = "InvalidParameterValue.IsCreateNewBucketError"
+//  INVALIDPARAMETERVALUE_ISCREATENEWQUEUEERROR = "InvalidParameterValue.IsCreateNewQueueError"
+//  INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = "InvalidParameterValue.IsEnableCmqNotifyError"
+//  INVALIDPARAMETERVALUE_LOGFILEPREFIXERROR = "InvalidParameterValue.LogFilePrefixError"
+//  INVALIDPARAMETERVALUE_QUEUENAMEERROR = "InvalidParameterValue.QueueNameError"
+//  INVALIDPARAMETERVALUE_READWRITEATTRIBUTEERROR = "InvalidParameterValue.ReadWriteAttributeError"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  MISSINGPARAMETER_MISSAUDITNAME = "MissingParameter.MissAuditName"
+//  MISSINGPARAMETER_MISSCOSBUCKETNAME = "MissingParameter.MissCosBucketName"
+//  MISSINGPARAMETER_MISSCOSREGION = "MissingParameter.MissCosRegion"
+//  MISSINGPARAMETER_CMQ = "MissingParameter.cmq"
+//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDIT = "ResourceInUse.AlreadyExistsSameAudit"
+//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
+//  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
+//  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
 func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
     if request == nil {
         request = NewCreateAuditRequest()
@@ -87,7 +116,12 @@ func NewDeleteAuditResponse() (response *DeleteAuditResponse) {
     return
 }
 
+// DeleteAudit
 // 删除跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEAUDITERROR = "InternalError.DeleteAuditError"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DeleteAudit(request *DeleteAuditRequest) (response *DeleteAuditResponse, err error) {
     if request == nil {
         request = NewDeleteAuditRequest()
@@ -112,7 +146,12 @@ func NewDescribeAuditResponse() (response *DescribeAuditResponse) {
     return
 }
 
+// DescribeAudit
 // 查询跟踪集详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEAUDITERROR = "InternalError.DescribeAuditError"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DescribeAudit(request *DescribeAuditRequest) (response *DescribeAuditResponse, err error) {
     if request == nil {
         request = NewDescribeAuditRequest()
@@ -137,7 +176,12 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
     return
 }
 
+// DescribeEvents
 // 查询云审计日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
     if request == nil {
         request = NewDescribeEventsRequest()
@@ -162,7 +206,11 @@ func NewGetAttributeKeyResponse() (response *GetAttributeKeyResponse) {
     return
 }
 
+// GetAttributeKey
 // 查询AttributeKey的有效取值范围
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 func (c *Client) GetAttributeKey(request *GetAttributeKeyRequest) (response *GetAttributeKeyResponse, err error) {
     if request == nil {
         request = NewGetAttributeKeyRequest()
@@ -187,7 +235,11 @@ func NewInquireAuditCreditResponse() (response *InquireAuditCreditResponse) {
     return
 }
 
+// InquireAuditCredit
 // 查询用户可创建跟踪集的数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INQUIREAUDITCREDITERROR = "InternalError.InquireAuditCreditError"
 func (c *Client) InquireAuditCredit(request *InquireAuditCreditRequest) (response *InquireAuditCreditResponse, err error) {
     if request == nil {
         request = NewInquireAuditCreditRequest()
@@ -212,7 +264,11 @@ func NewListAuditsResponse() (response *ListAuditsResponse) {
     return
 }
 
+// ListAudits
 // 查询跟踪集概要
+//
+// 可能返回的错误码:
+//  INTERNALERROR_LISTAUDITSERROR = "InternalError.ListAuditsError"
 func (c *Client) ListAudits(request *ListAuditsRequest) (response *ListAuditsResponse, err error) {
     if request == nil {
         request = NewListAuditsRequest()
@@ -237,7 +293,11 @@ func NewListCmqEnableRegionResponse() (response *ListCmqEnableRegionResponse) {
     return
 }
 
+// ListCmqEnableRegion
 // 查询云审计支持的cmq的可用区
+//
+// 可能返回的错误码:
+//  INTERNALERROR_LISTCMQENABLEREGIONERROR = "InternalError.ListCmqEnableRegionError"
 func (c *Client) ListCmqEnableRegion(request *ListCmqEnableRegionRequest) (response *ListCmqEnableRegionResponse, err error) {
     if request == nil {
         request = NewListCmqEnableRegionRequest()
@@ -262,7 +322,11 @@ func NewListCosEnableRegionResponse() (response *ListCosEnableRegionResponse) {
     return
 }
 
+// ListCosEnableRegion
 // 查询云审计支持的cos可用区
+//
+// 可能返回的错误码:
+//  INTERNALERROR_LISTCOSENABLEREGIONERROR = "InternalError.ListCosEnableRegionError"
 func (c *Client) ListCosEnableRegion(request *ListCosEnableRegionRequest) (response *ListCosEnableRegionResponse, err error) {
     if request == nil {
         request = NewListCosEnableRegionRequest()
@@ -287,7 +351,11 @@ func NewListKeyAliasByRegionResponse() (response *ListKeyAliasByRegionResponse) 
     return
 }
 
+// ListKeyAliasByRegion
 // 根据地域获取KMS密钥别名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_LISTKEYALIASBYREGIONERROR = "InternalError.ListKeyAliasByRegionError"
 func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (response *ListKeyAliasByRegionResponse, err error) {
     if request == nil {
         request = NewListKeyAliasByRegionRequest()
@@ -312,7 +380,16 @@ func NewLookUpEventsResponse() (response *LookUpEventsResponse) {
     return
 }
 
+// LookUpEvents
 // 用于对操作日志进行检索，便于用户进行查询相关的操作信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INVALIDPARAMETER_TIME = "InvalidParameter.Time"
+//  INVALIDPARAMETERVALUE_MAXRESULT = "InvalidParameterValue.MaxResult"
+//  INVALIDPARAMETERVALUE_TIME = "InvalidParameterValue.Time"
+//  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
+//  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
     if request == nil {
         request = NewLookUpEventsRequest()
@@ -337,7 +414,12 @@ func NewStartLoggingResponse() (response *StartLoggingResponse) {
     return
 }
 
+// StartLogging
 // 开启跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR_STARTLOGGINGERROR = "InternalError.StartLoggingError"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) StartLogging(request *StartLoggingRequest) (response *StartLoggingResponse, err error) {
     if request == nil {
         request = NewStartLoggingRequest()
@@ -362,7 +444,12 @@ func NewStopLoggingResponse() (response *StopLoggingResponse) {
     return
 }
 
+// StopLogging
 // 关闭跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR_STOPLOGGINGERROR = "InternalError.StopLoggingError"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) StopLogging(request *StopLoggingRequest) (response *StopLoggingResponse, err error) {
     if request == nil {
         request = NewStopLoggingRequest()
@@ -387,11 +474,29 @@ func NewUpdateAuditResponse() (response *UpdateAuditResponse) {
     return
 }
 
+// UpdateAudit
 // 参数要求：
+//
 // 1、如果IsCreateNewBucket的值存在的话，cosRegion和cosBucketName都是必填参数。
+//
 // 2、如果IsEnableCmqNotify的值是1的话，IsCreateNewQueue、CmqRegion和CmqQueueName都是必填参数。
+//
 // 3、如果IsEnableCmqNotify的值是0的话，IsCreateNewQueue、CmqRegion和CmqQueueName都不能传。
+//
 // 4、如果IsEnableKmsEncry的值是1的话，KmsRegion和KeyId属于必填项
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CMQERROR = "InternalError.CmqError"
+//  INTERNALERROR_UPDATEAUDITERROR = "InternalError.UpdateAuditError"
+//  INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
+//  INVALIDPARAMETERVALUE_COSNAMEERROR = "InvalidParameterValue.CosNameError"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
+//  INVALIDPARAMETERVALUE_LOGFILEPREFIXERROR = "InvalidParameterValue.LogFilePrefixError"
+//  INVALIDPARAMETERVALUE_QUEUENAMEERROR = "InvalidParameterValue.QueueNameError"
+//  INVALIDPARAMETERVALUE_READWRITEATTRIBUTEERROR = "InvalidParameterValue.ReadWriteAttributeError"
+//  MISSINGPARAMETER_CMQ = "MissingParameter.cmq"
+//  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) UpdateAudit(request *UpdateAuditRequest) (response *UpdateAuditResponse, err error) {
     if request == nil {
         request = NewUpdateAuditRequest()

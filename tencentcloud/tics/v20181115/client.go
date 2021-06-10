@@ -58,7 +58,15 @@ func NewDescribeDomainInfoResponse() (response *DescribeDomainInfoResponse) {
     return
 }
 
+// DescribeDomainInfo
 // 提供域名相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (response *DescribeDomainInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDomainInfoRequest()
@@ -83,7 +91,15 @@ func NewDescribeFileInfoResponse() (response *DescribeFileInfoResponse) {
     return
 }
 
+// DescribeFileInfo
 // 提供文件相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeFileInfo(request *DescribeFileInfoRequest) (response *DescribeFileInfoResponse, err error) {
     if request == nil {
         request = NewDescribeFileInfoRequest()
@@ -108,7 +124,15 @@ func NewDescribeIpInfoResponse() (response *DescribeIpInfoResponse) {
     return
 }
 
+// DescribeIpInfo
 // 提供IP相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (response *DescribeIpInfoResponse, err error) {
     if request == nil {
         request = NewDescribeIpInfoRequest()
@@ -133,7 +157,15 @@ func NewDescribeThreatInfoResponse() (response *DescribeThreatInfoResponse) {
     return
 }
 
+// DescribeThreatInfo
 // 提供IP和域名相关威胁情报信息查询，这些信息可以辅助检测失陷主机、帮助SIEM/SOC等系统做研判决策、帮助运营团队对设备报警的编排处理。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeThreatInfo(request *DescribeThreatInfoRequest) (response *DescribeThreatInfoResponse, err error) {
     if request == nil {
         request = NewDescribeThreatInfoRequest()

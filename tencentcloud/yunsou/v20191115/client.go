@@ -58,7 +58,18 @@ func NewDataManipulationResponse() (response *DataManipulationResponse) {
     return
 }
 
+// DataManipulation
 // 上传云搜数据的API接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTINFO = "FailedOperation.AccountInfo"
+//  FAILEDOPERATION_APPINFO = "FailedOperation.AppInfo"
+//  FAILEDOPERATION_SEARCH = "FailedOperation.Search"
+//  FAILEDOPERATION_UPLOADDATAAPIFAIL = "FailedOperation.UploadDataApiFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATACONTENT = "InvalidParameter.DataContent"
+//  LIMITEXCEEDED_SEARCH = "LimitExceeded.Search"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DataManipulation(request *DataManipulationRequest) (response *DataManipulationResponse, err error) {
     if request == nil {
         request = NewDataManipulationRequest()
@@ -83,7 +94,18 @@ func NewDataSearchResponse() (response *DataSearchResponse) {
     return
 }
 
+// DataSearch
 // 用于检索云搜中的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTINFO = "FailedOperation.AccountInfo"
+//  FAILEDOPERATION_APPINFO = "FailedOperation.AppInfo"
+//  FAILEDOPERATION_SEARCH = "FailedOperation.Search"
+//  FAILEDOPERATION_UPLOADDATAAPIFAIL = "FailedOperation.UploadDataApiFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATACONTENT = "InvalidParameter.DataContent"
+//  LIMITEXCEEDED_SEARCH = "LimitExceeded.Search"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DataSearch(request *DataSearchRequest) (response *DataSearchResponse, err error) {
     if request == nil {
         request = NewDataSearchRequest()

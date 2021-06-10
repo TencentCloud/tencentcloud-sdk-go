@@ -58,7 +58,22 @@ func NewAddInstancesResponse() (response *AddInstancesResponse) {
     return
 }
 
+// AddInstances
 // 本接口（AddInstances）用于集群添加实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
     if request == nil {
         request = NewAddInstancesRequest()
@@ -83,7 +98,25 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
     return
 }
 
+// CreateClusters
 // 创建集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateClusters(request *CreateClustersRequest) (response *CreateClustersResponse, err error) {
     if request == nil {
         request = NewCreateClustersRequest()
@@ -108,7 +141,14 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
     return
 }
 
+// DescribeAccounts
 // 本接口(DescribeAccounts)用于查询数据库管理账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountsRequest()
@@ -133,7 +173,14 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
     return
 }
 
+// DescribeBackupConfig
 // 获取指定集群的备份配置信息，包括全量备份时间段，备份文件保留时间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (response *DescribeBackupConfigResponse, err error) {
     if request == nil {
         request = NewDescribeBackupConfigRequest()
@@ -158,7 +205,15 @@ func NewDescribeBackupListResponse() (response *DescribeBackupListResponse) {
     return
 }
 
+// DescribeBackupList
 // 查询备份文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupList(request *DescribeBackupListRequest) (response *DescribeBackupListResponse, err error) {
     if request == nil {
         request = NewDescribeBackupListRequest()
@@ -183,7 +238,16 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
     return
 }
 
+// DescribeClusterDetail
 // 显示集群详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
     if request == nil {
         request = NewDescribeClusterDetailRequest()
@@ -208,7 +272,12 @@ func NewDescribeClusterInstanceGrpsResponse() (response *DescribeClusterInstance
     return
 }
 
+// DescribeClusterInstanceGrps
 // 本接口（DescribeClusterInstanceGrps）用于查询实例组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterInstanceGrps(request *DescribeClusterInstanceGrpsRequest) (response *DescribeClusterInstanceGrpsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterInstanceGrpsRequest()
@@ -233,7 +302,14 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     return
 }
 
+// DescribeClusters
 // 查询集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
     if request == nil {
         request = NewDescribeClustersRequest()
@@ -258,7 +334,12 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
     return
 }
 
+// DescribeDBSecurityGroups
 // 查询实例安全组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
@@ -283,7 +364,15 @@ func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailRespon
     return
 }
 
+// DescribeInstanceDetail
 // 本接口(DescribeInstanceDetail)用于查询实例详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) (response *DescribeInstanceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
@@ -308,7 +397,12 @@ func NewDescribeInstanceSpecsResponse() (response *DescribeInstanceSpecsResponse
     return
 }
 
+// DescribeInstanceSpecs
 // 本接口（DescribeInstanceSpecs）用于查询实例规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (response *DescribeInstanceSpecsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceSpecsRequest()
@@ -333,7 +427,15 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 本接口(DescribeInstances)用于查询实例列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -358,7 +460,14 @@ func NewDescribeMaintainPeriodResponse() (response *DescribeMaintainPeriodRespon
     return
 }
 
+// DescribeMaintainPeriod
 // 查询实例维护时间窗
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeMaintainPeriod(request *DescribeMaintainPeriodRequest) (response *DescribeMaintainPeriodResponse, err error) {
     if request == nil {
         request = NewDescribeMaintainPeriodRequest()
@@ -383,7 +492,13 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
     return
 }
 
+// DescribeProjectSecurityGroups
 // 查询项目安全组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
@@ -408,7 +523,15 @@ func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDeal
     return
 }
 
+// DescribeResourcesByDealName
 // 根据计费订单id查询资源列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_DEALNAMENOTFOUND = "InvalidParameterValue.DealNameNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNameRequest) (response *DescribeResourcesByDealNameResponse, err error) {
     if request == nil {
         request = NewDescribeResourcesByDealNameRequest()
@@ -433,7 +556,14 @@ func NewDescribeRollbackTimeRangeResponse() (response *DescribeRollbackTimeRange
     return
 }
 
+// DescribeRollbackTimeRange
 // 查询指定集群有效回滚时间范围
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRollbackTimeRange(request *DescribeRollbackTimeRangeRequest) (response *DescribeRollbackTimeRangeResponse, err error) {
     if request == nil {
         request = NewDescribeRollbackTimeRangeRequest()
@@ -458,7 +588,14 @@ func NewDescribeRollbackTimeValidityResponse() (response *DescribeRollbackTimeVa
     return
 }
 
+// DescribeRollbackTimeValidity
 // 指定时间和集群查询是否可回滚
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRollbackTimeValidity(request *DescribeRollbackTimeValidityRequest) (response *DescribeRollbackTimeValidityResponse, err error) {
     if request == nil {
         request = NewDescribeRollbackTimeValidityRequest()
@@ -483,7 +620,14 @@ func NewIsolateClusterResponse() (response *IsolateClusterResponse) {
     return
 }
 
+// IsolateCluster
 // 隔离集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) IsolateCluster(request *IsolateClusterRequest) (response *IsolateClusterResponse, err error) {
     if request == nil {
         request = NewIsolateClusterRequest()
@@ -508,7 +652,15 @@ func NewIsolateInstanceResponse() (response *IsolateInstanceResponse) {
     return
 }
 
+// IsolateInstance
 // 本接口(IsolateInstance)用于隔离实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ISOLATENOTALLOWED = "InvalidParameter.IsolateNotAllowed"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) IsolateInstance(request *IsolateInstanceRequest) (response *IsolateInstanceResponse, err error) {
     if request == nil {
         request = NewIsolateInstanceRequest()
@@ -533,7 +685,11 @@ func NewModifyBackupConfigResponse() (response *ModifyBackupConfigResponse) {
     return
 }
 
+// ModifyBackupConfig
 // 修改指定集群的备份配置
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (response *ModifyBackupConfigResponse, err error) {
     if request == nil {
         request = NewModifyBackupConfigRequest()
@@ -558,7 +714,14 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
     return
 }
 
+// ModifyDBInstanceSecurityGroups
 // 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
@@ -583,7 +746,13 @@ func NewModifyMaintainPeriodConfigResponse() (response *ModifyMaintainPeriodConf
     return
 }
 
+// ModifyMaintainPeriodConfig
 // 修改维护时间配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyMaintainPeriodConfig(request *ModifyMaintainPeriodConfigRequest) (response *ModifyMaintainPeriodConfigResponse, err error) {
     if request == nil {
         request = NewModifyMaintainPeriodConfigRequest()
@@ -608,7 +777,14 @@ func NewOfflineClusterResponse() (response *OfflineClusterResponse) {
     return
 }
 
+// OfflineCluster
 // 下线集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *OfflineClusterResponse, err error) {
     if request == nil {
         request = NewOfflineClusterRequest()
@@ -633,7 +809,16 @@ func NewOfflineInstanceResponse() (response *OfflineInstanceResponse) {
     return
 }
 
+// OfflineInstance
 // 下线实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *OfflineInstanceResponse, err error) {
     if request == nil {
         request = NewOfflineInstanceRequest()
@@ -658,7 +843,22 @@ func NewSetRenewFlagResponse() (response *SetRenewFlagResponse) {
     return
 }
 
+// SetRenewFlag
 // SetRenewFlag设置实例的自动续费功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) SetRenewFlag(request *SetRenewFlagRequest) (response *SetRenewFlagResponse, err error) {
     if request == nil {
         request = NewSetRenewFlagRequest()
@@ -683,7 +883,16 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
     return
 }
 
+// UpgradeInstance
 // 升级实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
     if request == nil {
         request = NewUpgradeInstanceRequest()

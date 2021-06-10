@@ -58,7 +58,16 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
     return
 }
 
+// CreateJob
 // 创建任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
     if request == nil {
         request = NewCreateJobRequest()
@@ -83,7 +92,17 @@ func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
     return
 }
 
+// CreateRsgAsGroup
 // 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRsgAsGroup(request *CreateRsgAsGroupRequest) (response *CreateRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewCreateRsgAsGroupRequest()
@@ -108,7 +127,16 @@ func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
     return
 }
 
+// CreateRuntime
 // 创建运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRuntime(request *CreateRuntimeRequest) (response *CreateRuntimeResponse, err error) {
     if request == nil {
         request = NewCreateRuntimeRequest()
@@ -133,7 +161,16 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
     return
 }
 
+// CreateService
 // 创建服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
     if request == nil {
         request = NewCreateServiceRequest()
@@ -158,7 +195,16 @@ func NewCreateServiceConfigResponse() (response *CreateServiceConfigResponse) {
     return
 }
 
+// CreateServiceConfig
 // 创建服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (response *CreateServiceConfigResponse, err error) {
     if request == nil {
         request = NewCreateServiceConfigRequest()
@@ -183,7 +229,15 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     return
 }
 
+// DeleteInstance
 // 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteInstanceRequest()
@@ -208,7 +262,13 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
     return
 }
 
+// DeleteJob
 // 删除任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
     if request == nil {
         request = NewDeleteJobRequest()
@@ -233,7 +293,13 @@ func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
     return
 }
 
+// DeleteResourceGroup
 // 删除资源组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (response *DeleteResourceGroupResponse, err error) {
     if request == nil {
         request = NewDeleteResourceGroupRequest()
@@ -258,7 +324,14 @@ func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
     return
 }
 
+// DeleteRsgAsGroup
 // 伸缩
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRsgAsGroup(request *DeleteRsgAsGroupRequest) (response *DeleteRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewDeleteRsgAsGroupRequest()
@@ -283,7 +356,16 @@ func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
     return
 }
 
+// DeleteRuntime
 // 删除运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRuntime(request *DeleteRuntimeRequest) (response *DeleteRuntimeResponse, err error) {
     if request == nil {
         request = NewDeleteRuntimeRequest()
@@ -308,7 +390,15 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
     return
 }
 
+// DeleteService
 // 删除服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
     if request == nil {
         request = NewDeleteServiceRequest()
@@ -333,7 +423,15 @@ func NewDeleteServiceConfigResponse() (response *DeleteServiceConfigResponse) {
     return
 }
 
+// DeleteServiceConfig
 // 删除服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteServiceConfig(request *DeleteServiceConfigRequest) (response *DeleteServiceConfigResponse, err error) {
     if request == nil {
         request = NewDeleteServiceConfigRequest()
@@ -358,7 +456,14 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 获取节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -383,7 +488,14 @@ func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsRespon
     return
 }
 
+// DescribeResourceGroups
 // 获取资源组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) (response *DescribeResourceGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceGroupsRequest()
@@ -408,7 +520,15 @@ func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActi
     return
 }
 
+// DescribeRsgAsGroupActivities
 // 查询伸缩组活动
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroupActivities(request *DescribeRsgAsGroupActivitiesRequest) (response *DescribeRsgAsGroupActivitiesResponse, err error) {
     if request == nil {
         request = NewDescribeRsgAsGroupActivitiesRequest()
@@ -433,7 +553,15 @@ func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
     return
 }
 
+// DescribeRsgAsGroups
 // 查询资源组的伸缩组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroups(request *DescribeRsgAsGroupsRequest) (response *DescribeRsgAsGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeRsgAsGroupsRequest()
@@ -458,7 +586,15 @@ func NewDescribeRuntimesResponse() (response *DescribeRuntimesResponse) {
     return
 }
 
+// DescribeRuntimes
 // 描述服务运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRuntimes(request *DescribeRuntimesRequest) (response *DescribeRuntimesResponse, err error) {
     if request == nil {
         request = NewDescribeRuntimesRequest()
@@ -483,7 +619,15 @@ func NewDescribeServiceConfigsResponse() (response *DescribeServiceConfigsRespon
     return
 }
 
+// DescribeServiceConfigs
 // 描述服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServiceConfigs(request *DescribeServiceConfigsRequest) (response *DescribeServiceConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeServiceConfigsRequest()
@@ -508,7 +652,16 @@ func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
     return
 }
 
+// DescribeServices
 // 描述服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
     if request == nil {
         request = NewDescribeServicesRequest()
@@ -533,7 +686,15 @@ func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
     return
 }
 
+// DisableRsgAsGroup
 // 停用资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableRsgAsGroup(request *DisableRsgAsGroupRequest) (response *DisableRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewDisableRsgAsGroupRequest()
@@ -558,7 +719,15 @@ func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
     return
 }
 
+// EnableRsgAsGroup
 // 启用资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRsgAsGroup(request *EnableRsgAsGroupRequest) (response *EnableRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewEnableRsgAsGroupRequest()
@@ -583,7 +752,16 @@ func NewExposeServiceResponse() (response *ExposeServiceResponse) {
     return
 }
 
+// ExposeService
 // 暴露服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExposeService(request *ExposeServiceRequest) (response *ExposeServiceResponse, err error) {
     if request == nil {
         request = NewExposeServiceRequest()
@@ -608,7 +786,15 @@ func NewUpdateJobResponse() (response *UpdateJobResponse) {
     return
 }
 
+// UpdateJob
 // 更新任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobResponse, err error) {
     if request == nil {
         request = NewUpdateJobRequest()
@@ -633,7 +819,15 @@ func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
     return
 }
 
+// UpdateRsgAsGroup
 // 更新资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRsgAsGroup(request *UpdateRsgAsGroupRequest) (response *UpdateRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewUpdateRsgAsGroupRequest()
@@ -658,7 +852,15 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
     return
 }
 
+// UpdateService
 // 更新服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateServiceResponse, err error) {
     if request == nil {
         request = NewUpdateServiceRequest()

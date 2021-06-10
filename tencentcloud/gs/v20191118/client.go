@@ -58,7 +58,20 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
     return
 }
 
+// CreateSession
 // 创建会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     if request == nil {
         request = NewCreateSessionRequest()
@@ -83,7 +96,13 @@ func NewDescribeInstancesCountResponse() (response *DescribeInstancesCountRespon
     return
 }
 
+// DescribeInstancesCount
 // 获取实例总数和运行数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) (response *DescribeInstancesCountResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesCountRequest()
@@ -108,7 +127,17 @@ func NewSaveGameArchiveResponse() (response *SaveGameArchiveResponse) {
     return
 }
 
+// SaveGameArchive
 // 保存游戏存档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *SaveGameArchiveResponse, err error) {
     if request == nil {
         request = NewSaveGameArchiveRequest()
@@ -133,7 +162,13 @@ func NewStopGameResponse() (response *StopGameResponse) {
     return
 }
 
+// StopGame
 // 强制退出游戏
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
     if request == nil {
         request = NewStopGameRequest()
@@ -158,7 +193,17 @@ func NewSwitchGameArchiveResponse() (response *SwitchGameArchiveResponse) {
     return
 }
 
+// SwitchGameArchive
 // 切换游戏存档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response *SwitchGameArchiveResponse, err error) {
     if request == nil {
         request = NewSwitchGameArchiveRequest()
@@ -183,7 +228,16 @@ func NewTrylockWorkerResponse() (response *TrylockWorkerResponse) {
     return
 }
 
+// TrylockWorker
 // 尝试锁定机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *TrylockWorkerResponse, err error) {
     if request == nil {
         request = NewTrylockWorkerRequest()

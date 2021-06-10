@@ -58,7 +58,14 @@ func NewCreateFlowServiceResponse() (response *CreateFlowServiceResponse) {
     return
 }
 
+// CreateFlowService
 // 该接口用于生成状态机服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateFlowService(request *CreateFlowServiceRequest) (response *CreateFlowServiceResponse, err error) {
     if request == nil {
         request = NewCreateFlowServiceRequest()
@@ -83,7 +90,14 @@ func NewDescribeExecutionResponse() (response *DescribeExecutionResponse) {
     return
 }
 
+// DescribeExecution
 // 查询执行详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response *DescribeExecutionResponse, err error) {
     if request == nil {
         request = NewDescribeExecutionRequest()
@@ -108,7 +122,14 @@ func NewDescribeExecutionHistoryResponse() (response *DescribeExecutionHistoryRe
     return
 }
 
+// DescribeExecutionHistory
 // 一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeExecutionHistory(request *DescribeExecutionHistoryRequest) (response *DescribeExecutionHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeExecutionHistoryRequest()
@@ -133,7 +154,13 @@ func NewDescribeExecutionsResponse() (response *DescribeExecutionsResponse) {
     return
 }
 
+// DescribeExecutions
 // 对状态机的执行历史进行描述.
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeExecutions(request *DescribeExecutionsRequest) (response *DescribeExecutionsResponse, err error) {
     if request == nil {
         request = NewDescribeExecutionsRequest()
@@ -158,7 +185,15 @@ func NewDescribeFlowServiceDetailResponse() (response *DescribeFlowServiceDetail
     return
 }
 
+// DescribeFlowServiceDetail
 // 查询该用户指定状态机下的详情数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowServiceDetail(request *DescribeFlowServiceDetailRequest) (response *DescribeFlowServiceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeFlowServiceDetailRequest()
@@ -183,7 +218,14 @@ func NewDescribeFlowServicesResponse() (response *DescribeFlowServicesResponse) 
     return
 }
 
+// DescribeFlowServices
 // 查询指定用户下所有状态机，以列表形式返回
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowServices(request *DescribeFlowServicesRequest) (response *DescribeFlowServicesResponse, err error) {
     if request == nil {
         request = NewDescribeFlowServicesRequest()
@@ -208,7 +250,14 @@ func NewModifyFlowServiceResponse() (response *ModifyFlowServiceResponse) {
     return
 }
 
+// ModifyFlowService
 // 该接口用于修改状态机
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyFlowService(request *ModifyFlowServiceRequest) (response *ModifyFlowServiceResponse, err error) {
     if request == nil {
         request = NewModifyFlowServiceRequest()
@@ -233,7 +282,14 @@ func NewStartExecutionResponse() (response *StartExecutionResponse) {
     return
 }
 
+// StartExecution
 // 为指定的状态机启动一次执行
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StartExecution(request *StartExecutionRequest) (response *StartExecutionResponse, err error) {
     if request == nil {
         request = NewStartExecutionRequest()
@@ -258,7 +314,12 @@ func NewStopExecutionResponse() (response *StopExecutionResponse) {
     return
 }
 
+// StopExecution
 // 终止某个状态机
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopExecution(request *StopExecutionRequest) (response *StopExecutionResponse, err error) {
     if request == nil {
         request = NewStopExecutionRequest()

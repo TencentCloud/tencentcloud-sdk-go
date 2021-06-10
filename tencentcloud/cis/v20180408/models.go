@@ -164,7 +164,7 @@ func (r *CreateContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateContainerInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -200,7 +200,7 @@ func (r *CreateContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -218,7 +218,7 @@ func (r *DeleteContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteContainerInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -249,7 +249,7 @@ func (r *DeleteContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -267,7 +267,7 @@ func (r *DescribeContainerInstanceEventsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceEventsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -298,7 +298,7 @@ func (r *DescribeContainerInstanceEventsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -316,7 +316,7 @@ func (r *DescribeContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -347,7 +347,7 @@ func (r *DescribeContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -374,7 +374,7 @@ func (r *DescribeContainerInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstancesRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -410,7 +410,7 @@ func (r *DescribeContainerInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -437,7 +437,7 @@ func (r *DescribeContainerLogRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerLogRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -471,7 +471,7 @@ func (r *DescribeContainerLogResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -534,7 +534,7 @@ func (r *InquiryPriceCreateCisRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InquiryPriceCreateCisRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -567,7 +567,7 @@ func (r *InquiryPriceCreateCisResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InquiryPriceCreateCisResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

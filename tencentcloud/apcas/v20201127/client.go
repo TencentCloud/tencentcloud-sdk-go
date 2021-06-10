@@ -58,7 +58,21 @@ func NewGetTaskDetailResponse() (response *GetTaskDetailResponse) {
     return
 }
 
+// GetTaskDetail
 // 查询画像洞察任务详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetTaskDetail(request *GetTaskDetailRequest) (response *GetTaskDetailResponse, err error) {
     if request == nil {
         request = NewGetTaskDetailRequest()
@@ -83,7 +97,18 @@ func NewGetTaskListResponse() (response *GetTaskListResponse) {
     return
 }
 
+// GetTaskList
 // 查询当前账号AppID下的画像洞察任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetTaskList(request *GetTaskListRequest) (response *GetTaskListResponse, err error) {
     if request == nil {
         request = NewGetTaskListRequest()
@@ -108,7 +133,19 @@ func NewPredictRatingResponse() (response *PredictRatingResponse) {
     return
 }
 
+// PredictRating
 // 根据传入的设备号（IMEI、IDFA、手机号、手机号MD5），返回意向评级结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PredictRating(request *PredictRatingRequest) (response *PredictRatingResponse, err error) {
     if request == nil {
         request = NewPredictRatingRequest()
@@ -133,7 +170,14 @@ func NewQueryCallDetailsResponse() (response *QueryCallDetailsResponse) {
     return
 }
 
+// QueryCallDetails
 // 查询调用明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryCallDetails(request *QueryCallDetailsRequest) (response *QueryCallDetailsResponse, err error) {
     if request == nil {
         request = NewQueryCallDetailsRequest()
@@ -158,7 +202,13 @@ func NewQueryCallStatResponse() (response *QueryCallStatResponse) {
     return
 }
 
+// QueryCallStat
 // 按时间维度获取调用量统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryCallStat(request *QueryCallStatRequest) (response *QueryCallStatResponse, err error) {
     if request == nil {
         request = NewQueryCallStatRequest()
@@ -183,7 +233,13 @@ func NewQueryGeneralStatResponse() (response *QueryGeneralStatResponse) {
     return
 }
 
+// QueryGeneralStat
 // 获取日/月/周/总调用量统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryGeneralStat(request *QueryGeneralStatRequest) (response *QueryGeneralStatResponse, err error) {
     if request == nil {
         request = NewQueryGeneralStatRequest()
@@ -208,7 +264,19 @@ func NewUploadIdResponse() (response *UploadIdResponse) {
     return
 }
 
+// UploadId
 // 上传群体画像的ID列表（支持的ID类型：0:imei 7:IDFA 8:MD5(imei)），后台返回生成的画像分析任务ID
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UploadId(request *UploadIdRequest) (response *UploadIdResponse, err error) {
     if request == nil {
         request = NewUploadIdRequest()

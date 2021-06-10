@@ -41,7 +41,7 @@ func (r *DescribeMaterialListRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -78,7 +78,7 @@ func (r *DescribeMaterialListResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -111,7 +111,7 @@ func (r *FaceFusionLiteRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -151,7 +151,7 @@ func (r *FaceFusionLiteResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FaceFusionLiteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -185,7 +185,7 @@ func (r *FaceFusionRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FaceFusionRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -224,7 +224,7 @@ func (r *FaceFusionResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FaceFusionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -293,7 +293,7 @@ func (r *FuseFaceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FuseFaceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -334,7 +334,7 @@ func (r *FuseFaceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FuseFaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

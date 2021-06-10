@@ -58,7 +58,12 @@ func NewCreateDatabaseResponse() (response *CreateDatabaseResponse) {
     return
 }
 
+// CreateDatabase
 // 本接口（CreateDatabase）用于生成建库SQL语句。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateDatabase(request *CreateDatabaseRequest) (response *CreateDatabaseResponse, err error) {
     if request == nil {
         request = NewCreateDatabaseRequest()
@@ -83,7 +88,13 @@ func NewCreateScriptResponse() (response *CreateScriptResponse) {
     return
 }
 
+// CreateScript
 // 该接口（CreateScript）用于创建sql脚本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateScript(request *CreateScriptRequest) (response *CreateScriptResponse, err error) {
     if request == nil {
         request = NewCreateScriptRequest()
@@ -108,7 +119,13 @@ func NewCreateTableResponse() (response *CreateTableResponse) {
     return
 }
 
+// CreateTable
 // 本接口（CreateTable）用于生成建表SQL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTable(request *CreateTableRequest) (response *CreateTableResponse, err error) {
     if request == nil {
         request = NewCreateTableRequest()
@@ -133,7 +150,13 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
     return
 }
 
+// CreateTask
 // 本接口（CreateTask）用于创建sql查询任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -158,7 +181,12 @@ func NewDeleteScriptResponse() (response *DeleteScriptResponse) {
     return
 }
 
+// DeleteScript
 // 该接口（DeleteScript）用于删除sql脚本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteScript(request *DeleteScriptRequest) (response *DeleteScriptResponse, err error) {
     if request == nil {
         request = NewDeleteScriptRequest()
@@ -183,7 +211,13 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
     return
 }
 
+// DescribeDatabases
 // 本接口（DescribeDatabases）用于查询数据库列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
 func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
     if request == nil {
         request = NewDescribeDatabasesRequest()
@@ -208,7 +242,12 @@ func NewDescribeScriptsResponse() (response *DescribeScriptsResponse) {
     return
 }
 
+// DescribeScripts
 // 该接口（DescribeScripts）用于获取所有SQL查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *DescribeScriptsResponse, err error) {
     if request == nil {
         request = NewDescribeScriptsRequest()
@@ -233,7 +272,15 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
     return
 }
 
+// DescribeTable
 // 查询单个表的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTable(request *DescribeTableRequest) (response *DescribeTableResponse, err error) {
     if request == nil {
         request = NewDescribeTableRequest()
@@ -258,7 +305,12 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
     return
 }
 
+// DescribeTables
 // 本接口（DescribleTables）用于查询数据表列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
     if request == nil {
         request = NewDescribeTablesRequest()
@@ -283,7 +335,13 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     return
 }
 
+// DescribeTasks
 // 该接口（DescribleTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -308,7 +366,12 @@ func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
     return
 }
 
+// DescribeViews
 // 本接口（DescribeViews）用于查询数据视图列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
     if request == nil {
         request = NewDescribeViewsRequest()

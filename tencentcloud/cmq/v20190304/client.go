@@ -58,7 +58,20 @@ func NewClearQueueResponse() (response *ClearQueueResponse) {
     return
 }
 
+// ClearQueue
 // 清除queue中的所有消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ClearQueue(request *ClearQueueRequest) (response *ClearQueueResponse, err error) {
     if request == nil {
         request = NewClearQueueRequest()
@@ -83,7 +96,20 @@ func NewClearSubscriptionFilterTagsResponse() (response *ClearSubscriptionFilter
     return
 }
 
+// ClearSubscriptionFilterTags
 // 清空订阅者消息标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ClearSubscriptionFilterTags(request *ClearSubscriptionFilterTagsRequest) (response *ClearSubscriptionFilterTagsResponse, err error) {
     if request == nil {
         request = NewClearSubscriptionFilterTagsRequest()
@@ -108,7 +134,16 @@ func NewCreateQueueResponse() (response *CreateQueueResponse) {
     return
 }
 
+// CreateQueue
 // 创建队列接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateQueue(request *CreateQueueRequest) (response *CreateQueueResponse, err error) {
     if request == nil {
         request = NewCreateQueueRequest()
@@ -133,7 +168,20 @@ func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
     return
 }
 
+// CreateSubscribe
 // 创建订阅接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *CreateSubscribeResponse, err error) {
     if request == nil {
         request = NewCreateSubscribeRequest()
@@ -158,7 +206,19 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
     return
 }
 
+// CreateTopic
 // 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
         request = NewCreateTopicRequest()
@@ -184,6 +244,15 @@ func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
 }
 
 // DeleteQueue
+// DeleteQueue
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueueResponse, err error) {
     if request == nil {
         request = NewDeleteQueueRequest()
@@ -208,7 +277,19 @@ func NewDeleteSubscribeResponse() (response *DeleteSubscribeResponse) {
     return
 }
 
+// DeleteSubscribe
 // 删除订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSubscribe(request *DeleteSubscribeRequest) (response *DeleteSubscribeResponse, err error) {
     if request == nil {
         request = NewDeleteSubscribeRequest()
@@ -233,7 +314,19 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     return
 }
 
+// DeleteTopic
 // 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {
         request = NewDeleteTopicRequest()
@@ -258,7 +351,19 @@ func NewDescribeDeadLetterSourceQueuesResponse() (response *DescribeDeadLetterSo
     return
 }
 
+// DescribeDeadLetterSourceQueues
 // 枚举死信队列源队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeadLetterSourceQueues(request *DescribeDeadLetterSourceQueuesRequest) (response *DescribeDeadLetterSourceQueuesResponse, err error) {
     if request == nil {
         request = NewDescribeDeadLetterSourceQueuesRequest()
@@ -283,7 +388,19 @@ func NewDescribeQueueDetailResponse() (response *DescribeQueueDetailResponse) {
     return
 }
 
+// DescribeQueueDetail
 // 枚举队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeQueueDetail(request *DescribeQueueDetailRequest) (response *DescribeQueueDetailResponse, err error) {
     if request == nil {
         request = NewDescribeQueueDetailRequest()
@@ -308,7 +425,20 @@ func NewDescribeSubscriptionDetailResponse() (response *DescribeSubscriptionDeta
     return
 }
 
+// DescribeSubscriptionDetail
 // 查询订阅详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSubscriptionDetail(request *DescribeSubscriptionDetailRequest) (response *DescribeSubscriptionDetailResponse, err error) {
     if request == nil {
         request = NewDescribeSubscriptionDetailRequest()
@@ -333,7 +463,20 @@ func NewDescribeTopicDetailResponse() (response *DescribeTopicDetailResponse) {
     return
 }
 
+// DescribeTopicDetail
 // 查询主题详情 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (response *DescribeTopicDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTopicDetailRequest()
@@ -358,7 +501,20 @@ func NewModifyQueueAttributeResponse() (response *ModifyQueueAttributeResponse) 
     return
 }
 
+// ModifyQueueAttribute
 // 修改队列属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyQueueAttribute(request *ModifyQueueAttributeRequest) (response *ModifyQueueAttributeResponse, err error) {
     if request == nil {
         request = NewModifyQueueAttributeRequest()
@@ -383,7 +539,20 @@ func NewModifySubscriptionAttributeResponse() (response *ModifySubscriptionAttri
     return
 }
 
+// ModifySubscriptionAttribute
 // 修改订阅属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubscriptionAttribute(request *ModifySubscriptionAttributeRequest) (response *ModifySubscriptionAttributeResponse, err error) {
     if request == nil {
         request = NewModifySubscriptionAttributeRequest()
@@ -408,7 +577,19 @@ func NewModifyTopicAttributeResponse() (response *ModifyTopicAttributeResponse) 
     return
 }
 
+// ModifyTopicAttribute
 // 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTopicAttribute(request *ModifyTopicAttributeRequest) (response *ModifyTopicAttributeResponse, err error) {
     if request == nil {
         request = NewModifyTopicAttributeRequest()
@@ -433,7 +614,19 @@ func NewRewindQueueResponse() (response *RewindQueueResponse) {
     return
 }
 
+// RewindQueue
 // 回溯队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RewindQueue(request *RewindQueueRequest) (response *RewindQueueResponse, err error) {
     if request == nil {
         request = NewRewindQueueRequest()
@@ -458,7 +651,20 @@ func NewUnbindDeadLetterResponse() (response *UnbindDeadLetterResponse) {
     return
 }
 
+// UnbindDeadLetter
 // 解绑死信队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UnbindDeadLetter(request *UnbindDeadLetterRequest) (response *UnbindDeadLetterResponse, err error) {
     if request == nil {
         request = NewUnbindDeadLetterRequest()

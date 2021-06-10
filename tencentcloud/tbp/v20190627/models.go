@@ -82,7 +82,7 @@ func (r *TextProcessRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextProcessRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -148,7 +148,7 @@ func (r *TextProcessResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextProcessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -178,7 +178,7 @@ func (r *TextResetRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextResetRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -242,7 +242,7 @@ func (r *TextResetResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextResetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

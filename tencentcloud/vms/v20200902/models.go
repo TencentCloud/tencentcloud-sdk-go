@@ -45,7 +45,7 @@ func (r *SendCodeVoiceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendCodeVoiceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -80,7 +80,7 @@ func (r *SendCodeVoiceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendCodeVoiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -125,7 +125,7 @@ func (r *SendTtsVoiceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendTtsVoiceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -161,7 +161,7 @@ func (r *SendTtsVoiceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendTtsVoiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

@@ -32,7 +32,7 @@ func (r *DetectFraudKOLRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -64,7 +64,7 @@ func (r *DetectFraudKOLResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -82,7 +82,7 @@ func (r *EnhanceTaDegreeRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -114,7 +114,7 @@ func (r *EnhanceTaDegreeResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -491,7 +491,7 @@ func (r *RecognizeCustomizedAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -523,7 +523,7 @@ func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -541,7 +541,7 @@ func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -572,7 +572,7 @@ func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -590,7 +590,7 @@ func (r *RecognizePreciseTargetAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -622,7 +622,7 @@ func (r *RecognizePreciseTargetAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -640,7 +640,7 @@ func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -672,7 +672,7 @@ func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -690,7 +690,7 @@ func (r *SendTrafficSecuritySmsMessageRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -722,7 +722,7 @@ func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

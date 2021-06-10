@@ -58,7 +58,13 @@ func NewBindAlarmPolicyResponse() (response *BindAlarmPolicyResponse) {
     return
 }
 
+// BindAlarmPolicy
 // 绑定拨测任务和告警策略组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindAlarmPolicy(request *BindAlarmPolicyRequest) (response *BindAlarmPolicyResponse, err error) {
     if request == nil {
         request = NewBindAlarmPolicyRequest()
@@ -83,7 +89,13 @@ func NewCreateAgentGroupResponse() (response *CreateAgentGroupResponse) {
     return
 }
 
+// CreateAgentGroup
 // 添加拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *CreateAgentGroupResponse, err error) {
     if request == nil {
         request = NewCreateAgentGroupRequest()
@@ -108,7 +120,13 @@ func NewCreateTaskExResponse() (response *CreateTaskExResponse) {
     return
 }
 
+// CreateTaskEx
 // 创建拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskEx(request *CreateTaskExRequest) (response *CreateTaskExResponse, err error) {
     if request == nil {
         request = NewCreateTaskExRequest()
@@ -133,7 +151,13 @@ func NewDeleteAgentGroupResponse() (response *DeleteAgentGroupResponse) {
     return
 }
 
+// DeleteAgentGroup
 // 删除拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAgentGroup(request *DeleteAgentGroupRequest) (response *DeleteAgentGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAgentGroupRequest()
@@ -158,7 +182,13 @@ func NewDeleteTasksResponse() (response *DeleteTasksResponse) {
     return
 }
 
+// DeleteTasks
 // 删除多个拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTasks(request *DeleteTasksRequest) (response *DeleteTasksResponse, err error) {
     if request == nil {
         request = NewDeleteTasksRequest()
@@ -183,7 +213,13 @@ func NewDescribeAgentGroupsResponse() (response *DescribeAgentGroupsResponse) {
     return
 }
 
+// DescribeAgentGroups
 // 查询拨测分组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgentGroups(request *DescribeAgentGroupsRequest) (response *DescribeAgentGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentGroupsRequest()
@@ -208,7 +244,13 @@ func NewDescribeAgentsResponse() (response *DescribeAgentsResponse) {
     return
 }
 
+// DescribeAgents
 // 查询本用户可选的拨测点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgents(request *DescribeAgentsRequest) (response *DescribeAgentsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentsRequest()
@@ -233,7 +275,13 @@ func NewDescribeAlarmTopicResponse() (response *DescribeAlarmTopicResponse) {
     return
 }
 
+// DescribeAlarmTopic
 // 查询用户的告警主题列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmTopic(request *DescribeAlarmTopicRequest) (response *DescribeAlarmTopicResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmTopicRequest()
@@ -258,7 +306,12 @@ func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
     return
 }
 
+// DescribeAlarms
 // 查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *DescribeAlarmsResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmsRequest()
@@ -283,7 +336,13 @@ func NewDescribeAlarmsByTaskResponse() (response *DescribeAlarmsByTaskResponse) 
     return
 }
 
+// DescribeAlarmsByTask
 // 按任务查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmsByTask(request *DescribeAlarmsByTaskRequest) (response *DescribeAlarmsByTaskResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmsByTaskRequest()
@@ -308,7 +367,13 @@ func NewDescribeCatLogsResponse() (response *DescribeCatLogsResponse) {
     return
 }
 
+// DescribeCatLogs
 // 查询拨测流水
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *DescribeCatLogsResponse, err error) {
     if request == nil {
         request = NewDescribeCatLogsRequest()
@@ -333,7 +398,13 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     return
 }
 
+// DescribeTaskDetail
 // 查询拨测任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
@@ -358,7 +429,13 @@ func NewDescribeTasksByTypeResponse() (response *DescribeTasksByTypeResponse) {
     return
 }
 
+// DescribeTasksByType
 // 按类型查询拨测任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTasksByType(request *DescribeTasksByTypeRequest) (response *DescribeTasksByTypeResponse, err error) {
     if request == nil {
         request = NewDescribeTasksByTypeRequest()
@@ -383,7 +460,13 @@ func NewDescribeUserLimitResponse() (response *DescribeUserLimitResponse) {
     return
 }
 
+// DescribeUserLimit
 // 获取用户可用资源限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeUserLimit(request *DescribeUserLimitRequest) (response *DescribeUserLimitResponse, err error) {
     if request == nil {
         request = NewDescribeUserLimitRequest()
@@ -408,7 +491,13 @@ func NewGetAvailRatioHistoryResponse() (response *GetAvailRatioHistoryResponse) 
     return
 }
 
+// GetAvailRatioHistory
 // 获取指定时刻的可用率地图信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetAvailRatioHistory(request *GetAvailRatioHistoryRequest) (response *GetAvailRatioHistoryResponse, err error) {
     if request == nil {
         request = NewGetAvailRatioHistoryRequest()
@@ -433,7 +522,13 @@ func NewGetDailyAvailRatioResponse() (response *GetDailyAvailRatioResponse) {
     return
 }
 
+// GetDailyAvailRatio
 // 获取一天的整体可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetDailyAvailRatio(request *GetDailyAvailRatioRequest) (response *GetDailyAvailRatioResponse, err error) {
     if request == nil {
         request = NewGetDailyAvailRatioRequest()
@@ -458,7 +553,13 @@ func NewGetRealAvailRatioResponse() (response *GetRealAvailRatioResponse) {
     return
 }
 
+// GetRealAvailRatio
 // 获取实时可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRealAvailRatio(request *GetRealAvailRatioRequest) (response *GetRealAvailRatioResponse, err error) {
     if request == nil {
         request = NewGetRealAvailRatioRequest()
@@ -483,7 +584,13 @@ func NewGetRespTimeTrendExResponse() (response *GetRespTimeTrendExResponse) {
     return
 }
 
+// GetRespTimeTrendEx
 // 查询拨测任务的走势数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRespTimeTrendEx(request *GetRespTimeTrendExRequest) (response *GetRespTimeTrendExResponse, err error) {
     if request == nil {
         request = NewGetRespTimeTrendExRequest()
@@ -508,7 +615,13 @@ func NewGetResultSummaryResponse() (response *GetResultSummaryResponse) {
     return
 }
 
+// GetResultSummary
 // 获取任务列表的实时数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetResultSummary(request *GetResultSummaryRequest) (response *GetResultSummaryResponse, err error) {
     if request == nil {
         request = NewGetResultSummaryRequest()
@@ -533,7 +646,13 @@ func NewGetReturnCodeHistoryResponse() (response *GetReturnCodeHistoryResponse) 
     return
 }
 
+// GetReturnCodeHistory
 // 查询拨测任务的历史返回码信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeHistory(request *GetReturnCodeHistoryRequest) (response *GetReturnCodeHistoryResponse, err error) {
     if request == nil {
         request = NewGetReturnCodeHistoryRequest()
@@ -558,7 +677,13 @@ func NewGetReturnCodeInfoResponse() (response *GetReturnCodeInfoResponse) {
     return
 }
 
+// GetReturnCodeInfo
 // 查询拨测任务的返回码统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeInfo(request *GetReturnCodeInfoRequest) (response *GetReturnCodeInfoResponse, err error) {
     if request == nil {
         request = NewGetReturnCodeInfoRequest()
@@ -583,7 +708,12 @@ func NewGetTaskTotalNumberResponse() (response *GetTaskTotalNumberResponse) {
     return
 }
 
+// GetTaskTotalNumber
 // 获取AppId下的拨测任务总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetTaskTotalNumber(request *GetTaskTotalNumberRequest) (response *GetTaskTotalNumberResponse, err error) {
     if request == nil {
         request = NewGetTaskTotalNumberRequest()
@@ -608,7 +738,13 @@ func NewModifyAgentGroupResponse() (response *ModifyAgentGroupResponse) {
     return
 }
 
+// ModifyAgentGroup
 // 修改拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAgentGroup(request *ModifyAgentGroupRequest) (response *ModifyAgentGroupResponse, err error) {
     if request == nil {
         request = NewModifyAgentGroupRequest()
@@ -633,7 +769,13 @@ func NewModifyTaskExResponse() (response *ModifyTaskExResponse) {
     return
 }
 
+// ModifyTaskEx
 // 修改拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTaskEx(request *ModifyTaskExRequest) (response *ModifyTaskExResponse, err error) {
     if request == nil {
         request = NewModifyTaskExRequest()
@@ -658,7 +800,13 @@ func NewPauseTaskResponse() (response *PauseTaskResponse) {
     return
 }
 
+// PauseTask
 // 暂停拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) PauseTask(request *PauseTaskRequest) (response *PauseTaskResponse, err error) {
     if request == nil {
         request = NewPauseTaskRequest()
@@ -683,7 +831,13 @@ func NewRunTaskResponse() (response *RunTaskResponse) {
     return
 }
 
+// RunTask
 // 运行拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, err error) {
     if request == nil {
         request = NewRunTaskRequest()
@@ -708,7 +862,13 @@ func NewVerifyResultResponse() (response *VerifyResultResponse) {
     return
 }
 
+// VerifyResult
 // 验证拨测任务，结果验证查询（验证成功的，才建议创建拨测任务）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) VerifyResult(request *VerifyResultRequest) (response *VerifyResultResponse, err error) {
     if request == nil {
         request = NewVerifyResultRequest()

@@ -58,7 +58,21 @@ func NewAddResourceTagResponse() (response *AddResourceTagResponse) {
     return
 }
 
+// AddResourceTag
 // 本接口用于给标签关联资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCEATTACHEDTAGS = "LimitExceeded.ResourceAttachedTags"
+//  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+//  RESOURCEINUSE_TAGKEYATTACHED = "ResourceInUse.TagKeyAttached"
 func (c *Client) AddResourceTag(request *AddResourceTagRequest) (response *AddResourceTagResponse, err error) {
     if request == nil {
         request = NewAddResourceTagRequest()
@@ -83,7 +97,28 @@ func NewAttachResourcesTagResponse() (response *AttachResourcesTagResponse) {
     return
 }
 
+// AttachResourcesTag
 // 给多个资源关联某个标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEAPPIDNOTSAME = "FailedOperation.ResourceAppIdNotSame"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  LIMITEXCEEDED_RESOURCEATTACHEDTAGS = "LimitExceeded.ResourceAttachedTags"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE_TAGKEYATTACHED = "ResourceInUse.TagKeyAttached"
+//  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) AttachResourcesTag(request *AttachResourcesTagRequest) (response *AttachResourcesTagResponse, err error) {
     if request == nil {
         request = NewAttachResourcesTagRequest()
@@ -108,7 +143,21 @@ func NewCreateTagResponse() (response *CreateTagResponse) {
     return
 }
 
+// CreateTag
 // 本接口用于创建一对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+//  RESOURCEINUSE_TAGDUPLICATE = "ResourceInUse.TagDuplicate"
 func (c *Client) CreateTag(request *CreateTagRequest) (response *CreateTagResponse, err error) {
     if request == nil {
         request = NewCreateTagRequest()
@@ -133,7 +182,15 @@ func NewDeleteResourceTagResponse() (response *DeleteResourceTagResponse) {
     return
 }
 
+// DeleteResourceTag
 // 本接口用于解除标签和资源的关联关系
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) DeleteResourceTag(request *DeleteResourceTagRequest) (response *DeleteResourceTagResponse, err error) {
     if request == nil {
         request = NewDeleteResourceTagRequest()
@@ -158,7 +215,15 @@ func NewDeleteTagResponse() (response *DeleteTagResponse) {
     return
 }
 
+// DeleteTag
 // 本接口用于删除一对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGATTACHEDRESOURCE = "FailedOperation.TagAttachedResource"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) DeleteTag(request *DeleteTagRequest) (response *DeleteTagResponse, err error) {
     if request == nil {
         request = NewDeleteTagRequest()
@@ -183,7 +248,11 @@ func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) 
     return
 }
 
+// DescribeResourceTags
 // 查询资源关联标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTagsRequest()
@@ -208,7 +277,16 @@ func NewDescribeResourceTagsByResourceIdsResponse() (response *DescribeResourceT
     return
 }
 
+// DescribeResourceTagsByResourceIds
 // 用于批量查询已有资源关联的标签键值对
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTagsByResourceIdsRequest) (response *DescribeResourceTagsByResourceIdsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTagsByResourceIdsRequest()
@@ -233,7 +311,16 @@ func NewDescribeResourceTagsByResourceIdsSeqResponse() (response *DescribeResour
     return
 }
 
+// DescribeResourceTagsByResourceIdsSeq
 // 按顺序查看资源关联的标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourceTagsByResourceIdsSeq(request *DescribeResourceTagsByResourceIdsSeqRequest) (response *DescribeResourceTagsByResourceIdsSeqResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTagsByResourceIdsSeqRequest()
@@ -258,7 +345,18 @@ func NewDescribeResourceTagsByTagKeysResponse() (response *DescribeResourceTagsB
     return
 }
 
+// DescribeResourceTagsByTagKeys
 // 根据标签键获取资源标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
 func (c *Client) DescribeResourceTagsByTagKeys(request *DescribeResourceTagsByTagKeysRequest) (response *DescribeResourceTagsByTagKeysResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTagsByTagKeysRequest()
@@ -283,7 +381,14 @@ func NewDescribeResourcesByTagsResponse() (response *DescribeResourcesByTagsResp
     return
 }
 
+// DescribeResourcesByTags
 // 通过标签查询资源列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_TAGFILTERS = "InvalidParameterValue.TagFilters"
+//  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest) (response *DescribeResourcesByTagsResponse, err error) {
     if request == nil {
         request = NewDescribeResourcesByTagsRequest()
@@ -308,7 +413,13 @@ func NewDescribeResourcesByTagsUnionResponse() (response *DescribeResourcesByTag
     return
 }
 
+// DescribeResourcesByTagsUnion
 // 通过标签查询资源列表并集
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TAGFILTERS = "InvalidParameterValue.TagFilters"
+//  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourcesByTagsUnion(request *DescribeResourcesByTagsUnionRequest) (response *DescribeResourcesByTagsUnionResponse, err error) {
     if request == nil {
         request = NewDescribeResourcesByTagsUnionRequest()
@@ -333,7 +444,11 @@ func NewDescribeTagKeysResponse() (response *DescribeTagKeysResponse) {
     return
 }
 
+// DescribeTagKeys
 // 用于查询已建立的标签列表中的标签键。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (response *DescribeTagKeysResponse, err error) {
     if request == nil {
         request = NewDescribeTagKeysRequest()
@@ -358,7 +473,11 @@ func NewDescribeTagValuesResponse() (response *DescribeTagValuesResponse) {
     return
 }
 
+// DescribeTagValues
 // 用于查询已建立的标签列表中的标签值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagValues(request *DescribeTagValuesRequest) (response *DescribeTagValuesResponse, err error) {
     if request == nil {
         request = NewDescribeTagValuesRequest()
@@ -383,7 +502,12 @@ func NewDescribeTagValuesSeqResponse() (response *DescribeTagValuesSeqResponse) 
     return
 }
 
+// DescribeTagValuesSeq
 // 用于查询已建立的标签列表中的标签值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagValuesSeq(request *DescribeTagValuesSeqRequest) (response *DescribeTagValuesSeqResponse, err error) {
     if request == nil {
         request = NewDescribeTagValuesSeqRequest()
@@ -408,7 +532,12 @@ func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
     return
 }
 
+// DescribeTags
 // 用于查询已建立的标签列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeTagsResponse, err error) {
     if request == nil {
         request = NewDescribeTagsRequest()
@@ -433,7 +562,12 @@ func NewDescribeTagsSeqResponse() (response *DescribeTagsSeqResponse) {
     return
 }
 
+// DescribeTagsSeq
 // 用于查询已建立的标签列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagsSeq(request *DescribeTagsSeqRequest) (response *DescribeTagsSeqResponse, err error) {
     if request == nil {
         request = NewDescribeTagsSeqRequest()
@@ -458,7 +592,21 @@ func NewDetachResourcesTagResponse() (response *DetachResourcesTagResponse) {
     return
 }
 
+// DetachResourcesTag
 // 解绑多个资源关联的某个标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEAPPIDNOTSAME = "FailedOperation.ResourceAppIdNotSame"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) DetachResourcesTag(request *DetachResourcesTagRequest) (response *DetachResourcesTagResponse, err error) {
     if request == nil {
         request = NewDetachResourcesTagRequest()
@@ -483,7 +631,23 @@ func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
     return
 }
 
+// ModifyResourceTags
 // 本接口用于修改资源关联的所有标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_DELETETAGSPARAMERROR = "InvalidParameterValue.DeleteTagsParamError"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCEATTACHEDTAGS = "LimitExceeded.ResourceAttachedTags"
+//  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
 func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
     if request == nil {
         request = NewModifyResourceTagsRequest()
@@ -508,7 +672,24 @@ func NewModifyResourcesTagValueResponse() (response *ModifyResourcesTagValueResp
     return
 }
 
+// ModifyResourcesTagValue
 // 修改多个资源关联的某个标签键对应的标签值
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_RESOURCEAPPIDNOTSAME = "FailedOperation.ResourceAppIdNotSame"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_RESOURCEIDINVALID = "InvalidParameterValue.ResourceIdInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
+//  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
+//  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) ModifyResourcesTagValue(request *ModifyResourcesTagValueRequest) (response *ModifyResourcesTagValueResponse, err error) {
     if request == nil {
         request = NewModifyResourcesTagValueRequest()
@@ -533,7 +714,16 @@ func NewUpdateResourceTagValueResponse() (response *UpdateResourceTagValueRespon
     return
 }
 
+// UpdateResourceTagValue
 // 本接口用于修改资源已关联的标签值（标签键不变）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+//  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) UpdateResourceTagValue(request *UpdateResourceTagValueRequest) (response *UpdateResourceTagValueResponse, err error) {
     if request == nil {
         request = NewUpdateResourceTagValueRequest()

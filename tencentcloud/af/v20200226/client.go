@@ -58,9 +58,33 @@ func NewQueryAntiFraudResponse() (response *QueryAntiFraudResponse) {
     return
 }
 
+// QueryAntiFraud
 // 天御反欺诈服务，主要应用于银行、证券、保险、消费金融等金融行业客户，通过腾讯的大数据风控能力，
+//
 // 可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业
+//
 // 的损失。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) QueryAntiFraud(request *QueryAntiFraudRequest) (response *QueryAntiFraudResponse, err error) {
     if request == nil {
         request = NewQueryAntiFraudRequest()

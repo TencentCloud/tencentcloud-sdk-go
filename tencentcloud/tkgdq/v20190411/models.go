@@ -32,7 +32,7 @@ func (r *DescribeEntityRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEntityRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -63,7 +63,7 @@ func (r *DescribeEntityResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEntityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -84,7 +84,7 @@ func (r *DescribeRelationRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRelationRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -116,7 +116,7 @@ func (r *DescribeRelationResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRelationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -134,7 +134,7 @@ func (r *DescribeTripleRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTripleRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -165,7 +165,7 @@ func (r *DescribeTripleResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTripleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

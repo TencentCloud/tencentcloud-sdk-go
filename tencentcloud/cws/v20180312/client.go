@@ -58,7 +58,15 @@ func NewCreateMonitorsResponse() (response *CreateMonitorsResponse) {
     return
 }
 
+// CreateMonitors
 // 本接口（CreateMonitors）用于新增一个或多个站点的监测任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateMonitors(request *CreateMonitorsRequest) (response *CreateMonitorsResponse, err error) {
     if request == nil {
         request = NewCreateMonitorsRequest()
@@ -83,7 +91,13 @@ func NewCreateSitesResponse() (response *CreateSitesResponse) {
     return
 }
 
+// CreateSites
 // 本接口（CreateSites）用于新增一个或多个站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATE = "InvalidParameter.Duplicate"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 func (c *Client) CreateSites(request *CreateSitesRequest) (response *CreateSitesResponse, err error) {
     if request == nil {
         request = NewCreateSitesRequest()
@@ -108,7 +122,14 @@ func NewCreateSitesScansResponse() (response *CreateSitesScansResponse) {
     return
 }
 
+// CreateSitesScans
 // 本接口（CreateSitesScans）用于新增一个或多个站点的单次扫描任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  LIMITEXCEEDED_SCANQUOTA = "LimitExceeded.ScanQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSitesScans(request *CreateSitesScansRequest) (response *CreateSitesScansResponse, err error) {
     if request == nil {
         request = NewCreateSitesScansRequest()
@@ -133,7 +154,15 @@ func NewCreateVulsMisinformationResponse() (response *CreateVulsMisinformationRe
     return
 }
 
+// CreateVulsMisinformation
 // 本接口（CreateVulsMisinformation）可以用于新增一个或多个漏洞误报信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATE = "InvalidParameter.Duplicate"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationRequest) (response *CreateVulsMisinformationResponse, err error) {
     if request == nil {
         request = NewCreateVulsMisinformationRequest()
@@ -158,7 +187,12 @@ func NewCreateVulsReportResponse() (response *CreateVulsReportResponse) {
     return
 }
 
+// CreateVulsReport
 // 本接口 (CreateVulsReport) 用于生成漏洞报告并返回下载链接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) CreateVulsReport(request *CreateVulsReportRequest) (response *CreateVulsReportResponse, err error) {
     if request == nil {
         request = NewCreateVulsReportRequest()
@@ -183,7 +217,13 @@ func NewDeleteMonitorsResponse() (response *DeleteMonitorsResponse) {
     return
 }
 
+// DeleteMonitors
 // 本接口 (DeleteMonitors) 用于删除用户监控任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DeleteMonitors(request *DeleteMonitorsRequest) (response *DeleteMonitorsResponse, err error) {
     if request == nil {
         request = NewDeleteMonitorsRequest()
@@ -208,7 +248,13 @@ func NewDeleteSitesResponse() (response *DeleteSitesResponse) {
     return
 }
 
+// DeleteSites
 // 本接口 (DeleteSites) 用于删除站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSitesResponse, err error) {
     if request == nil {
         request = NewDeleteSitesRequest()
@@ -233,7 +279,11 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     return
 }
 
+// DescribeConfig
 // 本接口 (DescribeConfig) 用于查询用户配置的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeConfigRequest()
@@ -258,7 +308,13 @@ func NewDescribeMonitorsResponse() (response *DescribeMonitorsResponse) {
     return
 }
 
+// DescribeMonitors
 // 本接口 (DescribeMonitors) 用于查询一个或多个监控任务的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeMonitors(request *DescribeMonitorsRequest) (response *DescribeMonitorsResponse, err error) {
     if request == nil {
         request = NewDescribeMonitorsRequest()
@@ -283,7 +339,11 @@ func NewDescribeSiteQuotaResponse() (response *DescribeSiteQuotaResponse) {
     return
 }
 
+// DescribeSiteQuota
 // 本接口 (DescribeSiteQuota) 用于查询用户购买的扫描次数总数和已使用数。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeSiteQuota(request *DescribeSiteQuotaRequest) (response *DescribeSiteQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeSiteQuotaRequest()
@@ -308,7 +368,13 @@ func NewDescribeSitesResponse() (response *DescribeSitesResponse) {
     return
 }
 
+// DescribeSites
 // 本接口 (DescribeSites) 用于查询一个或多个站点的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *DescribeSitesResponse, err error) {
     if request == nil {
         request = NewDescribeSitesRequest()
@@ -333,7 +399,13 @@ func NewDescribeSitesVerificationResponse() (response *DescribeSitesVerification
     return
 }
 
+// DescribeSitesVerification
 // 本接口 (DescribeSitesVerification) 用于查询一个或多个待验证站点的验证信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeSitesVerification(request *DescribeSitesVerificationRequest) (response *DescribeSitesVerificationResponse, err error) {
     if request == nil {
         request = NewDescribeSitesVerificationRequest()
@@ -358,7 +430,14 @@ func NewDescribeVulsResponse() (response *DescribeVulsResponse) {
     return
 }
 
+// DescribeVuls
 // 本接口 (DescribeVuls) 用于查询一个或多个漏洞的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeVulsResponse, err error) {
     if request == nil {
         request = NewDescribeVulsRequest()
@@ -383,7 +462,11 @@ func NewDescribeVulsNumberResponse() (response *DescribeVulsNumberResponse) {
     return
 }
 
+// DescribeVulsNumber
 // 本接口 (DescribeVulsNumber) 用于查询用户网站的漏洞总计数量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeVulsNumber(request *DescribeVulsNumberRequest) (response *DescribeVulsNumberResponse, err error) {
     if request == nil {
         request = NewDescribeVulsNumberRequest()
@@ -408,7 +491,11 @@ func NewDescribeVulsNumberTimelineResponse() (response *DescribeVulsNumberTimeli
     return
 }
 
+// DescribeVulsNumberTimeline
 // 本接口 (DescribeVulsNumberTimeline) 用于查询漏洞数随时间变化统计信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeVulsNumberTimeline(request *DescribeVulsNumberTimelineRequest) (response *DescribeVulsNumberTimelineResponse, err error) {
     if request == nil {
         request = NewDescribeVulsNumberTimelineRequest()
@@ -433,7 +520,11 @@ func NewModifyConfigAttributeResponse() (response *ModifyConfigAttributeResponse
     return
 }
 
+// ModifyConfigAttribute
 // 本接口 (ModifyConfigAttribute) 用于修改用户配置的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) ModifyConfigAttribute(request *ModifyConfigAttributeRequest) (response *ModifyConfigAttributeResponse, err error) {
     if request == nil {
         request = NewModifyConfigAttributeRequest()
@@ -458,7 +549,14 @@ func NewModifyMonitorAttributeResponse() (response *ModifyMonitorAttributeRespon
     return
 }
 
+// ModifyMonitorAttribute
 // 本接口 (ModifyMonitorAttribute) 用于修改监测任务的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
 func (c *Client) ModifyMonitorAttribute(request *ModifyMonitorAttributeRequest) (response *ModifyMonitorAttributeResponse, err error) {
     if request == nil {
         request = NewModifyMonitorAttributeRequest()
@@ -483,7 +581,13 @@ func NewModifySiteAttributeResponse() (response *ModifySiteAttributeResponse) {
     return
 }
 
+// ModifySiteAttribute
 // 本接口 (ModifySiteAttribute) 用于修改站点的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySiteAttribute(request *ModifySiteAttributeRequest) (response *ModifySiteAttributeResponse, err error) {
     if request == nil {
         request = NewModifySiteAttributeRequest()
@@ -508,7 +612,13 @@ func NewVerifySitesResponse() (response *VerifySitesResponse) {
     return
 }
 
+// VerifySites
 // 本接口 (VerifySites) 用于验证一个或多个待验证站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) VerifySites(request *VerifySitesRequest) (response *VerifySitesResponse, err error) {
     if request == nil {
         request = NewVerifySitesRequest()

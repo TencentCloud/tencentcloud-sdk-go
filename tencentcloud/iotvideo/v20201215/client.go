@@ -58,7 +58,13 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
     return
 }
 
+// BatchUpdateFirmware
 // 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
@@ -83,7 +89,13 @@ func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskRe
     return
 }
 
+// CancelDeviceFirmwareTask
 // 本接口用于取消设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
@@ -108,7 +120,13 @@ func NewCheckForwardAuthResponse() (response *CheckForwardAuthResponse) {
     return
 }
 
+// CheckForwardAuth
 // 判断是否开启的转发的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckForwardAuth(request *CheckForwardAuthRequest) (response *CheckForwardAuthResponse, err error) {
     if request == nil {
         request = NewCheckForwardAuthRequest()
@@ -133,7 +151,13 @@ func NewCreateBatchResponse() (response *CreateBatchResponse) {
     return
 }
 
+// CreateBatch
 // 创建批次
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBatch(request *CreateBatchRequest) (response *CreateBatchResponse, err error) {
     if request == nil {
         request = NewCreateBatchRequest()
@@ -158,7 +182,13 @@ func NewCreateCloudStorageResponse() (response *CreateCloudStorageResponse) {
     return
 }
 
+// CreateCloudStorage
 // 开通云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCloudStorage(request *CreateCloudStorageRequest) (response *CreateCloudStorageResponse, err error) {
     if request == nil {
         request = NewCreateCloudStorageRequest()
@@ -183,7 +213,13 @@ func NewCreateForwardRuleResponse() (response *CreateForwardRuleResponse) {
     return
 }
 
+// CreateForwardRule
 // 创建转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateForwardRule(request *CreateForwardRuleRequest) (response *CreateForwardRuleResponse, err error) {
     if request == nil {
         request = NewCreateForwardRuleRequest()
@@ -208,7 +244,14 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
     return
 }
 
+// CreateProduct
 // 创建产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
     if request == nil {
         request = NewCreateProductRequest()
@@ -233,7 +276,12 @@ func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
     return
 }
 
+// CreateTaskFileUrl
 // 本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
@@ -258,7 +306,13 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
+// DeleteDevice
 // 删除设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -283,7 +337,13 @@ func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
     return
 }
 
+// DeleteFirmware
 // 本接口（DeleteFirmware）用于删除固件 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
     if request == nil {
         request = NewDeleteFirmwareRequest()
@@ -308,7 +368,13 @@ func NewDeleteForwardRuleResponse() (response *DeleteForwardRuleResponse) {
     return
 }
 
+// DeleteForwardRule
 // 删除转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteForwardRule(request *DeleteForwardRuleRequest) (response *DeleteForwardRuleResponse, err error) {
     if request == nil {
         request = NewDeleteForwardRuleRequest()
@@ -333,7 +399,13 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
+// DeleteProduct
 // 删除产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
@@ -358,7 +430,13 @@ func NewDescribeBalanceResponse() (response *DescribeBalanceResponse) {
     return
 }
 
+// DescribeBalance
 // 查询账户余额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBalance(request *DescribeBalanceRequest) (response *DescribeBalanceResponse, err error) {
     if request == nil {
         request = NewDescribeBalanceRequest()
@@ -383,7 +461,13 @@ func NewDescribeBalanceTransactionsResponse() (response *DescribeBalanceTransact
     return
 }
 
+// DescribeBalanceTransactions
 // 拉取账户流水
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBalanceTransactions(request *DescribeBalanceTransactionsRequest) (response *DescribeBalanceTransactionsResponse, err error) {
     if request == nil {
         request = NewDescribeBalanceTransactionsRequest()
@@ -408,7 +492,13 @@ func NewDescribeBatchResponse() (response *DescribeBatchResponse) {
     return
 }
 
+// DescribeBatch
 // 获取批次详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBatch(request *DescribeBatchRequest) (response *DescribeBatchResponse, err error) {
     if request == nil {
         request = NewDescribeBatchRequest()
@@ -433,7 +523,13 @@ func NewDescribeBatchsResponse() (response *DescribeBatchsResponse) {
     return
 }
 
+// DescribeBatchs
 // 获取批次列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBatchs(request *DescribeBatchsRequest) (response *DescribeBatchsResponse, err error) {
     if request == nil {
         request = NewDescribeBatchsRequest()
@@ -458,7 +554,13 @@ func NewDescribeCategoryResponse() (response *DescribeCategoryResponse) {
     return
 }
 
+// DescribeCategory
 // 获取Category详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCategory(request *DescribeCategoryRequest) (response *DescribeCategoryResponse, err error) {
     if request == nil {
         request = NewDescribeCategoryRequest()
@@ -483,7 +585,12 @@ func NewDescribeCloudStorageResponse() (response *DescribeCloudStorageResponse) 
     return
 }
 
+// DescribeCloudStorage
 // 获取设备云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorage(request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
     if request == nil {
         request = NewDescribeCloudStorageRequest()
@@ -508,7 +615,13 @@ func NewDescribeCloudStorageDateResponse() (response *DescribeCloudStorageDateRe
     return
 }
 
+// DescribeCloudStorageDate
 // 获取具有云存的日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageDate(request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
     if request == nil {
         request = NewDescribeCloudStorageDateRequest()
@@ -533,7 +646,13 @@ func NewDescribeCloudStorageEventsResponse() (response *DescribeCloudStorageEven
     return
 }
 
+// DescribeCloudStorageEvents
 // 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageEvents(request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
     if request == nil {
         request = NewDescribeCloudStorageEventsRequest()
@@ -558,7 +677,13 @@ func NewDescribeCloudStorageThumbnailResponse() (response *DescribeCloudStorageT
     return
 }
 
+// DescribeCloudStorageThumbnail
 // 拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageThumbnail(request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
     if request == nil {
         request = NewDescribeCloudStorageThumbnailRequest()
@@ -583,7 +708,13 @@ func NewDescribeCloudStorageTimeResponse() (response *DescribeCloudStorageTimeRe
     return
 }
 
+// DescribeCloudStorageTime
 // 获取某一天云存时间轴
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
     if request == nil {
         request = NewDescribeCloudStorageTimeRequest()
@@ -608,7 +739,13 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     return
 }
 
+// DescribeDevice
 // 查看设备详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceRequest()
@@ -633,7 +770,13 @@ func NewDescribeDeviceActionHistoryResponse() (response *DescribeDeviceActionHis
     return
 }
 
+// DescribeDeviceActionHistory
 // 为用户提供获取动作历史的能力。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceActionHistory(request *DescribeDeviceActionHistoryRequest) (response *DescribeDeviceActionHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceActionHistoryRequest()
@@ -658,7 +801,13 @@ func NewDescribeDeviceCommLogResponse() (response *DescribeDeviceCommLogResponse
     return
 }
 
+// DescribeDeviceCommLog
 // 获取设备在指定时间范围内的通讯日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceCommLog(request *DescribeDeviceCommLogRequest) (response *DescribeDeviceCommLogResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceCommLogRequest()
@@ -683,7 +832,13 @@ func NewDescribeDeviceDataResponse() (response *DescribeDeviceDataResponse) {
     return
 }
 
+// DescribeDeviceData
 // 获取设备属性数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceDataRequest()
@@ -708,7 +863,13 @@ func NewDescribeDeviceDataHistoryResponse() (response *DescribeDeviceDataHistory
     return
 }
 
+// DescribeDeviceDataHistory
 // 获取设备在指定时间范围内上报的历史数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
@@ -733,7 +894,13 @@ func NewDescribeDeviceEventHistoryResponse() (response *DescribeDeviceEventHisto
     return
 }
 
+// DescribeDeviceEventHistory
 // 获取设备的历史事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceEventHistory(request *DescribeDeviceEventHistoryRequest) (response *DescribeDeviceEventHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceEventHistoryRequest()
@@ -758,7 +925,13 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     return
 }
 
+// DescribeDevices
 // 获取设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesRequest()
@@ -783,7 +956,11 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
     return
 }
 
+// DescribeFirmware
 // 本接口（DescribeFirmware）用于查询固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareRequest()
@@ -808,7 +985,11 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
     return
 }
 
+// DescribeFirmwareTask
 // 此接口查询固件升级任务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
@@ -833,7 +1014,13 @@ func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDev
     return
 }
 
+// DescribeFirmwareTaskDevices
 // 本接口用于查询固件升级任务的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
@@ -858,7 +1045,13 @@ func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTa
     return
 }
 
+// DescribeFirmwareTaskDistribution
 // 本接口用于查询固件升级任务状态分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
@@ -883,7 +1076,13 @@ func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTask
     return
 }
 
+// DescribeFirmwareTaskStatistics
 // 本接口用于查询固件升级任务统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
@@ -908,7 +1107,13 @@ func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse
     return
 }
 
+// DescribeFirmwareTasks
 // 本接口用于查询固件升级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
@@ -933,7 +1138,13 @@ func NewDescribeForwardRuleResponse() (response *DescribeForwardRuleResponse) {
     return
 }
 
+// DescribeForwardRule
 // 获取产品转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeForwardRule(request *DescribeForwardRuleRequest) (response *DescribeForwardRuleResponse, err error) {
     if request == nil {
         request = NewDescribeForwardRuleRequest()
@@ -958,7 +1169,13 @@ func NewDescribeModelDefinitionResponse() (response *DescribeModelDefinitionResp
     return
 }
 
+// DescribeModelDefinition
 // 查询产品配置的数据模板信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest) (response *DescribeModelDefinitionResponse, err error) {
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
@@ -983,7 +1200,13 @@ func NewDescribeProductResponse() (response *DescribeProductResponse) {
     return
 }
 
+// DescribeProduct
 // 获取产品详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
     if request == nil {
         request = NewDescribeProductRequest()
@@ -1008,7 +1231,13 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     return
 }
 
+// DescribeProducts
 // 获取产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
     if request == nil {
         request = NewDescribeProductsRequest()
@@ -1033,7 +1262,11 @@ func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
     return
 }
 
+// EditFirmware
 // 本接口用于编辑固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
     if request == nil {
         request = NewEditFirmwareRequest()
@@ -1058,7 +1291,13 @@ func NewGenerateSignedVideoURLResponse() (response *GenerateSignedVideoURLRespon
     return
 }
 
+// GenerateSignedVideoURL
 // 获取视频防盗链播放URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GenerateSignedVideoURL(request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
     if request == nil {
         request = NewGenerateSignedVideoURLRequest()
@@ -1083,7 +1322,13 @@ func NewGetAllFirmwareVersionResponse() (response *GetAllFirmwareVersionResponse
     return
 }
 
+// GetAllFirmwareVersion
 // 本接口（GetAllFirmwareVersion）用于获取所有的版本列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetAllFirmwareVersion(request *GetAllFirmwareVersionRequest) (response *GetAllFirmwareVersionResponse, err error) {
     if request == nil {
         request = NewGetAllFirmwareVersionRequest()
@@ -1108,7 +1353,12 @@ func NewGetFirmwareURLResponse() (response *GetFirmwareURLResponse) {
     return
 }
 
+// GetFirmwareURL
 // 本接口（GetFirmwareURL）用于获取固件存储的URL 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetFirmwareURL(request *GetFirmwareURLRequest) (response *GetFirmwareURLResponse, err error) {
     if request == nil {
         request = NewGetFirmwareURLRequest()
@@ -1133,7 +1383,13 @@ func NewImportModelDefinitionResponse() (response *ImportModelDefinitionResponse
     return
 }
 
+// ImportModelDefinition
 // 导入其它产品的数据模板，覆盖现有数据模板的物模型和产品分类信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportModelDefinition(request *ImportModelDefinitionRequest) (response *ImportModelDefinitionResponse, err error) {
     if request == nil {
         request = NewImportModelDefinitionRequest()
@@ -1158,7 +1414,13 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
     return
 }
 
+// ListFirmwares
 // 本接口（ListFirmwares）用于获取固件列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
     if request == nil {
         request = NewListFirmwaresRequest()
@@ -1183,7 +1445,13 @@ func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
     return
 }
 
+// ModifyDevice
 // 修改设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
     if request == nil {
         request = NewModifyDeviceRequest()
@@ -1208,7 +1476,13 @@ func NewModifyForwardRuleResponse() (response *ModifyForwardRuleResponse) {
     return
 }
 
+// ModifyForwardRule
 // 修改转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyForwardRule(request *ModifyForwardRuleRequest) (response *ModifyForwardRuleResponse, err error) {
     if request == nil {
         request = NewModifyForwardRuleRequest()
@@ -1233,7 +1507,13 @@ func NewModifyModelDefinitionResponse() (response *ModifyModelDefinitionResponse
     return
 }
 
+// ModifyModelDefinition
 // 提供修改产品的数据模板的能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (response *ModifyModelDefinitionResponse, err error) {
     if request == nil {
         request = NewModifyModelDefinitionRequest()
@@ -1258,7 +1538,13 @@ func NewModifyProductResponse() (response *ModifyProductResponse) {
     return
 }
 
+// ModifyProduct
 // 修改产品信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyProductResponse, err error) {
     if request == nil {
         request = NewModifyProductRequest()
@@ -1283,7 +1569,13 @@ func NewResetCloudStorageResponse() (response *ResetCloudStorageResponse) {
     return
 }
 
+// ResetCloudStorage
 // 重置云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResetCloudStorage(request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
     if request == nil {
         request = NewResetCloudStorageRequest()
@@ -1308,7 +1600,15 @@ func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResp
     return
 }
 
+// RetryDeviceFirmwareTask
 // 本接口用于重试设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
@@ -1333,7 +1633,13 @@ func NewSetForwardAuthResponse() (response *SetForwardAuthResponse) {
     return
 }
 
+// SetForwardAuth
 // 设置转发权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetForwardAuth(request *SetForwardAuthRequest) (response *SetForwardAuthResponse, err error) {
     if request == nil {
         request = NewSetForwardAuthRequest()
@@ -1358,7 +1664,13 @@ func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) 
     return
 }
 
+// TransferCloudStorage
 // 转移云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
     if request == nil {
         request = NewTransferCloudStorageRequest()
@@ -1383,7 +1695,13 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
     return
 }
 
+// UploadFirmware
 // 本接口（UploadFirmware）用于上传设备固件信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
     if request == nil {
         request = NewUploadFirmwareRequest()

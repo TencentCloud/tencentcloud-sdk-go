@@ -80,7 +80,7 @@ func (r *ImageModerationRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImageModerationRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -161,7 +161,7 @@ func (r *ImageModerationResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImageModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -215,7 +215,7 @@ func (r *ImageRecognitionRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -301,7 +301,7 @@ func (r *ImageRecognitionResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImageRecognitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

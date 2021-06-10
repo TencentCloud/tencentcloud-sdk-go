@@ -58,8 +58,18 @@ func NewAddFairPlayPemResponse() (response *AddFairPlayPemResponse) {
     return
 }
 
+// AddFairPlayPem
 // 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+//
 // 如需使用fairplay方案，请务必先设置私钥。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PEMIDNOTEXIST = "FailedOperation.PemIdNotExist"
+//  FAILEDOPERATION_PEMNUMTOOMUCH = "FailedOperation.PemNumTooMuch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFairPlayPemResponse, err error) {
     if request == nil {
         request = NewAddFairPlayPemRequest()
@@ -84,7 +94,14 @@ func NewCreateEncryptKeysResponse() (response *CreateEncryptKeysResponse) {
     return
 }
 
+// CreateEncryptKeys
 // 该接口用来设置加密的密钥。注意，同一个content id，只能设置一次！
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response *CreateEncryptKeysResponse, err error) {
     if request == nil {
         request = NewCreateEncryptKeysRequest()
@@ -109,8 +126,16 @@ func NewCreateLicenseResponse() (response *CreateLicenseResponse) {
     return
 }
 
+// CreateLicense
 // 本接口用来生成DRM方案对应的播放许可证，开发者需提供DRM方案类型、内容类型参数，后台将生成许可证后返回许可证数据
+//
 // 开发者需要转发终端设备发出的许可证请求信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateLicense(request *CreateLicenseRequest) (response *CreateLicenseResponse, err error) {
     if request == nil {
         request = NewCreateLicenseRequest()
@@ -135,9 +160,18 @@ func NewDeleteFairPlayPemResponse() (response *DeleteFairPlayPemResponse) {
     return
 }
 
+// DeleteFairPlayPem
 // 本接口用来删除fairplay方案的私钥、ask等信息
+//
 // 注：高风险操作，删除后，您将无法使用腾讯云DRM提供的fairplay服务。
+//
 // 由于缓存，删除操作需要约半小时生效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response *DeleteFairPlayPemResponse, err error) {
     if request == nil {
         request = NewDeleteFairPlayPemRequest()
@@ -162,7 +196,14 @@ func NewDescribeAllKeysResponse() (response *DescribeAllKeysResponse) {
     return
 }
 
+// DescribeAllKeys
 // 本接口用来查询指定DRM类型、ContentType的所有加密密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *DescribeAllKeysResponse, err error) {
     if request == nil {
         request = NewDescribeAllKeysRequest()
@@ -187,7 +228,14 @@ func NewDescribeFairPlayPemResponse() (response *DescribeFairPlayPemResponse) {
     return
 }
 
+// DescribeFairPlayPem
 // 该接口用来查询设置的FairPlay私钥校验信息。可用该接口校验设置的私钥与本身的私钥是否一致。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFairPlayPem(request *DescribeFairPlayPemRequest) (response *DescribeFairPlayPemResponse, err error) {
     if request == nil {
         request = NewDescribeFairPlayPemRequest()
@@ -212,8 +260,16 @@ func NewDescribeKeysResponse() (response *DescribeKeysResponse) {
     return
 }
 
+// DescribeKeys
 // 开发者需要指定使用的DRM类型、和需要加密的Track类型，后台返回加密使用的密钥
+//
 // 如果加密使用的ContentID没有关联的密钥信息，后台会自动生成新的密钥返回
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeKeysResponse, err error) {
     if request == nil {
         request = NewDescribeKeysRequest()
@@ -238,8 +294,18 @@ func NewModifyFairPlayPemResponse() (response *ModifyFairPlayPemResponse) {
     return
 }
 
+// ModifyFairPlayPem
 // 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+//
 // 如需使用fairplay方案，请务必先设置私钥。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PEMIDNOTEXIST = "FailedOperation.PemIdNotExist"
+//  FAILEDOPERATION_PEMNUMTOOMUCH = "FailedOperation.PemNumTooMuch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyFairPlayPem(request *ModifyFairPlayPemRequest) (response *ModifyFairPlayPemResponse, err error) {
     if request == nil {
         request = NewModifyFairPlayPemRequest()
@@ -264,8 +330,16 @@ func NewStartEncryptionResponse() (response *StartEncryptionResponse) {
     return
 }
 
+// StartEncryption
 // 开发者调用该接口，启动一次内容文件的DRM加密工作流。
+//
 // 注意：该接口已下线。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StartEncryption(request *StartEncryptionRequest) (response *StartEncryptionResponse, err error) {
     if request == nil {
         request = NewStartEncryptionRequest()

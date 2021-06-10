@@ -58,7 +58,20 @@ func NewAddUserContactResponse() (response *AddUserContactResponse) {
     return
 }
 
+// AddUserContact
 // 添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。Region统一选择广州。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddUserContact(request *AddUserContactRequest) (response *AddUserContactResponse, err error) {
     if request == nil {
         request = NewAddUserContactRequest()
@@ -83,7 +96,13 @@ func NewCreateDBDiagReportTaskResponse() (response *CreateDBDiagReportTaskRespon
     return
 }
 
+// CreateDBDiagReportTask
 // 创建健康报告，并可以选择是否发送邮件。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) CreateDBDiagReportTask(request *CreateDBDiagReportTaskRequest) (response *CreateDBDiagReportTaskResponse, err error) {
     if request == nil {
         request = NewCreateDBDiagReportTaskRequest()
@@ -108,7 +127,18 @@ func NewCreateDBDiagReportUrlResponse() (response *CreateDBDiagReportUrlResponse
     return
 }
 
+// CreateDBDiagReportUrl
 // 创建健康报告的浏览地址。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateDBDiagReportUrl(request *CreateDBDiagReportUrlRequest) (response *CreateDBDiagReportUrlResponse, err error) {
     if request == nil {
         request = NewCreateDBDiagReportUrlRequest()
@@ -133,7 +163,20 @@ func NewCreateMailProfileResponse() (response *CreateMailProfileResponse) {
     return
 }
 
+// CreateMailProfile
 // 创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateMailProfile(request *CreateMailProfileRequest) (response *CreateMailProfileResponse, err error) {
     if request == nil {
         request = NewCreateMailProfileRequest()
@@ -158,7 +201,20 @@ func NewCreateSchedulerMailProfileResponse() (response *CreateSchedulerMailProfi
     return
 }
 
+// CreateSchedulerMailProfile
 // 该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSchedulerMailProfile(request *CreateSchedulerMailProfileRequest) (response *CreateSchedulerMailProfileResponse, err error) {
     if request == nil {
         request = NewCreateSchedulerMailProfileRequest()
@@ -183,7 +239,16 @@ func NewCreateSecurityAuditLogExportTaskResponse() (response *CreateSecurityAudi
     return
 }
 
+// CreateSecurityAuditLogExportTask
 // 创建安全审计日志导出任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateSecurityAuditLogExportTask(request *CreateSecurityAuditLogExportTaskRequest) (response *CreateSecurityAuditLogExportTaskResponse, err error) {
     if request == nil {
         request = NewCreateSecurityAuditLogExportTaskRequest()
@@ -208,7 +273,15 @@ func NewDeleteSecurityAuditLogExportTasksResponse() (response *DeleteSecurityAud
     return
 }
 
+// DeleteSecurityAuditLogExportTasks
 // 删除安全审计日志导出任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSecurityAuditLogExportTasks(request *DeleteSecurityAuditLogExportTasksRequest) (response *DeleteSecurityAuditLogExportTasksResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityAuditLogExportTasksRequest()
@@ -233,7 +306,16 @@ func NewDescribeAllUserContactResponse() (response *DescribeAllUserContactRespon
     return
 }
 
+// DescribeAllUserContact
 // 获取邮件发送中联系人的相关信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAllUserContact(request *DescribeAllUserContactRequest) (response *DescribeAllUserContactResponse, err error) {
     if request == nil {
         request = NewDescribeAllUserContactRequest()
@@ -258,7 +340,14 @@ func NewDescribeAllUserGroupResponse() (response *DescribeAllUserGroupResponse) 
     return
 }
 
+// DescribeAllUserGroup
 // 获取邮件发送联系组的相关信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAllUserGroup(request *DescribeAllUserGroupRequest) (response *DescribeAllUserGroupResponse, err error) {
     if request == nil {
         request = NewDescribeAllUserGroupRequest()
@@ -283,7 +372,15 @@ func NewDescribeDBDiagEventResponse() (response *DescribeDBDiagEventResponse) {
     return
 }
 
+// DescribeDBDiagEvent
 // 获取实例异常诊断事件的详情信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDBDiagEvent(request *DescribeDBDiagEventRequest) (response *DescribeDBDiagEventResponse, err error) {
     if request == nil {
         request = NewDescribeDBDiagEventRequest()
@@ -308,7 +405,15 @@ func NewDescribeDBDiagHistoryResponse() (response *DescribeDBDiagHistoryResponse
     return
 }
 
+// DescribeDBDiagHistory
 // 获取实例诊断事件的列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (response *DescribeDBDiagHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDBDiagHistoryRequest()
@@ -333,7 +438,16 @@ func NewDescribeDBDiagReportTasksResponse() (response *DescribeDBDiagReportTasks
     return
 }
 
+// DescribeDBDiagReportTasks
 // 查询健康报告生成任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeDBDiagReportTasks(request *DescribeDBDiagReportTasksRequest) (response *DescribeDBDiagReportTasksResponse, err error) {
     if request == nil {
         request = NewDescribeDBDiagReportTasksRequest()
@@ -358,7 +472,15 @@ func NewDescribeDBSpaceStatusResponse() (response *DescribeDBSpaceStatusResponse
     return
 }
 
+// DescribeDBSpaceStatus
 // 获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (response *DescribeDBSpaceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeDBSpaceStatusRequest()
@@ -383,7 +505,19 @@ func NewDescribeDiagDBInstancesResponse() (response *DescribeDiagDBInstancesResp
     return
 }
 
+// DescribeDiagDBInstances
 // 获取实例信息列表。Region统一选择广州。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeDiagDBInstances(request *DescribeDiagDBInstancesRequest) (response *DescribeDiagDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDiagDBInstancesRequest()
@@ -408,7 +542,20 @@ func NewDescribeHealthScoreResponse() (response *DescribeHealthScoreResponse) {
     return
 }
 
+// DescribeHealthScore
 // 根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeHealthScore(request *DescribeHealthScoreRequest) (response *DescribeHealthScoreResponse, err error) {
     if request == nil {
         request = NewDescribeHealthScoreRequest()
@@ -433,7 +580,13 @@ func NewDescribeMailProfileResponse() (response *DescribeMailProfileResponse) {
     return
 }
 
+// DescribeMailProfile
 // 获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。Region统一选择广州。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeMailProfile(request *DescribeMailProfileRequest) (response *DescribeMailProfileResponse, err error) {
     if request == nil {
         request = NewDescribeMailProfileRequest()
@@ -458,7 +611,14 @@ func NewDescribeSecurityAuditLogDownloadUrlsResponse() (response *DescribeSecuri
     return
 }
 
+// DescribeSecurityAuditLogDownloadUrls
 // 查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityAuditLogDownloadUrls(request *DescribeSecurityAuditLogDownloadUrlsRequest) (response *DescribeSecurityAuditLogDownloadUrlsResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
@@ -483,7 +643,13 @@ func NewDescribeSecurityAuditLogExportTasksResponse() (response *DescribeSecurit
     return
 }
 
+// DescribeSecurityAuditLogExportTasks
 // 查询安全审计日志导出任务列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSecurityAuditLogExportTasks(request *DescribeSecurityAuditLogExportTasksRequest) (response *DescribeSecurityAuditLogExportTasksResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityAuditLogExportTasksRequest()
@@ -508,7 +674,11 @@ func NewDescribeSlowLogTimeSeriesStatsResponse() (response *DescribeSlowLogTimeS
     return
 }
 
+// DescribeSlowLogTimeSeriesStats
 // 获取慢日志统计柱状图。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogTimeSeriesStatsRequest()
@@ -533,7 +703,14 @@ func NewDescribeSlowLogTopSqlsResponse() (response *DescribeSlowLogTopSqlsRespon
     return
 }
 
+// DescribeSlowLogTopSqls
 // 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) (response *DescribeSlowLogTopSqlsResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogTopSqlsRequest()
@@ -558,7 +735,15 @@ func NewDescribeSlowLogUserHostStatsResponse() (response *DescribeSlowLogUserHos
     return
 }
 
+// DescribeSlowLogUserHostStats
 // 获取慢日志来源地址统计分布图。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeSlowLogUserHostStats(request *DescribeSlowLogUserHostStatsRequest) (response *DescribeSlowLogUserHostStatsResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogUserHostStatsRequest()
@@ -583,7 +768,17 @@ func NewDescribeTopSpaceSchemaTimeSeriesResponse() (response *DescribeTopSpaceSc
     return
 }
 
+// DescribeTopSpaceSchemaTimeSeries
 // 获取实例占用空间最大的前几个库在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeTopSpaceSchemaTimeSeries(request *DescribeTopSpaceSchemaTimeSeriesRequest) (response *DescribeTopSpaceSchemaTimeSeriesResponse, err error) {
     if request == nil {
         request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
@@ -608,7 +803,17 @@ func NewDescribeTopSpaceSchemasResponse() (response *DescribeTopSpaceSchemasResp
     return
 }
 
+// DescribeTopSpaceSchemas
 // 获取实例Top库的实时空间统计信息，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeTopSpaceSchemas(request *DescribeTopSpaceSchemasRequest) (response *DescribeTopSpaceSchemasResponse, err error) {
     if request == nil {
         request = NewDescribeTopSpaceSchemasRequest()
@@ -633,7 +838,14 @@ func NewDescribeTopSpaceTableTimeSeriesResponse() (response *DescribeTopSpaceTab
     return
 }
 
+// DescribeTopSpaceTableTimeSeries
 // 获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTopSpaceTableTimeSeries(request *DescribeTopSpaceTableTimeSeriesRequest) (response *DescribeTopSpaceTableTimeSeriesResponse, err error) {
     if request == nil {
         request = NewDescribeTopSpaceTableTimeSeriesRequest()
@@ -658,7 +870,14 @@ func NewDescribeTopSpaceTablesResponse() (response *DescribeTopSpaceTablesRespon
     return
 }
 
+// DescribeTopSpaceTables
 // 获取实例Top表的实时空间统计信息，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTopSpaceTables(request *DescribeTopSpaceTablesRequest) (response *DescribeTopSpaceTablesResponse, err error) {
     if request == nil {
         request = NewDescribeTopSpaceTablesRequest()
@@ -683,7 +902,17 @@ func NewDescribeUserSqlAdviceResponse() (response *DescribeUserSqlAdviceResponse
     return
 }
 
+// DescribeUserSqlAdvice
 // 获取SQL优化建议。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeUserSqlAdvice(request *DescribeUserSqlAdviceRequest) (response *DescribeUserSqlAdviceResponse, err error) {
     if request == nil {
         request = NewDescribeUserSqlAdviceRequest()
@@ -708,7 +937,15 @@ func NewModifyDiagDBInstanceConfResponse() (response *ModifyDiagDBInstanceConfRe
     return
 }
 
+// ModifyDiagDBInstanceConf
 // 修改实例巡检开关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyDiagDBInstanceConf(request *ModifyDiagDBInstanceConfRequest) (response *ModifyDiagDBInstanceConfResponse, err error) {
     if request == nil {
         request = NewModifyDiagDBInstanceConfRequest()

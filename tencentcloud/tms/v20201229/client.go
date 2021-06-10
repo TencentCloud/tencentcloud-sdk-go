@@ -58,7 +58,16 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
     return
 }
 
+// TextModeration
 // 文本内容检测（Text Moderation）服务使用了深度学习技术，识别可能令人反感、不安全或不适宜的文本内容，同时支持用户配置词库黑白名单，打击自定义识别类型的图片。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
+//  INVALIDPARAMETER_ERRACTION = "InvalidParameter.ErrAction"
+//  INVALIDPARAMETER_ERRTEXTCONTENTLEN = "InvalidParameter.ErrTextContentLen"
+//  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
+//  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
     if request == nil {
         request = NewTextModerationRequest()

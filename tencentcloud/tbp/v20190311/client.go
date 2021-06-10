@@ -58,7 +58,13 @@ func NewCreateBotResponse() (response *CreateBotResponse) {
     return
 }
 
+// CreateBot
 // 创建机器人
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLMMSFAILED = "InternalError.CallMMSFailed"
+//  INTERNALERROR_MMSINTERNALERROR = "InternalError.MMSInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotResponse, err error) {
     if request == nil {
         request = NewCreateBotRequest()
@@ -83,7 +89,16 @@ func NewResetResponse() (response *ResetResponse) {
     return
 }
 
+// Reset
 // 对当前机器人的会话状态进行复位
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERRORASR = "InternalError.ErrorAsr"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORTTS = "InternalError.ErrorTts"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
     if request == nil {
         request = NewResetRequest()
@@ -108,7 +123,17 @@ func NewTextProcessResponse() (response *TextProcessResponse) {
     return
 }
 
+// TextProcess
 // 接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcessResponse, err error) {
     if request == nil {
         request = NewTextProcessRequest()
@@ -133,7 +158,17 @@ func NewTextResetResponse() (response *TextResetResponse) {
     return
 }
 
+// TextReset
 // 会话重置接口。已废弃，推荐使用最新版TextReset接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
     if request == nil {
         request = NewTextResetRequest()

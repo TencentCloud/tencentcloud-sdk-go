@@ -58,7 +58,14 @@ func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
     return
 }
 
+// CreateBindInstance
 // 将应用和资源进行绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
     if request == nil {
         request = NewCreateBindInstanceRequest()
@@ -83,7 +90,13 @@ func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResp
     return
 }
 
+// CreateCosSecKeyInstance
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()
@@ -108,7 +121,17 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
     return
 }
 
+// CreateResourceInstances
 // 用户可以使用该接口自建资源，只支持白名单用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest) (response *CreateResourceInstancesResponse, err error) {
     if request == nil {
         request = NewCreateResourceInstancesRequest()
@@ -133,7 +156,14 @@ func NewCreateScanInstancesResponse() (response *CreateScanInstancesResponse) {
     return
 }
 
+// CreateScanInstances
 // 用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
 func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
     if request == nil {
         request = NewCreateScanInstancesRequest()
@@ -158,7 +188,19 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
     return
 }
 
+// CreateShieldInstance
 // 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_MISSINGSERVICEINFO = "InvalidParameter.MissingServiceInfo"
+//  INVALIDPARAMETER_PLANIDNOTFOUND = "InvalidParameter.PlanIdNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+//  RESOURCENOTFOUND_PLANIDNOTFOUND = "ResourceNotFound.PlanIdNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldInstanceRequest()
@@ -183,7 +225,15 @@ func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceRe
     return
 }
 
+// CreateShieldPlanInstance
 // 对资源进行策略新增
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldPlanInstanceRequest()
@@ -208,7 +258,13 @@ func NewDeleteScanInstancesResponse() (response *DeleteScanInstancesResponse) {
     return
 }
 
+// DeleteScanInstances
 // 删除一个或者多个app扫描信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteScanInstancesRequest()
@@ -233,7 +289,14 @@ func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse
     return
 }
 
+// DeleteShieldInstances
 // 删除一个或者多个app加固信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteShieldInstancesRequest()
@@ -258,7 +321,18 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
     return
 }
 
+// DescribeResourceInstances
 // 获取某个用户的所有资源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
@@ -283,8 +357,20 @@ func NewDescribeScanInstancesResponse() (response *DescribeScanInstancesResponse
     return
 }
 
+// DescribeScanInstances
 // 本接口用于查看app列表。
+//
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeScanInstancesRequest()
@@ -309,7 +395,14 @@ func NewDescribeScanResultsResponse() (response *DescribeScanResultsResponse) {
     return
 }
 
+// DescribeScanResults
 // 用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
     if request == nil {
         request = NewDescribeScanResultsRequest()
@@ -334,8 +427,20 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
     return
 }
 
+// DescribeShieldInstances
 // 本接口用于查看app列表。
+//
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeShieldInstancesRequest()
@@ -360,7 +465,14 @@ func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstan
     return
 }
 
+// DescribeShieldPlanInstance
 // 查询加固策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
@@ -385,7 +497,13 @@ func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) 
     return
 }
 
+// DescribeShieldResult
 // 通过唯一标识获取加固的结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
     if request == nil {
         request = NewDescribeShieldResultRequest()
@@ -410,7 +528,13 @@ func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoIn
     return
 }
 
+// DescribeUserBaseInfoInstance
 // 获取用户基础信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()

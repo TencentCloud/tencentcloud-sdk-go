@@ -58,7 +58,16 @@ func NewDescribeInvocationResultResponse() (response *DescribeInvocationResultRe
     return
 }
 
+// DescribeInvocationResult
 // 获取服务调用结果。和InvokeService接口配置合适，其InvokeId参数为InvokeService接口返回的RequestId。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEFINDERROR = "FailedOperation.DatabaseFindError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETER_REQUESTPARSEERROR = "InvalidParameter.RequestParseError"
 func (c *Client) DescribeInvocationResult(request *DescribeInvocationResultRequest) (response *DescribeInvocationResultResponse, err error) {
     if request == nil {
         request = NewDescribeInvocationResultRequest()
@@ -83,7 +92,20 @@ func NewInvokeServiceResponse() (response *InvokeServiceResponse) {
     return
 }
 
+// InvokeService
 // 通过传入文档url，测试服务算法。此接口需要和DescribeInvocationResult接口配置使用，该接口使用InvokeService返回的RequestId作为InvokeId参数，用于查询调用结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FILENOTEXISTS = "FailedOperation.FileNotExists"
+//  FAILEDOPERATION_INSUFFICIENTPRIVILEGE = "FailedOperation.InsufficientPrivilege"
+//  FAILEDOPERATION_SERVICENOTFOUND = "FailedOperation.ServiceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMPTYPARAMETERS = "InvalidParameter.EmptyParameters"
+//  INVALIDPARAMETER_INVALIDFILEFORMAT = "InvalidParameter.InvalidFileFormat"
+//  INVALIDPARAMETER_INVALIDFILESIZE = "InvalidParameter.InvalidFileSize"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETER_REQUESTPARSEERROR = "InvalidParameter.RequestParseError"
 func (c *Client) InvokeService(request *InvokeServiceRequest) (response *InvokeServiceResponse, err error) {
     if request == nil {
         request = NewInvokeServiceRequest()

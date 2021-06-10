@@ -58,7 +58,15 @@ func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceRespon
     return
 }
 
+// DescribeAccountBalance
 // 获取云账户余额信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PAYPRICEERROR = "FailedOperation.PayPriceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) (response *DescribeAccountBalanceResponse, err error) {
     if request == nil {
         request = NewDescribeAccountBalanceRequest()
@@ -83,7 +91,15 @@ func NewDescribeBillDetailResponse() (response *DescribeBillDetailResponse) {
     return
 }
 
+// DescribeBillDetail
 // 查询账单明细数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBillDetail(request *DescribeBillDetailRequest) (response *DescribeBillDetailResponse, err error) {
     if request == nil {
         request = NewDescribeBillDetailRequest()
@@ -108,7 +124,14 @@ func NewDescribeBillListResponse() (response *DescribeBillListResponse) {
     return
 }
 
+// DescribeBillList
 // 获取收支明细列表，支持翻页和参数过滤
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *DescribeBillListResponse, err error) {
     if request == nil {
         request = NewDescribeBillListRequest()
@@ -133,7 +156,12 @@ func NewDescribeBillResourceSummaryResponse() (response *DescribeBillResourceSum
     return
 }
 
+// DescribeBillResourceSummary
 // 查询账单资源汇总数据 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 func (c *Client) DescribeBillResourceSummary(request *DescribeBillResourceSummaryRequest) (response *DescribeBillResourceSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeBillResourceSummaryRequest()
@@ -158,7 +186,14 @@ func NewDescribeBillSummaryByPayModeResponse() (response *DescribeBillSummaryByP
     return
 }
 
+// DescribeBillSummaryByPayMode
 // 获取按付费模式汇总费用分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBillSummaryByPayMode(request *DescribeBillSummaryByPayModeRequest) (response *DescribeBillSummaryByPayModeResponse, err error) {
     if request == nil {
         request = NewDescribeBillSummaryByPayModeRequest()
@@ -183,7 +218,14 @@ func NewDescribeBillSummaryByProductResponse() (response *DescribeBillSummaryByP
     return
 }
 
+// DescribeBillSummaryByProduct
 // 获取产品汇总费用分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBillSummaryByProduct(request *DescribeBillSummaryByProductRequest) (response *DescribeBillSummaryByProductResponse, err error) {
     if request == nil {
         request = NewDescribeBillSummaryByProductRequest()
@@ -208,7 +250,14 @@ func NewDescribeBillSummaryByProjectResponse() (response *DescribeBillSummaryByP
     return
 }
 
+// DescribeBillSummaryByProject
 // 获取按项目汇总费用分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBillSummaryByProject(request *DescribeBillSummaryByProjectRequest) (response *DescribeBillSummaryByProjectResponse, err error) {
     if request == nil {
         request = NewDescribeBillSummaryByProjectRequest()
@@ -233,7 +282,14 @@ func NewDescribeBillSummaryByRegionResponse() (response *DescribeBillSummaryByRe
     return
 }
 
+// DescribeBillSummaryByRegion
 // 获取按地域汇总费用分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBillSummaryByRegion(request *DescribeBillSummaryByRegionRequest) (response *DescribeBillSummaryByRegionResponse, err error) {
     if request == nil {
         request = NewDescribeBillSummaryByRegionRequest()
@@ -258,7 +314,15 @@ func NewDescribeBillSummaryByTagResponse() (response *DescribeBillSummaryByTagRe
     return
 }
 
+// DescribeBillSummaryByTag
 // 获取按标签汇总费用分布
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBillSummaryByTag(request *DescribeBillSummaryByTagRequest) (response *DescribeBillSummaryByTagResponse, err error) {
     if request == nil {
         request = NewDescribeBillSummaryByTagRequest()
@@ -283,7 +347,15 @@ func NewDescribeCostDetailResponse() (response *DescribeCostDetailResponse) {
     return
 }
 
+// DescribeCostDetail
 // 查询消耗明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostDetail(request *DescribeCostDetailRequest) (response *DescribeCostDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCostDetailRequest()
@@ -308,7 +380,15 @@ func NewDescribeCostSummaryByProductResponse() (response *DescribeCostSummaryByP
     return
 }
 
+// DescribeCostSummaryByProduct
 // 获取按产品汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProduct(request *DescribeCostSummaryByProductRequest) (response *DescribeCostSummaryByProductResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByProductRequest()
@@ -333,7 +413,15 @@ func NewDescribeCostSummaryByProjectResponse() (response *DescribeCostSummaryByP
     return
 }
 
+// DescribeCostSummaryByProject
 // 获取按项目汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProject(request *DescribeCostSummaryByProjectRequest) (response *DescribeCostSummaryByProjectResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByProjectRequest()
@@ -358,7 +446,15 @@ func NewDescribeCostSummaryByRegionResponse() (response *DescribeCostSummaryByRe
     return
 }
 
+// DescribeCostSummaryByRegion
 // 获取按地域汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByRegion(request *DescribeCostSummaryByRegionRequest) (response *DescribeCostSummaryByRegionResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByRegionRequest()
@@ -383,7 +479,15 @@ func NewDescribeCostSummaryByResourceResponse() (response *DescribeCostSummaryBy
     return
 }
 
+// DescribeCostSummaryByResource
 // 获取按资源汇总消耗详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByResource(request *DescribeCostSummaryByResourceRequest) (response *DescribeCostSummaryByResourceResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByResourceRequest()
@@ -408,7 +512,11 @@ func NewDescribeDealsByCondResponse() (response *DescribeDealsByCondResponse) {
     return
 }
 
+// DescribeDealsByCond
 // 查询订单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDealsByCond(request *DescribeDealsByCondRequest) (response *DescribeDealsByCondResponse, err error) {
     if request == nil {
         request = NewDescribeDealsByCondRequest()
@@ -433,7 +541,11 @@ func NewDescribeDosageCosDetailByDateResponse() (response *DescribeDosageCosDeta
     return
 }
 
+// DescribeDosageCosDetailByDate
 // 获取COS产品用量明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 func (c *Client) DescribeDosageCosDetailByDate(request *DescribeDosageCosDetailByDateRequest) (response *DescribeDosageCosDetailByDateResponse, err error) {
     if request == nil {
         request = NewDescribeDosageCosDetailByDateRequest()
@@ -458,7 +570,11 @@ func NewDescribeDosageDetailByDateResponse() (response *DescribeDosageDetailByDa
     return
 }
 
+// DescribeDosageDetailByDate
 // 按日期获取产品用量明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 func (c *Client) DescribeDosageDetailByDate(request *DescribeDosageDetailByDateRequest) (response *DescribeDosageDetailByDateResponse, err error) {
     if request == nil {
         request = NewDescribeDosageDetailByDateRequest()
@@ -483,7 +599,24 @@ func NewPayDealsResponse() (response *PayDealsResponse) {
     return
 }
 
+// PayDeals
 // 支付订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTPAYDEALCANNOTDOWN = "FailedOperation.AgentPayDealCannotDown"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INVALIDDEAL = "FailedOperation.InvalidDeal"
+//  FAILEDOPERATION_INVALIDVOUCHER = "FailedOperation.InvalidVoucher"
+//  FAILEDOPERATION_NEEDPAYTOGETER = "FailedOperation.NeedPayTogeter"
+//  FAILEDOPERATION_NEEDPAYTOGETHER = "FailedOperation.NeedPayTogether"
+//  FAILEDOPERATION_PAYPRICEERROR = "FailedOperation.PayPriceError"
+//  FAILEDOPERATION_PAYSUCCDELIVERFAILED = "FailedOperation.PaySuccDeliverFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
 func (c *Client) PayDeals(request *PayDealsRequest) (response *PayDealsResponse, err error) {
     if request == nil {
         request = NewPayDealsRequest()

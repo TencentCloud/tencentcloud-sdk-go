@@ -58,7 +58,15 @@ func NewDeleteCertResponse() (response *DeleteCertResponse) {
     return
 }
 
+// DeleteCert
 // 本接口（DeleteCert）用于删除证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTINVALIDPARAM = "FailedOperation.CertInvalidParam"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) DeleteCert(request *DeleteCertRequest) (response *DeleteCertResponse, err error) {
     if request == nil {
         request = NewDeleteCertRequest()
@@ -83,7 +91,14 @@ func NewDescribeCertListResponse() (response *DescribeCertListResponse) {
     return
 }
 
+// DescribeCertList
 // 本接口(DescribeCertList)用于获取证书列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) DescribeCertList(request *DescribeCertListRequest) (response *DescribeCertListResponse, err error) {
     if request == nil {
         request = NewDescribeCertListRequest()
@@ -108,7 +123,17 @@ func NewUploadCertResponse() (response *UploadCertResponse) {
     return
 }
 
+// UploadCert
 // 本接口（UploadCert）用于上传证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTINVALIDPARAM = "FailedOperation.CertInvalidParam"
+//  FAILEDOPERATION_CERTMISMATCH = "FailedOperation.CertMismatch"
+//  FAILEDOPERATION_INVALIDCERT = "FailedOperation.InvalidCert"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) UploadCert(request *UploadCertRequest) (response *UploadCertResponse, err error) {
     if request == nil {
         request = NewUploadCertRequest()

@@ -58,7 +58,13 @@ func NewApplyApplicationMaterialResponse() (response *ApplyApplicationMaterialRe
     return
 }
 
+// ApplyApplicationMaterial
 // 跨境-提交申报材料。申报材料的主体是付款人，需要提前调用【跨境-付款人申请】接口提交付款人信息且审核通过后调用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyApplicationMaterial(request *ApplyApplicationMaterialRequest) (response *ApplyApplicationMaterialResponse, err error) {
     if request == nil {
         request = NewApplyApplicationMaterialRequest()
@@ -83,7 +89,13 @@ func NewApplyOutwardOrderResponse() (response *ApplyOutwardOrderResponse) {
     return
 }
 
+// ApplyOutwardOrder
 // 跨境-汇出指令申请。通过该接口可将对接方账户中的人民币余额汇兑成外币，再汇出至指定银行账户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyOutwardOrder(request *ApplyOutwardOrderRequest) (response *ApplyOutwardOrderResponse, err error) {
     if request == nil {
         request = NewApplyOutwardOrderRequest()
@@ -108,7 +120,13 @@ func NewApplyPayerInfoResponse() (response *ApplyPayerInfoResponse) {
     return
 }
 
+// ApplyPayerInfo
 // 跨境-付款人申请。通过该接口提交付款人信息并进行 kyc 审核。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyPayerInfo(request *ApplyPayerInfoRequest) (response *ApplyPayerInfoResponse, err error) {
     if request == nil {
         request = NewApplyPayerInfoRequest()
@@ -133,7 +151,15 @@ func NewApplyReWithdrawalResponse() (response *ApplyReWithdrawalResponse) {
     return
 }
 
+// ApplyReWithdrawal
 // 正常结算提现失败情况下，发起重新提现的请求接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ApplyReWithdrawal(request *ApplyReWithdrawalRequest) (response *ApplyReWithdrawalResponse, err error) {
     if request == nil {
         request = NewApplyReWithdrawalRequest()
@@ -158,7 +184,13 @@ func NewApplyTradeResponse() (response *ApplyTradeResponse) {
     return
 }
 
+// ApplyTrade
 // 跨境-提交贸易材料。通过提交贸易材料接口可为对接方累计贸易额度，在额度范围内可发起汇兑汇出交易。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyTrade(request *ApplyTradeRequest) (response *ApplyTradeResponse, err error) {
     if request == nil {
         request = NewApplyTradeRequest()
@@ -183,7 +215,15 @@ func NewApplyWithdrawalResponse() (response *ApplyWithdrawalResponse) {
     return
 }
 
+// ApplyWithdrawal
 // 商户提现
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) ApplyWithdrawal(request *ApplyWithdrawalRequest) (response *ApplyWithdrawalResponse, err error) {
     if request == nil {
         request = NewApplyWithdrawalRequest()
@@ -208,7 +248,15 @@ func NewBindAcctResponse() (response *BindAcctResponse) {
     return
 }
 
+// BindAcct
 // 商户绑定提现银行卡，每个商户只能绑定一张提现银行卡
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) BindAcct(request *BindAcctRequest) (response *BindAcctResponse, err error) {
     if request == nil {
         request = NewBindAcctRequest()
@@ -233,7 +281,19 @@ func NewBindRelateAccReUnionPayResponse() (response *BindRelateAccReUnionPayResp
     return
 }
 
+// BindRelateAccReUnionPay
 // 会员绑定提现账户-回填银联鉴权短信码。用于会员填写动态验证码后，发往银行进行验证，验证成功则完成绑定。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAccReUnionPay(request *BindRelateAccReUnionPayRequest) (response *BindRelateAccReUnionPayResponse, err error) {
     if request == nil {
         request = NewBindRelateAccReUnionPayRequest()
@@ -258,10 +318,25 @@ func NewBindRelateAcctSmallAmountResponse() (response *BindRelateAcctSmallAmount
     return
 }
 
+// BindRelateAcctSmallAmount
 // 会员绑定提现账户-小额鉴权。会员申请绑定提现账户，绑定后从会员子账户中提现到绑定账户。
+//
 // 转账鉴权有两种形式：往账鉴权和来账鉴权。
+//
 // 往账鉴权：该接口发起成功后，银行会向提现账户转入小于等于0.5元的随机金额，并短信通知客户查看，客户查看后，需将收到的金额大小，在电商平台页面上回填，并通知银行。银行验证通过后，完成提现账户绑定。
+//
 // 来账鉴权：该接口发起成功后，银行以短信通知客户查看，客户查看后，需通过待绑定的账户往市场的监管账户转入短信上指定的金额。银行检索到该笔指定金额的来账是源自待绑定账户，则绑定成功。平安银行的账户，即BankType送1时，大小额行号和超级网银号都不用送。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAcctSmallAmount(request *BindRelateAcctSmallAmountRequest) (response *BindRelateAcctSmallAmountResponse, err error) {
     if request == nil {
         request = NewBindRelateAcctSmallAmountRequest()
@@ -286,11 +361,27 @@ func NewBindRelateAcctUnionPayResponse() (response *BindRelateAcctUnionPayRespon
     return
 }
 
+// BindRelateAcctUnionPay
 // 会员绑定提现账户-银联鉴权。用于会员申请绑定提现账户，申请后银行前往银联验证卡信息：姓名、证件、卡号、银行预留手机是否相符，相符则发送给会员手机动态验证码并返回成功，不相符则返回失败。
+//
 // 平台接收到银行返回成功后，进入输入动态验证码的页面，有效期120秒，若120秒未输入，客户可点击重新发送动态验证码，这个步骤重新调用该接口即可。
+//
 // 平安银行的账户，大小额行号和超级网银号都不用送。
+//
 // 超级网银号：单笔转账金额不超过5万，不限制笔数，只用选XX银行，不用具体到支行，可实时知道对方是否收款成功。
+//
 // 大小额联行号：单笔转账可超过5万，需具体到支行，不能实时知道对方是否收款成功。金额超过5万的，在工作日的8点30-17点间才会成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAcctUnionPay(request *BindRelateAcctUnionPayRequest) (response *BindRelateAcctUnionPayResponse, err error) {
     if request == nil {
         request = NewBindRelateAcctUnionPayRequest()
@@ -315,7 +406,15 @@ func NewCheckAcctResponse() (response *CheckAcctResponse) {
     return
 }
 
+// CheckAcct
 // 商户绑定提现银行卡的验证接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CheckAcct(request *CheckAcctRequest) (response *CheckAcctResponse, err error) {
     if request == nil {
         request = NewCheckAcctRequest()
@@ -340,7 +439,19 @@ func NewCheckAmountResponse() (response *CheckAmountResponse) {
     return
 }
 
+// CheckAmount
 // 验证鉴权金额。此接口可受理BindRelateAcctSmallAmount接口发起的转账金额（往账鉴权方式）的验证处理。若所回填的验证金额验证通过，则会绑定原申请中的银行账户作为提现账户。通过此接口也可以查得BindRelateAcctSmallAmount接口发起的来账鉴权方式的申请的当前状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CheckAmount(request *CheckAmountRequest) (response *CheckAmountResponse, err error) {
     if request == nil {
         request = NewCheckAmountRequest()
@@ -365,7 +476,15 @@ func NewCloseOrderResponse() (response *CloseOrderResponse) {
     return
 }
 
+// CloseOrder
 // 通过此接口关闭此前已创建的订单，关闭后，用户将无法继续付款。仅能关闭创建后未支付的订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_ORDERNOTACTIVATED = "FailedOperation.OrderNotActivated"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderResponse, err error) {
     if request == nil {
         request = NewCloseOrderRequest()
@@ -390,7 +509,30 @@ func NewContractOrderResponse() (response *ContractOrderResponse) {
     return
 }
 
+// ContractOrder
 // 应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTINSERTTFAILED = "FailedOperation.DbClientInserttFailed"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PARENTAPPIDERROR = "FailedOperation.ParentAppIdError"
+//  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ContractOrder(request *ContractOrderRequest) (response *ContractOrderResponse, err error) {
     if request == nil {
         request = NewContractOrderRequest()
@@ -415,7 +557,15 @@ func NewCreateAcctResponse() (response *CreateAcctResponse) {
     return
 }
 
+// CreateAcct
 // 子商户入驻聚鑫平台
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CreateAcct(request *CreateAcctRequest) (response *CreateAcctResponse, err error) {
     if request == nil {
         request = NewCreateAcctRequest()
@@ -440,7 +590,16 @@ func NewCreateAgentTaxPaymentInfosResponse() (response *CreateAgentTaxPaymentInf
     return
 }
 
+// CreateAgentTaxPaymentInfos
 // 直播平台-代理商完税信息录入
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosRequest) (response *CreateAgentTaxPaymentInfosResponse, err error) {
     if request == nil {
         request = NewCreateAgentTaxPaymentInfosRequest()
@@ -465,8 +624,22 @@ func NewCreateCustAcctIdResponse() (response *CreateCustAcctIdResponse) {
     return
 }
 
+// CreateCustAcctId
 // 会员子账户开立。会员在银行注册，并开立会员子账户，交易网会员代码即会员在平台端系统的会员编号。
+//
 // 平台需保存银行返回的子账户账号，后续交易接口都会用到。会员属性字段为预留扩展字段，当前必须送默认值。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CreateCustAcctId(request *CreateCustAcctIdRequest) (response *CreateCustAcctIdResponse, err error) {
     if request == nil {
         request = NewCreateCustAcctIdRequest()
@@ -491,7 +664,26 @@ func NewCreateInvoiceResponse() (response *CreateInvoiceResponse) {
     return
 }
 
+// CreateInvoice
 // 智慧零售-发票开具
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_INVOICEEXIST = "InternalError.InvoiceExist"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateInvoice(request *CreateInvoiceRequest) (response *CreateInvoiceResponse, err error) {
     if request == nil {
         request = NewCreateInvoiceRequest()
@@ -516,7 +708,11 @@ func NewCreateInvoiceV2Response() (response *CreateInvoiceV2Response) {
     return
 }
 
+// CreateInvoiceV2
 // 智慧零售-发票开具V2
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) CreateInvoiceV2(request *CreateInvoiceV2Request) (response *CreateInvoiceV2Response, err error) {
     if request == nil {
         request = NewCreateInvoiceV2Request()
@@ -541,7 +737,18 @@ func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
     return
 }
 
+// CreateMerchant
 // 智慧零售-商户注册
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *CreateMerchantResponse, err error) {
     if request == nil {
         request = NewCreateMerchantRequest()
@@ -566,7 +773,25 @@ func NewCreateRedInvoiceResponse() (response *CreateRedInvoiceResponse) {
     return
 }
 
+// CreateRedInvoice
 // 智慧零售-发票红冲
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *CreateRedInvoiceResponse, err error) {
     if request == nil {
         request = NewCreateRedInvoiceRequest()
@@ -591,7 +816,25 @@ func NewCreateRedInvoiceV2Response() (response *CreateRedInvoiceV2Response) {
     return
 }
 
+// CreateRedInvoiceV2
 // 智慧零售-发票红冲V2
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (response *CreateRedInvoiceV2Response, err error) {
     if request == nil {
         request = NewCreateRedInvoiceV2Request()
@@ -616,7 +859,17 @@ func NewCreateSinglePayResponse() (response *CreateSinglePayResponse) {
     return
 }
 
+// CreateSinglePay
 // 银企直连-单笔支付接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *CreateSinglePayResponse, err error) {
     if request == nil {
         request = NewCreateSinglePayRequest()
@@ -641,7 +894,23 @@ func NewCreateTransferBatchResponse() (response *CreateTransferBatchResponse) {
     return
 }
 
+// CreateTransferBatch
 // 微信商户发起批量转账
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_APPIDMCHIDNOTMATCH = "FailedOperation.AppidMchidNotMatch"
+//  FAILEDOPERATION_FREQUENCYLIMITED = "FailedOperation.FrequencyLimited"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
+//  FAILEDOPERATION_NOTENOUGH = "FailedOperation.NotEnough"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_PARAMERROR = "FailedOperation.ParamError"
+//  FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_ = "InternalError."
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CreateTransferBatch(request *CreateTransferBatchRequest) (response *CreateTransferBatchResponse, err error) {
     if request == nil {
         request = NewCreateTransferBatchRequest()
@@ -666,7 +935,16 @@ func NewDeleteAgentTaxPaymentInfoResponse() (response *DeleteAgentTaxPaymentInfo
     return
 }
 
+// DeleteAgentTaxPaymentInfo
 // 直播平台-删除代理商完税信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) DeleteAgentTaxPaymentInfo(request *DeleteAgentTaxPaymentInfoRequest) (response *DeleteAgentTaxPaymentInfoResponse, err error) {
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfoRequest()
@@ -691,7 +969,16 @@ func NewDeleteAgentTaxPaymentInfosResponse() (response *DeleteAgentTaxPaymentInf
     return
 }
 
+// DeleteAgentTaxPaymentInfos
 // 直播平台-删除代理商完税信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) DeleteAgentTaxPaymentInfos(request *DeleteAgentTaxPaymentInfosRequest) (response *DeleteAgentTaxPaymentInfosResponse, err error) {
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfosRequest()
@@ -716,7 +1003,16 @@ func NewDescribeChargeDetailResponse() (response *DescribeChargeDetailResponse) 
     return
 }
 
+// DescribeChargeDetail
 // 查询充值明细接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) DescribeChargeDetail(request *DescribeChargeDetailRequest) (response *DescribeChargeDetailResponse, err error) {
     if request == nil {
         request = NewDescribeChargeDetailRequest()
@@ -741,7 +1037,12 @@ func NewDescribeOrderStatusResponse() (response *DescribeOrderStatusResponse) {
     return
 }
 
+// DescribeOrderStatus
 // 查询单笔订单交易状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DescribeOrderStatus(request *DescribeOrderStatusRequest) (response *DescribeOrderStatusResponse, err error) {
     if request == nil {
         request = NewDescribeOrderStatusRequest()
@@ -766,7 +1067,17 @@ func NewDownloadBillResponse() (response *DownloadBillResponse) {
     return
 }
 
+// DownloadBill
 // 账单下载接口，根据本接口返回的URL地址，在D+1日下载对账单。注意，本接口返回的URL地址有时效，请尽快下载。URL超时时效后，请重新调用本接口再次获取。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFIGERROR = "FailedOperation.ConfigError"
+//  FAILEDOPERATION_DBCONFIGERROR = "FailedOperation.DBConfigError"
+//  FAILEDOPERATION_FILENOTEXIST = "FailedOperation.FileNotExist"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadBillResponse, err error) {
     if request == nil {
         request = NewDownloadBillRequest()
@@ -791,7 +1102,13 @@ func NewExecuteMemberTransactionResponse() (response *ExecuteMemberTransactionRe
     return
 }
 
+// ExecuteMemberTransaction
 // 会员间交易接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) ExecuteMemberTransaction(request *ExecuteMemberTransactionRequest) (response *ExecuteMemberTransactionResponse, err error) {
     if request == nil {
         request = NewExecuteMemberTransactionRequest()
@@ -816,7 +1133,28 @@ func NewMigrateOrderRefundResponse() (response *MigrateOrderRefundResponse) {
     return
 }
 
+// MigrateOrderRefund
 // 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_CHANNELERROR = "FailedOperation.ChannelError"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) MigrateOrderRefund(request *MigrateOrderRefundRequest) (response *MigrateOrderRefundResponse, err error) {
     if request == nil {
         request = NewMigrateOrderRefundRequest()
@@ -841,7 +1179,26 @@ func NewMigrateOrderRefundQueryResponse() (response *MigrateOrderRefundQueryResp
     return
 }
 
+// MigrateOrderRefundQuery
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_CHANNELERROR = "FailedOperation.ChannelError"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) MigrateOrderRefundQuery(request *MigrateOrderRefundQueryRequest) (response *MigrateOrderRefundQueryResponse, err error) {
     if request == nil {
         request = NewMigrateOrderRefundQueryRequest()
@@ -866,7 +1223,16 @@ func NewModifyAgentTaxPaymentInfoResponse() (response *ModifyAgentTaxPaymentInfo
     return
 }
 
+// ModifyAgentTaxPaymentInfo
 // 直播平台-修改代理商完税信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoRequest) (response *ModifyAgentTaxPaymentInfoResponse, err error) {
     if request == nil {
         request = NewModifyAgentTaxPaymentInfoRequest()
@@ -891,7 +1257,19 @@ func NewModifyMntMbrBindRelateAcctBankCodeResponse() (response *ModifyMntMbrBind
     return
 }
 
+// ModifyMntMbrBindRelateAcctBankCode
 // 维护会员绑定提现账户联行号。此接口可以支持市场修改会员的提现账户的开户行信息，具体包括开户行行名、开户行的银行联行号（大小额联行号）和超级网银行号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) ModifyMntMbrBindRelateAcctBankCode(request *ModifyMntMbrBindRelateAcctBankCodeRequest) (response *ModifyMntMbrBindRelateAcctBankCodeResponse, err error) {
     if request == nil {
         request = NewModifyMntMbrBindRelateAcctBankCodeRequest()
@@ -916,7 +1294,15 @@ func NewQueryAcctBindingResponse() (response *QueryAcctBindingResponse) {
     return
 }
 
+// QueryAcctBinding
 // 聚鑫-查询子账户绑定银行卡
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *QueryAcctBindingResponse, err error) {
     if request == nil {
         request = NewQueryAcctBindingRequest()
@@ -941,7 +1327,15 @@ func NewQueryAcctInfoResponse() (response *QueryAcctInfoResponse) {
     return
 }
 
+// QueryAcctInfo
 // 聚鑫-开户信息查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctInfo(request *QueryAcctInfoRequest) (response *QueryAcctInfoResponse, err error) {
     if request == nil {
         request = NewQueryAcctInfoRequest()
@@ -966,7 +1360,15 @@ func NewQueryAcctInfoListResponse() (response *QueryAcctInfoListResponse) {
     return
 }
 
+// QueryAcctInfoList
 // 聚鑫-开户信息列表查询, 查询某一段时间的开户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response *QueryAcctInfoListResponse, err error) {
     if request == nil {
         request = NewQueryAcctInfoListRequest()
@@ -991,7 +1393,17 @@ func NewQueryAgentStatementsResponse() (response *QueryAgentStatementsResponse) 
     return
 }
 
+// QueryAgentStatements
 // 直播平台-查询代理商结算单链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCOUNT = "AuthFailure.Account"
+//  FAILEDOPERATION_GETLIVEDAILYSUMMARY = "FailedOperation.GetLiveDailySummary"
+//  FAILEDOPERATION_QUERYAGENTSTATEMENTS = "FailedOperation.QueryAgentStatements"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) QueryAgentStatements(request *QueryAgentStatementsRequest) (response *QueryAgentStatementsResponse, err error) {
     if request == nil {
         request = NewQueryAgentStatementsRequest()
@@ -1016,7 +1428,16 @@ func NewQueryAgentTaxPaymentBatchResponse() (response *QueryAgentTaxPaymentBatch
     return
 }
 
+// QueryAgentTaxPaymentBatch
 // 直播平台-查询批次信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryAgentTaxPaymentBatch(request *QueryAgentTaxPaymentBatchRequest) (response *QueryAgentTaxPaymentBatchResponse, err error) {
     if request == nil {
         request = NewQueryAgentTaxPaymentBatchRequest()
@@ -1041,7 +1462,15 @@ func NewQueryAnchorContractInfoResponse() (response *QueryAnchorContractInfoResp
     return
 }
 
+// QueryAnchorContractInfo
 // 直播平台-查询主播签约信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryAnchorContractInfo(request *QueryAnchorContractInfoRequest) (response *QueryAnchorContractInfoResponse, err error) {
     if request == nil {
         request = NewQueryAnchorContractInfoRequest()
@@ -1066,7 +1495,13 @@ func NewQueryApplicationMaterialResponse() (response *QueryApplicationMaterialRe
     return
 }
 
+// QueryApplicationMaterial
 // 跨境-成功申报材料查询。查询成功入库的申报材料。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialRequest) (response *QueryApplicationMaterialResponse, err error) {
     if request == nil {
         request = NewQueryApplicationMaterialRequest()
@@ -1091,7 +1526,15 @@ func NewQueryBalanceResponse() (response *QueryBalanceResponse) {
     return
 }
 
+// QueryBalance
 // 子商户余额查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryBalance(request *QueryBalanceRequest) (response *QueryBalanceResponse, err error) {
     if request == nil {
         request = NewQueryBalanceRequest()
@@ -1116,7 +1559,19 @@ func NewQueryBankClearResponse() (response *QueryBankClearResponse) {
     return
 }
 
+// QueryBankClear
 // 查询银行在途清算结果。查询时间段内交易网的在途清算结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankClear(request *QueryBankClearRequest) (response *QueryBankClearResponse, err error) {
     if request == nil {
         request = NewQueryBankClearRequest()
@@ -1141,7 +1596,19 @@ func NewQueryBankTransactionDetailsResponse() (response *QueryBankTransactionDet
     return
 }
 
+// QueryBankTransactionDetails
 // 查询银行时间段内交易明细。查询时间段的会员成功交易。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankTransactionDetails(request *QueryBankTransactionDetailsRequest) (response *QueryBankTransactionDetailsResponse, err error) {
     if request == nil {
         request = NewQueryBankTransactionDetailsRequest()
@@ -1166,7 +1633,19 @@ func NewQueryBankWithdrawCashDetailsResponse() (response *QueryBankWithdrawCashD
     return
 }
 
+// QueryBankWithdrawCashDetails
 // 查询银行时间段内清分提现明细。查询银行时间段内清分提现明细接口：若为“见证+收单退款”“见证+收单充值”记录时备注Note为“见证+收单充值,订单号”“见证+收单退款,订单号”，此接口可以查到T0/T1的充值明细和退款记录。查询标志：充值记录仍用3清分选项查询，退款记录同提现用2选项查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankWithdrawCashDetails(request *QueryBankWithdrawCashDetailsRequest) (response *QueryBankWithdrawCashDetailsResponse, err error) {
     if request == nil {
         request = NewQueryBankWithdrawCashDetailsRequest()
@@ -1191,7 +1670,19 @@ func NewQueryBillDownloadURLResponse() (response *QueryBillDownloadURLResponse) 
     return
 }
 
+// QueryBillDownloadURL
 // 获取单笔代发转账对账单下载URL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBillDownloadURL(request *QueryBillDownloadURLRequest) (response *QueryBillDownloadURLResponse, err error) {
     if request == nil {
         request = NewQueryBillDownloadURLRequest()
@@ -1216,7 +1707,19 @@ func NewQueryCommonTransferRechargeResponse() (response *QueryCommonTransferRech
     return
 }
 
+// QueryCommonTransferRecharge
 // 查询普通转账充值明细。接口用于查询会员主动转账进资金汇总账户的明细情况。若会员使用绑定账号转入，则直接入账到会员子账户。若未使用绑定账号转入，则系统无法自动清分到对应子账户，则转入挂账子账户由平台自行清分。若是 “见证+收单充值”T0充值记录时备注Note为“见证+收单充值,订单号” 此接口可以查到T0到账的“见证+收单充值”充值记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryCommonTransferRecharge(request *QueryCommonTransferRechargeRequest) (response *QueryCommonTransferRechargeResponse, err error) {
     if request == nil {
         request = NewQueryCommonTransferRechargeRequest()
@@ -1241,7 +1744,43 @@ func NewQueryContractResponse() (response *QueryContractResponse) {
     return
 }
 
+// QueryContract
 // 通过此接口查询签约数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTINDEXNOTFOUND = "FailedOperation.ExternalContractIndexNotFound"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_QUERYCONTRACTNULL = "FailedOperation.QueryContractNull"
+//  FAILEDOPERATION_QUERYMCHANNELERROR = "FailedOperation.QueryMchannelError"
+//  FAILEDOPERATION_QUERYMODEERROR = "FailedOperation.QueryModeError"
+//  FAILEDOPERATION_QUERYRESULTNULL = "FailedOperation.QueryResultNull"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_UPDATECONTRACTSTATUSFAILED = "FailedOperation.UpdateContractStatusFailed"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryContractResponse, err error) {
     if request == nil {
         request = NewQueryContractRequest()
@@ -1266,7 +1805,19 @@ func NewQueryCustAcctIdBalanceResponse() (response *QueryCustAcctIdBalanceRespon
     return
 }
 
+// QueryCustAcctIdBalance
 // 查询银行子账户余额。查询会员子账户以及平台的功能子账户的余额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) (response *QueryCustAcctIdBalanceResponse, err error) {
     if request == nil {
         request = NewQueryCustAcctIdBalanceRequest()
@@ -1291,7 +1842,13 @@ func NewQueryExchangeRateResponse() (response *QueryExchangeRateResponse) {
     return
 }
 
+// QueryExchangeRate
 // 跨境-查询汇率
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (response *QueryExchangeRateResponse, err error) {
     if request == nil {
         request = NewQueryExchangeRateRequest()
@@ -1316,7 +1873,26 @@ func NewQueryInvoiceResponse() (response *QueryInvoiceResponse) {
     return
 }
 
+// QueryInvoice
 // 智慧零售-发票查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_INVOICEEXIST = "InternalError.InvoiceExist"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvoiceResponse, err error) {
     if request == nil {
         request = NewQueryInvoiceRequest()
@@ -1341,7 +1917,26 @@ func NewQueryInvoiceV2Response() (response *QueryInvoiceV2Response) {
     return
 }
 
+// QueryInvoiceV2
 // 智慧零售-发票查询V2
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_INVOICEEXIST = "InternalError.InvoiceExist"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *QueryInvoiceV2Response, err error) {
     if request == nil {
         request = NewQueryInvoiceV2Request()
@@ -1366,8 +1961,21 @@ func NewQueryMemberBindResponse() (response *QueryMemberBindResponse) {
     return
 }
 
+// QueryMemberBind
 // 会员绑定信息查询。查询标志为“单个会员”的情况下，返回该会员的有效的绑定账户信息。
+//
 // 查询标志为“全部会员”的情况下，返回市场下的全部的有效的绑定账户信息。查询标志为“单个会员的证件信息”的情况下，返回市场下的指定的会员的留存在电商见证宝系统的证件信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryMemberBind(request *QueryMemberBindRequest) (response *QueryMemberBindResponse, err error) {
     if request == nil {
         request = NewQueryMemberBindRequest()
@@ -1392,7 +2000,19 @@ func NewQueryMemberTransactionResponse() (response *QueryMemberTransactionRespon
     return
 }
 
+// QueryMemberTransaction
 // 会员间交易-不验证。此接口可以实现会员间的余额的交易，实现资金在会员之间流动。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) (response *QueryMemberTransactionResponse, err error) {
     if request == nil {
         request = NewQueryMemberTransactionRequest()
@@ -1417,7 +2037,13 @@ func NewQueryMerchantBalanceResponse() (response *QueryMerchantBalanceResponse) 
     return
 }
 
+// QueryMerchantBalance
 // 跨境-对接方账户余额查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (response *QueryMerchantBalanceResponse, err error) {
     if request == nil {
         request = NewQueryMerchantBalanceRequest()
@@ -1442,7 +2068,19 @@ func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoFor
     return
 }
 
+// QueryMerchantInfoForManagement
 // 智慧零售-查询管理端商户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForManagementRequest) (response *QueryMerchantInfoForManagementResponse, err error) {
     if request == nil {
         request = NewQueryMerchantInfoForManagementRequest()
@@ -1467,7 +2105,14 @@ func NewQueryOrderResponse() (response *QueryOrderResponse) {
     return
 }
 
+// QueryOrder
 // 根据订单号，或者用户Id，查询支付订单状态 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderResponse, err error) {
     if request == nil {
         request = NewQueryOrderRequest()
@@ -1492,7 +2137,13 @@ func NewQueryOutwardOrderResponse() (response *QueryOutwardOrderResponse) {
     return
 }
 
+// QueryOutwardOrder
 // 跨境-查询汇出结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryOutwardOrder(request *QueryOutwardOrderRequest) (response *QueryOutwardOrderResponse, err error) {
     if request == nil {
         request = NewQueryOutwardOrderRequest()
@@ -1517,7 +2168,13 @@ func NewQueryPayerInfoResponse() (response *QueryPayerInfoResponse) {
     return
 }
 
+// QueryPayerInfo
 // 跨境-付款人查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryPayerInfo(request *QueryPayerInfoRequest) (response *QueryPayerInfoResponse, err error) {
     if request == nil {
         request = NewQueryPayerInfoRequest()
@@ -1542,7 +2199,19 @@ func NewQueryReconciliationDocumentResponse() (response *QueryReconciliationDocu
     return
 }
 
+// QueryReconciliationDocument
 // 查询对账文件信息。平台调用该接口获取需下载对账文件的文件名称以及密钥。 平台获取到信息后， 可以再调用OPENAPI的文件下载功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryReconciliationDocument(request *QueryReconciliationDocumentRequest) (response *QueryReconciliationDocumentResponse, err error) {
     if request == nil {
         request = NewQueryReconciliationDocumentRequest()
@@ -1567,7 +2236,14 @@ func NewQueryRefundResponse() (response *QueryRefundResponse) {
     return
 }
 
+// QueryRefund
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefundResponse, err error) {
     if request == nil {
         request = NewQueryRefundRequest()
@@ -1592,7 +2268,16 @@ func NewQuerySinglePayResponse() (response *QuerySinglePayResponse) {
     return
 }
 
+// QuerySinglePay
 // 银企直连-单笔支付状态查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *QuerySinglePayResponse, err error) {
     if request == nil {
         request = NewQuerySinglePayRequest()
@@ -1617,7 +2302,19 @@ func NewQuerySingleTransactionStatusResponse() (response *QuerySingleTransaction
     return
 }
 
+// QuerySingleTransactionStatus
 // 查询银行单笔交易状态。查询单笔交易的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QuerySingleTransactionStatus(request *QuerySingleTransactionStatusRequest) (response *QuerySingleTransactionStatusResponse, err error) {
     if request == nil {
         request = NewQuerySingleTransactionStatusRequest()
@@ -1642,7 +2339,19 @@ func NewQuerySmallAmountTransferResponse() (response *QuerySmallAmountTransferRe
     return
 }
 
+// QuerySmallAmountTransfer
 // 查询小额鉴权转账结果。查询小额往账鉴权的转账状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QuerySmallAmountTransfer(request *QuerySmallAmountTransferRequest) (response *QuerySmallAmountTransferResponse, err error) {
     if request == nil {
         request = NewQuerySmallAmountTransferRequest()
@@ -1667,7 +2376,13 @@ func NewQueryTradeResponse() (response *QueryTradeResponse) {
     return
 }
 
+// QueryTrade
 // 跨境-贸易材料明细查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeResponse, err error) {
     if request == nil {
         request = NewQueryTradeRequest()
@@ -1692,7 +2407,23 @@ func NewQueryTransferBatchResponse() (response *QueryTransferBatchResponse) {
     return
 }
 
+// QueryTransferBatch
 // 通过商家批次单号或者微信批次号查询批次单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_APPIDMCHIDNOTMATCH = "FailedOperation.AppidMchidNotMatch"
+//  FAILEDOPERATION_FREQUENCYLIMITED = "FailedOperation.FrequencyLimited"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
+//  FAILEDOPERATION_NOTENOUGH = "FailedOperation.NotEnough"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_PARAMERROR = "FailedOperation.ParamError"
+//  FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_ = "InternalError."
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferBatch(request *QueryTransferBatchRequest) (response *QueryTransferBatchResponse, err error) {
     if request == nil {
         request = NewQueryTransferBatchRequest()
@@ -1717,7 +2448,23 @@ func NewQueryTransferDetailResponse() (response *QueryTransferDetailResponse) {
     return
 }
 
+// QueryTransferDetail
 // 通过商家或者微信批次明细单号查询明细单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_APPIDMCHIDNOTMATCH = "FailedOperation.AppidMchidNotMatch"
+//  FAILEDOPERATION_FREQUENCYLIMITED = "FailedOperation.FrequencyLimited"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
+//  FAILEDOPERATION_NOTENOUGH = "FailedOperation.NotEnough"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_PARAMERROR = "FailedOperation.ParamError"
+//  FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_ = "InternalError."
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferDetail(request *QueryTransferDetailRequest) (response *QueryTransferDetailResponse, err error) {
     if request == nil {
         request = NewQueryTransferDetailRequest()
@@ -1742,7 +2489,23 @@ func NewQueryTransferResultResponse() (response *QueryTransferResultResponse) {
     return
 }
 
+// QueryTransferResult
 // 智能代发-单笔代发转账查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_APPIDMCHIDNOTMATCH = "FailedOperation.AppidMchidNotMatch"
+//  FAILEDOPERATION_FREQUENCYLIMITED = "FailedOperation.FrequencyLimited"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
+//  FAILEDOPERATION_NOTENOUGH = "FailedOperation.NotEnough"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_PARAMERROR = "FailedOperation.ParamError"
+//  FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_ = "InternalError."
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferResult(request *QueryTransferResultRequest) (response *QueryTransferResultResponse, err error) {
     if request == nil {
         request = NewQueryTransferResultRequest()
@@ -1767,7 +2530,12 @@ func NewRechargeByThirdPayResponse() (response *RechargeByThirdPayResponse) {
     return
 }
 
+// RechargeByThirdPay
 // 会员在途充值(经第三方支付渠道)接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RechargeByThirdPay(request *RechargeByThirdPayRequest) (response *RechargeByThirdPayResponse, err error) {
     if request == nil {
         request = NewRechargeByThirdPayRequest()
@@ -1792,7 +2560,19 @@ func NewRechargeMemberThirdPayResponse() (response *RechargeMemberThirdPayRespon
     return
 }
 
+// RechargeMemberThirdPay
 // 见证宝-会员在途充值(经第三方支付渠道)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RechargeMemberThirdPay(request *RechargeMemberThirdPayRequest) (response *RechargeMemberThirdPayResponse, err error) {
     if request == nil {
         request = NewRechargeMemberThirdPayRequest()
@@ -1817,7 +2597,16 @@ func NewRefundResponse() (response *RefundResponse) {
     return
 }
 
+// Refund
 // 如交易订单需退款，可以通过本接口将支付款全部或部分退还给付款方，聚鑫将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。最长支持1年的订单退款。在订单包含多个子订单的情况下，如果使用本接口传入OutTradeNo或TransactionId退款，则只支持全单退款；如果需要部分退款，请通过传入子订单的方式来指定部分金额退款。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err error) {
     if request == nil {
         request = NewRefundRequest()
@@ -1842,7 +2631,12 @@ func NewRefundMemberTransactionResponse() (response *RefundMemberTransactionResp
     return
 }
 
+// RefundMemberTransaction
 // 会员间交易退款
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest) (response *RefundMemberTransactionResponse, err error) {
     if request == nil {
         request = NewRefundMemberTransactionRequest()
@@ -1867,7 +2661,15 @@ func NewRegisterBehaviorResponse() (response *RegisterBehaviorResponse) {
     return
 }
 
+// RegisterBehavior
 // 商户查询是否签约和签约行为上报
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) RegisterBehavior(request *RegisterBehaviorRequest) (response *RegisterBehaviorResponse, err error) {
     if request == nil {
         request = NewRegisterBehaviorRequest()
@@ -1892,7 +2694,15 @@ func NewRegisterBillResponse() (response *RegisterBillResponse) {
     return
 }
 
+// RegisterBill
 // 登记挂账(支持撤销)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCTNOTBIND = "FailedOperation.AcctNotBind"
+//  FAILEDOPERATION_ACCTNOTEXIST = "FailedOperation.AcctNotExist"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RegisterBill(request *RegisterBillRequest) (response *RegisterBillResponse, err error) {
     if request == nil {
         request = NewRegisterBillRequest()
@@ -1917,7 +2727,19 @@ func NewRegisterBillSupportWithdrawResponse() (response *RegisterBillSupportWith
     return
 }
 
+// RegisterBillSupportWithdraw
 // 登记挂账(支持撤销)。此接口可实现把不明来账或自有资金等已登记在挂账子账户下的资金调整到普通会员子账户。即通过申请调用此接口，将会减少挂账子账户的资金，调增指定的普通会员子账户的可提现余额及可用余额。此接口不支持把挂账子账户资金清分到功能子账户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RegisterBillSupportWithdraw(request *RegisterBillSupportWithdrawRequest) (response *RegisterBillSupportWithdrawResponse, err error) {
     if request == nil {
         request = NewRegisterBillSupportWithdrawRequest()
@@ -1942,7 +2764,19 @@ func NewRevResigterBillSupportWithdrawResponse() (response *RevResigterBillSuppo
     return
 }
 
+// RevResigterBillSupportWithdraw
 // 登记挂账撤销。此接口可以实现把RegisterBillSupportWithdraw接口完成的登记挂账进行撤销，即调减普通会员子账户的可提现和可用余额，调增挂账子账户的可用余额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RevResigterBillSupportWithdraw(request *RevResigterBillSupportWithdrawRequest) (response *RevResigterBillSupportWithdrawResponse, err error) {
     if request == nil {
         request = NewRevResigterBillSupportWithdrawRequest()
@@ -1967,7 +2801,19 @@ func NewReviseMbrPropertyResponse() (response *ReviseMbrPropertyResponse) {
     return
 }
 
+// ReviseMbrProperty
 // 修改会员属性-普通商户子账户。修改会员的会员属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) ReviseMbrProperty(request *ReviseMbrPropertyRequest) (response *ReviseMbrPropertyResponse, err error) {
     if request == nil {
         request = NewReviseMbrPropertyRequest()
@@ -1992,7 +2838,19 @@ func NewRevokeMemberRechargeThirdPayResponse() (response *RevokeMemberRechargeTh
     return
 }
 
+// RevokeMemberRechargeThirdPay
 // 撤销会员在途充值(经第三方支付渠道)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RevokeMemberRechargeThirdPay(request *RevokeMemberRechargeThirdPayRequest) (response *RevokeMemberRechargeThirdPayResponse, err error) {
     if request == nil {
         request = NewRevokeMemberRechargeThirdPayRequest()
@@ -2017,7 +2875,12 @@ func NewRevokeRechargeByThirdPayResponse() (response *RevokeRechargeByThirdPayRe
     return
 }
 
+// RevokeRechargeByThirdPay
 // 撤销会员在途充值(经第三方支付渠道)接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayRequest) (response *RevokeRechargeByThirdPayResponse, err error) {
     if request == nil {
         request = NewRevokeRechargeByThirdPayRequest()
@@ -2042,7 +2905,39 @@ func NewSyncContractDataResponse() (response *SyncContractDataResponse) {
     return
 }
 
+// SyncContractData
 // 对于存量的签约关系导入或者部分场景下米大师无法收到签约通知的场景，需要由调用方主动将签约状态同步至米大师
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_SYNCMCHANNELERROR = "FailedOperation.SyncMchannelError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) SyncContractData(request *SyncContractDataRequest) (response *SyncContractDataResponse, err error) {
     if request == nil {
         request = NewSyncContractDataRequest()
@@ -2067,7 +2962,41 @@ func NewTerminateContractResponse() (response *TerminateContractResponse) {
     return
 }
 
+// TerminateContract
 // 通过此接口进行解约
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_CLOSECONTRACTDBFAILED = "FailedOperation.CloseContractDbFailed"
+//  FAILEDOPERATION_CLOSECONTRACTMODEINVALID = "FailedOperation.CloseContractModeInvalid"
+//  FAILEDOPERATION_CONTRACTSTATUSERROR = "FailedOperation.ContractStatusError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_TERMINATEMCHANNELERROR = "FailedOperation.TerminateMchannelError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) TerminateContract(request *TerminateContractRequest) (response *TerminateContractResponse, err error) {
     if request == nil {
         request = NewTerminateContractRequest()
@@ -2092,7 +3021,41 @@ func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
     return
 }
 
+// TransferSinglePay
 // 智能代发-单笔代发转账接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_CLOSECONTRACTDBFAILED = "FailedOperation.CloseContractDbFailed"
+//  FAILEDOPERATION_CLOSECONTRACTMODEINVALID = "FailedOperation.CloseContractModeInvalid"
+//  FAILEDOPERATION_CONTRACTSTATUSERROR = "FailedOperation.ContractStatusError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_TERMINATEMCHANNELERROR = "FailedOperation.TerminateMchannelError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response *TransferSinglePayResponse, err error) {
     if request == nil {
         request = NewTransferSinglePayRequest()
@@ -2117,7 +3080,15 @@ func NewUnBindAcctResponse() (response *UnBindAcctResponse) {
     return
 }
 
+// UnBindAcct
 // 商户解除绑定的提现银行卡
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) UnBindAcct(request *UnBindAcctRequest) (response *UnBindAcctResponse, err error) {
     if request == nil {
         request = NewUnBindAcctRequest()
@@ -2142,7 +3113,19 @@ func NewUnbindRelateAcctResponse() (response *UnbindRelateAcctResponse) {
     return
 }
 
+// UnbindRelateAcct
 // 会员解绑提现账户。此接口可以支持会员解除名下的绑定账户关系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) UnbindRelateAcct(request *UnbindRelateAcctRequest) (response *UnbindRelateAcctResponse, err error) {
     if request == nil {
         request = NewUnbindRelateAcctRequest()
@@ -2167,7 +3150,19 @@ func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
     return
 }
 
+// UnifiedOrder
 // 应用需要先调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_PARENTAPPIDERROR = "FailedOperation.ParentAppIdError"
+//  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOrderResponse, err error) {
     if request == nil {
         request = NewUnifiedOrderRequest()
@@ -2192,7 +3187,15 @@ func NewUploadTaxListResponse() (response *UploadTaxListResponse) {
     return
 }
 
+// UploadTaxList
 // 直播平台-上传代理商完税列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) UploadTaxList(request *UploadTaxListRequest) (response *UploadTaxListResponse, err error) {
     if request == nil {
         request = NewUploadTaxListRequest()
@@ -2217,7 +3220,15 @@ func NewUploadTaxPaymentResponse() (response *UploadTaxPaymentResponse) {
     return
 }
 
+// UploadTaxPayment
 // 直播平台-上传代理商完税证明
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) UploadTaxPayment(request *UploadTaxPaymentRequest) (response *UploadTaxPaymentResponse, err error) {
     if request == nil {
         request = NewUploadTaxPaymentRequest()
@@ -2242,7 +3253,19 @@ func NewWithdrawCashMembershipResponse() (response *WithdrawCashMembershipRespon
     return
 }
 
+// WithdrawCashMembership
 // 会员提现-不验证。此接口受理会员发起的提现申请。会员子账户的可提现余额、可用余额会减少，市场的资金汇总账户(监管账户)会减少相应的发生金额，提现到会员申请的收款账户。		
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) WithdrawCashMembership(request *WithdrawCashMembershipRequest) (response *WithdrawCashMembershipResponse, err error) {
     if request == nil {
         request = NewWithdrawCashMembershipRequest()

@@ -58,8 +58,18 @@ func NewAllocateHostsResponse() (response *AllocateHostsResponse) {
     return
 }
 
+// AllocateHosts
 // 本接口 (AllocateHosts) 用于创建一个或多个指定配置的CDH实例。
+//
 // * 当HostChargeType为PREPAID时，必须指定HostChargePrepaid参数。
+//
+// 可能返回的错误码:
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) AllocateHosts(request *AllocateHostsRequest) (response *AllocateHostsResponse, err error) {
     if request == nil {
         request = NewAllocateHostsRequest()
@@ -84,12 +94,41 @@ func NewAssociateInstancesKeyPairsResponse() (response *AssociateInstancesKeyPai
     return
 }
 
+// AssociateInstancesKeyPairs
 // 本接口 (AssociateInstancesKeyPairs) 用于将密钥绑定到实例上。
+//
 // 
+//
 // * 将密钥的公钥写入到实例的`SSH`配置当中，用户就可以通过该密钥的私钥来登录实例。
+//
 // * 如果实例原来绑定过密钥，那么原来的密钥将失效。
+//
 // * 如果实例原来是通过密码登录，绑定密钥后无法使用密码登录。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDKEYPAIRID_NOTFOUND = "InvalidKeyPairId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = "InvalidParameterValue.KeyPairNotSupported"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = "UnsupportedOperation.InstanceOsWindows"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsRequest) (response *AssociateInstancesKeyPairsResponse, err error) {
     if request == nil {
         request = NewAssociateInstancesKeyPairsRequest()
@@ -114,8 +153,24 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
     return
 }
 
+// AssociateSecurityGroups
 // 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDSGID_MALFORMED = "InvalidSgId.Malformed"
+//  LIMITEXCEEDED_ASSOCIATEUSGLIMITEXCEEDED = "LimitExceeded.AssociateUSGLimitExceeded"
+//  LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = "LimitExceeded.CvmsVifsPerSecGroupLimitExceeded"
+//  LIMITEXCEEDED_SINGLEUSGQUOTA = "LimitExceeded.SingleUSGQuota"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  SECGROUPACTIONFAILURE = "SecGroupActionFailure"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
@@ -140,7 +195,12 @@ func NewCreateDisasterRecoverGroupResponse() (response *CreateDisasterRecoverGro
     return
 }
 
+// CreateDisasterRecoverGroup
 // 本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 func (c *Client) CreateDisasterRecoverGroup(request *CreateDisasterRecoverGroupRequest) (response *CreateDisasterRecoverGroupResponse, err error) {
     if request == nil {
         request = NewCreateDisasterRecoverGroupRequest()
@@ -165,7 +225,41 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
     return
 }
 
+// CreateImage
 // 本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
+//
+// 可能返回的错误码:
+//  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_DATADISKIDCONTAINSROOTDISK = "InvalidParameter.DataDiskIdContainsRootDisk"
+//  INVALIDPARAMETER_DATADISKNOTBELONGSPECIFIEDINSTANCE = "InvalidParameter.DataDiskNotBelongSpecifiedInstance"
+//  INVALIDPARAMETER_DUPLICATESYSTEMSNAPSHOTS = "InvalidParameter.DuplicateSystemSnapshots"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETER_INVALIDDEPENDENCE = "InvalidParameter.InvalidDependence"
+//  INVALIDPARAMETER_LOCALDATADISKNOTSUPPORT = "InvalidParameter.LocalDataDiskNotSupport"
+//  INVALIDPARAMETER_SNAPSHOTNOTFOUND = "InvalidParameter.SnapshotNotFound"
+//  INVALIDPARAMETER_SPECIFYONEPARAMETER = "InvalidParameter.SpecifyOneParameter"
+//  INVALIDPARAMETER_SWAPDISKNOTSUPPORT = "InvalidParameter.SwapDiskNotSupport"
+//  INVALIDPARAMETER_SYSTEMSNAPSHOTNOTFOUND = "InvalidParameter.SystemSnapshotNotFound"
+//  INVALIDPARAMETER_VALUETOOLARGE = "InvalidParameter.ValueTooLarge"
+//  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTINSTANCEIMAGE = "UnsupportedOperation.NotSupportInstanceImage"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
     if request == nil {
         request = NewCreateImageRequest()
@@ -190,12 +284,29 @@ func NewCreateKeyPairResponse() (response *CreateKeyPairResponse) {
     return
 }
 
+// CreateKeyPair
 // 本接口 (CreateKeyPair) 用于创建一个 `OpenSSH RSA` 密钥对，可以用于登录 `Linux` 实例。
+//
 // 
+//
 // * 开发者只需指定密钥对名称，即可由系统自动创建密钥对，并返回所生成的密钥对的 `ID` 及其公钥、私钥的内容。
+//
 // * 密钥对名称不能和已经存在的密钥对的名称重复。
+//
 // * 私钥的内容可以保存到文件中作为 `SSH` 的一种认证方式。
+//
 // * 腾讯云不会保存用户的私钥，请妥善保管。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDKEYPAIR_LIMITEXCEEDED = "InvalidKeyPair.LimitExceeded"
+//  INVALIDKEYPAIRNAME_DUPLICATE = "InvalidKeyPairName.Duplicate"
+//  INVALIDKEYPAIRNAMEEMPTY = "InvalidKeyPairNameEmpty"
+//  INVALIDKEYPAIRNAMEINCLUDEILLEGALCHAR = "InvalidKeyPairNameIncludeIllegalChar"
+//  INVALIDKEYPAIRNAMETOOLONG = "InvalidKeyPairNameTooLong"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
     if request == nil {
         request = NewCreateKeyPairRequest()
@@ -220,7 +331,14 @@ func NewDeleteDisasterRecoverGroupsResponse() (response *DeleteDisasterRecoverGr
     return
 }
 
+// DeleteDisasterRecoverGroups
 // 本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云服务器，才能执行删除操作，不然会产生删除置放群组失败的错误。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PLACEMENTSETNOTEMPTY = "FailedOperation.PlacementSetNotEmpty"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
+//  RESOURCENOTFOUND_INVALIDPLACEMENTSET = "ResourceNotFound.InvalidPlacementSet"
 func (c *Client) DeleteDisasterRecoverGroups(request *DeleteDisasterRecoverGroupsRequest) (response *DeleteDisasterRecoverGroupsResponse, err error) {
     if request == nil {
         request = NewDeleteDisasterRecoverGroupsRequest()
@@ -245,11 +363,25 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
     return
 }
 
+// DeleteImages
 // 本接口（DeleteImages）用于删除一个或多个镜像。
+//
 // 
+//
 // * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
+//
 // * 每个地域最多只支持创建10个自定义镜像，删除镜像可以释放账户的配额。
+//
 // * 当镜像正在被其它账户分享时，不允许删除。
+//
+// 可能返回的错误码:
+//  INVALIDIMAGEID_INSHARED = "InvalidImageId.InShared"
+//  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
     if request == nil {
         request = NewDeleteImagesRequest()
@@ -274,10 +406,24 @@ func NewDeleteKeyPairsResponse() (response *DeleteKeyPairsResponse) {
     return
 }
 
+// DeleteKeyPairs
 // 本接口 (DeleteKeyPairs) 用于删除已在腾讯云托管的密钥对。
+//
 // 
+//
 // * 可以同时删除多个密钥对。
+//
 // * 不能删除已被实例或镜像引用的密钥对，所以需要独立判断是否所有密钥对都被成功删除。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDKEYPAIR_LIMITEXCEEDED = "InvalidKeyPair.LimitExceeded"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDKEYPAIRID_NOTFOUND = "InvalidKeyPairId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = "InvalidParameterValue.KeyPairNotSupported"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *DeleteKeyPairsResponse, err error) {
     if request == nil {
         request = NewDeleteKeyPairsRequest()
@@ -302,7 +448,12 @@ func NewDescribeAccountQuotaResponse() (response *DescribeAccountQuotaResponse) 
     return
 }
 
+// DescribeAccountQuota
 // 本接口(DescribeAccountQuota)用于查询用户配额详情。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeAccountQuota(request *DescribeAccountQuotaRequest) (response *DescribeAccountQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeAccountQuotaRequest()
@@ -327,7 +478,12 @@ func NewDescribeDisasterRecoverGroupQuotaResponse() (response *DescribeDisasterR
     return
 }
 
+// DescribeDisasterRecoverGroupQuota
 // 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeDisasterRecoverGroupQuotaRequest()
@@ -352,7 +508,12 @@ func NewDescribeDisasterRecoverGroupsResponse() (response *DescribeDisasterRecov
     return
 }
 
+// DescribeDisasterRecoverGroups
 // 本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeDisasterRecoverGroups(request *DescribeDisasterRecoverGroupsRequest) (response *DescribeDisasterRecoverGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeDisasterRecoverGroupsRequest()
@@ -377,7 +538,15 @@ func NewDescribeHostsResponse() (response *DescribeHostsResponse) {
     return
 }
 
+// DescribeHosts
 // 本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHosts(request *DescribeHostsRequest) (response *DescribeHostsResponse, err error) {
     if request == nil {
         request = NewDescribeHostsRequest()
@@ -402,7 +571,15 @@ func NewDescribeImageQuotaResponse() (response *DescribeImageQuotaResponse) {
     return
 }
 
+// DescribeImageQuota
 // 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeImageQuota(request *DescribeImageQuotaRequest) (response *DescribeImageQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeImageQuotaRequest()
@@ -427,7 +604,16 @@ func NewDescribeImageSharePermissionResponse() (response *DescribeImageSharePerm
     return
 }
 
+// DescribeImageSharePermission
 // 本接口（DescribeImageSharePermission）用于查询镜像分享信息。
+//
+// 可能返回的错误码:
+//  INVALIDACCOUNTID_NOTFOUND = "InvalidAccountId.NotFound"
+//  INVALIDACCOUNTIS_YOURSELF = "InvalidAccountIs.YourSelf"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  OVERQUOTA = "OverQuota"
+//  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 func (c *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (response *DescribeImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewDescribeImageSharePermissionRequest()
@@ -452,10 +638,25 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     return
 }
 
+// DescribeImages
 // 本接口(DescribeImages) 用于查看镜像列表。
+//
 // 
+//
 // * 可以通过指定镜像ID来查询指定镜像的详细信息，或通过设定过滤器来查询满足过滤条件的镜像的详细信息。
+//
 // * 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个镜像信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = "InvalidParameter.InvalidParameterCoexistImageIdsFilters"
+//  INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
     if request == nil {
         request = NewDescribeImagesRequest()
@@ -480,7 +681,19 @@ func NewDescribeImportImageOsResponse() (response *DescribeImportImageOsResponse
     return
 }
 
+// DescribeImportImageOs
 // 查看可以导入的镜像操作系统信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = "InvalidParameter.InvalidParameterCoexistImageIdsFilters"
+//  INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeImportImageOs(request *DescribeImportImageOsRequest) (response *DescribeImportImageOsResponse, err error) {
     if request == nil {
         request = NewDescribeImportImageOsRequest()
@@ -505,7 +718,13 @@ func NewDescribeInstanceFamilyConfigsResponse() (response *DescribeInstanceFamil
     return
 }
 
+// DescribeInstanceFamilyConfigs
 // 本接口（DescribeInstanceFamilyConfigs）查询当前用户和地域所支持的机型族列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 func (c *Client) DescribeInstanceFamilyConfigs(request *DescribeInstanceFamilyConfigsRequest) (response *DescribeInstanceFamilyConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceFamilyConfigsRequest()
@@ -530,10 +749,22 @@ func NewDescribeInstanceInternetBandwidthConfigsResponse() (response *DescribeIn
     return
 }
 
+// DescribeInstanceInternetBandwidthConfigs
 // 本接口 (DescribeInstanceInternetBandwidthConfigs) 用于查询实例带宽配置。
+//
 // 
+//
 // * 只支持查询`BANDWIDTH_PREPAID`（ 预付费按带宽结算 ）计费模式的带宽配置。
+//
 // * 接口返回实例的所有带宽配置信息（包含历史的带宽配置信息）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUNDEIP = "FailedOperation.NotFoundEIP"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInstanceInternetBandwidthConfigsRequest) (response *DescribeInstanceInternetBandwidthConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceInternetBandwidthConfigsRequest()
@@ -558,10 +789,21 @@ func NewDescribeInstanceTypeConfigsResponse() (response *DescribeInstanceTypeCon
     return
 }
 
+// DescribeInstanceTypeConfigs
 // 本接口 (DescribeInstanceTypeConfigs) 用于查询实例机型配置。
+//
 // 
+//
 // * 可以根据`zone`、`instance-family`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
+//
 // * 如果参数为空，返回指定地域的所有实例机型配置。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeInstanceTypeConfigs(request *DescribeInstanceTypeConfigsRequest) (response *DescribeInstanceTypeConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceTypeConfigsRequest()
@@ -586,21 +828,56 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
     return
 }
 
+// DescribeInstanceVncUrl
 // 本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址，获取的地址可用于实例的 VNC 登录。
+//
 // 
+//
 // * 处于 `STOPPED` 状态的机器无法使用此功能。
+//
 // * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
+//
 // * 管理终端地址一旦被访问，将自动失效，您需要重新查询。
+//
 // * 如果连接断开，每分钟内重新连接的次数不能超过 30 次。
+//
 // * 获取到 `InstanceVncUrl` 后，您需要在链接 <https://img.qcloud.com/qcloud/app/active_vnc/index.html?> 末尾加上参数 `InstanceVncUrl=xxxx`  。
+//
 // 
+//
 //   - 参数 `InstanceVncUrl` ：调用接口成功后会返回的 `InstanceVncUrl` 的值。
+//
 // 
+//
 //     最后组成的 URL 格式如下：
+//
 // 
+//
 // ```
+//
 // https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F%2Fbjvnc.qcloud.com%3A26789%2Fvnc%3Fs%3DaHpjWnRVMFNhYmxKdDM5MjRHNlVTSVQwajNUSW0wb2tBbmFtREFCTmFrcy8vUUNPMG0wSHZNOUUxRm5PMmUzWmFDcWlOdDJIbUJxSTZDL0RXcHZxYnZZMmRkWWZWcEZia2lyb09XMzdKNmM9
+//
 // ```
+//
+// 可能返回的错误码:
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCESTATE = "InvalidInstanceState"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = "UnsupportedOperation.InstanceStateStopped"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceVncUrlRequest()
@@ -625,11 +902,40 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 本接口 (DescribeInstances) 用于查询一个或多个实例的详细信息。
+//
 // 
+//
 // * 可以根据实例`ID`、实例名称或者实例计费模式等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+//
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
+//
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态(LatestOperationState)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ILLEGALTAGKEY = "FailedOperation.IllegalTagKey"
+//  FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
+//  INVALIDPARAMETERVALUE_INVALIDVAGUENAME = "InvalidParameterValue.InvalidVagueName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = "InvalidParameterValue.SubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDMALFORMED = "InvalidParameterValue.VpcIdMalformed"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDSGID_MALFORMED = "InvalidSgId.Malformed"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -654,9 +960,16 @@ func NewDescribeInstancesOperationLimitResponse() (response *DescribeInstancesOp
     return
 }
 
+// DescribeInstancesOperationLimit
 // 本接口（DescribeInstancesOperationLimit）用于查询实例操作限制。
+//
 // 
+//
 // * 目前支持调整配置操作限制次数查询。
+//
+// 可能返回的错误码:
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 func (c *Client) DescribeInstancesOperationLimit(request *DescribeInstancesOperationLimitRequest) (response *DescribeInstancesOperationLimitResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesOperationLimitRequest()
@@ -681,10 +994,21 @@ func NewDescribeInstancesStatusResponse() (response *DescribeInstancesStatusResp
     return
 }
 
+// DescribeInstancesStatus
 // 本接口 (DescribeInstancesStatus) 用于查询一个或多个实例的状态。
+//
 // 
+//
 // * 可以根据实例`ID`来查询实例的状态。
+//
 // * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例状态。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInstancesStatus(request *DescribeInstancesStatusRequest) (response *DescribeInstancesStatusResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesStatusRequest()
@@ -709,7 +1033,15 @@ func NewDescribeInternetChargeTypeConfigsResponse() (response *DescribeInternetC
     return
 }
 
+// DescribeInternetChargeTypeConfigs
 // 本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInternetChargeTypeConfigs(request *DescribeInternetChargeTypeConfigsRequest) (response *DescribeInternetChargeTypeConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInternetChargeTypeConfigsRequest()
@@ -734,9 +1066,23 @@ func NewDescribeKeyPairsResponse() (response *DescribeKeyPairsResponse) {
     return
 }
 
+// DescribeKeyPairs
 // 本接口 (DescribeKeyPairs) 用于查询密钥对信息。
+//
 // 
+//
 // * 密钥对是通过一种算法生成的一对密钥，在生成的密钥对中，一个向外界公开，称为公钥；另一个用户自己保留，称为私钥。密钥对的公钥内容可以通过这个接口查询，但私钥内容系统不保留。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDKEYPAIR_LIMITEXCEEDED = "InvalidKeyPair.LimitExceeded"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
 func (c *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (response *DescribeKeyPairsResponse, err error) {
     if request == nil {
         request = NewDescribeKeyPairsRequest()
@@ -761,7 +1107,19 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     return
 }
 
+// DescribeRegions
 // 本接口(DescribeRegions)用于查询地域信息。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDKEYPAIR_LIMITEXCEEDED = "InvalidKeyPair.LimitExceeded"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeRegionsRequest()
@@ -786,7 +1144,18 @@ func NewDescribeReservedInstancesResponse() (response *DescribeReservedInstances
     return
 }
 
+// DescribeReservedInstances
 // 本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
+//  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstances(request *DescribeReservedInstancesRequest) (response *DescribeReservedInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeReservedInstancesRequest()
@@ -811,7 +1180,14 @@ func NewDescribeReservedInstancesConfigInfosResponse() (response *DescribeReserv
     return
 }
 
+// DescribeReservedInstancesConfigInfos
 // 本接口(DescribeReservedInstancesConfigInfos)供用户列出可购买预留实例机型配置。预留实例当前只针对国际站白名单用户开放。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
+//  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstancesConfigInfos(request *DescribeReservedInstancesConfigInfosRequest) (response *DescribeReservedInstancesConfigInfosResponse, err error) {
     if request == nil {
         request = NewDescribeReservedInstancesConfigInfosRequest()
@@ -836,7 +1212,18 @@ func NewDescribeReservedInstancesOfferingsResponse() (response *DescribeReserved
     return
 }
 
+// DescribeReservedInstancesOfferings
 // 本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
+//  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstancesOfferings(request *DescribeReservedInstancesOfferingsRequest) (response *DescribeReservedInstancesOfferingsResponse, err error) {
     if request == nil {
         request = NewDescribeReservedInstancesOfferingsRequest()
@@ -861,7 +1248,17 @@ func NewDescribeZoneInstanceConfigInfosResponse() (response *DescribeZoneInstanc
     return
 }
 
+// DescribeZoneInstanceConfigInfos
 // 本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
+//  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
 func (c *Client) DescribeZoneInstanceConfigInfos(request *DescribeZoneInstanceConfigInfosRequest) (response *DescribeZoneInstanceConfigInfosResponse, err error) {
     if request == nil {
         request = NewDescribeZoneInstanceConfigInfosRequest()
@@ -886,7 +1283,17 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
     return
 }
 
+// DescribeZones
 // 本接口(DescribeZones)用于查询可用区信息。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
+//  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     if request == nil {
         request = NewDescribeZonesRequest()
@@ -911,12 +1318,37 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
     return
 }
 
+// DisassociateInstancesKeyPairs
 // 本接口 (DisassociateInstancesKeyPairs) 用于解除实例的密钥绑定关系。
+//
 // 
+//
 // * 只支持[`STOPPED`](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)状态的`Linux`操作系统的实例。
+//
 // * 解绑密钥后，实例可以通过原来设置的密码登录。
+//
 // * 如果原来没有设置密码，解绑后将无法使用 `SSH` 登录。可以调用 [ResetInstancesPassword](https://cloud.tencent.com/document/api/213/15736) 接口来设置登录密码。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDKEYPAIRID_NOTFOUND = "InvalidKeyPairId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = "UnsupportedOperation.InstanceOsWindows"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
     if request == nil {
         request = NewDisassociateInstancesKeyPairsRequest()
@@ -941,8 +1373,21 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
     return
 }
 
+// DisassociateSecurityGroups
 // 本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDSGID_MALFORMED = "InvalidSgId.Malformed"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  SECGROUPACTIONFAILURE = "SecGroupActionFailure"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
@@ -967,7 +1412,17 @@ func NewImportImageResponse() (response *ImportImageResponse) {
     return
 }
 
+// ImportImage
 // 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。 
+//
+// 可能返回的错误码:
+//  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
+//  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
+//  INVALIDIMAGEOSTYPE_UNSUPPORTED = "InvalidImageOsType.Unsupported"
+//  INVALIDIMAGEOSVERSION_UNSUPPORTED = "InvalidImageOsVersion.Unsupported"
+//  INVALIDPARAMETER_INVALIDPARAMETERURLERROR = "InvalidParameter.InvalidParameterUrlError"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = "RegionAbilityLimit.UnsupportedToImportImage"
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
     if request == nil {
         request = NewImportImageRequest()
@@ -992,11 +1447,29 @@ func NewImportKeyPairResponse() (response *ImportKeyPairResponse) {
     return
 }
 
+// ImportKeyPair
 // 本接口 (ImportKeyPair) 用于导入密钥对。
+//
 // 
+//
 // * 本接口的功能是将密钥对导入到用户账户，并不会自动绑定到实例。如需绑定可以使用[AssociasteInstancesKeyPair](https://cloud.tencent.com/document/api/213/9404)接口。
+//
 // * 需指定密钥对名称以及该密钥对的公钥文本。
+//
 // * 如果用户只有私钥，可以通过 `SSL` 工具将私钥转换成公钥后再导入。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDKEYPAIR_LIMITEXCEEDED = "InvalidKeyPair.LimitExceeded"
+//  INVALIDKEYPAIRNAME_DUPLICATE = "InvalidKeyPairName.Duplicate"
+//  INVALIDKEYPAIRNAMEEMPTY = "InvalidKeyPairNameEmpty"
+//  INVALIDKEYPAIRNAMEINCLUDEILLEGALCHAR = "InvalidKeyPairNameIncludeIllegalChar"
+//  INVALIDKEYPAIRNAMETOOLONG = "InvalidKeyPairNameTooLong"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  INVALIDPUBLICKEY_DUPLICATE = "InvalidPublicKey.Duplicate"
+//  INVALIDPUBLICKEY_MALFORMED = "InvalidPublicKey.Malformed"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportKeyPairResponse, err error) {
     if request == nil {
         request = NewImportKeyPairRequest()
@@ -1021,7 +1494,13 @@ func NewInquirePricePurchaseReservedInstancesOfferingResponse() (response *Inqui
     return
 }
 
+// InquirePricePurchaseReservedInstancesOffering
 // 本接口(InquirePricePurchaseReservedInstancesOffering)用于创建预留实例询价。本接口仅允许针对购买限制范围内的预留实例配置进行询价。预留实例当前只针对国际站白名单用户开放。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 func (c *Client) InquirePricePurchaseReservedInstancesOffering(request *InquirePricePurchaseReservedInstancesOfferingRequest) (response *InquirePricePurchaseReservedInstancesOfferingResponse, err error) {
     if request == nil {
         request = NewInquirePricePurchaseReservedInstancesOfferingRequest()
@@ -1046,10 +1525,27 @@ func NewInquiryPriceModifyInstancesChargeTypeResponse() (response *InquiryPriceM
     return
 }
 
+// InquiryPriceModifyInstancesChargeType
 // 本接口 (InquiryPriceModifyInstancesChargeType) 用于切换实例的计费模式询价。
+//
 // 
+//
 // * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+//
 // * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例、竞价实例不支持该操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 func (c *Client) InquiryPriceModifyInstancesChargeType(request *InquiryPriceModifyInstancesChargeTypeRequest) (response *InquiryPriceModifyInstancesChargeTypeResponse, err error) {
     if request == nil {
         request = NewInquiryPriceModifyInstancesChargeTypeRequest()
@@ -1074,9 +1570,27 @@ func NewInquiryPriceRenewInstancesResponse() (response *InquiryPriceRenewInstanc
     return
 }
 
+// InquiryPriceRenewInstances
 // 本接口 (InquiryPriceRenewInstances) 用于续费包年包月实例询价。
+//
 // 
+//
 // * 只支持查询包年包月实例的续费价格。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 func (c *Client) InquiryPriceRenewInstances(request *InquiryPriceRenewInstancesRequest) (response *InquiryPriceRenewInstancesResponse, err error) {
     if request == nil {
         request = NewInquiryPriceRenewInstancesRequest()
@@ -1101,11 +1615,30 @@ func NewInquiryPriceResetInstanceResponse() (response *InquiryPriceResetInstance
     return
 }
 
+// InquiryPriceResetInstance
 // 本接口 (InquiryPriceResetInstance) 用于重装实例询价。
+//
 // 
+//
 // * 如果指定了`ImageId`参数，则使用指定的镜像进行重装询价；否则按照当前实例使用的镜像进行重装询价。
+//
 // * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/15753#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
+//
 // * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MONITORSERVICE = "MissingParameter.MonitorService"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 func (c *Client) InquiryPriceResetInstance(request *InquiryPriceResetInstanceRequest) (response *InquiryPriceResetInstanceResponse, err error) {
     if request == nil {
         request = NewInquiryPriceResetInstanceRequest()
@@ -1130,14 +1663,39 @@ func NewInquiryPriceResetInstancesInternetMaxBandwidthResponse() (response *Inqu
     return
 }
 
+// InquiryPriceResetInstancesInternetMaxBandwidth
 // 本接口 (InquiryPriceResetInstancesInternetMaxBandwidth) 用于调整实例公网带宽上限询价。
+//
 // 
+//
 // * 不同机型带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
+//
 // * 对于`BANDWIDTH_PREPAID`计费方式的带宽，目前不支持调小带宽，且需要输入参数`StartTime`和`EndTime`，指定调整后的带宽的生效时间段。在这种场景下会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
 // * 对于 `TRAFFIC_POSTPAID_BY_HOUR`、 `BANDWIDTH_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE` 计费方式的带宽，使用该接口调整带宽上限是实时生效的，可以在带宽允许的范围内调大或者调小带宽，不支持输入参数 `StartTime` 和 `EndTime` 。
+//
 // * 接口不支持调整`BANDWIDTH_POSTPAID_BY_MONTH`计费方式的带宽。
+//
 // * 接口不支持批量调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽。
+//
 // * 接口不支持批量调整混合计费方式的带宽。例如不支持同时调整`TRAFFIC_POSTPAID_BY_HOUR`和`BANDWIDTH_PACKAGE`计费方式的带宽。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
+//  FAILEDOPERATION_NOTFOUNDEIP = "FailedOperation.NotFoundEIP"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) InquiryPriceResetInstancesInternetMaxBandwidth(request *InquiryPriceResetInstancesInternetMaxBandwidthRequest) (response *InquiryPriceResetInstancesInternetMaxBandwidthResponse, err error) {
     if request == nil {
         request = NewInquiryPriceResetInstancesInternetMaxBandwidthRequest()
@@ -1162,11 +1720,35 @@ func NewInquiryPriceResetInstancesTypeResponse() (response *InquiryPriceResetIns
     return
 }
 
+// InquiryPriceResetInstancesType
 // 本接口 (InquiryPriceResetInstancesType) 用于调整实例的机型询价。
+//
 // 
+//
 // * 目前只支持[系统盘类型](https://cloud.tencent.com/document/product/213/15753#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口进行调整机型询价。
+//
 // * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型询价。
+//
 // * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = "FailedOperation.InquiryRefundPriceFailed"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  LIMITEXCEEDED_INSTANCETYPEBANDWIDTH = "LimitExceeded.InstanceTypeBandwidth"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
 func (c *Client) InquiryPriceResetInstancesType(request *InquiryPriceResetInstancesTypeRequest) (response *InquiryPriceResetInstancesTypeResponse, err error) {
     if request == nil {
         request = NewInquiryPriceResetInstancesTypeRequest()
@@ -1191,10 +1773,27 @@ func NewInquiryPriceResizeInstanceDisksResponse() (response *InquiryPriceResizeI
     return
 }
 
+// InquiryPriceResizeInstanceDisks
 // 本接口 (InquiryPriceResizeInstanceDisks) 用于扩容实例的数据盘询价。
+//
 // 
+//
 // * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）询价，且[数据盘类型](https://cloud.tencent.com/document/product/213/15753#DataDisk)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。
+//
 // * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口扩容数据盘询价。* 仅支持包年包月实例随机器购买的数据盘。* 目前只支持扩容一块数据盘询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
 func (c *Client) InquiryPriceResizeInstanceDisks(request *InquiryPriceResizeInstanceDisksRequest) (response *InquiryPriceResizeInstanceDisksResponse, err error) {
     if request == nil {
         request = NewInquiryPriceResizeInstanceDisksRequest()
@@ -1219,7 +1818,56 @@ func NewInquiryPriceRunInstancesResponse() (response *InquiryPriceRunInstancesRe
     return
 }
 
+// InquiryPriceRunInstances
 // 本接口(InquiryPriceRunInstances)用于创建实例询价。本接口仅允许针对购买限制范围内的实例配置进行询价, 详见：[创建实例](https://cloud.tencent.com/document/api/213/15730)。
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  AUTHFAILURE_CAMROLENAMEAUTHENTICATEFAILED = "AuthFailure.CamRoleNameAuthenticateFailed"
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
+//  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
+//  INSTANCESQUOTALIMITEXCEEDED = "InstancesQuotaLimitExceeded"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INVALIDCLIENTTOKEN_TOOLONG = "InvalidClientToken.TooLong"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDINSTANCENAME_TOOLONG = "InvalidInstanceName.TooLong"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETER_SNAPSHOTNOTFOUND = "InvalidParameter.SnapshotNotFound"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = "InvalidParameterValue.BandwidthPackageIdNotFound"
+//  INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = "InvalidParameterValue.CloudSsdDataDiskSizeTooSmall"
+//  INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = "InvalidParameterValue.InstanceTypeNotSupportHpcCluster"
+//  INVALIDPARAMETERVALUE_INSTANCETYPEREQUIREDHPCCLUSTER = "InvalidParameterValue.InstanceTypeRequiredHpcCluster"
+//  INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = "InvalidParameterValue.InsufficientPrice"
+//  INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = "InvalidParameterValue.InvalidUserDataFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
+//  INVALIDPASSWORD = "InvalidPassword"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  LIMITEXCEEDED_DISASTERRECOVERGROUP = "LimitExceeded.DisasterRecoverGroup"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MONITORSERVICE = "MissingParameter.MonitorService"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+//  RESOURCENOTFOUND_NODEFAULTCBS = "ResourceNotFound.NoDefaultCbs"
+//  RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = "ResourceNotFound.NoDefaultCbsWithReason"
+//  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
+//  UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = "UnsupportedOperation.NoInstanceTypeSupportSpot"
+//  UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = "UnsupportedOperation.OnlyForPrepaidAccount"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"
 func (c *Client) InquiryPriceRunInstances(request *InquiryPriceRunInstancesRequest) (response *InquiryPriceRunInstancesResponse, err error) {
     if request == nil {
         request = NewInquiryPriceRunInstancesRequest()
@@ -1244,7 +1892,11 @@ func NewModifyDisasterRecoverGroupAttributeResponse() (response *ModifyDisasterR
     return
 }
 
+// ModifyDisasterRecoverGroupAttribute
 // 本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVALIDPLACEMENTSET = "ResourceNotFound.InvalidPlacementSet"
 func (c *Client) ModifyDisasterRecoverGroupAttribute(request *ModifyDisasterRecoverGroupAttributeRequest) (response *ModifyDisasterRecoverGroupAttributeResponse, err error) {
     if request == nil {
         request = NewModifyDisasterRecoverGroupAttributeRequest()
@@ -1269,7 +1921,13 @@ func NewModifyHostsAttributeResponse() (response *ModifyHostsAttributeResponse) 
     return
 }
 
+// ModifyHostsAttribute
 // 本接口（ModifyHostsAttribute）用于修改CDH实例的属性，如实例名称和续费标记等。参数HostName和RenewFlag必须设置其中一个，但不能同时设置。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
 func (c *Client) ModifyHostsAttribute(request *ModifyHostsAttributeRequest) (response *ModifyHostsAttributeResponse, err error) {
     if request == nil {
         request = NewModifyHostsAttributeRequest()
@@ -1294,9 +1952,20 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
     return
 }
 
+// ModifyImageAttribute
 // 本接口（ModifyImageAttribute）用于修改镜像属性。
+//
 // 
+//
 // * 已分享的镜像无法修改属性。
+//
+// 可能返回的错误码:
+//  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
+//  INVALIDPARAMETER_VALUETOOLARGE = "InvalidParameter.ValueTooLarge"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
     if request == nil {
         request = NewModifyImageAttributeRequest()
@@ -1321,12 +1990,35 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
     return
 }
 
+// ModifyImageSharePermission
 // 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+//
 // 
+//
 // * 分享镜像后，被分享账户可以通过该镜像创建实例。
+//
 // * 每个自定义镜像最多可共享给50个账户。
+//
 // * 分享镜像无法更改名称，描述，仅可用于创建实例。
+//
 // * 只支持分享到对方账户相同地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTISYOURSELF = "FailedOperation.AccountIsYourSelf"
+//  FAILEDOPERATION_NOTMASTERACCOUNT = "FailedOperation.NotMasterAccount"
+//  FAILEDOPERATION_QIMAGESHAREFAILED = "FailedOperation.QImageShareFailed"
+//  FAILEDOPERATION_RIMAGESHAREFAILED = "FailedOperation.RImageShareFailed"
+//  INVALIDACCOUNTID_NOTFOUND = "InvalidAccountId.NotFound"
+//  INVALIDACCOUNTIS_YOURSELF = "InvalidAccountIs.YourSelf"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  OVERQUOTA = "OverQuota"
+//  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewModifyImageSharePermissionRequest()
@@ -1351,12 +2043,47 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
     return
 }
 
+// ModifyInstancesAttribute
 // 本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
+//
 // 
+//
 // * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行实例管理操作的依据。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。
+//
 // * 修改关联安全组时，子机原来关联的安全组会被解绑。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMROLENAMEAUTHENTICATEFAILED = "AuthFailure.CamRoleNameAuthenticateFailed"
+//  FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCENAME_TOOLONG = "InvalidInstanceName.TooLong"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  LIMITEXCEEDED_ASSOCIATEUSGLIMITEXCEEDED = "LimitExceeded.AssociateUSGLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeRequest) (response *ModifyInstancesAttributeResponse, err error) {
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
@@ -1381,11 +2108,34 @@ func NewModifyInstancesChargeTypeResponse() (response *ModifyInstancesChargeType
     return
 }
 
+// ModifyInstancesChargeType
 // 本接口 (ModifyInstancesChargeType) 用于切换实例的计费模式。
+//
 // 
+//
 // * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
+//
 // * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例不支持该操作。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  LIMITEXCEEDED_INSTANCEQUOTA = "LimitExceeded.InstanceQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) ModifyInstancesChargeType(request *ModifyInstancesChargeTypeRequest) (response *ModifyInstancesChargeTypeResponse, err error) {
     if request == nil {
         request = NewModifyInstancesChargeTypeRequest()
@@ -1410,13 +2160,33 @@ func NewModifyInstancesProjectResponse() (response *ModifyInstancesProjectRespon
     return
 }
 
+// ModifyInstancesProject
 // 本接口 (ModifyInstancesProject) 用于修改实例所属项目。
+//
 // 
+//
 // * 项目为一个虚拟概念，用户可以在一个账户下面建立多个项目，每个项目中管理不同的资源；将多个不同实例分属到不同项目中，后续使用 [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口查询实例，项目ID可用于过滤结果。
+//
 // * 绑定负载均衡的实例不支持修改实例所属项目，请先使用[`DeregisterInstancesFromLoadBalancer`](https://cloud.tencent.com/document/api/214/1258)接口解绑负载均衡。
+//
 // [^_^]: # ( 修改实例所属项目会自动解关联实例原来关联的安全组，修改完成后可使用[`ModifyInstancesAttribute`](https://cloud.tencent.com/document/api/213/15739)接口关联安全组。)
+//
 // * 支持批量操作。每次请求批量实例的上限为100。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
 func (c *Client) ModifyInstancesProject(request *ModifyInstancesProjectRequest) (response *ModifyInstancesProjectResponse, err error) {
     if request == nil {
         request = NewModifyInstancesProjectRequest()
@@ -1441,11 +2211,37 @@ func NewModifyInstancesRenewFlagResponse() (response *ModifyInstancesRenewFlagRe
     return
 }
 
+// ModifyInstancesRenewFlag
 // 本接口 (ModifyInstancesRenewFlag) 用于修改包年包月实例续费标识。
+//
 // 
+//
 // * 实例被标识为自动续费后，每次在实例到期时，会自动续费一个月。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = "UnsupportedOperation.UnderwritingInstanceTypeOnlySupportAutoRenew"
 func (c *Client) ModifyInstancesRenewFlag(request *ModifyInstancesRenewFlagRequest) (response *ModifyInstancesRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyInstancesRenewFlagRequest()
@@ -1470,10 +2266,42 @@ func NewModifyInstancesVpcAttributeResponse() (response *ModifyInstancesVpcAttri
     return
 }
 
+// ModifyInstancesVpcAttribute
 // 本接口(ModifyInstancesVpcAttribute)用于修改实例vpc属性，如私有网络ip。
+//
 // * 此操作默认会关闭实例，完成后再启动。
+//
 // * 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  ENINOTALLOWEDCHANGESUBNET = "EniNotAllowedChangeSubnet"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCESTATE = "InvalidInstanceState"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_IPV6NOTSUPPORTVPCMIGRATE = "UnsupportedOperation.IPv6NotSupportVpcMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = "UnsupportedOperation.ModifyVPCWithCLB"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
+//  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ModifyInstancesVpcAttribute(request *ModifyInstancesVpcAttributeRequest) (response *ModifyInstancesVpcAttributeResponse, err error) {
     if request == nil {
         request = NewModifyInstancesVpcAttributeRequest()
@@ -1498,11 +2326,25 @@ func NewModifyKeyPairAttributeResponse() (response *ModifyKeyPairAttributeRespon
     return
 }
 
+// ModifyKeyPairAttribute
 // 本接口 (ModifyKeyPairAttribute) 用于修改密钥对属性。
+//
 // 
+//
 // * 修改密钥对ID所指定的密钥对的名称和描述信息。
+//
 // * 密钥对名称不能和已经存在的密钥对的名称重复。
+//
 // * 密钥对ID是密钥对的唯一标识，不可修改。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDKEYPAIRID_MALFORMED = "InvalidKeyPairId.Malformed"
+//  INVALIDKEYPAIRID_NOTFOUND = "InvalidKeyPairId.NotFound"
+//  INVALIDKEYPAIRNAME_DUPLICATE = "InvalidKeyPairName.Duplicate"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) (response *ModifyKeyPairAttributeResponse, err error) {
     if request == nil {
         request = NewModifyKeyPairAttributeRequest()
@@ -1527,7 +2369,18 @@ func NewPurchaseReservedInstancesOfferingResponse() (response *PurchaseReservedI
     return
 }
 
+// PurchaseReservedInstancesOffering
 // 本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDCLIENTTOKEN_TOOLONG = "InvalidClientToken.TooLong"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
+//  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
+//  UNSUPPORTEDOPERATION_RESERVEDINSTANCEOUTOFQUATA = "UnsupportedOperation.ReservedInstanceOutofQuata"
 func (c *Client) PurchaseReservedInstancesOffering(request *PurchaseReservedInstancesOfferingRequest) (response *PurchaseReservedInstancesOfferingResponse, err error) {
     if request == nil {
         request = NewPurchaseReservedInstancesOfferingRequest()
@@ -1552,13 +2405,47 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
     return
 }
 
+// RebootInstances
 // 本接口 (RebootInstances) 用于重启实例。
+//
 // 
+//
 // * 只有状态为`RUNNING`的实例才可以进行此操作。
+//
 // * 接口调用成功时，实例会进入`REBOOTING`状态；重启实例成功时，实例会进入`RUNNING`状态。
+//
 // * 支持强制重启。强制重启的效果等同于关闭物理计算机的电源开关再重新启动。强制重启可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常重启时使用。
+//
 // * 支持批量操作，每次请求批量实例的上限为100。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = "UnsupportedOperation.InstanceStateStopped"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *RebootInstancesResponse, err error) {
     if request == nil {
         request = NewRebootInstancesRequest()
@@ -1583,10 +2470,20 @@ func NewRenewHostsResponse() (response *RenewHostsResponse) {
     return
 }
 
+// RenewHosts
 // 本接口 (RenewHosts) 用于续费包年包月CDH实例。
+//
 // 
+//
 // * 只支持操作包年包月实例，否则操作会以特定[错误码](#6.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
+//
 // * 续费时请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDPERIOD = "InvalidPeriod"
 func (c *Client) RenewHosts(request *RenewHostsRequest) (response *RenewHostsResponse, err error) {
     if request == nil {
         request = NewRenewHostsRequest()
@@ -1611,11 +2508,34 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
     return
 }
 
+// RenewInstances
 // 本接口 (RenewInstances) 用于续费包年包月实例。
+//
 // 
+//
 // * 只支持操作包年包月实例。
+//
 // * 续费时请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *RenewInstancesResponse, err error) {
     if request == nil {
         request = NewRenewInstancesRequest()
@@ -1640,15 +2560,66 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
     return
 }
 
+// ResetInstance
 // 本接口 (ResetInstance) 用于重装指定实例上的操作系统。
+//
 // 
+//
 // * 如果指定了`ImageId`参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装。
+//
 // * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
+//
 // * `Linux`和`Windows`系统互相切换时，该实例系统盘`ID`将发生变化，系统盘关联快照将无法回滚、恢复数据。
+//
 // * 密码不指定将会通过站内信下发随机密码。
+//
 // * 目前只支持[系统盘类型](https://cloud.tencent.com/document/api/213/9452#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口实现`Linux`和`Windows`操作系统切换。
+//
 // * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_HOSTNAMEILLEGAL = "InvalidParameter.HostNameIllegal"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
+//  INVALIDPARAMETERVALUE_KEYPAIRNOTFOUND = "InvalidParameterValue.KeyPairNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPASSWORD = "InvalidPassword"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MONITORSERVICE = "MissingParameter.MonitorService"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
+//  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = "UnsupportedOperation.KeyPairUnsupportedWindows"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetInstanceResponse, err error) {
     if request == nil {
         request = NewResetInstanceRequest()
@@ -1673,15 +2644,48 @@ func NewResetInstancesInternetMaxBandwidthResponse() (response *ResetInstancesIn
     return
 }
 
+// ResetInstancesInternetMaxBandwidth
 // 本接口 (ResetInstancesInternetMaxBandwidth) 用于调整实例公网带宽上限。
+//
 // 
+//
 // * 不同机型带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
+//
 // * 对于 `BANDWIDTH_PREPAID` 计费方式的带宽，需要输入参数 `StartTime` 和 `EndTime` ，指定调整后的带宽的生效时间段。在这种场景下目前不支持调小带宽，会涉及扣费，请确保账户余额充足。可通过 [`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253) 接口查询账户余额。
+//
 // * 对于 `TRAFFIC_POSTPAID_BY_HOUR` 、 `BANDWIDTH_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE` 计费方式的带宽，使用该接口调整带宽上限是实时生效的，可以在带宽允许的范围内调大或者调小带宽，不支持输入参数 `StartTime` 和 `EndTime` 。
+//
 // * 接口不支持调整 `BANDWIDTH_POSTPAID_BY_MONTH` 计费方式的带宽。
+//
 // * 接口不支持批量调整 `BANDWIDTH_PREPAID` 和 `BANDWIDTH_POSTPAID_BY_HOUR` 计费方式的带宽。
+//
 // * 接口不支持批量调整混合计费方式的带宽。例如不支持同时调整 `TRAFFIC_POSTPAID_BY_HOUR` 和 `BANDWIDTH_PACKAGE` 计费方式的带宽。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstancesInternetMaxBandwidth(request *ResetInstancesInternetMaxBandwidthRequest) (response *ResetInstancesInternetMaxBandwidthResponse, err error) {
     if request == nil {
         request = NewResetInstancesInternetMaxBandwidthRequest()
@@ -1706,12 +2710,44 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
     return
 }
 
+// ResetInstancesPassword
 // 本接口 (ResetInstancesPassword) 用于将实例操作系统的密码重置为用户指定的密码。
+//
 // 
+//
 // *如果是修改系统管理云密码：实例的操作系统不同，管理员帐号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
+//
 // * 重置处于运行中状态的实例密码，需要设置关机参数`ForceStop`为`TRUE`。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
+//
 // * 支持批量操作。将多个实例操作系统的密码重置为相同的密码。每次请求批量实例的上限为100。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPASSWORD = "InvalidPassword"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
     if request == nil {
         request = NewResetInstancesPasswordRequest()
@@ -1736,11 +2772,51 @@ func NewResetInstancesTypeResponse() (response *ResetInstancesTypeResponse) {
     return
 }
 
+// ResetInstancesType
 // 本接口 (ResetInstancesType) 用于调整实例的机型。
+//
 // 
+//
 // * 目前只支持[系统盘类型](/document/api/213/9452#block_device)是CLOUD_BASIC、CLOUD_PREMIUM、CLOUD_SSD类型的实例使用该接口进行机型调整。
+//
 // * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型。对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
 // * 本接口为异步接口，调整实例配置请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表调整实例配置操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROMOTIONALPERIORESTRICTION = "FailedOperation.PromotionalPerioRestriction"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  LIMITEXCEEDED_ENINUMLIMIT = "LimitExceeded.EniNumLimit"
+//  LIMITEXCEEDED_INSTANCETYPEBANDWIDTH = "LimitExceeded.InstanceTypeBandwidth"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
+//  RESOURCESSOLDOUT_AVAILABLEZONE = "ResourcesSoldOut.AvailableZone"
+//  RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = "ResourcesSoldOut.SpecifiedInstanceType"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = "UnsupportedOperation.UnsupportedChangeInstanceFamily"
 func (c *Client) ResetInstancesType(request *ResetInstancesTypeRequest) (response *ResetInstancesTypeResponse, err error) {
     if request == nil {
         request = NewResetInstancesTypeRequest()
@@ -1765,12 +2841,35 @@ func NewResizeInstanceDisksResponse() (response *ResizeInstanceDisksResponse) {
     return
 }
 
+// ResizeInstanceDisks
 // 本接口 (ResizeInstanceDisks) 用于扩容实例的数据盘。
+//
 // 
+//
 // * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性），且[数据盘类型](https://cloud.tencent.com/document/api/213/15753#DataDisk)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`和[CDH](https://cloud.tencent.com/document/product/416)实例的`LOCAL_BASIC`、`LOCAL_SSD`类型数据盘。
+//
 // * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+//
 // * 目前只支持扩容一块数据盘。
+//
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResizeInstanceDisks(request *ResizeInstanceDisksRequest) (response *ResizeInstanceDisksResponse, err error) {
     if request == nil {
         request = NewResizeInstanceDisksRequest()
@@ -1795,13 +2894,110 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
     return
 }
 
+// RunInstances
 // 本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
+//
 // 
+//
 // * 实例创建成功后将自动开机启动，[实例状态](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)变为“运行中”。
+//
 // * 预付费实例的购买会预先扣除本次实例购买所需金额，按小时后付费实例购买会预先冻结本次实例购买一小时内所需金额，在调用本接口前请确保账户余额充足。
+//
 // * 调用本接口创建实例，支持代金券自动抵扣（注意，代金券不可用于抵扣后付费冻结金额），详情请参考[代金券选用规则](https://cloud.tencent.com/document/product/555/7428)。
+//
 // * 本接口允许购买的实例数量遵循[CVM实例购买限制](https://cloud.tencent.com/document/product/213/2664)，所创建的实例和官网入口创建的实例共用配额。
+//
 // * 本接口为异步接口，当创建实例请求下发成功后会返回一个实例`ID`列表和一个`RequestId`，此时创建实例操作并未立即完成。在此期间实例的状态将会处于“PENDING”，实例创建结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)  接口查询，如果实例状态(InstanceState)由“PENDING”变为“RUNNING”，则代表实例创建成功，“LAUNCH_FAILED”代表实例创建失败。
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  AUTHFAILURE_CAMROLENAMEAUTHENTICATEFAILED = "AuthFailure.CamRoleNameAuthenticateFailed"
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
+//  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
+//  FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
+//  FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = "FailedOperation.SnapshotSizeLessThanDataSize"
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
+//  INSTANCESQUOTALIMITEXCEEDED = "InstancesQuotaLimitExceeded"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDCLIENTTOKEN_TOOLONG = "InvalidClientToken.TooLong"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDINSTANCENAME_TOOLONG = "InvalidInstanceName.TooLong"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETER_INVALIDIPFORMAT = "InvalidParameter.InvalidIpFormat"
+//  INVALIDPARAMETER_LACKCORECOUNTORTHREADPERCORE = "InvalidParameter.LackCoreCountOrThreadPerCore"
+//  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
+//  INVALIDPARAMETER_SNAPSHOTNOTFOUND = "InvalidParameter.SnapshotNotFound"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = "InvalidParameterValue.BandwidthPackageIdNotFound"
+//  INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = "InvalidParameterValue.CloudSsdDataDiskSizeTooSmall"
+//  INVALIDPARAMETERVALUE_CORECOUNTVALUE = "InvalidParameterValue.CoreCountValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
+//  INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = "InvalidParameterValue.InstanceTypeNotSupportHpcCluster"
+//  INVALIDPARAMETERVALUE_INSTANCETYPEREQUIREDHPCCLUSTER = "InvalidParameterValue.InstanceTypeRequiredHpcCluster"
+//  INVALIDPARAMETERVALUE_INSUFFICIENTOFFERING = "InvalidParameterValue.InsufficientOffering"
+//  INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = "InvalidParameterValue.InsufficientPrice"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
+//  INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = "InvalidParameterValue.InvalidUserDataFormat"
+//  INVALIDPARAMETERVALUE_KEYPAIRNOTFOUND = "InvalidParameterValue.KeyPairNotFound"
+//  INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDNOTEXISTED = "InvalidParameterValue.LaunchTemplateIdNotExisted"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
+//  INVALIDPARAMETERVALUE_SUBNETNOTEXIST = "InvalidParameterValue.SubnetNotExist"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_THREADPERCOREVALUE = "InvalidParameterValue.ThreadPerCoreValue"
+//  INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = "InvalidParameterValue.VpcIdZoneIdNotMatch"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
+//  INVALIDPASSWORD = "InvalidPassword"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = "LimitExceeded.CvmsVifsPerSecGroupLimitExceeded"
+//  LIMITEXCEEDED_DISASTERRECOVERGROUP = "LimitExceeded.DisasterRecoverGroup"
+//  LIMITEXCEEDED_IPV6ADDRESSNUM = "LimitExceeded.IPv6AddressNum"
+//  LIMITEXCEEDED_INSTANCEQUOTA = "LimitExceeded.InstanceQuota"
+//  LIMITEXCEEDED_PREPAYQUOTA = "LimitExceeded.PrepayQuota"
+//  LIMITEXCEEDED_SINGLEUSGQUOTA = "LimitExceeded.SingleUSGQuota"
+//  LIMITEXCEEDED_SPOTQUOTA = "LimitExceeded.SpotQuota"
+//  LIMITEXCEEDED_USERSPOTQUOTA = "LimitExceeded.UserSpotQuota"
+//  LIMITEXCEEDED_VPCSUBNETNUM = "LimitExceeded.VpcSubnetNum"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DPDKINSTANCETYPEREQUIREDVPC = "MissingParameter.DPDKInstanceTypeRequiredVPC"
+//  MISSINGPARAMETER_MONITORSERVICE = "MissingParameter.MonitorService"
+//  RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
+//  RESOURCEINSUFFICIENT_CLOUDDISKSOLDOUT = "ResourceInsufficient.CloudDiskSoldOut"
+//  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+//  RESOURCENOTFOUND_NODEFAULTCBS = "ResourceNotFound.NoDefaultCbs"
+//  RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = "ResourceNotFound.NoDefaultCbsWithReason"
+//  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
+//  RESOURCESSOLDOUT_EIPINSUFFICIENT = "ResourcesSoldOut.EipInsufficient"
+//  RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = "ResourcesSoldOut.SpecifiedInstanceType"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
+//  UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = "UnsupportedOperation.InvalidRegionDiskEncrypt"
+//  UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = "UnsupportedOperation.KeyPairUnsupportedWindows"
+//  UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = "UnsupportedOperation.NoInstanceTypeSupportSpot"
+//  UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = "UnsupportedOperation.OnlyForPrepaidAccount"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
+//  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     if request == nil {
         request = NewRunInstancesRequest()
@@ -1826,12 +3022,41 @@ func NewStartInstancesResponse() (response *StartInstancesResponse) {
     return
 }
 
+// StartInstances
 // 本接口 (StartInstances) 用于启动一个或多个实例。
+//
 // 
+//
 // * 只有状态为`STOPPED`的实例才可以进行此操作。
+//
 // * 接口调用成功时，实例会进入`STARTING`状态；启动实例成功时，实例会进入`RUNNING`状态。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。
+//
 // * 本接口为异步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表启动实例操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) StartInstances(request *StartInstancesRequest) (response *StartInstancesResponse, err error) {
     if request == nil {
         request = NewStartInstancesRequest()
@@ -1856,13 +3081,47 @@ func NewStopInstancesResponse() (response *StopInstancesResponse) {
     return
 }
 
+// StopInstances
 // 本接口 (StopInstances) 用于关闭一个或多个实例。
+//
 // 
+//
 // * 只有状态为`RUNNING`的实例才可以进行此操作。
+//
 // * 接口调用成功时，实例会进入`STOPPING`状态；关闭实例成功时，实例会进入`STOPPED`状态。
+//
 // * 支持强制关闭。强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+//
 // * 支持批量操作。每次请求批量实例的上限为100。
+//
 // * 本接口为异步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表关闭实例操作成功。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateEnterServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERESCUEMODE = "UnsupportedOperation.InstanceStateRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateServiceLiveMigrate"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = "UnsupportedOperation.InstanceStateStopped"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopInstancesResponse, err error) {
     if request == nil {
         request = NewStopInstancesRequest()
@@ -1887,11 +3146,31 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
     return
 }
 
+// SyncImages
 // 本接口（SyncImages）用于将自定义镜像同步到其它地区。
+//
 // 
+//
 // * 该接口每次调用只支持同步一个镜像。
+//
 // * 该接口支持多个同步地域。
+//
 // * 单个帐号在每个地域最多支持存在10个自定义镜像。
+//
+// 可能返回的错误码:
+//  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
+//  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
+//  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
+//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDIMAGEID_TOOLARGE = "InvalidImageId.TooLarge"
+//  INVALIDIMAGENAME_DUPLICATE = "InvalidImageName.Duplicate"
+//  INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
+//  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
+//  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
     if request == nil {
         request = NewSyncImagesRequest()
@@ -1916,12 +3195,48 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
     return
 }
 
+// TerminateInstances
 // 本接口 (TerminateInstances) 用于主动退还实例。
+//
 // 
+//
 // * 不再使用的实例，可通过本接口主动退还。
+//
 // * 按量计费的实例通过本接口可直接退还；包年包月实例如符合[退还规则](https://cloud.tencent.com/document/product/213/9711)，也可通过本接口主动退还。
+//
 // * 包年包月实例首次调用本接口，实例将被移至回收站，再次调用本接口，实例将被销毁，且不可恢复。按量计费实例调用本接口将被直接销毁
+//
 // * 支持批量操作，每次请求批量实例的上限为100。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
+//  FAILEDOPERATION_UNRETURNABLE = "FailedOperation.Unreturnable"
+//  INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDACCOUNT_UNPAIDORDER = "InvalidAccount.UnpaidOrder"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDINSTANCENOTSUPPORTEDPREPAIDINSTANCE = "InvalidInstanceNotSupportedPrepaidInstance"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  LIMITEXCEEDED_USERRETURNQUOTA = "LimitExceeded.UserReturnQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEENTERRESCUEMODE = "UnsupportedOperation.InstanceStateEnterRescueMode"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEREBOOTING = "UnsupportedOperation.InstanceStateRebooting"
+//  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
+//  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+//  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
+//  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
     if request == nil {
         request = NewTerminateInstancesRequest()

@@ -58,8 +58,16 @@ func NewAssignProjectResponse() (response *AssignProjectResponse) {
     return
 }
 
+// AssignProject
 // 本接口(AssignProject)用于指定云数据库实例的所属项目。
+//
 // 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
 func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignProjectResponse, err error) {
     if request == nil {
         request = NewAssignProjectRequest()
@@ -84,7 +92,11 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
     return
 }
 
+// CreateDBInstance
 // 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -109,7 +121,11 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
     return
 }
 
+// CreateDBInstanceHour
 // 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例（包括主实例、灾备实例和只读实例），可通过传入实例规格、实例类型、MongoDB版本、购买时长和数量等信息创建云数据库实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
@@ -134,7 +150,15 @@ func NewDescribeClientConnectionsResponse() (response *DescribeClientConnections
     return
 }
 
+// DescribeClientConnections
 // 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。目前只支持3.2版本的MongoDB实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.MongoVersionNotSupportQueryClient"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PROXYNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.ProxyNotSupportQueryClient"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.RegionNotSupportQueryClient"
 func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsRequest) (response *DescribeClientConnectionsResponse, err error) {
     if request == nil {
         request = NewDescribeClientConnectionsRequest()
@@ -159,7 +183,15 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
     return
 }
 
+// DescribeDBInstances
 // 本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstancesRequest()
@@ -184,7 +216,20 @@ func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
     return
 }
 
+// DescribeSlowLog
 // 本接口(DescribeSlowLogs)用于获取云数据库实例的慢查询日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_LIMITPARAOUTOFRANGE = "InvalidParameterValue.LimitParaOutOfRange"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_OFFSETPARAOUTOFRANGE = "InvalidParameterValue.OffsetParaOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMEOUTOFRANGE = "InvalidParameterValue.QueryTimeOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMERANGEBEYONDLIMIT = "InvalidParameterValue.QueryTimeRangeBeyondLimit"
+//  INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+//  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
+//  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
 func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *DescribeSlowLogResponse, err error) {
     if request == nil {
         request = NewDescribeSlowLogRequest()
@@ -209,7 +254,12 @@ func NewDescribeSpecInfoResponse() (response *DescribeSpecInfoResponse) {
     return
 }
 
+// DescribeSpecInfo
 // 本接口(DescribeSpecInfo)用于查询实例的售卖规格。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *DescribeSpecInfoResponse, err error) {
     if request == nil {
         request = NewDescribeSpecInfoRequest()
@@ -234,7 +284,15 @@ func NewRenameInstanceResponse() (response *RenameInstanceResponse) {
     return
 }
 
+// RenameInstance
 // 本接口(RenameInstance)用于修改云数据库实例的名称。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *RenameInstanceResponse, err error) {
     if request == nil {
         request = NewRenameInstanceRequest()
@@ -259,7 +317,14 @@ func NewSetAutoRenewResponse() (response *SetAutoRenewResponse) {
     return
 }
 
+// SetAutoRenew
 // 本接口(SetAutoRenew)用于设置包年包月云数据库实例的续费选项。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_POSTPAYRENEWERROR = "InvalidParameterValue.PostPayRenewError"
 func (c *Client) SetAutoRenew(request *SetAutoRenewRequest) (response *SetAutoRenewResponse, err error) {
     if request == nil {
         request = NewSetAutoRenewRequest()
@@ -284,8 +349,18 @@ func NewSetPasswordResponse() (response *SetPasswordResponse) {
     return
 }
 
+// SetPassword
 // 本接口(SetPassword)用于设置云数据库账户的密码。
+//
 // 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_USERNOTFOUND = "InvalidParameterValue.UserNotFound"
 func (c *Client) SetPassword(request *SetPasswordRequest) (response *SetPasswordResponse, err error) {
     if request == nil {
         request = NewSetPasswordRequest()
@@ -310,7 +385,12 @@ func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
     return
 }
 
+// TerminateDBInstance
 // 本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
     if request == nil {
         request = NewTerminateDBInstanceRequest()
@@ -335,7 +415,11 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
     return
 }
 
+// UpgradeDBInstance
 // 本接口(UpgradeDBInstance)用于升级包年包月的MongoDB云数据库实例，可以扩容内存、存储以及Oplog
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
     if request == nil {
         request = NewUpgradeDBInstanceRequest()
@@ -360,7 +444,11 @@ func NewUpgradeDBInstanceHourResponse() (response *UpgradeDBInstanceHourResponse
     return
 }
 
+// UpgradeDBInstanceHour
 // 本接口(UpgradeDBInstanceHour)用于升级按量计费的MongoDB云数据库实例，可以扩容内存、存储以及oplog
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpgradeDBInstanceHour(request *UpgradeDBInstanceHourRequest) (response *UpgradeDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewUpgradeDBInstanceHourRequest()

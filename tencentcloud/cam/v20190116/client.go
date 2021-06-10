@@ -58,7 +58,17 @@ func NewAddUserResponse() (response *AddUserResponse) {
     return
 }
 
+// AddUser
 // 添加子用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
+//  INVALIDPARAMETER_SUBUSERFULL = "InvalidParameter.SubUserFull"
+//  INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
+//  INVALIDPARAMETER_USERNAMEILLEGAL = "InvalidParameter.UserNameIllegal"
+//  REQUESTLIMITEXCEEDED_CREATEUSER = "RequestLimitExceeded.CreateUser"
 func (c *Client) AddUser(request *AddUserRequest) (response *AddUserResponse, err error) {
     if request == nil {
         request = NewAddUserRequest()
@@ -83,7 +93,15 @@ func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
     return
 }
 
+// AddUserToGroup
 // 用户加入到用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_GROUPUSERFULL = "InvalidParameter.GroupUserFull"
+//  INVALIDPARAMETER_USERGROUPFULL = "InvalidParameter.UserGroupFull"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
     if request == nil {
         request = NewAddUserToGroupRequest()
@@ -108,7 +126,20 @@ func NewAttachGroupPolicyResponse() (response *AttachGroupPolicyResponse) {
     return
 }
 
+// AttachGroupPolicy
 // 本接口（AttachGroupPolicy）可用于绑定策略到用户组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AttachGroupPolicy(request *AttachGroupPolicyRequest) (response *AttachGroupPolicyResponse, err error) {
     if request == nil {
         request = NewAttachGroupPolicyRequest()
@@ -133,7 +164,16 @@ func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
     return
 }
 
+// AttachRolePolicy
 // 本接口（AttachRolePolicy）用于绑定策略到角色。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (response *AttachRolePolicyResponse, err error) {
     if request == nil {
         request = NewAttachRolePolicyRequest()
@@ -158,7 +198,19 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
     return
 }
 
+// AttachUserPolicy
 // 本接口（AttachUserPolicy）可用于绑定到用户的策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
     if request == nil {
         request = NewAttachUserPolicyRequest()
@@ -183,7 +235,11 @@ func NewConsumeCustomMFATokenResponse() (response *ConsumeCustomMFATokenResponse
     return
 }
 
+// ConsumeCustomMFAToken
 // 验证自定义多因子Token
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
 func (c *Client) ConsumeCustomMFAToken(request *ConsumeCustomMFATokenRequest) (response *ConsumeCustomMFATokenResponse, err error) {
     if request == nil {
         request = NewConsumeCustomMFATokenRequest()
@@ -208,7 +264,12 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
     return
 }
 
+// CreateGroup
 // 创建用户组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_GROUPFULL = "InvalidParameter.GroupFull"
+//  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
     if request == nil {
         request = NewCreateGroupRequest()
@@ -233,7 +294,42 @@ func NewCreatePolicyResponse() (response *CreatePolicyResponse) {
     return
 }
 
+// CreatePolicy
 // 本接口（CreatePolicy）可用于创建策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+//  INVALIDPARAMETER_ACTIONNOTEXIST = "InvalidParameter.ActionNotExist"
+//  INVALIDPARAMETER_ACTIONSERVICENOTEXIST = "InvalidParameter.ActionServiceNotExist"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+//  INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
+//  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+//  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
+//  INVALIDPARAMETER_RESOURCEQCSERROR = "InvalidParameter.ResourceQcsError"
+//  INVALIDPARAMETER_RESOURCEREGIONERROR = "InvalidParameter.ResourceRegionError"
+//  INVALIDPARAMETER_RESOURCESERVICENOTEXIST = "InvalidParameter.ResourceServiceNotExist"
+//  INVALIDPARAMETER_RESOURCEUINERROR = "InvalidParameter.ResourceUinError"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreatePolicy(request *CreatePolicyRequest) (response *CreatePolicyResponse, err error) {
     if request == nil {
         request = NewCreatePolicyRequest()
@@ -258,7 +354,44 @@ func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
     return
 }
 
+// CreatePolicyVersion
 // 该接口（CreatePolicyVersion）用于新增策略版本，用户创建了一个策略版本之后可以方便的通过变更策略版本的方式来变更策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
+//  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
+//  FAILEDOPERATION_POLICYVERSIONFULL = "FailedOperation.PolicyVersionFull"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+//  INVALIDPARAMETER_ACTIONNOTEXIST = "InvalidParameter.ActionNotExist"
+//  INVALIDPARAMETER_ACTIONSERVICENOTEXIST = "InvalidParameter.ActionServiceNotExist"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+//  INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
+//  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+//  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
+//  INVALIDPARAMETER_RESOURCEQCSERROR = "InvalidParameter.ResourceQcsError"
+//  INVALIDPARAMETER_RESOURCEREGIONERROR = "InvalidParameter.ResourceRegionError"
+//  INVALIDPARAMETER_RESOURCESERVICENOTEXIST = "InvalidParameter.ResourceServiceNotExist"
+//  INVALIDPARAMETER_RESOURCEUINERROR = "InvalidParameter.ResourceUinError"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (response *CreatePolicyVersionResponse, err error) {
     if request == nil {
         request = NewCreatePolicyVersionRequest()
@@ -283,7 +416,31 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
     return
 }
 
+// CreateRole
 // 本接口（CreateRole）用于创建角色。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSCROSSERROR = "InvalidParameter.PrincipalQcsCrossError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
+//  INVALIDPARAMETER_ROLEFULL = "InvalidParameter.RoleFull"
+//  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
+//  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
     if request == nil {
         request = NewCreateRoleRequest()
@@ -308,7 +465,15 @@ func NewCreateSAMLProviderResponse() (response *CreateSAMLProviderResponse) {
     return
 }
 
+// CreateSAMLProvider
 // 创建SAML身份提供商
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
 func (c *Client) CreateSAMLProvider(request *CreateSAMLProviderRequest) (response *CreateSAMLProviderResponse, err error) {
     if request == nil {
         request = NewCreateSAMLProviderRequest()
@@ -333,7 +498,15 @@ func NewCreateServiceLinkedRoleResponse() (response *CreateServiceLinkedRoleResp
     return
 }
 
+// CreateServiceLinkedRole
 // 创建服务相关角色
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
+//  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
 func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (response *CreateServiceLinkedRoleResponse, err error) {
     if request == nil {
         request = NewCreateServiceLinkedRoleRequest()
@@ -358,7 +531,11 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     return
 }
 
+// DeleteGroup
 // 删除用户组
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
     if request == nil {
         request = NewDeleteGroupRequest()
@@ -383,7 +560,16 @@ func NewDeletePolicyResponse() (response *DeletePolicyResponse) {
     return
 }
 
+// DeletePolicy
 // 本接口（DeletePolicy）可用于删除策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 func (c *Client) DeletePolicy(request *DeletePolicyRequest) (response *DeletePolicyResponse, err error) {
     if request == nil {
         request = NewDeletePolicyRequest()
@@ -408,7 +594,35 @@ func NewDeletePolicyVersionResponse() (response *DeletePolicyVersionResponse) {
     return
 }
 
+// DeletePolicyVersion
 // 本接口（DeletePolicyVersion）可用于删除一个策略的策略版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
+//  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+//  INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_POLICYVERSIONNOTEXISTS = "InvalidParameter.PolicyVersionNotExists"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (response *DeletePolicyVersionResponse, err error) {
     if request == nil {
         request = NewDeletePolicyVersionRequest()
@@ -433,7 +647,14 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
     return
 }
 
+// DeleteRole
 // 本接口（DeleteRole）用于删除指定角色。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
     if request == nil {
         request = NewDeleteRoleRequest()
@@ -458,7 +679,18 @@ func NewDeleteRolePermissionsBoundaryResponse() (response *DeleteRolePermissions
     return
 }
 
+// DeleteRolePermissionsBoundary
 // 删除角色权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEENTITIESOVERLIMIT = "InvalidParameter.OperateEntitiesOverLimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_SERVICELINKEDROLECANTUSEPERMISSIONBOUNDARY = "InvalidParameter.ServiceLinkedRoleCantUsePermissionBoundary"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteRolePermissionsBoundary(request *DeleteRolePermissionsBoundaryRequest) (response *DeleteRolePermissionsBoundaryResponse, err error) {
     if request == nil {
         request = NewDeleteRolePermissionsBoundaryRequest()
@@ -483,7 +715,12 @@ func NewDeleteSAMLProviderResponse() (response *DeleteSAMLProviderResponse) {
     return
 }
 
+// DeleteSAMLProvider
 // 删除SAML身份提供商
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (response *DeleteSAMLProviderResponse, err error) {
     if request == nil {
         request = NewDeleteSAMLProviderRequest()
@@ -508,7 +745,13 @@ func NewDeleteServiceLinkedRoleResponse() (response *DeleteServiceLinkedRoleResp
     return
 }
 
+// DeleteServiceLinkedRole
 // 删除服务相关角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRequest) (response *DeleteServiceLinkedRoleResponse, err error) {
     if request == nil {
         request = NewDeleteServiceLinkedRoleRequest()
@@ -533,7 +776,14 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
     return
 }
 
+// DeleteUser
 // 删除子用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_HAVEKEYS = "OperationDenied.HaveKeys"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION_DELETEAPIKEY = "UnauthorizedOperation.DeleteApiKey"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
         request = NewDeleteUserRequest()
@@ -558,7 +808,16 @@ func NewDeleteUserPermissionsBoundaryResponse() (response *DeleteUserPermissions
     return
 }
 
+// DeleteUserPermissionsBoundary
 // 删除用户权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEENTITIESOVERLIMIT = "InvalidParameter.OperateEntitiesOverLimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteUserPermissionsBoundary(request *DeleteUserPermissionsBoundaryRequest) (response *DeleteUserPermissionsBoundaryResponse, err error) {
     if request == nil {
         request = NewDeleteUserPermissionsBoundaryRequest()
@@ -583,7 +842,12 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
     return
 }
 
+// DescribeRoleList
 // 本接口（DescribeRoleList）用于获取账号下的角色列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     if request == nil {
         request = NewDescribeRoleListRequest()
@@ -608,7 +872,13 @@ func NewDescribeSafeAuthFlagResponse() (response *DescribeSafeAuthFlagResponse) 
     return
 }
 
+// DescribeSafeAuthFlag
 // 查询安全设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeSafeAuthFlag(request *DescribeSafeAuthFlagRequest) (response *DescribeSafeAuthFlagResponse, err error) {
     if request == nil {
         request = NewDescribeSafeAuthFlagRequest()
@@ -633,7 +903,13 @@ func NewDescribeSafeAuthFlagCollResponse() (response *DescribeSafeAuthFlagCollRe
     return
 }
 
+// DescribeSafeAuthFlagColl
 // 查询安全设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeSafeAuthFlagColl(request *DescribeSafeAuthFlagCollRequest) (response *DescribeSafeAuthFlagCollResponse, err error) {
     if request == nil {
         request = NewDescribeSafeAuthFlagCollRequest()
@@ -658,7 +934,13 @@ func NewDescribeSubAccountsResponse() (response *DescribeSubAccountsResponse) {
     return
 }
 
+// DescribeSubAccounts
 // 通过子用户UIN列表查询子用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubAccounts(request *DescribeSubAccountsRequest) (response *DescribeSubAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeSubAccountsRequest()
@@ -683,7 +965,17 @@ func NewDetachGroupPolicyResponse() (response *DetachGroupPolicyResponse) {
     return
 }
 
+// DetachGroupPolicy
 // 本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DetachGroupPolicy(request *DetachGroupPolicyRequest) (response *DetachGroupPolicyResponse, err error) {
     if request == nil {
         request = NewDetachGroupPolicyRequest()
@@ -708,7 +1000,14 @@ func NewDetachRolePolicyResponse() (response *DetachRolePolicyResponse) {
     return
 }
 
+// DetachRolePolicy
 // 本接口（DetachRolePolicy）用于解除绑定角色的策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) DetachRolePolicy(request *DetachRolePolicyRequest) (response *DetachRolePolicyResponse, err error) {
     if request == nil {
         request = NewDetachRolePolicyRequest()
@@ -733,7 +1032,18 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
     return
 }
 
+// DetachUserPolicy
 // 本接口（DetachUserPolicy）可用于解除绑定到用户的策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *DetachUserPolicyResponse, err error) {
     if request == nil {
         request = NewDetachUserPolicyRequest()
@@ -758,7 +1068,11 @@ func NewGetCustomMFATokenInfoResponse() (response *GetCustomMFATokenInfoResponse
     return
 }
 
+// GetCustomMFATokenInfo
 // 获取自定义多因子Token关联信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
 func (c *Client) GetCustomMFATokenInfo(request *GetCustomMFATokenInfoRequest) (response *GetCustomMFATokenInfoResponse, err error) {
     if request == nil {
         request = NewGetCustomMFATokenInfoRequest()
@@ -783,7 +1097,11 @@ func NewGetGroupResponse() (response *GetGroupResponse) {
     return
 }
 
+// GetGroup
 // 查询用户组详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetGroup(request *GetGroupRequest) (response *GetGroupResponse, err error) {
     if request == nil {
         request = NewGetGroupRequest()
@@ -808,7 +1126,14 @@ func NewGetPolicyResponse() (response *GetPolicyResponse) {
     return
 }
 
+// GetPolicy
 // 本接口（GetPolicy）可用于查询查看策略详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 func (c *Client) GetPolicy(request *GetPolicyRequest) (response *GetPolicyResponse, err error) {
     if request == nil {
         request = NewGetPolicyRequest()
@@ -833,7 +1158,15 @@ func NewGetPolicyVersionResponse() (response *GetPolicyVersionResponse) {
     return
 }
 
+// GetPolicyVersion
 // 该接口（GetPolicyVersion）用于查询策略版本详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYVERSIONNOTEXISTS = "InvalidParameter.PolicyVersionNotExists"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 func (c *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (response *GetPolicyVersionResponse, err error) {
     if request == nil {
         request = NewGetPolicyVersionRequest()
@@ -858,7 +1191,13 @@ func NewGetRoleResponse() (response *GetRoleResponse) {
     return
 }
 
+// GetRole
 // 本接口（GetRole）用于获取指定角色的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) GetRole(request *GetRoleRequest) (response *GetRoleResponse, err error) {
     if request == nil {
         request = NewGetRoleRequest()
@@ -883,7 +1222,12 @@ func NewGetSAMLProviderResponse() (response *GetSAMLProviderResponse) {
     return
 }
 
+// GetSAMLProvider
 // 查询SAML身份提供商详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 func (c *Client) GetSAMLProvider(request *GetSAMLProviderRequest) (response *GetSAMLProviderResponse, err error) {
     if request == nil {
         request = NewGetSAMLProviderRequest()
@@ -908,7 +1252,13 @@ func NewGetServiceLinkedRoleDeletionStatusResponse() (response *GetServiceLinked
     return
 }
 
+// GetServiceLinkedRoleDeletionStatus
 // 根据删除TaskId获取服务相关角色删除状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_DELETIONTASKNOTEXIST = "InvalidParameter.DeletionTaskNotExist"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) GetServiceLinkedRoleDeletionStatus(request *GetServiceLinkedRoleDeletionStatusRequest) (response *GetServiceLinkedRoleDeletionStatusResponse, err error) {
     if request == nil {
         request = NewGetServiceLinkedRoleDeletionStatusRequest()
@@ -933,7 +1283,11 @@ func NewGetUserResponse() (response *GetUserResponse) {
     return
 }
 
+// GetUser
 // 查询子用户
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, err error) {
     if request == nil {
         request = NewGetUserRequest()
@@ -958,7 +1312,16 @@ func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
     return
 }
 
+// ListAccessKeys
 // 列出指定CAM用户的访问密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
 func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
     if request == nil {
         request = NewListAccessKeysRequest()
@@ -983,7 +1346,12 @@ func NewListAttachedGroupPoliciesResponse() (response *ListAttachedGroupPolicies
     return
 }
 
+// ListAttachedGroupPolicies
 // 本接口（ListAttachedGroupPolicies）可用于查询用户组关联的策略列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ListAttachedGroupPolicies(request *ListAttachedGroupPoliciesRequest) (response *ListAttachedGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewListAttachedGroupPoliciesRequest()
@@ -1008,7 +1376,12 @@ func NewListAttachedRolePoliciesResponse() (response *ListAttachedRolePoliciesRe
     return
 }
 
+// ListAttachedRolePolicies
 // 本接口（ListAttachedRolePolicies）用于获取角色绑定的策略列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ListAttachedRolePolicies(request *ListAttachedRolePoliciesRequest) (response *ListAttachedRolePoliciesResponse, err error) {
     if request == nil {
         request = NewListAttachedRolePoliciesRequest()
@@ -1033,7 +1406,12 @@ func NewListAttachedUserPoliciesResponse() (response *ListAttachedUserPoliciesRe
     return
 }
 
+// ListAttachedUserPolicies
 // 本接口（ListAttachedUserPolicies）可用于查询子账号关联的策略列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ListAttachedUserPolicies(request *ListAttachedUserPoliciesRequest) (response *ListAttachedUserPoliciesResponse, err error) {
     if request == nil {
         request = NewListAttachedUserPoliciesRequest()
@@ -1058,7 +1436,12 @@ func NewListCollaboratorsResponse() (response *ListCollaboratorsResponse) {
     return
 }
 
+// ListCollaborators
 // 获取协作者列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ListCollaborators(request *ListCollaboratorsRequest) (response *ListCollaboratorsResponse, err error) {
     if request == nil {
         request = NewListCollaboratorsRequest()
@@ -1083,7 +1466,14 @@ func NewListEntitiesForPolicyResponse() (response *ListEntitiesForPolicyResponse
     return
 }
 
+// ListEntitiesForPolicy
 // 本接口（ListEntitiesForPolicy）可用于查询策略关联的实体列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ENTITYFILTERERROR = "InvalidParameter.EntityFilterError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
 func (c *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyRequest) (response *ListEntitiesForPolicyResponse, err error) {
     if request == nil {
         request = NewListEntitiesForPolicyRequest()
@@ -1108,7 +1498,14 @@ func NewListGroupsResponse() (response *ListGroupsResponse) {
     return
 }
 
+// ListGroups
 // 查询用户组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ENTITYFILTERERROR = "InvalidParameter.EntityFilterError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
 func (c *Client) ListGroups(request *ListGroupsRequest) (response *ListGroupsResponse, err error) {
     if request == nil {
         request = NewListGroupsRequest()
@@ -1133,7 +1530,11 @@ func NewListGroupsForUserResponse() (response *ListGroupsForUserResponse) {
     return
 }
 
+// ListGroupsForUser
 // 列出用户关联的用户组
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (response *ListGroupsForUserResponse, err error) {
     if request == nil {
         request = NewListGroupsForUserRequest()
@@ -1158,7 +1559,17 @@ func NewListPoliciesResponse() (response *ListPoliciesResponse) {
     return
 }
 
+// ListPolicies
 // 本接口（ListPolicies）可用于查询策略列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_GROUPIDERROR = "InvalidParameter.GroupIdError"
+//  INVALIDPARAMETER_KEYWORDERROR = "InvalidParameter.KeywordError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SCOPEERROR = "InvalidParameter.ScopeError"
+//  INVALIDPARAMETER_SERVICETYPEERROR = "InvalidParameter.ServiceTypeError"
+//  INVALIDPARAMETER_UINERROR = "InvalidParameter.UinError"
 func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {
     if request == nil {
         request = NewListPoliciesRequest()
@@ -1183,7 +1594,14 @@ func NewListPolicyVersionsResponse() (response *ListPolicyVersionsResponse) {
     return
 }
 
+// ListPolicyVersions
 // 该接口（ListPolicyVersions）用于获取策略版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 func (c *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (response *ListPolicyVersionsResponse, err error) {
     if request == nil {
         request = NewListPolicyVersionsRequest()
@@ -1208,7 +1626,14 @@ func NewListSAMLProvidersResponse() (response *ListSAMLProvidersResponse) {
     return
 }
 
+// ListSAMLProviders
 // 查询SAML身份提供商列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
 func (c *Client) ListSAMLProviders(request *ListSAMLProvidersRequest) (response *ListSAMLProvidersResponse, err error) {
     if request == nil {
         request = NewListSAMLProvidersRequest()
@@ -1233,7 +1658,11 @@ func NewListUsersResponse() (response *ListUsersResponse) {
     return
 }
 
+// ListUsers
 // 拉取子用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
     if request == nil {
         request = NewListUsersRequest()
@@ -1258,7 +1687,11 @@ func NewListUsersForGroupResponse() (response *ListUsersForGroupResponse) {
     return
 }
 
+// ListUsersForGroup
 // 查询用户组关联的用户列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (response *ListUsersForGroupResponse, err error) {
     if request == nil {
         request = NewListUsersForGroupRequest()
@@ -1283,7 +1716,11 @@ func NewListWeChatWorkSubAccountsResponse() (response *ListWeChatWorkSubAccounts
     return
 }
 
+// ListWeChatWorkSubAccounts
 // 获取企业微信子用户列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ListWeChatWorkSubAccounts(request *ListWeChatWorkSubAccountsRequest) (response *ListWeChatWorkSubAccountsResponse, err error) {
     if request == nil {
         request = NewListWeChatWorkSubAccountsRequest()
@@ -1308,7 +1745,19 @@ func NewPutRolePermissionsBoundaryResponse() (response *PutRolePermissionsBounda
     return
 }
 
+// PutRolePermissionsBoundary
 // 设置角色权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEENTITIESOVERLIMIT = "InvalidParameter.OperateEntitiesOverLimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_SERVICELINKEDPOLICYCANTINPERMISSIONBOUNDARY = "InvalidParameter.ServiceLinkedPolicyCantInPermissionBoundary"
+//  INVALIDPARAMETER_SERVICELINKEDROLECANTUSEPERMISSIONBOUNDARY = "InvalidParameter.ServiceLinkedRoleCantUsePermissionBoundary"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutRolePermissionsBoundary(request *PutRolePermissionsBoundaryRequest) (response *PutRolePermissionsBoundaryResponse, err error) {
     if request == nil {
         request = NewPutRolePermissionsBoundaryRequest()
@@ -1333,7 +1782,18 @@ func NewPutUserPermissionsBoundaryResponse() (response *PutUserPermissionsBounda
     return
 }
 
+// PutUserPermissionsBoundary
 // 设置用户权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_OPERATEENTITIESOVERLIMIT = "InvalidParameter.OperateEntitiesOverLimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_SERVICELINKEDPOLICYCANTINPERMISSIONBOUNDARY = "InvalidParameter.ServiceLinkedPolicyCantInPermissionBoundary"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutUserPermissionsBoundary(request *PutUserPermissionsBoundaryRequest) (response *PutUserPermissionsBoundaryResponse, err error) {
     if request == nil {
         request = NewPutUserPermissionsBoundaryRequest()
@@ -1358,7 +1818,11 @@ func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
     return
 }
 
+// RemoveUserFromGroup
 // 从用户组删除用户
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
     if request == nil {
         request = NewRemoveUserFromGroupRequest()
@@ -1383,7 +1847,38 @@ func NewSetDefaultPolicyVersionResponse() (response *SetDefaultPolicyVersionResp
     return
 }
 
+// SetDefaultPolicyVersion
 // 本接口（SetDefaultPolicyVersion）可用于设置生效的策略版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
+//  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONNOTEXIST = "InvalidParameter.ActionNotExist"
+//  INVALIDPARAMETER_ACTIONSERVICENOTEXIST = "InvalidParameter.ActionServiceNotExist"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+//  INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_POLICYVERSIONNOTEXISTS = "InvalidParameter.PolicyVersionNotExists"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
+//  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest) (response *SetDefaultPolicyVersionResponse, err error) {
     if request == nil {
         request = NewSetDefaultPolicyVersionRequest()
@@ -1408,7 +1903,16 @@ func NewSetMfaFlagResponse() (response *SetMfaFlagResponse) {
     return
 }
 
+// SetMfaFlag
 // 设置子用户的登录保护和敏感操作校验方式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERNOTBINDPHONE = "FailedOperation.UserNotBindPhone"
+//  FAILEDOPERATION_USERNOTBINDWECHAT = "FailedOperation.UserNotBindWechat"
+//  FAILEDOPERATION_USERUNBINDNOPERMISSION = "FailedOperation.UserUnbindNoPermission"
+//  INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetMfaFlag(request *SetMfaFlagRequest) (response *SetMfaFlagResponse, err error) {
     if request == nil {
         request = NewSetMfaFlagRequest()
@@ -1433,7 +1937,28 @@ func NewUpdateAssumeRolePolicyResponse() (response *UpdateAssumeRolePolicyRespon
     return
 }
 
+// UpdateAssumeRolePolicy
 // 本接口（UpdateAssumeRolePolicy）用于修改角色信任策略的策略文档。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSCROSSERROR = "InvalidParameter.PrincipalQcsCrossError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) UpdateAssumeRolePolicy(request *UpdateAssumeRolePolicyRequest) (response *UpdateAssumeRolePolicyResponse, err error) {
     if request == nil {
         request = NewUpdateAssumeRolePolicyRequest()
@@ -1458,7 +1983,14 @@ func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
     return
 }
 
+// UpdateGroup
 // 更新用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
+//  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
     if request == nil {
         request = NewUpdateGroupRequest()
@@ -1483,8 +2015,46 @@ func NewUpdatePolicyResponse() (response *UpdatePolicyResponse) {
     return
 }
 
+// UpdatePolicy
 // 本接口（UpdatePolicy ）可用于更新策略。
+//
 // 如果已存在策略版本，本接口会直接更新策略的默认版本，不会创建新版本，如果不存在任何策略版本，则直接创建一个默认版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
+//  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
+//  INVALIDPARAMETER_ACTIONNOTEXIST = "InvalidParameter.ActionNotExist"
+//  INVALIDPARAMETER_ACTIONSERVICENOTEXIST = "InvalidParameter.ActionServiceNotExist"
+//  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_EFFECTERROR = "InvalidParameter.EffectError"
+//  INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYDOCUMENTERROR = "InvalidParameter.PolicyDocumentError"
+//  INVALIDPARAMETER_POLICYDOCUMENTLENGTHOVERLIMIT = "InvalidParameter.PolicyDocumentLengthOverLimit"
+//  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
+//  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
+//  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
+//  INVALIDPARAMETER_RESOURCEQCSERROR = "InvalidParameter.ResourceQcsError"
+//  INVALIDPARAMETER_RESOURCEREGIONERROR = "InvalidParameter.ResourceRegionError"
+//  INVALIDPARAMETER_RESOURCESERVICENOTEXIST = "InvalidParameter.ResourceServiceNotExist"
+//  INVALIDPARAMETER_RESOURCEUINERROR = "InvalidParameter.ResourceUinError"
+//  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (response *UpdatePolicyResponse, err error) {
     if request == nil {
         request = NewUpdatePolicyRequest()
@@ -1509,7 +2079,13 @@ func NewUpdateRoleConsoleLoginResponse() (response *UpdateRoleConsoleLoginRespon
     return
 }
 
+// UpdateRoleConsoleLogin
 // 本接口（UpdateRoleConsoleLogin）用于修改角色是否可登录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) UpdateRoleConsoleLogin(request *UpdateRoleConsoleLoginRequest) (response *UpdateRoleConsoleLoginResponse, err error) {
     if request == nil {
         request = NewUpdateRoleConsoleLoginRequest()
@@ -1534,7 +2110,14 @@ func NewUpdateRoleDescriptionResponse() (response *UpdateRoleDescriptionResponse
     return
 }
 
+// UpdateRoleDescription
 // 本接口（UpdateRoleDescription）用于修改角色的描述信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 func (c *Client) UpdateRoleDescription(request *UpdateRoleDescriptionRequest) (response *UpdateRoleDescriptionResponse, err error) {
     if request == nil {
         request = NewUpdateRoleDescriptionRequest()
@@ -1559,7 +2142,12 @@ func NewUpdateSAMLProviderResponse() (response *UpdateSAMLProviderResponse) {
     return
 }
 
+// UpdateSAMLProvider
 // 更新SAML身份提供商信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 func (c *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (response *UpdateSAMLProviderResponse, err error) {
     if request == nil {
         request = NewUpdateSAMLProviderRequest()
@@ -1584,7 +2172,12 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
     return
 }
 
+// UpdateUser
 // 更新子用户
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
     if request == nil {
         request = NewUpdateUserRequest()

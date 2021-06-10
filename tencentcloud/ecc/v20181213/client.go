@@ -58,8 +58,39 @@ func NewCorrectMultiImageResponse() (response *CorrectMultiImageResponse) {
     return
 }
 
+// CorrectMultiImage
 // https://ecc.tencentcloudapi.com/?Action=CorrectMultiImage
+//
 // 多图像识别批改接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_OCRERROR = "InternalError.OcrError"
+//  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
+//  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
+//  INTERNALERROR_OVERLOADERROR = "InternalError.OverLoadError"
+//  INTERNALERROR_RECOGNIZEERROR = "InternalError.RecognizeError"
+//  INTERNALERROR_SERVERCONNECTDOWNLOADERROR = "InternalError.ServerConnectDownloadError"
+//  INTERNALERROR_SPLITERROR = "InternalError.SplitError"
+//  INVALIDPARAMETER_EMPTYPARAMETERERROR = "InvalidParameter.EmptyParameterError"
+//  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
+//  INVALIDPARAMETERVALUE_APPIDINVALIDERROR = "InvalidParameterValue.AppidInvalidError"
+//  INVALIDPARAMETERVALUE_DECODEIMAGEERROR = "InvalidParameterValue.DecodeImageError"
+//  INVALIDPARAMETERVALUE_DOWNLOADIMAGEFAILERROR = "InvalidParameterValue.DownloadImageFailError"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGEERROR = "InvalidParameterValue.EmptyImageError"
+//  INVALIDPARAMETERVALUE_IMAGEDOWNLOADFAILERROR = "InvalidParameterValue.ImageDownloadFailError"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEEDERROR = "InvalidParameterValue.ImageSizeExceedError"
+//  INVALIDPARAMETERVALUE_IMAGETOOBIGERROR = "InvalidParameterValue.ImageTooBigError"
+//  INVALIDPARAMETERVALUE_INPUTTYPEVALUEERROR = "InvalidParameterValue.InputTypeValueError"
+//  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
+//  INVALIDPARAMETERVALUE_URLFROMATIVADLIDERROR = "InvalidParameterValue.UrlFromatIvadlidError"
+//  LIMITEXCEEDED_FREQLIMITFORBIDDENACCESSERROR = "LimitExceeded.FreqLimitForbiddenAccessError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
+//  RESOURCENOTFOUND_SERVERNAMENOTEXISTINLICENSEERROR = "ResourceNotFound.ServerNameNotExistInLicenseError"
+//  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
+//  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
+//  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) CorrectMultiImage(request *CorrectMultiImageRequest) (response *CorrectMultiImageResponse, err error) {
     if request == nil {
         request = NewCorrectMultiImageRequest()
@@ -84,7 +115,34 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     return
 }
 
+// DescribeTask
 // 异步任务结果查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_OCRERROR = "InternalError.OcrError"
+//  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
+//  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
+//  INTERNALERROR_OVERLOADERROR = "InternalError.OverLoadError"
+//  INTERNALERROR_RECOGNIZEERROR = "InternalError.RecognizeError"
+//  INTERNALERROR_SERVERCONNECTDOWNLOADERROR = "InternalError.ServerConnectDownloadError"
+//  INTERNALERROR_SPLITERROR = "InternalError.SplitError"
+//  INVALIDPARAMETER_EMPTYPARAMETERERROR = "InvalidParameter.EmptyParameterError"
+//  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETERVALUE_APPIDINVALIDERROR = "InvalidParameterValue.AppidInvalidError"
+//  INVALIDPARAMETERVALUE_DECODEIMAGEERROR = "InvalidParameterValue.DecodeImageError"
+//  INVALIDPARAMETERVALUE_DOWNLOADIMAGEFAILERROR = "InvalidParameterValue.DownloadImageFailError"
+//  INVALIDPARAMETERVALUE_IMAGEDOWNLOADFAILERROR = "InvalidParameterValue.ImageDownloadFailError"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEEDERROR = "InvalidParameterValue.ImageSizeExceedError"
+//  INVALIDPARAMETERVALUE_URLFROMATIVADLIDERROR = "InvalidParameterValue.UrlFromatIvadlidError"
+//  LIMITEXCEEDED_FREQLIMITFORBIDDENACCESSERROR = "LimitExceeded.FreqLimitForbiddenAccessError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
+//  RESOURCENOTFOUND_SERVERNAMENOTEXISTINLICENSEERROR = "ResourceNotFound.ServerNameNotExistInLicenseError"
+//  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
+//  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
+//  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
     if request == nil {
         request = NewDescribeTaskRequest()
@@ -109,8 +167,16 @@ func NewECCResponse() (response *ECCResponse) {
     return
 }
 
+// ECC
 // 接口请求域名： ecc.tencentcloudapi.com 
+//
 // 纯文本英语作文批改
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
+//  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
 func (c *Client) ECC(request *ECCRequest) (response *ECCResponse, err error) {
     if request == nil {
         request = NewECCRequest()
@@ -135,8 +201,39 @@ func NewEHOCRResponse() (response *EHOCRResponse) {
     return
 }
 
+// EHOCR
 // https://ecc.tencentcloudapi.com/?Action=EHOCR
+//
 // 图像识别批改接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_OCRERROR = "InternalError.OcrError"
+//  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
+//  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
+//  INTERNALERROR_OVERLOADERROR = "InternalError.OverLoadError"
+//  INTERNALERROR_RECOGNIZEERROR = "InternalError.RecognizeError"
+//  INTERNALERROR_SERVERCONNECTDOWNLOADERROR = "InternalError.ServerConnectDownloadError"
+//  INTERNALERROR_SPLITERROR = "InternalError.SplitError"
+//  INVALIDPARAMETER_EMPTYPARAMETERERROR = "InvalidParameter.EmptyParameterError"
+//  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
+//  INVALIDPARAMETERVALUE_APPIDINVALIDERROR = "InvalidParameterValue.AppidInvalidError"
+//  INVALIDPARAMETERVALUE_DECODEIMAGEERROR = "InvalidParameterValue.DecodeImageError"
+//  INVALIDPARAMETERVALUE_DOWNLOADIMAGEFAILERROR = "InvalidParameterValue.DownloadImageFailError"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGEERROR = "InvalidParameterValue.EmptyImageError"
+//  INVALIDPARAMETERVALUE_IMAGEDOWNLOADFAILERROR = "InvalidParameterValue.ImageDownloadFailError"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEEDERROR = "InvalidParameterValue.ImageSizeExceedError"
+//  INVALIDPARAMETERVALUE_IMAGETOOBIGERROR = "InvalidParameterValue.ImageTooBigError"
+//  INVALIDPARAMETERVALUE_INPUTTYPEVALUEERROR = "InvalidParameterValue.InputTypeValueError"
+//  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
+//  INVALIDPARAMETERVALUE_URLFROMATIVADLIDERROR = "InvalidParameterValue.UrlFromatIvadlidError"
+//  LIMITEXCEEDED_FREQLIMITFORBIDDENACCESSERROR = "LimitExceeded.FreqLimitForbiddenAccessError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
+//  RESOURCENOTFOUND_SERVERNAMENOTEXISTINLICENSEERROR = "ResourceNotFound.ServerNameNotExistInLicenseError"
+//  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
+//  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
+//  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) EHOCR(request *EHOCRRequest) (response *EHOCRResponse, err error) {
     if request == nil {
         request = NewEHOCRRequest()

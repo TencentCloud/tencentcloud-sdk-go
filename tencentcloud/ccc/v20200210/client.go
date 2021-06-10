@@ -58,7 +58,15 @@ func NewCreateSDKLoginTokenResponse() (response *CreateSDKLoginTokenResponse) {
     return
 }
 
+// CreateSDKLoginToken
 // 创建 SDK 登录 Token。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
     if request == nil {
         request = NewCreateSDKLoginTokenRequest()
@@ -83,7 +91,17 @@ func NewCreateStaffResponse() (response *CreateStaffResponse) {
     return
 }
 
+// CreateStaff
 // 创建客服账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaffResponse, err error) {
     if request == nil {
         request = NewCreateStaffRequest()
@@ -108,7 +126,14 @@ func NewDescribeChatMessagesResponse() (response *DescribeChatMessagesResponse) 
     return
 }
 
+// DescribeChatMessages
 // 包括具体聊天内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (response *DescribeChatMessagesResponse, err error) {
     if request == nil {
         request = NewDescribeChatMessagesRequest()
@@ -133,7 +158,12 @@ func NewDescribeIMCdrsResponse() (response *DescribeIMCdrsResponse) {
     return
 }
 
+// DescribeIMCdrs
 // 包括全媒体和文本两种类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *DescribeIMCdrsResponse, err error) {
     if request == nil {
         request = NewDescribeIMCdrsRequest()
@@ -158,7 +188,12 @@ func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSes
     return
 }
 
+// DescribePSTNActiveSessionList
 // 获取 PSTN 活动会话列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
 func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {
     if request == nil {
         request = NewDescribePSTNActiveSessionListRequest()
@@ -183,7 +218,14 @@ func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) 
     return
 }
 
+// DescribeSeatUserList
 // 获取坐席用户列表（废弃）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
     if request == nil {
         request = NewDescribeSeatUserListRequest()
@@ -208,7 +250,15 @@ func NewDescribeSkillGroupInfoListResponse() (response *DescribeSkillGroupInfoLi
     return
 }
 
+// DescribeSkillGroupInfoList
 // 获取技能组信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeSkillGroupInfoList(request *DescribeSkillGroupInfoListRequest) (response *DescribeSkillGroupInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillGroupInfoListRequest()
@@ -233,7 +283,14 @@ func NewDescribeStaffInfoListResponse() (response *DescribeStaffInfoListResponse
     return
 }
 
+// DescribeStaffInfoList
 // 获取坐席信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (response *DescribeStaffInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStaffInfoListRequest()
@@ -258,7 +315,14 @@ func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
     return
 }
 
+// DescribeTelCallInfo
 // 按实例获取电话消耗统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (response *DescribeTelCallInfoResponse, err error) {
     if request == nil {
         request = NewDescribeTelCallInfoRequest()
@@ -283,7 +347,15 @@ func NewDescribeTelCdrResponse() (response *DescribeTelCdrResponse) {
     return
 }
 
+// DescribeTelCdr
 // 获取电话服务记录与录音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelCdr(request *DescribeTelCdrRequest) (response *DescribeTelCdrResponse, err error) {
     if request == nil {
         request = NewDescribeTelCdrRequest()
@@ -308,7 +380,13 @@ func NewDescribeTelSessionResponse() (response *DescribeTelSessionResponse) {
     return
 }
 
+// DescribeTelSession
 // 获取 PSTN 会话信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (response *DescribeTelSessionResponse, err error) {
     if request == nil {
         request = NewDescribeTelSessionRequest()

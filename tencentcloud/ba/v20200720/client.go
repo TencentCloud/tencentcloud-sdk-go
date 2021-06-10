@@ -58,7 +58,13 @@ func NewCreateWeappQRUrlResponse() (response *CreateWeappQRUrlResponse) {
     return
 }
 
+// CreateWeappQRUrl
 // 创建渠道备案小程序二维码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *CreateWeappQRUrlResponse, err error) {
     if request == nil {
         request = NewCreateWeappQRUrlRequest()

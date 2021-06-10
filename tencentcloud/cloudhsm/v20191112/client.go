@@ -58,7 +58,14 @@ func NewDescribeHSMBySubnetIdResponse() (response *DescribeHSMBySubnetIdResponse
     return
 }
 
+// DescribeHSMBySubnetId
 // 通过SubnetId获取Hsm资源数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHSMBySubnetId(request *DescribeHSMBySubnetIdRequest) (response *DescribeHSMBySubnetIdResponse, err error) {
     if request == nil {
         request = NewDescribeHSMBySubnetIdRequest()
@@ -83,7 +90,14 @@ func NewDescribeHSMByVpcIdResponse() (response *DescribeHSMByVpcIdResponse) {
     return
 }
 
+// DescribeHSMByVpcId
 // 通过VpcId获取Hsm资源数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHSMByVpcId(request *DescribeHSMByVpcIdRequest) (response *DescribeHSMByVpcIdResponse, err error) {
     if request == nil {
         request = NewDescribeHSMByVpcIdRequest()
@@ -108,7 +122,14 @@ func NewDescribeSubnetResponse() (response *DescribeSubnetResponse) {
     return
 }
 
+// DescribeSubnet
 // 查询子网列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSubnet(request *DescribeSubnetRequest) (response *DescribeSubnetResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetRequest()
@@ -133,7 +154,13 @@ func NewDescribeSupportedHsmResponse() (response *DescribeSupportedHsmResponse) 
     return
 }
 
+// DescribeSupportedHsm
 // 获取当前地域所支持的设备列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSupportedHsm(request *DescribeSupportedHsmRequest) (response *DescribeSupportedHsmResponse, err error) {
     if request == nil {
         request = NewDescribeSupportedHsmRequest()
@@ -158,7 +185,14 @@ func NewDescribeUsgResponse() (response *DescribeUsgResponse) {
     return
 }
 
+// DescribeUsg
 // 根据用户的AppId获取用户安全组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUsg(request *DescribeUsgRequest) (response *DescribeUsgResponse, err error) {
     if request == nil {
         request = NewDescribeUsgRequest()
@@ -183,7 +217,14 @@ func NewDescribeUsgRuleResponse() (response *DescribeUsgRuleResponse) {
     return
 }
 
+// DescribeUsgRule
 // 获取安全组详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUsgRule(request *DescribeUsgRuleRequest) (response *DescribeUsgRuleResponse, err error) {
     if request == nil {
         request = NewDescribeUsgRuleRequest()
@@ -208,7 +249,14 @@ func NewDescribeVpcResponse() (response *DescribeVpcResponse) {
     return
 }
 
+// DescribeVpc
 // 查询用户的私有网络列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpc(request *DescribeVpcRequest) (response *DescribeVpcResponse, err error) {
     if request == nil {
         request = NewDescribeVpcRequest()
@@ -233,7 +281,14 @@ func NewDescribeVsmAttributesResponse() (response *DescribeVsmAttributesResponse
     return
 }
 
+// DescribeVsmAttributes
 // 获取VSM属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVsmAttributes(request *DescribeVsmAttributesRequest) (response *DescribeVsmAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeVsmAttributesRequest()
@@ -258,7 +313,14 @@ func NewDescribeVsmsResponse() (response *DescribeVsmsResponse) {
     return
 }
 
+// DescribeVsms
 // 获取用户VSM列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVsms(request *DescribeVsmsRequest) (response *DescribeVsmsResponse, err error) {
     if request == nil {
         request = NewDescribeVsmsRequest()
@@ -283,7 +345,14 @@ func NewInquiryPriceBuyVsmResponse() (response *InquiryPriceBuyVsmResponse) {
     return
 }
 
+// InquiryPriceBuyVsm
 // 购买询价接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) InquiryPriceBuyVsm(request *InquiryPriceBuyVsmRequest) (response *InquiryPriceBuyVsmResponse, err error) {
     if request == nil {
         request = NewInquiryPriceBuyVsmRequest()
@@ -308,7 +377,14 @@ func NewModifyVsmAttributesResponse() (response *ModifyVsmAttributesResponse) {
     return
 }
 
+// ModifyVsmAttributes
 // 修改VSM属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVsmAttributes(request *ModifyVsmAttributesRequest) (response *ModifyVsmAttributesResponse, err error) {
     if request == nil {
         request = NewModifyVsmAttributesRequest()

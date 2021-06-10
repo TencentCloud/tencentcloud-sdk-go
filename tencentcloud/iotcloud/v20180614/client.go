@@ -58,7 +58,14 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
     return
 }
 
+// BatchUpdateFirmware
 // 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
@@ -83,7 +90,18 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
     return
 }
 
+// BindDevices
 // 本接口（BindDevices）用于网关设备批量绑定子设备 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDDEVICEOVERLIMIT = "FailedOperation.BindDeviceOverLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEISNOTGATEWAY = "InvalidParameterValue.DeviceIsNotGateway"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
     if request == nil {
         request = NewBindDevicesRequest()
@@ -108,7 +126,13 @@ func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskRe
     return
 }
 
+// CancelDeviceFirmwareTask
 // 取消设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
@@ -133,7 +157,14 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
     return
 }
 
+// CancelTask
 // 本接口（CancelTask）用于取消一个未被调度的任务。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCTASKALREADYSTARTED = "FailedOperation.AsyncTaskAlreadyStarted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {
         request = NewCancelTaskRequest()
@@ -158,7 +189,22 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
     return
 }
 
+// CreateDevice
 // 本接口（CreateDevice）用于新建一个物联网通信设备。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIDWHITELISTNOTOPEN = "FailedOperation.TidWhiteListNotOpen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINEDPSKNOTBASE64 = "InvalidParameterValue.DefinedPskNotBase64"
+//  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
+//  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVELORADEVICE = "UnauthorizedOperation.ProductCantHaveLoRaDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENORMALDEVICE = "UnauthorizedOperation.ProductCantHaveNormalDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENOTLORADEVICE = "UnauthorizedOperation.ProductCantHaveNotLoRaDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
+//  UNSUPPORTEDOPERATION_SUITETOKENNOCREATE = "UnsupportedOperation.SuiteTokenNoCreate"
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
     if request == nil {
         request = NewCreateDeviceRequest()
@@ -183,7 +229,12 @@ func NewCreateLoraDeviceResponse() (response *CreateLoraDeviceResponse) {
     return
 }
 
+// CreateLoraDevice
 // 创建lora类型的设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 func (c *Client) CreateLoraDevice(request *CreateLoraDeviceRequest) (response *CreateLoraDeviceResponse, err error) {
     if request == nil {
         request = NewCreateLoraDeviceRequest()
@@ -208,7 +259,13 @@ func NewCreateMultiDeviceResponse() (response *CreateMultiDeviceResponse) {
     return
 }
 
+// CreateMultiDevice
 // 本接口（CreateMultiDevice）用于批量创建物联云设备。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateMultiDevice(request *CreateMultiDeviceRequest) (response *CreateMultiDeviceResponse, err error) {
     if request == nil {
         request = NewCreateMultiDeviceRequest()
@@ -233,7 +290,14 @@ func NewCreateMultiDevicesTaskResponse() (response *CreateMultiDevicesTaskRespon
     return
 }
 
+// CreateMultiDevicesTask
 // 本接口（CreateMultiDevicesTask）用于创建产品级别的批量创建设备任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) (response *CreateMultiDevicesTaskResponse, err error) {
     if request == nil {
         request = NewCreateMultiDevicesTaskRequest()
@@ -258,7 +322,18 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
     return
 }
 
+// CreateProduct
 // 本接口（CreateProduct）用于创建一个新的物联网通信产品 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  INVALIDPARAMETERVALUE_TIDPRODUCTALREADYEXIST = "InvalidParameterValue.TidProductAlreadyExist"
+//  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_THINGMODELNOTEXIST = "ResourceNotFound.ThingModelNotExist"
+//  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
     if request == nil {
         request = NewCreateProductRequest()
@@ -283,7 +358,14 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
     return
 }
 
+// CreateTask
 // 本接口（CreateTask）用于创建一个批量任务。目前此接口可以创建批量更新影子以及批量下发消息的任务 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PENGINGORPROCESSINGTASKSEXCEEDLIMIT = "LimitExceeded.PengingOrProcessingTasksExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -308,7 +390,12 @@ func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
     return
 }
 
+// CreateTaskFileUrl
 // 本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
@@ -333,7 +420,16 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
     return
 }
 
+// CreateTopicPolicy
 // 本接口（CreateTopicPolicy）用于创建一个Topic 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTNOTBIND = "FailedOperation.ProductNotBind"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
+//  LIMITEXCEEDED_TOPICPOLICYEXCEEDLIMIT = "LimitExceeded.TopicPolicyExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
     if request == nil {
         request = NewCreateTopicPolicyRequest()
@@ -358,7 +454,19 @@ func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
     return
 }
 
+// CreateTopicRule
 // 本接口（CreateTopicRule）用于创建一个规则 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
+//  INVALIDPARAMETERVALUE_CLOUDCOMPONENTALREADYEXIST = "InvalidParameterValue.CloudComponentAlreadyExist"
+//  INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = "InvalidParameterValue.FailActionHasSameDevice"
+//  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = "InvalidParameterValue.TopicRuleAlreadyExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
     if request == nil {
         request = NewCreateTopicRuleRequest()
@@ -383,7 +491,17 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
+// DeleteDevice
 // 本接口（DeleteDevice）用于删除物联网通信设备。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
+//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -408,7 +526,12 @@ func NewDeleteLoraDeviceResponse() (response *DeleteLoraDeviceResponse) {
     return
 }
 
+// DeleteLoraDevice
 // 删除lora类型的设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteLoraDevice(request *DeleteLoraDeviceRequest) (response *DeleteLoraDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteLoraDeviceRequest()
@@ -433,7 +556,17 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
+// DeleteProduct
 // 本接口（DeleteProduct）用于删除一个物联网通信产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
+//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
@@ -458,7 +591,13 @@ func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
     return
 }
 
+// DeleteTopicRule
 // 本接口（DeleteTopicRule）用于删除规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *DeleteTopicRuleResponse, err error) {
     if request == nil {
         request = NewDeleteTopicRuleRequest()
@@ -483,7 +622,13 @@ func NewDescribeAllDevicesResponse() (response *DescribeAllDevicesResponse) {
     return
 }
 
+// DescribeAllDevices
 // 查询所有设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DescribeAllDevices(request *DescribeAllDevicesRequest) (response *DescribeAllDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeAllDevicesRequest()
@@ -508,7 +653,14 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     return
 }
 
+// DescribeDevice
 // 本接口（DescribeDevice）用于查看设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceRequest()
@@ -533,7 +685,16 @@ func NewDescribeDeviceClientKeyResponse() (response *DescribeDeviceClientKeyResp
     return
 }
 
+// DescribeDeviceClientKey
 // 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNSUPPORTEDOPERATION_CLIENTCERTALREADYGOT = "UnsupportedOperation.ClientCertAlreadyGot"
+//  UNSUPPORTEDOPERATION_WRONGPRODUCTAUTHTYPE = "UnsupportedOperation.WrongProductAuthType"
 func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest) (response *DescribeDeviceClientKeyResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceClientKeyRequest()
@@ -558,7 +719,14 @@ func NewDescribeDeviceResourceResponse() (response *DescribeDeviceResourceRespon
     return
 }
 
+// DescribeDeviceResource
 // 本接口（DescribeDeviceResource）用于查询设备资源详情。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICERESOURCENOTEXIST = "ResourceNotFound.DeviceResourceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResource(request *DescribeDeviceResourceRequest) (response *DescribeDeviceResourceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceResourceRequest()
@@ -583,7 +751,13 @@ func NewDescribeDeviceResourcesResponse() (response *DescribeDeviceResourcesResp
     return
 }
 
+// DescribeDeviceResources
 // 本接口（DescribeDeviceResources）用于查询设备资源列表。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest) (response *DescribeDeviceResourcesResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceResourcesRequest()
@@ -608,7 +782,15 @@ func NewDescribeDeviceShadowResponse() (response *DescribeDeviceShadowResponse) 
     return
 }
 
+// DescribeDeviceShadow
 // 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMINCOMPLETE = "InvalidParameterValue.ParamIncomplete"
+//  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
 func (c *Client) DescribeDeviceShadow(request *DescribeDeviceShadowRequest) (response *DescribeDeviceShadowResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceShadowRequest()
@@ -633,7 +815,13 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     return
 }
 
+// DescribeDevices
 // 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesRequest()
@@ -658,7 +846,11 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
     return
 }
 
+// DescribeFirmware
 // 查询固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareRequest()
@@ -683,7 +875,11 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
     return
 }
 
+// DescribeFirmwareTask
 // 查询固件升级任务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
@@ -708,7 +904,11 @@ func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDev
     return
 }
 
+// DescribeFirmwareTaskDevices
 // 查询固件升级任务的设备列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
@@ -733,7 +933,11 @@ func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTa
     return
 }
 
+// DescribeFirmwareTaskDistribution
 // 查询固件升级任务状态分布
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
@@ -758,7 +962,11 @@ func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTask
     return
 }
 
+// DescribeFirmwareTaskStatistics
 // 查询固件升级任务统计信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
@@ -783,7 +991,11 @@ func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse
     return
 }
 
+// DescribeFirmwareTasks
 // 查询固件升级任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
@@ -808,7 +1020,16 @@ func NewDescribeLoraDeviceResponse() (response *DescribeLoraDeviceResponse) {
     return
 }
 
+// DescribeLoraDevice
 // 获取lora类型设备的详细信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_QUERYDEVICEFAIL = "InvalidParameterValue.QueryDeviceFail"
+//  INVALIDPARAMETERVALUE_QUERYLORADEVICEFAIL = "InvalidParameterValue.QueryLoraDeviceFail"
+//  INVALIDPARAMETERVALUE_QUERYNOTLORADEVICEFAIL = "InvalidParameterValue.QueryNotLoraDeviceFail"
+//  INVALIDPARAMETERVALUE_REGISTERLORAINFOERROR = "InvalidParameterValue.RegisterLoraInfoError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeLoraDevice(request *DescribeLoraDeviceRequest) (response *DescribeLoraDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeLoraDeviceRequest()
@@ -833,7 +1054,16 @@ func NewDescribeMultiDevTaskResponse() (response *DescribeMultiDevTaskResponse) 
     return
 }
 
+// DescribeMultiDevTask
 // 本接口（DescribeMultiDevTask）用于查询批量创建设备任务的执行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKIDNOTMATCH = "FailedOperation.TaskIDNotMatch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TASKIDNOTMATCH = "InvalidParameterValue.TaskIDNotMatch"
+//  RESOURCENOTFOUND_CREATEMULTIDEVICETASKNOTEXIST = "ResourceNotFound.CreateMultiDeviceTaskNotExist"
+//  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeMultiDevTask(request *DescribeMultiDevTaskRequest) (response *DescribeMultiDevTaskResponse, err error) {
     if request == nil {
         request = NewDescribeMultiDevTaskRequest()
@@ -858,7 +1088,18 @@ func NewDescribeMultiDevicesResponse() (response *DescribeMultiDevicesResponse) 
     return
 }
 
+// DescribeMultiDevices
 // 本接口（DescribeMultiDevices）用于查询批量创建设备的执行结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKIDNOTMATCH = "FailedOperation.TaskIDNotMatch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
+//  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  RESOURCENOTFOUND_CREATEMULTIDEVICETASKNOTEXIST = "ResourceNotFound.CreateMultiDeviceTaskNotExist"
+//  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
+//  UNAUTHORIZEDOPERATION_CREATEMULTIDEVICETASKNOTFINISHED = "UnauthorizedOperation.CreateMultiDeviceTaskNotFinished"
 func (c *Client) DescribeMultiDevices(request *DescribeMultiDevicesRequest) (response *DescribeMultiDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeMultiDevicesRequest()
@@ -883,7 +1124,14 @@ func NewDescribeProductResourceResponse() (response *DescribeProductResourceResp
     return
 }
 
+// DescribeProductResource
 // 本接口（DescribeProductResource）用于查询产品资源详情。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest) (response *DescribeProductResourceResponse, err error) {
     if request == nil {
         request = NewDescribeProductResourceRequest()
@@ -908,7 +1156,15 @@ func NewDescribeProductResourcesResponse() (response *DescribeProductResourcesRe
     return
 }
 
+// DescribeProductResources
 // 本接口（DescribeProductResources）用于查询产品资源列表。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTRESOURCEDUPLICATE = "FailedOperation.ProductResourceDuplicate"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResources(request *DescribeProductResourcesRequest) (response *DescribeProductResourcesResponse, err error) {
     if request == nil {
         request = NewDescribeProductResourcesRequest()
@@ -933,7 +1189,14 @@ func NewDescribeProductTaskResponse() (response *DescribeProductTaskResponse) {
     return
 }
 
+// DescribeProductTask
 // 本接口（DescribeProductTask）用于查看产品级别的任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CREATEMULTIDEVICETASKNOTEXIST = "ResourceNotFound.CreateMultiDeviceTaskNotExist"
+//  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeProductTask(request *DescribeProductTaskRequest) (response *DescribeProductTaskResponse, err error) {
     if request == nil {
         request = NewDescribeProductTaskRequest()
@@ -958,7 +1221,12 @@ func NewDescribeProductTasksResponse() (response *DescribeProductTasksResponse) 
     return
 }
 
+// DescribeProductTasks
 // 本接口（DescribeProductTasks）用于查看产品级别的任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProductTasks(request *DescribeProductTasksRequest) (response *DescribeProductTasksResponse, err error) {
     if request == nil {
         request = NewDescribeProductTasksRequest()
@@ -983,7 +1251,12 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     return
 }
 
+// DescribeProducts
 // 本接口（DescribeProducts）用于列出产品列表。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
     if request == nil {
         request = NewDescribeProductsRequest()
@@ -1008,7 +1281,11 @@ func NewDescribePushResourceTaskStatisticsResponse() (response *DescribePushReso
     return
 }
 
+// DescribePushResourceTaskStatistics
 // 查询推送资源任务统计信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourceTaskStatisticsRequest) (response *DescribePushResourceTaskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribePushResourceTaskStatisticsRequest()
@@ -1033,7 +1310,11 @@ func NewDescribeResourceTasksResponse() (response *DescribeResourceTasksResponse
     return
 }
 
+// DescribeResourceTasks
 // 查询资源推送任务列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (response *DescribeResourceTasksResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTasksRequest()
@@ -1058,7 +1339,13 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
     return
 }
 
+// DescribeTask
 // 本接口（DescribeTask）用于查询一个已创建任务的详情，任务保留一个月 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
     if request == nil {
         request = NewDescribeTaskRequest()
@@ -1083,7 +1370,12 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
     return
 }
 
+// DescribeTasks
 // 本接口（DescribeTasks）用于查询已创建的任务列表，任务保留一个月 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -1108,7 +1400,17 @@ func NewDisableTopicRuleResponse() (response *DisableTopicRuleResponse) {
     return
 }
 
+// DisableTopicRule
 // 本接口（DisableTopicRule）用于禁用规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYDISABLED = "FailedOperation.RuleAlreadyDisabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *DisableTopicRuleResponse, err error) {
     if request == nil {
         request = NewDisableTopicRuleRequest()
@@ -1133,7 +1435,11 @@ func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
     return
 }
 
+// EditFirmware
 // 编辑固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
     if request == nil {
         request = NewEditFirmwareRequest()
@@ -1158,7 +1464,24 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
     return
 }
 
+// EnableTopicRule
 // 本接口（EnableTopicRule）用于启用规则 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATIONOFFUNCTIONITEM = "FailedOperation.DuplicationOfFunctionItem"
+//  FAILEDOPERATION_FUNCTIONFILENOTEXIST = "FailedOperation.FunctionFileNotExist"
+//  FAILEDOPERATION_PROXYIPISNOTENOUGH = "FailedOperation.ProxyIPIsNotEnough"
+//  FAILEDOPERATION_RULEALREADYENABLED = "FailedOperation.RuleAlreadyEnabled"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
+//  INVALIDPARAMETERVALUE_CLOUDCOMPONENTALREADYEXIST = "InvalidParameterValue.CloudComponentAlreadyExist"
+//  INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = "InvalidParameterValue.FailActionHasSameDevice"
+//  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
     if request == nil {
         request = NewEnableTopicRuleRequest()
@@ -1183,7 +1506,12 @@ func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
     return
 }
 
+// GetCOSURL
 // 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLResponse, err error) {
     if request == nil {
         request = NewGetCOSURLRequest()
@@ -1208,7 +1536,13 @@ func NewGetUserResourceInfoResponse() (response *GetUserResourceInfoResponse) {
     return
 }
 
+// GetUserResourceInfo
 // 本接口（GetUserResourceInfo）用于查询用户资源使用信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) GetUserResourceInfo(request *GetUserResourceInfoRequest) (response *GetUserResourceInfoResponse, err error) {
     if request == nil {
         request = NewGetUserResourceInfoRequest()
@@ -1233,7 +1567,11 @@ func NewPublishAsDeviceResponse() (response *PublishAsDeviceResponse) {
     return
 }
 
+// PublishAsDevice
 // 模拟lora类型的设备端向服务器端发送消息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) PublishAsDevice(request *PublishAsDeviceRequest) (response *PublishAsDeviceResponse, err error) {
     if request == nil {
         request = NewPublishAsDeviceRequest()
@@ -1258,7 +1596,12 @@ func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResp
     return
 }
 
+// PublishBroadcastMessage
 // 发布广播消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
     if request == nil {
         request = NewPublishBroadcastMessageRequest()
@@ -1283,7 +1626,24 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
     return
 }
 
+// PublishMessage
 // 本接口（PublishMessage）用于向某个主题发消息。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICEALREADYDISABLED = "FailedOperation.DeviceAlreadyDisabled"
+//  FAILEDOPERATION_DEVICENOSUBSCRIPTION = "FailedOperation.DeviceNoSubscription"
+//  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  FAILEDOPERATION_INVALIDMSGLEN = "FailedOperation.InvalidMsgLen"
+//  FAILEDOPERATION_INVALIDTOPICNAME = "FailedOperation.InvalidTopicName"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  LIMITEXCEEDED_MESSAGESAVED = "LimitExceeded.MessageSaved"
+//  LIMITEXCEEDED_OFFLINEMESSAGEEXCEEDLIMIT = "LimitExceeded.OfflineMessageExceedLimit"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     if request == nil {
         request = NewPublishMessageRequest()
@@ -1308,7 +1668,17 @@ func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
     return
 }
 
+// PublishRRPCMessage
 // 发布RRPC消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEALREADYDISABLED = "FailedOperation.DeviceAlreadyDisabled"
+//  FAILEDOPERATION_DEVICENOSUBSCRIPTION = "FailedOperation.DeviceNoSubscription"
+//  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  FAILEDOPERATION_RRPCTIMEOUT = "FailedOperation.RRPCTimeout"
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  LIMITEXCEEDED_OFFLINEMESSAGEEXCEEDLIMIT = "LimitExceeded.OfflineMessageExceedLimit"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (response *PublishRRPCMessageResponse, err error) {
     if request == nil {
         request = NewPublishRRPCMessageRequest()
@@ -1333,7 +1703,11 @@ func NewPublishToDeviceResponse() (response *PublishToDeviceResponse) {
     return
 }
 
+// PublishToDevice
 // 服务器端下发消息给lora类型的设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *PublishToDeviceResponse, err error) {
     if request == nil {
         request = NewPublishToDeviceRequest()
@@ -1358,7 +1732,24 @@ func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
     return
 }
 
+// ReplaceTopicRule
 // 本接口（ReplaceTopicRule）用于修改替换规则 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
+//  INVALIDPARAMETERVALUE_CLOUDCOMPONENTALREADYEXIST = "InvalidParameterValue.CloudComponentAlreadyExist"
+//  INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = "InvalidParameterValue.FailActionHasSameDevice"
+//  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
+//  INVALIDPARAMETERVALUE_REPUBLISHTOPICFORMATERROR = "InvalidParameterValue.RepublishTopicFormatError"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = "InvalidParameterValue.TopicRuleAlreadyExist"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  INVALIDPARAMETERVALUE_UPDATETOPICRULEDBFAIL = "InvalidParameterValue.UpdateTopicRuleDBFail"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {
     if request == nil {
         request = NewReplaceTopicRuleRequest()
@@ -1383,7 +1774,14 @@ func NewResetDeviceStateResponse() (response *ResetDeviceStateResponse) {
     return
 }
 
+// ResetDeviceState
 // 重置设备的连接状态 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *ResetDeviceStateResponse, err error) {
     if request == nil {
         request = NewResetDeviceStateRequest()
@@ -1408,7 +1806,13 @@ func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResp
     return
 }
 
+// RetryDeviceFirmwareTask
 // 重试设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
@@ -1433,7 +1837,13 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
     return
 }
 
+// UnbindDevices
 // 本接口（UnbindDevices）用于网关设备批量解绑子设备 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
     if request == nil {
         request = NewUnbindDevicesRequest()
@@ -1458,7 +1868,14 @@ func NewUpdateDeviceAvailableStateResponse() (response *UpdateDeviceAvailableSta
     return
 }
 
+// UpdateDeviceAvailableState
 // 启用或者禁用设备 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 func (c *Client) UpdateDeviceAvailableState(request *UpdateDeviceAvailableStateRequest) (response *UpdateDeviceAvailableStateResponse, err error) {
     if request == nil {
         request = NewUpdateDeviceAvailableStateRequest()
@@ -1483,7 +1900,19 @@ func NewUpdateDeviceShadowResponse() (response *UpdateDeviceShadowResponse) {
     return
 }
 
+// UpdateDeviceShadow
 // 本接口（UpdateDeviceShadow）用于更新虚拟设备信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPDATEVERSIONNOTMATCH = "FailedOperation.UpdateVersionNotMatch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDJSON = "InvalidParameterValue.InvalidJSON"
+//  INVALIDPARAMETERVALUE_JSONHASINVALIDNODE = "InvalidParameterValue.JSONHasInvalidNode"
+//  INVALIDPARAMETERVALUE_JSONSIZEEXCEEDLIMIT = "InvalidParameterValue.JSONSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_PREFIXINVALID = "InvalidParameterValue.PrefixInvalid"
+//  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
 func (c *Client) UpdateDeviceShadow(request *UpdateDeviceShadowRequest) (response *UpdateDeviceShadowResponse, err error) {
     if request == nil {
         request = NewUpdateDeviceShadowRequest()
@@ -1508,7 +1937,14 @@ func NewUpdateTopicPolicyResponse() (response *UpdateTopicPolicyResponse) {
     return
 }
 
+// UpdateTopicPolicy
 // 本接口（UpdateTopicPolicy）用于更新Topic信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
+//  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
 func (c *Client) UpdateTopicPolicy(request *UpdateTopicPolicyRequest) (response *UpdateTopicPolicyResponse, err error) {
     if request == nil {
         request = NewUpdateTopicPolicyRequest()
@@ -1533,7 +1969,14 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
     return
 }
 
+// UploadFirmware
 // 本接口（UploadFirmware）用于上传设备固件信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
     if request == nil {
         request = NewUploadFirmwareRequest()

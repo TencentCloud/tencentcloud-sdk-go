@@ -29,7 +29,7 @@ func (r *DescribeComponentAlertObjectRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeComponentAlertObjectRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -56,7 +56,7 @@ func (r *DescribeComponentAlertObjectResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeComponentAlertObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -71,7 +71,7 @@ func (r *DescribeServiceAlertObjectRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServiceAlertObjectRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -98,7 +98,7 @@ func (r *DescribeServiceAlertObjectResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServiceAlertObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -116,7 +116,7 @@ func (r *DescribeTokenRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTokenRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -147,7 +147,7 @@ func (r *DescribeTokenResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

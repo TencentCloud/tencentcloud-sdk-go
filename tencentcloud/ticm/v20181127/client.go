@@ -58,7 +58,11 @@ func NewDescribeVideoTaskResponse() (response *DescribeVideoTaskResponse) {
     return
 }
 
+// DescribeVideoTask
 // 提交完视频审核任务后，可以通过本接口来获取当前处理的进度和结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 func (c *Client) DescribeVideoTask(request *DescribeVideoTaskRequest) (response *DescribeVideoTaskResponse, err error) {
     if request == nil {
         request = NewDescribeVideoTaskRequest()
@@ -83,7 +87,17 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
     return
 }
 
+// ImageModeration
 // 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
         request = NewImageModerationRequest()
@@ -108,7 +122,12 @@ func NewVideoModerationResponse() (response *VideoModerationResponse) {
     return
 }
 
+// VideoModeration
 // 本接口提供多种维度的视频审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 func (c *Client) VideoModeration(request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
     if request == nil {
         request = NewVideoModerationRequest()

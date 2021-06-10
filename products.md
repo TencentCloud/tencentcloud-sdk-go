@@ -80,7 +80,7 @@
 | habo | [](https://cloud.tencent.com/document/product) | 2019-05-09 19:37:22 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2021-02-03 08:05:01 |
 | iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-05-26 08:05:27 |
-| ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-05-11 20:09:52 |
+| ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-06-10 08:00:25 |
 | ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-06-09 08:01:32 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-01-07 08:00:40 |
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-05-12 08:00:38 |
@@ -101,7 +101,7 @@
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-05-27 08:06:27 |
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-06-03 08:06:47 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-05-21 08:06:33 |
-| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-06-08 08:00:08 |
+| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-06-10 08:00:10 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2021-01-07 08:06:57 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
@@ -141,7 +141,7 @@
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-01-07 08:00:18 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-06-02 08:09:52 |
-| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-06-07 08:10:21 |
+| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-06-10 08:10:20 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2021-06-04 08:00:25 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product) | 2020-03-16 08:18:42 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2021-01-07 08:00:07 |

@@ -58,7 +58,14 @@ func NewAgentPayDealsResponse() (response *AgentPayDealsResponse) {
     return
 }
 
+// AgentPayDeals
 // 代理商支付订单接口，支持自付/代付
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPayDealsResponse, err error) {
     if request == nil {
         request = NewAgentPayDealsRequest()
@@ -83,7 +90,13 @@ func NewAgentTransferMoneyResponse() (response *AgentTransferMoneyResponse) {
     return
 }
 
+// AgentTransferMoney
 // 为合作伙伴提供转账给客户能力。仅支持合作伙伴为自己名下客户转账。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AgentTransferMoney(request *AgentTransferMoneyRequest) (response *AgentTransferMoneyResponse, err error) {
     if request == nil {
         request = NewAgentTransferMoneyRequest()
@@ -108,7 +121,13 @@ func NewAuditApplyClientResponse() (response *AuditApplyClientResponse) {
     return
 }
 
+// AuditApplyClient
 // 代理商可以审核其名下申请中代客
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *AuditApplyClientResponse, err error) {
     if request == nil {
         request = NewAuditApplyClientRequest()
@@ -133,7 +152,11 @@ func NewCreatePayRelationForClientResponse() (response *CreatePayRelationForClie
     return
 }
 
+// CreatePayRelationForClient
 // 合作伙伴为客户创建强代付关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreatePayRelationForClient(request *CreatePayRelationForClientRequest) (response *CreatePayRelationForClientResponse, err error) {
     if request == nil {
         request = NewCreatePayRelationForClientRequest()
@@ -158,7 +181,13 @@ func NewDescribeAgentAuditedClientsResponse() (response *DescribeAgentAuditedCli
     return
 }
 
+// DescribeAgentAuditedClients
 // 查询已审核客户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentAuditedClients(request *DescribeAgentAuditedClientsRequest) (response *DescribeAgentAuditedClientsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentAuditedClientsRequest()
@@ -183,7 +212,12 @@ func NewDescribeAgentBillsResponse() (response *DescribeAgentBillsResponse) {
     return
 }
 
+// DescribeAgentBills
 // 代理商可查询自己及名下代客所有业务明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAgentBills(request *DescribeAgentBillsRequest) (response *DescribeAgentBillsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentBillsRequest()
@@ -208,7 +242,14 @@ func NewDescribeAgentClientGradeResponse() (response *DescribeAgentClientGradeRe
     return
 }
 
+// DescribeAgentClientGrade
 // 传入代客uin，查客户级别，客户审核状态，客户实名认证状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentClientGrade(request *DescribeAgentClientGradeRequest) (response *DescribeAgentClientGradeResponse, err error) {
     if request == nil {
         request = NewDescribeAgentClientGradeRequest()
@@ -233,7 +274,12 @@ func NewDescribeAgentClientsResponse() (response *DescribeAgentClientsResponse) 
     return
 }
 
+// DescribeAgentClients
 // 代理商可查询自己名下待审核客户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (response *DescribeAgentClientsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentClientsRequest()
@@ -258,7 +304,14 @@ func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCache
     return
 }
 
+// DescribeAgentDealsByCache
 // 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheRequest) (response *DescribeAgentDealsByCacheResponse, err error) {
     if request == nil {
         request = NewDescribeAgentDealsByCacheRequest()
@@ -283,7 +336,14 @@ func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResp
     return
 }
 
+// DescribeAgentDealsCache
 // 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest) (response *DescribeAgentDealsCacheResponse, err error) {
     if request == nil {
         request = NewDescribeAgentDealsCacheRequest()
@@ -308,7 +368,14 @@ func NewDescribeAgentPayDealsResponse() (response *DescribeAgentPayDealsResponse
     return
 }
 
+// DescribeAgentPayDeals
 // 【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (response *DescribeAgentPayDealsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentPayDealsRequest()
@@ -333,7 +400,14 @@ func NewDescribeAgentPayDealsV2Response() (response *DescribeAgentPayDealsV2Resp
     return
 }
 
+// DescribeAgentPayDealsV2
 // 可以查询代理商代付的所有订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request) (response *DescribeAgentPayDealsV2Response, err error) {
     if request == nil {
         request = NewDescribeAgentPayDealsV2Request()
@@ -358,7 +432,14 @@ func NewDescribeAgentSelfPayDealsResponse() (response *DescribeAgentSelfPayDeals
     return
 }
 
+// DescribeAgentSelfPayDeals
 // 【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsRequest) (response *DescribeAgentSelfPayDealsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentSelfPayDealsRequest()
@@ -383,7 +464,14 @@ func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDea
     return
 }
 
+// DescribeAgentSelfPayDealsV2
 // 可以查询代理商下指定客户的自付订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV2Request) (response *DescribeAgentSelfPayDealsV2Response, err error) {
     if request == nil {
         request = NewDescribeAgentSelfPayDealsV2Request()
@@ -408,7 +496,13 @@ func NewDescribeClientBalanceResponse() (response *DescribeClientBalanceResponse
     return
 }
 
+// DescribeClientBalance
 // 为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (response *DescribeClientBalanceResponse, err error) {
     if request == nil {
         request = NewDescribeClientBalanceRequest()
@@ -433,7 +527,12 @@ func NewDescribeClientBaseInfoResponse() (response *DescribeClientBaseInfoRespon
     return
 }
 
+// DescribeClientBaseInfo
 // 国际站根据UIN查询代客基础信息【本接口仅限主账号访问】
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeClientBaseInfo(request *DescribeClientBaseInfoRequest) (response *DescribeClientBaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeClientBaseInfoRequest()
@@ -458,7 +557,12 @@ func NewDescribeRebateInfosResponse() (response *DescribeRebateInfosResponse) {
     return
 }
 
+// DescribeRebateInfos
 // 代理商可查询自己名下全部返佣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (response *DescribeRebateInfosResponse, err error) {
     if request == nil {
         request = NewDescribeRebateInfosRequest()
@@ -483,7 +587,14 @@ func NewDescribeSalesmansResponse() (response *DescribeSalesmansResponse) {
     return
 }
 
+// DescribeSalesmans
 // 代理商查询名下业务员列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response *DescribeSalesmansResponse, err error) {
     if request == nil {
         request = NewDescribeSalesmansRequest()
@@ -508,7 +619,14 @@ func NewDescribeUnbindClientListResponse() (response *DescribeUnbindClientListRe
     return
 }
 
+// DescribeUnbindClientList
 // 代理商名下客户解绑记录查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUnbindClientList(request *DescribeUnbindClientListRequest) (response *DescribeUnbindClientListResponse, err error) {
     if request == nil {
         request = NewDescribeUnbindClientListRequest()
@@ -533,7 +651,12 @@ func NewModifyClientRemarkResponse() (response *ModifyClientRemarkResponse) {
     return
 }
 
+// ModifyClientRemark
 // 代理商可以对名下客户添加备注、修改备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyClientRemark(request *ModifyClientRemarkRequest) (response *ModifyClientRemarkResponse, err error) {
     if request == nil {
         request = NewModifyClientRemarkRequest()
@@ -558,7 +681,11 @@ func NewRemovePayRelationForClientResponse() (response *RemovePayRelationForClie
     return
 }
 
+// RemovePayRelationForClient
 // 合作伙伴为客户消除强代付关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) RemovePayRelationForClient(request *RemovePayRelationForClientRequest) (response *RemovePayRelationForClientResponse, err error) {
     if request == nil {
         request = NewRemovePayRelationForClientRequest()

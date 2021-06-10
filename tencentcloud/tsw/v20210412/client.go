@@ -58,6 +58,7 @@ func NewDescribeComponentAlertObjectResponse() (response *DescribeComponentAlert
     return
 }
 
+// DescribeComponentAlertObject
 // 获取告警对象-组件告警
 func (c *Client) DescribeComponentAlertObject(request *DescribeComponentAlertObjectRequest) (response *DescribeComponentAlertObjectResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewDescribeServiceAlertObjectResponse() (response *DescribeServiceAlertObje
     return
 }
 
+// DescribeServiceAlertObject
 // 获取告警对象-服务告警表
 func (c *Client) DescribeServiceAlertObject(request *DescribeServiceAlertObjectRequest) (response *DescribeServiceAlertObjectResponse, err error) {
     if request == nil {
@@ -108,6 +110,7 @@ func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
     return
 }
 
+// DescribeToken
 // 查询token
 func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
     if request == nil {

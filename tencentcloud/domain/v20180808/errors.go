@@ -1,0 +1,160 @@
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package v20180808
+
+const (
+	// 此产品的特有错误码
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 域名查询失败，请稍后重试。
+	FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+
+	// 创建模板操作失败。
+	FAILEDOPERATION_CREATETEMPLATEFAILED = "FailedOperation.CreateTemplateFailed"
+
+	// 删除模版操作失败，请稍后重试。
+	FAILEDOPERATION_DELETETEMPLATEFAILED = "FailedOperation.DeleteTemplateFailed"
+
+	// 获取域名信息操作失败，请稍后重试。
+	FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+
+	// 获取域名信息操作失败，请稍后重试。
+	FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
+
+	// 查询模板操作失败。
+	FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+
+	// 获取域名价格列表失败。
+	FAILEDOPERATION_DOMAINPRICELISTFAILED = "FailedOperation.DomainPriceListFailed"
+
+	// 域名过户失败。
+	FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+
+	// 域名注册操作失败，请稍后重试。
+	FAILEDOPERATION_REGISTERDOMAIN = "FailedOperation.RegisterDomain"
+
+	// 域名注册操作失败，请稍后重试。
+	FAILEDOPERATION_REGISTERDOMAINFAILED = "FailedOperation.RegisterDomainFailed"
+
+	// 修改 DNS 失败，请输入正确的 DNS 服务器地址。
+	FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
+
+	// 模板数量超过最大值50个。
+	FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
+
+	// 上传图片操作失败。
+	FAILEDOPERATION_UPLOADIMAGEFAILED = "FailedOperation.UploadImageFailed"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 网络错误，请稍后重试。
+	INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
+	// 资质信息输入不正确。
+	INVALIDPARAMETER_CERTIFICATECODEISINVALID = "InvalidParameter.CertificateCodeIsInvalid"
+
+	// 资质照片输入不正确。
+	INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
+
+	// 无权限自定义DNS。
+	INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+
+	// 域名输入为空或者不合法。
+	INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+
+	// 存在重复域名，请检查后重新提交。
+	INVALIDPARAMETER_DUPLICATEDOMAINEXISTS = "InvalidParameter.DuplicateDomainExists"
+
+	// 邮箱为空或者不合法。
+	INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+
+	// 上传的照片参数为空或者不合法。
+	INVALIDPARAMETER_IMAGEFILEISINVALID = "InvalidParameter.ImageFileIsInvalid"
+
+	// 联系人为空或者不合法。
+	INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
+
+	// 注册人为空或者不合法。
+	INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+
+	// 特惠包ID无效。
+	INVALIDPARAMETER_PACKAGERESOURCEIDINVALID = "InvalidParameter.PackageResourceIdInvalid"
+
+	// 请求类型错误。
+	INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+
+	// 模板地址有误，请选择正确的模板。
+	INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
+
+	// 电话为空或者不合法。
+	INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+
+	// 域名数量不能超过4000个。
+	INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+
+	// 用户类型为空或者不合法。
+	INVALIDPARAMETER_USERTYPEISINVALID = "InvalidParameter.UserTypeIsInvalid"
+
+	// 邮编为空或者不合法。
+	INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
+	// 域名不能为空。
+	MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+
+	// 请求数据不能为空。
+	MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+
+	// 模板ID为空或者不合法。
+	MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+
+	// 模板已存在。
+	MISSINGPARAMETER_TEMPLATEIDISEXIST = "MissingParameter.TemplateIdIsExist"
+
+	// 当前正在执行中的任务过多，请稍后再提交新的任务。
+	RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 模板未实名。
+	RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+
+	// 域名地址有误，请输入正确的域名地址。
+	RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+
+	// 模板信息有误，请输入正确的信息。
+	RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+
+	// 该域名已有同类型操作未完成，无法执行该操作。
+	RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+
+	// 账户实名认证未通过。
+	UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+
+	// 当前域名状态不支持修改。
+	UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
+
+	// 当前域名状态不支持修改。
+	UNSUPPORTEDOPERATION_MODIFYDOMAINUNSUPPORTED = "UnsupportedOperation.ModifyDomainUnsupported"
+)

@@ -1,0 +1,124 @@
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package v20191205
+
+const (
+	// 此产品的特有错误码
+
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 请检查是否有权限。
+	FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+
+	// 取消订单失败。
+	FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+
+	// 该证书已颁发， 不能删除。
+	FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+
+	// 免费证书申请1小时内不允许删除。
+	FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+
+	// 获取订单信息失败，请稍后重试。
+	FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+
+	// 证书已存在。
+	FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
+
+	// 证书不符合标准。
+	FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+
+	// 证书与私钥不对应。
+	FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+
+	// 证书不存在。
+	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+
+	// 证书确认函文件过大（需小于1.4M）。
+	FAILEDOPERATION_CONFIRMLETTERTOOLARGE = "FailedOperation.ConfirmLetterTooLarge"
+
+	// 证书确认函文件过小（需大于1KB）。
+	FAILEDOPERATION_CONFIRMLETTERTOOSMALL = "FailedOperation.ConfirmLetterTooSmall"
+
+	// 证书已关联云资源，无法删除。
+	FAILEDOPERATION_DELETERESOURCEFAILED = "FailedOperation.DeleteResourceFailed"
+
+	// 免费证书数量超出限制。
+	FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+
+	// 文件尺寸太大（需小于1.4MB）。
+	FAILEDOPERATION_FILETOOLARGE = "FailedOperation.FileTooLarge"
+
+	// 文件尺寸太小，请上传清晰图片。
+	FAILEDOPERATION_FILETOOSMALL = "FailedOperation.FileTooSmall"
+
+	// 证书来源错误。
+	FAILEDOPERATION_INVALIDCERTIFICATESOURCE = "FailedOperation.InvalidCertificateSource"
+
+	// 证书状态不正确。
+	FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+
+	// 证书确认函格式错误（支持格式为jpg、jpeg、png、pdf）。
+	FAILEDOPERATION_INVALIDCONFIRMLETTERFORMAT = "FailedOperation.InvalidConfirmLetterFormat"
+
+	// 证书确认函格式错误（支持格式为jpg、pdf、gif）。
+	FAILEDOPERATION_INVALIDCONFIRMLETTERFORMATWOSIGN = "FailedOperation.InvalidConfirmLetterFormatWosign"
+
+	// 文件格式错误，请重新上传。
+	FAILEDOPERATION_INVALIDFILETYPE = "FailedOperation.InvalidFileType"
+
+	// 参数有误。
+	FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+
+	// 当前 CA 机构访问繁忙，请稍后重试。
+	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+
+	// 您没有该项目的操作权限。
+	FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+
+	// 尚未通过实名认证。
+	FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+
+	// 该订单已重签发。
+	FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+
+	// 重颁发失败。
+	FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+
+	// 证书吊销失败。
+	FAILEDOPERATION_REVOKEFAILED = "FailedOperation.RevokeFailed"
+
+	// 证书已关联云资源，无法吊销。
+	FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
+	// 公司管理人不存在。
+	RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+)

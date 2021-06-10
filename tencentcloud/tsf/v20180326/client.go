@@ -58,7 +58,23 @@ func NewAddClusterInstancesResponse() (response *AddClusterInstancesResponse) {
     return
 }
 
+// AddClusterInstances
 // 添加云主机节点至TSF集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCERESETERROR = "FailedOperation.InstanceResetError"
+//  FAILEDOPERATION_INSTANCERESETTIMEOUT = "FailedOperation.InstanceResetTimeout"
+//  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
+//  FAILEDOPERATION_TKECLUSTERQUERYFAILED = "FailedOperation.TkeClusterQueryFailed"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
+//  RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) AddClusterInstances(request *AddClusterInstancesRequest) (response *AddClusterInstancesResponse, err error) {
     if request == nil {
         request = NewAddClusterInstancesRequest()
@@ -83,7 +99,12 @@ func NewAddInstancesResponse() (response *AddInstancesResponse) {
     return
 }
 
+// AddInstances
 // 添加云主机节点至TSF集群
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
     if request == nil {
         request = NewAddInstancesRequest()
@@ -108,7 +129,13 @@ func NewBindApiGroupResponse() (response *BindApiGroupResponse) {
     return
 }
 
+// BindApiGroup
 // 网关与API分组批量绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) BindApiGroup(request *BindApiGroupRequest) (response *BindApiGroupResponse, err error) {
     if request == nil {
         request = NewBindApiGroupRequest()
@@ -133,7 +160,13 @@ func NewBindPluginResponse() (response *BindPluginResponse) {
     return
 }
 
+// BindPlugin
 // 插件与网关分组/API批量绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) BindPlugin(request *BindPluginRequest) (response *BindPluginResponse, err error) {
     if request == nil {
         request = NewBindPluginRequest()
@@ -158,7 +191,13 @@ func NewChangeApiUsableStatusResponse() (response *ChangeApiUsableStatusResponse
     return
 }
 
+// ChangeApiUsableStatus
 // 启用或禁用API
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) ChangeApiUsableStatus(request *ChangeApiUsableStatusRequest) (response *ChangeApiUsableStatusResponse, err error) {
     if request == nil {
         request = NewChangeApiUsableStatusRequest()
@@ -183,7 +222,24 @@ func NewContinueRunFailedTaskBatchResponse() (response *ContinueRunFailedTaskBat
     return
 }
 
+// ContinueRunFailedTaskBatch
 // 对执行失败的任务批次执行续跑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
+//  FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ContinueRunFailedTaskBatch(request *ContinueRunFailedTaskBatchRequest) (response *ContinueRunFailedTaskBatchResponse, err error) {
     if request == nil {
         request = NewContinueRunFailedTaskBatchRequest()
@@ -208,7 +264,11 @@ func NewCreateAllGatewayApiAsyncResponse() (response *CreateAllGatewayApiAsyncRe
     return
 }
 
+// CreateAllGatewayApiAsync
 // 一键导入API分组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) CreateAllGatewayApiAsync(request *CreateAllGatewayApiAsyncRequest) (response *CreateAllGatewayApiAsyncResponse, err error) {
     if request == nil {
         request = NewCreateAllGatewayApiAsyncRequest()
@@ -233,7 +293,15 @@ func NewCreateApiGroupResponse() (response *CreateApiGroupResponse) {
     return
 }
 
+// CreateApiGroup
 // 创建API分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateApiGroup(request *CreateApiGroupRequest) (response *CreateApiGroupResponse, err error) {
     if request == nil {
         request = NewCreateApiGroupRequest()
@@ -258,7 +326,14 @@ func NewCreateApiRateLimitRuleResponse() (response *CreateApiRateLimitRuleRespon
     return
 }
 
+// CreateApiRateLimitRule
 // 创建API限流规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSISTENCYERROR = "InternalError.GatewayConsistencyError"
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) CreateApiRateLimitRule(request *CreateApiRateLimitRuleRequest) (response *CreateApiRateLimitRuleResponse, err error) {
     if request == nil {
         request = NewCreateApiRateLimitRuleRequest()
@@ -283,7 +358,26 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
     return
 }
 
+// CreateApplication
 // 创建应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = "FailedOperation.ApplicationCreateEsAtuhError"
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  INTERNALERROR_APPLICATIONMASTERNUKNOWNERROR = "InternalError.ApplicationMasterNuknownError"
+//  INTERNALERROR_APPLICATIONSCALABLEINITERROR = "InternalError.ApplicationScalableInitError"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INVALIDPARAMETERVALUE_APPLICATIONMICROTYPEINVALID = "InvalidParameterValue.ApplicationMicroTypeInvalid"
+//  INVALIDPARAMETERVALUE_APPLICATIONNAMEEXIST = "InvalidParameterValue.ApplicationNameExist"
+//  INVALIDPARAMETERVALUE_APPLICATIONNAMENULL = "InvalidParameterValue.ApplicationNameNull"
+//  INVALIDPARAMETERVALUE_APPLICATIONNAMEREGXINVALID = "InvalidParameterValue.ApplicationNameRegxInvalid"
+//  INVALIDPARAMETERVALUE_APPLICATIONTYPEINVALID = "InvalidParameterValue.ApplicationTypeInvalid"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  MISSINGPARAMETER_APPLICATIONTYPENULL = "MissingParameter.ApplicationTypeNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateApplication(request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
     if request == nil {
         request = NewCreateApplicationRequest()
@@ -308,7 +402,28 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
     return
 }
 
+// CreateCluster
 // 创建集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CLUSTERCOMMONERROR = "InternalError.ClusterCommonError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CLUSTERCIDRCONFLICT = "InvalidParameterValue.ClusterCidrConflict"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEEXIST = "InvalidParameterValue.ClusterNameExist"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEREQUIRED = "InvalidParameterValue.ClusterNameRequired"
+//  INVALIDPARAMETERVALUE_CLUSTERREGIONINVALID = "InvalidParameterValue.ClusterRegionInvalid"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEINVALID = "InvalidParameterValue.ClusterTypeInvalid"
+//  INVALIDPARAMETERVALUE_CLUSTERZONEINVALID = "InvalidParameterValue.ClusterZoneInvalid"
+//  LIMITEXCEEDED_TKECLUSTERNUMBEREXCEEDLIMIT = "LimitExceeded.TkeClusterNumberExceedLimit"
+//  MISSINGPARAMETER_CLUSTERSUBNETREQUIRED = "MissingParameter.ClusterSubnetRequired"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CLUSTERVPCNOTEXIST = "ResourceNotFound.ClusterVpcNotExist"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()
@@ -333,7 +448,25 @@ func NewCreateConfigResponse() (response *CreateConfigResponse) {
     return
 }
 
+// CreateConfig
 // 创建配置项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGNAMEINVALID = "InvalidParameterValue.ConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = "InvalidParameterValue.ConfigValueTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONDESCINVALID = "InvalidParameterValue.ConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_APPLICATIONIDREQUIRED = "MissingParameter.ApplicationIdRequired"
+//  MISSINGPARAMETER_CONFIGNAMEREQUIRED = "MissingParameter.ConfigNameRequired"
+//  MISSINGPARAMETER_CONFIGTYPEREQUIRED = "MissingParameter.ConfigTypeRequired"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  MISSINGPARAMETER_CONFIGVERSIONREQUIRED = "MissingParameter.ConfigVersionRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateConfig(request *CreateConfigRequest) (response *CreateConfigResponse, err error) {
     if request == nil {
         request = NewCreateConfigRequest()
@@ -358,7 +491,27 @@ func NewCreateContainGroupResponse() (response *CreateContainGroupResponse) {
     return
 }
 
+// CreateContainGroup
 // 创建容器部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GROUPMASTERNUKNOWNERROR = "InternalError.GroupMasterNuknownError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPNAMELEGNTH = "InvalidParameterValue.ContainergroupGroupnameLegnth"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPNAMEREGEXMATCHFALSE = "InvalidParameterValue.ContainergroupGroupnameRegexMatchFalse"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPINVALIDCPUINFO = "InvalidParameterValue.ContainergroupInvalidCpuInfo"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPINVALIDMEMINFO = "InvalidParameterValue.ContainergroupInvalidMemInfo"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPNODEPORTINVALID = "InvalidParameterValue.ContainergroupNodePortInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPORTINVALID = "InvalidParameterValue.ContainergroupPortInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = "InvalidParameterValue.ContainergroupProtocolInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = "InvalidParameterValue.ContainergroupProtocolPortsNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = "InvalidParameterValue.ContainergroupTargetportNull"
+//  INVALIDPARAMETERVALUE_GROUPCLUSTERNAMESPACENOTBOUND = "InvalidParameterValue.GroupClusterNamespaceNotBound"
+//  INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPCLUSTERNOTFOUND = "ResourceNotFound.ContainergroupClusterNotfound"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
 func (c *Client) CreateContainGroup(request *CreateContainGroupRequest) (response *CreateContainGroupResponse, err error) {
     if request == nil {
         request = NewCreateContainGroupRequest()
@@ -383,7 +536,14 @@ func NewCreateGatewayApiResponse() (response *CreateGatewayApiResponse) {
     return
 }
 
+// CreateGatewayApi
 // 批量导入API至api分组(也支持新建API到分组)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
 func (c *Client) CreateGatewayApi(request *CreateGatewayApiRequest) (response *CreateGatewayApiResponse, err error) {
     if request == nil {
         request = NewCreateGatewayApiRequest()
@@ -408,7 +568,22 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
     return
 }
 
+// CreateGroup
 // 创建虚拟机部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GROUPMASTERNUKNOWNERROR = "InternalError.GroupMasterNuknownError"
+//  INVALIDPARAMETERVALUE_GROUPCLUSTERNAMESPACENOTBOUND = "InvalidParameterValue.GroupClusterNamespaceNotBound"
+//  INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
+//  INVALIDPARAMETERVALUE_GROUPNAMELENGTH = "InvalidParameterValue.GroupNameLength"
+//  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
+//  MISSINGPARAMETER_GROUPAPPLICATIONNULL = "MissingParameter.GroupApplicationNull"
+//  RESOURCENOTFOUND_CONTAINERGROUPCLUSTERNOTFOUND = "ResourceNotFound.ContainergroupClusterNotfound"
+//  RESOURCENOTFOUND_CVMCAEMASTERRESOURCENOTFOUND = "ResourceNotFound.CvmcaeMasterResourceNotFound"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
     if request == nil {
         request = NewCreateGroupRequest()
@@ -433,7 +608,57 @@ func NewCreateLaneResponse() (response *CreateLaneResponse) {
     return
 }
 
+// CreateLane
 // 创建泳道
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) CreateLane(request *CreateLaneRequest) (response *CreateLaneResponse, err error) {
     if request == nil {
         request = NewCreateLaneRequest()
@@ -458,7 +683,56 @@ func NewCreateLaneRuleResponse() (response *CreateLaneRuleResponse) {
     return
 }
 
+// CreateLaneRule
 // 创建泳道规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) CreateLaneRule(request *CreateLaneRuleRequest) (response *CreateLaneRuleResponse, err error) {
     if request == nil {
         request = NewCreateLaneRuleRequest()
@@ -483,7 +757,14 @@ func NewCreateMicroserviceResponse() (response *CreateMicroserviceResponse) {
     return
 }
 
+// CreateMicroservice
 // 新增微服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SERVICEDESCLENGTH = "InvalidParameterValue.ServiceDescLength"
+//  INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = "InvalidParameterValue.ServiceNameRepeated"
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateMicroservice(request *CreateMicroserviceRequest) (response *CreateMicroserviceResponse, err error) {
     if request == nil {
         request = NewCreateMicroserviceRequest()
@@ -508,7 +789,20 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     return
 }
 
+// CreateNamespace
 // 创建命名空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NAMESPACECREATEFAILED = "FailedOperation.NamespaceCreateFailed"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_KUBERNETESAPICREATESECRETERROR = "InternalError.KubernetesApiCreateSecretError"
+//  INVALIDPARAMETERVALUE_NAMESPACEALREADYBINDCLUSTER = "InvalidParameterValue.NamespaceAlreadyBindCluster"
+//  INVALIDPARAMETERVALUE_NAMESPACEDESCINVALID = "InvalidParameterValue.NamespaceDescInvalid"
+//  INVALIDPARAMETERVALUE_NAMESPACENAMEEXIST = "InvalidParameterValue.NamespaceNameExist"
+//  INVALIDPARAMETERVALUE_NAMESPACENAMEINVALID = "InvalidParameterValue.NamespaceNameInvalid"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
     if request == nil {
         request = NewCreateNamespaceRequest()
@@ -533,7 +827,13 @@ func NewCreatePathRewritesResponse() (response *CreatePathRewritesResponse) {
     return
 }
 
+// CreatePathRewrites
 // 创建路径重写
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) CreatePathRewrites(request *CreatePathRewritesRequest) (response *CreatePathRewritesResponse, err error) {
     if request == nil {
         request = NewCreatePathRewritesRequest()
@@ -558,7 +858,16 @@ func NewCreatePublicConfigResponse() (response *CreatePublicConfigResponse) {
     return
 }
 
+// CreatePublicConfig
 // 创建公共配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGNAMEINVALID = "InvalidParameterValue.ConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreatePublicConfig(request *CreatePublicConfigRequest) (response *CreatePublicConfigResponse, err error) {
     if request == nil {
         request = NewCreatePublicConfigRequest()
@@ -583,7 +892,13 @@ func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
     return
 }
 
+// CreateRepository
 // 创建仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINUSE_OBJECTEXIST = "ResourceInUse.ObjectExist"
 func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *CreateRepositoryResponse, err error) {
     if request == nil {
         request = NewCreateRepositoryRequest()
@@ -608,7 +923,16 @@ func NewCreateServerlessGroupResponse() (response *CreateServerlessGroupResponse
     return
 }
 
+// CreateServerlessGroup
 // 创建Serverless部署组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
+//  INVALIDPARAMETERVALUE_GROUPNAMELENGTH = "InvalidParameterValue.GroupNameLength"
+//  INVALIDPARAMETERVALUE_GROUPNAMENULL = "InvalidParameterValue.GroupNameNull"
+//  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
+//  INVALIDPARAMETERVALUE_GROUPPKGNULL = "InvalidParameterValue.GroupPkgNull"
 func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
     if request == nil {
         request = NewCreateServerlessGroupRequest()
@@ -633,7 +957,25 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
     return
 }
 
+// CreateTask
 // 创建任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -658,7 +1000,21 @@ func NewCreateTaskFlowResponse() (response *CreateTaskFlowResponse) {
     return
 }
 
+// CreateTaskFlow
 // 创建工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *CreateTaskFlowResponse, err error) {
     if request == nil {
         request = NewCreateTaskFlowRequest()
@@ -683,7 +1039,13 @@ func NewCreateUnitRuleResponse() (response *CreateUnitRuleResponse) {
     return
 }
 
+// CreateUnitRule
 // 创建单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) CreateUnitRule(request *CreateUnitRuleRequest) (response *CreateUnitRuleResponse, err error) {
     if request == nil {
         request = NewCreateUnitRuleRequest()
@@ -708,7 +1070,11 @@ func NewDeleteApiGroupResponse() (response *DeleteApiGroupResponse) {
     return
 }
 
+// DeleteApiGroup
 // 删除Api分组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (response *DeleteApiGroupResponse, err error) {
     if request == nil {
         request = NewDeleteApiGroupRequest()
@@ -733,7 +1099,17 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
     return
 }
 
+// DeleteApplication
 // 删除应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APPLICATIONREPODELETEPKG = "InternalError.ApplicationRepoDeletePkg"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
+//  RESOURCEINUSE_APPLICATIONCANNOTDELETE = "ResourceInUse.ApplicationCannotDelete"
+//  RESOURCEINUSE_CVMCAEMASTERCANNOTDELETE = "ResourceInUse.CvmcaeMasterCannotDelete"
+//  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationRequest()
@@ -758,7 +1134,13 @@ func NewDeleteConfigResponse() (response *DeleteConfigResponse) {
     return
 }
 
+// DeleteConfig
 // 删除配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteConfig(request *DeleteConfigRequest) (response *DeleteConfigResponse, err error) {
     if request == nil {
         request = NewDeleteConfigRequest()
@@ -783,7 +1165,17 @@ func NewDeleteContainerGroupResponse() (response *DeleteContainerGroupResponse) 
     return
 }
 
+// DeleteContainerGroup
 // 删除容器部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteContainerGroup(request *DeleteContainerGroupRequest) (response *DeleteContainerGroupResponse, err error) {
     if request == nil {
         request = NewDeleteContainerGroupRequest()
@@ -808,7 +1200,13 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     return
 }
 
+// DeleteGroup
 // 删除容器部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCEINUSE_GROUPCANNOTDELETE = "ResourceInUse.GroupCannotDelete"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
     if request == nil {
         request = NewDeleteGroupRequest()
@@ -833,7 +1231,13 @@ func NewDeleteImageTagsResponse() (response *DeleteImageTagsResponse) {
     return
 }
 
+// DeleteImageTags
 // 批量删除镜像版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCEINUSE_GROUPCANNOTDELETE = "ResourceInUse.GroupCannotDelete"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeleteImageTags(request *DeleteImageTagsRequest) (response *DeleteImageTagsResponse, err error) {
     if request == nil {
         request = NewDeleteImageTagsRequest()
@@ -858,7 +1262,55 @@ func NewDeleteLaneResponse() (response *DeleteLaneResponse) {
     return
 }
 
+// DeleteLane
 // 删除泳道
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 func (c *Client) DeleteLane(request *DeleteLaneRequest) (response *DeleteLaneResponse, err error) {
     if request == nil {
         request = NewDeleteLaneRequest()
@@ -883,7 +1335,13 @@ func NewDeleteMicroserviceResponse() (response *DeleteMicroserviceResponse) {
     return
 }
 
+// DeleteMicroservice
 // 删除微服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteMicroservice(request *DeleteMicroserviceRequest) (response *DeleteMicroserviceResponse, err error) {
     if request == nil {
         request = NewDeleteMicroserviceRequest()
@@ -908,7 +1366,17 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     return
 }
 
+// DeleteNamespace
 // 删除命名空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPEXISTS = "FailedOperation.GroupExists"
+//  INTERNALERROR_KUBERNETESCALLERROR = "InternalError.KubernetesCallError"
+//  RESOURCEINUSE_DEFAULTNAMEPSACECANNOTBEDELETED = "ResourceInUse.DefaultNamepsaceCannotBeDeleted"
+//  RESOURCEINUSE_NAMESPACECANNOTDELETE = "ResourceInUse.NamespaceCannotDelete"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
     if request == nil {
         request = NewDeleteNamespaceRequest()
@@ -933,7 +1401,12 @@ func NewDeletePathRewritesResponse() (response *DeletePathRewritesResponse) {
     return
 }
 
+// DeletePathRewrites
 // 删除路径重写
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DeletePathRewrites(request *DeletePathRewritesRequest) (response *DeletePathRewritesResponse, err error) {
     if request == nil {
         request = NewDeletePathRewritesRequest()
@@ -958,8 +1431,16 @@ func NewDeletePkgsResponse() (response *DeletePkgsResponse) {
     return
 }
 
+// DeletePkgs
 // 从软件仓库批量删除程序包。
+//
 // 一次最多支持删除1000个包，数量超过1000，返回UpperDeleteLimit错误。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PACKAGEINUSE = "InvalidParameter.PackageInUse"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UPPERDELETELIMIT = "InvalidParameter.UpperDeleteLimit"
 func (c *Client) DeletePkgs(request *DeletePkgsRequest) (response *DeletePkgsResponse, err error) {
     if request == nil {
         request = NewDeletePkgsRequest()
@@ -984,7 +1465,13 @@ func NewDeletePublicConfigResponse() (response *DeletePublicConfigResponse) {
     return
 }
 
+// DeletePublicConfig
 // 删除公共配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"
+//  MISSINGPARAMETER_CONFIGIDREQUIRED = "MissingParameter.ConfigIdRequired"
 func (c *Client) DeletePublicConfig(request *DeletePublicConfigRequest) (response *DeletePublicConfigResponse, err error) {
     if request == nil {
         request = NewDeletePublicConfigRequest()
@@ -1009,7 +1496,14 @@ func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
     return
 }
 
+// DeleteRepository
 // 删除仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOSITORYNOTEMPTY = "InvalidParameter.RepositoryNotEmpty"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *DeleteRepositoryResponse, err error) {
     if request == nil {
         request = NewDeleteRepositoryRequest()
@@ -1034,7 +1528,13 @@ func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse
     return
 }
 
+// DeleteServerlessGroup
 // 删除Serverless部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (response *DeleteServerlessGroupResponse, err error) {
     if request == nil {
         request = NewDeleteServerlessGroupRequest()
@@ -1059,7 +1559,19 @@ func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
     return
 }
 
+// DeleteTask
 // 删除任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKDELETEERROR = "FailedOperation.TaskDeleteError"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
     if request == nil {
         request = NewDeleteTaskRequest()
@@ -1084,7 +1596,13 @@ func NewDeleteUnitNamespacesResponse() (response *DeleteUnitNamespacesResponse) 
     return
 }
 
+// DeleteUnitNamespaces
 // 删除单元化命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DeleteUnitNamespaces(request *DeleteUnitNamespacesRequest) (response *DeleteUnitNamespacesResponse, err error) {
     if request == nil {
         request = NewDeleteUnitNamespacesRequest()
@@ -1109,7 +1627,13 @@ func NewDeleteUnitRuleResponse() (response *DeleteUnitRuleResponse) {
     return
 }
 
+// DeleteUnitRule
 // 删除单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DeleteUnitRule(request *DeleteUnitRuleRequest) (response *DeleteUnitRuleResponse, err error) {
     if request == nil {
         request = NewDeleteUnitRuleRequest()
@@ -1134,7 +1658,40 @@ func NewDeployContainerGroupResponse() (response *DeployContainerGroupResponse) 
     return
 }
 
+// DeployContainerGroup
 // 部署容器应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = "InvalidParameterValue.ContainergroupAccesstypeNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPINVALIDCPUINFO = "InvalidParameterValue.ContainergroupInvalidCpuInfo"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPINVALIDMEMINFO = "InvalidParameterValue.ContainergroupInvalidMemInfo"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPMEMLIMITOVER = "InvalidParameterValue.ContainergroupMemlimitOver"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPNODEPORTINVALID = "InvalidParameterValue.ContainergroupNodePortInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPORTSREPEAT = "InvalidParameterValue.ContainergroupPortsRepeat"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = "InvalidParameterValue.ContainergroupProtocolInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = "InvalidParameterValue.ContainergroupProtocolPortsNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = "InvalidParameterValue.ContainergroupReponameInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = "InvalidParameterValue.ContainergroupTargetPortsRepeat"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = "InvalidParameterValue.ContainergroupTargetportNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = "InvalidParameterValue.ContainergroupUpdateivlInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = "InvalidParameterValue.ContainergroupYamlUserContainerNotFound"
+//  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoReponameNull"
+//  INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeployContainerGroup(request *DeployContainerGroupRequest) (response *DeployContainerGroupResponse, err error) {
     if request == nil {
         request = NewDeployContainerGroupRequest()
@@ -1159,7 +1716,19 @@ func NewDeployGroupResponse() (response *DeployGroupResponse) {
     return
 }
 
+// DeployGroup
 // 部署虚拟机部署组应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTNOTFOUND = "InvalidParameterValue.CvmCaeMasterAgentNotFound"
+//  INVALIDPARAMETERVALUE_GROUPBATCHPARAMETERINVALID = "InvalidParameterValue.GroupBatchParameterInvalid"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DeployGroup(request *DeployGroupRequest) (response *DeployGroupResponse, err error) {
     if request == nil {
         request = NewDeployGroupRequest()
@@ -1184,7 +1753,17 @@ func NewDeployServerlessGroupResponse() (response *DeployServerlessGroupResponse
     return
 }
 
+// DeployServerlessGroup
 // 部署Serverless应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTNOTFOUND = "InvalidParameterValue.CvmCaeMasterAgentNotFound"
+//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
+//  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
+//  RESOURCEINSUFFICIENT_INSTANCEEXCESSLIMIT = "ResourceInsufficient.InstanceExcessLimit"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeployServerlessGroup(request *DeployServerlessGroupRequest) (response *DeployServerlessGroupResponse, err error) {
     if request == nil {
         request = NewDeployServerlessGroupRequest()
@@ -1209,7 +1788,14 @@ func NewDescribeApiDetailResponse() (response *DescribeApiDetailResponse) {
     return
 }
 
+// DescribeApiDetail
 // 查询API详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIMETAPARSEFAILED = "FailedOperation.ApiMetaParseFailed"
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeApiDetail(request *DescribeApiDetailRequest) (response *DescribeApiDetailResponse, err error) {
     if request == nil {
         request = NewDescribeApiDetailRequest()
@@ -1234,7 +1820,13 @@ func NewDescribeApiGroupResponse() (response *DescribeApiGroupResponse) {
     return
 }
 
+// DescribeApiGroup
 // 查询API分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeApiGroup(request *DescribeApiGroupRequest) (response *DescribeApiGroupResponse, err error) {
     if request == nil {
         request = NewDescribeApiGroupRequest()
@@ -1259,7 +1851,14 @@ func NewDescribeApiGroupsResponse() (response *DescribeApiGroupsResponse) {
     return
 }
 
+// DescribeApiGroups
 // 查询API 分组信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (response *DescribeApiGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeApiGroupsRequest()
@@ -1284,7 +1883,11 @@ func NewDescribeApiRateLimitRulesResponse() (response *DescribeApiRateLimitRules
     return
 }
 
+// DescribeApiRateLimitRules
 // 查询API限流规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 func (c *Client) DescribeApiRateLimitRules(request *DescribeApiRateLimitRulesRequest) (response *DescribeApiRateLimitRulesResponse, err error) {
     if request == nil {
         request = NewDescribeApiRateLimitRulesRequest()
@@ -1309,7 +1912,13 @@ func NewDescribeApiUseDetailResponse() (response *DescribeApiUseDetailResponse) 
     return
 }
 
+// DescribeApiUseDetail
 // 查询网关API监控明细数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeApiUseDetail(request *DescribeApiUseDetailRequest) (response *DescribeApiUseDetailResponse, err error) {
     if request == nil {
         request = NewDescribeApiUseDetailRequest()
@@ -1334,7 +1943,12 @@ func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
     return
 }
 
+// DescribeApiVersions
 // 查询API 版本
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (response *DescribeApiVersionsResponse, err error) {
     if request == nil {
         request = NewDescribeApiVersionsRequest()
@@ -1359,7 +1973,18 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
     return
 }
 
+// DescribeApplication
 // 获取应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER_APPLICATIONIDNULL = "MissingParameter.ApplicationIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationRequest()
@@ -1384,7 +2009,17 @@ func NewDescribeApplicationAttributeResponse() (response *DescribeApplicationAtt
     return
 }
 
+// DescribeApplicationAttribute
 // 获取应用列表其它字段，如实例数量信息等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeApplicationAttribute(request *DescribeApplicationAttributeRequest) (response *DescribeApplicationAttributeResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationAttributeRequest()
@@ -1409,7 +2044,18 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
     return
 }
 
+// DescribeApplications
 // 获取应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_APPLICATIONPAGELIMITINVALID = "InvalidParameterValue.ApplicationPageLimitInvalid"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationsRequest()
@@ -1434,7 +2080,18 @@ func NewDescribeBasicResourceUsageResponse() (response *DescribeBasicResourceUsa
     return
 }
 
+// DescribeBasicResourceUsage
 // TSF基本资源信息概览接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) DescribeBasicResourceUsage(request *DescribeBasicResourceUsageRequest) (response *DescribeBasicResourceUsageResponse, err error) {
     if request == nil {
         request = NewDescribeBasicResourceUsageRequest()
@@ -1459,7 +2116,19 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
     return
 }
 
+// DescribeClusterInstances
 // 查询集群实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesRequest) (response *DescribeClusterInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeClusterInstancesRequest()
@@ -1484,7 +2153,11 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
     return
 }
 
+// DescribeConfig
 // 查询配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeConfigRequest()
@@ -1509,7 +2182,11 @@ func NewDescribeConfigReleaseLogsResponse() (response *DescribeConfigReleaseLogs
     return
 }
 
+// DescribeConfigReleaseLogs
 // 查询配置发布历史
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SQLTOOMANYINITEM = "InternalError.SqlTooManyInItem"
 func (c *Client) DescribeConfigReleaseLogs(request *DescribeConfigReleaseLogsRequest) (response *DescribeConfigReleaseLogsResponse, err error) {
     if request == nil {
         request = NewDescribeConfigReleaseLogsRequest()
@@ -1534,7 +2211,15 @@ func NewDescribeConfigReleasesResponse() (response *DescribeConfigReleasesRespon
     return
 }
 
+// DescribeConfigReleases
 // 查询配置发布信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigReleases(request *DescribeConfigReleasesRequest) (response *DescribeConfigReleasesResponse, err error) {
     if request == nil {
         request = NewDescribeConfigReleasesRequest()
@@ -1559,7 +2244,14 @@ func NewDescribeConfigSummaryResponse() (response *DescribeConfigSummaryResponse
     return
 }
 
+// DescribeConfigSummary
 // 查询配置汇总列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigSummary(request *DescribeConfigSummaryRequest) (response *DescribeConfigSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeConfigSummaryRequest()
@@ -1584,7 +2276,13 @@ func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
     return
 }
 
+// DescribeConfigs
 // 查询配置项列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *DescribeConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeConfigsRequest()
@@ -1609,7 +2307,17 @@ func NewDescribeContainerEventsResponse() (response *DescribeContainerEventsResp
     return
 }
 
+// DescribeContainerEvents
 // 获取容器事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_RESOURCETYPEERROR = "InvalidParameterValue.ResourceTypeError"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
 func (c *Client) DescribeContainerEvents(request *DescribeContainerEventsRequest) (response *DescribeContainerEventsResponse, err error) {
     if request == nil {
         request = NewDescribeContainerEventsRequest()
@@ -1634,7 +2342,20 @@ func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroup
     return
 }
 
+// DescribeContainerGroupDetail
 //  容器部署组详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeContainerGroupDetail(request *DescribeContainerGroupDetailRequest) (response *DescribeContainerGroupDetailResponse, err error) {
     if request == nil {
         request = NewDescribeContainerGroupDetailRequest()
@@ -1659,7 +2380,15 @@ func NewDescribeContainerGroupsResponse() (response *DescribeContainerGroupsResp
     return
 }
 
+// DescribeContainerGroups
 // 容器部署组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeContainerGroups(request *DescribeContainerGroupsRequest) (response *DescribeContainerGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeContainerGroupsRequest()
@@ -1684,7 +2413,15 @@ func NewDescribeCreateGatewayApiStatusResponse() (response *DescribeCreateGatewa
     return
 }
 
+// DescribeCreateGatewayApiStatus
 // 查询一键导入API分组任务的状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeCreateGatewayApiStatus(request *DescribeCreateGatewayApiStatusRequest) (response *DescribeCreateGatewayApiStatusResponse, err error) {
     if request == nil {
         request = NewDescribeCreateGatewayApiStatusRequest()
@@ -1709,8 +2446,13 @@ func NewDescribeDownloadInfoResponse() (response *DescribeDownloadInfoResponse) 
     return
 }
 
+// DescribeDownloadInfo
 // TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
+//
 // COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DescribeDownloadInfo(request *DescribeDownloadInfoRequest) (response *DescribeDownloadInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDownloadInfoRequest()
@@ -1735,7 +2477,13 @@ func NewDescribeEnabledUnitRuleResponse() (response *DescribeEnabledUnitRuleResp
     return
 }
 
+// DescribeEnabledUnitRule
 // 查询生效的单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeEnabledUnitRule(request *DescribeEnabledUnitRuleRequest) (response *DescribeEnabledUnitRuleResponse, err error) {
     if request == nil {
         request = NewDescribeEnabledUnitRuleRequest()
@@ -1760,7 +2508,19 @@ func NewDescribeFlowLastBatchStateResponse() (response *DescribeFlowLastBatchSta
     return
 }
 
+// DescribeFlowLastBatchState
 // 查询工作流最新一个批次的状态信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeFlowLastBatchState(request *DescribeFlowLastBatchStateRequest) (response *DescribeFlowLastBatchStateResponse, err error) {
     if request == nil {
         request = NewDescribeFlowLastBatchStateRequest()
@@ -1785,7 +2545,13 @@ func NewDescribeGatewayAllGroupApisResponse() (response *DescribeGatewayAllGroup
     return
 }
 
+// DescribeGatewayAllGroupApis
 // 查询网关所有分组下Api列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEPLOYGROUPNOTEXISTS = "InvalidParameterValue.DeployGroupNotExists"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeGatewayAllGroupApis(request *DescribeGatewayAllGroupApisRequest) (response *DescribeGatewayAllGroupApisResponse, err error) {
     if request == nil {
         request = NewDescribeGatewayAllGroupApisRequest()
@@ -1810,7 +2576,16 @@ func NewDescribeGatewayMonitorOverviewResponse() (response *DescribeGatewayMonit
     return
 }
 
+// DescribeGatewayMonitorOverview
 // 查询网关监控概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeGatewayMonitorOverview(request *DescribeGatewayMonitorOverviewRequest) (response *DescribeGatewayMonitorOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeGatewayMonitorOverviewRequest()
@@ -1835,7 +2610,18 @@ func NewDescribeGroupResponse() (response *DescribeGroupResponse) {
     return
 }
 
+// DescribeGroup
 // 查询虚拟机部署组详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
+//  MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *DescribeGroupResponse, err error) {
     if request == nil {
         request = NewDescribeGroupRequest()
@@ -1860,7 +2646,13 @@ func NewDescribeGroupBindedGatewaysResponse() (response *DescribeGroupBindedGate
     return
 }
 
+// DescribeGroupBindedGateways
 // 查询某个API分组已绑定的网关部署组信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeGroupBindedGateways(request *DescribeGroupBindedGatewaysRequest) (response *DescribeGroupBindedGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeGroupBindedGatewaysRequest()
@@ -1885,7 +2677,12 @@ func NewDescribeGroupGatewaysResponse() (response *DescribeGroupGatewaysResponse
     return
 }
 
+// DescribeGroupGateways
 // 查询某个网关绑定的API 分组信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupGateways(request *DescribeGroupGatewaysRequest) (response *DescribeGroupGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeGroupGatewaysRequest()
@@ -1910,7 +2707,20 @@ func NewDescribeGroupInstancesResponse() (response *DescribeGroupInstancesRespon
     return
 }
 
+// DescribeGroupInstances
 // 查询虚拟机部署组云主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeGroupInstances(request *DescribeGroupInstancesRequest) (response *DescribeGroupInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeGroupInstancesRequest()
@@ -1935,7 +2745,13 @@ func NewDescribeGroupUseDetailResponse() (response *DescribeGroupUseDetailRespon
     return
 }
 
+// DescribeGroupUseDetail
 // 查询网关分组监控明细数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeGroupUseDetail(request *DescribeGroupUseDetailRequest) (response *DescribeGroupUseDetailResponse, err error) {
     if request == nil {
         request = NewDescribeGroupUseDetailRequest()
@@ -1960,7 +2776,19 @@ func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
     return
 }
 
+// DescribeGroups
 // 获取虚拟机部署组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_GROUPPAGELIMITINVALID = "InvalidParameterValue.GroupPageLimitInvalid"
+//  INVALIDPARAMETERVALUE_GROUPSTATUSINVALID = "InvalidParameterValue.GroupStatusInvalid"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *DescribeGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeGroupsRequest()
@@ -1985,7 +2813,19 @@ func NewDescribeGroupsWithPluginResponse() (response *DescribeGroupsWithPluginRe
     return
 }
 
+// DescribeGroupsWithPlugin
 // 查询某个插件下绑定或未绑定的API分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_GROUPPAGELIMITINVALID = "InvalidParameterValue.GroupPageLimitInvalid"
+//  INVALIDPARAMETERVALUE_GROUPSTATUSINVALID = "InvalidParameterValue.GroupStatusInvalid"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeGroupsWithPlugin(request *DescribeGroupsWithPluginRequest) (response *DescribeGroupsWithPluginResponse, err error) {
     if request == nil {
         request = NewDescribeGroupsWithPluginRequest()
@@ -2010,7 +2850,15 @@ func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResp
     return
 }
 
+// DescribeImageRepository
 // 镜像仓库列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest) (response *DescribeImageRepositoryResponse, err error) {
     if request == nil {
         request = NewDescribeImageRepositoryRequest()
@@ -2035,7 +2883,19 @@ func NewDescribeImageTagsResponse() (response *DescribeImageTagsResponse) {
     return
 }
 
+// DescribeImageTags
 // 镜像版本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeImageTags(request *DescribeImageTagsRequest) (response *DescribeImageTagsResponse, err error) {
     if request == nil {
         request = NewDescribeImageTagsRequest()
@@ -2060,7 +2920,58 @@ func NewDescribeLaneRulesResponse() (response *DescribeLaneRulesResponse) {
     return
 }
 
+// DescribeLaneRules
 // 查询泳道规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeLaneRules(request *DescribeLaneRulesRequest) (response *DescribeLaneRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLaneRulesRequest()
@@ -2085,7 +2996,57 @@ func NewDescribeLanesResponse() (response *DescribeLanesResponse) {
     return
 }
 
+// DescribeLanes
 // 查询泳道列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeLanes(request *DescribeLanesRequest) (response *DescribeLanesResponse, err error) {
     if request == nil {
         request = NewDescribeLanesRequest()
@@ -2110,7 +3071,18 @@ func NewDescribeMicroserviceResponse() (response *DescribeMicroserviceResponse) 
     return
 }
 
+// DescribeMicroservice
 // 查询微服务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  MISSINGPARAMETER_SERVICEIDREQUIRED = "MissingParameter.ServiceIdRequired"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeMicroservice(request *DescribeMicroserviceRequest) (response *DescribeMicroserviceResponse, err error) {
     if request == nil {
         request = NewDescribeMicroserviceRequest()
@@ -2135,7 +3107,18 @@ func NewDescribeMicroservicesResponse() (response *DescribeMicroservicesResponse
     return
 }
 
+// DescribeMicroservices
 // 获取微服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeMicroservices(request *DescribeMicroservicesRequest) (response *DescribeMicroservicesResponse, err error) {
     if request == nil {
         request = NewDescribeMicroservicesRequest()
@@ -2160,7 +3143,16 @@ func NewDescribeMsApiListResponse() (response *DescribeMsApiListResponse) {
     return
 }
 
+// DescribeMsApiList
 // 查询服务API列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeMsApiList(request *DescribeMsApiListRequest) (response *DescribeMsApiListResponse, err error) {
     if request == nil {
         request = NewDescribeMsApiListRequest()
@@ -2185,7 +3177,12 @@ func NewDescribePathRewriteResponse() (response *DescribePathRewriteResponse) {
     return
 }
 
+// DescribePathRewrite
 // 查询路径重写
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribePathRewrite(request *DescribePathRewriteRequest) (response *DescribePathRewriteResponse, err error) {
     if request == nil {
         request = NewDescribePathRewriteRequest()
@@ -2210,7 +3207,13 @@ func NewDescribePathRewritesResponse() (response *DescribePathRewritesResponse) 
     return
 }
 
+// DescribePathRewrites
 // 查询路径重写列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribePathRewrites(request *DescribePathRewritesRequest) (response *DescribePathRewritesResponse, err error) {
     if request == nil {
         request = NewDescribePathRewritesRequest()
@@ -2235,7 +3238,12 @@ func NewDescribePkgsResponse() (response *DescribePkgsResponse) {
     return
 }
 
+// DescribePkgs
 // 无
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribePkgs(request *DescribePkgsRequest) (response *DescribePkgsResponse, err error) {
     if request == nil {
         request = NewDescribePkgsRequest()
@@ -2260,7 +3268,12 @@ func NewDescribePluginInstancesResponse() (response *DescribePluginInstancesResp
     return
 }
 
+// DescribePluginInstances
 // 分页查询网关分组/API绑定（或未绑定）的插件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribePluginInstances(request *DescribePluginInstancesRequest) (response *DescribePluginInstancesResponse, err error) {
     if request == nil {
         request = NewDescribePluginInstancesRequest()
@@ -2285,7 +3298,20 @@ func NewDescribePodInstancesResponse() (response *DescribePodInstancesResponse) 
     return
 }
 
+// DescribePodInstances
 // 获取部署组实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribePodInstances(request *DescribePodInstancesRequest) (response *DescribePodInstancesResponse, err error) {
     if request == nil {
         request = NewDescribePodInstancesRequest()
@@ -2310,7 +3336,12 @@ func NewDescribePublicConfigResponse() (response *DescribePublicConfigResponse) 
     return
 }
 
+// DescribePublicConfig
 // 查询公共配置（单条）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 func (c *Client) DescribePublicConfig(request *DescribePublicConfigRequest) (response *DescribePublicConfigResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigRequest()
@@ -2335,7 +3366,12 @@ func NewDescribePublicConfigReleaseLogsResponse() (response *DescribePublicConfi
     return
 }
 
+// DescribePublicConfigReleaseLogs
 // 查询公共配置发布历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 func (c *Client) DescribePublicConfigReleaseLogs(request *DescribePublicConfigReleaseLogsRequest) (response *DescribePublicConfigReleaseLogsResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigReleaseLogsRequest()
@@ -2360,7 +3396,15 @@ func NewDescribePublicConfigReleasesResponse() (response *DescribePublicConfigRe
     return
 }
 
+// DescribePublicConfigReleases
 // 查询公共配置发布信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 func (c *Client) DescribePublicConfigReleases(request *DescribePublicConfigReleasesRequest) (response *DescribePublicConfigReleasesResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigReleasesRequest()
@@ -2385,7 +3429,12 @@ func NewDescribePublicConfigSummaryResponse() (response *DescribePublicConfigSum
     return
 }
 
+// DescribePublicConfigSummary
 // 查询公共配置汇总列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribePublicConfigSummary(request *DescribePublicConfigSummaryRequest) (response *DescribePublicConfigSummaryResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigSummaryRequest()
@@ -2410,7 +3459,12 @@ func NewDescribePublicConfigsResponse() (response *DescribePublicConfigsResponse
     return
 }
 
+// DescribePublicConfigs
 // 查询公共配置项列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribePublicConfigs(request *DescribePublicConfigsRequest) (response *DescribePublicConfigsResponse, err error) {
     if request == nil {
         request = NewDescribePublicConfigsRequest()
@@ -2435,7 +3489,14 @@ func NewDescribeReleasedConfigResponse() (response *DescribeReleasedConfigRespon
     return
 }
 
+// DescribeReleasedConfig
 // 查询group发布的配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) (response *DescribeReleasedConfigResponse, err error) {
     if request == nil {
         request = NewDescribeReleasedConfigRequest()
@@ -2460,7 +3521,12 @@ func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) 
     return
 }
 
+// DescribeRepositories
 // 查询仓库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoriesRequest()
@@ -2485,7 +3551,13 @@ func NewDescribeRepositoryResponse() (response *DescribeRepositoryResponse) {
     return
 }
 
+// DescribeRepository
 // 查询仓库信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DescribeRepository(request *DescribeRepositoryRequest) (response *DescribeRepositoryResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoryRequest()
@@ -2510,7 +3582,17 @@ func NewDescribeServerlessGroupResponse() (response *DescribeServerlessGroupResp
     return
 }
 
+// DescribeServerlessGroup
 // 查询Serverless部署组明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFASRESOURCESERVERERROR = "FailedOperation.TsfAsResourceServerError"
+//  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeServerlessGroup(request *DescribeServerlessGroupRequest) (response *DescribeServerlessGroupResponse, err error) {
     if request == nil {
         request = NewDescribeServerlessGroupRequest()
@@ -2535,7 +3617,12 @@ func NewDescribeServerlessGroupsResponse() (response *DescribeServerlessGroupsRe
     return
 }
 
+// DescribeServerlessGroups
 // 查询Serverless部署组列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
 func (c *Client) DescribeServerlessGroups(request *DescribeServerlessGroupsRequest) (response *DescribeServerlessGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeServerlessGroupsRequest()
@@ -2560,7 +3647,14 @@ func NewDescribeSimpleApplicationsResponse() (response *DescribeSimpleApplicatio
     return
 }
 
+// DescribeSimpleApplications
 // 查询简单应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeSimpleApplications(request *DescribeSimpleApplicationsRequest) (response *DescribeSimpleApplicationsResponse, err error) {
     if request == nil {
         request = NewDescribeSimpleApplicationsRequest()
@@ -2585,7 +3679,14 @@ func NewDescribeSimpleClustersResponse() (response *DescribeSimpleClustersRespon
     return
 }
 
+// DescribeSimpleClusters
 // 查询简单集群列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeSimpleClusters(request *DescribeSimpleClustersRequest) (response *DescribeSimpleClustersResponse, err error) {
     if request == nil {
         request = NewDescribeSimpleClustersRequest()
@@ -2610,7 +3711,16 @@ func NewDescribeSimpleGroupsResponse() (response *DescribeSimpleGroupsResponse) 
     return
 }
 
+// DescribeSimpleGroups
 // 查询简单部署组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeSimpleGroups(request *DescribeSimpleGroupsRequest) (response *DescribeSimpleGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeSimpleGroupsRequest()
@@ -2635,7 +3745,18 @@ func NewDescribeSimpleNamespacesResponse() (response *DescribeSimpleNamespacesRe
     return
 }
 
+// DescribeSimpleNamespaces
 // 查询简单命名空间列表 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeSimpleNamespaces(request *DescribeSimpleNamespacesRequest) (response *DescribeSimpleNamespacesResponse, err error) {
     if request == nil {
         request = NewDescribeSimpleNamespacesRequest()
@@ -2660,7 +3781,20 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     return
 }
 
+// DescribeTaskDetail
 // 查询任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
@@ -2685,7 +3819,16 @@ func NewDescribeTaskLastStatusResponse() (response *DescribeTaskLastStatusRespon
     return
 }
 
+// DescribeTaskLastStatus
 // 查询任务最近一次执行状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeTaskLastStatus(request *DescribeTaskLastStatusRequest) (response *DescribeTaskLastStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskLastStatusRequest()
@@ -2710,7 +3853,19 @@ func NewDescribeTaskRecordsResponse() (response *DescribeTaskRecordsResponse) {
     return
 }
 
+// DescribeTaskRecords
 // 翻页查询任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeTaskRecords(request *DescribeTaskRecordsRequest) (response *DescribeTaskRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeTaskRecordsRequest()
@@ -2735,7 +3890,13 @@ func NewDescribeUnitApiUseDetailResponse() (response *DescribeUnitApiUseDetailRe
     return
 }
 
+// DescribeUnitApiUseDetail
 // 查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeUnitApiUseDetail(request *DescribeUnitApiUseDetailRequest) (response *DescribeUnitApiUseDetailResponse, err error) {
     if request == nil {
         request = NewDescribeUnitApiUseDetailRequest()
@@ -2760,7 +3921,13 @@ func NewDescribeUnitNamespacesResponse() (response *DescribeUnitNamespacesRespon
     return
 }
 
+// DescribeUnitNamespaces
 // 查询单元化命名空间列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeUnitNamespaces(request *DescribeUnitNamespacesRequest) (response *DescribeUnitNamespacesResponse, err error) {
     if request == nil {
         request = NewDescribeUnitNamespacesRequest()
@@ -2785,7 +3952,13 @@ func NewDescribeUnitRuleResponse() (response *DescribeUnitRuleResponse) {
     return
 }
 
+// DescribeUnitRule
 // 查询单元化规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeUnitRule(request *DescribeUnitRuleRequest) (response *DescribeUnitRuleResponse, err error) {
     if request == nil {
         request = NewDescribeUnitRuleRequest()
@@ -2810,7 +3983,13 @@ func NewDescribeUnitRulesResponse() (response *DescribeUnitRulesResponse) {
     return
 }
 
+// DescribeUnitRules
 // 查询单元化规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeUnitRules(request *DescribeUnitRulesRequest) (response *DescribeUnitRulesResponse, err error) {
     if request == nil {
         request = NewDescribeUnitRulesRequest()
@@ -2835,8 +4014,17 @@ func NewDescribeUploadInfoResponse() (response *DescribeUploadInfoResponse) {
     return
 }
 
+// DescribeUploadInfo
 // TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
+//
 // COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINUSE_OBJECTEXIST = "ResourceInUse.ObjectExist"
+//  RESOURCEINSUFFICIENT_PACKAGESPACEFULL = "ResourceInsufficient.PackageSpaceFull"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DescribeUploadInfo(request *DescribeUploadInfoRequest) (response *DescribeUploadInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUploadInfoRequest()
@@ -2861,7 +4049,13 @@ func NewDescribeUsableUnitNamespacesResponse() (response *DescribeUsableUnitName
     return
 }
 
+// DescribeUsableUnitNamespaces
 // 查询可用于被导入的命名空间列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DescribeUsableUnitNamespaces(request *DescribeUsableUnitNamespacesRequest) (response *DescribeUsableUnitNamespacesResponse, err error) {
     if request == nil {
         request = NewDescribeUsableUnitNamespacesRequest()
@@ -2886,7 +4080,18 @@ func NewDisableTaskResponse() (response *DisableTaskResponse) {
     return
 }
 
+// DisableTask
 // 停用任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DisableTask(request *DisableTaskRequest) (response *DisableTaskResponse, err error) {
     if request == nil {
         request = NewDisableTaskRequest()
@@ -2911,7 +4116,18 @@ func NewDisableTaskFlowResponse() (response *DisableTaskFlowResponse) {
     return
 }
 
+// DisableTaskFlow
 // 停用工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DisableTaskFlow(request *DisableTaskFlowRequest) (response *DisableTaskFlowResponse, err error) {
     if request == nil {
         request = NewDisableTaskFlowRequest()
@@ -2936,7 +4152,12 @@ func NewDisableUnitRouteResponse() (response *DisableUnitRouteResponse) {
     return
 }
 
+// DisableUnitRoute
 // 禁用单元化路由
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DisableUnitRoute(request *DisableUnitRouteRequest) (response *DisableUnitRouteResponse, err error) {
     if request == nil {
         request = NewDisableUnitRouteRequest()
@@ -2961,7 +4182,13 @@ func NewDisableUnitRuleResponse() (response *DisableUnitRuleResponse) {
     return
 }
 
+// DisableUnitRule
 // 禁用单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) DisableUnitRule(request *DisableUnitRuleRequest) (response *DisableUnitRuleResponse, err error) {
     if request == nil {
         request = NewDisableUnitRuleRequest()
@@ -2986,7 +4213,11 @@ func NewDraftApiGroupResponse() (response *DraftApiGroupResponse) {
     return
 }
 
+// DraftApiGroup
 // 下线Api分组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) DraftApiGroup(request *DraftApiGroupRequest) (response *DraftApiGroupResponse, err error) {
     if request == nil {
         request = NewDraftApiGroupRequest()
@@ -3011,7 +4242,20 @@ func NewEnableTaskResponse() (response *EnableTaskResponse) {
     return
 }
 
+// EnableTask
 // 启用任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) EnableTask(request *EnableTaskRequest) (response *EnableTaskResponse, err error) {
     if request == nil {
         request = NewEnableTaskRequest()
@@ -3036,7 +4280,19 @@ func NewEnableTaskFlowResponse() (response *EnableTaskFlowResponse) {
     return
 }
 
+// EnableTaskFlow
 // 启用工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) EnableTaskFlow(request *EnableTaskFlowRequest) (response *EnableTaskFlowResponse, err error) {
     if request == nil {
         request = NewEnableTaskFlowRequest()
@@ -3061,7 +4317,13 @@ func NewEnableUnitRouteResponse() (response *EnableUnitRouteResponse) {
     return
 }
 
+// EnableUnitRoute
 // 启用单元化路由
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) EnableUnitRoute(request *EnableUnitRouteRequest) (response *EnableUnitRouteResponse, err error) {
     if request == nil {
         request = NewEnableUnitRouteRequest()
@@ -3086,7 +4348,13 @@ func NewEnableUnitRuleResponse() (response *EnableUnitRuleResponse) {
     return
 }
 
+// EnableUnitRule
 // 启用单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) EnableUnitRule(request *EnableUnitRuleRequest) (response *EnableUnitRuleResponse, err error) {
     if request == nil {
         request = NewEnableUnitRuleRequest()
@@ -3111,7 +4379,21 @@ func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
     return
 }
 
+// ExecuteTask
 // 手动执行一次任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) ExecuteTask(request *ExecuteTaskRequest) (response *ExecuteTaskResponse, err error) {
     if request == nil {
         request = NewExecuteTaskRequest()
@@ -3136,7 +4418,20 @@ func NewExecuteTaskFlowResponse() (response *ExecuteTaskFlowResponse) {
     return
 }
 
+// ExecuteTaskFlow
 // 执行一次工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKPUSHERROR = "FailedOperation.TaskPushError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ExecuteTaskFlow(request *ExecuteTaskFlowRequest) (response *ExecuteTaskFlowResponse, err error) {
     if request == nil {
         request = NewExecuteTaskFlowRequest()
@@ -3161,7 +4456,13 @@ func NewExpandGroupResponse() (response *ExpandGroupResponse) {
     return
 }
 
+// ExpandGroup
 // 虚拟机部署组添加实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CVMCAEMASTERUNKNOWNINSTANCESTATUS = "InvalidParameter.CvmCaeMasterUnknownInstanceStatus"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ExpandGroup(request *ExpandGroupRequest) (response *ExpandGroupResponse, err error) {
     if request == nil {
         request = NewExpandGroupRequest()
@@ -3186,7 +4487,12 @@ func NewModifyContainerGroupResponse() (response *ModifyContainerGroupResponse) 
     return
 }
 
+// ModifyContainerGroup
 // 修改容器部署组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = "InvalidParameterValue.ContainergroupAccesstypeNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
 func (c *Client) ModifyContainerGroup(request *ModifyContainerGroupRequest) (response *ModifyContainerGroupResponse, err error) {
     if request == nil {
         request = NewModifyContainerGroupRequest()
@@ -3211,7 +4517,17 @@ func NewModifyContainerReplicasResponse() (response *ModifyContainerReplicasResp
     return
 }
 
+// ModifyContainerReplicas
 // 修改容器部署组实例数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPINSTANCENUMINVALID = "InvalidParameterValue.ContainergroupInstanceNumInvalid"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPMEMLIMITOVER = "InvalidParameterValue.ContainergroupMemlimitOver"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ModifyContainerReplicas(request *ModifyContainerReplicasRequest) (response *ModifyContainerReplicasResponse, err error) {
     if request == nil {
         request = NewModifyContainerReplicasRequest()
@@ -3236,7 +4552,55 @@ func NewModifyLaneResponse() (response *ModifyLaneResponse) {
     return
 }
 
+// ModifyLane
 // 更新泳道信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 func (c *Client) ModifyLane(request *ModifyLaneRequest) (response *ModifyLaneResponse, err error) {
     if request == nil {
         request = NewModifyLaneRequest()
@@ -3261,7 +4625,55 @@ func NewModifyLaneRuleResponse() (response *ModifyLaneRuleResponse) {
     return
 }
 
+// ModifyLaneRule
 // 更新泳道规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
+//  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
+//  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
+//  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
+//  INVALIDPARAMETER_LANEINFONAMENOTEMPTY = "InvalidParameter.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETER_LANEINFONAMETOOLONG = "InvalidParameter.LaneInfoNameTooLong"
+//  INVALIDPARAMETER_LANEINFONOTEXIST = "InvalidParameter.LaneInfoNotExist"
+//  INVALIDPARAMETER_LANEINFONOTEXISTENTRANCE = "InvalidParameter.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETER_LANEINFOREMARKTOOLONG = "InvalidParameter.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETER_LANERULEINFONOTEXIST = "InvalidParameter.LaneRuleInfoNotExist"
+//  INVALIDPARAMETER_LANERULENAMEALREADYUSED = "InvalidParameter.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETER_LANERULENAMEINVALID = "InvalidParameter.LaneRuleNameInvalid"
+//  INVALIDPARAMETER_LANERULENAMENOTEMPTY = "InvalidParameter.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETER_LANERULENAMETOOLONG = "InvalidParameter.LaneRuleNameTooLong"
+//  INVALIDPARAMETER_LANERULENOTEXIST = "InvalidParameter.LaneRuleNotExist"
+//  INVALIDPARAMETER_LANERULEREMARKTOOLONG = "InvalidParameter.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETER_LANERULETAGNAMENOTEMPTY = "InvalidParameter.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGNAMETOOLONG = "InvalidParameter.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETER_LANERULETAGNOTEMPTY = "InvalidParameter.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETER_LANERULETAGVALUETOOLONG = "InvalidParameter.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETER_LANERULETAGVALUETOTALTOOLONG = "InvalidParameter.LaneRuleTagValueTotalTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEALREADYUSED = "InvalidParameterValue.LaneInfoNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANEINFONAMEINVALID = "InvalidParameterValue.LaneInfoNameInvalid"
+//  INVALIDPARAMETERVALUE_LANEINFONAMENOTEMPTY = "InvalidParameterValue.LaneInfoNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANEINFONAMETOOLONG = "InvalidParameterValue.LaneInfoNameTooLong"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXIST = "InvalidParameterValue.LaneInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANEINFONOTEXISTENTRANCE = "InvalidParameterValue.LaneInfoNotExistEntrance"
+//  INVALIDPARAMETERVALUE_LANEINFOREMARKTOOLONG = "InvalidParameterValue.LaneInfoRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULEINFONOTEXIST = "InvalidParameterValue.LaneRuleInfoNotExist"
+//  INVALIDPARAMETERVALUE_LANERULENAMEALREADYUSED = "InvalidParameterValue.LaneRuleNameAlreadyUsed"
+//  INVALIDPARAMETERVALUE_LANERULENAMEINVALID = "InvalidParameterValue.LaneRuleNameInvalid"
+//  INVALIDPARAMETERVALUE_LANERULENAMENOTEMPTY = "InvalidParameterValue.LaneRuleNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULENAMETOOLONG = "InvalidParameterValue.LaneRuleNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULENOTEXIST = "InvalidParameterValue.LaneRuleNotExist"
+//  INVALIDPARAMETERVALUE_LANERULEREMARKTOOLONG = "InvalidParameterValue.LaneRuleRemarkTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMENOTEMPTY = "InvalidParameterValue.LaneRuleTagNameNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGNAMETOOLONG = "InvalidParameterValue.LaneRuleTagNameTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
+//  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
 func (c *Client) ModifyLaneRule(request *ModifyLaneRuleRequest) (response *ModifyLaneRuleResponse, err error) {
     if request == nil {
         request = NewModifyLaneRuleRequest()
@@ -3286,7 +4698,11 @@ func NewModifyMicroserviceResponse() (response *ModifyMicroserviceResponse) {
     return
 }
 
+// ModifyMicroservice
 // 修改微服务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) ModifyMicroservice(request *ModifyMicroserviceRequest) (response *ModifyMicroserviceResponse, err error) {
     if request == nil {
         request = NewModifyMicroserviceRequest()
@@ -3311,7 +4727,12 @@ func NewModifyPathRewriteResponse() (response *ModifyPathRewriteResponse) {
     return
 }
 
+// ModifyPathRewrite
 // 修改路径重写
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) ModifyPathRewrite(request *ModifyPathRewriteRequest) (response *ModifyPathRewriteResponse, err error) {
     if request == nil {
         request = NewModifyPathRewriteRequest()
@@ -3336,7 +4757,21 @@ func NewModifyTaskResponse() (response *ModifyTaskResponse) {
     return
 }
 
+// ModifyTask
 // 修改任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ModifyTask(request *ModifyTaskRequest) (response *ModifyTaskResponse, err error) {
     if request == nil {
         request = NewModifyTaskRequest()
@@ -3361,8 +4796,15 @@ func NewModifyUploadInfoResponse() (response *ModifyUploadInfoResponse) {
     return
 }
 
+// ModifyUploadInfo
 // 调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
+//
 // 调用此接口完成后，才标志上传包流程结束。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) ModifyUploadInfo(request *ModifyUploadInfoRequest) (response *ModifyUploadInfoResponse, err error) {
     if request == nil {
         request = NewModifyUploadInfoRequest()
@@ -3387,7 +4829,23 @@ func NewRedoTaskResponse() (response *RedoTaskResponse) {
     return
 }
 
+// RedoTask
 // 重新执行任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  FAILEDOPERATION_TASKTERMINATEFAILED = "FailedOperation.TaskTerminateFailed"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+//  UNSUPPORTEDOPERATION_TASKNOTSUPPORTED = "UnsupportedOperation.TaskNotSupported"
 func (c *Client) RedoTask(request *RedoTaskRequest) (response *RedoTaskResponse, err error) {
     if request == nil {
         request = NewRedoTaskRequest()
@@ -3412,7 +4870,20 @@ func NewRedoTaskBatchResponse() (response *RedoTaskBatchResponse) {
     return
 }
 
+// RedoTaskBatch
 // 重新执行任务批次
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) RedoTaskBatch(request *RedoTaskBatchRequest) (response *RedoTaskBatchResponse, err error) {
     if request == nil {
         request = NewRedoTaskBatchRequest()
@@ -3437,7 +4908,21 @@ func NewRedoTaskExecuteResponse() (response *RedoTaskExecuteResponse) {
     return
 }
 
+// RedoTaskExecute
 // 重新执行在某个节点上执行任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) RedoTaskExecute(request *RedoTaskExecuteRequest) (response *RedoTaskExecuteResponse, err error) {
     if request == nil {
         request = NewRedoTaskExecuteRequest()
@@ -3462,7 +4947,21 @@ func NewRedoTaskFlowBatchResponse() (response *RedoTaskFlowBatchResponse) {
     return
 }
 
+// RedoTaskFlowBatch
 // 重新执行工作流批次
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) RedoTaskFlowBatch(request *RedoTaskFlowBatchRequest) (response *RedoTaskFlowBatchResponse, err error) {
     if request == nil {
         request = NewRedoTaskFlowBatchRequest()
@@ -3487,7 +4986,12 @@ func NewReleaseApiGroupResponse() (response *ReleaseApiGroupResponse) {
     return
 }
 
+// ReleaseApiGroup
 // 发布Api分组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseApiGroup(request *ReleaseApiGroupRequest) (response *ReleaseApiGroupResponse, err error) {
     if request == nil {
         request = NewReleaseApiGroupRequest()
@@ -3512,7 +5016,19 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
     return
 }
 
+// ReleaseConfig
 // 发布配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_CONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.ConfigGroupApplicationIdNotMatch"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *ReleaseConfigResponse, err error) {
     if request == nil {
         request = NewReleaseConfigRequest()
@@ -3537,7 +5053,16 @@ func NewReleasePublicConfigResponse() (response *ReleasePublicConfigResponse) {
     return
 }
 
+// ReleasePublicConfig
 // 发布公共配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = "InvalidParameterValue.ConfigValueTooLong"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTEXISTS = "InvalidParameterValue.NamespaceNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) ReleasePublicConfig(request *ReleasePublicConfigRequest) (response *ReleasePublicConfigResponse, err error) {
     if request == nil {
         request = NewReleasePublicConfigRequest()
@@ -3562,7 +5087,15 @@ func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
     return
 }
 
+// RemoveInstances
 // 从 TSF 集群中批量移除云主机节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *RemoveInstancesResponse, err error) {
     if request == nil {
         request = NewRemoveInstancesRequest()
@@ -3587,7 +5120,14 @@ func NewRevocationConfigResponse() (response *RevocationConfigResponse) {
     return
 }
 
+// RevocationConfig
 // 撤回已发布的配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_CONFIGRELEASEIDREQUIRED = "MissingParameter.ConfigReleaseIdRequired"
 func (c *Client) RevocationConfig(request *RevocationConfigRequest) (response *RevocationConfigResponse, err error) {
     if request == nil {
         request = NewRevocationConfigRequest()
@@ -3612,7 +5152,11 @@ func NewRevocationPublicConfigResponse() (response *RevocationPublicConfigRespon
     return
 }
 
+// RevocationPublicConfig
 // 撤回已发布的公共配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
 func (c *Client) RevocationPublicConfig(request *RevocationPublicConfigRequest) (response *RevocationPublicConfigResponse, err error) {
     if request == nil {
         request = NewRevocationPublicConfigRequest()
@@ -3637,7 +5181,12 @@ func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
     return
 }
 
+// RollbackConfig
 // 回滚配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     if request == nil {
         request = NewRollbackConfigRequest()
@@ -3662,7 +5211,12 @@ func NewShrinkGroupResponse() (response *ShrinkGroupResponse) {
     return
 }
 
+// ShrinkGroup
 // 下线部署组所有机器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) ShrinkGroup(request *ShrinkGroupRequest) (response *ShrinkGroupResponse, err error) {
     if request == nil {
         request = NewShrinkGroupRequest()
@@ -3687,7 +5241,15 @@ func NewShrinkInstancesResponse() (response *ShrinkInstancesResponse) {
     return
 }
 
+// ShrinkInstances
 // 虚拟机部署组下线实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
+//  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ShrinkInstances(request *ShrinkInstancesRequest) (response *ShrinkInstancesResponse, err error) {
     if request == nil {
         request = NewShrinkInstancesRequest()
@@ -3712,7 +5274,15 @@ func NewStartContainerGroupResponse() (response *StartContainerGroupResponse) {
     return
 }
 
+// StartContainerGroup
 // 启动容器部署组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = "FailedOperation.ContainergroupGroupHasrun"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StartContainerGroup(request *StartContainerGroupRequest) (response *StartContainerGroupResponse, err error) {
     if request == nil {
         request = NewStartContainerGroupRequest()
@@ -3737,7 +5307,14 @@ func NewStartGroupResponse() (response *StartGroupResponse) {
     return
 }
 
+// StartGroup
 // 启动分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) StartGroup(request *StartGroupRequest) (response *StartGroupResponse, err error) {
     if request == nil {
         request = NewStartGroupRequest()
@@ -3762,7 +5339,14 @@ func NewStopContainerGroupResponse() (response *StopContainerGroupResponse) {
     return
 }
 
+// StopContainerGroup
 // 停止容器部署组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINERGROUPGROUPHASSTOP = "FailedOperation.ContainergroupGroupHasstop"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StopContainerGroup(request *StopContainerGroupRequest) (response *StopContainerGroupResponse, err error) {
     if request == nil {
         request = NewStopContainerGroupRequest()
@@ -3787,7 +5371,16 @@ func NewStopGroupResponse() (response *StopGroupResponse) {
     return
 }
 
+// StopGroup
 // 停止虚拟机部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERGROUPNOAGENT = "InvalidParameterValue.CvmCaeMasterGroupNoAgent"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StopGroup(request *StopGroupRequest) (response *StopGroupResponse, err error) {
     if request == nil {
         request = NewStopGroupRequest()
@@ -3812,7 +5405,21 @@ func NewStopTaskBatchResponse() (response *StopTaskBatchResponse) {
     return
 }
 
+// StopTaskBatch
 // 停止执行中的任务批次， 非运行中的任务不可调用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StopTaskBatch(request *StopTaskBatchRequest) (response *StopTaskBatchResponse, err error) {
     if request == nil {
         request = NewStopTaskBatchRequest()
@@ -3837,7 +5444,22 @@ func NewStopTaskExecuteResponse() (response *StopTaskExecuteResponse) {
     return
 }
 
+// StopTaskExecute
 // 停止正在某个节点上执行的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  FAILEDOPERATION_TASKTERMINATEFAILED = "FailedOperation.TaskTerminateFailed"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StopTaskExecute(request *StopTaskExecuteRequest) (response *StopTaskExecuteResponse, err error) {
     if request == nil {
         request = NewStopTaskExecuteRequest()
@@ -3862,7 +5484,20 @@ func NewTerminateTaskFlowBatchResponse() (response *TerminateTaskFlowBatchRespon
     return
 }
 
+// TerminateTaskFlowBatch
 // 停止一个工作流批次
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
+//  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
+//  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
+//  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
+//  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
+//  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) TerminateTaskFlowBatch(request *TerminateTaskFlowBatchRequest) (response *TerminateTaskFlowBatchResponse, err error) {
     if request == nil {
         request = NewTerminateTaskFlowBatchRequest()
@@ -3887,7 +5522,11 @@ func NewUnbindApiGroupResponse() (response *UnbindApiGroupResponse) {
     return
 }
 
+// UnbindApiGroup
 // API分组批量与网关解绑
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 func (c *Client) UnbindApiGroup(request *UnbindApiGroupRequest) (response *UnbindApiGroupResponse, err error) {
     if request == nil {
         request = NewUnbindApiGroupRequest()
@@ -3912,7 +5551,11 @@ func NewUpdateApiGroupResponse() (response *UpdateApiGroupResponse) {
     return
 }
 
+// UpdateApiGroup
 // 更新Api分组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 func (c *Client) UpdateApiGroup(request *UpdateApiGroupRequest) (response *UpdateApiGroupResponse, err error) {
     if request == nil {
         request = NewUpdateApiGroupRequest()
@@ -3937,7 +5580,12 @@ func NewUpdateApiRateLimitRuleResponse() (response *UpdateApiRateLimitRuleRespon
     return
 }
 
+// UpdateApiRateLimitRule
 // 更新API限流规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
+//  RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
 func (c *Client) UpdateApiRateLimitRule(request *UpdateApiRateLimitRuleRequest) (response *UpdateApiRateLimitRuleResponse, err error) {
     if request == nil {
         request = NewUpdateApiRateLimitRuleRequest()
@@ -3962,7 +5610,15 @@ func NewUpdateApiRateLimitRulesResponse() (response *UpdateApiRateLimitRulesResp
     return
 }
 
+// UpdateApiRateLimitRules
 // 批量更新API限流规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RATELIMITCONSULERROR = "FailedOperation.RatelimitConsulError"
+//  INTERNALERROR_GATEWAYCONSISTENCYERROR = "InternalError.GatewayConsistencyError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) UpdateApiRateLimitRules(request *UpdateApiRateLimitRulesRequest) (response *UpdateApiRateLimitRulesResponse, err error) {
     if request == nil {
         request = NewUpdateApiRateLimitRulesRequest()
@@ -3987,7 +5643,12 @@ func NewUpdateApiTimeoutsResponse() (response *UpdateApiTimeoutsResponse) {
     return
 }
 
+// UpdateApiTimeouts
 // 批量更新API超时
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) UpdateApiTimeouts(request *UpdateApiTimeoutsRequest) (response *UpdateApiTimeoutsResponse, err error) {
     if request == nil {
         request = NewUpdateApiTimeoutsRequest()
@@ -4012,7 +5673,12 @@ func NewUpdateGatewayApiResponse() (response *UpdateGatewayApiResponse) {
     return
 }
 
+// UpdateGatewayApi
 // 更新API
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) UpdateGatewayApi(request *UpdateGatewayApiRequest) (response *UpdateGatewayApiResponse, err error) {
     if request == nil {
         request = NewUpdateGatewayApiRequest()
@@ -4037,7 +5703,11 @@ func NewUpdateHealthCheckSettingsResponse() (response *UpdateHealthCheckSettings
     return
 }
 
+// UpdateHealthCheckSettings
 // 更新健康检查配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
 func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
     if request == nil {
         request = NewUpdateHealthCheckSettingsRequest()
@@ -4062,7 +5732,12 @@ func NewUpdateRepositoryResponse() (response *UpdateRepositoryResponse) {
     return
 }
 
+// UpdateRepository
 // 更新仓库信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RUNTIMEERROR = "InternalError.RuntimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) UpdateRepository(request *UpdateRepositoryRequest) (response *UpdateRepositoryResponse, err error) {
     if request == nil {
         request = NewUpdateRepositoryRequest()
@@ -4087,7 +5762,13 @@ func NewUpdateUnitRuleResponse() (response *UpdateUnitRuleResponse) {
     return
 }
 
+// UpdateUnitRule
 // 更新单元化规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) UpdateUnitRule(request *UpdateUnitRuleRequest) (response *UpdateUnitRuleResponse, err error) {
     if request == nil {
         request = NewUpdateUnitRuleRequest()

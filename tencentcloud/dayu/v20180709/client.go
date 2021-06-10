@@ -58,6 +58,7 @@ func NewCreateBasicDDoSAlarmThresholdResponse() (response *CreateBasicDDoSAlarmT
     return
 }
 
+// CreateBasicDDoSAlarmThreshold
 // 设置基础防护的DDoS告警阈值，只支持基础防护产品
 func (c *Client) CreateBasicDDoSAlarmThreshold(request *CreateBasicDDoSAlarmThresholdRequest) (response *CreateBasicDDoSAlarmThresholdResponse, err error) {
     if request == nil {
@@ -83,7 +84,13 @@ func NewCreateBoundIPResponse() (response *CreateBoundIPResponse) {
     return
 }
 
+// CreateBoundIP
 // 绑定IP到高防包实例，支持独享包、共享包；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBoundIP(request *CreateBoundIPRequest) (response *CreateBoundIPResponse, err error) {
     if request == nil {
         request = NewCreateBoundIPRequest()
@@ -108,7 +115,13 @@ func NewCreateCCFrequencyRulesResponse() (response *CreateCCFrequencyRulesRespon
     return
 }
 
+// CreateCCFrequencyRules
 // 添加CC防护的访问频率控制规则
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCCFrequencyRules(request *CreateCCFrequencyRulesRequest) (response *CreateCCFrequencyRulesResponse, err error) {
     if request == nil {
         request = NewCreateCCFrequencyRulesRequest()
@@ -133,7 +146,19 @@ func NewCreateCCSelfDefinePolicyResponse() (response *CreateCCSelfDefinePolicyRe
     return
 }
 
+// CreateCCSelfDefinePolicy
 // 创建CC自定义策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCCSelfDefinePolicy(request *CreateCCSelfDefinePolicyRequest) (response *CreateCCSelfDefinePolicyResponse, err error) {
     if request == nil {
         request = NewCreateCCSelfDefinePolicyRequest()
@@ -158,7 +183,19 @@ func NewCreateDDoSPolicyResponse() (response *CreateDDoSPolicyResponse) {
     return
 }
 
+// CreateDDoSPolicy
 // 添加DDoS高级策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateDDoSPolicy(request *CreateDDoSPolicyRequest) (response *CreateDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewCreateDDoSPolicyRequest()
@@ -183,7 +220,19 @@ func NewCreateDDoSPolicyCaseResponse() (response *CreateDDoSPolicyCaseResponse) 
     return
 }
 
+// CreateDDoSPolicyCase
 // 添加策略场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateDDoSPolicyCase(request *CreateDDoSPolicyCaseRequest) (response *CreateDDoSPolicyCaseResponse, err error) {
     if request == nil {
         request = NewCreateDDoSPolicyCaseRequest()
@@ -208,7 +257,19 @@ func NewCreateInstanceNameResponse() (response *CreateInstanceNameResponse) {
     return
 }
 
+// CreateInstanceName
 // 资源实例重命名，支持独享包、共享包、高防IP、高防IP专业版；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateInstanceName(request *CreateInstanceNameRequest) (response *CreateInstanceNameResponse, err error) {
     if request == nil {
         request = NewCreateInstanceNameRequest()
@@ -233,7 +294,19 @@ func NewCreateL4HealthConfigResponse() (response *CreateL4HealthConfigResponse) 
     return
 }
 
+// CreateL4HealthConfig
 // 上传四层健康检查配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateL4HealthConfig(request *CreateL4HealthConfigRequest) (response *CreateL4HealthConfigResponse, err error) {
     if request == nil {
         request = NewCreateL4HealthConfigRequest()
@@ -258,7 +331,19 @@ func NewCreateL4RulesResponse() (response *CreateL4RulesResponse) {
     return
 }
 
+// CreateL4Rules
 // 添加L4转发规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateL4Rules(request *CreateL4RulesRequest) (response *CreateL4RulesResponse, err error) {
     if request == nil {
         request = NewCreateL4RulesRequest()
@@ -283,7 +368,19 @@ func NewCreateL7CCRuleResponse() (response *CreateL7CCRuleResponse) {
     return
 }
 
+// CreateL7CCRule
 // 此接口是7层CC的访问频控自定义规则（IP+Host维度，不支持具体的URI），此接口已弃用，请调用新接口CreateCCFrequencyRules，新接口同时支持IP+Host维度以及具体的URI；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateL7CCRule(request *CreateL7CCRuleRequest) (response *CreateL7CCRuleResponse, err error) {
     if request == nil {
         request = NewCreateL7CCRuleRequest()
@@ -308,7 +405,19 @@ func NewCreateL7HealthConfigResponse() (response *CreateL7HealthConfigResponse) 
     return
 }
 
+// CreateL7HealthConfig
 // 上传七层健康检查配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateL7HealthConfig(request *CreateL7HealthConfigRequest) (response *CreateL7HealthConfigResponse, err error) {
     if request == nil {
         request = NewCreateL7HealthConfigRequest()
@@ -333,7 +442,11 @@ func NewCreateL7RuleCertResponse() (response *CreateL7RuleCertResponse) {
     return
 }
 
+// CreateL7RuleCert
 // 配置7层转发规则的证书
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateL7RuleCert(request *CreateL7RuleCertRequest) (response *CreateL7RuleCertResponse, err error) {
     if request == nil {
         request = NewCreateL7RuleCertRequest()
@@ -358,7 +471,11 @@ func NewCreateL7RulesResponse() (response *CreateL7RulesResponse) {
     return
 }
 
+// CreateL7Rules
 // 添加7层(网站)转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateL7Rules(request *CreateL7RulesRequest) (response *CreateL7RulesResponse, err error) {
     if request == nil {
         request = NewCreateL7RulesRequest()
@@ -383,7 +500,20 @@ func NewCreateL7RulesUploadResponse() (response *CreateL7RulesUploadResponse) {
     return
 }
 
+// CreateL7RulesUpload
 // 批量上传7层转发规则
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateL7RulesUpload(request *CreateL7RulesUploadRequest) (response *CreateL7RulesUploadResponse, err error) {
     if request == nil {
         request = NewCreateL7RulesUploadRequest()
@@ -408,7 +538,20 @@ func NewCreateNetReturnResponse() (response *CreateNetReturnResponse) {
     return
 }
 
+// CreateNetReturn
 // 高防IP专业版一键切回源站
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateNetReturn(request *CreateNetReturnRequest) (response *CreateNetReturnResponse, err error) {
     if request == nil {
         request = NewCreateNetReturnRequest()
@@ -433,7 +576,20 @@ func NewCreateNewL4RulesResponse() (response *CreateNewL4RulesResponse) {
     return
 }
 
+// CreateNewL4Rules
 // 添加L4转发规则
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateNewL4Rules(request *CreateNewL4RulesRequest) (response *CreateNewL4RulesResponse, err error) {
     if request == nil {
         request = NewCreateNewL4RulesRequest()
@@ -458,7 +614,11 @@ func NewCreateNewL7RulesResponse() (response *CreateNewL7RulesResponse) {
     return
 }
 
+// CreateNewL7Rules
 // 添加7层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
     if request == nil {
         request = NewCreateNewL7RulesRequest()
@@ -483,7 +643,11 @@ func NewCreateNewL7RulesUploadResponse() (response *CreateNewL7RulesUploadRespon
     return
 }
 
+// CreateNewL7RulesUpload
 // 批量上传7层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNewL7RulesUpload(request *CreateNewL7RulesUploadRequest) (response *CreateNewL7RulesUploadResponse, err error) {
     if request == nil {
         request = NewCreateNewL7RulesUploadRequest()
@@ -508,7 +672,11 @@ func NewCreateUnblockIpResponse() (response *CreateUnblockIpResponse) {
     return
 }
 
+// CreateUnblockIp
 // IP解封操作
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateUnblockIp(request *CreateUnblockIpRequest) (response *CreateUnblockIpResponse, err error) {
     if request == nil {
         request = NewCreateUnblockIpRequest()
@@ -533,7 +701,11 @@ func NewDeleteCCFrequencyRulesResponse() (response *DeleteCCFrequencyRulesRespon
     return
 }
 
+// DeleteCCFrequencyRules
 // 删除CC防护的访问频率控制规则
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteCCFrequencyRules(request *DeleteCCFrequencyRulesRequest) (response *DeleteCCFrequencyRulesResponse, err error) {
     if request == nil {
         request = NewDeleteCCFrequencyRulesRequest()
@@ -558,7 +730,19 @@ func NewDeleteCCSelfDefinePolicyResponse() (response *DeleteCCSelfDefinePolicyRe
     return
 }
 
+// DeleteCCSelfDefinePolicy
 // 删除CC自定义策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCCSelfDefinePolicy(request *DeleteCCSelfDefinePolicyRequest) (response *DeleteCCSelfDefinePolicyResponse, err error) {
     if request == nil {
         request = NewDeleteCCSelfDefinePolicyRequest()
@@ -583,7 +767,11 @@ func NewDeleteDDoSPolicyResponse() (response *DeleteDDoSPolicyResponse) {
     return
 }
 
+// DeleteDDoSPolicy
 // 删除DDoS高级策略
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteDDoSPolicy(request *DeleteDDoSPolicyRequest) (response *DeleteDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteDDoSPolicyRequest()
@@ -608,7 +796,11 @@ func NewDeleteDDoSPolicyCaseResponse() (response *DeleteDDoSPolicyCaseResponse) 
     return
 }
 
+// DeleteDDoSPolicyCase
 // 删除策略场景
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteDDoSPolicyCase(request *DeleteDDoSPolicyCaseRequest) (response *DeleteDDoSPolicyCaseResponse, err error) {
     if request == nil {
         request = NewDeleteDDoSPolicyCaseRequest()
@@ -633,7 +825,11 @@ func NewDeleteL4RulesResponse() (response *DeleteL4RulesResponse) {
     return
 }
 
+// DeleteL4Rules
 // 删除四层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteL4Rules(request *DeleteL4RulesRequest) (response *DeleteL4RulesResponse, err error) {
     if request == nil {
         request = NewDeleteL4RulesRequest()
@@ -658,7 +854,11 @@ func NewDeleteL7RulesResponse() (response *DeleteL7RulesResponse) {
     return
 }
 
+// DeleteL7Rules
 // 删除七层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteL7Rules(request *DeleteL7RulesRequest) (response *DeleteL7RulesResponse, err error) {
     if request == nil {
         request = NewDeleteL7RulesRequest()
@@ -683,7 +883,11 @@ func NewDeleteNewL4RulesResponse() (response *DeleteNewL4RulesResponse) {
     return
 }
 
+// DeleteNewL4Rules
 // 删除L4转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteNewL4Rules(request *DeleteNewL4RulesRequest) (response *DeleteNewL4RulesResponse, err error) {
     if request == nil {
         request = NewDeleteNewL4RulesRequest()
@@ -708,7 +912,11 @@ func NewDeleteNewL7RulesResponse() (response *DeleteNewL7RulesResponse) {
     return
 }
 
+// DeleteNewL7Rules
 // 删除L7转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteNewL7Rules(request *DeleteNewL7RulesRequest) (response *DeleteNewL7RulesResponse, err error) {
     if request == nil {
         request = NewDeleteNewL7RulesRequest()
@@ -733,7 +941,11 @@ func NewDescribeActionLogResponse() (response *DescribeActionLogResponse) {
     return
 }
 
+// DescribeActionLog
 // 获取操作日志
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DescribeActionLog(request *DescribeActionLogRequest) (response *DescribeActionLogResponse, err error) {
     if request == nil {
         request = NewDescribeActionLogRequest()
@@ -758,7 +970,11 @@ func NewDescribeBGPIPL7RuleMaxCntResponse() (response *DescribeBGPIPL7RuleMaxCnt
     return
 }
 
+// DescribeBGPIPL7RuleMaxCnt
 // 获取高防IP可添加的最多7层规则数量
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DescribeBGPIPL7RuleMaxCnt(request *DescribeBGPIPL7RuleMaxCntRequest) (response *DescribeBGPIPL7RuleMaxCntResponse, err error) {
     if request == nil {
         request = NewDescribeBGPIPL7RuleMaxCntRequest()
@@ -783,7 +999,11 @@ func NewDescribeBaradDataResponse() (response *DescribeBaradDataResponse) {
     return
 }
 
+// DescribeBaradData
 // 为大禹子产品提供业务转发指标数据的接口
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DescribeBaradData(request *DescribeBaradDataRequest) (response *DescribeBaradDataResponse, err error) {
     if request == nil {
         request = NewDescribeBaradDataRequest()
@@ -808,7 +1028,20 @@ func NewDescribeBasicCCThresholdResponse() (response *DescribeBasicCCThresholdRe
     return
 }
 
+// DescribeBasicCCThreshold
 // 获取基础防护CC防护阈值
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeBasicCCThreshold(request *DescribeBasicCCThresholdRequest) (response *DescribeBasicCCThresholdResponse, err error) {
     if request == nil {
         request = NewDescribeBasicCCThresholdRequest()
@@ -833,7 +1066,20 @@ func NewDescribeBasicDeviceThresholdResponse() (response *DescribeBasicDeviceThr
     return
 }
 
+// DescribeBasicDeviceThreshold
 // 获取基础防护黑洞阈值
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresholdRequest) (response *DescribeBasicDeviceThresholdResponse, err error) {
     if request == nil {
         request = NewDescribeBasicDeviceThresholdRequest()
@@ -858,7 +1104,20 @@ func NewDescribeBizHttpStatusResponse() (response *DescribeBizHttpStatusResponse
     return
 }
 
+// DescribeBizHttpStatus
 // 获取业务流量状态码统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeBizHttpStatus(request *DescribeBizHttpStatusRequest) (response *DescribeBizHttpStatusResponse, err error) {
     if request == nil {
         request = NewDescribeBizHttpStatusRequest()
@@ -883,7 +1142,20 @@ func NewDescribeBizTrendResponse() (response *DescribeBizTrendResponse) {
     return
 }
 
+// DescribeBizTrend
 // 获取业务流量曲线
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeBizTrend(request *DescribeBizTrendRequest) (response *DescribeBizTrendResponse, err error) {
     if request == nil {
         request = NewDescribeBizTrendRequest()
@@ -908,7 +1180,20 @@ func NewDescribeCCAlarmThresholdResponse() (response *DescribeCCAlarmThresholdRe
     return
 }
 
+// DescribeCCAlarmThreshold
 // 获取高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCAlarmThreshold(request *DescribeCCAlarmThresholdRequest) (response *DescribeCCAlarmThresholdResponse, err error) {
     if request == nil {
         request = NewDescribeCCAlarmThresholdRequest()
@@ -933,7 +1218,20 @@ func NewDescribeCCEvListResponse() (response *DescribeCCEvListResponse) {
     return
 }
 
+// DescribeCCEvList
 // 获取CC攻击事件列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCEvList(request *DescribeCCEvListRequest) (response *DescribeCCEvListResponse, err error) {
     if request == nil {
         request = NewDescribeCCEvListRequest()
@@ -958,7 +1256,20 @@ func NewDescribeCCFrequencyRulesResponse() (response *DescribeCCFrequencyRulesRe
     return
 }
 
+// DescribeCCFrequencyRules
 // 获取CC防护的访问频率控制规则
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCFrequencyRules(request *DescribeCCFrequencyRulesRequest) (response *DescribeCCFrequencyRulesResponse, err error) {
     if request == nil {
         request = NewDescribeCCFrequencyRulesRequest()
@@ -983,7 +1294,20 @@ func NewDescribeCCIpAllowDenyResponse() (response *DescribeCCIpAllowDenyResponse
     return
 }
 
+// DescribeCCIpAllowDeny
 // 获取CC的IP黑白名单
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCIpAllowDeny(request *DescribeCCIpAllowDenyRequest) (response *DescribeCCIpAllowDenyResponse, err error) {
     if request == nil {
         request = NewDescribeCCIpAllowDenyRequest()
@@ -1008,7 +1332,19 @@ func NewDescribeCCSelfDefinePolicyResponse() (response *DescribeCCSelfDefinePoli
     return
 }
 
+// DescribeCCSelfDefinePolicy
 // 获取CC自定义策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCSelfDefinePolicy(request *DescribeCCSelfDefinePolicyRequest) (response *DescribeCCSelfDefinePolicyResponse, err error) {
     if request == nil {
         request = NewDescribeCCSelfDefinePolicyRequest()
@@ -1033,7 +1369,19 @@ func NewDescribeCCTrendResponse() (response *DescribeCCTrendResponse) {
     return
 }
 
+// DescribeCCTrend
 // 获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCTrend(request *DescribeCCTrendRequest) (response *DescribeCCTrendResponse, err error) {
     if request == nil {
         request = NewDescribeCCTrendRequest()
@@ -1058,7 +1406,19 @@ func NewDescribeCCUrlAllowResponse() (response *DescribeCCUrlAllowResponse) {
     return
 }
 
+// DescribeCCUrlAllow
 // 获取CC的Url白名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCCUrlAllow(request *DescribeCCUrlAllowRequest) (response *DescribeCCUrlAllowResponse, err error) {
     if request == nil {
         request = NewDescribeCCUrlAllowRequest()
@@ -1083,7 +1443,19 @@ func NewDescribeDDoSAlarmThresholdResponse() (response *DescribeDDoSAlarmThresho
     return
 }
 
+// DescribeDDoSAlarmThreshold
 // 获取高防包、高防IP、高防IP专业版、棋牌盾产品设置DDoS攻击的告警通知阈值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSAlarmThreshold(request *DescribeDDoSAlarmThresholdRequest) (response *DescribeDDoSAlarmThresholdResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSAlarmThresholdRequest()
@@ -1108,7 +1480,17 @@ func NewDescribeDDoSAttackIPRegionMapResponse() (response *DescribeDDoSAttackIPR
     return
 }
 
+// DescribeDDoSAttackIPRegionMap
 // 获取DDoS攻击源IP地域分布图，支持全球攻击分布和国内省份攻击分布；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSAttackIPRegionMap(request *DescribeDDoSAttackIPRegionMapRequest) (response *DescribeDDoSAttackIPRegionMapResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSAttackIPRegionMapRequest()
@@ -1133,7 +1515,20 @@ func NewDescribeDDoSAttackSourceResponse() (response *DescribeDDoSAttackSourceRe
     return
 }
 
+// DescribeDDoSAttackSource
 // 获取DDoS攻击源列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSAttackSource(request *DescribeDDoSAttackSourceRequest) (response *DescribeDDoSAttackSourceResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSAttackSourceRequest()
@@ -1158,7 +1553,20 @@ func NewDescribeDDoSCountResponse() (response *DescribeDDoSCountResponse) {
     return
 }
 
+// DescribeDDoSCount
 // 获取DDoS攻击占比分析
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSCount(request *DescribeDDoSCountRequest) (response *DescribeDDoSCountResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSCountRequest()
@@ -1183,7 +1591,20 @@ func NewDescribeDDoSDefendStatusResponse() (response *DescribeDDoSDefendStatusRe
     return
 }
 
+// DescribeDDoSDefendStatus
 // 获取DDoS防护状态（临时关闭状态），支持产品：基础防护，独享包，共享包，高防IP，高防IP专业版；调用此接口是获取当前是否有设置临时关闭DDoS防护状态，如果有设置会返回临时关闭的时长等参数。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSDefendStatus(request *DescribeDDoSDefendStatusRequest) (response *DescribeDDoSDefendStatusResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSDefendStatusRequest()
@@ -1208,7 +1629,20 @@ func NewDescribeDDoSEvInfoResponse() (response *DescribeDDoSEvInfoResponse) {
     return
 }
 
+// DescribeDDoSEvInfo
 // 获取DDoS攻击事件详情
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSEvInfo(request *DescribeDDoSEvInfoRequest) (response *DescribeDDoSEvInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSEvInfoRequest()
@@ -1233,7 +1667,20 @@ func NewDescribeDDoSEvListResponse() (response *DescribeDDoSEvListResponse) {
     return
 }
 
+// DescribeDDoSEvList
 // 获取DDoS攻击事件列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSEvList(request *DescribeDDoSEvListRequest) (response *DescribeDDoSEvListResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSEvListRequest()
@@ -1258,7 +1705,20 @@ func NewDescribeDDoSIpLogResponse() (response *DescribeDDoSIpLogResponse) {
     return
 }
 
+// DescribeDDoSIpLog
 // 获取DDoSIP攻击日志
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSIpLog(request *DescribeDDoSIpLogRequest) (response *DescribeDDoSIpLogResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSIpLogRequest()
@@ -1283,7 +1743,20 @@ func NewDescribeDDoSNetCountResponse() (response *DescribeDDoSNetCountResponse) 
     return
 }
 
+// DescribeDDoSNetCount
 // 获取高防IP专业版资源的DDoS攻击占比分析
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSNetCount(request *DescribeDDoSNetCountRequest) (response *DescribeDDoSNetCountResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSNetCountRequest()
@@ -1308,7 +1781,20 @@ func NewDescribeDDoSNetEvInfoResponse() (response *DescribeDDoSNetEvInfoResponse
     return
 }
 
+// DescribeDDoSNetEvInfo
 // 获取高防IP专业版资源的DDoS攻击事件详情
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSNetEvInfo(request *DescribeDDoSNetEvInfoRequest) (response *DescribeDDoSNetEvInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSNetEvInfoRequest()
@@ -1333,7 +1819,20 @@ func NewDescribeDDoSNetEvListResponse() (response *DescribeDDoSNetEvListResponse
     return
 }
 
+// DescribeDDoSNetEvList
 // 获取高防IP专业版资源的DDoS攻击事件列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSNetEvList(request *DescribeDDoSNetEvListRequest) (response *DescribeDDoSNetEvListResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSNetEvListRequest()
@@ -1358,7 +1857,20 @@ func NewDescribeDDoSNetIpLogResponse() (response *DescribeDDoSNetIpLogResponse) 
     return
 }
 
+// DescribeDDoSNetIpLog
 // 获取高防IP专业版资源的DDoSIP攻击日志
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSNetIpLog(request *DescribeDDoSNetIpLogRequest) (response *DescribeDDoSNetIpLogResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSNetIpLogRequest()
@@ -1383,7 +1895,20 @@ func NewDescribeDDoSNetTrendResponse() (response *DescribeDDoSNetTrendResponse) 
     return
 }
 
+// DescribeDDoSNetTrend
 // 获取高防IP专业版资源的DDoS攻击指标数据
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSNetTrend(request *DescribeDDoSNetTrendRequest) (response *DescribeDDoSNetTrendResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSNetTrendRequest()
@@ -1408,7 +1933,20 @@ func NewDescribeDDoSPolicyResponse() (response *DescribeDDoSPolicyResponse) {
     return
 }
 
+// DescribeDDoSPolicy
 // 获取DDoS高级策略
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSPolicy(request *DescribeDDoSPolicyRequest) (response *DescribeDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSPolicyRequest()
@@ -1433,7 +1971,20 @@ func NewDescribeDDoSTrendResponse() (response *DescribeDDoSTrendResponse) {
     return
 }
 
+// DescribeDDoSTrend
 // 获取DDoS攻击流量带宽和攻击包速率数据
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSTrend(request *DescribeDDoSTrendRequest) (response *DescribeDDoSTrendResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSTrendRequest()
@@ -1458,7 +2009,20 @@ func NewDescribeDDoSUsedStatisResponse() (response *DescribeDDoSUsedStatisRespon
     return
 }
 
+// DescribeDDoSUsedStatis
 // 统计用户的高防资源的使用天数和DDoS攻击防护次数
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeDDoSUsedStatis(request *DescribeDDoSUsedStatisRequest) (response *DescribeDDoSUsedStatisResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSUsedStatisRequest()
@@ -1483,7 +2047,20 @@ func NewDescribeIPProductInfoResponse() (response *DescribeIPProductInfoResponse
     return
 }
 
+// DescribeIPProductInfo
 // 获取独享包或共享包IP对应的云资产信息，只支持独享包和共享包的IP
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeIPProductInfo(request *DescribeIPProductInfoRequest) (response *DescribeIPProductInfoResponse, err error) {
     if request == nil {
         request = NewDescribeIPProductInfoRequest()
@@ -1508,7 +2085,20 @@ func NewDescribeInsurePacksResponse() (response *DescribeInsurePacksResponse) {
     return
 }
 
+// DescribeInsurePacks
 // 获取保险包套餐列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeInsurePacks(request *DescribeInsurePacksRequest) (response *DescribeInsurePacksResponse, err error) {
     if request == nil {
         request = NewDescribeInsurePacksRequest()
@@ -1533,7 +2123,20 @@ func NewDescribeIpBlockListResponse() (response *DescribeIpBlockListResponse) {
     return
 }
 
+// DescribeIpBlockList
 // 获取IP封堵列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeIpBlockList(request *DescribeIpBlockListRequest) (response *DescribeIpBlockListResponse, err error) {
     if request == nil {
         request = NewDescribeIpBlockListRequest()
@@ -1558,7 +2161,20 @@ func NewDescribeIpUnBlockListResponse() (response *DescribeIpUnBlockListResponse
     return
 }
 
+// DescribeIpUnBlockList
 // 获取IP解封记录
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeIpUnBlockList(request *DescribeIpUnBlockListRequest) (response *DescribeIpUnBlockListResponse, err error) {
     if request == nil {
         request = NewDescribeIpUnBlockListRequest()
@@ -1583,7 +2199,20 @@ func NewDescribeL4HealthConfigResponse() (response *DescribeL4HealthConfigRespon
     return
 }
 
+// DescribeL4HealthConfig
 // 导出四层健康检查配置
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeL4HealthConfig(request *DescribeL4HealthConfigRequest) (response *DescribeL4HealthConfigResponse, err error) {
     if request == nil {
         request = NewDescribeL4HealthConfigRequest()
@@ -1608,7 +2237,20 @@ func NewDescribeL4RulesErrHealthResponse() (response *DescribeL4RulesErrHealthRe
     return
 }
 
+// DescribeL4RulesErrHealth
 // 获取L4转发规则健康检查异常结果
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeL4RulesErrHealth(request *DescribeL4RulesErrHealthRequest) (response *DescribeL4RulesErrHealthResponse, err error) {
     if request == nil {
         request = NewDescribeL4RulesErrHealthRequest()
@@ -1633,7 +2275,20 @@ func NewDescribeL7HealthConfigResponse() (response *DescribeL7HealthConfigRespon
     return
 }
 
+// DescribeL7HealthConfig
 // 导出七层健康检查配置
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeL7HealthConfig(request *DescribeL7HealthConfigRequest) (response *DescribeL7HealthConfigResponse, err error) {
     if request == nil {
         request = NewDescribeL7HealthConfigRequest()
@@ -1658,7 +2313,20 @@ func NewDescribeNewL4RulesResponse() (response *DescribeNewL4RulesResponse) {
     return
 }
 
+// DescribeNewL4Rules
 // 获取L4转发规则
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeNewL4Rules(request *DescribeNewL4RulesRequest) (response *DescribeNewL4RulesResponse, err error) {
     if request == nil {
         request = NewDescribeNewL4RulesRequest()
@@ -1683,7 +2351,20 @@ func NewDescribeNewL4RulesErrHealthResponse() (response *DescribeNewL4RulesErrHe
     return
 }
 
+// DescribeNewL4RulesErrHealth
 // 获取L4转发规则健康检查异常结果
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeNewL4RulesErrHealth(request *DescribeNewL4RulesErrHealthRequest) (response *DescribeNewL4RulesErrHealthResponse, err error) {
     if request == nil {
         request = NewDescribeNewL4RulesErrHealthRequest()
@@ -1708,7 +2389,20 @@ func NewDescribeNewL7RulesErrHealthResponse() (response *DescribeNewL7RulesErrHe
     return
 }
 
+// DescribeNewL7RulesErrHealth
 // 获取L7转发规则健康检查异常结果
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeNewL7RulesErrHealth(request *DescribeNewL7RulesErrHealthRequest) (response *DescribeNewL7RulesErrHealthResponse, err error) {
     if request == nil {
         request = NewDescribeNewL7RulesErrHealthRequest()
@@ -1733,7 +2427,20 @@ func NewDescribePackIndexResponse() (response *DescribePackIndexResponse) {
     return
 }
 
+// DescribePackIndex
 // 获取产品总览统计，支持高防包、高防IP、高防IP专业版；
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribePackIndex(request *DescribePackIndexRequest) (response *DescribePackIndexResponse, err error) {
     if request == nil {
         request = NewDescribePackIndexRequest()
@@ -1758,7 +2465,20 @@ func NewDescribePcapResponse() (response *DescribePcapResponse) {
     return
 }
 
+// DescribePcap
 // 下载攻击事件的pcap包
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribePcap(request *DescribePcapRequest) (response *DescribePcapResponse, err error) {
     if request == nil {
         request = NewDescribePcapRequest()
@@ -1783,7 +2503,20 @@ func NewDescribePolicyCaseResponse() (response *DescribePolicyCaseResponse) {
     return
 }
 
+// DescribePolicyCase
 // 获取策略场景
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribePolicyCase(request *DescribePolicyCaseRequest) (response *DescribePolicyCaseResponse, err error) {
     if request == nil {
         request = NewDescribePolicyCaseRequest()
@@ -1808,7 +2541,20 @@ func NewDescribeResIpListResponse() (response *DescribeResIpListResponse) {
     return
 }
 
+// DescribeResIpList
 // 获取资源的IP列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeResIpList(request *DescribeResIpListRequest) (response *DescribeResIpListResponse, err error) {
     if request == nil {
         request = NewDescribeResIpListRequest()
@@ -1833,7 +2579,20 @@ func NewDescribeResourceListResponse() (response *DescribeResourceListResponse) 
     return
 }
 
+// DescribeResourceList
 // 获取资源列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeResourceList(request *DescribeResourceListRequest) (response *DescribeResourceListResponse, err error) {
     if request == nil {
         request = NewDescribeResourceListRequest()
@@ -1858,7 +2617,20 @@ func NewDescribeRuleSetsResponse() (response *DescribeRuleSetsResponse) {
     return
 }
 
+// DescribeRuleSets
 // 获取资源的规则数
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRuleSets(request *DescribeRuleSetsRequest) (response *DescribeRuleSetsResponse, err error) {
     if request == nil {
         request = NewDescribeRuleSetsRequest()
@@ -1883,7 +2655,20 @@ func NewDescribeSchedulingDomainListResponse() (response *DescribeSchedulingDoma
     return
 }
 
+// DescribeSchedulingDomainList
 // 获取调度域名列表
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSchedulingDomainList(request *DescribeSchedulingDomainListRequest) (response *DescribeSchedulingDomainListResponse, err error) {
     if request == nil {
         request = NewDescribeSchedulingDomainListRequest()
@@ -1908,7 +2693,20 @@ func NewDescribeSecIndexResponse() (response *DescribeSecIndexResponse) {
     return
 }
 
+// DescribeSecIndex
 // 获取本月安全统计
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSecIndex(request *DescribeSecIndexRequest) (response *DescribeSecIndexResponse, err error) {
     if request == nil {
         request = NewDescribeSecIndexRequest()
@@ -1933,7 +2731,20 @@ func NewDescribeSourceIpSegmentResponse() (response *DescribeSourceIpSegmentResp
     return
 }
 
+// DescribeSourceIpSegment
 // 获取回源IP段，支持的产品：高防IP，高防IP专业版；
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSourceIpSegment(request *DescribeSourceIpSegmentRequest) (response *DescribeSourceIpSegmentResponse, err error) {
     if request == nil {
         request = NewDescribeSourceIpSegmentRequest()
@@ -1958,7 +2769,11 @@ func NewDescribeTransmitStatisResponse() (response *DescribeTransmitStatisRespon
     return
 }
 
+// DescribeTransmitStatis
 // 获取业务转发统计数据，支持转发流量和转发包速率
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTransmitStatis(request *DescribeTransmitStatisRequest) (response *DescribeTransmitStatisResponse, err error) {
     if request == nil {
         request = NewDescribeTransmitStatisRequest()
@@ -1983,7 +2798,11 @@ func NewDescribeUnBlockStatisResponse() (response *DescribeUnBlockStatisResponse
     return
 }
 
+// DescribeUnBlockStatis
 // 获取黑洞解封次数
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUnBlockStatis(request *DescribeUnBlockStatisRequest) (response *DescribeUnBlockStatisResponse, err error) {
     if request == nil {
         request = NewDescribeUnBlockStatisRequest()
@@ -2008,7 +2827,11 @@ func NewDescribleL4RulesResponse() (response *DescribleL4RulesResponse) {
     return
 }
 
+// DescribleL4Rules
 // 获取四层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribleL4Rules(request *DescribleL4RulesRequest) (response *DescribleL4RulesResponse, err error) {
     if request == nil {
         request = NewDescribleL4RulesRequest()
@@ -2033,7 +2856,11 @@ func NewDescribleL7RulesResponse() (response *DescribleL7RulesResponse) {
     return
 }
 
+// DescribleL7Rules
 // 获取七层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribleL7Rules(request *DescribleL7RulesRequest) (response *DescribleL7RulesResponse, err error) {
     if request == nil {
         request = NewDescribleL7RulesRequest()
@@ -2058,7 +2885,11 @@ func NewDescribleNewL7RulesResponse() (response *DescribleNewL7RulesResponse) {
     return
 }
 
+// DescribleNewL7Rules
 // 获取7层规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribleNewL7Rules(request *DescribleNewL7RulesRequest) (response *DescribleNewL7RulesResponse, err error) {
     if request == nil {
         request = NewDescribleNewL7RulesRequest()
@@ -2083,7 +2914,11 @@ func NewDescribleRegionCountResponse() (response *DescribleRegionCountResponse) 
     return
 }
 
+// DescribleRegionCount
 // 获取地域的资源实例数
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribleRegionCount(request *DescribleRegionCountRequest) (response *DescribleRegionCountResponse, err error) {
     if request == nil {
         request = NewDescribleRegionCountRequest()
@@ -2108,7 +2943,11 @@ func NewModifyCCAlarmThresholdResponse() (response *ModifyCCAlarmThresholdRespon
     return
 }
 
+// ModifyCCAlarmThreshold
 // 为高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCAlarmThreshold(request *ModifyCCAlarmThresholdRequest) (response *ModifyCCAlarmThresholdResponse, err error) {
     if request == nil {
         request = NewModifyCCAlarmThresholdRequest()
@@ -2133,7 +2972,11 @@ func NewModifyCCFrequencyRulesResponse() (response *ModifyCCFrequencyRulesRespon
     return
 }
 
+// ModifyCCFrequencyRules
 // 修改CC防护的访问频率控制规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCFrequencyRules(request *ModifyCCFrequencyRulesRequest) (response *ModifyCCFrequencyRulesResponse, err error) {
     if request == nil {
         request = NewModifyCCFrequencyRulesRequest()
@@ -2158,7 +3001,11 @@ func NewModifyCCFrequencyRulesStatusResponse() (response *ModifyCCFrequencyRules
     return
 }
 
+// ModifyCCFrequencyRulesStatus
 // 开启或关闭CC防护的访问频率控制规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCFrequencyRulesStatus(request *ModifyCCFrequencyRulesStatusRequest) (response *ModifyCCFrequencyRulesStatusResponse, err error) {
     if request == nil {
         request = NewModifyCCFrequencyRulesStatusRequest()
@@ -2183,7 +3030,11 @@ func NewModifyCCHostProtectionResponse() (response *ModifyCCHostProtectionRespon
     return
 }
 
+// ModifyCCHostProtection
 // 开启或关闭CC域名防护
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCHostProtection(request *ModifyCCHostProtectionRequest) (response *ModifyCCHostProtectionResponse, err error) {
     if request == nil {
         request = NewModifyCCHostProtectionRequest()
@@ -2208,7 +3059,11 @@ func NewModifyCCIpAllowDenyResponse() (response *ModifyCCIpAllowDenyResponse) {
     return
 }
 
+// ModifyCCIpAllowDeny
 // 添加或删除CC的IP黑白名单
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCIpAllowDeny(request *ModifyCCIpAllowDenyRequest) (response *ModifyCCIpAllowDenyResponse, err error) {
     if request == nil {
         request = NewModifyCCIpAllowDenyRequest()
@@ -2233,7 +3088,11 @@ func NewModifyCCLevelResponse() (response *ModifyCCLevelResponse) {
     return
 }
 
+// ModifyCCLevel
 // 修改CC防护等级
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCCLevel(request *ModifyCCLevelRequest) (response *ModifyCCLevelResponse, err error) {
     if request == nil {
         request = NewModifyCCLevelRequest()
@@ -2258,7 +3117,19 @@ func NewModifyCCPolicySwitchResponse() (response *ModifyCCPolicySwitchResponse) 
     return
 }
 
+// ModifyCCPolicySwitch
 // 修改CC自定义策略开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCCPolicySwitch(request *ModifyCCPolicySwitchRequest) (response *ModifyCCPolicySwitchResponse, err error) {
     if request == nil {
         request = NewModifyCCPolicySwitchRequest()
@@ -2283,7 +3154,19 @@ func NewModifyCCSelfDefinePolicyResponse() (response *ModifyCCSelfDefinePolicyRe
     return
 }
 
+// ModifyCCSelfDefinePolicy
 // 修改CC自定义策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCCSelfDefinePolicy(request *ModifyCCSelfDefinePolicyRequest) (response *ModifyCCSelfDefinePolicyResponse, err error) {
     if request == nil {
         request = NewModifyCCSelfDefinePolicyRequest()
@@ -2308,7 +3191,11 @@ func NewModifyCCThresholdResponse() (response *ModifyCCThresholdResponse) {
     return
 }
 
+// ModifyCCThreshold
 // 修改CC的防护阈值
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCCThreshold(request *ModifyCCThresholdRequest) (response *ModifyCCThresholdResponse, err error) {
     if request == nil {
         request = NewModifyCCThresholdRequest()
@@ -2333,7 +3220,11 @@ func NewModifyCCUrlAllowResponse() (response *ModifyCCUrlAllowResponse) {
     return
 }
 
+// ModifyCCUrlAllow
 // 添加或删除CC的URL白名单
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCCUrlAllow(request *ModifyCCUrlAllowRequest) (response *ModifyCCUrlAllowResponse, err error) {
     if request == nil {
         request = NewModifyCCUrlAllowRequest()
@@ -2358,7 +3249,11 @@ func NewModifyDDoSAIStatusResponse() (response *ModifyDDoSAIStatusResponse) {
     return
 }
 
+// ModifyDDoSAIStatus
 // 读取或修改DDoS的AI防护状态
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSAIStatus(request *ModifyDDoSAIStatusRequest) (response *ModifyDDoSAIStatusResponse, err error) {
     if request == nil {
         request = NewModifyDDoSAIStatusRequest()
@@ -2383,7 +3278,11 @@ func NewModifyDDoSAlarmThresholdResponse() (response *ModifyDDoSAlarmThresholdRe
     return
 }
 
+// ModifyDDoSAlarmThreshold
 // 为高防包、高防IP、高防IP专业版、棋牌盾等产品设置DDoS攻击的告警通知阈值
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSAlarmThreshold(request *ModifyDDoSAlarmThresholdRequest) (response *ModifyDDoSAlarmThresholdResponse, err error) {
     if request == nil {
         request = NewModifyDDoSAlarmThresholdRequest()
@@ -2408,7 +3307,11 @@ func NewModifyDDoSDefendStatusResponse() (response *ModifyDDoSDefendStatusRespon
     return
 }
 
+// ModifyDDoSDefendStatus
 // 开启或关闭DDoS防护状态，调用此接口允许临时关闭DDoS防护一段时间，等时间到了会自动开启DDoS防护；
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSDefendStatus(request *ModifyDDoSDefendStatusRequest) (response *ModifyDDoSDefendStatusResponse, err error) {
     if request == nil {
         request = NewModifyDDoSDefendStatusRequest()
@@ -2433,7 +3336,11 @@ func NewModifyDDoSLevelResponse() (response *ModifyDDoSLevelResponse) {
     return
 }
 
+// ModifyDDoSLevel
 // 读取或修改DDoS的防护等级
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSLevel(request *ModifyDDoSLevelRequest) (response *ModifyDDoSLevelResponse, err error) {
     if request == nil {
         request = NewModifyDDoSLevelRequest()
@@ -2458,7 +3365,11 @@ func NewModifyDDoSPolicyResponse() (response *ModifyDDoSPolicyResponse) {
     return
 }
 
+// ModifyDDoSPolicy
 // 修改DDoS高级策略
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSPolicy(request *ModifyDDoSPolicyRequest) (response *ModifyDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewModifyDDoSPolicyRequest()
@@ -2483,7 +3394,11 @@ func NewModifyDDoSPolicyCaseResponse() (response *ModifyDDoSPolicyCaseResponse) 
     return
 }
 
+// ModifyDDoSPolicyCase
 // 修改策略场景
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSPolicyCase(request *ModifyDDoSPolicyCaseRequest) (response *ModifyDDoSPolicyCaseResponse, err error) {
     if request == nil {
         request = NewModifyDDoSPolicyCaseRequest()
@@ -2508,7 +3423,11 @@ func NewModifyDDoSPolicyNameResponse() (response *ModifyDDoSPolicyNameResponse) 
     return
 }
 
+// ModifyDDoSPolicyName
 // 修改DDoS高级策略名称
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSPolicyName(request *ModifyDDoSPolicyNameRequest) (response *ModifyDDoSPolicyNameResponse, err error) {
     if request == nil {
         request = NewModifyDDoSPolicyNameRequest()
@@ -2533,7 +3452,11 @@ func NewModifyDDoSSwitchResponse() (response *ModifyDDoSSwitchResponse) {
     return
 }
 
+// ModifyDDoSSwitch
 // 开启或关闭DDoS防护，只支持基础防护产品；
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSSwitch(request *ModifyDDoSSwitchRequest) (response *ModifyDDoSSwitchResponse, err error) {
     if request == nil {
         request = NewModifyDDoSSwitchRequest()
@@ -2558,7 +3481,11 @@ func NewModifyDDoSThresholdResponse() (response *ModifyDDoSThresholdResponse) {
     return
 }
 
+// ModifyDDoSThreshold
 // 修改DDoS清洗阈值
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSThreshold(request *ModifyDDoSThresholdRequest) (response *ModifyDDoSThresholdResponse, err error) {
     if request == nil {
         request = NewModifyDDoSThresholdRequest()
@@ -2583,7 +3510,11 @@ func NewModifyDDoSWaterKeyResponse() (response *ModifyDDoSWaterKeyResponse) {
     return
 }
 
+// ModifyDDoSWaterKey
 // 支持水印密钥的添加，删除，开启，关闭
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyDDoSWaterKey(request *ModifyDDoSWaterKeyRequest) (response *ModifyDDoSWaterKeyResponse, err error) {
     if request == nil {
         request = NewModifyDDoSWaterKeyRequest()
@@ -2608,7 +3539,11 @@ func NewModifyElasticLimitResponse() (response *ModifyElasticLimitResponse) {
     return
 }
 
+// ModifyElasticLimit
 // 修改弹性防护阈值
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyElasticLimit(request *ModifyElasticLimitRequest) (response *ModifyElasticLimitResponse, err error) {
     if request == nil {
         request = NewModifyElasticLimitRequest()
@@ -2633,7 +3568,11 @@ func NewModifyL4HealthResponse() (response *ModifyL4HealthResponse) {
     return
 }
 
+// ModifyL4Health
 // 修改L4转发规则健康检查参数，支持的子产品：高防IP、高防IP专业版
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyL4Health(request *ModifyL4HealthRequest) (response *ModifyL4HealthResponse, err error) {
     if request == nil {
         request = NewModifyL4HealthRequest()
@@ -2658,7 +3597,11 @@ func NewModifyL4KeepTimeResponse() (response *ModifyL4KeepTimeResponse) {
     return
 }
 
+// ModifyL4KeepTime
 // 修改L4转发规则的会话保持，支持的子产品：高防IP、高防IP专业版
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyL4KeepTime(request *ModifyL4KeepTimeRequest) (response *ModifyL4KeepTimeResponse, err error) {
     if request == nil {
         request = NewModifyL4KeepTimeRequest()
@@ -2683,7 +3626,11 @@ func NewModifyL4RulesResponse() (response *ModifyL4RulesResponse) {
     return
 }
 
+// ModifyL4Rules
 // 修改L4转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyL4Rules(request *ModifyL4RulesRequest) (response *ModifyL4RulesResponse, err error) {
     if request == nil {
         request = NewModifyL4RulesRequest()
@@ -2708,7 +3655,12 @@ func NewModifyL7RulesResponse() (response *ModifyL7RulesResponse) {
     return
 }
 
+// ModifyL7Rules
 // 修改L7转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyL7Rules(request *ModifyL7RulesRequest) (response *ModifyL7RulesResponse, err error) {
     if request == nil {
         request = NewModifyL7RulesRequest()
@@ -2733,7 +3685,12 @@ func NewModifyNetReturnSwitchResponse() (response *ModifyNetReturnSwitchResponse
     return
 }
 
+// ModifyNetReturnSwitch
 // 在客户收攻击或者被封堵时，切回到源站，并设置回切的时长
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyNetReturnSwitch(request *ModifyNetReturnSwitchRequest) (response *ModifyNetReturnSwitchResponse, err error) {
     if request == nil {
         request = NewModifyNetReturnSwitchRequest()
@@ -2758,7 +3715,11 @@ func NewModifyNewDomainRulesResponse() (response *ModifyNewDomainRulesResponse) 
     return
 }
 
+// ModifyNewDomainRules
 // 修改7层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) ModifyNewDomainRules(request *ModifyNewDomainRulesRequest) (response *ModifyNewDomainRulesResponse, err error) {
     if request == nil {
         request = NewModifyNewDomainRulesRequest()
@@ -2783,7 +3744,11 @@ func NewModifyNewL4RuleResponse() (response *ModifyNewL4RuleResponse) {
     return
 }
 
+// ModifyNewL4Rule
 // 修改4层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) ModifyNewL4Rule(request *ModifyNewL4RuleRequest) (response *ModifyNewL4RuleResponse, err error) {
     if request == nil {
         request = NewModifyNewL4RuleRequest()
@@ -2808,7 +3773,11 @@ func NewModifyResBindDDoSPolicyResponse() (response *ModifyResBindDDoSPolicyResp
     return
 }
 
+// ModifyResBindDDoSPolicy
 // 资源实例绑定DDoS高级策略
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) ModifyResBindDDoSPolicy(request *ModifyResBindDDoSPolicyRequest) (response *ModifyResBindDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewModifyResBindDDoSPolicyRequest()
@@ -2833,7 +3802,20 @@ func NewModifyResourceRenewFlagResponse() (response *ModifyResourceRenewFlagResp
     return
 }
 
+// ModifyResourceRenewFlag
 // 修改资源自动续费标记
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyResourceRenewFlag(request *ModifyResourceRenewFlagRequest) (response *ModifyResourceRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyResourceRenewFlagRequest()

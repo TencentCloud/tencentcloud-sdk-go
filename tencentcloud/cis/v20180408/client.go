@@ -58,7 +58,12 @@ func NewCreateContainerInstanceResponse() (response *CreateContainerInstanceResp
     return
 }
 
+// CreateContainerInstance
 // 此接口（CreateContainerInstance）用于创建容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateContainerInstance(request *CreateContainerInstanceRequest) (response *CreateContainerInstanceResponse, err error) {
     if request == nil {
         request = NewCreateContainerInstanceRequest()
@@ -83,7 +88,12 @@ func NewDeleteContainerInstanceResponse() (response *DeleteContainerInstanceResp
     return
 }
 
+// DeleteContainerInstance
 // 此接口（DeleteContainerInstance）用于删除容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteContainerInstance(request *DeleteContainerInstanceRequest) (response *DeleteContainerInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteContainerInstanceRequest()
@@ -108,7 +118,12 @@ func NewDescribeContainerInstanceResponse() (response *DescribeContainerInstance
     return
 }
 
+// DescribeContainerInstance
 // 此接口（DescribeContainerInstance）用于获取容器实例详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstance(request *DescribeContainerInstanceRequest) (response *DescribeContainerInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstanceRequest()
@@ -133,7 +148,12 @@ func NewDescribeContainerInstanceEventsResponse() (response *DescribeContainerIn
     return
 }
 
+// DescribeContainerInstanceEvents
 // 此接口（DescribeContainerInstanceEvents）用于查询容器实例事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstanceEvents(request *DescribeContainerInstanceEventsRequest) (response *DescribeContainerInstanceEventsResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstanceEventsRequest()
@@ -158,7 +178,12 @@ func NewDescribeContainerInstancesResponse() (response *DescribeContainerInstanc
     return
 }
 
+// DescribeContainerInstances
 // 此接口（DescribeContainerInstances）查询容器实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstances(request *DescribeContainerInstancesRequest) (response *DescribeContainerInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstancesRequest()
@@ -183,7 +208,12 @@ func NewDescribeContainerLogResponse() (response *DescribeContainerLogResponse) 
     return
 }
 
+// DescribeContainerLog
 // 此接口（DescribeContainerLog）用于获取容器日志信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (response *DescribeContainerLogResponse, err error) {
     if request == nil {
         request = NewDescribeContainerLogRequest()
@@ -208,7 +238,12 @@ func NewInquiryPriceCreateCisResponse() (response *InquiryPriceCreateCisResponse
     return
 }
 
+// InquiryPriceCreateCis
 // 此接口（InquiryPriceCreateCis）用于查询容器实例价格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) InquiryPriceCreateCis(request *InquiryPriceCreateCisRequest) (response *InquiryPriceCreateCisResponse, err error) {
     if request == nil {
         request = NewInquiryPriceCreateCisRequest()

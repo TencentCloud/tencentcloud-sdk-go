@@ -58,9 +58,28 @@ func NewCheckVcodeResponse() (response *CheckVcodeResponse) {
     return
 }
 
+// CheckVcode
 // 检测验证码接口。此接口用于企业电子合同平台通过给用户发送短信验证码，以短信授权方式签署合同。此接口配合发送验证码接口使用。
+//
 // 
+//
 // 用户在企业电子合同平台输入收到的验证码后，由企业电子合同平台调用该接口向腾讯云提交确认受托签署合同验证码命令。验证码验证正确时，本次合同签署的授权成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTOWNCONTRACTERROR = "FailedOperation.AccountNotOwnContractError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_CHECKVCODEERROR = "FailedOperation.CheckVcodeError"
+//  FAILEDOPERATION_CONTRACTSIGNEDERROR = "FailedOperation.ContractSignedError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_SMSCODEEXPIRED = "FailedOperation.SMSCodeExpired"
+//  FAILEDOPERATION_SMSCODELENGTHWRONG = "FailedOperation.SMSCodeLengthWrong"
+//  FAILEDOPERATION_WRONGSMSCODE = "FailedOperation.WrongSMSCode"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_CONTRACTPROJECTCODENOTFOUND = "ResourceNotFound.ContractProjectCodeNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CheckVcode(request *CheckVcodeRequest) (response *CheckVcodeResponse, err error) {
     if request == nil {
         request = NewCheckVcodeRequest()
@@ -85,7 +104,25 @@ func NewCreateContractByUploadResponse() (response *CreateContractByUploadRespon
     return
 }
 
+// CreateContractByUpload
 // 此接口适用于：客户平台通过上传PDF文件作为合同，以备未来进行签署。接口返回任务号，可调用DescribeTaskStatus接口查看任务执行结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHORIZATIONTIMEERROR = "FailedOperation.AuthorizationTimeError"
+//  FAILEDOPERATION_CREATECONTRACTERROR = "FailedOperation.CreateContractError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_IPFORMATERROR = "FailedOperation.IPFormatError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_CONTRACTFILENAMEERROR = "MissingParameter.ContractFileNameError"
+//  MISSINGPARAMETER_CONTRACTFILEPATHERROR = "MissingParameter.ContractFilePathError"
+//  MISSINGPARAMETER_LOCATIONNULLERROR = "MissingParameter.LocationNullError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  MISSINGPARAMETER_SIGNERNULLERROR = "MissingParameter.SignerNullError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_INITIATORNOTFOUNDERROR = "ResourceNotFound.InitiatorNotFoundError"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCEUNAVAILABLE_CONTRACTSIGNERUNAVAILABLE = "ResourceUnavailable.ContractSignerUnavailable"
 func (c *Client) CreateContractByUpload(request *CreateContractByUploadRequest) (response *CreateContractByUploadResponse, err error) {
     if request == nil {
         request = NewCreateContractByUploadRequest()
@@ -110,7 +147,29 @@ func NewCreateEnterpriseAccountResponse() (response *CreateEnterpriseAccountResp
     return
 }
 
+// CreateEnterpriseAccount
 // 为企业电子合同平台的最终企业用户进行开户。在企业电子合同平台进行操作的企业用户，企业电子合同平台向腾讯云发送企业用户的信息，提交开户命令。腾讯云接到请求后，自动为企业电子合同平台的企业用户生成一张数字证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDINTERFACEERROR = "FailedOperation.BackendInterfaceError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSECONTENTERROR = "FailedOperation.BackendInterfaceResponseContentError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_CREATEENTERPRISEACCOUNTERROR = "FailedOperation.CreateEnterpriseAccountError"
+//  FAILEDOPERATION_ENTERPRISENAMEFORMATERROR = "FailedOperation.EnterpriseNameFormatError"
+//  FAILEDOPERATION_IDENTNOFORMATERROR = "FailedOperation.IdentNoFormatError"
+//  FAILEDOPERATION_IDENTTYPEERROR = "FailedOperation.IdentTypeError"
+//  FAILEDOPERATION_MESSAGEDATAILLEGAL = "FailedOperation.MessageDataIllegal"
+//  FAILEDOPERATION_NAMEISPURENUMBER = "FailedOperation.NameIsPureNumber"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_TRANSACTORNAMEFORMATERROR = "FailedOperation.TransactorNameFormatError"
+//  FAILEDOPERATION_TRANSACTORPHONEFORMATERROR = "FailedOperation.TransactorPhoneFormatError"
+//  FAILEDOPERATION_WRONGIDENTNOFORMAT = "FailedOperation.WrongIdentNoFormat"
+//  FAILEDOPERATION_WRONGIDENTNOSIZE = "FailedOperation.WrongIdentNoSize"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCEINUSE_ACCOUNTEXIST = "ResourceInUse.AccountExist"
+//  RESOURCEINUSE_ENTERPRISEACCOUNTALREADYEXIST = "ResourceInUse.EnterpriseAccountAlreadyExist"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CreateEnterpriseAccount(request *CreateEnterpriseAccountRequest) (response *CreateEnterpriseAccountResponse, err error) {
     if request == nil {
         request = NewCreateEnterpriseAccountRequest()
@@ -135,7 +194,24 @@ func NewCreatePersonalAccountResponse() (response *CreatePersonalAccountResponse
     return
 }
 
+// CreatePersonalAccount
 // 为企业电子合同平台的最终个人用户进行开户。在企业电子合同平台进行操作的个人用户，企业电子合同平台向腾讯云发送个人用户的信息，提交开户命令。腾讯云接到请求后，自动为企业电子合同平台的个人用户生成一张数字证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDINTERFACEERROR = "FailedOperation.BackendInterfaceError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSECONTENTERROR = "FailedOperation.BackendInterfaceResponseContentError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_CREATEPERSONALACCOUNTERROR = "FailedOperation.CreatePersonalAccountError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_IDENTNOFORMATERROR = "FailedOperation.IdentNoFormatError"
+//  FAILEDOPERATION_IDENTTYPEERROR = "FailedOperation.IdentTypeError"
+//  FAILEDOPERATION_NAMECONTAINSNUMBER = "FailedOperation.NameContainsNumber"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCEINUSE_ACCOUNTEXIST = "ResourceInUse.AccountExist"
+//  RESOURCEINUSE_PERSONACCOUNTALREADYEXIST = "ResourceInUse.PersonAccountAlreadyExist"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CreatePersonalAccount(request *CreatePersonalAccountRequest) (response *CreatePersonalAccountResponse, err error) {
     if request == nil {
         request = NewCreatePersonalAccountRequest()
@@ -160,7 +236,27 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
     return
 }
 
+// CreateSeal
 // 此接口用于客户电子合同平台增加某用户的印章图片。客户平台可以调用此接口增加某用户的印章图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDINTERFACEERROR = "FailedOperation.BackendInterfaceError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSECONTENTERROR = "FailedOperation.BackendInterfaceResponseContentError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_CREATESEALERROR = "FailedOperation.CreateSealError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_DOWNLOADSEALERROR = "FailedOperation.DownloadSealError"
+//  FAILEDOPERATION_IMAGENOTPNG = "FailedOperation.ImageNotPNG"
+//  FAILEDOPERATION_MESSAGEDATAOVERSIZE = "FailedOperation.MessageDataOverSize"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_SEALNUMOVERLIMIT = "FailedOperation.SealNumOverLimit"
+//  FAILEDOPERATION_SEALSEXCEED = "FailedOperation.SealsExceed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTUNAVAILABLE = "ResourceUnavailable.AccountUnavailable"
+//  RESOURCEUNAVAILABLE_DOWNLOADSEALERROR = "ResourceUnavailable.DownloadSealError"
 func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
     if request == nil {
         request = NewCreateSealRequest()
@@ -185,7 +281,17 @@ func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
     return
 }
 
+// DeleteAccount
 // 删除企业电子合同平台的最终用户。调用该接口后，腾讯云将删除该用户账号。删除账号后，已经签名的合同不受影响。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEACCOUNTERROR = "FailedOperation.DeleteAccountError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_FIRSTENTERPRISEACCOUNTDELETEERROR = "FailedOperation.FirstEnterpriseAccountDeleteError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
     if request == nil {
         request = NewDeleteAccountRequest()
@@ -210,7 +316,21 @@ func NewDeleteSealResponse() (response *DeleteSealResponse) {
     return
 }
 
+// DeleteSeal
 // 删除印章接口，删除指定账号的某个印章
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDINTERFACEERROR = "FailedOperation.BackendInterfaceError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_DELETESEALERROR = "FailedOperation.DeleteSealError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_SEALNOTFOUND = "ResourceNotFound.SealNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTUNAVAILABLE = "ResourceUnavailable.AccountUnavailable"
 func (c *Client) DeleteSeal(request *DeleteSealRequest) (response *DeleteSealResponse, err error) {
     if request == nil {
         request = NewDeleteSealRequest()
@@ -235,7 +355,16 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     return
 }
 
+// DescribeTaskStatus
 // 接口使用于：客户平台可使用该接口查询任务执行状态或者执行结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_DESCRIBETASKSTATUSERROR = "FailedOperation.DescribeTaskStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskStatusRequest()
@@ -260,7 +389,17 @@ func NewDownloadContractResponse() (response *DownloadContractResponse) {
     return
 }
 
+// DownloadContract
 // 下载合同接口。调用该接口可以下载签署中和签署完成的合同。接口返回任务号，可调用DescribeTaskStatus接口查看任务执行结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDINTERFACEERROR = "FailedOperation.BackendInterfaceError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_CONTRACTNOTFOUND = "ResourceNotFound.ContractNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) DownloadContract(request *DownloadContractRequest) (response *DownloadContractResponse, err error) {
     if request == nil {
         request = NewDownloadContractRequest()
@@ -285,7 +424,24 @@ func NewSendVcodeResponse() (response *SendVcodeResponse) {
     return
 }
 
+// SendVcode
 // 发送验证码接口。此接口用于：企业电子合同平台需要腾讯云发送验证码对其用户进行验证时调用，腾讯云将向其用户联系手机(企业电子合同平台为用户开户时通过接口传入)发送验证码，以验证码授权方式签署合同。用户验证工作由企业电子合同平台自身完成。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTOWNCONTRACTERROR = "FailedOperation.AccountNotOwnContractError"
+//  FAILEDOPERATION_BACKENDINTERFACERESPONSEHEADERERROR = "FailedOperation.BackendInterfaceResponseHeaderError"
+//  FAILEDOPERATION_CONTRACTSIGNEDERROR = "FailedOperation.ContractSignedError"
+//  FAILEDOPERATION_COSTACCOUNTERROR = "FailedOperation.CostAccountError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_SENDVCODEERROR = "FailedOperation.SendVcodeError"
+//  FAILEDOPERATION_SIGNPERMISSIONEXISTED = "FailedOperation.SignPermissionExisted"
+//  FAILEDOPERATION_VCODECHECKED = "FailedOperation.VcodeChecked"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
+//  RESOURCENOTFOUND_CONTRACTPROJECTCODENOTFOUND = "ResourceNotFound.ContractProjectCodeNotFound"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) SendVcode(request *SendVcodeRequest) (response *SendVcodeResponse, err error) {
     if request == nil {
         request = NewSendVcodeRequest()
@@ -310,7 +466,36 @@ func NewSignContractByCoordinateResponse() (response *SignContractByCoordinateRe
     return
 }
 
+// SignContractByCoordinate
 // 此接口适用于：客户平台在创建好合同后，由合同签署方对创建的合同内容进行确认，无误后再进行签署。客户平台使用该接口提供详细的PDF文档签名坐标进行签署。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTOWNCONTRACTERROR = "FailedOperation.AccountNotOwnContractError"
+//  FAILEDOPERATION_AUTHORIZATIONTIMEERROR = "FailedOperation.AuthorizationTimeError"
+//  FAILEDOPERATION_CERTTYPEERROR = "FailedOperation.CertTypeError"
+//  FAILEDOPERATION_CONTRACTEXPIRED = "FailedOperation.ContractExpired"
+//  FAILEDOPERATION_CONTRACTSIGNEDERROR = "FailedOperation.ContractSignedError"
+//  FAILEDOPERATION_COORDINATEERROR = "FailedOperation.CoordinateError"
+//  FAILEDOPERATION_COORDINATEOUTSIDEPDF = "FailedOperation.CoordinateOutsidePDF"
+//  FAILEDOPERATION_COSTACCOUNTERROR = "FailedOperation.CostAccountError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_GETPDFSIZEFAILED = "FailedOperation.GetPDFSizeFailed"
+//  FAILEDOPERATION_IPFORMATERROR = "FailedOperation.IPFormatError"
+//  FAILEDOPERATION_IMAGENOTBASE = "FailedOperation.ImageNotBase"
+//  FAILEDOPERATION_MESSAGEDATAOVERSIZE = "FailedOperation.MessageDataOverSize"
+//  FAILEDOPERATION_NOPERMISSIONTOSIGN = "FailedOperation.NoPermissionToSign"
+//  FAILEDOPERATION_NOVERIFYERROR = "FailedOperation.NoVerifyError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_REPEATEDCOORDINATE = "FailedOperation.RepeatedCoordinate"
+//  FAILEDOPERATION_SEALMISMATCHED = "FailedOperation.SealMismatched"
+//  FAILEDOPERATION_SIGNCONTRACTBYCOORDINATEERROR = "FailedOperation.SignContractByCoordinateError"
+//  FAILEDOPERATION_SIGNPAGEERROR = "FailedOperation.SignPageError"
+//  FAILEDOPERATION_UPDATEFEESTATUSERROR = "FailedOperation.UpdateFeeStatusError"
+//  FAILEDOPERATION_WRONGCERTTYPE = "FailedOperation.WrongCertType"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCEUNAVAILABLE_SUBPLATUNAVAILABLE = "ResourceUnavailable.SubplatUnavailable"
 func (c *Client) SignContractByCoordinate(request *SignContractByCoordinateRequest) (response *SignContractByCoordinateResponse, err error) {
     if request == nil {
         request = NewSignContractByCoordinateRequest()
@@ -335,7 +520,36 @@ func NewSignContractByKeywordResponse() (response *SignContractByKeywordResponse
     return
 }
 
+// SignContractByKeyword
 // 此接口适用于：客户平台在创建好合同后，由合同签署方对创建的合同内容进行确认，无误后再进行签署。客户平台使用该接口对PDF合同文档按照关键字和坐标进行签署。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTOWNCONTRACTERROR = "FailedOperation.AccountNotOwnContractError"
+//  FAILEDOPERATION_AUTHORIZATIONTIMEERROR = "FailedOperation.AuthorizationTimeError"
+//  FAILEDOPERATION_CERTTYPEERROR = "FailedOperation.CertTypeError"
+//  FAILEDOPERATION_CONTRACTEXPIRED = "FailedOperation.ContractExpired"
+//  FAILEDOPERATION_CONTRACTSIGNEDERROR = "FailedOperation.ContractSignedError"
+//  FAILEDOPERATION_COSTACCOUNTERROR = "FailedOperation.CostAccountError"
+//  FAILEDOPERATION_DESCRIBESUBPLATERROR = "FailedOperation.DescribeSubplatError"
+//  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  FAILEDOPERATION_IPFORMATERROR = "FailedOperation.IPFormatError"
+//  FAILEDOPERATION_IMAGEMEASUREMENTOVERLIMITERROR = "FailedOperation.ImageMeasurementOverLimitError"
+//  FAILEDOPERATION_NOPERMISSIONTOSIGN = "FailedOperation.NoPermissionToSign"
+//  FAILEDOPERATION_NOVERIFYERROR = "FailedOperation.NoVerifyError"
+//  FAILEDOPERATION_OFFSETCOORDOVERLIMITERROR = "FailedOperation.OffsetCoordOverLimitError"
+//  FAILEDOPERATION_OTHER = "FailedOperation.Other"
+//  FAILEDOPERATION_SEALMISMATCHED = "FailedOperation.SealMismatched"
+//  FAILEDOPERATION_SIGNCONTRACTBYKEYWORDERROR = "FailedOperation.SignContractByKeywordError"
+//  FAILEDOPERATION_SIGNFIELDNOTFOUND = "FailedOperation.SignFieldNotFound"
+//  FAILEDOPERATION_UPDATEFEESTATUSERROR = "FailedOperation.UpdateFeeStatusError"
+//  FAILEDOPERATION_WRONGCERTTYPE = "FailedOperation.WrongCertType"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_IMAGEMEASUREMENTNULLERROR = "MissingParameter.ImageMeasurementNullError"
+//  MISSINGPARAMETER_KEYWORDNULLERROR = "MissingParameter.KeywordNullError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  MISSINGPARAMETER_OFFSETCOORDNULLERROR = "MissingParameter.OffsetCoordNullError"
+//  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
+//  RESOURCEUNAVAILABLE_SUBPLATUNAVAILABLE = "ResourceUnavailable.SubplatUnavailable"
 func (c *Client) SignContractByKeyword(request *SignContractByKeywordRequest) (response *SignContractByKeywordResponse, err error) {
     if request == nil {
         request = NewSignContractByKeywordRequest()

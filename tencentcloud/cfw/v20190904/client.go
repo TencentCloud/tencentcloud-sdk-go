@@ -58,7 +58,13 @@ func NewCreateAcRulesResponse() (response *CreateAcRulesResponse) {
     return
 }
 
+// CreateAcRules
 // 创建规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateAcRules(request *CreateAcRulesRequest) (response *CreateAcRulesResponse, err error) {
     if request == nil {
         request = NewCreateAcRulesRequest()
@@ -83,7 +89,14 @@ func NewCreateSecurityGroupApiRulesResponse() (response *CreateSecurityGroupApiR
     return
 }
 
+// CreateSecurityGroupApiRules
 // 创建安全组API规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSecurityGroupApiRules(request *CreateSecurityGroupApiRulesRequest) (response *CreateSecurityGroupApiRulesResponse, err error) {
     if request == nil {
         request = NewCreateSecurityGroupApiRulesRequest()
@@ -108,7 +121,13 @@ func NewDeleteAcRuleResponse() (response *DeleteAcRuleResponse) {
     return
 }
 
+// DeleteAcRule
 // 删除规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAcRule(request *DeleteAcRuleRequest) (response *DeleteAcRuleResponse, err error) {
     if request == nil {
         request = NewDeleteAcRuleRequest()
@@ -133,7 +152,14 @@ func NewDeleteAllAccessControlRuleResponse() (response *DeleteAllAccessControlRu
     return
 }
 
+// DeleteAllAccessControlRule
 // 全部删除规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAllAccessControlRule(request *DeleteAllAccessControlRuleRequest) (response *DeleteAllAccessControlRuleResponse, err error) {
     if request == nil {
         request = NewDeleteAllAccessControlRuleRequest()
@@ -158,7 +184,14 @@ func NewDeleteSecurityGroupAllRuleResponse() (response *DeleteSecurityGroupAllRu
     return
 }
 
+// DeleteSecurityGroupAllRule
 // 删除全部规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecurityGroupAllRule(request *DeleteSecurityGroupAllRuleRequest) (response *DeleteSecurityGroupAllRuleResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityGroupAllRuleRequest()
@@ -183,7 +216,13 @@ func NewDeleteSecurityGroupRuleResponse() (response *DeleteSecurityGroupRuleResp
     return
 }
 
+// DeleteSecurityGroupRule
 // 删除规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecurityGroupRule(request *DeleteSecurityGroupRuleRequest) (response *DeleteSecurityGroupRuleResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityGroupRuleRequest()
@@ -208,7 +247,14 @@ func NewDescribeAcListsResponse() (response *DescribeAcListsResponse) {
     return
 }
 
+// DescribeAcLists
 // 访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAcLists(request *DescribeAcListsRequest) (response *DescribeAcListsResponse, err error) {
     if request == nil {
         request = NewDescribeAcListsRequest()
@@ -233,7 +279,14 @@ func NewDescribeAssociatedInstanceListResponse() (response *DescribeAssociatedIn
     return
 }
 
+// DescribeAssociatedInstanceList
 // 获取安全组关联实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAssociatedInstanceList(request *DescribeAssociatedInstanceListRequest) (response *DescribeAssociatedInstanceListResponse, err error) {
     if request == nil {
         request = NewDescribeAssociatedInstanceListRequest()
@@ -258,7 +311,28 @@ func NewDescribeCfwEipsResponse() (response *DescribeCfwEipsResponse) {
     return
 }
 
+// DescribeCfwEips
 // 查询防火墙弹性公网ip
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCfwEips(request *DescribeCfwEipsRequest) (response *DescribeCfwEipsResponse, err error) {
     if request == nil {
         request = NewDescribeCfwEipsRequest()
@@ -283,7 +357,28 @@ func NewDescribeGuideScanInfoResponse() (response *DescribeGuideScanInfoResponse
     return
 }
 
+// DescribeGuideScanInfo
 // DescribeGuideScanInfo新手引导扫描接口信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGuideScanInfo(request *DescribeGuideScanInfoRequest) (response *DescribeGuideScanInfoResponse, err error) {
     if request == nil {
         request = NewDescribeGuideScanInfoRequest()
@@ -308,7 +403,14 @@ func NewDescribeNatRuleOverviewResponse() (response *DescribeNatRuleOverviewResp
     return
 }
 
+// DescribeNatRuleOverview
 // nat规则列表概况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeNatRuleOverview(request *DescribeNatRuleOverviewRequest) (response *DescribeNatRuleOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeNatRuleOverviewRequest()
@@ -333,7 +435,14 @@ func NewDescribeRuleOverviewResponse() (response *DescribeRuleOverviewResponse) 
     return
 }
 
+// DescribeRuleOverview
 // 查询规则列表概况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRuleOverview(request *DescribeRuleOverviewRequest) (response *DescribeRuleOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeRuleOverviewRequest()
@@ -358,7 +467,14 @@ func NewDescribeSecurityGroupListResponse() (response *DescribeSecurityGroupList
     return
 }
 
+// DescribeSecurityGroupList
 // 查询安全组规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSecurityGroupList(request *DescribeSecurityGroupListRequest) (response *DescribeSecurityGroupListResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityGroupListRequest()
@@ -383,7 +499,12 @@ func NewDescribeSwitchListsResponse() (response *DescribeSwitchListsResponse) {
     return
 }
 
+// DescribeSwitchLists
 // 防火墙开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSwitchLists(request *DescribeSwitchListsRequest) (response *DescribeSwitchListsResponse, err error) {
     if request == nil {
         request = NewDescribeSwitchListsRequest()
@@ -408,7 +529,14 @@ func NewDescribeSyncAssetStatusResponse() (response *DescribeSyncAssetStatusResp
     return
 }
 
+// DescribeSyncAssetStatus
 // 同步资产状态查询-互联网&VPC
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSyncAssetStatus(request *DescribeSyncAssetStatusRequest) (response *DescribeSyncAssetStatusResponse, err error) {
     if request == nil {
         request = NewDescribeSyncAssetStatusRequest()
@@ -433,7 +561,14 @@ func NewDescribeTableStatusResponse() (response *DescribeTableStatusResponse) {
     return
 }
 
+// DescribeTableStatus
 // 查询规则表状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTableStatus(request *DescribeTableStatusRequest) (response *DescribeTableStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTableStatusRequest()
@@ -458,7 +593,14 @@ func NewDescribeVpcRuleOverviewResponse() (response *DescribeVpcRuleOverviewResp
     return
 }
 
+// DescribeVpcRuleOverview
 // vpc规则列表概况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpcRuleOverview(request *DescribeVpcRuleOverviewRequest) (response *DescribeVpcRuleOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeVpcRuleOverviewRequest()
@@ -483,7 +625,28 @@ func NewExpandCfwVerticalResponse() (response *ExpandCfwVerticalResponse) {
     return
 }
 
+// ExpandCfwVertical
 // 防火墙垂直扩容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExpandCfwVertical(request *ExpandCfwVerticalRequest) (response *ExpandCfwVerticalResponse, err error) {
     if request == nil {
         request = NewExpandCfwVerticalRequest()
@@ -508,7 +671,14 @@ func NewModifyAcRuleResponse() (response *ModifyAcRuleResponse) {
     return
 }
 
+// ModifyAcRule
 // 修改规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAcRule(request *ModifyAcRuleRequest) (response *ModifyAcRuleResponse, err error) {
     if request == nil {
         request = NewModifyAcRuleRequest()
@@ -533,7 +703,14 @@ func NewModifyAllRuleStatusResponse() (response *ModifyAllRuleStatusResponse) {
     return
 }
 
+// ModifyAllRuleStatus
 // 启用停用全部规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAllRuleStatus(request *ModifyAllRuleStatusRequest) (response *ModifyAllRuleStatusResponse, err error) {
     if request == nil {
         request = NewModifyAllRuleStatusRequest()
@@ -558,7 +735,13 @@ func NewModifyAllSwitchStatusResponse() (response *ModifyAllSwitchStatusResponse
     return
 }
 
+// ModifyAllSwitchStatus
 // 一键开启和关闭
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyAllSwitchStatus(request *ModifyAllSwitchStatusRequest) (response *ModifyAllSwitchStatusResponse, err error) {
     if request == nil {
         request = NewModifyAllSwitchStatusRequest()
@@ -583,10 +766,20 @@ func NewModifyBlockIgnoreListResponse() (response *ModifyBlockIgnoreListResponse
     return
 }
 
+// ModifyBlockIgnoreList
 // 支持对拦截列表、忽略列表如下操作：
+//
 // 批量增加拦截IP、忽略IP/域名
+//
 // 批量删除拦截IP、忽略IP/域名
+//
 // 批量修改拦截IP、忽略IP/域名生效事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyBlockIgnoreList(request *ModifyBlockIgnoreListRequest) (response *ModifyBlockIgnoreListResponse, err error) {
     if request == nil {
         request = NewModifyBlockIgnoreListRequest()
@@ -611,7 +804,14 @@ func NewModifyItemSwitchStatusResponse() (response *ModifyItemSwitchStatusRespon
     return
 }
 
+// ModifyItemSwitchStatus
 // 修改单个防火墙开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyItemSwitchStatus(request *ModifyItemSwitchStatusRequest) (response *ModifyItemSwitchStatusResponse, err error) {
     if request == nil {
         request = NewModifyItemSwitchStatusRequest()
@@ -636,7 +836,14 @@ func NewModifySecurityGroupAllRuleStatusResponse() (response *ModifySecurityGrou
     return
 }
 
+// ModifySecurityGroupAllRuleStatus
 // 启用停用全部规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySecurityGroupAllRuleStatus(request *ModifySecurityGroupAllRuleStatusRequest) (response *ModifySecurityGroupAllRuleStatusResponse, err error) {
     if request == nil {
         request = NewModifySecurityGroupAllRuleStatusRequest()
@@ -661,7 +868,14 @@ func NewModifySequenceRulesResponse() (response *ModifySequenceRulesResponse) {
     return
 }
 
+// ModifySequenceRules
 // 修改规则执行顺序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySequenceRules(request *ModifySequenceRulesRequest) (response *ModifySequenceRulesResponse, err error) {
     if request == nil {
         request = NewModifySequenceRulesRequest()
@@ -686,7 +900,14 @@ func NewModifyTableStatusResponse() (response *ModifyTableStatusResponse) {
     return
 }
 
+// ModifyTableStatus
 // 修改规则表状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTableStatus(request *ModifyTableStatusRequest) (response *ModifyTableStatusResponse, err error) {
     if request == nil {
         request = NewModifyTableStatusRequest()
@@ -711,7 +932,14 @@ func NewRunSyncAssetResponse() (response *RunSyncAssetResponse) {
     return
 }
 
+// RunSyncAsset
 // 同步资产-互联网&VPC
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RunSyncAsset(request *RunSyncAssetRequest) (response *RunSyncAssetResponse, err error) {
     if request == nil {
         request = NewRunSyncAssetRequest()
@@ -736,7 +964,28 @@ func NewSetNatFwDnatRuleResponse() (response *SetNatFwDnatRuleResponse) {
     return
 }
 
+// SetNatFwDnatRule
 // 配置防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetNatFwDnatRule(request *SetNatFwDnatRuleRequest) (response *SetNatFwDnatRuleResponse, err error) {
     if request == nil {
         request = NewSetNatFwDnatRuleRequest()

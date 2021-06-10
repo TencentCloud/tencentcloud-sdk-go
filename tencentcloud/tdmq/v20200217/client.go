@@ -58,6 +58,7 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
     return
 }
 
+// ClearCmqQueue
 // 清空cmq消息队列中的消息
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscription
     return
 }
 
+// ClearCmqSubscriptionFilterTags
 // 清空订阅者消息标签
 func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFilterTagsRequest) (response *ClearCmqSubscriptionFilterTagsResponse, err error) {
     if request == nil {
@@ -108,7 +110,14 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
     return
 }
 
+// CreateCluster
 // 创建用户的集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()
@@ -133,7 +142,11 @@ func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
     return
 }
 
+// CreateCmqQueue
 // 创建cmq队列接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     if request == nil {
         request = NewCreateCmqQueueRequest()
@@ -158,7 +171,11 @@ func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
     return
 }
 
+// CreateCmqSubscribe
 // 创建cmq订阅接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
     if request == nil {
         request = NewCreateCmqSubscribeRequest()
@@ -183,7 +200,11 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
     return
 }
 
+// CreateCmqTopic
 // 创建cmq主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
         request = NewCreateCmqTopicRequest()
@@ -208,7 +229,19 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
     return
 }
 
+// CreateEnvironment
 // 用于在用户账户下创建消息队列 Tdmq 命名空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENT = "FailedOperation.CreateEnvironment"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCEINUSE_ENVIRONMENT = "ResourceInUse.Environment"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -233,7 +266,22 @@ func NewCreateSubscriptionResponse() (response *CreateSubscriptionResponse) {
     return
 }
 
+// CreateSubscription
 // 创建一个主题的订阅关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  INTERNALERROR_RETRY = "InternalError.Retry"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  LIMITEXCEEDED_SUBSCRIPTIONS = "LimitExceeded.Subscriptions"
+//  LIMITEXCEEDED_TOPICS = "LimitExceeded.Topics"
+//  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) CreateSubscription(request *CreateSubscriptionRequest) (response *CreateSubscriptionResponse, err error) {
     if request == nil {
         request = NewCreateSubscriptionRequest()
@@ -258,7 +306,21 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
     return
 }
 
+// CreateTopic
 // 新增指定分区、类型的消息主题
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  LIMITEXCEEDED_TOPICS = "LimitExceeded.Topics"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DLQORRETRYTOPIC = "OperationDenied.DlqOrRetryTopic"
+//  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
         request = NewCreateTopicRequest()
@@ -283,7 +345,12 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
     return
 }
 
+// DeleteCluster
 // 删除集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
     if request == nil {
         request = NewDeleteClusterRequest()
@@ -308,7 +375,11 @@ func NewDeleteCmqQueueResponse() (response *DeleteCmqQueueResponse) {
     return
 }
 
+// DeleteCmqQueue
 // 删除cmq队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *DeleteCmqQueueResponse, err error) {
     if request == nil {
         request = NewDeleteCmqQueueRequest()
@@ -333,7 +404,11 @@ func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
     return
 }
 
+// DeleteCmqSubscribe
 // 删除cmq订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
@@ -358,7 +433,11 @@ func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
     return
 }
 
+// DeleteCmqTopic
 // 删除cmq主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
     if request == nil {
         request = NewDeleteCmqTopicRequest()
@@ -383,7 +462,17 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
     return
 }
 
+// DeleteEnvironments
 // 批量删除租户下的命名空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
@@ -408,7 +497,19 @@ func NewDeleteSubscriptionsResponse() (response *DeleteSubscriptionsResponse) {
     return
 }
 
+// DeleteSubscriptions
 // 删除订阅关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DELETESUBSCRIPTIONS = "FailedOperation.DeleteSubscriptions"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteSubscriptions(request *DeleteSubscriptionsRequest) (response *DeleteSubscriptionsResponse, err error) {
     if request == nil {
         request = NewDeleteSubscriptionsRequest()
@@ -433,7 +534,19 @@ func NewDeleteTopicsResponse() (response *DeleteTopicsResponse) {
     return
 }
 
+// DeleteTopics
 // 批量删除topics
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTopicsResponse, err error) {
     if request == nil {
         request = NewDeleteTopicsRequest()
@@ -458,7 +571,17 @@ func NewDescribeBindClustersResponse() (response *DescribeBindClustersResponse) 
     return
 }
 
+// DescribeBindClusters
 // 获取用户绑定的专享集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SYSTEMUPGRADE = "ResourceUnavailable.SystemUpgrade"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindClusters(request *DescribeBindClustersRequest) (response *DescribeBindClustersResponse, err error) {
     if request == nil {
         request = NewDescribeBindClustersRequest()
@@ -483,7 +606,16 @@ func NewDescribeBindVpcsResponse() (response *DescribeBindVpcsResponse) {
     return
 }
 
+// DescribeBindVpcs
 // 获取租户VPC绑定关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 func (c *Client) DescribeBindVpcs(request *DescribeBindVpcsRequest) (response *DescribeBindVpcsResponse, err error) {
     if request == nil {
         request = NewDescribeBindVpcsRequest()
@@ -508,7 +640,16 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
     return
 }
 
+// DescribeClusterDetail
 // 获取集群的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
     if request == nil {
         request = NewDescribeClusterDetailRequest()
@@ -533,7 +674,16 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
     return
 }
 
+// DescribeClusters
 // 获取集群列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
     if request == nil {
         request = NewDescribeClustersRequest()
@@ -558,7 +708,16 @@ func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLe
     return
 }
 
+// DescribeCmqDeadLetterSourceQueues
 // 枚举cmq死信队列源队列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLetterSourceQueuesRequest) (response *DescribeCmqDeadLetterSourceQueuesResponse, err error) {
     if request == nil {
         request = NewDescribeCmqDeadLetterSourceQueuesRequest()
@@ -583,7 +742,11 @@ func NewDescribeCmqQueueDetailResponse() (response *DescribeCmqQueueDetailRespon
     return
 }
 
+// DescribeCmqQueueDetail
 // 查询cmq队列详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqQueueDetail(request *DescribeCmqQueueDetailRequest) (response *DescribeCmqQueueDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCmqQueueDetailRequest()
@@ -608,7 +771,11 @@ func NewDescribeCmqQueuesResponse() (response *DescribeCmqQueuesResponse) {
     return
 }
 
+// DescribeCmqQueues
 // 查询cmq全量队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqQueues(request *DescribeCmqQueuesRequest) (response *DescribeCmqQueuesResponse, err error) {
     if request == nil {
         request = NewDescribeCmqQueuesRequest()
@@ -633,7 +800,11 @@ func NewDescribeCmqSubscriptionDetailResponse() (response *DescribeCmqSubscripti
     return
 }
 
+// DescribeCmqSubscriptionDetail
 // 查询cmq订阅详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqSubscriptionDetail(request *DescribeCmqSubscriptionDetailRequest) (response *DescribeCmqSubscriptionDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCmqSubscriptionDetailRequest()
@@ -658,7 +829,11 @@ func NewDescribeCmqTopicDetailResponse() (response *DescribeCmqTopicDetailRespon
     return
 }
 
+// DescribeCmqTopicDetail
 // 查询cmq主题详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) (response *DescribeCmqTopicDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCmqTopicDetailRequest()
@@ -683,7 +858,11 @@ func NewDescribeCmqTopicsResponse() (response *DescribeCmqTopicsResponse) {
     return
 }
 
+// DescribeCmqTopics
 // 枚举cmq全量主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqTopics(request *DescribeCmqTopicsRequest) (response *DescribeCmqTopicsResponse, err error) {
     if request == nil {
         request = NewDescribeCmqTopicsRequest()
@@ -708,7 +887,17 @@ func NewDescribeEnvironmentAttributesResponse() (response *DescribeEnvironmentAt
     return
 }
 
+// DescribeEnvironmentAttributes
 // 获取指定命名空间的属性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = "FailedOperation.GetEnvironmentAttributesFailed"
+//  INTERNALERROR_GETATTRIBUTESFAILED = "InternalError.GetAttributesFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DescribeEnvironmentAttributes(request *DescribeEnvironmentAttributesRequest) (response *DescribeEnvironmentAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentAttributesRequest()
@@ -733,7 +922,16 @@ func NewDescribeEnvironmentRolesResponse() (response *DescribeEnvironmentRolesRe
     return
 }
 
+// DescribeEnvironmentRoles
 // 获取命名空间角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DescribeEnvironmentRoles(request *DescribeEnvironmentRolesRequest) (response *DescribeEnvironmentRolesResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentRolesRequest()
@@ -758,7 +956,14 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
     return
 }
 
+// DescribeEnvironments
 // 获取租户下命名空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
@@ -783,7 +988,16 @@ func NewDescribeProducersResponse() (response *DescribeProducersResponse) {
     return
 }
 
+// DescribeProducers
 // 获取生产者列表，仅显示在线的生产者
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response *DescribeProducersResponse, err error) {
     if request == nil {
         request = NewDescribeProducersRequest()
@@ -808,7 +1022,18 @@ func NewDescribeSubscriptionsResponse() (response *DescribeSubscriptionsResponse
     return
 }
 
+// DescribeSubscriptions
 // 查询指定环境和主题下的订阅者列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribeSubscriptions(request *DescribeSubscriptionsRequest) (response *DescribeSubscriptionsResponse, err error) {
     if request == nil {
         request = NewDescribeSubscriptionsRequest()
@@ -833,7 +1058,16 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
     return
 }
 
+// DescribeTopics
 // 获取环境下主题列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
     if request == nil {
         request = NewDescribeTopicsRequest()
@@ -858,7 +1092,11 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
     return
 }
 
+// ModifyCluster
 // 更新集群信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
     if request == nil {
         request = NewModifyClusterRequest()
@@ -883,7 +1121,11 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
     return
 }
 
+// ModifyCmqQueueAttribute
 // 修改cmq队列属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
@@ -908,7 +1150,11 @@ func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptio
     return
 }
 
+// ModifyCmqSubscriptionAttribute
 // 修改cmq订阅属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAttributeRequest) (response *ModifyCmqSubscriptionAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
@@ -933,7 +1179,11 @@ func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResp
     return
 }
 
+// ModifyCmqTopicAttribute
 // 修改cmq主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest) (response *ModifyCmqTopicAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()
@@ -958,7 +1208,17 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
     return
 }
 
+// ModifyEnvironmentAttributes
 // 修改指定命名空间的属性值
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UPDATEENVIRONMENT = "FailedOperation.UpdateEnvironment"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttributesRequest) (response *ModifyEnvironmentAttributesResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()
@@ -983,7 +1243,17 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
     return
 }
 
+// ModifyTopic
 // 修改主题备注和分区数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
     if request == nil {
         request = NewModifyTopicRequest()
@@ -1008,7 +1278,17 @@ func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
     return
 }
 
+// PublishCmqMsg
 // 发送cmq主题消息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *PublishCmqMsgResponse, err error) {
     if request == nil {
         request = NewPublishCmqMsgRequest()
@@ -1033,7 +1313,19 @@ func NewResetMsgSubOffsetByTimestampResponse() (response *ResetMsgSubOffsetByTim
     return
 }
 
+// ResetMsgSubOffsetByTimestamp
 // 根据时间戳进行消息回溯，精确到毫秒
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimestampRequest) (response *ResetMsgSubOffsetByTimestampResponse, err error) {
     if request == nil {
         request = NewResetMsgSubOffsetByTimestampRequest()
@@ -1058,7 +1350,19 @@ func NewRewindCmqQueueResponse() (response *RewindCmqQueueResponse) {
     return
 }
 
+// RewindCmqQueue
 // 回溯cmq队列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *RewindCmqQueueResponse, err error) {
     if request == nil {
         request = NewRewindCmqQueueRequest()
@@ -1083,7 +1387,19 @@ func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
     return
 }
 
+// SendBatchMessages
 // 批量发送消息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response *SendBatchMessagesResponse, err error) {
     if request == nil {
         request = NewSendBatchMessagesRequest()
@@ -1108,7 +1424,19 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
     return
 }
 
+// SendCmqMsg
 // 发送cmq消息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()
@@ -1133,7 +1461,19 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
     return
 }
 
+// SendMessages
 // 发送单条消息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessagesResponse, err error) {
     if request == nil {
         request = NewSendMessagesRequest()
@@ -1158,7 +1498,17 @@ func NewSendMsgResponse() (response *SendMsgResponse) {
     return
 }
 
+// SendMsg
 // 此接口仅用于测试发生消息，不能作为现网正式生产使用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, err error) {
     if request == nil {
         request = NewSendMsgRequest()
@@ -1183,7 +1533,17 @@ func NewUnbindCmqDeadLetterResponse() (response *UnbindCmqDeadLetterResponse) {
     return
 }
 
+// UnbindCmqDeadLetter
 // 解绑cmq死信队列
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) UnbindCmqDeadLetter(request *UnbindCmqDeadLetterRequest) (response *UnbindCmqDeadLetterResponse, err error) {
     if request == nil {
         request = NewUnbindCmqDeadLetterRequest()

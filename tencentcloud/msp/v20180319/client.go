@@ -58,7 +58,12 @@ func NewDeregisterMigrationTaskResponse() (response *DeregisterMigrationTaskResp
     return
 }
 
+// DeregisterMigrationTask
 // 取消注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest) (response *DeregisterMigrationTaskResponse, err error) {
     if request == nil {
         request = NewDeregisterMigrationTaskRequest()
@@ -83,7 +88,11 @@ func NewDescribeMigrationTaskResponse() (response *DescribeMigrationTaskResponse
     return
 }
 
+// DescribeMigrationTask
 // 获取指定迁移任务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeMigrationTask(request *DescribeMigrationTaskRequest) (response *DescribeMigrationTaskResponse, err error) {
     if request == nil {
         request = NewDescribeMigrationTaskRequest()
@@ -108,7 +117,11 @@ func NewListMigrationProjectResponse() (response *ListMigrationProjectResponse) 
     return
 }
 
+// ListMigrationProject
 // 获取迁移项目名称列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationProject(request *ListMigrationProjectRequest) (response *ListMigrationProjectResponse, err error) {
     if request == nil {
         request = NewListMigrationProjectRequest()
@@ -133,7 +146,11 @@ func NewListMigrationTaskResponse() (response *ListMigrationTaskResponse) {
     return
 }
 
+// ListMigrationTask
 // 获取迁移任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationTask(request *ListMigrationTaskRequest) (response *ListMigrationTaskResponse, err error) {
     if request == nil {
         request = NewListMigrationTaskRequest()
@@ -158,7 +175,12 @@ func NewModifyMigrationTaskBelongToProjectResponse() (response *ModifyMigrationT
     return
 }
 
+// ModifyMigrationTaskBelongToProject
 // 更改迁移任务所属项目
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyMigrationTaskBelongToProject(request *ModifyMigrationTaskBelongToProjectRequest) (response *ModifyMigrationTaskBelongToProjectResponse, err error) {
     if request == nil {
         request = NewModifyMigrationTaskBelongToProjectRequest()
@@ -183,7 +205,11 @@ func NewModifyMigrationTaskStatusResponse() (response *ModifyMigrationTaskStatus
     return
 }
 
+// ModifyMigrationTaskStatus
 // 更新迁移任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyMigrationTaskStatus(request *ModifyMigrationTaskStatusRequest) (response *ModifyMigrationTaskStatusResponse, err error) {
     if request == nil {
         request = NewModifyMigrationTaskStatusRequest()
@@ -208,7 +234,12 @@ func NewRegisterMigrationTaskResponse() (response *RegisterMigrationTaskResponse
     return
 }
 
+// RegisterMigrationTask
 // 注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RegisterMigrationTask(request *RegisterMigrationTaskRequest) (response *RegisterMigrationTaskResponse, err error) {
     if request == nil {
         request = NewRegisterMigrationTaskRequest()

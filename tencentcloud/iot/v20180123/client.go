@@ -58,7 +58,22 @@ func NewActivateRuleResponse() (response *ActivateRuleResponse) {
     return
 }
 
+// ActivateRule
 // 启用规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTACTIONSYSTEMERROR = "InternalError.IotActionSystemError"
+//  INTERNALERROR_MQRULESYSTEMERROR = "InternalError.MqruleSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTRULEOPTOOOFTEN = "LimitExceeded.IotRuleOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_IOTRULEISACTIVE = "ResourceUnavailable.IotRuleIsActive"
+//  RESOURCEUNAVAILABLE_IOTRULENOACTION = "ResourceUnavailable.IotRuleNoAction"
+//  RESOURCEUNAVAILABLE_IOTRULENOQUERY = "ResourceUnavailable.IotRuleNoQuery"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) ActivateRule(request *ActivateRuleRequest) (response *ActivateRuleResponse, err error) {
     if request == nil {
         request = NewActivateRuleRequest()
@@ -83,7 +98,19 @@ func NewAddDeviceResponse() (response *AddDeviceResponse) {
     return
 }
 
+// AddDevice
 // 提供在指定的产品Id下创建一个设备的能力，生成设备名称与设备秘钥。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTDBERROR = "InternalError.IotDbError"
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTDEVICEOPTOOOFTEN = "LimitExceeded.IotDeviceOpTooOften"
+//  RESOURCEINUSE_IOTDEVICEEXISTS = "ResourceInUse.IotDeviceExists"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCEINUSE_MQIOTRESOURCEEXISTS = "ResourceInUse.MqiotResourceExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
     if request == nil {
         request = NewAddDeviceRequest()
@@ -108,7 +135,22 @@ func NewAddProductResponse() (response *AddProductResponse) {
     return
 }
 
+// AddProduct
 // 本接口(AddProduct)用于创建、定义某款硬件产品。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
+//  INTERNALERROR_MQIOTSYSTEMERROR = "InternalError.MqiotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATATEMPLATE = "InvalidParameter.IotProductInvalidDataTemplate"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATATEMPLATERANGE = "InvalidParameter.IotProductInvalidDataTemplateRange"
+//  LIMITEXCEEDED_IOTPRODUCTOPTOOOFTEN = "LimitExceeded.IotProductOpTooOften"
+//  LIMITEXCEEDED_IOTUSERTOOMANYPRODUCTS = "LimitExceeded.IotUserTooManyProducts"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCEINUSE_IOTPRODUCTEXISTS = "ResourceInUse.IotProductExists"
+//  RESOURCEINUSE_MQIOTRESOURCEEXISTS = "ResourceInUse.MqiotResourceExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddProduct(request *AddProductRequest) (response *AddProductResponse, err error) {
     if request == nil {
         request = NewAddProductRequest()
@@ -133,7 +175,19 @@ func NewAddRuleResponse() (response *AddRuleResponse) {
     return
 }
 
+// AddRule
 // 新增规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTEMPTYDATATEMPLATE = "InvalidParameter.IotProductEmptyDataTemplate"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATAPROTOCOL = "InvalidParameter.IotProductInvalidDataProtocol"
+//  LIMITEXCEEDED_IOTRULEOPTOOMANY = "LimitExceeded.IotRuleOpTooMany"
+//  LIMITEXCEEDED_IOTRULEOPTOOOFTEN = "LimitExceeded.IotRuleOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCEINUSE_IOTRULEEXISTS = "ResourceInUse.IotRuleExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddRule(request *AddRuleRequest) (response *AddRuleResponse, err error) {
     if request == nil {
         request = NewAddRuleRequest()
@@ -158,7 +212,17 @@ func NewAddTopicResponse() (response *AddTopicResponse) {
     return
 }
 
+// AddTopic
 // 新增Topic，用于设备或应用发布消息至该Topic或订阅该Topic的消息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTPRODUCTTOOMANYTOPICS = "LimitExceeded.IotProductTooManyTopics"
+//  LIMITEXCEEDED_IOTTOPICOPTOOOFTEN = "LimitExceeded.IotTopicOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCEINUSE_IOTTOPICEXISTS = "ResourceInUse.IotTopicExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddTopic(request *AddTopicRequest) (response *AddTopicResponse, err error) {
     if request == nil {
         request = NewAddTopicRequest()
@@ -183,7 +247,15 @@ func NewAppAddUserResponse() (response *AppAddUserResponse) {
     return
 }
 
+// AppAddUser
 // 为APP提供用户注册功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSYSTEMERROR = "InternalError.IotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCEINUSE_IOTAPPLICATIONUSEREXISTS = "ResourceInUse.IotApplicationUserExists"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 func (c *Client) AppAddUser(request *AppAddUserRequest) (response *AppAddUserResponse, err error) {
     if request == nil {
         request = NewAppAddUserRequest()
@@ -208,7 +280,15 @@ func NewAppDeleteDeviceResponse() (response *AppDeleteDeviceResponse) {
     return
 }
 
+// AppDeleteDevice
 // 用户解除与设备的关联关系，解除后APP用户无法控制设备，获取设备数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppDeleteDevice(request *AppDeleteDeviceRequest) (response *AppDeleteDeviceResponse, err error) {
     if request == nil {
         request = NewAppDeleteDeviceRequest()
@@ -233,7 +313,14 @@ func NewAppGetDeviceResponse() (response *AppGetDeviceResponse) {
     return
 }
 
+// AppGetDevice
 // 获取绑定设备的基本信息与数据模板定义
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDevice(request *AppGetDeviceRequest) (response *AppGetDeviceResponse, err error) {
     if request == nil {
         request = NewAppGetDeviceRequest()
@@ -258,7 +345,16 @@ func NewAppGetDeviceDataResponse() (response *AppGetDeviceDataResponse) {
     return
 }
 
+// AppGetDeviceData
 // 获取绑定设备数据，用于实时展示设备的最新数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDeviceData(request *AppGetDeviceDataRequest) (response *AppGetDeviceDataResponse, err error) {
     if request == nil {
         request = NewAppGetDeviceDataRequest()
@@ -283,7 +379,17 @@ func NewAppGetDeviceStatusesResponse() (response *AppGetDeviceStatusesResponse) 
     return
 }
 
+// AppGetDeviceStatuses
 // 获取绑定设备的上下线状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDeviceStatuses(request *AppGetDeviceStatusesRequest) (response *AppGetDeviceStatusesResponse, err error) {
     if request == nil {
         request = NewAppGetDeviceStatusesRequest()
@@ -308,7 +414,12 @@ func NewAppGetDevicesResponse() (response *AppGetDevicesResponse) {
     return
 }
 
+// AppGetDevices
 // 获取用户的绑定设备列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDevices(request *AppGetDevicesRequest) (response *AppGetDevicesResponse, err error) {
     if request == nil {
         request = NewAppGetDevicesRequest()
@@ -333,7 +444,15 @@ func NewAppGetTokenResponse() (response *AppGetTokenResponse) {
     return
 }
 
+// AppGetToken
 // 获取用户token
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSYSTEMERROR = "InternalError.IotSystemError"
+//  INVALIDPARAMETER_IOTAPPLICATIONINVALIDUSERPASSWORD = "InvalidParameter.IotApplicationInvalidUserPassword"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetToken(request *AppGetTokenRequest) (response *AppGetTokenResponse, err error) {
     if request == nil {
         request = NewAppGetTokenRequest()
@@ -358,7 +477,14 @@ func NewAppGetUserResponse() (response *AppGetUserResponse) {
     return
 }
 
+// AppGetUser
 // 获取用户信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetUser(request *AppGetUserRequest) (response *AppGetUserResponse, err error) {
     if request == nil {
         request = NewAppGetUserRequest()
@@ -383,7 +509,11 @@ func NewAppIssueDeviceControlResponse() (response *AppIssueDeviceControlResponse
     return
 }
 
+// AppIssueDeviceControl
 // 用户通过APP控制设备
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
 func (c *Client) AppIssueDeviceControl(request *AppIssueDeviceControlRequest) (response *AppIssueDeviceControlResponse, err error) {
     if request == nil {
         request = NewAppIssueDeviceControlRequest()
@@ -408,7 +538,13 @@ func NewAppResetPasswordResponse() (response *AppResetPasswordResponse) {
     return
 }
 
+// AppResetPassword
 // 重置APP用户密码
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTAPPLICATIONINVALIDPASSWORD = "InvalidParameter.IotApplicationInvalidPassword"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppResetPassword(request *AppResetPasswordRequest) (response *AppResetPasswordResponse, err error) {
     if request == nil {
         request = NewAppResetPasswordRequest()
@@ -433,7 +569,18 @@ func NewAppSecureAddDeviceResponse() (response *AppSecureAddDeviceResponse) {
     return
 }
 
+// AppSecureAddDevice
 // 用户绑定设备，绑定后可以在APP端进行控制。绑定设备前需调用“获取设备绑定签名”接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTEXPIREDSIGNATURE = "InvalidParameter.IotExpiredSignature"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDSIGNATURE = "InvalidParameter.IotInvalidSignature"
+//  RESOURCEINUSE_IOTAPPLICATIONDEVICEEXISTS = "ResourceInUse.IotApplicationDeviceExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 func (c *Client) AppSecureAddDevice(request *AppSecureAddDeviceRequest) (response *AppSecureAddDeviceResponse, err error) {
     if request == nil {
         request = NewAppSecureAddDeviceRequest()
@@ -458,7 +605,16 @@ func NewAppUpdateDeviceResponse() (response *AppUpdateDeviceResponse) {
     return
 }
 
+// AppUpdateDevice
 // 修改设备别名，便于用户个性化定义设备的名称
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
+//  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppUpdateDevice(request *AppUpdateDeviceRequest) (response *AppUpdateDeviceResponse, err error) {
     if request == nil {
         request = NewAppUpdateDeviceRequest()
@@ -483,7 +639,13 @@ func NewAppUpdateUserResponse() (response *AppUpdateUserResponse) {
     return
 }
 
+// AppUpdateUser
 // 修改用户信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
+//  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppUpdateUser(request *AppUpdateUserRequest) (response *AppUpdateUserResponse, err error) {
     if request == nil {
         request = NewAppUpdateUserRequest()
@@ -508,7 +670,12 @@ func NewAssociateSubDeviceToGatewayProductResponse() (response *AssociateSubDevi
     return
 }
 
+// AssociateSubDeviceToGatewayProduct
 // 关联子设备产品和网关产品
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDGATEWAYPRODUCTID = "InvalidParameter.IotProductInvalidGatewayProductId"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDSUBDEVICEPRODUCTID = "InvalidParameter.IotProductInvalidSubDeviceProductId"
 func (c *Client) AssociateSubDeviceToGatewayProduct(request *AssociateSubDeviceToGatewayProductRequest) (response *AssociateSubDeviceToGatewayProductResponse, err error) {
     if request == nil {
         request = NewAssociateSubDeviceToGatewayProductRequest()
@@ -533,7 +700,18 @@ func NewDeactivateRuleResponse() (response *DeactivateRuleResponse) {
     return
 }
 
+// DeactivateRule
 // 禁用规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTACTIONSYSTEMERROR = "InternalError.IotActionSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTRULEOPTOOOFTEN = "LimitExceeded.IotRuleOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCENOTFOUND_MQRULERULEIDNOTEXISTS = "ResourceNotFound.MqruleRuleIdNotExists"
 func (c *Client) DeactivateRule(request *DeactivateRuleRequest) (response *DeactivateRuleResponse, err error) {
     if request == nil {
         request = NewDeactivateRuleRequest()
@@ -558,7 +736,17 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
+// DeleteDevice
 // 提供在指定的产品Id下删除一个设备的能力。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTDEVICEOPTOOOFTEN = "LimitExceeded.IotDeviceOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -583,7 +771,18 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
+// DeleteProduct
 // 删除用户指定的产品Id对应的信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MQIOTSYSTEMERROR = "InternalError.MqiotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTPRODUCTOPTOOOFTEN = "LimitExceeded.IotProductOpTooOften"
+//  RESOURCEINUSE_IOTDEVICEEXISTS = "ResourceInUse.IotDeviceExists"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCEINUSE_IOTRULEEXISTS = "ResourceInUse.IotRuleExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
@@ -608,7 +807,16 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
     return
 }
 
+// DeleteRule
 // 删除规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTRULEOPTOOOFTEN = "LimitExceeded.IotRuleOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_IOTRULEISACTIVE = "ResourceUnavailable.IotRuleIsActive"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
     if request == nil {
         request = NewDeleteRuleRequest()
@@ -633,7 +841,15 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     return
 }
 
+// DeleteTopic
 // 删除Topic
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTTOPICOPTOOOFTEN = "LimitExceeded.IotTopicOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {
         request = NewDeleteTopicRequest()
@@ -658,7 +874,15 @@ func NewGetDataHistoryResponse() (response *GetDataHistoryResponse) {
     return
 }
 
+// GetDataHistory
 // 批量获取设备某一段时间范围的设备上报数据。该接口适用于使用高级版类型的产品
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDataHistory(request *GetDataHistoryRequest) (response *GetDataHistoryResponse, err error) {
     if request == nil {
         request = NewGetDataHistoryRequest()
@@ -683,7 +907,16 @@ func NewGetDebugLogResponse() (response *GetDebugLogResponse) {
     return
 }
 
+// GetDebugLog
 // 获取设备的调试日志，用于定位问题
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTLOGSYSTEMERROR = "InternalError.IotLogSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDebugLog(request *GetDebugLogRequest) (response *GetDebugLogResponse, err error) {
     if request == nil {
         request = NewGetDebugLogRequest()
@@ -708,7 +941,13 @@ func NewGetDeviceResponse() (response *GetDeviceResponse) {
     return
 }
 
+// GetDevice
 // 提供查询某个设备详细信息的能力。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDevice(request *GetDeviceRequest) (response *GetDeviceResponse, err error) {
     if request == nil {
         request = NewGetDeviceRequest()
@@ -733,7 +972,15 @@ func NewGetDeviceDataResponse() (response *GetDeviceDataResponse) {
     return
 }
 
+// GetDeviceData
 // 获取某个设备当前上报到云端的数据，该接口适用于使用数据模板协议的产品。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceData(request *GetDeviceDataRequest) (response *GetDeviceDataResponse, err error) {
     if request == nil {
         request = NewGetDeviceDataRequest()
@@ -758,7 +1005,16 @@ func NewGetDeviceLogResponse() (response *GetDeviceLogResponse) {
     return
 }
 
+// GetDeviceLog
 // 批量获取设备与云端的详细通信日志，该接口适用于使用高级版类型的产品。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTLOGSYSTEMERROR = "InternalError.IotLogSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceLog(request *GetDeviceLogRequest) (response *GetDeviceLogResponse, err error) {
     if request == nil {
         request = NewGetDeviceLogRequest()
@@ -783,7 +1039,15 @@ func NewGetDeviceSignaturesResponse() (response *GetDeviceSignaturesResponse) {
     return
 }
 
+// GetDeviceSignatures
 // 获取设备绑定签名，用于用户绑定某个设备的应用场景
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceSignatures(request *GetDeviceSignaturesRequest) (response *GetDeviceSignaturesResponse, err error) {
     if request == nil {
         request = NewGetDeviceSignaturesRequest()
@@ -808,7 +1072,16 @@ func NewGetDeviceStatisticsResponse() (response *GetDeviceStatisticsResponse) {
     return
 }
 
+// GetDeviceStatistics
 // 查询某段时间范围内产品的在线、激活设备数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTDBERROR = "InternalError.IotDbError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTSTATINVALIDDATE = "InvalidParameter.IotStatInvalidDate"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceStatistics(request *GetDeviceStatisticsRequest) (response *GetDeviceStatisticsResponse, err error) {
     if request == nil {
         request = NewGetDeviceStatisticsRequest()
@@ -833,7 +1106,14 @@ func NewGetDeviceStatusesResponse() (response *GetDeviceStatusesResponse) {
     return
 }
 
+// GetDeviceStatuses
 // 批量获取设备的当前状态，状态包括在线、离线或未激活状态。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  LIMITEXCEEDED_IOTBATCHTOOMANY = "LimitExceeded.IotBatchTooMany"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 func (c *Client) GetDeviceStatuses(request *GetDeviceStatusesRequest) (response *GetDeviceStatusesResponse, err error) {
     if request == nil {
         request = NewGetDeviceStatusesRequest()
@@ -858,7 +1138,13 @@ func NewGetDevicesResponse() (response *GetDevicesResponse) {
     return
 }
 
+// GetDevices
 // 提供分页查询某个产品Id下设备信息的能力。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDevices(request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
     if request == nil {
         request = NewGetDevicesRequest()
@@ -883,7 +1169,14 @@ func NewGetProductResponse() (response *GetProductResponse) {
     return
 }
 
+// GetProduct
 // 获取产品定义的详细信息，包括产品名称、产品描述，鉴权模式等信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSYSTEMERROR = "InternalError.IotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetProduct(request *GetProductRequest) (response *GetProductResponse, err error) {
     if request == nil {
         request = NewGetProductRequest()
@@ -908,7 +1201,12 @@ func NewGetProductsResponse() (response *GetProductsResponse) {
     return
 }
 
+// GetProducts
 // 获取用户在物联网套件所创建的所有产品信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetProducts(request *GetProductsRequest) (response *GetProductsResponse, err error) {
     if request == nil {
         request = NewGetProductsRequest()
@@ -933,7 +1231,13 @@ func NewGetRuleResponse() (response *GetRuleResponse) {
     return
 }
 
+// GetRule
 // 获取转发规则信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetRule(request *GetRuleRequest) (response *GetRuleResponse, err error) {
     if request == nil {
         request = NewGetRuleRequest()
@@ -958,7 +1262,12 @@ func NewGetRulesResponse() (response *GetRulesResponse) {
     return
 }
 
+// GetRules
 // 获取转发规则列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetRules(request *GetRulesRequest) (response *GetRulesResponse, err error) {
     if request == nil {
         request = NewGetRulesRequest()
@@ -983,7 +1292,13 @@ func NewGetTopicResponse() (response *GetTopicResponse) {
     return
 }
 
+// GetTopic
 // 获取Topic信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetTopic(request *GetTopicRequest) (response *GetTopicResponse, err error) {
     if request == nil {
         request = NewGetTopicRequest()
@@ -1008,7 +1323,12 @@ func NewGetTopicsResponse() (response *GetTopicsResponse) {
     return
 }
 
+// GetTopics
 // 获取Topic列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetTopics(request *GetTopicsRequest) (response *GetTopicsResponse, err error) {
     if request == nil {
         request = NewGetTopicsRequest()
@@ -1033,7 +1353,16 @@ func NewIssueDeviceControlResponse() (response *IssueDeviceControlResponse) {
     return
 }
 
+// IssueDeviceControl
 // 提供下发控制指令到指定设备的能力，该接口适用于使用高级版类型的产品。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) IssueDeviceControl(request *IssueDeviceControlRequest) (response *IssueDeviceControlResponse, err error) {
     if request == nil {
         request = NewIssueDeviceControlRequest()
@@ -1058,7 +1387,18 @@ func NewPublishMsgResponse() (response *PublishMsgResponse) {
     return
 }
 
+// PublishMsg
 // 提供向指定的Topic发布消息的能力，常用于向设备下发控制指令。该接口只适用于产品版本为“基础版”类型的产品，使用高级版的产品需使用“下发设备控制指令”接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MQIOTSYSTEMERROR = "InternalError.MqiotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDAUTHTYPE = "InvalidParameter.IotProductInvalidAuthType"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) PublishMsg(request *PublishMsgRequest) (response *PublishMsgResponse, err error) {
     if request == nil {
         request = NewPublishMsgRequest()
@@ -1083,7 +1423,18 @@ func NewResetDeviceResponse() (response *ResetDeviceResponse) {
     return
 }
 
+// ResetDevice
 // 重置设备操作，将会为设备生成新的证书及清空最新数据，需谨慎操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MQIOTSYSTEMERROR = "InternalError.MqiotSystemError"
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDAUTHTYPE = "InvalidParameter.IotProductInvalidAuthType"
+//  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) ResetDevice(request *ResetDeviceRequest) (response *ResetDeviceResponse, err error) {
     if request == nil {
         request = NewResetDeviceRequest()
@@ -1108,7 +1459,12 @@ func NewUnassociateSubDeviceFromGatewayProductResponse() (response *UnassociateS
     return
 }
 
+// UnassociateSubDeviceFromGatewayProduct
 // 取消子设备产品与网关设备产品的关联
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDGATEWAYPRODUCTID = "InvalidParameter.IotProductInvalidGatewayProductId"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDSUBDEVICEPRODUCTID = "InvalidParameter.IotProductInvalidSubDeviceProductId"
 func (c *Client) UnassociateSubDeviceFromGatewayProduct(request *UnassociateSubDeviceFromGatewayProductRequest) (response *UnassociateSubDeviceFromGatewayProductResponse, err error) {
     if request == nil {
         request = NewUnassociateSubDeviceFromGatewayProductRequest()
@@ -1133,7 +1489,17 @@ func NewUpdateProductResponse() (response *UpdateProductResponse) {
     return
 }
 
+// UpdateProduct
 // 提供修改产品信息及数据模板的能力。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATATEMPLATE = "InvalidParameter.IotProductInvalidDataTemplate"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATATEMPLATERANGE = "InvalidParameter.IotProductInvalidDataTemplateRange"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) UpdateProduct(request *UpdateProductRequest) (response *UpdateProductResponse, err error) {
     if request == nil {
         request = NewUpdateProductRequest()
@@ -1158,7 +1524,20 @@ func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
     return
 }
 
+// UpdateRule
 // 更新规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
+//  INVALIDPARAMETER_IOTPRODUCTEMPTYDATATEMPLATE = "InvalidParameter.IotProductEmptyDataTemplate"
+//  INVALIDPARAMETER_IOTPRODUCTINVALIDDATAPROTOCOL = "InvalidParameter.IotProductInvalidDataProtocol"
+//  LIMITEXCEEDED_IOTRULEOPTOOOFTEN = "LimitExceeded.IotRuleOpTooOften"
+//  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
+//  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
+//  RESOURCENOTFOUND_IOTSUBACCOUNTNOTEXISTS = "ResourceNotFound.IotSubAccountNotExists"
+//  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
+//  RESOURCEUNAVAILABLE_IOTRULEISACTIVE = "ResourceUnavailable.IotRuleIsActive"
+//  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleResponse, err error) {
     if request == nil {
         request = NewUpdateRuleRequest()

@@ -58,6 +58,7 @@ func NewCreateCallBackResponse() (response *CreateCallBackResponse) {
     return
 }
 
+// CreateCallBack
 // 回拨呼叫请求
 func (c *Client) CreateCallBack(request *CreateCallBackRequest) (response *CreateCallBackResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewDelVirtualNumResponse() (response *DelVirtualNumResponse) {
     return
 }
 
+// DelVirtualNum
 // 直拨解绑中间号
 func (c *Client) DelVirtualNum(request *DelVirtualNumRequest) (response *DelVirtualNumResponse, err error) {
     if request == nil {
@@ -108,6 +110,7 @@ func NewDeleteCallBackResponse() (response *DeleteCallBackResponse) {
     return
 }
 
+// DeleteCallBack
 // 回拨呼叫取消
 func (c *Client) DeleteCallBack(request *DeleteCallBackRequest) (response *DeleteCallBackResponse, err error) {
     if request == nil {
@@ -133,6 +136,7 @@ func NewDescribeCallBackCdrResponse() (response *DescribeCallBackCdrResponse) {
     return
 }
 
+// DescribeCallBackCdr
 // 回拨话单获取接口
 func (c *Client) DescribeCallBackCdr(request *DescribeCallBackCdrRequest) (response *DescribeCallBackCdrResponse, err error) {
     if request == nil {
@@ -158,6 +162,7 @@ func NewDescribeCallBackStatusResponse() (response *DescribeCallBackStatusRespon
     return
 }
 
+// DescribeCallBackStatus
 // 回拨通话状态获取
 func (c *Client) DescribeCallBackStatus(request *DescribeCallBackStatusRequest) (response *DescribeCallBackStatusResponse, err error) {
     if request == nil {
@@ -183,6 +188,7 @@ func NewDescribeCallerDisplayListResponse() (response *DescribeCallerDisplayList
     return
 }
 
+// DescribeCallerDisplayList
 // 回拨拉取主叫显号号码集合
 func (c *Client) DescribeCallerDisplayList(request *DescribeCallerDisplayListRequest) (response *DescribeCallerDisplayListResponse, err error) {
     if request == nil {
@@ -208,6 +214,7 @@ func NewGet400CdrResponse() (response *Get400CdrResponse) {
     return
 }
 
+// Get400Cdr
 // 直拨话单获取接口
 func (c *Client) Get400Cdr(request *Get400CdrRequest) (response *Get400CdrResponse, err error) {
     if request == nil {
@@ -233,6 +240,7 @@ func NewGetVirtualNumResponse() (response *GetVirtualNumResponse) {
     return
 }
 
+// GetVirtualNum
 // 直拨获取中间号（App 使用方发起）
 func (c *Client) GetVirtualNum(request *GetVirtualNumRequest) (response *GetVirtualNumResponse, err error) {
     if request == nil {

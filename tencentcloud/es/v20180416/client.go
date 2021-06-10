@@ -58,7 +58,20 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
     return
 }
 
+// CreateInstance
 // 创建指定规格的ES集群实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {
         request = NewCreateInstanceRequest()
@@ -83,7 +96,14 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     return
 }
 
+// DeleteInstance
 // 销毁集群实例 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteInstanceRequest()
@@ -108,7 +128,12 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
     return
 }
 
+// DescribeInstanceLogs
 // 查询用户该地域下符合条件的ES集群的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceLogsRequest()
@@ -133,7 +158,13 @@ func NewDescribeInstanceOperationsResponse() (response *DescribeInstanceOperatio
     return
 }
 
+// DescribeInstanceOperations
 // 查询实例指定条件下的操作记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceOperationsRequest()
@@ -158,7 +189,13 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 查询用户该地域下符合条件的所有实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -183,7 +220,16 @@ func NewDiagnoseInstanceResponse() (response *DiagnoseInstanceResponse) {
     return
 }
 
+// DiagnoseInstance
 // 智能运维诊断集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DiagnoseInstance(request *DiagnoseInstanceRequest) (response *DiagnoseInstanceResponse, err error) {
     if request == nil {
         request = NewDiagnoseInstanceRequest()
@@ -208,7 +254,13 @@ func NewGetRequestTargetNodeTypesResponse() (response *GetRequestTargetNodeTypes
     return
 }
 
+// GetRequestTargetNodeTypes
 // 获取接收客户端请求的节点类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetRequestTargetNodeTypes(request *GetRequestTargetNodeTypesRequest) (response *GetRequestTargetNodeTypesResponse, err error) {
     if request == nil {
         request = NewGetRequestTargetNodeTypesRequest()
@@ -233,7 +285,13 @@ func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
     return
 }
 
+// RestartInstance
 // 重启ES集群实例(用于系统版本更新等操作) 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
     if request == nil {
         request = NewRestartInstanceRequest()
@@ -258,7 +316,13 @@ func NewRestartKibanaResponse() (response *RestartKibanaResponse) {
     return
 }
 
+// RestartKibana
 // 重启Kibana 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *RestartKibanaResponse, err error) {
     if request == nil {
         request = NewRestartKibanaRequest()
@@ -283,7 +347,15 @@ func NewRestartNodesResponse() (response *RestartNodesResponse) {
     return
 }
 
+// RestartNodes
 // 用于重启集群节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
     if request == nil {
         request = NewRestartNodesRequest()
@@ -308,7 +380,16 @@ func NewUpdateDiagnoseSettingsResponse() (response *UpdateDiagnoseSettingsRespon
     return
 }
 
+// UpdateDiagnoseSettings
 // 更新智能运维配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateDiagnoseSettings(request *UpdateDiagnoseSettingsRequest) (response *UpdateDiagnoseSettingsResponse, err error) {
     if request == nil {
         request = NewUpdateDiagnoseSettingsRequest()
@@ -333,14 +414,36 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
     return
 }
 
+// UpdateInstance
 // 对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
+//
 // - InstanceName：修改实例名称(仅用于标识实例)
+//
 // - NodeInfoList: 修改节点配置（节点横向扩缩容，纵向扩缩容，增加主节点，增加冷节点等）
+//
 // - EsConfig：修改集群配置
+//
 // - Password：修改默认用户elastic的密码
+//
 // - EsAcl：修改访问控制列表
+//
 // - CosBackUp: 设置集群COS自动备份信息
+//
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_UNSUPPORTREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
     if request == nil {
         request = NewUpdateInstanceRequest()
@@ -365,7 +468,18 @@ func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
     return
 }
 
+// UpdatePlugins
 // 变更插件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdatePluginsResponse, err error) {
     if request == nil {
         request = NewUpdatePluginsRequest()
@@ -390,7 +504,16 @@ func NewUpdateRequestTargetNodeTypesResponse() (response *UpdateRequestTargetNod
     return
 }
 
+// UpdateRequestTargetNodeTypes
 // 更新接收客户端请求的节点类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRequestTargetNodeTypes(request *UpdateRequestTargetNodeTypesRequest) (response *UpdateRequestTargetNodeTypesResponse, err error) {
     if request == nil {
         request = NewUpdateRequestTargetNodeTypesRequest()
@@ -415,7 +538,19 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
     return
 }
 
+// UpgradeInstance
 // 升级ES集群版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
     if request == nil {
         request = NewUpgradeInstanceRequest()
@@ -440,7 +575,17 @@ func NewUpgradeLicenseResponse() (response *UpgradeLicenseResponse) {
     return
 }
 
+// UpgradeLicense
 // 升级ES商业特性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeLicense(request *UpgradeLicenseRequest) (response *UpgradeLicenseResponse, err error) {
     if request == nil {
         request = NewUpgradeLicenseRequest()

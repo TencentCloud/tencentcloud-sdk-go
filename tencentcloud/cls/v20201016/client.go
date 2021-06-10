@@ -58,7 +58,18 @@ func NewCreateAlarmResponse() (response *CreateAlarmResponse) {
     return
 }
 
+// CreateAlarm
 // 本接口用于创建告警策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) CreateAlarm(request *CreateAlarmRequest) (response *CreateAlarmResponse, err error) {
     if request == nil {
         request = NewCreateAlarmRequest()
@@ -83,7 +94,15 @@ func NewCreateAlarmNoticeResponse() (response *CreateAlarmNoticeResponse) {
     return
 }
 
+// CreateAlarmNotice
 // 该接口用户创建告警通知模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateAlarmNotice(request *CreateAlarmNoticeRequest) (response *CreateAlarmNoticeResponse, err error) {
     if request == nil {
         request = NewCreateAlarmNoticeRequest()
@@ -108,7 +127,17 @@ func NewCreateExportResponse() (response *CreateExportResponse) {
     return
 }
 
+// CreateExport
 // 本接口用于创建日志导出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) CreateExport(request *CreateExportRequest) (response *CreateExportResponse, err error) {
     if request == nil {
         request = NewCreateExportRequest()
@@ -133,7 +162,18 @@ func NewCreateIndexResponse() (response *CreateIndexResponse) {
     return
 }
 
+// CreateIndex
 // 本接口用于创建索引
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) CreateIndex(request *CreateIndexRequest) (response *CreateIndexResponse, err error) {
     if request == nil {
         request = NewCreateIndexRequest()
@@ -158,7 +198,22 @@ func NewCreateMachineGroupResponse() (response *CreateMachineGroupResponse) {
     return
 }
 
+// CreateMachineGroup
 // 创建机器组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_MACHINEGROUP = "LimitExceeded.MachineGroup"
+//  LIMITEXCEEDED_MACHINEGROUPIP = "LimitExceeded.MachineGroupIp"
+//  LIMITEXCEEDED_MACHINEGROUPLABELS = "LimitExceeded.MachineGroupLabels"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateMachineGroup(request *CreateMachineGroupRequest) (response *CreateMachineGroupResponse, err error) {
     if request == nil {
         request = NewCreateMachineGroupRequest()
@@ -183,7 +238,19 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
     return
 }
 
+// CreateTopic
 // 本接口用于创建日志主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
         request = NewCreateTopicRequest()
@@ -208,7 +275,14 @@ func NewDeleteAlarmResponse() (response *DeleteAlarmResponse) {
     return
 }
 
+// DeleteAlarm
 // 本接口用于删除告警策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ALARMNOTEXIST = "ResourceNotFound.AlarmNotExist"
 func (c *Client) DeleteAlarm(request *DeleteAlarmRequest) (response *DeleteAlarmResponse, err error) {
     if request == nil {
         request = NewDeleteAlarmRequest()
@@ -233,7 +307,17 @@ func NewDeleteAlarmNoticeResponse() (response *DeleteAlarmNoticeResponse) {
     return
 }
 
+// DeleteAlarmNotice
 // 该接口用于删除告警通知模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
 func (c *Client) DeleteAlarmNotice(request *DeleteAlarmNoticeRequest) (response *DeleteAlarmNoticeResponse, err error) {
     if request == nil {
         request = NewDeleteAlarmNoticeRequest()
@@ -258,7 +342,16 @@ func NewDeleteExportResponse() (response *DeleteExportResponse) {
     return
 }
 
+// DeleteExport
 // 本接口用于删除日志导出
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
 func (c *Client) DeleteExport(request *DeleteExportRequest) (response *DeleteExportResponse, err error) {
     if request == nil {
         request = NewDeleteExportRequest()
@@ -283,7 +376,18 @@ func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
     return
 }
 
+// DeleteIndex
 // 本接口用于日志主题的索引配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DeleteIndex(request *DeleteIndexRequest) (response *DeleteIndexResponse, err error) {
     if request == nil {
         request = NewDeleteIndexRequest()
@@ -308,7 +412,18 @@ func NewDeleteMachineGroupResponse() (response *DeleteMachineGroupResponse) {
     return
 }
 
+// DeleteMachineGroup
 // 删除机器组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_MACHINEGROUPNOTEXIST = "ResourceNotFound.MachineGroupNotExist"
 func (c *Client) DeleteMachineGroup(request *DeleteMachineGroupRequest) (response *DeleteMachineGroupResponse, err error) {
     if request == nil {
         request = NewDeleteMachineGroupRequest()
@@ -333,7 +448,13 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
     return
 }
 
+// DeleteTopic
 // 本接口用于删除日志主题。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {
         request = NewDeleteTopicRequest()
@@ -358,7 +479,15 @@ func NewDescribeAlarmNoticesResponse() (response *DescribeAlarmNoticesResponse) 
     return
 }
 
+// DescribeAlarmNotices
 // 该接口用于获取告警通知模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
 func (c *Client) DescribeAlarmNotices(request *DescribeAlarmNoticesRequest) (response *DescribeAlarmNoticesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmNoticesRequest()
@@ -383,7 +512,11 @@ func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
     return
 }
 
+// DescribeAlarms
 // 本接口用于获取告警策略。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *DescribeAlarmsResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmsRequest()
@@ -408,7 +541,17 @@ func NewDescribeExportsResponse() (response *DescribeExportsResponse) {
     return
 }
 
+// DescribeExports
 // 本接口用于获取日志导出列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DescribeExports(request *DescribeExportsRequest) (response *DescribeExportsResponse, err error) {
     if request == nil {
         request = NewDescribeExportsRequest()
@@ -433,7 +576,19 @@ func NewDescribeIndexResponse() (response *DescribeIndexResponse) {
     return
 }
 
+// DescribeIndex
 // 本接口用于获取索引配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DescribeIndex(request *DescribeIndexRequest) (response *DescribeIndexResponse, err error) {
     if request == nil {
         request = NewDescribeIndexRequest()
@@ -458,7 +613,21 @@ func NewDescribeLogContextResponse() (response *DescribeLogContextResponse) {
     return
 }
 
+// DescribeLogContext
 // 本接口用于搜索日志上下文附近的内容
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DescribeLogContext(request *DescribeLogContextRequest) (response *DescribeLogContextResponse, err error) {
     if request == nil {
         request = NewDescribeLogContextRequest()
@@ -483,7 +652,16 @@ func NewDescribeMachineGroupsResponse() (response *DescribeMachineGroupsResponse
     return
 }
 
+// DescribeMachineGroups
 // 获取机器组信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeMachineGroups(request *DescribeMachineGroupsRequest) (response *DescribeMachineGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeMachineGroupsRequest()
@@ -508,7 +686,19 @@ func NewDescribeMachinesResponse() (response *DescribeMachinesResponse) {
     return
 }
 
+// DescribeMachines
 // 获取制定机器组下的机器状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_AGENTVERSIONNOTEXIST = "ResourceNotFound.AgentVersionNotExist"
+//  RESOURCENOTFOUND_MACHINEGROUPNOTEXIST = "ResourceNotFound.MachineGroupNotExist"
 func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *DescribeMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeMachinesRequest()
@@ -533,7 +723,18 @@ func NewDescribePartitionsResponse() (response *DescribePartitionsResponse) {
     return
 }
 
+// DescribePartitions
 // 本接口用于获取主题分区列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (response *DescribePartitionsResponse, err error) {
     if request == nil {
         request = NewDescribePartitionsRequest()
@@ -558,7 +759,17 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
     return
 }
 
+// DescribeTopics
 //  本接口用于获取日志主题列表，支持分页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
 func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
     if request == nil {
         request = NewDescribeTopicsRequest()
@@ -583,7 +794,22 @@ func NewGetAlarmLogResponse() (response *GetAlarmLogResponse) {
     return
 }
 
+// GetAlarmLog
 // 本接口用于获取告警任务历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETLOGREACHLIMIT = "FailedOperation.GetlogReachLimit"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) GetAlarmLog(request *GetAlarmLogRequest) (response *GetAlarmLogResponse, err error) {
     if request == nil {
         request = NewGetAlarmLogRequest()
@@ -608,7 +834,19 @@ func NewMergePartitionResponse() (response *MergePartitionResponse) {
     return
 }
 
+// MergePartition
 // 本接口用于合并一个读写态的主题分区，合并时指定一个主题分区 ID，日志服务会自动合并范围右相邻的分区。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) MergePartition(request *MergePartitionRequest) (response *MergePartitionResponse, err error) {
     if request == nil {
         request = NewMergePartitionRequest()
@@ -633,7 +871,18 @@ func NewModifyAlarmResponse() (response *ModifyAlarmResponse) {
     return
 }
 
+// ModifyAlarm
 // 本接口用于修改告警策略。需要至少修改一项有效内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDALARM = "FailedOperation.InvalidAlarm"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMCONFLICT = "InvalidParameter.AlarmConflict"
+//  RESOURCENOTFOUND_ALARMNOTEXIST = "ResourceNotFound.AlarmNotExist"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) ModifyAlarm(request *ModifyAlarmRequest) (response *ModifyAlarmResponse, err error) {
     if request == nil {
         request = NewModifyAlarmRequest()
@@ -658,7 +907,18 @@ func NewModifyAlarmNoticeResponse() (response *ModifyAlarmNoticeResponse) {
     return
 }
 
+// ModifyAlarmNotice
 // 该接口用于修改告警通知模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
 func (c *Client) ModifyAlarmNotice(request *ModifyAlarmNoticeRequest) (response *ModifyAlarmNoticeResponse, err error) {
     if request == nil {
         request = NewModifyAlarmNoticeRequest()
@@ -683,7 +943,18 @@ func NewModifyIndexResponse() (response *ModifyIndexResponse) {
     return
 }
 
+// ModifyIndex
 // 本接口用于修改索引配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) ModifyIndex(request *ModifyIndexRequest) (response *ModifyIndexResponse, err error) {
     if request == nil {
         request = NewModifyIndexRequest()
@@ -708,7 +979,21 @@ func NewModifyMachineGroupResponse() (response *ModifyMachineGroupResponse) {
     return
 }
 
+// ModifyMachineGroup
 // 修改机器组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_MACHINEGROUPIP = "LimitExceeded.MachineGroupIp"
+//  LIMITEXCEEDED_MACHINEGROUPLABELS = "LimitExceeded.MachineGroupLabels"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_MACHINEGROUPNOTEXIST = "ResourceNotFound.MachineGroupNotExist"
 func (c *Client) ModifyMachineGroup(request *ModifyMachineGroupRequest) (response *ModifyMachineGroupResponse, err error) {
     if request == nil {
         request = NewModifyMachineGroupRequest()
@@ -733,7 +1018,19 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
     return
 }
 
+// ModifyTopic
 // 本接口用于修改日志主题。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
     if request == nil {
         request = NewModifyTopicRequest()
@@ -758,7 +1055,21 @@ func NewSearchLogResponse() (response *SearchLogResponse) {
     return
 }
 
+// SearchLog
 // 本接口用于搜索日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogResponse, err error) {
     if request == nil {
         request = NewSearchLogRequest()
@@ -783,7 +1094,22 @@ func NewSplitPartitionResponse() (response *SplitPartitionResponse) {
     return
 }
 
+// SplitPartition
 // 本接口用于分裂主题分区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) SplitPartition(request *SplitPartitionRequest) (response *SplitPartitionResponse, err error) {
     if request == nil {
         request = NewSplitPartitionRequest()

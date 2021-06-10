@@ -58,7 +58,21 @@ func NewCreateAudioDepositResponse() (response *CreateAudioDepositResponse) {
     return
 }
 
+// CreateAudioDeposit
 // 用户通过本接口向BTOE写入待存证的音频原文件或下载URL，BTOE对音频原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。音频类型支持格式：mp3、wav、wma、midi、flac；原文件上传大小不超过5 MB，下载URL文件大小不超过25 MB。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateAudioDeposit(request *CreateAudioDepositRequest) (response *CreateAudioDepositResponse, err error) {
     if request == nil {
         request = NewCreateAudioDepositRequest()
@@ -83,7 +97,23 @@ func NewCreateDataDepositResponse() (response *CreateDataDepositResponse) {
     return
 }
 
+// CreateDataDeposit
 // 用户通过本接口向BTOE写入待存证的业务数据明文，业务数据明文存证写入后不可修改，BTOE对业务数据明文存证生成含有电子签章的区块链存证电子凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ONCHAINFAILURE = "FailedOperation.OnChainFailure"
+//  FAILEDOPERATION_QUERYNORECORD = "FailedOperation.QueryNoRecord"
+//  FAILEDOPERATION_SENSITIVEDATA = "FailedOperation.SensitiveData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATAINFOTOOLONG = "InvalidParameterValue.DataInfoTooLong"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateDataDeposit(request *CreateDataDepositRequest) (response *CreateDataDepositResponse, err error) {
     if request == nil {
         request = NewCreateDataDepositRequest()
@@ -108,7 +138,23 @@ func NewCreateDocDepositResponse() (response *CreateDocDepositResponse) {
     return
 }
 
+// CreateDocDeposit
 // 用户通过本接口向BTOE写入待存证的文档原文件或下载URL，BTOE对文档原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。文档类型支持格式：doc、docx、xls、xlsx、ppt、pptx、 pdf、html、txt、md、csv；原文件上传大小不超过5 MB，下载URL文件大小不超过10 MB。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEREADFAILED = "FailedOperation.FileReadFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILESUFFIX = "InvalidParameter.InvalidFileSuffix"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateDocDeposit(request *CreateDocDepositRequest) (response *CreateDocDepositResponse, err error) {
     if request == nil {
         request = NewCreateDocDepositRequest()
@@ -133,7 +179,18 @@ func NewCreateHashDepositResponse() (response *CreateHashDepositResponse) {
     return
 }
 
+// CreateHashDeposit
 // 用户通过本接口向BTOE写入待存证的原文数据Hash值，BTOE对业务数据Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDeposit(request *CreateHashDepositRequest) (response *CreateHashDepositResponse, err error) {
     if request == nil {
         request = NewCreateHashDepositRequest()
@@ -158,7 +215,17 @@ func NewCreateHashDepositNoCertResponse() (response *CreateHashDepositNoCertResp
     return
 }
 
+// CreateHashDepositNoCert
 // 用户通过本接口向BTOE写入待存证的原文数据Hash值，BTOE对业务数据Hash值存证上链，本接口不生成区块链存证电子凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ONCHAINFAILURE = "FailedOperation.OnChainFailure"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDepositNoCert(request *CreateHashDepositNoCertRequest) (response *CreateHashDepositNoCertResponse, err error) {
     if request == nil {
         request = NewCreateHashDepositNoCertRequest()
@@ -183,7 +250,16 @@ func NewCreateHashDepositNoSealResponse() (response *CreateHashDepositNoSealResp
     return
 }
 
+// CreateHashDepositNoSeal
 // 用户通过本接口向BTOE写入待存证的原文数据Hash值，BTOE对业务数据Hash值存证上链，并生成无电子签章的区块链存证电子凭证。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ONCHAINFAILURE = "FailedOperation.OnChainFailure"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDepositNoSeal(request *CreateHashDepositNoSealRequest) (response *CreateHashDepositNoSealResponse, err error) {
     if request == nil {
         request = NewCreateHashDepositNoSealRequest()
@@ -208,7 +284,23 @@ func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
     return
 }
 
+// CreateImageDeposit
 // 用户通过本接口向BTOE写入待存证的图片原文件或下载URL，BTOE对图片原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。图片类型支持格式：png、jpg、jpeg、bmp、gif、svg；原文件上传大小不超过5 MB，下载URL文件大小不超过10 MB。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
+//  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateImageDeposit(request *CreateImageDepositRequest) (response *CreateImageDepositResponse, err error) {
     if request == nil {
         request = NewCreateImageDepositRequest()
@@ -233,7 +325,24 @@ func NewCreateVideoDepositResponse() (response *CreateVideoDepositResponse) {
     return
 }
 
+// CreateVideoDeposit
 // 用户通过本接口向BTOE写入待存证的视频的原文件或下载URL，BTOE对视频原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。视频文件支持格式：mp4、avi、mkv、mov、flv,wmv,rmvb,3gp；文件大小限制：直接上传原文件不大于5MB，下载URL文件大小不大于200 MB。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEENCODINDFORMATERROR = "FailedOperation.FileEncodindFormatError"
+//  FAILEDOPERATION_FILEREADFAILED = "FailedOperation.FileReadFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILESUFFIX = "InvalidParameter.InvalidFileSuffix"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateVideoDeposit(request *CreateVideoDepositRequest) (response *CreateVideoDepositResponse, err error) {
     if request == nil {
         request = NewCreateVideoDepositRequest()
@@ -258,7 +367,16 @@ func NewGetDepositCertResponse() (response *GetDepositCertResponse) {
     return
 }
 
+// GetDepositCert
 // 用户通过存证编码向BTOE查询存证电子凭证信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYNORECORD = "FailedOperation.QueryNoRecord"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetDepositCert(request *GetDepositCertRequest) (response *GetDepositCertResponse, err error) {
     if request == nil {
         request = NewGetDepositCertRequest()
@@ -283,8 +401,31 @@ func NewGetDepositFileResponse() (response *GetDepositFileResponse) {
     return
 }
 
+// GetDepositFile
 // 用户通过存证编码向BTOE获取存证文件的下载URL。
+//
 // -注：Hash类存证、业务数据明文存证不产生存证文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
+//  FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
+//  FAILEDOPERATION_DATAINFOTOOLONG = "FailedOperation.DataInfoTooLong"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_HASHNOMATCH = "FailedOperation.HashNoMatch"
+//  FAILEDOPERATION_ONCHAINFAILURE = "FailedOperation.OnChainFailure"
+//  FAILEDOPERATION_QUERYNORECORD = "FailedOperation.QueryNoRecord"
+//  FAILEDOPERATION_SENSITIVEDATA = "FailedOperation.SensitiveData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACCOUNTINFOINVALID = "InvalidParameter.AccountInfoInvalid"
+//  INVALIDPARAMETER_INVALIDFILESUFFIX = "InvalidParameter.InvalidFileSuffix"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) GetDepositFile(request *GetDepositFileRequest) (response *GetDepositFileResponse, err error) {
     if request == nil {
         request = NewGetDepositFileRequest()
@@ -309,7 +450,21 @@ func NewGetDepositInfoResponse() (response *GetDepositInfoResponse) {
     return
 }
 
+// GetDepositInfo
 // 用户通过存证编码向BTOE查询存证基本信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEREADFAILED = "FailedOperation.FileReadFailed"
+//  FAILEDOPERATION_ONCHAINFAILURE = "FailedOperation.OnChainFailure"
+//  FAILEDOPERATION_QUERYNORECORD = "FailedOperation.QueryNoRecord"
+//  FAILEDOPERATION_SENSITIVEDATA = "FailedOperation.SensitiveData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetDepositInfo(request *GetDepositInfoRequest) (response *GetDepositInfoResponse, err error) {
     if request == nil {
         request = NewGetDepositInfoRequest()
@@ -334,7 +489,13 @@ func NewVerifyEvidenceBlockChainTxHashResponse() (response *VerifyEvidenceBlockC
     return
 }
 
+// VerifyEvidenceBlockChainTxHash
 // 用户向BTOE核验存证结果中的区块链交易hash的真实性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
 func (c *Client) VerifyEvidenceBlockChainTxHash(request *VerifyEvidenceBlockChainTxHashRequest) (response *VerifyEvidenceBlockChainTxHashResponse, err error) {
     if request == nil {
         request = NewVerifyEvidenceBlockChainTxHashRequest()
@@ -359,7 +520,13 @@ func NewVerifyEvidenceHashResponse() (response *VerifyEvidenceHashResponse) {
     return
 }
 
+// VerifyEvidenceHash
 // 用户存证内容hash向BTOE核验存证记录的真实性。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERERROR = "InvalidParameterValue.ParameterError"
 func (c *Client) VerifyEvidenceHash(request *VerifyEvidenceHashRequest) (response *VerifyEvidenceHashResponse, err error) {
     if request == nil {
         request = NewVerifyEvidenceHashRequest()

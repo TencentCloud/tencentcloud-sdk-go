@@ -119,7 +119,7 @@ func (r *CreateCfsFileSystemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -181,7 +181,7 @@ func (r *CreateCfsFileSystemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsFileSystemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -202,7 +202,7 @@ func (r *CreateCfsPGroupRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsPGroupRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -246,7 +246,7 @@ func (r *CreateCfsPGroupResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -276,7 +276,7 @@ func (r *CreateCfsRuleRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsRuleRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -326,7 +326,7 @@ func (r *CreateCfsRuleResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCfsRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -344,7 +344,7 @@ func (r *DeleteCfsFileSystemRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsFileSystemRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -372,7 +372,7 @@ func (r *DeleteCfsFileSystemResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsFileSystemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -390,7 +390,7 @@ func (r *DeleteCfsPGroupRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsPGroupRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -424,7 +424,7 @@ func (r *DeleteCfsPGroupResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -445,7 +445,7 @@ func (r *DeleteCfsRuleRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsRuleRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -480,7 +480,7 @@ func (r *DeleteCfsRuleResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -501,7 +501,7 @@ func (r *DeleteMountTargetRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -530,7 +530,7 @@ func (r *DeleteMountTargetResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -545,7 +545,7 @@ func (r *DescribeAvailableZoneInfoRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailableZoneInfoRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -575,7 +575,7 @@ func (r *DescribeAvailableZoneInfoResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailableZoneInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -593,7 +593,7 @@ func (r *DescribeCfsFileSystemClientsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemClientsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -624,7 +624,7 @@ func (r *DescribeCfsFileSystemClientsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemClientsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -648,7 +648,7 @@ func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -684,7 +684,7 @@ func (r *DescribeCfsFileSystemsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsFileSystemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -699,7 +699,7 @@ func (r *DescribeCfsPGroupsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsPGroupsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -729,7 +729,7 @@ func (r *DescribeCfsPGroupsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsPGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -747,7 +747,7 @@ func (r *DescribeCfsRulesRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsRulesRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -778,7 +778,7 @@ func (r *DescribeCfsRulesResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -793,7 +793,7 @@ func (r *DescribeCfsServiceStatusRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsServiceStatusRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -823,7 +823,7 @@ func (r *DescribeCfsServiceStatusResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfsServiceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -841,7 +841,7 @@ func (r *DescribeMountTargetsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMountTargetsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -875,7 +875,7 @@ func (r *DescribeMountTargetsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMountTargetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1046,7 +1046,7 @@ func (r *SignUpCfsServiceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SignUpCfsServiceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1076,7 +1076,7 @@ func (r *SignUpCfsServiceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1106,7 +1106,7 @@ func (r *UpdateCfsFileSystemNameRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemNameRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1144,7 +1144,7 @@ func (r *UpdateCfsFileSystemNameResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1165,7 +1165,7 @@ func (r *UpdateCfsFileSystemPGroupRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemPGroupRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1200,7 +1200,7 @@ func (r *UpdateCfsFileSystemPGroupResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1221,7 +1221,7 @@ func (r *UpdateCfsFileSystemSizeLimitRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemSizeLimitRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1250,7 +1250,7 @@ func (r *UpdateCfsFileSystemSizeLimitResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsFileSystemSizeLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1274,7 +1274,7 @@ func (r *UpdateCfsPGroupRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsPGroupRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1313,7 +1313,7 @@ func (r *UpdateCfsPGroupResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1346,7 +1346,7 @@ func (r *UpdateCfsRuleRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsRuleRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1397,7 +1397,7 @@ func (r *UpdateCfsRuleResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

@@ -58,7 +58,12 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
     return
 }
 
+// DescribeRegions
 // 本接口(DescribeRegions)用于查询各个产品支持地域信息，当前只支持cvm。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeRegionsRequest()
@@ -83,7 +88,11 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
     return
 }
 
+// DescribeZones
 // 本接口(DescribeZones)用于查询产品可用区信息，当前只支持cvm。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     if request == nil {
         request = NewDescribeZonesRequest()

@@ -58,6 +58,7 @@ func NewDataManipulationResponse() (response *DataManipulationResponse) {
     return
 }
 
+// DataManipulation
 // 上传云搜数据的API接口
 func (c *Client) DataManipulation(request *DataManipulationRequest) (response *DataManipulationResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewDataSearchResponse() (response *DataSearchResponse) {
     return
 }
 
+// DataSearch
 // 用于检索云搜中的数据
 func (c *Client) DataSearch(request *DataSearchRequest) (response *DataSearchResponse, err error) {
     if request == nil {

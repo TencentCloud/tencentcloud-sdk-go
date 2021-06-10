@@ -58,7 +58,23 @@ func NewCreateQosResponse() (response *CreateQosResponse) {
     return
 }
 
+// CreateQos
 // 移动网络发起Qos加速过程
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VENDORNOTFOUND = "InvalidParameterValue.VendorNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_CTCCTOKENEXPIRED = "OperationDenied.CTCCTokenExpired"
+//  OPERATIONDENIED_CREATEQOSEXCEEDLIMIT = "OperationDenied.CreateQosExceedLimit"
+//  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
+//  OPERATIONDENIED_USEROUTOFCOVERAGE = "OperationDenied.UserOutOfCoverage"
+//  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
+//  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosResponse, err error) {
     if request == nil {
         request = NewCreateQosRequest()
@@ -83,7 +99,19 @@ func NewDeleteQosResponse() (response *DeleteQosResponse) {
     return
 }
 
+// DeleteQos
 // 移动网络停止Qos加速过程
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERNONACCELERATED = "OperationDenied.UserNonAccelerated"
+//  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
+//  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
 func (c *Client) DeleteQos(request *DeleteQosRequest) (response *DeleteQosResponse, err error) {
     if request == nil {
         request = NewDeleteQosRequest()

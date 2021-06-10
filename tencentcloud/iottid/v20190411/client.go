@@ -58,7 +58,15 @@ func NewAuthTestTidResponse() (response *AuthTestTidResponse) {
     return
 }
 
+// AuthTestTid
 // 单向认证测试TID 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATA = "InvalidParameterValue.Data"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTidResponse, err error) {
     if request == nil {
         request = NewAuthTestTidRequest()
@@ -83,7 +91,17 @@ func NewBurnTidNotifyResponse() (response *BurnTidNotifyResponse) {
     return
 }
 
+// BurnTidNotify
 // 安全芯片TID烧录回执 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) BurnTidNotify(request *BurnTidNotifyRequest) (response *BurnTidNotifyResponse, err error) {
     if request == nil {
         request = NewBurnTidNotifyRequest()
@@ -108,7 +126,16 @@ func NewDeliverTidNotifyResponse() (response *DeliverTidNotifyResponse) {
     return
 }
 
+// DeliverTidNotify
 // 安全芯片为载体的TID空发回执，绑定TID与订单号。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
     if request == nil {
         request = NewDeliverTidNotifyRequest()
@@ -133,7 +160,16 @@ func NewDeliverTidsResponse() (response *DeliverTidsResponse) {
     return
 }
 
+// DeliverTids
 // 设备服务商请求空发产品订单的TID信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) DeliverTids(request *DeliverTidsRequest) (response *DeliverTidsResponse, err error) {
     if request == nil {
         request = NewDeliverTidsRequest()
@@ -158,7 +194,14 @@ func NewDescribeAvailableLibCountResponse() (response *DescribeAvailableLibCount
     return
 }
 
+// DescribeAvailableLibCount
 // 查询指定订单的可空发的白盒密钥数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountRequest) (response *DescribeAvailableLibCountResponse, err error) {
     if request == nil {
         request = NewDescribeAvailableLibCountRequest()
@@ -183,7 +226,14 @@ func NewDescribePermissionResponse() (response *DescribePermissionResponse) {
     return
 }
 
+// DescribePermission
 // 查询企业用户TID平台控制台权限 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 func (c *Client) DescribePermission(request *DescribePermissionRequest) (response *DescribePermissionResponse, err error) {
     if request == nil {
         request = NewDescribePermissionRequest()
@@ -208,7 +258,16 @@ func NewDownloadTidsResponse() (response *DownloadTidsResponse) {
     return
 }
 
+// DownloadTids
 // 下载芯片订单的TID 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadTidsResponse, err error) {
     if request == nil {
         request = NewDownloadTidsRequest()
@@ -233,7 +292,17 @@ func NewUploadDeviceUniqueCodeResponse() (response *UploadDeviceUniqueCodeRespon
     return
 }
 
+// UploadDeviceUniqueCode
 // 上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COUNT = "InvalidParameterValue.Count"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) UploadDeviceUniqueCode(request *UploadDeviceUniqueCodeRequest) (response *UploadDeviceUniqueCodeResponse, err error) {
     if request == nil {
         request = NewUploadDeviceUniqueCodeRequest()
@@ -258,7 +327,15 @@ func NewVerifyChipBurnInfoResponse() (response *VerifyChipBurnInfoResponse) {
     return
 }
 
+// VerifyChipBurnInfo
 // 下载控制台验证芯片烧录信息，保证TID与中心信息一致 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATA = "InvalidParameterValue.Data"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (response *VerifyChipBurnInfoResponse, err error) {
     if request == nil {
         request = NewVerifyChipBurnInfoRequest()

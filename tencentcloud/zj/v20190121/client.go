@@ -58,7 +58,11 @@ func NewAddCrowdPackInfoResponse() (response *AddCrowdPackInfoResponse) {
     return
 }
 
+// AddCrowdPackInfo
 // 添加短信人群包信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddCrowdPackInfo(request *AddCrowdPackInfoRequest) (response *AddCrowdPackInfoResponse, err error) {
     if request == nil {
         request = NewAddCrowdPackInfoRequest()
@@ -83,7 +87,16 @@ func NewAddSmsSignResponse() (response *AddSmsSignResponse) {
     return
 }
 
+// AddSmsSign
 // 创建普通短信签名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignResponse, err error) {
     if request == nil {
         request = NewAddSmsSignRequest()
@@ -108,7 +121,17 @@ func NewAddSmsTemplateResponse() (response *AddSmsTemplateResponse) {
     return
 }
 
+// AddSmsTemplate
 // 根据短信标题、模板内容等创建短信模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SMSTEMPLATEEXISTS = "FailedOperation.SmsTemplateExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSmsTemplateResponse, err error) {
     if request == nil {
         request = NewAddSmsTemplateRequest()
@@ -133,7 +156,16 @@ func NewCancelCampaignResponse() (response *CancelCampaignResponse) {
     return
 }
 
+// CancelCampaign
 // 取消短信推送活动
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CancelCampaign(request *CancelCampaignRequest) (response *CancelCampaignResponse, err error) {
     if request == nil {
         request = NewCancelCampaignRequest()
@@ -158,7 +190,17 @@ func NewCreateCampaignResponse() (response *CreateCampaignResponse) {
     return
 }
 
+// CreateCampaign
 // 创建短信推送活动
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CreateCampaign(request *CreateCampaignRequest) (response *CreateCampaignResponse, err error) {
     if request == nil {
         request = NewCreateCampaignRequest()
@@ -183,7 +225,16 @@ func NewCreateMmsInstanceResponse() (response *CreateMmsInstanceResponse) {
     return
 }
 
+// CreateMmsInstance
 // 创建超级短信的素材样例内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CreateMmsInstance(request *CreateMmsInstanceRequest) (response *CreateMmsInstanceResponse, err error) {
     if request == nil {
         request = NewCreateMmsInstanceRequest()
@@ -208,7 +259,15 @@ func NewDelCrowdPackResponse() (response *DelCrowdPackResponse) {
     return
 }
 
+// DelCrowdPack
 // 删除人群包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DelCrowdPack(request *DelCrowdPackRequest) (response *DelCrowdPackResponse, err error) {
     if request == nil {
         request = NewDelCrowdPackRequest()
@@ -233,7 +292,14 @@ func NewDelTemplateResponse() (response *DelTemplateResponse) {
     return
 }
 
+// DelTemplate
 // 删除短信模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DelTemplate(request *DelTemplateRequest) (response *DelTemplateResponse, err error) {
     if request == nil {
         request = NewDelTemplateRequest()
@@ -258,7 +324,16 @@ func NewDeleteMmsInstanceResponse() (response *DeleteMmsInstanceResponse) {
     return
 }
 
+// DeleteMmsInstance
 // 删除超级短信样例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DeleteMmsInstance(request *DeleteMmsInstanceRequest) (response *DeleteMmsInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteMmsInstanceRequest()
@@ -283,7 +358,15 @@ func NewDescribeMmsInstanceInfoResponse() (response *DescribeMmsInstanceInfoResp
     return
 }
 
+// DescribeMmsInstanceInfo
 // 获取彩信实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMmsInstanceInfo(request *DescribeMmsInstanceInfoRequest) (response *DescribeMmsInstanceInfoResponse, err error) {
     if request == nil {
         request = NewDescribeMmsInstanceInfoRequest()
@@ -308,7 +391,15 @@ func NewDescribeMmsInstanceListResponse() (response *DescribeMmsInstanceListResp
     return
 }
 
+// DescribeMmsInstanceList
 // 获取彩信实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMmsInstanceList(request *DescribeMmsInstanceListRequest) (response *DescribeMmsInstanceListResponse, err error) {
     if request == nil {
         request = NewDescribeMmsInstanceListRequest()
@@ -333,7 +424,16 @@ func NewDescribeSmsCampaignStatisticsResponse() (response *DescribeSmsCampaignSt
     return
 }
 
+// DescribeSmsCampaignStatistics
 // 获取短信超短活动统计数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsCampaignStatistics(request *DescribeSmsCampaignStatisticsRequest) (response *DescribeSmsCampaignStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeSmsCampaignStatisticsRequest()
@@ -358,7 +458,16 @@ func NewDescribeSmsSignListResponse() (response *DescribeSmsSignListResponse) {
     return
 }
 
+// DescribeSmsSignList
 // 获取普通短信签名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (response *DescribeSmsSignListResponse, err error) {
     if request == nil {
         request = NewDescribeSmsSignListRequest()
@@ -383,7 +492,16 @@ func NewDescribeSmsTemplateListResponse() (response *DescribeSmsTemplateListResp
     return
 }
 
+// DescribeSmsTemplateList
 // 获取模板信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest) (response *DescribeSmsTemplateListResponse, err error) {
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
@@ -408,7 +526,15 @@ func NewGetCrowdPackListResponse() (response *GetCrowdPackListResponse) {
     return
 }
 
+// GetCrowdPackList
 // 获取人群包列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetCrowdPackList(request *GetCrowdPackListRequest) (response *GetCrowdPackListResponse, err error) {
     if request == nil {
         request = NewGetCrowdPackListRequest()
@@ -433,7 +559,15 @@ func NewGetCrowdUploadInfoResponse() (response *GetCrowdUploadInfoResponse) {
     return
 }
 
+// GetCrowdUploadInfo
 // 获取短信人群包cos上传需要的信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetCrowdUploadInfo(request *GetCrowdUploadInfoRequest) (response *GetCrowdUploadInfoResponse, err error) {
     if request == nil {
         request = NewGetCrowdUploadInfoRequest()
@@ -458,7 +592,15 @@ func NewGetSmsAmountInfoResponse() (response *GetSmsAmountInfoResponse) {
     return
 }
 
+// GetSmsAmountInfo
 // 获取账号短信额度配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetSmsAmountInfo(request *GetSmsAmountInfoRequest) (response *GetSmsAmountInfoResponse, err error) {
     if request == nil {
         request = NewGetSmsAmountInfoRequest()
@@ -483,7 +625,15 @@ func NewGetSmsCampaignStatusResponse() (response *GetSmsCampaignStatusResponse) 
     return
 }
 
+// GetSmsCampaignStatus
 // 获取短信活动状态信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetSmsCampaignStatus(request *GetSmsCampaignStatusRequest) (response *GetSmsCampaignStatusResponse, err error) {
     if request == nil {
         request = NewGetSmsCampaignStatusRequest()
@@ -508,7 +658,30 @@ func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
     return
 }
 
+// ModifySmsTemplate
 // 对未审核或者审核未通过的短信模板内容进行编辑修改
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SMSTEMPLATEEXISTS = "FailedOperation.SmsTemplateExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response *ModifySmsTemplateResponse, err error) {
     if request == nil {
         request = NewModifySmsTemplateRequest()
@@ -533,7 +706,16 @@ func NewPushMmsContentResponse() (response *PushMmsContentResponse) {
     return
 }
 
+// PushMmsContent
 // 推送超级短信
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) PushMmsContent(request *PushMmsContentRequest) (response *PushMmsContentResponse, err error) {
     if request == nil {
         request = NewPushMmsContentRequest()
@@ -558,7 +740,16 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
     return
 }
 
+// SendSms
 // 发送短信
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
     if request == nil {
         request = NewSendSmsRequest()

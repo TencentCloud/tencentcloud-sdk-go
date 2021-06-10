@@ -58,7 +58,15 @@ func NewBatchDescribeOrderCertificateResponse() (response *BatchDescribeOrderCer
     return
 }
 
+// BatchDescribeOrderCertificate
 // 批量获取授权书下载地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 func (c *Client) BatchDescribeOrderCertificate(request *BatchDescribeOrderCertificateRequest) (response *BatchDescribeOrderCertificateResponse, err error) {
     if request == nil {
         request = NewBatchDescribeOrderCertificateRequest()
@@ -83,7 +91,16 @@ func NewBatchDescribeOrderImageResponse() (response *BatchDescribeOrderImageResp
     return
 }
 
+// BatchDescribeOrderImage
 // 批量获取图片下载地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ORDEREXPIREDERROR = "LimitExceeded.OrderExpiredError"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 func (c *Client) BatchDescribeOrderImage(request *BatchDescribeOrderImageRequest) (response *BatchDescribeOrderImageResponse, err error) {
     if request == nil {
         request = NewBatchDescribeOrderImageRequest()
@@ -108,7 +125,14 @@ func NewCreateOrderAndDownloadsResponse() (response *CreateOrderAndDownloadsResp
     return
 }
 
+// CreateOrderAndDownloads
 // 核销图片，获取原图URL地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {
     if request == nil {
         request = NewCreateOrderAndDownloadsRequest()
@@ -133,7 +157,18 @@ func NewCreateOrderAndPayResponse() (response *CreateOrderAndPayResponse) {
     return
 }
 
+// CreateOrderAndPay
 // 购买一张图片并且支付
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ORDERLIMITERROR = "LimitExceeded.OrderLimitError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOrderAndPay(request *CreateOrderAndPayRequest) (response *CreateOrderAndPayResponse, err error) {
     if request == nil {
         request = NewCreateOrderAndPayRequest()
@@ -158,7 +193,13 @@ func NewDescribeAuthUsersResponse() (response *DescribeAuthUsersResponse) {
     return
 }
 
+// DescribeAuthUsers
 // 分页查询授权人列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeAuthUsers(request *DescribeAuthUsersRequest) (response *DescribeAuthUsersResponse, err error) {
     if request == nil {
         request = NewDescribeAuthUsersRequest()
@@ -183,7 +224,12 @@ func NewDescribeDownloadInfosResponse() (response *DescribeDownloadInfosResponse
     return
 }
 
+// DescribeDownloadInfos
 // 获取用户图片下载记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDownloadInfos(request *DescribeDownloadInfosRequest) (response *DescribeDownloadInfosResponse, err error) {
     if request == nil {
         request = NewDescribeDownloadInfosRequest()
@@ -208,7 +254,18 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
     return
 }
 
+// DescribeImage
 // 根据ID查询一张图片的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeImage(request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
     if request == nil {
         request = NewDescribeImageRequest()
@@ -233,7 +290,15 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
     return
 }
 
+// DescribeImages
 // 根据关键字搜索图片列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
     if request == nil {
         request = NewDescribeImagesRequest()

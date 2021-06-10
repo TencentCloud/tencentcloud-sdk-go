@@ -114,7 +114,7 @@ func (r *DescribeBRIRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBRIRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -146,7 +146,7 @@ func (r *DescribeBRIResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBRIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

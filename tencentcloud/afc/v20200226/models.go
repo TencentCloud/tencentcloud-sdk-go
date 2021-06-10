@@ -109,7 +109,7 @@ func (r *QueryAntiFraudVipRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryAntiFraudVipRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -175,7 +175,7 @@ func (r *QueryAntiFraudVipResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryAntiFraudVipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

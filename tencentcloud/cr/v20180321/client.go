@@ -58,7 +58,13 @@ func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
     return
 }
 
+// ApplyBlackList
 // 提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于到期/逾期提醒、回访场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYBLACKLISTERROR = "FailedOperation.ApplyBlackListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
     if request == nil {
         request = NewApplyBlackListRequest()
@@ -83,7 +89,14 @@ func NewApplyBlackListDataResponse() (response *ApplyBlackListDataResponse) {
     return
 }
 
+// ApplyBlackListData
 // 提交机器人黑名单申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYBLACKLISTDATAERROR = "FailedOperation.ApplyBlackListDataError"
+//  FAILEDOPERATION_APPLYBLACKLISTERROR = "FailedOperation.ApplyBlackListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) ApplyBlackListData(request *ApplyBlackListDataRequest) (response *ApplyBlackListDataResponse, err error) {
     if request == nil {
         request = NewApplyBlackListDataRequest()
@@ -108,7 +121,14 @@ func NewApplyCreditAuditResponse() (response *ApplyCreditAuditResponse) {
     return
 }
 
+// ApplyCreditAudit
 // 提交信审外呼申请，返回当次请求日期。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYCREDITAUDITERROR = "FailedOperation.ApplyCreditAuditError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *ApplyCreditAuditResponse, err error) {
     if request == nil {
         request = NewApplyCreditAuditRequest()
@@ -133,7 +153,17 @@ func NewChangeBotCallStatusResponse() (response *ChangeBotCallStatusResponse) {
     return
 }
 
+// ChangeBotCallStatus
 // 更新机器人任务作业状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANGEBOTCALLSTATUSERROR = "FailedOperation.ChangeBotCallStatusError"
+//  FAILEDOPERATION_CHANGEBOTSTATUSERROR = "FailedOperation.ChangeBotStatusError"
+//  FAILEDOPERATION_QUERYCALLLISTERROR = "FailedOperation.QueryCallListError"
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ChangeBotCallStatus(request *ChangeBotCallStatusRequest) (response *ChangeBotCallStatusResponse, err error) {
     if request == nil {
         request = NewChangeBotCallStatusRequest()
@@ -158,7 +188,13 @@ func NewChangeBotTaskStatusResponse() (response *ChangeBotTaskStatusResponse) {
     return
 }
 
+// ChangeBotTaskStatus
 // 更新机器人任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANGEBOTSTATUSERROR = "FailedOperation.ChangeBotStatusError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ChangeBotTaskStatus(request *ChangeBotTaskStatusRequest) (response *ChangeBotTaskStatusResponse, err error) {
     if request == nil {
         request = NewChangeBotTaskStatusRequest()
@@ -183,7 +219,14 @@ func NewCreateBotTaskResponse() (response *CreateBotTaskResponse) {
     return
 }
 
+// CreateBotTask
 // 创建机器人任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBOTTASKERROR = "FailedOperation.CreateBotTaskError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) CreateBotTask(request *CreateBotTaskRequest) (response *CreateBotTaskResponse, err error) {
     if request == nil {
         request = NewCreateBotTaskRequest()
@@ -208,7 +251,14 @@ func NewDescribeBotFlowResponse() (response *DescribeBotFlowResponse) {
     return
 }
 
+// DescribeBotFlow
 // 查询机器人对话流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBOTFLOWERROR = "FailedOperation.DescribeBotFlowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) DescribeBotFlow(request *DescribeBotFlowRequest) (response *DescribeBotFlowResponse, err error) {
     if request == nil {
         request = NewDescribeBotFlowRequest()
@@ -233,7 +283,14 @@ func NewDescribeCreditResultResponse() (response *DescribeCreditResultResponse) 
     return
 }
 
+// DescribeCreditResult
 // 根据信审任务ID和请求日期，获取相关信审结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETCREDITAUDITERROR = "FailedOperation.GetCreditAuditError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (response *DescribeCreditResultResponse, err error) {
     if request == nil {
         request = NewDescribeCreditResultRequest()
@@ -258,7 +315,13 @@ func NewDescribeFileModelResponse() (response *DescribeFileModelResponse) {
     return
 }
 
+// DescribeFileModel
 // 查询机器人文件模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEFILEMODELERROR = "FailedOperation.DescribeFileModelError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeFileModel(request *DescribeFileModelRequest) (response *DescribeFileModelResponse, err error) {
     if request == nil {
         request = NewDescribeFileModelRequest()
@@ -283,7 +346,13 @@ func NewDescribeRecordsResponse() (response *DescribeRecordsResponse) {
     return
 }
 
+// DescribeRecords
 // 用于获取指定案件的录音地址，次日早上8:00后可查询前日录音。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBERECORDSERROR = "FailedOperation.DescribeRecordsError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) DescribeRecords(request *DescribeRecordsRequest) (response *DescribeRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeRecordsRequest()
@@ -308,7 +377,14 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     return
 }
 
+// DescribeTaskStatus
 // 根据上传文件接口的输出参数DataResId，获取相关上传结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBETASKSTATUSERROR = "FailedOperation.DescribeTaskStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskStatusRequest()
@@ -333,7 +409,14 @@ func NewDownloadBotRecordResponse() (response *DownloadBotRecordResponse) {
     return
 }
 
+// DownloadBotRecord
 // 下载任务录音与文本，第二天12点后可使用此接口获取对应的录音与文本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBETASKSTATUSERROR = "FailedOperation.DescribeTaskStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DownloadBotRecord(request *DownloadBotRecordRequest) (response *DownloadBotRecordResponse, err error) {
     if request == nil {
         request = NewDownloadBotRecordRequest()
@@ -358,7 +441,14 @@ func NewDownloadDialogueTextResponse() (response *DownloadDialogueTextResponse) 
     return
 }
 
+// DownloadDialogueText
 // 用于获取指定案件的对话文本内容，次日早上8:00后可查询前日对话文本内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADREPORTERROR = "FailedOperation.DownloadReportError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
 func (c *Client) DownloadDialogueText(request *DownloadDialogueTextRequest) (response *DownloadDialogueTextResponse, err error) {
     if request == nil {
         request = NewDownloadDialogueTextRequest()
@@ -383,8 +473,16 @@ func NewDownloadRecordListResponse() (response *DownloadRecordListResponse) {
     return
 }
 
+// DownloadRecordList
 // <p>用于获取录音下载链接清单，次日早上8:00后可查询前日录音清单。</p>
+//
 // <p>注意：录音清单中的录音下载链接仅次日20:00之前有效，请及时下载。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADRECORDLISTERROR = "FailedOperation.DownloadRecordListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_RECORDLISTNOTFOUND = "ResourceNotFound.RecordListNotFound"
 func (c *Client) DownloadRecordList(request *DownloadRecordListRequest) (response *DownloadRecordListResponse, err error) {
     if request == nil {
         request = NewDownloadRecordListRequest()
@@ -409,7 +507,15 @@ func NewDownloadReportResponse() (response *DownloadReportResponse) {
     return
 }
 
+// DownloadReport
 // 用于下载结果报表。当日23:00后，可获取当日到期/逾期提醒结果，次日00:30后，可获取昨日回访结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADREPORTERROR = "FailedOperation.DownloadReportError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
+//  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
 func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
     if request == nil {
         request = NewDownloadReportRequest()
@@ -434,7 +540,13 @@ func NewExportBotDataResponse() (response *ExportBotDataResponse) {
     return
 }
 
+// ExportBotData
 // 导出机器人数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORTBOTDATAERROR = "FailedOperation.ExportBotDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportBotDataResponse, err error) {
     if request == nil {
         request = NewExportBotDataRequest()
@@ -459,7 +571,15 @@ func NewQueryBlackListDataResponse() (response *QueryBlackListDataResponse) {
     return
 }
 
+// QueryBlackListData
 // 查看黑名单数据列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBLACKLISTDATAERROR = "FailedOperation.DescribeBlacklistDataError"
+//  FAILEDOPERATION_QUERYBLACKLISTDATAERROR = "FailedOperation.QueryBlackListDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_BLACKLISTDATANOTFOUND = "ResourceNotFound.BlacklistDataNotFound"
 func (c *Client) QueryBlackListData(request *QueryBlackListDataRequest) (response *QueryBlackListDataResponse, err error) {
     if request == nil {
         request = NewQueryBlackListDataRequest()
@@ -484,7 +604,11 @@ func NewQueryBotListResponse() (response *QueryBotListResponse) {
     return
 }
 
+// QueryBotList
 // 查询机器人任务状态列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYBOTLISTERROR = "FailedOperation.QueryBotListError"
 func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotListResponse, err error) {
     if request == nil {
         request = NewQueryBotListRequest()
@@ -509,7 +633,15 @@ func NewQueryCallListResponse() (response *QueryCallListResponse) {
     return
 }
 
+// QueryCallList
 // 机器人任务查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYCALLLISTERROR = "FailedOperation.QueryCallListError"
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) QueryCallList(request *QueryCallListRequest) (response *QueryCallListResponse, err error) {
     if request == nil {
         request = NewQueryCallListRequest()
@@ -534,7 +666,12 @@ func NewQueryInstantDataResponse() (response *QueryInstantDataResponse) {
     return
 }
 
+// QueryInstantData
 // 实时数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *QueryInstantDataResponse, err error) {
     if request == nil {
         request = NewQueryInstantDataRequest()
@@ -559,7 +696,14 @@ func NewQueryProductsResponse() (response *QueryProductsResponse) {
     return
 }
 
+// QueryProducts
 // 查询产品列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPRODUCTSERROR = "FailedOperation.DescribeProductsError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryProductsResponse, err error) {
     if request == nil {
         request = NewQueryProductsRequest()
@@ -584,7 +728,11 @@ func NewQueryRecordListResponse() (response *QueryRecordListResponse) {
     return
 }
 
+// QueryRecordList
 // 查询录音列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRECORDLISTERROR = "FailedOperation.QueryRecordListError"
 func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *QueryRecordListResponse, err error) {
     if request == nil {
         request = NewQueryRecordListRequest()
@@ -609,7 +757,14 @@ func NewUpdateBotTaskResponse() (response *UpdateBotTaskResponse) {
     return
 }
 
+// UpdateBotTask
 // 更新机器人任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPDATEBOTTASKERROR = "FailedOperation.UpdateBotTaskError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UpdateBotTask(request *UpdateBotTaskRequest) (response *UpdateBotTaskResponse, err error) {
     if request == nil {
         request = NewUpdateBotTaskRequest()
@@ -634,7 +789,15 @@ func NewUploadBotDataResponse() (response *UploadBotDataResponse) {
     return
 }
 
+// UploadBotData
 // 上传机器人任务数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadBotData(request *UploadBotDataRequest) (response *UploadBotDataResponse, err error) {
     if request == nil {
         request = NewUploadBotDataRequest()
@@ -659,7 +822,14 @@ func NewUploadBotFileResponse() (response *UploadBotFileResponse) {
     return
 }
 
+// UploadBotFile
 // 上传机器人文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadBotFile(request *UploadBotFileRequest) (response *UploadBotFileResponse, err error) {
     if request == nil {
         request = NewUploadBotFileRequest()
@@ -684,7 +854,14 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
     return
 }
 
+// UploadDataFile
 // 上传文件，接口返回数据任务ID，支持xlsx、xls、csv、zip格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
     if request == nil {
         request = NewUploadDataFileRequest()
@@ -709,7 +886,13 @@ func NewUploadDataJsonResponse() (response *UploadDataJsonResponse) {
     return
 }
 
+// UploadDataJson
 // 上传Json格式数据，接口返回数据任务ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadDataJson(request *UploadDataJsonRequest) (response *UploadDataJsonResponse, err error) {
     if request == nil {
         request = NewUploadDataJsonRequest()
@@ -734,7 +917,15 @@ func NewUploadFileResponse() (response *UploadFileResponse) {
     return
 }
 
+// UploadFile
 // 客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
+//  RESOURCEUNAVAILABLE_COMPANYUNAVAILABLE = "ResourceUnavailable.CompanyUnavailable"
 func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileResponse, err error) {
     if request == nil {
         request = NewUploadFileRequest()

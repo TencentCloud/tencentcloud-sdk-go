@@ -58,13 +58,43 @@ func NewCopyFunctionResponse() (response *CopyFunctionResponse) {
     return
 }
 
+// CopyFunction
 // 复制一个函数，您可以选择将复制出的新函数放置在特定的Region和Namespace。
+//
 // 注：本接口**不会**复制函数的以下对象或属性：
+//
 // 1. 函数的触发器
+//
 // 2. 除了$LATEST以外的其它版本
+//
 // 3. 函数配置的日志投递到的CLS目标。
+//
 // 
+//
 // 如有需要，您可以在复制后手动配置新函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COPYFAILED = "FailedOperation.CopyFailed"
+//  FAILEDOPERATION_COPYFUNCTION = "FailedOperation.CopyFunction"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_CODE = "InvalidParameterValue.Code"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_ENVIRONMENT = "InvalidParameterValue.Environment"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
+//  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) CopyFunction(request *CopyFunctionRequest) (response *CopyFunctionResponse, err error) {
     if request == nil {
         request = NewCopyFunctionRequest()
@@ -89,8 +119,26 @@ func NewCreateAliasResponse() (response *CreateAliasResponse) {
     return
 }
 
+// CreateAlias
 // 为某个函数版本创建一个别名，您可以使用别名来标记特定的函数版本，如DEV/RELEASE版本，也可以随时修改别名指向的版本。
+//
 // 一个别名必须指向一个主版本，此外还可以同时指向一个附加版本。调用函数时指定特定的别名，则请求会被发送到别名指向的版本上，您可以配置请求发送到主版本和附加版本的比例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEALIAS = "FailedOperation.CreateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
+//  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) CreateAlias(request *CreateAliasRequest) (response *CreateAliasResponse, err error) {
     if request == nil {
         request = NewCreateAliasRequest()
@@ -115,7 +163,83 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
     return
 }
 
+// CreateFunction
 // 该接口根据传入参数创建新的函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEFUNCTION = "FailedOperation.CreateFunction"
+//  FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
+//  FAILEDOPERATION_OPENSERVICE = "FailedOperation.OpenService"
+//  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
+//  FAILEDOPERATION_TOTALCONCURRENCYMEMORYINPROGRESS = "FailedOperation.TotalConcurrencyMemoryInProgress"
+//  FAILEDOPERATION_UNOPENEDSERVICE = "FailedOperation.UnOpenedService"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
+//  INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = "InvalidParameterValue.CfsStructionError"
+//  INVALIDPARAMETERVALUE_CLS = "InvalidParameterValue.Cls"
+//  INVALIDPARAMETERVALUE_CODE = "InvalidParameterValue.Code"
+//  INVALIDPARAMETERVALUE_CODESECRET = "InvalidParameterValue.CodeSecret"
+//  INVALIDPARAMETERVALUE_CODESOURCE = "InvalidParameterValue.CodeSource"
+//  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_COSBUCKETNAME = "InvalidParameterValue.CosBucketName"
+//  INVALIDPARAMETERVALUE_COSBUCKETREGION = "InvalidParameterValue.CosBucketRegion"
+//  INVALIDPARAMETERVALUE_COSOBJECTNAME = "InvalidParameterValue.CosObjectName"
+//  INVALIDPARAMETERVALUE_DEADLETTERCONFIG = "InvalidParameterValue.DeadLetterConfig"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_EIPCONFIG = "InvalidParameterValue.EipConfig"
+//  INVALIDPARAMETERVALUE_ENVIRONMENT = "InvalidParameterValue.Environment"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = "InvalidParameterValue.EnvironmentExceededLimit"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = "InvalidParameterValue.EnvironmentSystemProtect"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_GITCOMMITID = "InvalidParameterValue.GitCommitId"
+//  INVALIDPARAMETERVALUE_GITURL = "InvalidParameterValue.GitUrl"
+//  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
+//  INVALIDPARAMETERVALUE_LAYERS = "InvalidParameterValue.Layers"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MEMORY = "InvalidParameterValue.Memory"
+//  INVALIDPARAMETERVALUE_MEMORYSIZE = "InvalidParameterValue.MemorySize"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_PUBLICNETCONFIG = "InvalidParameterValue.PublicNetConfig"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+//  INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VPCNOTSETWHENOPENCFS = "InvalidParameterValue.VpcNotSetWhenOpenCfs"
+//  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
+//  INVALIDPARAMETERVALUE_ZIPFILEBASE64BINASCIIERROR = "InvalidParameterValue.ZipFileBase64BinasciiError"
+//  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
+//  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
+//  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  MISSINGPARAMETER_CODE = "MissingParameter.Code"
+//  MISSINGPARAMETER_RUNTIME = "MissingParameter.Runtime"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
+//  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
+//  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_DEMO = "ResourceNotFound.Demo"
+//  RESOURCENOTFOUND_GETCFSMOUNTINSERROR = "ResourceNotFound.GetCfsMountInsError"
+//  RESOURCENOTFOUND_GETCFSNOTMATCH = "ResourceNotFound.GetCfsNotMatch"
+//  RESOURCENOTFOUND_LAYER = "ResourceNotFound.Layer"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.Vpc"
+//  RESOURCEUNAVAILABLE_NAMESPACE = "ResourceUnavailable.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
+//  UNAUTHORIZEDOPERATION_ROLE = "UnauthorizedOperation.Role"
+//  UNAUTHORIZEDOPERATION_TEMPCOSAPPID = "UnauthorizedOperation.TempCosAppid"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *CreateFunctionResponse, err error) {
     if request == nil {
         request = NewCreateFunctionRequest()
@@ -140,7 +264,23 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
     return
 }
 
+// CreateNamespace
 // 该接口根据传入的参数创建命名空间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATENAMESPACE = "FailedOperation.CreateNamespace"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFAULTNAMESPACE = "InvalidParameterValue.DefaultNamespace"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_NAMESPACEINVALID = "InvalidParameterValue.NamespaceInvalid"
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+//  LIMITEXCEEDED_NAMESPACE = "LimitExceeded.Namespace"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
     if request == nil {
         request = NewCreateNamespaceRequest()
@@ -165,7 +305,60 @@ func NewCreateTriggerResponse() (response *CreateTriggerResponse) {
     return
 }
 
+// CreateTrigger
 // 该接口根据参数输入设置新的触发方式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAY = "FailedOperation.ApiGateway"
+//  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
+//  FAILEDOPERATION_COS = "FailedOperation.Cos"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  INTERNALERROR_APIGATEWAY = "InternalError.ApiGateway"
+//  INTERNALERROR_CKAFKA = "InternalError.Ckafka"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_COS = "InternalError.Cos"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APIGATEWAY = "InvalidParameterValue.ApiGateway"
+//  INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
+//  INVALIDPARAMETERVALUE_CKAFKA = "InvalidParameterValue.Ckafka"
+//  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
+//  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_SERVICENAME = "InvalidParameterValue.ServiceName"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
+//  LIMITEXCEEDED_CDN = "LimitExceeded.Cdn"
+//  LIMITEXCEEDED_FUNCTIONONTOPIC = "LimitExceeded.FunctionOnTopic"
+//  LIMITEXCEEDED_TRIGGER = "LimitExceeded.Trigger"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_CDN = "ResourceInUse.Cdn"
+//  RESOURCEINUSE_CMQ = "ResourceInUse.Cmq"
+//  RESOURCEINUSE_COS = "ResourceInUse.Cos"
+//  RESOURCEINUSE_TRIGGER = "ResourceInUse.Trigger"
+//  RESOURCEINUSE_TRIGGERNAME = "ResourceInUse.TriggerName"
+//  RESOURCEINSUFFICIENT_COS = "ResourceInsufficient.COS"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CDN = "ResourceNotFound.Cdn"
+//  RESOURCENOTFOUND_CKAFKA = "ResourceNotFound.Ckafka"
+//  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_COS = "ResourceNotFound.Cos"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_CREATETRIGGER = "UnauthorizedOperation.CreateTrigger"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CDN = "UnsupportedOperation.Cdn"
+//  UNSUPPORTEDOPERATION_COS = "UnsupportedOperation.Cos"
+//  UNSUPPORTEDOPERATION_TRIGGER = "UnsupportedOperation.Trigger"
 func (c *Client) CreateTrigger(request *CreateTriggerRequest) (response *CreateTriggerResponse, err error) {
     if request == nil {
         request = NewCreateTriggerRequest()
@@ -190,7 +383,15 @@ func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
     return
 }
 
+// DeleteAlias
 // 删除一个函数版本的别名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEALIAS = "FailedOperation.DeleteAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 func (c *Client) DeleteAlias(request *DeleteAliasRequest) (response *DeleteAliasResponse, err error) {
     if request == nil {
         request = NewDeleteAliasRequest()
@@ -215,7 +416,31 @@ func NewDeleteFunctionResponse() (response *DeleteFunctionResponse) {
     return
 }
 
+// DeleteFunction
 // 该接口根据传入参数删除函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEFUNCTION = "FailedOperation.DeleteFunction"
+//  FAILEDOPERATION_FUNCTIONNAMESTATUSERROR = "FailedOperation.FunctionNameStatusError"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_DELETEFUNCTION = "UnauthorizedOperation.DeleteFunction"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ALIASBIND = "UnsupportedOperation.AliasBind"
 func (c *Client) DeleteFunction(request *DeleteFunctionRequest) (response *DeleteFunctionResponse, err error) {
     if request == nil {
         request = NewDeleteFunctionRequest()
@@ -240,7 +465,17 @@ func NewDeleteLayerVersionResponse() (response *DeleteLayerVersionResponse) {
     return
 }
 
+// DeleteLayerVersion
 // 删除指定层的指定版本，被删除的版本无法再关联到函数上，但不会影响正在引用这个层的函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETELAYERVERSION = "FailedOperation.DeleteLayerVersion"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  RESOURCEINUSE_LAYERVERSION = "ResourceInUse.LayerVersion"
+//  RESOURCENOTFOUND_LAYERVERSION = "ResourceNotFound.LayerVersion"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) DeleteLayerVersion(request *DeleteLayerVersionRequest) (response *DeleteLayerVersionResponse, err error) {
     if request == nil {
         request = NewDeleteLayerVersionRequest()
@@ -265,7 +500,19 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
     return
 }
 
+// DeleteNamespace
 // 该接口根据传入的参数删除命名空间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_NAMESPACEINVALID = "InvalidParameterValue.NamespaceInvalid"
+//  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
     if request == nil {
         request = NewDeleteNamespaceRequest()
@@ -290,7 +537,17 @@ func NewDeleteProvisionedConcurrencyConfigResponse() (response *DeleteProvisione
     return
 }
 
+// DeleteProvisionedConcurrencyConfig
 // 删除函数版本的预置并发配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteProvisionedConcurrencyConfig(request *DeleteProvisionedConcurrencyConfigRequest) (response *DeleteProvisionedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewDeleteProvisionedConcurrencyConfigRequest()
@@ -315,7 +572,16 @@ func NewDeleteReservedConcurrencyConfigResponse() (response *DeleteReservedConcu
     return
 }
 
+// DeleteReservedConcurrencyConfig
 // 删除函数的保留并发配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
+//  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteReservedConcurrencyConfig(request *DeleteReservedConcurrencyConfigRequest) (response *DeleteReservedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewDeleteReservedConcurrencyConfigRequest()
@@ -340,7 +606,37 @@ func NewDeleteTriggerResponse() (response *DeleteTriggerResponse) {
     return
 }
 
+// DeleteTrigger
 // 该接口根据参数传入删除已有的触发方式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  FAILEDOPERATION_DELETETRIGGER = "FailedOperation.DeleteTrigger"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APIGATEWAY = "InvalidParameterValue.ApiGateway"
+//  INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
+//  INVALIDPARAMETERVALUE_CMQ = "InvalidParameterValue.Cmq"
+//  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCEINUSE_CDN = "ResourceInUse.Cdn"
+//  RESOURCEINUSE_CMQ = "ResourceInUse.Cmq"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CDN = "ResourceNotFound.Cdn"
+//  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_TIMER = "ResourceNotFound.Timer"
+//  RESOURCENOTFOUND_TRIGGER = "ResourceNotFound.Trigger"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_DELETETRIGGER = "UnauthorizedOperation.DeleteTrigger"
+//  UNSUPPORTEDOPERATION_CDN = "UnsupportedOperation.Cdn"
 func (c *Client) DeleteTrigger(request *DeleteTriggerRequest) (response *DeleteTriggerResponse, err error) {
     if request == nil {
         request = NewDeleteTriggerRequest()
@@ -365,7 +661,12 @@ func NewGetAccountResponse() (response *GetAccountResponse) {
     return
 }
 
+// GetAccount
 // 获取账户信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) GetAccount(request *GetAccountRequest) (response *GetAccountResponse, err error) {
     if request == nil {
         request = NewGetAccountRequest()
@@ -390,7 +691,21 @@ func NewGetAliasResponse() (response *GetAliasResponse) {
     return
 }
 
+// GetAlias
 // 获取别名的详细信息，包括名称、描述、版本、路由信息等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETALIAS = "FailedOperation.GetAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) GetAlias(request *GetAliasRequest) (response *GetAliasResponse, err error) {
     if request == nil {
         request = NewGetAliasRequest()
@@ -415,7 +730,27 @@ func NewGetFunctionResponse() (response *GetFunctionResponse) {
     return
 }
 
+// GetFunction
 // 该接口获取某个函数的详细信息，包括名称、代码、处理方法、关联触发器和超时时间等字段。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CODESECRET = "InvalidParameterValue.CodeSecret"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_CODESECRET = "UnauthorizedOperation.CodeSecret"
 func (c *Client) GetFunction(request *GetFunctionRequest) (response *GetFunctionResponse, err error) {
     if request == nil {
         request = NewGetFunctionRequest()
@@ -440,7 +775,26 @@ func NewGetFunctionAddressResponse() (response *GetFunctionAddressResponse) {
     return
 }
 
+// GetFunctionAddress
 // 该接口用于获取函数代码包的下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_GETFUNCTIONADDRESS = "FailedOperation.GetFunctionAddress"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_CODESECRET = "UnauthorizedOperation.CodeSecret"
 func (c *Client) GetFunctionAddress(request *GetFunctionAddressRequest) (response *GetFunctionAddressResponse, err error) {
     if request == nil {
         request = NewGetFunctionAddressRequest()
@@ -465,7 +819,23 @@ func NewGetFunctionEventInvokeConfigResponse() (response *GetFunctionEventInvoke
     return
 }
 
+// GetFunctionEventInvokeConfig
 // 获取函数异步重试配置，包括重试次数和消息保留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetFunctionEventInvokeConfig(request *GetFunctionEventInvokeConfigRequest) (response *GetFunctionEventInvokeConfigResponse, err error) {
     if request == nil {
         request = NewGetFunctionEventInvokeConfigRequest()
@@ -490,7 +860,26 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
     return
 }
 
+// GetFunctionLogs
 // 该接口根据指定的日志查询条件返回函数运行日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ES = "InternalError.ES"
+//  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATETIME = "InvalidParameterValue.DateTime"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
+//  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
+//  LIMITEXCEEDED_OFFSET = "LimitExceeded.Offset"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     if request == nil {
         request = NewGetFunctionLogsRequest()
@@ -515,7 +904,14 @@ func NewGetLayerVersionResponse() (response *GetLayerVersionResponse) {
     return
 }
 
+// GetLayerVersion
 // 获取层版本详细信息，包括用于下载层中文件的链接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  RESOURCENOTFOUND_LAYERVERSION = "ResourceNotFound.LayerVersion"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) GetLayerVersion(request *GetLayerVersionRequest) (response *GetLayerVersionResponse, err error) {
     if request == nil {
         request = NewGetLayerVersionRequest()
@@ -540,7 +936,19 @@ func NewGetProvisionedConcurrencyConfigResponse() (response *GetProvisionedConcu
     return
 }
 
+// GetProvisionedConcurrencyConfig
 // 获取函数或函数某一版本的预置并发详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetProvisionedConcurrencyConfig(request *GetProvisionedConcurrencyConfigRequest) (response *GetProvisionedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewGetProvisionedConcurrencyConfigRequest()
@@ -565,7 +973,18 @@ func NewGetReservedConcurrencyConfigResponse() (response *GetReservedConcurrency
     return
 }
 
+// GetReservedConcurrencyConfig
 // 获取函数的保留并发详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetReservedConcurrencyConfig(request *GetReservedConcurrencyConfigRequest) (response *GetReservedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewGetReservedConcurrencyConfigRequest()
@@ -590,7 +1009,21 @@ func NewInvokeResponse() (response *InvokeResponse) {
     return
 }
 
+// Invoke
 // 该接口用于运行函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_INVOKEFUNCTION = "FailedOperation.InvokeFunction"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_FUNCTIONNAME = "InvalidParameter.FunctionName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAM = "InvalidParameterValue.Param"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err error) {
     if request == nil {
         request = NewInvokeRequest()
@@ -615,7 +1048,17 @@ func NewListAliasesResponse() (response *ListAliasesResponse) {
     return
 }
 
+// ListAliases
 // 返回一个函数下的全部别名，可以根据特定函数版本过滤。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliasesResponse, err error) {
     if request == nil {
         request = NewListAliasesRequest()
@@ -640,7 +1083,18 @@ func NewListAsyncEventsResponse() (response *ListAsyncEventsResponse) {
     return
 }
 
+// ListAsyncEvents
 // 拉取函数异步事件列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
+//  INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 func (c *Client) ListAsyncEvents(request *ListAsyncEventsRequest) (response *ListAsyncEventsResponse, err error) {
     if request == nil {
         request = NewListAsyncEventsRequest()
@@ -665,7 +1119,22 @@ func NewListFunctionsResponse() (response *ListFunctionsResponse) {
     return
 }
 
+// ListFunctions
 // 该接口根据传入的查询参数返回相关函数信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
 func (c *Client) ListFunctions(request *ListFunctionsRequest) (response *ListFunctionsResponse, err error) {
     if request == nil {
         request = NewListFunctionsRequest()
@@ -690,7 +1159,15 @@ func NewListLayerVersionsResponse() (response *ListLayerVersionsResponse) {
     return
 }
 
+// ListLayerVersions
 // 返回指定层的全部版本的信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  RESOURCENOTFOUND_LAYER = "ResourceNotFound.Layer"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListLayerVersions(request *ListLayerVersionsRequest) (response *ListLayerVersionsResponse, err error) {
     if request == nil {
         request = NewListLayerVersionsRequest()
@@ -715,7 +1192,16 @@ func NewListLayersResponse() (response *ListLayersResponse) {
     return
 }
 
+// ListLayers
 // 返回全部层的列表，其中包含了每个层最新版本的信息，可以通过适配运行时进行过滤。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+//  LIMITEXCEEDED_LAYERS = "LimitExceeded.Layers"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListLayers(request *ListLayersRequest) (response *ListLayersResponse, err error) {
     if request == nil {
         request = NewListLayersRequest()
@@ -740,7 +1226,15 @@ func NewListNamespacesResponse() (response *ListNamespacesResponse) {
     return
 }
 
+// ListNamespaces
 // 列出命名空间列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
+//  INVALIDPARAMETERVALUE_SEARCHKEY = "InvalidParameterValue.SearchKey"
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 func (c *Client) ListNamespaces(request *ListNamespacesRequest) (response *ListNamespacesResponse, err error) {
     if request == nil {
         request = NewListNamespacesRequest()
@@ -765,7 +1259,13 @@ func NewListTriggersResponse() (response *ListTriggersResponse) {
     return
 }
 
+// ListTriggers
 // 获取函数触发器列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 func (c *Client) ListTriggers(request *ListTriggersRequest) (response *ListTriggersResponse, err error) {
     if request == nil {
         request = NewListTriggersRequest()
@@ -790,7 +1290,20 @@ func NewListVersionByFunctionResponse() (response *ListVersionByFunctionResponse
     return
 }
 
+// ListVersionByFunction
 // 该接口根据传入的参数查询函数的版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListVersionByFunction(request *ListVersionByFunctionRequest) (response *ListVersionByFunctionResponse, err error) {
     if request == nil {
         request = NewListVersionByFunctionRequest()
@@ -815,7 +1328,31 @@ func NewPublishLayerVersionResponse() (response *PublishLayerVersionResponse) {
     return
 }
 
+// PublishLayerVersion
 // 使用给定的zip文件或cos对象创建一个层的新版本，每次使用相同的层的名称调用本接口，都会生成一个新版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PUBLISHLAYERVERSION = "FailedOperation.PublishLayerVersion"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_COMPATIBLERUNTIMES = "InvalidParameterValue.CompatibleRuntimes"
+//  INVALIDPARAMETERVALUE_CONTENT = "InvalidParameterValue.Content"
+//  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_COSBUCKETNAME = "InvalidParameterValue.CosBucketName"
+//  INVALIDPARAMETERVALUE_COSBUCKETREGION = "InvalidParameterValue.CosBucketRegion"
+//  INVALIDPARAMETERVALUE_COSOBJECTNAME = "InvalidParameterValue.CosObjectName"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_LAYERNAME = "InvalidParameterValue.LayerName"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+//  INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
+//  LIMITEXCEEDED_LAYERVERSIONS = "LimitExceeded.LayerVersions"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_NOTMC = "UnauthorizedOperation.NotMC"
+//  UNSUPPORTEDOPERATION_COS = "UnsupportedOperation.Cos"
 func (c *Client) PublishLayerVersion(request *PublishLayerVersionRequest) (response *PublishLayerVersionResponse, err error) {
     if request == nil {
         request = NewPublishLayerVersionRequest()
@@ -840,7 +1377,22 @@ func NewPublishVersionResponse() (response *PublishVersionResponse) {
     return
 }
 
+// PublishVersion
 // 该接口用于用户发布新版本函数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PUBLISHVERSION = "FailedOperation.PublishVersion"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PublishVersion(request *PublishVersionRequest) (response *PublishVersionResponse, err error) {
     if request == nil {
         request = NewPublishVersionRequest()
@@ -865,7 +1417,29 @@ func NewPutProvisionedConcurrencyConfigResponse() (response *PutProvisionedConcu
     return
 }
 
+// PutProvisionedConcurrencyConfig
 // 设置函数某一非$LATEST版本的预置并发。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
+//  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
+//  FAILEDOPERATION_UNOPENEDSERVICE = "FailedOperation.UnOpenedService"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+//  LIMITEXCEEDED_FUNCTIONPROVISIONEDCONCURRENCYMEMORY = "LimitExceeded.FunctionProvisionedConcurrencyMemory"
+//  LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYMEMORY = "LimitExceeded.FunctionTotalProvisionedConcurrencyMemory"
+//  LIMITEXCEEDED_FUNCTIONTOTALPROVISIONEDCONCURRENCYNUM = "LimitExceeded.FunctionTotalProvisionedConcurrencyNum"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutProvisionedConcurrencyConfig(request *PutProvisionedConcurrencyConfigRequest) (response *PutProvisionedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewPutProvisionedConcurrencyConfigRequest()
@@ -890,7 +1464,22 @@ func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrency
     return
 }
 
+// PutReservedConcurrencyConfig
 // 设置函数保留并发
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
+//  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_FUNCTIONRESERVEDCONCURRENCYMEMORY = "LimitExceeded.FunctionReservedConcurrencyMemory"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutReservedConcurrencyConfig(request *PutReservedConcurrencyConfigRequest) (response *PutReservedConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewPutReservedConcurrencyConfigRequest()
@@ -915,7 +1504,20 @@ func NewPutTotalConcurrencyConfigResponse() (response *PutTotalConcurrencyConfig
     return
 }
 
+// PutTotalConcurrencyConfig
 // 修改账号并发限制配额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_TOTALCONCURRENCYMEMORYINPROGRESS = "FailedOperation.TotalConcurrencyMemoryInProgress"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOTALCONCURRENCYMEMORY = "LimitExceeded.TotalConcurrencyMemory"
+//  LIMITEXCEEDED_USERTOTALCONCURRENCYMEMORY = "LimitExceeded.UserTotalConcurrencyMemory"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_TOTALCONCURRENCYMEMORY = "ResourceNotFound.TotalConcurrencyMemory"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigRequest) (response *PutTotalConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewPutTotalConcurrencyConfigRequest()
@@ -940,7 +1542,14 @@ func NewTerminateAsyncEventResponse() (response *TerminateAsyncEventResponse) {
     return
 }
 
+// TerminateAsyncEvent
 // 终止正在运行中的函数异步事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) TerminateAsyncEvent(request *TerminateAsyncEventRequest) (response *TerminateAsyncEventResponse, err error) {
     if request == nil {
         request = NewTerminateAsyncEventRequest()
@@ -965,7 +1574,25 @@ func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
     return
 }
 
+// UpdateAlias
 // 更新别名的配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEALIAS = "FailedOperation.UpdateAlias"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
+//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
     if request == nil {
         request = NewUpdateAliasRequest()
@@ -990,7 +1617,43 @@ func NewUpdateFunctionCodeResponse() (response *UpdateFunctionCodeResponse) {
     return
 }
 
+// UpdateFunctionCode
 // 该接口根据传入参数更新函数代码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CODE = "InvalidParameterValue.Code"
+//  INVALIDPARAMETERVALUE_CODESECRET = "InvalidParameterValue.CodeSecret"
+//  INVALIDPARAMETERVALUE_CODESOURCE = "InvalidParameterValue.CodeSource"
+//  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_COSBUCKETNAME = "InvalidParameterValue.CosBucketName"
+//  INVALIDPARAMETERVALUE_COSBUCKETREGION = "InvalidParameterValue.CosBucketRegion"
+//  INVALIDPARAMETERVALUE_COSOBJECTNAME = "InvalidParameterValue.CosObjectName"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_GITBRANCH = "InvalidParameterValue.GitBranch"
+//  INVALIDPARAMETERVALUE_GITDIRECTORY = "InvalidParameterValue.GitDirectory"
+//  INVALIDPARAMETERVALUE_GITPASSWORD = "InvalidParameterValue.GitPassword"
+//  INVALIDPARAMETERVALUE_GITURL = "InvalidParameterValue.GitUrl"
+//  INVALIDPARAMETERVALUE_GITUSERNAME = "InvalidParameterValue.GitUserName"
+//  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
+//  INVALIDPARAMETERVALUE_INLINEZIPFILE = "InvalidParameterValue.InlineZipFile"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
+//  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
+//  INVALIDPARAMETERVALUE_ZIPFILEBASE64BINASCIIERROR = "InvalidParameterValue.ZipFileBase64BinasciiError"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_TEMPCOSAPPID = "UnauthorizedOperation.TempCosAppid"
+//  UNAUTHORIZEDOPERATION_UPDATEFUNCTIONCODE = "UnauthorizedOperation.UpdateFunctionCode"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFunctionCode(request *UpdateFunctionCodeRequest) (response *UpdateFunctionCodeResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionCodeRequest()
@@ -1015,7 +1678,49 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
     return
 }
 
+// UpdateFunctionConfiguration
 // 该接口根据传入参数更新函数配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = "FailedOperation.DebugModeUpdateTimeOutFail"
+//  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
+//  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
+//  FAILEDOPERATION_UPDATEFUNCTIONCONFIGURATION = "FailedOperation.UpdateFunctionConfiguration"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CLS = "InvalidParameterValue.Cls"
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_EIPCONFIG = "InvalidParameterValue.EipConfig"
+//  INVALIDPARAMETERVALUE_ENVIRONMENT = "InvalidParameterValue.Environment"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = "InvalidParameterValue.EnvironmentExceededLimit"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = "InvalidParameterValue.EnvironmentSystemProtect"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
+//  INVALIDPARAMETERVALUE_LAYERS = "InvalidParameterValue.Layers"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MEMORY = "InvalidParameterValue.Memory"
+//  INVALIDPARAMETERVALUE_MEMORYSIZE = "InvalidParameterValue.MemorySize"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_PUBLICNETCONFIG = "InvalidParameterValue.PublicNetConfig"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
+//  INVALIDPARAMETERVALUE_SYSTEMENVIRONMENT = "InvalidParameterValue.SystemEnvironment"
+//  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
+//  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
+//  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
+//  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_GETCFSNOTMATCH = "ResourceNotFound.GetCfsNotMatch"
+//  RESOURCENOTFOUND_LAYER = "ResourceNotFound.Layer"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCENOTFOUND_VPC = "ResourceNotFound.Vpc"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionConfigurationRequest()
@@ -1040,7 +1745,25 @@ func NewUpdateFunctionEventInvokeConfigResponse() (response *UpdateFunctionEvent
     return
 }
 
+// UpdateFunctionEventInvokeConfig
 // 更新函数的异步重试配置，包括重试次数和消息保留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = "InvalidParameterValue.AsyncTriggerConfig"
+//  LIMITEXCEEDED_MSGTTL = "LimitExceeded.MsgTTL"
+//  LIMITEXCEEDED_RETRYNUM = "LimitExceeded.RetryNum"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateFunctionEventInvokeConfig(request *UpdateFunctionEventInvokeConfigRequest) (response *UpdateFunctionEventInvokeConfigResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionEventInvokeConfigRequest()
@@ -1065,7 +1788,12 @@ func NewUpdateNamespaceResponse() (response *UpdateNamespaceResponse) {
     return
 }
 
+// UpdateNamespace
 // 更新命名空间
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) UpdateNamespace(request *UpdateNamespaceRequest) (response *UpdateNamespaceResponse, err error) {
     if request == nil {
         request = NewUpdateNamespaceRequest()

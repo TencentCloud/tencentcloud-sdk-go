@@ -58,7 +58,15 @@ func NewDescribeEisConnectorConfigResponse() (response *DescribeEisConnectorConf
     return
 }
 
+// DescribeEisConnectorConfig
 // 获取连接器配置参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
 func (c *Client) DescribeEisConnectorConfig(request *DescribeEisConnectorConfigRequest) (response *DescribeEisConnectorConfigResponse, err error) {
     if request == nil {
         request = NewDescribeEisConnectorConfigRequest()
@@ -83,7 +91,15 @@ func NewListEisConnectorOperationsResponse() (response *ListEisConnectorOperatio
     return
 }
 
+// ListEisConnectorOperations
 // 获取连接器操作列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
 func (c *Client) ListEisConnectorOperations(request *ListEisConnectorOperationsRequest) (response *ListEisConnectorOperationsResponse, err error) {
     if request == nil {
         request = NewListEisConnectorOperationsRequest()
@@ -108,7 +124,12 @@ func NewListEisConnectorsResponse() (response *ListEisConnectorsResponse) {
     return
 }
 
+// ListEisConnectors
 // 连接器列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 func (c *Client) ListEisConnectors(request *ListEisConnectorsRequest) (response *ListEisConnectorsResponse, err error) {
     if request == nil {
         request = NewListEisConnectorsRequest()

@@ -66,7 +66,7 @@ func (r *AssumeRoleRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AssumeRoleRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -107,7 +107,7 @@ func (r *AssumeRoleResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AssumeRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -137,7 +137,7 @@ func (r *AssumeRoleWithSAMLRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AssumeRoleWithSAMLRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -178,7 +178,7 @@ func (r *AssumeRoleWithSAMLResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AssumeRoleWithSAMLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -218,7 +218,7 @@ func (r *GetFederationTokenRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFederationTokenRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -258,7 +258,7 @@ func (r *GetFederationTokenResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFederationTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -276,7 +276,7 @@ func (r *QueryApiKeyRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryApiKeyRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -307,7 +307,7 @@ func (r *QueryApiKeyResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryApiKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

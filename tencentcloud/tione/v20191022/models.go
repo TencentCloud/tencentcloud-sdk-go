@@ -118,7 +118,7 @@ func (r *CreateCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCodeRepositoryRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -151,7 +151,7 @@ func (r *CreateCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCodeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -221,7 +221,7 @@ func (r *CreateNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -264,7 +264,7 @@ func (r *CreateNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -290,7 +290,7 @@ func (r *CreateNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -323,7 +323,7 @@ func (r *CreateNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -345,7 +345,7 @@ func (r *CreatePresignedNotebookInstanceUrlRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePresignedNotebookInstanceUrlRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -377,7 +377,7 @@ func (r *CreatePresignedNotebookInstanceUrlResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePresignedNotebookInstanceUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -426,7 +426,7 @@ func (r *CreateTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateTrainingJobRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -467,7 +467,7 @@ func (r *CreateTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateTrainingJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -496,7 +496,7 @@ func (r *DeleteCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCodeRepositoryRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -527,7 +527,7 @@ func (r *DeleteCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCodeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -545,7 +545,7 @@ func (r *DeleteNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -573,7 +573,7 @@ func (r *DeleteNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -594,7 +594,7 @@ func (r *DeleteNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -623,7 +623,7 @@ func (r *DeleteNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNotebookLifecycleScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -654,7 +654,7 @@ func (r *DescribeCodeRepositoriesRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoriesRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -692,7 +692,7 @@ func (r *DescribeCodeRepositoriesResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -710,7 +710,7 @@ func (r *DescribeCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoryRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -753,7 +753,7 @@ func (r *DescribeCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -772,7 +772,7 @@ func (r *DescribeNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -891,7 +891,7 @@ func (r *DescribeNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -931,7 +931,7 @@ func (r *DescribeNotebookInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookInstancesRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -969,7 +969,7 @@ func (r *DescribeNotebookInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -987,7 +987,7 @@ func (r *DescribeNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1032,7 +1032,7 @@ func (r *DescribeNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1063,7 +1063,7 @@ func (r *DescribeNotebookLifecycleScriptsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1100,7 +1100,7 @@ func (r *DescribeNotebookLifecycleScriptsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1115,7 +1115,7 @@ func (r *DescribeNotebookSummaryRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookSummaryRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1154,7 +1154,7 @@ func (r *DescribeNotebookSummaryResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1172,7 +1172,7 @@ func (r *DescribeTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingJobRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1281,7 +1281,7 @@ func (r *DescribeTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1319,7 +1319,7 @@ func (r *DescribeTrainingJobsRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingJobsRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1359,7 +1359,7 @@ func (r *DescribeTrainingJobsResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1590,7 +1590,7 @@ func (r *StartNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1620,7 +1620,7 @@ func (r *StartNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1638,7 +1638,7 @@ func (r *StopNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1666,7 +1666,7 @@ func (r *StopNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1684,7 +1684,7 @@ func (r *StopTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopTrainingJobRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1712,7 +1712,7 @@ func (r *StopTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopTrainingJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1780,7 +1780,7 @@ func (r *UpdateCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCodeRepositoryRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1812,7 +1812,7 @@ func (r *UpdateCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCodeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1880,7 +1880,7 @@ func (r *UpdateNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateNotebookInstanceRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1922,7 +1922,7 @@ func (r *UpdateNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateNotebookInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
@@ -1948,7 +1948,7 @@ func (r *UpdateNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
@@ -1978,7 +1978,7 @@ func (r *UpdateNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
-// It is highly **NOT** recommended to use this function
+// FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)

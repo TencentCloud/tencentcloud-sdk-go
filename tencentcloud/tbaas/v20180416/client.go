@@ -58,7 +58,32 @@ func NewApplyUserCertResponse() (response *ApplyUserCertResponse) {
     return
 }
 
+// ApplyUserCert
 // 申请用户证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CACHECKCSR = "FailedOperation.CaCheckCsr"
+//  FAILEDOPERATION_CADBOPTION = "FailedOperation.CaDbOption"
+//  FAILEDOPERATION_CAEXSIT = "FailedOperation.CaExsit"
+//  FAILEDOPERATION_CAGENKEY = "FailedOperation.CaGenkey"
+//  FAILEDOPERATION_CAINIT = "FailedOperation.CaInit"
+//  FAILEDOPERATION_CAINPUTPARAM = "FailedOperation.CaInputParam"
+//  FAILEDOPERATION_CANOEXIST = "FailedOperation.CaNoExist"
+//  FAILEDOPERATION_CAREVOKE = "FailedOperation.CaRevoke"
+//  FAILEDOPERATION_CAROOTNONEXIST = "FailedOperation.CaRootNonExist"
+//  FAILEDOPERATION_CASERVICE = "FailedOperation.CaService"
+//  FAILEDOPERATION_CASIGNCERT = "FailedOperation.CaSignCert"
+//  FAILEDOPERATION_CAYUNAPIAPPLYCERT = "FailedOperation.CaYunApiApplyCert"
+//  FAILEDOPERATION_CAYUNAPICOMMON = "FailedOperation.CaYunApiCommon"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_USERAUTHTYPE = "FailedOperation.UserAuthType"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) ApplyUserCert(request *ApplyUserCertRequest) (response *ApplyUserCertResponse, err error) {
     if request == nil {
         request = NewApplyUserCertRequest()
@@ -83,9 +108,52 @@ func NewBlockByNumberHandlerResponse() (response *BlockByNumberHandlerResponse) 
     return
 }
 
+// BlockByNumberHandler
 // 版本升级
+//
 // 
+//
 // Bcos根据块高查询区块信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (response *BlockByNumberHandlerResponse, err error) {
     if request == nil {
         request = NewBlockByNumberHandlerRequest()
@@ -110,7 +178,30 @@ func NewCreateChaincodeAndInstallForUserResponse() (response *CreateChaincodeAnd
     return
 }
 
+// CreateChaincodeAndInstallForUser
 // 创建并安装合约
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndInstallForUserRequest) (response *CreateChaincodeAndInstallForUserResponse, err error) {
     if request == nil {
         request = NewCreateChaincodeAndInstallForUserRequest()
@@ -135,7 +226,51 @@ func NewDeployDynamicBcosContractResponse() (response *DeployDynamicBcosContract
     return
 }
 
+// DeployDynamicBcosContract
 // 动态部署并发布Bcos合约
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  FAILEDOPERATION_UPDATEDEPLOYEDCONTRACT = "FailedOperation.UpdateDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) DeployDynamicBcosContract(request *DeployDynamicBcosContractRequest) (response *DeployDynamicBcosContractResponse, err error) {
     if request == nil {
         request = NewDeployDynamicBcosContractRequest()
@@ -160,9 +295,55 @@ func NewDeployDynamicContractHandlerResponse() (response *DeployDynamicContractH
     return
 }
 
+// DeployDynamicContractHandler
 // 版本升级
+//
 // 
+//
 // 动态部署合约
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  FAILEDOPERATION_UPDATEDEPLOYEDCONTRACT = "FailedOperation.UpdateDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) DeployDynamicContractHandler(request *DeployDynamicContractHandlerRequest) (response *DeployDynamicContractHandlerResponse, err error) {
     if request == nil {
         request = NewDeployDynamicContractHandlerRequest()
@@ -187,7 +368,31 @@ func NewDownloadUserCertResponse() (response *DownloadUserCertResponse) {
     return
 }
 
+// DownloadUserCert
 // 下载用户证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CACHECKCSR = "FailedOperation.CaCheckCsr"
+//  FAILEDOPERATION_CADBOPTION = "FailedOperation.CaDbOption"
+//  FAILEDOPERATION_CAEXSIT = "FailedOperation.CaExsit"
+//  FAILEDOPERATION_CAGENKEY = "FailedOperation.CaGenkey"
+//  FAILEDOPERATION_CAINIT = "FailedOperation.CaInit"
+//  FAILEDOPERATION_CAINPUTPARAM = "FailedOperation.CaInputParam"
+//  FAILEDOPERATION_CANOEXIST = "FailedOperation.CaNoExist"
+//  FAILEDOPERATION_CAREVOKE = "FailedOperation.CaRevoke"
+//  FAILEDOPERATION_CAROOTNONEXIST = "FailedOperation.CaRootNonExist"
+//  FAILEDOPERATION_CASERVICE = "FailedOperation.CaService"
+//  FAILEDOPERATION_CASIGNCERT = "FailedOperation.CaSignCert"
+//  FAILEDOPERATION_CAYUNAPIAPPLYCERT = "FailedOperation.CaYunApiApplyCert"
+//  FAILEDOPERATION_CAYUNAPICOMMON = "FailedOperation.CaYunApiCommon"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) DownloadUserCert(request *DownloadUserCertRequest) (response *DownloadUserCertResponse, err error) {
     if request == nil {
         request = NewDownloadUserCertRequest()
@@ -212,7 +417,48 @@ func NewGetBcosBlockByNumberResponse() (response *GetBcosBlockByNumberResponse) 
     return
 }
 
+// GetBcosBlockByNumber
 // 使用块高查询Bcos区块信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosBlockByNumber(request *GetBcosBlockByNumberRequest) (response *GetBcosBlockByNumberResponse, err error) {
     if request == nil {
         request = NewGetBcosBlockByNumberRequest()
@@ -237,7 +483,49 @@ func NewGetBcosBlockListResponse() (response *GetBcosBlockListResponse) {
     return
 }
 
+// GetBcosBlockList
 // Bcos分页查询当前群组下的区块列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosBlockList(request *GetBcosBlockListRequest) (response *GetBcosBlockListResponse, err error) {
     if request == nil {
         request = NewGetBcosBlockListRequest()
@@ -262,7 +550,50 @@ func NewGetBcosTransByHashResponse() (response *GetBcosTransByHashResponse) {
     return
 }
 
+// GetBcosTransByHash
 // Bcos根据交易哈希查看交易详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosTransByHash(request *GetBcosTransByHashRequest) (response *GetBcosTransByHashResponse, err error) {
     if request == nil {
         request = NewGetBcosTransByHashRequest()
@@ -287,7 +618,51 @@ func NewGetBcosTransListResponse() (response *GetBcosTransListResponse) {
     return
 }
 
+// GetBcosTransList
 // Bcos分页查询当前群组的交易信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosTransList(request *GetBcosTransListRequest) (response *GetBcosTransListResponse, err error) {
     if request == nil {
         request = NewGetBcosTransListRequest()
@@ -312,7 +687,23 @@ func NewGetBlockListResponse() (response *GetBlockListResponse) {
     return
 }
 
+// GetBlockList
 // 查看当前网络下的所有区块列表，分页展示
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_FABRICBLOCKQUERY = "FailedOperation.FabricBlockQuery"
+//  FAILEDOPERATION_FABRICREQUSTPARAMS = "FailedOperation.FabricRequstParams"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  FAILEDOPERATION_TIMEOUTURL = "FailedOperation.TimeOutUrl"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetBlockList(request *GetBlockListRequest) (response *GetBlockListResponse, err error) {
     if request == nil {
         request = NewGetBlockListRequest()
@@ -337,9 +728,52 @@ func NewGetBlockListHandlerResponse() (response *GetBlockListHandlerResponse) {
     return
 }
 
+// GetBlockListHandler
 // 版本升级
+//
 // 
+//
 // Bcos分页查询当前群组下的区块列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (response *GetBlockListHandlerResponse, err error) {
     if request == nil {
         request = NewGetBlockListHandlerRequest()
@@ -364,7 +798,28 @@ func NewGetBlockTransactionListForUserResponse() (response *GetBlockTransactionL
     return
 }
 
+// GetBlockTransactionListForUser
 // 获取区块内的交易列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DatabaseException"
+//  FAILEDOPERATION_FABRICBLOCKDETAIL = "FailedOperation.FabricBlockDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONDETAIL = "FailedOperation.FabricTransactionDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONQUERY = "FailedOperation.FabricTransactionQuery"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  FAILEDOPERATION_NOPEER = "FailedOperation.NoPeer"
+//  FAILEDOPERATION_STATUSNOMATCH = "FailedOperation.StatusNoMatch"
+//  FAILEDOPERATION_TIMEOUTURL = "FailedOperation.TimeOutUrl"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionListForUserRequest) (response *GetBlockTransactionListForUserResponse, err error) {
     if request == nil {
         request = NewGetBlockTransactionListForUserRequest()
@@ -389,7 +844,30 @@ func NewGetChaincodeCompileLogForUserResponse() (response *GetChaincodeCompileLo
     return
 }
 
+// GetChaincodeCompileLogForUser
 // 获取合约编译日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeCompileLogForUser(request *GetChaincodeCompileLogForUserRequest) (response *GetChaincodeCompileLogForUserResponse, err error) {
     if request == nil {
         request = NewGetChaincodeCompileLogForUserRequest()
@@ -414,7 +892,30 @@ func NewGetChaincodeInitializeResultForUserResponse() (response *GetChaincodeIni
     return
 }
 
+// GetChaincodeInitializeResultForUser
 // 实例化结果查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeInitializeResultForUser(request *GetChaincodeInitializeResultForUserRequest) (response *GetChaincodeInitializeResultForUserResponse, err error) {
     if request == nil {
         request = NewGetChaincodeInitializeResultForUserRequest()
@@ -439,7 +940,30 @@ func NewGetChaincodeLogForUserResponse() (response *GetChaincodeLogForUserRespon
     return
 }
 
+// GetChaincodeLogForUser
 // 获取合约容器日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeLogForUser(request *GetChaincodeLogForUserRequest) (response *GetChaincodeLogForUserResponse, err error) {
     if request == nil {
         request = NewGetChaincodeLogForUserRequest()
@@ -464,7 +988,30 @@ func NewGetChannelListForUserResponse() (response *GetChannelListForUserResponse
     return
 }
 
+// GetChannelListForUser
 // 获取通道列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChannelListForUser(request *GetChannelListForUserRequest) (response *GetChannelListForUserResponse, err error) {
     if request == nil {
         request = NewGetChannelListForUserRequest()
@@ -489,7 +1036,30 @@ func NewGetClusterListForUserResponse() (response *GetClusterListForUserResponse
     return
 }
 
+// GetClusterListForUser
 // 获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetClusterListForUser(request *GetClusterListForUserRequest) (response *GetClusterListForUserResponse, err error) {
     if request == nil {
         request = NewGetClusterListForUserRequest()
@@ -514,7 +1084,20 @@ func NewGetClusterSummaryResponse() (response *GetClusterSummaryResponse) {
     return
 }
 
+// GetClusterSummary
 // 获取区块链网络概要
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  FAILEDOPERATION_TIMEOUTURL = "FailedOperation.TimeOutUrl"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetClusterSummary(request *GetClusterSummaryRequest) (response *GetClusterSummaryResponse, err error) {
     if request == nil {
         request = NewGetClusterSummaryRequest()
@@ -539,7 +1122,23 @@ func NewGetInvokeTxResponse() (response *GetInvokeTxResponse) {
     return
 }
 
+// GetInvokeTx
 // Invoke异步调用结果查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DatabaseException"
+//  FAILEDOPERATION_FABRICREQUESTPARAMS = "FailedOperation.FabricRequestParams"
+//  FAILEDOPERATION_FABRICREQUSTPARAMS = "FailedOperation.FabricRequstParams"
+//  FAILEDOPERATION_FABRICTXIDQUERY = "FailedOperation.FabricTxIdQuery"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_TRANSACTIONSERVICE = "InternalError.TransactionService"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetInvokeTx(request *GetInvokeTxRequest) (response *GetInvokeTxResponse, err error) {
     if request == nil {
         request = NewGetInvokeTxRequest()
@@ -564,7 +1163,23 @@ func NewGetLatesdTransactionListResponse() (response *GetLatesdTransactionListRe
     return
 }
 
+// GetLatesdTransactionList
 // 获取最新交易列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_FABRICBLOCKDETAIL = "FailedOperation.FabricBlockDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONQUERY = "FailedOperation.FabricTransactionQuery"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListRequest) (response *GetLatesdTransactionListResponse, err error) {
     if request == nil {
         request = NewGetLatesdTransactionListRequest()
@@ -589,7 +1204,30 @@ func NewGetPeerLogForUserResponse() (response *GetPeerLogForUserResponse) {
     return
 }
 
+// GetPeerLogForUser
 // 获取节点日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetPeerLogForUser(request *GetPeerLogForUserRequest) (response *GetPeerLogForUserResponse, err error) {
     if request == nil {
         request = NewGetPeerLogForUserRequest()
@@ -614,9 +1252,52 @@ func NewGetTransByHashHandlerResponse() (response *GetTransByHashHandlerResponse
     return
 }
 
+// GetTransByHashHandler
 // 版本升级
+//
 // 
+//
 // Bcos根据交易哈希查看交易详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetTransByHashHandler(request *GetTransByHashHandlerRequest) (response *GetTransByHashHandlerResponse, err error) {
     if request == nil {
         request = NewGetTransByHashHandlerRequest()
@@ -641,9 +1322,53 @@ func NewGetTransListHandlerResponse() (response *GetTransListHandlerResponse) {
     return
 }
 
+// GetTransListHandler
 // 版本升级
+//
 // 
+//
 // Bcos分页查询当前群组的交易信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (response *GetTransListHandlerResponse, err error) {
     if request == nil {
         request = NewGetTransListHandlerRequest()
@@ -668,7 +1393,25 @@ func NewGetTransactionDetailForUserResponse() (response *GetTransactionDetailFor
     return
 }
 
+// GetTransactionDetailForUser
 // 获取交易详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DatabaseException"
+//  FAILEDOPERATION_FABRICBLOCKDETAIL = "FailedOperation.FabricBlockDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONDETAIL = "FailedOperation.FabricTransactionDetail"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  FAILEDOPERATION_TIMEOUTURL = "FailedOperation.TimeOutUrl"
+//  INTERNALERROR_FAILURL = "InternalError.FailUrl"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_TRANSACTIONSERVICE = "InternalError.TransactionService"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUserRequest) (response *GetTransactionDetailForUserResponse, err error) {
     if request == nil {
         request = NewGetTransactionDetailForUserRequest()
@@ -693,7 +1436,30 @@ func NewInitializeChaincodeForUserResponse() (response *InitializeChaincodeForUs
     return
 }
 
+// InitializeChaincodeForUser
 // 实例化合约
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHAINCODECHANNEL = "FailedOperation.ChainCodeChannel"
+//  FAILEDOPERATION_CHAINCODEEXIST = "FailedOperation.ChainCodeExist"
+//  FAILEDOPERATION_CHAINCODEINIT = "FailedOperation.ChainCodeInit"
+//  FAILEDOPERATION_CHAINCODEINSTALL = "FailedOperation.ChainCodeInstall"
+//  FAILEDOPERATION_FABRICMANAGE = "FailedOperation.FabricManage"
+//  FAILEDOPERATION_INVALIDCHAINCODE = "FailedOperation.InvalidChaincode"
+//  FAILEDOPERATION_INVALIDCHANNEL = "FailedOperation.InvalidChannel"
+//  FAILEDOPERATION_INVALIDCLUSTER = "FailedOperation.InvalidCluster"
+//  FAILEDOPERATION_INVALIDGROUP = "FailedOperation.InvalidGroup"
+//  FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
+//  FAILEDOPERATION_INVALIDRESOURCE = "FailedOperation.InvalidResource"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) InitializeChaincodeForUser(request *InitializeChaincodeForUserRequest) (response *InitializeChaincodeForUserResponse, err error) {
     if request == nil {
         request = NewInitializeChaincodeForUserRequest()
@@ -718,7 +1484,34 @@ func NewInvokeResponse() (response *InvokeResponse) {
     return
 }
 
+// Invoke
 // 新增交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DatabaseException"
+//  FAILEDOPERATION_FABRICCOMMIT = "FailedOperation.FabricCommit"
+//  FAILEDOPERATION_FABRICEVENTHUB = "FailedOperation.FabricEventHub"
+//  FAILEDOPERATION_FABRICPROPOSAL = "FailedOperation.FabricProposal"
+//  FAILEDOPERATION_FABRICREQUESTPARAMS = "FailedOperation.FabricRequestParams"
+//  FAILEDOPERATION_FABRICREQUSTPARAMS = "FailedOperation.FabricRequstParams"
+//  FAILEDOPERATION_FABRICTXINVOKE = "FailedOperation.FabricTxInvoke"
+//  FAILEDOPERATION_FABRICTXQUERY = "FailedOperation.FabricTxQuery"
+//  FAILEDOPERATION_FABRICTXQUERYNONE = "FailedOperation.FabricTxQueryNone"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEGROUP = "FailedOperation.NoChainCodeGroup"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  FAILEDOPERATION_NOPEER = "FailedOperation.NoPeer"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_TRANSACTIONSERVICE = "InternalError.TransactionService"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err error) {
     if request == nil {
         request = NewInvokeRequest()
@@ -743,7 +1536,51 @@ func NewInvokeBcosTransResponse() (response *InvokeBcosTransResponse) {
     return
 }
 
+// InvokeBcosTrans
 // 执行Bcos交易，支持动态部署的合约
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *InvokeBcosTransResponse, err error) {
     if request == nil {
         request = NewInvokeBcosTransRequest()
@@ -768,7 +1605,32 @@ func NewQueryResponse() (response *QueryResponse) {
     return
 }
 
+// Query
 // 查询交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DatabaseException"
+//  FAILEDOPERATION_FABRICCOMMIT = "FailedOperation.FabricCommit"
+//  FAILEDOPERATION_FABRICPROPOSAL = "FailedOperation.FabricProposal"
+//  FAILEDOPERATION_FABRICREQUESTPARAMS = "FailedOperation.FabricRequestParams"
+//  FAILEDOPERATION_FABRICREQUSTPARAMS = "FailedOperation.FabricRequstParams"
+//  FAILEDOPERATION_FABRICTXINVOKE = "FailedOperation.FabricTxInvoke"
+//  FAILEDOPERATION_FABRICTXQUERY = "FailedOperation.FabricTxQuery"
+//  FAILEDOPERATION_FABRICTXQUERYNONE = "FailedOperation.FabricTxQueryNone"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHAINCODECHANNEL = "FailedOperation.NoChainCodeChannel"
+//  FAILEDOPERATION_NOCHAINCODEGROUP = "FailedOperation.NoChainCodeGroup"
+//  FAILEDOPERATION_NOCHAINCODEPEER = "FailedOperation.NoChainCodePeer"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_TRANSACTIONSERVICE = "InternalError.TransactionService"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err error) {
     if request == nil {
         request = NewQueryRequest()
@@ -793,9 +1655,53 @@ func NewSendTransactionHandlerResponse() (response *SendTransactionHandlerRespon
     return
 }
 
+// SendTransactionHandler
 // 版本升级
+//
 // 
+//
 // Bcos发送交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) SendTransactionHandler(request *SendTransactionHandlerRequest) (response *SendTransactionHandlerResponse, err error) {
     if request == nil {
         request = NewSendTransactionHandlerRequest()
@@ -820,7 +1726,13 @@ func NewSrvInvokeResponse() (response *SrvInvokeResponse) {
     return
 }
 
+// SrvInvoke
 // trustsql服务统一接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SERVICEFAILED = "FailedOperation.ServiceFailed"
+//  OPERATIONDENIED_NOTOWNER = "OperationDenied.NotOwner"
 func (c *Client) SrvInvoke(request *SrvInvokeRequest) (response *SrvInvokeResponse, err error) {
     if request == nil {
         request = NewSrvInvokeRequest()
@@ -845,9 +1757,55 @@ func NewTransByDynamicContractHandlerResponse() (response *TransByDynamicContrac
     return
 }
 
+// TransByDynamicContractHandler
 // 版本升级
+//
 // 
+//
 // 根据动态部署的合约发送交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  FAILEDOPERATION_UPDATEDEPLOYEDCONTRACT = "FailedOperation.UpdateDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILPREFORM = "InternalError.FailPreform"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) TransByDynamicContractHandler(request *TransByDynamicContractHandlerRequest) (response *TransByDynamicContractHandlerResponse, err error) {
     if request == nil {
         request = NewTransByDynamicContractHandlerRequest()

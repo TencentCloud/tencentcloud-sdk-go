@@ -58,7 +58,40 @@ func NewBeautifyPicResponse() (response *BeautifyPicResponse) {
     return
 }
 
+// BeautifyPic
 // 用户上传一张人脸图片，精准定位五官，实现美肤、亮肤、祛痘等美颜功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BEAUTIFYFAILED = "FailedOperation.BeautifyFailed"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_NOFACEINPHOTO = "InvalidParameter.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_EYEENLARGINGILLEGAL = "InvalidParameterValue.EyeEnlargingIllegal"
+//  INVALIDPARAMETERVALUE_FACELIFTINGILLEGAL = "InvalidParameterValue.FaceLiftingIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_IMAGEINVALID = "InvalidParameterValue.ImageInvalid"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_SMOOTHINGILLEGAL = "InvalidParameterValue.SmoothingIllegal"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  INVALIDPARAMETERVALUE_WHITENINGILLEGAL = "InvalidParameterValue.WhiteningIllegal"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BeautifyPic(request *BeautifyPicRequest) (response *BeautifyPicResponse, err error) {
     if request == nil {
         request = NewBeautifyPicRequest()
@@ -83,7 +116,17 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
     return
 }
 
+// BeautifyVideo
 // 视频美颜
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
     if request == nil {
         request = NewBeautifyVideoRequest()
@@ -108,7 +151,15 @@ func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobRespon
     return
 }
 
+// CancelBeautifyVideoJob
 // 撤销视频美颜任务请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CANCELJOBFAILURE = "FailedOperation.CancelJobFailure"
+//  FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
     if request == nil {
         request = NewCancelBeautifyVideoJobRequest()
@@ -133,9 +184,26 @@ func NewCreateModelResponse() (response *CreateModelResponse) {
     return
 }
 
+// CreateModel
 // 在使用LUT素材的modelid实现试唇色前，您需要先上传 LUT 格式的cube文件注册唇色ID。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。
+//
 // 
+//
 // 注：您也可以直接使用 [试唇色接口](https://cloud.tencent.com/document/product/1172/40706)，通过输入RGBA模型数值的方式指定唇色，更简单易用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FREQCTRL = "FailedOperation.FreqCtrl"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  INVALIDPARAMETERVALUE_LUTIMAGEINVALID = "InvalidParameterValue.LutImageInvalid"
+//  INVALIDPARAMETERVALUE_LUTIMAGESIZEINVALID = "InvalidParameterValue.LutImageSizeInvalid"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModelResponse, err error) {
     if request == nil {
         request = NewCreateModelRequest()
@@ -160,7 +228,15 @@ func NewDeleteModelResponse() (response *DeleteModelResponse) {
     return
 }
 
+// DeleteModel
 // 删除已注册的唇色素材。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FREQCTRL = "FailedOperation.FreqCtrl"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  INVALIDPARAMETERVALUE_MODELIDNOTFOUND = "InvalidParameterValue.ModelIdNotFound"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
     if request == nil {
         request = NewDeleteModelRequest()
@@ -185,7 +261,15 @@ func NewGetModelListResponse() (response *GetModelListResponse) {
     return
 }
 
+// GetModelList
 // 查询已注册的唇色素材。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FREQCTRL = "FailedOperation.FreqCtrl"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) GetModelList(request *GetModelListRequest) (response *GetModelListResponse, err error) {
     if request == nil {
         request = NewGetModelListRequest()
@@ -210,7 +294,17 @@ func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse
     return
 }
 
+// QueryBeautifyVideoJob
 // 查询视频美颜处理进度
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EFFECTFREQCTRL = "FailedOperation.EffectFreqCtrl"
+//  FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_JOBHASBEENCANCELED = "FailedOperation.JobHasBeenCanceled"
+//  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
     if request == nil {
         request = NewQueryBeautifyVideoJobRequest()
@@ -235,7 +329,24 @@ func NewStyleImageResponse() (response *StyleImageResponse) {
     return
 }
 
+// StyleImage
 // 上传一张照片，输出滤镜处理后的图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageResponse, err error) {
     if request == nil {
         request = NewStyleImageRequest()
@@ -260,7 +371,24 @@ func NewStyleImageProResponse() (response *StyleImageProResponse) {
     return
 }
 
+// StyleImagePro
 // 上传一张照片，输出滤镜处理后的图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
     if request == nil {
         request = NewStyleImageProRequest()
@@ -285,14 +413,56 @@ func NewTryLipstickPicResponse() (response *TryLipstickPicResponse) {
     return
 }
 
+// TryLipstickPic
 // 对图片中的人脸嘴唇进行着色，最多支持同时对一张图中的3张人脸进行试唇色。
+//
 // 
+//
 // 您可以通过事先注册在腾讯云的唇色素材（LUT文件）改变图片中的人脸唇色，也可以输入RGBA模型数值。
+//
 // 
+//
 // 为了更好的效果，建议您使用事先注册在腾讯云的唇色素材（LUT文件）。
+//
 // 
+//
 // >     
+//
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FREQCTRL = "FailedOperation.FreqCtrl"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEGRAYNOTSUPPORT = "FailedOperation.ImageGrayNotSupport"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  INVALIDPARAMETERVALUE_FACERECTINVALID = "InvalidParameterValue.FaceRectInvalid"
+//  INVALIDPARAMETERVALUE_FACERECTINVALIDFIRST = "InvalidParameterValue.FaceRectInvalidFirst"
+//  INVALIDPARAMETERVALUE_FACERECTINVALIDSECOND = "InvalidParameterValue.FaceRectInvalidSecond"
+//  INVALIDPARAMETERVALUE_FACERECTINVALIDTHRID = "InvalidParameterValue.FaceRectInvalidThrid"
+//  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_LUTIMAGEINVALID = "InvalidParameterValue.LutImageInvalid"
+//  INVALIDPARAMETERVALUE_LUTIMAGESIZEINVALID = "InvalidParameterValue.LutImageSizeInvalid"
+//  INVALIDPARAMETERVALUE_MODELIDNOTFOUND = "InvalidParameterValue.ModelIdNotFound"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TryLipstickPic(request *TryLipstickPicRequest) (response *TryLipstickPicResponse, err error) {
     if request == nil {
         request = NewTryLipstickPicRequest()

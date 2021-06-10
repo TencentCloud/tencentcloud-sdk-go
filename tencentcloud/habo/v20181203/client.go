@@ -58,6 +58,7 @@ func NewDescribeStatusResponse() (response *DescribeStatusResponse) {
     return
 }
 
+// DescribeStatus
 // 查询指定md5样本是否分析完成，并获取分析日志下载地址。
 func (c *Client) DescribeStatus(request *DescribeStatusRequest) (response *DescribeStatusResponse, err error) {
     if request == nil {
@@ -83,6 +84,7 @@ func NewStartAnalyseResponse() (response *StartAnalyseResponse) {
     return
 }
 
+// StartAnalyse
 // 上传样本到哈勃进行分析，异步生成分析日志。
 func (c *Client) StartAnalyse(request *StartAnalyseRequest) (response *StartAnalyseResponse, err error) {
     if request == nil {
