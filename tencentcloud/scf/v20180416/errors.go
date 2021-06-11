@@ -329,9 +329,6 @@ const (
 	// OrderBy取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
 	INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 
-	// Orderby传入错误。
-	INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
-
 	// 入参不是标准的json。
 	INVALIDPARAMETERVALUE_PARAM = "InvalidParameterValue.Param"
 

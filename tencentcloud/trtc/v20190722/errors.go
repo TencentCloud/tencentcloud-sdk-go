@@ -128,9 +128,6 @@ const (
 	// SdkAppId参数错误。
 	INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 
-	// 不能操作的SdkAppid。
-	INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppid"
-
 	// 小画面布局参数错误。
 	INVALIDPARAMETER_SMALLVIDEOLAYOUTPARAMS = "InvalidParameter.SmallVideoLayoutParams"
 

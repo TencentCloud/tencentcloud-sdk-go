@@ -1090,7 +1090,6 @@ func NewListAsyncEventsResponse() (response *ListAsyncEventsResponse) {
 //  INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
-//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 //  INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
@@ -1131,7 +1130,6 @@ func NewListFunctionsResponse() (response *ListFunctionsResponse) {
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
-//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
@@ -1232,7 +1230,6 @@ func NewListNamespacesResponse() (response *ListNamespacesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
-//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 //  INVALIDPARAMETERVALUE_SEARCHKEY = "InvalidParameterValue.SearchKey"
 //  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 func (c *Client) ListNamespaces(request *ListNamespacesRequest) (response *ListNamespacesResponse, err error) {
@@ -1265,7 +1262,6 @@ func NewListTriggersResponse() (response *ListTriggersResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
-//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 func (c *Client) ListTriggers(request *ListTriggersRequest) (response *ListTriggersResponse, err error) {
     if request == nil {
         request = NewListTriggersRequest()
@@ -1299,7 +1295,6 @@ func NewListVersionByFunctionResponse() (response *ListVersionByFunctionResponse
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
-//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.Orderby"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
