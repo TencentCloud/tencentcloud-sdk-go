@@ -4,7 +4,7 @@
 | aai | [](https://cloud.tencent.com/document/product) | 2019-08-08 23:15:13 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2021-01-07 08:00:37 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2021-01-07 08:00:36 |
-| ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2021-06-09 08:09:47 |
+| ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2021-06-11 08:09:38 |
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-06-07 08:01:17 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-03-30 08:00:17 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-04-20 08:00:30 |
@@ -30,7 +30,7 @@
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-06-09 08:03:29 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-04-07 08:00:41 |
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-06-08 08:03:57 |
-| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-06-09 08:03:50 |
+| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-06-11 08:03:45 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-01-07 08:03:25 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-04-07 08:03:25 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-06-02 08:11:06 |

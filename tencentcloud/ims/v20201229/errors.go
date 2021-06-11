@@ -53,7 +53,7 @@ const (
 	// DataId格式错误。
 	INVALIDPARAMETERVALUE_INVALIDDATAID = "InvalidParameterValue.InvalidDataId"
 
-	// 图片文件内容大小超过限制。
+	// 图片文件内容大小异常。
 	INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = "InvalidParameterValue.InvalidFileContentSize"
 
 	// 图片内容错误。
