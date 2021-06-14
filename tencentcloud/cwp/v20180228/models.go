@@ -210,6 +210,19 @@ type AssetFilters struct {
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
+type AssetKeyVal struct {
+
+	// 标签
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 数量
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
 type BashEvent struct {
 
 	// ID
@@ -1953,6 +1966,144 @@ func (r *DescribeAlarmAttributeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlarmAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAssetInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主机数
+		MachineCount *uint64 `json:"MachineCount,omitempty" name:"MachineCount"`
+
+		// 账号数
+		AccountCount *uint64 `json:"AccountCount,omitempty" name:"AccountCount"`
+
+		// 端口数
+		PortCount *uint64 `json:"PortCount,omitempty" name:"PortCount"`
+
+		// 进程数
+		ProcessCount *uint64 `json:"ProcessCount,omitempty" name:"ProcessCount"`
+
+		// 软件数
+		SoftwareCount *uint64 `json:"SoftwareCount,omitempty" name:"SoftwareCount"`
+
+		// 数据库数
+		DatabaseCount *uint64 `json:"DatabaseCount,omitempty" name:"DatabaseCount"`
+
+		// Web应用数
+		WebAppCount *uint64 `json:"WebAppCount,omitempty" name:"WebAppCount"`
+
+		// Web框架数
+		WebFrameCount *uint64 `json:"WebFrameCount,omitempty" name:"WebFrameCount"`
+
+		// Web服务数
+		WebServiceCount *uint64 `json:"WebServiceCount,omitempty" name:"WebServiceCount"`
+
+		// Web站点数
+		WebLocationCount *uint64 `json:"WebLocationCount,omitempty" name:"WebLocationCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetRecentMachineInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间。
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 结束时间。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
+func (r *DescribeAssetRecentMachineInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetRecentMachineInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginDate")
+	delete(f, "EndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetRecentMachineInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetRecentMachineInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalList []*AssetKeyVal `json:"TotalList,omitempty" name:"TotalList"`
+
+		// 在线数量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LiveList []*AssetKeyVal `json:"LiveList,omitempty" name:"LiveList"`
+
+		// 离线数量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OfflineList []*AssetKeyVal `json:"OfflineList,omitempty" name:"OfflineList"`
+
+		// 风险数量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskList []*AssetKeyVal `json:"RiskList,omitempty" name:"RiskList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetRecentMachineInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetRecentMachineInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8484,6 +8635,52 @@ func (r *SwitchBashRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SwitchBashRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncAssetScanRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否同步
+	Sync *bool `json:"Sync,omitempty" name:"Sync"`
+}
+
+func (r *SyncAssetScanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncAssetScanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sync")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncAssetScanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncAssetScanResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncAssetScanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncAssetScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

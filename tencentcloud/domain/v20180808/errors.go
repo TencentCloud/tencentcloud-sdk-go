@@ -86,8 +86,23 @@ const (
 	// 邮箱为空或者不合法。
 	INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 
+	// 不支持该格式文件，请上传 JPG、JPEG 格式图片（可使用第三方图片格式转换工具）。
+	INVALIDPARAMETER_IMAGEEXTINVALID = "InvalidParameter.ImageExtInvalid"
+
 	// 上传的照片参数为空或者不合法。
 	INVALIDPARAMETER_IMAGEFILEISINVALID = "InvalidParameter.ImageFileIsInvalid"
+
+	// 非标准的 JPG、JPEG 格式图片，请使用工具转换格式后重新上传（可使用第三方图片格式转换工具）。
+	INVALIDPARAMETER_IMAGEFORMATISINVALID = "InvalidParameter.ImageFormatIsInvalid"
+
+	// 图片大小低于最小限制(55KB)，请重新上传。
+	INVALIDPARAMETER_IMAGESIZEBELOW = "InvalidParameter.ImageSizeBelow"
+
+	// 图片过大，请减小后重试。
+	INVALIDPARAMETER_IMAGESIZEEXCEED = "InvalidParameter.ImageSizeExceed"
+
+	// 图片大小超过限制(1M)，请重新上传。
+	INVALIDPARAMETER_IMAGESIZELIMIT = "InvalidParameter.ImageSizeLimit"
 
 	// 联系人为空或者不合法。
 	INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"

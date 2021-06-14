@@ -555,6 +555,12 @@ type DeployServiceV2Request struct {
 
 	// 是否添加默认注册中心配置
 	UseRegistryDefaultConfig *bool `json:"UseRegistryDefaultConfig,omitempty" name:"UseRegistryDefaultConfig"`
+
+	// 挂载配置信息
+	SettingConfs []*MountedSettingConf `json:"SettingConfs,omitempty" name:"SettingConfs"`
+
+	// eks 访问设置
+	EksService *EksService `json:"EksService,omitempty" name:"EksService"`
 }
 
 func (r *DeployServiceV2Request) ToJsonString() string {
@@ -595,6 +601,8 @@ func (r *DeployServiceV2Request) FromJsonString(s string) error {
 	delete(f, "ImageArgs")
 	delete(f, "PortMappings")
 	delete(f, "UseRegistryDefaultConfig")
+	delete(f, "SettingConfs")
+	delete(f, "EksService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployServiceV2Request has unknown keys!", "")
 	}
@@ -960,6 +968,53 @@ func (r *DescribeServiceRunPodListV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EksService struct {
+
+	// service name
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 可用端口
+	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
+
+	// yaml 内容
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+
+	// 服务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 版本名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIp []*string `json:"ClusterIp,omitempty" name:"ClusterIp"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalIp *string `json:"ExternalIp,omitempty" name:"ExternalIp"`
+
+	// 访问类型，可选值：
+	// - EXTERNAL（公网访问）
+	// - VPC（vpc内访问）
+	// - CLUSTER（集群内访问）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 子网ID，只在类型为vpc访问时才有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalanceId *string `json:"LoadBalanceId,omitempty" name:"LoadBalanceId"`
+
+	// 端口映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings"`
+}
+
 type EsInfo struct {
 
 	// 最小实例数
@@ -1267,6 +1322,18 @@ func (r *ModifyServiceInfoResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyServiceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MountedSettingConf struct {
+
+	// 配置名称
+	ConfigDataName *string `json:"ConfigDataName,omitempty" name:"ConfigDataName"`
+
+	// 挂载路径
+	MountedPath *string `json:"MountedPath,omitempty" name:"MountedPath"`
+
+	// 配置内容
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
 }
 
 type NamespacePage struct {

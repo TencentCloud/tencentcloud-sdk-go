@@ -1050,6 +1050,70 @@ func (c *Client) DescribeAlarmAttribute(request *DescribeAlarmAttributeRequest) 
     return
 }
 
+func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
+    request = &DescribeAssetInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInfo")
+    return
+}
+
+func NewDescribeAssetInfoResponse() (response *DescribeAssetInfoResponse) {
+    response = &DescribeAssetInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetInfo
+// 获取资产数量： 主机数、账号数、端口数、进程数、软件数、数据库数、Web应用数、Web框架数、Web服务数、Web站点数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+func (c *Client) DescribeAssetInfo(request *DescribeAssetInfoRequest) (response *DescribeAssetInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetInfoRequest()
+    }
+    response = NewDescribeAssetInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetRecentMachineInfoRequest() (request *DescribeAssetRecentMachineInfoRequest) {
+    request = &DescribeAssetRecentMachineInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetRecentMachineInfo")
+    return
+}
+
+func NewDescribeAssetRecentMachineInfoResponse() (response *DescribeAssetRecentMachineInfoResponse) {
+    response = &DescribeAssetRecentMachineInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetRecentMachineInfo
+// 获取主机最近趋势情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+func (c *Client) DescribeAssetRecentMachineInfo(request *DescribeAssetRecentMachineInfoRequest) (response *DescribeAssetRecentMachineInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetRecentMachineInfoRequest()
+    }
+    response = NewDescribeAssetRecentMachineInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
     request = &DescribeAttackLogInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4112,6 +4176,40 @@ func (c *Client) SwitchBashRules(request *SwitchBashRulesRequest) (response *Swi
         request = NewSwitchBashRulesRequest()
     }
     response = NewSwitchBashRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncAssetScanRequest() (request *SyncAssetScanRequest) {
+    request = &SyncAssetScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "SyncAssetScan")
+    return
+}
+
+func NewSyncAssetScanResponse() (response *SyncAssetScanResponse) {
+    response = &SyncAssetScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncAssetScan
+// 同步资产扫描信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+func (c *Client) SyncAssetScan(request *SyncAssetScanRequest) (response *SyncAssetScanResponse, err error) {
+    if request == nil {
+        request = NewSyncAssetScanRequest()
+    }
+    response = NewSyncAssetScanResponse()
     err = c.Send(request, response)
     return
 }
