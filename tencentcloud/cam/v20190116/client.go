@@ -172,6 +172,7 @@ func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
 //  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (response *AttachRolePolicyResponse, err error) {

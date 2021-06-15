@@ -242,6 +242,7 @@ func NewCreateEdgePackTaskResponse() (response *CreateEdgePackTaskResponse) {
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (response *CreateEdgePackTaskResponse, err error) {
     if request == nil {
         request = NewCreateEdgePackTaskRequest()
@@ -605,6 +606,7 @@ func NewDescribeCdnDataResponse() (response *DescribeCdnDataResponse) {
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_COSTDATASYSTEMERROR = "InternalError.CostDataSystemError"
 //  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
@@ -2278,36 +2280,9 @@ func NewModifyPurgeFetchTaskStatusResponse() (response *ModifyPurgeFetchTaskStat
 // ModifyPurgeFetchTaskStatus 用于上报定时刷新预热任务执行状态
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
-//  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
-//  INVALIDPARAMETER_CDNCLSDUPLICATETOPIC = "InvalidParameter.CdnClsDuplicateTopic"
-//  INVALIDPARAMETER_CDNCLSTOPICNOTEXIST = "InvalidParameter.CdnClsTopicNotExist"
-//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
-//  INVALIDPARAMETER_CLSINDEXCONFLICT = "InvalidParameter.ClsIndexConflict"
-//  INVALIDPARAMETER_CLSINDEXRULEEMPTY = "InvalidParameter.ClsIndexRuleEmpty"
-//  INVALIDPARAMETER_CLSINVALIDCONTENT = "InvalidParameter.ClsInvalidContent"
-//  INVALIDPARAMETER_CLSINVALIDCONTENTTYPE = "InvalidParameter.ClsInvalidContentType"
-//  INVALIDPARAMETER_CLSLOGSETCONFLICT = "InvalidParameter.ClsLogsetConflict"
-//  INVALIDPARAMETER_CLSLOGSETEMPTY = "InvalidParameter.ClsLogsetEmpty"
-//  INVALIDPARAMETER_CLSLOGSETNOTEMPTY = "InvalidParameter.ClsLogsetNotEmpty"
-//  INVALIDPARAMETER_CLSMISSINGAUTHORIZATION = "InvalidParameter.ClsMissingAuthorization"
-//  INVALIDPARAMETER_CLSMISSINGCONTENT = "InvalidParameter.ClsMissingContent"
-//  INVALIDPARAMETER_CLSSYNTAXERROR = "InvalidParameter.ClsSyntaxError"
-//  INVALIDPARAMETER_CLSTOPICCLOSED = "InvalidParameter.ClsTopicClosed"
-//  INVALIDPARAMETER_CLSTOPICCONFLICT = "InvalidParameter.ClsTopicConflict"
-//  LIMITEXCEEDED_CDNCLSTOOMANYTOPICS = "LimitExceeded.CdnClsTooManyTopics"
-//  LIMITEXCEEDED_CLSLOGSIZEEXCEED = "LimitExceeded.ClsLogSizeExceed"
-//  LIMITEXCEEDED_CLSLOGSETEXCEED = "LimitExceeded.ClsLogsetExceed"
-//  LIMITEXCEEDED_CLSTOPICEXCEED = "LimitExceeded.ClsTopicExceed"
-//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
-//  RESOURCENOTFOUND_CLSINDEXNOTEXIST = "ResourceNotFound.ClsIndexNotExist"
-//  RESOURCENOTFOUND_CLSLOGSETNOTEXIST = "ResourceNotFound.ClsLogsetNotExist"
-//  RESOURCENOTFOUND_CLSTOPICNOTEXIST = "ResourceNotFound.ClsTopicNotExist"
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
-//  UNAUTHORIZEDOPERATION_CDNCLSNOTREGISTERED = "UnauthorizedOperation.CdnClsNotRegistered"
-//  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
-//  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
-//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) ModifyPurgeFetchTaskStatus(request *ModifyPurgeFetchTaskStatusRequest) (response *ModifyPurgeFetchTaskStatusResponse, err error) {
     if request == nil {
         request = NewModifyPurgeFetchTaskStatusRequest()
@@ -2676,6 +2651,7 @@ func NewStopCdnDomainResponse() (response *StopCdnDomainResponse) {
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
 //  UNAUTHORIZEDOPERATION_CDNUSERAUTHWAIT = "UnauthorizedOperation.CdnUserAuthWait"
+//  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
 //  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 //  UNSUPPORTEDOPERATION_OPNOAUTH = "UnsupportedOperation.OpNoAuth"

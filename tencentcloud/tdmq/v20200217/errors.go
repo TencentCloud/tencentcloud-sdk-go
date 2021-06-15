@@ -68,6 +68,9 @@ const (
 	// 系统错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
+	// 上传的 tenant name 错误。
+	INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+
 	// 参数值不在允许范围内。
 	INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 

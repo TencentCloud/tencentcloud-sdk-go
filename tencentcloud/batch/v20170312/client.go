@@ -201,6 +201,7 @@ func NewCreateTaskTemplateResponse() (response *CreateTaskTemplateResponse) {
 //  ALLOWEDONEATTRIBUTEINENVIDANDCOMPUTEENV = "AllowedOneAttributeInEnvIdAndComputeEnv"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_CVMPARAMETERS = "InvalidParameter.CvmParameters"
+//  INVALIDPARAMETER_ENVIDMALFORMED = "InvalidParameter.EnvIdMalformed"
 //  INVALIDPARAMETER_TASKNAME = "InvalidParameter.TaskName"
 //  INVALIDPARAMETER_TASKNAMETOOLONG = "InvalidParameter.TaskNameTooLong"
 //  INVALIDPARAMETER_TASKTEMPLATENAME = "InvalidParameter.TaskTemplateName"

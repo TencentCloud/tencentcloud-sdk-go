@@ -436,6 +436,7 @@ func NewCreateCloneInstanceResponse() (response *CreateCloneInstanceResponse) {
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
@@ -479,6 +480,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_WRONGPASSWORD = "OperationDenied.WrongPassword"
 //  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
@@ -537,6 +539,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_OTHERODERINPROCESS = "OperationDenied.OtherOderInProcess"
@@ -1215,6 +1218,7 @@ func NewDescribeAuditLogFilesResponse() (response *DescribeAuditLogFilesResponse
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeAuditLogFiles(request *DescribeAuditLogFilesRequest) (response *DescribeAuditLogFilesResponse, err error) {
     if request == nil {
         request = NewDescribeAuditLogFilesRequest()
@@ -1680,6 +1684,7 @@ func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
 //  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"

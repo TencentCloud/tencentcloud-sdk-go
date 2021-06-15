@@ -1921,22 +1921,7 @@ func NewQueryInvoiceV2Response() (response *QueryInvoiceV2Response) {
 // 智慧零售-发票查询V2
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_INVOICEEXIST = "InternalError.InvoiceExist"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *QueryInvoiceV2Response, err error) {
     if request == nil {
         request = NewQueryInvoiceV2Request()

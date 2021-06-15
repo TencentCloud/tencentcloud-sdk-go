@@ -143,6 +143,7 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
+//  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"

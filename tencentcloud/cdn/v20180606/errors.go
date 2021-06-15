@@ -23,6 +23,9 @@ const (
 	// 鉴权错误，请确认后重试。
 	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 域名配置更新操作失败，请重试或联系客服人员解决。
 	FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
 
@@ -314,6 +317,9 @@ const (
 	// 域名已存在。
 	RESOURCEINUSE_TCBHOSTEXISTS = "ResourceInUse.TcbHostExists"
 
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
 	// 标签键不存在。
 	RESOURCENOTFOUND_CAMTAGKEYNOTEXIST = "ResourceNotFound.CamTagKeyNotExist"
 
@@ -343,6 +349,9 @@ const (
 
 	// 域名不存在，请确认后重试。
 	RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 该域名已在其他处接入中国境内服务地域，如需修改服务地域为全球，需验证取回域名。
 	RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = "ResourceUnavailable.CdnHostBelongsToOthersInMainland"

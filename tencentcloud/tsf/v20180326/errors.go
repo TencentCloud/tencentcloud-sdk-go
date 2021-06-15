@@ -56,6 +56,9 @@ const (
 	// 命名空间下存在部署组。
 	FAILEDOPERATION_GROUPEXISTS = "FailedOperation.GroupExists"
 
+	// 部署组查询失败。
+	FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+
 	// 重装系统失败，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	FAILEDOPERATION_INSTANCERESETERROR = "FailedOperation.InstanceResetError"
 
@@ -148,6 +151,9 @@ const (
 
 	// 集群通用错误。
 	INTERNALERROR_CLUSTERCOMMONERROR = "InternalError.ClusterCommonError"
+
+	// 无法找到部署组，或相应集群/命名空间/应用的权限不足。
+	INTERNALERROR_CLUSTERNOTEXISTORPRIVILEGEERROR = "InternalError.ClusterNotExistOrPrivilegeError"
 
 	// 配置发布失败：配置中心服务器处理失败。
 	INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -460,6 +466,9 @@ const (
 
 	// 无效请求参数:%s。
 	INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+
+	// 全局命名空间已经存在，只能创建一个全局命名空间。
+	INVALIDPARAMETERVALUE_GLOBALNAMESPACENAMEEXIST = "InvalidParameterValue.GlobalNamespaceNameExist"
 
 	// 部署相关请求参数校验失败。
 	INVALIDPARAMETERVALUE_GROUPBATCHPARAMETERINVALID = "InvalidParameterValue.GroupBatchParameterInvalid"

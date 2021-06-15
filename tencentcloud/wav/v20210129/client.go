@@ -43,6 +43,130 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateChannelCodeRequest() (request *CreateChannelCodeRequest) {
+    request = &CreateChannelCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "CreateChannelCode")
+    return
+}
+
+func NewCreateChannelCodeResponse() (response *CreateChannelCodeResponse) {
+    response = &CreateChannelCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateChannelCode
+// 新增渠道活码接口
+func (c *Client) CreateChannelCode(request *CreateChannelCodeRequest) (response *CreateChannelCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateChannelCodeRequest()
+    }
+    response = NewCreateChannelCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
+    request = &CreateCorpTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "CreateCorpTag")
+    return
+}
+
+func NewCreateCorpTagResponse() (response *CreateCorpTagResponse) {
+    response = &CreateCorpTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCorpTag
+// 该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateCorpTagResponse, err error) {
+    if request == nil {
+        request = NewCreateCorpTagRequest()
+    }
+    response = NewCreateCorpTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
+    request = &QueryActivityJoinListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryActivityJoinList")
+    return
+}
+
+func NewQueryActivityJoinListResponse() (response *QueryActivityJoinListResponse) {
+    response = &QueryActivityJoinListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryActivityJoinList
+// 根据游标拉取活动参与列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryActivityJoinList(request *QueryActivityJoinListRequest) (response *QueryActivityJoinListResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityJoinListRequest()
+    }
+    response = NewQueryActivityJoinListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryActivityListRequest() (request *QueryActivityListRequest) {
+    request = &QueryActivityListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryActivityList")
+    return
+}
+
+func NewQueryActivityListResponse() (response *QueryActivityListResponse) {
+    response = &QueryActivityListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryActivityList
+// 根据游标拉取活动列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryActivityList(request *QueryActivityListRequest) (response *QueryActivityListResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityListRequest()
+    }
+    response = NewQueryActivityListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityLiveCodeListRequest() (request *QueryActivityLiveCodeListRequest) {
     request = &QueryActivityLiveCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -70,6 +194,174 @@ func (c *Client) QueryActivityLiveCodeList(request *QueryActivityLiveCodeListReq
         request = NewQueryActivityLiveCodeListRequest()
     }
     response = NewQueryActivityLiveCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChannelCodeListRequest() (request *QueryChannelCodeListRequest) {
+    request = &QueryChannelCodeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryChannelCodeList")
+    return
+}
+
+func NewQueryChannelCodeListResponse() (response *QueryChannelCodeListResponse) {
+    response = &QueryChannelCodeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChannelCodeList
+// 根据游标拉取渠道活码列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryChannelCodeList(request *QueryChannelCodeListRequest) (response *QueryChannelCodeListResponse, err error) {
+    if request == nil {
+        request = NewQueryChannelCodeListRequest()
+    }
+    response = NewQueryChannelCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChatArchivingListRequest() (request *QueryChatArchivingListRequest) {
+    request = &QueryChatArchivingListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryChatArchivingList")
+    return
+}
+
+func NewQueryChatArchivingListResponse() (response *QueryChatArchivingListResponse) {
+    response = &QueryChatArchivingListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChatArchivingList
+// 根据游标拉取会话存档列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryChatArchivingList(request *QueryChatArchivingListRequest) (response *QueryChatArchivingListResponse, err error) {
+    if request == nil {
+        request = NewQueryChatArchivingListRequest()
+    }
+    response = NewQueryChatArchivingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetailRequest) {
+    request = &QueryExternalContactDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactDetail")
+    return
+}
+
+func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDetailResponse) {
+    response = &QueryExternalContactDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExternalContactDetail
+// 企业可通过此接口，根据外部联系人的userid，拉取客户详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailRequest) (response *QueryExternalContactDetailResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalContactDetailRequest()
+    }
+    response = NewQueryExternalContactDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryExternalContactListRequest() (request *QueryExternalContactListRequest) {
+    request = &QueryExternalContactListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactList")
+    return
+}
+
+func NewQueryExternalContactListResponse() (response *QueryExternalContactListResponse) {
+    response = &QueryExternalContactListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExternalContactList
+// 企业可通过此接口获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryExternalContactList(request *QueryExternalContactListRequest) (response *QueryExternalContactListResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalContactListRequest()
+    }
+    response = NewQueryExternalContactListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
+    request = &QueryMiniAppCodeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryMiniAppCodeList")
+    return
+}
+
+func NewQueryMiniAppCodeListResponse() (response *QueryMiniAppCodeListResponse) {
+    response = &QueryMiniAppCodeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMiniAppCodeList
+// 查询小程序码列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryMiniAppCodeList(request *QueryMiniAppCodeListRequest) (response *QueryMiniAppCodeListResponse, err error) {
+    if request == nil {
+        request = NewQueryMiniAppCodeListRequest()
+    }
+    response = NewQueryMiniAppCodeListResponse()
     err = c.Send(request, response)
     return
 }

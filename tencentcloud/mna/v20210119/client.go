@@ -109,6 +109,7 @@ func NewDeleteQosResponse() (response *DeleteQosResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
 //  OPERATIONDENIED_USERNONACCELERATED = "OperationDenied.UserNonAccelerated"
 //  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
 //  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"

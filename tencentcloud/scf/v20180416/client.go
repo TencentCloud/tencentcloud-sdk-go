@@ -134,6 +134,7 @@ func NewCreateAliasResponse() (response *CreateAliasResponse) {
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
 //  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
@@ -828,6 +829,9 @@ func NewGetFunctionEventInvokeConfigResponse() (response *GetFunctionEventInvoke
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
+//  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -1260,6 +1264,7 @@ func NewListTriggersResponse() (response *ListTriggersResponse) {
 // 获取函数触发器列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 func (c *Client) ListTriggers(request *ListTriggersRequest) (response *ListTriggersResponse, err error) {
@@ -1750,6 +1755,8 @@ func NewUpdateFunctionEventInvokeConfigResponse() (response *UpdateFunctionEvent
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = "InvalidParameterValue.AsyncTriggerConfig"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  LIMITEXCEEDED_MSGTTL = "LimitExceeded.MsgTTL"
 //  LIMITEXCEEDED_RETRYNUM = "LimitExceeded.RetryNum"
 //  MISSINGPARAMETER = "MissingParameter"

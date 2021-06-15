@@ -236,6 +236,7 @@ func NewCreateTableGroupResponse() (response *CreateTableGroupResponse) {
 // 在TcaplusDB集群下创建表格组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDTABLEGROUPNAME = "InvalidParameterValue.InvalidTableGroupName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1211,6 +1212,7 @@ func NewModifyClusterPasswordResponse() (response *ModifyClusterPasswordResponse
 // 修改指定集群的密码，后台将在旧密码失效之前同时支持TcaplusDB SDK使用旧密码和新密码访问数据库。在旧密码失效之前不能提交新的密码修改请求，在旧密码失效之后不能提交修改旧密码过期时间的请求。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OLDPASSWORDHASEXPIRED = "FailedOperation.OldPasswordHasExpired"
 //  FAILEDOPERATION_OLDPASSWORDINUSE = "FailedOperation.OldPasswordInUse"
 //  FAILEDOPERATION_PASSWORDFAILURE = "FailedOperation.PasswordFailure"

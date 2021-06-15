@@ -727,6 +727,7 @@ func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByP
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
 //  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"

@@ -166,7 +166,7 @@
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2021-06-03 08:09:29 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-06-04 08:08:58 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-06-03 08:11:25 |
-| wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2021-06-07 14:33:31 |
+| wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2021-06-15 08:00:03 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | youmall | [](https://cloud.tencent.com/document/product) | 2019-01-11 11:24:15 |
 | yunjing | [主机安全](https://cloud.tencent.com/document/product) | 2020-09-15 08:08:47 |

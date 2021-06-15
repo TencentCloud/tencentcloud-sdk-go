@@ -107,6 +107,9 @@ const (
 	// 刷新的Url数量超过每日限额。
 	LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgeUrlExceedDayLimit"
 
+	// 域名已存在。
+	RESOURCEINUSE_ECDNDOMAINEXISTS = "ResourceInUse.EcdnDomainExists"
+
 	// ECDN资源正在被操作中。
 	RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
 

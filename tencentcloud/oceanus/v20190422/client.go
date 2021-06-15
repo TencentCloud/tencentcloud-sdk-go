@@ -159,6 +159,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE_RESOURCENAMEALREADYEXISTS = "ResourceInUse.ResourceNameAlreadyExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = "ResourceUnavailable.CheckResourceLocExists"
 //  RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = "ResourceUnavailable.ResourceLocNotExists"
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {

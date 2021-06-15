@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 企业微信汽车行业版(wav) 版本：2021-01-29
 
-### 第 17 次发布
+### 第 2 次发布
 
-发布时间：2021-06-14 08:10:35
+发布时间：2021-06-15 08:00:03
 
 本次发布包含了以下内容：
 
@@ -12,37 +12,32 @@
 
 新增接口：
 
-* [DescribeAssetInfo](https://cloud.tencent.com/document/api/296/57282)
-* [DescribeAssetRecentMachineInfo](https://cloud.tencent.com/document/api/296/57281)
-* [SyncAssetScan](https://cloud.tencent.com/document/api/296/57280)
+* [CreateChannelCode](https://cloud.tencent.com/document/api/1318/57315)
+* [CreateCorpTag](https://cloud.tencent.com/document/api/1318/57314)
+* [QueryActivityJoinList](https://cloud.tencent.com/document/api/1318/57313)
+* [QueryActivityList](https://cloud.tencent.com/document/api/1318/57312)
+* [QueryChannelCodeList](https://cloud.tencent.com/document/api/1318/57311)
+* [QueryChatArchivingList](https://cloud.tencent.com/document/api/1318/57310)
+* [QueryExternalContactDetail](https://cloud.tencent.com/document/api/1318/57309)
+* [QueryExternalContactList](https://cloud.tencent.com/document/api/1318/57308)
+* [QueryMiniAppCodeList](https://cloud.tencent.com/document/api/1318/57307)
 
 新增数据结构：
 
-* [AssetKeyVal](https://cloud.tencent.com/document/api/296/19867#AssetKeyVal)
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
-
-### 第 6 次发布
-
-发布时间：2021-06-14 08:00:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeployServiceV2](https://cloud.tencent.com/document/api/1371/55519)
-
-	* 新增入参：SettingConfs, EksService
-
-
-新增数据结构：
-
-* [EksService](https://cloud.tencent.com/document/api/1371/55421#EksService)
-* [MountedSettingConf](https://cloud.tencent.com/document/api/1371/55421#MountedSettingConf)
+* [ActivityDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityDetail)
+* [ActivityJoinDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityJoinDetail)
+* [ChannelCodeInnerDetail](https://cloud.tencent.com/document/api/1318/56791#ChannelCodeInnerDetail)
+* [ChatArchivingDetail](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingDetail)
+* [ChatArchivingMsgTypeVideo](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingMsgTypeVideo)
+* [ExternalContact](https://cloud.tencent.com/document/api/1318/56791#ExternalContact)
+* [ExternalContactSimpleInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalContactSimpleInfo)
+* [ExternalContactTag](https://cloud.tencent.com/document/api/1318/56791#ExternalContactTag)
+* [FollowUser](https://cloud.tencent.com/document/api/1318/56791#FollowUser)
+* [MiniAppCodeInfo](https://cloud.tencent.com/document/api/1318/56791#MiniAppCodeInfo)
+* [TagDetailInfo](https://cloud.tencent.com/document/api/1318/56791#TagDetailInfo)
+* [TagGroup](https://cloud.tencent.com/document/api/1318/56791#TagGroup)
+* [TagInfo](https://cloud.tencent.com/document/api/1318/56791#TagInfo)
+* [WeComTagDetail](https://cloud.tencent.com/document/api/1318/56791#WeComTagDetail)
 
 
 
@@ -15672,13 +15667,13 @@
 
 新增接口：
 
-* [[DescribeAssetInfo](https://cloud.tencent.com/document/api/296/57282)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAssetRecentMachineInfo](https://cloud.tencent.com/document/api/296/57281)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncAssetScan](https://cloud.tencent.com/document/api/296/57280)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAssetInfo](https://cloud.tencent.com/document/api/296/57282)
+* [DescribeAssetRecentMachineInfo](https://cloud.tencent.com/document/api/296/57281)
+* [SyncAssetScan](https://cloud.tencent.com/document/api/296/57280)
 
 新增数据结构：
 
-* [[AssetKeyVal](https://cloud.tencent.com/document/api/296/19867#AssetKeyVal)](https://cloud.tencent.com/document/api/296/19867#[AssetKeyVal](https://cloud.tencent.com/document/api/296/19867#AssetKeyVal))
+* [AssetKeyVal](https://cloud.tencent.com/document/api/296/19867#AssetKeyVal)
 
 ### 第 16 次发布
 
@@ -41574,8 +41569,8 @@
 
 新增数据结构：
 
-* [[EksService](https://cloud.tencent.com/document/api/1371/55421#EksService)](https://cloud.tencent.com/document/api/1371/55421#[EksService](https://cloud.tencent.com/document/api/1371/55421#EksService))
-* [[MountedSettingConf](https://cloud.tencent.com/document/api/1371/55421#MountedSettingConf)](https://cloud.tencent.com/document/api/1371/55421#[MountedSettingConf](https://cloud.tencent.com/document/api/1371/55421#MountedSettingConf))
+* [EksService](https://cloud.tencent.com/document/api/1371/55421#EksService)
+* [MountedSettingConf](https://cloud.tencent.com/document/api/1371/55421#MountedSettingConf)
 
 ### 第 5 次发布
 
@@ -51584,6 +51579,43 @@
 
 
 ## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 2 次发布
+
+发布时间：2021-06-15 08:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateChannelCode](https://cloud.tencent.com/document/api/1318/57315)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCorpTag](https://cloud.tencent.com/document/api/1318/57314)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryActivityJoinList](https://cloud.tencent.com/document/api/1318/57313)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryActivityList](https://cloud.tencent.com/document/api/1318/57312)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChannelCodeList](https://cloud.tencent.com/document/api/1318/57311)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChatArchivingList](https://cloud.tencent.com/document/api/1318/57310)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryExternalContactDetail](https://cloud.tencent.com/document/api/1318/57309)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryExternalContactList](https://cloud.tencent.com/document/api/1318/57308)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryMiniAppCodeList](https://cloud.tencent.com/document/api/1318/57307)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ActivityDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityDetail)](https://cloud.tencent.com/document/api/1318/56791#[ActivityDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityDetail))
+* [[ActivityJoinDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityJoinDetail)](https://cloud.tencent.com/document/api/1318/56791#[ActivityJoinDetail](https://cloud.tencent.com/document/api/1318/56791#ActivityJoinDetail))
+* [[ChannelCodeInnerDetail](https://cloud.tencent.com/document/api/1318/56791#ChannelCodeInnerDetail)](https://cloud.tencent.com/document/api/1318/56791#[ChannelCodeInnerDetail](https://cloud.tencent.com/document/api/1318/56791#ChannelCodeInnerDetail))
+* [[ChatArchivingDetail](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingDetail)](https://cloud.tencent.com/document/api/1318/56791#[ChatArchivingDetail](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingDetail))
+* [[ChatArchivingMsgTypeVideo](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingMsgTypeVideo)](https://cloud.tencent.com/document/api/1318/56791#[ChatArchivingMsgTypeVideo](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingMsgTypeVideo))
+* [[ExternalContact](https://cloud.tencent.com/document/api/1318/56791#ExternalContact)](https://cloud.tencent.com/document/api/1318/56791#[ExternalContact](https://cloud.tencent.com/document/api/1318/56791#ExternalContact))
+* [[ExternalContactSimpleInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalContactSimpleInfo)](https://cloud.tencent.com/document/api/1318/56791#[ExternalContactSimpleInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalContactSimpleInfo))
+* [[ExternalContactTag](https://cloud.tencent.com/document/api/1318/56791#ExternalContactTag)](https://cloud.tencent.com/document/api/1318/56791#[ExternalContactTag](https://cloud.tencent.com/document/api/1318/56791#ExternalContactTag))
+* [[FollowUser](https://cloud.tencent.com/document/api/1318/56791#FollowUser)](https://cloud.tencent.com/document/api/1318/56791#[FollowUser](https://cloud.tencent.com/document/api/1318/56791#FollowUser))
+* [[MiniAppCodeInfo](https://cloud.tencent.com/document/api/1318/56791#MiniAppCodeInfo)](https://cloud.tencent.com/document/api/1318/56791#[MiniAppCodeInfo](https://cloud.tencent.com/document/api/1318/56791#MiniAppCodeInfo))
+* [[TagDetailInfo](https://cloud.tencent.com/document/api/1318/56791#TagDetailInfo)](https://cloud.tencent.com/document/api/1318/56791#[TagDetailInfo](https://cloud.tencent.com/document/api/1318/56791#TagDetailInfo))
+* [[TagGroup](https://cloud.tencent.com/document/api/1318/56791#TagGroup)](https://cloud.tencent.com/document/api/1318/56791#[TagGroup](https://cloud.tencent.com/document/api/1318/56791#TagGroup))
+* [[TagInfo](https://cloud.tencent.com/document/api/1318/56791#TagInfo)](https://cloud.tencent.com/document/api/1318/56791#[TagInfo](https://cloud.tencent.com/document/api/1318/56791#TagInfo))
+* [[WeComTagDetail](https://cloud.tencent.com/document/api/1318/56791#WeComTagDetail)](https://cloud.tencent.com/document/api/1318/56791#[WeComTagDetail](https://cloud.tencent.com/document/api/1318/56791#WeComTagDetail))
 
 ### 第 1 次发布
 

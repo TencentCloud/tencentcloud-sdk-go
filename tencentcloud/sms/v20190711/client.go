@@ -391,6 +391,7 @@ func NewDescribeSmsTemplateListResponse() (response *DescribeSmsTemplateListResp
 //  INTERNALERROR_PARSEBACKENDRESPONSEFAIL = "InternalError.ParseBackendResponseFail"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
 //  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

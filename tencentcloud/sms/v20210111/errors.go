@@ -74,6 +74,9 @@ const (
 	// 模板个数达到最大值。
 	FAILEDOPERATION_TEMPLATENUMBERLIMIT = "FailedOperation.TemplateNumberLimit"
 
+	// 解析用户参数失败，可联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 。
+	INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
+
 	// 其他错误，请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 并提供失败手机号。
 	INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 

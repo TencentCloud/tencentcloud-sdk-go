@@ -1391,15 +1391,7 @@ func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
 // 批量发送消息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
-//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response *SendBatchMessagesResponse, err error) {
     if request == nil {
         request = NewSendBatchMessagesRequest()
@@ -1428,15 +1420,7 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 // 发送cmq消息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
-//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()
@@ -1465,15 +1449,7 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
 // 发送单条消息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
-//  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessagesResponse, err error) {
     if request == nil {
         request = NewSendMessagesRequest()

@@ -64,6 +64,7 @@ func NewAddTeamMemberResponse() (response *AddTeamMemberResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_TEAMID = "InvalidParameterValue.TeamId"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

@@ -252,6 +252,7 @@ func NewDescribeVideoStatResponse() (response *DescribeVideoStatResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVideoStat(request *DescribeVideoStatRequest) (response *DescribeVideoStatResponse, err error) {
     if request == nil {
         request = NewDescribeVideoStatRequest()

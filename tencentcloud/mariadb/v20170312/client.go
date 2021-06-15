@@ -1319,6 +1319,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
 //  FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
 //  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+//  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 //  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
 //  INTERNALERROR_READDATABASEFAILED = "InternalError.ReadDatabaseFailed"
 //  INTERNALERROR_ROUTENOTFOUND = "InternalError.RouteNotFound"
@@ -1552,6 +1553,7 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
     if request == nil {
