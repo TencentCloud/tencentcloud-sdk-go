@@ -74,6 +74,9 @@ const (
 	// 图片编码无效。
 	INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 
+	// 图片没有文字。
+	INVALIDPARAMETERVALUE_IMAGEISNOTEXT = "InvalidParameterValue.ImageIsNoText"
+
 	// 图片URL无效。
 	INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
 

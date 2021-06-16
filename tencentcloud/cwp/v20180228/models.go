@@ -709,6 +709,56 @@ func (r *CreateProcessTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateProtectServerRequest struct {
+	*tchttp.BaseRequest
+
+	// 防护目录地址
+	ProtectDir *string `json:"ProtectDir,omitempty" name:"ProtectDir"`
+
+	// 防护机器 信息
+	ProtectHostConfig []*ProtectHostConfig `json:"ProtectHostConfig,omitempty" name:"ProtectHostConfig"`
+}
+
+func (r *CreateProtectServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProtectServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProtectDir")
+	delete(f, "ProtectHostConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProtectServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProtectServerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateProtectServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProtectServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSearchLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -1700,6 +1750,48 @@ func (r *DeleteUsualLoginPlacesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUsualLoginPlacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWebPageEventLogRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DeleteWebPageEventLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebPageEventLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWebPageEventLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWebPageEventLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWebPageEventLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebPageEventLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5623,6 +5715,69 @@ func (r *DescribeVulsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWebPageGeneralizeRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeWebPageGeneralizeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebPageGeneralizeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebPageGeneralizeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebPageGeneralizeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 防护监测 0 未开启 1 已开启 2 异常
+		ProtectMonitor *uint64 `json:"ProtectMonitor,omitempty" name:"ProtectMonitor"`
+
+		// 防护目录数
+		ProtectDirNum *uint64 `json:"ProtectDirNum,omitempty" name:"ProtectDirNum"`
+
+		// 防护文件数
+		ProtectFileNum *uint64 `json:"ProtectFileNum,omitempty" name:"ProtectFileNum"`
+
+		// 篡改文件数
+		TamperFileNum *uint64 `json:"TamperFileNum,omitempty" name:"TamperFileNum"`
+
+		// 篡改数
+		TamperNum *uint64 `json:"TamperNum,omitempty" name:"TamperNum"`
+
+		// 今日防护
+		ProtectToday *uint64 `json:"ProtectToday,omitempty" name:"ProtectToday"`
+
+		// 防护主机数
+		ProtectHostNum *uint64 `json:"ProtectHostNum,omitempty" name:"ProtectHostNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebPageGeneralizeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebPageGeneralizeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWeeklyReportBruteAttacksRequest struct {
 	*tchttp.BaseRequest
 
@@ -7784,6 +7939,60 @@ func (r *ModifyProVersionRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyWebPageProtectSettingRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要操作的类型1 目录名称 2 防护文件类型
+	ModifyType *uint64 `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 提交值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 配置对应的protect_path
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *ModifyWebPageProtectSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebPageProtectSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModifyType")
+	delete(f, "Value")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWebPageProtectSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWebPageProtectSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyWebPageProtectSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebPageProtectSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NonLocalLoginPlace struct {
 
 	// 事件ID。
@@ -8152,6 +8361,18 @@ type ProcessStatistics struct {
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
 }
 
+type ProtectHostConfig struct {
+
+	// 机器唯一ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 防护开关 0  关闭 1开启
+	ProtectSwitch *uint64 `json:"ProtectSwitch,omitempty" name:"ProtectSwitch"`
+
+	// 自动恢复开关 0 关闭 1开启
+	AutoRecovery *uint64 `json:"AutoRecovery,omitempty" name:"AutoRecovery"`
+}
+
 type RecoverMalwaresRequest struct {
 	*tchttp.BaseRequest
 
@@ -8412,6 +8633,72 @@ type ReverseShellRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+}
+
+type ScanVulRequest struct {
+	*tchttp.BaseRequest
+
+	// 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文;分隔)
+	VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
+
+	// 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文;分隔)
+	VulLevels *string `json:"VulLevels,omitempty" name:"VulLevels"`
+
+	// 服务器分类：1:专业版服务器；2:自选服务器
+	HostType *uint64 `json:"HostType,omitempty" name:"HostType"`
+
+	// 自选服务器时生效，主机quuid的string数组
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+
+	// 是否是应急漏洞 0 否 1 是
+	VulEmergency *uint64 `json:"VulEmergency,omitempty" name:"VulEmergency"`
+}
+
+func (r *ScanVulRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulCategories")
+	delete(f, "VulLevels")
+	delete(f, "HostType")
+	delete(f, "QuuidList")
+	delete(f, "VulEmergency")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVulResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScanVulResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchTemplate struct {

@@ -47,13 +47,13 @@ type CreateSessionRequest struct {
 	// 【已废弃】
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
-	// 单位Mbps，固定码率，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)
+	// 单位Mbps，固定码率建议值，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
-	// 单位Mbps，动态调整最大码率，有一定浮动范围
+	// 单位Mbps，动态调整最大码率建议值，会按实际情况调整
 	MaxBitrate *uint64 `json:"MaxBitrate,omitempty" name:"MaxBitrate"`
 
-	// 单位Mbps，动态调整最小码率，有一定浮动范围
+	// 单位Mbps，动态调整最小码率建议值，会按实际情况调整
 	MinBitrate *uint64 `json:"MinBitrate,omitempty" name:"MinBitrate"`
 
 	// 帧率，可设置为30、45、60、90、120、144

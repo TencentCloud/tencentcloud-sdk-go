@@ -901,19 +901,19 @@ type MusicDetailInfo struct {
 	// 商业化权益
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
-	// 场景信息
+	// 应用歌曲信息,1.图文/短视频,2.网络直播,3.网络电台FM,4.免费游戏,5.商业游戏,6.网店网站设计,7.广告营销,8.网络长视频
 	Scene []*string `json:"Scene,omitempty" name:"Scene"`
 
-	// 应用地域
+	// 应用地域,1. 中国大陆,2. 中国含港澳台,3. 全球
 	Region []*string `json:"Region,omitempty" name:"Region"`
 
-	// 授权期限
+	// 授权时间,1. 1年, 5. 随片永久
 	AuthPeriod *string `json:"AuthPeriod,omitempty" name:"AuthPeriod"`
 
-	// 商业化权益
+	// 商业化授权，1. 支持商业化 ,2. 不支持商业化
 	Commercialization *string `json:"Commercialization,omitempty" name:"Commercialization"`
 
-	// 跨平台传播权益
+	// 跨平台传播，1. 支持跨平台传播 ,2. 不支持跨平台传播
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 传播渠道
@@ -1221,6 +1221,7 @@ type TakeMusicOffShelves struct {
 	MusicIds *string `json:"MusicIds,omitempty" name:"MusicIds"`
 
 	// 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
+	// 在售状态，0在售，1临时下架，2永久下架
 	SaleStatus *string `json:"SaleStatus,omitempty" name:"SaleStatus"`
 }
 

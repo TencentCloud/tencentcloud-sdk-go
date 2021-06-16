@@ -113,6 +113,7 @@ func NewImageToObjectResponse() (response *ImageToObjectResponse) {
 // 图片转结构化对象
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
 //  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 //  FAILEDOPERATION_UNKNOWNERROR = "FailedOperation.UnknownError"
@@ -131,6 +132,7 @@ func NewImageToObjectResponse() (response *ImageToObjectResponse) {
 //  INVALIDPARAMETER_ROTATETHEANGLE = "InvalidParameter.RotateTheAngle"
 //  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 //  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEISNOTEXT = "InvalidParameterValue.ImageIsNoText"
 //  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"

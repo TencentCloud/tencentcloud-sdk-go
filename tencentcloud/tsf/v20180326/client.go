@@ -5203,6 +5203,74 @@ func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *Rollb
     return
 }
 
+func NewSearchBusinessLogRequest() (request *SearchBusinessLogRequest) {
+    request = &SearchBusinessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "SearchBusinessLog")
+    return
+}
+
+func NewSearchBusinessLogResponse() (response *SearchBusinessLogResponse) {
+    response = &SearchBusinessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchBusinessLog
+// 业务日志搜索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmBusiLogSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) SearchBusinessLog(request *SearchBusinessLogRequest) (response *SearchBusinessLogResponse, err error) {
+    if request == nil {
+        request = NewSearchBusinessLogRequest()
+    }
+    response = NewSearchBusinessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchStdoutLogRequest() (request *SearchStdoutLogRequest) {
+    request = &SearchStdoutLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "SearchStdoutLog")
+    return
+}
+
+func NewSearchStdoutLogResponse() (response *SearchStdoutLogResponse) {
+    response = &SearchStdoutLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchStdoutLog
+// 标准输出日志搜索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) SearchStdoutLog(request *SearchStdoutLogRequest) (response *SearchStdoutLogResponse, err error) {
+    if request == nil {
+        request = NewSearchStdoutLogRequest()
+    }
+    response = NewSearchStdoutLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewShrinkGroupRequest() (request *ShrinkGroupRequest) {
     request = &ShrinkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5222,8 +5290,11 @@ func NewShrinkGroupResponse() (response *ShrinkGroupResponse) {
 // 下线部署组所有机器实例
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
-//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) ShrinkGroup(request *ShrinkGroupRequest) (response *ShrinkGroupResponse, err error) {
     if request == nil {
         request = NewShrinkGroupRequest()

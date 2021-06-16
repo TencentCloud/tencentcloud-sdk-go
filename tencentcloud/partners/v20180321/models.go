@@ -55,7 +55,7 @@ type AgentAuditedClient struct {
 	// 是否欠费,0：不欠费；1：欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
 
-	// 客户类型：可以为new(新拓)/assign(指定)/old(存量)/direct(直销)/direct_newopp(直销(新商机))/空
+	// 客户类型：可以为new(新拓)/assign(指定)/old(存量已关联)/old_newchecking(存量-新关联考核中)/old_newnotpass(存量-新关联未达标)/direct(直销)/direct_newopp(直销(新商机))/空
 	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
@@ -651,7 +651,7 @@ type DescribeAgentAuditedClientsRequest struct {
 	// 限制数目
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+	// 客户类型：可以为new(新拓)/assign(指定)/old(存量已关联)/old_newchecking(存量-新关联考核中)/old_newnotpass(存量-新关联未达标)/direct(直销)/direct_newopp(直销(新商机))/空
 	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空

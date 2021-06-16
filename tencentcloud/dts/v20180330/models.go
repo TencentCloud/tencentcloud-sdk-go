@@ -94,6 +94,9 @@ type CompleteMigrateJobRequest struct {
 
 	// 数据迁移任务ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
+	CompleteMode *string `json:"CompleteMode,omitempty" name:"CompleteMode"`
 }
 
 func (r *CompleteMigrateJobRequest) ToJsonString() string {
@@ -109,6 +112,7 @@ func (r *CompleteMigrateJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "CompleteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompleteMigrateJobRequest has unknown keys!", "")
 	}

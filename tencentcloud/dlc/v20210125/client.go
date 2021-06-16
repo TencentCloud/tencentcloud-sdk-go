@@ -104,6 +104,37 @@ func (c *Client) CreateScript(request *CreateScriptRequest) (response *CreateScr
     return
 }
 
+func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
+    request = &CreateStoreLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateStoreLocation")
+    return
+}
+
+func NewCreateStoreLocationResponse() (response *CreateStoreLocationResponse) {
+    response = &CreateStoreLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateStoreLocation
+// 该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateStoreLocation(request *CreateStoreLocationRequest) (response *CreateStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewCreateStoreLocationRequest()
+    }
+    response = NewCreateStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTableRequest() (request *CreateTableRequest) {
     request = &CreateTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -156,6 +187,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
@@ -372,6 +404,7 @@ func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
 func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
     if request == nil {
         request = NewDescribeViewsRequest()

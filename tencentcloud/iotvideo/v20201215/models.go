@@ -309,6 +309,76 @@ type CloudStorageTimeInfo struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+type ControlDeviceDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 属性数据, JSON格式字符串, 注意字段需要在物模型属性里定义
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 请求类型 , 不填该参数或者 desired 表示下发属性给设备,  reported 表示模拟设备上报属性
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 上报数据UNIX时间戳(毫秒), 仅对Method:reported有效
+	DataTimestamp *int64 `json:"DataTimestamp,omitempty" name:"DataTimestamp"`
+}
+
+func (r *ControlDeviceDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlDeviceDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Data")
+	delete(f, "Method")
+	delete(f, "DataTimestamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlDeviceDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlDeviceDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回信息
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// JSON字符串， 返回下发控制的结果信息, 
+	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlDeviceDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -3463,6 +3533,72 @@ type ProductTemplate struct {
 	// 九宫格图片地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IconUrlGrid *string `json:"IconUrlGrid,omitempty" name:"IconUrlGrid"`
+}
+
+type PublishMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息发往的主题
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 云端下发到设备的控制报文
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息服务质量等级，取值为0或1
+	Qos *uint64 `json:"Qos,omitempty" name:"Qos"`
+
+	// Payload的内容编码格式，取值为base64或空。base64表示云端将接收到的base64编码后的报文再转换成二进制报文下发至设备，为空表示不作转换，透传下发至设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
+}
+
+func (r *PublishMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Topic")
+	delete(f, "Payload")
+	delete(f, "Qos")
+	delete(f, "PayloadEncoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetCloudStorageRequest struct {

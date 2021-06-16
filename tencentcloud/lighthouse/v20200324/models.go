@@ -1621,7 +1621,7 @@ type DescribeResetInstanceBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
-	// 取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+	// 取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
 	// 类型：String
 	// 必选：否
 	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -2306,7 +2306,7 @@ type InstanceTrafficPackage struct {
 
 type InternetAccessible struct {
 
-	// 网络计费类型,，取值范围：
+	// 网络计费类型，取值范围：
 	// <li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
 	// <li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
 	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
@@ -2797,7 +2797,7 @@ type RegionInfo struct {
 	// 地域描述，例如，华南地区(广州)。
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
-	// 地域是否可用状态，取值为AVAILABLE。
+	// 地域是否可用状态，取值仅为AVAILABLE。
 	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
 
 	// 是否中国大陆地域

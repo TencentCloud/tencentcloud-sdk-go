@@ -136,6 +136,37 @@ func (c *Client) CheckForwardAuth(request *CheckForwardAuthRequest) (response *C
     return
 }
 
+func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
+    request = &ControlDeviceDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ControlDeviceData")
+    return
+}
+
+func NewControlDeviceDataResponse() (response *ControlDeviceDataResponse) {
+    response = &ControlDeviceDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ControlDeviceData
+// 根据设备产品ID、设备名称，设置控制设备的属性数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response *ControlDeviceDataResponse, err error) {
+    if request == nil {
+        request = NewControlDeviceDataRequest()
+    }
+    response = NewControlDeviceDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchRequest() (request *CreateBatchRequest) {
     request = &CreateBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1550,6 +1581,37 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
         request = NewModifyProductRequest()
     }
     response = NewModifyProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishMessageRequest() (request *PublishMessageRequest) {
+    request = &PublishMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "PublishMessage")
+    return
+}
+
+func NewPublishMessageResponse() (response *PublishMessageResponse) {
+    response = &PublishMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PublishMessage
+// 本接口（PublishMessage）用于使用自定义透传协议进行设备远控
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishMessageRequest()
+    }
+    response = NewPublishMessageResponse()
     err = c.Send(request, response)
     return
 }

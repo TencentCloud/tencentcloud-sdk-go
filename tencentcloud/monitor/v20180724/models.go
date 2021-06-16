@@ -705,7 +705,9 @@ type CreateAlertRuleRequest struct {
 	// 标签列表
 	Labels []*PrometheusRuleKV `json:"Labels,omitempty" name:"Labels"`
 
-	// 注释列表
+	// 注释列表。
+	// 
+	// 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
 	Annotations []*PrometheusRuleKV `json:"Annotations,omitempty" name:"Annotations"`
 
 	// 报警策略模板分类
@@ -5006,7 +5008,9 @@ type UpdateAlertRuleRequest struct {
 	// 报警规则标签列表
 	Labels []*PrometheusRuleKV `json:"Labels,omitempty" name:"Labels"`
 
-	// 报警规则注释列表
+	// 报警规则注释列表。
+	// 
+	// 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
 	Annotations []*PrometheusRuleKV `json:"Annotations,omitempty" name:"Annotations"`
 
 	// 报警策略模板分类

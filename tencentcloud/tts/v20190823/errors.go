@@ -20,8 +20,20 @@ const (
 	// 授权无效。
 	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 任务不存在。
+	FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+
 	// 路由错误。
 	INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+
+	// 数据库存取失败。
+	INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+
+	// Redis存储失败。
+	INTERNALERROR_FAILACCESSREDIS = "InternalError.FailAccessRedis"
 
 	// 内部错误。
 	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
@@ -38,6 +50,9 @@ const (
 	// APPID未注册，请在语音合成主页   https://console.cloud.tencent.com/tts  开通使用。
 	INVALIDPARAMETERVALUE_APPIDNOTREGISTERED = "InvalidParameterValue.AppIdNotRegistered"
 
+	// CallbackUrl非法或不可访问。
+	INVALIDPARAMETERVALUE_CALLBACKURL = "InvalidParameterValue.CallbackUrl"
+
 	// Codec非法，请参考Codec参数说明。
 	INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 
@@ -49,6 +64,9 @@ const (
 
 	// 缺少参数。
 	INVALIDPARAMETERVALUE_MISSPARAMETERS = "InvalidParameterValue.MissParameters"
+
+	// ModelType非法。
+	INVALIDPARAMETERVALUE_MODELTYPE = "InvalidParameterValue.ModelType"
 
 	// PrimaryLanguage非法，请参考PrimaryLanguage参数说明。
 	INVALIDPARAMETERVALUE_PRIMARYLANGUAGE = "InvalidParameterValue.PrimaryLanguage"
@@ -74,6 +92,9 @@ const (
 	// Text参数SSML语法错误，请参考SSML文档说明。
 	INVALIDPARAMETERVALUE_TEXTSSMLPARSEERROR = "InvalidParameterValue.TextSsmlParseError"
 
+	// 合成文本字符过长。
+	INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+
 	// Type 类型非法。
 	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 
@@ -92,6 +113,15 @@ const (
 	// 欠费。
 	UNSUPPORTEDOPERATION_ACCOUNTARREARS = "UnsupportedOperation.AccountArrears"
 
+	// 鉴权已过期。
+	UNSUPPORTEDOPERATION_AUTHORIZATIONEXPIRED = "UnsupportedOperation.AuthorizationExpired"
+
+	// 鉴权失败。
+	UNSUPPORTEDOPERATION_AUTHORIZATIONFAILED = "UnsupportedOperation.AuthorizationFailed"
+
+	// 服务禁止使用。
+	UNSUPPORTEDOPERATION_FORBIDDENUSE = "UnsupportedOperation.ForbiddenUse"
+
 	// 没有余额。
 	UNSUPPORTEDOPERATION_NOBANLANCE = "UnsupportedOperation.NoBanlance"
 
@@ -101,8 +131,14 @@ const (
 	// 服务器已打开。
 	UNSUPPORTEDOPERATION_SERVERALREADYOPEN = "UnsupportedOperation.ServerAlreadyOpen"
 
+	// 服务已销毁。
+	UNSUPPORTEDOPERATION_SERVERDESTORYED = "UnsupportedOperation.ServerDestoryed"
+
 	// 服务未开通使用。
 	UNSUPPORTEDOPERATION_SERVERNOTOPEN = "UnsupportedOperation.ServerNotOpen"
+
+	// 服务已停止使用。
+	UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
 
 	// 文本过长，请参考请求参数Text的说明。
 	UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"

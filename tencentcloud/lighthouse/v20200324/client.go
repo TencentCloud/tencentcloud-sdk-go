@@ -1115,7 +1115,7 @@ func NewDescribeResetInstanceBlueprintsResponse() (response *DescribeResetInstan
 }
 
 // DescribeResetInstanceBlueprints
-// 查询重置实例的镜像信息
+// 本接口（DescribeResetInstanceBlueprints）查询重置实例的镜像信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = "InvalidParameter.FilterValueLimitExceeded"

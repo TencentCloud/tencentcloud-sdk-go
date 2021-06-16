@@ -1786,11 +1786,15 @@ type Entity struct {
 type EventContent struct {
 
 	// 事件类型，可取值为：
-	// <li>Storage.NewFileCreated：新文件产生。</li>
+	// <li>Storage.NewFileCreated：新文件产生；</li>
+	// <li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
 	StorageNewFileCreatedEvent *StorageNewFileCreatedEvent `json:"StorageNewFileCreatedEvent,omitempty" name:"StorageNewFileCreatedEvent"`
+
+	// 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
+	ProjectStreamConnectStatusChangedEvent *ProjectStreamConnectStatusChangedEvent `json:"ProjectStreamConnectStatusChangedEvent,omitempty" name:"ProjectStreamConnectStatusChangedEvent"`
 }
 
 type ExportVideoByEditorTrackDataRequest struct {
@@ -3495,6 +3499,17 @@ type ProjectInfo struct {
 
 	// 项目更新时间，格式按照 ISO 8601 标准表示。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ProjectStreamConnectStatusChangedEvent struct {
+
+	// 项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目状态，取值有：
+	// <li>Working：云转推推流开始；</li>
+	// <li>Stopped：云转推推流结束。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type RecordReplayProjectInput struct {

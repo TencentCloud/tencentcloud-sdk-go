@@ -289,6 +289,41 @@ type HistologyType struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type Hospitalization struct {
+
+	// 入院时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionTime *string `json:"AdmissionTime,omitempty" name:"AdmissionTime"`
+
+	// 出院时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DischargeTime *string `json:"DischargeTime,omitempty" name:"DischargeTime"`
+
+	// 住院天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionDays *string `json:"AdmissionDays,omitempty" name:"AdmissionDays"`
+
+	// 入院诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionDignosis *string `json:"AdmissionDignosis,omitempty" name:"AdmissionDignosis"`
+
+	// 入院情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdmissionCondition *string `json:"AdmissionCondition,omitempty" name:"AdmissionCondition"`
+
+	// 诊疗经过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnosisTreatment *string `json:"DiagnosisTreatment,omitempty" name:"DiagnosisTreatment"`
+
+	// 出院诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DischargeDiagnosis *string `json:"DischargeDiagnosis,omitempty" name:"DischargeDiagnosis"`
+
+	// 出院医嘱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DischargeInstruction *string `json:"DischargeInstruction,omitempty" name:"DischargeInstruction"`
+}
+
 type IHCInfo struct {
 
 	// 原文位置
@@ -328,7 +363,7 @@ type ImageToClassRequest struct {
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
 
-	// 图片类型
+	// 图片类型，目前支持11（检验报告），12（检查报告），15（病理报告），218（诊断证明）。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -386,10 +421,11 @@ type ImageToObjectRequest struct {
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
 
-	// 图片类别
+	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 是否使用分类引擎
+	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
+	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
 }
 
@@ -555,6 +591,41 @@ type MedDoc struct {
 
 	// 诊疗记录
 	TreatmentRecord *TreatmentRecord `json:"TreatmentRecord,omitempty" name:"TreatmentRecord"`
+}
+
+type MedicalRecordInfo struct {
+
+	// 就诊日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnosisTime *string `json:"DiagnosisTime,omitempty" name:"DiagnosisTime"`
+
+	// 就诊科室
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnosisDepartmentName *string `json:"DiagnosisDepartmentName,omitempty" name:"DiagnosisDepartmentName"`
+
+	// 就诊医生
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnosisDoctorName *string `json:"DiagnosisDoctorName,omitempty" name:"DiagnosisDoctorName"`
+
+	// 临床诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClinicalDiagnosis *string `json:"ClinicalDiagnosis,omitempty" name:"ClinicalDiagnosis"`
+
+	// 主述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainNarration *string `json:"MainNarration,omitempty" name:"MainNarration"`
+
+	// 体格检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalExamination *string `json:"PhysicalExamination,omitempty" name:"PhysicalExamination"`
+
+	// 检查结论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InspectionFindings *string `json:"InspectionFindings,omitempty" name:"InspectionFindings"`
+
+	// 治疗意见
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TreatmentOpinion *string `json:"TreatmentOpinion,omitempty" name:"TreatmentOpinion"`
 }
 
 type MenstrualMedicalHistory struct {
@@ -854,6 +925,46 @@ type PatientInfo struct {
 	// 患者身份证
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 健康卡号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCardNo *string `json:"HealthCardNo,omitempty" name:"HealthCardNo"`
+
+	// 社保卡号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SocialSecurityCardNo *string `json:"SocialSecurityCardNo,omitempty" name:"SocialSecurityCardNo"`
+
+	// 出生日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
+
+	// 民族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ethnicity *string `json:"Ethnicity,omitempty" name:"Ethnicity"`
+
+	// 婚姻状况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Married *string `json:"Married,omitempty" name:"Married"`
+
+	// 职业
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Profession *string `json:"Profession,omitempty" name:"Profession"`
+
+	// 教育程度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EducationBackground *string `json:"EducationBackground,omitempty" name:"EducationBackground"`
+
+	// 国籍
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+	// 籍贯
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BirthPlace *string `json:"BirthPlace,omitempty" name:"BirthPlace"`
+
+	// 医保类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalInsuranceType *string `json:"MedicalInsuranceType,omitempty" name:"MedicalInsuranceType"`
 }
 
 type PersonalMedicalHistory struct {
@@ -948,6 +1059,10 @@ type ReportInfo struct {
 	// 超声号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UltraNum *string `json:"UltraNum,omitempty" name:"UltraNum"`
+
+	// 临床诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Diagnose *string `json:"Diagnose,omitempty" name:"Diagnose"`
 }
 
 type Size struct {
@@ -978,6 +1093,51 @@ type Summary struct {
 	// 文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type Surgery struct {
+
+	// 手术史
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SurgeryHistory *SurgeryHistory `json:"SurgeryHistory,omitempty" name:"SurgeryHistory"`
+}
+
+type SurgeryAttr struct {
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type SurgeryHistory struct {
+
+	// 手术名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SurgeryName *SurgeryAttr `json:"SurgeryName,omitempty" name:"SurgeryName"`
+
+	// 手术日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SurgeryDate *SurgeryAttr `json:"SurgeryDate,omitempty" name:"SurgeryDate"`
+
+	// 术前诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreoperativePathology *SurgeryAttr `json:"PreoperativePathology,omitempty" name:"PreoperativePathology"`
+
+	// 术中诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntraoperativePathology *SurgeryAttr `json:"IntraoperativePathology,omitempty" name:"IntraoperativePathology"`
+
+	// 术后诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostoperativePathology *SurgeryAttr `json:"PostoperativePathology,omitempty" name:"PostoperativePathology"`
+
+	// 出院诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DischargeDiagnosis *SurgeryAttr `json:"DischargeDiagnosis,omitempty" name:"DischargeDiagnosis"`
 }
 
 type SymptomInfo struct {
@@ -1044,6 +1204,18 @@ type Template struct {
 	// 报告类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportType *string `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 门诊病历信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalRecordInfo *MedicalRecordInfo `json:"MedicalRecordInfo,omitempty" name:"MedicalRecordInfo"`
+
+	// 出入院信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hospitalization *Hospitalization `json:"Hospitalization,omitempty" name:"Hospitalization"`
+
+	// 手术记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Surgery *Surgery `json:"Surgery,omitempty" name:"Surgery"`
 }
 
 type TextToClassRequest struct {
@@ -1101,10 +1273,11 @@ type TextToObjectRequest struct {
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 报告类型，目前支持12（检查报告单），15（病理报告），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
+	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
 }
 
@@ -1312,7 +1485,7 @@ type TuberInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RearEcho *BlockInfo `json:"RearEcho,omitempty" name:"RearEcho"`
 
-	// 质地弹性
+	// 弹性质地
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Elastic *Elastic `json:"Elastic,omitempty" name:"Elastic"`
 

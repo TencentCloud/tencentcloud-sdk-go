@@ -29,6 +29,12 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// SQL解析失败。
+	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+
+	// 存储位置错误。
+	INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

@@ -697,6 +697,33 @@ func (r *BindPluginResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BusinessLogV2 struct {
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 日志时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 实例IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIp *string `json:"InstanceIp,omitempty" name:"InstanceIp"`
+
+	// 日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogId *string `json:"LogId,omitempty" name:"LogId"`
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
 type ChangeApiUsableStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -11401,6 +11428,202 @@ type SchedulingStrategy struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type SearchBusinessLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 机器实例ID，不传表示全部实例
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 请求偏移量，取值范围大于等于0，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页请求配置数量，取值范围[1, 200]，默认值为50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序规则，默认值"time"
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，取值"asc"或"desc"，默认值"desc"
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 检索关键词
+	SearchWords []*string `json:"SearchWords,omitempty" name:"SearchWords"`
+
+	// 部署组ID列表，不传表示全部部署组
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 检索类型，取值"LUCENE", "REGEXP", "NORMAL"
+	SearchWordType *string `json:"SearchWordType,omitempty" name:"SearchWordType"`
+
+	// 批量请求类型，取值"page"或"scroll"
+	BatchType *string `json:"BatchType,omitempty" name:"BatchType"`
+
+	// 游标ID
+	ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
+}
+
+func (r *SearchBusinessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchBusinessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "InstanceIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "SearchWords")
+	delete(f, "GroupIds")
+	delete(f, "SearchWordType")
+	delete(f, "BatchType")
+	delete(f, "ScrollId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchBusinessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchBusinessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageBusinessLogV2 `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchBusinessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchBusinessLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchStdoutLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 机器实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 单页请求配置数量，取值范围[1, 500]，默认值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 检索关键词
+	SearchWords []*string `json:"SearchWords,omitempty" name:"SearchWords"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 请求偏移量，取值范围大于等于0，默认值为
+	// 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序规则，默认值"time"
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，取值"asc"或"desc"，默认
+	// 值"desc"
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 检索类型，取值"LUCENE", "REGEXP",
+	// "NORMAL"
+	SearchWordType *string `json:"SearchWordType,omitempty" name:"SearchWordType"`
+
+	// 批量请求类型，取值"page"或"scroll"，默认
+	// 值"page"
+	BatchType *string `json:"BatchType,omitempty" name:"BatchType"`
+
+	// 游标ID
+	ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
+}
+
+func (r *SearchStdoutLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchStdoutLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "SearchWords")
+	delete(f, "StartTime")
+	delete(f, "GroupId")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "SearchWordType")
+	delete(f, "BatchType")
+	delete(f, "ScrollId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchStdoutLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchStdoutLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 标准输出日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageStdoutLogV2 `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchStdoutLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchStdoutLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ServerlessGroup struct {
 
 	// 部署组ID
@@ -11833,6 +12056,25 @@ func (r *StartGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StdoutLogV2 struct {
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 日志时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 实例IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIp *string `json:"InstanceIp,omitempty" name:"InstanceIp"`
 }
 
 type StopContainerGroupRequest struct {
@@ -12309,6 +12551,25 @@ type TsfPageApplication struct {
 	Content []*ApplicationForPage `json:"Content,omitempty" name:"Content"`
 }
 
+type TsfPageBusinessLogV2 struct {
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 业务日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*BusinessLogV2 `json:"Content,omitempty" name:"Content"`
+
+	// 游标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
+
+	// 查询状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type TsfPageCluster struct {
 
 	// 总条数
@@ -12444,6 +12705,25 @@ type TsfPageSimpleGroup struct {
 	// 简单部署组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*SimpleGroup `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfPageStdoutLogV2 struct {
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 标准输出日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*StdoutLogV2 `json:"Content,omitempty" name:"Content"`
+
+	// 游标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScrollId *string `json:"ScrollId,omitempty" name:"ScrollId"`
+
+	// 查询状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type TsfPageUnitNamespace struct {

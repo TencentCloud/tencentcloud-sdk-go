@@ -43,6 +43,158 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateTtsTaskRequest() (request *CreateTtsTaskRequest) {
+    request = &CreateTtsTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tts", APIVersion, "CreateTtsTask")
+    return
+}
+
+func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
+    response = &CreateTtsTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTtsTask
+// 本接口服务对10万字符以内的文本进行语音合成，异步返回音频结果。满足一次性合成较长文本的客户需求，如阅读播报、新闻媒体等场景。
+//
+// 
+//
+// <li>支持音频格式：mp3,wav,pcm</li>
+//
+// <li>支持音频采样率：16000 Hz</li>
+//
+// <li>支持中文普通话、英文、中英文混读、粤语合成</li>
+//
+// <li>支持语速、音量设置</li>
+//
+// <li>支持回调或轮询的方式获取结果，结果获取请参考 长文本语音合成结果查询。</li>
+//
+// <li>长文本语音合成任务完成后，合成音频结果在服务端可保存24小时</li>
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDTEXT = "InvalidParameter.InvalidText"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
+//  INVALIDPARAMETERVALUE_APPIDNOTREGISTERED = "InvalidParameterValue.AppIdNotRegistered"
+//  INVALIDPARAMETERVALUE_CALLBACKURL = "InvalidParameterValue.CallbackUrl"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_ERRORCARDINALFORMAT = "InvalidParameterValue.ErrorCardinalFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTEXT = "InvalidParameterValue.InvalidText"
+//  INVALIDPARAMETERVALUE_MISSPARAMETERS = "InvalidParameterValue.MissParameters"
+//  INVALIDPARAMETERVALUE_MODELTYPE = "InvalidParameterValue.ModelType"
+//  INVALIDPARAMETERVALUE_PRIMARYLANGUAGE = "InvalidParameterValue.PrimaryLanguage"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SPEED = "InvalidParameterValue.Speed"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TEXTEMPTY = "InvalidParameterValue.TextEmpty"
+//  INVALIDPARAMETERVALUE_TEXTNOTUTF8 = "InvalidParameterValue.TextNotUtf8"
+//  INVALIDPARAMETERVALUE_TEXTSSMLPARSEERROR = "InvalidParameterValue.TextSsmlParseError"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VOICETYPE = "InvalidParameterValue.VoiceType"
+//  INVALIDPARAMETERVALUE_VOLUME = "InvalidParameterValue.Volume"
+//  LIMITEXCEEDED_ACCESSLIMIT = "LimitExceeded.AccessLimit"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTARREARS = "UnsupportedOperation.AccountArrears"
+//  UNSUPPORTEDOPERATION_AUTHORIZATIONEXPIRED = "UnsupportedOperation.AuthorizationExpired"
+//  UNSUPPORTEDOPERATION_AUTHORIZATIONFAILED = "UnsupportedOperation.AuthorizationFailed"
+//  UNSUPPORTEDOPERATION_FORBIDDENUSE = "UnsupportedOperation.ForbiddenUse"
+//  UNSUPPORTEDOPERATION_NOBANLANCE = "UnsupportedOperation.NoBanlance"
+//  UNSUPPORTEDOPERATION_NOFREEACCOUNT = "UnsupportedOperation.NoFreeAccount"
+//  UNSUPPORTEDOPERATION_SERVERALREADYOPEN = "UnsupportedOperation.ServerAlreadyOpen"
+//  UNSUPPORTEDOPERATION_SERVERDESTORYED = "UnsupportedOperation.ServerDestoryed"
+//  UNSUPPORTEDOPERATION_SERVERNOTOPEN = "UnsupportedOperation.ServerNotOpen"
+//  UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
+//  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
+func (c *Client) CreateTtsTask(request *CreateTtsTaskRequest) (response *CreateTtsTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTtsTaskRequest()
+    }
+    response = NewCreateTtsTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTtsTaskStatusRequest() (request *DescribeTtsTaskStatusRequest) {
+    request = &DescribeTtsTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tts", APIVersion, "DescribeTtsTaskStatus")
+    return
+}
+
+func NewDescribeTtsTaskStatusResponse() (response *DescribeTtsTaskStatusResponse) {
+    response = &DescribeTtsTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTtsTaskStatus
+// 在调用长文本语音合成请求接口后，有回调和轮询两种方式获取识别结果。
+//
+// 
+//
+// <li>当采用回调方式时，合成完毕后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见 长文本语音合成结果查询 。</li>
+//
+// <li>当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见下文说明。</li>
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILACCESSREDIS = "InternalError.FailAccessRedis"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDTEXT = "InvalidParameter.InvalidText"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
+//  INVALIDPARAMETERVALUE_APPIDNOTREGISTERED = "InvalidParameterValue.AppIdNotRegistered"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_ERRORCARDINALFORMAT = "InvalidParameterValue.ErrorCardinalFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTEXT = "InvalidParameterValue.InvalidText"
+//  INVALIDPARAMETERVALUE_MISSPARAMETERS = "InvalidParameterValue.MissParameters"
+//  INVALIDPARAMETERVALUE_PRIMARYLANGUAGE = "InvalidParameterValue.PrimaryLanguage"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SPEED = "InvalidParameterValue.Speed"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  INVALIDPARAMETERVALUE_TEXTEMPTY = "InvalidParameterValue.TextEmpty"
+//  INVALIDPARAMETERVALUE_TEXTNOTUTF8 = "InvalidParameterValue.TextNotUtf8"
+//  INVALIDPARAMETERVALUE_TEXTSSMLPARSEERROR = "InvalidParameterValue.TextSsmlParseError"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  INVALIDPARAMETERVALUE_VOICETYPE = "InvalidParameterValue.VoiceType"
+//  INVALIDPARAMETERVALUE_VOLUME = "InvalidParameterValue.Volume"
+//  LIMITEXCEEDED_ACCESSLIMIT = "LimitExceeded.AccessLimit"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTARREARS = "UnsupportedOperation.AccountArrears"
+//  UNSUPPORTEDOPERATION_AUTHORIZATIONEXPIRED = "UnsupportedOperation.AuthorizationExpired"
+//  UNSUPPORTEDOPERATION_AUTHORIZATIONFAILED = "UnsupportedOperation.AuthorizationFailed"
+//  UNSUPPORTEDOPERATION_FORBIDDENUSE = "UnsupportedOperation.ForbiddenUse"
+//  UNSUPPORTEDOPERATION_NOBANLANCE = "UnsupportedOperation.NoBanlance"
+//  UNSUPPORTEDOPERATION_NOFREEACCOUNT = "UnsupportedOperation.NoFreeAccount"
+//  UNSUPPORTEDOPERATION_SERVERALREADYOPEN = "UnsupportedOperation.ServerAlreadyOpen"
+//  UNSUPPORTEDOPERATION_SERVERDESTORYED = "UnsupportedOperation.ServerDestoryed"
+//  UNSUPPORTEDOPERATION_SERVERNOTOPEN = "UnsupportedOperation.ServerNotOpen"
+//  UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
+//  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
+func (c *Client) DescribeTtsTaskStatus(request *DescribeTtsTaskStatusRequest) (response *DescribeTtsTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTtsTaskStatusRequest()
+    }
+    response = NewDescribeTtsTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
     request = &TextToVoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

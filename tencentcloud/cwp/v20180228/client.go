@@ -248,6 +248,39 @@ func (c *Client) CreateProcessTask(request *CreateProcessTaskRequest) (response 
     return
 }
 
+func NewCreateProtectServerRequest() (request *CreateProtectServerRequest) {
+    request = &CreateProtectServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "CreateProtectServer")
+    return
+}
+
+func NewCreateProtectServerResponse() (response *CreateProtectServerResponse) {
+    response = &CreateProtectServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProtectServer
+// 添加房展防护服务器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) CreateProtectServer(request *CreateProtectServerRequest) (response *CreateProtectServerResponse, err error) {
+    if request == nil {
+        request = NewCreateProtectServerRequest()
+    }
+    response = NewCreateProtectServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
     request = &CreateSearchLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -920,6 +953,39 @@ func (c *Client) DeleteUsualLoginPlaces(request *DeleteUsualLoginPlacesRequest) 
         request = NewDeleteUsualLoginPlacesRequest()
     }
     response = NewDeleteUsualLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWebPageEventLogRequest() (request *DeleteWebPageEventLogRequest) {
+    request = &DeleteWebPageEventLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteWebPageEventLog")
+    return
+}
+
+func NewDeleteWebPageEventLogResponse() (response *DeleteWebPageEventLogResponse) {
+    response = &DeleteWebPageEventLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteWebPageEventLog
+// 网站防篡改-删除事件记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DeleteWebPageEventLog(request *DeleteWebPageEventLogRequest) (response *DeleteWebPageEventLogResponse, err error) {
+    if request == nil {
+        request = NewDeleteWebPageEventLogRequest()
+    }
+    response = NewDeleteWebPageEventLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -2941,6 +3007,36 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
     return
 }
 
+func NewDescribeWebPageGeneralizeRequest() (request *DescribeWebPageGeneralizeRequest) {
+    request = &DescribeWebPageGeneralizeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageGeneralize")
+    return
+}
+
+func NewDescribeWebPageGeneralizeResponse() (response *DescribeWebPageGeneralizeResponse) {
+    response = &DescribeWebPageGeneralizeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebPageGeneralize
+// 查询网站防篡改 概览信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+func (c *Client) DescribeWebPageGeneralize(request *DescribeWebPageGeneralizeRequest) (response *DescribeWebPageGeneralizeResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebPageGeneralizeRequest()
+    }
+    response = NewDescribeWebPageGeneralizeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWeeklyReportBruteAttacksRequest() (request *DescribeWeeklyReportBruteAttacksRequest) {
     request = &DescribeWeeklyReportBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3543,6 +3639,7 @@ func NewExportReverseShellEventsResponse() (response *ExportReverseShellEventsRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3908,6 +4005,39 @@ func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagReq
     return
 }
 
+func NewModifyWebPageProtectSettingRequest() (request *ModifyWebPageProtectSettingRequest) {
+    request = &ModifyWebPageProtectSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectSetting")
+    return
+}
+
+func NewModifyWebPageProtectSettingResponse() (response *ModifyWebPageProtectSettingResponse) {
+    response = &ModifyWebPageProtectSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWebPageProtectSetting
+// 网站防篡改-修改网站防护设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) ModifyWebPageProtectSetting(request *ModifyWebPageProtectSettingRequest) (response *ModifyWebPageProtectSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyWebPageProtectSettingRequest()
+    }
+    response = NewModifyWebPageProtectSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenProVersionRequest() (request *OpenProVersionRequest) {
     request = &OpenProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4070,6 +4200,44 @@ func (c *Client) RescanImpactedHost(request *RescanImpactedHostRequest) (respons
         request = NewRescanImpactedHostRequest()
     }
     response = NewRescanImpactedHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScanVulRequest() (request *ScanVulRequest) {
+    request = &ScanVulRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ScanVul")
+    return
+}
+
+func NewScanVulResponse() (response *ScanVulResponse) {
+    response = &ScanVulResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScanVul
+// 漏洞管理 - 一键检测
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScanVul(request *ScanVulRequest) (response *ScanVulResponse, err error) {
+    if request == nil {
+        request = NewScanVulRequest()
+    }
+    response = NewScanVulResponse()
     err = c.Send(request, response)
     return
 }

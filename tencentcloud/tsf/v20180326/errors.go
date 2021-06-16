@@ -221,6 +221,9 @@ const (
 	// 调用 TKE 接口失败，%s。
 	INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 
+	// TSF应用性能管理ES客户端响应状态异常。
+	INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
+
 	// [%s]模块未处理异常。。
 	INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 
@@ -307,6 +310,15 @@ const (
 
 	// 仓库中存在软件包，请先删除软件包。
 	INVALIDPARAMETER_REPOSITORYNOTEMPTY = "InvalidParameter.RepositoryNotEmpty"
+
+	// TSF应用性能管理业务日志配置与应用关联参数错误。
+	INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+
+	// TSF应用性能管理业务日志搜索请求参数错误。
+	INVALIDPARAMETER_TSFAPMBUSILOGSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmBusiLogSearchRequestParamError"
+
+	// TSF应用性能管理标准输出日志搜索请求参数错误。
+	INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
 
 	// 仓库批量删除包数量超过单次允许上限。
 	INVALIDPARAMETER_UPPERDELETELIMIT = "InvalidParameter.UpperDeleteLimit"

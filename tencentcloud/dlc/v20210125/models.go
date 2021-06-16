@@ -68,6 +68,9 @@ type CreateDatabaseRequest struct {
 
 	// 数据库基础信息
 	DatabaseInfo *DatabaseInfo `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
+
+	// 数据源名称，默认为CosDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *CreateDatabaseRequest) ToJsonString() string {
@@ -83,6 +86,7 @@ func (r *CreateDatabaseRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DatabaseInfo")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatabaseRequest has unknown keys!", "")
 	}
@@ -170,6 +174,52 @@ func (r *CreateScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateStoreLocationRequest struct {
+	*tchttp.BaseRequest
+
+	// 计算结果存储cos路径，如：cosn://bucketname/
+	StoreLocation *string `json:"StoreLocation,omitempty" name:"StoreLocation"`
+}
+
+func (r *CreateStoreLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStoreLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StoreLocation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStoreLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStoreLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateStoreLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStoreLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTableRequest struct {
 	*tchttp.BaseRequest
 
@@ -227,6 +277,9 @@ type CreateTaskRequest struct {
 
 	// 数据库名称。任务在执行前均会USE该数据库， 除了首次建库时，其他情况建议均添加上。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 默认数据源名称。
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -243,6 +296,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Task")
 	delete(f, "DatabaseName")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -396,6 +450,9 @@ type DescribeDatabasesRequest struct {
 
 	// 模糊匹配，库名关键字。
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为CosDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeDatabasesRequest) ToJsonString() string {
@@ -413,6 +470,7 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "KeyWord")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}
@@ -524,6 +582,9 @@ type DescribeTableRequest struct {
 
 	// 查询表所在的数据库名称。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 查询表所在的数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeTableRequest) ToJsonString() string {
@@ -540,6 +601,7 @@ func (r *DescribeTableRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TableName")
 	delete(f, "DatabaseName")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableRequest has unknown keys!", "")
 	}
@@ -585,6 +647,9 @@ type DescribeTablesRequest struct {
 	// table-name - String - （过滤条件）数据表名称,形如：table-001。
 	// table-id - String - （过滤条件）table id形如：12342。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指定查询的数据源名称，默认为CosDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -603,6 +668,7 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}
@@ -730,6 +796,9 @@ type DescribeViewsRequest struct {
 	// view-name - String - （过滤条件）数据表名称,形如：view-001。
 	// view-id - String - （过滤条件）view id形如：12342。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 数据库所属的数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeViewsRequest) ToJsonString() string {
@@ -748,6 +817,7 @@ func (r *DescribeViewsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeViewsRequest has unknown keys!", "")
 	}
@@ -795,6 +865,17 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type KVPair struct {
+
+	// 配置的key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 配置的value值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Other struct {
 
 	// 枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
@@ -826,6 +907,9 @@ type SQLTask struct {
 
 	// base64加密后的SQL语句
 	SQL *string `json:"SQL,omitempty" name:"SQL"`
+
+	// 任务的配置信息
+	Config []*KVPair `json:"Config,omitempty" name:"Config"`
 }
 
 type Script struct {
@@ -862,6 +946,10 @@ type TableBaseInfo struct {
 
 	// 数据表名字
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 该数据表所属数据源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
 type TableInfo struct {
@@ -920,6 +1008,9 @@ type Task struct {
 
 	// SQL查询任务
 	SQLTask *SQLTask `json:"SQLTask,omitempty" name:"SQLTask"`
+
+	// Spark SQL查询任务
+	SparkSQLTask *SQLTask `json:"SparkSQLTask,omitempty" name:"SparkSQLTask"`
 }
 
 type TaskResponseInfo struct {
@@ -969,6 +1060,9 @@ type TaskResponseInfo struct {
 
 	// 任务执行输出信息。
 	OutputMessage *string `json:"OutputMessage,omitempty" name:"OutputMessage"`
+
+	// 执行SQL的引擎类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 type TextFile struct {
