@@ -156,9 +156,78 @@ func main() {
 }
 ```
 
-更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 examples/cvm/v20170312/run_instances.go 。对于使用json字符串初始化 Request 的例子，可以参考 examples/cvm/v20170312/describe_instances.go 。
+更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。  
+对于复杂接口的 Request 初始化，可以参考 [示例1](./examples/cvm/v20170312/run_instances.go) 。  
+对于使用json字符串初始化 Request，可以参考 [示例2](examples/cvm/v20170312/describe_instances.go) 。  
 
 # 相关配置
+
+## HTTP配置
+
+**如无特殊需要，建议您使用默认配置。**
+
+在创建客户端前，如有需要，您可以通过修改`profile.ClientProfile`中字段的值来进行一些配置。
+
+```go
+// 非必要步骤
+// 实例化一个客户端配置对象，可以指定超时时间等配置
+cpf := profile.NewClientProfile()
+```
+
+具体的配置项说明如下：
+
+### 请求方式
+
+SDK默认使用POST方法。 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
+
+```go
+cpf.HttpProfile.ReqMethod = "POST"
+```
+
+### 超时时间
+
+SDK有默认的超时时间，如非必要请不要修改默认设置。
+如有需要请在代码中查阅以获取最新的默认值。  
+单位：秒
+
+```go
+cpf.HttpProfile.ReqTimeout = 30
+```
+
+### 指定域名
+
+SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
+
+```go
+cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+```
+
+### 签名方式
+
+SDK默认用 `HmacSHA256` 进行签名，它更安全但是会轻微降低性能。
+
+```go
+cpf.SignMethod = "HmacSHA1"
+```
+
+### 设置语言
+
+SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
+但大部分产品或接口并不支持全英文的返回。
+
+```go
+cpf.Language = "en-US"
+```
+
+### DEBUG模式
+
+DEBUG模式会打印更详细的日志，当您需要进行详细的排查错误时可以开启。  
+默认为 `false`
+
+```go
+cpf.Debug = true
+```
 
 ## 代理
 
