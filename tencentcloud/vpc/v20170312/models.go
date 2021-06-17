@@ -6773,6 +6773,12 @@ type DescribeCrossBorderComplianceRequest struct {
 
 	// （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。
 	State *string `json:"State,omitempty" name:"State"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeCrossBorderComplianceRequest) ToJsonString() string {
@@ -6803,6 +6809,8 @@ func (r *DescribeCrossBorderComplianceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceStartDate")
 	delete(f, "ServiceEndDate")
 	delete(f, "State")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCrossBorderComplianceRequest has unknown keys!", "")
 	}

@@ -1355,8 +1355,8 @@ type CheckAcctRequest struct {
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
 
-	// 短信验证码
-	// BindType==2必填
+	// 短信验证码或指令号
+	// BindType==2必填，平安渠道必填
 	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
 
 	// 币种 RMB

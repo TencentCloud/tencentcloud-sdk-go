@@ -8306,6 +8306,10 @@ type SecurityGroupPolicy struct {
 	// 修改时间，例如 2020-07-22 19：27：23
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 网段或IPv6(互斥)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 type SecurityGroupPolicySet struct {

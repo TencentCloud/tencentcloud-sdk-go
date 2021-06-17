@@ -26,6 +26,12 @@ const (
 	// 环境创建失败。
 	FAILEDOPERATION_CREATEENVIRONMENT = "FailedOperation.CreateEnvironment"
 
+	// 创建producer出错。
+	FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+
+	// 创建TDMQ client的出错。
+	FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+
 	// 创建订阅关系失败。
 	FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
 
@@ -71,11 +77,17 @@ const (
 	// 上传的 tenant name 错误。
 	INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 
+	// 没有获取到正确的 token。
+	INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
+
 	// 参数值不在允许范围内。
 	INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 
 	// 必要参数没有传递。
 	INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
+
+	// 上传的topic name错误。
+	INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 
 	// 实例下环境数量超过限制。
 	LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"

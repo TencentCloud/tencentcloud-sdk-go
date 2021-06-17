@@ -20,6 +20,64 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AcknowledgeMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+	AckTopic *string `json:"AckTopic,omitempty" name:"AckTopic"`
+
+	// 订阅者的名字，可以从receiveMessage的返回值中获取到。这里尽量与receiveMessage中的订阅者保持一致，否则没办法正确ack 接收回来的消息。
+	SubName *string `json:"SubName,omitempty" name:"SubName"`
+}
+
+func (r *AcknowledgeMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcknowledgeMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MessageId")
+	delete(f, "AckTopic")
+	delete(f, "SubName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcknowledgeMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AcknowledgeMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 如果为“”，则说明没有错误返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AcknowledgeMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcknowledgeMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BindCluster struct {
 
 	// 物理集群的名称
@@ -3042,6 +3100,81 @@ func (r *PublishCmqMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReceiveMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 订阅者的名字
+	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
+
+	// 默认值为1000，consumer接收的消息会首先存储到receiverQueueSize这个队列中，用作调优接收消息的速率
+	ReceiverQueueSize *int64 `json:"ReceiverQueueSize,omitempty" name:"ReceiverQueueSize"`
+
+	// 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
+	SubInitialPosition *string `json:"SubInitialPosition,omitempty" name:"SubInitialPosition"`
+}
+
+func (r *ReceiveMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReceiveMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "SubscriptionName")
+	delete(f, "ReceiverQueueSize")
+	delete(f, "SubInitialPosition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReceiveMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReceiveMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用作标识消息的唯一主键
+		MessageID *string `json:"MessageID,omitempty" name:"MessageID"`
+
+		// 接收消息的内容
+		MessagePayload *string `json:"MessagePayload,omitempty" name:"MessagePayload"`
+
+		// 提供给 Ack 接口，用来Ack哪一个topic中的消息
+		AckTopic *string `json:"AckTopic,omitempty" name:"AckTopic"`
+
+		// 返回的错误信息，如果为空，说明没有错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 返回订阅者的名字，用来创建 ack consumer时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubName *string `json:"SubName,omitempty" name:"SubName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReceiveMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReceiveMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetMsgSubOffsetByTimestampRequest struct {
 	*tchttp.BaseRequest
 
@@ -3161,13 +3294,13 @@ func (r *RewindCmqQueueResponse) FromJsonString(s string) error {
 type SendBatchMessagesRequest struct {
 	*tchttp.BaseRequest
 
-	// Topic name
+	// 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
 	Topic *string `json:"Topic,omitempty" name:"Topic"`
 
 	// 需要发送消息的内容
 	Payload *string `json:"Payload,omitempty" name:"Payload"`
 
-	// String 类型的 token，用来校验客户端和服务端之间的连接
+	// String 类型的 token，可以不填，系统会自动获取
 	StringToken *string `json:"StringToken,omitempty" name:"StringToken"`
 
 	// producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成
@@ -3307,14 +3440,14 @@ func (r *SendCmqMsgResponse) FromJsonString(s string) error {
 type SendMessagesRequest struct {
 	*tchttp.BaseRequest
 
-	// Token 是用来做鉴权使用的
-	StringToken *string `json:"StringToken,omitempty" name:"StringToken"`
-
-	// 消息要发送的topic的名字
+	// 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
 	Topic *string `json:"Topic,omitempty" name:"Topic"`
 
 	// 要发送的消息的内容
 	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// Token 是用来做鉴权使用的，可以不填，系统会自动获取
+	StringToken *string `json:"StringToken,omitempty" name:"StringToken"`
 
 	// 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成
 	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
@@ -3338,9 +3471,9 @@ func (r *SendMessagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StringToken")
 	delete(f, "Topic")
 	delete(f, "Payload")
+	delete(f, "StringToken")
 	delete(f, "ProducerName")
 	delete(f, "SendTimeout")
 	delete(f, "MaxPendingMessages")

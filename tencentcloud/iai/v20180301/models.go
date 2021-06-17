@@ -2239,7 +2239,7 @@ type GetUpgradeGroupFaceModelVersionResultResponse struct {
 		// 人员库ID。
 		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-		// 无法升级的人脸Id信息，文件格式
+		// 无法升级的人脸Id信息，文件格式为json。半小时有效
 		FailedFacesUrl *string `json:"FailedFacesUrl,omitempty" name:"FailedFacesUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3087,7 +3087,7 @@ type UpgradeGroupFaceModelVersionRequest struct {
 	// 需要升级的人员库ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 需要升级至的算法模型版本。默认为最新版本。
+	// 需要升级至的算法模型版本。默认为最新版本。不可逆向升级
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 

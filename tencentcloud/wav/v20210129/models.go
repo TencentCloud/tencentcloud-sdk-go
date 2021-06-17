@@ -210,9 +210,13 @@ type ChatArchivingDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgTime *uint64 `json:"MsgTime,omitempty" name:"MsgTime"`
 
-	// MsgType=video时的消息体
+	// MsgType=video时的消息体，忽略此字段，见BodyJson字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Video *ChatArchivingMsgTypeVideo `json:"Video,omitempty" name:"Video"`
+
+	// 根据MsgType的不同取值，解析内容不同，参考：https://open.work.weixin.qq.com/api/doc/90000/90135/91774
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BodyJson *string `json:"BodyJson,omitempty" name:"BodyJson"`
 }
 
 type ChatArchivingMsgTypeVideo struct {
@@ -810,10 +814,10 @@ type QueryExternalContactDetailRequest struct {
 	// 外部联系人的userid，注意不是企业成员的帐号
 	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
 
-	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
-	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	// 当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 

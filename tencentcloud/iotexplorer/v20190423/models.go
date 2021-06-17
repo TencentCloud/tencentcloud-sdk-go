@@ -1893,6 +1893,18 @@ type GetProjectListRequest struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按项目D搜索
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 按产品ID搜索
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 加载 ProductCount、DeviceCount、ApplicationCount，可选值：ProductCount、DeviceCount、ApplicationCount，可多选
+	Includes []*string `json:"Includes,omitempty" name:"Includes"`
+
+	// 按项目名称搜索
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *GetProjectListRequest) ToJsonString() string {
@@ -1910,6 +1922,10 @@ func (r *GetProjectListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "InstanceId")
+	delete(f, "ProjectId")
+	delete(f, "ProductId")
+	delete(f, "Includes")
+	delete(f, "ProjectName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetProjectListRequest has unknown keys!", "")
 	}
@@ -2801,6 +2817,14 @@ type ProjectEntryEx struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationCount *uint64 `json:"ApplicationCount,omitempty" name:"ApplicationCount"`
+
+	// 设备注册总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceCount *uint64 `json:"DeviceCount,omitempty" name:"DeviceCount"`
 }
 
 type PublishMessageRequest struct {
@@ -2945,6 +2969,9 @@ type SearchStudioProductRequest struct {
 
 	// 产品Status
 	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
 func (r *SearchStudioProductRequest) ToJsonString() string {
@@ -2964,6 +2991,7 @@ func (r *SearchStudioProductRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "DevStatus")
+	delete(f, "ProductId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchStudioProductRequest has unknown keys!", "")
 	}

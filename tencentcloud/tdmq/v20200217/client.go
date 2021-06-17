@@ -43,6 +43,36 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAcknowledgeMessageRequest() (request *AcknowledgeMessageRequest) {
+    request = &AcknowledgeMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "AcknowledgeMessage")
+    return
+}
+
+func NewAcknowledgeMessageResponse() (response *AcknowledgeMessageResponse) {
+    response = &AcknowledgeMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AcknowledgeMessage
+// 根据提供的 MessageID 确认指定 topic 中的消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+func (c *Client) AcknowledgeMessage(request *AcknowledgeMessageRequest) (response *AcknowledgeMessageResponse, err error) {
+    if request == nil {
+        request = NewAcknowledgeMessageRequest()
+    }
+    response = NewAcknowledgeMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewClearCmqQueueRequest() (request *ClearCmqQueueRequest) {
     request = &ClearCmqQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -60,6 +90,10 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
 
 // ClearCmqQueue
 // 清空cmq消息队列中的消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     if request == nil {
         request = NewClearCmqQueueRequest()
@@ -86,6 +120,10 @@ func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscription
 
 // ClearCmqSubscriptionFilterTags
 // 清空订阅者消息标签
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFilterTagsRequest) (response *ClearCmqSubscriptionFilterTagsResponse, err error) {
     if request == nil {
         request = NewClearCmqSubscriptionFilterTagsRequest()
@@ -1298,6 +1336,37 @@ func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *Publish
     return
 }
 
+func NewReceiveMessageRequest() (request *ReceiveMessageRequest) {
+    request = &ReceiveMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ReceiveMessage")
+    return
+}
+
+func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
+    response = &ReceiveMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReceiveMessage
+// 接收发送到指定 topic 中的消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+func (c *Client) ReceiveMessage(request *ReceiveMessageRequest) (response *ReceiveMessageResponse, err error) {
+    if request == nil {
+        request = NewReceiveMessageRequest()
+    }
+    response = NewReceiveMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetMsgSubOffsetByTimestampRequest() (request *ResetMsgSubOffsetByTimestampRequest) {
     request = &ResetMsgSubOffsetByTimestampRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1391,7 +1460,11 @@ func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
 // 批量发送消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response *SendBatchMessagesResponse, err error) {
     if request == nil {
         request = NewSendBatchMessagesRequest()
@@ -1420,7 +1493,11 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 // 发送cmq消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()
@@ -1449,7 +1526,11 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
 // 发送单条消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessagesResponse, err error) {
     if request == nil {
         request = NewSendMessagesRequest()

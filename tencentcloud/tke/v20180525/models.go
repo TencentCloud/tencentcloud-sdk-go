@@ -440,6 +440,10 @@ type Cluster struct {
 	// 删除保护开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// 集群是否开启第三方节点支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableExternalNode *bool `json:"EnableExternalNode,omitempty" name:"EnableExternalNode"`
 }
 
 type ClusterAdvancedSettings struct {

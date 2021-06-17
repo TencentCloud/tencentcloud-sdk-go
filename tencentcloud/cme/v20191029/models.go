@@ -4069,6 +4069,9 @@ type VideoEditTemplateMaterial struct {
 
 	// 卡槽信息。
 	SlotSet []*SlotInfo `json:"SlotSet,omitempty" name:"SlotSet"`
+
+	// 模板预览视频 URL 地址 。
+	PreviewVideoUrl *string `json:"PreviewVideoUrl,omitempty" name:"PreviewVideoUrl"`
 }
 
 type VideoMaterial struct {
