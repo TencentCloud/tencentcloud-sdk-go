@@ -101,9 +101,9 @@ func main() {
         // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
         // 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
         cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-        // SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
+        // SDK默认用TC3-HMAC-SHA256进行签名，它更安全但是会轻微降低性能。
         // 如非必要请不要修改默认设置。
-        cpf.SignMethod = "HmacSHA1"
+        cpf.SignMethod = "TC3-HMAC-SHA256"
         // SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
         // 但大部分产品或接口并不支持全英文的返回。
         // 如非必要请不要修改默认设置。
@@ -160,11 +160,9 @@ func main() {
 
 # 相关配置
 
-## HTTP配置
-
 **如无特殊需要，建议您使用默认配置。**
 
-在创建客户端前，如有需要，您可以通过修改`profile.ClientProfile`中字段的值来进行一些配置。
+在创建客户端前，如有需要，您可以通过修改`profile.ClientProfile`中字段的值进行一些配置。
 
 ```go
 // 非必要步骤
@@ -174,15 +172,15 @@ cpf := profile.NewClientProfile()
 
 具体的配置项说明如下：
 
-### 请求方式
+## 请求方式
 
-SDK默认使用POST方法。 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
+SDK默认使用POST方法。 如果你一定要使用GET方法，可以在这里设置。**GET方法无法处理一些较大的请求**。
 
 ```go
 cpf.HttpProfile.ReqMethod = "POST"
 ```
 
-### 超时时间
+## 超时时间
 
 SDK有默认的超时时间，如非必要请不要修改默认设置。
 如有需要请在代码中查阅以获取最新的默认值。  
@@ -192,7 +190,7 @@ SDK有默认的超时时间，如非必要请不要修改默认设置。
 cpf.HttpProfile.ReqTimeout = 30
 ```
 
-### 指定域名
+## 指定域名
 
 SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
@@ -201,24 +199,15 @@ SDK会自动指定域名。通常是不需要特地指定域名的，但是如�
 cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 ```
 
-### 签名方式
+## 签名方式
 
-SDK默认用 `HmacSHA256` 进行签名，它更安全但是会轻微降低性能。
+SDK默认用 `TC3-HMAC-SHA256` 进行签名，它更安全但是会轻微降低性能。
 
 ```go
 cpf.SignMethod = "HmacSHA1"
 ```
 
-### 设置语言
-
-SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
-但大部分产品或接口并不支持全英文的返回。
-
-```go
-cpf.Language = "en-US"
-```
-
-### DEBUG模式
+## DEBUG模式
 
 DEBUG模式会打印更详细的日志，当您需要进行详细的排查错误时可以开启。  
 默认为 `false`
@@ -252,7 +241,7 @@ import "crypto/tls"
 ...
 ```
 
-再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。
+**再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
 # 支持产品列表
 
