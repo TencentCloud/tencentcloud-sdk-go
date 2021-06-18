@@ -276,3 +276,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
 	client.Init(region).WithSecretId(secretId, secretKey)
 	return
 }
+
+func NewCommonClient(cred *Credential, region string, clientProfile *profile.ClientProfile) (c *Client) {
+	return new(Client).Init(region).WithCredential(cred).WithProfile(clientProfile)
+}
