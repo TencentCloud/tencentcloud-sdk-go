@@ -1,7 +1,8 @@
-package common
+package integration
 
 import (
 	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
@@ -12,17 +13,17 @@ import (
 // TestCommonRequest
 //  目前只支持 签名v3+POST
 func TestCommonRequest(t *testing.T) {
-	credential := NewCredential(
+	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "redis.tencentcloudapi.com"
+	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
 	//创建common client
-	client := NewCommonClient(credential, regions.Guangzhou, cpf)
+	client := common.NewCommonClient(credential, regions.Guangzhou, cpf)
 
 	// 创建common request
-	request := tchttp.NewCommonRequest("redis", "2018-04-12", "DescribeInstanceMonitorTopNCmdTook")
+	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
 	//自定义请求参数,SetActionParameters 函数支持三种数据类型的入参
 	// 1. map[string]interface{}
 	//body:=map[string]interface{}{
@@ -31,10 +32,7 @@ func TestCommonRequest(t *testing.T) {
 	//}
 
 	// 2. string
-	bodyStr := `{
-	"InstanceId":"crs-xxx",
-	"SpanType":2
-}`
+	bodyStr := `{}`
 
 	// 3. []byte
 	bodyBytes := []byte(bodyStr)
@@ -53,5 +51,5 @@ func TestCommonRequest(t *testing.T) {
 	if err != nil {
 		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
 	}
-	t.Log(response.GetBody().Raw())
+	t.Log(string(response.GetBody()))
 }

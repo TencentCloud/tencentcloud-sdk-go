@@ -53,8 +53,3 @@ func (cr *CommonRequest) SetActionParameters(data interface{}) error {
 func (cr *CommonRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(cr.actionParameters)
 }
-
-func (cb *actionParameters) Raw() []byte {
-	raw, _ := json.Marshal(cb)
-	return raw
-}
