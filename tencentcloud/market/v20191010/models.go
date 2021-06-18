@@ -20,6 +20,82 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type FlowProductRemindRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务商uin
+	ProviderUin *string `json:"ProviderUin,omitempty" name:"ProviderUin"`
+
+	// 服务商实例ID
+	SignId *string `json:"SignId,omitempty" name:"SignId"`
+
+	// 云市场实例ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 实例总流量
+	TotalFlow *string `json:"TotalFlow,omitempty" name:"TotalFlow"`
+
+	// 剩余流量
+	LeftFlow *string `json:"LeftFlow,omitempty" name:"LeftFlow"`
+
+	// 流量单位
+	FlowUnit *string `json:"FlowUnit,omitempty" name:"FlowUnit"`
+}
+
+func (r *FlowProductRemindRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FlowProductRemindRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProviderUin")
+	delete(f, "SignId")
+	delete(f, "ResourceId")
+	delete(f, "TotalFlow")
+	delete(f, "LeftFlow")
+	delete(f, "FlowUnit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlowProductRemindRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FlowProductRemindResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+		Success *string `json:"Success,omitempty" name:"Success"`
+
+		// 流水号
+		FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Info *string `json:"Info,omitempty" name:"Info"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FlowProductRemindResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FlowProductRemindResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetCateTreeRequest struct {
 	*tchttp.BaseRequest
 

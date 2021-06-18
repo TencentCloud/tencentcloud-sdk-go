@@ -1119,6 +1119,40 @@ func (c *Client) DescribeExtraPkgBillingInfo(request *DescribeExtraPkgBillingInf
     return
 }
 
+func NewDescribeHostingDomainTaskRequest() (request *DescribeHostingDomainTaskRequest) {
+    request = &DescribeHostingDomainTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeHostingDomainTask")
+    return
+}
+
+func NewDescribeHostingDomainTaskResponse() (response *DescribeHostingDomainTaskResponse) {
+    response = &DescribeHostingDomainTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostingDomainTask
+// 查询静态托管域名任务状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+func (c *Client) DescribeHostingDomainTask(request *DescribeHostingDomainTaskRequest) (response *DescribeHostingDomainTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostingDomainTaskRequest()
+    }
+    response = NewDescribeHostingDomainTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostpayFreeQuotasRequest() (request *DescribePostpayFreeQuotasRequest) {
     request = &DescribePostpayFreeQuotasRequest{
         BaseRequest: &tchttp.BaseRequest{},

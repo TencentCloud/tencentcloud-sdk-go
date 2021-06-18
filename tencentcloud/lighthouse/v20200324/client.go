@@ -1217,6 +1217,38 @@ func (c *Client) DescribeSnapshotsDeniedActions(request *DescribeSnapshotsDenied
     return
 }
 
+func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
+    request = &DescribeZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeZones")
+    return
+}
+
+func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
+    response = &DescribeZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZones
+// 查询地域下可用区
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
+func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZonesRequest()
+    }
+    response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateInstancesKeyPairsRequest() (request *DisassociateInstancesKeyPairsRequest) {
     request = &DisassociateInstancesKeyPairsRequest{
         BaseRequest: &tchttp.BaseRequest{},

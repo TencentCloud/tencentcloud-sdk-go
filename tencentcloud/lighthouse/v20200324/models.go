@@ -1807,6 +1807,54 @@ func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeZonesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可用区数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 可用区详细信息列表
+		ZoneInfoSet []*ZoneInfo `json:"ZoneInfoSet,omitempty" name:"ZoneInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3197,4 +3245,13 @@ type TrafficPackage struct {
 	// <li>NETWORK_NORMAL：正常</li>
 	// <li>OVERDUE_NETWORK_DISABLED：欠费断网</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ZoneInfo struct {
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区中文名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }

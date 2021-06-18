@@ -43,6 +43,32 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewFlowProductRemindRequest() (request *FlowProductRemindRequest) {
+    request = &FlowProductRemindRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("market", APIVersion, "FlowProductRemind")
+    return
+}
+
+func NewFlowProductRemindResponse() (response *FlowProductRemindResponse) {
+    response = &FlowProductRemindResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FlowProductRemind
+// 计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
+func (c *Client) FlowProductRemind(request *FlowProductRemindRequest) (response *FlowProductRemindResponse, err error) {
+    if request == nil {
+        request = NewFlowProductRemindRequest()
+    }
+    response = NewFlowProductRemindResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCateTreeRequest() (request *GetCateTreeRequest) {
     request = &GetCateTreeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -90,10 +116,6 @@ func NewGetUsagePlanUsageAmountResponse() (response *GetUsagePlanUsageAmountResp
 
 // GetUsagePlanUsageAmount
 // 该接口可以根据InstanceId查询实例的api的使用情况。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

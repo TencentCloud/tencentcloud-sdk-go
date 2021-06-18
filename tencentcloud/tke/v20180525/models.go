@@ -501,6 +501,9 @@ type ClusterAdvancedSettings struct {
 
 	// 自定义模式下的基础pod数量
 	BasePodNumber *int64 `json:"BasePodNumber,omitempty" name:"BasePodNumber"`
+
+	// 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
+	CiliumMode *string `json:"CiliumMode,omitempty" name:"CiliumMode"`
 }
 
 type ClusterAsGroup struct {
@@ -4980,6 +4983,18 @@ type PrometheusInstanceOverview struct {
 
 	// COS桶存储
 	COSBucket *string `json:"COSBucket,omitempty" name:"COSBucket"`
+
+	// grafana默认地址，如果开启外网访问得为域名，否则为内网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaURL *string `json:"GrafanaURL,omitempty" name:"GrafanaURL"`
+
+	// 关联集群总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundTotal *uint64 `json:"BoundTotal,omitempty" name:"BoundTotal"`
+
+	// 运行正常的集群数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundNormal *uint64 `json:"BoundNormal,omitempty" name:"BoundNormal"`
 }
 
 type PrometheusJobTargets struct {

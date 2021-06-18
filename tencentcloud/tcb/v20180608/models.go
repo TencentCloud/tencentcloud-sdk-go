@@ -2971,6 +2971,55 @@ func (r *DescribeExtraPkgBillingInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeHostingDomainTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeHostingDomainTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostingDomainTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostingDomainTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHostingDomainTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// todo/doing/done/error
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeHostingDomainTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostingDomainTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePostpayFreeQuotasRequest struct {
 	*tchttp.BaseRequest
 

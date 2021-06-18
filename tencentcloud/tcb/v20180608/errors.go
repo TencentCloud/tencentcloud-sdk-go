@@ -17,6 +17,9 @@ package v20180608
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 您没有查看该资源的权限。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
@@ -52,6 +55,9 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 并发请求超过配额限制。
+	LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
 
 	// 命名空间超过配额。
 	LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"

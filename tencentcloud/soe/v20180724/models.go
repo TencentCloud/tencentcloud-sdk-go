@@ -251,7 +251,7 @@ type PhoneInfo struct {
 	// 当前音节是否检测为重音
 	DetectedStress *bool `json:"DetectedStress,omitempty" name:"DetectedStress"`
 
-	// 当前音节
+	// 当前音节，当前评测识别的音素
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 当前音节是否应为重音
@@ -262,6 +262,9 @@ type PhoneInfo struct {
 
 	// 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
 	MatchTag *int64 `json:"MatchTag,omitempty" name:"MatchTag"`
+
+	// 参考字符，在单词诊断模式下，代表音素对应的原始文本
+	ReferenceLetter *string `json:"ReferenceLetter,omitempty" name:"ReferenceLetter"`
 }
 
 type SentenceInfo struct {

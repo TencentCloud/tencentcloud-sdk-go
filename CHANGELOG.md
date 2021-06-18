@@ -1,144 +1,30 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 35 次发布
+### 第 15 次发布
 
-发布时间：2021-06-17 08:02:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
-
-	* 新增入参：HealthCheckType, LoadBalancerHealthCheckGracePeriod
-
-* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
-
-	* 新增入参：HealthCheckType, LoadBalancerHealthCheckGracePeriod
-
-
-修改数据结构：
-
-* [ServiceSettings](https://cloud.tencent.com/document/api/377/20453#ServiceSettings)
-
-	* 新增成员：ReplaceLoadBalancerUnhealthy
-
-
-
-
-## 云审计(cloudaudit) 版本：2019-03-19
-
-### 第 8 次发布
-
-发布时间：2021-06-17 08:11:39
+发布时间：2021-06-18 08:01:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeEvents](https://cloud.tencent.com/document/api/629/54488)
+* [DescribeZones](https://cloud.tencent.com/document/api/1207/57513)
 
-	* 新增入参：IsReturnLocation
+新增数据结构：
 
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 34 次发布
-
-发布时间：2021-06-17 08:02:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VideoEditTemplateMaterial](https://cloud.tencent.com/document/api/1156/40360#VideoEditTemplateMaterial)
-
-	* 新增成员：PreviewVideoUrl
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 48 次发布
-
-发布时间：2021-06-17 08:01:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SecurityGroupPolicy](https://cloud.tencent.com/document/api/1108/42574#SecurityGroupPolicy)
-
-	* 新增成员：Ipv6CidrBlock
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 25 次发布
-
-发布时间：2021-06-17 08:06:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetProjectList](https://cloud.tencent.com/document/api/1081/34968)
-
-	* 新增入参：ProjectId, ProductId, Includes, ProjectName
-
-* [SearchStudioProduct](https://cloud.tencent.com/document/api/1081/34981)
-
-	* 新增入参：ProductId
-
-
-修改数据结构：
-
-* [ProjectEntryEx](https://cloud.tencent.com/document/api/1081/34988#ProjectEntryEx)
-
-	* 新增成员：ApplicationCount, DeviceCount
-
+* [ZoneInfo](https://cloud.tencent.com/document/api/1207/47576#ZoneInfo)
 
 
 
 ## 云市场(market) 版本：2019-10-10
 
-### 第 1 次发布
+### 第 2 次发布
 
-发布时间：2021-06-17 08:00:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetCateTree](https://cloud.tencent.com/document/api/306/57445)
-* [GetUsagePlanUsageAmount](https://cloud.tencent.com/document/api/306/57443)
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 9 次发布
-
-发布时间：2021-06-17 08:10:59
+发布时间：2021-06-18 08:00:04
 
 本次发布包含了以下内容：
 
@@ -146,65 +32,50 @@
 
 新增接口：
 
-* [AcknowledgeMessage](https://cloud.tencent.com/document/api/1179/57459)
-* [ReceiveMessage](https://cloud.tencent.com/document/api/1179/57458)
+* [FlowProductRemind](https://cloud.tencent.com/document/api/306/57512)
 
-修改接口：
 
-* [SendBatchMessages](https://cloud.tencent.com/document/api/1179/53441)
 
-	* <font color="#dd0000">**修改入参**：</font>StringToken
+## 智聆口语评测(soe) 版本：2018-07-24
 
-* [SendMessages](https://cloud.tencent.com/document/api/1179/53440)
+### 第 12 次发布
 
-	* <font color="#dd0000">**修改入参**：</font>StringToken
+发布时间：2021-06-18 08:07:31
 
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PhoneInfo](https://cloud.tencent.com/document/api/884/19320#PhoneInfo)
+
+	* 新增成员：ReferenceLetter
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 51 次发布
+
+发布时间：2021-06-18 08:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHostingDomainTask](https://cloud.tencent.com/document/api/876/57514)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 58 次发布
+### 第 59 次发布
 
-发布时间：2021-06-17 08:08:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
-
-	* 新增成员：EnableExternalNode
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 90 次发布
-
-发布时间：2021-06-17 08:09:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCrossBorderCompliance](https://cloud.tencent.com/document/api/215/47838)
-
-	* 新增入参：Offset, Limit
-
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 3 次发布
-
-发布时间：2021-06-17 08:00:11
+发布时间：2021-06-18 08:08:14
 
 本次发布包含了以下内容：
 
@@ -212,9 +83,13 @@
 
 修改数据结构：
 
-* [ChatArchivingDetail](https://cloud.tencent.com/document/api/1318/56791#ChatArchivingDetail)
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
 
-	* 新增成员：BodyJson
+	* 新增成员：CiliumMode
+
+* [PrometheusInstanceOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusInstanceOverview)
+
+	* 新增成员：GrafanaURL, BoundTotal, BoundNormal
 
 
 
@@ -28375,6 +28250,22 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 15 次发布
+
+发布时间：2021-06-18 08:01:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeZones](https://cloud.tencent.com/document/api/1207/57513)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ZoneInfo](https://cloud.tencent.com/document/api/1207/47576#ZoneInfo)](https://cloud.tencent.com/document/api/1207/47576#[ZoneInfo](https://cloud.tencent.com/document/api/1207/47576#ZoneInfo))
+
 ### 第 14 次发布
 
 发布时间：2021-06-04 08:01:17
@@ -30643,6 +30534,18 @@
 
 ## 云市场(market) 版本：2019-10-10
 
+### 第 2 次发布
+
+发布时间：2021-06-18 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FlowProductRemind](https://cloud.tencent.com/document/api/306/57512)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 1 次发布
 
 发布时间：2021-06-17 08:00:04
@@ -30653,8 +30556,8 @@
 
 新增接口：
 
-* [[GetCateTree](https://cloud.tencent.com/document/api/306/57445)](https://cloud.tencent.com/document/api/#/#)
-* [[GetUsagePlanUsageAmount](https://cloud.tencent.com/document/api/306/57443)](https://cloud.tencent.com/document/api/#/#)
+* [GetCateTree](https://cloud.tencent.com/document/api/306/57445)
+* [GetUsagePlanUsageAmount](https://cloud.tencent.com/document/api/306/57443)
 
 
 
@@ -37266,6 +37169,21 @@
 
 ## 智聆口语评测(soe) 版本：2018-07-24
 
+### 第 12 次发布
+
+发布时间：2021-06-18 08:07:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PhoneInfo](https://cloud.tencent.com/document/api/884/19320#PhoneInfo)
+
+	* 新增成员：ReferenceLetter
+
+
 ### 第 11 次发布
 
 发布时间：2019-08-15 17:39:10
@@ -39862,6 +39780,18 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 51 次发布
+
+发布时间：2021-06-18 08:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeHostingDomainTask](https://cloud.tencent.com/document/api/876/57514)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 50 次发布
 
 发布时间：2021-06-01 08:09:10
@@ -41745,8 +41675,8 @@
 
 新增接口：
 
-* [[AcknowledgeMessage](https://cloud.tencent.com/document/api/1179/57459)](https://cloud.tencent.com/document/api/#/#)
-* [[ReceiveMessage](https://cloud.tencent.com/document/api/1179/57458)](https://cloud.tencent.com/document/api/#/#)
+* [AcknowledgeMessage](https://cloud.tencent.com/document/api/1179/57459)
+* [ReceiveMessage](https://cloud.tencent.com/document/api/1179/57458)
 
 修改接口：
 
@@ -43584,6 +43514,25 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 59 次发布
+
+发布时间：2021-06-18 08:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：CiliumMode
+
+* [PrometheusInstanceOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusInstanceOverview)
+
+	* 新增成员：GrafanaURL, BoundTotal, BoundNormal
+
 
 ### 第 58 次发布
 
