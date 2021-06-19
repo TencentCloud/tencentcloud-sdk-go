@@ -12,9 +12,15 @@
 
 ## 通过go get安装（推荐）
 
-推荐使用语言自带的工具安装 SDK ：
-
-    go get -v github.com/tencentcloud/tencentcloud-sdk-go@latest
+2021.05.28 修改为按照产品下载，您只需下载基础包和对应的产品包(如cvm)即可，不需要下载全部的产品：
+1. 安装公共基础包：
+	```
+	go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common@latest
+	```
+2. 安装对应的产品包(如cvm): 
+	```
+	go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm@latest
+	```
 
 推荐使用腾讯云镜像加速下载：
 
