@@ -62,6 +62,7 @@ func NewInitOralProcessResponse() (response *InitOralProcessResponse) {
 // 初始化发音评估过程，每一轮评估前进行调用。语音输入模式分为流式模式和非流式模式，流式模式支持数据分片传输，可以加快评估响应速度。评估模式分为词模式和句子模式，词模式会标注每个音节的详细信息；句子模式会有完整度和流利度的评估。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_AUDIOPROCESSINGFAILED = "InternalError.AudioProcessingFailed"
 //  INTERNALERROR_BASE64DECODEFAILED = "InternalError.BASE64DecodeFailed"
@@ -93,6 +94,7 @@ func NewInitOralProcessResponse() (response *InitOralProcessResponse) {
 //  INVALIDPARAMETERVALUE_STREAMINGVOICEPKGTIMEOUT = "InvalidParameterValue.StreamingvoicepkgTimeout"
 //  INVALIDPARAMETERVALUE_VADNOTDETECTEDSPEAK = "InvalidParameterValue.VadNotDetectedSpeak"
 //  INVALIDPARAMETERVALUE_WORDLENGTHTOOLONG = "InvalidParameterValue.WordLengthTooLong"
+//  RESOURCEINSUFFICIENT_SERVERTIMEOUT = "ResourceInsufficient.ServerTimeout"
 //  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
 //  RESOURCEUNAVAILABLE_CANNOTFINDSESSION = "ResourceUnavailable.CannotFindSession"
 //  RESOURCEUNAVAILABLE_CONCURRENCYLIMIT = "ResourceUnavailable.ConcurrencyLimit"
@@ -134,10 +136,8 @@ func NewKeywordEvaluateResponse() (response *KeywordEvaluateResponse) {
 //  INTERNALERROR_VOICEMSGOVERSIZED = "InternalError.VoiceMsgOversized"
 //  INVALIDPARAMETER_INITIALPARAMETERERROR = "InvalidParameter.InitialParameterError"
 //  INVALIDPARAMETERVALUE_BASEDECODEFAILED = "InvalidParameterValue.BASEDecodeFailed"
-//  INVALIDPARAMETERVALUE_INVALIDSEQID = "InvalidParameterValue.InvalidSeqId"
 //  INVALIDPARAMETERVALUE_INVALIDWAVHEADER = "InvalidParameterValue.InvalidWAVHeader"
 //  INVALIDPARAMETERVALUE_REFTXTEMPTY = "InvalidParameterValue.RefTxtEmpty"
-//  INVALIDPARAMETERVALUE_REFTXTTOOLANG = "InvalidParameterValue.RefTxtTooLang"
 //  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
 //  RESOURCEUNAVAILABLE_CANNOTFINDSESSION = "ResourceUnavailable.CannotFindSession"
 //  RESOURCEUNAVAILABLE_NOINITBEFOREEVALUATION = "ResourceUnavailable.NoInitBeforeEvaluation"
@@ -169,6 +169,7 @@ func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
 // 传输音频数据，必须在完成发音评估初始化接口之后调用，且SessonId要与初始化接口保持一致。分片传输时，尽量保证SeqId顺序传输。音频源目前仅支持16k采样率16bit单声道编码方式，如有不一致可能导致评估不准确或失败。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_AUDIOPROCESSINGFAILED = "InternalError.AudioProcessingFailed"
 //  INTERNALERROR_AUTHORIZEERROR = "InternalError.AuthorizeError"
@@ -207,6 +208,7 @@ func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_AUTHORIZEERROR = "ResourceUnavailable.AuthorizeError"
 //  RESOURCEUNAVAILABLE_CANNOTFINDSESSION = "ResourceUnavailable.CannotFindSession"
+//  RESOURCEUNAVAILABLE_CONCURRENCYLIMIT = "ResourceUnavailable.ConcurrencyLimit"
 //  RESOURCEUNAVAILABLE_INITSTREAMNOTSUPPORT = "ResourceUnavailable.InitStreamNotSupport"
 //  RESOURCEUNAVAILABLE_INITSTREAMUNFINISHED = "ResourceUnavailable.InitStreamUnfinished"
 //  RESOURCEUNAVAILABLE_LASTSEQUNFINISHED = "ResourceUnavailable.LastSeqUnfinished"

@@ -379,6 +379,35 @@ func (c *Client) DescribeServiceRunPodListV2(request *DescribeServiceRunPodListV
     return
 }
 
+func NewGenerateDownloadUrlRequest() (request *GenerateDownloadUrlRequest) {
+    request = &GenerateDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "GenerateDownloadUrl")
+    return
+}
+
+func NewGenerateDownloadUrlResponse() (response *GenerateDownloadUrlResponse) {
+    response = &GenerateDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenerateDownloadUrl
+// 生成包预签名下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) GenerateDownloadUrl(request *GenerateDownloadUrlRequest) (response *GenerateDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewGenerateDownloadUrlRequest()
+    }
+    response = NewGenerateDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyIngressRequest() (request *ModifyIngressRequest) {
     request = &ModifyIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -397,6 +397,10 @@ type ExternalContact struct {
 	// 外部联系人在微信开放平台的唯一身份标识（微信unionid），通过此字段企业可将外部联系人与公众号/小程序用户关联起来。仅当联系人类型是微信用户，且企业或第三方服务商绑定了微信开发者ID有此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnionId *string `json:"UnionId,omitempty" name:"UnionId"`
+
+	// 外部联系人联系电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
 }
 
 type ExternalContactSimpleInfo struct {
@@ -406,6 +410,10 @@ type ExternalContactSimpleInfo struct {
 
 	// 添加了此外部联系人的企业成员userId
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 添加了此外部联系人的企业成员的姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
 }
 
 type ExternalContactTag struct {

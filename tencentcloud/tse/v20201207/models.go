@@ -319,4 +319,12 @@ type SREInstance struct {
 	// 计费方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
+
+	// EKS集群的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EKSClusterID *string `json:"EKSClusterID,omitempty" name:"EKSClusterID"`
+
+	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }

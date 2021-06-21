@@ -130,6 +130,9 @@ type CreateCosTokenV2Request struct {
 
 	// 来源 channel
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 充当deployVersion入参
+	TimeVersion *string `json:"TimeVersion,omitempty" name:"TimeVersion"`
 }
 
 func (r *CreateCosTokenV2Request) ToJsonString() string {
@@ -148,6 +151,7 @@ func (r *CreateCosTokenV2Request) FromJsonString(s string) error {
 	delete(f, "PkgName")
 	delete(f, "OptType")
 	delete(f, "SourceChannel")
+	delete(f, "TimeVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosTokenV2Request has unknown keys!", "")
 	}
@@ -561,6 +565,9 @@ type DeployServiceV2Request struct {
 
 	// eks 访问设置
 	EksService *EksService `json:"EksService,omitempty" name:"EksService"`
+
+	// 要回滚到的历史版本id
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 func (r *DeployServiceV2Request) ToJsonString() string {
@@ -603,6 +610,7 @@ func (r *DeployServiceV2Request) FromJsonString(s string) error {
 	delete(f, "UseRegistryDefaultConfig")
 	delete(f, "SettingConfs")
 	delete(f, "EksService")
+	delete(f, "VersionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployServiceV2Request has unknown keys!", "")
 	}
@@ -1031,6 +1039,68 @@ type EsInfo struct {
 
 	// 版本Id
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
+type GenerateDownloadUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 包名
+	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
+
+	// 需要下载的包版本
+	DeployVersion *string `json:"DeployVersion,omitempty" name:"DeployVersion"`
+
+	// 来源 channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *GenerateDownloadUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateDownloadUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "PkgName")
+	delete(f, "DeployVersion")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateDownloadUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GenerateDownloadUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 包下载临时链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GenerateDownloadUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IngressInfo struct {
