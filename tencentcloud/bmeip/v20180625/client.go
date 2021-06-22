@@ -571,8 +571,6 @@ func NewUnbindRsResponse() (response *UnbindRsResponse) {
 // 解绑黑石EIP
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindRs(request *UnbindRsRequest) (response *UnbindRsResponse, err error) {
     if request == nil {

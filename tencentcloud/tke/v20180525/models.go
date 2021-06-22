@@ -4920,6 +4920,10 @@ type PrometheusAlertRule struct {
 	// 该条规则的描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 参考prometheus rule中的annotations
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Annotations []*Label `json:"Annotations,omitempty" name:"Annotations"`
 }
 
 type PrometheusAlertRuleDetail struct {

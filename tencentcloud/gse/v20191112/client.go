@@ -761,6 +761,7 @@ func NewDescribeCcnInstancesResponse() (response *DescribeCcnInstancesResponse) 
 // 本接口（DescribeCcnInstances）用于查询云联网实例。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -840,6 +841,7 @@ func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse
 // 本接口（DescribeFleetCapacity）用于查询服务部署容量配置。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1099,6 +1101,7 @@ func NewDescribeFleetUtilizationResponse() (response *DescribeFleetUtilizationRe
 // 本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1523,6 +1526,7 @@ func NewDescribeTimerScalingPoliciesResponse() (response *DescribeTimerScalingPo
 // 本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2383,6 +2387,7 @@ func NewSetServerReservedResponse() (response *SetServerReservedResponse) {
 // 字段ReserveValue：0默认值，不保留；1 保留
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

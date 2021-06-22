@@ -2407,6 +2407,41 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
     return
 }
 
+func NewCreateVpnGatewayRoutesRequest() (request *CreateVpnGatewayRoutesRequest) {
+    request = &CreateVpnGatewayRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewayRoutes")
+    return
+}
+
+func NewCreateVpnGatewayRoutesResponse() (response *CreateVpnGatewayRoutesResponse) {
+    response = &CreateVpnGatewayRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVpnGatewayRoutes
+// 创建路由型VPN网关的目的路由
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpnGatewayRoutes(request *CreateVpnGatewayRoutesRequest) (response *CreateVpnGatewayRoutesResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewayRoutesRequest()
+    }
+    response = NewCreateVpnGatewayRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAddressTemplateRequest() (request *DeleteAddressTemplateRequest) {
     request = &DeleteAddressTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3457,6 +3492,37 @@ func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *D
     return
 }
 
+func NewDeleteVpnGatewayRoutesRequest() (request *DeleteVpnGatewayRoutesRequest) {
+    request = &DeleteVpnGatewayRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewayRoutes")
+    return
+}
+
+func NewDeleteVpnGatewayRoutesResponse() (response *DeleteVpnGatewayRoutesResponse) {
+    response = &DeleteVpnGatewayRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVpnGatewayRoutes
+// 本接口（DeleteVpnGatewayCcnRoutes）用于删除VPN网关路由
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteVpnGatewayRoutes(request *DeleteVpnGatewayRoutesRequest) (response *DeleteVpnGatewayRoutesResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewayRoutesRequest()
+    }
+    response = NewDeleteVpnGatewayRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountAttributesRequest() (request *DescribeAccountAttributesRequest) {
     request = &DescribeAccountAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3476,11 +3542,9 @@ func NewDescribeAccountAttributesResponse() (response *DescribeAccountAttributes
 // 本接口（DescribeAccountAttributes）用于查询用户账号私有属性。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  INVALIDVPNGATEWAYID_MALFORMED = "InvalidVpnGatewayId.Malformed"
-//  INVALIDVPNGATEWAYID_NOTFOUND = "InvalidVpnGatewayId.NotFound"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccountAttributes(request *DescribeAccountAttributesRequest) (response *DescribeAccountAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeAccountAttributesRequest()
@@ -3948,6 +4012,7 @@ func NewDescribeCrossBorderComplianceResponse() (response *DescribeCrossBorderCo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeCrossBorderCompliance(request *DescribeCrossBorderComplianceRequest) (response *DescribeCrossBorderComplianceResponse, err error) {
     if request == nil {
         request = NewDescribeCrossBorderComplianceRequest()
@@ -3977,6 +4042,7 @@ func NewDescribeCustomerGatewayVendorsResponse() (response *DescribeCustomerGate
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGatewayVendorsRequest) (response *DescribeCustomerGatewayVendorsResponse, err error) {
     if request == nil {
         request = NewDescribeCustomerGatewayVendorsRequest()
@@ -5556,6 +5622,41 @@ func (c *Client) DescribeVpnGatewayCcnRoutes(request *DescribeVpnGatewayCcnRoute
         request = NewDescribeVpnGatewayCcnRoutesRequest()
     }
     response = NewDescribeVpnGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpnGatewayRoutesRequest() (request *DescribeVpnGatewayRoutesRequest) {
+    request = &DescribeVpnGatewayRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayRoutes")
+    return
+}
+
+func NewDescribeVpnGatewayRoutesResponse() (response *DescribeVpnGatewayRoutesResponse) {
+    response = &DescribeVpnGatewayRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpnGatewayRoutes
+// 查询路由型VPN网关的目的路由
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpnGatewayRoutes(request *DescribeVpnGatewayRoutesRequest) (response *DescribeVpnGatewayRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewayRoutesRequest()
+    }
+    response = NewDescribeVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -7918,6 +8019,40 @@ func (c *Client) ModifyVpnGatewayCcnRoutes(request *ModifyVpnGatewayCcnRoutesReq
         request = NewModifyVpnGatewayCcnRoutesRequest()
     }
     response = NewModifyVpnGatewayCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpnGatewayRoutesRequest() (request *ModifyVpnGatewayRoutesRequest) {
+    request = &ModifyVpnGatewayRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayRoutes")
+    return
+}
+
+func NewModifyVpnGatewayRoutesResponse() (response *ModifyVpnGatewayRoutesResponse) {
+    response = &ModifyVpnGatewayRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVpnGatewayRoutes
+// 修改VPN路由是否启用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpnGatewayRoutes(request *ModifyVpnGatewayRoutesRequest) (response *ModifyVpnGatewayRoutesResponse, err error) {
+    if request == nil {
+        request = NewModifyVpnGatewayRoutesRequest()
+    }
+    response = NewModifyVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
 }

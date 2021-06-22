@@ -35,7 +35,7 @@ type CreateInstanceRequest struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"）
+	// 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"、"7.10.1"）
 	EsVersion *string `json:"EsVersion,omitempty" name:"EsVersion"`
 
 	// 私有网络ID
@@ -123,6 +123,9 @@ type CreateInstanceRequest struct {
 
 	// 场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
 	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitempty" name:"WebNodeTypeInfo"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -165,6 +168,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "TagList")
 	delete(f, "BasicSecurityType")
 	delete(f, "SceneType")
+	delete(f, "WebNodeTypeInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -810,6 +814,10 @@ type InstanceInfo struct {
 	// Kibana配置项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaConfig *string `json:"KibanaConfig,omitempty" name:"KibanaConfig"`
+
+	// Kibana节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaNodeInfo *KibanaNodeInfo `json:"KibanaNodeInfo,omitempty" name:"KibanaNodeInfo"`
 }
 
 type InstanceLog struct {
@@ -834,6 +842,27 @@ type KeyValue struct {
 
 	// 值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type KibanaNodeInfo struct {
+
+	// Kibana节点规格
+	KibanaNodeType *string `json:"KibanaNodeType,omitempty" name:"KibanaNodeType"`
+
+	// Kibana节点个数
+	KibanaNodeNum *uint64 `json:"KibanaNodeNum,omitempty" name:"KibanaNodeNum"`
+
+	// Kibana节点CPU数
+	KibanaNodeCpuNum *uint64 `json:"KibanaNodeCpuNum,omitempty" name:"KibanaNodeCpuNum"`
+
+	// Kibana节点内存GB
+	KibanaNodeMemSize *uint64 `json:"KibanaNodeMemSize,omitempty" name:"KibanaNodeMemSize"`
+
+	// Kibana节点磁盘类型
+	KibanaNodeDiskType *string `json:"KibanaNodeDiskType,omitempty" name:"KibanaNodeDiskType"`
+
+	// Kibana节点磁盘大小
+	KibanaNodeDiskSize *uint64 `json:"KibanaNodeDiskSize,omitempty" name:"KibanaNodeDiskSize"`
 }
 
 type LocalDiskInfo struct {
@@ -1577,6 +1606,15 @@ func (r *UpgradeLicenseResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WebNodeTypeInfo struct {
+
+	// 可视化节点个数，固定为1
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 可视化节点规格
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 type ZoneDetail struct {

@@ -4432,12 +4432,14 @@ type OrganizationInfo struct {
 	OrganizationCode *string `json:"OrganizationCode,omitempty" name:"OrganizationCode"`
 
 	// 法人名称，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
 
 	// 法人证件类型，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
 	LegalPersonIdType *string `json:"LegalPersonIdType,omitempty" name:"LegalPersonIdType"`
 
 	// 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
 }
 

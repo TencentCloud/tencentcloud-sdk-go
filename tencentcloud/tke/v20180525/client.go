@@ -2314,6 +2314,7 @@ func NewGetUpgradeInstanceProgressResponse() (response *GetUpgradeInstanceProgre
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) GetUpgradeInstanceProgress(request *GetUpgradeInstanceProgressRequest) (response *GetUpgradeInstanceProgressResponse, err error) {
     if request == nil {
         request = NewGetUpgradeInstanceProgressRequest()

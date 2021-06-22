@@ -429,6 +429,9 @@ type DescribeKTVMusicDetailResponse struct {
 		// 播放凭证
 		PlayToken *string `json:"PlayToken,omitempty" name:"PlayToken"`
 
+		// 歌词下载地址
+		LyricsUrl *string `json:"LyricsUrl,omitempty" name:"LyricsUrl"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

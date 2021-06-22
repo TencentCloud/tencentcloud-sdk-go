@@ -238,6 +238,12 @@ type BGPInstance struct {
 	// "failed"：绑定失败
 	// ]
 	BoundStatus *string `json:"BoundStatus,omitempty" name:"BoundStatus"`
+
+	// 四层防护严格级别
+	DDoSLevel *string `json:"DDoSLevel,omitempty" name:"DDoSLevel"`
+
+	// CC防护开关
+	CCEnable *int64 `json:"CCEnable,omitempty" name:"CCEnable"`
 }
 
 type BGPInstanceSpecification struct {

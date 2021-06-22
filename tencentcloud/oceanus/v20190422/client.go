@@ -232,6 +232,7 @@ func NewDeleteResourceConfigsResponse() (response *DeleteResourceConfigsResponse
 //  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
 //  INVALIDPARAMETERVALUE_RESOURCEIDSNOTFOUND = "InvalidParameterValue.ResourceIdsNotFound"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BEUSEBYSOMEJOBCONFIG = "ResourceUnavailable.BeUseBySomeJobConfig"
 func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (response *DeleteResourceConfigsResponse, err error) {
     if request == nil {
@@ -268,6 +269,7 @@ func NewDeleteResourcesResponse() (response *DeleteResourcesResponse) {
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *DeleteResourcesResponse, err error) {
     if request == nil {
         request = NewDeleteResourcesRequest()
@@ -405,6 +407,7 @@ func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResp
 //  INVALIDPARAMETER_UINRESOURCENOTMATCH = "InvalidParameter.UinResourceNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
 func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
     if request == nil {

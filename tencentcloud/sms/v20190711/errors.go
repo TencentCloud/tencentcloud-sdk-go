@@ -35,8 +35,14 @@ const (
 	// 没有申请签名之前，无法申请模板，请根据 [创建签名](https://cloud.tencent.com/document/product/382/37794#.E5.88.9B.E5.BB.BA.E7.AD.BE.E5.90.8D) 申请完成之后再次申请。
 	FAILEDOPERATION_MISSINGSIGNATURE = "FailedOperation.MissingSignature"
 
+	// 无法识别签名，请确认是否已有签名通过申请，一般是签名未通过申请，可以查看 [签名审核](https://cloud.tencent.com/document/product/382/37745)。
+	FAILEDOPERATION_MISSINGSIGNATURELIST = "FailedOperation.MissingSignatureList"
+
 	// 此签名 ID 未提交申请或不存在，不能进行修改操作，请检查您的 SignId 是否填写正确。
 	FAILEDOPERATION_MISSINGSIGNATURETOMODIFY = "FailedOperation.MissingSignatureToModify"
+
+	// 无法识别模板，请确认是否已有模板通过申请，一般是模板未通过申请，可以查看 [模板审核](https://cloud.tencent.com/document/product/382/37745)。
+	FAILEDOPERATION_MISSINGTEMPLATELIST = "FailedOperation.MissingTemplateList"
 
 	// 此模板 ID 未提交申请或不存在，不能进行修改操作，请检查您的 TemplateId是否填写正确。
 	FAILEDOPERATION_MISSINGTEMPLATETOMODIFY = "FailedOperation.MissingTemplateToModify"
@@ -137,8 +143,8 @@ const (
 	// 禁止在模板变量中使用 URL。
 	INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
 
-	// SdkAppid 不存在。
-	INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppidNotExist"
+	// SdkAppId 不存在。
+	INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
 
 	// 此签名已经通过审核，无法再次进行修改。
 	INVALIDPARAMETERVALUE_SIGNALREADYPASSEDCHECK = "InvalidParameterValue.SignAlreadyPassedCheck"
@@ -182,6 +188,9 @@ const (
 	// 传入的号码列表为空，请确认您的参数中是否传入号码。
 	MISSINGPARAMETER_EMPTYPHONENUMBERSET = "MissingParameter.EmptyPhoneNumberSet"
 
+	// 账户下无此签名或者模板，请登录控制台查询。
+	MISSINGPARAMETER_MISSINGSIGNATURELIST = "MissingParameter.MissingSignatureList"
+
 	// 个人用户没有发营销短信的权限，请参考 [权益区别](https://cloud.tencent.com/document/product/382/13444)。
 	UNAUTHORIZEDOPERATION_INDIVIDUALUSERMARKETINGSMSPERMISSIONDENY = "UnauthorizedOperation.IndividualUserMarketingSmsPermissionDeny"
 
@@ -191,14 +200,14 @@ const (
 	// 请求没有权限，请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	UNAUTHORIZEDOPERATION_REQUESTPERMISSIONDENY = "UnauthorizedOperation.RequestPermissionDeny"
 
-	// 此 sdkappid 禁止提供服务，如有需要请联系  [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
-	UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppidIsDisabled"
+	// 此 SdkAppId 禁止提供服务，如有需要请联系  [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
+	UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppIdIsDisabled"
 
 	// 欠费被停止服务，可自行登录腾讯云充值来缴清欠款。
 	UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = "UnauthorizedOperation.SerivceSuspendDueToArrears"
 
-	// SmsSdkAppid 校验失败。
-	UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppidVerifyFail"
+	// SmsSdkAppId 校验失败。
+	UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 
 	// 不支持该请求。
 	UNSUPPORTEDOPERATION_ = "UnsupportedOperation."

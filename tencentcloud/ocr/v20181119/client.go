@@ -163,6 +163,44 @@ func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCR
     return
 }
 
+func NewBankSlipOCRRequest() (request *BankSlipOCRRequest) {
+    request = &BankSlipOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "BankSlipOCR")
+    return
+}
+
+func NewBankSlipOCRResponse() (response *BankSlipOCRResponse) {
+    response = &BankSlipOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BankSlipOCR
+// 本接口支持银行回单全字段的识别，包括付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+//
+//            
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+func (c *Client) BankSlipOCR(request *BankSlipOCRRequest) (response *BankSlipOCRResponse, err error) {
+    if request == nil {
+        request = NewBankSlipOCRRequest()
+    }
+    response = NewBankSlipOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBizLicenseOCRRequest() (request *BizLicenseOCRRequest) {
     request = &BizLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

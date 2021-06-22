@@ -1,132 +1,29 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 1 次发布
+### 第 11 次发布
 
-发布时间：2021-06-18 10:36:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AssociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57525)
-* [CreateBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57553)
-* [CreateDDoSAI](https://cloud.tencent.com/document/api/1021/57552)
-* [CreateDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57551)
-* [CreateDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57550)
-* [CreateDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57562)
-* [CreateIPAlarmThresholdConfig](https://cloud.tencent.com/document/api/1021/57561)
-* [CreatePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57549)
-* [CreateProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57548)
-* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
-* [CreateWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57547)
-* [CreateWaterPrintKey](https://cloud.tencent.com/document/api/1021/57546)
-* [DeleteBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57545)
-* [DeleteDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57544)
-* [DeleteDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57543)
-* [DeletePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57542)
-* [DeleteWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57541)
-* [DeleteWaterPrintKey](https://cloud.tencent.com/document/api/1021/57540)
-* [DescribeBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57539)
-* [DescribeDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57560)
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
-* [DescribeListBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57538)
-* [DescribeListDDoSAI](https://cloud.tencent.com/document/api/1021/57537)
-* [DescribeListDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57536)
-* [DescribeListDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57535)
-* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)
-* [DescribeListListener](https://cloud.tencent.com/document/api/1021/57534)
-* [DescribeListPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57533)
-* [DescribeListProtectThresholdConfig](https://cloud.tencent.com/document/api/1021/57532)
-* [DescribeListProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57531)
-* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/1021/57556)
-* [DescribeListWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57530)
-* [DisassociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57523)
-* [ModifyDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57529)
-* [ModifyDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57528)
-* [ModifyDomainUsrName](https://cloud.tencent.com/document/api/1021/57555)
-* [ModifyPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57527)
-
-新增数据结构：
-
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
-* [BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceSpecification)
-* [BGPIPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceUsages)
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
-* [BGPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceUsages)
-* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)
-* [DDoSAIRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSAIRelation)
-* [DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfig)
-* [DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfigRelation)
-* [DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfig)
-* [DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfigRelation)
-* [DefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57582#DefaultAlarmThreshold)
-* [EipAddressPackRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressPackRelation)
-* [EipAddressRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressRelation)
-* [EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo)
-* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
-* [IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#IPAlarmThresholdRelation)
-* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
-* [InstanceRelation](https://cloud.tencent.com/document/api/1021/57582#InstanceRelation)
-* [Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)
-* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
-* [ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/1021/57582#ListenerCcThreholdConfig)
-* [PackInfo](https://cloud.tencent.com/document/api/1021/57582#PackInfo)
-* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
-* [PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)
-* [PortSegment](https://cloud.tencent.com/document/api/1021/57582#PortSegment)
-* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
-* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
-* [ProtocolBlockRelation](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockRelation)
-* [ProxyTypeInfo](https://cloud.tencent.com/document/api/1021/57582#ProxyTypeInfo)
-* [RegionInfo](https://cloud.tencent.com/document/api/1021/57582#RegionInfo)
-* [SchedulingDomainInfo](https://cloud.tencent.com/document/api/1021/57582#SchedulingDomainInfo)
-* [SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)
-* [SpeedValue](https://cloud.tencent.com/document/api/1021/57582#SpeedValue)
-* [StaticPackRelation](https://cloud.tencent.com/document/api/1021/57582#StaticPackRelation)
-* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
-* [WaterPrintKey](https://cloud.tencent.com/document/api/1021/57582#WaterPrintKey)
-* [WaterPrintRelation](https://cloud.tencent.com/document/api/1021/57582#WaterPrintRelation)
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
-
-### 第 7 次发布
-
-发布时间：2021-06-21 08:00:32
+发布时间：2021-06-22 08:11:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [GenerateDownloadUrl](https://cloud.tencent.com/document/api/1371/57595)
 
 修改接口：
 
-* [CreateCosTokenV2](https://cloud.tencent.com/document/api/1371/55523)
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
 
-	* 新增入参：TimeVersion
-
-* [DeployServiceV2](https://cloud.tencent.com/document/api/1371/55519)
-
-	* 新增入参：VersionId
+	* 新增出参：LyricsUrl
 
 
 
 
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 4 次发布
+### 第 2 次发布
 
-发布时间：2021-06-21 08:00:41
+发布时间：2021-06-22 08:00:04
 
 本次发布包含了以下内容：
 
@@ -134,18 +31,131 @@
 
 修改数据结构：
 
-* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
 
-	* 新增成员：EKSClusterID, CreateTime
-
-
+	* 新增成员：DDoSLevel, CCEnable
 
 
-## 企业微信汽车行业版(wav) 版本：2021-01-29
 
-### 第 4 次发布
 
-发布时间：2021-06-21 08:00:09
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 35 次发布
+
+发布时间：2021-06-22 08:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo)
+
+修改数据结构：
+
+* [SlotReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#SlotReplacementInfo)
+
+	* 新增成员：TextReplacementInfo
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 17 次发布
+
+发布时间：2021-06-22 08:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：WebNodeTypeInfo
+
+
+新增数据结构：
+
+* [KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo)
+* [WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo)
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：KibanaNodeInfo
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 50 次发布
+
+发布时间：2021-06-22 08:08:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增入参：IsWords
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增入参：IsWords
+
+
+新增数据结构：
+
+* [BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo)
+* [DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint)
+* [DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords)
+
+修改数据结构：
+
+* [TextDetection](https://cloud.tencent.com/document/api/866/33527#TextDetection)
+
+	* 新增成员：Words, WordCoordPoint
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 13 次发布
+
+发布时间：2021-06-22 08:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
+
+	* 新增出参：ProductInfoList
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 60 次发布
+
+发布时间：2021-06-22 08:09:27
 
 本次发布包含了以下内容：
 
@@ -153,14 +163,34 @@
 
 修改数据结构：
 
-* [ExternalContact](https://cloud.tencent.com/document/api/1318/56791#ExternalContact)
+* [PrometheusAlertRule](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRule)
 
-	* 新增成员：Phone
+	* 新增成员：Annotations
 
-* [ExternalContactSimpleInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalContactSimpleInfo)
 
-	* 新增成员：SalesName
 
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 91 次发布
+
+发布时间：2021-06-22 08:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57678)
+* [DeleteVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57677)
+* [DescribeVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57676)
+* [ModifyVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57675)
+
+新增数据结构：
+
+* [VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute)
+* [VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify)
 
 
 
@@ -426,6 +456,21 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 11 次发布
+
+发布时间：2021-06-22 08:11:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
+
+	* 新增出参：LyricsUrl
+
 
 ### 第 10 次发布
 
@@ -819,6 +864,21 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
+### 第 2 次发布
+
+发布时间：2021-06-22 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+
+	* 新增成员：DDoSLevel, CCEnable
+
+
 ### 第 1 次发布
 
 发布时间：2021-06-18 10:36:41
@@ -829,86 +889,86 @@
 
 新增接口：
 
-* [[AssociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57525)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57553)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDDoSAI](https://cloud.tencent.com/document/api/1021/57552)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57551)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57550)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57562)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateIPAlarmThresholdConfig](https://cloud.tencent.com/document/api/1021/57561)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57549)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57548)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57547)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWaterPrintKey](https://cloud.tencent.com/document/api/1021/57546)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57545)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57544)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57543)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57542)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57541)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteWaterPrintKey](https://cloud.tencent.com/document/api/1021/57540)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57539)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57560)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57538)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListDDoSAI](https://cloud.tencent.com/document/api/1021/57537)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57536)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57535)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListListener](https://cloud.tencent.com/document/api/1021/57534)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57533)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListProtectThresholdConfig](https://cloud.tencent.com/document/api/1021/57532)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57531)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/1021/57556)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeListWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57530)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57523)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57529)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57528)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDomainUsrName](https://cloud.tencent.com/document/api/1021/57555)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57527)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57525)
+* [CreateBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57553)
+* [CreateDDoSAI](https://cloud.tencent.com/document/api/1021/57552)
+* [CreateDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57551)
+* [CreateDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57550)
+* [CreateDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57562)
+* [CreateIPAlarmThresholdConfig](https://cloud.tencent.com/document/api/1021/57561)
+* [CreatePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57549)
+* [CreateProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57548)
+* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
+* [CreateWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57547)
+* [CreateWaterPrintKey](https://cloud.tencent.com/document/api/1021/57546)
+* [DeleteBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57545)
+* [DeleteDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57544)
+* [DeleteDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57543)
+* [DeletePacketFilterConfig](https://cloud.tencent.com/document/api/1021/57542)
+* [DeleteWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57541)
+* [DeleteWaterPrintKey](https://cloud.tencent.com/document/api/1021/57540)
+* [DescribeBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57539)
+* [DescribeDefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57560)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeListBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/57538)
+* [DescribeListDDoSAI](https://cloud.tencent.com/document/api/1021/57537)
+* [DescribeListDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57536)
+* [DescribeListDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57535)
+* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)
+* [DescribeListListener](https://cloud.tencent.com/document/api/1021/57534)
+* [DescribeListPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57533)
+* [DescribeListProtectThresholdConfig](https://cloud.tencent.com/document/api/1021/57532)
+* [DescribeListProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57531)
+* [DescribeListSchedulingDomain](https://cloud.tencent.com/document/api/1021/57556)
+* [DescribeListWaterPrintConfig](https://cloud.tencent.com/document/api/1021/57530)
+* [DisassociateDDoSEipAddress](https://cloud.tencent.com/document/api/1021/57523)
+* [ModifyDDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57529)
+* [ModifyDDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57528)
+* [ModifyDomainUsrName](https://cloud.tencent.com/document/api/1021/57555)
+* [ModifyPacketFilterConfig](https://cloud.tencent.com/document/api/1021/57527)
 
 新增数据结构：
 
-* [[BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)](https://cloud.tencent.com/document/api/1021/57582#[BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance))
-* [[BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceSpecification)](https://cloud.tencent.com/document/api/1021/57582#[BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceSpecification))
-* [[BGPIPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceUsages)](https://cloud.tencent.com/document/api/1021/57582#[BGPIPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceUsages))
-* [[BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)](https://cloud.tencent.com/document/api/1021/57582#[BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance))
-* [[BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)](https://cloud.tencent.com/document/api/1021/57582#[BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification))
-* [[BGPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceUsages)](https://cloud.tencent.com/document/api/1021/57582#[BGPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceUsages))
-* [[BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)](https://cloud.tencent.com/document/api/1021/57582#[BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation))
-* [[DDoSAIRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSAIRelation)](https://cloud.tencent.com/document/api/1021/57582#[DDoSAIRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSAIRelation))
-* [[DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfig)](https://cloud.tencent.com/document/api/1021/57582#[DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfig))
-* [[DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfigRelation)](https://cloud.tencent.com/document/api/1021/57582#[DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfigRelation))
-* [[DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfig)](https://cloud.tencent.com/document/api/1021/57582#[DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfig))
-* [[DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfigRelation)](https://cloud.tencent.com/document/api/1021/57582#[DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfigRelation))
-* [[DefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57582#DefaultAlarmThreshold)](https://cloud.tencent.com/document/api/1021/57582#[DefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57582#DefaultAlarmThreshold))
-* [[EipAddressPackRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressPackRelation)](https://cloud.tencent.com/document/api/1021/57582#[EipAddressPackRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressPackRelation))
-* [[EipAddressRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressRelation)](https://cloud.tencent.com/document/api/1021/57582#[EipAddressRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressRelation))
-* [[EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo)](https://cloud.tencent.com/document/api/1021/57582#[EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo))
-* [[ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)](https://cloud.tencent.com/document/api/1021/57582#[ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener))
-* [[IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#IPAlarmThresholdRelation)](https://cloud.tencent.com/document/api/1021/57582#[IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#IPAlarmThresholdRelation))
-* [[IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)](https://cloud.tencent.com/document/api/1021/57582#[IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo))
-* [[InstanceRelation](https://cloud.tencent.com/document/api/1021/57582#InstanceRelation)](https://cloud.tencent.com/document/api/1021/57582#[InstanceRelation](https://cloud.tencent.com/document/api/1021/57582#InstanceRelation))
-* [[Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)](https://cloud.tencent.com/document/api/1021/57582#[Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule))
-* [[Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)](https://cloud.tencent.com/document/api/1021/57582#[Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule))
-* [[ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/1021/57582#ListenerCcThreholdConfig)](https://cloud.tencent.com/document/api/1021/57582#[ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/1021/57582#ListenerCcThreholdConfig))
-* [[PackInfo](https://cloud.tencent.com/document/api/1021/57582#PackInfo)](https://cloud.tencent.com/document/api/1021/57582#[PackInfo](https://cloud.tencent.com/document/api/1021/57582#PackInfo))
-* [[PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)](https://cloud.tencent.com/document/api/1021/57582#[PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig))
-* [[PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)](https://cloud.tencent.com/document/api/1021/57582#[PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation))
-* [[PortSegment](https://cloud.tencent.com/document/api/1021/57582#PortSegment)](https://cloud.tencent.com/document/api/1021/57582#[PortSegment](https://cloud.tencent.com/document/api/1021/57582#PortSegment))
-* [[ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)](https://cloud.tencent.com/document/api/1021/57582#[ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation))
-* [[ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)](https://cloud.tencent.com/document/api/1021/57582#[ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig))
-* [[ProtocolBlockRelation](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockRelation)](https://cloud.tencent.com/document/api/1021/57582#[ProtocolBlockRelation](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockRelation))
-* [[ProxyTypeInfo](https://cloud.tencent.com/document/api/1021/57582#ProxyTypeInfo)](https://cloud.tencent.com/document/api/1021/57582#[ProxyTypeInfo](https://cloud.tencent.com/document/api/1021/57582#ProxyTypeInfo))
-* [[RegionInfo](https://cloud.tencent.com/document/api/1021/57582#RegionInfo)](https://cloud.tencent.com/document/api/1021/57582#[RegionInfo](https://cloud.tencent.com/document/api/1021/57582#RegionInfo))
-* [[SchedulingDomainInfo](https://cloud.tencent.com/document/api/1021/57582#SchedulingDomainInfo)](https://cloud.tencent.com/document/api/1021/57582#[SchedulingDomainInfo](https://cloud.tencent.com/document/api/1021/57582#SchedulingDomainInfo))
-* [[SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)](https://cloud.tencent.com/document/api/1021/57582#[SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer))
-* [[SpeedValue](https://cloud.tencent.com/document/api/1021/57582#SpeedValue)](https://cloud.tencent.com/document/api/1021/57582#[SpeedValue](https://cloud.tencent.com/document/api/1021/57582#SpeedValue))
-* [[StaticPackRelation](https://cloud.tencent.com/document/api/1021/57582#StaticPackRelation)](https://cloud.tencent.com/document/api/1021/57582#[StaticPackRelation](https://cloud.tencent.com/document/api/1021/57582#StaticPackRelation))
-* [[WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)](https://cloud.tencent.com/document/api/1021/57582#[WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig))
-* [[WaterPrintKey](https://cloud.tencent.com/document/api/1021/57582#WaterPrintKey)](https://cloud.tencent.com/document/api/1021/57582#[WaterPrintKey](https://cloud.tencent.com/document/api/1021/57582#WaterPrintKey))
-* [[WaterPrintRelation](https://cloud.tencent.com/document/api/1021/57582#WaterPrintRelation)](https://cloud.tencent.com/document/api/1021/57582#[WaterPrintRelation](https://cloud.tencent.com/document/api/1021/57582#WaterPrintRelation))
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [BGPIPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceSpecification)
+* [BGPIPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstanceUsages)
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+* [BGPInstanceUsages](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceUsages)
+* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)
+* [DDoSAIRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSAIRelation)
+* [DDoSGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfig)
+* [DDoSGeoIPBlockConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSGeoIPBlockConfigRelation)
+* [DDoSSpeedLimitConfig](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfig)
+* [DDoSSpeedLimitConfigRelation](https://cloud.tencent.com/document/api/1021/57582#DDoSSpeedLimitConfigRelation)
+* [DefaultAlarmThreshold](https://cloud.tencent.com/document/api/1021/57582#DefaultAlarmThreshold)
+* [EipAddressPackRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressPackRelation)
+* [EipAddressRelation](https://cloud.tencent.com/document/api/1021/57582#EipAddressRelation)
+* [EipProductInfo](https://cloud.tencent.com/document/api/1021/57582#EipProductInfo)
+* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
+* [IPAlarmThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#IPAlarmThresholdRelation)
+* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
+* [InstanceRelation](https://cloud.tencent.com/document/api/1021/57582#InstanceRelation)
+* [Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)
+* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
+* [ListenerCcThreholdConfig](https://cloud.tencent.com/document/api/1021/57582#ListenerCcThreholdConfig)
+* [PackInfo](https://cloud.tencent.com/document/api/1021/57582#PackInfo)
+* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
+* [PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)
+* [PortSegment](https://cloud.tencent.com/document/api/1021/57582#PortSegment)
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
+* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
+* [ProtocolBlockRelation](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockRelation)
+* [ProxyTypeInfo](https://cloud.tencent.com/document/api/1021/57582#ProxyTypeInfo)
+* [RegionInfo](https://cloud.tencent.com/document/api/1021/57582#RegionInfo)
+* [SchedulingDomainInfo](https://cloud.tencent.com/document/api/1021/57582#SchedulingDomainInfo)
+* [SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)
+* [SpeedValue](https://cloud.tencent.com/document/api/1021/57582#SpeedValue)
+* [StaticPackRelation](https://cloud.tencent.com/document/api/1021/57582#StaticPackRelation)
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
+* [WaterPrintKey](https://cloud.tencent.com/document/api/1021/57582#WaterPrintKey)
+* [WaterPrintRelation](https://cloud.tencent.com/document/api/1021/57582#WaterPrintRelation)
 
 
 
@@ -12274,6 +12334,25 @@
 
 ## 腾讯云剪(cme) 版本：2019-10-29
 
+### 第 35 次发布
+
+发布时间：2021-06-22 08:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo)](https://cloud.tencent.com/document/api/1156/40360#[TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo))
+
+修改数据结构：
+
+* [SlotReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#SlotReplacementInfo)
+
+	* 新增成员：TextReplacementInfo
+
+
 ### 第 34 次发布
 
 发布时间：2021-06-17 08:02:44
@@ -21610,6 +21689,33 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 17 次发布
+
+发布时间：2021-06-22 08:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：WebNodeTypeInfo
+
+
+新增数据结构：
+
+* [[KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo)](https://cloud.tencent.com/document/api/845/30634#[KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo))
+* [[WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo)](https://cloud.tencent.com/document/api/845/30634#[WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo))
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：KibanaNodeInfo
+
 
 ### 第 16 次发布
 
@@ -33628,6 +33734,42 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 50 次发布
+
+发布时间：2021-06-22 08:08:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增入参：IsWords
+
+* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
+
+	* 新增入参：IsWords
+
+
+新增数据结构：
+
+* [[BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo)](https://cloud.tencent.com/document/api/866/33527#[BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo))
+* [[DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint)](https://cloud.tencent.com/document/api/866/33527#[DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint))
+* [[DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords)](https://cloud.tencent.com/document/api/866/33527#[DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords))
+
+修改数据结构：
+
+* [TextDetection](https://cloud.tencent.com/document/api/866/33527#TextDetection)
+
+	* 新增成员：Words, WordCoordPoint
+
+
 ### 第 49 次发布
 
 发布时间：2021-05-27 08:06:56
@@ -42137,7 +42279,7 @@
 
 新增接口：
 
-* [[GenerateDownloadUrl](https://cloud.tencent.com/document/api/1371/57595)](https://cloud.tencent.com/document/api/#/#)
+* [GenerateDownloadUrl](https://cloud.tencent.com/document/api/1371/57595)
 
 修改接口：
 
@@ -42810,6 +42952,21 @@
 
 
 ## 图像分析(tiia) 版本：2019-05-29
+
+### 第 13 次发布
+
+发布时间：2021-06-22 08:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
+
+	* 新增出参：ProductInfoList
+
 
 ### 第 12 次发布
 
@@ -43703,6 +43860,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 60 次发布
+
+发布时间：2021-06-22 08:09:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusAlertRule](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRule)
+
+	* 新增成员：Annotations
+
 
 ### 第 59 次发布
 
@@ -50007,6 +50179,26 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 91 次发布
+
+发布时间：2021-06-22 08:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57678)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57677)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57676)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57675)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute)](https://cloud.tencent.com/document/api/215/15824#[VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute))
+* [[VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify)](https://cloud.tencent.com/document/api/215/15824#[VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify))
 
 ### 第 90 次发布
 

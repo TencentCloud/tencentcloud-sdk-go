@@ -573,6 +573,10 @@ type DetectProductBetaResponse struct {
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
 		ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
 
+		// 相似商品信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductInfoList []*ProductInfo `json:"ProductInfoList,omitempty" name:"ProductInfoList"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

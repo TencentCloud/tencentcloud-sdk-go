@@ -1655,6 +1655,7 @@ func NewRollUpdateCloudBaseRunServerVersionResponse() (response *RollUpdateCloud
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 func (c *Client) RollUpdateCloudBaseRunServerVersion(request *RollUpdateCloudBaseRunServerVersionRequest) (response *RollUpdateCloudBaseRunServerVersionResponse, err error) {
     if request == nil {
         request = NewRollUpdateCloudBaseRunServerVersionRequest()

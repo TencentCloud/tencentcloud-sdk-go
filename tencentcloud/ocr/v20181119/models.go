@@ -285,6 +285,77 @@ func (r *BankCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BankSlipInfo struct {
+
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标。
+	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
+}
+
+type BankSlipOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *BankSlipOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BankSlipOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankSlipOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BankSlipOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 银行回单识别结果，具体内容请点击左侧链接。
+		BankSlipInfos []*BankSlipInfo `json:"BankSlipInfos,omitempty" name:"BankSlipInfos"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BankSlipOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BankSlipOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BizLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -772,6 +843,21 @@ type Detail struct {
 
 	// 企业四要素核验结果描述
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type DetectedWordCoordPoint struct {
+
+	// 单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
+}
+
+type DetectedWords struct {
+
+	// 置信度 0 ~100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 候选字Character
+	Character *string `json:"Character,omitempty" name:"Character"`
 }
 
 type DriverLicenseOCRRequest struct {
@@ -1569,6 +1655,9 @@ type GeneralAccurateOCRRequest struct {
 	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回单字信息，默认关
+	IsWords *bool `json:"IsWords,omitempty" name:"IsWords"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -1585,6 +1674,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsWords")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
@@ -1655,6 +1745,9 @@ type GeneralBasicOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否返回单字信息，默认关
+	IsWords *bool `json:"IsWords,omitempty" name:"IsWords"`
 }
 
 func (r *GeneralBasicOCRRequest) ToJsonString() string {
@@ -1675,6 +1768,7 @@ func (r *GeneralBasicOCRRequest) FromJsonString(s string) error {
 	delete(f, "LanguageType")
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
+	delete(f, "IsWords")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralBasicOCRRequest has unknown keys!", "")
 	}
@@ -4607,6 +4701,12 @@ type TextDetection struct {
 
 	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
 	ItemPolygon *ItemCoord `json:"ItemPolygon,omitempty" name:"ItemPolygon"`
+
+	// 识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	Words []*DetectedWords `json:"Words,omitempty" name:"Words"`
+
+	// 单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	WordCoordPoint []*DetectedWordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint"`
 }
 
 type TextDetectionEn struct {

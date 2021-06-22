@@ -1102,6 +1102,7 @@ func NewGetGroupResponse() (response *GetGroupResponse) {
 // 查询用户组详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetGroup(request *GetGroupRequest) (response *GetGroupResponse, err error) {
     if request == nil {
@@ -1441,8 +1442,7 @@ func NewListCollaboratorsResponse() (response *ListCollaboratorsResponse) {
 // 获取协作者列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ListCollaborators(request *ListCollaboratorsRequest) (response *ListCollaboratorsResponse, err error) {
     if request == nil {
         request = NewListCollaboratorsRequest()

@@ -80,6 +80,9 @@ const (
 	// 日志导出数量超出限制。
 	LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
 
+	// 并发查询超过限制，单topic并发最大值15。
+	LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+
 	// 日志集数量超出限制。
 	LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
 

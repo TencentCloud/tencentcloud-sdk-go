@@ -610,6 +610,7 @@ func NewDescribeBundlesResponse() (response *DescribeBundlesResponse) {
 // 本接口（DescribeBundles）用于查询套餐信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"

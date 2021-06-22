@@ -38,8 +38,14 @@ const (
 	// 没有申请签名之前，无法申请模板，请根据 [创建签名](https://cloud.tencent.com/document/product/382/37794#.E5.88.9B.E5.BB.BA.E7.AD.BE.E5.90.8D) 申请完成之后再次申请。
 	FAILEDOPERATION_MISSINGSIGNATURE = "FailedOperation.MissingSignature"
 
+	// 无法识别签名，请确认是否已有签名通过申请，一般是签名未通过申请，可以查看 [签名审核](https://cloud.tencent.com/document/product/382/37745)。
+	FAILEDOPERATION_MISSINGSIGNATURELIST = "FailedOperation.MissingSignatureList"
+
 	// 此签名 ID 未提交申请或不存在，不能进行修改操作，请检查您的 SignId 是否填写正确。
 	FAILEDOPERATION_MISSINGSIGNATURETOMODIFY = "FailedOperation.MissingSignatureToModify"
+
+	// 无法识别模板，请确认是否已有模板通过申请，一般是模板未通过申请，可以查看 [模板审核](https://cloud.tencent.com/document/product/382/37745)。
+	FAILEDOPERATION_MISSINGTEMPLATELIST = "FailedOperation.MissingTemplateList"
 
 	// 此模板 ID 未提交申请或不存在，不能进行修改操作，请检查您的 TemplateId是否填写正确。
 	FAILEDOPERATION_MISSINGTEMPLATETOMODIFY = "FailedOperation.MissingTemplateToModify"
@@ -148,9 +154,6 @@ const (
 
 	// 参数 Limit 校验失败。
 	INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = "InvalidParameterValue.LimitVerifyFail"
-
-	// 无法识别签名，请确认是否已有签名通过申请，一般是签名未通过申请，可以查看 [签名审核](https://cloud.tencent.com/document/product/382/37745#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E7.AD.89.E5.BE.85.E5.AE.A1.E6.A0.B8) 。
-	INVALIDPARAMETERVALUE_MISSINGSIGNATURELIST = "InvalidParameterValue.MissingSignatureList"
 
 	// 参数 Offset 校验失败。
 	INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"

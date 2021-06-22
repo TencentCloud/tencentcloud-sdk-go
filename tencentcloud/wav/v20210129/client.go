@@ -126,6 +126,7 @@ func NewQueryActivityJoinListResponse() (response *QueryActivityJoinListResponse
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityJoinList(request *QueryActivityJoinListRequest) (response *QueryActivityJoinListResponse, err error) {
     if request == nil {
@@ -157,6 +158,7 @@ func NewQueryActivityListResponse() (response *QueryActivityListResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityList(request *QueryActivityListRequest) (response *QueryActivityListResponse, err error) {
     if request == nil {

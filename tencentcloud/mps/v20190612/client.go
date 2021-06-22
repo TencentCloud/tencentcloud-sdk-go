@@ -1533,6 +1533,7 @@ func NewDisableWorkflowResponse() (response *DisableWorkflowResponse) {
 // 禁用工作流。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
