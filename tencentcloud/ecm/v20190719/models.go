@@ -4662,11 +4662,11 @@ type EnhancedService struct {
 
 type Filter struct {
 
-	// 过滤字段名称
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 过滤字段内容数组
+	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type HaVip struct {

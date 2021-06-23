@@ -1,102 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
-
-### 第 11 次发布
-
-发布时间：2021-06-22 08:11:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
-
-	* 新增出参：LyricsUrl
-
-
-
-
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2021-06-22 08:00:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
-
-	* 新增成员：DDoSLevel, CCEnable
-
-
-
-
-## 腾讯云剪(cme) 版本：2019-10-29
-
-### 第 35 次发布
-
-发布时间：2021-06-22 08:03:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo)
-
-修改数据结构：
-
-* [SlotReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#SlotReplacementInfo)
-
-	* 新增成员：TextReplacementInfo
-
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 17 次发布
-
-发布时间：2021-06-22 08:06:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
-
-	* 新增入参：WebNodeTypeInfo
-
-
-新增数据结构：
-
-* [KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo)
-* [WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo)
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：KibanaNodeInfo
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 50 次发布
-
-发布时间：2021-06-22 08:08:03
+发布时间：2021-06-23 11:26:33
 
 本次发布包含了以下内容：
 
@@ -104,39 +12,22 @@
 
 新增接口：
 
-* [BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)
-
-修改接口：
-
-* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
-
-	* 新增入参：IsWords
-
-* [GeneralBasicOCR](https://cloud.tencent.com/document/api/866/33526)
-
-	* 新增入参：IsWords
-
+* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
+* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
 
 新增数据结构：
 
-* [BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo)
-* [DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint)
-* [DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords)
-
-修改数据结构：
-
-* [TextDetection](https://cloud.tencent.com/document/api/866/33527#TextDetection)
-
-	* 新增成员：Words, WordCoordPoint
+* [CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)
+* [InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)
+* [SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)
 
 
 
+## 内容分发网络(cdn) 版本：2018-06-06
 
-## 图像分析(tiia) 版本：2019-05-29
+### 第 68 次发布
 
-### 第 13 次发布
-
-发布时间：2021-06-22 08:09:18
+发布时间：2021-06-23 11:31:26
 
 本次发布包含了以下内容：
 
@@ -144,37 +35,22 @@
 
 修改接口：
 
-* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
+* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
 
-	* 新增出参：ProductInfoList
+	* 新增入参：Segment
+
+* [EnableCaches](https://cloud.tencent.com/document/api/228/33540)
+
+	* 新增入参：Date
 
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 60 次发布
+### 第 61 次发布
 
-发布时间：2021-06-22 08:09:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PrometheusAlertRule](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRule)
-
-	* 新增成员：Annotations
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 91 次发布
-
-发布时间：2021-06-22 08:10:10
+发布时间：2021-06-23 11:36:42
 
 本次发布包含了以下内容：
 
@@ -182,15 +58,11 @@
 
 新增接口：
 
-* [CreateVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57678)
-* [DeleteVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57677)
-* [DescribeVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57676)
-* [ModifyVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57675)
+* [DescribeClusterControllers](https://cloud.tencent.com/document/api/457/57744)
 
 新增数据结构：
 
-* [VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute)
-* [VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify)
+* [ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus)
 
 
 
@@ -863,6 +735,25 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 3 次发布
+
+发布时间：2021-06-23 11:26:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)](https://cloud.tencent.com/document/api/1021/57582#[CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules))
+* [[InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)](https://cloud.tencent.com/document/api/1021/57582#[InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules))
+* [[SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)](https://cloud.tencent.com/document/api/1021/57582#[SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode))
 
 ### 第 2 次发布
 
@@ -8404,6 +8295,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 68 次发布
+
+发布时间：2021-06-23 11:31:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
+
+	* 新增入参：Segment
+
+* [EnableCaches](https://cloud.tencent.com/document/api/228/33540)
+
+	* 新增入参：Date
+
+
 ### 第 67 次发布
 
 发布时间：2021-06-09 08:03:50
@@ -12344,7 +12254,7 @@
 
 新增数据结构：
 
-* [[TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo)](https://cloud.tencent.com/document/api/1156/40360#[TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo))
+* [TextReplacementInfo](https://cloud.tencent.com/document/api/1156/40360#TextReplacementInfo)
 
 修改数据结构：
 
@@ -21707,8 +21617,8 @@
 
 新增数据结构：
 
-* [[KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo)](https://cloud.tencent.com/document/api/845/30634#[KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo))
-* [[WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo)](https://cloud.tencent.com/document/api/845/30634#[WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo))
+* [KibanaNodeInfo](https://cloud.tencent.com/document/api/845/30634#KibanaNodeInfo)
+* [WebNodeTypeInfo](https://cloud.tencent.com/document/api/845/30634#WebNodeTypeInfo)
 
 修改数据结构：
 
@@ -33744,7 +33654,7 @@
 
 新增接口：
 
-* [[BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)](https://cloud.tencent.com/document/api/#/#)
+* [BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)
 
 修改接口：
 
@@ -33759,9 +33669,9 @@
 
 新增数据结构：
 
-* [[BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo)](https://cloud.tencent.com/document/api/866/33527#[BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo))
-* [[DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint)](https://cloud.tencent.com/document/api/866/33527#[DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint))
-* [[DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords)](https://cloud.tencent.com/document/api/866/33527#[DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords))
+* [BankSlipInfo](https://cloud.tencent.com/document/api/866/33527#BankSlipInfo)
+* [DetectedWordCoordPoint](https://cloud.tencent.com/document/api/866/33527#DetectedWordCoordPoint)
+* [DetectedWords](https://cloud.tencent.com/document/api/866/33527#DetectedWords)
 
 修改数据结构：
 
@@ -43861,6 +43771,22 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 61 次发布
+
+发布时间：2021-06-23 11:36:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeClusterControllers](https://cloud.tencent.com/document/api/457/57744)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus)](https://cloud.tencent.com/document/api/457/31866#[ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus))
+
 ### 第 60 次发布
 
 发布时间：2021-06-22 08:09:27
@@ -50190,15 +50116,15 @@
 
 新增接口：
 
-* [[CreateVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57678)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57677)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57676)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57675)](https://cloud.tencent.com/document/api/#/#)
+* [CreateVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57678)
+* [DeleteVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57677)
+* [DescribeVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57676)
+* [ModifyVpnGatewayRoutes](https://cloud.tencent.com/document/api/215/57675)
 
 新增数据结构：
 
-* [[VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute)](https://cloud.tencent.com/document/api/215/15824#[VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute))
-* [[VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify)](https://cloud.tencent.com/document/api/215/15824#[VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify))
+* [VpnGatewayRoute](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRoute)
+* [VpnGatewayRouteModify](https://cloud.tencent.com/document/api/215/15824#VpnGatewayRouteModify)
 
 ### 第 90 次发布
 

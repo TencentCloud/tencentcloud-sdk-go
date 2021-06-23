@@ -219,6 +219,10 @@ func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) 
 }
 
 // DescribeSeatUserList
+// 废弃接口下架
+//
+// 
+//
 // 获取坐席用户列表（废弃）
 //
 // 可能返回的错误码:

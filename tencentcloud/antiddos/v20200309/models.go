@@ -291,6 +291,15 @@ type BlackWhiteIpRelation struct {
 	Mask *uint64 `json:"Mask,omitempty" name:"Mask"`
 }
 
+type CertIdInsL7Rules struct {
+
+	// 使用证书的规则列表
+	L7Rules []*InsL7Rules `json:"L7Rules,omitempty" name:"L7Rules"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+}
+
 type CreateBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
@@ -594,6 +603,51 @@ func (r *CreateIPAlarmThresholdConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateIPAlarmThresholdConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RuleCertsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *CreateL7RuleCertsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL7RuleCertsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL7RuleCertsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateL7RuleCertsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateL7RuleCertsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateL7RuleCertsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1341,6 +1395,51 @@ func (r *DescribeDefaultAlarmThresholdResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDefaultAlarmThresholdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL7RulesBySSLCertIdRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeL7RulesBySSLCertIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL7RulesBySSLCertIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7RulesBySSLCertIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeL7RulesBySSLCertIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证书规则集合
+		CertSet []*CertIdInsL7Rules `json:"CertSet,omitempty" name:"CertSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeL7RulesBySSLCertIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeL7RulesBySSLCertIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2361,6 +2460,30 @@ type IPLineInfo struct {
 	Eip *string `json:"Eip,omitempty" name:"Eip"`
 }
 
+type InsL7Rules struct {
+
+	// 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 实例ID
+	InsId *string `json:"InsId,omitempty" name:"InsId"`
+
+	// 用户AppID
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 高防端口
+	VirtualPort *string `json:"VirtualPort,omitempty" name:"VirtualPort"`
+
+	// 证书ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+}
+
 type InstanceRelation struct {
 
 	// 资源实例的IP
@@ -2915,6 +3038,15 @@ type StaticPackRelation struct {
 	// 到期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitempty" name:"CurDeadline"`
+}
+
+type SuccessCode struct {
+
+	// 描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 成功/错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
 type WaterPrintConfig struct {

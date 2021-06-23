@@ -753,6 +753,15 @@ type CommonName struct {
 	CN *string `json:"CN,omitempty" name:"CN"`
 }
 
+type ControllerStatus struct {
+
+	// 控制器的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 控制器是否开启
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
 type CreateClusterAsGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2328,6 +2337,55 @@ func (r *DescribeClusterCommonNamesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterCommonNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterControllersRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterControllersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterControllersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterControllersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterControllersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 描述集群中各个控制器的状态
+		ControllerStatusSet []*ControllerStatus `json:"ControllerStatusSet,omitempty" name:"ControllerStatusSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterControllersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterControllersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -511,7 +511,7 @@ type DescribeMusicRequest struct {
 	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
 	IdentityId *string `json:"IdentityId,omitempty" name:"IdentityId"`
 
-	// MP3-320K-FTD-P  为获取64kbps歌曲热门片段。
+	// MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
 	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 

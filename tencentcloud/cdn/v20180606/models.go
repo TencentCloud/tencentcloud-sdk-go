@@ -2502,6 +2502,9 @@ type DescribeIpStatusRequest struct {
 	// overseas: 海外节点
 	// global: 全球节点
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 是否以IP段的格式返回。
+	Segment *bool `json:"Segment,omitempty" name:"Segment"`
 }
 
 func (r *DescribeIpStatusRequest) ToJsonString() string {
@@ -2519,6 +2522,7 @@ func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Layer")
 	delete(f, "Area")
+	delete(f, "Segment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpStatusRequest has unknown keys!", "")
 	}
@@ -4130,6 +4134,9 @@ type EnableCachesRequest struct {
 
 	// 解封 URL 列表
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+
+	// URL封禁日期
+	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
 func (r *EnableCachesRequest) ToJsonString() string {
@@ -4145,6 +4152,7 @@ func (r *EnableCachesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Urls")
+	delete(f, "Date")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableCachesRequest has unknown keys!", "")
 	}

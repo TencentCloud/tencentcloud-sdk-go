@@ -1310,6 +1310,38 @@ func (c *Client) DescribeClusterCommonNames(request *DescribeClusterCommonNamesR
     return
 }
 
+func NewDescribeClusterControllersRequest() (request *DescribeClusterControllersRequest) {
+    request = &DescribeClusterControllersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterControllers")
+    return
+}
+
+func NewDescribeClusterControllersResponse() (response *DescribeClusterControllersResponse) {
+    response = &DescribeClusterControllersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterControllers
+// 用于查询Kubernetes的各个原生控制器是否开启
+//
+// 可能返回的错误码:
+//  INTERNALERROR_KUBECLIENTCREATE = "InternalError.KubeClientCreate"
+//  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeClusterControllers(request *DescribeClusterControllersRequest) (response *DescribeClusterControllersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterControllersRequest()
+    }
+    response = NewDescribeClusterControllersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterEndpointStatusRequest() (request *DescribeClusterEndpointStatusRequest) {
     request = &DescribeClusterEndpointStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

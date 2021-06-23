@@ -1276,7 +1276,7 @@ type DeleteLoadBalancerListenersRequest struct {
 	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器。
+	// 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
@@ -2267,10 +2267,10 @@ func (r *DescribeExclusiveClustersResponse) FromJsonString(s string) error {
 type DescribeListenersRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID。
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 要查询的负载均衡监听器ID数组。
+	// 要查询的负载均衡监听器 ID 数组，最大为100个。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL。
@@ -2986,10 +2986,10 @@ func (r *DescribeTargetHealthResponse) FromJsonString(s string) error {
 type DescribeTargetsRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例ID。
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 监听器ID列表。
+	// 监听器 ID 列表。ID 数量上限为20个。
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 	// 监听器协议类型。
