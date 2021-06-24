@@ -52,6 +52,12 @@ type CreateJobConfigRequest struct {
 
 	// 是否采集作业日志
 	LogCollect *bool `json:"LogCollect,omitempty" name:"LogCollect"`
+
+	// JobManager规格
+	JobManagerSpec *float64 `json:"JobManagerSpec,omitempty" name:"JobManagerSpec"`
+
+	// TaskManager规格
+	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitempty" name:"TaskManagerSpec"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -76,6 +82,8 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "AutoDelete")
 	delete(f, "COSBucket")
 	delete(f, "LogCollect")
+	delete(f, "JobManagerSpec")
+	delete(f, "TaskManagerSpec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -920,6 +928,14 @@ type JobConfig struct {
 	// 作业的最大并行度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxParallelism *uint64 `json:"MaxParallelism,omitempty" name:"MaxParallelism"`
+
+	// JobManager规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobManagerSpec *float64 `json:"JobManagerSpec,omitempty" name:"JobManagerSpec"`
+
+	// TaskManager规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitempty" name:"TaskManagerSpec"`
 }
 
 type JobV1 struct {
@@ -952,7 +968,7 @@ type JobV1 struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 作业类型
+	// 作业类型，1：sql作业，2：Jar作业
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobType *int64 `json:"JobType,omitempty" name:"JobType"`
 
@@ -1031,6 +1047,10 @@ type JobV1 struct {
 	// 作业所在集群状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 细粒度下的运行的CU数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCu *float64 `json:"RunningCu,omitempty" name:"RunningCu"`
 }
 
 type Property struct {

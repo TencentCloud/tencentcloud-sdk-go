@@ -48,7 +48,7 @@ type CreateTtsTaskRequest struct {
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
 	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
-	// 返回音频格式，可取值：mp3（默认），mp3，pcm
+	// 返回音频格式，可取值：mp3（默认），wav，pcm
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)

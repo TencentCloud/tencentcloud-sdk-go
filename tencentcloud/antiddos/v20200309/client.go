@@ -120,6 +120,37 @@ func (c *Client) CreateBlackWhiteIpList(request *CreateBlackWhiteIpListRequest) 
     return
 }
 
+func NewCreateBoundIPRequest() (request *CreateBoundIPRequest) {
+    request = &CreateBoundIPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateBoundIP")
+    return
+}
+
+func NewCreateBoundIPResponse() (response *CreateBoundIPResponse) {
+    response = &CreateBoundIPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBoundIP
+// 绑定IP到高防包实例，支持独享包、共享包；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBoundIP(request *CreateBoundIPRequest) (response *CreateBoundIPResponse, err error) {
+    if request == nil {
+        request = NewCreateBoundIPRequest()
+    }
+    response = NewCreateBoundIPResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDDoSAIRequest() (request *CreateDDoSAIRequest) {
     request = &CreateDDoSAIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -140,7 +171,7 @@ func NewCreateDDoSAIResponse() (response *CreateDDoSAIResponse) {
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSAI(request *CreateDDoSAIRequest) (response *CreateDDoSAIResponse, err error) {
     if request == nil {

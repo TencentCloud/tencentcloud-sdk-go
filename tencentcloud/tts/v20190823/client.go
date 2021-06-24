@@ -65,7 +65,7 @@ func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
 //
 // <li>支持音频格式：mp3,wav,pcm</li>
 //
-// <li>支持音频采样率：16000 Hz</li>
+// <li>支持音频采样率：16000 Hz, 8000 Hz</li>
 //
 // <li>支持中文普通话、英文、中英文混读、粤语合成</li>
 //

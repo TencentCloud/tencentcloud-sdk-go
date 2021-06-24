@@ -2,9 +2,9 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2021-06-23 11:26:33
+发布时间：2021-06-24 08:00:04
 
 本次发布包含了以下内容：
 
@@ -12,22 +12,49 @@
 
 新增接口：
 
+* [CreateBoundIP](https://cloud.tencent.com/document/api/1021/57763)
+
+修改接口：
+
 * [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
+
+	* 新增入参：CertId, L7Rules
+
 * [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
+
+	* 新增入参：Status, CertIds
+
 
 新增数据结构：
 
-* [CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)
-* [InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)
-* [SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)
+* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo)
 
 
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 68 次发布
+### 第 15 次发布
 
-发布时间：2021-06-23 11:31:26
+发布时间：2021-06-24 08:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainSetList](https://cloud.tencent.com/document/api/628/45244#DomainSetList)
+
+	* 新增成员：IsForcedHttps, RegistrationStatus
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 7 次发布
+
+发布时间：2021-06-24 08:01:29
 
 本次发布包含了以下内容：
 
@@ -35,34 +62,21 @@
 
 修改接口：
 
-* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
 
-	* 新增入参：Segment
-
-* [EnableCaches](https://cloud.tencent.com/document/api/228/33540)
-
-	* 新增入参：Date
+	* 新增入参：JobManagerSpec, TaskManagerSpec
 
 
+修改数据结构：
 
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
 
-## 容器服务(tke) 版本：2018-05-25
+	* 新增成员：JobManagerSpec, TaskManagerSpec
 
-### 第 61 次发布
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
 
-发布时间：2021-06-23 11:36:42
+	* 新增成员：RunningCu
 
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterControllers](https://cloud.tencent.com/document/api/457/57744)
-
-新增数据结构：
-
-* [ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus)
 
 
 
@@ -736,6 +750,33 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
+### 第 4 次发布
+
+发布时间：2021-06-24 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBoundIP](https://cloud.tencent.com/document/api/1021/57763)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
+
+	* 新增入参：CertId, L7Rules
+
+* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
+
+	* 新增入参：Status, CertIds
+
+
+新增数据结构：
+
+* [[BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo)](https://cloud.tencent.com/document/api/1021/57582#[BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo))
+
 ### 第 3 次发布
 
 发布时间：2021-06-23 11:26:33
@@ -746,14 +787,14 @@
 
 新增接口：
 
-* [[CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)](https://cloud.tencent.com/document/api/#/#)
+* [CreateL7RuleCerts](https://cloud.tencent.com/document/api/1021/57742)
+* [DescribeL7RulesBySSLCertId](https://cloud.tencent.com/document/api/1021/57740)
 
 新增数据结构：
 
-* [[CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)](https://cloud.tencent.com/document/api/1021/57582#[CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules))
-* [[InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)](https://cloud.tencent.com/document/api/1021/57582#[InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules))
-* [[SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)](https://cloud.tencent.com/document/api/1021/57582#[SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode))
+* [CertIdInsL7Rules](https://cloud.tencent.com/document/api/1021/57582#CertIdInsL7Rules)
+* [InsL7Rules](https://cloud.tencent.com/document/api/1021/57582#InsL7Rules)
+* [SuccessCode](https://cloud.tencent.com/document/api/1021/57582#SuccessCode)
 
 ### 第 2 次发布
 
@@ -1049,6 +1090,21 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 15 次发布
+
+发布时间：2021-06-24 08:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainSetList](https://cloud.tencent.com/document/api/628/45244#DomainSetList)
+
+	* 新增成员：IsForcedHttps, RegistrationStatus
+
 
 ### 第 14 次发布
 
@@ -33523,6 +33579,32 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 7 次发布
+
+发布时间：2021-06-24 08:01:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：JobManagerSpec, TaskManagerSpec
+
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：JobManagerSpec, TaskManagerSpec
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：RunningCu
+
+
 ### 第 6 次发布
 
 发布时间：2021-04-15 08:00:16
@@ -43781,11 +43863,11 @@
 
 新增接口：
 
-* [[DescribeClusterControllers](https://cloud.tencent.com/document/api/457/57744)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterControllers](https://cloud.tencent.com/document/api/457/57744)
 
 新增数据结构：
 
-* [[ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus)](https://cloud.tencent.com/document/api/457/31866#[ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus))
+* [ControllerStatus](https://cloud.tencent.com/document/api/457/31866#ControllerStatus)
 
 ### 第 60 次发布
 

@@ -291,6 +291,24 @@ type BlackWhiteIpRelation struct {
 	Mask *uint64 `json:"Mask,omitempty" name:"Mask"`
 }
 
+type BoundIpInfo struct {
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 运营商，0：电信；1：联通；2：移动；5：BGP
+	IspCode *uint64 `json:"IspCode,omitempty" name:"IspCode"`
+}
+
 type CertIdInsL7Rules struct {
 
 	// 使用证书的规则列表
@@ -351,6 +369,71 @@ func (r *CreateBlackWhiteIpListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBoundIPRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+	BoundDevList []*BoundIpInfo `json:"BoundDevList,omitempty" name:"BoundDevList"`
+
+	// 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+	UnBoundDevList []*BoundIpInfo `json:"UnBoundDevList,omitempty" name:"UnBoundDevList"`
+
+	// 已弃用，不填
+	CopyPolicy *string `json:"CopyPolicy,omitempty" name:"CopyPolicy"`
+}
+
+func (r *CreateBoundIPRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBoundIPRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Id")
+	delete(f, "BoundDevList")
+	delete(f, "UnBoundDevList")
+	delete(f, "CopyPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBoundIPRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBoundIPResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBoundIPResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBoundIPResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -608,6 +691,12 @@ func (r *CreateIPAlarmThresholdConfigResponse) FromJsonString(s string) error {
 
 type CreateL7RuleCertsRequest struct {
 	*tchttp.BaseRequest
+
+	// SSL证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// L7域名转发规则列表
+	L7Rules []*InsL7Rules `json:"L7Rules,omitempty" name:"L7Rules"`
 }
 
 func (r *CreateL7RuleCertsRequest) ToJsonString() string {
@@ -622,6 +711,8 @@ func (r *CreateL7RuleCertsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "CertId")
+	delete(f, "L7Rules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL7RuleCertsRequest has unknown keys!", "")
 	}
@@ -1400,6 +1491,12 @@ func (r *DescribeDefaultAlarmThresholdResponse) FromJsonString(s string) error {
 
 type DescribeL7RulesBySSLCertIdRequest struct {
 	*tchttp.BaseRequest
+
+	// 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 证书ID列表
+	CertIds []*string `json:"CertIds,omitempty" name:"CertIds"`
 }
 
 func (r *DescribeL7RulesBySSLCertIdRequest) ToJsonString() string {
@@ -1414,6 +1511,8 @@ func (r *DescribeL7RulesBySSLCertIdRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Status")
+	delete(f, "CertIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7RulesBySSLCertIdRequest has unknown keys!", "")
 	}

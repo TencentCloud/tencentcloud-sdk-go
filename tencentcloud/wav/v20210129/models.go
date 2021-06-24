@@ -38,11 +38,11 @@ type ActivityDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityType *int64 `json:"ActivityType,omitempty" name:"ActivityType"`
 
-	// 活动开始时间，单位：秒
+	// 活动开始时间戳，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 活动结束时间，单位：秒
+	// 活动结束时间戳，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -54,7 +54,7 @@ type ActivityDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivacyAgreementId *string `json:"PrivacyAgreementId,omitempty" name:"PrivacyAgreementId"`
 
-	// 活动更新时间，单位：秒
+	// 活动更新时间戳，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
