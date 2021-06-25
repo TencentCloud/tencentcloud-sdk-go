@@ -621,6 +621,12 @@ type CreateAlarmPolicyRequest struct {
 
 	// 触发任务列表
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitempty" name:"TriggerTasks"`
+
+	// 全局过滤条件
+	Filter *AlarmPolicyFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 聚合维度列表，指定按哪些维度 key 来做 group by
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
 }
 
 func (r *CreateAlarmPolicyRequest) ToJsonString() string {
@@ -647,6 +653,8 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 	delete(f, "EventCondition")
 	delete(f, "NoticeIds")
 	delete(f, "TriggerTasks")
+	delete(f, "Filter")
+	delete(f, "GroupBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmPolicyRequest has unknown keys!", "")
 	}
@@ -1388,6 +1396,9 @@ type DescribeAlarmEventsRequest struct {
 
 	// 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 监控类型，如 MT_QCE。如果不填默认为 MT_QCE。
+	MonitorType *string `json:"MonitorType,omitempty" name:"MonitorType"`
 }
 
 func (r *DescribeAlarmEventsRequest) ToJsonString() string {
@@ -1404,6 +1415,7 @@ func (r *DescribeAlarmEventsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Module")
 	delete(f, "Namespace")
+	delete(f, "MonitorType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmEventsRequest has unknown keys!", "")
 	}
@@ -4039,6 +4051,12 @@ type ModifyAlarmPolicyConditionRequest struct {
 
 	// 事件触发条件
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitempty" name:"EventCondition"`
+
+	// 全局过滤条件
+	Filter *AlarmPolicyFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 聚合维度列表，指定按哪些维度 key 来做 group by
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
 }
 
 func (r *ModifyAlarmPolicyConditionRequest) ToJsonString() string {
@@ -4058,6 +4076,8 @@ func (r *ModifyAlarmPolicyConditionRequest) FromJsonString(s string) error {
 	delete(f, "ConditionTemplateId")
 	delete(f, "Condition")
 	delete(f, "EventCondition")
+	delete(f, "Filter")
+	delete(f, "GroupBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmPolicyConditionRequest has unknown keys!", "")
 	}

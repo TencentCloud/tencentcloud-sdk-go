@@ -205,6 +205,9 @@ type BankCardOCRRequest struct {
 
 	// 边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
 	EnableBorderCheck *bool `json:"EnableBorderCheck,omitempty" name:"EnableBorderCheck"`
+
+	// 是否返回图片质量分数（图片质量分数是评价一个图片的模糊程度的标准），默认false。
+	EnableQualityValue *bool `json:"EnableQualityValue,omitempty" name:"EnableQualityValue"`
 }
 
 func (r *BankCardOCRRequest) ToJsonString() string {
@@ -226,6 +229,7 @@ func (r *BankCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnableCopyCheck")
 	delete(f, "EnableReshootCheck")
 	delete(f, "EnableBorderCheck")
+	delete(f, "EnableQualityValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCardOCRRequest has unknown keys!", "")
 	}
@@ -268,6 +272,10 @@ type BankCardOCRResponse struct {
 	// （告警码可以同时存在多个）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
+
+		// 图片质量分数，请求enable_quality_value时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		QualityValue *int64 `json:"QualityValue,omitempty" name:"QualityValue"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1146,6 +1154,9 @@ type EnglishOCRRequest struct {
 	// 候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
 	// 该参数默认值为false。
 	EnableCandWord *bool `json:"EnableCandWord,omitempty" name:"EnableCandWord"`
+
+	// 预处理开关，功能是检测图片倾斜的角度，将原本倾斜的图片矫正。该参数默认值为true。
+	Preprocess *bool `json:"Preprocess,omitempty" name:"Preprocess"`
 }
 
 func (r *EnglishOCRRequest) ToJsonString() string {
@@ -1164,6 +1175,7 @@ func (r *EnglishOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "EnableCoordPoint")
 	delete(f, "EnableCandWord")
+	delete(f, "Preprocess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnglishOCRRequest has unknown keys!", "")
 	}

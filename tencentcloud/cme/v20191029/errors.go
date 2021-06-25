@@ -104,7 +104,7 @@ const (
 	// 名称字段长度超长，限制 30 个中文字符。
 	INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 
-	// 分布偏移不合法。
+	// 分页偏移不合法。
 	INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 
 	// 无效的操作者。

@@ -189,7 +189,7 @@ type ChatArchivingDetail struct {
 	// 动作名称，switch表示切换企微账号，send表示企微普通消息
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 消息类型，当Action != "switch"时存在，比如video, text, voice 等，和企微开放文档一一对应
+	// 消息类型，当Action != "switch"时存在，例如video, text, voice 等，和企微开放文档一一对应
 	// https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
@@ -448,10 +448,10 @@ type FollowUser struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 该成员添加此外部联系人的时间,单位为秒
+	// 该成员添加此外部联系人的时间戳，单位为秒
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 该成员添加此客户的来源，具体含义详见来<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+	// 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
 	AddWay *int64 `json:"AddWay,omitempty" name:"AddWay"`
 
 	// 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid

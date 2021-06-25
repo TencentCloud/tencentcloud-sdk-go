@@ -4690,7 +4690,7 @@ type FaceConfigureInfo struct {
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	// 标签个数最多 100 个，每个标签长度最多 16 个字符。
 	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：
@@ -4718,7 +4718,7 @@ type FaceConfigureInfoForUpdate struct {
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
+	// 标签个数最多 100 个，每个标签长度最多 16 个字符。
 	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：

@@ -757,7 +757,7 @@ type DescribeDBDiagReportTasksRequest struct {
 	// 偏移量，默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认20。
+	// 返回数量，默认20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -895,7 +895,7 @@ type DescribeDiagDBInstancesRequest struct {
 	// 分页参数，偏移量。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数，分页值。
+	// 分页参数，分页值，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 根据实例名称条件查询。
@@ -1089,6 +1089,95 @@ func (r *DescribeMailProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMySqlProcessListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 线程的ID，用于筛选线程列表。
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
+	// 线程的操作账号名，用于筛选线程列表。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 线程的操作主机地址，用于筛选线程列表。
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 线程的操作数据库，用于筛选线程列表。
+	DB *string `json:"DB,omitempty" name:"DB"`
+
+	// 线程的操作状态，用于筛选线程列表。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 线程的执行类型，用于筛选线程列表。
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 线程的操作语句，用于筛选线程列表。
+	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeMySqlProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySqlProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ID")
+	delete(f, "User")
+	delete(f, "Host")
+	delete(f, "DB")
+	delete(f, "State")
+	delete(f, "Command")
+	delete(f, "Time")
+	delete(f, "Info")
+	delete(f, "Limit")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMySqlProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMySqlProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实时线程列表。
+		ProcessList []*MySqlProcess `json:"ProcessList,omitempty" name:"ProcessList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMySqlProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySqlProcessListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityAuditLogDownloadUrlsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1161,7 +1250,7 @@ type DescribeSecurityAuditLogExportTasksRequest struct {
 	// 偏移量，默认0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认20。
+	// 返回数量，默认20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1293,10 +1382,10 @@ type DescribeSlowLogTopSqlsRequest struct {
 	// 截止时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键。
+	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 排序方式，支持ASC（升序）以及DESC（降序）。
+	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -2056,7 +2145,7 @@ type MailConfiguration struct {
 type ModifyDiagDBInstanceConfRequest struct {
 	*tchttp.BaseRequest
 
-	// 巡检开关。
+	// 实例配置，包括巡检、概览开关等。
 	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitempty" name:"InstanceConfs"`
 
 	// 生效实例地域，取值为"All"，代表全地域。
@@ -2153,6 +2242,33 @@ type MonitorMetricSeriesData struct {
 
 	// 监控指标对应的时间戳。
 	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
+type MySqlProcess struct {
+
+	// 线程ID。
+	ID *string `json:"ID,omitempty" name:"ID"`
+
+	// 线程的操作账号名。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 线程的操作主机地址。
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 线程的操作数据库。
+	DB *string `json:"DB,omitempty" name:"DB"`
+
+	// 线程的操作状态。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 线程的执行类型。
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 线程的操作时长，单位秒。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 线程的操作语句。
+	Info *string `json:"Info,omitempty" name:"Info"`
 }
 
 type ProfileInfo struct {
@@ -2294,13 +2410,13 @@ type SlowLogHost struct {
 
 type SlowLogTopSqlItem struct {
 
-	// sql总锁等待时间
+	// sql总锁等待时间，单位秒
 	LockTime *float64 `json:"LockTime,omitempty" name:"LockTime"`
 
-	// 最大锁等待时间
+	// 最大锁等待时间，单位秒
 	LockTimeMax *float64 `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
 
-	// 最小锁等待时间
+	// 最小锁等待时间，单位秒
 	LockTimeMin *float64 `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
 
 	// 总扫描行数
@@ -2312,13 +2428,13 @@ type SlowLogTopSqlItem struct {
 	// 最小扫描行数
 	RowsExaminedMin *int64 `json:"RowsExaminedMin,omitempty" name:"RowsExaminedMin"`
 
-	// 总耗时
+	// 总耗时，单位秒
 	QueryTime *float64 `json:"QueryTime,omitempty" name:"QueryTime"`
 
-	// 最大执行时间
+	// 最大执行时间，单位秒
 	QueryTimeMax *float64 `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
 
-	// 最小执行时间
+	// 最小执行时间，单位秒
 	QueryTimeMin *float64 `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
 
 	// 总返回行数
@@ -2342,25 +2458,25 @@ type SlowLogTopSqlItem struct {
 	// 数据库名
 	Schema *string `json:"Schema,omitempty" name:"Schema"`
 
-	// 总耗时占比
+	// 总耗时占比，单位%
 	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitempty" name:"QueryTimeRatio"`
 
-	// sql总锁等待时间占比
+	// sql总锁等待时间占比，单位%
 	LockTimeRatio *float64 `json:"LockTimeRatio,omitempty" name:"LockTimeRatio"`
 
-	// 总扫描行数占比
+	// 总扫描行数占比，单位%
 	RowsExaminedRatio *float64 `json:"RowsExaminedRatio,omitempty" name:"RowsExaminedRatio"`
 
-	// 总返回行数占比
+	// 总返回行数占比，单位%
 	RowsSentRatio *float64 `json:"RowsSentRatio,omitempty" name:"RowsSentRatio"`
 
-	// 平均执行时间
+	// 平均执行时间，单位秒
 	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitempty" name:"QueryTimeAvg"`
 
 	// 平均返回行数
 	RowsSentAvg *float64 `json:"RowsSentAvg,omitempty" name:"RowsSentAvg"`
 
-	// 平均锁等待时间
+	// 平均锁等待时间，单位秒
 	LockTimeAvg *float64 `json:"LockTimeAvg,omitempty" name:"LockTimeAvg"`
 
 	// 平均扫描行数

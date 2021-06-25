@@ -497,7 +497,7 @@ func NewDescribeClientBalanceResponse() (response *DescribeClientBalanceResponse
 }
 
 // DescribeClientBalance
-// 为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+// 【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -508,6 +508,37 @@ func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (r
         request = NewDescribeClientBalanceRequest()
     }
     response = NewDescribeClientBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequest) {
+    request = &DescribeClientBalanceNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalanceNew")
+    return
+}
+
+func NewDescribeClientBalanceNewResponse() (response *DescribeClientBalanceNewResponse) {
+    response = &DescribeClientBalanceNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClientBalanceNew
+// 为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientBalanceNew(request *DescribeClientBalanceNewRequest) (response *DescribeClientBalanceNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientBalanceNewRequest()
+    }
+    response = NewDescribeClientBalanceNewResponse()
     err = c.Send(request, response)
     return
 }

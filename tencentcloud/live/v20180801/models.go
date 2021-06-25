@@ -4966,7 +4966,7 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 
 	// 查询时间，北京时间，
 	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内某天的详细数据。
+	// 注意：支持查询近1个月内某天的详细数据，截止到昨天。
 	DayTime *string `json:"DayTime,omitempty" name:"DayTime"`
 
 	// 页数，默认1，
@@ -4984,7 +4984,7 @@ type DescribeLiveTranscodeDetailInfoRequest struct {
 
 	// 结束天时间，北京时间，
 	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+	// 注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
 	EndDayTime *string `json:"EndDayTime,omitempty" name:"EndDayTime"`
 }
 
@@ -8401,12 +8401,12 @@ type RecordParam struct {
 
 	// 录制间隔。
 	// 单位秒，默认：1800。
-	// 取值范围：300-7200。
+	// 取值范围：60-7200。
 	// 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
 	RecordInterval *int64 `json:"RecordInterval,omitempty" name:"RecordInterval"`
 
 	// 录制存储时长。
-	// 单位秒，取值范围： 0 - 93312000。
+	// 单位秒，取值范围： 0 - 1500天。
 	// 0：表示永久存储。
 	StorageTime *int64 `json:"StorageTime,omitempty" name:"StorageTime"`
 
@@ -8436,6 +8436,20 @@ type RecordParam struct {
 	// 
 	// 若未设置默认录制文件名为{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}
 	VodFileName *string `json:"VodFileName,omitempty" name:"VodFileName"`
+
+	// 任务流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 视频存储策略。
+	// normal：标准存储。
+	// cold：低频存储。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageMode *string `json:"StorageMode,omitempty" name:"StorageMode"`
+
+	// 点播应用分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 }
 
 type RecordTask struct {

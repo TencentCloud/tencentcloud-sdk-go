@@ -4055,7 +4055,7 @@ type DescribeMalwaresResponse struct {
 		// 木马总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// Malware数组。
+		// 木马相关信息。
 		Malwares []*Malware `json:"Malwares,omitempty" name:"Malwares"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4884,10 +4884,10 @@ type DescribeRiskDnsListRequest struct {
 	// <li>MergeEndTime - String - 是否必填：否 - 最近访问结束时间</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 排序方式
+	// 排序方式：根据请求次数排序：asc-升序/desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序字段
+	// 排序字段：AccessCount-请求次数
 	By *string `json:"By,omitempty" name:"By"`
 }
 
@@ -4960,7 +4960,7 @@ type DescribeScanMalwareScheduleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 扫描进度
+		// 扫描进度（单位：%）
 		Schedule *int64 `json:"Schedule,omitempty" name:"Schedule"`
 
 		// 风险文件数,当进度满了以后才有该值
@@ -8376,7 +8376,7 @@ type ProtectHostConfig struct {
 type RecoverMalwaresRequest struct {
 	*tchttp.BaseRequest
 
-	// 木马Id数组,单次最大删除不能超过200条
+	// 木马Id数组（单次最大恢复不超过100条）
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 
@@ -9056,7 +9056,7 @@ func (r *TrustMaliciousRequestResponse) FromJsonString(s string) error {
 type TrustMalwaresRequest struct {
 	*tchttp.BaseRequest
 
-	// 木马ID数组。
+	// 木马ID数组（单次不超过的最大条数：100）
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 }
 

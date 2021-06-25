@@ -142,7 +142,7 @@ type AgentClientElem struct {
 	// 0表示不欠费，1表示欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
 
-	// 1:待代理商审核;2:待腾讯云审核
+	// 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 业务员ID
@@ -152,6 +152,10 @@ type AgentClientElem struct {
 	// 业务员姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 客户名称，此字段和控制台返回一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientName *string `json:"ClientName,omitempty" name:"ClientName"`
 }
 
 type AgentDealElem struct {
@@ -255,6 +259,14 @@ type AgentDealElem struct {
 	// 产品详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
+
+	// 付款方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 订单更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type AgentDealNewElem struct {
@@ -358,6 +370,14 @@ type AgentDealNewElem struct {
 	// 产品详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
+
+	// 付款方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 订单更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type AgentPayDealsRequest struct {
@@ -611,14 +631,20 @@ func (r *CreatePayRelationForClientResponse) FromJsonString(s string) error {
 
 type DealGoodsPriceElem struct {
 
-	// 实付金额
+	// 实付金额（单位：分）
 	RealTotalCost *uint64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 订单实际金额（不含折扣，单位：分）
+	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitempty" name:"OriginalTotalCost"`
 }
 
 type DealGoodsPriceNewElem struct {
 
-	// 实付金额
+	// 实付金额（单位：分）
 	RealTotalCost *int64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 原始金额（不含折扣，单位：分）
+	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitempty" name:"OriginalTotalCost"`
 }
 
 type DescribeAgentAuditedClientsRequest struct {
@@ -1420,6 +1446,58 @@ func (r *DescribeAgentSelfPayDealsV2Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAgentSelfPayDealsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceNewRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户(代客)账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *DescribeClientBalanceNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBalanceNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientBalanceNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceNewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 账户现金余额，单位分
+		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClientBalanceNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBalanceNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
