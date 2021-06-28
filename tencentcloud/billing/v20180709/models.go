@@ -1094,6 +1094,12 @@ type DescribeBillResourceSummaryRequest struct {
 
 	// 查询交易类型。如 按量计费日结，按量计费小时结 等
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 付费模式 prePay/postPay
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
@@ -1114,6 +1120,8 @@ func (r *DescribeBillResourceSummaryRequest) FromJsonString(s string) error {
 	delete(f, "Month")
 	delete(f, "NeedRecordNum")
 	delete(f, "ActionType")
+	delete(f, "ResourceId")
+	delete(f, "PayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillResourceSummaryRequest has unknown keys!", "")
 	}

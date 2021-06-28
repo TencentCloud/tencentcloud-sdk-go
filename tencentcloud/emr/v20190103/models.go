@@ -254,6 +254,10 @@ type ClusterInstancesInfo struct {
 	// 集群版本Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 地区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type ClusterSetting struct {
@@ -903,6 +907,14 @@ type EmrProductConfigOutter struct {
 	// 是否开启Cbs加密
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CbsEncrypt *int64 `json:"CbsEncrypt,omitempty" name:"CbsEncrypt"`
+
+	// 自定义应用角色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationRole *string `json:"ApplicationRole,omitempty" name:"ApplicationRole"`
+
+	// 安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
 }
 
 type Execution struct {

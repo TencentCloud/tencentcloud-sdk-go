@@ -1539,6 +1539,10 @@ type DataDisk struct {
 	// 挂载目录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
+
+	// 挂载设备名或分区名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskPartition *string `json:"DiskPartition,omitempty" name:"DiskPartition"`
 }
 
 type DeleteClusterAsGroupsRequest struct {

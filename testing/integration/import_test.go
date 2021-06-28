@@ -91,7 +91,9 @@ import (
 	eccv20181213 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc/v20181213"
 	ecdnv20191012 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn/v20191012"
 	ecmv20190719 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm/v20190719"
+	eiamv20210420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam/v20210420"
 	eisv20200715 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis/v20200715"
+	eisv20210601 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis/v20210601"
 	emrv20190103 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr/v20190103"
 	esv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20180416"
 	facefusionv20181201 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion/v20181201"
@@ -1135,6 +1137,19 @@ func TestEcmv20190719Import(t *testing.T) {
     }
 }
 
+func TestEiamv20210420Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := eiamv20210420.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init eiam_v20210420 client: %v", err))
+    }
+}
+
 func TestEisv20200715Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -1145,6 +1160,19 @@ func TestEisv20200715Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init eis_v20200715 client: %v", err))
+    }
+}
+
+func TestEisv20210601Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := eisv20210601.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init eis_v20210601 client: %v", err))
     }
 }
 

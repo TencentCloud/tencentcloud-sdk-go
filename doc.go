@@ -79,6 +79,8 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es"

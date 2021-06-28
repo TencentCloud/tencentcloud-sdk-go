@@ -1,105 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+## 计费相关(billing) 版本：2018-07-09
 
-### 第 2 次发布
+### 第 26 次发布
 
-发布时间：2021-06-24 14:42:17
+发布时间：2021-06-28 08:03:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeMySqlProcessList](https://cloud.tencent.com/document/api/1130/57824)
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：ResourceId, PayMode
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 19 次发布
+
+发布时间：2021-06-28 08:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRiskDnsList](https://cloud.tencent.com/document/api/296/53644)
+
+	* 新增出参：RiskDnsList, TotalCount
+
 
 新增数据结构：
 
-* [MySqlProcess](https://cloud.tencent.com/document/api/1130/57812#MySqlProcess)
+* [RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList)
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
 
+### 第 2 次发布
 
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 65 次发布
-
-发布时间：2021-06-25 08:06:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RecordParam](https://cloud.tencent.com/document/api/267/20474#RecordParam)
-
-	* 新增成员：Procedure, StorageMode, ClassId
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 25 次发布
-
-发布时间：2021-06-25 08:06:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)
-
-	* 新增入参：Filter, GroupBy
-
-* [DescribeAlarmEvents](https://cloud.tencent.com/document/api/248/51284)
-
-	* 新增入参：MonitorType
-
-* [ModifyAlarmPolicyCondition](https://cloud.tencent.com/document/api/248/51276)
-
-	* 新增入参：Filter, GroupBy
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 51 次发布
-
-发布时间：2021-06-25 08:07:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BankCardOCR](https://cloud.tencent.com/document/api/866/36216)
-
-	* 新增入参：EnableQualityValue
-
-	* 新增出参：QualityValue
-
-* [EnglishOCR](https://cloud.tencent.com/document/api/866/34938)
-
-	* 新增入参：Preprocess
-
-
-
-
-## 渠道合作伙伴(partners) 版本：2018-03-21
-
-### 第 22 次发布
-
-发布时间：2021-06-25 08:07:32
+发布时间：2021-06-28 08:11:39
 
 本次发布包含了以下内容：
 
@@ -107,29 +54,120 @@
 
 新增接口：
 
-* [DescribeClientBalanceNew](https://cloud.tencent.com/document/api/563/57850)
+* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1442/57990)
+* [DecribePublicKey](https://cloud.tencent.com/document/api/1442/57989)
+* [DeleteUser](https://cloud.tencent.com/document/api/1442/57988)
+* [DeleteUserGroup](https://cloud.tencent.com/document/api/1442/57987)
+* [DescribeApplication](https://cloud.tencent.com/document/api/1442/57986)
+* [DescribeUserGroup](https://cloud.tencent.com/document/api/1442/57985)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+* [ListAuthorizedApplicationsToOrgNode](https://cloud.tencent.com/document/api/1442/57983)
+* [ListAuthorizedApplicationsToUser](https://cloud.tencent.com/document/api/1442/57982)
+* [ListAuthorizedApplicationsToUserGroup](https://cloud.tencent.com/document/api/1442/57981)
+* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)
+* [RemoveUserFromUserGroup](https://cloud.tencent.com/document/api/1442/57979)
+
+新增数据结构：
+
+* [ApplicationAuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#ApplicationAuthorizationInfo)
+* [InheritedForm](https://cloud.tencent.com/document/api/1442/57931#InheritedForm)
+
+### 第 1 次发布
+
+发布时间：2021-06-25 16:46:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOrgNode](https://cloud.tencent.com/document/api/1442/57930)
+* [CreateUser](https://cloud.tencent.com/document/api/1442/57929)
+* [DeleteOrgNode](https://cloud.tencent.com/document/api/1442/57928)
+* [DescribeOrgNode](https://cloud.tencent.com/document/api/1442/57927)
+* [ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/57926)
+* [ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/57925)
+* [UpdateOrgNode](https://cloud.tencent.com/document/api/1442/57924)
+
+新增数据结构：
+
+* [OrgNodeChildInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildInfo)
+* [OrgNodeChildUserInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildUserInfo)
+* [UserInfo](https://cloud.tencent.com/document/api/1442/57931#UserInfo)
+
+
+
+## 企业集成服务(eis) 版本：2021-06-01
+
+### 第 1 次发布
+
+发布时间：2021-06-28 08:00:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRuntimeMC](https://cloud.tencent.com/document/api/1270/57967)
+* [GetRuntimeResourceMonitorMetricMC](https://cloud.tencent.com/document/api/1270/57966)
+* [ListDeployableRuntimesMC](https://cloud.tencent.com/document/api/1270/57965)
+* [ListRuntimeDeployedInstancesMC](https://cloud.tencent.com/document/api/1270/57964)
+* [ListRuntimesMC](https://cloud.tencent.com/document/api/1270/57963)
+
+新增数据结构：
+
+* [AbstractRuntimeMC](https://cloud.tencent.com/document/api/1270/57968#AbstractRuntimeMC)
+* [MetricValueMC](https://cloud.tencent.com/document/api/1270/57968#MetricValueMC)
+* [RuntimeDeployedInstanceMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeDeployedInstanceMC)
+* [RuntimeMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeMC)
+
+
+
+## 企业集成服务(eis) 版本：2020-07-15
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 21 次发布
+
+发布时间：2021-06-28 08:05:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [AgentClientElem](https://cloud.tencent.com/document/api/563/16047#AgentClientElem)
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
 
-	* 新增成员：ClientName
+	* 新增成员：Zone
 
-* [AgentDealElem](https://cloud.tencent.com/document/api/563/16047#AgentDealElem)
+* [EmrProductConfigOutter](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigOutter)
 
-	* 新增成员：PaymentMethod, UpdateTime
+	* 新增成员：ApplicationRole, SecurityGroups
 
-* [AgentDealNewElem](https://cloud.tencent.com/document/api/563/16047#AgentDealNewElem)
 
-	* 新增成员：PaymentMethod, UpdateTime
 
-* [DealGoodsPriceElem](https://cloud.tencent.com/document/api/563/16047#DealGoodsPriceElem)
 
-	* 新增成员：OriginalTotalCost
+## 容器服务(tke) 版本：2018-05-25
 
-* [DealGoodsPriceNewElem](https://cloud.tencent.com/document/api/563/16047#DealGoodsPriceNewElem)
+### 第 62 次发布
 
-	* 新增成员：OriginalTotalCost
+发布时间：2021-06-28 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/457/31866#DataDisk)
+
+	* 新增成员：DiskPartition
 
 
 
@@ -3790,6 +3828,21 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 26 次发布
+
+发布时间：2021-06-28 08:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：ResourceId, PayMode
+
 
 ### 第 25 次发布
 
@@ -16050,6 +16103,25 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 19 次发布
+
+发布时间：2021-06-28 08:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRiskDnsList](https://cloud.tencent.com/document/api/296/53644)
+
+	* 新增出参：RiskDnsList, TotalCount
+
+
+新增数据结构：
+
+* [[RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList)](https://cloud.tencent.com/document/api/296/19867#[RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList))
+
 ### 第 18 次发布
 
 发布时间：2021-06-16 08:11:12
@@ -17785,11 +17857,11 @@
 
 新增接口：
 
-* [[DescribeMySqlProcessList](https://cloud.tencent.com/document/api/1130/57824)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMySqlProcessList](https://cloud.tencent.com/document/api/1130/57824)
 
 新增数据结构：
 
-* [[MySqlProcess](https://cloud.tencent.com/document/api/1130/57812#MySqlProcess)](https://cloud.tencent.com/document/api/1130/57812#[MySqlProcess](https://cloud.tencent.com/document/api/1130/57812#MySqlProcess))
+* [MySqlProcess](https://cloud.tencent.com/document/api/1130/57812#MySqlProcess)
 
 ### 第 1 次发布
 
@@ -21136,6 +21208,64 @@
 
 
 
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 2 次发布
+
+发布时间：2021-06-28 08:11:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUserGroup](https://cloud.tencent.com/document/api/1442/57990)](https://cloud.tencent.com/document/api/#/#)
+* [[DecribePublicKey](https://cloud.tencent.com/document/api/1442/57989)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUser](https://cloud.tencent.com/document/api/1442/57988)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUserGroup](https://cloud.tencent.com/document/api/1442/57987)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeApplication](https://cloud.tencent.com/document/api/1442/57986)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserGroup](https://cloud.tencent.com/document/api/1442/57985)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)](https://cloud.tencent.com/document/api/#/#)
+* [[ListAuthorizedApplicationsToOrgNode](https://cloud.tencent.com/document/api/1442/57983)](https://cloud.tencent.com/document/api/#/#)
+* [[ListAuthorizedApplicationsToUser](https://cloud.tencent.com/document/api/1442/57982)](https://cloud.tencent.com/document/api/#/#)
+* [[ListAuthorizedApplicationsToUserGroup](https://cloud.tencent.com/document/api/1442/57981)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)](https://cloud.tencent.com/document/api/#/#)
+* [[RemoveUserFromUserGroup](https://cloud.tencent.com/document/api/1442/57979)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplicationAuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#ApplicationAuthorizationInfo)](https://cloud.tencent.com/document/api/1442/57931#[ApplicationAuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#ApplicationAuthorizationInfo))
+* [[InheritedForm](https://cloud.tencent.com/document/api/1442/57931#InheritedForm)](https://cloud.tencent.com/document/api/1442/57931#[InheritedForm](https://cloud.tencent.com/document/api/1442/57931#InheritedForm))
+
+### 第 1 次发布
+
+发布时间：2021-06-25 16:46:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateOrgNode](https://cloud.tencent.com/document/api/1442/57930)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUser](https://cloud.tencent.com/document/api/1442/57929)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteOrgNode](https://cloud.tencent.com/document/api/1442/57928)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOrgNode](https://cloud.tencent.com/document/api/1442/57927)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/57926)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/57925)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateOrgNode](https://cloud.tencent.com/document/api/1442/57924)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[OrgNodeChildInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildInfo)](https://cloud.tencent.com/document/api/1442/57931#[OrgNodeChildInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildInfo))
+* [[OrgNodeChildUserInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildUserInfo)](https://cloud.tencent.com/document/api/1442/57931#[OrgNodeChildUserInfo](https://cloud.tencent.com/document/api/1442/57931#OrgNodeChildUserInfo))
+* [[UserInfo](https://cloud.tencent.com/document/api/1442/57931#UserInfo)](https://cloud.tencent.com/document/api/1442/57931#[UserInfo](https://cloud.tencent.com/document/api/1442/57931#UserInfo))
+
+
+
+
 ## 企业集成服务(eis) 版本：2020-07-15
 
 ### 第 1 次发布
@@ -21159,8 +21289,54 @@
 
 
 
+## 企业集成服务(eis) 版本：2021-06-01
+
+### 第 1 次发布
+
+发布时间：2021-06-28 08:00:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetRuntimeMC](https://cloud.tencent.com/document/api/1270/57967)](https://cloud.tencent.com/document/api/#/#)
+* [[GetRuntimeResourceMonitorMetricMC](https://cloud.tencent.com/document/api/1270/57966)](https://cloud.tencent.com/document/api/#/#)
+* [[ListDeployableRuntimesMC](https://cloud.tencent.com/document/api/1270/57965)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRuntimeDeployedInstancesMC](https://cloud.tencent.com/document/api/1270/57964)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRuntimesMC](https://cloud.tencent.com/document/api/1270/57963)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AbstractRuntimeMC](https://cloud.tencent.com/document/api/1270/57968#AbstractRuntimeMC)](https://cloud.tencent.com/document/api/1270/57968#[AbstractRuntimeMC](https://cloud.tencent.com/document/api/1270/57968#AbstractRuntimeMC))
+* [[MetricValueMC](https://cloud.tencent.com/document/api/1270/57968#MetricValueMC)](https://cloud.tencent.com/document/api/1270/57968#[MetricValueMC](https://cloud.tencent.com/document/api/1270/57968#MetricValueMC))
+* [[RuntimeDeployedInstanceMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeDeployedInstanceMC)](https://cloud.tencent.com/document/api/1270/57968#[RuntimeDeployedInstanceMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeDeployedInstanceMC))
+* [[RuntimeMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeMC)](https://cloud.tencent.com/document/api/1270/57968#[RuntimeMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeMC))
+
+
+
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 21 次发布
+
+发布时间：2021-06-28 08:05:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：Zone
+
+* [EmrProductConfigOutter](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigOutter)
+
+	* 新增成员：ApplicationRole, SecurityGroups
+
 
 ### 第 20 次发布
 
@@ -34957,7 +35133,7 @@
 
 新增接口：
 
-* [[DescribeClientBalanceNew](https://cloud.tencent.com/document/api/563/57850)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClientBalanceNew](https://cloud.tencent.com/document/api/563/57850)
 
 修改数据结构：
 
@@ -44016,6 +44192,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 62 次发布
+
+发布时间：2021-06-28 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/457/31866#DataDisk)
+
+	* 新增成员：DiskPartition
+
 
 ### 第 61 次发布
 

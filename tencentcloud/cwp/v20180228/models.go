@@ -4918,6 +4918,13 @@ type DescribeRiskDnsListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 恶意请求列表数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskDnsList []*RiskDnsList `json:"RiskDnsList,omitempty" name:"RiskDnsList"`
+
+		// 总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -8633,6 +8640,69 @@ type ReverseShellRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+}
+
+type RiskDnsList struct {
+
+	// 对外访问域名
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 访问次数
+	AccessCount *uint64 `json:"AccessCount,omitempty" name:"AccessCount"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程MD5
+	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+
+	// 是否为全局规则，0否，1是
+	GlobalRuleId *uint64 `json:"GlobalRuleId,omitempty" name:"GlobalRuleId"`
+
+	// 用户规则id
+	UserRuleId *uint64 `json:"UserRuleId,omitempty" name:"UserRuleId"`
+
+	// 状态；0-待处理，2-已加白，3-非信任状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 首次访问时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最近访问时间
+	MergeTime *string `json:"MergeTime,omitempty" name:"MergeTime"`
+
+	// 唯一 Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机ip
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 唯一ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 参考
+	Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+	// 命令行
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 进程号
+	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 唯一UUID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 建议方案
+	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+
+	// 标签特性
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ScanVulRequest struct {
