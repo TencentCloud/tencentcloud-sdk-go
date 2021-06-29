@@ -195,6 +195,7 @@ func NewCreateResourceConfigResponse() (response *CreateResourceConfigResponse) 
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
 func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (response *CreateResourceConfigResponse, err error) {
     if request == nil {

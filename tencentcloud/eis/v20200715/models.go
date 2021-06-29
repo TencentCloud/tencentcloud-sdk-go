@@ -57,147 +57,177 @@ type DescribeEisConnectorConfigResponse struct {
 		// 连接器配置参数描述（json结构），示例如下：
 	// {
 	//     "attributes":{
-	//         "description":"测试",
-	//         "displayName":"test",
-	//         "name":"test",
-	//         "version":"1.0.0"
+	//         "description":"测试", // 连接器的描述
+	//         "displayName":"测试", // 连接器的展示名
+	//         "name":"test", // 连接器的名称
+	//         "version":"1.0.0" // 连接器的版本号
 	//     },
 	//     "properties":[
 	//         {
-	//             "displayName":"日期",
-	//             "name":"prop1",
-	//             "required":"true",
-	//             "type":"date"
-	//         }
-	//     ],
-	//     "operations":{
-	//         "get-info":[
-	//             {
-	//                 "displayName":"para1",
-	//                 "name":"para1",
-	//                 "required":"true",
-	//                 "type":"int"
-	//             },
-	//             {
-	//                 "displayName":"para2",
+	//             "attributes":{
+	//                 "displayName":"企业ID", // 参数的展示名
+	//                 "name":"para1", // 参数名
+	//                 "required":"true", // 是否必填
+	//                 "type":"int" // 参数的类型
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"成员管理密钥",
 	//                 "name":"para2",
 	//                 "required":"true",
 	//                 "type":"float"
-	//             },
-	//             {
-	//                 "displayName":"para3",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"应用管理密钥",
 	//                 "name":"para3",
 	//                 "required":"true",
 	//                 "type":"string"
-	//             },
-	//             {
-	//                 "displayName":"para4",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"企业ID",
 	//                 "name":"para4",
 	//                 "required":"true",
 	//                 "type":"decimal"
-	//             },
-	//             {
-	//                 "displayName":"para5",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"成员管理密钥",
 	//                 "name":"para5",
 	//                 "required":"true",
 	//                 "type":"bool"
-	//             },
-	//             {
-	//                 "displayName":"para6",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"应用管理密钥",
 	//                 "name":"para6",
 	//                 "required":"true",
 	//                 "type":"date"
-	//             },
-	//             {
-	//                 "displayName":"para7",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"企业ID",
 	//                 "name":"para7",
 	//                 "required":"true",
 	//                 "type":"time"
-	//             },
-	//             {
-	//                 "displayName":"para8",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"成员管理密钥",
 	//                 "name":"para8",
 	//                 "required":"true",
 	//                 "type":"datetime"
-	//             },
-	//             {
-	//                 "displayName":"para9",
+	//             }
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"应用管理密钥",
 	//                 "name":"para9",
 	//                 "required":"true",
-	//                 "type":"struct",
-	//                 "children":[
-	//                     {
-	//                         "displayName":"date",
-	//                         "name":"date",
-	//                         "required":"true",
-	//                         "type":"date"
-	//                     },
-	//                     {
-	//                         "displayName":"time",
-	//                         "name":"time",
-	//                         "required":"true",
-	//                         "type":"time"
-	//                     },
-	//                     {
-	//                         "displayName":"datetime",
-	//                         "name":"datetime",
-	//                         "required":"true",
-	//                         "type":"datetime"
-	//                     }
-	//                 ]
+	//                 "type":"map"
 	//             },
-	//             {
-	//                 "displayName":"para10",
-	//                 "name":"para10",
-	//                 "required":"true",
-	//                 "type":"list",
-	//                 "children":[
-	//                     {
-	//                         "displayName":"value",
-	//                         "name":"value",
-	//                         "required":"true",
-	//                         "type":"string"
-	//                     }
-	//                 ]
-	//             },
-	//             {
-	//                 "displayName":"para11",
-	//                 "name":"para11",
-	//                 "required":"true",
-	//                 "type":"dict",
-	//                 "children":[
-	//                     {
+	//             "children":[
+	//                 {
+	//                     "attributes":{
 	//                         "displayName":"key",
 	//                         "name":"key",
 	//                         "required":"true",
 	//                         "type":"string"
-	//                     },
-	//                     {
+	//                     }
+	//                 },
+	//                 {
+	//                     "attributes":{
 	//                         "displayName":"value",
 	//                         "name":"value",
 	//                         "required":"true",
+	//                         "type":"any"
+	//                     }
+	//                 }
+	//             ]
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"企业ID",
+	//                 "name":"para10",
+	//                 "required":"true",
+	//                 "type":"list" // list，list里元素的类型是结构体，children里是结构体的描述
+	//             },
+	//             "children":[
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"field1",
+	//                         "name":"field1",
+	//                         "required":"true",
 	//                         "type":"string"
 	//                     }
-	//                 ]
+	//                 },
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"field2",
+	//                         "name":"field2",
+	//                         "required":"true",
+	//                         "type":"any"
+	//                     }
+	//                 }
+	//             ]
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"成员管理密钥",
+	//                 "name":"para11",
+	//                 "required":"true",
+	//                 "type":"struct"
 	//             },
-	//             {
-	//                 "displayName":"para12",
+	//             "children":[
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"field1", // 结构体属性的展示名
+	//                         "name":"field1", // 结构体属性的名称
+	//                         "required":"true", // 是否必填
+	//                         "type":"string" // 属性的类型
+	//                     }
+	//                 },
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"field2",
+	//                         "name":"field2",
+	//                         "required":"true",
+	//                         "type":"any"
+	//                     }
+	//                 }
+	//             ]
+	//         },
+	//         {
+	//             "attributes":{
+	//                 "displayName":"应用管理密钥",
 	//                 "name":"para12",
 	//                 "required":"true",
-	//                 "type":"enum",
-	//                 "children":[
-	//                     {
-	//                         "displayName":"PC",
-	//                         "name":"1"
-	//                     },
-	//                     {
-	//                         "displayName":"Mac",
-	//                         "name":"2"
+	//                 "type":"enum"
+	//             },
+	//             "children":[
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"PC", // 枚举值的展示名
+	//                         "name":"PC" // 枚举值的名称
 	//                     }
-	//                 ]
-	//             }
-	//         ]
-	//     }
+	//                 },
+	//                 {
+	//                     "attributes":{
+	//                         "displayName":"MAC",
+	//                         "name":"MAC"
+	//                     }
+	//                 }
+	//             ]
+	//         }
+	//     ]
 	// }
 		ConnectorParameter *string `json:"ConnectorParameter,omitempty" name:"ConnectorParameter"`
 

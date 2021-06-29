@@ -130,6 +130,7 @@ func NewListEisConnectorsResponse() (response *ListEisConnectorsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ListEisConnectors(request *ListEisConnectorsRequest) (response *ListEisConnectorsResponse, err error) {
     if request == nil {
         request = NewListEisConnectorsRequest()

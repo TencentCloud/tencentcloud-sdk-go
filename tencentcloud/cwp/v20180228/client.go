@@ -1766,6 +1766,7 @@ func NewDescribeImportMachineInfoResponse() (response *DescribeImportMachineInfo
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoRequest) (response *DescribeImportMachineInfoResponse, err error) {
     if request == nil {
         request = NewDescribeImportMachineInfoRequest()
@@ -3777,6 +3778,7 @@ func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
@@ -4443,6 +4445,7 @@ func NewTrustMalwaresResponse() (response *TrustMalwaresResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMalwaresResponse, err error) {
     if request == nil {
         request = NewTrustMalwaresRequest()

@@ -68,6 +68,11 @@ type CreateTranscodeRequest struct {
 
 	// 内部参数
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
+
+	// 文档转码优先级，支持填入以下值：<br/>
+	// - low: 低优先级转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
+	// - 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
+	Priority *string `json:"Priority,omitempty" name:"Priority"`
 }
 
 func (r *CreateTranscodeRequest) ToJsonString() string {
@@ -89,6 +94,7 @@ func (r *CreateTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "ThumbnailResolution")
 	delete(f, "CompressFileType")
 	delete(f, "ExtraData")
+	delete(f, "Priority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeRequest has unknown keys!", "")
 	}

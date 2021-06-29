@@ -242,6 +242,9 @@ const (
 	// 无效的参数值。
 	INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 
+	// Json反序列化错误。
+	INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+
 	// 超出置放群组资源数量配额。
 	INVALIDPARAMETER_OVERDEPLOYGROUPQUOTA = "InvalidParameter.OverDeployGroupQuota"
 

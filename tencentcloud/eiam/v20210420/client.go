@@ -620,6 +620,38 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
     return
 }
 
+func NewModifyUserInfoRequest() (request *ModifyUserInfoRequest) {
+    request = &ModifyUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ModifyUserInfo")
+    return
+}
+
+func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
+    response = &ModifyUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserInfo
+// 通过用户名或用户 id 冻结用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyUserInfoRequest()
+    }
+    response = NewModifyUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveUserFromUserGroupRequest() (request *RemoveUserFromUserGroupRequest) {
     request = &RemoveUserFromUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

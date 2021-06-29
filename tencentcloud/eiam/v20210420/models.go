@@ -1162,6 +1162,88 @@ func (r *ListUsersInUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyUserInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 昵称，长度限制：64个字符。 默认与用户名相同。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户备注，长度限制：512个字符。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户所属用户组ID列表。
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" name:"UserGroupIds"`
+
+	// 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户手机号。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 用户过期时间，遵循 ISO 8601 标准。
+	ExpirationTime *string `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
+
+	// 用户密码， 需要符合密码策略的配置。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 用户邮箱。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 密码是否需要重置，为空默认为false不需要重置密码。
+	PwdNeedReset *bool `json:"PwdNeedReset,omitempty" name:"PwdNeedReset"`
+}
+
+func (r *ModifyUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserName")
+	delete(f, "DisplayName")
+	delete(f, "Description")
+	delete(f, "UserGroupIds")
+	delete(f, "UserId")
+	delete(f, "Phone")
+	delete(f, "ExpirationTime")
+	delete(f, "Password")
+	delete(f, "Email")
+	delete(f, "PwdNeedReset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OrgNodeChildInfo struct {
 
 	// 机构节点展示名称，长度限制：64个字符。 默认与机构名相同。
