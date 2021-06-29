@@ -22,9 +22,11 @@ func (c *Chain) GetCredential() (CredentialIface, error) {
 	for _, provider := range c.Providers {
 		cred, err := provider.GetCredential()
 		if err != nil {
-			return nil, err
-		} else if cred == nil {
-			continue
+			if errors.Is(err, ENVNOTSET) || errors.Is(err, FILEDOSENOTEXIST) || errors.Is(err, CVMNOROLE) {
+				continue
+			} else {
+				return nil, err
+			}
 		}
 		return cred, err
 	}

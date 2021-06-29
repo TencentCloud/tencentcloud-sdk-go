@@ -1,7 +1,6 @@
 package common
 
 import (
-	"log"
 	"time"
 )
 
@@ -13,11 +12,10 @@ type CvmRoleCredential struct {
 	tmpSecretId  string
 	tmpSecretKey string
 	token        string
-	source       *cvmRoleProvider
+	source       *CvmRoleProvider
 }
 
 func (c *CvmRoleCredential) GetSecretId() string {
-	log.Println("id re", c)
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -25,7 +23,6 @@ func (c *CvmRoleCredential) GetSecretId() string {
 }
 
 func (c *CvmRoleCredential) GetToken() string {
-	log.Println("token re,", c)
 	if c.needRefresh() {
 		c.refresh()
 	}
@@ -33,7 +30,6 @@ func (c *CvmRoleCredential) GetToken() string {
 }
 
 func (c *CvmRoleCredential) GetCredentialParams() map[string]string {
-	log.Println("key re,", c)
 	p := map[string]string{
 		"SecretId": c.GetSecretId(),
 	}

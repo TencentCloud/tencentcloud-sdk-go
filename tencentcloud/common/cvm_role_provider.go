@@ -5,7 +5,6 @@ import (
 	"errors"
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"time"
 )
@@ -17,7 +16,7 @@ const (
 
 var RoleNotBound = errors.New("get cvm role name failed, Please confirm whether the role is bound")
 
-type cvmRoleProvider struct {
+type CvmRoleProvider struct {
 	RoleName string
 }
 
@@ -30,12 +29,12 @@ type roleRsp struct {
 	Code         string    `json:"Code"`
 }
 
-func NewCvmRoleProvider(roleName string) *cvmRoleProvider {
-	return &cvmRoleProvider{RoleName: roleName}
+func NewCvmRoleProvider(roleName string) *CvmRoleProvider {
+	return &CvmRoleProvider{RoleName: roleName}
 }
 
-func DefaultCvmRoleProvider() *cvmRoleProvider {
-	return &cvmRoleProvider{}
+func DefaultCvmRoleProvider() *CvmRoleProvider {
+	return &CvmRoleProvider{}
 }
 
 func get(url string) ([]byte, error) {
@@ -55,7 +54,7 @@ func get(url string) ([]byte, error) {
 	return body, nil
 }
 
-func (r *cvmRoleProvider) getRoleName() (string, error) {
+func (r *CvmRoleProvider) getRoleName() (string, error) {
 	if r.RoleName != "" {
 		return r.RoleName, nil
 	}
@@ -67,12 +66,12 @@ func (r *cvmRoleProvider) getRoleName() (string, error) {
 	return string(rn), err
 }
 
-func (r *cvmRoleProvider) GetCredential() (CredentialIface, error) {
+func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	roleName, err := r.getRoleName()
 	if err != nil {
 		//如果没有就返回空的err,否则会使 DefaultChain 终止
 		if errors.Is(err, RoleNotBound) {
-			return nil, nil
+			return nil, CVMNOROLE
 		}
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", err.Error(), "")
 	}
@@ -89,7 +88,6 @@ func (r *cvmRoleProvider) GetCredential() (CredentialIface, error) {
 	if rspSt.Code != "Success" {
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "get credential from cvm role name failed,code="+rspSt.Code, "")
 	}
-	log.Println("rspstToken:", rspSt.Token)
 	cre := &CvmRoleCredential{
 		tmpSecretId:  rspSt.TmpSecretId,
 		tmpSecretKey: rspSt.TmpSecretKey,
