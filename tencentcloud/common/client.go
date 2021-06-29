@@ -287,7 +287,7 @@ func NewClientWithProviders(region string, providers ...Provider) (client *Clien
 	client = (&Client{}).Init(region)
 	var pc Provider
 	if len(providers) == 0 {
-		pc = DefaultChain()
+		pc = DefaultProviderChain()
 	} else {
 		pc = NewProviderChain(providers)
 	}

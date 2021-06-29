@@ -14,7 +14,7 @@ func NewProviderChain(providers []Provider) Provider {
 	}
 }
 
-func DefaultChain() Provider {
+func DefaultProviderChain() Provider {
 	return NewProviderChain([]Provider{DefaultEnvProvider(), DefaultProfileProvider(), DefaultCvmRoleProvider()})
 }
 

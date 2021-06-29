@@ -69,7 +69,7 @@ func (r *CvmRoleProvider) getRoleName() (string, error) {
 func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	roleName, err := r.getRoleName()
 	if err != nil {
-		//如果没有就返回空的err,否则会使 DefaultChain 终止
+		//如果没有就返回空的err,否则会使 DefaultProviderChain 终止
 		if errors.Is(err, RoleNotBound) {
 			return nil, CVMNOROLE
 		}

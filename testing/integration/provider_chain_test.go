@@ -6,10 +6,10 @@ import (
 )
 
 func TestProviderChain(t *testing.T) {
-	rc:=common.DefaultChain()
+	rc := common.DefaultProviderChain()
 	cre, err := rc.GetCredential()
 	if err != nil {
 		t.Error(err)
 	}
-	t.Log("id:"+cre.GetSecretId()+"\n"+"key:"+cre.GetSecretKey()+"\n"+"token:"+cre.GetToken())
+	t.Log("id:" + cre.GetSecretId() + "\n" + "key:" + cre.GetSecretKey() + "\n" + "token:" + cre.GetToken())
 }
