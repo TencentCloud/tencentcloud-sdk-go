@@ -21,7 +21,7 @@ type Client struct {
 	httpClient      *http.Client
 	httpProfile     *profile.HttpProfile
 	profile         *profile.ClientProfile
-	credential      *Credential
+	credential      CredentialIface
 	signMethod      string
 	unsignedPayload bool
 	debug           bool
@@ -104,8 +104,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if c.region != "" {
 		headers["X-TC-Region"] = c.region
 	}
-	if c.credential.Token != "" {
-		headers["X-TC-Token"] = c.credential.Token
+	if c.credential.GetToken() != "" {
+		headers["X-TC-token"] = c.credential.GetToken()
 	}
 	if request.GetHttpMethod() == "GET" {
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
@@ -179,7 +179,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	//log.Println("string2sign", string2sign)
 
 	// sign string
-	secretDate := hmacsha256(date, "TC3"+c.credential.SecretKey)
+	secretDate := hmacsha256(date, "TC3"+c.credential.GetSecretKey())
 	secretService := hmacsha256(request.GetService(), secretDate)
 	secretKey := hmacsha256("tc3_request", secretService)
 	signature := hex.EncodeToString([]byte(hmacsha256(string2sign, secretKey)))
@@ -188,7 +188,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	// build authorization
 	authorization := fmt.Sprintf("%s Credential=%s/%s, SignedHeaders=%s, Signature=%s",
 		algorithm,
-		c.credential.SecretId,
+		c.credential.GetSecretId(),
 		credentialScope,
 		signedHeaders,
 		signature)
@@ -241,7 +241,7 @@ func (c *Client) WithSecretId(secretId, secretKey string) *Client {
 	return c
 }
 
-func (c *Client) WithCredential(cred *Credential) *Client {
+func (c *Client) WithCredential(cred CredentialIface) *Client {
 	c.credential = cred
 	return c
 }
@@ -271,12 +271,29 @@ func (c *Client) WithDebug(flag bool) *Client {
 	return c
 }
 
-func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
-	client = &Client{}
-	client.Init(region).WithSecretId(secretId, secretKey)
-	return
+func (c *Client) WithProviders(provider Provider) (*Client, error) {
+	cred, err := provider.GetCredential()
+	if err != nil {
+		return nil, err
+	}
+	return c.WithCredential(cred), nil
 }
 
-func NewCommonClient(cred *Credential, region string, clientProfile *profile.ClientProfile) (c *Client) {
+func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+	return (&Client{}).Init(region).WithSecretId(secretId, secretKey), nil
+}
+
+func NewClientWithProviders(region string, providers ...Provider) (client *Client, err error) {
+	client = (&Client{}).Init(region)
+	var pc Provider
+	if len(providers) == 0 {
+		pc = DefaultChain()
+	} else {
+		pc = NewProviderChain(providers)
+	}
+	return client.WithProviders(pc)
+}
+
+func NewCommonClient(cred CredentialIface, region string, clientProfile *profile.ClientProfile) (c *Client) {
 	return new(Client).Init(region).WithCredential(cred).WithProfile(clientProfile)
 }

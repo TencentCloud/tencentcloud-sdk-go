@@ -38,18 +38,18 @@ func hmacsha256(s, key string) string {
 	return string(hashed.Sum(nil))
 }
 
-func signRequest(request tchttp.Request, credential *Credential, method string) (err error) {
+func signRequest(request tchttp.Request, credential CredentialIface, method string) (err error) {
 	if method != SHA256 {
 		method = SHA1
 	}
 	checkAuthParams(request, credential, method)
 	s := getStringToSign(request)
-	signature := Sign(s, credential.SecretKey, method)
+	signature := Sign(s, credential.GetSecretKey(), method)
 	request.GetParams()["Signature"] = signature
 	return
 }
 
-func checkAuthParams(request tchttp.Request, credential *Credential, method string) {
+func checkAuthParams(request tchttp.Request, credential CredentialIface, method string) {
 	params := request.GetParams()
 	credentialParams := credential.GetCredentialParams()
 	for key, value := range credentialParams {
