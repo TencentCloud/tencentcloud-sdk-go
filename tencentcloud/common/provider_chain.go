@@ -4,12 +4,12 @@ import (
 	"errors"
 )
 
-type Chain struct {
+type ProviderChain struct {
 	Providers []Provider
 }
 
 func NewProviderChain(providers []Provider) Provider {
-	return &Chain{
+	return &ProviderChain{
 		Providers: providers,
 	}
 }
@@ -18,7 +18,7 @@ func DefaultChain() Provider {
 	return NewProviderChain([]Provider{DefaultEnvProvider(), DefaultProfileProvider(), DefaultCvmRoleProvider()})
 }
 
-func (c *Chain) GetCredential() (CredentialIface, error) {
+func (c *ProviderChain) GetCredential() (CredentialIface, error) {
 	for _, provider := range c.Providers {
 		cred, err := provider.GetCredential()
 		if err != nil {
@@ -30,6 +30,6 @@ func (c *Chain) GetCredential() (CredentialIface, error) {
 		}
 		return cred, err
 	}
-	return nil, errors.New("no credential found")
+	return nil, errors.New("no credential found in each provider")
 
 }
