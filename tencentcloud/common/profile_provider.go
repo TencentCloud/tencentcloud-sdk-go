@@ -63,7 +63,7 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 			return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialNotFound", "Failed to find profile file,"+err.Error(), "")
 		}
 		if path == "" {
-			return nil, nil
+			return nil, FILEDOSENOTEXIST
 		}
 	} else if path == "" {
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Environment variable '"+EnvCredentialFile+"' cannot be empty", "")
