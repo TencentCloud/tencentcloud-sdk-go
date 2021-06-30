@@ -6,11 +6,11 @@
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2021-01-07 08:00:36 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2021-06-23 11:38:34 |
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-06-07 08:01:17 |
-| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2021-06-24 08:00:04 |
+| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2021-06-30 08:00:03 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-03-30 08:00:17 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-04-20 08:00:30 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
-| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-06-29 08:16:56 |
+| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-06-30 08:10:08 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-06-17 08:02:54 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-06-17 08:01:12 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-06-25 08:00:59 |

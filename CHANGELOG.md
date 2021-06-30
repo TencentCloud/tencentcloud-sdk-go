@@ -1,60 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
-
-### 第 3 次发布
-
-发布时间：2021-06-29 08:18:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 18 次发布
-
-发布时间：2021-06-29 08:16:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
-
-	* 新增入参：Priority
-
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 5 次发布
-
-发布时间：2021-06-29 08:00:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/58032)
-
-新增数据结构：
-
-* [ExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalUserMappingInfo)
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -21103,7 +21048,7 @@
 
 新增接口：
 
-* [[ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
 
 ### 第 2 次发布
 
@@ -52755,11 +52700,11 @@
 
 新增接口：
 
-* [[QueryExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/58032)](https://cloud.tencent.com/document/api/#/#)
+* [QueryExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/58032)
 
 新增数据结构：
 
-* [[ExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalUserMappingInfo)](https://cloud.tencent.com/document/api/1318/56791#[ExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalUserMappingInfo))
+* [ExternalUserMappingInfo](https://cloud.tencent.com/document/api/1318/56791#ExternalUserMappingInfo)
 
 ### 第 4 次发布
 
