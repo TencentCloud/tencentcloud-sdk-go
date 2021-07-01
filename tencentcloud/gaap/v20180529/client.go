@@ -1799,6 +1799,8 @@ func NewDescribeProxyDetailResponse() (response *DescribeProxyDetailResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
 //  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

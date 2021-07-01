@@ -1,5 +1,114 @@
 # 本版本更新包含以下内容：
 
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 2 次发布
+
+发布时间：2021-07-01 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)
+
+修改接口：
+
+* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/56852)
+
+	* 新增入参：CallbackUrl
+
+
+新增数据结构：
+
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 18 次发布
+
+发布时间：2021-07-01 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
+
+	* 新增入参：HealthyThreshold, UnhealthyThreshold
+
+* [DescribeAccessRegionsByDestRegion](https://cloud.tencent.com/document/api/608/36965)
+
+	* 新增入参：IPAddressVersion
+
+* [DescribeRegionAndPrice](https://cloud.tencent.com/document/api/608/37017)
+
+	* 新增入参：IPAddressVersion
+
+* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
+
+	* 新增入参：IPAddressVersion
+
+* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
+
+	* 新增入参：HealthyThreshold, UnhealthyThreshold
+
+
+修改数据结构：
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：IPAddressVersion
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：IPAddressVersion
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：HealthyThreshold, UnhealthyThreshold
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 14 次发布
+
+发布时间：2021-07-01 08:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetectLabelBeta](https://cloud.tencent.com/document/api/865/58067)
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -10367,6 +10476,29 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 2 次发布
+
+发布时间：2021-07-01 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/56852)
+
+	* 新增入参：CallbackUrl
+
+
+新增数据结构：
+
+* [[StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)](https://cloud.tencent.com/document/api/1368/56853#[StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject))
 
 ### 第 1 次发布
 
@@ -22876,6 +23008,64 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 18 次发布
+
+发布时间：2021-07-01 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：IPAddressVersion
+
+* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
+
+	* 新增入参：HealthyThreshold, UnhealthyThreshold
+
+* [DescribeAccessRegionsByDestRegion](https://cloud.tencent.com/document/api/608/36965)
+
+	* 新增入参：IPAddressVersion
+
+* [DescribeRegionAndPrice](https://cloud.tencent.com/document/api/608/37017)
+
+	* 新增入参：IPAddressVersion
+
+* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
+
+	* 新增入参：IPAddressVersion
+
+* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
+
+	* 新增入参：HealthyThreshold, UnhealthyThreshold
+
+
+修改数据结构：
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：IPAddressVersion
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：IPAddressVersion
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：HealthyThreshold, UnhealthyThreshold
+
 
 ### 第 17 次发布
 
@@ -43124,6 +43314,18 @@
 
 
 ## 图像分析(tiia) 版本：2019-05-29
+
+### 第 14 次发布
+
+发布时间：2021-07-01 08:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DetectLabelBeta](https://cloud.tencent.com/document/api/865/58067)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 13 次发布
 

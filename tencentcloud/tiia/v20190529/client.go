@@ -313,6 +313,52 @@ func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabel
     return
 }
 
+func NewDetectLabelBetaRequest() (request *DetectLabelBetaRequest) {
+    request = &DetectLabelBetaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectLabelBeta")
+    return
+}
+
+func NewDetectLabelBetaResponse() (response *DetectLabelBetaResponse) {
+    response = &DetectLabelBetaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetectLabelBeta
+// 图像标签测试接口
+//
+// 
+//
+// >     
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DetectLabelBeta(request *DetectLabelBetaRequest) (response *DetectLabelBetaResponse, err error) {
+    if request == nil {
+        request = NewDetectLabelBetaRequest()
+    }
+    response = NewDetectLabelBetaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
     request = &DetectMisbehaviorRequest{
         BaseRequest: &tchttp.BaseRequest{},

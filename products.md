@@ -36,7 +36,7 @@
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-04-07 08:03:25 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-06-02 08:11:06 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2021-02-22 08:03:09 |
-| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-05-08 15:29:47 |
+| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-07-01 08:11:12 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-06-29 08:16:18 |
@@ -74,7 +74,7 @@
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-06-08 08:05:55 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-03-16 08:02:03 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-04-12 08:01:48 |
-| gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-03-24 08:05:04 |
+| gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-07-01 08:05:20 |
 | gme | [游戏多媒体引擎](https://cloud.tencent.com/document/product/607) | 2021-04-20 08:05:33 |
 | gpm | [游戏玩家匹配](https://cloud.tencent.com/document/product/1294) | 2021-04-28 08:00:58 |
 | gs | [云游戏解决方案](https://cloud.tencent.com/document/product/1162) | 2021-06-16 08:02:50 |
@@ -151,7 +151,7 @@
 | ticm | [智能鉴黄](https://cloud.tencent.com/document/product/864) | 2021-01-07 08:08:15 |
 | tics | [威胁情报云查服务](https://cloud.tencent.com/document/product/1013) | 2021-01-07 08:08:14 |
 | tiems | [智能钛弹性模型服务](https://cloud.tencent.com/document/product/1120) | 2021-01-07 08:08:16 |
-| tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-06-22 08:09:18 |
+| tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-07-01 08:08:11 |
 | tione | [智能钛机器学习平台](https://cloud.tencent.com/document/product/851) | 2021-01-07 08:01:07 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-06-29 08:16:06 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-06-29 08:13:48 |

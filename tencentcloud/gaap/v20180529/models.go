@@ -378,6 +378,9 @@ type CheckProxyCreateRequest struct {
 
 	// 如果在通道组下创建通道，需要填写通道组的ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *CheckProxyCreateRequest) ToJsonString() string {
@@ -397,6 +400,7 @@ func (r *CheckProxyCreateRequest) FromJsonString(s string) error {
 	delete(f, "Bandwidth")
 	delete(f, "Concurrent")
 	delete(f, "GroupId")
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckProxyCreateRequest has unknown keys!", "")
 	}
@@ -1029,6 +1033,9 @@ type CreateProxyGroupRequest struct {
 
 	// 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
 	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitempty" name:"AccessRegionSet"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *CreateProxyGroupRequest) ToJsonString() string {
@@ -1048,6 +1055,7 @@ func (r *CreateProxyGroupRequest) FromJsonString(s string) error {
 	delete(f, "RealServerRegion")
 	delete(f, "TagSet")
 	delete(f, "AccessRegionSet")
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyGroupRequest has unknown keys!", "")
 	}
@@ -1114,6 +1122,9 @@ type CreateProxyRequest struct {
 
 	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
 	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -1139,6 +1150,7 @@ func (r *CreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "TagSet")
 	delete(f, "ClonedProxyId")
 	delete(f, "BillingType")
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyRequest has unknown keys!", "")
 	}
@@ -1398,6 +1410,12 @@ type CreateTCPListenersRequest struct {
 
 	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
 	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
 }
 
 func (r *CreateTCPListenersRequest) ToJsonString() string {
@@ -1424,6 +1442,8 @@ func (r *CreateTCPListenersRequest) FromJsonString(s string) error {
 	delete(f, "RealServerPorts")
 	delete(f, "ClientIPMethod")
 	delete(f, "FailoverSwitch")
+	delete(f, "HealthyThreshold")
+	delete(f, "UnhealthyThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTCPListenersRequest has unknown keys!", "")
 	}
@@ -1948,6 +1968,9 @@ type DescribeAccessRegionsByDestRegionRequest struct {
 
 	// 源站区域：接口DescribeDestRegions返回DestRegionSet中的RegionId字段值
 	DestRegion *string `json:"DestRegion,omitempty" name:"DestRegion"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *DescribeAccessRegionsByDestRegionRequest) ToJsonString() string {
@@ -1963,6 +1986,7 @@ func (r *DescribeAccessRegionsByDestRegionRequest) FromJsonString(s string) erro
 		return err
 	}
 	delete(f, "DestRegion")
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessRegionsByDestRegionRequest has unknown keys!", "")
 	}
@@ -2766,10 +2790,11 @@ type DescribeProxiesRequest struct {
 
 	// 过滤条件。   
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-	// ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。    
+	// ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
 	// AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
 	// RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 	// GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
+	// IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
@@ -3456,6 +3481,9 @@ func (r *DescribeRealServersStatusResponse) FromJsonString(s string) error {
 
 type DescribeRegionAndPriceRequest struct {
 	*tchttp.BaseRequest
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *DescribeRegionAndPriceRequest) ToJsonString() string {
@@ -3470,6 +3498,7 @@ func (r *DescribeRegionAndPriceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionAndPriceRequest has unknown keys!", "")
 	}
@@ -4369,6 +4398,9 @@ type InquiryPriceCreateProxyRequest struct {
 
 	// 计费方式，0表示按带宽计费，1表示按流量计费。默认按带宽计费
 	BillingType *int64 `json:"BillingType,omitempty" name:"BillingType"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
@@ -4390,6 +4422,7 @@ func (r *InquiryPriceCreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "RealServerRegion")
 	delete(f, "Concurrent")
 	delete(f, "BillingType")
+	delete(f, "IPAddressVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateProxyRequest has unknown keys!", "")
 	}
@@ -5305,6 +5338,12 @@ type ModifyTCPListenerAttributeRequest struct {
 
 	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
 	FailoverSwitch *uint64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
 }
 
 func (r *ModifyTCPListenerAttributeRequest) ToJsonString() string {
@@ -5328,6 +5367,8 @@ func (r *ModifyTCPListenerAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ConnectTimeout")
 	delete(f, "HealthCheck")
 	delete(f, "FailoverSwitch")
+	delete(f, "HealthyThreshold")
+	delete(f, "UnhealthyThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTCPListenerAttributeRequest has unknown keys!", "")
 	}
@@ -5658,6 +5699,10 @@ type ProxyGroupDetail struct {
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
+
+	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 type ProxyGroupInfo struct {
@@ -5815,6 +5860,10 @@ type ProxyInfo struct {
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod []*int64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
+
+	// IP版本：IPv4、IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 }
 
 type ProxySimpleInfo struct {
@@ -6236,6 +6285,14 @@ type TCPListener struct {
 	// 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod *uint64 `json:"ClientIPMethod,omitempty" name:"ClientIPMethod"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
 }
 
 type TagPair struct {

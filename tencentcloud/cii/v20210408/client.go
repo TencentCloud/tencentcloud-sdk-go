@@ -59,7 +59,7 @@ func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
 }
 
 // CreateStructureTask
-// 基于提供的客户及保单信息，启动结构化识别任务。
+// 本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -105,6 +105,41 @@ func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataReq
         request = NewDescribeStructCompareDataRequest()
     }
     response = NewDescribeStructCompareDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStructureResultRequest() (request *DescribeStructureResultRequest) {
+    request = &DescribeStructureResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureResult")
+    return
+}
+
+func NewDescribeStructureResultResponse() (response *DescribeStructureResultResponse) {
+    response = &DescribeStructureResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStructureResult
+// 本接口(DescribeStructureResult)用于查询结构化结果接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest) (response *DescribeStructureResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureResultRequest()
+    }
+    response = NewDescribeStructureResultResponse()
     err = c.Send(request, response)
     return
 }

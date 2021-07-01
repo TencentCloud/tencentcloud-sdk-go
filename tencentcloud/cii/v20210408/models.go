@@ -92,6 +92,9 @@ type CreateStructureTaskRequest struct {
 	// LifeInsurance：寿险
 	// AccidentInsurance：意外险
 	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
+
+	// 回调地址，接收Post请求传送结果
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 func (r *CreateStructureTaskRequest) ToJsonString() string {
@@ -111,6 +114,7 @@ func (r *CreateStructureTaskRequest) FromJsonString(s string) error {
 	delete(f, "PolicyId")
 	delete(f, "TriggerType")
 	delete(f, "InsuranceTypes")
+	delete(f, "CallbackUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStructureTaskRequest has unknown keys!", "")
 	}
@@ -121,7 +125,7 @@ type CreateStructureTaskResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建的主任务号
+		// 创建的主任务号，用于查询结果
 		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -231,6 +235,61 @@ func (r *DescribeStructCompareDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStructureResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 创建任务时返回的主任务ID
+	MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+}
+
+func (r *DescribeStructureResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStructureResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MainTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStructureResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStructureResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果状态：
+	// 0：返回成功
+	// 1：结果未生成
+	// 2：结果生成失败
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 结构化结果
+		Results []*StructureResultObject `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStructureResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStructureResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeStructureTaskResultRequest struct {
 	*tchttp.BaseRequest
 
@@ -309,4 +368,16 @@ type ReviewDataTaskInfo struct {
 
 	// 任务类型
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type StructureResultObject struct {
+
+	// 0表示正常返回
+	Code *uint64 `json:"Code,omitempty" name:"Code"`
+
+	// 报告类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 结构化结果
+	StructureResult *string `json:"StructureResult,omitempty" name:"StructureResult"`
 }
