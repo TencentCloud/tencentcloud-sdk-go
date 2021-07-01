@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://cloud.tencent.com/"><img src="http://api.icon.woa.com/tcloud_brand/501d1c64-80e2-42e0-8139-72d1aba5d607.svg" height="200" width="200"></a>
+<a href="https://cloud.tencent.com/"><img src="https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/eec00e38-a178-479f-83d4-853a18575ac4.png" height="100" ></a>
 </p>
 <h1 align="center">Tencent Cloud SDK for Go</h1>
 
