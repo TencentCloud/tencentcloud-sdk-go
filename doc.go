@@ -75,6 +75,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn"

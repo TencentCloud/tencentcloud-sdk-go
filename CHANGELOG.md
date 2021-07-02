@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 智能保险助手(cii) 版本：2021-04-08
+## 分布式事务(dtf) 版本：2020-05-06
 
-### 第 2 次发布
+### 第 1 次发布
 
-发布时间：2021-07-01 08:11:12
+发布时间：2021-07-02 08:00:03
 
 本次发布包含了以下内容：
 
@@ -12,92 +12,20 @@
 
 新增接口：
 
-* [DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)
-
-修改接口：
-
-* [CreateStructureTask](https://cloud.tencent.com/document/api/1368/56852)
-
-	* 新增入参：CallbackUrl
-
+* [DescribeTransactions](https://cloud.tencent.com/document/api/1224/58100)
 
 新增数据结构：
 
-* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+* [PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction)
+* [Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction)
 
 
 
-## 智能保险助手(cii) 版本：2020-12-10
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
+### 第 3 次发布
 
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 18 次发布
-
-发布时间：2021-07-01 08:05:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
-
-	* 新增入参：IPAddressVersion
-
-* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
-
-	* 新增入参：IPAddressVersion
-
-* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
-
-	* 新增入参：IPAddressVersion
-
-* [CreateTCPListeners](https://cloud.tencent.com/document/api/608/37005)
-
-	* 新增入参：HealthyThreshold, UnhealthyThreshold
-
-* [DescribeAccessRegionsByDestRegion](https://cloud.tencent.com/document/api/608/36965)
-
-	* 新增入参：IPAddressVersion
-
-* [DescribeRegionAndPrice](https://cloud.tencent.com/document/api/608/37017)
-
-	* 新增入参：IPAddressVersion
-
-* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
-
-	* 新增入参：IPAddressVersion
-
-* [ModifyTCPListenerAttribute](https://cloud.tencent.com/document/api/608/36995)
-
-	* 新增入参：HealthyThreshold, UnhealthyThreshold
-
-
-修改数据结构：
-
-* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
-
-	* 新增成员：IPAddressVersion
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：IPAddressVersion
-
-* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
-
-	* 新增成员：HealthyThreshold, UnhealthyThreshold
-
-
-
-
-## 图像分析(tiia) 版本：2019-05-29
-
-### 第 14 次发布
-
-发布时间：2021-07-01 08:08:11
+发布时间：2021-07-02 08:00:20
 
 本次发布包含了以下内容：
 
@@ -105,7 +33,37 @@
 
 新增接口：
 
-* [DetectLabelBeta](https://cloud.tencent.com/document/api/865/58067)
+* [ReportImageStructured](https://cloud.tencent.com/document/api/1314/58113)
+* [ReportTextStructured](https://cloud.tencent.com/document/api/1314/58112)
+
+新增数据结构：
+
+* [Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute)
+* [BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo)
+* [Case](https://cloud.tencent.com/document/api/1314/56230#Case)
+* [CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory)
+* [Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion)
+* [DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory)
+* [FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory)
+* [Finding](https://cloud.tencent.com/document/api/1314/56230#Finding)
+* [HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory)
+* [IHC](https://cloud.tencent.com/document/api/1314/56230#IHC)
+* [ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport)
+* [ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText)
+* [Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection)
+* [Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive)
+* [KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem)
+* [MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory)
+* [MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory)
+* [Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis)
+* [Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology)
+* [PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory)
+* [PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo)
+* [Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom)
+* [TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem)
+* [TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport)
+* [Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment)
+* [Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber)
 
 
 
@@ -10487,7 +10445,7 @@
 
 新增接口：
 
-* [[DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)
 
 修改接口：
 
@@ -10498,7 +10456,7 @@
 
 新增数据结构：
 
-* [[StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)](https://cloud.tencent.com/document/api/1368/56853#[StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject))
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
 
 ### 第 1 次发布
 
@@ -19469,6 +19427,28 @@
 
 * [SignInfo](https://cloud.tencent.com/document/api/869/17797#SignInfo)
 * [SignLocation](https://cloud.tencent.com/document/api/869/17797#SignLocation)
+
+
+
+
+## 分布式事务(dtf) 版本：2020-05-06
+
+### 第 1 次发布
+
+发布时间：2021-07-02 08:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTransactions](https://cloud.tencent.com/document/api/1224/58100)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction)](https://cloud.tencent.com/document/api/1224/58101#[PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction))
+* [[Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction)](https://cloud.tencent.com/document/api/1224/58101#[Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction))
 
 
 
@@ -33281,6 +33261,48 @@
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
 
+### 第 3 次发布
+
+发布时间：2021-07-02 08:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ReportImageStructured](https://cloud.tencent.com/document/api/1314/58113)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportTextStructured](https://cloud.tencent.com/document/api/1314/58112)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute)](https://cloud.tencent.com/document/api/1314/56230#[Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute))
+* [[BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo)](https://cloud.tencent.com/document/api/1314/56230#[BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo))
+* [[Case](https://cloud.tencent.com/document/api/1314/56230#Case)](https://cloud.tencent.com/document/api/1314/56230#[Case](https://cloud.tencent.com/document/api/1314/56230#Case))
+* [[CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory)](https://cloud.tencent.com/document/api/1314/56230#[CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory))
+* [[Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion)](https://cloud.tencent.com/document/api/1314/56230#[Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion))
+* [[DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory)](https://cloud.tencent.com/document/api/1314/56230#[DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory))
+* [[FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory)](https://cloud.tencent.com/document/api/1314/56230#[FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory))
+* [[Finding](https://cloud.tencent.com/document/api/1314/56230#Finding)](https://cloud.tencent.com/document/api/1314/56230#[Finding](https://cloud.tencent.com/document/api/1314/56230#Finding))
+* [[HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory)](https://cloud.tencent.com/document/api/1314/56230#[HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory))
+* [[IHC](https://cloud.tencent.com/document/api/1314/56230#IHC)](https://cloud.tencent.com/document/api/1314/56230#[IHC](https://cloud.tencent.com/document/api/1314/56230#IHC))
+* [[ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport)](https://cloud.tencent.com/document/api/1314/56230#[ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport))
+* [[ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText)](https://cloud.tencent.com/document/api/1314/56230#[ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText))
+* [[Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection)](https://cloud.tencent.com/document/api/1314/56230#[Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection))
+* [[Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive)](https://cloud.tencent.com/document/api/1314/56230#[Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive))
+* [[KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem)](https://cloud.tencent.com/document/api/1314/56230#[KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem))
+* [[MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory)](https://cloud.tencent.com/document/api/1314/56230#[MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory))
+* [[MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory)](https://cloud.tencent.com/document/api/1314/56230#[MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory))
+* [[Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis)](https://cloud.tencent.com/document/api/1314/56230#[Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis))
+* [[Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology)](https://cloud.tencent.com/document/api/1314/56230#[Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology))
+* [[PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory)](https://cloud.tencent.com/document/api/1314/56230#[PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory))
+* [[PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo)](https://cloud.tencent.com/document/api/1314/56230#[PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo))
+* [[Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom)](https://cloud.tencent.com/document/api/1314/56230#[Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom))
+* [[TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem)](https://cloud.tencent.com/document/api/1314/56230#[TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem))
+* [[TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport)](https://cloud.tencent.com/document/api/1314/56230#[TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport))
+* [[Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment)](https://cloud.tencent.com/document/api/1314/56230#[Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment))
+* [[Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber)](https://cloud.tencent.com/document/api/1314/56230#[Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber))
+
 ### 第 2 次发布
 
 发布时间：2021-06-16 08:00:15
@@ -43325,7 +43347,7 @@
 
 新增接口：
 
-* [[DetectLabelBeta](https://cloud.tencent.com/document/api/865/58067)](https://cloud.tencent.com/document/api/#/#)
+* [DetectLabelBeta](https://cloud.tencent.com/document/api/865/58067)
 
 ### 第 13 次发布
 
