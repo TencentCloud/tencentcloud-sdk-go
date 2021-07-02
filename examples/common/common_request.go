@@ -1,12 +1,12 @@
 package main
 
 import (
-"fmt"
-"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
-"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-"os"
+	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	"os"
 )
 
 // 目前只支持 签名v3+POST
@@ -30,7 +30,7 @@ func main() {
 	// "InstanceId":"crs-xxx",
 	// "SpanType":2,
 	// }
-	body:= map[string]interface{}{}
+	body := map[string]interface{}{}
 
 	// // 2. string
 	// bodyStr := `{}`
@@ -56,4 +56,3 @@ func main() {
 	// 获取响应结果
 	fmt.Println(string(response.GetBody()))
 }
-
