@@ -148,9 +148,7 @@ func (r *BaseRequest) GetVersion() string {
 func GetUrlQueriesEncoded(params map[string]string) string {
 	values := url.Values{}
 	for key, value := range params {
-		if value != "" {
-			values.Add(key, value)
-		}
+		values.Add(key, value)
 	}
 	return values.Encode()
 }
