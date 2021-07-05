@@ -86,7 +86,7 @@
 | ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-07-02 08:00:38 |
 | ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-07-02 08:01:46 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-07-02 08:01:41 |
-| ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-07-02 08:01:09 |
+| ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-07-05 08:01:03 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-07-02 08:05:57 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-07-02 08:06:03 |
 | iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-07-02 08:06:10 |

@@ -1,72 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 分布式事务(dtf) 版本：2020-05-06
-
-### 第 1 次发布
-
-发布时间：2021-07-02 08:00:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTransactions](https://cloud.tencent.com/document/api/1224/58100)
-
-新增数据结构：
-
-* [PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction)
-* [Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction)
-
-
-
-## 医疗报告结构化(mrs) 版本：2020-09-10
-
-### 第 3 次发布
-
-发布时间：2021-07-02 08:00:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ReportImageStructured](https://cloud.tencent.com/document/api/1314/58113)
-* [ReportTextStructured](https://cloud.tencent.com/document/api/1314/58112)
-
-新增数据结构：
-
-* [Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute)
-* [BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo)
-* [Case](https://cloud.tencent.com/document/api/1314/56230#Case)
-* [CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory)
-* [Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion)
-* [DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory)
-* [FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory)
-* [Finding](https://cloud.tencent.com/document/api/1314/56230#Finding)
-* [HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory)
-* [IHC](https://cloud.tencent.com/document/api/1314/56230#IHC)
-* [ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport)
-* [ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText)
-* [Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection)
-* [Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive)
-* [KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem)
-* [MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory)
-* [MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory)
-* [Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis)
-* [Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology)
-* [PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory)
-* [PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo)
-* [Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom)
-* [TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem)
-* [TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport)
-* [Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment)
-* [Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber)
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -19443,12 +19376,12 @@
 
 新增接口：
 
-* [[DescribeTransactions](https://cloud.tencent.com/document/api/1224/58100)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTransactions](https://cloud.tencent.com/document/api/1224/58100)
 
 新增数据结构：
 
-* [[PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction)](https://cloud.tencent.com/document/api/1224/58101#[PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction))
-* [[Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction)](https://cloud.tencent.com/document/api/1224/58101#[Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction))
+* [PagedTransaction](https://cloud.tencent.com/document/api/1224/58101#PagedTransaction)
+* [Transaction](https://cloud.tencent.com/document/api/1224/58101#Transaction)
 
 
 
@@ -33271,37 +33204,37 @@
 
 新增接口：
 
-* [[ReportImageStructured](https://cloud.tencent.com/document/api/1314/58113)](https://cloud.tencent.com/document/api/#/#)
-* [[ReportTextStructured](https://cloud.tencent.com/document/api/1314/58112)](https://cloud.tencent.com/document/api/#/#)
+* [ReportImageStructured](https://cloud.tencent.com/document/api/1314/58113)
+* [ReportTextStructured](https://cloud.tencent.com/document/api/1314/58112)
 
 新增数据结构：
 
-* [[Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute)](https://cloud.tencent.com/document/api/1314/56230#[Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute))
-* [[BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo)](https://cloud.tencent.com/document/api/1314/56230#[BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo))
-* [[Case](https://cloud.tencent.com/document/api/1314/56230#Case)](https://cloud.tencent.com/document/api/1314/56230#[Case](https://cloud.tencent.com/document/api/1314/56230#Case))
-* [[CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory)](https://cloud.tencent.com/document/api/1314/56230#[CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory))
-* [[Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion)](https://cloud.tencent.com/document/api/1314/56230#[Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion))
-* [[DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory)](https://cloud.tencent.com/document/api/1314/56230#[DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory))
-* [[FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory)](https://cloud.tencent.com/document/api/1314/56230#[FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory))
-* [[Finding](https://cloud.tencent.com/document/api/1314/56230#Finding)](https://cloud.tencent.com/document/api/1314/56230#[Finding](https://cloud.tencent.com/document/api/1314/56230#Finding))
-* [[HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory)](https://cloud.tencent.com/document/api/1314/56230#[HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory))
-* [[IHC](https://cloud.tencent.com/document/api/1314/56230#IHC)](https://cloud.tencent.com/document/api/1314/56230#[IHC](https://cloud.tencent.com/document/api/1314/56230#IHC))
-* [[ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport)](https://cloud.tencent.com/document/api/1314/56230#[ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport))
-* [[ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText)](https://cloud.tencent.com/document/api/1314/56230#[ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText))
-* [[Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection)](https://cloud.tencent.com/document/api/1314/56230#[Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection))
-* [[Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive)](https://cloud.tencent.com/document/api/1314/56230#[Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive))
-* [[KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem)](https://cloud.tencent.com/document/api/1314/56230#[KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem))
-* [[MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory)](https://cloud.tencent.com/document/api/1314/56230#[MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory))
-* [[MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory)](https://cloud.tencent.com/document/api/1314/56230#[MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory))
-* [[Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis)](https://cloud.tencent.com/document/api/1314/56230#[Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis))
-* [[Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology)](https://cloud.tencent.com/document/api/1314/56230#[Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology))
-* [[PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory)](https://cloud.tencent.com/document/api/1314/56230#[PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory))
-* [[PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo)](https://cloud.tencent.com/document/api/1314/56230#[PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo))
-* [[Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom)](https://cloud.tencent.com/document/api/1314/56230#[Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom))
-* [[TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem)](https://cloud.tencent.com/document/api/1314/56230#[TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem))
-* [[TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport)](https://cloud.tencent.com/document/api/1314/56230#[TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport))
-* [[Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment)](https://cloud.tencent.com/document/api/1314/56230#[Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment))
-* [[Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber)](https://cloud.tencent.com/document/api/1314/56230#[Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber))
+* [Attribute](https://cloud.tencent.com/document/api/1314/56230#Attribute)
+* [BasicInfo](https://cloud.tencent.com/document/api/1314/56230#BasicInfo)
+* [Case](https://cloud.tencent.com/document/api/1314/56230#Case)
+* [CaseHistory](https://cloud.tencent.com/document/api/1314/56230#CaseHistory)
+* [Conclusion](https://cloud.tencent.com/document/api/1314/56230#Conclusion)
+* [DiseaseHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistory)
+* [FamilyHistory](https://cloud.tencent.com/document/api/1314/56230#FamilyHistory)
+* [Finding](https://cloud.tencent.com/document/api/1314/56230#Finding)
+* [HealthHistory](https://cloud.tencent.com/document/api/1314/56230#HealthHistory)
+* [IHC](https://cloud.tencent.com/document/api/1314/56230#IHC)
+* [ImageReport](https://cloud.tencent.com/document/api/1314/56230#ImageReport)
+* [ImageText](https://cloud.tencent.com/document/api/1314/56230#ImageText)
+* [Inspection](https://cloud.tencent.com/document/api/1314/56230#Inspection)
+* [Invasive](https://cloud.tencent.com/document/api/1314/56230#Invasive)
+* [KindItem](https://cloud.tencent.com/document/api/1314/56230#KindItem)
+* [MarryHistory](https://cloud.tencent.com/document/api/1314/56230#MarryHistory)
+* [MenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistory)
+* [Metastasis](https://cloud.tencent.com/document/api/1314/56230#Metastasis)
+* [Pathology](https://cloud.tencent.com/document/api/1314/56230#Pathology)
+* [PersonalHistory](https://cloud.tencent.com/document/api/1314/56230#PersonalHistory)
+* [PersonalInfo](https://cloud.tencent.com/document/api/1314/56230#PersonalInfo)
+* [Symptom](https://cloud.tencent.com/document/api/1314/56230#Symptom)
+* [TestItem](https://cloud.tencent.com/document/api/1314/56230#TestItem)
+* [TextReport](https://cloud.tencent.com/document/api/1314/56230#TextReport)
+* [Treatment](https://cloud.tencent.com/document/api/1314/56230#Treatment)
+* [Tuber](https://cloud.tencent.com/document/api/1314/56230#Tuber)
 
 ### 第 2 次发布
 
