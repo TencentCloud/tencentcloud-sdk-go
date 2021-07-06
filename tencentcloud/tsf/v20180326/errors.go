@@ -452,6 +452,9 @@ const (
 	// agent 容器资源值非法 , %s。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
 
+	// istioProxy 容器资源值非法 , %s。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEISTIOVALUEINVALID = "InvalidParameterValue.ContainergroupResourceIstioValueInvalid"
+
 	// 容器端口不允许重复映射。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = "InvalidParameterValue.ContainergroupTargetPortsRepeat"
 

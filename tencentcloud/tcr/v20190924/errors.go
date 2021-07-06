@@ -17,6 +17,12 @@ package v20190924
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

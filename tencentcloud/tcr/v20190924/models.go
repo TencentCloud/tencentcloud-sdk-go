@@ -347,6 +347,60 @@ func (r *CreateImageLifecyclePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateImmutableTagRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则
+	Rule *ImmutableTagRule `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *CreateImmutableTagRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImmutableTagRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "Rule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImmutableTagRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImmutableTagRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImmutableTagRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImmutableTagRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1373,6 +1427,60 @@ func (r *DeleteImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImmutableTagRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则 Id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *DeleteImmutableTagRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImmutableTagRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImmutableTagRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImmutableTagRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImmutableTagRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2602,6 +2710,63 @@ func (r *DescribeImagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImmutableTagRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+func (r *DescribeImmutableTagRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImmutableTagRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImmutableTagRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImmutableTagRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Rules []*ImmutableTagRule `json:"Rules,omitempty" name:"Rules"`
+
+		// 未创建规则的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EmptyNs []*string `json:"EmptyNs,omitempty" name:"EmptyNs"`
+
+		// 规则总量
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImmutableTagRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4060,6 +4225,30 @@ type Header struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type ImmutableTagRule struct {
+
+	// 仓库匹配规则
+	RepositoryPattern *string `json:"RepositoryPattern,omitempty" name:"RepositoryPattern"`
+
+	// Tag 匹配规则
+	TagPattern *string `json:"TagPattern,omitempty" name:"TagPattern"`
+
+	// repoMatches或repoExcludes
+	RepositoryDecoration *string `json:"RepositoryDecoration,omitempty" name:"RepositoryDecoration"`
+
+	// matches或excludes
+	TagDecoration *string `json:"TagDecoration,omitempty" name:"TagDecoration"`
+
+	// 禁用规则
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+
+	// 规则 Id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 命名空间
+	NsName *string `json:"NsName,omitempty" name:"NsName"`
+}
+
 type Limit struct {
 
 	// 用户名
@@ -4385,6 +4574,64 @@ func (r *ModifyApplicationTriggerPersonalResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApplicationTriggerPersonalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImmutableTagRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则 Id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则
+	Rule *ImmutableTagRule `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyImmutableTagRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyImmutableTagRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "RuleId")
+	delete(f, "Rule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImmutableTagRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImmutableTagRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyImmutableTagRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

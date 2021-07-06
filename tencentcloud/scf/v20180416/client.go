@@ -211,6 +211,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
 //  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 //  INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
+//  INVALIDPARAMETERVALUE_TRACEENABLE = "InvalidParameterValue.TraceEnable"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  INVALIDPARAMETERVALUE_VPCNOTSETWHENOPENCFS = "InvalidParameterValue.VpcNotSetWhenOpenCfs"
 //  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
@@ -544,10 +545,12 @@ func NewDeleteProvisionedConcurrencyConfigResponse() (response *DeleteProvisione
 // 可能返回的错误码:
 //  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteProvisionedConcurrencyConfig(request *DeleteProvisionedConcurrencyConfigRequest) (response *DeleteProvisionedConcurrencyConfigResponse, err error) {
     if request == nil {

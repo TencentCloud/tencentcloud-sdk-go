@@ -112,6 +112,7 @@ func NewCreateDataDepositResponse() (response *CreateDataDepositResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATAINFOTOOLONG = "InvalidParameterValue.DataInfoTooLong"
 //  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateDataDeposit(request *CreateDataDepositRequest) (response *CreateDataDepositResponse, err error) {
@@ -292,6 +293,7 @@ func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
 //  FAILEDOPERATION_FILEENCODINDFORMATERROR = "FailedOperation.FileEncodindFormatError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILESUFFIX = "InvalidParameter.InvalidFileSuffix"
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"

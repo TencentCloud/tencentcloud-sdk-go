@@ -244,6 +244,7 @@ func NewDeleteEipResponse() (response *DeleteEipResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteEip(request *DeleteEipRequest) (response *DeleteEipResponse, err error) {
     if request == nil {
         request = NewDeleteEipRequest()

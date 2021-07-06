@@ -171,6 +171,7 @@ func NewCreateBaselineStrategyResponse() (response *CreateBaselineStrategyRespon
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) (response *CreateBaselineStrategyResponse, err error) {
     if request == nil {
@@ -4509,6 +4510,7 @@ func NewUntrustMalwaresResponse() (response *UntrustMalwaresResponse) {
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *UntrustMalwaresResponse, err error) {
     if request == nil {
         request = NewUntrustMalwaresRequest()

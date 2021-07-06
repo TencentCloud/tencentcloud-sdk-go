@@ -449,6 +449,7 @@ func NewDescribeTagKeysResponse() (response *DescribeTagKeysResponse) {
 // 用于查询已建立的标签列表中的标签键。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (response *DescribeTagKeysResponse, err error) {
     if request == nil {

@@ -643,6 +643,7 @@ func NewGetRealNameAuthResultResponse() (response *GetRealNameAuthResultResponse
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetRealNameAuthResult(request *GetRealNameAuthResultRequest) (response *GetRealNameAuthResultResponse, err error) {

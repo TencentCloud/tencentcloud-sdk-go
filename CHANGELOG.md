@@ -1,5 +1,141 @@
 # 本版本更新包含以下内容：
 
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 31 次发布
+
+发布时间：2021-07-06 08:03:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListPoliciesGrantingServiceAccess](https://cloud.tencent.com/document/api/598/58191)
+
+新增数据结构：
+
+* [ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode)
+* [ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode)
+* [ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy)
+* [ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService)
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 12 次发布
+
+发布时间：2021-07-06 08:01:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
+* [DeleteStaff](https://cloud.tencent.com/document/api/679/58189)
+* [UnbindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58188)
+
+修改接口：
+
+* [CreateStaff](https://cloud.tencent.com/document/api/679/49677)
+
+	* 新增出参：ErrorStaffList
+
+
+新增数据结构：
+
+* [ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 59 次发布
+
+发布时间：2021-07-06 08:05:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 16 次发布
+
+发布时间：2021-07-06 08:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)
+
+	* 新增入参：Zones
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
+
+	* 新增成员：Zone
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 52 次发布
+
+发布时间：2021-07-06 08:09:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：IsCreatePath
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 34 次发布
+
+发布时间：2021-07-06 08:11:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateImmutableTagRules](https://cloud.tencent.com/document/api/1141/58197)
+* [DeleteImmutableTagRules](https://cloud.tencent.com/document/api/1141/58196)
+* [DescribeImmutableTagRules](https://cloud.tencent.com/document/api/1141/58195)
+* [ModifyImmutableTagRules](https://cloud.tencent.com/document/api/1141/58194)
+
+新增数据结构：
+
+* [ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule)
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -5268,6 +5404,25 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 31 次发布
+
+发布时间：2021-07-06 08:03:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListPoliciesGrantingServiceAccess](https://cloud.tencent.com/document/api/598/58191)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode))
+* [[ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode))
+* [[ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy))
+* [[ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService))
+
 ### 第 30 次发布
 
 发布时间：2021-03-17 08:03:11
@@ -6722,6 +6877,31 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 12 次发布
+
+发布时间：2021-07-06 08:01:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteStaff](https://cloud.tencent.com/document/api/679/58189)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58188)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateStaff](https://cloud.tencent.com/document/api/679/49677)
+
+	* 新增出参：ErrorStaffList
+
+
+新增数据结构：
+
+* [[ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem)](https://cloud.tencent.com/document/api/679/47715#[ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem))
 
 ### 第 11 次发布
 
@@ -14760,6 +14940,18 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 59 次发布
+
+发布时间：2021-07-06 08:05:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 58 次发布
 
@@ -28677,6 +28869,28 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 16 次发布
+
+发布时间：2021-07-06 08:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)
+
+	* 新增入参：Zones
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
+
+	* 新增成员：Zone
+
+
 ### 第 15 次发布
 
 发布时间：2021-06-18 08:01:16
@@ -40405,6 +40619,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 52 次发布
+
+发布时间：2021-07-06 08:09:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：IsCreatePath
+
+
 ### 第 51 次发布
 
 发布时间：2021-06-18 08:07:55
@@ -41667,6 +41896,25 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 34 次发布
+
+发布时间：2021-07-06 08:11:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateImmutableTagRules](https://cloud.tencent.com/document/api/1141/58197)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteImmutableTagRules](https://cloud.tencent.com/document/api/1141/58196)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeImmutableTagRules](https://cloud.tencent.com/document/api/1141/58195)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyImmutableTagRules](https://cloud.tencent.com/document/api/1141/58194)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule)](https://cloud.tencent.com/document/api/1141/41603#[ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule))
 
 ### 第 33 次发布
 

@@ -1318,7 +1318,7 @@ type DescribeRecordListRequest struct {
 	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数量，当前Limit最大支持3000。默认值为3000。
+	// 限制数量，当前Limit最大支持3000。默认值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 

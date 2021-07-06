@@ -699,6 +699,7 @@ func NewCreateRoInstanceIpResponse() (response *CreateRoInstanceIpResponse) {
 // 本接口(CreateRoInstanceIp)用于创建云数据库只读实例的独立VIP。
 //
 // 可能返回的错误码:
+//  CDBERROR = "CdbError"
 //  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -1030,6 +1031,7 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 // 本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
 //
 // 可能返回的错误码:
+//  CDBERROR = "CdbError"
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
 //  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
 //  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
@@ -1690,6 +1692,7 @@ func NewDescribeDBInstanceConfigResponse() (response *DescribeDBInstanceConfigRe
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (response *DescribeDBInstanceConfigResponse, err error) {
     if request == nil {
@@ -2267,6 +2270,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoRequest) (response *DescribeParamTemplateInfoResponse, err error) {
     if request == nil {
@@ -2693,6 +2697,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"

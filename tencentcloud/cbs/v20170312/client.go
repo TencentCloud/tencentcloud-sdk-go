@@ -762,6 +762,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"

@@ -20,6 +20,60 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BindStaffSkillGroupListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 绑定技能组列表
+	SkillGroupList []*int64 `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
+}
+
+func (r *BindStaffSkillGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindStaffSkillGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffEmail")
+	delete(f, "SkillGroupList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindStaffSkillGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindStaffSkillGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindStaffSkillGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindStaffSkillGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSDKLoginTokenRequest struct {
 	*tchttp.BaseRequest
 
@@ -113,6 +167,10 @@ type CreateStaffResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 错误坐席列表及错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorStaffList []*ErrStaffItem `json:"ErrorStaffList,omitempty" name:"ErrorStaffList"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -126,6 +184,60 @@ func (r *CreateStaffResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStaffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteStaffRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待删除客服邮箱列表
+	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+}
+
+func (r *DeleteStaffRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStaffRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStaffRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteStaffResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无法删除的状态为在线的客服列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OnlineStaffList []*string `json:"OnlineStaffList,omitempty" name:"OnlineStaffList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteStaffResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -729,6 +841,18 @@ func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ErrStaffItem struct {
+
+	// 坐席邮箱地址
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 错误描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type IMCdrInfo struct {
 
 	// 服务记录ID
@@ -1163,4 +1287,58 @@ type TelCdrInfo struct {
 	// 会话 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type UnbindStaffSkillGroupListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 客服邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 解绑技能组列表
+	SkillGroupList []*int64 `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
+}
+
+func (r *UnbindStaffSkillGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindStaffSkillGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffEmail")
+	delete(f, "SkillGroupList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindStaffSkillGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindStaffSkillGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindStaffSkillGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindStaffSkillGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
