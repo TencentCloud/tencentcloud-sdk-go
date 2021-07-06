@@ -17,12 +17,10 @@ type ProfileProvider struct {
 
 }
 
-//new?
-
 // DefaultProfileProvider return a default Profile  provider
 // profile path :
 // linux: ~/.tencentcloud/credentials
-// windows: \c:\User\NAME\.tencentcloud\credentials
+// windows: \c:\Users\NAME\.tencentcloud\credentials
 func DefaultProfileProvider() *ProfileProvider {
 	return &ProfileProvider{}
 }
@@ -60,7 +58,7 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 		var err error
 		path, err = checkDefaultFile()
 		if err != nil {
-			return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialNotFound", "Failed to find profile file,"+err.Error(), "")
+			return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to find profile file,"+err.Error(), "")
 		}
 		if path == "" {
 			return nil, FILEDOSENOTEXIST
@@ -78,7 +76,7 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 	sKey := cfg.Section("default").Key("secret_key").String()
 
 	if sId == "" || sKey == "" {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to parse profile file,please confirm whether it contains secret_id and secret_key in section: default ", "")
+		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to parse profile file,please confirm whether it contains \"secret_id\" and \"secret_key\" in section: \"default\" ", "")
 	}
 	return &Credential{
 		SecretId:  sId,

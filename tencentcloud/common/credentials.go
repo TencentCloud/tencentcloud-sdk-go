@@ -42,7 +42,7 @@ func (c *Credential) GetCredentialParams() map[string]string {
 		"SecretId": c.GetSecretId(),
 	}
 	if c.Token != "" {
-		p["token"] = c.Token
+		p["Token"] = c.Token
 	}
 	return p
 }

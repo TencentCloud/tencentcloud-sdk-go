@@ -105,7 +105,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		headers["X-TC-Region"] = c.region
 	}
 	if c.credential.GetToken() != "" {
-		headers["X-TC-token"] = c.credential.GetToken()
+		headers["X-TC-Token"] = c.credential.GetToken()
 	}
 	if request.GetHttpMethod() == "GET" {
 		headers["Content-Type"] = "application/x-www-form-urlencoded"

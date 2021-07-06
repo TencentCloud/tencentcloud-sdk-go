@@ -34,7 +34,7 @@ func (c *CvmRoleCredential) GetCredentialParams() map[string]string {
 		"SecretId": c.GetSecretId(),
 	}
 	if c.token != "" {
-		p["token"] = c.GetToken()
+		p["Token"] = c.GetToken()
 	}
 	return p
 }

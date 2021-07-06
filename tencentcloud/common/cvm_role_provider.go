@@ -34,7 +34,7 @@ func NewCvmRoleProvider(roleName string) *CvmRoleProvider {
 }
 
 func DefaultCvmRoleProvider() *CvmRoleProvider {
-	return &CvmRoleProvider{}
+	return NewCvmRoleProvider("")
 }
 
 func get(url string) ([]byte, error) {
@@ -69,7 +69,7 @@ func (r *CvmRoleProvider) getRoleName() (string, error) {
 func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	roleName, err := r.getRoleName()
 	if err != nil {
-		//如果没有就返回空的err,否则会使 DefaultProviderChain 终止
+		//如果没有就返回特点的err,否则会使 DefaultProviderChain 终止
 		if errors.Is(err, RoleNotBound) {
 			return nil, CVMNOROLE
 		}

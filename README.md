@@ -249,6 +249,83 @@ import "crypto/tls"
 
 **再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
+# 凭证管理
+
+腾讯云 GO SDK 目前支持以下方式进行凭证管理：
+
+1. 环境变量
+    默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey.
+    相关代码如下：
+
+    ```go
+    provider := common.DefaultEnvProvider()
+    credential, err := p.GetCredential()
+    ```
+
+2. 配置文件
+配置文件路径为：
+   1. Linux or MacOS: `~/.tencentcloud/credentials`
+   2. Windows: `c:\Users\NAME\.tencentcloud\credentials`
+
+    配置文件格式如下：
+
+    ```ini
+    [default]
+    secret_id = xxxxx
+    secret_key = xxxxx
+    ```
+
+    相关代码如下：
+
+    ```go
+    provider := common.DefaultProfileProvider()
+    credentail, err := provider.GetCredential()
+    ```
+
+3. 角色扮演
+有关角色扮演的相关概念请参阅：[腾讯云角色概述](https://cloud.tencent.com/document/product/598/19420)
+要使用此种方式，您必须在腾讯云访问管理控制台上创建了一个角色，具体创建过程请参阅：[腾讯云角色创建](https://cloud.tencent.com/document/product/598/19381)
+在您拥有角色后，可以通过如下方式获取凭证：
+
+    ```go
+    provider := common.DefaultRoleArnProvider(secretId, secretKey, roleArn)
+    credentail, err := provider.GetCredential()
+    ```
+
+4. 实例角色
+有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)
+
+    在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证。相关代码如下：
+
+    ```go
+    provider := common.DefaultCvmRoleProvider()
+    credentail, err := provider.GetCredential()
+    ```
+
+5. 凭证提供链
+腾讯云 GO SDK 提供了 凭证提供链 ，它会默认以 环境变量->配置文件->实例角色 的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
+
+    ```go
+    provider := common.DefaultProviderChain()
+    credentail, err := provider.GetCredential()
+    ```
+
+    您也可以自定义自己的凭证提供链：
+
+    ```go
+    provider1 := common.DefaultCvmRoleProvider()
+    provider2 := common.DefaultEnvProvider()
+
+    provider := common.NewProviderChain([]{provider1, provider2})
+    credentail, err := provider.GetCredential()
+    ```
+
+    相应的，我们也提供了使用凭证管理来初始化客户端的方法：
+
+    ```go
+    client,err := NewClientWithProviders(regin,provider1,provider2...)
+    ```
+
 # 支持产品列表
 
 参见[产品列表文档](./products.md)
