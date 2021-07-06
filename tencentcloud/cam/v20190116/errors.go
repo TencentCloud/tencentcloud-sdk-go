@@ -45,6 +45,9 @@ const (
 	FAILEDOPERATION_USERUNBINDNOPERMISSION = "FailedOperation.UserUnbindNoPermission"
 
 	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 内部错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
 	// 参数错误。

@@ -1580,6 +1580,37 @@ func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPolic
     return
 }
 
+func NewListPoliciesGrantingServiceAccessRequest() (request *ListPoliciesGrantingServiceAccessRequest) {
+    request = &ListPoliciesGrantingServiceAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListPoliciesGrantingServiceAccess")
+    return
+}
+
+func NewListPoliciesGrantingServiceAccessResponse() (response *ListPoliciesGrantingServiceAccessResponse) {
+    response = &ListPoliciesGrantingServiceAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListPoliciesGrantingServiceAccess
+// 获取所有已授权服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListPoliciesGrantingServiceAccess(request *ListPoliciesGrantingServiceAccessRequest) (response *ListPoliciesGrantingServiceAccessResponse, err error) {
+    if request == nil {
+        request = NewListPoliciesGrantingServiceAccessRequest()
+    }
+    response = NewListPoliciesGrantingServiceAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListPolicyVersionsRequest() (request *ListPolicyVersionsRequest) {
     request = &ListPolicyVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

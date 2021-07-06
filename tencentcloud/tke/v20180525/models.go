@@ -1539,6 +1539,10 @@ type DataDisk struct {
 	// 挂载目录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
+
+	// 挂载设备名或分区名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskPartition *string `json:"DiskPartition,omitempty" name:"DiskPartition"`
 }
 
 type DeleteClusterAsGroupsRequest struct {
@@ -4275,7 +4279,7 @@ type InstanceAdvancedSettings struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
 
-	// 多盘数据盘挂载信息，同时请确保购买CVM的参数传递了购买多个数据盘的信息，如添加节点CreateClusterInstances API的RunInstancesPara下的DataDisks也设置了购买多个数据盘, 具体可以参考CreateClusterInstances接口的，添加集群节点(多块数据盘)样例；注意：此参数在调用接口AddExistedInstances时不起作用
+	// 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 

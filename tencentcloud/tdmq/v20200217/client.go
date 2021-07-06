@@ -1286,6 +1286,7 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
 //  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -1321,6 +1322,7 @@ func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
 //  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

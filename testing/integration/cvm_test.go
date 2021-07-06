@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
@@ -52,6 +53,51 @@ func TestDescribeInstancesSignV1Get(t *testing.T) {
 		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
 	}
 	fmt.Printf("%s\n", resp.ToJsonString())
+}
+
+func TestEmptyStringGetSignV1HmacSHA1(t *testing.T) {
+    testEmptyStringGet(t, "HmacSHA1")
+}
+
+func TestEmptyStringGetSignV1HmacSHA256(t *testing.T) {
+    testEmptyStringGet(t, "HmacSHA256")
+}
+
+func TestEmptyStringGetSignV3(t *testing.T) {
+    testEmptyStringGet(t, "TC3-HMAC-SHA256")
+}
+
+func testEmptyStringGet(t *testing.T, method string) {
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.ReqMethod = "GET"
+	cpf.SignMethod = method
+	client, err := cvm.NewClient(
+		credential,
+		regions.Guangzhou,
+		cpf)
+	if err != nil {
+		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+	}
+
+	request := cvm.NewDescribeInstancesRequest()
+	request.Filters = []*cvm.Filter{
+		&cvm.Filter{
+			Name:   common.StringPtr("zone"),
+			Values: common.StringPtrs([]string{""}),
+		},
+	}
+	resp, err := client.DescribeInstances(request)
+	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
+		code := terr.GetCode()
+		if code == cvm.INVALIDZONE_MISMATCHREGION {
+			return
+		}
+	}
+	fmt.Printf("%s\n", resp.ToJsonString())
+	t.Errorf(fmt.Sprintf("not expected error: %v", err))
 }
 
 func TestDescribeInstances(t *testing.T) {

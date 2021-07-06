@@ -29,6 +29,9 @@ const (
 	// 操作正在执行中，请勿重复操作。
 	FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
 
+	// 接口操作太频繁，请稍后重试。
+	FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
+
 	// 该批通道归属于不同的通道组，无法批量操作。
 	FAILEDOPERATION_BELONGDIFFERENTGROUP = "FailedOperation.BelongDifferentGroup"
 

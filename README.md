@@ -1,3 +1,8 @@
+<p align="center">
+<a href="https://cloud.tencent.com/"><img src="https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/eec00e38-a178-479f-83d4-853a18575ac4.png" height="100" ></a>
+</p>
+<h1 align="center">Tencent Cloud SDK for Go</h1>
+
 # 简介
 
 欢迎使用腾讯云开发者工具套件（SDK），此 SDK 是云 API 3.0 平台的配套开发工具。
@@ -12,27 +17,51 @@
 
 ## 通过go get安装（推荐）
 
-2021.05.28 修改为按照产品下载，您只需下载基础包和对应的产品包(如cvm)即可，不需要下载全部的产品：
-1. 安装公共基础包：
-	```
-	go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common@latest
-	```
-2. 安装对应的产品包(如cvm): 
-	```
-	go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm@latest
-	```
-
 推荐使用腾讯云镜像加速下载：
 
-    export GOPROXY=https://mirrors.tencent.com/go/
+1. lnuix 或 macos:
 
-注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有v3.0.\*和3.0.\*的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
+    ```bash
+    export GOPROXY=https://mirrors.tencent.com/go/
+    ```
+
+2. windows:
+
+    ```cmd
+    set GOPROXY=https://mirrors.tencent.com/go/
+    ```
+
+### 按需安装（推荐）
+
+v1.0.170后可以按照产品下载，您只需下载基础包和对应的产品包(如cvm)即可，不需要下载全部的产品，从而加快您构建镜像或者编译的速度：
+
+1. 安装公共基础包：
+
+    ```bash
+    go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common@latest
+    ```
+
+2. 安装对应的产品包(如cvm):
+
+    ```bash
+    go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm@latest
+    ```
+
+### 全部安装
+
+您也可以按照以前的方式一次性下载腾讯云所有产品的包：
+
+```bash
+go get -v github.com/tencentcloud/tencentcloud-sdk-go@latest
+```
+
+注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有`v3.0.*`和`3.0.*`的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
 
 ## 通过源码安装
 
 前往代码托管地址 [Github](https://github.com/tencentcloud/tencentcloud-sdk-go) 或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
 
-# 示例
+# 快速开始
 
 每个接口都有一个对应的 Request 结构和一个 Response 结构。例如云服务器的查询实例列表接口 DescribeInstances 有对应的请求结构体 DescribeInstancesRequest 和返回结构体 DescribeInstancesResponse 。
 
@@ -162,7 +191,7 @@ func main() {
 }
 ```
 
-更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 examples/cvm/v20170312/run_instances.go 。对于使用json字符串初始化 Request 的例子，可以参考 examples/cvm/v20170312/describe_instances.go 。
+更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request 的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
 
 # 相关配置
 
@@ -249,6 +278,7 @@ import "crypto/tls"
 
 **再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
+
 # 凭证管理
 
 腾讯云 GO SDK 目前支持以下方式进行凭证管理：
@@ -325,6 +355,82 @@ import "crypto/tls"
     ```go
     client,err := NewClientWithProviders(regin,provider1,provider2...)
     ```
+
+# 错误处理
+
+从 `v1.0.181` 开始，腾讯云 GO SDK 会将各个产品的返回的错误码定义为常量，您可以直接调用处理，无需手动定义。如果您使用 IDE (如 Goland )进行开发，可以使用他们的代码提示功能直接选择。例如：
+
+```go
+...//Your other go code
+
+// Handling errors
+response, err := client.DescribeInstances(request)
+if terr, ok := err.(*errors.TencentCloudSDKError); ok {
+    code :=terr.GetCode()
+    if code == cvm.FAILEDOPERATION_ILLEGALTAGKEY{
+        fmt.Printf("Handling error: FailedOperation.IllegalTagKey,%s", err)
+    }else if code == cvm.UNAUTHORIZEDOPERATION{
+        fmt.Printf("Handling error: UnauthorizedOperation,%s", err)
+    }else{
+        fmt.Printf("An API error has returned: %s", err)
+    }
+    return
+}
+...
+```
+
+同时，各个接口函数的注释部分也列出了此接口可能会返回的错误码，方便您进行处理：
+
+```go
+// DescribeInstances
+// 本接口 (DescribeInstances) 用于查询一个或多个实例的详细信息。
+//
+// 
+//
+// * 可以根据实例`ID`、实例名称或者实例计费模式等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
+//
+// * 支持查询实例的最新操作（LatestOperation）以及最新操作状态(LatestOperationState)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ILLEGALTAGKEY = "FailedOperation.IllegalTagKey"
+//  FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
+//  INVALIDPARAMETERVALUE_INVALIDVAGUENAME = "InvalidParameterValue.InvalidVagueName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = "InvalidParameterValue.SubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDMALFORMED = "InvalidParameterValue.VpcIdMalformed"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDSGID_MALFORMED = "InvalidSgId.Malformed"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error){
+    ...
+}
+
+```
+
+# Common Request
+
+从 `v1.0.189`开始，腾讯云 GO SDK 支持使用 `泛用型的API调用方式(Common Request)` 进行请求。您只需安装 `common` 包, 即可向任何产品发起调用。
+
+**注意，您必须明确知道您调用的接口所需参数，否则可能会调用失败。**
+
+目前仅支持使用POST方式，且签名方法必须使用 签名方法 v3。
+
+详细使用请参阅示例：[使用 Common Request 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_request.go)
 
 # 支持产品列表
 

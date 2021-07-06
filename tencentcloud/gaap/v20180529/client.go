@@ -1799,6 +1799,8 @@ func NewDescribeProxyDetailResponse() (response *DescribeProxyDetailResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
 //  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2162,6 +2164,7 @@ func NewDescribeRuleRealServersResponse() (response *DescribeRuleRealServersResp
 // 本接口（DescribeRuleRealServers）用于查询转发规则相关的源站信息， 包括该规则可绑定的源站信息和已绑定的源站信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
 //  INTERNALERROR = "InternalError"

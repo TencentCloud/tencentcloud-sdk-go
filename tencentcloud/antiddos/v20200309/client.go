@@ -626,7 +626,7 @@ func NewDeleteWaterPrintConfigResponse() (response *DeleteWaterPrintConfigRespon
 // 删除DDoS防护的水印防护配置
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteWaterPrintConfig(request *DeleteWaterPrintConfigRequest) (response *DeleteWaterPrintConfigResponse, err error) {
     if request == nil {
         request = NewDeleteWaterPrintConfigRequest()
@@ -655,7 +655,7 @@ func NewDeleteWaterPrintKeyResponse() (response *DeleteWaterPrintKeyResponse) {
 // 删除DDoS防护的水印防护密钥
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteWaterPrintKey(request *DeleteWaterPrintKeyRequest) (response *DeleteWaterPrintKeyResponse, err error) {
     if request == nil {
         request = NewDeleteWaterPrintKeyRequest()

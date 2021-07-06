@@ -435,6 +435,16 @@ type ExternalContactTag struct {
 	TagId *string `json:"TagId,omitempty" name:"TagId"`
 }
 
+type ExternalUserMappingInfo struct {
+
+	// 企业主体对应的外部联系人userId
+	CorpExternalUserId *string `json:"CorpExternalUserId,omitempty" name:"CorpExternalUserId"`
+
+	// 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+}
+
 type FollowUser struct {
 
 	// 添加了此外部联系人的企业成员userid
@@ -937,6 +947,56 @@ func (r *QueryExternalContactListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryExternalContactListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExternalUserMappingInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 企业主体对应的外部联系人id列表，列表长度限制最大为50。
+	CorpExternalUserIdList []*string `json:"CorpExternalUserIdList,omitempty" name:"CorpExternalUserIdList"`
+}
+
+func (r *QueryExternalUserMappingInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalUserMappingInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpExternalUserIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryExternalUserMappingInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExternalUserMappingInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 外部联系人映射信息, 只返回映射成功的记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExternalUserIdMapping []*ExternalUserMappingInfo `json:"ExternalUserIdMapping,omitempty" name:"ExternalUserIdMapping"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryExternalUserMappingInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalUserMappingInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

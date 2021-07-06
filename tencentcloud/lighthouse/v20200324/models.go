@@ -869,6 +869,9 @@ type DescribeBundlesRequest struct {
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 可用区列表。默认为全部可用区。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 }
 
 func (r *DescribeBundlesRequest) ToJsonString() string {
@@ -887,6 +890,7 @@ func (r *DescribeBundlesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "Zones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBundlesRequest has unknown keys!", "")
 	}
@@ -2292,6 +2296,9 @@ type Instance struct {
 
 	// 操作系统名称。
 	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type InstanceChargePrepaid struct {

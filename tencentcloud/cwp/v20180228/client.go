@@ -171,6 +171,7 @@ func NewCreateBaselineStrategyResponse() (response *CreateBaselineStrategyRespon
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) (response *CreateBaselineStrategyResponse, err error) {
     if request == nil {
@@ -1766,6 +1767,7 @@ func NewDescribeImportMachineInfoResponse() (response *DescribeImportMachineInfo
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoRequest) (response *DescribeImportMachineInfoResponse, err error) {
     if request == nil {
         request = NewDescribeImportMachineInfoRequest()
@@ -3777,6 +3779,7 @@ func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
@@ -4443,6 +4446,7 @@ func NewTrustMalwaresResponse() (response *TrustMalwaresResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMalwaresResponse, err error) {
     if request == nil {
         request = NewTrustMalwaresRequest()
@@ -4506,6 +4510,7 @@ func NewUntrustMalwaresResponse() (response *UntrustMalwaresResponse) {
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *UntrustMalwaresResponse, err error) {
     if request == nil {
         request = NewUntrustMalwaresRequest()

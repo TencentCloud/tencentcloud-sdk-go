@@ -2536,6 +2536,51 @@ func (r *ListEntitiesForPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListGrantServiceAccessActionNode struct {
+
+	// 接口名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 接口描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type ListGrantServiceAccessNode struct {
+
+	// 服务
+	Service *ListGrantServiceAccessService `json:"Service,omitempty" name:"Service"`
+
+	// 接口信息
+	Action []*ListGrantServiceAccessActionNode `json:"Action,omitempty" name:"Action"`
+
+	// 授权的策略
+	Policy []*ListGrantServiceAccessPolicy `json:"Policy,omitempty" name:"Policy"`
+}
+
+type ListGrantServiceAccessPolicy struct {
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略类型: Custom自定义策略，Presetting预设策略
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略描述
+	PolicyDescription *string `json:"PolicyDescription,omitempty" name:"PolicyDescription"`
+}
+
+type ListGrantServiceAccessService struct {
+
+	// 服务
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+}
+
 type ListGroupsForUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -2657,6 +2702,67 @@ func (r *ListGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListPoliciesGrantingServiceAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 子账号uin，与RoleId、GroupId三选一必传
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 角色ID，与TargetUin、GroupId三选一必传
+	RoleId *uint64 `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户组ID，与TargetUin、RoleId三选一必传
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 服务名，查看服务授权接口详情时需传该字段
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+}
+
+func (r *ListPoliciesGrantingServiceAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesGrantingServiceAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	delete(f, "RoleId")
+	delete(f, "GroupId")
+	delete(f, "ServiceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPoliciesGrantingServiceAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListPoliciesGrantingServiceAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+		List []*ListGrantServiceAccessNode `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListPoliciesGrantingServiceAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPoliciesGrantingServiceAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

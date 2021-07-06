@@ -67,10 +67,12 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v0.0.0
@@ -246,10 +248,12 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain => ../tencentcloud/domain
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm => ../tencentcloud/drm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds => ../tencentcloud/ds
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf => ../tencentcloud/dtf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts => ../tencentcloud/dts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc => ../tencentcloud/ecc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn => ../tencentcloud/ecdn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm => ../tencentcloud/ecm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam => ../tencentcloud/eiam
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis => ../tencentcloud/eis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr => ../tencentcloud/emr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es => ../tencentcloud/es

@@ -43,6 +43,37 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListRequest) {
+    request = &BindStaffSkillGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "BindStaffSkillGroupList")
+    return
+}
+
+func NewBindStaffSkillGroupListResponse() (response *BindStaffSkillGroupListResponse) {
+    response = &BindStaffSkillGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindStaffSkillGroupList
+// 绑定坐席所属技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest) (response *BindStaffSkillGroupListResponse, err error) {
+    if request == nil {
+        request = NewBindStaffSkillGroupListRequest()
+    }
+    response = NewBindStaffSkillGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +138,36 @@ func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaff
         request = NewCreateStaffRequest()
     }
     response = NewCreateStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
+    request = &DeleteStaffRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DeleteStaff")
+    return
+}
+
+func NewDeleteStaffResponse() (response *DeleteStaffResponse) {
+    response = &DeleteStaffResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteStaff
+// 删除坐席信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaffResponse, err error) {
+    if request == nil {
+        request = NewDeleteStaffRequest()
+    }
+    response = NewDeleteStaffResponse()
     err = c.Send(request, response)
     return
 }
@@ -189,7 +250,7 @@ func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSes
 }
 
 // DescribePSTNActiveSessionList
-// 获取 PSTN 活动会话列表。
+// 获取当前正在通话的会话列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -396,6 +457,37 @@ func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (respons
         request = NewDescribeTelSessionRequest()
     }
     response = NewDescribeTelSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindStaffSkillGroupListRequest() (request *UnbindStaffSkillGroupListRequest) {
+    request = &UnbindStaffSkillGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "UnbindStaffSkillGroupList")
+    return
+}
+
+func NewUnbindStaffSkillGroupListResponse() (response *UnbindStaffSkillGroupListResponse) {
+    response = &UnbindStaffSkillGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindStaffSkillGroupList
+// 解绑坐席所属技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UnbindStaffSkillGroupList(request *UnbindStaffSkillGroupListRequest) (response *UnbindStaffSkillGroupListResponse, err error) {
+    if request == nil {
+        request = NewUnbindStaffSkillGroupListRequest()
+    }
+    response = NewUnbindStaffSkillGroupListResponse()
     err = c.Send(request, response)
     return
 }

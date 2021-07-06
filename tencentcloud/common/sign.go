@@ -80,10 +80,6 @@ func getStringToSign(request tchttp.Request) string {
 
 	for i := range keys {
 		k := keys[i]
-		// TODO: check if server side allows empty value in url.
-		if params[k] == "" {
-			continue
-		}
 		buf.WriteString(k)
 		buf.WriteString("=")
 		buf.WriteString(params[k])

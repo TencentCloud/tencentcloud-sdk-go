@@ -206,8 +206,17 @@ const (
 	// 弹性伸缩组创建参数错误。
 	INVALIDPARAMETER_ASCOMMONERROR = "InvalidParameter.AsCommonError"
 
+	// CIDR和其他集群CIDR冲突。
+	INVALIDPARAMETER_CIDRCONFLICTWITHOTHERCLUSTER = "InvalidParameter.CidrConflictWithOtherCluster"
+
 	// 创建的路由与已存在的其他路由产生冲突。
 	INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
+
+	// CIDR和vpc的CIDR冲突。
+	INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
+
+	// 创建的路由与VPC下已存在的全局路由产生冲突。
+	INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
 
 	// 参数错误，CIDR不符合规范。
 	INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"

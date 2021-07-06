@@ -3685,6 +3685,9 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// OA PUBLIC MINIAPP VPC
 	OpenAccessTypes []*string `json:"OpenAccessTypes,omitempty" name:"OpenAccessTypes"`
+
+	// 是否创建Path 0未传默认创建 1创建 2不创建
+	IsCreatePath *int64 `json:"IsCreatePath,omitempty" name:"IsCreatePath"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
@@ -3711,6 +3714,7 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 	delete(f, "VpcInfo")
 	delete(f, "PublicAccess")
 	delete(f, "OpenAccessTypes")
+	delete(f, "IsCreatePath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstablishCloudBaseRunServerRequest has unknown keys!", "")
 	}

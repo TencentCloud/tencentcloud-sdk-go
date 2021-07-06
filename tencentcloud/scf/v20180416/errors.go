@@ -365,6 +365,9 @@ const (
 	// 非法的TempCosObjectName。
 	INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
 
+	// TraceEnable取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_TRACEENABLE = "InvalidParameterValue.TraceEnable"
+
 	// TriggerDesc传入参数错误。
 	INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
 

@@ -148,9 +148,7 @@ func (r *BaseRequest) GetVersion() string {
 func GetUrlQueriesEncoded(params map[string]string) string {
 	values := url.Values{}
 	for key, value := range params {
-		if value != "" {
-			values.Add(key, value)
-		}
+		values.Add(key, value)
 	}
 	return values.Encode()
 }
@@ -194,7 +192,7 @@ func CompleteCommonParams(request Request, region string) {
 	params["Action"] = request.GetAction()
 	params["Timestamp"] = strconv.FormatInt(time.Now().Unix(), 10)
 	params["Nonce"] = strconv.Itoa(rand.Int())
-	params["RequestClient"] = "SDK_GO_1.0.195"
+	params["RequestClient"] = "SDK_GO_1.0.202"
 }
 
 func ConstructParams(req Request) (err error) {

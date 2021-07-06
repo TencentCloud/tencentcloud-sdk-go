@@ -363,6 +363,102 @@ func (r *DetectDisgustResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectLabelBetaRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 本次调用支持的识别场景，可选值如下：
+	// WEB，针对网络图片优化;
+	// CAMERA，针对手机摄像头拍摄图片优化;
+	// ALBUM，针对手机相册、网盘产品优化;
+	// NEWS，针对新闻、资讯、广电等行业优化；
+	// NONECAM，非实拍图；
+	// LOCATION，主体位置识别；
+	// 如果不传此参数，则默认为WEB。
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
+func (r *DetectLabelBetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectLabelBetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "Scenes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectLabelBetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectLabelBetaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Web网络版标签结果数组。如未选择WEB场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
+
+		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
+
+		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
+
+		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
+	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
+
+		// 非实拍标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NoneCamLabels []*DetectLabelItem `json:"NoneCamLabels,omitempty" name:"NoneCamLabels"`
+
+		// 识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LocationLabels []*Product `json:"LocationLabels,omitempty" name:"LocationLabels"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectLabelBetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectLabelBetaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectLabelItem struct {
 
 	// 图片中的物体名称。

@@ -78,6 +78,7 @@ func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDTEXT = "InvalidParameter.InvalidText"
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"

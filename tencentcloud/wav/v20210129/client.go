@@ -332,6 +332,39 @@ func (c *Client) QueryExternalContactList(request *QueryExternalContactListReque
     return
 }
 
+func NewQueryExternalUserMappingInfoRequest() (request *QueryExternalUserMappingInfoRequest) {
+    request = &QueryExternalUserMappingInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryExternalUserMappingInfo")
+    return
+}
+
+func NewQueryExternalUserMappingInfoResponse() (response *QueryExternalUserMappingInfoResponse) {
+    response = &QueryExternalUserMappingInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExternalUserMappingInfo
+// 企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingInfoRequest) (response *QueryExternalUserMappingInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalUserMappingInfoRequest()
+    }
+    response = NewQueryExternalUserMappingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
     request = &QueryMiniAppCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},

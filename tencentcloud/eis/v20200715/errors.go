@@ -31,4 +31,7 @@ const (
 
 	// 连接器不存在。
 	INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 )

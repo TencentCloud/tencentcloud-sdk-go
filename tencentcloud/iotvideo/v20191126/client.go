@@ -2636,6 +2636,7 @@ func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
     if request == nil {
         request = NewModifyDeviceRequest()

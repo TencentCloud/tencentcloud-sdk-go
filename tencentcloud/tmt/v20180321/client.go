@@ -116,6 +116,7 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
 //  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
+//  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

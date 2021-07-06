@@ -116,7 +116,7 @@ const (
 	// 请求类型错误。
 	INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 
-	// 模板地址有误，请选择正确的模板。
+	// 地址有误，请传入正确的地址。
 	INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
 
 	// 电话为空或者不合法。

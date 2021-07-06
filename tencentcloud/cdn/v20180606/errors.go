@@ -65,6 +65,9 @@ const (
 	// 内部服务错误，请联系腾讯云工程师进一步排查。
 	INTERNALERROR_INVALIDERRORCODE = "InternalError.InvalidErrorCode"
 
+	// 内部服务错误，请联系腾讯云工程师进一步排查。
+	INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+
 	// SCDN服务未生效，请购买或续费SCDN套餐后重试。
 	INTERNALERROR_SCDNUSERNOPACKAGE = "InternalError.ScdnUserNoPackage"
 
@@ -142,6 +145,9 @@ const (
 
 	// 域名状态不合法。
 	INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
+
+	// 域名太长。
+	INVALIDPARAMETER_CDNHOSTTOOLONGHOST = "InvalidParameter.CdnHostTooLongHost"
 
 	// 内部接口错误，请联系腾讯云工程师进一步排查。
 	INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"

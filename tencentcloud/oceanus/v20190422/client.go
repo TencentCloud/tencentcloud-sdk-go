@@ -195,6 +195,7 @@ func NewCreateResourceConfigResponse() (response *CreateResourceConfigResponse) 
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
 func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (response *CreateResourceConfigResponse, err error) {
     if request == nil {
@@ -512,6 +513,7 @@ func NewDescribeSystemResourcesResponse() (response *DescribeSystemResourcesResp
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_FAILEDTOBESCRIBERESOURCES = "InternalError.FailedToBescribeResources"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCEUNAVAILABLE_FAILEDTOBESCRIBERESOURCES = "ResourceUnavailable.FailedToBescribeResources"
 func (c *Client) DescribeSystemResources(request *DescribeSystemResourcesRequest) (response *DescribeSystemResourcesResponse, err error) {
     if request == nil {
