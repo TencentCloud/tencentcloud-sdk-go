@@ -11,5 +11,4 @@ func TestProviderChain(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	t.Log("id:" + cre.GetSecretId() + "\n" + "key:" + cre.GetSecretKey() + "\n" + "token:" + cre.GetToken())
 }

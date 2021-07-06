@@ -278,7 +278,6 @@ import "crypto/tls"
 
 **再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
-
 # 凭证管理
 
 腾讯云 GO SDK 目前支持以下方式进行凭证管理：
@@ -355,6 +354,8 @@ import "crypto/tls"
     ```go
     client,err := NewClientWithProviders(regin,provider1,provider2...)
     ```
+
+   更详细的使用方式请参考示例：[使用ProviderChain](examples/common/credential_manager.go)
 
 # 错误处理
 
