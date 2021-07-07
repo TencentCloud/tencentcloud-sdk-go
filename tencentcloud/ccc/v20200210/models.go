@@ -734,6 +734,9 @@ type DescribeTelCdrRequest struct {
 
 	// 分页页码，从 0 开始
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 按手机号筛选
+	Phones []*string `json:"Phones,omitempty" name:"Phones"`
 }
 
 func (r *DescribeTelCdrRequest) ToJsonString() string {
@@ -756,6 +759,7 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
+	delete(f, "Phones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelCdrRequest has unknown keys!", "")
 	}

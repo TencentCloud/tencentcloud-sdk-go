@@ -43,6 +43,37 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyAIModelRequest() (request *ApplyAIModelRequest) {
+    request = &ApplyAIModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ApplyAIModel")
+    return
+}
+
+func NewApplyAIModelResponse() (response *ApplyAIModelResponse) {
+    response = &ApplyAIModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyAIModel
+// 申请AI模型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ApplyAIModel(request *ApplyAIModelRequest) (response *ApplyAIModelResponse, err error) {
+    if request == nil {
+        request = NewApplyAIModelRequest()
+    }
+    response = NewApplyAIModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
     request = &BatchUpdateFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -70,6 +101,37 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
         request = NewBatchUpdateFirmwareRequest()
     }
     response = NewBatchUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequest) {
+    request = &CancelAIModelApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CancelAIModelApplication")
+    return
+}
+
+func NewCancelAIModelApplicationResponse() (response *CancelAIModelApplicationResponse) {
+    response = &CancelAIModelApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelAIModelApplication
+// 取消AI模型申请
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelAIModelApplication(request *CancelAIModelApplicationRequest) (response *CancelAIModelApplicationResponse, err error) {
+    if request == nil {
+        request = NewCancelAIModelApplicationRequest()
+    }
+    response = NewCancelAIModelApplicationResponse()
     err = c.Send(request, response)
     return
 }
@@ -167,6 +229,37 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
     return
 }
 
+func NewCreateAIDetectionRequest() (request *CreateAIDetectionRequest) {
+    request = &CreateAIDetectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAIDetection")
+    return
+}
+
+func NewCreateAIDetectionResponse() (response *CreateAIDetectionResponse) {
+    response = &CreateAIDetectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAIDetection
+// 发起AI推理请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAIDetection(request *CreateAIDetectionRequest) (response *CreateAIDetectionResponse, err error) {
+    if request == nil {
+        request = NewCreateAIDetectionRequest()
+    }
+    response = NewCreateAIDetectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchRequest() (request *CreateBatchRequest) {
     request = &CreateBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -194,6 +287,37 @@ func (c *Client) CreateBatch(request *CreateBatchRequest) (response *CreateBatch
         request = NewCreateBatchRequest()
     }
     response = NewCreateBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCOSCredentialsRequest() (request *CreateCOSCredentialsRequest) {
+    request = &CreateCOSCredentialsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateCOSCredentials")
+    return
+}
+
+func NewCreateCOSCredentialsResponse() (response *CreateCOSCredentialsResponse) {
+    response = &CreateCOSCredentialsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCOSCredentials
+// 创建COS上传密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCOSCredentials(request *CreateCOSCredentialsRequest) (response *CreateCOSCredentialsResponse, err error) {
+    if request == nil {
+        request = NewCreateCOSCredentialsRequest()
+    }
+    response = NewCreateCOSCredentialsResponse()
     err = c.Send(request, response)
     return
 }
@@ -442,6 +566,130 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
         request = NewDeleteProductRequest()
     }
     response = NewDeleteProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIModelApplicationsRequest() (request *DescribeAIModelApplicationsRequest) {
+    request = &DescribeAIModelApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelApplications")
+    return
+}
+
+func NewDescribeAIModelApplicationsResponse() (response *DescribeAIModelApplicationsResponse) {
+    response = &DescribeAIModelApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAIModelApplications
+// 用户AI模型申请记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelApplications(request *DescribeAIModelApplicationsRequest) (response *DescribeAIModelApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelApplicationsRequest()
+    }
+    response = NewDescribeAIModelApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIModelChannelRequest() (request *DescribeAIModelChannelRequest) {
+    request = &DescribeAIModelChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelChannel")
+    return
+}
+
+func NewDescribeAIModelChannelResponse() (response *DescribeAIModelChannelResponse) {
+    response = &DescribeAIModelChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAIModelChannel
+// 查看AI推理结果推送配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelChannel(request *DescribeAIModelChannelRequest) (response *DescribeAIModelChannelResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelChannelRequest()
+    }
+    response = NewDescribeAIModelChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIModelUsageRequest() (request *DescribeAIModelUsageRequest) {
+    request = &DescribeAIModelUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelUsage")
+    return
+}
+
+func NewDescribeAIModelUsageResponse() (response *DescribeAIModelUsageResponse) {
+    response = &DescribeAIModelUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAIModelUsage
+// 查看AI模型资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelUsage(request *DescribeAIModelUsageRequest) (response *DescribeAIModelUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelUsageRequest()
+    }
+    response = NewDescribeAIModelUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIModelsRequest() (request *DescribeAIModelsRequest) {
+    request = &DescribeAIModelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModels")
+    return
+}
+
+func NewDescribeAIModelsResponse() (response *DescribeAIModelsResponse) {
+    response = &DescribeAIModelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAIModels
+// 拉取AI模型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModels(request *DescribeAIModelsRequest) (response *DescribeAIModelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelsRequest()
+    }
+    response = NewDescribeAIModelsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1616,6 +1864,37 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
     return
 }
 
+func NewReportAliveDeviceRequest() (request *ReportAliveDeviceRequest) {
+    request = &ReportAliveDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ReportAliveDevice")
+    return
+}
+
+func NewReportAliveDeviceResponse() (response *ReportAliveDeviceResponse) {
+    response = &ReportAliveDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportAliveDevice
+// 上报活跃设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReportAliveDevice(request *ReportAliveDeviceRequest) (response *ReportAliveDeviceResponse, err error) {
+    if request == nil {
+        request = NewReportAliveDeviceRequest()
+    }
+    response = NewReportAliveDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
     request = &ResetCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1738,6 +2017,37 @@ func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (res
         request = NewTransferCloudStorageRequest()
     }
     response = NewTransferCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAIModelChannelRequest() (request *UpdateAIModelChannelRequest) {
+    request = &UpdateAIModelChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "UpdateAIModelChannel")
+    return
+}
+
+func NewUpdateAIModelChannelResponse() (response *UpdateAIModelChannelResponse) {
+    response = &UpdateAIModelChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateAIModelChannel
+// 更新AI推理结果推送配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateAIModelChannel(request *UpdateAIModelChannelRequest) (response *UpdateAIModelChannelResponse, err error) {
+    if request == nil {
+        request = NewUpdateAIModelChannelRequest()
+    }
+    response = NewUpdateAIModelChannelResponse()
     err = c.Send(request, response)
     return
 }

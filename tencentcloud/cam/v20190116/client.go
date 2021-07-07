@@ -1239,6 +1239,36 @@ func (c *Client) GetSAMLProvider(request *GetSAMLProviderRequest) (response *Get
     return
 }
 
+func NewGetSecurityLastUsedRequest() (request *GetSecurityLastUsedRequest) {
+    request = &GetSecurityLastUsedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetSecurityLastUsed")
+    return
+}
+
+func NewGetSecurityLastUsedResponse() (response *GetSecurityLastUsedResponse) {
+    response = &GetSecurityLastUsedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetSecurityLastUsed
+// 获取密钥最近使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetSecurityLastUsed(request *GetSecurityLastUsedRequest) (response *GetSecurityLastUsedResponse, err error) {
+    if request == nil {
+        request = NewGetSecurityLastUsedRequest()
+    }
+    response = NewGetSecurityLastUsedResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetServiceLinkedRoleDeletionStatusRequest() (request *GetServiceLinkedRoleDeletionStatusRequest) {
     request = &GetServiceLinkedRoleDeletionStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -307,7 +307,13 @@ type CreateInstanceAccountRequest struct {
 	// 子账号名称
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
-	// 子账号密码
+	// 1.长度8-30位,推荐使用12位以上的密码
+	// 2.不能以"/"开头
+	// 3.至少包含两项
+	//     a.小写字母a-z
+	//     b.大写字母A-Z
+	//     c.数字0-9
+	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
 	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
 
 	// 路由策略：填写master或者replication，表示主节点或者从节点
@@ -710,10 +716,10 @@ type DescribeCommonDBInstancesRequest struct {
 	// 实例vip信息列表
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 
-	// vpc网络统一Id列表
+	// vpc网络ID信息列表
 	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds"`
 
-	// 子网统一id列表
+	// 子网统一ID列表
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds"`
 
 	// 数量限制，默认推荐100
@@ -1507,7 +1513,7 @@ func (r *DescribeInstanceMonitorTopNCmdResponse) FromJsonString(s string) error 
 type DescribeInstanceMonitorTopNCmdTookRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例Id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
@@ -4310,7 +4316,7 @@ type RedisCommonInstanceList struct {
 	// 子网id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例状态信息，0-创建中，1-运行中
+	// 实例状态信息，1-流程中 ,2-运行中, -2-实例已隔离 ,-3-实例待回收, -4-实例已删除
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 实例网络ip

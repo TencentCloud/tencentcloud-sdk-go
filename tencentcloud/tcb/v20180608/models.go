@@ -260,6 +260,48 @@ type CloudBaseRunEmptyDirVolumeSource struct {
 	SizeLimit *string `json:"SizeLimit,omitempty" name:"SizeLimit"`
 }
 
+type CloudBaseRunForGatewayConf struct {
+
+	// 是否缩容到0
+	IsZero *bool `json:"IsZero,omitempty" name:"IsZero"`
+
+	// 按百分比灰度的权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 按请求/header参数的灰度Key
+	GrayKey *string `json:"GrayKey,omitempty" name:"GrayKey"`
+
+	// 按请求/header参数的灰度Value
+	GrayValue *string `json:"GrayValue,omitempty" name:"GrayValue"`
+
+	// 是否为默认版本(按请求/header参数)
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 访问权限，对应二进制分多段，vpc内网｜公网｜oa
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 访问的URL（域名＋路径）列表
+	URLs []*string `json:"URLs,omitempty" name:"URLs"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 灰度类型：FLOW(权重), URL_PARAMS/HEAD_PARAMS
+	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+
+	// CLB的IP:Port
+	LbAddr *string `json:"LbAddr,omitempty" name:"LbAddr"`
+
+	// 0:http访问服务配置信息, 1: 服务域名
+	ConfigType *int64 `json:"ConfigType,omitempty" name:"ConfigType"`
+}
+
 type CloudBaseRunImageInfo struct {
 
 	// 镜像仓库名称
@@ -366,6 +408,29 @@ type CloudBaseRunSideSpec struct {
 	// 挂载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+}
+
+type CloudBaseRunVersionFlowItem struct {
+
+	// 版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 流量占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// 流量参数键值对（URL参数/HEADERS参数）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlParam *ObjectKV `json:"UrlParam,omitempty" name:"UrlParam"`
+
+	// 优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 是否是默认兜底版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultPriority *bool `json:"IsDefaultPriority,omitempty" name:"IsDefaultPriority"`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -1852,6 +1917,64 @@ func (r *DescribeCloudBaseProjectVersionListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseProjectVersionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunConfForGateWayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvID *string `json:"EnvID,omitempty" name:"EnvID"`
+
+	// vpc信息
+	VpcID *string `json:"VpcID,omitempty" name:"VpcID"`
+}
+
+func (r *DescribeCloudBaseRunConfForGateWayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunConfForGateWayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvID")
+	delete(f, "VpcID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunConfForGateWayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunConfForGateWayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 最近更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LastUpTime *string `json:"LastUpTime,omitempty" name:"LastUpTime"`
+
+		// 配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*CloudBaseRunForGatewayConf `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunConfForGateWayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunConfForGateWayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3688,6 +3811,9 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// 是否创建Path 0未传默认创建 1创建 2不创建
 	IsCreatePath *int64 `json:"IsCreatePath,omitempty" name:"IsCreatePath"`
+
+	// 指定创建路径（如不存在，则创建。存在，则忽略）
+	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
@@ -3715,6 +3841,7 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 	delete(f, "PublicAccess")
 	delete(f, "OpenAccessTypes")
 	delete(f, "IsCreatePath")
+	delete(f, "ServerPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstablishCloudBaseRunServerRequest has unknown keys!", "")
 	}
@@ -3917,6 +4044,72 @@ type LoginStatistic struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ModifyCloudBaseRunServerFlowConfRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 流量占比
+	VersionFlowItems []*CloudBaseRunVersionFlowItem `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+
+	// 流量类型（URL_PARAMS / FLOW / HEADERS)
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *ModifyCloudBaseRunServerFlowConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerFlowConfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionFlowItems")
+	delete(f, "TrafficType")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudBaseRunServerFlowConfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCloudBaseRunServerFlowConfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，succ代表成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCloudBaseRunServerFlowConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerFlowConfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -4079,6 +4272,15 @@ func (r *ModifyEnvResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ObjectKV struct {
+
+	// object 的 key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// object key 对应的 value
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type OrderInfo struct {

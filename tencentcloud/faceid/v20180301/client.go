@@ -181,6 +181,39 @@ func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationReque
     return
 }
 
+func NewCheckEidTokenStatusRequest() (request *CheckEidTokenStatusRequest) {
+    request = &CheckEidTokenStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckEidTokenStatus")
+    return
+}
+
+func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
+    response = &CheckEidTokenStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckEidTokenStatus
+// 用于轮询E证通H5场景EidToken验证状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
+//  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (response *CheckEidTokenStatusResponse, err error) {
+    if request == nil {
+        request = NewCheckEidTokenStatusRequest()
+    }
+    response = NewCheckEidTokenStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest) {
     request = &CheckIdCardInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -466,7 +499,10 @@ func NewGetEidResultResponse() (response *GetEidResultResponse) {
 // 完成验证后，用EidToken调用本接口获取结果信息，EidToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ENCRYPTSYSTEMERROR = "InternalError.EncryptSystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
@@ -498,7 +534,7 @@ func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
 }
 
 // GetEidToken
-// 每次调用E证通小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+// 每次调用E证通服务前，需先调用本接口获取EidToken，用来串联E证通流程，在验证完成后，用于获取E证通结果信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"

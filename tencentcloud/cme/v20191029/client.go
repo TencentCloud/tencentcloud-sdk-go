@@ -354,6 +354,8 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 // 删除云剪编辑项目。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SWITCHERONWORKING = "FailedOperation.SwitcherOnWorking"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
@@ -773,8 +775,9 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DATANOTFOUNDINDB = "InvalidParameterValue.DataNotFoundInDB"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {

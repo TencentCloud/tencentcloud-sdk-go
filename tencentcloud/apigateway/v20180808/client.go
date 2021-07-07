@@ -423,6 +423,38 @@ func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *C
     return
 }
 
+func NewCreatePluginRequest() (request *CreatePluginRequest) {
+    request = &CreatePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "CreatePlugin")
+    return
+}
+
+func NewCreatePluginResponse() (response *CreatePluginResponse) {
+    response = &CreatePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePlugin
+// 创建API网关插件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
+    if request == nil {
+        request = NewCreatePluginRequest()
+    }
+    response = NewCreatePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServiceRequest() (request *CreateServiceRequest) {
     request = &CreateServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

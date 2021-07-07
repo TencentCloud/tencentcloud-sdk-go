@@ -1324,6 +1324,67 @@ func (r *CreateIPStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 插件类型。目前支持IPControl。
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 插件定义语句，支持json。
+	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+
+	// 插件描述，限定200字以内。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreatePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginName")
+	delete(f, "PluginType")
+	delete(f, "PluginData")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新建的插件详情。
+		Result *Plugin `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateServiceRequest struct {
 	*tchttp.BaseRequest
 

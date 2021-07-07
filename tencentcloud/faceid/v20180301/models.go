@@ -342,6 +342,59 @@ func (r *CheckBankCardInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckEidTokenStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+}
+
+func (r *CheckEidTokenStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckEidTokenStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EidToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckEidTokenStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckEidTokenStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 枚举：
+	// init：token未验证
+	// doing: 验证中
+	// finished: 验证完成
+	// timeout: token已超时
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckEidTokenStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckEidTokenStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckIdCardInformationRequest struct {
 	*tchttp.BaseRequest
 
@@ -1148,7 +1201,7 @@ func (r *GetDetectInfoResponse) FromJsonString(s string) error {
 type GetEidResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 人脸核身流程的标识，调用GetEidToken接口时生成的。
+	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
 	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
@@ -1247,6 +1300,9 @@ type GetEidTokenRequest struct {
 
 	// 小程序模式配置，包括如何传入姓名身份证的配置。
 	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
+
+	// 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 }
 
 func (r *GetEidTokenRequest) ToJsonString() string {
@@ -1266,6 +1322,7 @@ func (r *GetEidTokenRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Extra")
 	delete(f, "Config")
+	delete(f, "RedirectUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEidTokenRequest has unknown keys!", "")
 	}
@@ -1276,9 +1333,12 @@ type GetEidTokenResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 一次核身流程的标识，有效时间为7,200秒；
+		// 一次核身流程的标识，有效时间为600秒；
 	// 完成核身后，可用该标识获取验证结果信息。
 		EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+
+		// 发起核身流程的URL，用于H5场景核身。
+		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

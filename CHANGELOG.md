@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 31 次发布
+### 第 16 次发布
 
-发布时间：2021-07-06 08:03:53
+发布时间：2021-07-07 10:05:40
 
 本次发布包含了以下内容：
 
@@ -12,22 +12,50 @@
 
 新增接口：
 
-* [ListPoliciesGrantingServiceAccess](https://cloud.tencent.com/document/api/598/58191)
+* [CreatePlugin](https://cloud.tencent.com/document/api/628/58234)
 
-新增数据结构：
 
-* [ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode)
-* [ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode)
-* [ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy)
-* [ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService)
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 32 次发布
+
+发布时间：2021-07-07 09:58:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetSecurityLastUsed](https://cloud.tencent.com/document/api/598/58230)
 
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2021-07-06 08:01:37
+发布时间：2021-07-07 09:55:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* 新增入参：Phones
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 20 次发布
+
+发布时间：2021-07-07 10:06:12
 
 本次发布包含了以下内容：
 
@@ -35,28 +63,52 @@
 
 新增接口：
 
-* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
-* [DeleteStaff](https://cloud.tencent.com/document/api/679/58189)
-* [UnbindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58188)
+* [CreateScanMalwareSetting](https://cloud.tencent.com/document/api/296/58241)
+* [DescribeMalwareTimingScanSetting](https://cloud.tencent.com/document/api/296/58240)
+* [DescribeScanTaskDetails](https://cloud.tencent.com/document/api/296/58238)
+* [DescribeScanVulSetting](https://cloud.tencent.com/document/api/296/58237)
+* [EditBashRules](https://cloud.tencent.com/document/api/296/58239)
+* [ScanVulAgain](https://cloud.tencent.com/document/api/296/58236)
+* [ScanVulSetting](https://cloud.tencent.com/document/api/296/58235)
 
 修改接口：
 
-* [CreateStaff](https://cloud.tencent.com/document/api/679/49677)
+* [DescribeMachineRegions](https://cloud.tencent.com/document/api/296/55137)
 
-	* 新增出参：ErrorStaffList
+	* 新增出参：CVM, BM, LH, ECM, Other
+
+* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
+
+	* 新增入参：AutoIsolation
+
+* [ScanVul](https://cloud.tencent.com/document/api/296/57375)
+
+	* 新增入参：TimeoutPeriod, VulIds
 
 
 新增数据结构：
 
-* [ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem)
+* [ScanTaskDetails](https://cloud.tencent.com/document/api/296/19867#ScanTaskDetails)
+* [VulDetailInfo](https://cloud.tencent.com/document/api/296/19867#VulDetailInfo)
+
+修改数据结构：
+
+* [BashEvent](https://cloud.tencent.com/document/api/296/19867#BashEvent)
+
+	* 新增成员：DetectBy, Pid, Exe, ModifyTime, RuleCategory, RegexBashCmd
+
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+
+	* 新增成员：Uuids, White, DealOldEvents
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
 
-### 第 59 次发布
+## 人脸核身(faceid) 版本：2018-03-01
 
-发布时间：2021-07-06 08:05:06
+### 第 27 次发布
+
+发布时间：2021-07-07 10:00:09
 
 本次发布包含了以下内容：
 
@@ -64,60 +116,140 @@
 
 新增接口：
 
-* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
+* [CheckEidTokenStatus](https://cloud.tencent.com/document/api/1007/58231)
+
+修改接口：
+
+* [GetEidToken](https://cloud.tencent.com/document/api/1007/54089)
+
+	* 新增入参：RedirectUrl
+
+	* 新增出参：Url
 
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 16 次发布
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-发布时间：2021-07-06 08:01:43
+### 第 26 次发布
+
+发布时间：2021-07-07 10:01:07
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
 
-	* 新增入参：Zones
+	* 新增成员：CreateUserId, CreatorNickName
 
+* [FirmwareInfo](https://cloud.tencent.com/document/api/1081/34988#FirmwareInfo)
+
+	* 新增成员：CreateUserId, CreatorNickName
+
+* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
+
+	* 新增成员：CreateUserId, CreatorNickName
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 10 次发布
+
+发布时间：2021-07-07 09:56:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyAIModel](https://cloud.tencent.com/document/api/1131/58228)
+* [CancelAIModelApplication](https://cloud.tencent.com/document/api/1131/58227)
+* [CreateAIDetection](https://cloud.tencent.com/document/api/1131/58226)
+* [CreateCOSCredentials](https://cloud.tencent.com/document/api/1131/58225)
+* [DescribeAIModelApplications](https://cloud.tencent.com/document/api/1131/58224)
+* [DescribeAIModelChannel](https://cloud.tencent.com/document/api/1131/58223)
+* [DescribeAIModelUsage](https://cloud.tencent.com/document/api/1131/58222)
+* [DescribeAIModels](https://cloud.tencent.com/document/api/1131/58221)
+* [ReportAliveDevice](https://cloud.tencent.com/document/api/1131/58220)
+* [UpdateAIModelChannel](https://cloud.tencent.com/document/api/1131/58219)
+
+新增数据结构：
+
+* [AIModelApplication](https://cloud.tencent.com/document/api/1131/53113#AIModelApplication)
+* [AIModelInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelInfo)
+* [AIModelUsageInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelUsageInfo)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 云市场(market) 版本：2019-10-10
+
+### 第 3 次发布
+
+发布时间：2021-07-06 10:48:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetCateTree
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 4 次发布
+
+发布时间：2021-07-07 09:54:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
 
-	* 新增成员：Zone
+	* 新增成员：ItemString
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 7 次发布
+
+发布时间：2021-07-07 10:06:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：InstanceKind
 
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 52 次发布
+### 第 53 次发布
 
-发布时间：2021-07-06 08:09:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
-
-	* 新增入参：IsCreatePath
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 34 次发布
-
-发布时间：2021-07-06 08:11:25
+发布时间：2021-07-07 10:03:19
 
 本次发布包含了以下内容：
 
@@ -125,14 +257,40 @@
 
 新增接口：
 
-* [CreateImmutableTagRules](https://cloud.tencent.com/document/api/1141/58197)
-* [DeleteImmutableTagRules](https://cloud.tencent.com/document/api/1141/58196)
-* [DescribeImmutableTagRules](https://cloud.tencent.com/document/api/1141/58195)
-* [ModifyImmutableTagRules](https://cloud.tencent.com/document/api/1141/58194)
+* [DescribeCloudBaseRunConfForGateWay](https://cloud.tencent.com/document/api/876/58233)
+* [ModifyCloudBaseRunServerFlowConf](https://cloud.tencent.com/document/api/876/58232)
+
+修改接口：
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：ServerPath
+
 
 新增数据结构：
 
-* [ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule)
+* [CloudBaseRunForGatewayConf](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunForGatewayConf)
+* [CloudBaseRunVersionFlowItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVersionFlowItem)
+* [ObjectKV](https://cloud.tencent.com/document/api/876/34822#ObjectKV)
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 5 次发布
+
+发布时间：2021-07-07 09:55:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：InternetAddress
+
 
 
 
@@ -1146,6 +1304,18 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 16 次发布
+
+发布时间：2021-07-07 10:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePlugin](https://cloud.tencent.com/document/api/628/58234)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 15 次发布
 
@@ -5404,6 +5574,18 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 32 次发布
+
+发布时间：2021-07-07 09:58:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetSecurityLastUsed](https://cloud.tencent.com/document/api/598/58230)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 31 次发布
 
 发布时间：2021-07-06 08:03:53
@@ -5414,14 +5596,14 @@
 
 新增接口：
 
-* [[ListPoliciesGrantingServiceAccess](https://cloud.tencent.com/document/api/598/58191)](https://cloud.tencent.com/document/api/#/#)
+* [ListPoliciesGrantingServiceAccess](https://cloud.tencent.com/document/api/598/58191)
 
 新增数据结构：
 
-* [[ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode))
-* [[ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode))
-* [[ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy))
-* [[ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService)](https://cloud.tencent.com/document/api/598/33167#[ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService))
+* [ListGrantServiceAccessActionNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessActionNode)
+* [ListGrantServiceAccessNode](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessNode)
+* [ListGrantServiceAccessPolicy](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessPolicy)
+* [ListGrantServiceAccessService](https://cloud.tencent.com/document/api/598/33167#ListGrantServiceAccessService)
 
 ### 第 30 次发布
 
@@ -6878,6 +7060,21 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 13 次发布
+
+发布时间：2021-07-07 09:55:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* 新增入参：Phones
+
+
 ### 第 12 次发布
 
 发布时间：2021-07-06 08:01:37
@@ -6888,9 +7085,9 @@
 
 新增接口：
 
-* [[BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteStaff](https://cloud.tencent.com/document/api/679/58189)](https://cloud.tencent.com/document/api/#/#)
-* [[UnbindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58188)](https://cloud.tencent.com/document/api/#/#)
+* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
+* [DeleteStaff](https://cloud.tencent.com/document/api/679/58189)
+* [UnbindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58188)
 
 修改接口：
 
@@ -6901,7 +7098,7 @@
 
 新增数据结构：
 
-* [[ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem)](https://cloud.tencent.com/document/api/679/47715#[ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem))
+* [ErrStaffItem](https://cloud.tencent.com/document/api/679/47715#ErrStaffItem)
 
 ### 第 11 次发布
 
@@ -14951,7 +15148,7 @@
 
 新增接口：
 
-* [[InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)](https://cloud.tencent.com/document/api/#/#)
+* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
 
 ### 第 58 次发布
 
@@ -16145,6 +16342,55 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 20 次发布
+
+发布时间：2021-07-07 10:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateScanMalwareSetting](https://cloud.tencent.com/document/api/296/58241)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMalwareTimingScanSetting](https://cloud.tencent.com/document/api/296/58240)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScanTaskDetails](https://cloud.tencent.com/document/api/296/58238)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScanVulSetting](https://cloud.tencent.com/document/api/296/58237)](https://cloud.tencent.com/document/api/#/#)
+* [[EditBashRules](https://cloud.tencent.com/document/api/296/58239)](https://cloud.tencent.com/document/api/#/#)
+* [[ScanVulAgain](https://cloud.tencent.com/document/api/296/58236)](https://cloud.tencent.com/document/api/#/#)
+* [[ScanVulSetting](https://cloud.tencent.com/document/api/296/58235)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeMachineRegions](https://cloud.tencent.com/document/api/296/55137)
+
+	* 新增出参：CVM, BM, LH, ECM, Other
+
+* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
+
+	* 新增入参：AutoIsolation
+
+* [ScanVul](https://cloud.tencent.com/document/api/296/57375)
+
+	* 新增入参：TimeoutPeriod, VulIds
+
+
+新增数据结构：
+
+* [[ScanTaskDetails](https://cloud.tencent.com/document/api/296/19867#ScanTaskDetails)](https://cloud.tencent.com/document/api/296/19867#[ScanTaskDetails](https://cloud.tencent.com/document/api/296/19867#ScanTaskDetails))
+* [[VulDetailInfo](https://cloud.tencent.com/document/api/296/19867#VulDetailInfo)](https://cloud.tencent.com/document/api/296/19867#[VulDetailInfo](https://cloud.tencent.com/document/api/296/19867#VulDetailInfo))
+
+修改数据结构：
+
+* [BashEvent](https://cloud.tencent.com/document/api/296/19867#BashEvent)
+
+	* 新增成员：DetectBy, Pid, Exe, ModifyTime, RuleCategory, RegexBashCmd
+
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+
+	* 新增成员：Uuids, White, DealOldEvents
+
 
 ### 第 19 次发布
 
@@ -22484,6 +22730,27 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 27 次发布
+
+发布时间：2021-07-07 10:00:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckEidTokenStatus](https://cloud.tencent.com/document/api/1007/58231)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [GetEidToken](https://cloud.tencent.com/document/api/1007/54089)
+
+	* 新增入参：RedirectUrl
+
+	* 新增出参：Url
+
+
 ### 第 26 次发布
 
 发布时间：2021-04-25 10:14:38
@@ -27057,6 +27324,29 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 26 次发布
+
+发布时间：2021-07-07 10:01:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
+
+	* 新增成员：CreateUserId, CreatorNickName
+
+* [FirmwareInfo](https://cloud.tencent.com/document/api/1081/34988#FirmwareInfo)
+
+	* 新增成员：CreateUserId, CreatorNickName
+
+* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
+
+	* 新增成员：CreateUserId, CreatorNickName
+
+
 ### 第 25 次发布
 
 发布时间：2021-06-17 08:06:06
@@ -28143,6 +28433,33 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 10 次发布
+
+发布时间：2021-07-07 09:56:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyAIModel](https://cloud.tencent.com/document/api/1131/58228)](https://cloud.tencent.com/document/api/#/#)
+* [[CancelAIModelApplication](https://cloud.tencent.com/document/api/1131/58227)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAIDetection](https://cloud.tencent.com/document/api/1131/58226)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCOSCredentials](https://cloud.tencent.com/document/api/1131/58225)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAIModelApplications](https://cloud.tencent.com/document/api/1131/58224)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAIModelChannel](https://cloud.tencent.com/document/api/1131/58223)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAIModelUsage](https://cloud.tencent.com/document/api/1131/58222)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAIModels](https://cloud.tencent.com/document/api/1131/58221)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportAliveDevice](https://cloud.tencent.com/document/api/1131/58220)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateAIModelChannel](https://cloud.tencent.com/document/api/1131/58219)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AIModelApplication](https://cloud.tencent.com/document/api/1131/53113#AIModelApplication)](https://cloud.tencent.com/document/api/1131/53113#[AIModelApplication](https://cloud.tencent.com/document/api/1131/53113#AIModelApplication))
+* [[AIModelInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelInfo)](https://cloud.tencent.com/document/api/1131/53113#[AIModelInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelInfo))
+* [[AIModelUsageInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelUsageInfo)](https://cloud.tencent.com/document/api/1131/53113#[AIModelUsageInfo](https://cloud.tencent.com/document/api/1131/53113#AIModelUsageInfo))
 
 ### 第 9 次发布
 
@@ -31190,6 +31507,18 @@
 
 ## 云市场(market) 版本：2019-10-10
 
+### 第 3 次发布
+
+发布时间：2021-07-06 10:48:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetCateTree
+
 ### 第 2 次发布
 
 发布时间：2021-06-18 08:00:04
@@ -33407,6 +33736,21 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 4 次发布
+
+发布时间：2021-07-07 09:54:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+
+	* 新增成员：ItemString
+
 
 ### 第 3 次发布
 
@@ -39594,6 +39938,21 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 7 次发布
+
+发布时间：2021-07-07 10:06:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：InstanceKind
+
+
 ### 第 6 次发布
 
 发布时间：2021-05-31 08:11:21
@@ -40618,6 +40977,32 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 53 次发布
+
+发布时间：2021-07-07 10:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunConfForGateWay](https://cloud.tencent.com/document/api/876/58233)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCloudBaseRunServerFlowConf](https://cloud.tencent.com/document/api/876/58232)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增入参：ServerPath
+
+
+新增数据结构：
+
+* [[CloudBaseRunForGatewayConf](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunForGatewayConf)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunForGatewayConf](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunForGatewayConf))
+* [[CloudBaseRunVersionFlowItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVersionFlowItem)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunVersionFlowItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunVersionFlowItem))
+* [[ObjectKV](https://cloud.tencent.com/document/api/876/34822#ObjectKV)](https://cloud.tencent.com/document/api/876/34822#[ObjectKV](https://cloud.tencent.com/document/api/876/34822#ObjectKV))
 
 ### 第 52 次发布
 
@@ -41907,14 +42292,14 @@
 
 新增接口：
 
-* [[CreateImmutableTagRules](https://cloud.tencent.com/document/api/1141/58197)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteImmutableTagRules](https://cloud.tencent.com/document/api/1141/58196)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImmutableTagRules](https://cloud.tencent.com/document/api/1141/58195)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyImmutableTagRules](https://cloud.tencent.com/document/api/1141/58194)](https://cloud.tencent.com/document/api/#/#)
+* [CreateImmutableTagRules](https://cloud.tencent.com/document/api/1141/58197)
+* [DeleteImmutableTagRules](https://cloud.tencent.com/document/api/1141/58196)
+* [DescribeImmutableTagRules](https://cloud.tencent.com/document/api/1141/58195)
+* [ModifyImmutableTagRules](https://cloud.tencent.com/document/api/1141/58194)
 
 新增数据结构：
 
-* [[ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule)](https://cloud.tencent.com/document/api/1141/41603#[ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule))
+* [ImmutableTagRule](https://cloud.tencent.com/document/api/1141/41603#ImmutableTagRule)
 
 ### 第 33 次发布
 
@@ -46401,6 +46786,21 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 5 次发布
+
+发布时间：2021-07-07 09:55:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：InternetAddress
+
 
 ### 第 4 次发布
 

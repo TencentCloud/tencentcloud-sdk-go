@@ -69,36 +69,6 @@ func (c *Client) FlowProductRemind(request *FlowProductRemindRequest) (response 
     return
 }
 
-func NewGetCateTreeRequest() (request *GetCateTreeRequest) {
-    request = &GetCateTreeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("market", APIVersion, "GetCateTree")
-    return
-}
-
-func NewGetCateTreeResponse() (response *GetCateTreeResponse) {
-    response = &GetCateTreeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// GetCateTree
-// 获取分类名称
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) GetCateTree(request *GetCateTreeRequest) (response *GetCateTreeResponse, err error) {
-    if request == nil {
-        request = NewGetCateTreeRequest()
-    }
-    response = NewGetCateTreeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetUsagePlanUsageAmountRequest() (request *GetUsagePlanUsageAmountRequest) {
     request = &GetUsagePlanUsageAmountRequest{
         BaseRequest: &tchttp.BaseRequest{},

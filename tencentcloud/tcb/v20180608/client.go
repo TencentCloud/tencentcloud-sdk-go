@@ -628,6 +628,38 @@ func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseP
     return
 }
 
+func NewDescribeCloudBaseRunConfForGateWayRequest() (request *DescribeCloudBaseRunConfForGateWayRequest) {
+    request = &DescribeCloudBaseRunConfForGateWayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunConfForGateWay")
+    return
+}
+
+func NewDescribeCloudBaseRunConfForGateWayResponse() (response *DescribeCloudBaseRunConfForGateWayResponse) {
+    response = &DescribeCloudBaseRunConfForGateWayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunConfForGateWay
+// 独立网关中拉取云托管服务对应的配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRunConfForGateWayRequest) (response *DescribeCloudBaseRunConfForGateWayResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunConfForGateWayRequest()
+    }
+    response = NewDescribeCloudBaseRunConfForGateWayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunResourceRequest() (request *DescribeCloudBaseRunResourceRequest) {
     request = &DescribeCloudBaseRunResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1499,6 +1531,37 @@ func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest
         request = NewEstablishWxGatewayRouteRequest()
     }
     response = NewEstablishWxGatewayRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunServerFlowConfRequest) {
+    request = &ModifyCloudBaseRunServerFlowConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseRunServerFlowConf")
+    return
+}
+
+func NewModifyCloudBaseRunServerFlowConfResponse() (response *ModifyCloudBaseRunServerFlowConfResponse) {
+    response = &ModifyCloudBaseRunServerFlowConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCloudBaseRunServerFlowConf
+// 修改容器内的版本流量配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+func (c *Client) ModifyCloudBaseRunServerFlowConf(request *ModifyCloudBaseRunServerFlowConfRequest) (response *ModifyCloudBaseRunServerFlowConfResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudBaseRunServerFlowConfRequest()
+    }
+    response = NewModifyCloudBaseRunServerFlowConfResponse()
     err = c.Send(request, response)
     return
 }

@@ -283,6 +283,47 @@ func (c *Client) CreateProtectServer(request *CreateProtectServerRequest) (respo
     return
 }
 
+func NewCreateScanMalwareSettingRequest() (request *CreateScanMalwareSettingRequest) {
+    request = &CreateScanMalwareSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "CreateScanMalwareSetting")
+    return
+}
+
+func NewCreateScanMalwareSettingResponse() (response *CreateScanMalwareSettingResponse) {
+    response = &CreateScanMalwareSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScanMalwareSetting
+// 该接口可以对入侵检测-文件查杀扫描检测
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateScanMalwareSetting(request *CreateScanMalwareSettingRequest) (response *CreateScanMalwareSettingResponse, err error) {
+    if request == nil {
+        request = NewCreateScanMalwareSettingRequest()
+    }
+    response = NewCreateScanMalwareSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
     request = &CreateSearchLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1991,6 +2032,7 @@ func NewDescribeMachineRegionsResponse() (response *DescribeMachineRegionsRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeMachineRegions(request *DescribeMachineRegionsRequest) (response *DescribeMachineRegionsResponse, err error) {
     if request == nil {
@@ -2098,6 +2140,35 @@ func (c *Client) DescribeMalwareInfo(request *DescribeMalwareInfoRequest) (respo
         request = NewDescribeMalwareInfoRequest()
     }
     response = NewDescribeMalwareInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMalwareTimingScanSettingRequest() (request *DescribeMalwareTimingScanSettingRequest) {
+    request = &DescribeMalwareTimingScanSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareTimingScanSetting")
+    return
+}
+
+func NewDescribeMalwareTimingScanSettingResponse() (response *DescribeMalwareTimingScanSettingResponse) {
+    response = &DescribeMalwareTimingScanSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMalwareTimingScanSetting
+// 查询定时扫描配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMalwareTimingScanSetting(request *DescribeMalwareTimingScanSettingRequest) (response *DescribeMalwareTimingScanSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeMalwareTimingScanSettingRequest()
+    }
+    response = NewDescribeMalwareTimingScanSettingResponse()
     err = c.Send(request, response)
     return
 }
@@ -2630,6 +2701,73 @@ func (c *Client) DescribeScanMalwareSchedule(request *DescribeScanMalwareSchedul
         request = NewDescribeScanMalwareScheduleRequest()
     }
     response = NewDescribeScanMalwareScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanTaskDetailsRequest() (request *DescribeScanTaskDetailsRequest) {
+    request = &DescribeScanTaskDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskDetails")
+    return
+}
+
+func NewDescribeScanTaskDetailsResponse() (response *DescribeScanTaskDetailsResponse) {
+    response = &DescribeScanTaskDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScanTaskDetails
+// DescribeScanTaskDetails 查询扫描任务详情 , 可以查询扫描进度信息/异常;
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+func (c *Client) DescribeScanTaskDetails(request *DescribeScanTaskDetailsRequest) (response *DescribeScanTaskDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanTaskDetailsRequest()
+    }
+    response = NewDescribeScanTaskDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanVulSettingRequest() (request *DescribeScanVulSettingRequest) {
+    request = &DescribeScanVulSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanVulSetting")
+    return
+}
+
+func NewDescribeScanVulSettingResponse() (response *DescribeScanVulSettingResponse) {
+    response = &DescribeScanVulSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScanVulSetting
+// 查询定期检测的配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeScanVulSetting(request *DescribeScanVulSettingRequest) (response *DescribeScanVulSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanVulSettingRequest()
+    }
+    response = NewDescribeScanVulSettingResponse()
     err = c.Send(request, response)
     return
 }
@@ -3262,6 +3400,45 @@ func (c *Client) EditBashRule(request *EditBashRuleRequest) (response *EditBashR
         request = NewEditBashRuleRequest()
     }
     response = NewEditBashRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEditBashRulesRequest() (request *EditBashRulesRequest) {
+    request = &EditBashRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "EditBashRules")
+    return
+}
+
+func NewEditBashRulesResponse() (response *EditBashRulesResponse) {
+    response = &EditBashRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EditBashRules
+// 新增或修改高危命令规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EditBashRules(request *EditBashRulesRequest) (response *EditBashRulesResponse, err error) {
+    if request == nil {
+        request = NewEditBashRulesRequest()
+    }
+    response = NewEditBashRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3965,14 +4142,17 @@ func NewModifyMalwareTimingScanSettingsResponse() (response *ModifyMalwareTiming
 // 定时扫描设置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyMalwareTimingScanSettings(request *ModifyMalwareTimingScanSettingsRequest) (response *ModifyMalwareTimingScanSettingsResponse, err error) {
     if request == nil {
@@ -4230,17 +4410,18 @@ func NewScanVulResponse() (response *ScanVulResponse) {
 }
 
 // ScanVul
-// 漏洞管理 - 一键检测
+//  一键检测
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ScanVul(request *ScanVulRequest) (response *ScanVulResponse, err error) {
@@ -4248,6 +4429,78 @@ func (c *Client) ScanVul(request *ScanVulRequest) (response *ScanVulResponse, er
         request = NewScanVulRequest()
     }
     response = NewScanVulResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScanVulAgainRequest() (request *ScanVulAgainRequest) {
+    request = &ScanVulAgainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ScanVulAgain")
+    return
+}
+
+func NewScanVulAgainResponse() (response *ScanVulAgainResponse) {
+    response = &ScanVulAgainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScanVulAgain
+// 漏洞管理-重新检测接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  FAILEDOPERATION_RESCANVUL = "FailedOperation.RescanVul"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScanVulAgain(request *ScanVulAgainRequest) (response *ScanVulAgainResponse, err error) {
+    if request == nil {
+        request = NewScanVulAgainRequest()
+    }
+    response = NewScanVulAgainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScanVulSettingRequest() (request *ScanVulSettingRequest) {
+    request = &ScanVulSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ScanVulSetting")
+    return
+}
+
+func NewScanVulSettingResponse() (response *ScanVulSettingResponse) {
+    response = &ScanVulSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScanVulSetting
+// 定期扫描漏洞设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ScanVulSetting(request *ScanVulSettingRequest) (response *ScanVulSettingResponse, err error) {
+    if request == nil {
+        request = NewScanVulSettingRequest()
+    }
+    response = NewScanVulSettingResponse()
     err = c.Send(request, response)
     return
 }
