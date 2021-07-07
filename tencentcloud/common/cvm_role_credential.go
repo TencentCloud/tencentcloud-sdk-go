@@ -1,14 +1,15 @@
 package common
 
 import (
+	"log"
 	"time"
 )
 
 const ExpiredTimeout = 300
 
 type CvmRoleCredential struct {
-	RoleName     string
-	ExpiredTime  int64
+	roleName     string
+	expiredTime  int64
 	tmpSecretId  string
 	tmpSecretKey string
 	token        string
@@ -29,16 +30,6 @@ func (c *CvmRoleCredential) GetToken() string {
 	return c.token
 }
 
-func (c *CvmRoleCredential) GetCredentialParams() map[string]string {
-	p := map[string]string{
-		"SecretId": c.GetSecretId(),
-	}
-	if c.token != "" {
-		p["Token"] = c.GetToken()
-	}
-	return p
-}
-
 func (c *CvmRoleCredential) GetSecretKey() string {
 	if c.needRefresh() {
 		c.refresh()
@@ -47,7 +38,7 @@ func (c *CvmRoleCredential) GetSecretKey() string {
 }
 
 func (c *CvmRoleCredential) needRefresh() bool {
-	if c.tmpSecretId == "" || c.tmpSecretKey == "" || c.token == "" || c.ExpiredTime-ExpiredTimeout <= time.Now().Unix() {
+	if c.tmpSecretId == "" || c.tmpSecretKey == "" || c.token == "" || c.expiredTime-ExpiredTimeout <= time.Now().Unix() {
 		return true
 	}
 	return false
@@ -56,9 +47,8 @@ func (c *CvmRoleCredential) needRefresh() bool {
 func (c *CvmRoleCredential) refresh() {
 	newCre, err := c.source.GetCredential()
 	if err != nil {
-		//todo: how to handle this err?
-		panic(err)
+		log.Println(err)
+		return
 	}
-	//todo: maybe not safe
 	*c = *newCre.(*CvmRoleCredential)
 }

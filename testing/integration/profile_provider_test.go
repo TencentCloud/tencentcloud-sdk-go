@@ -7,7 +7,7 @@ import (
 
 func TestProfileProvider(t *testing.T) {
 	p := common.DefaultProfileProvider()
-	c, err := p.GetCredential()
+	_, err := p.GetCredential()
 	if err != nil {
 		t.Error(err)
 	}

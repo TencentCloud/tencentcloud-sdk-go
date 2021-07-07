@@ -3,44 +3,26 @@ package main
 import (
 	"fmt"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func main() {
+	//通过默认凭证提供链获取凭证
 	pc := common.DefaultProviderChain()
 	cre, err := pc.GetCredential()
 	if err != nil {
 		fmt.Println("get cre failed!", err)
 		return
 	}
-	fmt.Println("get cre success!")
-	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-	cpf.HttpProfile.ReqMethod = "POST"
-	//创建common client
-	client := common.NewCommonClient(cre, regions.Guangzhou, cpf)
-	// 创建common request
-	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
 
-	bodyStr := `{}`
-
-	// 设置action所需的请求数据
-	err = request.SetActionParameters(bodyStr)
+	client, _ := cvm.NewClient(cre, regions.Guangzhou, profile.NewClientProfile())
+	request := cvm.NewDescribeInstancesRequest()
+	response, err := client.DescribeInstances(request)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("An API error has returned: %s", err)
 		return
 	}
-
-	//创建common response
-	response := tchttp.NewCommonResponse()
-
-	//发送请求
-	err = client.Send(request, response)
-	if err != nil {
-		fmt.Println("fail to invoke api: ", err)
-		return
-	}
-	fmt.Println(string(response.GetBody()))
+	fmt.Printf("%s\n", response.ToJsonString())
 }

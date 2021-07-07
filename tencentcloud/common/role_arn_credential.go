@@ -1,14 +1,15 @@
 package common
 
 import (
+	"log"
 	"time"
 )
 
 type RoleArnCredential struct {
-	RoleArn         string
-	RoleSessionName string
-	DurationSeconds int64
-	ExpiredTime     int64
+	roleArn         string
+	roleSessionName string
+	durationSeconds int64
+	expiredTime     int64
 	token           string
 	tmpSecretId     string
 	tmpSecretKey    string
@@ -37,18 +38,8 @@ func (c *RoleArnCredential) GetToken() string {
 	return c.token
 }
 
-func (c *RoleArnCredential) GetCredentialParams() map[string]string {
-	p := map[string]string{
-		"SecretId": c.GetSecretId(),
-	}
-	if c.token != "" {
-		p["token"] = c.GetToken()
-	}
-	return p
-}
-
 func (c *RoleArnCredential) needRefresh() bool {
-	if c.tmpSecretKey == "" || c.tmpSecretId == "" || c.token == "" || c.ExpiredTime <= time.Now().Unix() {
+	if c.tmpSecretKey == "" || c.tmpSecretId == "" || c.token == "" || c.expiredTime <= time.Now().Unix() {
 		return true
 	}
 	return false
@@ -57,8 +48,7 @@ func (c *RoleArnCredential) needRefresh() bool {
 func (c *RoleArnCredential) refresh() {
 	newCre, err := c.source.GetCredential()
 	if err != nil {
-		//todo: how to handle this err?
-		panic(err)
+		log.Println(err)
 	}
 	*c = *newCre.(*RoleArnCredential)
 }

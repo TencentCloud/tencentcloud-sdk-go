@@ -13,12 +13,11 @@ const (
 )
 
 type ProfileProvider struct {
-	//path []string
-
 }
 
 // DefaultProfileProvider return a default Profile  provider
 // profile path :
+// The value of the environment variable TENCENTCLOUD_CREDENTIALS_FILE
 // linux: ~/.tencentcloud/credentials
 // windows: \c:\Users\NAME\.tencentcloud\credentials
 func DefaultProfileProvider() *ProfileProvider {

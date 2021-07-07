@@ -7,7 +7,7 @@ import (
 
 func TestProviderChain(t *testing.T) {
 	rc := common.DefaultProviderChain()
-	cre, err := rc.GetCredential()
+	_, err := rc.GetCredential()
 	if err != nil {
 		t.Error(err)
 	}

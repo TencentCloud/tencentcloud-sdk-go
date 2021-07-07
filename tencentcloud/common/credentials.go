@@ -3,7 +3,6 @@ package common
 type CredentialIface interface {
 	GetSecretId() string
 	GetToken() string
-	GetCredentialParams() map[string]string
 	GetSecretKey() string
 	needRefresh() bool
 	refresh()
@@ -35,16 +34,6 @@ func NewTokenCredential(secretId, secretKey, token string) *Credential {
 		SecretKey: secretKey,
 		Token:     token,
 	}
-}
-
-func (c *Credential) GetCredentialParams() map[string]string {
-	p := map[string]string{
-		"SecretId": c.GetSecretId(),
-	}
-	if c.Token != "" {
-		p["Token"] = c.Token
-	}
-	return p
 }
 
 func (c *Credential) GetSecretKey() string {

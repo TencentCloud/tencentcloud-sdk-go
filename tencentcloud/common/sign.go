@@ -51,9 +51,9 @@ func signRequest(request tchttp.Request, credential CredentialIface, method stri
 
 func checkAuthParams(request tchttp.Request, credential CredentialIface, method string) {
 	params := request.GetParams()
-	credentialParams := credential.GetCredentialParams()
-	for key, value := range credentialParams {
-		params[key] = value
+	params["SecretId"] = credential.GetSecretId()
+	if token := credential.GetToken(); len(token) != 0 {
+		params["Token"] = token
 	}
 	params["SignatureMethod"] = method
 	delete(params, "Signature")
@@ -73,7 +73,7 @@ func getStringToSign(request tchttp.Request) string {
 	params := request.GetParams()
 	// sort params
 	keys := make([]string, 0, len(params))
-	for k, _ := range params {
+	for k := range params {
 		keys = append(keys, k)
 	}
 	sort.Strings(keys)

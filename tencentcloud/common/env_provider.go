@@ -11,6 +11,7 @@ type EnvProvider struct {
 }
 
 // DefaultEnvProvider return a default provider
+// The default environment variable name are TENCENTCLOUD_SECRET_ID and TENCENTCLOUD_SECRET_KEY
 func DefaultEnvProvider() *EnvProvider {
 	return &EnvProvider{
 		secretIdENV:  "TENCENTCLOUD_SECRET_ID",
@@ -18,10 +19,11 @@ func DefaultEnvProvider() *EnvProvider {
 	}
 }
 
-func NewEnvProvider(idEnv, keyEnv string) *EnvProvider {
+// NewEnvProvider uses the name of the environment variable you specify to get the credentials
+func NewEnvProvider(secretIdEnvName, secretKeyEnvName string) *EnvProvider {
 	return &EnvProvider{
-		secretIdENV:  idEnv,
-		secretKeyENV: keyEnv,
+		secretIdENV:  secretIdEnvName,
+		secretKeyENV: secretKeyEnvName,
 	}
 }
 

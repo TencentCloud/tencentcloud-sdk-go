@@ -293,8 +293,9 @@ import "crypto/tls"
 
 2. 配置文件
 配置文件路径为：
-   1. Linux or MacOS: `~/.tencentcloud/credentials`
-   2. Windows: `c:\Users\NAME\.tencentcloud\credentials`
+   1. 环境变量 `TENCENTCLOUD_CREDENTIALS_FILE` 所指定的路径
+   2. Linux or MacOS: `~/.tencentcloud/credentials`
+   3. Windows: `c:\Users\NAME\.tencentcloud\credentials`
 
     配置文件格式如下：
 

@@ -11,12 +11,13 @@ import (
 )
 
 const (
-	endpoint           = "sts.tencentcloudapi.com"
-	service            = "sts"
-	version            = "2018-08-13"
-	region             = regions.Guangzhou
-	defaultSessionName = "tencentcloud-go-sdk-"
-	action             = "AssumeRole"
+	endpoint               = "sts.tencentcloudapi.com"
+	service                = "sts"
+	version                = "2018-08-13"
+	region                 = regions.Guangzhou
+	defaultSessionName     = "tencentcloud-go-sdk-"
+	action                 = "AssumeRole"
+	defaultDurationSeconds = 7200
 )
 
 type RoleArnProvider struct {
@@ -50,12 +51,15 @@ func NewRoleArnProvider(secretId, secretKey, roleArn, sessionName string, durati
 	}
 }
 
+// DefaultRoleArnProvider returns a RoleArnProvider that use some default options:
+//  1. roleSessionName will be "tencentcloud-go-sdk-" + timestamp
+//  2. durationSeconds will be 7200s
 func DefaultRoleArnProvider(secretId, secretKey, roleArn string) *RoleArnProvider {
-	return NewRoleArnProvider(secretId, secretKey, roleArn, defaultSessionName+strconv.FormatInt(time.Now().UnixNano()/1000, 10), 7200)
+	return NewRoleArnProvider(secretId, secretKey, roleArn, defaultSessionName+strconv.FormatInt(time.Now().UnixNano()/1000, 10), defaultDurationSeconds)
 }
 
 func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
-	if r.durationSeconds >= 43200 || r.durationSeconds <= 0 {
+	if r.durationSeconds > 43200 || r.durationSeconds <= 0 {
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Assume Role durationSeconds should be in the range of 0~43200s", "")
 	}
 	credential := NewCredential(r.longSecretId, r.longSecretKey)
@@ -88,10 +92,10 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	}
 
 	return &RoleArnCredential{
-		RoleArn:         r.roleArn,
-		RoleSessionName: r.roleSessionName,
-		DurationSeconds: r.durationSeconds,
-		ExpiredTime:     int64(rspSt.Response.ExpiredTime) - r.durationSeconds/10*9, // credential's actual duration time is 1/10 of the original
+		roleArn:         r.roleArn,
+		roleSessionName: r.roleSessionName,
+		durationSeconds: r.durationSeconds,
+		expiredTime:     int64(rspSt.Response.ExpiredTime) - r.durationSeconds/10*9, // credential's actual duration time is 1/10 of the original
 		token:           rspSt.Response.Credentials.Token,
 		tmpSecretId:     rspSt.Response.Credentials.TmpSecretId,
 		tmpSecretKey:    rspSt.Response.Credentials.TmpSecretKey,

@@ -16,7 +16,7 @@ func TestCommonRequestMarshal(t *testing.T) {
 		},
 	})
 
-	bytes, err := json.MarshalIndent(crn, "", "\t")
+	_, err := json.MarshalIndent(crn, "", "\t")
 	if err != nil {
 		t.Fatal(err)
 	}
