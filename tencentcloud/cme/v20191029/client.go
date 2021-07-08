@@ -77,6 +77,40 @@ func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeam
     return
 }
 
+func NewCopyProjectRequest() (request *CopyProjectRequest) {
+    request = &CopyProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "CopyProject")
+    return
+}
+
+func NewCopyProjectResponse() (response *CopyProjectResponse) {
+    response = &CopyProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CopyProject
+// 复制一个项目，包括项目素材及轨道数据。目前仅普通剪辑及模板制作项目可复制，其它类型的项目不支持复制。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
+//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProjectResponse, err error) {
+    if request == nil {
+        request = NewCopyProjectRequest()
+    }
+    response = NewCopyProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},

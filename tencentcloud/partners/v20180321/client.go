@@ -94,6 +94,7 @@ func NewAgentTransferMoneyResponse() (response *AgentTransferMoneyResponse) {
 // 为合作伙伴提供转账给客户能力。仅支持合作伙伴为自己名下客户转账。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

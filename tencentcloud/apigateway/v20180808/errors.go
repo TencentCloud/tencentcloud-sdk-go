@@ -200,6 +200,9 @@ const (
 	// 不合法的常量参数。
 	INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = "InvalidParameterValue.InvalidConstantParameters"
 
+	// 服务当前环境状态，不支持此操作。
+	INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 
@@ -301,6 +304,9 @@ const (
 
 	// 请求频率超限制，请稍等再试。
 	LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
+
+	// 插件绑定的服务数量超出限制，请解绑服务或提升限额后重试。
+	LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 
 	// 服务数量超过限制，请删除服务或提升限额后重试。
 	LIMITEXCEEDED_SERVICECOUNTLIMITEXCEEDED = "LimitExceeded.ServiceCountLimitExceeded"

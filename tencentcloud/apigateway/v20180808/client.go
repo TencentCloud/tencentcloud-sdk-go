@@ -43,6 +43,42 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAttachPluginRequest() (request *AttachPluginRequest) {
+    request = &AttachPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "AttachPlugin")
+    return
+}
+
+func NewAttachPluginResponse() (response *AttachPluginResponse) {
+    response = &AttachPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachPlugin
+// 绑定插件到API上。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPluginResponse, err error) {
+    if request == nil {
+        request = NewAttachPluginRequest()
+    }
+    response = NewAttachPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindEnvironmentRequest() (request *BindEnvironmentRequest) {
     request = &BindEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -695,6 +731,37 @@ func (c *Client) DeleteIPStrategy(request *DeleteIPStrategyRequest) (response *D
     return
 }
 
+func NewDeletePluginRequest() (request *DeletePluginRequest) {
+    request = &DeletePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DeletePlugin")
+    return
+}
+
+func NewDeletePluginResponse() (response *DeletePluginResponse) {
+    response = &DeletePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePlugin
+// 删除API网关插件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
+    if request == nil {
+        request = NewDeletePluginRequest()
+    }
+    response = NewDeletePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
     request = &DeleteServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -896,6 +963,37 @@ func (c *Client) DescribeAPIDocs(request *DescribeAPIDocsRequest) (response *Des
         request = NewDescribeAPIDocsRequest()
     }
     response = NewDescribeAPIDocsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllPluginApisRequest() (request *DescribeAllPluginApisRequest) {
+    request = &DescribeAllPluginApisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAllPluginApis")
+    return
+}
+
+func NewDescribeAllPluginApisResponse() (response *DescribeAllPluginApisResponse) {
+    response = &DescribeAllPluginApisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAllPluginApis
+// 展示插件相关的API列表，包括已绑定的和未绑定的API信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) DescribeAllPluginApis(request *DescribeAllPluginApisRequest) (response *DescribeAllPluginApisResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllPluginApisRequest()
+    }
+    response = NewDescribeAllPluginApisResponse()
     err = c.Send(request, response)
     return
 }
@@ -1213,6 +1311,69 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
         request = NewDescribeLogSearchRequest()
     }
     response = NewDescribeLogSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePluginRequest() (request *DescribePluginRequest) {
+    request = &DescribePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribePlugin")
+    return
+}
+
+func NewDescribePluginResponse() (response *DescribePluginResponse) {
+    response = &DescribePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePlugin
+// 展示插件详情，支持按照插件ID进行。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
+    if request == nil {
+        request = NewDescribePluginRequest()
+    }
+    response = NewDescribePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePluginApisRequest() (request *DescribePluginApisRequest) {
+    request = &DescribePluginApisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribePluginApis")
+    return
+}
+
+func NewDescribePluginApisResponse() (response *DescribePluginApisResponse) {
+    response = &DescribePluginApisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePluginApis
+// 查询指定插件下绑定的API信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) DescribePluginApis(request *DescribePluginApisRequest) (response *DescribePluginApisResponse, err error) {
+    if request == nil {
+        request = NewDescribePluginApisRequest()
+    }
+    response = NewDescribePluginApisResponse()
     err = c.Send(request, response)
     return
 }
@@ -1677,6 +1838,40 @@ func (c *Client) DescribeUsagePlansStatus(request *DescribeUsagePlansStatusReque
     return
 }
 
+func NewDetachPluginRequest() (request *DetachPluginRequest) {
+    request = &DetachPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DetachPlugin")
+    return
+}
+
+func NewDetachPluginResponse() (response *DetachPluginResponse) {
+    response = &DetachPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachPlugin
+// 解除插件与API绑定
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETERVALUE_INVALIDAPIIDS = "InvalidParameterValue.InvalidApiIds"
+//  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPluginResponse, err error) {
+    if request == nil {
+        request = NewDetachPluginRequest()
+    }
+    response = NewDetachPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableApiKeyRequest() (request *DisableApiKeyRequest) {
     request = &DisableApiKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1960,6 +2155,40 @@ func (c *Client) ModifyIPStrategy(request *ModifyIPStrategyRequest) (response *M
         request = NewModifyIPStrategyRequest()
     }
     response = NewModifyIPStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPluginRequest() (request *ModifyPluginRequest) {
+    request = &ModifyPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ModifyPlugin")
+    return
+}
+
+func NewModifyPluginResponse() (response *ModifyPluginResponse) {
+    response = &ModifyPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPlugin
+// 修改API网关插件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
+    if request == nil {
+        request = NewModifyPluginRequest()
+    }
+    response = NewModifyPluginResponse()
     err = c.Send(request, response)
     return
 }

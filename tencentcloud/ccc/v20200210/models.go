@@ -187,6 +187,67 @@ func (r *CreateStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateUserSigRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用 ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户 ID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 有效期，单位秒，不超过 1 小时
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 用户签名数据
+	ClientData *string `json:"ClientData,omitempty" name:"ClientData"`
+}
+
+func (r *CreateUserSigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserSigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Uid")
+	delete(f, "ExpiredTime")
+	delete(f, "ClientData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserSigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserSigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 签名结果
+		UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUserSigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserSigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteStaffRequest struct {
 	*tchttp.BaseRequest
 

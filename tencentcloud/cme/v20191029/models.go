@@ -224,6 +224,71 @@ type ClassInfo struct {
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 }
 
+type CopyProjectRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 被复制的项目 ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 复制后的项目名称，不填为原项目名称+"(副本)"。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 复制后的项目归属者，不填为原项目归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CopyProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyProjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "ProjectId")
+	delete(f, "Name")
+	delete(f, "Owner")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CopyProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 复制后的项目 ID。
+		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CopyProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CosPublishInputInfo struct {
 
 	// 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。

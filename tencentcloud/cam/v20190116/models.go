@@ -1988,6 +1988,9 @@ func (r *GetSAMLProviderResponse) FromJsonString(s string) error {
 
 type GetSecurityLastUsedRequest struct {
 	*tchttp.BaseRequest
+
+	// 查询密钥ID列表
+	SecretIdList []*string `json:"SecretIdList,omitempty" name:"SecretIdList"`
 }
 
 func (r *GetSecurityLastUsedRequest) ToJsonString() string {
@@ -2002,6 +2005,7 @@ func (r *GetSecurityLastUsedRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SecretIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSecurityLastUsedRequest has unknown keys!", "")
 	}
@@ -2011,6 +2015,9 @@ func (r *GetSecurityLastUsedRequest) FromJsonString(s string) error {
 type GetSecurityLastUsedResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 密钥ID最近访问列表
+		SecretIdLastUsedRows []*SecretIdLastUsed `json:"SecretIdLastUsedRows,omitempty" name:"SecretIdLastUsedRows"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3425,6 +3432,16 @@ type SAMLProviderInfo struct {
 
 	// SAML身份提供商上次修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type SecretIdLastUsed struct {
+
+	// 密钥ID
+	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+
+	// 最后访问日期(有1天延迟)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUsedDate *string `json:"LastUsedDate,omitempty" name:"LastUsedDate"`
 }
 
 type SetDefaultPolicyVersionRequest struct {

@@ -390,6 +390,15 @@ type ApiInfo struct {
 	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
 }
 
+type ApiInfoSummary struct {
+
+	// 插件相关的API总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 插件相关的API信息。
+	ApiSet []*AvailableApiInfo `json:"ApiSet,omitempty" name:"ApiSet"`
+}
+
 type ApiKey struct {
 
 	// 创建的 API 密钥 ID 。
@@ -517,6 +526,67 @@ type ApisStatus struct {
 	ApiIdStatusSet []*DesApisStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
 }
 
+type AttachPluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 绑定的API网关插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 要操作的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 要操作API的环境。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 要绑定的API列表。
+	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+}
+
+func (r *AttachPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachPluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "ServiceId")
+	delete(f, "EnvironmentName")
+	delete(f, "ApiIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachPluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 绑定操作是否成功。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachPluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AttachedApiInfo struct {
 
 	// API所在服务ID。
@@ -544,6 +614,41 @@ type AttachedApiInfo struct {
 
 	// 插件和API绑定时间。
 	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+}
+
+type AttachedApiSummary struct {
+
+	// 插件绑定的API数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 插件绑定的API信息。
+	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis"`
+}
+
+type AvailableApiInfo struct {
+
+	// API ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// API名称。
+	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+
+	// API类型。
+	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+
+	// API路径。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// API方法。
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// API是否绑定其他插件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedOtherPlugin *bool `json:"AttachedOtherPlugin,omitempty" name:"AttachedOtherPlugin"`
+
+	// API是否绑定当前插件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAttached *bool `json:"IsAttached,omitempty" name:"IsAttached"`
 }
 
 type Base64EncodedTriggerRule struct {
@@ -1761,6 +1866,55 @@ func (r *DeleteIPStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeletePluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的API网关插件的ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+}
+
+func (r *DeletePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除操作是否成功。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteServiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -2156,6 +2310,71 @@ func (r *DescribeAPIDocsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAPIDocsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllPluginApisRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 要查询的插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 环境信息。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAllPluginApisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllPluginApisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "PluginId")
+	delete(f, "EnvironmentName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllPluginApisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllPluginApisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 插件相关API的列表。
+		Result *ApiInfoSummary `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllPluginApisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllPluginApisResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2820,6 +3039,120 @@ func (r *DescribeLogSearchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogSearchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginApisRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePluginApisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginApisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePluginApisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginApisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 插件绑定的API列表信息。
+		Result *AttachedApiSummary `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePluginApisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginApisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 插件详情。
+		Result *Plugin `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3710,6 +4043,67 @@ func (r *DescribeUsagePlansStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachPluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 要解绑的API网关插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 要操作的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 要操作API的环境。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 要解绑的API ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+}
+
+func (r *DetachPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachPluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "ServiceId")
+	delete(f, "EnvironmentName")
+	delete(f, "ApiId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachPluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解绑操作是否成功。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachPluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisableApiKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -4586,6 +4980,67 @@ func (r *ModifyIPStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIPStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPluginRequest struct {
+	*tchttp.BaseRequest
+
+	// 要修改的插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 要修改的插件描述，限定200字以内。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 要修改的插件定义语句，支持json。
+	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+}
+
+func (r *ModifyPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "PluginName")
+	delete(f, "Description")
+	delete(f, "PluginData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 修改操作是否成功。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPluginResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

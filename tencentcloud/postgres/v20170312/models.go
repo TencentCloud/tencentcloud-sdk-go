@@ -377,7 +377,7 @@ type CreateInstancesRequest struct {
 	// 实例名。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 是否需要支持Ipv6，1：是，0：否。
+	// 是否需要支持Ipv6，1：是，0：否（默认）。
 	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
 
 	// 实例需要绑定的Tag信息，默认为空。
