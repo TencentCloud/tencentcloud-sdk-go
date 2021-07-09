@@ -48,6 +48,9 @@ const (
 	INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 
 	// 查询实例是否可变配失败。
+	INTERNALERROR_DESCRIBEINSTANCESMODIFICATION = "InternalError.DescribeInstancesModification"
+
+	// 查询实例是否可变配失败。
 	INTERNALERROR_DESCRIBEINSTANCESMODIFICATIONERROR = "InternalError.DescribeInstancesModificationError"
 
 	// 查询实例是否可退还失败。

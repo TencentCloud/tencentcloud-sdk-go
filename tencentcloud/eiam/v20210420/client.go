@@ -177,38 +177,6 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
     return
 }
 
-func NewDecribePublicKeyRequest() (request *DecribePublicKeyRequest) {
-    request = &DecribePublicKeyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("eiam", APIVersion, "DecribePublicKey")
-    return
-}
-
-func NewDecribePublicKeyResponse() (response *DecribePublicKeyResponse) {
-    response = &DecribePublicKeyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DecribePublicKey
-// 获取JWT公钥信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
-//  FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
-func (c *Client) DecribePublicKey(request *DecribePublicKeyRequest) (response *DecribePublicKeyResponse, err error) {
-    if request == nil {
-        request = NewDecribePublicKeyRequest()
-    }
-    response = NewDecribePublicKeyResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteOrgNodeRequest() (request *DeleteOrgNodeRequest) {
     request = &DeleteOrgNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

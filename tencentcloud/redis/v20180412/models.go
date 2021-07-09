@@ -3569,6 +3569,65 @@ type InstanceTextParam struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type KillMasterGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 1.长度8-30位,推荐使用12位以上的密码
+	// 2.不能以"/"开头
+	// 3.至少包含两项
+	//     a.小写字母a-z
+	//     b.大写字母A-Z
+	//     c.数字0-9
+	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *KillMasterGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillMasterGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillMasterGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type KillMasterGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *KillMasterGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillMasterGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ManualBackupInstanceRequest struct {
 	*tchttp.BaseRequest
 

@@ -149,6 +149,9 @@ type DescribeSREInstancesRequest struct {
 
 	// 翻页单页偏移量，默认值0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询类型
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 }
 
 func (r *DescribeSREInstancesRequest) ToJsonString() string {
@@ -166,6 +169,7 @@ func (r *DescribeSREInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "QueryType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSREInstancesRequest has unknown keys!", "")
 	}
@@ -196,6 +200,27 @@ func (r *DescribeSREInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeSREInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnvInfo struct {
+
+	// 环境名称
+	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
+
+	// 环境对应的网络信息
+	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
+
+	// 云硬盘容量
+	StorageCapacity *int64 `json:"StorageCapacity,omitempty" name:"StorageCapacity"`
+
+	// 运行状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// Admin service 访问地址
+	AdminServiceIp *string `json:"AdminServiceIp,omitempty" name:"AdminServiceIp"`
+
+	// Config service访问地址
+	ConfigServiceIp *string `json:"ConfigServiceIp,omitempty" name:"ConfigServiceIp"`
 }
 
 type Filter struct {
@@ -330,4 +355,17 @@ type SREInstance struct {
 	// 集群创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 环境配置信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvInfos []*EnvInfo `json:"EnvInfos,omitempty" name:"EnvInfos"`
+}
+
+type VpcInfo struct {
+
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

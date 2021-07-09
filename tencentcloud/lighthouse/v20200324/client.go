@@ -1022,6 +1022,7 @@ func NewDescribeModifyInstanceBundlesResponse() (response *DescribeModifyInstanc
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
+//  INTERNALERROR_DESCRIBEINSTANCESMODIFICATION = "InternalError.DescribeInstancesModification"
 //  INTERNALERROR_DESCRIBEINSTANCESMODIFICATIONERROR = "InternalError.DescribeInstancesModificationError"
 //  INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
@@ -1071,6 +1072,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
+//  INTERNALERROR_DESCRIBEINSTANCESMODIFICATION = "InternalError.DescribeInstancesModification"
 //  INTERNALERROR_DESCRIBEINSTANCESMODIFICATIONERROR = "InternalError.DescribeInstancesModificationError"
 //  INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"

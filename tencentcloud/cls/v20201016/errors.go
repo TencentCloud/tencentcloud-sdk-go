@@ -107,6 +107,15 @@ const (
 	// ACL校验失败。
 	OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
 
+	// 账户已销毁。
+	OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+
+	// 账户欠费。
+	OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+
+	// 账户不存在。
+	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+
 	// 通知模版已绑定告警，无法删除。
 	OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
 

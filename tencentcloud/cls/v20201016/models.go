@@ -1580,6 +1580,10 @@ type FullTextInfo struct {
 
 	// 全文索引的分词符，字符串中每个字符代表一个分词符
 	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
+
+	// 是否包含中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
 }
 
 type GetAlarmLogRequest struct {
@@ -2015,7 +2019,7 @@ type ModifyIndexRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 是否生效
+	// 默认不生效
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
 	// 索引规则，Rule和Effective两个必须有一个参数存在
@@ -2508,6 +2512,10 @@ type ValueInfo struct {
 
 	// 字段是否开启分析功能
 	SqlFlag *bool `json:"SqlFlag,omitempty" name:"SqlFlag"`
+
+	// 是否包含中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
 }
 
 type WebCallback struct {

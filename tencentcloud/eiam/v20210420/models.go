@@ -287,64 +287,6 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DecribePublicKeyRequest struct {
-	*tchttp.BaseRequest
-
-	// 应用ID，是应用的全局唯一标识。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-}
-
-func (r *DecribePublicKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DecribePublicKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ApplicationId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DecribePublicKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DecribePublicKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// jwt验证签名所用的公钥信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
-
-		// jwt的密钥id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
-
-		// 应用ID，是应用的全局唯一标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DecribePublicKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DecribePublicKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteOrgNodeRequest struct {
 	*tchttp.BaseRequest
 

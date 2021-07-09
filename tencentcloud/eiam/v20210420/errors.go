@@ -17,85 +17,82 @@ package v20210420
 const (
 	// 此产品的特有错误码
 
-	// FailedOperation.AddUsersToUserGroup
+	// 加入用户到用户组异常。
 	FAILEDOPERATION_ADDUSERSTOUSERGROUP = "FailedOperation.AddUsersToUserGroup"
 
-	// FailedOperation.AppIdIsNull
+	// 应用ID不能为空。
 	FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
 
 	// FailedOperation.AppIdNotExited
 	FAILEDOPERATION_APPIDNOTEXITED = "FailedOperation.AppIdNotExited"
 
-	// FailedOperation.AppIdNotFound
-	FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
-
-	// FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted
+	// 其子机构中存在用户的机构节点不能被删除。
 	FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted"
 
-	// FailedOperation.CreateOrgNodeFailure
+	// 创建机构节点失败。
 	FAILEDOPERATION_CREATEORGNODEFAILURE = "FailedOperation.CreateOrgNodeFailure"
 
-	// FailedOperation.CreateUserFailure
+	// 创建用户异常。
 	FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
 
-	// FailedOperation.CreateUserGroupFailure
+	// 创建用户组异常。
 	FAILEDOPERATION_CREATEUSERGROUPFAILURE = "FailedOperation.CreateUserGroupFailure"
 
-	// FailedOperation.CustomizedParentOrgNodeIdExisted
+	// 自定义机构节点对外ID已存在。
 	FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
 
-	// FailedOperation.DeleteOrgNodeFailure
+	// 删除机构节点异常。
 	FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 
-	// FailedOperation.DeleteUserGroupFailure
+	// 删除用户组异常。
 	FAILEDOPERATION_DELETEUSERGROUPFAILURE = "FailedOperation.DeleteUserGroupFailure"
 
-	// FailedOperation.DescribeOrgNodeFailure
+	// 读取机构节点信息异常。
 	FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
 
-	// FailedOperation.GroupIdNotFound
+	// 用户组ID未找到。
 	FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
 
-	// FailedOperation.ListUserGroupsOfUserFailure
+	// 获取用户所在的用户组列表异常。
 	FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = "FailedOperation.ListUserGroupsOfUserFailure"
 
-	// FailedOperation.ListUsersInOrgNodeFailure
+	// 读取节点下用户异常。
 	FAILEDOPERATION_LISTUSERSINORGNODEFAILURE = "FailedOperation.ListUsersInOrgNodeFailure"
 
-	// FailedOperation.ListUsersInUserGroupFailure
+	// 获取用户组中的用户列表异常。
 	FAILEDOPERATION_LISTUSERSINUSERGROUPFAILURE = "FailedOperation.ListUsersInUserGroupFailure"
 
-	// Operation failed.
+	// 操作失败。
 	FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 
-	// FailedOperation.OrgNodeIdNotExist
+	// 机构节点ID不存在。
 	FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
 
-	// FailedOperation.OrgNodeNotExist
+	// 机构节点不存在。
 	FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 
-	// FailedOperation.OrgNodeRootCannotBeDeleted
+	// 机构根节点不能被删除。
 	FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCannotBeDeleted"
 
-	// FailedOperation.OrgNodeWithUsersCannotBeDeleted
+	// 有用户存在的机构节点不能被删除。
 	FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCannotBeDeleted"
 
-	// FailedOperation.ParentOrgNodeIdNotFound
+	// 父机构节点ID未找到。
 	FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 
-	// FailedOperation.ParentOrgNodeIsEmpty
+	// 父机构节点ID为空。
 	FAILEDOPERATION_PARENTORGNODEISEMPTY = "FailedOperation.ParentOrgNodeIsEmpty"
 
-	// FailedOperation.PersonNotFound
+	// 身份主体未找到。
 	FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 
-	// FailedOperation.RemoveUsersFromUserGroupFailure
+	// 从用户组中移除用户异常。
 	FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPFAILURE = "FailedOperation.RemoveUsersFromUserGroupFailure"
 
-	// FailedOperation.TimeFormatIsIllegal
+	// 设定的时间格式不合法。
 	FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
 
-	// FailedOperation.UserAlreadyExistedInUserGroup
+	// 用户已存在于该用户组。
 	FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = "FailedOperation.UserAlreadyExistedInUserGroup"
 
 	// 获取用户被授权访问的应用列表失败。
@@ -107,21 +104,21 @@ const (
 	// 用户组不存在。
 	FAILEDOPERATION_USERGROUPNOTEXIST = "FailedOperation.UserGroupNotExist"
 
-	// FailedOperation.UserGroupNotExisted
+	// 用户组不存在。
 	FAILEDOPERATION_USERGROUPNOTEXISTED = "FailedOperation.UserGroupNotExisted"
 
-	// FailedOperation.UserNameExisted
+	// 用户名字已存在。
 	FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
 
-	// FailedOperation.UserNotExistedInUserGroup
+	// 用户不存在于该用户组。
 	FAILEDOPERATION_USERNOTEXISTEDINUSERGROUP = "FailedOperation.UserNotExistedInUserGroup"
 
-	// FailedOperation.UserPhoneExisted
+	// 用户手机已存在。
 	FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
 
 	// 参数不合法。
 	INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 
-	// InvalidParameter.PasswordIsIllegal
+	// 输入密码不合法。
 	INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
 )

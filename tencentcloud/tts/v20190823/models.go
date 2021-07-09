@@ -53,6 +53,9 @@ type CreateTtsTaskRequest struct {
 
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色），默认 false
+	VoiceoverDialogueSplit *bool `json:"VoiceoverDialogueSplit,omitempty" name:"VoiceoverDialogueSplit"`
 }
 
 func (r *CreateTtsTaskRequest) ToJsonString() string {
@@ -77,6 +80,7 @@ func (r *CreateTtsTaskRequest) FromJsonString(s string) error {
 	delete(f, "SampleRate")
 	delete(f, "Codec")
 	delete(f, "CallbackUrl")
+	delete(f, "VoiceoverDialogueSplit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTtsTaskRequest has unknown keys!", "")
 	}

@@ -1630,6 +1630,48 @@ func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanc
     return
 }
 
+func NewKillMasterGroupRequest() (request *KillMasterGroupRequest) {
+    request = &KillMasterGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "KillMasterGroup")
+    return
+}
+
+func NewKillMasterGroupResponse() (response *KillMasterGroupResponse) {
+    response = &KillMasterGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// KillMasterGroup
+// 模拟故障
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_PASSWORDEMPTY = "InvalidParameterValue.PasswordEmpty"
+//  INVALIDPARAMETERVALUE_PASSWORDERROR = "InvalidParameterValue.PasswordError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEERROR = "InvalidParameterValue.PasswordRuleError"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = "ResourceUnavailable.InstanceNotSupportOperation"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *KillMasterGroupResponse, err error) {
+    if request == nil {
+        request = NewKillMasterGroupRequest()
+    }
+    response = NewKillMasterGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManualBackupInstanceRequest() (request *ManualBackupInstanceRequest) {
     request = &ManualBackupInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

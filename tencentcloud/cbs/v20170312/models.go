@@ -500,6 +500,9 @@ type DeleteSnapshotsRequest struct {
 
 	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+
+	// 是否强制删除快照关联的镜像
+	DeleteBindImages *bool `json:"DeleteBindImages,omitempty" name:"DeleteBindImages"`
 }
 
 func (r *DeleteSnapshotsRequest) ToJsonString() string {
@@ -515,6 +518,7 @@ func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SnapshotIds")
+	delete(f, "DeleteBindImages")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotsRequest has unknown keys!", "")
 	}
