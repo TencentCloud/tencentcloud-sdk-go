@@ -92,6 +92,9 @@ const (
 	// 资源不可用-余额不足。
 	RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
 
+	// 资源不可用，CDN冻结。
+	RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+
 	// 当前发票余额不足，无法退费。
 	RESOURCEUNAVAILABLE_INVOICEAMOUNTLACK = "ResourceUnavailable.InvoiceAmountLack"
 

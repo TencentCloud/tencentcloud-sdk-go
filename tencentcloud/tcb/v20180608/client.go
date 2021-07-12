@@ -441,6 +441,39 @@ func (c *Client) DeleteCloudBaseProjectLatestVersion(request *DeleteCloudBasePro
     return
 }
 
+func NewDeleteCloudBaseRunServerVersionRequest() (request *DeleteCloudBaseRunServerVersionRequest) {
+    request = &DeleteCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseRunServerVersion")
+    return
+}
+
+func NewDeleteCloudBaseRunServerVersionResponse() (response *DeleteCloudBaseRunServerVersionResponse) {
+    response = &DeleteCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCloudBaseRunServerVersion
+// 删除服务版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) DeleteCloudBaseRunServerVersion(request *DeleteCloudBaseRunServerVersionRequest) (response *DeleteCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudBaseRunServerVersionRequest()
+    }
+    response = NewDeleteCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
     request = &DeleteEndUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,40 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
 
-### 第 36 次发布
+### 第 10 次发布
 
-发布时间：2021-07-09 08:02:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ClearLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/54255)
-
-	* 新增入参：ClearHostNameSettings, ClearInstanceNameSettings
-
-* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
-
-	* 新增入参：HostNameSettings, InstanceNameSettings
-
-
-修改数据结构：
-
-* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
-
-	* 新增成员：HealthCheckType, LoadBalancerHealthCheckGracePeriod
-
-
-
-
-## 云硬盘(cbs) 版本：2017-03-12
-
-### 第 30 次发布
-
-发布时间：2021-07-09 08:03:51
+发布时间：2021-07-12 08:01:28
 
 本次发布包含了以下内容：
 
@@ -42,89 +12,112 @@
 
 修改接口：
 
-* [DeleteSnapshots](https://cloud.tencent.com/document/api/362/15645)
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
 
-	* 新增入参：DeleteBindImages
+	* 新增入参：StoragePayMode
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：DbType
+
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：Storage, StorageId, StoragePayMode, MinStorageSize, MaxStorageSize
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：StoragePayMode, StorageId
+
+* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
+
+	* 新增成员：MinCpu, MaxCpu, ServerlessStatus
 
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## 数据湖计算(dlc) 版本：2021-01-25
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2021-07-09 08:00:12
+发布时间：2021-07-12 08:00:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [FullTextInfo](https://cloud.tencent.com/document/api/614/56471#FullTextInfo)
+* [AddUsersToWorkGroup](https://cloud.tencent.com/document/api/1342/58469)
+* [AttachUserPolicy](https://cloud.tencent.com/document/api/1342/58468)
+* [AttachWorkGroupPolicy](https://cloud.tencent.com/document/api/1342/58467)
+* [BindWorkGroupsToUser](https://cloud.tencent.com/document/api/1342/58466)
+* [CancelTask](https://cloud.tencent.com/document/api/1342/58476)
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+* [CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)
+* [DeleteUser](https://cloud.tencent.com/document/api/1342/58463)
+* [DeleteUsersFromWorkGroup](https://cloud.tencent.com/document/api/1342/58462)
+* [DeleteWorkGroup](https://cloud.tencent.com/document/api/1342/58461)
+* [DescribeStoreLocation](https://cloud.tencent.com/document/api/1342/58471)
+* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+* [DescribeWorkGroups](https://cloud.tencent.com/document/api/1342/58459)
+* [DetachUserPolicy](https://cloud.tencent.com/document/api/1342/58458)
+* [DetachWorkGroupPolicy](https://cloud.tencent.com/document/api/1342/58457)
+* [ModifyUser](https://cloud.tencent.com/document/api/1342/58456)
+* [ModifyWorkGroup](https://cloud.tencent.com/document/api/1342/58455)
+* [UnbindWorkGroupsFromUser](https://cloud.tencent.com/document/api/1342/58454)
 
-	* 新增成员：ContainZH
+新增数据结构：
 
-* [ValueInfo](https://cloud.tencent.com/document/api/614/56471#ValueInfo)
-
-	* 新增成员：ContainZH
-
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+* [UserIdSetOfWorkGroupId](https://cloud.tencent.com/document/api/1342/53778#UserIdSetOfWorkGroupId)
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+* [UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage)
+* [WorkGroupIdSetOfUserId](https://cloud.tencent.com/document/api/1342/53778#WorkGroupIdSetOfUserId)
+* [WorkGroupInfo](https://cloud.tencent.com/document/api/1342/53778#WorkGroupInfo)
+* [WorkGroupMessage](https://cloud.tencent.com/document/api/1342/53778#WorkGroupMessage)
 
 
 
 ## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2021-07-08 20:20:57
+发布时间：2021-07-12 08:11:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* DecribePublicKey
+* [DescribePublicKey](https://cloud.tencent.com/document/api/1442/58482)
+* [ListApplicationAuthorizations](https://cloud.tencent.com/document/api/1442/58481)
+* [ListApplications](https://cloud.tencent.com/document/api/1442/58480)
+* [ListUserGroups](https://cloud.tencent.com/document/api/1442/58479)
+* [ListUsers](https://cloud.tencent.com/document/api/1442/58478)
+
+新增数据结构：
+
+* [ApplicationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#ApplicationInfoSearchCriteria)
+* [ApplicationInformation](https://cloud.tencent.com/document/api/1442/57931#ApplicationInformation)
+* [AuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfo)
+* [AuthorizationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfoSearchCriteria)
+* [SortCondition](https://cloud.tencent.com/document/api/1442/57931#SortCondition)
+* [UserGroupInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserGroupInfoSearchCriteria)
+* [UserGroupInformation](https://cloud.tencent.com/document/api/1442/57931#UserGroupInformation)
+* [UserInformation](https://cloud.tencent.com/document/api/1442/57931#UserInformation)
+* [UserSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserSearchCriteria)
 
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 33 次发布
+### 第 34 次发布
 
-发布时间：2021-07-09 08:07:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 30 次发布
-
-发布时间：2021-07-09 08:07:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [InvokeFunction](https://cloud.tencent.com/document/api/583/58400)
-
-
-
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
-
-### 第 6 次发布
-
-发布时间：2021-07-09 08:00:45
+发布时间：2021-07-12 08:07:50
 
 本次发布包含了以下内容：
 
@@ -132,41 +125,49 @@
 
 修改接口：
 
-* [DescribeSREInstances](https://cloud.tencent.com/document/api/1364/54940)
+* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
 
-	* 新增入参：QueryType
+	* <font color="#dd0000">**修改入参**：</font>Password
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 54 次发布
+
+发布时间：2021-07-12 08:08:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/58477)
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 19 次发布
+
+发布时间：2021-07-12 08:10:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecord](https://cloud.tencent.com/document/api/1137/40067)
+
+	* 新增出参：Interrupts
 
 
 新增数据结构：
 
-* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
-* [VpcInfo](https://cloud.tencent.com/document/api/1364/54942#VpcInfo)
-
-修改数据结构：
-
-* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
-
-	* 新增成员：EnvInfos
-
-
-
-
-## 语音合成(tts) 版本：2019-08-23
-
-### 第 5 次发布
-
-发布时间：2021-07-09 08:09:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTtsTask](https://cloud.tencent.com/document/api/1073/57373)
-
-	* 新增入参：VoiceoverDialogueSplit
-
+* [Interrupt](https://cloud.tencent.com/document/api/1137/40068#Interrupt)
 
 
 
@@ -17180,6 +17181,40 @@
 
 ## 云数据库 CynosDB(cynosdb) 版本：2019-01-07
 
+### 第 10 次发布
+
+发布时间：2021-07-12 08:01:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：StoragePayMode
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：DbType
+
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：Storage, StorageId, StoragePayMode, MinStorageSize, MaxStorageSize
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：StoragePayMode, StorageId
+
+* [CynosdbInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstanceDetail)
+
+	* 新增成员：MinCpu, MaxCpu, ServerlessStatus
+
+
 ### 第 9 次发布
 
 发布时间：2021-05-31 08:01:04
@@ -19196,6 +19231,45 @@
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 3 次发布
+
+发布时间：2021-07-12 08:00:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddUsersToWorkGroup](https://cloud.tencent.com/document/api/1342/58469)](https://cloud.tencent.com/document/api/#/#)
+* [[AttachUserPolicy](https://cloud.tencent.com/document/api/1342/58468)](https://cloud.tencent.com/document/api/#/#)
+* [[AttachWorkGroupPolicy](https://cloud.tencent.com/document/api/1342/58467)](https://cloud.tencent.com/document/api/#/#)
+* [[BindWorkGroupsToUser](https://cloud.tencent.com/document/api/1342/58466)](https://cloud.tencent.com/document/api/#/#)
+* [[CancelTask](https://cloud.tencent.com/document/api/1342/58476)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUser](https://cloud.tencent.com/document/api/1342/58465)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUser](https://cloud.tencent.com/document/api/1342/58463)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUsersFromWorkGroup](https://cloud.tencent.com/document/api/1342/58462)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteWorkGroup](https://cloud.tencent.com/document/api/1342/58461)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStoreLocation](https://cloud.tencent.com/document/api/1342/58471)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWorkGroups](https://cloud.tencent.com/document/api/1342/58459)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachUserPolicy](https://cloud.tencent.com/document/api/1342/58458)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachWorkGroupPolicy](https://cloud.tencent.com/document/api/1342/58457)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyUser](https://cloud.tencent.com/document/api/1342/58456)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyWorkGroup](https://cloud.tencent.com/document/api/1342/58455)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindWorkGroupsFromUser](https://cloud.tencent.com/document/api/1342/58454)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)](https://cloud.tencent.com/document/api/1342/53778#[Policy](https://cloud.tencent.com/document/api/1342/53778#Policy))
+* [[UserIdSetOfWorkGroupId](https://cloud.tencent.com/document/api/1342/53778#UserIdSetOfWorkGroupId)](https://cloud.tencent.com/document/api/1342/53778#[UserIdSetOfWorkGroupId](https://cloud.tencent.com/document/api/1342/53778#UserIdSetOfWorkGroupId))
+* [[UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)](https://cloud.tencent.com/document/api/1342/53778#[UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo))
+* [[UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage)](https://cloud.tencent.com/document/api/1342/53778#[UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage))
+* [[WorkGroupIdSetOfUserId](https://cloud.tencent.com/document/api/1342/53778#WorkGroupIdSetOfUserId)](https://cloud.tencent.com/document/api/1342/53778#[WorkGroupIdSetOfUserId](https://cloud.tencent.com/document/api/1342/53778#WorkGroupIdSetOfUserId))
+* [[WorkGroupInfo](https://cloud.tencent.com/document/api/1342/53778#WorkGroupInfo)](https://cloud.tencent.com/document/api/1342/53778#[WorkGroupInfo](https://cloud.tencent.com/document/api/1342/53778#WorkGroupInfo))
+* [[WorkGroupMessage](https://cloud.tencent.com/document/api/1342/53778#WorkGroupMessage)](https://cloud.tencent.com/document/api/1342/53778#[WorkGroupMessage](https://cloud.tencent.com/document/api/1342/53778#WorkGroupMessage))
 
 ### 第 2 次发布
 
@@ -21565,6 +21639,34 @@
 
 
 ## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 5 次发布
+
+发布时间：2021-07-12 08:11:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePublicKey](https://cloud.tencent.com/document/api/1442/58482)](https://cloud.tencent.com/document/api/#/#)
+* [[ListApplicationAuthorizations](https://cloud.tencent.com/document/api/1442/58481)](https://cloud.tencent.com/document/api/#/#)
+* [[ListApplications](https://cloud.tencent.com/document/api/1442/58480)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUserGroups](https://cloud.tencent.com/document/api/1442/58479)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUsers](https://cloud.tencent.com/document/api/1442/58478)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplicationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#ApplicationInfoSearchCriteria)](https://cloud.tencent.com/document/api/1442/57931#[ApplicationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#ApplicationInfoSearchCriteria))
+* [[ApplicationInformation](https://cloud.tencent.com/document/api/1442/57931#ApplicationInformation)](https://cloud.tencent.com/document/api/1442/57931#[ApplicationInformation](https://cloud.tencent.com/document/api/1442/57931#ApplicationInformation))
+* [[AuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfo)](https://cloud.tencent.com/document/api/1442/57931#[AuthorizationInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfo))
+* [[AuthorizationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfoSearchCriteria)](https://cloud.tencent.com/document/api/1442/57931#[AuthorizationInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#AuthorizationInfoSearchCriteria))
+* [[SortCondition](https://cloud.tencent.com/document/api/1442/57931#SortCondition)](https://cloud.tencent.com/document/api/1442/57931#[SortCondition](https://cloud.tencent.com/document/api/1442/57931#SortCondition))
+* [[UserGroupInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserGroupInfoSearchCriteria)](https://cloud.tencent.com/document/api/1442/57931#[UserGroupInfoSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserGroupInfoSearchCriteria))
+* [[UserGroupInformation](https://cloud.tencent.com/document/api/1442/57931#UserGroupInformation)](https://cloud.tencent.com/document/api/1442/57931#[UserGroupInformation](https://cloud.tencent.com/document/api/1442/57931#UserGroupInformation))
+* [[UserInformation](https://cloud.tencent.com/document/api/1442/57931#UserInformation)](https://cloud.tencent.com/document/api/1442/57931#[UserInformation](https://cloud.tencent.com/document/api/1442/57931#UserInformation))
+* [[UserSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserSearchCriteria)](https://cloud.tencent.com/document/api/1442/57931#[UserSearchCriteria](https://cloud.tencent.com/document/api/1442/57931#UserSearchCriteria))
 
 ### 第 4 次发布
 
@@ -36594,6 +36696,21 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 34 次发布
+
+发布时间：2021-07-12 08:07:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
+
+	* <font color="#dd0000">**修改入参**：</font>Password
+
+
 ### 第 33 次发布
 
 发布时间：2021-07-09 08:07:43
@@ -36604,7 +36721,7 @@
 
 新增接口：
 
-* [[KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)](https://cloud.tencent.com/document/api/#/#)
+* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
 
 ### 第 32 次发布
 
@@ -37345,7 +37462,7 @@
 
 新增接口：
 
-* [[InvokeFunction](https://cloud.tencent.com/document/api/583/58400)](https://cloud.tencent.com/document/api/#/#)
+* [InvokeFunction](https://cloud.tencent.com/document/api/583/58400)
 
 ### 第 29 次发布
 
@@ -41099,6 +41216,18 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 54 次发布
+
+发布时间：2021-07-12 08:08:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/58477)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 53 次发布
 
 发布时间：2021-07-07 10:03:19
@@ -44601,6 +44730,25 @@
 
 ## 互动白板(tiw) 版本：2019-09-19
 
+### 第 19 次发布
+
+发布时间：2021-07-12 08:10:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOnlineRecord](https://cloud.tencent.com/document/api/1137/40067)
+
+	* 新增出参：Interrupts
+
+
+新增数据结构：
+
+* [[Interrupt](https://cloud.tencent.com/document/api/1137/40068#Interrupt)](https://cloud.tencent.com/document/api/1137/40068#[Interrupt](https://cloud.tencent.com/document/api/1137/40068#Interrupt))
+
 ### 第 18 次发布
 
 发布时间：2021-06-29 08:16:06
@@ -46925,8 +47073,8 @@
 
 新增数据结构：
 
-* [[EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)](https://cloud.tencent.com/document/api/1364/54942#[EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo))
-* [[VpcInfo](https://cloud.tencent.com/document/api/1364/54942#VpcInfo)](https://cloud.tencent.com/document/api/1364/54942#[VpcInfo](https://cloud.tencent.com/document/api/1364/54942#VpcInfo))
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+* [VpcInfo](https://cloud.tencent.com/document/api/1364/54942#VpcInfo)
 
 修改数据结构：
 

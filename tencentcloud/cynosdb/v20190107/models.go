@@ -246,16 +246,16 @@ type CreateClustersRequest struct {
 	// 普通实例Cpu核数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 普通实例内存
+	// 普通实例内存,单位G
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 存储
+	// 存储大小，单位G
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
-	// 账号密码(8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()~）中的两种)
+	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
 	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
 
 	// 端口，默认5432
@@ -286,6 +286,7 @@ type CreateClustersRequest struct {
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitempty" name:"ExpectTimeThresh"`
 
 	// 普通实例存储上限，单位GB
+	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
 	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
 
 	// 实例数量
@@ -335,6 +336,11 @@ type CreateClustersRequest struct {
 	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
 	// 默认值:600
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitempty" name:"AutoPauseDelay"`
+
+	// 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
+	// 当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
+	// 回档与克隆均不支持包年包月存储
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -382,6 +388,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "MaxCpu")
 	delete(f, "AutoPause")
 	delete(f, "AutoPauseDelay")
+	delete(f, "StoragePayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -515,6 +522,21 @@ type CynosdbCluster struct {
 	// resume
 	// pause
 	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
+
+	// 集群预付费存储值大小
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 集群存储为预付费时的存储ID，用于预付费存储变配
+	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
+
+	// 集群存储付费模式。0-按量计费，1-包年包月
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 集群计算规格对应的最小存储值
+	MinStorageSize *int64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
+
+	// 集群计算规格对应的最大存储值
+	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
 }
 
 type CynosdbClusterDetail struct {
@@ -719,6 +741,14 @@ type CynosdbInstance struct {
 	// resume
 	// pause
 	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
+
+	// 存储付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 预付费存储Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -815,6 +845,17 @@ type CynosdbInstanceDetail struct {
 
 	// 续费标志
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// serverless实例cpu下限
+	MinCpu *float64 `json:"MinCpu,omitempty" name:"MinCpu"`
+
+	// serverless实例cpu上限
+	MaxCpu *float64 `json:"MaxCpu,omitempty" name:"MaxCpu"`
+
+	// serverless实例状态, 可能值：
+	// resume
+	// pause
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 }
 
 type CynosdbInstanceGrp struct {
@@ -997,6 +1038,10 @@ type DescribeBackupListRequest struct {
 
 	// 备份文件列表起始
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据库类型，取值范围: 
+	// <li> MYSQL </li>
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
 }
 
 func (r *DescribeBackupListRequest) ToJsonString() string {
@@ -1014,6 +1059,7 @@ func (r *DescribeBackupListRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "DbType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListRequest has unknown keys!", "")
 	}
@@ -1562,7 +1608,7 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 type DescribeResourcesByDealNameRequest struct {
 	*tchttp.BaseRequest
 
-	// 计费订单id
+	// 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 

@@ -1541,6 +1541,76 @@ func (r *DeleteCloudBaseProjectLatestVersionResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 是否删除服务，只有最后一个版本的时候，才生效。
+	IsDeleteServer *bool `json:"IsDeleteServer,omitempty" name:"IsDeleteServer"`
+
+	// 只有删除服务的时候，才会起作用
+	IsDeleteImage *bool `json:"IsDeleteImage,omitempty" name:"IsDeleteImage"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *DeleteCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	delete(f, "IsDeleteServer")
+	delete(f, "IsDeleteImage")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudBaseRunServerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，succ为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteEndUserRequest struct {
 	*tchttp.BaseRequest
 

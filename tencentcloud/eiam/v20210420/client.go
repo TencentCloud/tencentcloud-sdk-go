@@ -338,6 +338,38 @@ func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *Des
     return
 }
 
+func NewDescribePublicKeyRequest() (request *DescribePublicKeyRequest) {
+    request = &DescribePublicKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribePublicKey")
+    return
+}
+
+func NewDescribePublicKeyResponse() (response *DescribePublicKeyResponse) {
+    response = &DescribePublicKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePublicKey
+// 获取JWT公钥信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
+//  FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+func (c *Client) DescribePublicKey(request *DescribePublicKeyRequest) (response *DescribePublicKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicKeyRequest()
+    }
+    response = NewDescribePublicKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserGroupRequest() (request *DescribeUserGroupRequest) {
     request = &DescribeUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -396,6 +428,71 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
         request = NewDescribeUserInfoRequest()
     }
     response = NewDescribeUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListApplicationAuthorizationsRequest() (request *ListApplicationAuthorizationsRequest) {
+    request = &ListApplicationAuthorizationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ListApplicationAuthorizations")
+    return
+}
+
+func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthorizationsResponse) {
+    response = &ListApplicationAuthorizationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListApplicationAuthorizations
+// 应用授权关系列表（含搜索条件匹配）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
+    if request == nil {
+        request = NewListApplicationAuthorizationsRequest()
+    }
+    response = NewListApplicationAuthorizationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListApplicationsRequest() (request *ListApplicationsRequest) {
+    request = &ListApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ListApplications")
+    return
+}
+
+func NewListApplicationsResponse() (response *ListApplicationsResponse) {
+    response = &ListApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListApplications
+// 获取应用列表信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ListApplications(request *ListApplicationsRequest) (response *ListApplicationsResponse, err error) {
+    if request == nil {
+        request = NewListApplicationsRequest()
+    }
+    response = NewListApplicationsResponse()
     err = c.Send(request, response)
     return
 }
@@ -494,6 +591,38 @@ func (c *Client) ListAuthorizedApplicationsToUserGroup(request *ListAuthorizedAp
     return
 }
 
+func NewListUserGroupsRequest() (request *ListUserGroupsRequest) {
+    request = &ListUserGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ListUserGroups")
+    return
+}
+
+func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
+    response = &ListUserGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListUserGroups
+// 获取用户组列表信息（包含查询条件）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
+    if request == nil {
+        request = NewListUserGroupsRequest()
+    }
+    response = NewListUserGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListUserGroupsOfUserRequest() (request *ListUserGroupsOfUserRequest) {
     request = &ListUserGroupsOfUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -521,6 +650,40 @@ func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (res
         request = NewListUserGroupsOfUserRequest()
     }
     response = NewListUserGroupsOfUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListUsersRequest() (request *ListUsersRequest) {
+    request = &ListUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ListUsers")
+    return
+}
+
+func NewListUsersResponse() (response *ListUsersResponse) {
+    response = &ListUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListUsers
+// 获取用户列表信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPECTFIELDSNOTFOUND = "FailedOperation.ExpectFieldsNotFound"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
+    if request == nil {
+        request = NewListUsersRequest()
+    }
+    response = NewListUsersResponse()
     err = c.Send(request, response)
     return
 }

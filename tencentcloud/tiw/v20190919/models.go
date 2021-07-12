@@ -349,6 +349,10 @@ type DescribeOnlineRecordResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ReplayUrl *string `json:"ReplayUrl,omitempty" name:"ReplayUrl"`
 
+		// 视频流在录制过程中断流次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Interrupts []*Interrupt `json:"Interrupts,omitempty" name:"Interrupts"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -854,6 +858,17 @@ func (r *DescribeWhiteboardPushResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWhiteboardPushResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Interrupt struct {
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 视频流断流次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type LayoutParams struct {

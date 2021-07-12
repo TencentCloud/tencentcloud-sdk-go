@@ -20,6 +20,198 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddUsersToWorkGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 要操作的工作组和用户信息
+	AddInfo *UserIdSetOfWorkGroupId `json:"AddInfo,omitempty" name:"AddInfo"`
+}
+
+func (r *AddUsersToWorkGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUsersToWorkGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUsersToWorkGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUsersToWorkGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddUsersToWorkGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUsersToWorkGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachUserPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 鉴权策略集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *AttachUserPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachUserPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachUserPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachUserPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachUserPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachUserPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachWorkGroupPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 要绑定的策略集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *AttachWorkGroupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachWorkGroupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupId")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachWorkGroupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachWorkGroupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachWorkGroupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachWorkGroupPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindWorkGroupsToUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 绑定的用户和工作组信息
+	AddInfo *WorkGroupIdSetOfUserId `json:"AddInfo,omitempty" name:"AddInfo"`
+}
+
+func (r *BindWorkGroupsToUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindWorkGroupsToUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindWorkGroupsToUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindWorkGroupsToUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindWorkGroupsToUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindWorkGroupsToUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CSV struct {
 
 	// 压缩格式，["Snappy", "Gzip", "None"选一]。
@@ -47,6 +239,52 @@ type CSVSerde struct {
 
 	// CSV序列化分隔符，默认为"\t"，最长8个字符, 如 Separator: "\t"
 	Separator *string `json:"Separator,omitempty" name:"Separator"`
+}
+
+type CancelTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务Id，全局唯一
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *CancelTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Column struct {
@@ -327,6 +565,117 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户Id，当前主账号的子账号Uin，和CAM侧匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户描述
+	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
+
+	// 绑定到用户的权限集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *CreateUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "UserDescription")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWorkGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作组名称
+	WorkGroupName *string `json:"WorkGroupName,omitempty" name:"WorkGroupName"`
+
+	// 工作组描述
+	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
+
+	// 工作组绑定的鉴权策略集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *CreateWorkGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupName")
+	delete(f, "WorkGroupDescription")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateWorkGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 工作组Id，全局唯一
+		WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateWorkGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataFormat struct {
 
 	// 文本格式，TextFile。
@@ -436,6 +785,144 @@ func (r *DeleteScriptResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要删除的用户的Id
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+func (r *DeleteUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUsersFromWorkGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的用户信息
+	AddInfo *UserIdSetOfWorkGroupId `json:"AddInfo,omitempty" name:"AddInfo"`
+}
+
+func (r *DeleteUsersFromWorkGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUsersFromWorkGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUsersFromWorkGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUsersFromWorkGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUsersFromWorkGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUsersFromWorkGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWorkGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的工作组Id集合
+	WorkGroupIds []*int64 `json:"WorkGroupIds,omitempty" name:"WorkGroupIds"`
+}
+
+func (r *DeleteWorkGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWorkGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWorkGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWorkGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -571,6 +1058,52 @@ func (r *DescribeScriptsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStoreLocationRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeStoreLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStoreLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStoreLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStoreLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回用户设置的结果存储位置路径，如果未设置则返回空字符串：""
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StoreLocation *string `json:"StoreLocation,omitempty" name:"StoreLocation"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStoreLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStoreLocationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -780,6 +1313,74 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUsersRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+}
+
+func (r *DescribeUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 用户集合
+		UserSet []*UserInfo `json:"UserSet,omitempty" name:"UserSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeViewsRequest struct {
 	*tchttp.BaseRequest
 
@@ -850,6 +1451,178 @@ func (r *DescribeViewsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWorkGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+}
+
+func (r *DescribeWorkGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWorkGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 工作组总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 工作组信息集合
+		WorkGroupSet []*WorkGroupInfo `json:"WorkGroupSet,omitempty" name:"WorkGroupSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWorkGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachUserPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 解绑的权限集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *DetachUserPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachUserPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachUserPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachUserPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachWorkGroupPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 解绑的权限集合
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+}
+
+func (r *DetachWorkGroupPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachWorkGroupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupId")
+	delete(f, "PolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachWorkGroupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachWorkGroupPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachWorkGroupPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachWorkGroupPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Execution struct {
 
 	// 自动生成SQL语句。
@@ -876,6 +1649,106 @@ type KVPair struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type ModifyUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户描述
+	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
+}
+
+func (r *ModifyUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "UserDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWorkGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 工作组描述
+	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
+}
+
+func (r *ModifyWorkGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupId")
+	delete(f, "WorkGroupDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWorkGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyWorkGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyWorkGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Other struct {
 
 	// 枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
@@ -892,6 +1765,21 @@ type Partition struct {
 
 	// 对分区的描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+type Policy struct {
+
+	// 需要授权的数据源名称，*代表拥有全部数据源权限
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 需要授权的数据库名称，*代表拥有全部数据库名称
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 需要授权的表名称，*代表拥有全部表权限
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 授权的操作，当前只支持“ALL”
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
 }
 
 type Property struct {
@@ -1075,6 +1963,105 @@ type TextFile struct {
 	Regex *string `json:"Regex,omitempty" name:"Regex"`
 }
 
+type UnbindWorkGroupsFromUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 解绑的工作组Id和用户Id的关联关系
+	AddInfo *WorkGroupIdSetOfUserId `json:"AddInfo,omitempty" name:"AddInfo"`
+}
+
+func (r *UnbindWorkGroupsFromUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindWorkGroupsFromUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindWorkGroupsFromUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindWorkGroupsFromUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnbindWorkGroupsFromUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindWorkGroupsFromUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserIdSetOfWorkGroupId struct {
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 用户Id集合，和CAM侧Uin匹配
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+type UserInfo struct {
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
+
+	// 单独给用户绑定的权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 关联的工作组集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupSet []*WorkGroupMessage `json:"WorkGroupSet,omitempty" name:"WorkGroupSet"`
+
+	// 是否是管理员账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOwner *bool `json:"IsOwner,omitempty" name:"IsOwner"`
+}
+
+type UserMessage struct {
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type ViewBaseInfo struct {
 
 	// 该视图所属数据库名字
@@ -1102,4 +2089,62 @@ type ViewResponseInfo struct {
 
 	// 视图更新时间。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
+type WorkGroupIdSetOfUserId struct {
+
+	// 用户Id，和CAM侧Uin匹配
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 工作组Id集合
+	WorkGroupIds []*int64 `json:"WorkGroupIds,omitempty" name:"WorkGroupIds"`
+}
+
+type WorkGroupInfo struct {
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 工作组名称
+	WorkGroupName *string `json:"WorkGroupName,omitempty" name:"WorkGroupName"`
+
+	// 工作组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
+
+	// 工作组关联的用户数量
+	UserNum *int64 `json:"UserNum,omitempty" name:"UserNum"`
+
+	// 工作组关联的用户集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSet []*UserMessage `json:"UserSet,omitempty" name:"UserSet"`
+
+	// 工作组绑定的权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type WorkGroupMessage struct {
+
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
+
+	// 工作组名称
+	WorkGroupName *string `json:"WorkGroupName,omitempty" name:"WorkGroupName"`
+
+	// 工作组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
