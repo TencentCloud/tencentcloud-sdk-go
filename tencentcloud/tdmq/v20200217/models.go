@@ -2496,6 +2496,10 @@ type Environment struct {
 
 	// 命名空间名称
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// Topic数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
 }
 
 type EnvironmentRole struct {

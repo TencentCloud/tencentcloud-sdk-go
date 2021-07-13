@@ -298,6 +298,7 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
 //  FAILEDOPERATION_APPIDNOTEXITED = "FailedOperation.AppIdNotExited"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  OPERATIONDENIED_UINNOTEXISTED = "OperationDenied.UinNotExisted"
 func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationRequest()

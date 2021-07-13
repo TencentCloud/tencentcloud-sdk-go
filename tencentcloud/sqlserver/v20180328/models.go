@@ -1608,10 +1608,10 @@ type DeleteIncrementalMigrationRequest struct {
 	// 目标实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份导入任务ID
+	// 备份导入任务ID，由CreateBackupMigration接口返回
 	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
 
-	// 增量备份导入任务ID
+	// 增量备份导入任务ID，由CreateIncrementalMigration接口返回
 	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
 }
 
@@ -1986,16 +1986,16 @@ type DescribeBackupMigrationRequest struct {
 	// COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
 	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
 
-	// 分页，页大小
+	// 分页，页大小，默认值：100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页，页数
+	// 分页，页数，默认值：0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 排序字段，name,createTime,startTime,endTime
+	// 排序字段，name；createTime；startTime；endTime，默认按照createTime递增排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 排序方式，desc,asc
+	// 排序方式，desc-递减排序，asc-递增排序。默认按照asc排序，且在OrderBy为有效值时，本参数有效
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
@@ -2589,19 +2589,19 @@ type DescribeIncrementalMigrationRequest struct {
 	// 导入任务状态集合
 	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
 
-	// 分页，页大小
+	// 分页，页大小，默认值：100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页，页数
+	// 分页，页数，默认值：0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 排序字段，name,createTime,startTime,endTime
+	// 排序字段，name；createTime；startTime；endTime，默认按照createTime递增排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 排序方式，desc,asc
+	// 排序方式，desc-递减排序，asc-递增排序。默认按照asc排序，且在OrderBy为有效值时，本参数有效
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
-	// 增量备份导入任务ID
+	// 增量备份导入任务ID，由CreateIncrementalMigration接口返回
 	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
 }
 
@@ -4910,10 +4910,10 @@ type ModifyIncrementalMigrationRequest struct {
 	// 备份导入任务ID，由CreateBackupMigration接口返回
 	BackupMigrationId *string `json:"BackupMigrationId,omitempty" name:"BackupMigrationId"`
 
-	// 增量导入任务ID
+	// 增量导入任务ID，由CreateIncrementalMigration接口返回
 	IncrementalMigrationId *string `json:"IncrementalMigrationId,omitempty" name:"IncrementalMigrationId"`
 
-	// 是否需要恢复，NO-不需要，YES-需要
+	// 是否需要恢复，NO-不需要，YES-需要，默认不修改增量备份导入任务是否需要恢复的属性。
 	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
 
 	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库

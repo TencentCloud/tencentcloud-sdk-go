@@ -28,6 +28,9 @@ type BankCard2EVerificationRequest struct {
 
 	// 银行卡
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+
+	// 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *BankCard2EVerificationRequest) ToJsonString() string {
@@ -44,6 +47,7 @@ func (r *BankCard2EVerificationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "BankCard")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCard2EVerificationRequest has unknown keys!", "")
 	}
@@ -283,6 +287,9 @@ type CheckBankCardInformationRequest struct {
 
 	// 银行卡号。
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+
+	// 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *CheckBankCardInformationRequest) ToJsonString() string {
@@ -298,6 +305,7 @@ func (r *CheckBankCardInformationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BankCard")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckBankCardInformationRequest has unknown keys!", "")
 	}
@@ -425,6 +433,10 @@ type CheckIdCardInformationRequest struct {
 	// API 3.0 Explorer 设置方式参考：
 	// Config = {"CopyWarn":true,"ReshootWarn":true}
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 是否需要对返回中的敏感信息进行加密。默认false。
+	// 其中敏感信息包括：Response.IdNum、Response.Name
+	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
 }
 
 func (r *CheckIdCardInformationRequest) ToJsonString() string {
@@ -442,6 +454,7 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "Config")
+	delete(f, "IsEncrypt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIdCardInformationRequest has unknown keys!", "")
 	}
@@ -497,6 +510,10 @@ type CheckIdCardInformationResponse struct {
 		// 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
 		Quality *float64 `json:"Quality,omitempty" name:"Quality"`
 
+		// 敏感数据加密信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -521,6 +538,9 @@ type CheckPhoneAndNameRequest struct {
 
 	// 姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *CheckPhoneAndNameRequest) ToJsonString() string {
@@ -537,6 +557,7 @@ func (r *CheckPhoneAndNameRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Mobile")
 	delete(f, "Name")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckPhoneAndNameRequest has unknown keys!", "")
 	}
@@ -1782,6 +1803,9 @@ type IdCardVerificationRequest struct {
 
 	// 姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *IdCardVerificationRequest) ToJsonString() string {
@@ -1798,6 +1822,7 @@ func (r *IdCardVerificationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "IdCard")
 	delete(f, "Name")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IdCardVerificationRequest has unknown keys!", "")
 	}
@@ -1854,6 +1879,9 @@ type ImageRecognitionRequest struct {
 
 	// 本接口不需要传递此参数。
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *ImageRecognitionRequest) ToJsonString() string {
@@ -1872,6 +1900,7 @@ func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ImageBase64")
 	delete(f, "Optional")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionRequest has unknown keys!", "")
 	}
@@ -2023,6 +2052,9 @@ type LivenessRecognitionRequest struct {
 	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *LivenessRecognitionRequest) ToJsonString() string {
@@ -2043,6 +2075,7 @@ func (r *LivenessRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "LivenessType")
 	delete(f, "ValidateData")
 	delete(f, "Optional")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LivenessRecognitionRequest has unknown keys!", "")
 	}

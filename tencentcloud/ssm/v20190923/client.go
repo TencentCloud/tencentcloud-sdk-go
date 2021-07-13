@@ -191,6 +191,7 @@ func NewDeleteSecretVersionResponse() (response *DeleteSecretVersionResponse) {
 // 本接口仅适用于用户自定义凭据，本接口不能对云产品凭据进行操作。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -593,6 +594,7 @@ func NewGetSecretValueResponse() (response *GetSecretValueResponse) {
 // 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -660,6 +662,7 @@ func NewListSecretVersionIdsResponse() (response *ListSecretVersionIdsResponse) 
 // 该接口用于获取指定凭据下的版本列表信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"

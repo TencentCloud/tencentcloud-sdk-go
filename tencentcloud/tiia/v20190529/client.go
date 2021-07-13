@@ -344,6 +344,7 @@ func NewDetectLabelBetaResponse() (response *DetectLabelBetaResponse) {
 //  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
 //  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"

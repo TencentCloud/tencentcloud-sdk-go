@@ -188,6 +188,9 @@ const (
 	// Cdn传入错误。
 	INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
 
+	// cfs配置项重复。
+	INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = "InvalidParameterValue.CfsParameterDuplicate"
+
 	// cfs配置项取值与规范不符。
 	INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
 
@@ -337,6 +340,9 @@ const (
 
 	// 不支持的函数版本。
 	INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+
+	// RetCode不合法。
+	INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 
 	// RoutingConfig取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
 	INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"

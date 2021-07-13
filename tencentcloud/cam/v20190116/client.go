@@ -920,6 +920,37 @@ func (c *Client) DescribeSafeAuthFlagColl(request *DescribeSafeAuthFlagCollReque
     return
 }
 
+func NewDescribeSafeAuthFlagIntlRequest() (request *DescribeSafeAuthFlagIntlRequest) {
+    request = &DescribeSafeAuthFlagIntlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeSafeAuthFlagIntl")
+    return
+}
+
+func NewDescribeSafeAuthFlagIntlResponse() (response *DescribeSafeAuthFlagIntlResponse) {
+    response = &DescribeSafeAuthFlagIntlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSafeAuthFlagIntl
+// 查询安全设置(国际站)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeSafeAuthFlagIntl(request *DescribeSafeAuthFlagIntlRequest) (response *DescribeSafeAuthFlagIntlResponse, err error) {
+    if request == nil {
+        request = NewDescribeSafeAuthFlagIntlRequest()
+    }
+    response = NewDescribeSafeAuthFlagIntlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubAccountsRequest() (request *DescribeSubAccountsRequest) {
     request = &DescribeSubAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1050,6 +1081,35 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
         request = NewDetachUserPolicyRequest()
     }
     response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAccountSummaryRequest() (request *GetAccountSummaryRequest) {
+    request = &GetAccountSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetAccountSummary")
+    return
+}
+
+func NewGetAccountSummaryResponse() (response *GetAccountSummaryResponse) {
+    response = &GetAccountSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAccountSummary
+// 查询账户摘要 
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) GetAccountSummary(request *GetAccountSummaryRequest) (response *GetAccountSummaryResponse, err error) {
+    if request == nil {
+        request = NewGetAccountSummaryRequest()
+    }
+    response = NewGetAccountSummaryResponse()
     err = c.Send(request, response)
     return
 }

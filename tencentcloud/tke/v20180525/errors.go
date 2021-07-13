@@ -62,6 +62,9 @@ const (
 	// 集群状态错误。
 	INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
 
+	// 集群节点版本过低。
+	INTERNALERROR_CLUSTERUPGRADENODEVERSION = "InternalError.ClusterUpgradeNodeVersion"
+
 	// 内部HTTP客户端错误。
 	INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 

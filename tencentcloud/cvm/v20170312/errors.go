@@ -440,6 +440,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 缺少必要参数，请至少提供一个参数。
+	MISSINGPARAMETER_ATLEASTONE = "MissingParameter.AtLeastOne"
+
 	// DPDK实例机型要求VPC网络
 	MISSINGPARAMETER_DPDKINSTANCETYPEREQUIREDVPC = "MissingParameter.DPDKInstanceTypeRequiredVPC"
 
@@ -604,6 +607,9 @@ const (
 
 	// 该操作仅支持预付费账户
 	UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = "UnsupportedOperation.OnlyForPrepaidAccount"
+
+	// 当前镜像不支持对该实例的重装操作。
+	UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
 
 	// 不支持该地域
 	UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"

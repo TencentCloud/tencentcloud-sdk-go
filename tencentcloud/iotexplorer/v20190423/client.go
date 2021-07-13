@@ -103,6 +103,7 @@ func NewCallDeviceActionSyncResponse() (response *CallDeviceActionSyncResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONUNREACHABLE = "FailedOperation.ActionUnreachable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
@@ -1594,6 +1595,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 //  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_MESSAGESAVED = "LimitExceeded.MessageSaved"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"

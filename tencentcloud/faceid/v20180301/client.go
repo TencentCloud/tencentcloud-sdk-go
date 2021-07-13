@@ -62,8 +62,11 @@ func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationRespon
 // 本接口用于校验姓名和银行卡号的真实性和一致性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
@@ -170,6 +173,10 @@ func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationRe
 // 银行卡基础信息查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationRequest) (response *CheckBankCardInformationResponse, err error) {
@@ -256,7 +263,9 @@ func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationRespon
 //  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INTERNALERROR_ENCRYPTSYSTEMERROR = "InternalError.EncryptSystemError"
 //  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
@@ -289,6 +298,10 @@ func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
 // 手机号二要素核验接口用于校验手机号和姓名的真实性和一致性，支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response *CheckPhoneAndNameResponse, err error) {
     if request == nil {
@@ -789,8 +802,11 @@ func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
 // 传入姓名和身份证号，校验两者的真实性和一致性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
@@ -826,6 +842,7 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
@@ -840,9 +857,11 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 //  FAILEDOPERATION_NAMEFORMATERROR = "FailedOperation.NameFormatError"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
@@ -1049,6 +1068,7 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
@@ -1080,9 +1100,11 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_SILENTDETECTFAIL = "FailedOperation.SilentDetectFail"
 //  FAILEDOPERATION_SILENTTHRESHOLD = "FailedOperation.SilentThreshold"
 //  FAILEDOPERATION_SILENTTOOSHORT = "FailedOperation.SilentTooShort"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"

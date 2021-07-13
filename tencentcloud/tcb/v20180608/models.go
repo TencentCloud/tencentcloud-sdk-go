@@ -1499,6 +1499,9 @@ type DeleteCloudBaseProjectLatestVersionRequest struct {
 
 	// 项目名
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 是否保留资源
+	KeepResource *bool `json:"KeepResource,omitempty" name:"KeepResource"`
 }
 
 func (r *DeleteCloudBaseProjectLatestVersionRequest) ToJsonString() string {
@@ -1515,6 +1518,7 @@ func (r *DeleteCloudBaseProjectLatestVersionRequest) FromJsonString(s string) er
 	}
 	delete(f, "EnvId")
 	delete(f, "ProjectName")
+	delete(f, "KeepResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudBaseProjectLatestVersionRequest has unknown keys!", "")
 	}
@@ -2988,6 +2992,18 @@ type DescribeEnvLimitResponse struct {
 
 		// 微信网关体验版已购买月份数
 		CurrentFreeTrialNum *int64 `json:"CurrentFreeTrialNum,omitempty" name:"CurrentFreeTrialNum"`
+
+		// 转支付限额总数
+		ChangePayTotal *int64 `json:"ChangePayTotal,omitempty" name:"ChangePayTotal"`
+
+		// 当前已用转支付次数
+		CurrentChangePayTotal *int64 `json:"CurrentChangePayTotal,omitempty" name:"CurrentChangePayTotal"`
+
+		// 转支付每月限额
+		ChangePayMonthly *int64 `json:"ChangePayMonthly,omitempty" name:"ChangePayMonthly"`
+
+		// 本月已用转支付额度
+		CurrentChangePayMonthly *int64 `json:"CurrentChangePayMonthly,omitempty" name:"CurrentChangePayMonthly"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

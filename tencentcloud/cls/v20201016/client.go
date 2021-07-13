@@ -457,6 +457,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
     if request == nil {

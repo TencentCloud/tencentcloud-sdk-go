@@ -292,6 +292,7 @@ func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
@@ -360,6 +361,7 @@ func NewCreateWxCloudBaseRunEnvResponse() (response *CreateWxCloudBaseRunEnvResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -1525,6 +1527,7 @@ func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunSe
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServerRequest) (response *EstablishCloudBaseRunServerResponse, err error) {
     if request == nil {
         request = NewEstablishCloudBaseRunServerRequest()
@@ -1559,6 +1562,7 @@ func NewEstablishWxGatewayRouteResponse() (response *EstablishWxGatewayRouteResp
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest) (response *EstablishWxGatewayRouteResponse, err error) {
     if request == nil {
         request = NewEstablishWxGatewayRouteRequest()

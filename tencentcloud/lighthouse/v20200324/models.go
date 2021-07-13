@@ -3261,4 +3261,7 @@ type ZoneInfo struct {
 
 	// 可用区中文名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 实例购买页可用区展示标签
+	InstanceDisplayLabel *string `json:"InstanceDisplayLabel,omitempty" name:"InstanceDisplayLabel"`
 }

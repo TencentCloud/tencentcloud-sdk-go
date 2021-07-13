@@ -133,6 +133,7 @@ func NewCreateClassResponse() (response *CreateClassResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
 //  INVALIDPARAMETERVALUE_CLASSEXIST = "InvalidParameterValue.ClassExist"
+//  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -711,6 +712,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_SORTORDER = "InvalidParameterValue.SortOrder"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
     if request == nil {
@@ -994,6 +996,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
 //  INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"

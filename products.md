@@ -24,8 +24,8 @@
 | bmlb | [黑石负载均衡](https://cloud.tencent.com/document/product/1027) | 2021-07-02 08:03:21 |
 | bmvpc | [黑石私有网络](https://cloud.tencent.com/document/product/1024) | 2021-07-02 08:03:27 |
 | bri | [业务风险情报](https://cloud.tencent.com/document/product/1064) | 2021-01-07 08:02:40 |
-| btoe | [区块链可信取证](https://cloud.tencent.com/document/product/1259) | 2021-07-02 08:00:42 |
-| cam | [访问管理](https://cloud.tencent.com/document/product/598) | 2021-07-09 08:03:40 |
+| btoe | [区块链可信取证](https://cloud.tencent.com/document/product/1259) | 2021-07-13 08:01:01 |
+| cam | [访问管理](https://cloud.tencent.com/document/product/598) | 2021-07-13 08:05:10 |
 | captcha | [验证码](https://cloud.tencent.com/document/product/1110) | 2021-07-02 08:03:42 |
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-07-02 08:02:41 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-07-09 08:03:51 |
@@ -43,7 +43,7 @@
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2021-07-02 08:04:23 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-07-02 08:11:31 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-07-02 08:10:22 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2021-07-09 08:00:12 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2021-07-13 08:00:25 |
 | cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-07-08 08:02:59 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-07-02 08:02:07 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
@@ -54,7 +54,7 @@
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云数据库 CynosDB](https://cloud.tencent.com/document/product/1003) | 2021-07-12 08:01:28 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2021-07-02 08:04:43 |
-| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-07-02 08:04:55 |
+| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-07-13 08:07:05 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2021-07-02 08:05:01 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2021-07-02 08:05:05 |
 | dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2021-07-12 08:00:40 |
@@ -72,7 +72,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-07-02 08:05:23 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-07-02 08:05:26 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-07-02 08:05:29 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-07-07 10:00:09 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-07-13 08:07:56 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-07-02 08:02:36 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-07-02 08:02:35 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-07-02 08:05:35 |
@@ -94,7 +94,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-07-07 09:56:32 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-07-02 08:00:48 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-07-02 08:06:17 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-07-06 08:01:43 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-07-13 08:02:15 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-07-02 08:06:23 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-07-02 08:01:39 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-07-02 08:06:37 |
@@ -127,7 +127,7 @@
 | sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-07-02 08:00:31 |
 | soe | [智聆口语评测](https://cloud.tencent.com/document/product/884) | 2021-07-02 08:07:48 |
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
-| sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2021-07-02 08:07:50 |
+| sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2021-07-13 08:11:00 |
 | ssa | [态势感知](https://cloud.tencent.com/document/product/664) | 2021-07-02 08:00:59 |
 | ssl | [证书](https://cloud.tencent.com/document/product/400) | 2021-07-02 08:02:38 |
 | sslpod | [SSL 证书监控](https://cloud.tencent.com/document/product/1084) | 2021-07-02 08:01:14 |
@@ -141,11 +141,11 @@
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2021-07-02 08:08:13 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-07-02 08:08:14 |
-| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-07-12 08:08:34 |
+| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-07-13 08:11:35 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-07-02 08:01:17 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-07-06 08:11:25 |
-| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-07-08 08:11:14 |
+| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-07-13 08:15:04 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2021-07-02 08:00:39 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product) | 2020-03-16 08:18:42 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2021-07-02 08:01:01 |
@@ -168,7 +168,7 @@
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2021-07-08 08:00:54 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2021-07-02 08:00:58 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2021-07-02 08:09:37 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-07-02 08:09:07 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-07-13 08:12:47 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-07-02 08:11:30 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2021-07-02 08:00:14 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |

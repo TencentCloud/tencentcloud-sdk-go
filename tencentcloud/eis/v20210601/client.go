@@ -62,6 +62,7 @@ func NewGetRuntimeMCResponse() (response *GetRuntimeMCResponse) {
 // 获取运行时详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INTERNALERROR_COUNTRUNTIMEINSTANCESFAILED = "InternalError.CountRuntimeInstancesFailed"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"

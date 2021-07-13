@@ -240,6 +240,7 @@ func NewCreateImmutableTagRulesResponse() (response *CreateImmutableTagRulesResp
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 func (c *Client) CreateImmutableTagRules(request *CreateImmutableTagRulesRequest) (response *CreateImmutableTagRulesResponse, err error) {
     if request == nil {
         request = NewCreateImmutableTagRulesRequest()
@@ -1750,6 +1751,7 @@ func NewDescribeImmutableTagRulesResponse() (response *DescribeImmutableTagRules
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeImmutableTagRules(request *DescribeImmutableTagRulesRequest) (response *DescribeImmutableTagRulesResponse, err error) {
     if request == nil {
         request = NewDescribeImmutableTagRulesRequest()
@@ -2766,6 +2768,7 @@ func NewModifyImmutableTagRulesResponse() (response *ModifyImmutableTagRulesResp
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 func (c *Client) ModifyImmutableTagRules(request *ModifyImmutableTagRulesRequest) (response *ModifyImmutableTagRulesResponse, err error) {
     if request == nil {
         request = NewModifyImmutableTagRulesRequest()

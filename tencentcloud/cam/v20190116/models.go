@@ -1369,6 +1369,57 @@ func (r *DescribeSafeAuthFlagCollResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSafeAuthFlagIntlRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSafeAuthFlagIntlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSafeAuthFlagIntlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSafeAuthFlagIntlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSafeAuthFlagIntlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 登录保护设置
+		LoginFlag *LoginActionFlagIntl `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+		// 敏感操作保护设置
+		ActionFlag *LoginActionFlagIntl `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+		// 异地登录保护设置
+		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSafeAuthFlagIntlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSafeAuthFlagIntlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSafeAuthFlagRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1624,6 +1675,66 @@ func (r *DetachUserPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountSummaryRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetAccountSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAccountSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAccountSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略数
+		Policies *uint64 `json:"Policies,omitempty" name:"Policies"`
+
+		// 角色数
+		Roles *uint64 `json:"Roles,omitempty" name:"Roles"`
+
+		// 身份提供商数
+		Idps *uint64 `json:"Idps,omitempty" name:"Idps"`
+
+		// 子账户数
+		User *uint64 `json:"User,omitempty" name:"User"`
+
+		// 分组数
+		Group *uint64 `json:"Group,omitempty" name:"Group"`
+
+		// 分组用户总数
+		Member *uint64 `json:"Member,omitempty" name:"Member"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAccountSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAccountSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3167,6 +3278,27 @@ type LoginActionFlag struct {
 
 	// 自定义
 	Custom *uint64 `json:"Custom,omitempty" name:"Custom"`
+}
+
+type LoginActionFlagIntl struct {
+
+	// 手机
+	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
+
+	// 硬token
+	Token *uint64 `json:"Token,omitempty" name:"Token"`
+
+	// 软token
+	Stoken *uint64 `json:"Stoken,omitempty" name:"Stoken"`
+
+	// 微信
+	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+
+	// 自定义
+	Custom *uint64 `json:"Custom,omitempty" name:"Custom"`
+
+	// 邮件
+	Mail *uint64 `json:"Mail,omitempty" name:"Mail"`
 }
 
 type LoginActionMfaFlag struct {

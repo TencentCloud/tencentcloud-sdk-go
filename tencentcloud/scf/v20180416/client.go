@@ -182,6 +182,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = "InvalidParameterValue.CfsParameterDuplicate"
 //  INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
 //  INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = "InvalidParameterValue.CfsStructionError"
 //  INVALIDPARAMETERVALUE_CLS = "InvalidParameterValue.Cls"
@@ -882,6 +883,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
+//  INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
 //  LIMITEXCEEDED_OFFSET = "LimitExceeded.Offset"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -1068,6 +1070,7 @@ func NewInvokeFunctionResponse() (response *InvokeFunctionResponse) {
 //  INVALIDPARAMETERVALUE_PARAM = "InvalidParameterValue.Param"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
 //  RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) InvokeFunction(request *InvokeFunctionRequest) (response *InvokeFunctionResponse, err error) {

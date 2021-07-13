@@ -139,4 +139,7 @@ const (
 
 	// 输入密码不合法。
 	INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
+
+	// Uin不存在。
+	OPERATIONDENIED_UINNOTEXISTED = "OperationDenied.UinNotExisted"
 )

@@ -3209,6 +3209,7 @@ func NewUploadTaxPaymentResponse() (response *UploadTaxPaymentResponse) {
 // 直播平台-上传代理商完税证明
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
 //  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
