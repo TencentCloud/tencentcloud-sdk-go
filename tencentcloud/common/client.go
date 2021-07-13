@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
@@ -50,6 +49,11 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
 
+	// reflect to inject client client if field exists and retry feature is enabled
+	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
+		safeInjectClientToken(request)
+	}
+
 	if c.signMethod == "HmacSHA1" || c.signMethod == "HmacSHA256" {
 		return c.sendWithSignatureV1(request, response)
 	} else {
@@ -75,18 +79,9 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
-	if c.debug {
-		outbytes, err := httputil.DumpRequest(httpRequest, true)
-		if err != nil {
-			log.Printf("[ERROR] dump request failed because %s", err)
-			return err
-		}
-		log.Printf("[DEBUG] http request = %s", outbytes)
-	}
-	httpResponse, err := c.httpClient.Do(httpRequest)
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
-		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+		return err
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
@@ -223,21 +218,27 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
-	if c.debug {
-		outbytes, err := httputil.DumpRequest(httpRequest, true)
-		if err != nil {
-			log.Printf("[ERROR] dump request failed because %s", err)
-			return err
-		}
-		log.Printf("[DEBUG] http request = %s", outbytes)
-	}
-	httpResponse, err := c.httpClient.Do(httpRequest)
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
-		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+		return err
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
+}
+
+// send http request
+func (c *Client) sendHttp(request *http.Request) (response *http.Response, err error) {
+	if c.debug {
+		outbytes, err := httputil.DumpRequest(request, true)
+		if err != nil {
+			log.Printf("[ERROR] dump request failed because %s", err)
+			return nil, err
+		}
+		log.Printf("[DEBUG] http request = %s", outbytes)
+	}
+
+	response, err = c.httpClient.Do(request)
+	return response, err
 }
 
 func (c *Client) GetRegion() string {

@@ -1,5 +1,23 @@
 package profile
 
+import (
+	"math"
+	"time"
+)
+
+type DurationFunc func(index int) time.Duration
+
+func ConstantDurationFunc(duration time.Duration) DurationFunc {
+	return func(int) time.Duration {
+		return duration
+	}
+}
+
+func ExponentialBackoff(index int) time.Duration {
+	seconds := math.Pow(2, float64(index))
+	return time.Duration(seconds) * time.Second
+}
+
 type ClientProfile struct {
 	HttpProfile *HttpProfile
 	// Valid choices: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256.
@@ -10,6 +28,12 @@ type ClientProfile struct {
 	// Default value is zh-CN.
 	Language string
 	Debug    bool
+
+	// define how to retry request
+	NetworkFailureMaxRetries       int
+	NetworkFailureRetryDuration    DurationFunc
+	RateLimitExceededMaxRetries    int
+	RateLimitExceededRetryDuration DurationFunc
 }
 
 func NewClientProfile() *ClientProfile {

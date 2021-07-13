@@ -107,13 +107,13 @@ func main() {
 package main
 
 import (
-        "fmt"
+	"fmt"
 
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-        cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func main() {
@@ -353,6 +353,72 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 目前仅支持使用POST方式，且签名方法必须使用 签名方法 v3。
 
 详细使用请参阅示例：[使用 Common Request 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_request.go)
+
+## 网络错误重试
+
+当发生临时网络错误或超时时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
+
+> 通过反射检查 `Request` 结构体是否存在 `ClientToken` 字段，存在该字段则认为是幂等请求。
+> 幂等请求才会在网络错误时自动重试，非幂等请求会抛出异常，防止请求多次重放造成结果不一致。
+
+```golang
+package main
+
+import (
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+)
+
+func main() {
+	credential := common.NewCredential("secretId", "secretKey")
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 3                               // 定义最大重试次数
+	prof.NetworkFailureRetryDuration = profile.ExponentialBackoff   // 定义重试建个时间
+	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
+
+	// ...
+}
+```
+
+更多用法参考[测试文件](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/tencentcloud/common/netretry_test.go)
+
+## 限频重试
+
+当发生API限频时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
+
+```golang
+package main
+
+import (
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+)
+
+func main() {
+	credential := common.NewCredential("secretId", "secretKey")
+	prof := profile.NewClientProfile()
+	prof.RateLimitExceededMaxRetries = 3                               // 定义最大重试次数
+	prof.RateLimitExceededRetryDuration = profile.ExponentialBackoff   // 定义重试建个时间
+	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
+
+	// ...
+}
+```
+
+更多用法参考[测试文件](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/tencentcloud/common/ratelimitretry_test.go)
+
+## 幂等标识符
+
+当网络超时重试或限频重试开启时，会自动向请求中注入 `ClientToken` 参数（如果请求存在`ClientToken`字段且为空）。
+当用户手动指定 `ClientToken` 时，会跳过注入流程。
+
+> 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
 # 支持产品列表
 
