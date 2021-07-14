@@ -1,10 +1,203 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 12 次发布
+
+发布时间：2021-07-14 08:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KTVMusicBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicBaseInfo)
+
+	* 新增成员：Duration
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 69 次发布
+
+发布时间：2021-07-14 08:04:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#ScdnAclGroup)
+
+	* 新增成员：ErrorPage
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 50 次发布
+
+发布时间：2021-07-14 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：TargetHealth
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 3 次发布
+
+发布时间：2021-07-14 08:00:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
+
+	* 新增成员：Period
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 24 次发布
+
+发布时间：2021-07-14 08:05:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBUpgradePrice](https://cloud.tencent.com/document/api/557/16132)
+
+	* 新增出参：Formula
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)
+
+	* 新增成员：Cpu, Memory, Storage, PayMode, CreateTime, PeriodEndTime, InstanceType
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 66 次发布
+
+发布时间：2021-07-14 08:06:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnBindLiveDomainCert](https://cloud.tencent.com/document/api/267/32649)
+
+	* 新增入参：Type
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 21 次发布
+
+发布时间：2021-07-14 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUpgradePrice](https://cloud.tencent.com/document/api/237/16183)
+
+	* 新增出参：Formula
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)
+
+	* 新增成员：Cpu, Memory, Storage, PayMode, CreateTime, PeriodEndTime, InstanceType
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 8 次发布
+
+发布时间：2021-07-14 08:12:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCommand](https://cloud.tencent.com/document/api/1340/52684)
+
+	* 新增入参：Username
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：Username
+
+* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+
+	* 新增入参：Username
+
+* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+
+	* 新增入参：Username
+
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：Username
+
+* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
+
+	* 新增成员：Username
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：Username
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
 
 ### 第 35 次发布
 
-发布时间：2021-07-13 08:05:10
+发布时间：2021-07-14 08:10:43
 
 本次发布包含了以下内容：
 
@@ -12,65 +205,49 @@
 
 新增接口：
 
-* [DescribeSafeAuthFlagIntl](https://cloud.tencent.com/document/api/598/58533)
-* [GetAccountSummary](https://cloud.tencent.com/document/api/598/58534)
+* [CheckInstance](https://cloud.tencent.com/document/api/1141/58595)
+
+修改接口：
+
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+
+	* 新增入参：PeerReplicationOption
+
 
 新增数据结构：
 
-* [LoginActionFlagIntl](https://cloud.tencent.com/document/api/598/33167#LoginActionFlagIntl)
+* [PeerReplicationOption](https://cloud.tencent.com/document/api/1141/41603#PeerReplicationOption)
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 28 次发布
+### 第 54 次发布
 
-发布时间：2021-07-13 08:07:56
+发布时间：2021-07-14 08:08:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [BankCard2EVerification](https://cloud.tencent.com/document/api/1007/35776)
+* [CreateFileConfig](https://cloud.tencent.com/document/api/649/58594)
+* [DescribeFileConfigs](https://cloud.tencent.com/document/api/649/58593)
+* [ReleaseFileConfig](https://cloud.tencent.com/document/api/649/58592)
 
-	* 新增入参：Encryption
+新增数据结构：
 
-* [CheckBankCardInformation](https://cloud.tencent.com/document/api/1007/47837)
-
-	* 新增入参：Encryption
-
-* [CheckIdCardInformation](https://cloud.tencent.com/document/api/1007/47276)
-
-	* 新增入参：IsEncrypt
-
-	* 新增出参：Encryption
-
-* [CheckPhoneAndName](https://cloud.tencent.com/document/api/1007/50364)
-
-	* 新增入参：Encryption
-
-* [IdCardVerification](https://cloud.tencent.com/document/api/1007/33188)
-
-	* 新增入参：Encryption
-
-* [ImageRecognition](https://cloud.tencent.com/document/api/1007/31820)
-
-	* 新增入参：Encryption
-
-* [LivenessRecognition](https://cloud.tencent.com/document/api/1007/31818)
-
-	* 新增入参：Encryption
+* [FileConfig](https://cloud.tencent.com/document/api/649/36099#FileConfig)
+* [TsfPageFileConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfig)
 
 
 
+## 私有网络(vpc) 版本：2017-03-12
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
+### 第 92 次发布
 
-### 第 17 次发布
-
-发布时间：2021-07-13 08:02:15
+发布时间：2021-07-14 08:09:31
 
 本次发布包含了以下内容：
 
@@ -78,51 +255,9 @@
 
 修改数据结构：
 
-* [ZoneInfo](https://cloud.tencent.com/document/api/1207/47576#ZoneInfo)
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
 
-	* 新增成员：InstanceDisplayLabel
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 55 次发布
-
-发布时间：2021-07-13 08:11:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteCloudBaseProjectLatestVersion](https://cloud.tencent.com/document/api/876/51097)
-
-	* 新增入参：KeepResource
-
-* [DescribeEnvLimit](https://cloud.tencent.com/document/api/876/42146)
-
-	* 新增出参：ChangePayTotal, CurrentChangePayTotal, ChangePayMonthly, CurrentChangePayMonthly
-
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 10 次发布
-
-发布时间：2021-07-13 08:15:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
-
-	* 新增成员：TopicNum
+	* 新增成员：SourceIpTranslationNatRuleSet, IsExclusive, ExclusiveGatewayBandwidth
 
 
 
@@ -389,6 +524,21 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 12 次发布
+
+发布时间：2021-07-14 08:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KTVMusicBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicBaseInfo)
+
+	* 新增成员：Duration
+
 
 ### 第 11 次发布
 
@@ -5467,12 +5617,12 @@
 
 新增接口：
 
-* [[DescribeSafeAuthFlagIntl](https://cloud.tencent.com/document/api/598/58533)](https://cloud.tencent.com/document/api/#/#)
-* [[GetAccountSummary](https://cloud.tencent.com/document/api/598/58534)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSafeAuthFlagIntl](https://cloud.tencent.com/document/api/598/58533)
+* [GetAccountSummary](https://cloud.tencent.com/document/api/598/58534)
 
 新增数据结构：
 
-* [[LoginActionFlagIntl](https://cloud.tencent.com/document/api/598/33167#LoginActionFlagIntl)](https://cloud.tencent.com/document/api/598/33167#[LoginActionFlagIntl](https://cloud.tencent.com/document/api/598/33167#LoginActionFlagIntl))
+* [LoginActionFlagIntl](https://cloud.tencent.com/document/api/598/33167#LoginActionFlagIntl)
 
 ### 第 34 次发布
 
@@ -8626,6 +8776,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 69 次发布
+
+发布时间：2021-07-14 08:04:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#ScdnAclGroup)
+
+	* 新增成员：ErrorPage
+
+
 ### 第 68 次发布
 
 发布时间：2021-06-23 11:31:26
@@ -11162,6 +11327,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 50 次发布
+
+发布时间：2021-07-14 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：TargetHealth
+
+
 ### 第 49 次发布
 
 发布时间：2021-05-18 08:04:20
@@ -12547,6 +12727,21 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 3 次发布
+
+发布时间：2021-07-14 08:00:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
+
+	* 新增成员：Period
+
 
 ### 第 2 次发布
 
@@ -18677,6 +18872,28 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 24 次发布
+
+发布时间：2021-07-14 08:05:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBUpgradePrice](https://cloud.tencent.com/document/api/557/16132)
+
+	* 新增出参：Formula
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)
+
+	* 新增成员：Cpu, Memory, Storage, PayMode, CreateTime, PeriodEndTime, InstanceType
+
 
 ### 第 23 次发布
 
@@ -29720,6 +29937,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 66 次发布
+
+发布时间：2021-07-14 08:06:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnBindLiveDomainCert](https://cloud.tencent.com/document/api/267/32649)
+
+	* 新增入参：Type
+
+
 ### 第 65 次发布
 
 发布时间：2021-06-25 08:06:13
@@ -31128,6 +31360,28 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 21 次发布
+
+发布时间：2021-07-14 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUpgradePrice](https://cloud.tencent.com/document/api/237/16183)
+
+	* 新增出参：Formula
+
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)
+
+	* 新增成员：Cpu, Memory, Storage, PayMode, CreateTime, PeriodEndTime, InstanceType
+
 
 ### 第 20 次发布
 
@@ -40205,6 +40459,48 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 8 次发布
+
+发布时间：2021-07-14 08:12:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCommand](https://cloud.tencent.com/document/api/1340/52684)
+
+	* 新增入参：Username
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：Username
+
+* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+
+	* 新增入参：Username
+
+* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+
+	* 新增入参：Username
+
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：Username
+
+* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
+
+	* 新增成员：Username
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：Username
+
+
 ### 第 7 次发布
 
 发布时间：2021-07-07 10:06:48
@@ -42579,6 +42875,29 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 35 次发布
+
+发布时间：2021-07-14 08:10:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckInstance](https://cloud.tencent.com/document/api/1141/58595)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ManageReplication](https://cloud.tencent.com/document/api/1141/54138)
+
+	* 新增入参：PeerReplicationOption
+
+
+新增数据结构：
+
+* [[PeerReplicationOption](https://cloud.tencent.com/document/api/1141/41603#PeerReplicationOption)](https://cloud.tencent.com/document/api/1141/41603#[PeerReplicationOption](https://cloud.tencent.com/document/api/1141/41603#PeerReplicationOption))
 
 ### 第 34 次发布
 
@@ -47230,6 +47549,25 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 54 次发布
+
+发布时间：2021-07-14 08:08:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFileConfig](https://cloud.tencent.com/document/api/649/58594)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFileConfigs](https://cloud.tencent.com/document/api/649/58593)](https://cloud.tencent.com/document/api/#/#)
+* [[ReleaseFileConfig](https://cloud.tencent.com/document/api/649/58592)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FileConfig](https://cloud.tencent.com/document/api/649/36099#FileConfig)](https://cloud.tencent.com/document/api/649/36099#[FileConfig](https://cloud.tencent.com/document/api/649/36099#FileConfig))
+* [[TsfPageFileConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfig)](https://cloud.tencent.com/document/api/649/36099#[TsfPageFileConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfig))
+
 ### 第 53 次发布
 
 发布时间：2021-06-16 08:08:41
@@ -51576,6 +51914,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 92 次发布
+
+发布时间：2021-07-14 08:09:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：SourceIpTranslationNatRuleSet, IsExclusive, ExclusiveGatewayBandwidth
+
 
 ### 第 91 次发布
 

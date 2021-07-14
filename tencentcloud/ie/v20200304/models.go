@@ -78,31 +78,26 @@ type AudioInfo struct {
 
 type AudioInfoResultItem struct {
 
-	// 音频流的流id
+	// 音频流的流id。
 	Stream *int64 `json:"Stream,omitempty" name:"Stream"`
 
 	// 音频采样率 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sample *int64 `json:"Sample,omitempty" name:"Sample"`
 
 	// 音频声道数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
 
 	// 编码格式，如aac, mp3等。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频时长，单位：ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
@@ -798,32 +793,26 @@ type FaceProtect struct {
 type FileInfo struct {
 
 	// 任务结束后生成的文件大小。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
 	// 任务结束后生成的文件格式，例如：mp4,flv等等。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 任务结束后生成的文件整体码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 任务结束后生成的文件时长，单位：ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 任务结束后生成的文件视频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoInfoResult []*VideoInfoResultItem `json:"VideoInfoResult,omitempty" name:"VideoInfoResult"`
 
 	// 任务结束后生成的文件音频信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult"`
 }
@@ -1667,7 +1656,6 @@ type SubTaskResultItem struct {
 
 	// 子任务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
 	// 子任务状态。
@@ -1681,21 +1669,17 @@ type SubTaskResultItem struct {
 
 	// 子任务进度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressRate *int64 `json:"ProgressRate,omitempty" name:"ProgressRate"`
 
 	// 画质重生处理后文件的下载地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
 	// 画质重生处理后文件的MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 画质重生处理后文件的详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfo *FileInfo `json:"FileInfo,omitempty" name:"FileInfo"`
 }
@@ -1965,8 +1949,7 @@ type VideoInfo struct {
 	// 编码器支持选项，可选值：
 	// h264,
 	// h265,
-	// av1
-	// 。
+	// av1。
 	// 不填默认h264。
 	VideoCodec *string `json:"VideoCodec,omitempty" name:"VideoCodec"`
 
@@ -1996,41 +1979,33 @@ type VideoInfoResultItem struct {
 
 	// 视频宽度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频高度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频帧率，用分数格式表示，如：25/1, 99/32等等。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *string `json:"Fps,omitempty" name:"Fps"`
 
 	// 编码格式，如h264,h265等等 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 播放旋转角度，可选值0-360。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频时长，单位：ms 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 颜色空间，如yuv420p，yuv444p等等。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PixFormat *string `json:"PixFormat,omitempty" name:"PixFormat"`
 }

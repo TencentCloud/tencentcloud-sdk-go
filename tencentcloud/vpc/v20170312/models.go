@@ -14610,6 +14610,18 @@ type NatGateway struct {
 	// NAT网关绑定的安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupSet []*string `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
+
+	// NAT网关的SNAT转发规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitempty" name:"SourceIpTranslationNatRuleSet"`
+
+	// 是否独享型NAT。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExclusive *bool `json:"IsExclusive,omitempty" name:"IsExclusive"`
+
+	// 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusiveGatewayBandwidth *uint64 `json:"ExclusiveGatewayBandwidth,omitempty" name:"ExclusiveGatewayBandwidth"`
 }
 
 type NatGatewayAddress struct {

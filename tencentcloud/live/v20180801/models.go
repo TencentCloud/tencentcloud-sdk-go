@@ -361,11 +361,11 @@ type CallBackTemplateInfo struct {
 	// 开播回调 URL。
 	StreamBeginNotifyUrl *string `json:"StreamBeginNotifyUrl,omitempty" name:"StreamBeginNotifyUrl"`
 
+	// 混流回调 URL。(参数已弃用)。
+	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
+
 	// 断流回调 URL。
 	StreamEndNotifyUrl *string `json:"StreamEndNotifyUrl,omitempty" name:"StreamEndNotifyUrl"`
-
-	// 混流回调 URL。
-	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
 
 	// 录制回调 URL。
 	RecordNotifyUrl *string `json:"RecordNotifyUrl,omitempty" name:"RecordNotifyUrl"`
@@ -9019,6 +9019,13 @@ type UnBindLiveDomainCertRequest struct {
 
 	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 枚举值：
+	// gray: 解绑灰度规则
+	// formal(默认): 解绑正式规则
+	// 
+	// 不传则为formal
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *UnBindLiveDomainCertRequest) ToJsonString() string {
@@ -9034,6 +9041,7 @@ func (r *UnBindLiveDomainCertRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DomainName")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnBindLiveDomainCertRequest has unknown keys!", "")
 	}

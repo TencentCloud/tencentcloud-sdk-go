@@ -3714,6 +3714,10 @@ type LoadBalancerDetail struct {
 	// 负载均衡安全组上移特性是否开启标识。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerPassToTarget *uint64 `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
+
+	// 后端目标健康状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHealth *string `json:"TargetHealth,omitempty" name:"TargetHealth"`
 }
 
 type LoadBalancerHealth struct {

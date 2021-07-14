@@ -2500,6 +2500,10 @@ type TopicInfo struct {
 	// 日主题的存储类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 生命周期，单位为天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
 type ValueInfo struct {

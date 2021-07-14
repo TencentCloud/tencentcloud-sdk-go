@@ -6206,11 +6206,15 @@ type ScdnAclGroup struct {
 	// 具体配置
 	Configure []*ScdnAclRule `json:"Configure,omitempty" name:"Configure"`
 
-	// 规则行为，一般为refuse
+	// 规则行为，一般为refuse，重定向redirect
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 规则是否生效中active|inactive
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误页面配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorPage *ScdnErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 }
 
 type ScdnAclRule struct {

@@ -106,6 +106,49 @@ func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPer
     return
 }
 
+func NewCheckInstanceRequest() (request *CheckInstanceRequest) {
+    request = &CheckInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "CheckInstance")
+    return
+}
+
+func NewCheckInstanceResponse() (response *CheckInstanceResponse) {
+    response = &CheckInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckInstance
+// 用于校验企业版实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORNAMEEXISTS = "InvalidParameter.ErrorNameExists"
+//  INVALIDPARAMETER_ERRORREGISTRYNAME = "InvalidParameter.ErrorRegistryName"
+//  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckInstance(request *CheckInstanceRequest) (response *CheckInstanceResponse, err error) {
+    if request == nil {
+        request = NewCheckInstanceRequest()
+    }
+    response = NewCheckInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckInstanceNameRequest() (request *CheckInstanceNameRequest) {
     request = &CheckInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},

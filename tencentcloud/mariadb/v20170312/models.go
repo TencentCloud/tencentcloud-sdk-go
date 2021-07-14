@@ -821,6 +821,27 @@ type DcnDetailItem struct {
 
 	// 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
 	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+
+	// 实例CPU核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例内存大小，单位 GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例存储大小，单位 GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例创建时间，格式为 2006-01-02 15:04:05
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例到期时间，格式为 2006-01-02 15:04:05
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type Deal struct {
@@ -2489,6 +2510,9 @@ type DescribeUpgradePriceResponse struct {
 
 		// 实际价格，单位：分。受折扣等影响，可能和原价不同。
 		Price *int64 `json:"Price,omitempty" name:"Price"`
+
+		// 变配明细计算公式
+		Formula *string `json:"Formula,omitempty" name:"Formula"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

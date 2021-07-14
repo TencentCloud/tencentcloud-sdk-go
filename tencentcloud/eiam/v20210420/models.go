@@ -1142,7 +1142,7 @@ type ListAuthorizedApplicationsToUserRequest struct {
 	// 用户 ID。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传0表示不查询该范围，传1表示应用查询该范围。
+	// 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。
 	IncludeInheritedAuthorizations *bool `json:"IncludeInheritedAuthorizations,omitempty" name:"IncludeInheritedAuthorizations"`
 }
 
