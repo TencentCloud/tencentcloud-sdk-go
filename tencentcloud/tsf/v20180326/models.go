@@ -5046,6 +5046,12 @@ type DescribeConfigSummaryRequest struct {
 
 	// 每页条数，默认为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按时间排序：creation_time；按名称排序：config_name
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 升序传 0，降序传 1
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 }
 
 func (r *DescribeConfigSummaryRequest) ToJsonString() string {
@@ -5064,6 +5070,8 @@ func (r *DescribeConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigSummaryRequest has unknown keys!", "")
 	}
@@ -7159,6 +7167,12 @@ type DescribePublicConfigSummaryRequest struct {
 
 	// 每页条数，默认为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按时间排序：creation_time；按名称排序：config_name
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 升序传 0，降序传 1
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 }
 
 func (r *DescribePublicConfigSummaryRequest) ToJsonString() string {
@@ -7176,6 +7190,8 @@ func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicConfigSummaryRequest has unknown keys!", "")
 	}
@@ -12025,6 +12041,18 @@ type ServiceSetting struct {
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 是否创建 k8s service，默认为 false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableService *bool `json:"DisableService,omitempty" name:"DisableService"`
+
+	// service 是否为 headless 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadlessService *bool `json:"HeadlessService,omitempty" name:"HeadlessService"`
+
+	// 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDeleteService *bool `json:"AllowDeleteService,omitempty" name:"AllowDeleteService"`
 }
 
 type ShardArgument struct {

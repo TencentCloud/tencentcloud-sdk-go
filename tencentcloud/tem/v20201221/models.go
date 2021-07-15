@@ -568,6 +568,21 @@ type DeployServiceV2Request struct {
 
 	// 要回滚到的历史版本id
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 启动后执行的脚本
+	PostStart *string `json:"PostStart,omitempty" name:"PostStart"`
+
+	// 停止前执行的脚本
+	PreStop *string `json:"PreStop,omitempty" name:"PreStop"`
+
+	// 分批发布策略配置
+	DeployStrategyConf *DeployStrategyConf `json:"DeployStrategyConf,omitempty" name:"DeployStrategyConf"`
+
+	// 存活探针配置
+	Liveness *HealthCheckConfig `json:"Liveness,omitempty" name:"Liveness"`
+
+	// 就绪探针配置
+	Readiness *HealthCheckConfig `json:"Readiness,omitempty" name:"Readiness"`
 }
 
 func (r *DeployServiceV2Request) ToJsonString() string {
@@ -611,6 +626,11 @@ func (r *DeployServiceV2Request) FromJsonString(s string) error {
 	delete(f, "SettingConfs")
 	delete(f, "EksService")
 	delete(f, "VersionId")
+	delete(f, "PostStart")
+	delete(f, "PreStop")
+	delete(f, "DeployStrategyConf")
+	delete(f, "Liveness")
+	delete(f, "Readiness")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployServiceV2Request has unknown keys!", "")
 	}
@@ -638,6 +658,21 @@ func (r *DeployServiceV2Response) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeployServiceV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployStrategyConf struct {
+
+	// 总分批数
+	TotalBatchCount *int64 `json:"TotalBatchCount,omitempty" name:"TotalBatchCount"`
+
+	// beta分批实例数
+	BetaBatchNum *int64 `json:"BetaBatchNum,omitempty" name:"BetaBatchNum"`
+
+	// 分批策略：0-全自动，1-全手动，beta分批一定是手动的，这里的策略指定的是剩余批次
+	DeployStrategyType *int64 `json:"DeployStrategyType,omitempty" name:"DeployStrategyType"`
+
+	// 每批暂停间隔
+	BatchInterval *int64 `json:"BatchInterval,omitempty" name:"BatchInterval"`
 }
 
 type DescribeIngressRequest struct {
@@ -1103,6 +1138,33 @@ func (r *GenerateDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HealthCheckConfig struct {
+
+	// 支持的健康检查类型，如 HttpGet，TcpSocket，Exec
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 仅当健康检查类型为 HttpGet 时有效，表示请求路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容
+	Exec *string `json:"Exec,omitempty" name:"Exec"`
+
+	// 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 检查延迟开始时间，单位为秒，默认为 0
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// 超时时间，单位为秒，默认为 1
+	TimeoutSeconds *int64 `json:"TimeoutSeconds,omitempty" name:"TimeoutSeconds"`
+
+	// 间隔时间，单位为秒，默认为 10
+	PeriodSeconds *int64 `json:"PeriodSeconds,omitempty" name:"PeriodSeconds"`
+}
+
 type IngressInfo struct {
 
 	// tem namespaceId
@@ -1540,6 +1602,10 @@ type RunVersionPod struct {
 	// 部署版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployVersion *string `json:"DeployVersion,omitempty" name:"DeployVersion"`
+
+	// 重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartCount *int64 `json:"RestartCount,omitempty" name:"RestartCount"`
 }
 
 type StorageConf struct {

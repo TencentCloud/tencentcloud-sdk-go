@@ -206,6 +206,9 @@ const (
 	// 参数取值过长，超过最大长度。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 
+	// 非法的可用区。
+	INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
+
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
 

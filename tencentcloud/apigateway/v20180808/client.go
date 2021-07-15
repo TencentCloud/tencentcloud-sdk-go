@@ -79,6 +79,43 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
     return
 }
 
+func NewBindApiAppRequest() (request *BindApiAppRequest) {
+    request = &BindApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "BindApiApp")
+    return
+}
+
+func NewBindApiAppResponse() (response *BindApiAppResponse) {
+    response = &BindApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindApiApp
+// 本接口（BindApiApp）用于绑定应用到API。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETERVALUE_INVALIDENV = "InvalidParameterValue.InvalidEnv"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
+//  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
+func (c *Client) BindApiApp(request *BindApiAppRequest) (response *BindApiAppResponse, err error) {
+    if request == nil {
+        request = NewBindApiAppRequest()
+    }
+    response = NewBindApiAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindEnvironmentRequest() (request *BindEnvironmentRequest) {
     request = &BindEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -396,6 +433,40 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
     return
 }
 
+func NewCreateApiAppRequest() (request *CreateApiAppRequest) {
+    request = &CreateApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "CreateApiApp")
+    return
+}
+
+func NewCreateApiAppResponse() (response *CreateApiAppResponse) {
+    response = &CreateApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApiApp
+// 本接口（CreateApiApp）用于创建应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = "LimitExceeded.ApiAppCountLimitExceeded"
+//  LIMITEXCEEDED_APIKEYCOUNTLIMITEXCEEDED = "LimitExceeded.ApiKeyCountLimitExceeded"
+func (c *Client) CreateApiApp(request *CreateApiAppRequest) (response *CreateApiAppResponse, err error) {
+    if request == nil {
+        request = NewCreateApiAppRequest()
+    }
+    response = NewCreateApiAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApiKeyRequest() (request *CreateApiKeyRequest) {
     request = &CreateApiKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -667,6 +738,45 @@ func (c *Client) DeleteApi(request *DeleteApiRequest) (response *DeleteApiRespon
         request = NewDeleteApiRequest()
     }
     response = NewDeleteApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApiAppRequest() (request *DeleteApiAppRequest) {
+    request = &DeleteApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DeleteApiApp")
+    return
+}
+
+func NewDeleteApiAppResponse() (response *DeleteApiAppResponse) {
+    response = &DeleteApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteApiApp
+// 本接口（DeleteApiApp）用于删除已经创建的应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
+//  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
+func (c *Client) DeleteApiApp(request *DeleteApiAppRequest) (response *DeleteApiAppResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiAppRequest()
+    }
+    response = NewDeleteApiAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -1033,6 +1143,125 @@ func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApi
         request = NewDescribeApiRequest()
     }
     response = NewDescribeApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiAppRequest() (request *DescribeApiAppRequest) {
+    request = &DescribeApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiApp")
+    return
+}
+
+func NewDescribeApiAppResponse() (response *DescribeApiAppResponse) {
+    response = &DescribeApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApiApp
+// 本接口（DescribeApiApp）用于根据应用ID搜索应用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *DescribeApiAppResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiAppRequest()
+    }
+    response = NewDescribeApiAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiAppBindApisStatusRequest() (request *DescribeApiAppBindApisStatusRequest) {
+    request = &DescribeApiAppBindApisStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiAppBindApisStatus")
+    return
+}
+
+func NewDescribeApiAppBindApisStatusResponse() (response *DescribeApiAppBindApisStatusResponse) {
+    response = &DescribeApiAppBindApisStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApiAppBindApisStatus
+// 本接口（DescribeApiAppBindApisStatus）查询应用绑定的Api列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiAppBindApisStatusRequest()
+    }
+    response = NewDescribeApiAppBindApisStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiAppsStatusRequest() (request *DescribeApiAppsStatusRequest) {
+    request = &DescribeApiAppsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiAppsStatus")
+    return
+}
+
+func NewDescribeApiAppsStatusResponse() (response *DescribeApiAppsStatusResponse) {
+    response = &DescribeApiAppsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApiAppsStatus
+// 本接口（DescribeApiAppsStatus）查询应用列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiAppsStatusRequest()
+    }
+    response = NewDescribeApiAppsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiBindApiAppsStatusRequest() (request *DescribeApiBindApiAppsStatusRequest) {
+    request = &DescribeApiBindApiAppsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiBindApiAppsStatus")
+    return
+}
+
+func NewDescribeApiBindApiAppsStatusResponse() (response *DescribeApiBindApiAppsStatusResponse) {
+    response = &DescribeApiBindApiAppsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApiBindApiAppsStatus
+// 本接口（DescribeApiBindApiAppsStatus）查询Api绑定的应用列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+func (c *Client) DescribeApiBindApiAppsStatus(request *DescribeApiBindApiAppsStatusRequest) (response *DescribeApiBindApiAppsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiBindApiAppsStatusRequest()
+    }
+    response = NewDescribeApiBindApiAppsStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -1534,6 +1763,36 @@ func (c *Client) DescribeServiceEnvironmentStrategy(request *DescribeServiceEnvi
         request = NewDescribeServiceEnvironmentStrategyRequest()
     }
     response = NewDescribeServiceEnvironmentStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServiceForApiAppRequest() (request *DescribeServiceForApiAppRequest) {
+    request = &DescribeServiceForApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceForApiApp")
+    return
+}
+
+func NewDescribeServiceForApiAppResponse() (response *DescribeServiceForApiAppResponse) {
+    response = &DescribeServiceForApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeServiceForApiApp
+// 本接口（DescribeServiceForApiApp）用于应用使用者查询一个服务的详细信息、包括服务的描述、域名、协议等信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+func (c *Client) DescribeServiceForApiApp(request *DescribeServiceForApiAppRequest) (response *DescribeServiceForApiAppResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceForApiAppRequest()
+    }
+    response = NewDescribeServiceForApiAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -2068,6 +2327,46 @@ func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiRespon
     return
 }
 
+func NewModifyApiAppRequest() (request *ModifyApiAppRequest) {
+    request = &ModifyApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ModifyApiApp")
+    return
+}
+
+func NewModifyApiAppResponse() (response *ModifyApiAppResponse) {
+    response = &ModifyApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApiApp
+// 本接口（ModifyApiApp）用于修改已经创建的应用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
+//  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
+func (c *Client) ModifyApiApp(request *ModifyApiAppRequest) (response *ModifyApiAppResponse, err error) {
+    if request == nil {
+        request = NewModifyApiAppRequest()
+    }
+    response = NewModifyApiAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApiEnvironmentStrategyRequest() (request *ModifyApiEnvironmentStrategyRequest) {
     request = &ModifyApiEnvironmentStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2565,6 +2864,81 @@ func (c *Client) UnReleaseService(request *UnReleaseServiceRequest) (response *U
         request = NewUnReleaseServiceRequest()
     }
     response = NewUnReleaseServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindApiAppRequest() (request *UnbindApiAppRequest) {
+    request = &UnbindApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "UnbindApiApp")
+    return
+}
+
+func NewUnbindApiAppResponse() (response *UnbindApiAppResponse) {
+    response = &UnbindApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindApiApp
+// 本接口（UnbindApiApp）用于解除应用和API绑定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETERVALUE_INVALIDENV = "InvalidParameterValue.InvalidEnv"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
+//  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
+func (c *Client) UnbindApiApp(request *UnbindApiAppRequest) (response *UnbindApiAppResponse, err error) {
+    if request == nil {
+        request = NewUnbindApiAppRequest()
+    }
+    response = NewUnbindApiAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApiAppKeyRequest() (request *UpdateApiAppKeyRequest) {
+    request = &UpdateApiAppKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "UpdateApiAppKey")
+    return
+}
+
+func NewUpdateApiAppKeyResponse() (response *UpdateApiAppKeyResponse) {
+    response = &UpdateApiAppKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateApiAppKey
+// 本接口（UpdateApiAppKey）用于更新应用秘钥。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
+//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
+//  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
+func (c *Client) UpdateApiAppKey(request *UpdateApiAppKeyRequest) (response *UpdateApiAppKeyResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiAppKeyRequest()
+    }
+    response = NewUpdateApiAppKeyResponse()
     err = c.Send(request, response)
     return
 }

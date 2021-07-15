@@ -4452,6 +4452,12 @@ type EditMediaFileInfo struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type EditMediaOutputConfig struct {
+
+	// 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+}
+
 type EditMediaRequest struct {
 	*tchttp.BaseRequest
 
@@ -4463,6 +4469,9 @@ type EditMediaRequest struct {
 
 	// 视频处理输出文件的目标路径。
 	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
+
+	// 编辑后生成的文件配置。
+	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
@@ -4492,6 +4501,7 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 	delete(f, "FileInfos")
 	delete(f, "OutputStorage")
 	delete(f, "OutputObjectPath")
+	delete(f, "OutputConfig")
 	delete(f, "TaskNotifyConfig")
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")

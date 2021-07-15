@@ -575,7 +575,7 @@ type DCDBInstanceInfo struct {
 	// 状态中文描述
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
 
-	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 内网IP

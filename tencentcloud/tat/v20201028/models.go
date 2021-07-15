@@ -693,7 +693,7 @@ type InvokeCommandRequest struct {
 	// 待触发的命令ID。
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
 
-	// 待执行命令的实例ID列表。
+	// 待执行命令的实例ID列表，上限100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
@@ -918,7 +918,7 @@ type RunCommandRequest struct {
 	// Base64编码后的命令内容，长度不可超过64KB。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// 待执行命令的实例ID列表。 支持实例类型：
+	// 待执行命令的实例ID列表，上限100。支持实例类型：
 	// <li> CVM
 	// <li> LIGHTHOUSE
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`

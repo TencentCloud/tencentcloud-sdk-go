@@ -200,6 +200,9 @@ const (
 	// 不合法的常量参数。
 	INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = "InvalidParameterValue.InvalidConstantParameters"
 
+	// 参数Env取值错误，取值范围为（release, prepub, test）。
+	INVALIDPARAMETERVALUE_INVALIDENV = "InvalidParameterValue.InvalidEnv"
+
 	// 服务当前环境状态，不支持此操作。
 	INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 
@@ -287,6 +290,9 @@ const (
 	// API文档数量超出限制。
 	LIMITEXCEEDED_APIDOCLIMITEXCEEDED = "LimitExceeded.APIDocLimitExceeded"
 
+	// 应用数量超过限制。
+	LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = "LimitExceeded.ApiAppCountLimitExceeded"
+
 	// API数量超过限制。
 	LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
 
@@ -337,6 +343,9 @@ const (
 
 	// ApiId错误。
 	RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+
+	// 应用ID错误。
+	RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
 
 	// API文档不存在。
 	RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
@@ -418,6 +427,9 @@ const (
 
 	// 不支持绑定环境。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
+
+	// 当前API已绑定业务API，请先解绑再试。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 
 	// 服务使用中，不能被删除。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"

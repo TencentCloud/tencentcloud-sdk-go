@@ -312,7 +312,7 @@ func NewDescribeBlockByIpTimesListResponse() (response *DescribeBlockByIpTimesLi
 }
 
 // DescribeBlockByIpTimesList
-// DescribeBlockByIpTimesList 告警中心阻断ip折线图
+// DescribeBlockByIpTimesList 告警中心阻断IP折线图
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -404,7 +404,7 @@ func NewDescribeCfwEipsResponse() (response *DescribeCfwEipsResponse) {
 }
 
 // DescribeCfwEips
-// 查询防火墙弹性公网ip
+// 查询防火墙弹性公网IP
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -700,7 +700,7 @@ func NewDescribeTLogIpListResponse() (response *DescribeTLogIpListResponse) {
 }
 
 // DescribeTLogIpList
-// DescribeTLogIpList告警中心ip柱形图
+// DescribeTLogIpList告警中心IP柱形图
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

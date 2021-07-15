@@ -906,8 +906,9 @@ func NewDescribeDownloadFileResponse() (response *DescribeDownloadFileResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeDownloadFile(request *DescribeDownloadFileRequest) (response *DescribeDownloadFileResponse, err error) {
     if request == nil {
         request = NewDescribeDownloadFileRequest()

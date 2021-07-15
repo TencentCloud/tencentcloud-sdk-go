@@ -2654,7 +2654,7 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
 type DescribeDownloadFileRequest struct {
 	*tchttp.BaseRequest
 
-	// 代码uri
+	// 代码uri，格式如：extension://abcdefhhxxx.zip，对应 DescribeExtensionUploadInfo 接口的返回值
 	CodeUri *string `json:"CodeUri,omitempty" name:"CodeUri"`
 }
 
@@ -2681,11 +2681,11 @@ type DescribeDownloadFileResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 文件路径
+		// 文件路径，该字段已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 
-		// 加密key
+		// 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CustomKey *string `json:"CustomKey,omitempty" name:"CustomKey"`
 
