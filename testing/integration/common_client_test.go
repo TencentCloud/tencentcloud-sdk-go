@@ -6,21 +6,26 @@ import (
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	"io/ioutil"
 	"os"
 	"testing"
 )
 
+func getCredential() *common.Credential {
+	return common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+}
+
 // TestCommonRequest
 //  目前只支持 签名v3+POST
 func TestCommonRequest(t *testing.T) {
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+	cr := getCredential()
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
 	//创建common client
-	client := common.NewCommonClient(credential, regions.Guangzhou, cpf)
+	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
 
 	// 创建common request
 	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
@@ -48,6 +53,33 @@ func TestCommonRequest(t *testing.T) {
 
 	//发送请求
 	err = client.Send(request, response)
+	if err != nil {
+		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+	}
+	t.Log(string(response.GetBody()))
+}
+
+func TestClient_SendOctetStream(t *testing.T) {
+	cr := getCredential()
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
+	cpf.HttpProfile.ReqMethod = "POST"
+	//创建common client
+	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
+	// 创建common request
+	request := tchttp.NewCommonRequest("cls", "2020-10-16", "UploadLog")
+	headers := map[string]string{
+		"X-CLS-TopicId":      "cde920aa-61f2-4569-a2c0-d01ecef65c55",
+		"X-CLS-HashKey":      "0fffffffffffffffffffffffffffffff",
+		"X-CLS-CompressType": "",
+	}
+	body, _ := ioutil.ReadFile("./binary.data")
+	request.SetOctetStreamParameters(headers, body)
+	//创建common response
+	response := tchttp.NewCommonResponse()
+
+	//发送请求
+	err := client.SendOctetStream(request, response)
 	if err != nil {
 		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
 	}

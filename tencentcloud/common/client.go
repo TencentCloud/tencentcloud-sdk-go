@@ -112,7 +112,19 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	} else {
 		headers["Content-Type"] = "application/json"
 	}
-
+	isOctetStream := false
+	cr := &tchttp.CommonRequest{}
+	ok := false
+	if cr, ok = request.(*tchttp.CommonRequest); ok {
+		if cr.IsOctetStream() {
+			isOctetStream = true
+			// custom headers must contain Content-Type : application/octet-stream
+			// todo:the custom header may overwrite headers
+			for k, v := range cr.GetHeader() {
+				headers[k] = v
+			}
+		}
+	}
 	// start signature v3 process
 
 	// build canonical request string
@@ -140,11 +152,16 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	signedHeaders := "content-type;host"
 	requestPayload := ""
 	if httpRequestMethod == "POST" {
-		b, err := json.Marshal(request)
-		if err != nil {
-			return err
+		if isOctetStream {
+			// todo Conversion comparison between string and []byte affects performance much
+			requestPayload = string(cr.GetOctetStreamBody())
+		} else {
+			b, err := json.Marshal(request)
+			if err != nil {
+				return err
+			}
+			requestPayload = string(b)
 		}
-		requestPayload = string(b)
 	}
 	hashedRequestPayload := ""
 	if c.unsignedPayload {
@@ -275,8 +292,4 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
 	client = &Client{}
 	client.Init(region).WithSecretId(secretId, secretKey)
 	return
-}
-
-func NewCommonClient(cred *Credential, region string, clientProfile *profile.ClientProfile) (c *Client) {
-	return new(Client).Init(region).WithCredential(cred).WithProfile(clientProfile)
 }
