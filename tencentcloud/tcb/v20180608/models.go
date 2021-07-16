@@ -3021,6 +3021,68 @@ func (r *DescribeEnvLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEnvPostpaidDeductRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源方列表
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeEnvPostpaidDeductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPostpaidDeductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceTypes")
+	delete(f, "EnvId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvPostpaidDeductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvPostpaidDeductResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标抵扣详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PostPaidEnvDeductInfoList []*PostPaidEnvDeductInfo `json:"PostPaidEnvDeductInfoList,omitempty" name:"PostPaidEnvDeductInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvPostpaidDeductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPostpaidDeductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3471,6 +3533,64 @@ func (r *DescribeSmsQuotasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSmsQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSpecialCostItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeSpecialCostItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecialCostItemsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecialCostItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSpecialCostItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 1分钱抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SpecialCostItems []*SpecialCostItem `json:"SpecialCostItems,omitempty" name:"SpecialCostItems"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSpecialCostItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecialCostItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4464,6 +4584,33 @@ type PlatformStatistic struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type PostPaidEnvDeductInfo struct {
+
+	// 资源方
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 按量计费详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResQuota *float64 `json:"ResQuota,omitempty" name:"ResQuota"`
+
+	// 资源包抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgQuota *float64 `json:"PkgQuota,omitempty" name:"PkgQuota"`
+
+	// 免费额度抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuota *float64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
 type PostpayEnvQuota struct {
 
 	// 资源类型
@@ -4732,6 +4879,25 @@ type SmsFreeQuota struct {
 	// 今天已使用总条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TodayUsedQuota *uint64 `json:"TodayUsedQuota,omitempty" name:"TodayUsedQuota"`
+}
+
+type SpecialCostItem struct {
+
+	// 上报日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+
+	// 腾讯云uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 资源id:环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 上报任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type StaticStorageInfo struct {

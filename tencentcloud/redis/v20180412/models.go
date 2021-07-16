@@ -47,6 +47,59 @@ type Account struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type ApplyParamsTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 应用的参数模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *ApplyParamsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyParamsTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyParamsTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyParamsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskIds []*int64 `json:"TaskIds,omitempty" name:"TaskIds"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyParamsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyParamsTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -376,9 +429,6 @@ func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
-	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
-
 	// 实例类型：2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)。
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
@@ -394,6 +444,9 @@ type CreateInstancesRequest struct {
 
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
+
+	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 实例密码，当输入参数NoAuth为true且使用私有网络VPC时，Password为非必填，否则Password为必填参数。
 	// 当实例类型TypeId为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头；
@@ -438,6 +491,12 @@ type CreateInstancesRequest struct {
 
 	// 购买实例绑定标签
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 创建实例需要应用的参数模板ID，不传则应用默认的参数模板
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -452,12 +511,12 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ZoneId")
 	delete(f, "TypeId")
 	delete(f, "MemSize")
 	delete(f, "GoodsNum")
 	delete(f, "Period")
 	delete(f, "BillingMode")
+	delete(f, "ZoneId")
 	delete(f, "Password")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
@@ -472,6 +531,8 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "NoAuth")
 	delete(f, "NodeSet")
 	delete(f, "ResourceTags")
+	delete(f, "ZoneName")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -501,6 +562,71 @@ func (r *CreateInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateParamTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 参数模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数模板描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。创建模板时必填，从源模板复制则不需要传入该参数。
+	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
+
+	// 源参数模板 ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数列表。
+	ParamList []*InstanceParam `json:"ParamList,omitempty" name:"ParamList"`
+}
+
+func (r *CreateParamTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateParamTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ProductType")
+	delete(f, "TemplateId")
+	delete(f, "ParamList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateParamTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateParamTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 参数模板 ID。
+		TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateParamTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -572,6 +698,52 @@ func (r *DeleteInstanceAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteParamTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 参数模板 ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteParamTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteParamTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteParamTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteParamTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteParamTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2101,6 +2273,130 @@ func (r *DescribeMaintenanceWindowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMaintenanceWindowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamTemplateInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 参数模板 ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeParamTemplateInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplateInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplateInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamTemplateInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例参数个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 参数模板 ID。
+		TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+		// 参数模板名称。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+		ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
+
+		// 参数模板描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 参数详情
+		Items []*ParameterDetail `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeParamTemplateInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplateInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品类型数组。产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	ProductTypes []*int64 `json:"ProductTypes,omitempty" name:"ProductTypes"`
+
+	// 模板名称数组。
+	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
+
+	// 模板ID数组。
+	TemplateIds []*string `json:"TemplateIds,omitempty" name:"TemplateIds"`
+}
+
+func (r *DescribeParamTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductTypes")
+	delete(f, "TemplateNames")
+	delete(f, "TemplateIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该用户的参数模板数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 参数模板详情。
+		Items []*ParamTemplateInfo `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeParamTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4252,6 +4548,64 @@ func (r *ModifyNetworkConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyParamTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 源参数模板 ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数模板描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参数列表。
+	ParamList []*InstanceParam `json:"ParamList,omitempty" name:"ParamList"`
+}
+
+func (r *ModifyParamTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyParamTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ParamList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyParamTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyParamTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyParamTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Outbound struct {
 
 	// 策略，ACCEPT或者DROP。
@@ -4277,6 +4631,54 @@ type Outbound struct {
 
 	// 安全组id代表的地址集合。
 	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type ParamTemplateInfo struct {
+
+	// 参数模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数模板描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
+}
+
+type ParameterDetail struct {
+
+	// 参数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数类型
+	ParamType *string `json:"ParamType,omitempty" name:"ParamType"`
+
+	// 参数默认值
+	Default *string `json:"Default,omitempty" name:"Default"`
+
+	// 参数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参数当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 修改参数后，是否需要重启数据库以使参数生效。可能的值包括：0-不需要重启；1-需要重启
+	NeedReboot *int64 `json:"NeedReboot,omitempty" name:"NeedReboot"`
+
+	// 参数允许的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *string `json:"Max,omitempty" name:"Max"`
+
+	// 参数允许的最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *string `json:"Min,omitempty" name:"Min"`
+
+	// 参数的可选枚举值。如果为非枚举参数，则为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 }
 
 type ProductConf struct {
@@ -4417,11 +4819,14 @@ type RedisNodeInfo struct {
 	// 节点类型，0 为主节点，1 为副本节点
 	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
 
+	// 主节点或者副本节点的ID，创建时不需要传递此参数。
+	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
+
 	// 主节点或者副本节点的可用区ID
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 主节点或者副本节点的ID，创建时不需要传递此参数。
-	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
+	// 主节点或者副本节点的可用区名称
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 type RedisNodes struct {

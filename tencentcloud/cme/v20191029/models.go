@@ -1884,6 +1884,9 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
 	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
 
+	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
+
 	// 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
@@ -1910,6 +1913,7 @@ func (r *ExportVideoByEditorTrackDataRequest) FromJsonString(s string) error {
 	delete(f, "Definition")
 	delete(f, "ExportDestination")
 	delete(f, "TrackData")
+	delete(f, "CoverData")
 	delete(f, "CMEExportInfo")
 	delete(f, "VODExportInfo")
 	delete(f, "Operator")

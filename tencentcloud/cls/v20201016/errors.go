@@ -50,6 +50,9 @@ const (
 	// 查询超时。
 	FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
 
+	// 投递任务不允许重试。
+	FAILEDOPERATION_SHIPPERTASKNOTTORETRY = "FailedOperation.ShipperTaskNotToRetry"
+
 	// 查询语句解析错误。
 	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
 
@@ -83,6 +86,9 @@ const (
 	// 同名机器组已经存在。
 	INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
 
+	// 投递规则命名冲突。
+	INVALIDPARAMETER_SHIPPERCONFLICT = "InvalidParameter.ShipperConflict"
+
 	// 指定日志集下已经有同名的日志主题。
 	INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
 
@@ -115,6 +121,9 @@ const (
 
 	// 分区超过限制。
 	LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"
+
+	// 投递规则超出限制。
+	LIMITEXCEEDED_SHIPPER = "LimitExceeded.Shipper"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -169,6 +178,12 @@ const (
 
 	// 分区不存在。
 	RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
+
+	// 投递规则不存在。
+	RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+
+	// 投递任务不存在。
+	RESOURCENOTFOUND_SHIPPERTASKNOTEXIST = "ResourceNotFound.ShipperTaskNotExist"
 
 	// 日志主题不存在。
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"

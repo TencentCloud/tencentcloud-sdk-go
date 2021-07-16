@@ -1088,6 +1088,38 @@ func (c *Client) DescribeEnvLimit(request *DescribeEnvLimitRequest) (response *D
     return
 }
 
+func NewDescribeEnvPostpaidDeductRequest() (request *DescribeEnvPostpaidDeductRequest) {
+    request = &DescribeEnvPostpaidDeductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvPostpaidDeduct")
+    return
+}
+
+func NewDescribeEnvPostpaidDeductResponse() (response *DescribeEnvPostpaidDeductResponse) {
+    response = &DescribeEnvPostpaidDeductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvPostpaidDeduct
+// 查询环境后付费计费详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeEnvPostpaidDeduct(request *DescribeEnvPostpaidDeductRequest) (response *DescribeEnvPostpaidDeductResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvPostpaidDeductRequest()
+    }
+    response = NewDescribeEnvPostpaidDeductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvsRequest() (request *DescribeEnvsRequest) {
     request = &DescribeEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1360,6 +1392,38 @@ func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response 
         request = NewDescribeSmsQuotasRequest()
     }
     response = NewDescribeSmsQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSpecialCostItemsRequest() (request *DescribeSpecialCostItemsRequest) {
+    request = &DescribeSpecialCostItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeSpecialCostItems")
+    return
+}
+
+func NewDescribeSpecialCostItemsResponse() (response *DescribeSpecialCostItemsResponse) {
+    response = &DescribeSpecialCostItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSpecialCostItems
+// 查询环境1分钱抵扣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeSpecialCostItems(request *DescribeSpecialCostItemsRequest) (response *DescribeSpecialCostItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecialCostItemsRequest()
+    }
+    response = NewDescribeSpecialCostItemsResponse()
     err = c.Send(request, response)
     return
 }

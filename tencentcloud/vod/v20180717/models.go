@@ -7656,6 +7656,9 @@ type EditMediaTask struct {
 	// <li>70000：内部服务错误，建议重试。</li>
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 

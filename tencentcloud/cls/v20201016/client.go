@@ -359,6 +359,48 @@ func (c *Client) CreateMachineGroup(request *CreateMachineGroupRequest) (respons
     return
 }
 
+func NewCreateShipperRequest() (request *CreateShipperRequest) {
+    request = &CreateShipperRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateShipper")
+    return
+}
+
+func NewCreateShipperResponse() (response *CreateShipperResponse) {
+    response = &CreateShipperResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateShipper
+// 创建新的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SHIPPERCONFLICT = "InvalidParameter.ShipperConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SHIPPER = "LimitExceeded.Shipper"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateShipper(request *CreateShipperRequest) (response *CreateShipperResponse, err error) {
+    if request == nil {
+        request = NewCreateShipperRequest()
+    }
+    response = NewCreateShipperResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRequest() (request *CreateTopicRequest) {
     request = &CreateTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -702,6 +744,46 @@ func (c *Client) DeleteMachineGroup(request *DeleteMachineGroupRequest) (respons
         request = NewDeleteMachineGroupRequest()
     }
     response = NewDeleteMachineGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteShipperRequest() (request *DeleteShipperRequest) {
+    request = &DeleteShipperRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteShipper")
+    return
+}
+
+func NewDeleteShipperResponse() (response *DeleteShipperResponse) {
+    response = &DeleteShipperResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteShipper
+// 删除投递规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+func (c *Client) DeleteShipper(request *DeleteShipperRequest) (response *DeleteShipperResponse, err error) {
+    if request == nil {
+        request = NewDeleteShipperRequest()
+    }
+    response = NewDeleteShipperResponse()
     err = c.Send(request, response)
     return
 }
@@ -1200,6 +1282,86 @@ func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (respons
     return
 }
 
+func NewDescribeShipperTasksRequest() (request *DescribeShipperTasksRequest) {
+    request = &DescribeShipperTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeShipperTasks")
+    return
+}
+
+func NewDescribeShipperTasksResponse() (response *DescribeShipperTasksResponse) {
+    response = &DescribeShipperTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeShipperTasks
+// 获取投递任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+func (c *Client) DescribeShipperTasks(request *DescribeShipperTasksRequest) (response *DescribeShipperTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeShipperTasksRequest()
+    }
+    response = NewDescribeShipperTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeShippersRequest() (request *DescribeShippersRequest) {
+    request = &DescribeShippersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeShippers")
+    return
+}
+
+func NewDescribeShippersResponse() (response *DescribeShippersResponse) {
+    response = &DescribeShippersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeShippers
+// 获取投递规则信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeShippers(request *DescribeShippersRequest) (response *DescribeShippersResponse, err error) {
+    if request == nil {
+        request = NewDescribeShippersRequest()
+    }
+    response = NewDescribeShippersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
     request = &DescribeTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1564,6 +1726,45 @@ func (c *Client) ModifyMachineGroup(request *ModifyMachineGroupRequest) (respons
     return
 }
 
+func NewModifyShipperRequest() (request *ModifyShipperRequest) {
+    request = &ModifyShipperRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyShipper")
+    return
+}
+
+func NewModifyShipperResponse() (response *ModifyShipperResponse) {
+    response = &ModifyShipperResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyShipper
+// 修改现有的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+func (c *Client) ModifyShipper(request *ModifyShipperRequest) (response *ModifyShipperResponse, err error) {
+    if request == nil {
+        request = NewModifyShipperRequest()
+    }
+    response = NewModifyShipperResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTopicRequest() (request *ModifyTopicRequest) {
     request = &ModifyTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1601,6 +1802,48 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
         request = NewModifyTopicRequest()
     }
     response = NewModifyTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRetryShipperTaskRequest() (request *RetryShipperTaskRequest) {
+    request = &RetryShipperTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "RetryShipperTask")
+    return
+}
+
+func NewRetryShipperTaskResponse() (response *RetryShipperTaskResponse) {
+    response = &RetryShipperTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RetryShipperTask
+// 重试失败的投递任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SHIPPERTASKNOTTORETRY = "FailedOperation.ShipperTaskNotToRetry"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+//  RESOURCENOTFOUND_SHIPPERTASKNOTEXIST = "ResourceNotFound.ShipperTaskNotExist"
+func (c *Client) RetryShipperTask(request *RetryShipperTaskRequest) (response *RetryShipperTaskResponse, err error) {
+    if request == nil {
+        request = NewRetryShipperTaskRequest()
+    }
+    response = NewRetryShipperTaskResponse()
     err = c.Send(request, response)
     return
 }
