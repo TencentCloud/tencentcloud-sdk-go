@@ -288,7 +288,7 @@ import "crypto/tls"
 // Handling errors
 response, err := client.DescribeInstances(request)
 if terr, ok := err.(*errors.TencentCloudSDKError); ok {
-    code :=terr.GetCode()
+    code := terr.GetCode()
     if code == cvm.FAILEDOPERATION_ILLEGALTAGKEY{
         fmt.Printf("Handling error: FailedOperation.IllegalTagKey,%s", err)
     }else if code == cvm.UNAUTHORIZEDOPERATION{
