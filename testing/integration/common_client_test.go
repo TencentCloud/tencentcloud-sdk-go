@@ -69,11 +69,12 @@ func TestClient_SendOctetStream(t *testing.T) {
 	// 创建common request
 	request := tchttp.NewCommonRequest("cls", "2020-10-16", "UploadLog")
 	headers := map[string]string{
-		"X-CLS-TopicId":      "cde920aa-61f2-4569-a2c0-d01ecef65c55",
+		"X-CLS-TopicId":      "f6c4fa6f-367a-4f14-8289-1ff6f77ed975",
 		"X-CLS-HashKey":      "0fffffffffffffffffffffffffffffff",
 		"X-CLS-CompressType": "",
 	}
 	body, _ := ioutil.ReadFile("./binary.data")
+
 	request.SetOctetStreamParameters(headers, body)
 	//创建common response
 	response := tchttp.NewCommonResponse()
