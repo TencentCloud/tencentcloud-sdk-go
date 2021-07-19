@@ -1,44 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 70 次发布
+### 第 18 次发布
 
-发布时间：2021-07-16 08:04:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
-
-	* 新增入参：AwsPrivateAccess, OssPrivateAccess
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：OssPrivateAccess
-
-
-新增数据结构：
-
-* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：OssPrivateAccess
-
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 5 次发布
-
-发布时间：2021-07-16 08:00:12
+发布时间：2021-07-19 08:01:24
 
 本次发布包含了以下内容：
 
@@ -46,153 +12,22 @@
 
 新增接口：
 
-* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
-* [DeleteShipper](https://cloud.tencent.com/document/api/614/58746)
-* [DescribeShipperTasks](https://cloud.tencent.com/document/api/614/58745)
-* [DescribeShippers](https://cloud.tencent.com/document/api/614/58744)
-* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
-* [RetryShipperTask](https://cloud.tencent.com/document/api/614/58742)
+* [AttachCcn](https://cloud.tencent.com/document/api/1207/58798)
+* [DescribeCcnAttachedInstances](https://cloud.tencent.com/document/api/1207/58797)
+* [DetachCcn](https://cloud.tencent.com/document/api/1207/58796)
+* [ResetAttachCcn](https://cloud.tencent.com/document/api/1207/58795)
 
 新增数据结构：
 
-* [CompressInfo](https://cloud.tencent.com/document/api/614/56471#CompressInfo)
-* [ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo)
-* [CsvInfo](https://cloud.tencent.com/document/api/614/56471#CsvInfo)
-* [FilterRuleInfo](https://cloud.tencent.com/document/api/614/56471#FilterRuleInfo)
-* [JsonInfo](https://cloud.tencent.com/document/api/614/56471#JsonInfo)
-* [ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)
-* [ShipperTaskInfo](https://cloud.tencent.com/document/api/614/56471#ShipperTaskInfo)
+* [CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance)
 
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 腾讯云自动化助手(tat) 版本：2020-10-28
 
-### 第 37 次发布
+### 第 9 次发布
 
-发布时间：2021-07-16 08:03:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ExportVideoByEditorTrackData](https://cloud.tencent.com/document/api/1156/44159)
-
-	* 新增入参：CoverData
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 22 次发布
-
-发布时间：2021-07-16 08:05:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
-
-	* 新增出参：InstanceId
-
-* [InquiryPriceRenewInstance](https://cloud.tencent.com/document/api/589/38064)
-
-	* 新增入参：ModifyPayMode
-
-* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
-
-	* 新增入参：StartServiceAfterScaleOut
-
-
-修改数据结构：
-
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
-
-	* 新增成员：SupportModifyPayMode
-
-* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
-
-	* 新增成员：VpcId, SubnetId
-
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 35 次发布
-
-发布时间：2021-07-16 08:08:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ApplyParamsTemplate](https://cloud.tencent.com/document/api/239/58753)
-* [CreateParamTemplate](https://cloud.tencent.com/document/api/239/58752)
-* [DeleteParamTemplate](https://cloud.tencent.com/document/api/239/58751)
-* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/239/58748)
-* [DescribeParamTemplates](https://cloud.tencent.com/document/api/239/58750)
-* [ModifyParamTemplate](https://cloud.tencent.com/document/api/239/58749)
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/239/20026)
-
-	* 新增入参：ZoneName, TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId
-
-
-新增数据结构：
-
-* [ParamTemplateInfo](https://cloud.tencent.com/document/api/239/20022#ParamTemplateInfo)
-* [ParameterDetail](https://cloud.tencent.com/document/api/239/20022#ParameterDetail)
-
-修改数据结构：
-
-* [RedisNodeInfo](https://cloud.tencent.com/document/api/239/20022#RedisNodeInfo)
-
-	* 新增成员：ZoneName
-
-	* <font color="#dd0000">**修改成员**：</font>ZoneId
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 56 次发布
-
-发布时间：2021-07-16 08:09:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEnvPostpaidDeduct](https://cloud.tencent.com/document/api/876/58755)
-* [DescribeSpecialCostItems](https://cloud.tencent.com/document/api/876/58754)
-
-新增数据结构：
-
-* [PostPaidEnvDeductInfo](https://cloud.tencent.com/document/api/876/34822#PostPaidEnvDeductInfo)
-* [SpecialCostItem](https://cloud.tencent.com/document/api/876/34822#SpecialCostItem)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 87 次发布
-
-发布时间：2021-07-16 08:10:26
+发布时间：2021-07-19 08:11:15
 
 本次发布包含了以下内容：
 
@@ -200,9 +35,9 @@
 
 修改数据结构：
 
-* [EditMediaTask](https://cloud.tencent.com/document/api/266/31773#EditMediaTask)
+* [InvocationTask](https://cloud.tencent.com/document/api/1340/52687#InvocationTask)
 
-	* 新增成员：ErrCodeExt
+	* 新增成员：ErrorInfo
 
 
 
@@ -8786,7 +8621,7 @@
 
 新增数据结构：
 
-* [[OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)](https://cloud.tencent.com/document/api/228/30987#[OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess))
+* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
 
 修改数据结构：
 
@@ -12757,22 +12592,22 @@
 
 新增接口：
 
-* [[CreateShipper](https://cloud.tencent.com/document/api/614/58747)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteShipper](https://cloud.tencent.com/document/api/614/58746)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShipperTasks](https://cloud.tencent.com/document/api/614/58745)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeShippers](https://cloud.tencent.com/document/api/614/58744)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyShipper](https://cloud.tencent.com/document/api/614/58743)](https://cloud.tencent.com/document/api/#/#)
-* [[RetryShipperTask](https://cloud.tencent.com/document/api/614/58742)](https://cloud.tencent.com/document/api/#/#)
+* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
+* [DeleteShipper](https://cloud.tencent.com/document/api/614/58746)
+* [DescribeShipperTasks](https://cloud.tencent.com/document/api/614/58745)
+* [DescribeShippers](https://cloud.tencent.com/document/api/614/58744)
+* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
+* [RetryShipperTask](https://cloud.tencent.com/document/api/614/58742)
 
 新增数据结构：
 
-* [[CompressInfo](https://cloud.tencent.com/document/api/614/56471#CompressInfo)](https://cloud.tencent.com/document/api/614/56471#[CompressInfo](https://cloud.tencent.com/document/api/614/56471#CompressInfo))
-* [[ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo)](https://cloud.tencent.com/document/api/614/56471#[ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo))
-* [[CsvInfo](https://cloud.tencent.com/document/api/614/56471#CsvInfo)](https://cloud.tencent.com/document/api/614/56471#[CsvInfo](https://cloud.tencent.com/document/api/614/56471#CsvInfo))
-* [[FilterRuleInfo](https://cloud.tencent.com/document/api/614/56471#FilterRuleInfo)](https://cloud.tencent.com/document/api/614/56471#[FilterRuleInfo](https://cloud.tencent.com/document/api/614/56471#FilterRuleInfo))
-* [[JsonInfo](https://cloud.tencent.com/document/api/614/56471#JsonInfo)](https://cloud.tencent.com/document/api/614/56471#[JsonInfo](https://cloud.tencent.com/document/api/614/56471#JsonInfo))
-* [[ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)](https://cloud.tencent.com/document/api/614/56471#[ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo))
-* [[ShipperTaskInfo](https://cloud.tencent.com/document/api/614/56471#ShipperTaskInfo)](https://cloud.tencent.com/document/api/614/56471#[ShipperTaskInfo](https://cloud.tencent.com/document/api/614/56471#ShipperTaskInfo))
+* [CompressInfo](https://cloud.tencent.com/document/api/614/56471#CompressInfo)
+* [ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo)
+* [CsvInfo](https://cloud.tencent.com/document/api/614/56471#CsvInfo)
+* [FilterRuleInfo](https://cloud.tencent.com/document/api/614/56471#FilterRuleInfo)
+* [JsonInfo](https://cloud.tencent.com/document/api/614/56471#JsonInfo)
+* [ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)
+* [ShipperTaskInfo](https://cloud.tencent.com/document/api/614/56471#ShipperTaskInfo)
 
 ### 第 4 次发布
 
@@ -29713,6 +29548,25 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 18 次发布
+
+发布时间：2021-07-19 08:01:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AttachCcn](https://cloud.tencent.com/document/api/1207/58798)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/api/1207/58797)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachCcn](https://cloud.tencent.com/document/api/1207/58796)](https://cloud.tencent.com/document/api/#/#)
+* [[ResetAttachCcn](https://cloud.tencent.com/document/api/1207/58795)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance)](https://cloud.tencent.com/document/api/1207/47576#[CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance))
+
 ### 第 17 次发布
 
 发布时间：2021-07-13 08:02:15
@@ -37145,12 +36999,12 @@
 
 新增接口：
 
-* [[ApplyParamsTemplate](https://cloud.tencent.com/document/api/239/58753)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateParamTemplate](https://cloud.tencent.com/document/api/239/58752)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteParamTemplate](https://cloud.tencent.com/document/api/239/58751)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/239/58748)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParamTemplates](https://cloud.tencent.com/document/api/239/58750)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyParamTemplate](https://cloud.tencent.com/document/api/239/58749)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyParamsTemplate](https://cloud.tencent.com/document/api/239/58753)
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/239/58752)
+* [DeleteParamTemplate](https://cloud.tencent.com/document/api/239/58751)
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/239/58748)
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/239/58750)
+* [ModifyParamTemplate](https://cloud.tencent.com/document/api/239/58749)
 
 修改接口：
 
@@ -37163,8 +37017,8 @@
 
 新增数据结构：
 
-* [[ParamTemplateInfo](https://cloud.tencent.com/document/api/239/20022#ParamTemplateInfo)](https://cloud.tencent.com/document/api/239/20022#[ParamTemplateInfo](https://cloud.tencent.com/document/api/239/20022#ParamTemplateInfo))
-* [[ParameterDetail](https://cloud.tencent.com/document/api/239/20022#ParameterDetail)](https://cloud.tencent.com/document/api/239/20022#[ParameterDetail](https://cloud.tencent.com/document/api/239/20022#ParameterDetail))
+* [ParamTemplateInfo](https://cloud.tencent.com/document/api/239/20022#ParamTemplateInfo)
+* [ParameterDetail](https://cloud.tencent.com/document/api/239/20022#ParameterDetail)
 
 修改数据结构：
 
@@ -40655,6 +40509,21 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 9 次发布
+
+发布时间：2021-07-19 08:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InvocationTask](https://cloud.tencent.com/document/api/1340/52687#InvocationTask)
+
+	* 新增成员：ErrorInfo
+
+
 ### 第 8 次发布
 
 发布时间：2021-07-14 08:12:04
@@ -41747,13 +41616,13 @@
 
 新增接口：
 
-* [[DescribeEnvPostpaidDeduct](https://cloud.tencent.com/document/api/876/58755)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSpecialCostItems](https://cloud.tencent.com/document/api/876/58754)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEnvPostpaidDeduct](https://cloud.tencent.com/document/api/876/58755)
+* [DescribeSpecialCostItems](https://cloud.tencent.com/document/api/876/58754)
 
 新增数据结构：
 
-* [[PostPaidEnvDeductInfo](https://cloud.tencent.com/document/api/876/34822#PostPaidEnvDeductInfo)](https://cloud.tencent.com/document/api/876/34822#[PostPaidEnvDeductInfo](https://cloud.tencent.com/document/api/876/34822#PostPaidEnvDeductInfo))
-* [[SpecialCostItem](https://cloud.tencent.com/document/api/876/34822#SpecialCostItem)](https://cloud.tencent.com/document/api/876/34822#[SpecialCostItem](https://cloud.tencent.com/document/api/876/34822#SpecialCostItem))
+* [PostPaidEnvDeductInfo](https://cloud.tencent.com/document/api/876/34822#PostPaidEnvDeductInfo)
+* [SpecialCostItem](https://cloud.tencent.com/document/api/876/34822#SpecialCostItem)
 
 ### 第 55 次发布
 

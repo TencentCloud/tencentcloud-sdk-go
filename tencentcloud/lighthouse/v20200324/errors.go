@@ -122,6 +122,9 @@ const (
 	// 参数值非法，镜像 ID 格式非法。
 	INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
 
+	// 云联网实例ID格式非法。
+	INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
+
 	// 磁盘大小发生改变。
 	INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = "InvalidParameterValue.DiskSizeNotMatch"
 
@@ -281,6 +284,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 关联云联网失败。请检查云联网状态并稍后再试。
+	UNSUPPORTEDOPERATION_ATTACHCCNFAILED = "UnsupportedOperation.AttachCcnFailed"
+
 	// 镜像当前状态不支持该操作。
 	UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
 
@@ -289,6 +295,18 @@ const (
 
 	// 镜像被使用中，不支持该操作。
 	UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+
+	// 已经关联云联网，不支持再次关联。
+	UNSUPPORTEDOPERATION_CCNALREADYATTACHED = "UnsupportedOperation.CcnAlreadyAttached"
+
+	// 云联网 尚未关联。不支持此操作。
+	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
+
+	// 查询云联网关联的实例状态失败。请稍后再试。
+	UNSUPPORTEDOPERATION_DESCRIBECCNATTACHEDINSTANCESFAILED = "UnsupportedOperation.DescribeCcnAttachedInstancesFailed"
+
+	// 解关联云联网失败。请检查云联网状态并稍后再试。
+	UNSUPPORTEDOPERATION_DETACHCCNFAILED = "UnsupportedOperation.DetachCcnFailed"
 
 	// 磁盘忙。
 	UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
@@ -322,6 +340,9 @@ const (
 
 	// 不支持的操作，实例最近一次的操作尚未完成。
 	UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+
+	// 重新申请关联云联网失败。请检查云联网状态并稍后再试。
+	UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = "UnsupportedOperation.ResetAttachCcnFailed"
 
 	// 快照忙。
 	UNSUPPORTEDOPERATION_SNAPSHOTBUSY = "UnsupportedOperation.SnapshotBusy"

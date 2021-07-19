@@ -664,6 +664,9 @@ type InvocationTask struct {
 
 	// 执行任务所执行的命令详情。
 	CommandDocument *CommandDocument `json:"CommandDocument,omitempty" name:"CommandDocument"`
+
+	// 执行任务失败时的错误信息。
+	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
 }
 
 type InvocationTaskBasicInfo struct {

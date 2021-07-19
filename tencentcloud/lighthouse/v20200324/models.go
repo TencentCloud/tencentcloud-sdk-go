@@ -120,6 +120,52 @@ func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AttachCcnRequest struct {
+	*tchttp.BaseRequest
+
+	// 云联网实例ID。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+}
+
+func (r *AttachCcnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachCcnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachCcnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachCcnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachCcnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachCcnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Blueprint struct {
 
 	// 镜像 ID  ，是 Blueprint 的唯一标识。
@@ -248,6 +294,35 @@ type Bundle struct {
 	// "NORMAL": 普通套餐
 	// "CAREFREE": 无忧套餐
 	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitempty" name:"BundleDisplayLabel"`
+}
+
+type CcnAttachedInstance struct {
+
+	// 云联网ID。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 关联实例CIDR。
+	CidrBlock []*string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 关联实例状态：
+	// 
+	// •  PENDING：申请中
+	// •  ACTIVE：已连接
+	// •  EXPIRED：已过期
+	// •  REJECTED：已拒绝
+	// •  DELETED：已删除
+	// •  FAILED：失败的（2小时后将异步强制解关联）
+	// •  ATTACHING：关联中
+	// •  DETACHING：解关联中
+	// •  DETACHFAILED：解关联失败（2小时后将异步强制解关联）
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 关联时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type CreateBlueprintRequest struct {
@@ -920,6 +995,52 @@ func (r *DescribeBundlesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBundlesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnAttachedInstancesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCcnAttachedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnAttachedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcnAttachedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcnAttachedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云联网关联的实例列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CcnAttachedInstanceSet []*CcnAttachedInstance `json:"CcnAttachedInstanceSet,omitempty" name:"CcnAttachedInstanceSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcnAttachedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1856,6 +1977,52 @@ func (r *DescribeZonesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachCcnRequest struct {
+	*tchttp.BaseRequest
+
+	// 云联网实例ID。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+}
+
+func (r *DetachCcnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachCcnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachCcnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachCcnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachCcnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachCcnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2857,6 +3024,52 @@ type RegionInfo struct {
 
 	// 是否中国大陆地域
 	IsChinaMainland *bool `json:"IsChinaMainland,omitempty" name:"IsChinaMainland"`
+}
+
+type ResetAttachCcnRequest struct {
+	*tchttp.BaseRequest
+
+	// 云联网实例ID。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+}
+
+func (r *ResetAttachCcnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetAttachCcnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetAttachCcnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetAttachCcnResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetAttachCcnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetAttachCcnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetInstanceBlueprint struct {

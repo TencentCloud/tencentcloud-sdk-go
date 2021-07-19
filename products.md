@@ -84,7 +84,7 @@
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2021-07-02 08:05:47 |
 | iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-07-06 08:06:33 |
 | ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-07-02 08:00:38 |
-| ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-07-14 08:01:45 |
+| ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-07-19 08:01:49 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-07-02 08:01:41 |
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-07-05 08:01:03 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-07-02 08:05:57 |
@@ -94,7 +94,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-07-07 09:56:32 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-07-02 08:00:48 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-07-02 08:06:17 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-07-13 08:02:15 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-07-19 08:01:24 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-07-15 08:06:26 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-07-02 08:01:39 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-07-15 08:06:44 |
@@ -135,13 +135,13 @@
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2021-07-02 08:11:02 |
 | taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-07-15 08:01:41 |
 | tag | [标签](https://cloud.tencent.com/document/product/651) | 2021-07-02 08:08:00 |
-| tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-07-15 08:12:10 |
+| tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-07-19 08:11:15 |
 | tav | [文件检测](https://cloud.tencent.com/document/product) | 2019-11-28 22:10:04 |
 | tbaas | [TBaaS](https://cloud.tencent.com/document/product/663) | 2021-07-02 08:08:03 |
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2021-07-02 08:08:13 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-07-02 08:08:14 |
-| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-07-16 08:09:05 |
+| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-07-19 08:08:20 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-07-02 08:01:17 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-07-14 08:10:43 |
