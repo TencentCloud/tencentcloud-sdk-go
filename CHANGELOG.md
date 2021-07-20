@@ -1,10 +1,44 @@
 # 本版本更新包含以下内容：
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 18 次发布
+### 第 37 次发布
 
-发布时间：2021-07-19 08:01:24
+发布时间：2021-07-20 08:04:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
+
+	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
+
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
+
+	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
+
+
+新增数据结构：
+
+* [SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy)
+
+修改数据结构：
+
+* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
+
+	* 新增成员：InstanceAllocationPolicy, SpotMixedAllocationPolicy, CapacityRebalance
+
+
+
+
+## 网站备案(ba) 版本：2020-07-20
+
+### 第 2 次发布
+
+发布时间：2021-07-20 08:01:59
 
 本次发布包含了以下内容：
 
@@ -12,32 +46,57 @@
 
 新增接口：
 
-* [AttachCcn](https://cloud.tencent.com/document/api/1207/58798)
-* [DescribeCcnAttachedInstances](https://cloud.tencent.com/document/api/1207/58797)
-* [DetachCcn](https://cloud.tencent.com/document/api/1207/58796)
-* [ResetAttachCcn](https://cloud.tencent.com/document/api/1207/58795)
-
-新增数据结构：
-
-* [CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance)
+* [SyncIcpOrderWebInfo](https://cloud.tencent.com/document/api/243/58909)
 
 
 
-## 腾讯云自动化助手(tat) 版本：2020-10-28
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 9 次发布
+### 第 25 次发布
 
-发布时间：2021-07-19 08:11:15
+发布时间：2021-07-20 08:07:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [InvocationTask](https://cloud.tencent.com/document/api/1340/52687#InvocationTask)
+* [CancelDcnJob](https://cloud.tencent.com/document/api/557/58910)
 
-	* 新增成员：ErrorInfo
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 22 次发布
+
+发布时间：2021-07-20 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelDcnJob](https://cloud.tencent.com/document/api/237/58911)
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 7 次发布
+
+发布时间：2021-07-20 08:04:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+
+	* 新增入参：Upload, Renew
 
 
 
@@ -1546,6 +1605,36 @@
 
 ## 弹性伸缩(as) 版本：2018-04-19
 
+### 第 37 次发布
+
+发布时间：2021-07-20 08:04:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
+
+	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
+
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
+
+	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
+
+
+新增数据结构：
+
+* [[SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy)](https://cloud.tencent.com/document/api/377/20453#[SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy))
+
+修改数据结构：
+
+* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
+
+	* 新增成员：InstanceAllocationPolicy, SpotMixedAllocationPolicy, CapacityRebalance
+
+
 ### 第 36 次发布
 
 发布时间：2021-07-09 08:02:59
@@ -2807,6 +2896,18 @@
 
 
 ## 网站备案(ba) 版本：2020-07-20
+
+### 第 2 次发布
+
+发布时间：2021-07-20 08:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SyncIcpOrderWebInfo](https://cloud.tencent.com/document/api/243/58909)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 1 次发布
 
@@ -18811,6 +18912,18 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 25 次发布
+
+发布时间：2021-07-20 08:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelDcnJob](https://cloud.tencent.com/document/api/557/58910)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 24 次发布
 
 发布时间：2021-07-14 08:05:11
@@ -29558,14 +29671,14 @@
 
 新增接口：
 
-* [[AttachCcn](https://cloud.tencent.com/document/api/1207/58798)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCcnAttachedInstances](https://cloud.tencent.com/document/api/1207/58797)](https://cloud.tencent.com/document/api/#/#)
-* [[DetachCcn](https://cloud.tencent.com/document/api/1207/58796)](https://cloud.tencent.com/document/api/#/#)
-* [[ResetAttachCcn](https://cloud.tencent.com/document/api/1207/58795)](https://cloud.tencent.com/document/api/#/#)
+* [AttachCcn](https://cloud.tencent.com/document/api/1207/58798)
+* [DescribeCcnAttachedInstances](https://cloud.tencent.com/document/api/1207/58797)
+* [DetachCcn](https://cloud.tencent.com/document/api/1207/58796)
+* [ResetAttachCcn](https://cloud.tencent.com/document/api/1207/58795)
 
 新增数据结构：
 
-* [[CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance)](https://cloud.tencent.com/document/api/1207/47576#[CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance))
+* [CcnAttachedInstance](https://cloud.tencent.com/document/api/1207/47576#CcnAttachedInstance)
 
 ### 第 17 次发布
 
@@ -31351,6 +31464,18 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 22 次发布
+
+发布时间：2021-07-20 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelDcnJob](https://cloud.tencent.com/document/api/237/58911)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 21 次发布
 
@@ -39819,6 +39944,21 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 7 次发布
+
+发布时间：2021-07-20 08:04:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+
+	* 新增入参：Upload, Renew
+
 
 ### 第 6 次发布
 

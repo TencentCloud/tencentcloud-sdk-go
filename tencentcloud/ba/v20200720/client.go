@@ -73,3 +73,36 @@ func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *C
     err = c.Send(request, response)
     return
 }
+
+func NewSyncIcpOrderWebInfoRequest() (request *SyncIcpOrderWebInfoRequest) {
+    request = &SyncIcpOrderWebInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ba", APIVersion, "SyncIcpOrderWebInfo")
+    return
+}
+
+func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
+    response = &SyncIcpOrderWebInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncIcpOrderWebInfo
+// 将备案ICP订单下的一个网站信息 同步给订单下其他网站，需要被同步的网站被检查通过(isCheck:true)；
+//
+// 只有指定的网站信息字段能被同步
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
+    if request == nil {
+        request = NewSyncIcpOrderWebInfoRequest()
+    }
+    response = NewSyncIcpOrderWebInfoResponse()
+    err = c.Send(request, response)
+    return
+}

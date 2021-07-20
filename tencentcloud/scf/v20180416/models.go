@@ -65,7 +65,7 @@ type AsyncEvent struct {
 	// 函数版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
-	// 事件状态
+	// 事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"

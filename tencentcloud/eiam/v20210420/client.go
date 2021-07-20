@@ -135,7 +135,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
 //  FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
 //  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
     if request == nil {
@@ -329,7 +329,7 @@ func NewDescribeOrgNodeResponse() (response *DescribeOrgNodeResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *DescribeOrgNodeResponse, err error) {
     if request == nil {
         request = NewDescribeOrgNodeRequest()
@@ -423,7 +423,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()

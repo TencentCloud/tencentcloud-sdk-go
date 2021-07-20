@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 另一个请求正在处理中，请稍后再试。
+	FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

@@ -98,6 +98,40 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewCancelDcnJobRequest() (request *CancelDcnJobRequest) {
+    request = &CancelDcnJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "CancelDcnJob")
+    return
+}
+
+func NewCancelDcnJobResponse() (response *CancelDcnJobResponse) {
+    response = &CancelDcnJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelDcnJob
+// 取消DCN同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) CancelDcnJob(request *CancelDcnJobRequest) (response *CancelDcnJobResponse, err error) {
+    if request == nil {
+        request = NewCancelDcnJobRequest()
+    }
+    response = NewCancelDcnJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneAccountRequest() (request *CloneAccountRequest) {
     request = &CloneAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -356,6 +390,7 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETRIGHTFAILED = "InternalError.GetRightFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -759,6 +794,7 @@ func NewDescribeDCDBShardsResponse() (response *DescribeDCDBShardsResponse) {
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
 //  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -1029,6 +1065,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()

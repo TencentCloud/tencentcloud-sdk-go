@@ -1096,6 +1096,12 @@ type DescribeCertificatesRequest struct {
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
 	Deployable *uint64 `json:"Deployable,omitempty" name:"Deployable"`
+
+	// 是否筛选上传托管的 1筛选，0不筛选
+	Upload *int64 `json:"Upload,omitempty" name:"Upload"`
+
+	// 是否筛选可续期证书 1筛选 0不筛选
+	Renew *int64 `json:"Renew,omitempty" name:"Renew"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -1118,6 +1124,8 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "ExpirationSort")
 	delete(f, "CertificateStatus")
 	delete(f, "Deployable")
+	delete(f, "Upload")
+	delete(f, "Renew")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}

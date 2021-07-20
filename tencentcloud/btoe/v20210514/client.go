@@ -146,6 +146,7 @@ func NewCreateDocDepositResponse() (response *CreateDocDepositResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_FILEREADFAILED = "FailedOperation.FileReadFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFILESUFFIX = "InvalidParameter.InvalidFileSuffix"
@@ -155,6 +156,7 @@ func NewCreateDocDepositResponse() (response *CreateDocDepositResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateDocDeposit(request *CreateDocDepositRequest) (response *CreateDocDepositResponse, err error) {

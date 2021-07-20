@@ -2433,6 +2433,7 @@ func NewDescribeTagRetentionRulesResponse() (response *DescribeTagRetentionRules
 //  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
 //  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
 //  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2535,6 +2536,7 @@ func NewDescribeWebhookTriggerLogResponse() (response *DescribeWebhookTriggerLog
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {

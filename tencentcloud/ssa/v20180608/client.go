@@ -282,6 +282,7 @@ func NewDescribeComplianceListResponse() (response *DescribeComplianceListRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -313,6 +314,7 @@ func NewDescribeConfigListResponse() (response *DescribeConfigListResponse) {
 // 云配置检查项总览页检查项列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConfigList(request *DescribeConfigListRequest) (response *DescribeConfigListResponse, err error) {

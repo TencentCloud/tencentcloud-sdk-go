@@ -267,6 +267,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BACKUPNAMEISILLEGAL = "InvalidParameterValue.BackupNameIsIllegal"
 //  LIMITEXCEEDED_TOOMANYDB = "LimitExceeded.TooManyDB"
 //  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"

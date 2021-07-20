@@ -312,6 +312,7 @@ func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEENCODINDFORMATERROR = "FailedOperation.FileEncodindFormatError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
@@ -320,6 +321,7 @@ func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateImageDeposit(request *CreateImageDepositRequest) (response *CreateImageDepositResponse, err error) {
     if request == nil {

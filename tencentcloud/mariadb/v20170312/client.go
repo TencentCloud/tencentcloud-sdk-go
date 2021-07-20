@@ -98,6 +98,39 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewCancelDcnJobRequest() (request *CancelDcnJobRequest) {
+    request = &CancelDcnJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "CancelDcnJob")
+    return
+}
+
+func NewCancelDcnJobResponse() (response *CancelDcnJobResponse) {
+    response = &CancelDcnJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelDcnJob
+// 取消DCN同步
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) CancelDcnJob(request *CancelDcnJobRequest) (response *CancelDcnJobResponse, err error) {
+    if request == nil {
+        request = NewCancelDcnJobRequest()
+    }
+    response = NewCancelDcnJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneAccountRequest() (request *CloneAccountRequest) {
     request = &CloneAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -401,6 +434,7 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETRIGHTFAILED = "InternalError.GetRightFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"

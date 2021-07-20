@@ -183,6 +183,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 // 取消任务执行
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
 //  INTERNALERROR = "InternalError"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {

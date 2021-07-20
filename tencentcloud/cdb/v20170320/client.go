@@ -668,6 +668,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 //  CDBERROR = "CdbError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -2066,6 +2067,7 @@ func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
     if request == nil {
@@ -3635,6 +3637,7 @@ func NewModifyRoTypeResponse() (response *ModifyRoTypeResponse) {
 //  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
 //  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"

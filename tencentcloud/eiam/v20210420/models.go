@@ -289,7 +289,7 @@ type CreateUserRequest struct {
 	// 用户所属用户组ID列表。
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" name:"UserGroupIds"`
 
-	// 用户手机号。
+	// 用户手机号。例如：+86-1xxxxxxxxxx。
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 用户所属组织机构唯一ID。如果为空，默认为在根节点下创建用户。
@@ -599,7 +599,7 @@ type DescribeOrgNodeRequest struct {
 	// 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点信息。
 	OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
 
-	// 是否读取其子节点信息。当读取层数为空或0时，默认仅读取当前机构节点信息。当读取层数为1时，读取本机构节点以及其第一层子节点信息。
+	// 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
 	IncludeOrgNodeChildInfo *bool `json:"IncludeOrgNodeChildInfo,omitempty" name:"IncludeOrgNodeChildInfo"`
 }
 
