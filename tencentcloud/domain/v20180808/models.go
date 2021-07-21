@@ -1132,6 +1132,9 @@ type ModifyDomainOwnerBatchRequest struct {
 
 	// 转入账户的uin。
 	NewOwnerUin *string `json:"NewOwnerUin,omitempty" name:"NewOwnerUin"`
+
+	// 是否同时转移对应的 DNS 解析域名，默认false
+	TransferDns *bool `json:"TransferDns,omitempty" name:"TransferDns"`
 }
 
 func (r *ModifyDomainOwnerBatchRequest) ToJsonString() string {
@@ -1148,6 +1151,7 @@ func (r *ModifyDomainOwnerBatchRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Domains")
 	delete(f, "NewOwnerUin")
+	delete(f, "TransferDns")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainOwnerBatchRequest has unknown keys!", "")
 	}

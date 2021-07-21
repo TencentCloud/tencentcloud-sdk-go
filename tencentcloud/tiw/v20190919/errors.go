@@ -47,6 +47,9 @@ const (
 	// 白板推流失败，具体请参考错误描述。
 	FAILEDOPERATION_WHITEBOARDPUSH = "FailedOperation.WhiteboardPush"
 
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -83,8 +86,14 @@ const (
 	// 超过文档最大页数限制，目前不支持超过500页的文件转码，如有特殊需求，请联系客服人员。
 	LIMITEXCEEDED_TRANSCODEPAGESLIMITATION = "LimitExceeded.TranscodePagesLimitation"
 
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+
 	// 实时录制任务录制用户已被其他录制任务使用。
 	RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 未开通互动白板。
 	RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
@@ -97,6 +106,12 @@ const (
 
 	// SdkAppId不存在或者SdkAppId与当前腾讯云账号不对应。
 	UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 当前未完成的任务不能此状态下执行指定操作，例如对正在录制的任务执行恢复录制等。
 	UNSUPPORTEDOPERATION_INVALIDTASKSTATUS = "UnsupportedOperation.InvalidTaskStatus"

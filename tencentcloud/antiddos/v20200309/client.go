@@ -1420,3 +1420,33 @@ func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigReque
     err = c.Send(request, response)
     return
 }
+
+func NewSwitchWaterPrintConfigRequest() (request *SwitchWaterPrintConfigRequest) {
+    request = &SwitchWaterPrintConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "SwitchWaterPrintConfig")
+    return
+}
+
+func NewSwitchWaterPrintConfigResponse() (response *SwitchWaterPrintConfigResponse) {
+    response = &SwitchWaterPrintConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchWaterPrintConfig
+// 开启或关闭DDoS防护的水印防护配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
+    if request == nil {
+        request = NewSwitchWaterPrintConfigRequest()
+    }
+    response = NewSwitchWaterPrintConfigResponse()
+    err = c.Send(request, response)
+    return
+}

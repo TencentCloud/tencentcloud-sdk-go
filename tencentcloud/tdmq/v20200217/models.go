@@ -221,6 +221,22 @@ type Cluster struct {
 
 	// 最大存储容量
 	MaxStorageCapacity *int64 `json:"MaxStorageCapacity,omitempty" name:"MaxStorageCapacity"`
+
+	// 集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 公网访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicEndPoint *string `json:"PublicEndPoint,omitempty" name:"PublicEndPoint"`
+
+	// VPC访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcEndPoint *string `json:"VpcEndPoint,omitempty" name:"VpcEndPoint"`
+
+	// 命名空间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceNum *int64 `json:"NamespaceNum,omitempty" name:"NamespaceNum"`
 }
 
 type CmqDeadLetterPolicy struct {

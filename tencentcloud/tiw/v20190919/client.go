@@ -43,6 +43,42 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateSnapshotTaskRequest() (request *CreateSnapshotTaskRequest) {
+    request = &CreateSnapshotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "CreateSnapshotTask")
+    return
+}
+
+func NewCreateSnapshotTaskResponse() (response *CreateSnapshotTaskResponse) {
+    response = &CreateSnapshotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSnapshotTask
+// 创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateSnapshotTask(request *CreateSnapshotTaskRequest) (response *CreateSnapshotTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSnapshotTaskRequest()
+    }
+    response = NewCreateSnapshotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTranscodeRequest() (request *CreateTranscodeRequest) {
     request = &CreateTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +253,45 @@ func (c *Client) DescribeQualityMetrics(request *DescribeQualityMetricsRequest) 
         request = NewDescribeQualityMetricsRequest()
     }
     response = NewDescribeQualityMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotTaskRequest() (request *DescribeSnapshotTaskRequest) {
+    request = &DescribeSnapshotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeSnapshotTask")
+    return
+}
+
+func NewDescribeSnapshotTaskResponse() (response *DescribeSnapshotTaskResponse) {
+    response = &DescribeSnapshotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotTask
+// 获取指定白板板书生成任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSnapshotTask(request *DescribeSnapshotTaskRequest) (response *DescribeSnapshotTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotTaskRequest()
+    }
+    response = NewDescribeSnapshotTaskResponse()
     err = c.Send(request, response)
     return
 }

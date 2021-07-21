@@ -662,7 +662,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板。
+// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -969,7 +969,7 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板。
+// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -2272,7 +2272,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 }
 
 // DescribeParamTemplateInfo
-// 该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
+// 该接口（DescribeParamTemplateInfo）用于查询参数模板详情，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -3525,7 +3525,7 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
 }
 
 // ModifyParamTemplate
-// 该接口（ModifyParamTemplate）用于修改参数模板。
+// 该接口（ModifyParamTemplate）用于修改参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"

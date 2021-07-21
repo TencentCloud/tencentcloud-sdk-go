@@ -1,92 +1,37 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 37 次发布
+### 第 5 次发布
 
-发布时间：2021-07-20 08:04:50
+发布时间：2021-07-21 08:00:04
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
-
-	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
-
-* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
-
-	* 新增入参：InstanceAllocationPolicy, SpotMixedAllocationPolicy
-
-
-新增数据结构：
-
-* [SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy)
+* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
 
 修改数据结构：
 
-* [AutoScalingGroup](https://cloud.tencent.com/document/api/377/20453#AutoScalingGroup)
+* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
 
-	* 新增成员：InstanceAllocationPolicy, SpotMixedAllocationPolicy, CapacityRebalance
+	* 新增成员：FrontendPortEnd
 
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
 
-
-
-## 网站备案(ba) 版本：2020-07-20
-
-### 第 2 次发布
-
-发布时间：2021-07-20 08:01:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SyncIcpOrderWebInfo](https://cloud.tencent.com/document/api/243/58909)
+	* 新增成员：Verify
 
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 25 次发布
+## 内容分发网络(cdn) 版本：2018-06-06
 
-发布时间：2021-07-20 08:07:55
+### 第 71 次发布
 
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelDcnJob](https://cloud.tencent.com/document/api/557/58910)
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 22 次发布
-
-发布时间：2021-07-20 08:10:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelDcnJob](https://cloud.tencent.com/document/api/237/58911)
-
-
-
-## 证书(ssl) 版本：2019-12-05
-
-### 第 7 次发布
-
-发布时间：2021-07-20 08:04:21
+发布时间：2021-07-21 08:04:29
 
 本次发布包含了以下内容：
 
@@ -94,10 +39,176 @@
 
 修改接口：
 
-* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+* [DisableCaches](https://cloud.tencent.com/document/api/228/33541)
 
-	* 新增入参：Upload, Renew
+	* 新增出参：TaskId
 
+* [GetDisableRecords](https://cloud.tencent.com/document/api/228/33539)
+
+	* 新增入参：TaskId
+
+	* <font color="#dd0000">**修改入参**：</font>StartTime, EndTime
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 15 次发布
+
+发布时间：2021-07-21 08:05:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+
+	* 新增入参：TransferDns
+
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 1 次发布
+
+发布时间：2021-07-21 08:06:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDevice](https://cloud.tencent.com/document/api/#/#)
+* [CreatePrivateCA](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDevice](https://cloud.tencent.com/document/api/#/#)
+* [DeletePrivateCA](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProduct](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDevice](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDevices](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrivateCA](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrivateCABindedProducts](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrivateCAs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProduct](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProductCA](https://cloud.tencent.com/document/api/#/#)
+* [UpdateDeviceLogLevel](https://cloud.tencent.com/document/api/#/#)
+* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/#/#)
+* [UpdatePrivateCA](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [Attribute](https://cloud.tencent.com/document/api/#/##Attribute)
+* [BindProductInfo](https://cloud.tencent.com/document/api/#/##BindProductInfo)
+* [CertInfo](https://cloud.tencent.com/document/api/#/##CertInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/#/##DeviceInfo)
+* [DeviceLabel](https://cloud.tencent.com/document/api/#/##DeviceLabel)
+* [DeviceTag](https://cloud.tencent.com/document/api/#/##DeviceTag)
+* [ProductMetadata](https://cloud.tencent.com/document/api/#/##ProductMetadata)
+* [ProductProperties](https://cloud.tencent.com/document/api/#/##ProductProperties)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 26 次发布
+
+发布时间：2021-07-21 08:07:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBindingPolicyObjectList](https://cloud.tencent.com/document/api/248/40570)
+
+	* 新增入参：PolicyId
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 10 次发布
+
+发布时间：2021-07-21 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：WorkingDirectory, Timeout
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 11 次发布
+
+发布时间：2021-07-21 08:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：Version, PublicEndPoint, VpcEndPoint, NamespaceNum
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 20 次发布
+
+发布时间：2021-07-21 08:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSnapshotTask](https://cloud.tencent.com/document/api/1137/59004)
+* [DescribeSnapshotTask](https://cloud.tencent.com/document/api/1137/59003)
+
+新增数据结构：
+
+* [SnapshotCOS](https://cloud.tencent.com/document/api/1137/40068#SnapshotCOS)
+* [SnapshotResult](https://cloud.tencent.com/document/api/1137/40068#SnapshotResult)
+* [SnapshotWhiteboard](https://cloud.tencent.com/document/api/1137/40068#SnapshotWhiteboard)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 3 次发布
+
+发布时间：2021-07-21 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyAccessPeriod](https://cloud.tencent.com/document/api/627/59005)
 
 
 
@@ -785,6 +896,29 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 5 次发布
+
+发布时间：2021-07-21 08:00:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [ForwardListener](https://cloud.tencent.com/document/api/1021/57582#ForwardListener)
+
+	* 新增成员：FrontendPortEnd
+
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
+
+	* 新增成员：Verify
+
 
 ### 第 4 次发布
 
@@ -1626,7 +1760,7 @@
 
 新增数据结构：
 
-* [[SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy)](https://cloud.tencent.com/document/api/377/20453#[SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy))
+* [SpotMixedAllocationPolicy](https://cloud.tencent.com/document/api/377/20453#SpotMixedAllocationPolicy)
 
 修改数据结构：
 
@@ -2907,7 +3041,7 @@
 
 新增接口：
 
-* [[SyncIcpOrderWebInfo](https://cloud.tencent.com/document/api/243/58909)](https://cloud.tencent.com/document/api/#/#)
+* [SyncIcpOrderWebInfo](https://cloud.tencent.com/document/api/243/58909)
 
 ### 第 1 次发布
 
@@ -8700,6 +8834,27 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 71 次发布
+
+发布时间：2021-07-21 08:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DisableCaches](https://cloud.tencent.com/document/api/228/33541)
+
+	* 新增出参：TaskId
+
+* [GetDisableRecords](https://cloud.tencent.com/document/api/228/33539)
+
+	* 新增入参：TaskId
+
+	* <font color="#dd0000">**修改入参**：</font>StartTime, EndTime
+
 
 ### 第 70 次发布
 
@@ -18922,7 +19077,7 @@
 
 新增接口：
 
-* [[CancelDcnJob](https://cloud.tencent.com/document/api/557/58910)](https://cloud.tencent.com/document/api/#/#)
+* [CancelDcnJob](https://cloud.tencent.com/document/api/557/58910)
 
 ### 第 24 次发布
 
@@ -19697,6 +19852,21 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 15 次发布
+
+发布时间：2021-07-21 08:05:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+
+	* 新增入参：TransferDns
+
 
 ### 第 14 次发布
 
@@ -27796,6 +27966,47 @@
 
 
 
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 1 次发布
+
+发布时间：2021-07-21 08:06:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDevice](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrivateCA](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDevice](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrivateCA](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteProduct](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDevice](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDevices](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrivateCA](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrivateCABindedProducts](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrivateCAs](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProduct](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProductCA](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDeviceLogLevel](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDevicesEnableState](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdatePrivateCA](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Attribute](https://cloud.tencent.com/document/api/#/##Attribute)](https://cloud.tencent.com/document/api/#/##[Attribute](https://cloud.tencent.com/document/api/#/##Attribute))
+* [[BindProductInfo](https://cloud.tencent.com/document/api/#/##BindProductInfo)](https://cloud.tencent.com/document/api/#/##[BindProductInfo](https://cloud.tencent.com/document/api/#/##BindProductInfo))
+* [[CertInfo](https://cloud.tencent.com/document/api/#/##CertInfo)](https://cloud.tencent.com/document/api/#/##[CertInfo](https://cloud.tencent.com/document/api/#/##CertInfo))
+* [[DeviceInfo](https://cloud.tencent.com/document/api/#/##DeviceInfo)](https://cloud.tencent.com/document/api/#/##[DeviceInfo](https://cloud.tencent.com/document/api/#/##DeviceInfo))
+* [[DeviceLabel](https://cloud.tencent.com/document/api/#/##DeviceLabel)](https://cloud.tencent.com/document/api/#/##[DeviceLabel](https://cloud.tencent.com/document/api/#/##DeviceLabel))
+* [[DeviceTag](https://cloud.tencent.com/document/api/#/##DeviceTag)](https://cloud.tencent.com/document/api/#/##[DeviceTag](https://cloud.tencent.com/document/api/#/##DeviceTag))
+* [[ProductMetadata](https://cloud.tencent.com/document/api/#/##ProductMetadata)](https://cloud.tencent.com/document/api/#/##[ProductMetadata](https://cloud.tencent.com/document/api/#/##ProductMetadata))
+* [[ProductProperties](https://cloud.tencent.com/document/api/#/##ProductProperties)](https://cloud.tencent.com/document/api/#/##[ProductProperties](https://cloud.tencent.com/document/api/#/##ProductProperties))
+
+
+
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
@@ -31475,7 +31686,7 @@
 
 新增接口：
 
-* [[CancelDcnJob](https://cloud.tencent.com/document/api/237/58911)](https://cloud.tencent.com/document/api/#/#)
+* [CancelDcnJob](https://cloud.tencent.com/document/api/237/58911)
 
 ### 第 21 次发布
 
@@ -32576,6 +32787,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 26 次发布
+
+发布时间：2021-07-21 08:07:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBindingPolicyObjectList](https://cloud.tencent.com/document/api/248/40570)
+
+	* 新增入参：PolicyId
+
 
 ### 第 25 次发布
 
@@ -40649,6 +40875,21 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 10 次发布
+
+发布时间：2021-07-21 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：WorkingDirectory, Timeout
+
+
 ### 第 9 次发布
 
 发布时间：2021-07-19 08:11:15
@@ -43763,6 +44004,21 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 11 次发布
+
+发布时间：2021-07-21 08:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：Version, PublicEndPoint, VpcEndPoint, NamespaceNum
+
+
 ### 第 10 次发布
 
 发布时间：2021-07-13 08:15:04
@@ -45361,6 +45617,25 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 20 次发布
+
+发布时间：2021-07-21 08:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSnapshotTask](https://cloud.tencent.com/document/api/1137/59004)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshotTask](https://cloud.tencent.com/document/api/1137/59003)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SnapshotCOS](https://cloud.tencent.com/document/api/1137/40068#SnapshotCOS)](https://cloud.tencent.com/document/api/1137/40068#[SnapshotCOS](https://cloud.tencent.com/document/api/1137/40068#SnapshotCOS))
+* [[SnapshotResult](https://cloud.tencent.com/document/api/1137/40068#SnapshotResult)](https://cloud.tencent.com/document/api/1137/40068#[SnapshotResult](https://cloud.tencent.com/document/api/1137/40068#SnapshotResult))
+* [[SnapshotWhiteboard](https://cloud.tencent.com/document/api/1137/40068#SnapshotWhiteboard)](https://cloud.tencent.com/document/api/1137/40068#[SnapshotWhiteboard](https://cloud.tencent.com/document/api/1137/40068#SnapshotWhiteboard))
 
 ### 第 19 次发布
 
@@ -54465,6 +54740,18 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 3 次发布
+
+发布时间：2021-07-21 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyAccessPeriod](https://cloud.tencent.com/document/api/627/59005)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 2 次发布
 

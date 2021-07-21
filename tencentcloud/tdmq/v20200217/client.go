@@ -278,13 +278,14 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEENVIRONMENT = "FailedOperation.CreateEnvironment"
+//  FAILEDOPERATION_CREATENAMESPACE = "FailedOperation.CreateNamespace"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
 //  LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"
+//  LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
-//  RESOURCEINUSE_ENVIRONMENT = "ResourceInUse.Environment"
-//  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -515,8 +516,11 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
+//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
+//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
@@ -557,6 +561,7 @@ func NewDeleteSubscriptionsResponse() (response *DeleteSubscriptionsResponse) {
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_CONSUMERRUNNING = "OperationDenied.ConsumerRunning"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteSubscriptions(request *DeleteSubscriptionsRequest) (response *DeleteSubscriptionsResponse, err error) {
@@ -942,6 +947,7 @@ func NewDescribeEnvironmentAttributesResponse() (response *DescribeEnvironmentAt
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = "FailedOperation.GetEnvironmentAttributesFailed"
+//  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  INTERNALERROR_GETATTRIBUTESFAILED = "InternalError.GetAttributesFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -1042,9 +1048,11 @@ func NewDescribeProducersResponse() (response *DescribeProducersResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response *DescribeProducersResponse, err error) {
@@ -1263,12 +1271,15 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  FAILEDOPERATION_UPDATEENVIRONMENT = "FailedOperation.UpdateEnvironment"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttributesRequest) (response *ModifyEnvironmentAttributesResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()

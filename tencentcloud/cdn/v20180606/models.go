@@ -3917,6 +3917,10 @@ type DisableCachesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CacheOptResult *CacheOptResult `json:"CacheOptResult,omitempty" name:"CacheOptResult"`
 
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4312,14 +4316,14 @@ type ForceRedirect struct {
 type GetDisableRecordsRequest struct {
 	*tchttp.BaseRequest
 
+	// 指定 URL 查询
+	Url *string `json:"Url,omitempty" name:"Url"`
+
 	// 开始时间，如：2018-12-12 10:24:00。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，如：2018-12-14 10:24:00。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 指定 URL 查询
-	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// URL 当前状态
 	// disable：当前仍为禁用状态，访问返回 403
@@ -4331,6 +4335,9 @@ type GetDisableRecordsRequest struct {
 
 	// 分页查询限制数目，默认为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务ID，任务ID和起始时间需要至少填写一项。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *GetDisableRecordsRequest) ToJsonString() string {
@@ -4345,12 +4352,13 @@ func (r *GetDisableRecordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Url")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
-	delete(f, "Url")
 	delete(f, "Status")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDisableRecordsRequest has unknown keys!", "")
 	}

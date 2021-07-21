@@ -117,6 +117,7 @@ import (
 	imsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims/v20201229"
 	iotv20180123 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot/v20180123"
 	iotcloudv20180614 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud/v20180614"
+	iotcloudv20210408 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud/v20210408"
 	iotexplorerv20190423 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotexplorer/v20190423"
 	iottidv20190411 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iottid/v20190411"
 	iotvideov20191126 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo/v20191126"
@@ -1473,6 +1474,19 @@ func TestIotcloudv20180614Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init iotcloud_v20180614 client: %v", err))
+    }
+}
+
+func TestIotcloudv20210408Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := iotcloudv20210408.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init iotcloud_v20210408 client: %v", err))
     }
 }
 
