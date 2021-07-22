@@ -1028,6 +1028,70 @@ func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (res
     return
 }
 
+func NewDescribeNamespaceBundlesOptRequest() (request *DescribeNamespaceBundlesOptRequest) {
+    request = &DescribeNamespaceBundlesOptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeNamespaceBundlesOpt")
+    return
+}
+
+func NewDescribeNamespaceBundlesOptResponse() (response *DescribeNamespaceBundlesOptResponse) {
+    response = &DescribeNamespaceBundlesOptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNamespaceBundlesOpt
+// 运营端获取命名空间bundle列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+func (c *Client) DescribeNamespaceBundlesOpt(request *DescribeNamespaceBundlesOptRequest) (response *DescribeNamespaceBundlesOptResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespaceBundlesOptRequest()
+    }
+    response = NewDescribeNamespaceBundlesOptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNodeHealthOptRequest() (request *DescribeNodeHealthOptRequest) {
+    request = &DescribeNodeHealthOptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeNodeHealthOpt")
+    return
+}
+
+func NewDescribeNodeHealthOptResponse() (response *DescribeNodeHealthOptResponse) {
+    response = &DescribeNodeHealthOptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNodeHealthOpt
+// 运营端获节点健康状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (response *DescribeNodeHealthOptResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeHealthOptRequest()
+    }
+    response = NewDescribeNodeHealthOptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProducersRequest() (request *DescribeProducersRequest) {
     request = &DescribeProducersRequest{
         BaseRequest: &tchttp.BaseRequest{},

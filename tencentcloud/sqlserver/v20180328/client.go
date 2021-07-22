@@ -1237,6 +1237,40 @@ func (c *Client) DescribeDBs(request *DescribeDBsRequest) (response *DescribeDBs
     return
 }
 
+func NewDescribeDBsNormalRequest() (request *DescribeDBsNormalRequest) {
+    request = &DescribeDBsNormalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBsNormal")
+    return
+}
+
+func NewDescribeDBsNormalResponse() (response *DescribeDBsNormalResponse) {
+    response = &DescribeDBsNormalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBsNormal
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBsNormal(request *DescribeDBsNormalRequest) (response *DescribeDBsNormalResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBsNormalRequest()
+    }
+    response = NewDescribeDBsNormalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowStatusRequest() (request *DescribeFlowStatusRequest) {
     request = &DescribeFlowStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2498,6 +2532,112 @@ func (c *Client) ModifyDBRemark(request *ModifyDBRemarkRequest) (response *Modif
         request = NewModifyDBRemarkRequest()
     }
     response = NewModifyDBRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseCDCRequest() (request *ModifyDatabaseCDCRequest) {
+    request = &ModifyDatabaseCDCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseCDC")
+    return
+}
+
+func NewModifyDatabaseCDCResponse() (response *ModifyDatabaseCDCResponse) {
+    response = &ModifyDatabaseCDCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseCDC
+// 本接口(ModifyDatabaseCDC)用于开启、关闭数据库数据变更捕获(CDC)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+func (c *Client) ModifyDatabaseCDC(request *ModifyDatabaseCDCRequest) (response *ModifyDatabaseCDCResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseCDCRequest()
+    }
+    response = NewModifyDatabaseCDCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseCTRequest() (request *ModifyDatabaseCTRequest) {
+    request = &ModifyDatabaseCTRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseCT")
+    return
+}
+
+func NewModifyDatabaseCTResponse() (response *ModifyDatabaseCTResponse) {
+    response = &ModifyDatabaseCTResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseCT
+// 本接口(ModifyDatabaseCT)用于启用、禁用数据库数据变更跟踪(CT)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDatabaseCT(request *ModifyDatabaseCTRequest) (response *ModifyDatabaseCTResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseCTRequest()
+    }
+    response = NewModifyDatabaseCTResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseMdfRequest() (request *ModifyDatabaseMdfRequest) {
+    request = &ModifyDatabaseMdfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseMdf")
+    return
+}
+
+func NewModifyDatabaseMdfResponse() (response *ModifyDatabaseMdfResponse) {
+    response = &ModifyDatabaseMdfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseMdf
+// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+func (c *Client) ModifyDatabaseMdf(request *ModifyDatabaseMdfRequest) (response *ModifyDatabaseMdfResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseMdfRequest()
+    }
+    response = NewModifyDatabaseMdfResponse()
     err = c.Send(request, response)
     return
 }

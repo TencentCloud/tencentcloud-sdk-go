@@ -1922,6 +1922,46 @@ func (c *Client) ModifyReadOnlyGroupConfig(request *ModifyReadOnlyGroupConfigReq
     return
 }
 
+func NewModifySwitchTimePeriodRequest() (request *ModifySwitchTimePeriodRequest) {
+    request = &ModifySwitchTimePeriodRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifySwitchTimePeriod")
+    return
+}
+
+func NewModifySwitchTimePeriodResponse() (response *ModifySwitchTimePeriodResponse) {
+    response = &ModifySwitchTimePeriodResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySwitchTimePeriod
+// 当升级完成后，对处于等待切换状态下的实例，强制实例立即切换。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
+//  FAILEDOPERATION_CAMCHECKRESOURCEFAILED = "FailedOperation.CamCheckResourceFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNKNOWNERROR = "UnknownError"
+func (c *Client) ModifySwitchTimePeriod(request *ModifySwitchTimePeriodRequest) (response *ModifySwitchTimePeriodResponse, err error) {
+    if request == nil {
+        request = NewModifySwitchTimePeriodRequest()
+    }
+    response = NewModifySwitchTimePeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
     request = &OpenDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2332,7 +2372,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 }
 
 // UpgradeDBInstance
-// 本接口（UpgradeDBInstance）用于升级实例。
+// 本接口（UpgradeDBInstance）用于升级实例配置。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

@@ -166,11 +166,11 @@ type FaceFusionRequest struct {
 	// 素材 ID，请在人脸融合控制台查看。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
 	// 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
 	Image *string `json:"Image,omitempty" name:"Image"`
-
-	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
 	// 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
 	PornDetect *int64 `json:"PornDetect,omitempty" name:"PornDetect"`
@@ -178,6 +178,9 @@ type FaceFusionRequest struct {
 	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
 	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 图片Url地址
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 func (r *FaceFusionRequest) ToJsonString() string {
@@ -194,10 +197,11 @@ func (r *FaceFusionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "ModelId")
-	delete(f, "Image")
 	delete(f, "RspImgType")
+	delete(f, "Image")
 	delete(f, "PornDetect")
 	delete(f, "CelebrityIdentify")
+	delete(f, "Url")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionRequest has unknown keys!", "")
 	}
@@ -269,7 +273,7 @@ type FuseFaceRequest struct {
 	// 素材 ID，请在人脸融合控制台查看。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
-	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。

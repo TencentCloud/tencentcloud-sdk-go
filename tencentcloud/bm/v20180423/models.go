@@ -1454,7 +1454,7 @@ type DescribeDevicesRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询
@@ -1504,6 +1504,9 @@ type DescribeDevicesRequest struct {
 
 	// 排序方式，取值：0:增序(默认)，1:降序
 	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 按照维保方式过滤。可取值为 Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+	MaintainStatus *string `json:"MaintainStatus,omitempty" name:"MaintainStatus"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -1536,6 +1539,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "IsLuckyDevice")
 	delete(f, "OrderField")
 	delete(f, "Order")
+	delete(f, "MaintainStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -2590,6 +2594,14 @@ type DeviceInfo struct {
 
 	// 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备
 	IsLuckyDevice *uint64 `json:"IsLuckyDevice,omitempty" name:"IsLuckyDevice"`
+
+	// 标识机器维保状态。Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainStatus *string `json:"MaintainStatus,omitempty" name:"MaintainStatus"`
+
+	// 维保信息描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainMessage *string `json:"MaintainMessage,omitempty" name:"MaintainMessage"`
 }
 
 type DeviceOperationLog struct {
