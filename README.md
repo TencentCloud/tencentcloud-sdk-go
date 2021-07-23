@@ -33,26 +33,32 @@
 
 ### 按需安装（推荐）
 
+注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`, 并且在您的项目中执行了 `go mod init xxx`.
+
+如果您使用 GOPATH, 请参考下节： 全部安装
+
 v1.0.170后可以按照产品下载，您只需下载基础包和对应的产品包(如cvm)即可，不需要下载全部的产品，从而加快您构建镜像或者编译的速度：
 
 1. 安装公共基础包：
 
     ```bash
-    go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common@latest
+    go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
     ```
 
 2. 安装对应的产品包(如cvm):
 
     ```bash
-    go get -v github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm@latest
+    go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm
     ```
 
 ### 全部安装
 
-您也可以按照以前的方式一次性下载腾讯云所有产品的包：
+此模式支持 GOPATH 和 Go Modules
+
+此方式会一次性下载腾讯云所有产品的包：
 
 ```bash
-go get -v github.com/tencentcloud/tencentcloud-sdk-go@latest
+go get -v -u github.com/tencentcloud/tencentcloud-sdk-go
 ```
 
 注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有`v3.0.*`和`3.0.*`的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
