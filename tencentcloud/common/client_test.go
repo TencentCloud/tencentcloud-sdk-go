@@ -10,8 +10,20 @@ import (
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
+
+type requestWithClientToken struct {
+	tchttp.CommonRequest
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+}
+
+func newTestRequest() *requestWithClientToken {
+	var testRequest = &requestWithClientToken{
+		CommonRequest: *tchttp.NewCommonRequest("cvm", "2017-03-12", "RunInstances"),
+		ClientToken:   nil,
+	}
+	return testRequest
+}
 
 type retryErr struct{}
 
@@ -59,8 +71,8 @@ type testCase struct {
 func TestNormalSucceedRequest(t *testing.T) {
 	test(t, testCase{
 		prof:     profile.NewClientProfile(),
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{},
 		expected: mockRT{},
 		success:  true,
@@ -74,8 +86,8 @@ func TestNetworkFailedButSucceedAfterRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{NetworkFailures: 1},
 		expected: mockRT{NetworkTries: 1},
 		success:  true,
@@ -89,8 +101,8 @@ func TestNetworkFailedAndShouldNotRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewDescribeInstancesRequest(),
-		response: cvm.NewDescribeInstancesResponse(),
+		request:  tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeInstances"),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{NetworkFailures: 2},
 		expected: mockRT{NetworkTries: 1},
 		success:  false,
@@ -104,8 +116,8 @@ func TestNetworkFailedAfterRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{NetworkFailures: 2},
 		expected: mockRT{NetworkTries: 2},
 		success:  false,
@@ -119,8 +131,8 @@ func TestRateLimitButSucceedAfterRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{RateLimitFailures: 1},
 		expected: mockRT{RateLimitTries: 1},
 		success:  true,
@@ -134,8 +146,8 @@ func TestRateLimitExceededAfterRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{RateLimitFailures: 3},
 		expected: mockRT{RateLimitTries: 2},
 		success:  false,
@@ -151,8 +163,8 @@ func TestBothFailuresOccurredButSucceedAfterRetry(t *testing.T) {
 
 	test(t, testCase{
 		prof:     prof,
-		request:  cvm.NewRunInstancesRequest(),
-		response: cvm.NewRunInstancesResponse(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
 		specific: mockRT{RateLimitFailures: 1, NetworkFailures: 1},
 		expected: mockRT{RateLimitTries: 1, NetworkTries: 1},
 		success:  true,
@@ -161,14 +173,11 @@ func TestBothFailuresOccurredButSucceedAfterRetry(t *testing.T) {
 
 func test(t *testing.T, tc testCase) {
 	credential := common.NewCredential("", "")
-	client, err := cvm.NewClient(credential, regions.Guangzhou, tc.prof)
-	if err != nil {
-		t.Fatalf("failed on createing client: %+v", err)
-	}
+	client := common.NewCommonClient(credential, regions.Guangzhou, tc.prof)
 
 	client.WithHttpTransport(&tc.specific)
 
-	err = client.Send(tc.request, tc.response)
+	err := client.Send(tc.request, tc.response)
 	if tc.success != (err == nil) {
 		t.Fatalf("unexpected failed on request: %+v", err)
 	}
