@@ -23,10 +23,10 @@ import (
 type AddUserContactRequest struct {
 	*tchttp.BaseRequest
 
-	// 联系人姓名，大小写字母+数字+下划线，最小 2 位最大 60 位的长度， 不能以"_"开头，且联系人名保持唯一。
+	// 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 邮箱地址，大小写字母、数字及下划线组成， 不能以"_"开头。
+	// 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
 	ContactInfo *string `json:"ContactInfo,omitempty" name:"ContactInfo"`
 
 	// 服务产品类型，固定值："mysql"。
@@ -631,10 +631,10 @@ type DescribeDBDiagEventResponse struct {
 		// 事件 ID 。
 		EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
-		// 事件详情。
+		// 诊断事件详情，若无附加解释信息则输出为空。
 		Explanation *string `json:"Explanation,omitempty" name:"Explanation"`
 
-		// 概要。
+		// 诊断概要。
 		Outline *string `json:"Outline,omitempty" name:"Outline"`
 
 		// 诊断出的问题。
@@ -646,7 +646,7 @@ type DescribeDBDiagEventResponse struct {
 		// 开始时间
 		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-		// 建议。
+		// 诊断建议，若无建议则输出为空。
 		Suggestions *string `json:"Suggestions,omitempty" name:"Suggestions"`
 
 		// 保留字段。
@@ -968,7 +968,7 @@ type DescribeHealthScoreRequest struct {
 	// 需要获取健康得分的实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 获取健康得分的时间。
+	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -1822,10 +1822,10 @@ type DescribeUserSqlAdviceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// SQL优化建议，可解析为JSON数组。
+		// SQL优化建议，可解析为JSON数组，无需优化时输出为空。
 		Advices *string `json:"Advices,omitempty" name:"Advices"`
 
-		// SQL优化建议备注，可解析为String数组。
+		// SQL优化建议备注，可解析为String数组，无需优化时输出为空。
 		Comments *string `json:"Comments,omitempty" name:"Comments"`
 
 		// SQL语句。
@@ -1837,10 +1837,10 @@ type DescribeUserSqlAdviceResponse struct {
 		// 相关表的DDL信息，可解析为JSON数组。
 		Tables *string `json:"Tables,omitempty" name:"Tables"`
 
-		// SQL执行计划，可解析为JSON。
+		// SQL执行计划，可解析为JSON，无需优化时输出为空。
 		SqlPlan *string `json:"SqlPlan,omitempty" name:"SqlPlan"`
 
-		// SQL优化后的成本节约详情，可解析为JSON。
+		// SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
 		Cost *string `json:"Cost,omitempty" name:"Cost"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1870,28 +1870,26 @@ type DiagHistoryEventItem struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 事件 ID 。
+	// 事件唯一ID 。
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
 	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
 	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
 
-	// 概要。
+	// 诊断概要。
 	Outline *string `json:"Outline,omitempty" name:"Outline"`
 
-	// 诊断项。
+	// 诊断项说明。
 	DiagItem *string `json:"DiagItem,omitempty" name:"DiagItem"`
 
 	// 实例 ID 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 保留字段
+	// 保留字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
-	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 地域。
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
@@ -2546,11 +2544,11 @@ type UserProfile struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileId *string `json:"ProfileId,omitempty" name:"ProfileId"`
 
-	// 配置类型。
+	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
 
-	// 配置级别，"User"或"Instance"。
+	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
 

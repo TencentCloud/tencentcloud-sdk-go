@@ -77,6 +77,40 @@ func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeam
     return
 }
 
+func NewCopyProjectRequest() (request *CopyProjectRequest) {
+    request = &CopyProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "CopyProject")
+    return
+}
+
+func NewCopyProjectResponse() (response *CopyProjectResponse) {
+    response = &CopyProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CopyProject
+// 复制一个项目，包括项目素材及轨道数据。目前仅普通剪辑及模板制作项目可复制，其它类型的项目不支持复制。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
+//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProjectResponse, err error) {
+    if request == nil {
+        request = NewCopyProjectRequest()
+    }
+    response = NewCopyProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClassRequest() (request *CreateClassRequest) {
     request = &CreateClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -99,6 +133,7 @@ func NewCreateClassResponse() (response *CreateClassResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
 //  INVALIDPARAMETERVALUE_CLASSEXIST = "InvalidParameterValue.ClassExist"
+//  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -354,6 +389,8 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 // 删除云剪编辑项目。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SWITCHERONWORKING = "FailedOperation.SwitcherOnWorking"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
@@ -675,6 +712,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_SORTORDER = "InvalidParameterValue.SortOrder"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
     if request == nil {
@@ -773,8 +811,9 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DATANOTFOUNDINDB = "InvalidParameterValue.DataNotFoundInDB"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
@@ -957,6 +996,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
 //  INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"

@@ -65,6 +65,7 @@ func NewBindStaffSkillGroupListResponse() (response *BindStaffSkillGroupListResp
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest) (response *BindStaffSkillGroupListResponse, err error) {
     if request == nil {
         request = NewBindStaffSkillGroupListRequest()
@@ -138,6 +139,38 @@ func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaff
         request = NewCreateStaffRequest()
     }
     response = NewCreateStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
+    request = &CreateUserSigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateUserSig")
+    return
+}
+
+func NewCreateUserSigResponse() (response *CreateUserSigResponse) {
+    response = &CreateUserSigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserSig
+// 创建用户数据签名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateUserSig(request *CreateUserSigRequest) (response *CreateUserSigResponse, err error) {
+    if request == nil {
+        request = NewCreateUserSigRequest()
+    }
+    response = NewCreateUserSigResponse()
     err = c.Send(request, response)
     return
 }
@@ -483,6 +516,7 @@ func NewUnbindStaffSkillGroupListResponse() (response *UnbindStaffSkillGroupList
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) UnbindStaffSkillGroupList(request *UnbindStaffSkillGroupListRequest) (response *UnbindStaffSkillGroupListResponse, err error) {
     if request == nil {
         request = NewUnbindStaffSkillGroupListRequest()

@@ -29,11 +29,35 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 重复的工作组名称。
+	INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
+
+	// 重复的用户名。
+	INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+
+	// 无效的描述信息。
+	INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+
+	// 无效的工作组Id。
+	INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+
+	// 无效的Offset值。
+	INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+
 	// SQL解析失败。
 	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 
+	// 不支持的排序类型。
+	INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+
 	// 存储位置错误。
 	INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+
+	// 无效的用户名。
+	INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+
+	// 无效的工作组名。
+	INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -46,4 +70,7 @@ const (
 
 	// 指定数据源连接没有找到。
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+
+	// 无法修改主账号。
+	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 )

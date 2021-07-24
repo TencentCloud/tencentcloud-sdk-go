@@ -796,6 +796,9 @@ type KTVMusicBaseInfo struct {
 
 	// 标签列表
 	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 歌曲时长
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type Lyric struct {

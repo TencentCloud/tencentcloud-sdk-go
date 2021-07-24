@@ -200,6 +200,12 @@ const (
 	// 不合法的常量参数。
 	INVALIDPARAMETERVALUE_INVALIDCONSTANTPARAMETERS = "InvalidParameterValue.InvalidConstantParameters"
 
+	// 参数Env取值错误，取值范围为（release, prepub, test）。
+	INVALIDPARAMETERVALUE_INVALIDENV = "InvalidParameterValue.InvalidEnv"
+
+	// 服务当前环境状态，不支持此操作。
+	INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 
@@ -284,6 +290,9 @@ const (
 	// API文档数量超出限制。
 	LIMITEXCEEDED_APIDOCLIMITEXCEEDED = "LimitExceeded.APIDocLimitExceeded"
 
+	// 应用数量超过限制。
+	LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = "LimitExceeded.ApiAppCountLimitExceeded"
+
 	// API数量超过限制。
 	LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
 
@@ -301,6 +310,9 @@ const (
 
 	// 请求频率超限制，请稍等再试。
 	LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
+
+	// 插件绑定的服务数量超出限制，请解绑服务或提升限额后重试。
+	LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 
 	// 服务数量超过限制，请删除服务或提升限额后重试。
 	LIMITEXCEEDED_SERVICECOUNTLIMITEXCEEDED = "LimitExceeded.ServiceCountLimitExceeded"
@@ -331,6 +343,9 @@ const (
 
 	// ApiId错误。
 	RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+
+	// 应用ID错误。
+	RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
 
 	// API文档不存在。
 	RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
@@ -412,6 +427,9 @@ const (
 
 	// 不支持绑定环境。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
+
+	// 当前API已绑定业务API，请先解绑再试。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 
 	// 服务使用中，不能被删除。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"

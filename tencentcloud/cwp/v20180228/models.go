@@ -225,7 +225,7 @@ type AssetKeyVal struct {
 
 type BashEvent struct {
 
-	// ID
+	// 数据ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// 云镜ID
@@ -252,10 +252,10 @@ type BashEvent struct {
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 规则等级
+	// 规则等级：1-高 2-中 3-低
 	RuleLevel *uint64 `json:"RuleLevel,omitempty" name:"RuleLevel"`
 
-	// 处理状态
+	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 发生时间
@@ -263,6 +263,30 @@ type BashEvent struct {
 
 	// 主机名
 	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 0: bash日志 1: 实时监控(雷霆版)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectBy *uint64 `json:"DetectBy,omitempty" name:"DetectBy"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 进程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exe *string `json:"Exe,omitempty" name:"Exe"`
+
+	// 处理时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 规则类别  0=系统规则，1=用户规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCategory *uint64 `json:"RuleCategory,omitempty" name:"RuleCategory"`
+
+	// 自动生成的正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegexBashCmd *string `json:"RegexBashCmd,omitempty" name:"RegexBashCmd"`
 }
 
 type BashRule struct {
@@ -276,7 +300,7 @@ type BashRule struct {
 	// 规则名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 危险等级(1: 高危 2:中危 3: 低危)
+	// 危险等级(0 ：无 1: 高危 2:中危 3: 低危)
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
 	// 正则表达式
@@ -302,6 +326,18 @@ type BashRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+
+	// 生效服务器的uuid数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuids []*string `json:"Uuids,omitempty" name:"Uuids"`
+
+	// 0=黑名单 1=白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	White *uint64 `json:"White,omitempty" name:"White"`
+
+	// 是否处理之前的事件 0: 不处理 1:处理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealOldEvents *uint64 `json:"DealOldEvents,omitempty" name:"DealOldEvents"`
 }
 
 type BruteAttack struct {
@@ -756,6 +792,64 @@ func (r *CreateProtectServerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateProtectServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScanMalwareSettingRequest struct {
+	*tchttp.BaseRequest
+
+	// 扫描模式 0 全盘扫描, 1 快速扫描
+	ScanPattern *uint64 `json:"ScanPattern,omitempty" name:"ScanPattern"`
+
+	// 服务器分类：1:专业版服务器；2:自选服务器
+	HostType *int64 `json:"HostType,omitempty" name:"HostType"`
+
+	// 自选服务器时生效，主机quuid的string数组
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+
+	// 超时时间单位 秒
+	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitempty" name:"TimeoutPeriod"`
+}
+
+func (r *CreateScanMalwareSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanMalwareSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScanPattern")
+	delete(f, "HostType")
+	delete(f, "QuuidList")
+	delete(f, "TimeoutPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanMalwareSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScanMalwareSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateScanMalwareSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanMalwareSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3795,6 +3889,21 @@ type DescribeMachineRegionsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// CVM 云服务器地域列表
+		CVM []*RegionInfo `json:"CVM,omitempty" name:"CVM"`
+
+		// BM 黑石机器地域列表
+		BM []*RegionInfo `json:"BM,omitempty" name:"BM"`
+
+		// LH 轻量应用服务器地域列表
+		LH []*RegionInfo `json:"LH,omitempty" name:"LH"`
+
+		// ECM 边缘计算服务器地域列表
+		ECM []*RegionInfo `json:"ECM,omitempty" name:"ECM"`
+
+		// Other 混合云地域列表
+		Other []*RegionInfo `json:"Other,omitempty" name:"Other"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4004,6 +4113,85 @@ func (r *DescribeMalwareInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMalwareInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMalwareTimingScanSettingRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeMalwareTimingScanSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMalwareTimingScanSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMalwareTimingScanSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMalwareTimingScanSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测模式 0 全盘检测  1快速检测
+		CheckPattern *uint64 `json:"CheckPattern,omitempty" name:"CheckPattern"`
+
+		// 检测周期 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 检测周期 超时结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 是否全部服务器 1 全部 2 自选
+		IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+		// 自选服务器时必须 主机quuid的string数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+
+		// 监控模式 0 标准 1深度
+		MonitoringPattern *uint64 `json:"MonitoringPattern,omitempty" name:"MonitoringPattern"`
+
+		// 周期 1每天
+		Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
+
+		// 定时检测开关 0 关闭1 开启
+		EnableScan *int64 `json:"EnableScan,omitempty" name:"EnableScan"`
+
+		// 唯一ID
+		Id *int64 `json:"Id,omitempty" name:"Id"`
+
+		// 实时监控0 关闭 1开启
+		RealTimeMonitoring *int64 `json:"RealTimeMonitoring,omitempty" name:"RealTimeMonitoring"`
+
+		// 是否自动隔离
+		AutoIsolation *uint64 `json:"AutoIsolation,omitempty" name:"AutoIsolation"`
+
+		// 一键扫描超时
+		ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMalwareTimingScanSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMalwareTimingScanSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4992,6 +5180,183 @@ func (r *DescribeScanMalwareScheduleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScanMalwareScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanTaskDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块类型 当前提供 Malware 木马 , Vul 漏洞 , Baseline 基线
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 过滤参数
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeScanTaskDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModuleType")
+	delete(f, "TaskId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanTaskDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanTaskDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 扫描任务信息列表
+		ScanTaskDetailList []*ScanTaskDetails `json:"ScanTaskDetailList,omitempty" name:"ScanTaskDetailList"`
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 扫描机器总数
+		ScanMachineCount *uint64 `json:"ScanMachineCount,omitempty" name:"ScanMachineCount"`
+
+		// 发现风险机器数
+		RiskMachineCount *uint64 `json:"RiskMachineCount,omitempty" name:"RiskMachineCount"`
+
+		// 扫描开始时间
+		ScanBeginTime *string `json:"ScanBeginTime,omitempty" name:"ScanBeginTime"`
+
+		// 扫描结束时间
+		ScanEndTime *string `json:"ScanEndTime,omitempty" name:"ScanEndTime"`
+
+		// 检测时间
+		ScanTime *uint64 `json:"ScanTime,omitempty" name:"ScanTime"`
+
+		// 扫描进度
+		ScanProgress *uint64 `json:"ScanProgress,omitempty" name:"ScanProgress"`
+
+		// 扫描剩余时间
+		ScanLeftTime *uint64 `json:"ScanLeftTime,omitempty" name:"ScanLeftTime"`
+
+		// 扫描内容
+		ScanContent []*string `json:"ScanContent,omitempty" name:"ScanContent"`
+
+		// 漏洞信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulInfo []*VulDetailInfo `json:"VulInfo,omitempty" name:"VulInfo"`
+
+		// 风险事件个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskEventCount *uint64 `json:"RiskEventCount,omitempty" name:"RiskEventCount"`
+
+		// 0一键检测 1定时检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+		// 任务是否全部正在被停止 ture是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StoppingAll *bool `json:"StoppingAll,omitempty" name:"StoppingAll"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScanTaskDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanVulSettingRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeScanVulSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanVulSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanVulSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanVulSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文逗号分隔)
+		VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
+
+		// 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文逗号分隔)
+		VulLevels *string `json:"VulLevels,omitempty" name:"VulLevels"`
+
+		// 定期检测间隔时间（天）
+		TimerInterval *uint64 `json:"TimerInterval,omitempty" name:"TimerInterval"`
+
+		// 定期检测时间
+		TimerTime *string `json:"TimerTime,omitempty" name:"TimerTime"`
+
+		// 是否紧急漏洞
+		VulEmergency *uint64 `json:"VulEmergency,omitempty" name:"VulEmergency"`
+
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 是否开启
+		EnableScan *uint64 `json:"EnableScan,omitempty" name:"EnableScan"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 一键扫描超时时长
+		ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScanVulSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanVulSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6236,6 +6601,88 @@ func (r *EditBashRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EditBashRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EditBashRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 正则表达式
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
+
+	// 规则ID（新增时不填）
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 客户端ID数组
+	Uuids []*string `json:"Uuids,omitempty" name:"Uuids"`
+
+	// 主机IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 危险等级(0:无，1: 高危 2:中危 3: 低危)
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 是否全局规则(默认否)
+	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 0=黑名单， 1=白名单
+	White *uint64 `json:"White,omitempty" name:"White"`
+
+	// 事件列表点击“加入白名单”时,需要传EventId 事件的id
+	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 是否处理旧事件为白名单 0=不处理 1=处理
+	DealOldEvents *uint64 `json:"DealOldEvents,omitempty" name:"DealOldEvents"`
+}
+
+func (r *EditBashRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditBashRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Rule")
+	delete(f, "Id")
+	delete(f, "Uuids")
+	delete(f, "HostIp")
+	delete(f, "Level")
+	delete(f, "IsGlobal")
+	delete(f, "White")
+	delete(f, "EventId")
+	delete(f, "DealOldEvents")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditBashRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EditBashRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EditBashRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditBashRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7844,6 +8291,9 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// 自选服务器时必须 主机quuid的string数组
 	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+
+	// 是否自动隔离 1隔离 0 不隔离
+	AutoIsolation *uint64 `json:"AutoIsolation,omitempty" name:"AutoIsolation"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -7867,6 +8317,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "Cycle")
 	delete(f, "RealTimeMonitoring")
 	delete(f, "QuuidList")
+	delete(f, "AutoIsolation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -8705,6 +9156,95 @@ type RiskDnsList struct {
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
+type ScanTaskDetails struct {
+
+	// 服务器IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 服务器名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 操作系统
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 风险数量
+	RiskNum *uint64 `json:"RiskNum,omitempty" name:"RiskNum"`
+
+	// 扫描开始时间
+	ScanBeginTime *string `json:"ScanBeginTime,omitempty" name:"ScanBeginTime"`
+
+	// 扫描结束时间
+	ScanEndTime *string `json:"ScanEndTime,omitempty" name:"ScanEndTime"`
+
+	// 唯一Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 唯一Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 状态码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// id唯一
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 失败详情
+	FailType *uint64 `json:"FailType,omitempty" name:"FailType"`
+}
+
+type ScanVulAgainRequest struct {
+	*tchttp.BaseRequest
+
+	// 漏洞事件id串，多个用英文逗号分隔
+	EventIds *string `json:"EventIds,omitempty" name:"EventIds"`
+
+	// 重新检查的机器uuid,多个逗号分隔
+	Uuids *string `json:"Uuids,omitempty" name:"Uuids"`
+}
+
+func (r *ScanVulAgainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulAgainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventIds")
+	delete(f, "Uuids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulAgainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVulAgainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScanVulAgainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulAgainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ScanVulRequest struct {
 	*tchttp.BaseRequest
 
@@ -8722,6 +9262,12 @@ type ScanVulRequest struct {
 
 	// 是否是应急漏洞 0 否 1 是
 	VulEmergency *uint64 `json:"VulEmergency,omitempty" name:"VulEmergency"`
+
+	// 超时时长 单位秒
+	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitempty" name:"TimeoutPeriod"`
+
+	// 需要扫描的漏洞id
+	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds"`
 }
 
 func (r *ScanVulRequest) ToJsonString() string {
@@ -8741,6 +9287,8 @@ func (r *ScanVulRequest) FromJsonString(s string) error {
 	delete(f, "HostType")
 	delete(f, "QuuidList")
 	delete(f, "VulEmergency")
+	delete(f, "TimeoutPeriod")
+	delete(f, "VulIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulRequest has unknown keys!", "")
 	}
@@ -8768,6 +9316,80 @@ func (r *ScanVulResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ScanVulResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVulSettingRequest struct {
+	*tchttp.BaseRequest
+
+	// 定期检测间隔时间（天）
+	TimerInterval *uint64 `json:"TimerInterval,omitempty" name:"TimerInterval"`
+
+	// 漏洞类型：1: web应用漏洞 2:系统组件漏洞, 以数组方式传参[1,2]
+	VulCategories []*uint64 `json:"VulCategories,omitempty" name:"VulCategories"`
+
+	// 危害等级：1-低危；2-中危；3-高危；4-严重,以数组方式传参[1,2,3]
+	VulLevels []*uint64 `json:"VulLevels,omitempty" name:"VulLevels"`
+
+	// 定期检测时间
+	TimerTime *string `json:"TimerTime,omitempty" name:"TimerTime"`
+
+	// 是否是应急漏洞 0 否 1 是
+	VulEmergency *uint64 `json:"VulEmergency,omitempty" name:"VulEmergency"`
+
+	// 扫描开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 扫描结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 是否开启扫描 1开启 0不开启
+	EnableScan *uint64 `json:"EnableScan,omitempty" name:"EnableScan"`
+}
+
+func (r *ScanVulSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimerInterval")
+	delete(f, "VulCategories")
+	delete(f, "VulLevels")
+	delete(f, "TimerTime")
+	delete(f, "VulEmergency")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "EnableScan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVulSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanVulSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScanVulSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScanVulSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9382,6 +10004,42 @@ type Vul struct {
 	// * UN_OPERATED : 待处理
 	// * FIXED : 已修复
 	VulStatus *string `json:"VulStatus,omitempty" name:"VulStatus"`
+}
+
+type VulDetailInfo struct {
+
+	// 漏洞ID
+	VulId *uint64 `json:"VulId,omitempty" name:"VulId"`
+
+	// 漏洞级别
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 漏洞名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// cve编号
+	CveId *string `json:"CveId,omitempty" name:"CveId"`
+
+	// 漏洞分类
+	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
+
+	// 漏洞描述
+	Descript *string `json:"Descript,omitempty" name:"Descript"`
+
+	// 修复建议
+	Fix *string `json:"Fix,omitempty" name:"Fix"`
+
+	// 参考链接
+	Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+	// CVSS评分
+	CvssScore *float64 `json:"CvssScore,omitempty" name:"CvssScore"`
+
+	// CVSS详情
+	Cvss *string `json:"Cvss,omitempty" name:"Cvss"`
+
+	// 发布时间
+	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
 }
 
 type WeeklyReport struct {

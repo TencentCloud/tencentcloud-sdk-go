@@ -43,6 +43,47 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewApplyParamsTemplateRequest() (request *ApplyParamsTemplateRequest) {
+    request = &ApplyParamsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ApplyParamsTemplate")
+    return
+}
+
+func NewApplyParamsTemplateResponse() (response *ApplyParamsTemplateResponse) {
+    response = &ApplyParamsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyParamsTemplate
+// 应用参数模板到实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_CALLOSSERROR = "ResourceUnavailable.CallOssError"
+//  RESOURCEUNAVAILABLE_INSTANCECONFERROR = "ResourceUnavailable.InstanceConfError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKEDERROR = "ResourceUnavailable.InstanceLockedError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATEERROR = "ResourceUnavailable.InstanceStateError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) ApplyParamsTemplate(request *ApplyParamsTemplateRequest) (response *ApplyParamsTemplateResponse, err error) {
+    if request == nil {
+        request = NewApplyParamsTemplateRequest()
+    }
+    response = NewApplyParamsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -267,6 +308,38 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
     return
 }
 
+func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
+    request = &CreateParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "CreateParamTemplate")
+    return
+}
+
+func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
+    response = &CreateParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateParamTemplate
+// 创建参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (response *CreateParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateParamTemplateRequest()
+    }
+    response = NewCreateParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
     request = &DeleteInstanceAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -296,6 +369,38 @@ func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (r
         request = NewDeleteInstanceAccountRequest()
     }
     response = NewDeleteInstanceAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
+    request = &DeleteParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DeleteParamTemplate")
+    return
+}
+
+func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
+    response = &DeleteParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteParamTemplate
+// 删除参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (response *DeleteParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteParamTemplateRequest()
+    }
+    response = NewDeleteParamTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -1080,6 +1185,72 @@ func (c *Client) DescribeMaintenanceWindow(request *DescribeMaintenanceWindowReq
     return
 }
 
+func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRequest) {
+    request = &DescribeParamTemplateInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplateInfo")
+    return
+}
+
+func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfoResponse) {
+    response = &DescribeParamTemplateInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParamTemplateInfo
+// 查询参数模板详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+//  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
+func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoRequest) (response *DescribeParamTemplateInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamTemplateInfoRequest()
+    }
+    response = NewDescribeParamTemplateInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest) {
+    request = &DescribeParamTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplates")
+    return
+}
+
+func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesResponse) {
+    response = &DescribeParamTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParamTemplates
+// 查询参数模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamTemplatesRequest()
+    }
+    response = NewDescribeParamTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
     request = &DescribeProductInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1630,6 +1801,48 @@ func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanc
     return
 }
 
+func NewKillMasterGroupRequest() (request *KillMasterGroupRequest) {
+    request = &KillMasterGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "KillMasterGroup")
+    return
+}
+
+func NewKillMasterGroupResponse() (response *KillMasterGroupResponse) {
+    response = &KillMasterGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// KillMasterGroup
+// 模拟故障
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_PASSWORDEMPTY = "InvalidParameterValue.PasswordEmpty"
+//  INVALIDPARAMETERVALUE_PASSWORDERROR = "InvalidParameterValue.PasswordError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEERROR = "InvalidParameterValue.PasswordRuleError"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = "ResourceUnavailable.InstanceNotSupportOperation"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *KillMasterGroupResponse, err error) {
+    if request == nil {
+        request = NewKillMasterGroupRequest()
+    }
+    response = NewKillMasterGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManualBackupInstanceRequest() (request *ManualBackupInstanceRequest) {
     request = &ManualBackupInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1981,6 +2194,38 @@ func (c *Client) ModifyNetworkConfig(request *ModifyNetworkConfigRequest) (respo
         request = NewModifyNetworkConfigRequest()
     }
     response = NewModifyNetworkConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyParamTemplateRequest() (request *ModifyParamTemplateRequest) {
+    request = &ModifyParamTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyParamTemplate")
+    return
+}
+
+func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
+    response = &ModifyParamTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyParamTemplate
+// 修改参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (response *ModifyParamTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyParamTemplateRequest()
+    }
+    response = NewModifyParamTemplateResponse()
     err = c.Send(request, response)
     return
 }

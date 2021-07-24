@@ -96,60 +96,6 @@ func (r *FlowProductRemindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetCateTreeRequest struct {
-	*tchttp.BaseRequest
-
-	// 分类ID
-	CateId *uint64 `json:"CateId,omitempty" name:"CateId"`
-}
-
-func (r *GetCateTreeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCateTreeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "CateId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCateTreeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type GetCateTreeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分类ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CateId *uint64 `json:"CateId,omitempty" name:"CateId"`
-
-		// 分类名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetCateTreeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCateTreeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetUsagePlanUsageAmountRequest struct {
 	*tchttp.BaseRequest
 

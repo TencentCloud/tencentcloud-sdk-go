@@ -184,7 +184,7 @@ func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_PARSEBACKENDRESPONSEFAIL = "InternalError.ParseBackendResponseFail"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
@@ -196,6 +196,7 @@ func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsRe
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
 //  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_REQUESTIPNOTINWHITELIST = "UnauthorizedOperation.RequestIpNotInWhitelist"
@@ -555,7 +556,7 @@ func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -667,7 +668,7 @@ func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -721,7 +722,7 @@ func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByP
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -859,6 +860,7 @@ func NewSendStatusStatisticsResponse() (response *SendStatusStatisticsResponse) 
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIME = "InvalidParameterValue.InvalidStartTime"
 //  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_REQUESTIPNOTINWHITELIST = "UnauthorizedOperation.RequestIpNotInWhitelist"

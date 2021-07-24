@@ -14610,6 +14610,18 @@ type NatGateway struct {
 	// NAT网关绑定的安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupSet []*string `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
+
+	// NAT网关的SNAT转发规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitempty" name:"SourceIpTranslationNatRuleSet"`
+
+	// 是否独享型NAT。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExclusive *bool `json:"IsExclusive,omitempty" name:"IsExclusive"`
+
+	// 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusiveGatewayBandwidth *uint64 `json:"ExclusiveGatewayBandwidth,omitempty" name:"ExclusiveGatewayBandwidth"`
 }
 
 type NatGatewayAddress struct {
@@ -15997,6 +16009,7 @@ type Route struct {
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
 	// 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。
+	// 该字段在删除时必填，其他字段无需填写。
 	RouteId *uint64 `json:"RouteId,omitempty" name:"RouteId"`
 
 	// 路由策略描述。

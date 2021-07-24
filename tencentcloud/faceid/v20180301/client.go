@@ -62,8 +62,11 @@ func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationRespon
 // 本接口用于校验姓名和银行卡号的真实性和一致性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
@@ -170,6 +173,10 @@ func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationRe
 // 银行卡基础信息查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationRequest) (response *CheckBankCardInformationResponse, err error) {
@@ -177,6 +184,39 @@ func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationReque
         request = NewCheckBankCardInformationRequest()
     }
     response = NewCheckBankCardInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckEidTokenStatusRequest() (request *CheckEidTokenStatusRequest) {
+    request = &CheckEidTokenStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckEidTokenStatus")
+    return
+}
+
+func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
+    response = &CheckEidTokenStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckEidTokenStatus
+// 用于轮询E证通H5场景EidToken验证状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
+//  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (response *CheckEidTokenStatusResponse, err error) {
+    if request == nil {
+        request = NewCheckEidTokenStatusRequest()
+    }
+    response = NewCheckEidTokenStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -223,7 +263,9 @@ func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationRespon
 //  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INTERNALERROR_ENCRYPTSYSTEMERROR = "InternalError.EncryptSystemError"
 //  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
@@ -256,6 +298,10 @@ func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
 // 手机号二要素核验接口用于校验手机号和姓名的真实性和一致性，支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response *CheckPhoneAndNameResponse, err error) {
     if request == nil {
@@ -466,7 +512,10 @@ func NewGetEidResultResponse() (response *GetEidResultResponse) {
 // 完成验证后，用EidToken调用本接口获取结果信息，EidToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ENCRYPTSYSTEMERROR = "InternalError.EncryptSystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
@@ -498,7 +547,7 @@ func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
 }
 
 // GetEidToken
-// 每次调用E证通小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+// 每次调用E证通服务前，需先调用本接口获取EidToken，用来串联E证通流程，在验证完成后，用于获取E证通结果信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
@@ -753,8 +802,11 @@ func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
 // 传入姓名和身份证号，校验两者的真实性和一致性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
@@ -790,6 +842,7 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
@@ -804,9 +857,11 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 //  FAILEDOPERATION_NAMEFORMATERROR = "FailedOperation.NameFormatError"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
@@ -1013,6 +1068,7 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
@@ -1044,9 +1100,11 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_SILENTDETECTFAIL = "FailedOperation.SilentDetectFail"
 //  FAILEDOPERATION_SILENTTHRESHOLD = "FailedOperation.SilentThreshold"
 //  FAILEDOPERATION_SILENTTOOSHORT = "FailedOperation.SilentTooShort"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"

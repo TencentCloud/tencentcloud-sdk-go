@@ -5329,7 +5329,7 @@ type RemoveNodeFromNodePoolRequest struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
 
-	// 节点id列表
+	// 节点id列表，一次最多支持100台
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 

@@ -260,6 +260,48 @@ type CloudBaseRunEmptyDirVolumeSource struct {
 	SizeLimit *string `json:"SizeLimit,omitempty" name:"SizeLimit"`
 }
 
+type CloudBaseRunForGatewayConf struct {
+
+	// 是否缩容到0
+	IsZero *bool `json:"IsZero,omitempty" name:"IsZero"`
+
+	// 按百分比灰度的权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 按请求/header参数的灰度Key
+	GrayKey *string `json:"GrayKey,omitempty" name:"GrayKey"`
+
+	// 按请求/header参数的灰度Value
+	GrayValue *string `json:"GrayValue,omitempty" name:"GrayValue"`
+
+	// 是否为默认版本(按请求/header参数)
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 访问权限，对应二进制分多段，vpc内网｜公网｜oa
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 访问的URL（域名＋路径）列表
+	URLs []*string `json:"URLs,omitempty" name:"URLs"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 灰度类型：FLOW(权重), URL_PARAMS/HEAD_PARAMS
+	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+
+	// CLB的IP:Port
+	LbAddr *string `json:"LbAddr,omitempty" name:"LbAddr"`
+
+	// 0:http访问服务配置信息, 1: 服务域名
+	ConfigType *int64 `json:"ConfigType,omitempty" name:"ConfigType"`
+}
+
 type CloudBaseRunImageInfo struct {
 
 	// 镜像仓库名称
@@ -366,6 +408,29 @@ type CloudBaseRunSideSpec struct {
 	// 挂载信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+}
+
+type CloudBaseRunVersionFlowItem struct {
+
+	// 版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 流量占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// 流量参数键值对（URL参数/HEADERS参数）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlParam *ObjectKV `json:"UrlParam,omitempty" name:"UrlParam"`
+
+	// 优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 是否是默认兜底版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultPriority *bool `json:"IsDefaultPriority,omitempty" name:"IsDefaultPriority"`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -1434,6 +1499,9 @@ type DeleteCloudBaseProjectLatestVersionRequest struct {
 
 	// 项目名
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 是否保留资源
+	KeepResource *bool `json:"KeepResource,omitempty" name:"KeepResource"`
 }
 
 func (r *DeleteCloudBaseProjectLatestVersionRequest) ToJsonString() string {
@@ -1450,6 +1518,7 @@ func (r *DeleteCloudBaseProjectLatestVersionRequest) FromJsonString(s string) er
 	}
 	delete(f, "EnvId")
 	delete(f, "ProjectName")
+	delete(f, "KeepResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudBaseProjectLatestVersionRequest has unknown keys!", "")
 	}
@@ -1473,6 +1542,76 @@ func (r *DeleteCloudBaseProjectLatestVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudBaseProjectLatestVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 是否删除服务，只有最后一个版本的时候，才生效。
+	IsDeleteServer *bool `json:"IsDeleteServer,omitempty" name:"IsDeleteServer"`
+
+	// 只有删除服务的时候，才会起作用
+	IsDeleteImage *bool `json:"IsDeleteImage,omitempty" name:"IsDeleteImage"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *DeleteCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	delete(f, "IsDeleteServer")
+	delete(f, "IsDeleteImage")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudBaseRunServerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，succ为成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1852,6 +1991,64 @@ func (r *DescribeCloudBaseProjectVersionListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseProjectVersionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunConfForGateWayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvID *string `json:"EnvID,omitempty" name:"EnvID"`
+
+	// vpc信息
+	VpcID *string `json:"VpcID,omitempty" name:"VpcID"`
+}
+
+func (r *DescribeCloudBaseRunConfForGateWayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunConfForGateWayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvID")
+	delete(f, "VpcID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunConfForGateWayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunConfForGateWayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 最近更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LastUpTime *string `json:"LastUpTime,omitempty" name:"LastUpTime"`
+
+		// 配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*CloudBaseRunForGatewayConf `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunConfForGateWayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunConfForGateWayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2457,7 +2654,7 @@ func (r *DescribeDatabaseACLResponse) FromJsonString(s string) error {
 type DescribeDownloadFileRequest struct {
 	*tchttp.BaseRequest
 
-	// 代码uri
+	// 代码uri，格式如：extension://abcdefhhxxx.zip，对应 DescribeExtensionUploadInfo 接口的返回值
 	CodeUri *string `json:"CodeUri,omitempty" name:"CodeUri"`
 }
 
@@ -2484,11 +2681,11 @@ type DescribeDownloadFileResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 文件路径
+		// 文件路径，该字段已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 
-		// 加密key
+		// 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CustomKey *string `json:"CustomKey,omitempty" name:"CustomKey"`
 
@@ -2796,6 +2993,18 @@ type DescribeEnvLimitResponse struct {
 		// 微信网关体验版已购买月份数
 		CurrentFreeTrialNum *int64 `json:"CurrentFreeTrialNum,omitempty" name:"CurrentFreeTrialNum"`
 
+		// 转支付限额总数
+		ChangePayTotal *int64 `json:"ChangePayTotal,omitempty" name:"ChangePayTotal"`
+
+		// 当前已用转支付次数
+		CurrentChangePayTotal *int64 `json:"CurrentChangePayTotal,omitempty" name:"CurrentChangePayTotal"`
+
+		// 转支付每月限额
+		ChangePayMonthly *int64 `json:"ChangePayMonthly,omitempty" name:"ChangePayMonthly"`
+
+		// 本月已用转支付额度
+		CurrentChangePayMonthly *int64 `json:"CurrentChangePayMonthly,omitempty" name:"CurrentChangePayMonthly"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2809,6 +3018,68 @@ func (r *DescribeEnvLimitResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEnvLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvPostpaidDeductRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源方列表
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeEnvPostpaidDeductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPostpaidDeductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceTypes")
+	delete(f, "EnvId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvPostpaidDeductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvPostpaidDeductResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标抵扣详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PostPaidEnvDeductInfoList []*PostPaidEnvDeductInfo `json:"PostPaidEnvDeductInfoList,omitempty" name:"PostPaidEnvDeductInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvPostpaidDeductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPostpaidDeductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3265,6 +3536,64 @@ func (r *DescribeSmsQuotasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSpecialCostItemsRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeSpecialCostItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecialCostItemsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecialCostItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSpecialCostItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 1分钱抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SpecialCostItems []*SpecialCostItem `json:"SpecialCostItems,omitempty" name:"SpecialCostItems"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSpecialCostItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecialCostItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWxCloudBaseRunEnvsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3688,6 +4017,9 @@ type EstablishCloudBaseRunServerRequest struct {
 
 	// 是否创建Path 0未传默认创建 1创建 2不创建
 	IsCreatePath *int64 `json:"IsCreatePath,omitempty" name:"IsCreatePath"`
+
+	// 指定创建路径（如不存在，则创建。存在，则忽略）
+	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
 }
 
 func (r *EstablishCloudBaseRunServerRequest) ToJsonString() string {
@@ -3715,6 +4047,7 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 	delete(f, "PublicAccess")
 	delete(f, "OpenAccessTypes")
 	delete(f, "IsCreatePath")
+	delete(f, "ServerPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstablishCloudBaseRunServerRequest has unknown keys!", "")
 	}
@@ -3917,6 +4250,72 @@ type LoginStatistic struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ModifyCloudBaseRunServerFlowConfRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 流量占比
+	VersionFlowItems []*CloudBaseRunVersionFlowItem `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+
+	// 流量类型（URL_PARAMS / FLOW / HEADERS)
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *ModifyCloudBaseRunServerFlowConfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerFlowConfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionFlowItems")
+	delete(f, "TrafficType")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudBaseRunServerFlowConfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCloudBaseRunServerFlowConfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果，succ代表成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCloudBaseRunServerFlowConfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerFlowConfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -4081,6 +4480,15 @@ func (r *ModifyEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ObjectKV struct {
+
+	// object 的 key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// object key 对应的 value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type OrderInfo struct {
 
 	// 订单号
@@ -4174,6 +4582,33 @@ type PlatformStatistic struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type PostPaidEnvDeductInfo struct {
+
+	// 资源方
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 按量计费详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResQuota *float64 `json:"ResQuota,omitempty" name:"ResQuota"`
+
+	// 资源包抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgQuota *float64 `json:"PkgQuota,omitempty" name:"PkgQuota"`
+
+	// 免费额度抵扣详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeQuota *float64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
 type PostpayEnvQuota struct {
@@ -4444,6 +4879,25 @@ type SmsFreeQuota struct {
 	// 今天已使用总条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TodayUsedQuota *uint64 `json:"TodayUsedQuota,omitempty" name:"TodayUsedQuota"`
+}
+
+type SpecialCostItem struct {
+
+	// 上报日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+
+	// 腾讯云uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 资源id:环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 上报任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type StaticStorageInfo struct {

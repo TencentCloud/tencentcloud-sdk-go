@@ -389,6 +389,9 @@ const (
 	// 资源配额超限。
 	OPERATIONDENIED_OVERQUOTA = "OperationDenied.OverQuota"
 
+	// 腾讯云子账号权限不足，不允许执行当前操作。
+	OPERATIONDENIED_SUBACCOUNTOPERATIONDENIED = "OperationDenied.SubAccountOperationDenied"
+
 	// 该实例暂不支持退款。
 	OPERATIONDENIED_UNSUPPORTREFUNDERROR = "OperationDenied.UnSupportRefundError"
 

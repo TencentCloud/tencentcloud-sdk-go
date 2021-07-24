@@ -59,7 +59,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 }
 
 // CreateInstance
-// 创建EMR实例
+// 创建EMR集群实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

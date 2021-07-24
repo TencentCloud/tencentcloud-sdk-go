@@ -211,6 +211,58 @@ func (r *CheckInstanceNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 待检测的实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+func (r *CheckInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检查结果，true为合法，false为非法
+		IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
+
+		// 实例所在的RegionId
+		RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
 
@@ -4446,6 +4498,9 @@ type ManageReplicationRequest struct {
 
 	// 目标实例的地域ID，如广州是1
 	DestinationRegionId *uint64 `json:"DestinationRegionId,omitempty" name:"DestinationRegionId"`
+
+	// 开启跨主账号实例同步配置项
+	PeerReplicationOption *PeerReplicationOption `json:"PeerReplicationOption,omitempty" name:"PeerReplicationOption"`
 }
 
 func (r *ManageReplicationRequest) ToJsonString() string {
@@ -4465,6 +4520,7 @@ func (r *ManageReplicationRequest) FromJsonString(s string) error {
 	delete(f, "Rule")
 	delete(f, "Description")
 	delete(f, "DestinationRegionId")
+	delete(f, "PeerReplicationOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageReplicationRequest has unknown keys!", "")
 	}
@@ -5168,6 +5224,18 @@ type NamespaceIsExistsResp struct {
 
 	// 是否为保留命名空间
 	IsPreserved *bool `json:"IsPreserved,omitempty" name:"IsPreserved"`
+}
+
+type PeerReplicationOption struct {
+
+	// 待同步实例的uin
+	PeerRegistryUin *string `json:"PeerRegistryUin,omitempty" name:"PeerRegistryUin"`
+
+	// 待同步实例的访问永久Token
+	PeerRegistryToken *string `json:"PeerRegistryToken,omitempty" name:"PeerRegistryToken"`
+
+	// 是否开启跨主账号实例同步
+	EnablePeerReplication *bool `json:"EnablePeerReplication,omitempty" name:"EnablePeerReplication"`
 }
 
 type Registry struct {

@@ -167,6 +167,12 @@ type AddCdnDomainRequest struct {
 
 	// QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
+
+	// 回源S3私有鉴权
+	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
+
+	// 回源OSS私有鉴权
+	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -215,6 +221,8 @@ func (r *AddCdnDomainRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6Access")
 	delete(f, "OfflineCache")
 	delete(f, "Quic")
+	delete(f, "AwsPrivateAccess")
+	delete(f, "OssPrivateAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCdnDomainRequest has unknown keys!", "")
 	}
@@ -3776,6 +3784,10 @@ type DetailDomain struct {
 	// Quic配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
+
+	// 回源OSS私有鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
 }
 
 type DiagnoseData struct {
@@ -4032,7 +4044,7 @@ type DomainFilter struct {
 	// - status：域名状态，online，offline或processing。
 	// - serviceType：业务类型，web，download或media。
 	// - projectId：项目ID。
-	// - domainType：主源站类型，cname表示自有源，cos表示cos接入。
+	// - domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
 	// - fullUrlCache：全路径缓存，on或off。
 	// - https：是否配置https，on，off或processing。
 	// - originPullProtocol：回源协议类型，支持http，follow或https。
@@ -5508,6 +5520,20 @@ type OriginPullTimeout struct {
 	ReceiveTimeout *uint64 `json:"ReceiveTimeout,omitempty" name:"ReceiveTimeout"`
 }
 
+type OssPrivateAccess struct {
+
+	// 开关， on/off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 访问ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
 type OverseaConfig struct {
 
 	// 时间戳防盗链配置。
@@ -6206,11 +6232,15 @@ type ScdnAclGroup struct {
 	// 具体配置
 	Configure []*ScdnAclRule `json:"Configure,omitempty" name:"Configure"`
 
-	// 规则行为，一般为refuse
+	// 规则行为，一般为refuse，重定向redirect
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 规则是否生效中active|inactive
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误页面配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorPage *ScdnErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 }
 
 type ScdnAclRule struct {
@@ -7202,6 +7232,9 @@ type UpdateDomainConfigRequest struct {
 
 	// QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
+
+	// 回源OSS私有鉴权
+	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -7256,6 +7289,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "OfflineCache")
 	delete(f, "OriginCombine")
 	delete(f, "Quic")
+	delete(f, "OssPrivateAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

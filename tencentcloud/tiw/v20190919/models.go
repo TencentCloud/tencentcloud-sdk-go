@@ -69,9 +69,11 @@ type CreateTranscodeRequest struct {
 	// 内部参数
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
 
-	// 文档转码优先级，支持填入以下值：<br/>
-	// - low: 低优先级转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
+	// 文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
+	// - low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
 	// - 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
+	// <br/>
+	// 注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
 	Priority *string `json:"Priority,omitempty" name:"Priority"`
 }
 
@@ -348,6 +350,10 @@ type DescribeOnlineRecordResponse struct {
 		// 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ReplayUrl *string `json:"ReplayUrl,omitempty" name:"ReplayUrl"`
+
+		// 视频流在录制过程中断流次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Interrupts []*Interrupt `json:"Interrupts,omitempty" name:"Interrupts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -854,6 +860,17 @@ func (r *DescribeWhiteboardPushResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWhiteboardPushResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Interrupt struct {
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 视频流断流次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type LayoutParams struct {

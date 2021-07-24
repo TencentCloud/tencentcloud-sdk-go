@@ -2015,6 +2015,92 @@ func (r *CreateContainGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateFileConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项文件名
+	ConfigFileName *string `json:"ConfigFileName,omitempty" name:"ConfigFileName"`
+
+	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+	ConfigFileValue *string `json:"ConfigFileValue,omitempty" name:"ConfigFileValue"`
+
+	// 配置项关联应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 发布路径
+	ConfigFilePath *string `json:"ConfigFilePath,omitempty" name:"ConfigFilePath"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	ConfigFileCode *string `json:"ConfigFileCode,omitempty" name:"ConfigFileCode"`
+
+	// 后置命令
+	ConfigPostCmd *string `json:"ConfigPostCmd,omitempty" name:"ConfigPostCmd"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+}
+
+func (r *CreateFileConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigName")
+	delete(f, "ConfigVersion")
+	delete(f, "ConfigFileName")
+	delete(f, "ConfigFileValue")
+	delete(f, "ApplicationId")
+	delete(f, "ConfigFilePath")
+	delete(f, "ConfigVersionDesc")
+	delete(f, "ConfigFileCode")
+	delete(f, "ConfigPostCmd")
+	delete(f, "EncodeWithBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFileConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true：创建成功；false：创建失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFileConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateGatewayApiRequest struct {
 	*tchttp.BaseRequest
 
@@ -4960,6 +5046,12 @@ type DescribeConfigSummaryRequest struct {
 
 	// 每页条数，默认为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按时间排序：creation_time；按名称排序：config_name
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 升序传 0，降序传 1
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 }
 
 func (r *DescribeConfigSummaryRequest) ToJsonString() string {
@@ -4978,6 +5070,8 @@ func (r *DescribeConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigSummaryRequest has unknown keys!", "")
 	}
@@ -5434,6 +5528,80 @@ func (r *DescribeEnabledUnitRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEnabledUnitRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项ID列表
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
+
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+}
+
+func (r *DescribeFileConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "ConfigIdList")
+	delete(f, "ConfigName")
+	delete(f, "ApplicationId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ConfigVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件配置项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageFileConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFileConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6999,6 +7167,12 @@ type DescribePublicConfigSummaryRequest struct {
 
 	// 每页条数，默认为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按时间排序：creation_time；按名称排序：config_name
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 升序传 0，降序传 1
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 }
 
 func (r *DescribePublicConfigSummaryRequest) ToJsonString() string {
@@ -7016,6 +7190,8 @@ func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicConfigSummaryRequest has unknown keys!", "")
 	}
@@ -8893,6 +9069,73 @@ type FieldRef struct {
 	// k8s 的 FieldPath
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldPath *string `json:"FieldPath,omitempty" name:"FieldPath"`
+}
+
+type FileConfig struct {
+
+	// 配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项版本描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileName *string `json:"ConfigFileName,omitempty" name:"ConfigFileName"`
+
+	// 配置项文件内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileValue *string `json:"ConfigFileValue,omitempty" name:"ConfigFileValue"`
+
+	// 配置项文件编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileCode *string `json:"ConfigFileCode,omitempty" name:"ConfigFileCode"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 配置项归属应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 删除标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 配置项版本数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersionCount *int64 `json:"ConfigVersionCount,omitempty" name:"ConfigVersionCount"`
+
+	// 配置项最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 发布路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFilePath *string `json:"ConfigFilePath,omitempty" name:"ConfigFilePath"`
+
+	// 后置命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigPostCmd *string `json:"ConfigPostCmd,omitempty" name:"ConfigPostCmd"`
+
+	// 配置项文件长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigFileValueLength *uint64 `json:"ConfigFileValueLength,omitempty" name:"ConfigFileValueLength"`
 }
 
 type GatewayApiGroupVo struct {
@@ -11102,6 +11345,64 @@ func (r *ReleaseConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReleaseFileConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 发布描述
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+}
+
+func (r *ReleaseFileConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseFileConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "GroupId")
+	delete(f, "ReleaseDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseFileConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReleaseFileConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发布结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReleaseFileConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseFileConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ReleasePublicConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -11740,6 +12041,18 @@ type ServiceSetting struct {
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 是否创建 k8s service，默认为 false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableService *bool `json:"DisableService,omitempty" name:"DisableService"`
+
+	// service 是否为 headless 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadlessService *bool `json:"HeadlessService,omitempty" name:"HeadlessService"`
+
+	// 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDeleteService *bool `json:"AllowDeleteService,omitempty" name:"AllowDeleteService"`
 }
 
 type ShardArgument struct {
@@ -12619,6 +12932,17 @@ type TsfPageContainerEvent struct {
 
 	// events 数组
 	Content []*ContainerEvent `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfPageFileConfig struct {
+
+	// 总数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件配置数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*FileConfig `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageGatewayDeployGroup struct {

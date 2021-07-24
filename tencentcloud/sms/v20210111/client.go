@@ -186,7 +186,7 @@ func NewCallbackStatusStatisticsResponse() (response *CallbackStatusStatisticsRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -560,7 +560,7 @@ func NewPullSmsReplyStatusResponse() (response *PullSmsReplyStatusResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -673,7 +673,7 @@ func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -729,7 +729,7 @@ func NewPullSmsSendStatusByPhoneNumberResponse() (response *PullSmsSendStatusByP
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_PHONENUMBERONBLACKLIST = "FailedOperation.PhoneNumberOnBlacklist"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"

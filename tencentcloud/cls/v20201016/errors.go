@@ -35,11 +35,23 @@ const (
 	// 检索游标已失效或不存在。
 	FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
 
+	// 相同的日志集已存在。
+	FAILEDOPERATION_LOGSETCONFLICT = "FailedOperation.LogsetConflict"
+
+	// 日志集下存在日志主题。
+	FAILEDOPERATION_LOGSETNOTEMPTY = "FailedOperation.LogsetNotEmpty"
+
+	// 修改的生命周期被禁止。
+	FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
+
 	// 查询语句运行失败。
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
 
 	// 查询超时。
 	FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+
+	// 投递任务不允许重试。
+	FAILEDOPERATION_SHIPPERTASKNOTTORETRY = "FailedOperation.ShipperTaskNotToRetry"
 
 	// 查询语句解析错误。
 	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
@@ -62,11 +74,20 @@ const (
 	// 告警策略通知模板已经存在。
 	INVALIDPARAMETER_ALARMNOTICECONFLICT = "InvalidParameter.AlarmNoticeConflict"
 
+	// 相同的采集配置规则已经存在。
+	INVALIDPARAMETER_CONFIGCONFLICT = "InvalidParameter.ConfigConflict"
+
 	// 指定日志主题已经存在索引规则。
 	INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
 
+	// 相同的日志集已存在。
+	INVALIDPARAMETER_LOGSETCONFLICT = "InvalidParameter.LogsetConflict"
+
 	// 同名机器组已经存在。
 	INVALIDPARAMETER_MACHINEGROUPCONFLICT = "InvalidParameter.MachineGroupConflict"
+
+	// 投递规则命名冲突。
+	INVALIDPARAMETER_SHIPPERCONFLICT = "InvalidParameter.ShipperConflict"
 
 	// 指定日志集下已经有同名的日志主题。
 	INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
@@ -76,6 +97,9 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 采集规则配置超过最大值限制。
+	LIMITEXCEEDED_CONFIG = "LimitExceeded.Config"
 
 	// 日志导出数量超出限制。
 	LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
@@ -98,6 +122,9 @@ const (
 	// 分区超过限制。
 	LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"
 
+	// 投递规则超出限制。
+	LIMITEXCEEDED_SHIPPER = "LimitExceeded.Shipper"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -106,6 +133,18 @@ const (
 
 	// ACL校验失败。
 	OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+
+	// 账户已销毁。
+	OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+
+	// 账户欠费。
+	OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+
+	// 账户不存在。
+	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+
+	// 字段没有开启分析功能。
+	OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
 
 	// 通知模版已绑定告警，无法删除。
 	OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
@@ -122,6 +161,9 @@ const (
 	// 告警策略通知模板不存在。
 	RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
 
+	// 指定的采集规则配置不存在。
+	RESOURCENOTFOUND_CONFIGNOTEXIST = "ResourceNotFound.ConfigNotExist"
+
 	// 日志导出不存在。
 	RESOURCENOTFOUND_EXPORTNOTEXIST = "ResourceNotFound.ExportNotExist"
 
@@ -136,6 +178,12 @@ const (
 
 	// 分区不存在。
 	RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
+
+	// 投递规则不存在。
+	RESOURCENOTFOUND_SHIPPERNOTEXIST = "ResourceNotFound.ShipperNotExist"
+
+	// 投递任务不存在。
+	RESOURCENOTFOUND_SHIPPERTASKNOTEXIST = "ResourceNotFound.ShipperTaskNotExist"
 
 	// 日志主题不存在。
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"

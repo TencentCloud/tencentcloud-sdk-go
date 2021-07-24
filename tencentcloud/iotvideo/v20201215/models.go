@@ -20,6 +20,54 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AIModelApplication struct {
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type AIModelInfo struct {
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 可调用数量
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 已调用数量
+	Used *uint64 `json:"Used,omitempty" name:"Used"`
+
+	// 申请时间
+	ApplyTime *uint64 `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 审批通过时间
+	ApprovalTime *uint64 `json:"ApprovalTime,omitempty" name:"ApprovalTime"`
+}
+
+type AIModelUsageInfo struct {
+
+	// 开通时间
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 资源总量
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 已使用资源数量
+	Used *uint64 `json:"Used,omitempty" name:"Used"`
+}
+
 type ActionHistory struct {
 
 	// 设备名称
@@ -53,6 +101,56 @@ type ActionHistory struct {
 
 	// 调用状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ApplyAIModelRequest struct {
+	*tchttp.BaseRequest
+
+	// AI模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *ApplyAIModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyAIModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyAIModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyAIModelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyAIModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BalanceTransaction struct {
@@ -150,6 +248,56 @@ func (r *BatchUpdateFirmwareResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BatchUpdateFirmwareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelAIModelApplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// AI模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *CancelAIModelApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAIModelApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelAIModelApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelAIModelApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelAIModelApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAIModelApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -379,6 +527,68 @@ func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAIDetectionRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// AI模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 图片上传的开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 图片上传的结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *CreateAIDetectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIDetectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ModelId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIDetectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAIDetectionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAIDetectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIDetectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -433,6 +643,77 @@ func (r *CreateBatchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCOSCredentialsRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *CreateCOSCredentialsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCOSCredentialsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCOSCredentialsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCOSCredentialsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// COS存储桶名称
+		StorageBucket *string `json:"StorageBucket,omitempty" name:"StorageBucket"`
+
+		// COS存储桶区域
+		StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+		// COS存储桶路径
+		StoragePath *string `json:"StoragePath,omitempty" name:"StoragePath"`
+
+		// COS上传用的SecretID
+		SecretID *string `json:"SecretID,omitempty" name:"SecretID"`
+
+		// COS上传用的SecretKey
+		SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+		// COS上传用的Token
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 密钥信息过期时间
+		ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCOSCredentialsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCOSCredentialsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -975,6 +1256,271 @@ func (r *DeleteProductResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelApplicationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 分页的大小，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，Offset从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeAIModelApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 申请记录数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 申请记录数组
+		Applications []*AIModelApplication `json:"Applications,omitempty" name:"Applications"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIModelApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelChannelRequest struct {
+	*tchttp.BaseRequest
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeAIModelChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 推送类型。ckafka：消息队列；forward：http/https推送
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 第三方推送地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ForwardAddress *string `json:"ForwardAddress,omitempty" name:"ForwardAddress"`
+
+		// 第三方推送密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ForwardKey *string `json:"ForwardKey,omitempty" name:"ForwardKey"`
+
+		// ckafka地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CKafkaRegion *string `json:"CKafkaRegion,omitempty" name:"CKafkaRegion"`
+
+		// ckafka实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CKafkaInstance *string `json:"CKafkaInstance,omitempty" name:"CKafkaInstance"`
+
+		// ckafka订阅主题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CKafkaTopic *string `json:"CKafkaTopic,omitempty" name:"CKafkaTopic"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIModelChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelUsageRequest struct {
+	*tchttp.BaseRequest
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 偏移量，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIModelUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ProductId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// AI模型资源包总量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// AI模型资源包信息数组
+		UsageInfo []*AIModelUsageInfo `json:"UsageInfo,omitempty" name:"UsageInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIModelUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelsRequest struct {
+	*tchttp.BaseRequest
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 偏移量，Offset从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAIModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// AI模型数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// AI模型信息数组
+		Models []*AIModelInfo `json:"Models,omitempty" name:"Models"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAIModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3601,6 +4147,56 @@ func (r *PublishMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReportAliveDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *ReportAliveDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportAliveDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportAliveDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReportAliveDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReportAliveDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportAliveDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetCloudStorageRequest struct {
 	*tchttp.BaseRequest
 
@@ -3848,6 +4444,84 @@ func (r *TransferCloudStorageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TransferCloudStorageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAIModelChannelRequest struct {
+	*tchttp.BaseRequest
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 推送类型。ckafka：消息队列；forward：http/https推送
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 第三方推送地址
+	ForwardAddress *string `json:"ForwardAddress,omitempty" name:"ForwardAddress"`
+
+	// 第三方推送密钥，不填写则腾讯云自动生成。
+	ForwardKey *string `json:"ForwardKey,omitempty" name:"ForwardKey"`
+
+	// ckafka地域
+	CKafkaRegion *string `json:"CKafkaRegion,omitempty" name:"CKafkaRegion"`
+
+	// ckafka实例
+	CKafkaInstance *string `json:"CKafkaInstance,omitempty" name:"CKafkaInstance"`
+
+	// ckafka订阅主题
+	CKafkaTopic *string `json:"CKafkaTopic,omitempty" name:"CKafkaTopic"`
+}
+
+func (r *UpdateAIModelChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIModelChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ProductId")
+	delete(f, "Type")
+	delete(f, "ForwardAddress")
+	delete(f, "ForwardKey")
+	delete(f, "CKafkaRegion")
+	delete(f, "CKafkaInstance")
+	delete(f, "CKafkaTopic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAIModelChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAIModelChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 第三方推送密钥，如果选择自动生成则会返回此字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ForwardKey *string `json:"ForwardKey,omitempty" name:"ForwardKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateAIModelChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIModelChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

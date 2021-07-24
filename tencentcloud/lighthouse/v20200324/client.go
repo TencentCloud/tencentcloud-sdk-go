@@ -149,6 +149,39 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
     return
 }
 
+func NewAttachCcnRequest() (request *AttachCcnRequest) {
+    request = &AttachCcnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "AttachCcn")
+    return
+}
+
+func NewAttachCcnResponse() (response *AttachCcnResponse) {
+    response = &AttachCcnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachCcn
+// 本接口 (AttachCcn) 用于建立与云联网的关联。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ATTACHCCNFAILED = "UnsupportedOperation.AttachCcnFailed"
+//  UNSUPPORTEDOPERATION_CCNALREADYATTACHED = "UnsupportedOperation.CcnAlreadyAttached"
+func (c *Client) AttachCcn(request *AttachCcnRequest) (response *AttachCcnResponse, err error) {
+    if request == nil {
+        request = NewAttachCcnRequest()
+    }
+    response = NewAttachCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlueprintRequest() (request *CreateBlueprintRequest) {
     request = &CreateBlueprintRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -627,11 +660,44 @@ func NewDescribeBundlesResponse() (response *DescribeBundlesResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NEGATIVE = "InvalidParameterValue.Negative"
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
+//  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 func (c *Client) DescribeBundles(request *DescribeBundlesRequest) (response *DescribeBundlesResponse, err error) {
     if request == nil {
         request = NewDescribeBundlesRequest()
     }
     response = NewDescribeBundlesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnAttachedInstancesRequest() (request *DescribeCcnAttachedInstancesRequest) {
+    request = &DescribeCcnAttachedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeCcnAttachedInstances")
+    return
+}
+
+func NewDescribeCcnAttachedInstancesResponse() (response *DescribeCcnAttachedInstancesResponse) {
+    response = &DescribeCcnAttachedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCcnAttachedInstances
+// 本接口 (DescribeCcnAttachedInstances) 用于查询云联网关联的实例信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DESCRIBECCNATTACHEDINSTANCESFAILED = "UnsupportedOperation.DescribeCcnAttachedInstancesFailed"
+func (c *Client) DescribeCcnAttachedInstances(request *DescribeCcnAttachedInstancesRequest) (response *DescribeCcnAttachedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnAttachedInstancesRequest()
+    }
+    response = NewDescribeCcnAttachedInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1022,6 +1088,7 @@ func NewDescribeModifyInstanceBundlesResponse() (response *DescribeModifyInstanc
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
+//  INTERNALERROR_DESCRIBEINSTANCESMODIFICATION = "InternalError.DescribeInstancesModification"
 //  INTERNALERROR_DESCRIBEINSTANCESMODIFICATIONERROR = "InternalError.DescribeInstancesModificationError"
 //  INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
@@ -1071,6 +1138,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
+//  INTERNALERROR_DESCRIBEINSTANCESMODIFICATION = "InternalError.DescribeInstancesModification"
 //  INTERNALERROR_DESCRIBEINSTANCESMODIFICATIONERROR = "InternalError.DescribeInstancesModificationError"
 //  INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
@@ -1250,6 +1318,39 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
     return
 }
 
+func NewDetachCcnRequest() (request *DetachCcnRequest) {
+    request = &DetachCcnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DetachCcn")
+    return
+}
+
+func NewDetachCcnResponse() (response *DetachCcnResponse) {
+    response = &DetachCcnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachCcn
+// 本接口 (AttachCcn) 用于解除与云联网的关联。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
+//  UNSUPPORTEDOPERATION_DETACHCCNFAILED = "UnsupportedOperation.DetachCcnFailed"
+func (c *Client) DetachCcn(request *DetachCcnRequest) (response *DetachCcnResponse, err error) {
+    if request == nil {
+        request = NewDetachCcnRequest()
+    }
+    response = NewDetachCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateInstancesKeyPairsRequest() (request *DisassociateInstancesKeyPairsRequest) {
     request = &DisassociateInstancesKeyPairsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1290,6 +1391,7 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 //  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_KEYIDNOTFOUND = "ResourceNotFound.KeyIdNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = "UnsupportedOperation.KeyPairNotBoundToInstance"
@@ -1783,6 +1885,40 @@ func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *Reb
         request = NewRebootInstancesRequest()
     }
     response = NewRebootInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetAttachCcnRequest() (request *ResetAttachCcnRequest) {
+    request = &ResetAttachCcnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ResetAttachCcn")
+    return
+}
+
+func NewResetAttachCcnResponse() (response *ResetAttachCcnResponse) {
+    response = &ResetAttachCcnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetAttachCcn
+// 本接口 (ResetAttachCcn) 用于关联云联网实例申请过期时，重新申请关联操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
+//  UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = "UnsupportedOperation.ResetAttachCcnFailed"
+func (c *Client) ResetAttachCcn(request *ResetAttachCcnRequest) (response *ResetAttachCcnResponse, err error) {
+    if request == nil {
+        request = NewResetAttachCcnRequest()
+    }
+    response = NewResetAttachCcnResponse()
     err = c.Send(request, response)
     return
 }

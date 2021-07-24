@@ -146,6 +146,7 @@ func NewBindRuleRealServersResponse() (response *BindRuleRealServersResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
 //  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
 //  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
 //  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
@@ -1065,6 +1066,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
 //  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
 //  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
 //  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"

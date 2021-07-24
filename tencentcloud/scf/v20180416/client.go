@@ -182,6 +182,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = "InvalidParameterValue.CfsParameterDuplicate"
 //  INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
 //  INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = "InvalidParameterValue.CfsStructionError"
 //  INVALIDPARAMETERVALUE_CLS = "InvalidParameterValue.Cls"
@@ -882,6 +883,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
+//  INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
 //  LIMITEXCEEDED_OFFSET = "LimitExceeded.Offset"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -1036,6 +1038,46 @@ func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err e
         request = NewInvokeRequest()
     }
     response = NewInvokeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeFunctionRequest() (request *InvokeFunctionRequest) {
+    request = &InvokeFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "InvokeFunction")
+    return
+}
+
+func NewInvokeFunctionResponse() (response *InvokeFunctionResponse) {
+    response = &InvokeFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InvokeFunction
+//  SCF同步调用函数接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_INVOKEFUNCTION = "FailedOperation.InvokeFunction"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_FUNCTIONNAME = "InvalidParameter.FunctionName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAM = "InvalidParameterValue.Param"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) InvokeFunction(request *InvokeFunctionRequest) (response *InvokeFunctionResponse, err error) {
+    if request == nil {
+        request = NewInvokeFunctionRequest()
+    }
+    response = NewInvokeFunctionResponse()
     err = c.Send(request, response)
     return
 }

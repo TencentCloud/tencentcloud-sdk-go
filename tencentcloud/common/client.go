@@ -50,6 +50,11 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
 
+	// reflect to inject client client if field exists and retry feature is enabled
+	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
+		safeInjectClientToken(request)
+	}
+
 	if c.signMethod == "HmacSHA1" || c.signMethod == "HmacSHA256" {
 		return c.sendWithSignatureV1(request, response)
 	} else {
@@ -75,18 +80,9 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
-	if c.debug {
-		outbytes, err := httputil.DumpRequest(httpRequest, true)
-		if err != nil {
-			log.Printf("[ERROR] dump request failed because %s", err)
-			return err
-		}
-		log.Printf("[DEBUG] http request = %s", outbytes)
-	}
-	httpResponse, err := c.httpClient.Do(httpRequest)
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
-		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+		return err
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
@@ -112,7 +108,19 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	} else {
 		headers["Content-Type"] = "application/json"
 	}
-
+	isOctetStream := false
+	cr := &tchttp.CommonRequest{}
+	ok := false
+	if cr, ok = request.(*tchttp.CommonRequest); ok {
+		if cr.IsOctetStream() {
+			isOctetStream = true
+			// custom headers must contain Content-Type : application/octet-stream
+			// todo:the custom header may overwrite headers
+			for k, v := range cr.GetHeader() {
+				headers[k] = v
+			}
+		}
+	}
 	// start signature v3 process
 
 	// build canonical request string
@@ -140,11 +148,16 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	signedHeaders := "content-type;host"
 	requestPayload := ""
 	if httpRequestMethod == "POST" {
-		b, err := json.Marshal(request)
-		if err != nil {
-			return err
+		if isOctetStream {
+			// todo Conversion comparison between string and []byte affects performance much
+			requestPayload = string(cr.GetOctetStreamBody())
+		} else {
+			b, err := json.Marshal(request)
+			if err != nil {
+				return err
+			}
+			requestPayload = string(b)
 		}
-		requestPayload = string(b)
 	}
 	hashedRequestPayload := ""
 	if c.unsignedPayload {
@@ -206,21 +219,27 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
-	if c.debug {
-		outbytes, err := httputil.DumpRequest(httpRequest, true)
-		if err != nil {
-			log.Printf("[ERROR] dump request failed because %s", err)
-			return err
-		}
-		log.Printf("[DEBUG] http request = %s", outbytes)
-	}
-	httpResponse, err := c.httpClient.Do(httpRequest)
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
-		msg := fmt.Sprintf("Fail to get response because %s", err)
-		return errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+		return err
 	}
 	err = tchttp.ParseFromHttpResponse(httpResponse, response)
 	return err
+}
+
+// send http request
+func (c *Client) sendHttp(request *http.Request) (response *http.Response, err error) {
+	if c.debug {
+		outbytes, err := httputil.DumpRequest(request, true)
+		if err != nil {
+			log.Printf("[ERROR] dump request failed because %s", err)
+			return nil, err
+		}
+		log.Printf("[DEBUG] http request = %s", outbytes)
+	}
+
+	response, err = c.httpClient.Do(request)
+	return response, err
 }
 
 func (c *Client) GetRegion() string {
@@ -280,7 +299,9 @@ func (c *Client) WithProviders(provider Provider) (*Client, error) {
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
-	return (&Client{}).Init(region).WithSecretId(secretId, secretKey), nil
+	client = &Client{}
+	client.Init(region).WithSecretId(secretId, secretKey)
+	return
 }
 
 func NewClientWithProviders(region string, providers ...Provider) (client *Client, err error) {

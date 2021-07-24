@@ -522,6 +522,44 @@ func (c *Client) CreateContainGroup(request *CreateContainGroupRequest) (respons
     return
 }
 
+func NewCreateFileConfigRequest() (request *CreateFileConfigRequest) {
+    request = &CreateFileConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateFileConfig")
+    return
+}
+
+func NewCreateFileConfigResponse() (response *CreateFileConfigResponse) {
+    response = &CreateFileConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFileConfig
+// 创建文件配置项
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = "InvalidParameterValue.FileConfigExistsPath"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
+func (c *Client) CreateFileConfig(request *CreateFileConfigRequest) (response *CreateFileConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateFileConfigRequest()
+    }
+    response = NewCreateFileConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGatewayApiRequest() (request *CreateGatewayApiRequest) {
     request = &CreateGatewayApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -616,6 +654,7 @@ func NewCreateLaneResponse() (response *CreateLaneResponse) {
 //  FAILEDOPERATION_LANEINFODELETECONSULFAILED = "FailedOperation.LaneInfoDeleteConsulFailed"
 //  FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = "FailedOperation.LaneInfoGroupNotEmpty"
 //  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
+//  FAILEDOPERATION_LANEINFORELEASEMESHFAILED = "FailedOperation.LaneInfoReleaseMeshFailed"
 //  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
 //  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
 //  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
@@ -1174,6 +1213,7 @@ func NewDeleteContainerGroupResponse() (response *DeleteContainerGroupResponse) 
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
@@ -1726,6 +1766,7 @@ func NewDeployGroupResponse() (response *DeployGroupResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
+//  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
@@ -2503,6 +2544,35 @@ func (c *Client) DescribeEnabledUnitRule(request *DescribeEnabledUnitRuleRequest
         request = NewDescribeEnabledUnitRuleRequest()
     }
     response = NewDescribeEnabledUnitRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFileConfigsRequest() (request *DescribeFileConfigsRequest) {
+    request = &DescribeFileConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeFileConfigs")
+    return
+}
+
+func NewDescribeFileConfigsResponse() (response *DescribeFileConfigsResponse) {
+    response = &DescribeFileConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFileConfigs
+// 查询文件配置项列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+func (c *Client) DescribeFileConfigs(request *DescribeFileConfigsRequest) (response *DescribeFileConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileConfigsRequest()
+    }
+    response = NewDescribeFileConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3640,6 +3710,7 @@ func NewDescribeServerlessGroupsResponse() (response *DescribeServerlessGroupsRe
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
+//  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
 func (c *Client) DescribeServerlessGroups(request *DescribeServerlessGroupsRequest) (response *DescribeServerlessGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeServerlessGroupsRequest()
@@ -3841,6 +3912,7 @@ func NewDescribeTaskLastStatusResponse() (response *DescribeTaskLastStatusRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
 //  UNAUTHORIZEDOPERATION_LICENSEINACTIVE = "UnauthorizedOperation.LicenseInactive"
@@ -5053,6 +5125,36 @@ func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *Release
         request = NewReleaseConfigRequest()
     }
     response = NewReleaseConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseFileConfigRequest() (request *ReleaseFileConfigRequest) {
+    request = &ReleaseFileConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ReleaseFileConfig")
+    return
+}
+
+func NewReleaseFileConfigResponse() (response *ReleaseFileConfigResponse) {
+    response = &ReleaseFileConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReleaseFileConfig
+// 发布文件配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
+func (c *Client) ReleaseFileConfig(request *ReleaseFileConfigRequest) (response *ReleaseFileConfigResponse, err error) {
+    if request == nil {
+        request = NewReleaseFileConfigRequest()
+    }
+    response = NewReleaseFileConfigResponse()
     err = c.Send(request, response)
     return
 }

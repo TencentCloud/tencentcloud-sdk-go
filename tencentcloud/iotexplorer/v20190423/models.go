@@ -1541,6 +1541,14 @@ type DeviceInfo struct {
 	// LoRaWAN 网络会话密钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
+
+	// 创建人Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *int64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// 创建人昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
 }
 
 type DisableTopicRuleRequest struct {
@@ -1692,6 +1700,14 @@ type FirmwareInfo struct {
 	// 固件升级模块
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *string `json:"FwType,omitempty" name:"FwType"`
+
+	// 创建者子 uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *int64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// 创建者昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
 }
 
 type GetCOSURLRequest struct {
@@ -2745,6 +2761,14 @@ type ProductEntry struct {
 	// 是否使用脚本进行二进制转json功能 可以取值 true / false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
+
+	// 创建人 UinId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *int64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// 创建者昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
 }
 
 type ProductModelDefinition struct {

@@ -575,7 +575,7 @@ type DCDBInstanceInfo struct {
 	// 状态中文描述
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
 
-	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 内网IP
@@ -848,6 +848,27 @@ type DcnDetailItem struct {
 
 	// 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
 	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+
+	// 实例CPU核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例内存大小，单位 GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例存储大小，单位 GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例创建时间，格式为 2006-01-02 15:04:05
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例到期时间，格式为 2006-01-02 15:04:05
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type Deal struct {
@@ -1799,6 +1820,9 @@ type DescribeDCDBUpgradePriceResponse struct {
 		// 实际价格，单位：分。受折扣等影响，可能和原价不同。
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
+		// 变配明细计算公式
+		Formula *string `json:"Formula,omitempty" name:"Formula"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2479,7 +2503,7 @@ type DestroyDCDBInstanceResponse struct {
 		// 实例 ID，与入参InstanceId一致。
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/557/56485)。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2528,7 +2552,7 @@ type DestroyHourDCDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+		// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/557/56485)。
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 实例 ID，与入参InstanceId一致。
@@ -3548,7 +3572,7 @@ type SplitShardConfig struct {
 	// 分片ID数组
 	ShardInstanceIds []*string `json:"ShardInstanceIds,omitempty" name:"ShardInstanceIds"`
 
-	// 数据切分比例
+	// 数据切分比例，固定50%
 	SplitRate *int64 `json:"SplitRate,omitempty" name:"SplitRate"`
 
 	// 分片内存大小，单位 GB

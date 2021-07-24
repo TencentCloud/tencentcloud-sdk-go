@@ -85,6 +85,76 @@ type ApplicationAuthorizationInfo struct {
 	InheritedForm *InheritedForm `json:"InheritedForm,omitempty" name:"InheritedForm"`
 }
 
+type ApplicationInfoSearchCriteria struct {
+
+	// 应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+}
+
+type ApplicationInformation struct {
+
+	// 应用ID，是应用的全局唯一标识。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 应用创建时间，符合 ISO8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedDate *string `json:"CreatedDate,omitempty" name:"CreatedDate"`
+
+	// 上次更新时间，符合 ISO8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifiedDate *string `json:"LastModifiedDate,omitempty" name:"LastModifiedDate"`
+
+	// 应用状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppStatus *bool `json:"AppStatus,omitempty" name:"AppStatus"`
+
+	// 应用图标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Icon *string `json:"Icon,omitempty" name:"Icon"`
+
+	// 应用类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 客户端id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+}
+
+type AuthorizationInfo struct {
+
+	// 应用唯一ID。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 类型名称。
+	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
+
+	// 类型唯一ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 上次更新时间，符合 ISO8601 标准。
+	LastModifiedDate *string `json:"LastModifiedDate,omitempty" name:"LastModifiedDate"`
+
+	// 授权类型唯一ID。
+	AuthorizationId *string `json:"AuthorizationId,omitempty" name:"AuthorizationId"`
+}
+
+type AuthorizationInfoSearchCriteria struct {
+
+	// 名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type CreateOrgNodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -284,64 +354,6 @@ func (r *CreateUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DecribePublicKeyRequest struct {
-	*tchttp.BaseRequest
-
-	// 应用ID，是应用的全局唯一标识。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-}
-
-func (r *DecribePublicKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DecribePublicKeyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ApplicationId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DecribePublicKeyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DecribePublicKeyResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// jwt验证签名所用的公钥信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
-
-		// jwt的密钥id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
-
-		// 应用ID，是应用的全局唯一标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DecribePublicKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DecribePublicKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -663,6 +675,64 @@ func (r *DescribeOrgNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePublicKeyRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，是应用的全局唯一标识。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribePublicKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublicKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// jwt验证签名所用的公钥信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+		// jwt的密钥id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+		// 应用ID，是应用的全局唯一标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublicKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -830,6 +900,142 @@ type InheritedForm struct {
 	OrgNodeIds []*string `json:"OrgNodeIds,omitempty" name:"OrgNodeIds"`
 }
 
+type ListApplicationAuthorizationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。
+	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+	SearchCondition *AuthorizationInfoSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
+
+	// 排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。
+	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListApplicationAuthorizationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListApplicationAuthorizationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EntityType")
+	delete(f, "SearchCondition")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListApplicationAuthorizationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListApplicationAuthorizationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的应用授权信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthorizationInfoList []*AuthorizationInfo `json:"AuthorizationInfoList,omitempty" name:"AuthorizationInfoList"`
+
+		// 返回的应用信息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListApplicationAuthorizationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListApplicationAuthorizationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListApplicationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+	SearchCondition *ApplicationInfoSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
+
+	// 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchCondition")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的应用信息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回的应用信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplicationInfoList []*ApplicationInformation `json:"ApplicationInfoList,omitempty" name:"ApplicationInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListAuthorizedApplicationsToOrgNodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -936,7 +1142,7 @@ type ListAuthorizedApplicationsToUserRequest struct {
 	// 用户 ID。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传0表示不查询该范围，传1表示应用查询该范围。
+	// 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 。传false表示不查询该范围，传true表示应用查询该范围。
 	IncludeInheritedAuthorizations *bool `json:"IncludeInheritedAuthorizations,omitempty" name:"IncludeInheritedAuthorizations"`
 }
 
@@ -1038,13 +1244,79 @@ func (r *ListUserGroupsOfUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListUserGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+	SearchCondition *UserGroupInfoSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
+
+	// 排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。
+	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchCondition")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的用户组列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserGroupList []*UserGroupInformation `json:"UserGroupList,omitempty" name:"UserGroupList"`
+
+		// 返回的用户组信息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListUsersInOrgNodeRequest struct {
 	*tchttp.BaseRequest
 
 	// 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。
 	OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
 
-	// 限制读取子节点信息层数。当读取层数为空或0时，默认仅读取当前机构节点信息。当读取层数为1时，读取本机构节点以及其第一层子节点信息。
+	// 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
 	IncludeOrgNodeChildInfo *bool `json:"IncludeOrgNodeChildInfo,omitempty" name:"IncludeOrgNodeChildInfo"`
 }
 
@@ -1159,6 +1431,80 @@ func (r *ListUsersInUserGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListUsersInUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListUsersRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+	SearchCondition *UserSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
+
+	// 指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
+	ExpectedFields []*string `json:"ExpectedFields,omitempty" name:"ExpectedFields"`
+
+	// 排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
+	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否查看搜索结果的总数，默认该选项为false不查看。
+	IncludeTotal *bool `json:"IncludeTotal,omitempty" name:"IncludeTotal"`
+}
+
+func (r *ListUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchCondition")
+	delete(f, "ExpectedFields")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IncludeTotal")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询返回的相关用户列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
+
+		// 返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1340,6 +1686,15 @@ func (r *RemoveUserFromUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SortCondition struct {
+
+	// 排序属性。
+	SortKey *string `json:"SortKey,omitempty" name:"SortKey"`
+
+	// 排序顺序，ASC为正向排序，DESC为反向排序。
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+}
+
 type UpdateOrgNodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1398,6 +1753,25 @@ func (r *UpdateOrgNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UserGroupInfoSearchCriteria struct {
+
+	// 名称匹配搜索，匹配范围包括：用户组名称、用户组ID。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+type UserGroupInformation struct {
+
+	// 用户组ID。
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 用户组名称。
+	UserGroupName *string `json:"UserGroupName,omitempty" name:"UserGroupName"`
+
+	// 上次更新时间，符合 ISO8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifiedDate *string `json:"LastModifiedDate,omitempty" name:"LastModifiedDate"`
+}
+
 type UserInfo struct {
 
 	// 用户ID，是用户全局唯一标识，长度限制：64个字符。
@@ -1407,4 +1781,79 @@ type UserInfo struct {
 	// 昵称，长度限制：64个字符。 默认与用户名相同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+}
+
+type UserInformation struct {
+
+	// 用户名，长度限制：32个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 昵称，长度限制：64个字符。 默认与用户名相同。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户备注，长度限制：512个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户上次更新时间，遵循 ISO 8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 用户创建时间，遵循 ISO 8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 用户所属组织机构路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPath *string `json:"OrgPath,omitempty" name:"OrgPath"`
+
+	// 带国家号的用户手机号，例如+86-00000000000。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 用户所属用户组ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubjectGroups []*string `json:"SubjectGroups,omitempty" name:"SubjectGroups"`
+
+	// 用户邮箱。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 用户上次登录时间，遵循 ISO 8601 标准。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
+
+	// 用户ID，是用户全局唯一标识，长度限制：64个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type UserSearchCriteria struct {
+
+	// 用户名，长度限制：64个字符。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户手机号。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 用户邮箱。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 用户创建时间，遵循 ISO 8601 标准。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 用户上次更新时间区间。
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 名称匹配搜索，匹配范围包括：用户名称、用户ID。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }

@@ -1830,6 +1830,75 @@ func (r *GetReservedConcurrencyConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InvokeFunctionRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 触发函数的版本号或别名
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 运行函数时的参数，以json格式传入，最大支持的参数长度是 1M
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 同步调用时指定该字段，返回值会包含4K的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+	RoutingKey *string `json:"RoutingKey,omitempty" name:"RoutingKey"`
+}
+
+func (r *InvokeFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "Qualifier")
+	delete(f, "Event")
+	delete(f, "LogType")
+	delete(f, "Namespace")
+	delete(f, "RoutingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InvokeFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 函数执行结果
+		Result *Result `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InvokeFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 

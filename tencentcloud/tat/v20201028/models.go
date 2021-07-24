@@ -83,6 +83,9 @@ type Command struct {
 
 	// 命令关联的标签列表。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 在实例上执行命令的用户名。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 type CommandDocument struct {
@@ -98,6 +101,9 @@ type CommandDocument struct {
 
 	// 执行路径。
 	WorkingDirectory *string `json:"WorkingDirectory,omitempty" name:"WorkingDirectory"`
+
+	// 执行用户。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 type CreateCommandRequest struct {
@@ -135,6 +141,10 @@ type CreateCommandRequest struct {
 
 	// 为命令关联的标签，列表长度不超过10。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 func (r *CreateCommandRequest) ToJsonString() string {
@@ -158,6 +168,7 @@ func (r *CreateCommandRequest) FromJsonString(s string) error {
 	delete(f, "EnableParameter")
 	delete(f, "DefaultParameters")
 	delete(f, "Tags")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCommandRequest has unknown keys!", "")
 	}
@@ -443,7 +454,11 @@ type DescribeInvocationsRequest struct {
 	// 执行活动ID列表，每次请求的上限为100。参数不支持同时指定 `InvocationIds` 和 `Filters`。
 	InvocationIds []*string `json:"InvocationIds,omitempty" name:"InvocationIds"`
 
-	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
+	// 过滤条件。<br> <li> invocation-id - String - 是否必填：否 -（过滤条件）按照执行活动ID过滤。<br> 
+	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。 
+	// <li> command-created-by - String - 是否必填：否 -（过滤条件）按照执行的命令类型过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
+	// <li> instance-kind - String - 是否必填：否 -（过滤条件）按照运行实例类型过滤，取值为 CVM 或 LIGHTHOUSE，CVM 代表实例为云服务器， LIGHTHOUSE 代表实例为轻量应用服务器。
+	// <br>每次请求的 `Filters` 的上限为10， `Filter.Values` 的上限为5。参数不支持同时指定 `InvocationIds` 和 `Filters` 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。关于 `Limit` 的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -598,6 +613,12 @@ type Invocation struct {
 
 	// 自定义参数的默认取值。
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
+
+	// 执行命令的实例类型，取值范围：CVM、LIGHTHOUSE。
+	InstanceKind *string `json:"InstanceKind,omitempty" name:"InstanceKind"`
+
+	// 在实例上执行命令时使用的用户名。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 type InvocationTask struct {
@@ -643,6 +664,9 @@ type InvocationTask struct {
 
 	// 执行任务所执行的命令详情。
 	CommandDocument *CommandDocument `json:"CommandDocument,omitempty" name:"CommandDocument"`
+
+	// 执行任务失败时的错误信息。
+	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
 }
 
 type InvocationTaskBasicInfo struct {
@@ -672,7 +696,7 @@ type InvokeCommandRequest struct {
 	// 待触发的命令ID。
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
 
-	// 待执行命令的实例ID列表。
+	// 待执行命令的实例ID列表，上限100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
@@ -681,6 +705,10 @@ type InvokeCommandRequest struct {
 	// 自定义参数最多20个。
 	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 func (r *InvokeCommandRequest) ToJsonString() string {
@@ -698,6 +726,7 @@ func (r *InvokeCommandRequest) FromJsonString(s string) error {
 	delete(f, "CommandId")
 	delete(f, "InstanceIds")
 	delete(f, "Parameters")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeCommandRequest has unknown keys!", "")
 	}
@@ -758,6 +787,10 @@ type ModifyCommandRequest struct {
 	// 自定义参数最多20个。
 	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
+
+	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 func (r *ModifyCommandRequest) ToJsonString() string {
@@ -780,6 +813,7 @@ func (r *ModifyCommandRequest) FromJsonString(s string) error {
 	delete(f, "WorkingDirectory")
 	delete(f, "Timeout")
 	delete(f, "DefaultParameters")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCommandRequest has unknown keys!", "")
 	}
@@ -887,7 +921,7 @@ type RunCommandRequest struct {
 	// Base64编码后的命令内容，长度不可超过64KB。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// 待执行命令的实例ID列表。 支持实例类型：
+	// 待执行命令的实例ID列表，上限100。支持实例类型：
 	// <li> CVM
 	// <li> LIGHTHOUSE
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -934,6 +968,10 @@ type RunCommandRequest struct {
 
 	// 如果保存命令，可为命令设置标签。列表长度不超过10。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+	Username *string `json:"Username,omitempty" name:"Username"`
 }
 
 func (r *RunCommandRequest) ToJsonString() string {
@@ -960,6 +998,7 @@ func (r *RunCommandRequest) FromJsonString(s string) error {
 	delete(f, "DefaultParameters")
 	delete(f, "Parameters")
 	delete(f, "Tags")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunCommandRequest has unknown keys!", "")
 	}

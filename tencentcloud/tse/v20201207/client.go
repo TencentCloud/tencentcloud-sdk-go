@@ -119,7 +119,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 }
 
 // DescribeSREInstances
-// 用于查询微服务注册中心实例列表
+// 用于查询微服务引擎实例列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"

@@ -43,6 +43,156 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
+    request = &AddUsersToWorkGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AddUsersToWorkGroup")
+    return
+}
+
+func NewAddUsersToWorkGroupResponse() (response *AddUsersToWorkGroupResponse) {
+    response = &AddUsersToWorkGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddUsersToWorkGroup
+// 添加用户到工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+func (c *Client) AddUsersToWorkGroup(request *AddUsersToWorkGroupRequest) (response *AddUsersToWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewAddUsersToWorkGroupRequest()
+    }
+    response = NewAddUsersToWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
+    request = &AttachUserPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AttachUserPolicy")
+    return
+}
+
+func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
+    response = &AttachUserPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachUserPolicy
+// 绑定鉴权策略到用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachUserPolicyRequest()
+    }
+    response = NewAttachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAttachWorkGroupPolicyRequest() (request *AttachWorkGroupPolicyRequest) {
+    request = &AttachWorkGroupPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AttachWorkGroupPolicy")
+    return
+}
+
+func NewAttachWorkGroupPolicyResponse() (response *AttachWorkGroupPolicyResponse) {
+    response = &AttachWorkGroupPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachWorkGroupPolicy
+// 绑定鉴权策略到工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (response *AttachWorkGroupPolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachWorkGroupPolicyRequest()
+    }
+    response = NewAttachWorkGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindWorkGroupsToUserRequest() (request *BindWorkGroupsToUserRequest) {
+    request = &BindWorkGroupsToUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "BindWorkGroupsToUser")
+    return
+}
+
+func NewBindWorkGroupsToUserResponse() (response *BindWorkGroupsToUserResponse) {
+    response = &BindWorkGroupsToUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindWorkGroupsToUser
+// 绑定工作组到用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (response *BindWorkGroupsToUserResponse, err error) {
+    if request == nil {
+        request = NewBindWorkGroupsToUserRequest()
+    }
+    response = NewBindWorkGroupsToUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelTaskRequest() (request *CancelTaskRequest) {
+    request = &CancelTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelTask")
+    return
+}
+
+func NewCancelTaskResponse() (response *CancelTaskResponse) {
+    response = &CancelTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelTask
+// 取消任务执行
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
     request = &CreateDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -199,6 +349,70 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+func NewCreateUserRequest() (request *CreateUserRequest) {
+    request = &CreateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateUser")
+    return
+}
+
+func NewCreateUserResponse() (response *CreateUserResponse) {
+    response = &CreateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUser
+// 创建用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateWorkGroupRequest() (request *CreateWorkGroupRequest) {
+    request = &CreateWorkGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateWorkGroup")
+    return
+}
+
+func NewCreateWorkGroupResponse() (response *CreateWorkGroupResponse) {
+    response = &CreateWorkGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateWorkGroup
+// 创建工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
+//  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+//  INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
+func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *CreateWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkGroupRequest()
+    }
+    response = NewCreateWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
     request = &DeleteScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -225,6 +439,96 @@ func (c *Client) DeleteScript(request *DeleteScriptRequest) (response *DeleteScr
         request = NewDeleteScriptRequest()
     }
     response = NewDeleteScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserRequest() (request *DeleteUserRequest) {
+    request = &DeleteUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteUser")
+    return
+}
+
+func NewDeleteUserResponse() (response *DeleteUserResponse) {
+    response = &DeleteUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUser
+// 删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserRequest()
+    }
+    response = NewDeleteUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUsersFromWorkGroupRequest() (request *DeleteUsersFromWorkGroupRequest) {
+    request = &DeleteUsersFromWorkGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteUsersFromWorkGroup")
+    return
+}
+
+func NewDeleteUsersFromWorkGroupResponse() (response *DeleteUsersFromWorkGroupResponse) {
+    response = &DeleteUsersFromWorkGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUsersFromWorkGroup
+// 从工作组中删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+func (c *Client) DeleteUsersFromWorkGroup(request *DeleteUsersFromWorkGroupRequest) (response *DeleteUsersFromWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsersFromWorkGroupRequest()
+    }
+    response = NewDeleteUsersFromWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWorkGroupRequest() (request *DeleteWorkGroupRequest) {
+    request = &DeleteWorkGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteWorkGroup")
+    return
+}
+
+func NewDeleteWorkGroupResponse() (response *DeleteWorkGroupResponse) {
+    response = &DeleteWorkGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteWorkGroup
+// 删除工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteWorkGroupRequest()
+    }
+    response = NewDeleteWorkGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -286,6 +590,36 @@ func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *Des
         request = NewDescribeScriptsRequest()
     }
     response = NewDescribeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStoreLocationRequest() (request *DescribeStoreLocationRequest) {
+    request = &DescribeStoreLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeStoreLocation")
+    return
+}
+
+func NewDescribeStoreLocationResponse() (response *DescribeStoreLocationResponse) {
+    response = &DescribeStoreLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStoreLocation
+// 查询计算结果存储位置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStoreLocation(request *DescribeStoreLocationRequest) (response *DescribeStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeStoreLocationRequest()
+    }
+    response = NewDescribeStoreLocationResponse()
     err = c.Send(request, response)
     return
 }
@@ -385,6 +719,37 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     return
 }
 
+func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
+    request = &DescribeUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUsers")
+    return
+}
+
+func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
+    response = &DescribeUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUsers
+// 获取用户列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsersRequest()
+    }
+    response = NewDescribeUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
     request = &DescribeViewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -412,6 +777,185 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
         request = NewDescribeViewsRequest()
     }
     response = NewDescribeViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkGroupsRequest() (request *DescribeWorkGroupsRequest) {
+    request = &DescribeWorkGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeWorkGroups")
+    return
+}
+
+func NewDescribeWorkGroupsResponse() (response *DescribeWorkGroupsResponse) {
+    response = &DescribeWorkGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWorkGroups
+// 获取工作组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkGroupsRequest()
+    }
+    response = NewDescribeWorkGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
+    request = &DetachUserPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DetachUserPolicy")
+    return
+}
+
+func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
+    response = &DetachUserPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachUserPolicy
+// 解绑用户鉴权策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *DetachUserPolicyResponse, err error) {
+    if request == nil {
+        request = NewDetachUserPolicyRequest()
+    }
+    response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachWorkGroupPolicyRequest() (request *DetachWorkGroupPolicyRequest) {
+    request = &DetachWorkGroupPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DetachWorkGroupPolicy")
+    return
+}
+
+func NewDetachWorkGroupPolicyResponse() (response *DetachWorkGroupPolicyResponse) {
+    response = &DetachWorkGroupPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachWorkGroupPolicy
+// 解绑工作组鉴权策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
+    if request == nil {
+        request = NewDetachWorkGroupPolicyRequest()
+    }
+    response = NewDetachWorkGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserRequest() (request *ModifyUserRequest) {
+    request = &ModifyUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyUser")
+    return
+}
+
+func NewModifyUserResponse() (response *ModifyUserResponse) {
+    response = &ModifyUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUser
+// 修改用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWorkGroupRequest() (request *ModifyWorkGroupRequest) {
+    request = &ModifyWorkGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyWorkGroup")
+    return
+}
+
+func NewModifyWorkGroupResponse() (response *ModifyWorkGroupResponse) {
+    response = &ModifyWorkGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWorkGroup
+// 修改工作组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyWorkGroup(request *ModifyWorkGroupRequest) (response *ModifyWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkGroupRequest()
+    }
+    response = NewModifyWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequest) {
+    request = &UnbindWorkGroupsFromUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "UnbindWorkGroupsFromUser")
+    return
+}
+
+func NewUnbindWorkGroupsFromUserResponse() (response *UnbindWorkGroupsFromUserResponse) {
+    response = &UnbindWorkGroupsFromUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindWorkGroupsFromUser
+// 解绑用户上的用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+func (c *Client) UnbindWorkGroupsFromUser(request *UnbindWorkGroupsFromUserRequest) (response *UnbindWorkGroupsFromUserResponse, err error) {
+    if request == nil {
+        request = NewUnbindWorkGroupsFromUserRequest()
+    }
+    response = NewUnbindWorkGroupsFromUserResponse()
     err = c.Send(request, response)
     return
 }

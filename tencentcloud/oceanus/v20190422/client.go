@@ -408,6 +408,7 @@ func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResp
 //  INVALIDPARAMETER_UINRESOURCENOTMATCH = "InvalidParameter.UinResourceNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
 func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {

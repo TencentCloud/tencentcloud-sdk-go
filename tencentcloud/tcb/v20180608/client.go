@@ -292,6 +292,7 @@ func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
@@ -360,6 +361,7 @@ func NewCreateWxCloudBaseRunEnvResponse() (response *CreateWxCloudBaseRunEnvResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -437,6 +439,39 @@ func (c *Client) DeleteCloudBaseProjectLatestVersion(request *DeleteCloudBasePro
         request = NewDeleteCloudBaseProjectLatestVersionRequest()
     }
     response = NewDeleteCloudBaseProjectLatestVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudBaseRunServerVersionRequest() (request *DeleteCloudBaseRunServerVersionRequest) {
+    request = &DeleteCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseRunServerVersion")
+    return
+}
+
+func NewDeleteCloudBaseRunServerVersionResponse() (response *DeleteCloudBaseRunServerVersionResponse) {
+    response = &DeleteCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCloudBaseRunServerVersion
+// 删除服务版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) DeleteCloudBaseRunServerVersion(request *DeleteCloudBaseRunServerVersionRequest) (response *DeleteCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudBaseRunServerVersionRequest()
+    }
+    response = NewDeleteCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -624,6 +659,38 @@ func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseP
         request = NewDescribeCloudBaseProjectVersionListRequest()
     }
     response = NewDescribeCloudBaseProjectVersionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseRunConfForGateWayRequest() (request *DescribeCloudBaseRunConfForGateWayRequest) {
+    request = &DescribeCloudBaseRunConfForGateWayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunConfForGateWay")
+    return
+}
+
+func NewDescribeCloudBaseRunConfForGateWayResponse() (response *DescribeCloudBaseRunConfForGateWayResponse) {
+    response = &DescribeCloudBaseRunConfForGateWayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunConfForGateWay
+// 独立网关中拉取云托管服务对应的配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRunConfForGateWayRequest) (response *DescribeCloudBaseRunConfForGateWayResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunConfForGateWayRequest()
+    }
+    response = NewDescribeCloudBaseRunConfForGateWayResponse()
     err = c.Send(request, response)
     return
 }
@@ -839,8 +906,9 @@ func NewDescribeDownloadFileResponse() (response *DescribeDownloadFileResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeDownloadFile(request *DescribeDownloadFileRequest) (response *DescribeDownloadFileResponse, err error) {
     if request == nil {
         request = NewDescribeDownloadFileRequest()
@@ -1016,6 +1084,38 @@ func (c *Client) DescribeEnvLimit(request *DescribeEnvLimitRequest) (response *D
         request = NewDescribeEnvLimitRequest()
     }
     response = NewDescribeEnvLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvPostpaidDeductRequest() (request *DescribeEnvPostpaidDeductRequest) {
+    request = &DescribeEnvPostpaidDeductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvPostpaidDeduct")
+    return
+}
+
+func NewDescribeEnvPostpaidDeductResponse() (response *DescribeEnvPostpaidDeductResponse) {
+    response = &DescribeEnvPostpaidDeductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvPostpaidDeduct
+// 查询环境后付费计费详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeEnvPostpaidDeduct(request *DescribeEnvPostpaidDeductRequest) (response *DescribeEnvPostpaidDeductResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvPostpaidDeductRequest()
+    }
+    response = NewDescribeEnvPostpaidDeductResponse()
     err = c.Send(request, response)
     return
 }
@@ -1296,6 +1396,38 @@ func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response 
     return
 }
 
+func NewDescribeSpecialCostItemsRequest() (request *DescribeSpecialCostItemsRequest) {
+    request = &DescribeSpecialCostItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeSpecialCostItems")
+    return
+}
+
+func NewDescribeSpecialCostItemsResponse() (response *DescribeSpecialCostItemsResponse) {
+    response = &DescribeSpecialCostItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSpecialCostItems
+// 查询环境1分钱抵扣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeSpecialCostItems(request *DescribeSpecialCostItemsRequest) (response *DescribeSpecialCostItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecialCostItemsRequest()
+    }
+    response = NewDescribeSpecialCostItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWxCloudBaseRunEnvsRequest() (request *DescribeWxCloudBaseRunEnvsRequest) {
     request = &DescribeWxCloudBaseRunEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1460,6 +1592,7 @@ func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunSe
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServerRequest) (response *EstablishCloudBaseRunServerResponse, err error) {
     if request == nil {
         request = NewEstablishCloudBaseRunServerRequest()
@@ -1494,11 +1627,43 @@ func NewEstablishWxGatewayRouteResponse() (response *EstablishWxGatewayRouteResp
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest) (response *EstablishWxGatewayRouteResponse, err error) {
     if request == nil {
         request = NewEstablishWxGatewayRouteRequest()
     }
     response = NewEstablishWxGatewayRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunServerFlowConfRequest) {
+    request = &ModifyCloudBaseRunServerFlowConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseRunServerFlowConf")
+    return
+}
+
+func NewModifyCloudBaseRunServerFlowConfResponse() (response *ModifyCloudBaseRunServerFlowConfResponse) {
+    response = &ModifyCloudBaseRunServerFlowConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCloudBaseRunServerFlowConf
+// 修改容器内的版本流量配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+func (c *Client) ModifyCloudBaseRunServerFlowConf(request *ModifyCloudBaseRunServerFlowConfRequest) (response *ModifyCloudBaseRunServerFlowConfResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudBaseRunServerFlowConfRequest()
+    }
+    response = NewModifyCloudBaseRunServerFlowConfResponse()
     err = c.Send(request, response)
     return
 }

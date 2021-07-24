@@ -259,10 +259,10 @@ type DescribeAbnormalEventRequest struct {
 	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间
+	// 查询开始时间,本地unix时间戳（1588031999s）
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间
+	// 查询结束时间,本地unix时间戳（1588031999s）
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 房间号，查询房间内任意20条以内异常体验事件
@@ -323,7 +323,7 @@ type DescribeCallDetailRequest struct {
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1588031999s）
+	// 查询开始时间，14天内。本地unix时间戳（1588031999s），查询实时数据时，查询起止时间不超过1个小时。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询结束时间，本地unix时间戳（1588031999s）
@@ -461,7 +461,7 @@ type DescribeDetailEventResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回的事件列表
+		// 返回的事件列表，若没有数据，会返回空数组。
 		Data []*EventList `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

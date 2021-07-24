@@ -28,6 +28,9 @@ type BankCard2EVerificationRequest struct {
 
 	// 银行卡
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+
+	// 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *BankCard2EVerificationRequest) ToJsonString() string {
@@ -44,6 +47,7 @@ func (r *BankCard2EVerificationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "BankCard")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCard2EVerificationRequest has unknown keys!", "")
 	}
@@ -283,6 +287,9 @@ type CheckBankCardInformationRequest struct {
 
 	// 银行卡号。
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
+
+	// 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *CheckBankCardInformationRequest) ToJsonString() string {
@@ -298,6 +305,7 @@ func (r *CheckBankCardInformationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BankCard")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckBankCardInformationRequest has unknown keys!", "")
 	}
@@ -342,6 +350,59 @@ func (r *CheckBankCardInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckEidTokenStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+}
+
+func (r *CheckEidTokenStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckEidTokenStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EidToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckEidTokenStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckEidTokenStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 枚举：
+	// init：token未验证
+	// doing: 验证中
+	// finished: 验证完成
+	// timeout: token已超时
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckEidTokenStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckEidTokenStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckIdCardInformationRequest struct {
 	*tchttp.BaseRequest
 
@@ -372,6 +433,10 @@ type CheckIdCardInformationRequest struct {
 	// API 3.0 Explorer 设置方式参考：
 	// Config = {"CopyWarn":true,"ReshootWarn":true}
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 是否需要对返回中的敏感信息进行加密。默认false。
+	// 其中敏感信息包括：Response.IdNum、Response.Name
+	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
 }
 
 func (r *CheckIdCardInformationRequest) ToJsonString() string {
@@ -389,6 +454,7 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "Config")
+	delete(f, "IsEncrypt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIdCardInformationRequest has unknown keys!", "")
 	}
@@ -444,6 +510,10 @@ type CheckIdCardInformationResponse struct {
 		// 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
 		Quality *float64 `json:"Quality,omitempty" name:"Quality"`
 
+		// 敏感数据加密信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -468,6 +538,9 @@ type CheckPhoneAndNameRequest struct {
 
 	// 姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *CheckPhoneAndNameRequest) ToJsonString() string {
@@ -484,6 +557,7 @@ func (r *CheckPhoneAndNameRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Mobile")
 	delete(f, "Name")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckPhoneAndNameRequest has unknown keys!", "")
 	}
@@ -1148,7 +1222,7 @@ func (r *GetDetectInfoResponse) FromJsonString(s string) error {
 type GetEidResultRequest struct {
 	*tchttp.BaseRequest
 
-	// 人脸核身流程的标识，调用GetEidToken接口时生成的。
+	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
 	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
@@ -1247,6 +1321,9 @@ type GetEidTokenRequest struct {
 
 	// 小程序模式配置，包括如何传入姓名身份证的配置。
 	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
+
+	// 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 }
 
 func (r *GetEidTokenRequest) ToJsonString() string {
@@ -1266,6 +1343,7 @@ func (r *GetEidTokenRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Extra")
 	delete(f, "Config")
+	delete(f, "RedirectUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEidTokenRequest has unknown keys!", "")
 	}
@@ -1276,9 +1354,12 @@ type GetEidTokenResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 一次核身流程的标识，有效时间为7,200秒；
+		// 一次核身流程的标识，有效时间为600秒；
 	// 完成核身后，可用该标识获取验证结果信息。
 		EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
+
+		// 发起核身流程的URL，用于H5场景核身。
+		Url *string `json:"Url,omitempty" name:"Url"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1722,6 +1803,9 @@ type IdCardVerificationRequest struct {
 
 	// 姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *IdCardVerificationRequest) ToJsonString() string {
@@ -1738,6 +1822,7 @@ func (r *IdCardVerificationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "IdCard")
 	delete(f, "Name")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IdCardVerificationRequest has unknown keys!", "")
 	}
@@ -1794,6 +1879,9 @@ type ImageRecognitionRequest struct {
 
 	// 本接口不需要传递此参数。
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *ImageRecognitionRequest) ToJsonString() string {
@@ -1812,6 +1900,7 @@ func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ImageBase64")
 	delete(f, "Optional")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageRecognitionRequest has unknown keys!", "")
 	}
@@ -1963,6 +2052,9 @@ type LivenessRecognitionRequest struct {
 	// "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 	// }
 	Optional *string `json:"Optional,omitempty" name:"Optional"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *LivenessRecognitionRequest) ToJsonString() string {
@@ -1983,6 +2075,7 @@ func (r *LivenessRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "LivenessType")
 	delete(f, "ValidateData")
 	delete(f, "Optional")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LivenessRecognitionRequest has unknown keys!", "")
 	}

@@ -787,7 +787,7 @@ func NewDescribeDCDBUpgradePriceResponse() (response *DescribeDCDBUpgradePriceRe
 }
 
 // DescribeDCDBUpgradePrice
-// 本接口（DescribeDCDBUpgradePrice）用于查询升级分布式数据库实例价格。
+// 本接口（DescribeDCDBUpgradePrice）用于查询变配分布式数据库实例价格。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"

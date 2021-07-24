@@ -1,0 +1,194 @@
+package common_test
+
+import (
+	"bytes"
+	"io/ioutil"
+	"net/http"
+	"testing"
+
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+)
+
+type requestWithClientToken struct {
+	tchttp.CommonRequest
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+}
+
+func newTestRequest() *requestWithClientToken {
+	var testRequest = &requestWithClientToken{
+		CommonRequest: *tchttp.NewCommonRequest("cvm", "2017-03-12", "RunInstances"),
+		ClientToken:   nil,
+	}
+	return testRequest
+}
+
+type retryErr struct{}
+
+func (r retryErr) Error() string   { return "retry error" }
+func (r retryErr) Timeout() bool   { return true }
+func (r retryErr) Temporary() bool { return true }
+
+var (
+	successResp   = `{"Response": {"RequestId": ""}}`
+	rateLimitResp = `{"Response": {"RequestId": "", "Error": {"Code": "RequestLimitExceeded"}}}`
+)
+
+type mockRT struct {
+	NetworkFailures   int
+	RateLimitFailures int
+
+	NetworkTries   int
+	RateLimitTries int
+}
+
+func (s *mockRT) RoundTrip(request *http.Request) (*http.Response, error) {
+	if s.NetworkTries < s.NetworkFailures {
+		s.NetworkTries++
+		return nil, retryErr{}
+	}
+
+	if s.RateLimitTries < s.RateLimitFailures {
+		s.RateLimitTries++
+		return &http.Response{StatusCode: 200, Body: ioutil.NopCloser(bytes.NewBufferString(rateLimitResp))}, nil
+	}
+
+	return &http.Response{StatusCode: 200, Body: ioutil.NopCloser(bytes.NewBufferString(successResp))}, nil
+}
+
+type testCase struct {
+	msg      string
+	prof     *profile.ClientProfile
+	request  tchttp.Request
+	response tchttp.Response
+	specific mockRT
+	expected mockRT
+	success  bool
+}
+
+func TestNormalSucceedRequest(t *testing.T) {
+	test(t, testCase{
+		prof:     profile.NewClientProfile(),
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{},
+		expected: mockRT{},
+		success:  true,
+	})
+}
+
+func TestNetworkFailedButSucceedAfterRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 1
+	prof.NetworkFailureRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{NetworkFailures: 1},
+		expected: mockRT{NetworkTries: 1},
+		success:  true,
+	})
+}
+
+func TestNetworkFailedAndShouldNotRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 1
+	prof.NetworkFailureRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeInstances"),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{NetworkFailures: 2},
+		expected: mockRT{NetworkTries: 1},
+		success:  false,
+	})
+}
+
+func TestNetworkFailedAfterRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 1
+	prof.NetworkFailureRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{NetworkFailures: 2},
+		expected: mockRT{NetworkTries: 2},
+		success:  false,
+	})
+}
+
+func TestRateLimitButSucceedAfterRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.RateLimitExceededMaxRetries = 1
+	prof.RateLimitExceededRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{RateLimitFailures: 1},
+		expected: mockRT{RateLimitTries: 1},
+		success:  true,
+	})
+}
+
+func TestRateLimitExceededAfterRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.RateLimitExceededMaxRetries = 1
+	prof.RateLimitExceededRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{RateLimitFailures: 3},
+		expected: mockRT{RateLimitTries: 2},
+		success:  false,
+	})
+}
+
+func TestBothFailuresOccurredButSucceedAfterRetry(t *testing.T) {
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 1
+	prof.NetworkFailureRetryDuration = profile.ConstantDurationFunc(0)
+	prof.RateLimitExceededMaxRetries = 1
+	prof.RateLimitExceededRetryDuration = profile.ConstantDurationFunc(0)
+
+	test(t, testCase{
+		prof:     prof,
+		request:  newTestRequest(),
+		response: tchttp.NewCommonResponse(),
+		specific: mockRT{RateLimitFailures: 1, NetworkFailures: 1},
+		expected: mockRT{RateLimitTries: 1, NetworkTries: 1},
+		success:  true,
+	})
+}
+
+func test(t *testing.T, tc testCase) {
+	credential := common.NewCredential("", "")
+	client := common.NewCommonClient(credential, regions.Guangzhou, tc.prof)
+
+	client.WithHttpTransport(&tc.specific)
+
+	err := client.Send(tc.request, tc.response)
+	if tc.success != (err == nil) {
+		t.Fatalf("unexpected failed on request: %+v", err)
+	}
+
+	if tc.expected.RateLimitTries != tc.specific.RateLimitTries {
+		t.Fatalf("unexpected rate limit retry, expected %d, got %d",
+			tc.expected.RateLimitTries, tc.specific.RateLimitTries)
+	}
+
+	if tc.expected.NetworkTries != tc.specific.NetworkTries {
+		t.Fatalf("unexpected network failure retry, expected %d, got %d",
+			tc.expected.NetworkTries, tc.specific.NetworkTries)
+	}
+}

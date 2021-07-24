@@ -29,7 +29,7 @@ type CreateAudioDepositRequest struct {
 	// 数据Base64编码，大小不超过5M
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 对应数据Base64文件名称
+	// 带后缀的文件名称，如music.mp3
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件hash
@@ -175,7 +175,7 @@ type CreateDocDepositRequest struct {
 	// 数据Base64编码，大小不超过5M
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 对应数据Base64文件名称
+	// 带后缀的文件名称，如 test.doc
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件hash
@@ -439,7 +439,7 @@ type CreateImageDepositRequest struct {
 	// 数据Base64编码，大小不超过5M
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 对应数据Base64文件名称 test.png
+	// 带后缀的文件名称，如 test.png
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件hash
@@ -516,7 +516,7 @@ type CreateVideoDepositRequest struct {
 	// 数据Base64编码，大小不超过5M
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
-	// 对应数据Base64文件名称
+	// 带后缀的文件名称，如music.mkv
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件hash

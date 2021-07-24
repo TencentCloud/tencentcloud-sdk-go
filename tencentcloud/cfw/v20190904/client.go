@@ -296,6 +296,98 @@ func (c *Client) DescribeAssociatedInstanceList(request *DescribeAssociatedInsta
     return
 }
 
+func NewDescribeBlockByIpTimesListRequest() (request *DescribeBlockByIpTimesListRequest) {
+    request = &DescribeBlockByIpTimesListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockByIpTimesList")
+    return
+}
+
+func NewDescribeBlockByIpTimesListResponse() (response *DescribeBlockByIpTimesListResponse) {
+    response = &DescribeBlockByIpTimesListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBlockByIpTimesList
+// DescribeBlockByIpTimesList 告警中心阻断IP折线图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBlockByIpTimesList(request *DescribeBlockByIpTimesListRequest) (response *DescribeBlockByIpTimesListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockByIpTimesListRequest()
+    }
+    response = NewDescribeBlockByIpTimesListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBlockStaticListRequest() (request *DescribeBlockStaticListRequest) {
+    request = &DescribeBlockStaticListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockStaticList")
+    return
+}
+
+func NewDescribeBlockStaticListResponse() (response *DescribeBlockStaticListResponse) {
+    response = &DescribeBlockStaticListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBlockStaticList
+// DescribeBlockStaticList 告警中心柱形图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBlockStaticList(request *DescribeBlockStaticListRequest) (response *DescribeBlockStaticListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockStaticListRequest()
+    }
+    response = NewDescribeBlockStaticListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCfwEipsRequest() (request *DescribeCfwEipsRequest) {
     request = &DescribeCfwEipsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -312,7 +404,7 @@ func NewDescribeCfwEipsResponse() (response *DescribeCfwEipsResponse) {
 }
 
 // DescribeCfwEips
-// 查询防火墙弹性公网ip
+// 查询防火墙弹性公网IP
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -546,6 +638,98 @@ func (c *Client) DescribeSyncAssetStatus(request *DescribeSyncAssetStatusRequest
     return
 }
 
+func NewDescribeTLogInfoRequest() (request *DescribeTLogInfoRequest) {
+    request = &DescribeTLogInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeTLogInfo")
+    return
+}
+
+func NewDescribeTLogInfoResponse() (response *DescribeTLogInfoResponse) {
+    response = &DescribeTLogInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTLogInfo
+// DescribeTLogInfo告警中心概况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTLogInfo(request *DescribeTLogInfoRequest) (response *DescribeTLogInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTLogInfoRequest()
+    }
+    response = NewDescribeTLogInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTLogIpListRequest() (request *DescribeTLogIpListRequest) {
+    request = &DescribeTLogIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeTLogIpList")
+    return
+}
+
+func NewDescribeTLogIpListResponse() (response *DescribeTLogIpListResponse) {
+    response = &DescribeTLogIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTLogIpList
+// DescribeTLogIpList告警中心IP柱形图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTLogIpList(request *DescribeTLogIpListRequest) (response *DescribeTLogIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTLogIpListRequest()
+    }
+    response = NewDescribeTLogIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableStatusRequest() (request *DescribeTableStatusRequest) {
     request = &DescribeTableStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -574,6 +758,52 @@ func (c *Client) DescribeTableStatus(request *DescribeTableStatusRequest) (respo
         request = NewDescribeTableStatusRequest()
     }
     response = NewDescribeTableStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnHandleEventTabListRequest() (request *DescribeUnHandleEventTabListRequest) {
+    request = &DescribeUnHandleEventTabListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeUnHandleEventTabList")
+    return
+}
+
+func NewDescribeUnHandleEventTabListResponse() (response *DescribeUnHandleEventTabListResponse) {
+    response = &DescribeUnHandleEventTabListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUnHandleEventTabList
+// DescribeUnHandleEventTabList 告警中心伪攻击链事件未处置接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUnHandleEventTabList(request *DescribeUnHandleEventTabListRequest) (response *DescribeUnHandleEventTabListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnHandleEventTabListRequest()
+    }
+    response = NewDescribeUnHandleEventTabListResponse()
     err = c.Send(request, response)
     return
 }
@@ -789,6 +1019,52 @@ func (c *Client) ModifyBlockIgnoreList(request *ModifyBlockIgnoreListRequest) (r
     return
 }
 
+func NewModifyBlockTopRequest() (request *ModifyBlockTopRequest) {
+    request = &ModifyBlockTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockTop")
+    return
+}
+
+func NewModifyBlockTopResponse() (response *ModifyBlockTopResponse) {
+    response = &ModifyBlockTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBlockTop
+// ModifyBlockTop取消置顶接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBlockTop(request *ModifyBlockTopRequest) (response *ModifyBlockTopResponse, err error) {
+    if request == nil {
+        request = NewModifyBlockTopRequest()
+    }
+    response = NewModifyBlockTopResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyItemSwitchStatusRequest() (request *ModifyItemSwitchStatusRequest) {
     request = &ModifyItemSwitchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -808,10 +1084,24 @@ func NewModifyItemSwitchStatusResponse() (response *ModifyItemSwitchStatusRespon
 // 修改单个防火墙开关
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyItemSwitchStatus(request *ModifyItemSwitchStatusRequest) (response *ModifyItemSwitchStatusResponse, err error) {
     if request == nil {
         request = NewModifyItemSwitchStatusRequest()
