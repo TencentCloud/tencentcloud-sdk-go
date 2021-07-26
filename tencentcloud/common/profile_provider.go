@@ -2,7 +2,7 @@ package common
 
 import (
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-	"gopkg.in/ini.v1"
+	ini "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/ini"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -24,9 +24,9 @@ func DefaultProfileProvider() *ProfileProvider {
 	return &ProfileProvider{}
 }
 
-// GetHomePath return home directory according to the system.
+// getHomePath return home directory according to the system.
 // if the environmental variables does not exist, it will return empty string
-func GetHomePath() string {
+func getHomePath() string {
 	// Windows
 	if runtime.GOOS == "windows" {
 		return os.Getenv("USERPROFILE")
@@ -35,12 +35,12 @@ func GetHomePath() string {
 	return os.Getenv("HOME")
 }
 
-func GetCredentialsFilePath() string {
-	return filepath.Join(GetHomePath(), ".tencentcloud", "credentials")
+func getCredentialsFilePath() string {
+	return filepath.Join(getHomePath(), ".tencentcloud", "credentials")
 }
 
 func checkDefaultFile() (path string, err error) {
-	path = GetCredentialsFilePath()
+	path = getCredentialsFilePath()
 	_, err = os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -60,15 +60,15 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 			return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to find profile file,"+err.Error(), "")
 		}
 		if path == "" {
-			return nil, FILEDOSENOTEXIST
+			return nil, fileDoseNotExist
 		}
 	} else if path == "" {
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Environment variable '"+EnvCredentialFile+"' cannot be empty", "")
 	}
 
-	cfg, err := ini.Load(path)
+	cfg, err := ini.Parse(path)
 	if err != nil {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to parse profile file,"+err.Error(), "")
+		return nil, err
 	}
 
 	sId := cfg.Section("default").Key("secret_id").String()

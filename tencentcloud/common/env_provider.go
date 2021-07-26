@@ -31,7 +31,7 @@ func (p *EnvProvider) GetCredential() (CredentialIface, error) {
 	secretId, ok1 := os.LookupEnv(p.secretIdENV)
 	secretKey, ok2 := os.LookupEnv(p.secretKeyENV)
 	if !ok1 || !ok2 {
-		return nil, ENVNOTSET
+		return nil, envNotSet
 	}
 	if secretId == "" || secretKey == "" {
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialNotFound", "Environmental variable ("+p.secretIdENV+" or "+p.secretKeyENV+") is empty", "")

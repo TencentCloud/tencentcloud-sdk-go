@@ -28,7 +28,7 @@ func (c *ProviderChain) GetCredential() (CredentialIface, error) {
 	for _, provider := range c.Providers {
 		cred, err := provider.GetCredential()
 		if err != nil {
-			if errors.Is(err, ENVNOTSET) || errors.Is(err, FILEDOSENOTEXIST) || errors.Is(err, CVMNOROLE) {
+			if errors.Is(err, envNotSet) || errors.Is(err, fileDoseNotExist) || errors.Is(err, noCvmRole) {
 				continue
 			} else {
 				return nil, err

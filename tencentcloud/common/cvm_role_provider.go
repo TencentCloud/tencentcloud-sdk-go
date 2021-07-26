@@ -70,7 +70,7 @@ func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	roleName, err := r.getRoleName()
 	if err != nil {
 		if errors.Is(err, RoleNotBound) {
-			return nil, CVMNOROLE
+			return nil, noCvmRole
 		}
 		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", err.Error(), "")
 	}

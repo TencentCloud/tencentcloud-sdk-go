@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
@@ -313,8 +312,4 @@ func NewClientWithProviders(region string, providers ...Provider) (client *Clien
 		pc = NewProviderChain(providers)
 	}
 	return client.WithProviders(pc)
-}
-
-func NewCommonClient(cred CredentialIface, region string, clientProfile *profile.ClientProfile) (c *Client) {
-	return new(Client).Init(region).WithCredential(cred).WithProfile(clientProfile)
 }
