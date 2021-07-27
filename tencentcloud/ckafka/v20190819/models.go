@@ -272,6 +272,10 @@ type CreateInstancePreData struct {
 	// 订单号列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type CreateInstancePreRequest struct {
@@ -303,6 +307,27 @@ type CreateInstancePreRequest struct {
 
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 支持指定版本Kafka版本（0.10.2/1.1.1/2.4.2） 。指定专业版参数specificationsType=pro
+	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+
+	// 专业版必须填写 （专业版：profession、标准版：standard） 默认是standard。专业版填profession
+	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
+
+	// 磁盘大小,专业版不填写默认最小磁盘,填写后根据磁盘带宽分区数弹性计算
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 带宽,专业版不填写默认最小带宽,填写后根据磁盘带宽分区数弹性计算
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// 分区大小,专业版不填写默认最小分区数,填写后根据磁盘带宽分区数弹性计算
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -326,6 +351,13 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "MsgRetentionTime")
 	delete(f, "ClusterId")
 	delete(f, "RenewFlag")
+	delete(f, "KafkaVersion")
+	delete(f, "SpecificationsType")
+	delete(f, "DiskSize")
+	delete(f, "BandWidth")
+	delete(f, "Partition")
+	delete(f, "Tags")
+	delete(f, "DiskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}

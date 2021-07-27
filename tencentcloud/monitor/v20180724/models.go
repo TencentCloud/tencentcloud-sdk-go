@@ -2447,10 +2447,10 @@ type DescribeBindingPolicyObjectListRequest struct {
 	// 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 分页参数，每页返回的数量，取值1~100，默认20
+	// 每次返回的数量，取值1~100，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页参数，页偏移量，从0开始计数，默认0
+	// 偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 筛选对象的维度信息

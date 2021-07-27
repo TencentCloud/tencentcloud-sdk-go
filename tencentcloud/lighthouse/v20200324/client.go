@@ -379,6 +379,7 @@ func NewDeleteBlueprintsResponse() (response *DeleteBlueprintsResponse) {
 //  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
 //  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = "UnsupportedOperation.BlueprintOccupied"
+//  UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = "UnsupportedOperation.PostDestroyResourceFailed"
 func (c *Client) DeleteBlueprints(request *DeleteBlueprintsRequest) (response *DeleteBlueprintsResponse, err error) {
     if request == nil {
         request = NewDeleteBlueprintsRequest()
@@ -1703,7 +1704,7 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
 // ModifyInstancesAttribute
 // 本接口（ModifyInstancesAttribute）用于修改实例的属性。
 //
-// * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行实例管理操作的依据。
+// * “实例名称”仅为方便用户自己管理之用。
 //
 // * 支持批量操作。每次请求批量实例的上限为 100。
 //
@@ -1824,7 +1825,7 @@ func NewModifySnapshotAttributeResponse() (response *ModifySnapshotAttributeResp
 // ModifySnapshotAttribute
 // 本接口（ModifySnapshotAttribute）用于修改指定快照的属性。
 //
-// <li>“快照名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。</li>
+// <li>“快照名称”仅为方便用户自己管理之用。</li>
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"

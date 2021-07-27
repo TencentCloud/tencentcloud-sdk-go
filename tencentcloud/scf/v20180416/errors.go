@@ -515,6 +515,9 @@ const (
 	// Cdn不存在。
 	RESOURCENOTFOUND_CDN = "ResourceNotFound.Cdn"
 
+	// 指定的cfs下未找到您所指定的挂载点。
+	RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = "ResourceNotFound.CfsMountInsNotMatch"
+
 	// cfs与云函数所处vpc不一致。
 	RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 

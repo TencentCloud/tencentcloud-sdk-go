@@ -98,3 +98,32 @@ func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest
     err = c.Send(request, response)
     return
 }
+
+func NewSyncUserAndOrderInfoRequest() (request *SyncUserAndOrderInfoRequest) {
+    request = &SyncUserAndOrderInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("market", APIVersion, "SyncUserAndOrderInfo")
+    return
+}
+
+func NewSyncUserAndOrderInfoResponse() (response *SyncUserAndOrderInfoResponse) {
+    response = &SyncUserAndOrderInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncUserAndOrderInfo
+// 同步企微的用户信息和订单信息到云市场
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) SyncUserAndOrderInfo(request *SyncUserAndOrderInfoRequest) (response *SyncUserAndOrderInfoResponse, err error) {
+    if request == nil {
+        request = NewSyncUserAndOrderInfoRequest()
+    }
+    response = NewSyncUserAndOrderInfoResponse()
+    err = c.Send(request, response)
+    return
+}

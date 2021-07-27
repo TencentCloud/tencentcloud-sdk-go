@@ -228,6 +228,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
 //  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = "ResourceNotFound.CfsMountInsNotMatch"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
 //  RESOURCENOTFOUND_DEMO = "ResourceNotFound.Demo"

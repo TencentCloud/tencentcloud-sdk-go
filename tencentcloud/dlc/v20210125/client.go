@@ -649,6 +649,7 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
 func (c *Client) DescribeTable(request *DescribeTableRequest) (response *DescribeTableResponse, err error) {
     if request == nil {
         request = NewDescribeTableRequest()

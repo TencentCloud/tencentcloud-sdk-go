@@ -1846,6 +1846,30 @@ type TaskResultFile struct {
 	MediaInfo *MediaResultInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
 }
 
+type TextMarkInfoItem struct {
+
+	// 文字内容。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 文字水印X坐标。
+	PosX *int64 `json:"PosX,omitempty" name:"PosX"`
+
+	// 文字水印Y坐标。
+	PosY *int64 `json:"PosY,omitempty" name:"PosY"`
+
+	// 文字大小
+	FontSize *int64 `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
+	FontFile *string `json:"FontFile,omitempty" name:"FontFile"`
+
+	// 字体颜色，颜色见附录，不填默认black。
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
+	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
+}
+
 type UrlInfo struct {
 
 	// 视频 URL。
@@ -1970,6 +1994,9 @@ type VideoInfo struct {
 
 	// 数字水印参数信息。
 	HiddenMarkInfo *HiddenMarkInfo `json:"HiddenMarkInfo,omitempty" name:"HiddenMarkInfo"`
+
+	// 文本水印参数信息。
+	TextMarkInfo []*TextMarkInfoItem `json:"TextMarkInfo,omitempty" name:"TextMarkInfo"`
 }
 
 type VideoInfoResultItem struct {

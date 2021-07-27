@@ -154,6 +154,21 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BackupDownloadInfo struct {
+
+	// 备份文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 备份文件大小，单位B，如果为0，表示无效
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 备份文件外网下载地址（6小时）
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 备份文件内网下载地址（6小时）
+	InnerDownloadUrl *string `json:"InnerDownloadUrl,omitempty" name:"InnerDownloadUrl"`
+}
+
 type BigKeyInfo struct {
 
 	// 所属的database
@@ -841,6 +856,14 @@ type DescribeBackupUrlResponse struct {
 
 		// 内网下载地址（6小时）
 		InnerDownloadUrl []*string `json:"InnerDownloadUrl,omitempty" name:"InnerDownloadUrl"`
+
+		// 文件名称（仅tendis实例有值）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Filenames []*string `json:"Filenames,omitempty" name:"Filenames"`
+
+		// 备份文件信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BackupInfos []*BackupDownloadInfo `json:"BackupInfos,omitempty" name:"BackupInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3223,9 +3246,6 @@ type Inbound struct {
 type InquiryPriceCreateInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
-	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
-
 	// 实例类型：2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)。
 	TypeId *uint64 `json:"TypeId,omitempty" name:"TypeId"`
 
@@ -3242,6 +3262,9 @@ type InquiryPriceCreateInstanceRequest struct {
 	// 付费方式:0-按量计费，1-包年包月。
 	BillingMode *int64 `json:"BillingMode,omitempty" name:"BillingMode"`
 
+	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
 	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写。
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
@@ -3250,6 +3273,9 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
 	ReplicasReadonly *bool `json:"ReplicasReadonly,omitempty" name:"ReplicasReadonly"`
+
+	// 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -3264,15 +3290,16 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ZoneId")
 	delete(f, "TypeId")
 	delete(f, "MemSize")
 	delete(f, "GoodsNum")
 	delete(f, "Period")
 	delete(f, "BillingMode")
+	delete(f, "ZoneId")
 	delete(f, "RedisShardNum")
 	delete(f, "RedisReplicasNum")
 	delete(f, "ReplicasReadonly")
+	delete(f, "ZoneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}

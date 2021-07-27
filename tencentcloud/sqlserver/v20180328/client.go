@@ -1338,6 +1338,77 @@ func (c *Client) DescribeIncrementalMigration(request *DescribeIncrementalMigrat
     return
 }
 
+func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
+    request = &DescribeInstanceParamRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceParamRecords")
+    return
+}
+
+func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamRecordsResponse) {
+    response = &DescribeInstanceParamRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceParamRecords
+// 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamRecordsRequest()
+    }
+    response = NewDescribeInstanceParamRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
+    request = &DescribeInstanceParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceParams")
+    return
+}
+
+func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsResponse) {
+    response = &DescribeInstanceParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceParams
+// 该接口（DescribeInstanceParams）用于查询实例的参数列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamsRequest()
+    }
+    response = NewDescribeInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMaintenanceSpanRequest() (request *DescribeMaintenanceSpanRequest) {
     request = &DescribeMaintenanceSpanRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2562,6 +2633,7 @@ func NewModifyDatabaseCDCResponse() (response *ModifyDatabaseCDCResponse) {
 //  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDatabaseCDC(request *ModifyDatabaseCDCRequest) (response *ModifyDatabaseCDCResponse, err error) {
     if request == nil {
         request = NewModifyDatabaseCDCRequest()
@@ -2677,6 +2749,45 @@ func (c *Client) ModifyIncrementalMigration(request *ModifyIncrementalMigrationR
         request = NewModifyIncrementalMigrationRequest()
     }
     response = NewModifyIncrementalMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceParamRequest() (request *ModifyInstanceParamRequest) {
+    request = &ModifyInstanceParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceParam")
+    return
+}
+
+func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
+    response = &ModifyInstanceParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceParam
+// 本接口(ModifyInstanceParam)用于修改云数据库实例的参数。
+//
+// <b>注意</b>：如果修改的参数是需要<b>重启实例</b>的，那么实例将会按照WaitSwitch参数的设置(可能是立即执行也可能在可维护时间窗内自动执行)在执行参数修改时<b>重启实例</b>。
+//
+// 您可以通过DescribeInstanceParams接口查询修改参数时是否会重启实例，以免导致您的实例不符合预期重启。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceParamRequest()
+    }
+    response = NewModifyInstanceParamResponse()
     err = c.Send(request, response)
     return
 }

@@ -20,6 +20,25 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ActivityRecordItem struct {
+
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 活动id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 自定义状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 自定义子状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+}
+
 type AuthDomain struct {
 
 	// 域名ID
@@ -1712,6 +1731,67 @@ func (r *DeleteWxGatewayRouteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWxGatewayRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeActivityRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 渠道加密token
+	ChannelToken *string `json:"ChannelToken,omitempty" name:"ChannelToken"`
+
+	// 渠道来源，每个来源对应不同secretKey
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 活动id列表
+	ActivityIdList []*int64 `json:"ActivityIdList,omitempty" name:"ActivityIdList"`
+
+	// 过滤状态码
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribeActivityRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivityRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelToken")
+	delete(f, "Channel")
+	delete(f, "ActivityIdList")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivityRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeActivityRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 活动记录详情
+		ActivityRecords []*ActivityRecordItem `json:"ActivityRecords,omitempty" name:"ActivityRecords"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeActivityRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivityRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4674,6 +4754,68 @@ func (r *ReinstateEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReinstateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceActivityRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 状态码
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 自定义子状态
+	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+
+	// 鉴权token
+	ChannelToken *string `json:"ChannelToken,omitempty" name:"ChannelToken"`
+
+	// 渠道名，不同渠道对应不同secretKey
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *ReplaceActivityRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceActivityRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActivityId")
+	delete(f, "Status")
+	delete(f, "SubStatus")
+	delete(f, "ChannelToken")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceActivityRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReplaceActivityRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReplaceActivityRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceActivityRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

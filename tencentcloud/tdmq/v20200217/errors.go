@@ -74,6 +74,9 @@ const (
 	// 必须先清除关联命名空间才能继续操作。
 	FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
 
+	// 接收消息超时，请重试。
+	FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+
 	// 消息回溯设置失败。
 	FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = "FailedOperation.ResetMsgSubOffsetByTimestampFailed"
 
@@ -122,6 +125,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 与现有集群名称重复。
+	INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
+
 	// 参数值不在允许范围内。
 	INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 
@@ -161,11 +167,20 @@ const (
 	// 集群已存在。
 	RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
 
+	// 重名，命名空间已存在。
+	RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
+
 	// 重名，订阅关系已存在。
 	RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
 
+	// 重名，主题已存在。
+	RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+
 	// 服务的集群不存在。
 	RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+
+	// 集群不存在。
+	RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 
 	// 环境不存在。
 	RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"

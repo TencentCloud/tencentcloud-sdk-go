@@ -4754,6 +4754,15 @@ type FrameTagConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HeadTailParameter struct {
+
+	// 片头列表。
+	HeadSet []*MediaInputInfo `json:"HeadSet,omitempty" name:"HeadSet"`
+
+	// 片尾列表。
+	TailSet []*MediaInputInfo `json:"TailSet,omitempty" name:"TailSet"`
+}
+
 type ImageSpriteTaskInput struct {
 
 	// 雪碧图模板 ID。
@@ -8144,6 +8153,12 @@ type TaskNotifyConfig struct {
 
 	// 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
 	NotifyMode *string `json:"NotifyMode,omitempty" name:"NotifyMode"`
+
+	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// HTTP回调地址，NotifyType为URL时必填。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 }
 
 type TaskOutputStorage struct {
@@ -8362,6 +8377,10 @@ type TranscodeTaskInput struct {
 	// 转码后输出路径中的`{number}`变量的规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
+
+	// 片头片尾参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTailParameter *HeadTailParameter `json:"HeadTailParameter,omitempty" name:"HeadTailParameter"`
 }
 
 type TranscodeTemplate struct {

@@ -177,6 +177,7 @@ func NewDescribeAbnormalEventResponse() (response *DescribeAbnormalEventResponse
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTIMEEXPIRE = "InvalidParameter.StartTimeExpire"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"

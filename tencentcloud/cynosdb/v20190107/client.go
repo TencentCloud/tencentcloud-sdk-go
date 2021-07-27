@@ -405,6 +405,7 @@ func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailRespon
 // 本接口(DescribeInstanceDetail)用于查询实例详情。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"

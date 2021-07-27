@@ -124,6 +124,7 @@ func NewDescribeAssetsMappingListResponse() (response *DescribeAssetsMappingList
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {

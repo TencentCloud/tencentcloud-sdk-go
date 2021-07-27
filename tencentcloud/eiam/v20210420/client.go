@@ -294,11 +294,9 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
 // 获取一个应用的信息。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
-//  FAILEDOPERATION_APPIDNOTEXITED = "FailedOperation.AppIdNotExited"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
-//  OPERATIONDENIED_UINNOTEXISTED = "OperationDenied.UinNotExisted"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationRequest()

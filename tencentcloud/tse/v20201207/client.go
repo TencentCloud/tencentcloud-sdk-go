@@ -43,35 +43,6 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
-func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
-    request = &DescribeConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tse", APIVersion, "DescribeConfig")
-    return
-}
-
-func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
-    response = &DescribeConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeConfig
-// 查看配置项
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
-func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigRequest()
-    }
-    response = NewDescribeConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceAccessAddressRequest) {
     request = &DescribeSREInstanceAccessAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -130,36 +101,6 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
         request = NewDescribeSREInstancesRequest()
     }
     response = NewDescribeSREInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewManageConfigRequest() (request *ManageConfigRequest) {
-    request = &ManageConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tse", APIVersion, "ManageConfig")
-    return
-}
-
-func NewManageConfigResponse() (response *ManageConfigResponse) {
-    response = &ManageConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ManageConfig
-// 管理配置
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_KEYNOTEXIST = "InvalidParameterValue.KeyNotExist"
-//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
-func (c *Client) ManageConfig(request *ManageConfigRequest) (response *ManageConfigResponse, err error) {
-    if request == nil {
-        request = NewManageConfigRequest()
-    }
-    response = NewManageConfigResponse()
     err = c.Send(request, response)
     return
 }

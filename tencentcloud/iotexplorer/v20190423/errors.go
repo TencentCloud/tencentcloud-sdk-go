@@ -41,6 +41,9 @@ const (
 	// 转发已经停止。
 	FAILEDOPERATION_RULEALREADYDISABLED = "FailedOperation.RuleAlreadyDisabled"
 
+	// 该规则已被启用。
+	FAILEDOPERATION_RULEALREADYENABLED = "FailedOperation.RuleAlreadyEnabled"
+
 	// 超过时间。
 	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 
@@ -91,6 +94,9 @@ const (
 
 	// App不存在。
 	INVALIDPARAMETERVALUE_APPNOTEXISTS = "InvalidParameterValue.AppNotExists"
+
+	// 检查第三方URL超时或失败。
+	INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
 
 	// 创建的设备名已存在。
 	INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"

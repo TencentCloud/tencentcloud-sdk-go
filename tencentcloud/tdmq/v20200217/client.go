@@ -286,6 +286,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -362,6 +363,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  LIMITEXCEEDED_TOPICS = "LimitExceeded.Topics"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
@@ -398,6 +400,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_VPCINUSE = "FailedOperation.VpcInUse"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
     if request == nil {
         request = NewDeleteClusterRequest()
@@ -1219,6 +1222,7 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
     if request == nil {
         request = NewModifyClusterRequest()
@@ -1248,6 +1252,7 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
@@ -1277,6 +1282,7 @@ func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptio
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAttributeRequest) (response *ModifyCmqSubscriptionAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
@@ -1306,6 +1312,7 @@ func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest) (response *ModifyCmqTopicAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()
@@ -1444,6 +1451,7 @@ func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
 // 接收发送到指定 topic 中的消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
@@ -1582,11 +1590,7 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 // 发送cmq消息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
-//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
-//  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
-//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
-//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()
