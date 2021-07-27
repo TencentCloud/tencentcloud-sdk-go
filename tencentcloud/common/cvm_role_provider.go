@@ -10,11 +10,11 @@ import (
 )
 
 const (
-	MetaUrl = "http://metadata.tencentyun.com/latest/meta-data/"
-	RoleUrl = MetaUrl + "cam/security-credentials/"
+	metaUrl = "http://metadata.tencentyun.com/latest/meta-data/"
+	roleUrl = metaUrl + "cam/security-credentials/"
 )
 
-var RoleNotBound = errors.New("get cvm role name failed, Please confirm whether the role is bound")
+var roleNotBound = errors.New("get cvm role name failed, Please confirm whether the role is bound")
 
 type CvmRoleProvider struct {
 	roleName string
@@ -44,12 +44,12 @@ func get(url string) ([]byte, error) {
 	}
 
 	if rsp.StatusCode == http.StatusNotFound {
-		return nil, RoleNotBound
+		return nil, roleNotBound
 	}
 
 	body, err := ioutil.ReadAll(rsp.Body)
 	if err != nil {
-		return nil, err
+		return []byte{}, err
 	}
 	return body, nil
 }
@@ -58,25 +58,17 @@ func (r *CvmRoleProvider) getRoleName() (string, error) {
 	if r.roleName != "" {
 		return r.roleName, nil
 	}
-	rn, err := get(RoleUrl)
-	if err == nil {
-		r.roleName = string(rn)
-		return r.roleName, nil
-	}
+	rn, err := get(roleUrl)
 	return string(rn), err
 }
 
 func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	roleName, err := r.getRoleName()
 	if err != nil {
-		if errors.Is(err, RoleNotBound) {
-			return nil, noCvmRole
-		}
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", err.Error(), "")
+		return nil, noCvmRole
 	}
 	//通过元数据接口获取临时凭证 https://cloud.tencent.com/document/product/213/4934
-
-	body, err := get(RoleUrl + roleName)
+	body, err := get(roleUrl + roleName)
 
 	if err != nil {
 		return nil, err
