@@ -29,10 +29,13 @@ type roleRsp struct {
 	Code         string    `json:"Code"`
 }
 
+// NewCvmRoleProvider need you to specify the roleName of the cvm currently in use
 func NewCvmRoleProvider(roleName string) *CvmRoleProvider {
 	return &CvmRoleProvider{roleName: roleName}
 }
 
+// DefaultCvmRoleProvider will auto get the cvm role name by accessing the metadata api
+// more info please lookup: https://cloud.tencent.com/document/product/213/4934
 func DefaultCvmRoleProvider() *CvmRoleProvider {
 	return NewCvmRoleProvider("")
 }
@@ -67,7 +70,8 @@ func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	if err != nil {
 		return nil, noCvmRole
 	}
-	//通过元数据接口获取临时凭证 https://cloud.tencent.com/document/product/213/4934
+	// get the cvm role name by accessing the metadata api
+	// https://cloud.tencent.com/document/product/213/4934
 	body, err := get(roleUrl + roleName)
 
 	if err != nil {
@@ -75,10 +79,10 @@ func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	}
 	rspSt := new(roleRsp)
 	if err = json.Unmarshal(body, rspSt); err != nil {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", err.Error(), "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
 	}
 	if rspSt.Code != "Success" {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Get credential from metadata server by role name "+roleName+" failed, code="+rspSt.Code, "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, "Get credential from metadata server by role name "+roleName+" failed, code="+rspSt.Code, "")
 	}
 	cre := &CvmRoleCredential{
 		tmpSecretId:  rspSt.TmpSecretId,

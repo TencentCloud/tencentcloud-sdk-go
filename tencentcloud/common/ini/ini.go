@@ -7,12 +7,15 @@ import (
 	"strings"
 )
 
-var globalSectionName = "____GLOBAL____"
+var (
+	globalSectionName = "____GLOBAL____"
+	iniErr            = "ClientError.INIError"
+)
 
 func openFile(path string) (data []byte, err error) {
 	data, err = os.ReadFile(path)
 	if err != nil {
-		err = tcerr.NewTencentCloudSDKError(tcerr.CreError, err.Error(), "")
+		err = tcerr.NewTencentCloudSDKError(iniErr, err.Error(), "")
 	}
 	return
 }
@@ -28,7 +31,7 @@ func Parse(path string) (*sections, error) {
 	lines := strings.Split(content, "\n")
 	if len(lines) == 0 {
 		msg := fmt.Sprintf("the result of reading the %s is empty", path)
-		return &sections{}, tcerr.NewTencentCloudSDKError(tcerr.CreError, msg, "")
+		return &sections{}, tcerr.NewTencentCloudSDKError(iniErr, msg, "")
 	}
 	currentSectionName := globalSectionName
 	currentSection := &section{make(map[string]*value)}
@@ -42,23 +45,23 @@ func Parse(path string) (*sections, error) {
 		if strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") {
 			continue
 		}
-		// 判断 section name
+		// section name
 		if strings.HasPrefix(line, "[") {
 			if strings.HasSuffix(line, "]") {
 				tempSection := line[1 : len(line)-1]
 				if len(tempSection) == 0 {
 					msg := fmt.Sprintf("INI file %s lien %d is not valid: wrong section", path, i)
-					return result, tcerr.NewTencentCloudSDKError(tcerr.CreError, msg, "")
+					return result, tcerr.NewTencentCloudSDKError(iniErr, msg, "")
 				}
-				// 上一个 section 保存
+				// Save the previous section
 				result.contains[currentSectionName] = currentSection
-				// 记录新的 section
+				// new section
 				currentSectionName = tempSection
 				currentSection = &section{make(map[string]*value, 0)}
 				continue
 			} else {
 				msg := fmt.Sprintf("INI file %s lien %d is not valid: wrong section", path, i)
-				return result, tcerr.NewTencentCloudSDKError(tcerr.CreError, msg, "")
+				return result, tcerr.NewTencentCloudSDKError(iniErr, msg, "")
 			}
 		}
 

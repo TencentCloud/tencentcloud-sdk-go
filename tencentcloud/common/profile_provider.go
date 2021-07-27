@@ -17,9 +17,9 @@ type ProfileProvider struct {
 
 // DefaultProfileProvider return a default Profile  provider
 // profile path :
-// The value of the environment variable TENCENTCLOUD_CREDENTIALS_FILE
-// linux: ~/.tencentcloud/credentials
-// windows: \c:\Users\NAME\.tencentcloud\credentials
+//  1. The value of the environment variable TENCENTCLOUD_CREDENTIALS_FILE
+//  2. linux: ~/.tencentcloud/credentials
+// 	  windows: \c:\Users\NAME\.tencentcloud\credentials
 func DefaultProfileProvider() *ProfileProvider {
 	return &ProfileProvider{}
 }
@@ -36,11 +36,18 @@ func getHomePath() string {
 }
 
 func getCredentialsFilePath() string {
-	return filepath.Join(getHomePath(), ".tencentcloud", "credentials")
+	homePath := getHomePath()
+	if homePath == "" {
+		return homePath
+	}
+	return filepath.Join(homePath, ".tencentcloud", "credentials")
 }
 
 func checkDefaultFile() (path string, err error) {
 	path = getCredentialsFilePath()
+	if path == "" {
+		return path, nil
+	}
 	_, err = os.Stat(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -53,17 +60,21 @@ func checkDefaultFile() (path string, err error) {
 
 func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 	path, ok := os.LookupEnv(EnvCredentialFile)
+	// if not set custom file path, will use the default path
 	if !ok {
 		var err error
 		path, err = checkDefaultFile()
+		// only when the file exist but failed read it the err is not nil
 		if err != nil {
-			return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to find profile file,"+err.Error(), "")
+			return nil, tcerr.NewTencentCloudSDKError(creErr, "Failed to find profile file,"+err.Error(), "")
 		}
+		// when the path is "" means the file dose not exist
 		if path == "" {
 			return nil, fileDoseNotExist
 		}
+		// if the EnvCredentialFile is set to "", will return an error
 	} else if path == "" {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Environment variable '"+EnvCredentialFile+"' cannot be empty", "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, "Environment variable '"+EnvCredentialFile+"' cannot be empty", "")
 	}
 
 	cfg, err := ini.Parse(path)
@@ -73,9 +84,9 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 
 	sId := cfg.Section("default").Key("secret_id").String()
 	sKey := cfg.Section("default").Key("secret_key").String()
-
+	// if sId and sKey is "", but the credential file exist, means an error
 	if sId == "" || sKey == "" {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Failed to parse profile file,please confirm whether it contains \"secret_id\" and \"secret_key\" in section: \"default\" ", "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, "Failed to parse profile file,please confirm whether it contains \"secret_id\" and \"secret_key\" in section: \"default\" ", "")
 	}
 	return &Credential{
 		SecretId:  sId,

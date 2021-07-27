@@ -61,7 +61,7 @@ func Test_parse(t *testing.T) {
 				if got.Section("default").Key("key1").String() == "" {
 					t.Errorf("Parse() error:not get default.key1 value")
 				}
-				if _, e := got.Section("custom").Key("customKey2").bool(); e != nil {
+				if _, e := got.Section("custom").Key("customKey2").Bool(); e != nil {
 					t.Errorf("Parse() error:not get custom.customKey2 value")
 				}
 			}

@@ -2,6 +2,7 @@ package common
 
 import (
 	"errors"
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 type ProviderChain struct {
@@ -36,6 +37,6 @@ func (c *ProviderChain) GetCredential() (CredentialIface, error) {
 		}
 		return cred, err
 	}
-	return nil, errors.New("no credential found in each provider")
+	return nil, tcerr.NewTencentCloudSDKError(creErr, "no credential found in every providers", "")
 
 }

@@ -289,7 +289,8 @@ func (c *Client) WithDebug(flag bool) *Client {
 	return c
 }
 
-func (c *Client) WithProviders(provider Provider) (*Client, error) {
+// WithProvider use the specify provider to get a credential and use it to build a client
+func (c *Client) WithProvider(provider Provider) (*Client, error) {
 	cred, err := provider.GetCredential()
 	if err != nil {
 		return nil, err
@@ -303,6 +304,8 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
 	return
 }
 
+// NewClientWithProviders build client with your custom providers;
+// If you don't specify the providers, it will use the DefaultProviderChain to find credential
 func NewClientWithProviders(region string, providers ...Provider) (client *Client, err error) {
 	client = (&Client{}).Init(region)
 	var pc Provider
@@ -311,5 +314,5 @@ func NewClientWithProviders(region string, providers ...Provider) (client *Clien
 	} else {
 		pc = NewProviderChain(providers)
 	}
-	return client.WithProviders(pc)
+	return client.WithProvider(pc)
 }

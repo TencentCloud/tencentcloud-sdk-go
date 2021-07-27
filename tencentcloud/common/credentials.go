@@ -1,5 +1,7 @@
 package common
 
+var creErr = "ClientError.CredentialError"
+
 type CredentialIface interface {
 	GetSecretId() string
 	GetToken() string

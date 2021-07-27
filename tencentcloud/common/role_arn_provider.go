@@ -60,7 +60,7 @@ func DefaultRoleArnProvider(secretId, secretKey, roleArn string) *RoleArnProvide
 
 func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	if r.durationSeconds > 43200 || r.durationSeconds <= 0 {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", "Assume Role durationSeconds should be in the range of 0~43200s", "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, "Assume Role durationSeconds should be in the range of 0~43200s", "")
 	}
 	credential := NewCredential(r.longSecretId, r.longSecretKey)
 	cpf := profile.NewClientProfile()
@@ -88,7 +88,7 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	rspSt := new(stsRsp)
 
 	if err = json.Unmarshal(response.GetBody(), rspSt); err != nil {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialError", err.Error(), "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
 	}
 
 	return &RoleArnCredential{

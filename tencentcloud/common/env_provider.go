@@ -19,7 +19,7 @@ func DefaultEnvProvider() *EnvProvider {
 	}
 }
 
-// NewEnvProvider uses the name of the environment variable you specify to get the credentials
+// NewEnvProvider uses the name of the environment variable you specified to get the credentials
 func NewEnvProvider(secretIdEnvName, secretKeyEnvName string) *EnvProvider {
 	return &EnvProvider{
 		secretIdENV:  secretIdEnvName,
@@ -34,7 +34,7 @@ func (p *EnvProvider) GetCredential() (CredentialIface, error) {
 		return nil, envNotSet
 	}
 	if secretId == "" || secretKey == "" {
-		return nil, tcerr.NewTencentCloudSDKError("ClientError.CredentialNotFound", "Environmental variable ("+p.secretIdENV+" or "+p.secretKeyENV+") is empty", "")
+		return nil, tcerr.NewTencentCloudSDKError(creErr, "Environmental variable ("+p.secretIdENV+" or "+p.secretKeyENV+") is empty", "")
 	}
 	return NewCredential(secretId, secretKey), nil
 }
