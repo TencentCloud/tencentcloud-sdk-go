@@ -1,4 +1,4 @@
-package ini
+package common
 
 import "testing"
 
@@ -18,7 +18,7 @@ func Test_value_String(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			if got := v.String(); got != tt.want {
+			if got := v.string(); got != tt.want {
 				t.Errorf("String() = %v, want %v", got, tt.want)
 			}
 		})
@@ -44,7 +44,7 @@ func Test_value_bool(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			got, err := v.Bool()
+			got, err := v.bool()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Bool() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -75,7 +75,7 @@ func Test_value_float32(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			got, err := v.Float32()
+			got, err := v.float32()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Float32() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -106,7 +106,7 @@ func Test_value_float64(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			got, err := v.Float64()
+			got, err := v.float64()
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Float64() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -128,22 +128,22 @@ func Test_value_int(t *testing.T) {
 		want    int
 		wantErr bool
 	}{
-		{"valid Int", fields{raw: "1"}, 1, false},
-		{"valid Int", fields{raw: "99887766"}, 99887766, false},
-		{"invalid Int", fields{raw: "1987a"}, 0, true},
+		{"valid int", fields{raw: "1"}, 1, false},
+		{"valid int", fields{raw: "99887766"}, 99887766, false},
+		{"invalid int", fields{raw: "1987a"}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			got, err := v.Int()
+			got, err := v.int()
 			if (err != nil) != tt.wantErr {
-				t.Errorf("Int() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("int() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("Int() got = %v, want %v", got, tt.want)
+				t.Errorf("int() got = %v, want %v", got, tt.want)
 			}
 		})
 	}
@@ -160,22 +160,22 @@ func Test_value_int64(t *testing.T) {
 		wantErr bool
 	}{
 		// TODO: Add test cases.
-		{"valid Int", fields{raw: "1"}, 1, false},
-		{"valid Int", fields{raw: "99887766"}, 99887766, false},
-		{"invalid Int", fields{raw: "1987a"}, 0, true},
+		{"valid int", fields{raw: "1"}, 1, false},
+		{"valid int", fields{raw: "99887766"}, 99887766, false},
+		{"invalid int", fields{raw: "1987a"}, 0, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			v := &value{
 				raw: tt.fields.raw,
 			}
-			got, err := v.Int64()
+			got, err := v.int64()
 			if (err != nil) != tt.wantErr {
-				t.Errorf("Int64() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("int64() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("Int64() got = %v, want %v", got, tt.want)
+				t.Errorf("int64() got = %v, want %v", got, tt.want)
 			}
 		})
 	}

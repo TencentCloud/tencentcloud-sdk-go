@@ -1,4 +1,4 @@
-package ini
+package common
 
 import (
 	"reflect"
@@ -21,7 +21,7 @@ func Test_section_key(t *testing.T) {
 		{
 			"contain key",
 			fields{content: map[string]*value{
-				"key1": &value{raw: "value1"},
+				"key1": {raw: "value1"},
 			},
 			},
 			args{name: "key1"}, &value{raw: "value1"},
@@ -38,7 +38,7 @@ func Test_section_key(t *testing.T) {
 			s := &section{
 				content: tt.fields.content,
 			}
-			if got := s.Key(tt.args.name); !reflect.DeepEqual(got, tt.want) {
+			if got := s.key(tt.args.name); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("key() = %v, want %v", got, tt.want)
 			}
 		})
@@ -77,7 +77,7 @@ func Test_sections_section(t *testing.T) {
 			ss := sections{
 				contains: tt.fields.contains,
 			}
-			if got := ss.Section(tt.args.name); !reflect.DeepEqual(got, tt.want) {
+			if got := ss.section(tt.args.name); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("section() = %v, want %v", got, tt.want)
 			}
 		})

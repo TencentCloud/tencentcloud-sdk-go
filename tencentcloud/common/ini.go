@@ -1,10 +1,11 @@
-package ini
+package common
 
 import (
 	"fmt"
-	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"os"
 	"strings"
+
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 var (
@@ -20,7 +21,7 @@ func openFile(path string) (data []byte, err error) {
 	return
 }
 
-func Parse(path string) (*sections, error) {
+func parse(path string) (*sections, error) {
 	result := &sections{map[string]*section{}}
 	buf, err := openFile(path)
 	if err != nil {

@@ -1,10 +1,10 @@
-package ini
+package common
 
 type sections struct {
 	contains map[string]*section
 }
 
-func (ss sections) Section(name string) *section {
+func (ss sections) section(name string) *section {
 	s, ok := ss.contains[name]
 	if !ok {
 		s = new(section)
@@ -17,7 +17,7 @@ type section struct {
 	content map[string]*value
 }
 
-func (s *section) Key(name string) *value {
+func (s *section) key(name string) *value {
 	v, ok := s.content[name]
 	if !ok {
 		v = new(value)

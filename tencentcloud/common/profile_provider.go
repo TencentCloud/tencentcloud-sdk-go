@@ -1,11 +1,11 @@
 package common
 
 import (
-	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-	ini "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/ini"
 	"os"
 	"path/filepath"
 	"runtime"
+
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 const (
@@ -77,13 +77,13 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "Environment variable '"+EnvCredentialFile+"' cannot be empty", "")
 	}
 
-	cfg, err := ini.Parse(path)
+	cfg, err := parse(path)
 	if err != nil {
 		return nil, err
 	}
 
-	sId := cfg.Section("default").Key("secret_id").String()
-	sKey := cfg.Section("default").Key("secret_key").String()
+	sId := cfg.section("default").key("secret_id").string()
+	sKey := cfg.section("default").key("secret_key").string()
 	// if sId and sKey is "", but the credential file exist, means an error
 	if sId == "" || sKey == "" {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "Failed to parse profile file,please confirm whether it contains \"secret_id\" and \"secret_key\" in section: \"default\" ", "")
