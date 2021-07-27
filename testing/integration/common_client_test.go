@@ -58,7 +58,6 @@ func TestCommonRequest(t *testing.T) {
 	if err != nil {
 		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
 	}
-	t.Log(string(response.GetBody()))
 }
 
 func TestClient_SendOctetStream(t *testing.T) {
