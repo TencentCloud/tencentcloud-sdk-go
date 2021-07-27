@@ -364,6 +364,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = "FailedOperation.ApplicationCreateEsAtuhError"
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  INTERNALERROR_APPLICATIONMASTERFEIGNERROR = "InternalError.ApplicationMasterFeignError"
 //  INTERNALERROR_APPLICATIONMASTERNUKNOWNERROR = "InternalError.ApplicationMasterNuknownError"
 //  INTERNALERROR_APPLICATIONSCALABLEINITERROR = "InternalError.ApplicationScalableInitError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -410,6 +411,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CLUSTERCOMMONERROR = "InternalError.ClusterCommonError"
+//  INTERNALERROR_CLUSTERMASTERFEIGNERROR = "InternalError.ClusterMasterFeignError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CLUSTERCIDRCONFLICT = "InvalidParameterValue.ClusterCidrConflict"
@@ -495,6 +497,7 @@ func NewCreateContainGroupResponse() (response *CreateContainGroupResponse) {
 // 创建容器部署组
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_GROUPMASTERNUKNOWNERROR = "InternalError.GroupMasterNuknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
@@ -2175,6 +2178,7 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CLUSTERNOTEXISTORPRIVILEGEERROR = "InternalError.ClusterNotExistOrPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -2401,6 +2405,7 @@ func NewDescribeContainerGroupDetailResponse() (response *DescribeContainerGroup
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
@@ -2507,6 +2512,7 @@ func NewDescribeDownloadInfoResponse() (response *DescribeDownloadInfoResponse) 
 // COS相关文档请查阅：https://cloud.tencent.com/document/product/436
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DescribeDownloadInfo(request *DescribeDownloadInfoRequest) (response *DescribeDownloadInfoResponse, err error) {
     if request == nil {
@@ -5111,6 +5117,7 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
 // 发布配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

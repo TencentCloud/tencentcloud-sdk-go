@@ -1097,6 +1097,7 @@ func NewTerminateComputeNodesResponse() (response *TerminateComputeNodesResponse
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 //  RESOURCENOTFOUND_COMPUTENODE = "ResourceNotFound.ComputeNode"
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
     if request == nil {

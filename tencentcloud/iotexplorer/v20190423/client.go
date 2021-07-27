@@ -1012,9 +1012,12 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
 // 启用规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYENABLED = "FailedOperation.RuleAlreadyEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
+//  INVALIDPARAMETERVALUE_INVALIDSQL = "InvalidParameterValue.InvalidSQL"
 //  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

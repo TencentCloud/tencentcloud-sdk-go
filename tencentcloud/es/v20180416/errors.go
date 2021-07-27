@@ -32,6 +32,9 @@ const (
 	// 集群状态错误。
 	FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 
+	// 集群索引没有副本存在。
+	FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+
 	// 账户未绑定信用卡或paypal，无法支付。
 	FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 

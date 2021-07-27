@@ -84,6 +84,9 @@ type BindCluster struct {
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
+type BundleSetOpt struct {
+}
+
 type ClearCmqQueueRequest struct {
 	*tchttp.BaseRequest
 
@@ -221,6 +224,22 @@ type Cluster struct {
 
 	// 最大存储容量
 	MaxStorageCapacity *int64 `json:"MaxStorageCapacity,omitempty" name:"MaxStorageCapacity"`
+
+	// 集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 公网访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicEndPoint *string `json:"PublicEndPoint,omitempty" name:"PublicEndPoint"`
+
+	// VPC访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcEndPoint *string `json:"VpcEndPoint,omitempty" name:"VpcEndPoint"`
+
+	// 命名空间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceNum *int64 `json:"NamespaceNum,omitempty" name:"NamespaceNum"`
 }
 
 type CmqDeadLetterPolicy struct {
@@ -1031,8 +1050,7 @@ type CreateTopicRequest struct {
 	// 1 ：全局顺序消息；
 	// 2 ：局部顺序消息；
 	// 3 ：重试队列；
-	// 4 ：死信队列；
-	// 5 ：事务消息。
+	// 4 ：死信队列。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 
 	// 备注，128字符以内。
@@ -2238,6 +2256,130 @@ func (r *DescribeEnvironmentsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNamespaceBundlesOptRequest struct {
+	*tchttp.BaseRequest
+
+	// 物理集群名
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 虚拟集群（租户）ID
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 命名空间名
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 是否需要监控指标，若传false，则不需要传Limit和Offset分页参数
+	NeedMetrics *bool `json:"NeedMetrics,omitempty" name:"NeedMetrics"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNamespaceBundlesOptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNamespaceBundlesOptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterName")
+	delete(f, "TenantId")
+	delete(f, "NamespaceName")
+	delete(f, "NeedMetrics")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNamespaceBundlesOptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNamespaceBundlesOptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// bundle列表
+		BundleSet []*BundleSetOpt `json:"BundleSet,omitempty" name:"BundleSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNamespaceBundlesOptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNamespaceBundlesOptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNodeHealthOptRequest struct {
+	*tchttp.BaseRequest
+
+	// 节点实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeNodeHealthOptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeHealthOptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeHealthOptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNodeHealthOptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0-异常；1-正常
+		NodeState *int64 `json:"NodeState,omitempty" name:"NodeState"`
+
+		// 最近一次健康检查的时间
+		LatestHealthCheckTime *string `json:"LatestHealthCheckTime,omitempty" name:"LatestHealthCheckTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNodeHealthOptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeHealthOptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

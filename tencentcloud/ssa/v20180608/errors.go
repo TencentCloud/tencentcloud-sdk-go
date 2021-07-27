@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 云上资产、安全配置、合规风险配置、互联网攻击面测绘模块未授权。
+	AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

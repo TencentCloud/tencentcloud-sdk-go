@@ -540,6 +540,38 @@ func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (res
     return
 }
 
+func NewDescribeActivityRecordRequest() (request *DescribeActivityRecordRequest) {
+    request = &DescribeActivityRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeActivityRecord")
+    return
+}
+
+func NewDescribeActivityRecordResponse() (response *DescribeActivityRecordResponse) {
+    response = &DescribeActivityRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeActivityRecord
+// 查询活动记录信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeActivityRecord(request *DescribeActivityRecordRequest) (response *DescribeActivityRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeActivityRecordRequest()
+    }
+    response = NewDescribeActivityRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
     request = &DescribeAuthDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1795,6 +1827,38 @@ func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *Reinstate
         request = NewReinstateEnvRequest()
     }
     response = NewReinstateEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceActivityRecordRequest() (request *ReplaceActivityRecordRequest) {
+    request = &ReplaceActivityRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ReplaceActivityRecord")
+    return
+}
+
+func NewReplaceActivityRecordResponse() (response *ReplaceActivityRecordResponse) {
+    response = &ReplaceActivityRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReplaceActivityRecord
+// 更新活动详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) ReplaceActivityRecord(request *ReplaceActivityRecordRequest) (response *ReplaceActivityRecordResponse, err error) {
+    if request == nil {
+        request = NewReplaceActivityRecordRequest()
+    }
+    response = NewReplaceActivityRecordResponse()
     err = c.Send(request, response)
     return
 }

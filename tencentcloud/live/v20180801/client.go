@@ -780,6 +780,7 @@ func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResp
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveTranscodeRuleRequest()

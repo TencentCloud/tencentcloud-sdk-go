@@ -39,6 +39,71 @@ type Concat struct {
 	Image *string `json:"Image,omitempty" name:"Image"`
 }
 
+type CreateSnapshotTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 白板相关参数
+	Whiteboard *SnapshotWhiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
+
+	// 白板房间SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 白板房间号
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 白板板书生成结果通知回调地址
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+
+	// 白板板书文件COS存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
+	COS *SnapshotCOS `json:"COS,omitempty" name:"COS"`
+}
+
+func (r *CreateSnapshotTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Whiteboard")
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "CallbackURL")
+	delete(f, "COS")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白板板书生成任务ID，只有任务创建成功的时候才会返回此字段
+		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSnapshotTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTranscodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -447,6 +512,78 @@ func (r *DescribeQualityMetricsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeQualityMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询任务ID
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 任务SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeSnapshotTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskID")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+		// 任务状态
+	// Running - 任务执行中
+	// Finished - 任务已结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 任务创建时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 任务完成时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FinishTime *uint64 `json:"FinishTime,omitempty" name:"FinishTime"`
+
+		// 任务结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *SnapshotResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSnapshotTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1458,6 +1595,55 @@ func (r *SetWhiteboardPushCallbackResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetWhiteboardPushCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SnapshotCOS struct {
+
+	// cos所在腾讯云帐号uin
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// cos所在地区
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// cos存储桶名称
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 板书文件存储根目录
+	TargetDir *string `json:"TargetDir,omitempty" name:"TargetDir"`
+
+	// CDN加速域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type SnapshotResult struct {
+
+	// 任务执行错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 快照生成图片总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 快照图片链接列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Snapshots []*string `json:"Snapshots,omitempty" name:"Snapshots"`
+}
+
+type SnapshotWhiteboard struct {
+
+	// 白板宽度大小，默认为1280，有效取值范围[0，2560]
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 白板高度大小，默认为720，有效取值范围[0，2560]
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 白板初始化参数的JSON转义字符串，透传到白板 SDK
+	InitParams *string `json:"InitParams,omitempty" name:"InitParams"`
 }
 
 type StartOnlineRecordRequest struct {

@@ -341,6 +341,9 @@ const (
 	// 不支持的操作，实例最近一次的操作尚未完成。
 	UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 
+	// 计费资源中心删除资源失败。
+	UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = "UnsupportedOperation.PostDestroyResourceFailed"
+
 	// 重新申请关联云联网失败。请检查云联网状态并稍后再试。
 	UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = "UnsupportedOperation.ResetAttachCcnFailed"
 

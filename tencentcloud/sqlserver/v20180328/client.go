@@ -267,6 +267,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BACKUPNAMEISILLEGAL = "InvalidParameterValue.BackupNameIsIllegal"
 //  LIMITEXCEEDED_TOOMANYDB = "LimitExceeded.TooManyDB"
 //  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -1236,6 +1237,40 @@ func (c *Client) DescribeDBs(request *DescribeDBsRequest) (response *DescribeDBs
     return
 }
 
+func NewDescribeDBsNormalRequest() (request *DescribeDBsNormalRequest) {
+    request = &DescribeDBsNormalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBsNormal")
+    return
+}
+
+func NewDescribeDBsNormalResponse() (response *DescribeDBsNormalResponse) {
+    response = &DescribeDBsNormalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBsNormal
+// 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_INTERFACENAMENOTFOUND = "InvalidParameter.InterfaceNameNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBsNormal(request *DescribeDBsNormalRequest) (response *DescribeDBsNormalResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBsNormalRequest()
+    }
+    response = NewDescribeDBsNormalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowStatusRequest() (request *DescribeFlowStatusRequest) {
     request = &DescribeFlowStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1299,6 +1334,77 @@ func (c *Client) DescribeIncrementalMigration(request *DescribeIncrementalMigrat
         request = NewDescribeIncrementalMigrationRequest()
     }
     response = NewDescribeIncrementalMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
+    request = &DescribeInstanceParamRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceParamRecords")
+    return
+}
+
+func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamRecordsResponse) {
+    response = &DescribeInstanceParamRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceParamRecords
+// 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamRecordsRequest()
+    }
+    response = NewDescribeInstanceParamRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
+    request = &DescribeInstanceParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceParams")
+    return
+}
+
+func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsResponse) {
+    response = &DescribeInstanceParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceParams
+// 该接口（DescribeInstanceParams）用于查询实例的参数列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamsRequest()
+    }
+    response = NewDescribeInstanceParamsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2501,6 +2607,113 @@ func (c *Client) ModifyDBRemark(request *ModifyDBRemarkRequest) (response *Modif
     return
 }
 
+func NewModifyDatabaseCDCRequest() (request *ModifyDatabaseCDCRequest) {
+    request = &ModifyDatabaseCDCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseCDC")
+    return
+}
+
+func NewModifyDatabaseCDCResponse() (response *ModifyDatabaseCDCResponse) {
+    response = &ModifyDatabaseCDCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseCDC
+// 本接口(ModifyDatabaseCDC)用于开启、关闭数据库数据变更捕获(CDC)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDatabaseCDC(request *ModifyDatabaseCDCRequest) (response *ModifyDatabaseCDCResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseCDCRequest()
+    }
+    response = NewModifyDatabaseCDCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseCTRequest() (request *ModifyDatabaseCTRequest) {
+    request = &ModifyDatabaseCTRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseCT")
+    return
+}
+
+func NewModifyDatabaseCTResponse() (response *ModifyDatabaseCTResponse) {
+    response = &ModifyDatabaseCTResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseCT
+// 本接口(ModifyDatabaseCT)用于启用、禁用数据库数据变更跟踪(CT)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDatabaseCT(request *ModifyDatabaseCTRequest) (response *ModifyDatabaseCTResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseCTRequest()
+    }
+    response = NewModifyDatabaseCTResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDatabaseMdfRequest() (request *ModifyDatabaseMdfRequest) {
+    request = &ModifyDatabaseMdfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDatabaseMdf")
+    return
+}
+
+func NewModifyDatabaseMdfResponse() (response *ModifyDatabaseMdfResponse) {
+    response = &ModifyDatabaseMdfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDatabaseMdf
+// 本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
+//  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
+func (c *Client) ModifyDatabaseMdf(request *ModifyDatabaseMdfRequest) (response *ModifyDatabaseMdfResponse, err error) {
+    if request == nil {
+        request = NewModifyDatabaseMdfRequest()
+    }
+    response = NewModifyDatabaseMdfResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyIncrementalMigrationRequest() (request *ModifyIncrementalMigrationRequest) {
     request = &ModifyIncrementalMigrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2536,6 +2749,45 @@ func (c *Client) ModifyIncrementalMigration(request *ModifyIncrementalMigrationR
         request = NewModifyIncrementalMigrationRequest()
     }
     response = NewModifyIncrementalMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceParamRequest() (request *ModifyInstanceParamRequest) {
+    request = &ModifyInstanceParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceParam")
+    return
+}
+
+func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
+    response = &ModifyInstanceParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceParam
+// 本接口(ModifyInstanceParam)用于修改云数据库实例的参数。
+//
+// <b>注意</b>：如果修改的参数是需要<b>重启实例</b>的，那么实例将会按照WaitSwitch参数的设置(可能是立即执行也可能在可维护时间窗内自动执行)在执行参数修改时<b>重启实例</b>。
+//
+// 您可以通过DescribeInstanceParams接口查询修改参数时是否会重启实例，以免导致您的实例不符合预期重启。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceParamRequest()
+    }
+    response = NewModifyInstanceParamResponse()
     err = c.Send(request, response)
     return
 }

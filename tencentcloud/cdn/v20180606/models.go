@@ -761,6 +761,9 @@ type BriefDomain struct {
 	// overseas：中国境外锁定
 	// global：全球锁定
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
+
+	// 域名所属产品，cdn/ecdn
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 type Cache struct {
@@ -1703,6 +1706,9 @@ type DescribeBillingDataRequest struct {
 	// bandwidth：计费带宽
 	// 默认为 bandwidth
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeBillingDataRequest) ToJsonString() string {
@@ -1725,6 +1731,7 @@ func (r *DescribeBillingDataRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "District")
 	delete(f, "Metric")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingDataRequest has unknown keys!", "")
 	}
@@ -1776,7 +1783,11 @@ type DescribeCdnDataRequest struct {
 
 	// 指定查询指标，支持的类型有：
 	// flux：流量，单位为 byte
+	// fluxIn：上行流量，单位为 byte，该指标仅ecdn支持查询
+	// fluxOut：下行流量，单位为 byte，该指标仅ecdn支持查询
 	// bandwidth：带宽，单位为 bps
+	// bandwidthIn：上行带宽，单位为 bps，该指标仅ecdn支持查询
+	// bandwidthOut：下行带宽，单位为 bps，该指标仅ecdn支持查询
 	// request：请求数，单位为 次
 	// hitRequest：命中请求数，单位为 次
 	// requestHitRate：请求命中率，单位为 %，保留小数点后两位
@@ -1846,6 +1857,9 @@ type DescribeCdnDataRequest struct {
 	// server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 	// client：指定查询客户端地区（用户请求终端所在地区）数据
 	AreaType *string `json:"AreaType,omitempty" name:"AreaType"`
+
+	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeCdnDataRequest) ToJsonString() string {
@@ -1874,6 +1888,7 @@ func (r *DescribeCdnDataRequest) FromJsonString(s string) error {
 	delete(f, "IpProtocol")
 	delete(f, "Area")
 	delete(f, "AreaType")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCdnDataRequest has unknown keys!", "")
 	}
@@ -2093,6 +2108,12 @@ type DescribeCertDomainsRequest struct {
 
 	// PEM格式证书Base64编码后的字符串
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 域名所属产品，cdn或ecdn，默认cdn。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeCertDomainsRequest) ToJsonString() string {
@@ -2108,6 +2129,8 @@ func (r *DescribeCertDomainsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Cert")
+	delete(f, "CertId")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertDomainsRequest has unknown keys!", "")
 	}
@@ -2807,6 +2830,9 @@ type DescribePayTypeRequest struct {
 	// overseas：境外计费方式查询
 	// 未填充时默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribePayTypeRequest) ToJsonString() string {
@@ -2822,6 +2848,7 @@ func (r *DescribePayTypeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Area")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePayTypeRequest has unknown keys!", "")
 	}
@@ -2835,6 +2862,7 @@ type DescribePayTypeResponse struct {
 		// 计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
+	// request：请求数计费
 	// 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
 		PayType *string `json:"PayType,omitempty" name:"PayType"`
 
@@ -2843,12 +2871,11 @@ type DescribePayTypeResponse struct {
 	// month：月结计费
 		BillingCycle *string `json:"BillingCycle,omitempty" name:"BillingCycle"`
 
-		// 计费方式：
-	// monthMax：日峰值月平均计费，月结模式
-	// day95：日 95 带宽计费，月结模式
-	// month95：月95带宽计费，月结模式
-	// sum：总流量计费，日结与月结均有流量计费模式
-	// max：峰值带宽计费，日结模式
+		// monthMax：日峰值月平均，月结模式
+	// day95：日 95 带宽，月结模式
+	// month95：月95带宽，月结模式
+	// sum：总流量/总请求数，日结或月结模式
+	// max：峰值带宽，日结模式
 		StatType *string `json:"StatType,omitempty" name:"StatType"`
 
 		// 境外计费类型：
@@ -2859,6 +2886,7 @@ type DescribePayTypeResponse struct {
 		// 当前生效计费类型：
 	// flux：流量计费
 	// bandwidth：带宽计费
+	// request：请求数计费
 		CurrentPayType *string `json:"CurrentPayType,omitempty" name:"CurrentPayType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3788,6 +3816,10 @@ type DetailDomain struct {
 	// 回源OSS私有鉴权
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
+
+	// WebSocket配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 type DiagnoseData struct {
@@ -3916,6 +3948,10 @@ type DisableCachesResponse struct {
 		// 提交结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CacheOptResult *CacheOptResult `json:"CacheOptResult,omitempty" name:"CacheOptResult"`
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4312,14 +4348,14 @@ type ForceRedirect struct {
 type GetDisableRecordsRequest struct {
 	*tchttp.BaseRequest
 
+	// 指定 URL 查询
+	Url *string `json:"Url,omitempty" name:"Url"`
+
 	// 开始时间，如：2018-12-12 10:24:00。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，如：2018-12-14 10:24:00。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 指定 URL 查询
-	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// URL 当前状态
 	// disable：当前仍为禁用状态，访问返回 403
@@ -4331,6 +4367,9 @@ type GetDisableRecordsRequest struct {
 
 	// 分页查询限制数目，默认为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务ID，任务ID和起始时间需要至少填写一项。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *GetDisableRecordsRequest) ToJsonString() string {
@@ -4345,12 +4384,13 @@ func (r *GetDisableRecordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Url")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
-	delete(f, "Url")
 	delete(f, "Status")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDisableRecordsRequest has unknown keys!", "")
 	}
@@ -5043,6 +5083,9 @@ type ListTopDataRequest struct {
 	// server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 	// client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
 	AreaType *string `json:"AreaType,omitempty" name:"AreaType"`
+
+	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *ListTopDataRequest) ToJsonString() string {
@@ -5067,6 +5110,7 @@ func (r *ListTopDataRequest) FromJsonString(s string) error {
 	delete(f, "Code")
 	delete(f, "Area")
 	delete(f, "AreaType")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopDataRequest has unknown keys!", "")
 	}
@@ -7043,6 +7087,10 @@ type TopicInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 归属于cdn或ecdn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 type TpgAdapter struct {
@@ -7235,6 +7283,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 回源OSS私有鉴权
 	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -7290,6 +7341,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "OriginCombine")
 	delete(f, "Quic")
 	delete(f, "OssPrivateAccess")
+	delete(f, "WebSocket")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}
@@ -7664,6 +7716,18 @@ type WafSubRuleStatus struct {
 
 	// 规则id列表
 	SubIds []*int64 `json:"SubIds,omitempty" name:"SubIds"`
+}
+
+type WebSocket struct {
+
+	// WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+	// 
+	// * WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 设置超时时间，单位为秒，最大超时时间65秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }
 
 type WebpAdapter struct {

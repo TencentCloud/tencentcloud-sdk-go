@@ -187,6 +187,7 @@ func NewComposeMediaResponse() (response *ComposeMediaResponse) {
 //  INTERNALERROR_GETMEDIALISTERROR = "InternalError.GetMediaListError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_CLIPDURATION = "InvalidParameterValue.ClipDuration"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ComposeMedia(request *ComposeMediaRequest) (response *ComposeMediaResponse, err error) {

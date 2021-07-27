@@ -618,7 +618,7 @@ type CreateAccountsRequest struct {
 	// 备注信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 新账户最大可用连接数。
+	// 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
@@ -6019,7 +6019,7 @@ type ModifyAccountMaxUserConnectionsRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 设置账户最大可用连接数。
+	// 设置账户最大可用连接数，最大可设置值为10240。
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 

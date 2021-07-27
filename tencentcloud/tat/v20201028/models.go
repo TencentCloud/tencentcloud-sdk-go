@@ -709,6 +709,12 @@ type InvokeCommandRequest struct {
 	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
 	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 命令执行路径, 默认以Command配置的WorkingDirectory执行。
+	WorkingDirectory *string `json:"WorkingDirectory,omitempty" name:"WorkingDirectory"`
+
+	// 命令超时时间，取值范围[1, 86400]。默认以Command配置的Timeout执行。
+	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
 }
 
 func (r *InvokeCommandRequest) ToJsonString() string {
@@ -727,6 +733,8 @@ func (r *InvokeCommandRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "Parameters")
 	delete(f, "Username")
+	delete(f, "WorkingDirectory")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeCommandRequest has unknown keys!", "")
 	}

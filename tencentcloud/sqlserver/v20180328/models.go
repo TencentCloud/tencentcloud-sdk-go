@@ -1367,6 +1367,63 @@ type DatabaseTupleStatus struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type DbNormalDetail struct {
+
+	// 是否已订阅 0：否 1：是
+	IsSubscribed *string `json:"IsSubscribed,omitempty" name:"IsSubscribed"`
+
+	// 数据库排序规则
+	CollationName *string `json:"CollationName,omitempty" name:"CollationName"`
+
+	// 开启CT之后是否自动清理 0：否 1：是
+	IsAutoCleanupOn *string `json:"IsAutoCleanupOn,omitempty" name:"IsAutoCleanupOn"`
+
+	// 是否已启用代理  0：否 1：是
+	IsBrokerEnabled *string `json:"IsBrokerEnabled,omitempty" name:"IsBrokerEnabled"`
+
+	// 是否已开启/关闭CDC 0：关闭 1：开启
+	IsCdcEnabled *string `json:"IsCdcEnabled,omitempty" name:"IsCdcEnabled"`
+
+	// 是否已启用/ 禁用CT 0：禁用 1：启用
+	IsDbChainingOn *string `json:"IsDbChainingOn,omitempty" name:"IsDbChainingOn"`
+
+	// 是否加密 0：否 1：是
+	IsEncrypted *string `json:"IsEncrypted,omitempty" name:"IsEncrypted"`
+
+	// 是否全文启用 0：否 1：是
+	IsFulltextEnabled *string `json:"IsFulltextEnabled,omitempty" name:"IsFulltextEnabled"`
+
+	// 是否是镜像 0：否 1：是
+	IsMirroring *string `json:"IsMirroring,omitempty" name:"IsMirroring"`
+
+	// 是否已发布 0：否 1：是
+	IsPublished *string `json:"IsPublished,omitempty" name:"IsPublished"`
+
+	// 是否开启快照 0：否 1：是
+	IsReadCommittedSnapshotOn *string `json:"IsReadCommittedSnapshotOn,omitempty" name:"IsReadCommittedSnapshotOn"`
+
+	// 是否可信任 0：否 1：是
+	IsTrustworthyOn *string `json:"IsTrustworthyOn,omitempty" name:"IsTrustworthyOn"`
+
+	// 镜像状态
+	MirroringState *string `json:"MirroringState,omitempty" name:"MirroringState"`
+
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 恢复模式
+	RecoveryModelDesc *string `json:"RecoveryModelDesc,omitempty" name:"RecoveryModelDesc"`
+
+	// 保留天数
+	RetentionPeriod *string `json:"RetentionPeriod,omitempty" name:"RetentionPeriod"`
+
+	// 数据库状态
+	StateDesc *string `json:"StateDesc,omitempty" name:"StateDesc"`
+
+	// 用户类型
+	UserAccessDesc *string `json:"UserAccessDesc,omitempty" name:"UserAccessDesc"`
+}
+
 type DbRollbackTimeInfo struct {
 
 	// 数据库名称
@@ -2465,6 +2522,58 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBsNormalRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如mssql-7vfv3rk3
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBsNormalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBsNormalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBsNormalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBsNormalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 表示当前实例下的数据库总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
+		DBList []*DbNormalDetail `json:"DBList,omitempty" name:"DBList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBsNormalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBsNormalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2655,6 +2764,118 @@ func (r *DescribeIncrementalMigrationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIncrementalMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页，页数，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页，页大小，默认20，最大不超过100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstanceParamRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceParamRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的记录数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 参数修改记录
+		Items []*ParamRecord `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceParamRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceParamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceParamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例的参数总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 参数详情
+		Items []*ParameterDetail `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceParamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4901,6 +5122,177 @@ func (r *ModifyDBRemarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDatabaseCDCRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名数组
+	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
+
+	// 开启、关闭数据库CDC功能 enable；开启，disable：关闭
+	ModifyType *string `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *ModifyDatabaseCDCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseCDCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBNames")
+	delete(f, "ModifyType")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatabaseCDCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDatabaseCDCResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDatabaseCDCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseCDCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDatabaseCTRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名数组
+	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
+
+	// 启用、禁用数据库CT功能 enable；启用，disable：禁用
+	ModifyType *string `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 启用CT时额外保留天数，默认保留3天，最小3天，最大30天
+	ChangeRetentionDay *int64 `json:"ChangeRetentionDay,omitempty" name:"ChangeRetentionDay"`
+}
+
+func (r *ModifyDatabaseCTRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseCTRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBNames")
+	delete(f, "ModifyType")
+	delete(f, "InstanceId")
+	delete(f, "ChangeRetentionDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatabaseCTRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDatabaseCTResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDatabaseCTResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseCTResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDatabaseMdfRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名数组
+	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *ModifyDatabaseMdfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseMdfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBNames")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatabaseMdfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDatabaseMdfResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDatabaseMdfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatabaseMdfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyIncrementalMigrationRequest struct {
 	*tchttp.BaseRequest
 
@@ -4963,6 +5355,60 @@ func (r *ModifyIncrementalMigrationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIncrementalMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceParamRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例短 ID 列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改的值。<b>注意</b>：如果修改的参数需要<b>重启</b>实例，那么您的实例将会在执行修改时<b>重启</b>。您可以通过DescribeInstanceParams接口查询修改参数时是否会重启实例，以免导致您的实例不符合预期重启。
+	ParamList []*Parameter `json:"ParamList,omitempty" name:"ParamList"`
+
+	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行。
+	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
+}
+
+func (r *ModifyInstanceParamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceParamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "ParamList")
+	delete(f, "WaitSwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceParamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceParamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstanceParamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5223,6 +5669,69 @@ func (r *ModifyReadOnlyGroupDetailsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyReadOnlyGroupDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ParamRecord struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 参数修改前的值
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+
+	// 参数修改后的值
+	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
+
+	// 参数修改状态，1-初始化等待被执行，2-执行成功，3-执行失败，4-参数修改中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type Parameter struct {
+
+	// 参数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+}
+
+type ParameterDetail struct {
+
+	// 参数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数类型，integer-整型，enum-枚举型
+	ParamType *string `json:"ParamType,omitempty" name:"ParamType"`
+
+	// 参数默认值
+	Default *string `json:"Default,omitempty" name:"Default"`
+
+	// 参数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参数当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 修改参数后，是否需要重启数据库以使参数生效，0-不需要重启，1-需要重启
+	NeedReboot *int64 `json:"NeedReboot,omitempty" name:"NeedReboot"`
+
+	// 参数允许的最大值
+	Max *int64 `json:"Max,omitempty" name:"Max"`
+
+	// 参数允许的最小值
+	Min *int64 `json:"Min,omitempty" name:"Min"`
+
+	// 参数允许的枚举类型
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 参数状态 0-状态正常 1-在修改中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type PublishSubscribe struct {

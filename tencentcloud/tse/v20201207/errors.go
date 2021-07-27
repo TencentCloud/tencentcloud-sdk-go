@@ -23,12 +23,6 @@ const (
 	// 请求格式不正确。
 	INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 
-	// 查询的Key不存在。
-	INVALIDPARAMETERVALUE_KEYNOTEXIST = "InvalidParameterValue.KeyNotExist"
-
-	// 无效请求参数导致操作失败。
-	INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
-
 	// 无效请求参数，查询失败。
 	INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 

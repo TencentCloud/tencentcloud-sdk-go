@@ -290,6 +290,9 @@ const (
 	// 镜像不允许执行该操作
 	INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
 
+	// 当前地域不支持指定镜像所包含的操作系统。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = "InvalidParameterValue.InvalidImageOsName"
+
 	// 镜像状态不合规范
 	INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
 
@@ -631,6 +634,9 @@ const (
 
 	// 指定机型不支持跨机型调整配置。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = "UnsupportedOperation.UnsupportedChangeInstanceFamily"
+
+	// 目标机型是SA3, 不支持变配。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = "UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3"
 
 	// 请求不支持国际版账号
 	UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"

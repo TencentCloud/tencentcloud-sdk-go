@@ -1146,6 +1146,7 @@ func NewModifyDisksRenewFlagResponse() (response *ModifyDisksRenewFlagResponse) 
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) ModifyDisksRenewFlag(request *ModifyDisksRenewFlagRequest) (response *ModifyDisksRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyDisksRenewFlagRequest()

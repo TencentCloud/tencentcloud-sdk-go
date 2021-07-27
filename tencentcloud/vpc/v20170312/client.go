@@ -241,7 +241,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 // AssignIpv6Addresses
 // 本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 //
@@ -425,17 +425,12 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
-//  INVALIDADDRESSIDSTATE_INARREARS = "InvalidAddressIdState.InArrears"
-//  INVALIDADDRESSIDSTATUS_NOTPERMIT = "InvalidAddressIdStatus.NotPermit"
-//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_ALREADYBINDEIP = "InvalidInstanceId.AlreadyBindEip"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
-//  INVALIDNETWORKINTERFACEID_NOTFOUND = "InvalidNetworkInterfaceId.NotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
 //  INVALIDPRIVATEIPADDRESS_ALREADYBINDEIP = "InvalidPrivateIpAddress.AlreadyBindEip"
 //  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGRESOURCEID = "MissingResourceId"
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
     if request == nil {
         request = NewAssociateAddressRequest()
@@ -722,6 +717,10 @@ func NewAttachNetworkInterfaceResponse() (response *AttachNetworkInterfaceRespon
 // * 只有运行中或者已关机状态的云服务器才能绑定弹性网卡，查看云服务器状态详见<a href="https://cloud.tencent.com/document/api/213/9452#InstanceStatus">腾讯云服务器信息</a>。
 //
 // * 弹性网卡绑定的云服务器必须是私有网络的，而且云服务器所在可用区必须和弹性网卡子网的可用区相同。
+//
+// 
+//
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -1091,6 +1090,7 @@ func NewCreateBandwidthPackageResponse() (response *CreateBandwidthPackageRespon
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
 func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) (response *CreateBandwidthPackageResponse, err error) {
     if request == nil {
         request = NewCreateBandwidthPackageRequest()
@@ -2594,6 +2594,7 @@ func NewDeleteCcnResponse() (response *DeleteCcnResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
@@ -2784,9 +2785,9 @@ func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
 }
 
 // DeleteHaVip
-// 本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）<br />
+// 本接口（DeleteHaVip）用于删除高可用虚拟IP（HAVIP）。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3049,6 +3050,10 @@ func NewDeleteNetworkInterfaceResponse() (response *DeleteNetworkInterfaceRespon
 // * 弹性网卡上绑定了云服务器时，不能被删除。
 //
 // * 删除指定弹性网卡，弹性网卡必须先和子机解绑才能删除。删除之后弹性网卡上所有内网IP都将被退还。
+//
+// 
+//
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -3704,6 +3709,7 @@ func NewDescribeAssistantCidrResponse() (response *DescribeAssistantCidrResponse
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeAssistantCidr(request *DescribeAssistantCidrRequest) (response *DescribeAssistantCidrResponse, err error) {
     if request == nil {
         request = NewDescribeAssistantCidrRequest()
@@ -3735,6 +3741,7 @@ func NewDescribeBandwidthPackageBillUsageResponse() (response *DescribeBandwidth
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeBandwidthPackageBillUsage(request *DescribeBandwidthPackageBillUsageRequest) (response *DescribeBandwidthPackageBillUsageResponse, err error) {
     if request == nil {
         request = NewDescribeBandwidthPackageBillUsageRequest()
@@ -3766,6 +3773,7 @@ func NewDescribeBandwidthPackageQuotaResponse() (response *DescribeBandwidthPack
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackageQuotaRequest) (response *DescribeBandwidthPackageQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeBandwidthPackageQuotaRequest()
@@ -4892,6 +4900,7 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -5537,6 +5546,38 @@ func (c *Client) DescribeVpcResourceDashboard(request *DescribeVpcResourceDashbo
     return
 }
 
+func NewDescribeVpcTaskResultRequest() (request *DescribeVpcTaskResultRequest) {
+    request = &DescribeVpcTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcTaskResult")
+    return
+}
+
+func NewDescribeVpcTaskResultResponse() (response *DescribeVpcTaskResultResponse) {
+    response = &DescribeVpcTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpcTaskResult
+// 本接口（DescribeVpcTaskResult）用于查询VPC任务执行结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpcTaskResult(request *DescribeVpcTaskResultRequest) (response *DescribeVpcTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcTaskResultRequest()
+    }
+    response = NewDescribeVpcTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
     request = &DescribeVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5786,6 +5827,8 @@ func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceRespon
 
 // DetachNetworkInterface
 // 本接口（DetachNetworkInterface）用于弹性网卡解绑云服务器。
+//
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -6249,6 +6292,7 @@ func NewEnableRoutesResponse() (response *EnableRoutesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -6346,9 +6390,9 @@ func NewHaVipAssociateAddressIpResponse() (response *HaVipAssociateAddressIpResp
 }
 
 // HaVipAssociateAddressIp
-// 本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）<br />
+// 本接口（HaVipAssociateAddressIp）用于高可用虚拟IP（HAVIP）绑定弹性公网IP（EIP）。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -6380,9 +6424,9 @@ func NewHaVipDisassociateAddressIpResponse() (response *HaVipDisassociateAddress
 }
 
 // HaVipDisassociateAddressIp
-// 本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定<br />
+// 本接口（HaVipDisassociateAddressIp）用于将高可用虚拟IP（HAVIP）已绑定的弹性公网IP（EIP）解除绑定。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -6541,6 +6585,8 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
 // MigrateNetworkInterface
 // 本接口（MigrateNetworkInterface）用于弹性网卡迁移。
 //
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -6573,11 +6619,13 @@ func NewMigratePrivateIpAddressResponse() (response *MigratePrivateIpAddressResp
 // MigratePrivateIpAddress
 //  本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
 //
-// 
-//
 // * 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
 //
-// * 迁移前后的弹性网卡必须在同一个子网内。
+// * 迁移前后的弹性网卡必须在同一个子网内。  
+//
+// 
+//
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -8353,7 +8401,6 @@ func NewReplaceDirectConnectGatewayCcnRoutesResponse() (response *ReplaceDirectC
 // 本接口（ReplaceDirectConnectGatewayCcnRoutes）根据路由ID（RouteId）修改指定的路由（Route），支持批量修改。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReplaceDirectConnectGatewayCcnRoutes(request *ReplaceDirectConnectGatewayCcnRoutesRequest) (response *ReplaceDirectConnectGatewayCcnRoutesResponse, err error) {
     if request == nil {
@@ -8723,7 +8770,7 @@ func NewUnassignIpv6AddressesResponse() (response *UnassignIpv6AddressesResponse
 // UnassignIpv6Addresses
 // 本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`QueryTask`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = "UnauthorizedOperation.AttachmentNotFound"

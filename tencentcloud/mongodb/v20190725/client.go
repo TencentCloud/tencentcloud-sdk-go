@@ -768,6 +768,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
 //  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
 //  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"

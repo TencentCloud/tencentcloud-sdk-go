@@ -209,6 +209,9 @@ const (
 	// 弹性伸缩组创建参数错误。
 	INVALIDPARAMETER_ASCOMMONERROR = "InvalidParameter.AsCommonError"
 
+	// CIDR掩码超出范围(集群CIDR范围 最小值: 10 最大值: 24)。
+	INVALIDPARAMETER_CIDRMASKSIZEOUTOFRANGE = "InvalidParameter.CIDRMaskSizeOutOfRange"
+
 	// CIDR和其他集群CIDR冲突。
 	INVALIDPARAMETER_CIDRCONFLICTWITHOTHERCLUSTER = "InvalidParameter.CidrConflictWithOtherCluster"
 
@@ -235,6 +238,9 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+
+	// Prometheus未关联本集群。
+	INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 
 	// Prometheus实例不存在。
 	INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"

@@ -2599,6 +2599,56 @@ func (r *ModifyReadOnlyGroupConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySwitchTimePeriodRequest struct {
+	*tchttp.BaseRequest
+
+	// 处于等待切换状态中的实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 入参取值为 0 ，代表立即切换。
+	SwitchTag *uint64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
+}
+
+func (r *ModifySwitchTimePeriodRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySwitchTimePeriodRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "SwitchTag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySwitchTimePeriodRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySwitchTimePeriodResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySwitchTimePeriodResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySwitchTimePeriodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NormalQueryItem struct {
 
 	// 用户名
@@ -3353,6 +3403,15 @@ type UpgradeDBInstanceRequest struct {
 
 	// 活动ID
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+	SwitchTag *int64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
+
+	// 切换开始时间
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换截止时间
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -3373,6 +3432,9 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
 	delete(f, "ActivityId")
+	delete(f, "SwitchTag")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

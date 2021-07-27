@@ -3724,6 +3724,18 @@ type StrategyInfo struct {
 	// 是否是服务相关角色策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsServiceLinkedPolicy *uint64 `json:"IsServiceLinkedPolicy,omitempty" name:"IsServiceLinkedPolicy"`
+
+	// 关联策略实体数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachEntityCount *int64 `json:"AttachEntityCount,omitempty" name:"AttachEntityCount"`
+
+	// 关联权限边界实体数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachEntityBoundaryCount *int64 `json:"AttachEntityBoundaryCount,omitempty" name:"AttachEntityBoundaryCount"`
+
+	// 最后编辑时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type SubAccountInfo struct {

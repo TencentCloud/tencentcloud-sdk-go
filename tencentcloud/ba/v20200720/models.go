@@ -68,3 +68,65 @@ func (r *CreateWeappQRUrlResponse) ToJsonString() string {
 func (r *CreateWeappQRUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type SyncIcpOrderWebInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 备案ICP订单号
+	IcpOrderId *string `json:"IcpOrderId,omitempty" name:"IcpOrderId"`
+
+	// 订单里的webId
+	SourceWebId *string `json:"SourceWebId,omitempty" name:"SourceWebId"`
+
+	// 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
+	TargetWebIds []*string `json:"TargetWebIds,omitempty" name:"TargetWebIds"`
+
+	// 网站信息字段名 数组
+	SyncFields []*string `json:"SyncFields,omitempty" name:"SyncFields"`
+
+	// 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
+	CheckSamePerson *bool `json:"CheckSamePerson,omitempty" name:"CheckSamePerson"`
+}
+
+func (r *SyncIcpOrderWebInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncIcpOrderWebInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IcpOrderId")
+	delete(f, "SourceWebId")
+	delete(f, "TargetWebIds")
+	delete(f, "SyncFields")
+	delete(f, "CheckSamePerson")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncIcpOrderWebInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncIcpOrderWebInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncIcpOrderWebInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncIcpOrderWebInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -293,6 +293,54 @@ func (c *Client) DescribeUserClbWafRegions(request *DescribeUserClbWafRegionsReq
     return
 }
 
+func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
+    request = &ModifyAccessPeriodRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessPeriod")
+    return
+}
+
+func NewModifyAccessPeriodResponse() (response *ModifyAccessPeriodResponse) {
+    response = &ModifyAccessPeriodResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccessPeriod
+// 本接口用于修改访问日志保存期限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (response *ModifyAccessPeriodResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessPeriodRequest()
+    }
+    response = NewModifyAccessPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest) {
     request = &ModifyCustomRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

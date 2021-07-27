@@ -82,6 +82,44 @@ func (c *Client) AcquireClusterAdminRole(request *AcquireClusterAdminRoleRequest
     return
 }
 
+func NewAddClusterCIDRRequest() (request *AddClusterCIDRRequest) {
+    request = &AddClusterCIDRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "AddClusterCIDR")
+    return
+}
+
+func NewAddClusterCIDRResponse() (response *AddClusterCIDRResponse) {
+    response = &AddClusterCIDRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddClusterCIDR
+// 给GR集群增加可用的ClusterCIDR
+//
+// 可能返回的错误码:
+//  INTERNALERROR_KUBECLIENTCREATE = "InternalError.KubeClientCreate"
+//  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CIDRMASKSIZEOUTOFRANGE = "InvalidParameter.CIDRMaskSizeOutOfRange"
+//  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERCLUSTER = "InvalidParameter.CidrConflictWithOtherCluster"
+//  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
+//  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
+//  INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+func (c *Client) AddClusterCIDR(request *AddClusterCIDRRequest) (response *AddClusterCIDRResponse, err error) {
+    if request == nil {
+        request = NewAddClusterCIDRRequest()
+    }
+    response = NewAddClusterCIDRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddExistedInstancesRequest() (request *AddExistedInstancesRequest) {
     request = &AddExistedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1299,6 +1337,7 @@ func NewDescribeClusterCommonNamesResponse() (response *DescribeClusterCommonNam
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INTERNALERROR_WHITELISTUNEXPECTEDERROR = "InternalError.WhitelistUnexpectedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
@@ -1336,6 +1375,7 @@ func NewDescribeClusterControllersResponse() (response *DescribeClusterControlle
 //  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DescribeClusterControllers(request *DescribeClusterControllersRequest) (response *DescribeClusterControllersResponse, err error) {
     if request == nil {
         request = NewDescribeClusterControllersRequest()
@@ -2147,6 +2187,7 @@ func NewDescribePrometheusTargetsResponse() (response *DescribePrometheusTargets
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusTargets(request *DescribePrometheusTargetsRequest) (response *DescribePrometheusTargetsResponse, err error) {
     if request == nil {
@@ -2299,6 +2340,37 @@ func (c *Client) DescribeRouteTableConflicts(request *DescribeRouteTableConflict
     return
 }
 
+func NewDisableVpcCniNetworkTypeRequest() (request *DisableVpcCniNetworkTypeRequest) {
+    request = &DisableVpcCniNetworkTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DisableVpcCniNetworkType")
+    return
+}
+
+func NewDisableVpcCniNetworkTypeResponse() (response *DisableVpcCniNetworkTypeResponse) {
+    response = &DisableVpcCniNetworkTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableVpcCniNetworkType
+// 提供给附加了VPC-CNI能力的Global-Route集群关闭VPC-CNI
+//
+// 可能返回的错误码:
+//  INTERNALERROR_KUBECLIENTCREATE = "InternalError.KubeClientCreate"
+//  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+func (c *Client) DisableVpcCniNetworkType(request *DisableVpcCniNetworkTypeRequest) (response *DisableVpcCniNetworkTypeResponse, err error) {
+    if request == nil {
+        request = NewDisableVpcCniNetworkTypeRequest()
+    }
+    response = NewDisableVpcCniNetworkTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableVpcCniNetworkTypeRequest() (request *EnableVpcCniNetworkTypeRequest) {
     request = &EnableVpcCniNetworkTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2435,6 +2507,7 @@ func NewModifyClusterAsGroupOptionAttributeResponse() (response *ModifyClusterAs
 //  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -2558,6 +2631,7 @@ func NewModifyClusterNodePoolResponse() (response *ModifyClusterNodePoolResponse
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
 func (c *Client) ModifyClusterNodePool(request *ModifyClusterNodePoolRequest) (response *ModifyClusterNodePoolResponse, err error) {
     if request == nil {

@@ -89,6 +89,9 @@ const (
 	// 备份文件签名失败。
 	INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"
 
+	// 创建任务流程失败。
+	INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+
 	// DB影响行数为0错误。
 	INTERNALERROR_DBROWSAFFECTEDERROR = "InternalError.DBRowsAffectedError"
 

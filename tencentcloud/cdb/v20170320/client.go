@@ -261,6 +261,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_AUDITFILEOVERQUOTAERROR = "OperationDenied.AuditFileOverQuotaError"
 //  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
@@ -662,12 +663,13 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板。
+// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -968,7 +970,7 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板。
+// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -1320,6 +1322,7 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -2030,6 +2033,7 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
 //  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -2066,6 +2070,7 @@ func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
     if request == nil {
@@ -2270,7 +2275,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 }
 
 // DescribeParamTemplateInfo
-// 该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
+// 该接口（DescribeParamTemplateInfo）用于查询参数模板详情，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -2897,6 +2902,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 // 本接口(IsolateDBInstance)用于隔离云数据库实例，隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -3523,7 +3529,7 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
 }
 
 // ModifyParamTemplate
-// 该接口（ModifyParamTemplate）用于修改参数模板。
+// 该接口（ModifyParamTemplate）用于修改参数模板，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
@@ -3567,6 +3573,7 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
 func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
     if request == nil {
         request = NewModifyRoGroupInfoRequest()
@@ -3635,6 +3642,7 @@ func NewModifyRoTypeResponse() (response *ModifyRoTypeResponse) {
 //  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
 //  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
@@ -3812,6 +3820,7 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 //  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
 func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesRequest) (response *ReleaseIsolatedDBInstancesResponse, err error) {
     if request == nil {
@@ -4101,6 +4110,7 @@ func NewSwitchDBInstanceMasterSlaveResponse() (response *SwitchDBInstanceMasterS
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) SwitchDBInstanceMasterSlave(request *SwitchDBInstanceMasterSlaveRequest) (response *SwitchDBInstanceMasterSlaveResponse, err error) {
     if request == nil {

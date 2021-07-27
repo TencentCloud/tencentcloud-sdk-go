@@ -359,6 +359,9 @@ const (
 	// 该域名已在其他处接入中国境外服务地域，如需修改服务地域为全球，需验证取回域名。
 	RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = "ResourceUnavailable.CdnHostBelongsToOthersInOverseas"
 
+	// 域名已接入DSA功能。
+	RESOURCEUNAVAILABLE_CDNHOSTEXISTSINDSA = "ResourceUnavailable.CdnHostExistsInDsa"
+
 	// 域名已经在TCB控制台接入。
 	RESOURCEUNAVAILABLE_CDNHOSTEXISTSINTCB = "ResourceUnavailable.CdnHostExistsInTcb"
 

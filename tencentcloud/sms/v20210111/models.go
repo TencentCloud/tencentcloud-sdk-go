@@ -495,7 +495,7 @@ type DescribeSmsTemplateListRequest struct {
 	*tchttp.BaseRequest
 
 	// 模板 ID 数组。
-	// 注：默认数组长度最大100。
+	// <dx-alert infotype="notice" title="注意">默认数组长度最大100</dx-alert>
 	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
 
 	// 是否国际/港澳台短信：

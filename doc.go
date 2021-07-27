@@ -105,6 +105,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotcloud"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotexplorer"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iottid"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo"

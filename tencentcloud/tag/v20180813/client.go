@@ -187,6 +187,7 @@ func NewDeleteResourceTagResponse() (response *DeleteResourceTagResponse) {
 // 本接口用于解除标签和资源的关联关系
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
 //  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
 //  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
 //  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
@@ -418,6 +419,7 @@ func NewDescribeResourcesByTagsUnionResponse() (response *DescribeResourcesByTag
 // 通过标签查询资源列表并集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_TAGFILTERS = "InvalidParameterValue.TagFilters"
 //  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
@@ -479,6 +481,7 @@ func NewDescribeTagValuesResponse() (response *DescribeTagValuesResponse) {
 // 用于查询已建立的标签列表中的标签值。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagValues(request *DescribeTagValuesRequest) (response *DescribeTagValuesResponse, err error) {
     if request == nil {

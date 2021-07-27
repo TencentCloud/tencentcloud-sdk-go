@@ -2519,7 +2519,7 @@ type EipProductInfo struct {
 
 type ForwardListener struct {
 
-	// 转发监听端口，取值1~65535
+	// 转发监听端口下限，取值1~65535
 	FrontendPort *int64 `json:"FrontendPort,omitempty" name:"FrontendPort"`
 
 	// 转发协议，取值[
@@ -2527,6 +2527,9 @@ type ForwardListener struct {
 	// UDP
 	// ]
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
+
+	// 转发监听端口上限，取值1~65535
+	FrontendPortEnd *int64 `json:"FrontendPortEnd,omitempty" name:"FrontendPortEnd"`
 }
 
 type IPAlarmThresholdRelation struct {
@@ -2903,7 +2906,7 @@ type PacketFilterConfig struct {
 	MatchType *string `json:"MatchType,omitempty" name:"MatchType"`
 
 	// 检测值，关键字符串或正则表达式,取值[
-	// 当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+	// 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 	// 当检测类型为pcre时, 请填写正则表达式字符串;
 	// ]
 	Str *string `json:"Str,omitempty" name:"Str"`
@@ -2939,7 +2942,7 @@ type PacketFilterConfig struct {
 	MatchType2 *string `json:"MatchType2,omitempty" name:"MatchType2"`
 
 	// 第二个检测值，关键字符串或正则表达式,取值[
-	// 当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+	// 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 	// 当检测类型为pcre时, 请填写正则表达式字符串;
 	// ]
 	Str2 *string `json:"Str2,omitempty" name:"Str2"`
@@ -3148,6 +3151,56 @@ type SuccessCode struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+type SwitchWaterPrintConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 水印开启/关闭状态，1表示开启；0表示关闭
+	OpenStatus *int64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
+}
+
+func (r *SwitchWaterPrintConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchWaterPrintConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OpenStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchWaterPrintConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchWaterPrintConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchWaterPrintConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchWaterPrintConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type WaterPrintConfig struct {
 
 	// 水印偏移量，取值范围[0, 100)
@@ -3164,6 +3217,12 @@ type WaterPrintConfig struct {
 
 	// 水印添加成功后生成的水印密钥列表，一条水印最少1个密钥，最多2个密钥
 	Keys []*WaterPrintKey `json:"Keys,omitempty" name:"Keys"`
+
+	// 水印检查模式, 取值[
+	// checkall（普通模式）
+	// shortfpcheckall（精简模式）
+	// ]
+	Verify *string `json:"Verify,omitempty" name:"Verify"`
 }
 
 type WaterPrintKey struct {

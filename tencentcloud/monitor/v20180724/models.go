@@ -2441,13 +2441,16 @@ type DescribeBindingPolicyObjectListRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组id
+	// 策略组id，如果有形如 policy-xxxx 的 id，请填到 PolicyId 字段中，本字段填 0
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 分页参数，每页返回的数量，取值1~100，默认20
+	// 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 每次返回的数量，取值1~100，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页参数，页偏移量，从0开始计数，默认0
+	// 偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 筛选对象的维度信息
@@ -2468,6 +2471,7 @@ func (r *DescribeBindingPolicyObjectListRequest) FromJsonString(s string) error 
 	}
 	delete(f, "Module")
 	delete(f, "GroupId")
+	delete(f, "PolicyId")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Dimensions")

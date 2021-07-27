@@ -206,6 +206,9 @@ const (
 	// 无效的SoftInfo。
 	INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
 
+	// 参数错误。
+	INVALIDPARAMETER_INVALIDSOFTWARE = "InvalidParameter.InvalidSoftWare"
+
 	// 软件名无效。
 	INVALIDPARAMETER_INVALIDSOFTWARENAME = "InvalidParameter.InvalidSoftWareName"
 

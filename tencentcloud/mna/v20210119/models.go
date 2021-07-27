@@ -58,6 +58,9 @@ type CreateQosRequest struct {
 
 	// 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
 	Capacity *Capacity `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 应用模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *CreateQosRequest) ToJsonString() string {
@@ -78,6 +81,7 @@ func (r *CreateQosRequest) FromJsonString(s string) error {
 	delete(f, "DeviceInfo")
 	delete(f, "Duration")
 	delete(f, "Capacity")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQosRequest has unknown keys!", "")
 	}
