@@ -4,10 +4,6 @@ import (
 	"fmt"
 )
 
-const (
-	CreError = "ClientError.CredentialError"
-)
-
 type TencentCloudSDKError struct {
 	Code      string
 	Message   string
