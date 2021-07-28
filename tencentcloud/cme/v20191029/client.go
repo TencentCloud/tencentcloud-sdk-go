@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -210,6 +210,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
+//  FAILEDOPERATION_RECORDNOTSUPPORT = "FailedOperation.RecordNotSupport"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ASPECTRATIO = "InvalidParameterValue.AspectRatio"
@@ -959,6 +960,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 //  INVALIDPARAMETERVALUE_THIRDYPARTYPUBLISHCHANNELID = "InvalidParameterValue.ThirdyPartyPublishChannelId"
 //  INVALIDPARAMETERVALUE_TRACKDATA = "InvalidParameterValue.TrackData"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
+//  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1004,6 +1006,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_VIDEOEDITTEMPLATEIDNOTEXIST = "InvalidParameterValue.VideoEditTemplateIdNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
@@ -1039,8 +1042,8 @@ func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVid
 //  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
 //  INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
+//  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
-//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoSegmentationDataRequest) (response *ExportVideoByVideoSegmentationDataResponse, err error) {
     if request == nil {
         request = NewExportVideoByVideoSegmentationDataRequest()
@@ -1082,6 +1085,7 @@ func NewExportVideoEditProjectResponse() (response *ExportVideoEditProjectRespon
 //  INVALIDPARAMETERVALUE_THIRDYPARTYPUBLISHCHANNELID = "InvalidParameterValue.ThirdyPartyPublishChannelId"
 //  INVALIDPARAMETERVALUE_TRACKDATA = "InvalidParameterValue.TrackData"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
+//  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1262,6 +1266,8 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 //  INVALIDPARAMETERVALUE_STREAMCONNECTINPUTINVALID = "InvalidParameterValue.StreamConnectInputInvalid"
 //  INVALIDPARAMETERVALUE_STREAMCONNECTOUTPUTINVALID = "InvalidParameterValue.StreamConnectOutputInvalid"
 //  INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
+//  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
+//  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
 func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
     if request == nil {
         request = NewHandleStreamConnectProjectRequest()

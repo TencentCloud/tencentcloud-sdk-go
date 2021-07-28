@@ -565,6 +565,66 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTasksInOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// SQL任务信息
+	Tasks *TasksInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 数据源名称，默认为COSDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *CreateTasksInOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksInOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "Tasks")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksInOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTasksInOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本批次提交的任务的批次Id
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 任务Id集合，按照执行顺序排列
+		TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTasksInOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksInOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -1951,6 +2011,21 @@ type TaskResponseInfo struct {
 
 	// 执行SQL的引擎类型
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type TasksInfo struct {
+
+	// 任务类型，SQLTask：SQL查询任务。SparkSQLTask：Spark SQL查询任务
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 容错策略。Proceed：前面任务出错/取消后继续执行后面的任务。Terminate：前面的任务出错/取消之后终止后面任务的执行，后面的任务全部标记为已取消。
+	FailureTolerance *string `json:"FailureTolerance,omitempty" name:"FailureTolerance"`
+
+	// base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
+	SQL *string `json:"SQL,omitempty" name:"SQL"`
+
+	// 任务的配置信息
+	Config []*KVPair `json:"Config,omitempty" name:"Config"`
 }
 
 type TextFile struct {

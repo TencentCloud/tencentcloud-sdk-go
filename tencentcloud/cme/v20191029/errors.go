@@ -26,6 +26,9 @@ const (
 	// 创建录制任务失败。
 	FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
 
+	// 直播录制功能暂未对使用腾讯云点播存储的平台开放。
+	FAILEDOPERATION_RECORDNOTSUPPORT = "FailedOperation.RecordNotSupport"
+
 	// 转推操作失败。
 	FAILEDOPERATION_STREAMCONNECT = "FailedOperation.StreamConnect"
 
@@ -181,6 +184,15 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 您已超过推流时长限制，若还需使用，请升级会员版本或购买资源包。
+	LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
+
+	// 您已达到转推并发数上限，若还需使用，请升级会员版本或购买资源包。
+	LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
+
+	// 存储空间不足，请查看会员权益，购买资源包或会员版本后继续使用。
+	LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

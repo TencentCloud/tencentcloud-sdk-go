@@ -1378,6 +1378,55 @@ func (r *DeleteWaterPrintKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBasicDeviceStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// IP 资源列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+}
+
+func (r *DescribeBasicDeviceStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBasicDeviceStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IpList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBasicDeviceStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicDeviceStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回资源及状态
+		Data []*KeyValue `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBasicDeviceStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBasicDeviceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2162,7 +2211,7 @@ type DescribeListProtectThresholdConfigRequest struct {
 	// IP搜索
 	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
 
-	// 域名搜索（查询域名与协议的CC防护阈值时使用）
+	// 域名搜索(查询域名与协议的CC防护阈值时使用）
 	FilterDomain *string `json:"FilterDomain,omitempty" name:"FilterDomain"`
 
 	// 协议搜索(查询域名与协议的CC防护阈值时使用）
@@ -2593,6 +2642,15 @@ type InstanceRelation struct {
 
 	// 资源实例的ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type KeyValue struct {
+
+	// 字段名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 字段取值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type Layer4Rule struct {

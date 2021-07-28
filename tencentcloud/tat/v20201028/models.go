@@ -619,6 +619,9 @@ type Invocation struct {
 
 	// 在实例上执行命令时使用的用户名。
 	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 调用来源。
+	InvocationSource *string `json:"InvocationSource,omitempty" name:"InvocationSource"`
 }
 
 type InvocationTask struct {
@@ -667,6 +670,9 @@ type InvocationTask struct {
 
 	// 执行任务失败时的错误信息。
 	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+
+	// 调用来源。
+	InvocationSource *string `json:"InvocationSource,omitempty" name:"InvocationSource"`
 }
 
 type InvocationTaskBasicInfo struct {

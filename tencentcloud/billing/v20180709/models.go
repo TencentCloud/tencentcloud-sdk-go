@@ -985,7 +985,30 @@ type DescribeBillListRequest struct {
 	// 交易类型： all所有交易类型，recharge充值，return退款，unblock解冻，agentin资金转入，advanced垫付，cash提现，deduct扣费，block冻结，agentout资金转出，repay垫付回款，repayment还款(仅国际信用账户)，adj_refund调增(仅国际信用账户)，adj_deduct调减(仅国际信用账户)
 	PayType []*string `json:"PayType,omitempty" name:"PayType"`
 
-	// 扣费模式，当所选的交易类型中包含扣费deduct时有意义： all所有扣费类型，trade预付费支付，hour_h按量小时结，hour_d按量日结，hour_m按量月结，decompensate调账扣费，other其他扣费
+	// 扣费模式，
+	// 当所选的交易类型为扣费deduct时： 
+	// all所有扣费类型;trade预付费支付;hour_h按量小时结;hour_d按量日结;hour_m按量月结;decompensate调账扣费;other第三方扣费;panshi 线下项目扣费;offline 线下产品扣费;
+	// 
+	// 当所选的交易类型为扣费recharge时： 
+	// online 在线充值;bank-enterprice 银企直连;offline 线下充值;transfer 分成充值
+	// 
+	// 当所选的交易类型为扣费cash时： 
+	// online 线上提现;offline 线下提现;panshi 赠送金清零
+	// 
+	// 当所选的交易类型为扣费advanced时： 
+	// advanced 垫付充值
+	// 
+	// 当所选的交易类型为扣费repay时： 
+	// panshi 垫付回款
+	// 
+	// 当所选的交易类型为扣费block时： 
+	// other 第三方冻结;hour 按量冻结;month按月冻结
+	// 
+	// 当所选的交易类型为扣费return时： 
+	// compensate 调账补偿;trade 预付费退款
+	// 
+	// 当所选的交易类型为扣费unblock时：
+	// other 第三方解冻;hour 按量解冻;month 按月解冻
 	SubPayType []*string `json:"SubPayType,omitempty" name:"SubPayType"`
 
 	// 是否返回0元交易金额的交易项，取值：0-不返回，1-返回。不传该参数则不返回

@@ -103,6 +103,10 @@ type AlarmHistory struct {
 	// 指标信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricsInfo []*AlarmHistoryMetric `json:"MetricsInfo,omitempty" name:"MetricsInfo"`
+
+	// 告警实例的维度信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions *string `json:"Dimensions,omitempty" name:"Dimensions"`
 }
 
 type AlarmHistoryMetric struct {

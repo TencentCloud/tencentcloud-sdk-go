@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -346,6 +346,38 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
         request = NewCreateTaskRequest()
     }
     response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTasksInOrderRequest() (request *CreateTasksInOrderRequest) {
+    request = &CreateTasksInOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateTasksInOrder")
+    return
+}
+
+func NewCreateTasksInOrderResponse() (response *CreateTasksInOrderResponse) {
+    response = &CreateTasksInOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTasksInOrder
+// 按顺序创建任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateTasksInOrder(request *CreateTasksInOrderRequest) (response *CreateTasksInOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateTasksInOrderRequest()
+    }
+    response = NewCreateTasksInOrderResponse()
     err = c.Send(request, response)
     return
 }

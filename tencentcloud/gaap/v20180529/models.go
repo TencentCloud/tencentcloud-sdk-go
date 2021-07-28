@@ -685,6 +685,56 @@ func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCustomHeaderRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 新增的header名称和内容列表， ‘’$remote_addr‘’会被解析替换成客户端ip，其他值原样透传到源站。
+	Headers []*HttpHeaderParam `json:"Headers,omitempty" name:"Headers"`
+}
+
+func (r *CreateCustomHeaderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomHeaderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Headers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomHeaderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomHeaderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomHeaderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomHeaderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDomainErrorPageInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -2067,6 +2117,52 @@ func (r *DescribeAccessRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBlackHeaderRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeBlackHeaderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlackHeaderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlackHeaderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBlackHeaderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 禁用的自定义header列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BlackHeaders []*string `json:"BlackHeaders,omitempty" name:"BlackHeaders"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBlackHeaderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlackHeaderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCertificateDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -2225,6 +2321,56 @@ func (r *DescribeCountryAreaMappingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCountryAreaMappingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomHeaderRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCustomHeaderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomHeaderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomHeaderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomHeaderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+		// 自定义header列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Headers []*HttpHeaderParam `json:"Headers,omitempty" name:"Headers"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomHeaderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomHeaderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

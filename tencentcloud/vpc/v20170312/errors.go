@@ -350,6 +350,9 @@ const (
 	// 绑定NAT网关的弹性IP不是按流量计费的。
 	UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = "UnsupportedOperation.PublicIpAddressNotBilledByTraffic"
 
+	// 输入的资源ID与IP绑定的资源不匹配，请检查。
+	UNSUPPORTEDOPERATION_RESOURCEMISMATCH = "UnsupportedOperation.ResourceMismatch"
+
 	// 指定的终端节点服务所创建的终端节点不支持绑定安全组。
 	UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = "UnsupportedOperation.SpecialEndPointService"
 

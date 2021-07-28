@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -360,6 +360,44 @@ func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response 
     return
 }
 
+func NewCreateCustomHeaderRequest() (request *CreateCustomHeaderRequest) {
+    request = &CreateCustomHeaderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "CreateCustomHeader")
+    return
+}
+
+func NewCreateCustomHeaderResponse() (response *CreateCustomHeaderResponse) {
+    response = &CreateCustomHeaderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomHeader
+// 本接口（CreateCustomHeader）用于创建HTTP/HTTPS监听器的自定义header，客户端请求通过访问该监听器时，会将监听器中配置的header信息发送到源站。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HITBLACKLIST = "InvalidParameterValue.HitBlacklist"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateCustomHeader(request *CreateCustomHeaderRequest) (response *CreateCustomHeaderResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomHeaderRequest()
+    }
+    response = NewCreateCustomHeaderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDomainRequest() (request *CreateDomainRequest) {
     request = &CreateDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -669,6 +707,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
 //  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
 //  FAILEDOPERATION_LIMITNUMOFRULES = "FailedOperation.LimitNumofRules"
 //  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
@@ -1232,6 +1271,42 @@ func (c *Client) DescribeAccessRegionsByDestRegion(request *DescribeAccessRegion
     return
 }
 
+func NewDescribeBlackHeaderRequest() (request *DescribeBlackHeaderRequest) {
+    request = &DescribeBlackHeaderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeBlackHeader")
+    return
+}
+
+func NewDescribeBlackHeaderResponse() (response *DescribeBlackHeaderResponse) {
+    response = &DescribeBlackHeaderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBlackHeader
+// 本接口（DescribeBlackHeader）用于查询禁用的自定义header 名称
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBlackHeader(request *DescribeBlackHeaderRequest) (response *DescribeBlackHeaderResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlackHeaderRequest()
+    }
+    response = NewDescribeBlackHeaderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertificateDetailRequest() (request *DescribeCertificateDetailRequest) {
     request = &DescribeCertificateDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1340,6 +1415,42 @@ func (c *Client) DescribeCountryAreaMapping(request *DescribeCountryAreaMappingR
         request = NewDescribeCountryAreaMappingRequest()
     }
     response = NewDescribeCountryAreaMappingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomHeaderRequest() (request *DescribeCustomHeaderRequest) {
+    request = &DescribeCustomHeaderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeCustomHeader")
+    return
+}
+
+func NewDescribeCustomHeaderResponse() (response *DescribeCustomHeaderResponse) {
+    response = &DescribeCustomHeaderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomHeader
+// 本接口（DescribeCustomHeader）用于自定义header列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCustomHeader(request *DescribeCustomHeaderRequest) (response *DescribeCustomHeaderResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomHeaderRequest()
+    }
+    response = NewDescribeCustomHeaderResponse()
     err = c.Send(request, response)
     return
 }

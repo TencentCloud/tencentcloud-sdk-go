@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -248,6 +248,55 @@ func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (respons
         request = NewCreateEdgePackTaskRequest()
     }
     response = NewCreateEdgePackTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateScdnDomainRequest() (request *CreateScdnDomainRequest) {
+    request = &CreateScdnDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "CreateScdnDomain")
+    return
+}
+
+func NewCreateScdnDomainResponse() (response *CreateScdnDomainResponse) {
+    response = &CreateScdnDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScdnDomain
+// CreateScdnDomain 用于创建 SCDN 加速域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_SCDNUSERNOPACKAGE = "InternalError.ScdnUserNoPackage"
+//  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
+//  INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
+//  INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
+//  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  LIMITEXCEEDED_CDNUSERTOOMANYHOSTS = "LimitExceeded.CdnUserTooManyHosts"
+//  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
+//  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
+//  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
+func (c *Client) CreateScdnDomain(request *CreateScdnDomainRequest) (response *CreateScdnDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateScdnDomainRequest()
+    }
+    response = NewCreateScdnDomainResponse()
     err = c.Send(request, response)
     return
 }

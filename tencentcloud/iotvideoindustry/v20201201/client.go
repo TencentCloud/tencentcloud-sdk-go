@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).

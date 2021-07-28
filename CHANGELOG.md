@@ -1,10 +1,107 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 36 次发布
+### 第 6 次发布
 
-发布时间：2021-07-27 08:04:10
+发布时间：2021-07-28 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/1021/59237)
+
+新增数据结构：
+
+* [KeyValue](https://cloud.tencent.com/document/api/1021/57582#KeyValue)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 73 次发布
+
+发布时间：2021-07-28 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateScdnDomain](https://cloud.tencent.com/document/api/228/59239)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 38 次发布
+
+发布时间：2021-07-28 08:11:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryContract](https://cloud.tencent.com/document/api/1122/56398)
+
+	* 新增入参：MigrateMode, ContractMethod
+
+* [TerminateContract](https://cloud.tencent.com/document/api/1122/56396)
+
+	* 新增入参：ContractMethod, MigrateMode
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 4 次发布
+
+发布时间：2021-07-28 08:00:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTasksInOrder](https://cloud.tencent.com/document/api/1342/59238)
+
+新增数据结构：
+
+* [TasksInfo](https://cloud.tencent.com/document/api/1342/53778#TasksInfo)
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 19 次发布
+
+发布时间：2021-07-28 08:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomHeader](https://cloud.tencent.com/document/api/608/59242)
+* [DescribeBlackHeader](https://cloud.tencent.com/document/api/608/59241)
+* [DescribeCustomHeader](https://cloud.tencent.com/document/api/608/59240)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 27 次发布
+
+发布时间：2021-07-28 08:07:18
 
 本次发布包含了以下内容：
 
@@ -12,55 +109,52 @@
 
 修改数据结构：
 
-* [StrategyInfo](https://cloud.tencent.com/document/api/598/33167#StrategyInfo)
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
 
-	* 新增成员：AttachEntityCount, AttachEntityBoundaryCount, UpdateTime
-
-
+	* 新增成员：Dimensions
 
 
-## 云市场(market) 版本：2019-10-10
 
-### 第 4 次发布
 
-发布时间：2021-07-27 08:00:11
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 11 次发布
+
+发布时间：2021-07-28 08:12:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [SyncUserAndOrderInfo](https://cloud.tencent.com/document/api/306/59174)
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
 
-新增数据结构：
+	* 新增成员：InvocationSource
 
-* [Error](https://cloud.tencent.com/document/api/306/59175#Error)
-* [OfflineProductDeal](https://cloud.tencent.com/document/api/306/59175#OfflineProductDeal)
-* [SyncUserAndOrderInfoDetail](https://cloud.tencent.com/document/api/306/59175#SyncUserAndOrderInfoDetail)
-* [WeChatOrderInfo](https://cloud.tencent.com/document/api/306/59175#WeChatOrderInfo)
-* [WeChatUserInfo](https://cloud.tencent.com/document/api/306/59175#WeChatUserInfo)
+* [InvocationTask](https://cloud.tencent.com/document/api/1340/52687#InvocationTask)
+
+	* 新增成员：InvocationSource
+
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 57 次发布
+### 第 58 次发布
 
-发布时间：2021-07-27 08:09:41
+发布时间：2021-07-28 08:08:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
 * [DescribeActivityRecord](https://cloud.tencent.com/document/api/876/59181)
-* [ReplaceActivityRecord](https://cloud.tencent.com/document/api/876/59180)
 
-新增数据结构：
+	* 新增入参：Statuses
 
-* [ActivityRecordItem](https://cloud.tencent.com/document/api/876/34822#ActivityRecordItem)
 
 
 
@@ -748,6 +842,22 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 6 次发布
+
+发布时间：2021-07-28 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/1021/59237)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KeyValue](https://cloud.tencent.com/document/api/1021/57582#KeyValue)](https://cloud.tencent.com/document/api/1021/57582#[KeyValue](https://cloud.tencent.com/document/api/1021/57582#KeyValue))
 
 ### 第 5 次发布
 
@@ -8724,6 +8834,18 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 73 次发布
+
+发布时间：2021-07-28 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateScdnDomain](https://cloud.tencent.com/document/api/228/59239)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 72 次发布
 
 发布时间：2021-07-23 08:04:13
@@ -14259,6 +14381,25 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 38 次发布
+
+发布时间：2021-07-28 08:11:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryContract](https://cloud.tencent.com/document/api/1122/56398)
+
+	* 新增入参：MigrateMode, ContractMethod
+
+* [TerminateContract](https://cloud.tencent.com/document/api/1122/56396)
+
+	* 新增入参：ContractMethod, MigrateMode
+
+
 ### 第 37 次发布
 
 发布时间：2021-06-02 08:10:27
@@ -19694,6 +19835,22 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 4 次发布
+
+发布时间：2021-07-28 08:00:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTasksInOrder](https://cloud.tencent.com/document/api/1342/59238)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TasksInfo](https://cloud.tencent.com/document/api/1342/53778#TasksInfo)](https://cloud.tencent.com/document/api/1342/53778#[TasksInfo](https://cloud.tencent.com/document/api/1342/53778#TasksInfo))
+
 ### 第 3 次发布
 
 发布时间：2021-07-12 08:00:40
@@ -24108,6 +24265,20 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 19 次发布
+
+发布时间：2021-07-28 08:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCustomHeader](https://cloud.tencent.com/document/api/608/59242)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBlackHeader](https://cloud.tencent.com/document/api/608/59241)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCustomHeader](https://cloud.tencent.com/document/api/608/59240)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 18 次发布
 
@@ -32388,15 +32559,15 @@
 
 新增接口：
 
-* [[SyncUserAndOrderInfo](https://cloud.tencent.com/document/api/306/59174)](https://cloud.tencent.com/document/api/#/#)
+* [SyncUserAndOrderInfo](https://cloud.tencent.com/document/api/306/59174)
 
 新增数据结构：
 
-* [[Error](https://cloud.tencent.com/document/api/306/59175#Error)](https://cloud.tencent.com/document/api/306/59175#[Error](https://cloud.tencent.com/document/api/306/59175#Error))
-* [[OfflineProductDeal](https://cloud.tencent.com/document/api/306/59175#OfflineProductDeal)](https://cloud.tencent.com/document/api/306/59175#[OfflineProductDeal](https://cloud.tencent.com/document/api/306/59175#OfflineProductDeal))
-* [[SyncUserAndOrderInfoDetail](https://cloud.tencent.com/document/api/306/59175#SyncUserAndOrderInfoDetail)](https://cloud.tencent.com/document/api/306/59175#[SyncUserAndOrderInfoDetail](https://cloud.tencent.com/document/api/306/59175#SyncUserAndOrderInfoDetail))
-* [[WeChatOrderInfo](https://cloud.tencent.com/document/api/306/59175#WeChatOrderInfo)](https://cloud.tencent.com/document/api/306/59175#[WeChatOrderInfo](https://cloud.tencent.com/document/api/306/59175#WeChatOrderInfo))
-* [[WeChatUserInfo](https://cloud.tencent.com/document/api/306/59175#WeChatUserInfo)](https://cloud.tencent.com/document/api/306/59175#[WeChatUserInfo](https://cloud.tencent.com/document/api/306/59175#WeChatUserInfo))
+* [Error](https://cloud.tencent.com/document/api/306/59175#Error)
+* [OfflineProductDeal](https://cloud.tencent.com/document/api/306/59175#OfflineProductDeal)
+* [SyncUserAndOrderInfoDetail](https://cloud.tencent.com/document/api/306/59175#SyncUserAndOrderInfoDetail)
+* [WeChatOrderInfo](https://cloud.tencent.com/document/api/306/59175#WeChatOrderInfo)
+* [WeChatUserInfo](https://cloud.tencent.com/document/api/306/59175#WeChatUserInfo)
 
 ### 第 3 次发布
 
@@ -32924,6 +33095,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 27 次发布
+
+发布时间：2021-07-28 08:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：Dimensions
+
 
 ### 第 26 次发布
 
@@ -41118,6 +41304,25 @@
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
 
+### 第 11 次发布
+
+发布时间：2021-07-28 08:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：InvocationSource
+
+* [InvocationTask](https://cloud.tencent.com/document/api/1340/52687#InvocationTask)
+
+	* 新增成员：InvocationSource
+
+
 ### 第 10 次发布
 
 发布时间：2021-07-21 08:11:56
@@ -42230,6 +42435,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 58 次发布
+
+发布时间：2021-07-28 08:08:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeActivityRecord](https://cloud.tencent.com/document/api/876/59181)
+
+	* 新增入参：Statuses
+
+
 ### 第 57 次发布
 
 发布时间：2021-07-27 08:09:41
@@ -42240,12 +42460,12 @@
 
 新增接口：
 
-* [[DescribeActivityRecord](https://cloud.tencent.com/document/api/876/59181)](https://cloud.tencent.com/document/api/#/#)
-* [[ReplaceActivityRecord](https://cloud.tencent.com/document/api/876/59180)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeActivityRecord](https://cloud.tencent.com/document/api/876/59181)
+* [ReplaceActivityRecord](https://cloud.tencent.com/document/api/876/59180)
 
 新增数据结构：
 
-* [[ActivityRecordItem](https://cloud.tencent.com/document/api/876/34822#ActivityRecordItem)](https://cloud.tencent.com/document/api/876/34822#[ActivityRecordItem](https://cloud.tencent.com/document/api/876/34822#ActivityRecordItem))
+* [ActivityRecordItem](https://cloud.tencent.com/document/api/876/34822#ActivityRecordItem)
 
 ### 第 56 次发布
 
