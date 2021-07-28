@@ -363,7 +363,7 @@ import "crypto/tls"
     credentail, err := provider.GetCredential()
     ```
 
-    更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go))
+    更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
 
 # 错误处理
 
