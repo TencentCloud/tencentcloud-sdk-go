@@ -2,7 +2,7 @@ package common
 
 import (
 	"fmt"
-	"os"
+    "io/ioutil"
 	"strings"
 
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -14,7 +14,7 @@ var (
 )
 
 func openFile(path string) (data []byte, err error) {
-	data, err = os.ReadFile(path)
+	data, err = ioutil.ReadFile(path)
 	if err != nil {
 		err = tcerr.NewTencentCloudSDKError(iniErr, err.Error(), "")
 	}
