@@ -1,8 +1,6 @@
 package common
 
 import (
-	"errors"
-
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
@@ -30,7 +28,7 @@ func (c *ProviderChain) GetCredential() (CredentialIface, error) {
 	for _, provider := range c.Providers {
 		cred, err := provider.GetCredential()
 		if err != nil {
-			if errors.Is(err, envNotSet) || errors.Is(err, fileDoseNotExist) || errors.Is(err, noCvmRole) {
+			if err == envNotSet || err == fileDoseNotExist || err == noCvmRole {
 				continue
 			} else {
 				return nil, err
