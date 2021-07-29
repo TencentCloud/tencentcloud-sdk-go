@@ -1,8 +1,6 @@
 package common
 
 import (
-	"errors"
-
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
