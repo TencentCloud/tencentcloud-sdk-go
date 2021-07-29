@@ -1458,6 +1458,9 @@ type CreateApiRequest struct {
 
 	// 是否打开Base64编码，只有后端是scf时才会生效。
 	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+
+	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
 }
 
 func (r *CreateApiRequest) ToJsonString() string {
@@ -1518,6 +1521,7 @@ func (r *CreateApiRequest) FromJsonString(s string) error {
 	delete(f, "TargetNamespaceId")
 	delete(f, "UserType")
 	delete(f, "IsBase64Encoded")
+	delete(f, "ServiceScfFunctionType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiRequest has unknown keys!", "")
 	}
@@ -2428,7 +2432,7 @@ type DesApisStatus struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
 
-	// API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。
+	// API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
@@ -2927,6 +2931,63 @@ func (r *DescribeApiEnvironmentStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApiEnvironmentStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApiForApiAppRequest struct {
+	*tchttp.BaseRequest
+
+	// API 所在的服务唯一 ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// API 接口唯一 ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// Api所属地域
+	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+}
+
+func (r *DescribeApiForApiAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiForApiAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ApiId")
+	delete(f, "ApiRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiForApiAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApiForApiAppResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// API 详情。
+		Result *ApiInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApiForApiAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiForApiAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6308,7 +6369,7 @@ type Service struct {
 
 type ServiceConfig struct {
 
-	// 后端类型。启用vpc时生效，目前支持的类型为clb。
+	// 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// vpc 的唯一ID。

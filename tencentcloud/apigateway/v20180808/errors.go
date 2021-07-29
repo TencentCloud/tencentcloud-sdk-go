@@ -404,6 +404,9 @@ const (
 	// 当前密钥状态不支持此操作。
 	UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 
+	// 不支持修改EIAM类型授权API。
+	UNSUPPORTEDOPERATION_MODIFYEIAMAUTHAPI = "UnsupportedOperation.ModifyEIAMAuthApi"
+
 	// 前端协议类型不支持修改。
 	UNSUPPORTEDOPERATION_MODIFYPROTOCOL = "UnsupportedOperation.ModifyProtocol"
 
@@ -433,6 +436,9 @@ const (
 
 	// 服务使用中，不能被删除。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"
+
+	// 不支持网络类型。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = "UnsupportedOperation.UnsupportedNetType"
 
 	// 不支持解绑环境，存在未绑定使用计划的API。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"

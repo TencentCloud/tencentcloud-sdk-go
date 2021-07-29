@@ -3271,6 +3271,10 @@ func NewRescanImpactedHostResponse() (response *RescanImpactedHostResponse) {
 }
 
 // RescanImpactedHost
+// 该接口已废弃
+//
+// 
+//
 // 本接口 (RescanImpactedHost) 用于漏洞重新检测。
 //
 // 可能返回的错误码:

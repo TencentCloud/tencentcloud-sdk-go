@@ -1345,6 +1345,14 @@ type CCN struct {
 
 	// 是否支持云联网路由优先级的功能。False：不支持，True：支持。
 	RoutePriorityFlag *bool `json:"RoutePriorityFlag,omitempty" name:"RoutePriorityFlag"`
+
+	// 实例关联的路由表个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableCount *uint64 `json:"RouteTableCount,omitempty" name:"RouteTableCount"`
+
+	// 是否开启云联网多路由表特性。False：未开启，True：开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableFlag *bool `json:"RouteTableFlag,omitempty" name:"RouteTableFlag"`
 }
 
 type CcnAttachedInstance struct {
@@ -1396,6 +1404,14 @@ type CcnAttachedInstance struct {
 
 	// 备注
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 路由表ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
+
+	// 路由表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableName *string `json:"RouteTableName,omitempty" name:"RouteTableName"`
 }
 
 type CcnBandwidthInfo struct {
@@ -1442,6 +1458,10 @@ type CcnInstance struct {
 
 	// 备注
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 实例关联的路由表ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
 type CcnRegionBandwidthLimit struct {
@@ -6198,7 +6218,7 @@ type DescribeAssistantCidrRequest struct {
 	// `VPC`实例`ID`数组。形如：[`vpc-6v2ht8q5`]
 	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
-	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
+	// 过滤条件，参数不支持同时指定VpcIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 

@@ -269,6 +269,9 @@ const (
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 
+	// 指定的路由表不存在。
+	UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+
 	// CDC子网不支持创建非本地网关类型的路由。
 	UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = "UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway"
 
@@ -302,8 +305,14 @@ const (
 	// 和用户自定义的路由形成ECMP。
 	UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 
+	// 用户配置的实例和路由表不匹配。
+	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
+
 	// 账户余额不足。
 	UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+
+	// 无效的实例状态。
+	UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 
 	// 资源状态不合法。
 	UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"

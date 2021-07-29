@@ -365,6 +365,38 @@ func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingI
     return
 }
 
+func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
+    request = &QueryLicenseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryLicenseInfo")
+    return
+}
+
+func NewQueryLicenseInfoResponse() (response *QueryLicenseInfoResponse) {
+    response = &QueryLicenseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryLicenseInfo
+// 该接口获取license对应的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryLicenseInfo(request *QueryLicenseInfoRequest) (response *QueryLicenseInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryLicenseInfoRequest()
+    }
+    response = NewQueryLicenseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
     request = &QueryMiniAppCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},

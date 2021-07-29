@@ -59,7 +59,7 @@ func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanc
 }
 
 // DescribeSREInstanceAccessAddress
-// 查询微服务注册引擎实例访问地址
+// 查询引擎实例访问地址
 //
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
@@ -90,7 +90,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 }
 
 // DescribeSREInstances
-// 用于查询微服务引擎实例列表
+// 用于查询引擎实例列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
