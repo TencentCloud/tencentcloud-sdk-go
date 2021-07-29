@@ -107,8 +107,14 @@ const (
 	// 联系人为空或者不合法。
 	INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
 
+	// 联系人填写有误，或因其他原因无法使用，请更换其他联系人。
+	INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
+
 	// 注册人为空或者不合法。
 	INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+
+	// 域名所有者填写有误，或因其他原因无法使用，请更换其他域名所有者。
+	INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
 
 	// 特惠包ID无效。
 	INVALIDPARAMETER_PACKAGERESOURCEIDINVALID = "InvalidParameter.PackageResourceIdInvalid"

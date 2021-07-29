@@ -3931,6 +3931,68 @@ func (r *DescribeRouteTableConflictsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpcCniPodLimitsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的机型所在可用区，如：ap-guangzhou-3，默认为空，即不按可用区过滤信息
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 查询的实例机型系列信息，如：S5，默认为空，即不按机型系列过滤信息
+	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
+
+	// 查询的实例机型信息，如：S5.LARGE8，默认为空，即不按机型过滤信息
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+func (r *DescribeVpcCniPodLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcCniPodLimitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "InstanceFamily")
+	delete(f, "InstanceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcCniPodLimitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpcCniPodLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 机型数据数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PodLimitsInstanceSet []*PodLimitsInstance `json:"PodLimitsInstanceSet,omitempty" name:"PodLimitsInstanceSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpcCniPodLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcCniPodLimitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisableVpcCniNetworkTypeRequest struct {
 	*tchttp.BaseRequest
 
@@ -5015,6 +5077,40 @@ type NodePoolOption struct {
 
 	// 是否继承节点池相关配置
 	InheritConfigurationFromNodePool *bool `json:"InheritConfigurationFromNodePool,omitempty" name:"InheritConfigurationFromNodePool"`
+}
+
+type PodLimitsByType struct {
+
+	// TKE共享网卡非固定IP模式可支持的Pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKERouteENINonStaticIP *int64 `json:"TKERouteENINonStaticIP,omitempty" name:"TKERouteENINonStaticIP"`
+
+	// TKE共享网卡固定IP模式可支持的Pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKERouteENIStaticIP *int64 `json:"TKERouteENIStaticIP,omitempty" name:"TKERouteENIStaticIP"`
+
+	// TKE独立网卡模式可支持的Pod数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKEDirectENI *int64 `json:"TKEDirectENI,omitempty" name:"TKEDirectENI"`
+}
+
+type PodLimitsInstance struct {
+
+	// 机型所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 机型所属机型族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
+
+	// 实例机型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 机型可支持的最大VPC-CNI模式Pod数量信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodLimits *PodLimitsByType `json:"PodLimits,omitempty" name:"PodLimits"`
 }
 
 type PrometheusAgentOverview struct {

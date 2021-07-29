@@ -56,6 +56,9 @@ type DescribeSREInstanceAccessAddressResponse struct {
 		// 公网访问地址
 		InternetAddress *string `json:"InternetAddress,omitempty" name:"InternetAddress"`
 
+		// apollo多环境公网ip
+		EnvAddressInfos []*EnvAddressInfo `json:"EnvAddressInfos,omitempty" name:"EnvAddressInfos"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -136,6 +139,18 @@ func (r *DescribeSREInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnvAddressInfo struct {
+
+	// 环境名
+	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
+
+	// 是否开启config公网
+	EnableConfigInternet *bool `json:"EnableConfigInternet,omitempty" name:"EnableConfigInternet"`
+
+	// config公网ip
+	ConfigInternetServiceIp *string `json:"ConfigInternetServiceIp,omitempty" name:"ConfigInternetServiceIp"`
+}
+
 type EnvInfo struct {
 
 	// 环境名称
@@ -155,6 +170,12 @@ type EnvInfo struct {
 
 	// Config service访问地址
 	ConfigServiceIp *string `json:"ConfigServiceIp,omitempty" name:"ConfigServiceIp"`
+
+	// 是否开启config-server公网
+	EnableConfigInternet *bool `json:"EnableConfigInternet,omitempty" name:"EnableConfigInternet"`
+
+	// config-server公网访问地址
+	ConfigInternetServiceIp *string `json:"ConfigInternetServiceIp,omitempty" name:"ConfigInternetServiceIp"`
 }
 
 type Filter struct {
@@ -223,6 +244,14 @@ type SREInstance struct {
 	// 环境配置信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvInfos []*EnvInfo `json:"EnvInfos,omitempty" name:"EnvInfos"`
+
+	// 引擎所在的区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 注册引擎是否开启公网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
 }
 
 type VpcInfo struct {

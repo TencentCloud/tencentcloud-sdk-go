@@ -69,7 +69,7 @@ func (r *AddUsersToWorkGroupResponse) FromJsonString(s string) error {
 type AttachUserPolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户Id，和CAM侧Uin匹配
+	// 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 鉴权策略集合
@@ -565,13 +565,133 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTasksInOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// SQL任务信息
+	Tasks *TasksInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 数据源名称，默认为COSDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *CreateTasksInOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksInOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "Tasks")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksInOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTasksInOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本批次提交的任务的批次Id
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 任务Id集合，按照执行顺序排列
+		TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTasksInOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksInOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// SQL任务信息
+	Tasks *TasksInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 数据源名称，默认为COSDataCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *CreateTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "Tasks")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本批次提交的任务的批次Id
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 任务Id集合，按照执行顺序排列
+		TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户Id，当前主账号的子账号Uin，和CAM侧匹配
+	// 需要授权的子用户uin，可以通过腾讯云控制台右上角 → “账号信息” → “账号ID进行查看”。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用户描述
+	// 用户描述信息，方便区分不同用户
 	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
 
 	// 绑定到用户的权限集合
@@ -1316,7 +1436,7 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 type DescribeUsersRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询的用户Id，和CAM侧Uin匹配
+	// 指定查询的子用户uin，用户需要通过CreateUser接口创建。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 偏移量，默认为0
@@ -1359,10 +1479,10 @@ type DescribeUsersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 用户总数
+		// 查询到的用户总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 用户集合
+		// 查询到的授权用户信息集合
 		UserSet []*UserInfo `json:"UserSet,omitempty" name:"UserSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1454,7 +1574,7 @@ func (r *DescribeViewsResponse) FromJsonString(s string) error {
 type DescribeWorkGroupsRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询的工作组Id
+	// 查询的工作组Id，不填或填0表示不过滤。
 	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
 
 	// 过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
@@ -1769,16 +1889,16 @@ type Partition struct {
 
 type Policy struct {
 
-	// 需要授权的数据源名称，*代表拥有全部数据源权限
+	// 需要授权的数据源名称，当前仅支持COSDataCatalog或者*
 	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
 
-	// 需要授权的数据库名称，*代表拥有全部数据库名称
+	// 需要授权的数据库名，填*代表当前Catalog下所有数据库
 	Database *string `json:"Database,omitempty" name:"Database"`
 
-	// 需要授权的表名称，*代表拥有全部表权限
+	// 需要授权的表名，填*代表当前Database下所有表
 	Table *string `json:"Table,omitempty" name:"Table"`
 
-	// 授权的操作，当前只支持“ALL”
+	// 授权粒度，当前只支持ALL，即全部权限
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 }
 
@@ -1953,6 +2073,21 @@ type TaskResponseInfo struct {
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
+type TasksInfo struct {
+
+	// 任务类型，SQLTask：SQL查询任务。SparkSQLTask：Spark SQL查询任务
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 容错策略。Proceed：前面任务出错/取消后继续执行后面的任务。Terminate：前面的任务出错/取消之后终止后面任务的执行，后面的任务全部标记为已取消。
+	FailureTolerance *string `json:"FailureTolerance,omitempty" name:"FailureTolerance"`
+
+	// base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
+	SQL *string `json:"SQL,omitempty" name:"SQL"`
+
+	// 任务的配置信息，当前仅支持SparkSQLTask任务。
+	Config []*KVPair `json:"Config,omitempty" name:"Config"`
+}
+
 type TextFile struct {
 
 	// 文本类型，本参数取值为TextFile。
@@ -2020,10 +2155,10 @@ type UserIdSetOfWorkGroupId struct {
 
 type UserInfo struct {
 
-	// 用户Id，和CAM侧Uin匹配
+	// 用户Id，和子用户uin相同
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用户描述
+	// 用户描述信息，方便区分不同用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
 
@@ -2031,10 +2166,10 @@ type UserInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
 
-	// 创建者
+	// 当前用户的创建者
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 创建时间
+	// 创建时间，格式如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 关联的工作组集合
@@ -2048,17 +2183,17 @@ type UserInfo struct {
 
 type UserMessage struct {
 
-	// 用户Id，和CAM侧Uin匹配
+	// 用户Id，和CAM侧子用户Uin匹配
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 用户描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDescription *string `json:"UserDescription,omitempty" name:"UserDescription"`
 
-	// 创建者
+	// 当前用户的创建者
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 创建时间
+	// 当前用户的创建时间，形如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
@@ -2102,7 +2237,7 @@ type WorkGroupIdSetOfUserId struct {
 
 type WorkGroupInfo struct {
 
-	// 工作组Id
+	// 查询到的工作组唯一Id
 	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
 
 	// 工作组名称
@@ -2123,16 +2258,16 @@ type WorkGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicySet []*Policy `json:"PolicySet,omitempty" name:"PolicySet"`
 
-	// 创建者
+	// 工作组的创建人
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 创建时间
+	// 工作组的创建时间，形如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type WorkGroupMessage struct {
 
-	// 工作组Id
+	// 工作组唯一Id
 	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
 
 	// 工作组名称
@@ -2145,6 +2280,6 @@ type WorkGroupMessage struct {
 	// 创建者
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 创建时间
+	// 工作组创建的时间，形如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }

@@ -472,6 +472,36 @@ type FollowUser struct {
 	Tags []*ExternalContactTag `json:"Tags,omitempty" name:"Tags"`
 }
 
+type LicenseInfo struct {
+
+	// license编号
+	License *string `json:"License,omitempty" name:"License"`
+
+	// license版本；1-基础版，2-标准版，3-增值版
+	LicenseEdition *int64 `json:"LicenseEdition,omitempty" name:"LicenseEdition"`
+
+	// 生效开始时间, 格式yyyy-MM-dd HH:mm:ss
+	ResourceStartTime *string `json:"ResourceStartTime,omitempty" name:"ResourceStartTime"`
+
+	// 生效结束时间, 格式yyyy-MM-dd HH:mm:ss
+	ResourceEndTime *string `json:"ResourceEndTime,omitempty" name:"ResourceEndTime"`
+
+	// 隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolationDeadline *string `json:"IsolationDeadline,omitempty" name:"IsolationDeadline"`
+
+	// 资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestroyTime *string `json:"DestroyTime,omitempty" name:"DestroyTime"`
+
+	// 资源状态，1.正常，2.隔离，3.销毁
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+}
+
 type LiveCodeDetail struct {
 
 	// 活码id
@@ -997,6 +1027,56 @@ func (r *QueryExternalUserMappingInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryExternalUserMappingInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryLicenseInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// license编号
+	License *string `json:"License,omitempty" name:"License"`
+}
+
+func (r *QueryLicenseInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryLicenseInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "License")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryLicenseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryLicenseInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// license响应信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LicenseInfo *LicenseInfo `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryLicenseInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryLicenseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -572,7 +572,14 @@ type AiRecognitionTaskAsrFullTextResultInput struct {
 type AiRecognitionTaskAsrFullTextResultOutput struct {
 
 	// 语音全文识别片段列表。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
+
+	// 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
+
+	// 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。
+	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 
 	// 字幕文件 Url。
 	SubtitleUrl *string `json:"SubtitleUrl,omitempty" name:"SubtitleUrl"`
@@ -633,7 +640,14 @@ type AiRecognitionTaskAsrWordsResultItem struct {
 type AiRecognitionTaskAsrWordsResultOutput struct {
 
 	// 语音关键词识别结果集。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
 	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// 语音关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+	ResultSetFileUrl *string `json:"ResultSetFileUrl,omitempty" name:"ResultSetFileUrl"`
+
+	// 语音关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	ResultSetFileUrlExpireTime *string `json:"ResultSetFileUrlExpireTime,omitempty" name:"ResultSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskAsrWordsSegmentItem struct {
@@ -696,7 +710,14 @@ type AiRecognitionTaskFaceResultItem struct {
 type AiRecognitionTaskFaceResultOutput struct {
 
 	// 智能人脸识别结果集。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
 	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// 智能人脸识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+	ResultSetFileUrl *string `json:"ResultSetFileUrl,omitempty" name:"ResultSetFileUrl"`
+
+	// 智能人脸识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	ResultSetFileUrlExpireTime *string `json:"ResultSetFileUrlExpireTime,omitempty" name:"ResultSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskFaceSegmentItem struct {
@@ -803,7 +824,14 @@ type AiRecognitionTaskObjectResultItem struct {
 type AiRecognitionTaskObjectResultOutput struct {
 
 	// 智能物体识别结果集。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
 	ResultSet []*AiRecognitionTaskObjectResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// 智能物体识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+	ResultSetFileUrl *string `json:"ResultSetFileUrl,omitempty" name:"ResultSetFileUrl"`
+
+	// 智能物体识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	ResultSetFileUrlExpireTime *string `json:"ResultSetFileUrlExpireTime,omitempty" name:"ResultSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskObjectSeqmentItem struct {
@@ -852,7 +880,14 @@ type AiRecognitionTaskOcrFullTextResultInput struct {
 type AiRecognitionTaskOcrFullTextResultOutput struct {
 
 	// 文本全文识别结果集。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
+
+	// 文本全文识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
+
+	// 文本全文识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskOcrFullTextSegmentItem struct {
@@ -919,7 +954,14 @@ type AiRecognitionTaskOcrWordsResultItem struct {
 type AiRecognitionTaskOcrWordsResultOutput struct {
 
 	// 文本关键词识别结果集。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
 	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// 文本关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+	ResultSetFileUrl *string `json:"ResultSetFileUrl,omitempty" name:"ResultSetFileUrl"`
+
+	// 文本关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	ResultSetFileUrlExpireTime *string `json:"ResultSetFileUrlExpireTime,omitempty" name:"ResultSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskOcrWordsSegmentItem struct {
@@ -969,7 +1011,14 @@ type AiRecognitionTaskSegmentResultInput struct {
 type AiRecognitionTaskSegmentResultOutput struct {
 
 	// 视频拆条片段列表。
+	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*AiRecognitionTaskSegmentSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
+
+	// 视频拆条片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
+
+	// 视频拆条片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiRecognitionTaskSegmentSegmentItem struct {

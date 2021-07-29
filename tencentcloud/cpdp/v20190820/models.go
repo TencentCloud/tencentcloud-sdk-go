@@ -5634,6 +5634,12 @@ type QueryContractRequest struct {
 	// ANONYMOUS: 匿名类型 USER_ID
 	// 默认值为 USER_ID
 	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 签约代扣穿透查询存量数据迁移模式
+	MigrateMode *string `json:"MigrateMode,omitempty" name:"MigrateMode"`
+
+	// 签约方式
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
 }
 
 func (r *QueryContractRequest) ToJsonString() string {
@@ -5661,6 +5667,8 @@ func (r *QueryContractRequest) FromJsonString(s string) error {
 	delete(f, "ExternalContractData")
 	delete(f, "MidasEnvironment")
 	delete(f, "UserType")
+	delete(f, "MigrateMode")
+	delete(f, "ContractMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractRequest has unknown keys!", "")
 	}
@@ -9540,6 +9548,12 @@ type TerminateContractRequest struct {
 	// ANONYMOUS: 匿名类型 USER_ID
 	// 默认值为 USER_ID
 	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 签约方式
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 签约代扣穿透查询存量数据迁移模式
+	MigrateMode *string `json:"MigrateMode,omitempty" name:"MigrateMode"`
 }
 
 func (r *TerminateContractRequest) ToJsonString() string {
@@ -9568,6 +9582,8 @@ func (r *TerminateContractRequest) FromJsonString(s string) error {
 	delete(f, "TerminationReason")
 	delete(f, "MidasEnvironment")
 	delete(f, "UserType")
+	delete(f, "ContractMethod")
+	delete(f, "MigrateMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateContractRequest has unknown keys!", "")
 	}

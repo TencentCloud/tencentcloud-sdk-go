@@ -910,6 +910,7 @@ type DomainBaseInfo struct {
 	// InAudit：实名审核中
 	// Approved：实名审核通过
 	// Reject：实名审核失败
+	// NoAudit: 无需实名认证
 	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitempty" name:"RealNameAuditStatus"`
 
 	// 域名实名认证不通过原因。

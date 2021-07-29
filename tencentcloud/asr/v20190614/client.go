@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -235,32 +235,31 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 // CreateRecTask
 // 本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果。
 //
-// <br>• 支持中文普通话、英语、粤语、日语、泰语
+// • 支持中文普通话、英语、粤语、日语、泰语
 //
-// <br>• 支持通用、音视频领域
+// • 支持通用、音视频领域
 //
-// <br>• 支持wav、mp3、m4a、flv、mp4、wma、3gp、amr、aac、ogg-opus、flac格式
+// • 支持wav、mp3、m4a、flv、mp4、wma、3gp、amr、aac、ogg-opus、flac格式
 //
-// <br>• 支持语音 URL 和本地语音文件两种请求方式
+// • 支持语音 URL 和本地语音文件两种请求方式
 //
-// <br>• 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
+// • 语音 URL 的音频时长不能长于5小时，文件大小不超过512MB
 //
-// <br>• 本地语音文件不能大于5MB
+// • 本地语音文件不能大于5MB
 //
-// <br>• 提交录音文件识别请求后，在5小时内完成识别（半小时内发送超过1000小时录音或者2万条识别任务的除外），识别结果在服务端可保存7天
+// • 提交录音文件识别请求后，在5小时内完成识别（半小时内发送超过1000小时录音或者2万条识别任务的除外），识别结果在服务端可保存7天
 //
-// <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
+// • 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
 //
-// <br>•   请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+// •   请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
-// <br>•   签名方法参考 [公共参数](https://cloud.tencent.com/document/api/1093/35640) 中签名方法v3。
+// •   签名方法参考 [公共参数](https://cloud.tencent.com/document/api/1093/35640) 中签名方法v3。
 //
-// <br>• 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提[工单](https://console.cloud.tencent.com/workorder/category)进行咨询。
+// • 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提[工单](https://console.cloud.tencent.com/workorder/category)进行咨询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORDOWNFILE = "FailedOperation.ErrorDownFile"
 //  FAILEDOPERATION_ERRORRECOGNIZE = "FailedOperation.ErrorRecognize"
-//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"

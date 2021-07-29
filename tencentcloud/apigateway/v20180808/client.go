@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -418,12 +418,14 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEPARAMETERS = "InvalidParameterValue.InvalidServiceParameters"
 //  INVALIDPARAMETERVALUE_INVALIDTSFCONFIG = "InvalidParameterValue.InvalidTsfConfig"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidUrl"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_PARAMETERNOTMATCH = "InvalidParameterValue.ParameterNotMatch"
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDOAUTHAPI = "ResourceNotFound.InvalidOauthApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = "UnsupportedOperation.UnsupportedNetType"
 func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiResponse, err error) {
     if request == nil {
         request = NewCreateApiRequest()
@@ -1294,6 +1296,41 @@ func (c *Client) DescribeApiEnvironmentStrategy(request *DescribeApiEnvironmentS
         request = NewDescribeApiEnvironmentStrategyRequest()
     }
     response = NewDescribeApiEnvironmentStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiForApiAppRequest() (request *DescribeApiForApiAppRequest) {
+    request = &DescribeApiForApiAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiForApiApp")
+    return
+}
+
+func NewDescribeApiForApiAppResponse() (response *DescribeApiForApiAppResponse) {
+    response = &DescribeApiForApiAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApiForApiApp
+// 本接口（DescribeApiForApiApp）用于应用使用者查询部署于 API 网关的 API 接口的详细信息。​
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+func (c *Client) DescribeApiForApiApp(request *DescribeApiForApiAppRequest) (response *DescribeApiForApiAppResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiForApiAppRequest()
+    }
+    response = NewDescribeApiForApiAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -2309,6 +2346,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDWSMETHOD = "InvalidParameterValue.InvalidWSMethod"
 //  INVALIDPARAMETERVALUE_LENGTHEXCEEDED = "InvalidParameterValue.LengthExceeded"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_PARAMETERNOTMATCH = "InvalidParameterValue.ParameterNotMatch"
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
@@ -2316,6 +2354,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 //  RESOURCENOTFOUND_INVALIDOAUTHAPI = "ResourceNotFound.InvalidOauthApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
+//  UNSUPPORTEDOPERATION_MODIFYEIAMAUTHAPI = "UnsupportedOperation.ModifyEIAMAuthApi"
 //  UNSUPPORTEDOPERATION_MODIFYPROTOCOL = "UnsupportedOperation.ModifyProtocol"
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiResponse, err error) {

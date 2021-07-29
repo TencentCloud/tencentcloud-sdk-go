@@ -1281,6 +1281,75 @@ func (r *CreateEdgePackTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateScdnDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// Web 攻击防护（WAF）配置
+	Waf *ScdnWafConfig `json:"Waf,omitempty" name:"Waf"`
+
+	// 自定义防护策略配置
+	Acl *ScdnAclConfig `json:"Acl,omitempty" name:"Acl"`
+
+	// CC 防护配置，目前 CC 防护默认开启
+	CC *ScdnConfig `json:"CC,omitempty" name:"CC"`
+
+	// DDOS 防护配置，目前 DDoS 防护默认开启
+	Ddos *ScdnDdosConfig `json:"Ddos,omitempty" name:"Ddos"`
+
+	// BOT 防护配置
+	Bot *ScdnBotConfig `json:"Bot,omitempty" name:"Bot"`
+}
+
+func (r *CreateScdnDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScdnDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Waf")
+	delete(f, "Acl")
+	delete(f, "CC")
+	delete(f, "Ddos")
+	delete(f, "Bot")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScdnDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScdnDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建结果，Success表示成功
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateScdnDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScdnDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScdnFailedLogTaskRequest struct {
 	*tchttp.BaseRequest
 

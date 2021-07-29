@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -220,7 +220,9 @@ func NewCreateTemplateResponse() (response *CreateTemplateResponse) {
 //  INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
 //  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 //  INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
+//  INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
 //  INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+//  INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
 //  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 //  INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"

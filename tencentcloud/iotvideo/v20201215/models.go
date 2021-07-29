@@ -3336,7 +3336,7 @@ type DeviceInfo struct {
 	// 设备密钥
 	DevicePsk *string `json:"DevicePsk,omitempty" name:"DevicePsk"`
 
-	// 设备启用状态
+	// 设备启用状态 0为停用 1为可用
 	EnableState *uint64 `json:"EnableState,omitempty" name:"EnableState"`
 
 	// 设备过期时间

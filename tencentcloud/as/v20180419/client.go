@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -303,9 +303,6 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 // * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
 //
 // 可能返回的错误码:
-//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
-//  CALLCVMERROR = "CallCvmError"
-//  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_HOSTNAMEUNAVAILABLE = "InvalidParameter.HostNameUnavailable"
 //  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
@@ -317,6 +314,7 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 //  INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTED = "InvalidParameterValue.InstanceTypeNotSupported"
 //  INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = "InvalidParameterValue.InvalidInstanceType"
+//  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATION = "InvalidParameterValue.InvalidLaunchConfiguration"
 //  INVALIDPARAMETERVALUE_LAUNCHCONFIGURATIONNAMEDUPLICATED = "InvalidParameterValue.LaunchConfigurationNameDuplicated"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NOTSTRINGTYPEFLOAT = "InvalidParameterValue.NotStringTypeFloat"
@@ -325,7 +323,7 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 //  INVALIDPARAMETERVALUE_USERDATAFORMATERROR = "InvalidParameterValue.UserDataFormatError"
 //  INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = "InvalidParameterValue.UserDataSizeExceeded"
 //  INVALIDPERMISSION = "InvalidPermission"
-//  LAUNCHCONFIGURATIONQUOTALIMITEXCEEDED = "LaunchConfigurationQuotaLimitExceeded"
+//  LIMITEXCEEDED_LAUNCHCONFIGURATIONQUOTANOTENOUGH = "LimitExceeded.LaunchConfigurationQuotaNotEnough"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_INSTANCEMARKETOPTIONS = "MissingParameter.InstanceMarketOptions"
 func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationRequest) (response *CreateLaunchConfigurationResponse, err error) {
@@ -628,12 +626,7 @@ func NewDeleteLaunchConfigurationResponse() (response *DeleteLaunchConfiguration
 // * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
 //
 // 可能返回的错误码:
-//  INVALIDLAUNCHCONFIGURATION = "InvalidLaunchConfiguration"
-//  INVALIDLAUNCHCONFIGURATIONID = "InvalidLaunchConfigurationId"
-//  INVALIDLAUNCHCONFIGURATIONID_INUSE = "InvalidLaunchConfigurationId.InUse"
-//  INVALIDLAUNCHCONFIGURATIONID_NOTFOUND = "InvalidLaunchConfigurationId.NotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
-//  RESOURCEINUSE_LAUNCHCONFIGURATIONIDINUSE = "ResourceInUse.LaunchConfigurationIdInUse"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
 func (c *Client) DeleteLaunchConfiguration(request *DeleteLaunchConfigurationRequest) (response *DeleteLaunchConfigurationResponse, err error) {
     if request == nil {

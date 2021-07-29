@@ -653,7 +653,7 @@ const (
 	// 标签添加失败。
 	FAILEDOPERATION_TAGADDFAILED = "FailedOperation.TagAddFailed"
 
-	// 标签接口调用失败，请稍后再试。若无法解决，请提交工单。
+	// 标签接口调用失败，请稍后再试。若无法解决，请在线咨询。
 	FAILEDOPERATION_TAGCALLERFAILED = "FailedOperation.TagCallerFailed"
 
 	// 后端超时错误。
@@ -917,7 +917,7 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
-	// 日志服务(CLS)不可用，请确保您已在日志服务控制台开通服务。若无法解决，请提交工单。
+	// 日志服务(CLS)不可用，请确保您已在日志服务控制台开通服务。若无法解决，请在线咨询。
 	RESOURCEUNAVAILABLE_CLSNOTALLOWED = "ResourceUnavailable.CLSNotAllowed"
 
 	// 资源售罄。

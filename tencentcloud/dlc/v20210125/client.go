@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -333,7 +333,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
-// 本接口（CreateTask）用于创建sql查询任务。
+// 本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -346,6 +346,71 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
         request = NewCreateTaskRequest()
     }
     response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTasksRequest() (request *CreateTasksRequest) {
+    request = &CreateTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateTasks")
+    return
+}
+
+func NewCreateTasksResponse() (response *CreateTasksResponse) {
+    response = &CreateTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTasks
+// 批量创建任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateTasksRequest()
+    }
+    response = NewCreateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTasksInOrderRequest() (request *CreateTasksInOrderRequest) {
+    request = &CreateTasksInOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateTasksInOrder")
+    return
+}
+
+func NewCreateTasksInOrderResponse() (response *CreateTasksInOrderResponse) {
+    response = &CreateTasksInOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTasksInOrder
+// 按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateTasksInOrder(request *CreateTasksInOrderRequest) (response *CreateTasksInOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateTasksInOrderRequest()
+    }
+    response = NewCreateTasksInOrderResponse()
     err = c.Send(request, response)
     return
 }

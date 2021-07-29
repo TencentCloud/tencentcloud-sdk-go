@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -3271,6 +3271,10 @@ func NewRescanImpactedHostResponse() (response *RescanImpactedHostResponse) {
 }
 
 // RescanImpactedHost
+// 该接口已废弃
+//
+// 
+//
 // 本接口 (RescanImpactedHost) 用于漏洞重新检测。
 //
 // 可能返回的错误码:

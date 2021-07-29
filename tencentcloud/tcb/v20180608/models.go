@@ -1746,8 +1746,11 @@ type DescribeActivityRecordRequest struct {
 	// 活动id列表
 	ActivityIdList []*int64 `json:"ActivityIdList,omitempty" name:"ActivityIdList"`
 
-	// 过滤状态码
+	// 过滤状态码，已废弃
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态码过滤数组，空数组时不过滤
+	Statuses []*int64 `json:"Statuses,omitempty" name:"Statuses"`
 }
 
 func (r *DescribeActivityRecordRequest) ToJsonString() string {
@@ -1766,6 +1769,7 @@ func (r *DescribeActivityRecordRequest) FromJsonString(s string) error {
 	delete(f, "Channel")
 	delete(f, "ActivityIdList")
 	delete(f, "Status")
+	delete(f, "Statuses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivityRecordRequest has unknown keys!", "")
 	}

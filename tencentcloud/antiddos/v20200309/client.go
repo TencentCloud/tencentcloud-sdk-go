@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -661,6 +661,35 @@ func (c *Client) DeleteWaterPrintKey(request *DeleteWaterPrintKeyRequest) (respo
         request = NewDeleteWaterPrintKeyRequest()
     }
     response = NewDeleteWaterPrintKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBasicDeviceStatusRequest() (request *DescribeBasicDeviceStatusRequest) {
+    request = &DescribeBasicDeviceStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeBasicDeviceStatus")
+    return
+}
+
+func NewDescribeBasicDeviceStatusResponse() (response *DescribeBasicDeviceStatusResponse) {
+    response = &DescribeBasicDeviceStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBasicDeviceStatus
+// 获取基础防护攻击状态
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicDeviceStatusRequest()
+    }
+    response = NewDescribeBasicDeviceStatusResponse()
     err = c.Send(request, response)
     return
 }

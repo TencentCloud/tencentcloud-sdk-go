@@ -269,6 +269,9 @@ const (
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 
+	// 指定的路由表不存在。
+	UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
+
 	// CDC子网不支持创建非本地网关类型的路由。
 	UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = "UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway"
 
@@ -302,8 +305,14 @@ const (
 	// 和用户自定义的路由形成ECMP。
 	UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 
+	// 用户配置的实例和路由表不匹配。
+	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
+
 	// 账户余额不足。
 	UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+
+	// 无效的实例状态。
+	UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 
 	// 资源状态不合法。
 	UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
@@ -349,6 +358,9 @@ const (
 
 	// 绑定NAT网关的弹性IP不是按流量计费的。
 	UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = "UnsupportedOperation.PublicIpAddressNotBilledByTraffic"
+
+	// 输入的资源ID与IP绑定的资源不匹配，请检查。
+	UNSUPPORTEDOPERATION_RESOURCEMISMATCH = "UnsupportedOperation.ResourceMismatch"
 
 	// 指定的终端节点服务所创建的终端节点不支持绑定安全组。
 	UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = "UnsupportedOperation.SpecialEndPointService"

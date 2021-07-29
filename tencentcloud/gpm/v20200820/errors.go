@@ -26,7 +26,7 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 匹配日志开通失败，请提交工单。
+	// 匹配日志开通失败，请在线咨询。
 	FAILEDOPERATION_CLSFAILEDOPERATION = "FailedOperation.CLSFailedOperation"
 
 	// 频率限制。玩家重复请求匹配的间隔不小于100ms。
@@ -38,7 +38,7 @@ const (
 	// 创建的规则数超过限制。
 	FAILEDOPERATION_LIMITRULECOUNT = "FailedOperation.LimitRuleCount"
 
-	// 系统错误。若无法解决，请联系智能客服或提交工单。
+	// 系统错误。若无法解决，请在线咨询。
 	FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
 
 	// 标签操作失败。

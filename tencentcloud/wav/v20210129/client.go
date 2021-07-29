@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -361,6 +361,38 @@ func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingI
         request = NewQueryExternalUserMappingInfoRequest()
     }
     response = NewQueryExternalUserMappingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
+    request = &QueryLicenseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryLicenseInfo")
+    return
+}
+
+func NewQueryLicenseInfoResponse() (response *QueryLicenseInfoResponse) {
+    response = &QueryLicenseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryLicenseInfo
+// 该接口获取license对应的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryLicenseInfo(request *QueryLicenseInfoRequest) (response *QueryLicenseInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryLicenseInfoRequest()
+    }
+    response = NewQueryLicenseInfoResponse()
     err = c.Send(request, response)
     return
 }

@@ -6267,6 +6267,9 @@ type Place struct {
 
 	// 国家ID，暂只支持国内：1。
 	CountryId *uint64 `json:"CountryId,omitempty" name:"CountryId"`
+
+	// 位置名称
+	Location *string `json:"Location,omitempty" name:"Location"`
 }
 
 type PrivilegeEscalationProcess struct {
