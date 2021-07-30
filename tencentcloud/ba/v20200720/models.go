@@ -69,6 +69,57 @@ func (r *CreateWeappQRUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGetAuthInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeGetAuthInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGetAuthInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGetAuthInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGetAuthInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实名认证状态：0未实名，1已实名
+		IsTenPayMasked *string `json:"IsTenPayMasked,omitempty" name:"IsTenPayMasked"`
+
+		// 实名认证类型：0个人，1企业
+		IsAuthenticated *string `json:"IsAuthenticated,omitempty" name:"IsAuthenticated"`
+
+		// 认证类型，个人0，企业1
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGetAuthInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGetAuthInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SyncIcpOrderWebInfoRequest struct {
 	*tchttp.BaseRequest
 

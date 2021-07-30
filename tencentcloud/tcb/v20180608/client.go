@@ -43,6 +43,39 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindEnvGatewayRequest() (request *BindEnvGatewayRequest) {
+    request = &BindEnvGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "BindEnvGateway")
+    return
+}
+
+func NewBindEnvGatewayResponse() (response *BindEnvGatewayResponse) {
+    response = &BindEnvGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindEnvGateway
+// 绑定另外一个环境下的网关，callContainer请求可以访问到该网关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BindEnvGateway(request *BindEnvGatewayRequest) (response *BindEnvGatewayResponse, err error) {
+    if request == nil {
+        request = NewBindEnvGatewayRequest()
+    }
+    response = NewBindEnvGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
     request = &CheckTcbServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

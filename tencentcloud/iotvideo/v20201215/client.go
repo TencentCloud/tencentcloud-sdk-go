@@ -105,6 +105,37 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
     return
 }
 
+func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
+    request = &BindCloudStorageUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "BindCloudStorageUser")
+    return
+}
+
+func NewBindCloudStorageUserResponse() (response *BindCloudStorageUserResponse) {
+    response = &BindCloudStorageUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindCloudStorageUser
+// 绑定云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindCloudStorageUser(request *BindCloudStorageUserRequest) (response *BindCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewBindCloudStorageUserRequest()
+    }
+    response = NewBindCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequest) {
     request = &CancelAIModelApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -349,6 +380,37 @@ func (c *Client) CreateCloudStorage(request *CreateCloudStorageRequest) (respons
         request = NewCreateCloudStorageRequest()
     }
     response = NewCreateCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDataForwardRequest() (request *CreateDataForwardRequest) {
+    request = &CreateDataForwardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDataForward")
+    return
+}
+
+func NewCreateDataForwardResponse() (response *CreateDataForwardResponse) {
+    response = &CreateDataForwardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDataForward
+// 创建数据转发
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDataForward(request *CreateDataForwardRequest) (response *CreateDataForwardResponse, err error) {
+    if request == nil {
+        request = NewCreateDataForwardRequest()
+    }
+    response = NewCreateDataForwardResponse()
     err = c.Send(request, response)
     return
 }
@@ -1003,6 +1065,68 @@ func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeReque
     return
 }
 
+func NewDescribeCloudStorageUsersRequest() (request *DescribeCloudStorageUsersRequest) {
+    request = &DescribeCloudStorageUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageUsers")
+    return
+}
+
+func NewDescribeCloudStorageUsersResponse() (response *DescribeCloudStorageUsersResponse) {
+    response = &DescribeCloudStorageUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudStorageUsers
+// 拉取云存用户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageUsers(request *DescribeCloudStorageUsersRequest) (response *DescribeCloudStorageUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageUsersRequest()
+    }
+    response = NewDescribeCloudStorageUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataForwardListRequest() (request *DescribeDataForwardListRequest) {
+    request = &DescribeDataForwardListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDataForwardList")
+    return
+}
+
+func NewDescribeDataForwardListResponse() (response *DescribeDataForwardListResponse) {
+    response = &DescribeDataForwardListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataForwardList
+// 获取数据转发列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataForwardList(request *DescribeDataForwardListRequest) (response *DescribeDataForwardListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataForwardListRequest()
+    }
+    response = NewDescribeDataForwardListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1185,6 +1309,37 @@ func (c *Client) DescribeDeviceEventHistory(request *DescribeDeviceEventHistoryR
         request = NewDescribeDeviceEventHistoryRequest()
     }
     response = NewDescribeDeviceEventHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceStatusLogRequest() (request *DescribeDeviceStatusLogRequest) {
+    request = &DescribeDeviceStatusLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceStatusLog")
+    return
+}
+
+func NewDescribeDeviceStatusLogResponse() (response *DescribeDeviceStatusLogResponse) {
+    response = &DescribeDeviceStatusLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeviceStatusLog
+// 获取设备上下线日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceStatusLog(request *DescribeDeviceStatusLogRequest) (response *DescribeDeviceStatusLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceStatusLogRequest()
+    }
+    response = NewDescribeDeviceStatusLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -1526,6 +1681,37 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
     return
 }
 
+func NewDescribeSDKLogRequest() (request *DescribeSDKLogRequest) {
+    request = &DescribeSDKLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeSDKLog")
+    return
+}
+
+func NewDescribeSDKLogResponse() (response *DescribeSDKLogResponse) {
+    response = &DescribeSDKLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSDKLog
+// 获取设备sdk日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSDKLog(request *DescribeSDKLogRequest) (response *DescribeSDKLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeSDKLogRequest()
+    }
+    response = NewDescribeSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
     request = &EditFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1678,6 +1864,37 @@ func (c *Client) ImportModelDefinition(request *ImportModelDefinitionRequest) (r
     return
 }
 
+func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserRequest) {
+    request = &InheritCloudStorageUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "InheritCloudStorageUser")
+    return
+}
+
+func NewInheritCloudStorageUserResponse() (response *InheritCloudStorageUserResponse) {
+    response = &InheritCloudStorageUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InheritCloudStorageUser
+// 继承云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InheritCloudStorageUser(request *InheritCloudStorageUserRequest) (response *InheritCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewInheritCloudStorageUserRequest()
+    }
+    response = NewInheritCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
     request = &ListFirmwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1709,6 +1926,68 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
     return
 }
 
+func NewModifyDataForwardRequest() (request *ModifyDataForwardRequest) {
+    request = &ModifyDataForwardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDataForward")
+    return
+}
+
+func NewModifyDataForwardResponse() (response *ModifyDataForwardResponse) {
+    response = &ModifyDataForwardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDataForward
+// 修改数据转发
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataForward(request *ModifyDataForwardRequest) (response *ModifyDataForwardResponse, err error) {
+    if request == nil {
+        request = NewModifyDataForwardRequest()
+    }
+    response = NewModifyDataForwardResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDataForwardStatusRequest() (request *ModifyDataForwardStatusRequest) {
+    request = &ModifyDataForwardStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDataForwardStatus")
+    return
+}
+
+func NewModifyDataForwardStatusResponse() (response *ModifyDataForwardStatusResponse) {
+    response = &ModifyDataForwardStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDataForwardStatus
+// 设置数据转发状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataForwardStatus(request *ModifyDataForwardStatusRequest) (response *ModifyDataForwardStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDataForwardStatusRequest()
+    }
+    response = NewModifyDataForwardStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
     request = &ModifyDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1736,6 +2015,37 @@ func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDev
         request = NewModifyDeviceRequest()
     }
     response = NewModifyDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceLogLevelRequest() (request *ModifyDeviceLogLevelRequest) {
+    request = &ModifyDeviceLogLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceLogLevel")
+    return
+}
+
+func NewModifyDeviceLogLevelResponse() (response *ModifyDeviceLogLevelResponse) {
+    response = &ModifyDeviceLogLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDeviceLogLevel
+// 更新设备日志级别
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceLogLevel(request *ModifyDeviceLogLevelRequest) (response *ModifyDeviceLogLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceLogLevelRequest()
+    }
+    response = NewModifyDeviceLogLevelResponse()
     err = c.Send(request, response)
     return
 }
@@ -2079,6 +2389,37 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
         request = NewUploadFirmwareRequest()
     }
     response = NewUploadFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewWakeUpDeviceRequest() (request *WakeUpDeviceRequest) {
+    request = &WakeUpDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "WakeUpDevice")
+    return
+}
+
+func NewWakeUpDeviceResponse() (response *WakeUpDeviceResponse) {
+    response = &WakeUpDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// WakeUpDevice
+// 设备唤醒
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) WakeUpDevice(request *WakeUpDeviceRequest) (response *WakeUpDeviceResponse, err error) {
+    if request == nil {
+        request = NewWakeUpDeviceRequest()
+    }
+    response = NewWakeUpDeviceResponse()
     err = c.Send(request, response)
     return
 }

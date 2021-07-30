@@ -251,6 +251,60 @@ func (r *BatchUpdateFirmwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BindCloudStorageUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *BindCloudStorageUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindCloudStorageUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindCloudStorageUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindCloudStorageUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindCloudStorageUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindCloudStorageUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CancelAIModelApplicationRequest struct {
 	*tchttp.BaseRequest
 
@@ -365,7 +419,7 @@ type CheckForwardAuthRequest struct {
 	// 控制台Skey
 	Skey *string `json:"Skey,omitempty" name:"Skey"`
 
-	// 队列类型
+	// 队列类型 0.CMQ  1.Ckafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 }
 
@@ -405,7 +459,7 @@ type CheckForwardAuthResponse struct {
 		// 错误消息
 		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
-		// 队列类型
+		// 队列类型 0.CMQ  1.Ckafka
 		QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -455,6 +509,12 @@ type CloudStorageTimeInfo struct {
 
 	// 结束时间
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type CloudStorageUserInfo struct {
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type ControlDeviceDataRequest struct {
@@ -789,6 +849,60 @@ func (r *CreateCloudStorageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDataForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 转发地址。
+	ForwardAddr *string `json:"ForwardAddr,omitempty" name:"ForwardAddr"`
+
+	// 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+	DataChose *int64 `json:"DataChose,omitempty" name:"DataChose"`
+}
+
+func (r *CreateDataForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ForwardAddr")
+	delete(f, "DataChose")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDataForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDataForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataForwardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateForwardRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -804,7 +918,7 @@ type CreateForwardRuleRequest struct {
 	// 队列区域
 	QueueRegion *string `json:"QueueRegion,omitempty" name:"QueueRegion"`
 
-	// 队列类型
+	// 队列类型 0.CMQ  1.Ckafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
 	// 临时密钥
@@ -913,16 +1027,16 @@ type CreateProductRequest struct {
 	// 产品名称
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 产品设备类型
+	// 产品设备类型 1.普通设备 2.NVR设备
 	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 产品有效期
 	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
 
-	// 设备功能码
+	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
 	Features []*string `json:"Features,omitempty" name:"Features"`
 
-	// 设备操作系统
+	// 设备操作系统 android linux liteos
 	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
 
 	// 芯片厂商id
@@ -934,7 +1048,7 @@ type CreateProductRequest struct {
 	// 产品描述信息
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
-	// 认证方式。2 PSK
+	// 认证方式 只支持取值为2 psk认证
 	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
 }
 
@@ -1038,6 +1152,28 @@ func (r *CreateTaskFileUrlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateTaskFileUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DataForward struct {
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 转发地址。
+	ForwardAddr *string `json:"ForwardAddr,omitempty" name:"ForwardAddr"`
+
+	// 转发状态。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataChose *int64 `json:"DataChose,omitempty" name:"DataChose"`
 }
 
 type DeleteDeviceRequest struct {
@@ -1191,7 +1327,7 @@ type DeleteForwardRuleResponse struct {
 		// 产品ID
 		ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
-		// 删除结果
+		// 删除结果 0成功 其他不成功
 		Result *uint64 `json:"Result,omitempty" name:"Result"`
 
 		// 错误消息
@@ -1585,7 +1721,7 @@ type DescribeBalanceTransactionsRequest struct {
 	// 分页每页数量。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。
+	// 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。默认为All
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 }
 
@@ -1803,6 +1939,9 @@ type DescribeCloudStorageDateRequest struct {
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *DescribeCloudStorageDateRequest) ToJsonString() string {
@@ -1819,6 +1958,7 @@ func (r *DescribeCloudStorageDateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageDateRequest has unknown keys!", "")
 	}
@@ -1871,6 +2011,9 @@ type DescribeCloudStorageEventsRequest struct {
 
 	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *DescribeCloudStorageEventsRequest) ToJsonString() string {
@@ -1892,6 +2035,7 @@ func (r *DescribeCloudStorageEventsRequest) FromJsonString(s string) error {
 	delete(f, "Context")
 	delete(f, "Size")
 	delete(f, "EventId")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageEventsRequest has unknown keys!", "")
 	}
@@ -1941,6 +2085,9 @@ type DescribeCloudStorageRequest struct {
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 云存用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *DescribeCloudStorageRequest) ToJsonString() string {
@@ -1957,6 +2104,7 @@ func (r *DescribeCloudStorageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageRequest has unknown keys!", "")
 	}
@@ -1978,6 +2126,10 @@ type DescribeCloudStorageResponse struct {
 
 		// 云存回看时长
 		ShiftDuration *uint64 `json:"ShiftDuration,omitempty" name:"ShiftDuration"`
+
+		// 云存用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2063,6 +2215,15 @@ type DescribeCloudStorageTimeRequest struct {
 
 	// 云存日期，例如"2020-01-05"
 	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 开始时间，unix时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *DescribeCloudStorageTimeRequest) ToJsonString() string {
@@ -2080,6 +2241,9 @@ func (r *DescribeCloudStorageTimeRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "Date")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageTimeRequest has unknown keys!", "")
 	}
@@ -2109,6 +2273,120 @@ func (r *DescribeCloudStorageTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloudStorageUsersRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 分页拉取数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页拉取偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCloudStorageUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudStorageUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 用户信息
+		Users []*CloudStorageUserInfo `json:"Users,omitempty" name:"Users"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudStorageUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataForwardListRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID列表
+	ProductIds *string `json:"ProductIds,omitempty" name:"ProductIds"`
+}
+
+func (r *DescribeDataForwardListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataForwardListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataForwardListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataForwardListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据转发列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataForwardList []*DataForward `json:"DataForwardList,omitempty" name:"DataForwardList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDataForwardListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataForwardListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceActionHistoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -2127,7 +2405,7 @@ type DescribeDeviceActionHistoryRequest struct {
 	// 动作Id
 	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
 
-	// 查询条数
+	// 查询条数 默认为0 最大不超过500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 游标，标识查询位置。
@@ -2197,10 +2475,10 @@ func (r *DescribeDeviceActionHistoryResponse) FromJsonString(s string) error {
 type DescribeDeviceCommLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 开始时间
+	// 开始时间 13位时间戳 单位毫秒
 	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
 
-	// 结束时间
+	// 结束时间 13位时间戳 单位毫秒
 	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
 
 	// 产品ID
@@ -2209,13 +2487,13 @@ type DescribeDeviceCommLogRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 返回条数
+	// 返回条数 默认为50
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 检索上下文
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 类型：shadow 下行，device 上行
+	// 类型：shadow 下行，device 上行 默认为空则全部查询
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -2554,6 +2832,10 @@ type DescribeDeviceResponse struct {
 		// 设备过期时间
 		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
+		// 设备的sdk日志等级，0：关闭，1：错误，2：告警，3：信息，4：调试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2567,6 +2849,88 @@ func (r *DescribeDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceStatusLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间（毫秒）
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 结束时间（毫秒）
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 返回条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
+func (r *DescribeDeviceStatusLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceStatusLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MinTime")
+	delete(f, "MaxTime")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Limit")
+	delete(f, "Context")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceStatusLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceStatusLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 日志数据结果数组，返回对应时间点及取值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*DeviceStatusLogItem `json:"Results,omitempty" name:"Results"`
+
+		// 日志数据结果总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceStatusLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceStatusLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2721,10 +3085,10 @@ type DescribeFirmwareTaskDevicesRequest struct {
 	// 筛选条件
 	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询偏移量
+	// 查询偏移量 默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询的数量
+	// 查询的数量 默认为50
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -3104,10 +3468,10 @@ type DescribeForwardRuleResponse struct {
 		// 产品ID
 		ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
-		// 消息类型
+		// 消息类型 1设备上报信息 2设备状态变化通知 3为全选
 		MsgType *uint64 `json:"MsgType,omitempty" name:"MsgType"`
 
-		// 结果
+		// 结果 2表示禁用 其他为成功
 		Result *uint64 `json:"Result,omitempty" name:"Result"`
 
 		// 角色名
@@ -3301,6 +3665,81 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSDKLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志开始时间
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 日志结束时间
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 查询关键字，可以同时支持键值查询和文本查询，
+	// 例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。
+	// 键值或文本可以包含多个，以空格隔开。
+	// 其中可以索引的key包括：productid、devicename、loglevel
+	// 一个典型的查询示例：productid:7JK1G72JNE devicename:name publish loglevel:WARN一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW publish
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 日志检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 查询条数
+	MaxNum *uint64 `json:"MaxNum,omitempty" name:"MaxNum"`
+}
+
+func (r *DescribeSDKLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSDKLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MinTime")
+	delete(f, "MaxTime")
+	delete(f, "Keywords")
+	delete(f, "Context")
+	delete(f, "MaxNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSDKLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSDKLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志检索上下文
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 日志列表
+		Results []*SDKLogItem `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSDKLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSDKLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeviceCommLogItem struct {
 
 	// 时间
@@ -3341,6 +3780,18 @@ type DeviceInfo struct {
 
 	// 设备过期时间
 	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type DeviceStatusLogItem struct {
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 状态类型： Online 上线，Offline 下线
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 日志信息
+	Data *string `json:"Data,omitempty" name:"Data"`
 }
 
 type DeviceUpdateStatus struct {
@@ -3587,7 +4038,7 @@ type GetAllFirmwareVersionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 无
+		// 固件可用版本列表
 		Version []*string `json:"Version,omitempty" name:"Version"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3709,6 +4160,64 @@ func (r *ImportModelDefinitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InheritCloudStorageUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 原始用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 目标用户ID
+	ToUserId *string `json:"ToUserId,omitempty" name:"ToUserId"`
+}
+
+func (r *InheritCloudStorageUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InheritCloudStorageUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "UserId")
+	delete(f, "ToUserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InheritCloudStorageUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InheritCloudStorageUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InheritCloudStorageUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InheritCloudStorageUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListFirmwaresRequest struct {
 	*tchttp.BaseRequest
 
@@ -3770,6 +4279,164 @@ func (r *ListFirmwaresResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListFirmwaresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 转发地址。
+	ForwardAddr *string `json:"ForwardAddr,omitempty" name:"ForwardAddr"`
+
+	// 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
+	DataChose *int64 `json:"DataChose,omitempty" name:"DataChose"`
+}
+
+func (r *ModifyDataForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ForwardAddr")
+	delete(f, "DataChose")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDataForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataForwardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataForwardStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 转发状态，1启用，0禁用。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyDataForwardStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataForwardStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataForwardStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataForwardStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDataForwardStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataForwardStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceLogLevelRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 日志级别，0：关闭，1：错误，2：告警，3：信息，4：调试
+	LogLevel *uint64 `json:"LogLevel,omitempty" name:"LogLevel"`
+}
+
+func (r *ModifyDeviceLogLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceLogLevelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "LogLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceLogLevelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDeviceLogLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDeviceLogLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceLogLevelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3842,7 +4509,7 @@ type ModifyForwardRuleRequest struct {
 	// 队列区域
 	QueueRegion *string `json:"QueueRegion,omitempty" name:"QueueRegion"`
 
-	// 队列类型
+	// 队列类型 0.CMQ 1.CKafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
 	// 临时密钥
@@ -3905,7 +4572,7 @@ type ModifyForwardRuleResponse struct {
 		// 错误信息
 		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
-		// 队列类型
+		// 队列类型 0.CMQ 1.CKafka
 		QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3980,10 +4647,10 @@ type ModifyProductRequest struct {
 	// 产品id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 修改的产品名称
+	// 修改的产品名称 （支持中文、英文、数字、下划线组合，最多不超过20个字符）
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 修改的产品描述
+	// 修改的产品描述 （最多不超过128个字符）
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 }
 
@@ -4305,6 +4972,24 @@ func (r *RetryDeviceFirmwareTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SDKLogItem struct {
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 日志等级
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 日志时间
+	DateTime *string `json:"DateTime,omitempty" name:"DateTime"`
+
+	// 日志内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 type SearchKeyword struct {
 
 	// 搜索条件的Key
@@ -4320,7 +5005,7 @@ type SetForwardAuthRequest struct {
 	// 控制台Skey
 	Skey *string `json:"Skey,omitempty" name:"Skey"`
 
-	// 消息队列类型
+	// 消息队列类型  0.CMQ 1.CKafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 }
 
@@ -4360,7 +5045,7 @@ type SetForwardAuthResponse struct {
 		// 角色ID
 		RoleID *uint64 `json:"RoleID,omitempty" name:"RoleID"`
 
-		// 消息队列类型
+		// 消息队列类型  0.CMQ 1.CKafka
 		QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
 		// 错误消息
@@ -4658,4 +5343,54 @@ type VideoProduct struct {
 
 	// 修改时间unix时间戳
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type WakeUpDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *WakeUpDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WakeUpDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WakeUpDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type WakeUpDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *WakeUpDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WakeUpDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

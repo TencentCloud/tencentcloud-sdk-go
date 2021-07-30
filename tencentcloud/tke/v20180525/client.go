@@ -713,6 +713,38 @@ func (c *Client) CreateEKSCluster(request *CreateEKSClusterRequest) (response *C
     return
 }
 
+func NewCreatePrometheusAlertRuleRequest() (request *CreatePrometheusAlertRuleRequest) {
+    request = &CreatePrometheusAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusAlertRule")
+    return
+}
+
+func NewCreatePrometheusAlertRuleResponse() (response *CreatePrometheusAlertRuleResponse) {
+    response = &CreatePrometheusAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusAlertRule
+// 创建告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusAlertRule(request *CreatePrometheusAlertRuleRequest) (response *CreatePrometheusAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusAlertRuleRequest()
+    }
+    response = NewCreatePrometheusAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusDashboardRequest() (request *CreatePrometheusDashboardRequest) {
     request = &CreatePrometheusDashboardRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1131,6 +1163,38 @@ func (c *Client) DeleteEKSCluster(request *DeleteEKSClusterRequest) (response *D
         request = NewDeleteEKSClusterRequest()
     }
     response = NewDeleteEKSClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusAlertRuleRequest() (request *DeletePrometheusAlertRuleRequest) {
+    request = &DeletePrometheusAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusAlertRule")
+    return
+}
+
+func NewDeletePrometheusAlertRuleResponse() (response *DeletePrometheusAlertRuleResponse) {
+    response = &DeletePrometheusAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrometheusAlertRule
+// 删除告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRuleRequest) (response *DeletePrometheusAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusAlertRuleRequest()
+    }
+    response = NewDeletePrometheusAlertRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2131,6 +2195,41 @@ func (c *Client) DescribePrometheusAlertRule(request *DescribePrometheusAlertRul
     return
 }
 
+func NewDescribePrometheusInstanceRequest() (request *DescribePrometheusInstanceRequest) {
+    request = &DescribePrometheusInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusInstance")
+    return
+}
+
+func NewDescribePrometheusInstanceResponse() (response *DescribePrometheusInstanceResponse) {
+    response = &DescribePrometheusInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusInstance
+// 获取实例详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusInstance(request *DescribePrometheusInstanceRequest) (response *DescribePrometheusInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusInstanceRequest()
+    }
+    response = NewDescribePrometheusInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusOverviewsRequest() (request *DescribePrometheusOverviewsRequest) {
     request = &DescribePrometheusOverviewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2717,6 +2816,39 @@ func (c *Client) ModifyNodePoolDesiredCapacityAboutAsg(request *ModifyNodePoolDe
         request = NewModifyNodePoolDesiredCapacityAboutAsgRequest()
     }
     response = NewModifyNodePoolDesiredCapacityAboutAsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrometheusAlertRuleRequest() (request *ModifyPrometheusAlertRuleRequest) {
+    request = &ModifyPrometheusAlertRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusAlertRule")
+    return
+}
+
+func NewModifyPrometheusAlertRuleResponse() (response *ModifyPrometheusAlertRuleResponse) {
+    response = &ModifyPrometheusAlertRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPrometheusAlertRule
+// 修改告警规则 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyPrometheusAlertRule(request *ModifyPrometheusAlertRuleRequest) (response *ModifyPrometheusAlertRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusAlertRuleRequest()
+    }
+    response = NewModifyPrometheusAlertRuleResponse()
     err = c.Send(request, response)
     return
 }

@@ -125,7 +125,7 @@ const (
 	// 同一请求只能扩容Task或者Core节点。
 	INVALIDPARAMETER_INVALIDCOUNTNUM = "InvalidParameter.InvalidCountNum"
 
-	// 容器账号或容器参数校验错误。
+	// 错误信息：Invalid PodParameter。
 	INVALIDPARAMETER_INVALIDCUSTOMIZEDPODPARAM = "InvalidParameter.InvalidCustomizedPodParam"
 
 	// 无效的磁盘大小。

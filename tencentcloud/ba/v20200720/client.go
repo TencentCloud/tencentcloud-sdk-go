@@ -74,6 +74,35 @@ func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *C
     return
 }
 
+func NewDescribeGetAuthInfoRequest() (request *DescribeGetAuthInfoRequest) {
+    request = &DescribeGetAuthInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ba", APIVersion, "DescribeGetAuthInfo")
+    return
+}
+
+func NewDescribeGetAuthInfoResponse() (response *DescribeGetAuthInfoResponse) {
+    response = &DescribeGetAuthInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGetAuthInfo
+// 获取实名认证信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (response *DescribeGetAuthInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeGetAuthInfoRequest()
+    }
+    response = NewDescribeGetAuthInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncIcpOrderWebInfoRequest() (request *SyncIcpOrderWebInfoRequest) {
     request = &SyncIcpOrderWebInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,9 +124,7 @@ func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
 // 只有指定的网站信息字段能被同步
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()

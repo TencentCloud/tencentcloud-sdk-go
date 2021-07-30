@@ -1738,18 +1738,29 @@ type GeneralBasicOCRRequest struct {
 	// 识别语言类型。
 	// 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)，各种语言均支持与英文混合的文字识别。
 	// 可选值：
-	// zh\auto\jap\kor\
-	// spa\fre\ger\por\
-	// vie\may\rus\ita\
-	// hol\swe\fin\dan\
-	// nor\hun\tha\lat\ara
-	// 可选值分别表示：
-	// 中英文混合、自动识别、日语、韩语、
-	// 西班牙语、法语、德语、葡萄牙语、
-	// 越南语、马来语、俄语、意大利语、
-	// 荷兰语、瑞典语、芬兰语、丹麦语、
-	// 挪威语、匈牙利语、泰语、拉丁语系、
-	// 阿拉伯语。
+	// zh：中英混合
+	// zh_rare：支持英文、数字、中文生僻字、繁体字，特殊符号等
+	// auto：自动
+	// mix：混合语种
+	// jap：日语
+	// kor：韩语
+	// spa：西班牙语
+	// fre：法语
+	// ger：德语
+	// por：葡萄牙语
+	// vie：越语
+	// may：马来语
+	// rus：俄语
+	// ita：意大利语
+	// hol：荷兰语
+	// swe：瑞典语
+	// fin：芬兰语
+	// dan：丹麦语
+	// nor：挪威语
+	// hun：匈牙利语
+	// tha：泰语
+	// hi：印地语
+	// ara：阿拉伯语
 	LanguageType *string `json:"LanguageType,omitempty" name:"LanguageType"`
 
 	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
@@ -5091,11 +5102,35 @@ type TrainTicketOCRResponse struct {
 		// 身份证号
 		ID *string `json:"ID,omitempty" name:"ID"`
 
-		// 发票消费类型
+		// 发票消费类型：交通
 		InvoiceType *string `json:"InvoiceType,omitempty" name:"InvoiceType"`
 
 		// 序列号
 		SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+		// 加收票价
+		AdditionalCost *string `json:"AdditionalCost,omitempty" name:"AdditionalCost"`
+
+		// 手续费
+		HandlingFee *string `json:"HandlingFee,omitempty" name:"HandlingFee"`
+
+		// 大写金额（票面有大写金额该字段才有值）
+		LegalAmount *string `json:"LegalAmount,omitempty" name:"LegalAmount"`
+
+		// 售票站
+		TicketStation *string `json:"TicketStation,omitempty" name:"TicketStation"`
+
+		// 原票价（一般有手续费的才有原始票价字段）
+		OriginalPrice *string `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+		// 发票类型：火车票、火车票补票、火车票退票凭证
+		InvoiceStyle *string `json:"InvoiceStyle,omitempty" name:"InvoiceStyle"`
+
+		// 收据号码
+		ReceiptNumber *string `json:"ReceiptNumber,omitempty" name:"ReceiptNumber"`
+
+		// 仅供报销使用：1为是，0为否
+		IsReceipt *string `json:"IsReceipt,omitempty" name:"IsReceipt"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

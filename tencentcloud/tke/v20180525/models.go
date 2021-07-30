@@ -1468,6 +1468,59 @@ func (r *CreateEKSClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePrometheusAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 告警配置
+	AlertRule *PrometheusAlertRuleDetail `json:"AlertRule,omitempty" name:"AlertRule"`
+}
+
+func (r *CreatePrometheusAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusAlertRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AlertRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusAlertRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrometheusAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 告警id
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePrometheusAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusAlertRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePrometheusDashboardRequest struct {
 	*tchttp.BaseRequest
 
@@ -2070,6 +2123,56 @@ func (r *DeleteEKSClusterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEKSClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 告警规则id列表
+	AlertIds []*string `json:"AlertIds,omitempty" name:"AlertIds"`
+}
+
+func (r *DeletePrometheusAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusAlertRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AlertIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusAlertRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrometheusAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrometheusAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusAlertRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3585,6 +3688,78 @@ func (r *DescribePrometheusAlertRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrometheusInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribePrometheusInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例id
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 实例名称
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 私有网络id
+		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+		// 子网id
+		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+		// cos桶名称
+		COSBucket *string `json:"COSBucket,omitempty" name:"COSBucket"`
+
+		// 数据查询地址
+		QueryAddress *string `json:"QueryAddress,omitempty" name:"QueryAddress"`
+
+		// 实例中grafana相关的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Grafana *PrometheusGrafanaInfo `json:"Grafana,omitempty" name:"Grafana"`
+
+		// 用户自定义alertmanager
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AlertManagerUrl *string `json:"AlertManagerUrl,omitempty" name:"AlertManagerUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePrometheusOverviewsRequest struct {
 	*tchttp.BaseRequest
 
@@ -4940,6 +5115,56 @@ func (r *ModifyNodePoolDesiredCapacityAboutAsgResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPrometheusAlertRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 告警配置
+	AlertRule *PrometheusAlertRuleDetail `json:"AlertRule,omitempty" name:"AlertRule"`
+}
+
+func (r *ModifyPrometheusAlertRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusAlertRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AlertRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusAlertRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPrometheusAlertRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPrometheusAlertRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusAlertRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPrometheusTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -5221,6 +5446,27 @@ type PrometheusConfigItem struct {
 	// 用于出参，如果该配置来至模板，则为模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type PrometheusGrafanaInfo struct {
+
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 域名，只有开启外网访问才有效果
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 内网地址，或者外网地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 是否开启了外网访问
+	// close = 未开启外网访问
+	// opening = 正在开启外网访问
+	// open  = 已开启外网访问
+	Internet *string `json:"Internet,omitempty" name:"Internet"`
+
+	// grafana管理员用户名
+	AdminUser *string `json:"AdminUser,omitempty" name:"AdminUser"`
 }
 
 type PrometheusInstanceOverview struct {
