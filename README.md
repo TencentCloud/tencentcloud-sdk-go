@@ -19,13 +19,13 @@
 
 推荐使用腾讯云镜像加速下载：
 
-1. lnuix 或 macos:
+1. Linux 或 MacOS:
 
     ```bash
     export GOPROXY=https://mirrors.tencent.com/go/
     ```
 
-2. windows:
+2. Windows:
 
     ```cmd
     set GOPROXY=https://mirrors.tencent.com/go/
