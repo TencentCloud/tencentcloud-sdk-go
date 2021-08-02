@@ -1,179 +1,5 @@
 # 本版本更新包含以下内容：
 
-## 网站备案(ba) 版本：2020-07-20
-
-### 第 3 次发布
-
-发布时间：2021-07-30 08:01:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeGetAuthInfo](https://cloud.tencent.com/document/api/243/59312)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-### 第 11 次发布
-
-发布时间：2021-07-30 08:02:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [BindCloudStorageUser](https://cloud.tencent.com/document/api/1131/59323)
-* [CreateDataForward](https://cloud.tencent.com/document/api/1131/59317)
-* [DescribeCloudStorageUsers](https://cloud.tencent.com/document/api/1131/59322)
-* [DescribeDataForwardList](https://cloud.tencent.com/document/api/1131/59316)
-* [DescribeDeviceStatusLog](https://cloud.tencent.com/document/api/1131/59320)
-* [DescribeSDKLog](https://cloud.tencent.com/document/api/1131/59319)
-* [InheritCloudStorageUser](https://cloud.tencent.com/document/api/1131/59321)
-* [ModifyDataForward](https://cloud.tencent.com/document/api/1131/59315)
-* [ModifyDataForwardStatus](https://cloud.tencent.com/document/api/1131/59314)
-* [ModifyDeviceLogLevel](https://cloud.tencent.com/document/api/1131/59318)
-* [WakeUpDevice](https://cloud.tencent.com/document/api/1131/59313)
-
-修改接口：
-
-* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/53635)
-
-	* 新增入参：UserId
-
-	* 新增出参：UserId
-
-* [DescribeCloudStorageDate](https://cloud.tencent.com/document/api/1131/53634)
-
-	* 新增入参：UserId
-
-* [DescribeCloudStorageEvents](https://cloud.tencent.com/document/api/1131/53633)
-
-	* 新增入参：UserId
-
-* [DescribeCloudStorageTime](https://cloud.tencent.com/document/api/1131/53631)
-
-	* 新增入参：StartTime, EndTime, UserId
-
-* [DescribeDevice](https://cloud.tencent.com/document/api/1131/53083)
-
-	* 新增出参：LogLevel
-
-
-新增数据结构：
-
-* [CloudStorageUserInfo](https://cloud.tencent.com/document/api/1131/53113#CloudStorageUserInfo)
-* [DataForward](https://cloud.tencent.com/document/api/1131/53113#DataForward)
-* [DeviceStatusLogItem](https://cloud.tencent.com/document/api/1131/53113#DeviceStatusLogItem)
-* [SDKLogItem](https://cloud.tencent.com/document/api/1131/53113#SDKLogItem)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 19 次发布
-
-发布时间：2021-07-30 08:01:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
-
-	* 新增成员：ImageId
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 52 次发布
-
-发布时间：2021-07-30 08:07:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [TrainTicketOCR](https://cloud.tencent.com/document/api/866/37071)
-
-	* 新增出参：AdditionalCost, HandlingFee, LegalAmount, TicketStation, OriginalPrice, InvoiceStyle, ReceiptNumber, IsReceipt
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 59 次发布
-
-发布时间：2021-07-30 08:08:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [BindEnvGateway](https://cloud.tencent.com/document/api/876/59324)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 65 次发布
-
-发布时间：2021-07-30 08:09:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59328)
-* [DeletePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59327)
-* [DescribePrometheusInstance](https://cloud.tencent.com/document/api/457/59326)
-* [ModifyPrometheusAlertRule](https://cloud.tencent.com/document/api/457/59325)
-
-新增数据结构：
-
-* [PrometheusGrafanaInfo](https://cloud.tencent.com/document/api/457/31866#PrometheusGrafanaInfo)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 89 次发布
-
-发布时间：2021-07-30 08:10:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MediaProcessTaskTranscodeResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskTranscodeResult)
-
-	* 新增成员：BeginProcessTime, FinishTime
-
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -3038,7 +2864,7 @@
 
 新增接口：
 
-* [[DescribeGetAuthInfo](https://cloud.tencent.com/document/api/243/59312)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGetAuthInfo](https://cloud.tencent.com/document/api/243/59312)
 
 ### 第 2 次发布
 
@@ -29477,17 +29303,17 @@
 
 新增接口：
 
-* [[BindCloudStorageUser](https://cloud.tencent.com/document/api/1131/59323)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDataForward](https://cloud.tencent.com/document/api/1131/59317)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCloudStorageUsers](https://cloud.tencent.com/document/api/1131/59322)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDataForwardList](https://cloud.tencent.com/document/api/1131/59316)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceStatusLog](https://cloud.tencent.com/document/api/1131/59320)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSDKLog](https://cloud.tencent.com/document/api/1131/59319)](https://cloud.tencent.com/document/api/#/#)
-* [[InheritCloudStorageUser](https://cloud.tencent.com/document/api/1131/59321)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDataForward](https://cloud.tencent.com/document/api/1131/59315)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDataForwardStatus](https://cloud.tencent.com/document/api/1131/59314)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDeviceLogLevel](https://cloud.tencent.com/document/api/1131/59318)](https://cloud.tencent.com/document/api/#/#)
-* [[WakeUpDevice](https://cloud.tencent.com/document/api/1131/59313)](https://cloud.tencent.com/document/api/#/#)
+* [BindCloudStorageUser](https://cloud.tencent.com/document/api/1131/59323)
+* [CreateDataForward](https://cloud.tencent.com/document/api/1131/59317)
+* [DescribeCloudStorageUsers](https://cloud.tencent.com/document/api/1131/59322)
+* [DescribeDataForwardList](https://cloud.tencent.com/document/api/1131/59316)
+* [DescribeDeviceStatusLog](https://cloud.tencent.com/document/api/1131/59320)
+* [DescribeSDKLog](https://cloud.tencent.com/document/api/1131/59319)
+* [InheritCloudStorageUser](https://cloud.tencent.com/document/api/1131/59321)
+* [ModifyDataForward](https://cloud.tencent.com/document/api/1131/59315)
+* [ModifyDataForwardStatus](https://cloud.tencent.com/document/api/1131/59314)
+* [ModifyDeviceLogLevel](https://cloud.tencent.com/document/api/1131/59318)
+* [WakeUpDevice](https://cloud.tencent.com/document/api/1131/59313)
 
 修改接口：
 
@@ -29516,10 +29342,10 @@
 
 新增数据结构：
 
-* [[CloudStorageUserInfo](https://cloud.tencent.com/document/api/1131/53113#CloudStorageUserInfo)](https://cloud.tencent.com/document/api/1131/53113#[CloudStorageUserInfo](https://cloud.tencent.com/document/api/1131/53113#CloudStorageUserInfo))
-* [[DataForward](https://cloud.tencent.com/document/api/1131/53113#DataForward)](https://cloud.tencent.com/document/api/1131/53113#[DataForward](https://cloud.tencent.com/document/api/1131/53113#DataForward))
-* [[DeviceStatusLogItem](https://cloud.tencent.com/document/api/1131/53113#DeviceStatusLogItem)](https://cloud.tencent.com/document/api/1131/53113#[DeviceStatusLogItem](https://cloud.tencent.com/document/api/1131/53113#DeviceStatusLogItem))
-* [[SDKLogItem](https://cloud.tencent.com/document/api/1131/53113#SDKLogItem)](https://cloud.tencent.com/document/api/1131/53113#[SDKLogItem](https://cloud.tencent.com/document/api/1131/53113#SDKLogItem))
+* [CloudStorageUserInfo](https://cloud.tencent.com/document/api/1131/53113#CloudStorageUserInfo)
+* [DataForward](https://cloud.tencent.com/document/api/1131/53113#DataForward)
+* [DeviceStatusLogItem](https://cloud.tencent.com/document/api/1131/53113#DeviceStatusLogItem)
+* [SDKLogItem](https://cloud.tencent.com/document/api/1131/53113#SDKLogItem)
 
 ### 第 10 次发布
 
@@ -42603,7 +42429,7 @@
 
 新增接口：
 
-* [[BindEnvGateway](https://cloud.tencent.com/document/api/876/59324)](https://cloud.tencent.com/document/api/#/#)
+* [BindEnvGateway](https://cloud.tencent.com/document/api/876/59324)
 
 ### 第 58 次发布
 
@@ -46706,14 +46532,14 @@
 
 新增接口：
 
-* [[CreatePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59328)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59327)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusInstance](https://cloud.tencent.com/document/api/457/59326)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPrometheusAlertRule](https://cloud.tencent.com/document/api/457/59325)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59328)
+* [DeletePrometheusAlertRule](https://cloud.tencent.com/document/api/457/59327)
+* [DescribePrometheusInstance](https://cloud.tencent.com/document/api/457/59326)
+* [ModifyPrometheusAlertRule](https://cloud.tencent.com/document/api/457/59325)
 
 新增数据结构：
 
-* [[PrometheusGrafanaInfo](https://cloud.tencent.com/document/api/457/31866#PrometheusGrafanaInfo)](https://cloud.tencent.com/document/api/457/31866#[PrometheusGrafanaInfo](https://cloud.tencent.com/document/api/457/31866#PrometheusGrafanaInfo))
+* [PrometheusGrafanaInfo](https://cloud.tencent.com/document/api/457/31866#PrometheusGrafanaInfo)
 
 ### 第 64 次发布
 

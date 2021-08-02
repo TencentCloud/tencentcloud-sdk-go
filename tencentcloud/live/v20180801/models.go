@@ -552,6 +552,8 @@ type CommonMixCropParams struct {
 type CommonMixInputParam struct {
 
 	// 输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+	// 当LayoutParams.InputType=0(音视频)/4(纯音频)/5(纯视频)时，该值为需要混流的流名称。
+	// 当LayoutParams.InputType=2(图片)/3(画布)时，该值仅用作标识输入，可用类似Canvas1、Pictrue1的名称。
 	InputStreamName *string `json:"InputStreamName,omitempty" name:"InputStreamName"`
 
 	// 输入流布局参数。
@@ -577,19 +579,19 @@ type CommonMixLayoutParams struct {
 	// 5表示输入流为纯视频。
 	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
 
-	// 输入画面在输出时的宽度。取值范围：
-	// 像素：[0，2000]
-	// 百分比：[0.01，0.99]
-	// 不填默认为输入流的宽度。
-	// 使用百分比时，期望输出为（百分比 * 背景宽）。
-	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
-
 	// 输入画面在输出时的高度。取值范围：
 	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为输入流的高度。
 	// 使用百分比时，期望输出为（百分比 * 背景高）。
 	ImageHeight *float64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
+
+	// 输入画面在输出时的宽度。取值范围：
+	// 像素：[0，2000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为输入流的宽度。
+	// 使用百分比时，期望输出为（百分比 * 背景宽）。
+	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
 
 	// 输入在输出画面的X偏移。取值范围：
 	// 像素：[0，2000]
@@ -968,6 +970,9 @@ type CreateLivePullStreamTaskRequest struct {
 	// SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 	// 当前支持的文件格式：flv，mp4，hls。
 	// 当前支持的拉流协议：http，https，rtmp。
+	// 注意：
+	// 1. 建议优先使用 flv 文件，对于 mp4 未交织好的文件轮播推流易产生卡顿，可通过点播转码进行重新交织后再轮播。
+	// 2. 拒绝内网域名等攻击性拉流地址，如有使用，则做账号封禁处理。
 	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。
