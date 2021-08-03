@@ -311,6 +311,9 @@ const (
 	// 伸缩组内尚有正常实例。
 	RESOURCEINUSE_INSTANCEINGROUP = "ResourceInUse.InstanceInGroup"
 
+	// 指定的启动配置仍在伸缩组中使用。
+	RESOURCEINUSE_LAUNCHCONFIGURATIONIDINUSE = "ResourceInUse.LaunchConfigurationIdInUse"
+
 	// 超过伸缩组最大实例数。
 	RESOURCEINSUFFICIENT_AUTOSCALINGGROUPABOVEMAXSIZE = "ResourceInsufficient.AutoScalingGroupAboveMaxSize"
 

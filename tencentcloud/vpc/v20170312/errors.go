@@ -59,6 +59,9 @@ const (
 	// 无效实例ID。指定的实例ID不存在。
 	INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 
+	// 指定 NetworkInterfaceId 不存在或指定的PrivateIpAddress不在NetworkInterfaceId上。
+	INVALIDNETWORKINTERFACEID_NOTFOUND = "InvalidNetworkInterfaceId.NotFound"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

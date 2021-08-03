@@ -78,6 +78,41 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
     return
 }
 
+func NewCreateStructureTaskTestRequest() (request *CreateStructureTaskTestRequest) {
+    request = &CreateStructureTaskTestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTaskTest")
+    return
+}
+
+func NewCreateStructureTaskTestResponse() (response *CreateStructureTaskTestResponse) {
+    response = &CreateStructureTaskTestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateStructureTaskTest
+// 本接口(CreateStructureTaskTest)基于提供的客户及保单信息，创建并启动结构化识别任务。用于路由到测试环境。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateStructureTaskTest(request *CreateStructureTaskTestRequest) (response *CreateStructureTaskTestResponse, err error) {
+    if request == nil {
+        request = NewCreateStructureTaskTestRequest()
+    }
+    response = NewCreateStructureTaskTestResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRequest) {
     request = &DescribeStructCompareDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -174,6 +209,40 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
         request = NewDescribeStructureTaskResultRequest()
     }
     response = NewDescribeStructureTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStructureTaskResultTestRequest() (request *DescribeStructureTaskResultTestRequest) {
+    request = &DescribeStructureTaskResultTestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResultTest")
+    return
+}
+
+func NewDescribeStructureTaskResultTestResponse() (response *DescribeStructureTaskResultTestResponse) {
+    response = &DescribeStructureTaskResultTestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStructureTaskResultTest
+// 依据任务ID获取结构化结果接口，该接口用于路由到测试环境。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStructureTaskResultTest(request *DescribeStructureTaskResultTestRequest) (response *DescribeStructureTaskResultTestResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureTaskResultTestRequest()
+    }
+    response = NewDescribeStructureTaskResultTestResponse()
     err = c.Send(request, response)
     return
 }

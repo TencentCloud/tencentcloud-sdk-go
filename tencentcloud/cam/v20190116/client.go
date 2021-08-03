@@ -1379,6 +1379,7 @@ func NewGetUserResponse() (response *GetUserResponse) {
 // 查询子用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, err error) {
     if request == nil {

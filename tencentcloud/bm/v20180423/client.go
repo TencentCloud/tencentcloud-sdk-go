@@ -1464,6 +1464,7 @@ func NewReloadDeviceOsResponse() (response *ReloadDeviceOsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTREPAIRTASK = "FailedOperation.ExistRepairTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *ReloadDeviceOsResponse, err error) {

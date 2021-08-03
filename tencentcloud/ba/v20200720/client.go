@@ -93,6 +93,7 @@ func NewDescribeGetAuthInfoResponse() (response *DescribeGetAuthInfoResponse) {
 // 获取实名认证信息
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (response *DescribeGetAuthInfoResponse, err error) {
     if request == nil {
@@ -124,6 +125,7 @@ func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
 // 只有指定的网站信息字段能被同步
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
     if request == nil {

@@ -351,6 +351,7 @@ func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
 // 删除域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISKEYDOMAIN = "FailedOperation.DomainIsKeyDomain"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"

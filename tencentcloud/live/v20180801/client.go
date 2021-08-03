@@ -69,6 +69,7 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
 //  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"

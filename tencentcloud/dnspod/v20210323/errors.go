@@ -26,6 +26,9 @@ const (
 	// 该域名已在您的列表中，无需重复添加。
 	FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 
+	// 该域名为腾讯云 DNSPod 重点保护资源，为了避免误操作造成的业务影响，域名禁止自行操作删除。如果您确认需要删除域名，请先联系您的客户经理，我们将竭诚为您提供技术支持。
+	FAILEDOPERATION_DOMAINISKEYDOMAIN = "FailedOperation.DomainIsKeyDomain"
+
 	// 锁定域名不能进行此操作。
 	FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 

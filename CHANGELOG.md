@@ -1,5 +1,68 @@
 # 本版本更新包含以下内容：
 
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 3 次发布
+
+发布时间：2021-08-03 08:12:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateStructureTaskTest](https://cloud.tencent.com/document/api/1368/59418)
+* [DescribeStructureTaskResultTest](https://cloud.tencent.com/document/api/1368/59417)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 31 次发布
+
+发布时间：2021-08-03 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：AsyncRunEnable, TraceEnable
+
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 2 次发布
+
+发布时间：2021-08-03 08:01:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [User](https://cloud.tencent.com/document/api/1124/51861#User)
+
+	* 新增成员：HeadUrl, Desc
+
+
+
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -10947,6 +11010,19 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 3 次发布
+
+发布时间：2021-08-03 08:12:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateStructureTaskTest](https://cloud.tencent.com/document/api/1368/59418)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStructureTaskResultTest](https://cloud.tencent.com/document/api/1368/59417)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 2 次发布
 
@@ -38510,6 +38586,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 31 次发布
+
+发布时间：2021-08-03 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：AsyncRunEnable, TraceEnable
+
+
 ### 第 30 次发布
 
 发布时间：2021-07-09 08:07:55
@@ -47966,6 +48057,21 @@
 
 
 ## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 2 次发布
+
+发布时间：2021-08-03 08:01:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [User](https://cloud.tencent.com/document/api/1124/51861#User)
+
+	* 新增成员：HeadUrl, Desc
+
 
 ### 第 1 次发布
 
