@@ -19,13 +19,13 @@
 
 推荐使用腾讯云镜像加速下载：
 
-1. lnuix 或 macos:
+1. Linux 或 MacOS:
 
     ```bash
     export GOPROXY=https://mirrors.tencent.com/go/
     ```
 
-2. windows:
+2. Windows:
 
     ```cmd
     set GOPROXY=https://mirrors.tencent.com/go/
@@ -256,6 +256,24 @@ DEBUG模式会打印更详细的日志，当您需要进行详细的排查错误
 ```go
 cpf.Debug = true
 ```
+
+## 禁用长连接(Keep-alive)
+
+SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connection 字段的值为 keep-alive.
+
+如果您需要使用短连接，可以按照以下方式进行设置：
+
+```go
+...
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tp := &http.Transport{
+        DisableKeepAlives: true,
+    }
+    client.WithHttpTransport(tp)
+...
+```
+
+则此 client 发出的每个请求头部的 Connection 字段的值为 close
 
 ## 代理
 
