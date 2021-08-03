@@ -289,7 +289,7 @@ func (c *Client) WithDebug(flag bool) *Client {
 	return c
 }
 
-// WithProvider use the specify provider to get a credential and use it to build a client
+// WithProvider use specify provider to get a credential and use it to build a client
 func (c *Client) WithProvider(provider Provider) (*Client, error) {
 	cred, err := provider.GetCredential()
 	if err != nil {

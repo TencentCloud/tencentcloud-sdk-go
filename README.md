@@ -257,6 +257,24 @@ DEBUG模式会打印更详细的日志，当您需要进行详细的排查错误
 cpf.Debug = true
 ```
 
+## 禁用长连接(Keep-alive)
+
+SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connection 字段的值为 keep-alive.
+
+如果您需要使用短连接，可以按照以下方式进行设置：
+
+```go
+...
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tp := &http.Transport{
+        DisableKeepAlives: true,
+    }
+    client.WithHttpTransport(tp)
+...
+```
+
+则此 client 发出的每个请求头部的 Connection 字段的值为 close
+
 ## 代理
 
 如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。或者自定义 Transport 指定代理，通过 client.WithHttpTransport 覆盖默认配置。
