@@ -12646,6 +12646,10 @@ type SearchMediaRequest struct {
 	// <li>包含所指定的头尾时间点。</li>
 	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
 
+	// 匹配过期时间在此时间段内的文件，无法检索到已过期文件。
+	// <li>包含所指定的头尾时间点。</li>
+	ExpireTime *TimeRange `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
 	// 排序方式。
 	// <li>Sort.Field 可选 CreateTime 。</li>
 	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
@@ -12679,6 +12683,13 @@ type SearchMediaRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 存储类型数组。可选值有：
+	// <li> STANDARD：标准存储。</li>
+	// <li> STANDARD_IA：低频存储。</li>
+	// <li> ARCHIVE：归档存储。</li>
+	// <li> DEEP_ARCHIVE：深度归档存储。</li>
+	StorageClasses []*string `json:"StorageClasses,omitempty" name:"StorageClasses"`
 
 	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
@@ -12734,12 +12745,14 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "StreamIds")
 	delete(f, "Vids")
 	delete(f, "CreateTime")
+	delete(f, "ExpireTime")
 	delete(f, "Sort")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "StorageRegions")
 	delete(f, "SubAppId")
+	delete(f, "StorageClasses")
 	delete(f, "Text")
 	delete(f, "SourceType")
 	delete(f, "StreamId")

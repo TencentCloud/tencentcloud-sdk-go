@@ -328,19 +328,19 @@ type TextLib struct {
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+	// 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
+	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
 	// 数据ID，英文字母、下划线、-组成，不超过64个字符
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-	// 账号相关信息字段，填入后可识别违规风险账号。
+	// 账号相关信息字段，填入后可识别违规风险账号
 	User *User `json:"User,omitempty" name:"User"`
 
-	// 设备相关信息字段，填入后可识别违规风险设备。
+	// 设备相关信息字段，填入后可识别违规风险设备
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
@@ -371,23 +371,21 @@ type TextModerationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+		// 您在入参时所填入的Biztype参数
 		BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-		// 数据是否属于恶意类型。
-	//  0：正常 1：可疑
+		// 数据是否属于恶意类型，0：正常 1：可疑
 		EvilFlag *int64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
 
-		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-	// 以及令人反感、不安全或不适宜的内容类型。
+		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
 		Label *string `json:"Label,omitempty" name:"Label"`
 
-		// 建议您拿到判断结果后的执行操作。
+		// 建议您拿到判断结果后的执行操作
 	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 		// 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
-	// 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
+	// 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
@@ -395,15 +393,15 @@ type TextModerationResponse struct {
 	// （如：色情 99.99，则该样本属于色情的置信度非常高。）
 		Score *int64 `json:"Score,omitempty" name:"Score"`
 
-		// 接口识别样本后返回的详细结果。
+		// 接口识别样本后返回的详细结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults"`
 
-		// 接口识别样本中存在违规账号风险的检测结果。
+		// 接口识别样本中存在违规账号风险的检测结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
 
-		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Extra *string `json:"Extra,omitempty" name:"Extra"`
 

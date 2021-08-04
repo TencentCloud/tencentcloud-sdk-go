@@ -614,6 +614,68 @@ func (r *DescribeClusterNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCvmQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// EMR集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 区ID
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+func (r *DescribeCvmQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCvmQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCvmQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCvmQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 后付费配额列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PostPaidQuotaSet []*QuotaEntity `json:"PostPaidQuotaSet,omitempty" name:"PostPaidQuotaSet"`
+
+		// 竞价实例配额列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SpotPaidQuotaSet []*QuotaEntity `json:"SpotPaidQuotaSet,omitempty" name:"SpotPaidQuotaSet"`
+
+		// eks配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EksQuotaSet []*PodSaleSpec `json:"EksQuotaSet,omitempty" name:"EksQuotaSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCvmQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCvmQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceRenewNodesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1957,6 +2019,21 @@ type PodParameter struct {
 	Parameter *string `json:"Parameter,omitempty" name:"Parameter"`
 }
 
+type PodSaleSpec struct {
+
+	// 可售卖的资源规格，仅为以下值:"TASK","CORE","MASTER","ROUTER"。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// Cpu核数。
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存数量，单位为GB。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 该规格资源可申请的最大数量。
+	Number *uint64 `json:"Number,omitempty" name:"Number"`
+}
+
 type PodSpec struct {
 
 	// 外部资源提供者的标识符，例如"cls-a1cd23fa"。
@@ -1997,6 +2074,27 @@ type PodSpec struct {
 	// 代表vpc子网唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type PodState struct {
+
+	// pod的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// pod uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// pod的状态
+	State *string `json:"State,omitempty" name:"State"`
+
+	// pod处于该状态原因
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// pod所属集群
+	OwnerCluster *string `json:"OwnerCluster,omitempty" name:"OwnerCluster"`
+
+	// pod内存大小
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 }
 
 type PodVolume struct {
@@ -2106,6 +2204,25 @@ type PriceResource struct {
 	// 本地盘的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskNum *int64 `json:"LocalDiskNum,omitempty" name:"LocalDiskNum"`
+}
+
+type QuotaEntity struct {
+
+	// 已使用配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedQuota *int64 `json:"UsedQuota,omitempty" name:"UsedQuota"`
+
+	// 剩余配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainingQuota *int64 `json:"RemainingQuota,omitempty" name:"RemainingQuota"`
+
+	// 总配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalQuota *int64 `json:"TotalQuota,omitempty" name:"TotalQuota"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type RenewInstancesInfo struct {
@@ -2492,6 +2609,52 @@ type Step struct {
 
 	// 指定执行Step时的用户名，非必须，默认为hadoop。
 	User *string `json:"User,omitempty" name:"User"`
+}
+
+type SyncPodStateRequest struct {
+	*tchttp.BaseRequest
+
+	// EmrService中pod状态信息
+	Message *PodState `json:"Message,omitempty" name:"Message"`
+}
+
+func (r *SyncPodStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncPodStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Message")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncPodStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncPodStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncPodStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncPodStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Tag struct {

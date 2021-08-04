@@ -64,6 +64,15 @@ type AuthDomain struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type BackendServiceInfo struct {
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 服务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type BindEnvGatewayRequest struct {
 	*tchttp.BaseRequest
 
@@ -1354,6 +1363,75 @@ func (r *CreatePostpayPackageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePostpayPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStandaloneGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名
+	GatewayAlias *string `json:"GatewayAlias,omitempty" name:"GatewayAlias"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 网关描述
+	GatewayDesc *string `json:"GatewayDesc,omitempty" name:"GatewayDesc"`
+
+	// 网关套餐版本
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+}
+
+func (r *CreateStandaloneGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStandaloneGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayAlias")
+	delete(f, "VpcId")
+	delete(f, "SubnetIds")
+	delete(f, "GatewayDesc")
+	delete(f, "PackageVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStandaloneGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateStandaloneGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 网关名称
+		GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateStandaloneGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStandaloneGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3724,6 +3802,122 @@ func (r *DescribeSpecialCostItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeStandaloneGatewayPackageRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 套餐版本，包含starter、basic、advanced、enterprise
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+}
+
+func (r *DescribeStandaloneGatewayPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandaloneGatewayPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "PackageVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandaloneGatewayPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStandaloneGatewayPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 套餐详情
+		StandaloneGatewayPackageList []*StandaloneGatewayPackageInfo `json:"StandaloneGatewayPackageList,omitempty" name:"StandaloneGatewayPackageList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStandaloneGatewayPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandaloneGatewayPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStandaloneGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 网关别名
+	GatewayAlias *string `json:"GatewayAlias,omitempty" name:"GatewayAlias"`
+}
+
+func (r *DescribeStandaloneGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandaloneGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayName")
+	delete(f, "GatewayAlias")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandaloneGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStandaloneGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独立网关信息列表
+		StandaloneGatewayList []*StandaloneGatewayInfo `json:"StandaloneGatewayList,omitempty" name:"StandaloneGatewayList"`
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStandaloneGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandaloneGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWxCloudBaseRunEnvsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3877,6 +4071,63 @@ func (r *DestroyEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DestroyEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyStandaloneGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网名名称
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 是否强制释放
+	IsForce *bool `json:"IsForce,omitempty" name:"IsForce"`
+}
+
+func (r *DestroyStandaloneGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyStandaloneGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayName")
+	delete(f, "IsForce")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyStandaloneGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyStandaloneGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除独立网关状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DestroyStandaloneGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyStandaloneGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4967,6 +5218,9 @@ type RollUpdateCloudBaseRunServerVersionRequest struct {
 
 	// 服务路径（只会第一次生效）
 	ServerPath *string `json:"ServerPath,omitempty" name:"ServerPath"`
+
+	// 是否更新Cls
+	IsUpdateCls *bool `json:"IsUpdateCls,omitempty" name:"IsUpdateCls"`
 }
 
 func (r *RollUpdateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -5013,6 +5267,7 @@ func (r *RollUpdateCloudBaseRunServerVersionRequest) FromJsonString(s string) er
 	delete(f, "EnableUnion")
 	delete(f, "OperatorRemark")
 	delete(f, "ServerPath")
+	delete(f, "IsUpdateCls")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollUpdateCloudBaseRunServerVersionRequest has unknown keys!", "")
 	}
@@ -5092,6 +5347,51 @@ type SpecialCostItem struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type StandaloneGatewayInfo struct {
+
+	// 独立网关名称
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// CPU核心数
+	CPU *float64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存大小，单位MB
+	Mem *uint64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 套餐包版本名称
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 网关别名
+	GatewayAlias *string `json:"GatewayAlias,omitempty" name:"GatewayAlias"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 网关描述
+	GatewayDesc *string `json:"GatewayDesc,omitempty" name:"GatewayDesc"`
+
+	// 网关状态
+	GateWayStatus *string `json:"GateWayStatus,omitempty" name:"GateWayStatus"`
+
+	// 服务信息
+	ServiceInfo *BackendServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
+}
+
+type StandaloneGatewayPackageInfo struct {
+
+	// CPU核心数
+	CPU *float64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存大小，单位MB
+	Mem *uint64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 套餐包版本名称
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+}
+
 type StaticStorageInfo struct {
 
 	// 静态CDN域名
@@ -5138,4 +5438,118 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TurnOffStandaloneGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 服务名称列表
+	ServiceNameList []*string `json:"ServiceNameList,omitempty" name:"ServiceNameList"`
+}
+
+func (r *TurnOffStandaloneGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnOffStandaloneGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayName")
+	delete(f, "ServiceNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TurnOffStandaloneGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TurnOffStandaloneGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 关闭独立网关状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TurnOffStandaloneGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnOffStandaloneGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TurnOnStandaloneGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 服务名称列表
+	ServiceNameList []*string `json:"ServiceNameList,omitempty" name:"ServiceNameList"`
+}
+
+func (r *TurnOnStandaloneGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnOnStandaloneGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayName")
+	delete(f, "ServiceNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TurnOnStandaloneGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TurnOnStandaloneGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 小租户网关开启状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TurnOnStandaloneGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnOnStandaloneGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

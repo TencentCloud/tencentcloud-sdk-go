@@ -41,11 +41,17 @@ const (
 	// 日志集下存在日志主题。
 	FAILEDOPERATION_LOGSETNOTEMPTY = "FailedOperation.LogsetNotEmpty"
 
+	// 无效的Content。
+	FAILEDOPERATION_MISSINGCONTENT = "FailedOperation.MissingContent"
+
 	// 修改的生命周期被禁止。
 	FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
 
 	// 查询语句运行失败。
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+
+	// 读qps超过限制。
+	FAILEDOPERATION_READQPSLIMIT = "FailedOperation.ReadQpsLimit"
 
 	// 查询超时。
 	FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
@@ -62,6 +68,12 @@ const (
 	// 日志主题已隔离。
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 
+	// 写qps超过限制。
+	FAILEDOPERATION_WRITEQPSLIMIT = "FailedOperation.WriteQpsLimit"
+
+	// 写流量超过限制。
+	FAILEDOPERATION_WRITETRAFFICLIMIT = "FailedOperation.WriteTrafficLimit"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -76,6 +88,9 @@ const (
 
 	// 相同的采集配置规则已经存在。
 	INVALIDPARAMETER_CONFIGCONFLICT = "InvalidParameter.ConfigConflict"
+
+	// 无效的Content。
+	INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 
 	// 指定日志主题已经存在索引规则。
 	INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
@@ -107,6 +122,9 @@ const (
 	// 并发查询超过限制，单topic并发最大值15。
 	LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
 
+	// 日志大小超过限制。
+	LIMITEXCEEDED_LOGSIZE = "LimitExceeded.LogSize"
+
 	// 日志集数量超出限制。
 	LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
 
@@ -124,6 +142,9 @@ const (
 
 	// 投递规则超出限制。
 	LIMITEXCEEDED_SHIPPER = "LimitExceeded.Shipper"
+
+	// tag超过限制。
+	LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

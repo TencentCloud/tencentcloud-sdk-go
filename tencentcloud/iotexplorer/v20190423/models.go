@@ -645,6 +645,9 @@ type DeleteDeviceRequest struct {
 
 	// 设备名称。
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 是否删除绑定设备
+	ForceDelete *bool `json:"ForceDelete,omitempty" name:"ForceDelete"`
 }
 
 func (r *DeleteDeviceRequest) ToJsonString() string {
@@ -661,6 +664,7 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
+	delete(f, "ForceDelete")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceRequest has unknown keys!", "")
 	}

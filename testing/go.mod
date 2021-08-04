@@ -126,6 +126,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rkp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rp v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn v0.0.0
@@ -307,6 +308,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis => ../tencentcloud/redis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rkp => ../tencentcloud/rkp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rp => ../tencentcloud/rp
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum => ../tencentcloud/rum
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf => ../tencentcloud/scf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses => ../tencentcloud/ses
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn => ../tencentcloud/smpn

@@ -465,9 +465,11 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //
 // 2. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
 //
-// 3. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+// 3. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
-// 4. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+// 4. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+//
+// 5. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
