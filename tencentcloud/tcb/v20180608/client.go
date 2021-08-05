@@ -955,6 +955,41 @@ func (c *Client) DescribeCloudBaseRunVersionSnapshot(request *DescribeCloudBaseR
     return
 }
 
+func NewDescribeCurveDataRequest() (request *DescribeCurveDataRequest) {
+    request = &DescribeCurveDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCurveData")
+    return
+}
+
+func NewDescribeCurveDataResponse() (response *DescribeCurveDataResponse) {
+    response = &DescribeCurveDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCurveData
+// 根据用户传入的指标, 拉取一段时间内的监控数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCurveData(request *DescribeCurveDataRequest) (response *DescribeCurveDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCurveDataRequest()
+    }
+    response = NewDescribeCurveDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
     request = &DescribeDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},

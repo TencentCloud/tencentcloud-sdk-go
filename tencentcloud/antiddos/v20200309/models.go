@@ -2653,6 +2653,80 @@ type KeyValue struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type L4RuleSource struct {
+
+	// 回源IP或域名
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 权重值，取值[0,100]
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type L7RuleEntry struct {
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
+
+	// 转发域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 转发协议，取值[http, https]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 回源方式，取值[1(域名回源)，2(IP回源)]
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 负载均衡方式，取值[1(加权轮询)]
+	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
+
+	// 回源列表
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+
+	// 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// HTTPS协议的CC防护阈值
+	CCThreshold *uint64 `json:"CCThreshold,omitempty" name:"CCThreshold"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+	CCEnable *uint64 `json:"CCEnable,omitempty" name:"CCEnable"`
+
+	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
+
+	// 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// HTTPS协议的CC防护等级
+	CCLevel *string `json:"CCLevel,omitempty" name:"CCLevel"`
+
+	// 规则描述
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// cc防护状态，取值[0(关闭), 1(开启)]
+	CCStatus *uint64 `json:"CCStatus,omitempty" name:"CCStatus"`
+
+	// 接入端口值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
+
+	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+}
+
 type Layer4Rule struct {
 
 	// 源站端口，取值1~65535
@@ -2851,6 +2925,63 @@ func (r *ModifyDomainUsrNameResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDomainUsrNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL7RulesEdgeRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（edge表示边界防护产品）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则
+	Rule *L7RuleEntry `json:"Rule,omitempty" name:"Rule"`
+}
+
+func (r *ModifyL7RulesEdgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL7RulesEdgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Id")
+	delete(f, "Rule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL7RulesEdgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyL7RulesEdgeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyL7RulesEdgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyL7RulesEdgeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -190,6 +190,30 @@ type ConsumerGroupTopic struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
+type ConsumerRecord struct {
+
+	// 主题名
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 消息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 消息value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 消息时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
 type CreateAclRequest struct {
 	*tchttp.BaseRequest
 
@@ -1927,6 +1951,67 @@ type DynamicRetentionTime struct {
 	// 保底时长，单位分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BottomRetention *int64 `json:"BottomRetention,omitempty" name:"BottomRetention"`
+}
+
+type FetchMessageByOffsetRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *FetchMessageByOffsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageByOffsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "Partition")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchMessageByOffsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FetchMessageByOffsetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *ConsumerRecord `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FetchMessageByOffsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageByOffsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {

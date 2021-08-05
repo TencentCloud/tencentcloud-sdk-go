@@ -1421,6 +1421,36 @@ func (c *Client) ModifyDomainUsrName(request *ModifyDomainUsrNameRequest) (respo
     return
 }
 
+func NewModifyL7RulesEdgeRequest() (request *ModifyL7RulesEdgeRequest) {
+    request = &ModifyL7RulesEdgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "ModifyL7RulesEdge")
+    return
+}
+
+func NewModifyL7RulesEdgeResponse() (response *ModifyL7RulesEdgeResponse) {
+    response = &ModifyL7RulesEdgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyL7RulesEdge
+// 修改边界防护L7转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyL7RulesEdge(request *ModifyL7RulesEdgeRequest) (response *ModifyL7RulesEdgeResponse, err error) {
+    if request == nil {
+        request = NewModifyL7RulesEdgeRequest()
+    }
+    response = NewModifyL7RulesEdgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPacketFilterConfigRequest() (request *ModifyPacketFilterConfigRequest) {
     request = &ModifyPacketFilterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1440,7 +1470,8 @@ func NewModifyPacketFilterConfigResponse() (response *ModifyPacketFilterConfigRe
 // 修改DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     if request == nil {
         request = NewModifyPacketFilterConfigRequest()

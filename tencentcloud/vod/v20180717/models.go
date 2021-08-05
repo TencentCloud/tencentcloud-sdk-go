@@ -8319,7 +8319,7 @@ type ImageTransform struct {
 
 type ImageWatermarkInput struct {
 
-	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png、gif 图片格式。
 	ImageContent *string `json:"ImageContent,omitempty" name:"ImageContent"`
 
 	// 水印的宽度。支持 %、px 两种格式：

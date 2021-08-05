@@ -467,9 +467,13 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //
 // 3. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
-// 4. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+// 4. 目前仅支持推流到腾讯云直播，暂不支持推到第三方。
 //
-// 5. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+// 5. 过期不用的任务需自行清理，未清理的过期任务也会占用上限额度，如需要自动清理过期任务，可提单给售后进行配置。
+//
+// 6. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+//
+// 7. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3392,6 +3396,39 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
         request = NewDescribePullStreamConfigsRequest()
     }
     response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidthAndFluxListRequest) {
+    request = &DescribePushBandwidthAndFluxListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePushBandwidthAndFluxList")
+    return
+}
+
+func NewDescribePushBandwidthAndFluxListResponse() (response *DescribePushBandwidthAndFluxListResponse) {
+    response = &DescribePushBandwidthAndFluxListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePushBandwidthAndFluxList
+// 直播推流带宽和流量数据查询。
+//
+// 推流计费会先取全球推流用量和全球播放用量进行比较，满足计费条件后再按各地区用量出账。详情参见[计费文档](https://cloud.tencent.com/document/product/267/34175)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribePushBandwidthAndFluxListRequest()
+    }
+    response = NewDescribePushBandwidthAndFluxListResponse()
     err = c.Send(request, response)
     return
 }

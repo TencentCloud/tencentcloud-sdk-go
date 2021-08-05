@@ -3540,6 +3540,9 @@ type RepairTaskControlRequest struct {
 
 	// 操作
 	Operate *string `json:"Operate,omitempty" name:"Operate"`
+
+	// 打回操作的备注信息
+	OperateRemark *string `json:"OperateRemark,omitempty" name:"OperateRemark"`
 }
 
 func (r *RepairTaskControlRequest) ToJsonString() string {
@@ -3556,6 +3559,7 @@ func (r *RepairTaskControlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "Operate")
+	delete(f, "OperateRemark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RepairTaskControlRequest has unknown keys!", "")
 	}

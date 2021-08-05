@@ -687,7 +687,7 @@ type ClusterResource struct {
 	// 集群名称。
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
-	// 互联网服务供应商
+	// 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isp *string `json:"Isp,omitempty" name:"Isp"`
 }

@@ -717,6 +717,21 @@ type CloudRunServiceVolume struct {
 	EmptyDir *CloudBaseRunEmptyDirVolumeSource `json:"EmptyDir,omitempty" name:"EmptyDir"`
 }
 
+type ClsInfo struct {
+
+	// cls所属地域
+	ClsRegion *string `json:"ClsRegion,omitempty" name:"ClsRegion"`
+
+	// cls日志集ID
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// cls日志主题ID
+	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type CodeSource struct {
 
 	// 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
@@ -2802,6 +2817,105 @@ func (r *DescribeCloudBaseRunVersionSnapshotResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCurveDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// <li> 指标名: </li>
+	// <li> StorageRead: 存储读请求次数 </li>
+	// <li> StorageWrite: 存储写请求次数 </li>
+	// <li> StorageCdnOriginFlux: CDN回源流量, 单位字节 </li>
+	// <li> CDNFlux: CDN回源流量, 单位字节 </li>
+	// <li> FunctionInvocation: 云函数调用次数 </li>
+	// <li> FunctionGBs: 云函数资源使用量, 单位Mb*Ms </li>
+	// <li> FunctionFlux: 云函数流量, 单位千字节(KB) </li>
+	// <li> FunctionError: 云函数调用错误次数 </li>
+	// <li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
+	// <li> DbRead: 数据库读请求数 </li>
+	// <li> DbWrite: 数据库写请求数 </li>
+	// <li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
+	// <li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+	// <li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
+	// <li> TkeCpuRatio: 容器CPU占用率 </li>
+	// <li> TkeMemRatio: 容器内存占用率 </li>
+	// <li> TkeCpuUsed: 容器CPU使用量 </li>
+	// <li> TkeMemUsed: 容器内存使用量 </li>
+	// <li> TkeInvokeNum: 调用量 </li>
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)..
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocation, FunctionGBs, FunctionFlux, FunctionError, FunctionDuration)、容器托管（服务名称）, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.如果想查询数据库某个集合相关信息，传入集合名称
+	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+}
+
+func (r *DescribeCurveDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurveDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ResourceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCurveDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCurveDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 开始时间, 会根据数据的统计周期进行取整.
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间, 会根据数据的统计周期进行取整.
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 指标名.
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
+		Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+		// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+		Values []*int64 `json:"Values,omitempty" name:"Values"`
+
+		// 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
+		Time []*int64 `json:"Time,omitempty" name:"Time"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCurveDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurveDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDatabaseACLRequest struct {
 	*tchttp.BaseRequest
 
@@ -4355,6 +4469,10 @@ type EnvInfo struct {
 	// 环境标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 自定义日志服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitempty" name:"CustomLogServices"`
 }
 
 type EstablishCloudBaseRunServerRequest struct {

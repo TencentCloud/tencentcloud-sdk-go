@@ -116,6 +116,9 @@ const (
 	// 内部http方式请求下游服务错误。
 	FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
 
+	// 参数错误。
+	FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+
 	// 请求参数符合参数格式，但不符合业务规则。
 	FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 
@@ -125,8 +128,14 @@ const (
 	// 序列化出错。
 	FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
 
+	// 查无此商户。
+	FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
+
 	// 商户权限错误。
 	FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+
+	// 参数缺失。
+	FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 
 	// 商户信息不合法。
 	FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"

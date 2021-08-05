@@ -1882,10 +1882,10 @@ type CreateRecordTaskRequest struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且EndTime - StartTime不能超过24小时。
+	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始6天之内的时间。
+	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：
@@ -5841,6 +5841,93 @@ func (r *DescribePullStreamConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushBandwidthAndFluxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为 yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为 yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 域名，可以填多个，若不填，表示总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+
+	// 可选值：
+	// Mainland：查询中国大陆（境内）数据，
+	// Oversea：则查询国际/港澳台（境外）数据，
+	// 不填则默认查询全球地区（境内+境外）的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 数据粒度，支持如下粒度：
+	// 5：5分钟粒度，（跨度不支持超过1天），
+	// 60：1小时粒度（跨度不支持超过一个月），
+	// 1440：天粒度（跨度不支持超过一个月）。
+	// 默认值：5。
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribePushBandwidthAndFluxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePushBandwidthAndFluxListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	delete(f, "MainlandOrOversea")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePushBandwidthAndFluxListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushBandwidthAndFluxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+		PeakBandwidthTime *string `json:"PeakBandwidthTime,omitempty" name:"PeakBandwidthTime"`
+
+		// 峰值带宽，单位是 Mbps。
+		PeakBandwidth *float64 `json:"PeakBandwidth,omitempty" name:"PeakBandwidth"`
+
+		// 95峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+		P95PeakBandwidthTime *string `json:"P95PeakBandwidthTime,omitempty" name:"P95PeakBandwidthTime"`
+
+		// 95峰值带宽，单位是 Mbps。
+		P95PeakBandwidth *float64 `json:"P95PeakBandwidth,omitempty" name:"P95PeakBandwidth"`
+
+		// 总流量，单位是 MB。
+		SumFlux *float64 `json:"SumFlux,omitempty" name:"SumFlux"`
+
+		// 明细数据信息。
+		DataInfoList []*BillDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePushBandwidthAndFluxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePushBandwidthAndFluxListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

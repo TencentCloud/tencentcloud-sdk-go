@@ -1143,6 +1143,35 @@ func (c *Client) DescribeUser(request *DescribeUserRequest) (response *DescribeU
     return
 }
 
+func NewFetchMessageByOffsetRequest() (request *FetchMessageByOffsetRequest) {
+    request = &FetchMessageByOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageByOffset")
+    return
+}
+
+func NewFetchMessageByOffsetResponse() (response *FetchMessageByOffsetResponse) {
+    response = &FetchMessageByOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FetchMessageByOffset
+// 根据指定offset位置的消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) FetchMessageByOffset(request *FetchMessageByOffsetRequest) (response *FetchMessageByOffsetResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageByOffsetRequest()
+    }
+    response = NewFetchMessageByOffsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGroupOffsetsRequest() (request *ModifyGroupOffsetsRequest) {
     request = &ModifyGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
