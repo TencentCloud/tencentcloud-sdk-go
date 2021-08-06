@@ -3541,7 +3541,7 @@ type RepairTaskControlRequest struct {
 	// 操作
 	Operate *string `json:"Operate,omitempty" name:"Operate"`
 
-	// 打回操作的备注信息
+	// 需要重新维修操作的备注信息，可提供返场维修原因，以便驻场快速针对问题定位解决。
 	OperateRemark *string `json:"OperateRemark,omitempty" name:"OperateRemark"`
 }
 

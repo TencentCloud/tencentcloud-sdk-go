@@ -78,6 +78,64 @@ func (r *AssociateDDoSEipAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateDDoSEipLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资源实例ID对应的高防弹性公网IP。
+	Eip *string `json:"Eip,omitempty" name:"Eip"`
+
+	// 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。
+	LoadBalancerID *string `json:"LoadBalancerID,omitempty" name:"LoadBalancerID"`
+
+	// Clb所在地域，例如：ap-hongkong。
+	LoadBalancerRegion *string `json:"LoadBalancerRegion,omitempty" name:"LoadBalancerRegion"`
+}
+
+func (r *AssociateDDoSEipLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateDDoSEipLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Eip")
+	delete(f, "LoadBalancerID")
+	delete(f, "LoadBalancerRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateDDoSEipLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateDDoSEipLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateDDoSEipLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateDDoSEipLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BGPIPInstance struct {
 
 	// 资产实例的详细信息

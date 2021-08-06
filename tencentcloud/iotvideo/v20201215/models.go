@@ -1036,7 +1036,7 @@ type CreateProductRequest struct {
 	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
 	Features []*string `json:"Features,omitempty" name:"Features"`
 
-	// 设备操作系统 android linux liteos
+	// 设备操作系统 Linux
 	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
 
 	// 芯片厂商id

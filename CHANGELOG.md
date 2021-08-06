@@ -2,9 +2,9 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 7 次发布
+### 第 8 次发布
 
-发布时间：2021-08-05 08:00:06
+发布时间：2021-08-06 08:00:07
 
 本次发布包含了以下内容：
 
@@ -12,20 +12,15 @@
 
 新增接口：
 
-* [ModifyL7RulesEdge](https://cloud.tencent.com/document/api/1021/59510)
-
-新增数据结构：
-
-* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
-* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
 
 
 
-## 黑石物理服务器1.0(bm) 版本：2018-04-23
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 18 次发布
+### 第 38 次发布
 
-发布时间：2021-08-05 08:03:16
+发布时间：2021-08-06 08:03:03
 
 本次发布包含了以下内容：
 
@@ -33,79 +28,45 @@
 
 修改接口：
 
-* [RepairTaskControl](https://cloud.tencent.com/document/api/386/32916)
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
 
-	* 新增入参：OperateRemark
+	* 新增入参：CapacityRebalance
 
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
 
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 15 次发布
-
-发布时间：2021-08-05 08:10:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)
-
-新增数据结构：
-
-* [ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)
+	* 新增入参：CapacityRebalance
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 39 次发布
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-发布时间：2021-08-05 08:11:13
+### 第 49 次发布
+
+发布时间：2021-08-06 08:01:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [ConfirmOrder](https://cloud.tencent.com/document/api/1122/59520)
-* [CreateOrder](https://cloud.tencent.com/document/api/1122/59519)
-* [CreatePayMerchant](https://cloud.tencent.com/document/api/1122/59518)
-* [ModifyMerchant](https://cloud.tencent.com/document/api/1122/59517)
-* [QueryMerchant](https://cloud.tencent.com/document/api/1122/59516)
-* [QueryMerchantOrder](https://cloud.tencent.com/document/api/1122/59515)
-* [RefundOrder](https://cloud.tencent.com/document/api/1122/59514)
+* [Image](https://cloud.tencent.com/document/api/1108/42574#Image)
 
+	* 新增成员：IsSupportCloudInit
 
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 26 次发布
-
-发布时间：2021-08-05 08:05:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDCDBInstance](https://cloud.tencent.com/document/api/557/16135)
-
-	* 新增入参：DcnRegion, DcnInstanceId
+	* 新增成员：UserData
 
 
 
 
 ## 云直播(live) 版本：2018-08-01
 
-### 第 67 次发布
+### 第 68 次发布
 
-发布时间：2021-08-05 08:06:30
+发布时间：2021-08-06 08:06:31
 
 本次发布包含了以下内容：
 
@@ -113,15 +74,19 @@
 
 新增接口：
 
-* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+* [DescribeLiveTranscodeTotalInfo](https://cloud.tencent.com/document/api/267/59864)
+
+新增数据结构：
+
+* [TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo)
 
 
 
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 23 次发布
+### 第 53 次发布
 
-发布时间：2021-08-05 08:06:50
+发布时间：2021-08-06 08:07:23
 
 本次发布包含了以下内容：
 
@@ -129,57 +94,15 @@
 
 修改接口：
 
-* [CreateDBInstance](https://cloud.tencent.com/document/api/237/16180)
+* [VatInvoiceVerify](https://cloud.tencent.com/document/api/866/47324)
 
-	* 新增入参：DcnRegion, DcnInstanceId
+	* 新增出参：VehicleInvoiceInfo, UsedVehicleInvoiceInfo
 
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 61 次发布
-
-发布时间：2021-08-05 08:08:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
 
 新增数据结构：
 
-* [ClsInfo](https://cloud.tencent.com/document/api/876/34822#ClsInfo)
-
-修改数据结构：
-
-* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
-
-	* 新增成员：CustomLogServices
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 67 次发布
-
-发布时间：2021-08-05 08:08:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeVersions](https://cloud.tencent.com/document/api/457/59513)
-
-新增数据结构：
-
-* [VersionInstance](https://cloud.tencent.com/document/api/457/31866#VersionInstance)
+* [UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo)
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
 
 
 
@@ -868,6 +791,18 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
+### 第 8 次发布
+
+发布时间：2021-08-06 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 7 次发布
 
 发布时间：2021-08-05 08:00:06
@@ -878,12 +813,12 @@
 
 新增接口：
 
-* [[ModifyL7RulesEdge](https://cloud.tencent.com/document/api/1021/59510)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyL7RulesEdge](https://cloud.tencent.com/document/api/1021/59510)
 
 新增数据结构：
 
-* [[L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)](https://cloud.tencent.com/document/api/1021/57582#[L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource))
-* [[L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)](https://cloud.tencent.com/document/api/1021/57582#[L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry))
+* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
 
 ### 第 6 次发布
 
@@ -1761,6 +1696,25 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 38 次发布
+
+发布时间：2021-08-06 08:03:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
+
+	* 新增入参：CapacityRebalance
+
+* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
+
+	* 新增入参：CapacityRebalance
+
 
 ### 第 37 次发布
 
@@ -11286,11 +11240,11 @@
 
 新增接口：
 
-* [[FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)](https://cloud.tencent.com/document/api/#/#)
+* [FetchMessageByOffset](https://cloud.tencent.com/document/api/597/47897)
 
 新增数据结构：
 
-* [[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)](https://cloud.tencent.com/document/api/597/40861#[ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord))
+* [ConsumerRecord](https://cloud.tencent.com/document/api/597/40861#ConsumerRecord)
 
 ### 第 14 次发布
 
@@ -14535,13 +14489,13 @@
 
 新增接口：
 
-* [[ConfirmOrder](https://cloud.tencent.com/document/api/1122/59520)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateOrder](https://cloud.tencent.com/document/api/1122/59519)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePayMerchant](https://cloud.tencent.com/document/api/1122/59518)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyMerchant](https://cloud.tencent.com/document/api/1122/59517)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryMerchant](https://cloud.tencent.com/document/api/1122/59516)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryMerchantOrder](https://cloud.tencent.com/document/api/1122/59515)](https://cloud.tencent.com/document/api/#/#)
-* [[RefundOrder](https://cloud.tencent.com/document/api/1122/59514)](https://cloud.tencent.com/document/api/#/#)
+* [ConfirmOrder](https://cloud.tencent.com/document/api/1122/59520)
+* [CreateOrder](https://cloud.tencent.com/document/api/1122/59519)
+* [CreatePayMerchant](https://cloud.tencent.com/document/api/1122/59518)
+* [ModifyMerchant](https://cloud.tencent.com/document/api/1122/59517)
+* [QueryMerchant](https://cloud.tencent.com/document/api/1122/59516)
+* [QueryMerchantOrder](https://cloud.tencent.com/document/api/1122/59515)
+* [RefundOrder](https://cloud.tencent.com/document/api/1122/59514)
 
 ### 第 38 次发布
 
@@ -21344,6 +21298,25 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 49 次发布
+
+发布时间：2021-08-06 08:01:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Image](https://cloud.tencent.com/document/api/1108/42574#Image)
+
+	* 新增成员：IsSupportCloudInit
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：UserData
+
 
 ### 第 48 次发布
 
@@ -30832,6 +30805,22 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 68 次发布
+
+发布时间：2021-08-06 08:06:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLiveTranscodeTotalInfo](https://cloud.tencent.com/document/api/267/59864)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo)](https://cloud.tencent.com/document/api/267/20474#[TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo))
+
 ### 第 67 次发布
 
 发布时间：2021-08-05 08:06:30
@@ -30842,7 +30831,7 @@
 
 新增接口：
 
-* [[DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
 
 ### 第 66 次发布
 
@@ -36035,6 +36024,26 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 53 次发布
+
+发布时间：2021-08-06 08:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VatInvoiceVerify](https://cloud.tencent.com/document/api/866/47324)
+
+	* 新增出参：VehicleInvoiceInfo, UsedVehicleInvoiceInfo
+
+
+新增数据结构：
+
+* [[UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo)](https://cloud.tencent.com/document/api/866/33527#[UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo))
+* [[VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)](https://cloud.tencent.com/document/api/866/33527#[VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo))
 
 ### 第 52 次发布
 
@@ -42826,11 +42835,11 @@
 
 新增接口：
 
-* [[DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
 
 新增数据结构：
 
-* [[ClsInfo](https://cloud.tencent.com/document/api/876/34822#ClsInfo)](https://cloud.tencent.com/document/api/876/34822#[ClsInfo](https://cloud.tencent.com/document/api/876/34822#ClsInfo))
+* [ClsInfo](https://cloud.tencent.com/document/api/876/34822#ClsInfo)
 
 修改数据结构：
 
@@ -47009,11 +47018,11 @@
 
 新增接口：
 
-* [[DescribeVersions](https://cloud.tencent.com/document/api/457/59513)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVersions](https://cloud.tencent.com/document/api/457/59513)
 
 新增数据结构：
 
-* [[VersionInstance](https://cloud.tencent.com/document/api/457/31866#VersionInstance)](https://cloud.tencent.com/document/api/457/31866#[VersionInstance](https://cloud.tencent.com/document/api/457/31866#VersionInstance))
+* [VersionInstance](https://cloud.tencent.com/document/api/457/31866#VersionInstance)
 
 ### 第 66 次发布
 

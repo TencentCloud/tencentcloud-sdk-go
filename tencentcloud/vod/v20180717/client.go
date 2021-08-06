@@ -2605,7 +2605,6 @@ func NewDescribeStorageDetailsResponse() (response *DescribeStorageDetailsRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  FAILEDOPERATION_USERSTATUSINAVLID = "FailedOperation.UserStatusInavlid"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TIMEPARSEERROR = "InternalError.TimeParseError"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -17,8 +17,83 @@ package v20180724
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
+	// 账号未开通口语评测服务或账号已欠费隔离，请开通服务或检查账号状态。
+	AUTHFAILURE_ACCOUNTUNAVAILABLE = "AuthFailure.AccountUnavailable"
+
 	// 鉴权失败。
 	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 评测时间超出限制，请检查音频时间是否过长后重试。
+	FAILEDOPERATION_EVALUATETIMEOUT = "FailedOperation.EvaluateTimeout"
+
+	// 引擎未知错误，请检查一下RefText是否正常后重试。
+	FAILEDOPERATION_EVALUATEUNKNOWNERROR = "FailedOperation.EvaluateUnknownError"
+
+	// 获取评测引擎IP失败，请稍后重试。
+	FAILEDOPERATION_FAILEDGETENGINEIP = "FailedOperation.FailedGetEngineIP"
+
+	// 结果缓存获取失败，请稍后重试。
+	FAILEDOPERATION_FAILEDGETRESULT = "FailedOperation.FailedGetResult"
+
+	// 会话缓存获取失败，请稍后重试。
+	FAILEDOPERATION_FAILEDGETSESSION = "FailedOperation.FailedGetSession"
+
+	// 会话分片序号缓存获取失败，请稍后重试。
+	FAILEDOPERATION_FAILEDGETSESSIONSEQID = "FailedOperation.FailedGetSessionSeqID"
+
+	// 用户信息缓存获取失败，请稍后重试。
+	FAILEDOPERATION_FAILEDGETUSER = "FailedOperation.FailedGetUser"
+
+	// 请求初始化失败，请检查参数后重新初始化。
+	FAILEDOPERATION_FAILEDINIT = "FailedOperation.FailedInit"
+
+	// 结果缓存保存失败，请稍后重试。
+	FAILEDOPERATION_FAILEDSETRESULT = "FailedOperation.FailedSetResult"
+
+	// 会话缓存保存失败，请重新初始化。
+	FAILEDOPERATION_FAILEDSETSESSION = "FailedOperation.FailedSetSession"
+
+	// 会话分片序号缓存保存失败，请重新初始化。
+	FAILEDOPERATION_FAILEDSETSESSIONSEQID = "FailedOperation.FailedSetSessionSeqID"
+
+	// 用户信息缓存保存失败，请稍后重试。
+	FAILEDOPERATION_FAILEDSETUSER = "FailedOperation.FailedSetUser"
+
+	// 引擎参数错误，请稍后重试。
+	FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
+
+	// Json编解码失败，请稍后重试。
+	FAILEDOPERATION_JSONCODECERROR = "FailedOperation.JsonCodecError"
+
+	// 引擎评估之前没有初始化，请重新初始化成功之后重新传输数据。
+	FAILEDOPERATION_NEEDINITBEFOREEVALUATION = "FailedOperation.NeedInitBeforeEvaluation"
+
+	// 前序分片缺失，请重新补发前序分片。
+	FAILEDOPERATION_PASTSEQIDLOSE = "FailedOperation.PastSeqIdLose"
+
+	// 结果缓存已过期，请重新初始化成功之后重新传输数据。
+	FAILEDOPERATION_RESULTEXPIRED = "FailedOperation.ResultExpired"
+
+	// 分片序号缓存已过期，请重新初始化成功之后重新传输数据。
+	FAILEDOPERATION_SEQIDEXPIRED = "FailedOperation.SeqIdExpired"
+
+	// 引擎服务器过载，请稍后重试。
+	FAILEDOPERATION_SERVEROVERLOAD = "FailedOperation.ServerOverload"
+
+	// 评测超时，请通过轮询查询评测结果，后续请使用分片传输或减少单次传输音频时长。
+	FAILEDOPERATION_SERVICETIMEOUT = "FailedOperation.ServiceTimeout"
+
+	// 会话缓存已过期，请重新初始化成功之后重新传输数据。
+	FAILEDOPERATION_SESSIONEXPIRED = "FailedOperation.SessionExpired"
+
+	// 引擎等待前序分片超时，请重新补发前序分片。
+	FAILEDOPERATION_WAITPASTSEQIDTIMEOUT = "FailedOperation.WaitPastSeqIdTimeout"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -131,8 +206,20 @@ const (
 	// 服务未开通或已欠费。
 	INVALIDPARAMETER_AUTHORIZEERROR = "InvalidParameter.AuthorizeError"
 
+	// 请求参数RefText的音素Json解码失败，请参考API文档使用标准的Json格式。
+	INVALIDPARAMETER_ERRORPHONEME = "InvalidParameter.ErrorPhoneme"
+
 	// 初始化参数错误。
 	INVALIDPARAMETER_INITIALPARAMETERERROR = "InvalidParameter.InitialParameterError"
+
+	// 请求参数Action不合法，请参考API文档检查参数Action的有效性。
+	INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+
+	// 请求参数不合法，请参考API文档检查参数的有效性。
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
+	// 请求参数SeqId超过最大值限制，请参考API文档检查参数SeqId是否小于3000。
+	INVALIDPARAMETER_SEQIDLIMITEXCEEDED = "InvalidParameter.SeqIdLimitExceeded"
 
 	// 语音数据大于1MB。
 	INVALIDPARAMETER_VOICEMSGOVERSIZED = "InvalidParameter.VoiceMsgOversized"
@@ -142,6 +229,18 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 输入分片音频大小超过最大限制，请调整分片大小后重新传输数据。
+	INVALIDPARAMETERVALUE_AUDIODATASIZELIMITEXCEEDED = "InvalidParameterValue.AudioDataSizeLimitExceeded"
+
+	// 音频数据解码失败，请参考API文档中音频要求检查音频数据格式设置是否正确后重新传输数据。
+	INVALIDPARAMETERVALUE_AUDIODECODEFAILED = "InvalidParameterValue.AudioDecodeFailed"
+
+	// 输入音频时长超过限制，请结束本次评测，后续请根据评测模式设置音频时长限制。
+	INVALIDPARAMETERVALUE_AUDIOLIMITEXCEEDED = "InvalidParameterValue.AudioLimitExceeded"
+
+	// 输入音频异常，音频数据指针或音频⻓度必须为偶数，请参考API文档检查音频数据是否正确后重新传输数据。
+	INVALIDPARAMETERVALUE_AUDIOSIZEMUSTBEEVEN = "InvalidParameterValue.AudioSizeMustBeEven"
 
 	// BASE64解码错误。
 	INVALIDPARAMETERVALUE_BASEDECODEFAILED = "InvalidParameterValue.BASEDecodeFailed"
@@ -155,11 +254,26 @@ const (
 	// 表单中没有文件。
 	INVALIDPARAMETERVALUE_NODOCINLIST = "InvalidParameterValue.NoDocInList"
 
+	// 请求参数RefText无效或参考文本为空，请检查RefText是否为空。
+	INVALIDPARAMETERVALUE_REFTEXTEMPTY = "InvalidParameterValue.RefTextEmpty"
+
+	// 请求参数RefText语法错误，请参考API文档检查文本格式，尤其是指定发音格式是否正确。
+	INVALIDPARAMETERVALUE_REFTEXTGRAMMARERROR = "InvalidParameterValue.RefTextGrammarError"
+
+	// 请求参数RefText的字数超过最大限制，请根据评测模式调整字数后重新初始化。
+	INVALIDPARAMETERVALUE_REFTEXTLIMITEXCEEDED = "InvalidParameterValue.RefTextLimitExceeded"
+
+	// 请求参数RefText包含OOV词汇，请使用指定发音或联系我们处理。
+	INVALIDPARAMETERVALUE_REFTEXTOOV = "InvalidParameterValue.RefTextOOV"
+
 	// 输入文本为空。
 	INVALIDPARAMETERVALUE_REFTXTEMPTY = "InvalidParameterValue.RefTxtEmpty"
 
 	// 输入文本太长。
 	INVALIDPARAMETERVALUE_REFTXTTOOLANG = "InvalidParameterValue.RefTxtTooLang"
+
+	// SessionId已存在，建议使用uuid作为SessionId重新初始化。
+	INVALIDPARAMETERVALUE_SESSIONIDINUSE = "InvalidParameterValue.SessionIdInUse"
 
 	// 分片序号错误应该从1开始。
 	INVALIDPARAMETERVALUE_SHARDNOSTARTWITHONE = "InvalidParameterValue.ShardNoStartWithOne"
@@ -170,8 +284,29 @@ const (
 	// 没有检测到语音。
 	INVALIDPARAMETERVALUE_VADNOTDETECTEDSPEAK = "InvalidParameterValue.VadNotDetectedSpeak"
 
+	// 语音文件格式参数VoiceFileType取值错误，请参考API文档检查语音文件格式VoiceFileType是否正确后重新传输数据。
+	INVALIDPARAMETERVALUE_VOICEFILETYPENOTFOUND = "InvalidParameterValue.VoiceFileTypeNotFound"
+
+	// 音频超过长度限制，要求音频大小不能超过3Mb。
+	INVALIDPARAMETERVALUE_VOICELENGTHTOOLONG = "InvalidParameterValue.VoiceLengthTooLong"
+
+	// WAV格式的音频数据第一个分片的数据长度小于44，头部数据不合法，请检查后重试。
+	INVALIDPARAMETERVALUE_WAVHEADERDECODEFAILED = "InvalidParameterValue.WAVHeaderDecodeFailed"
+
 	// 文本单词超过限制。
 	INVALIDPARAMETERVALUE_WORDLENGTHTOOLONG = "InvalidParameterValue.WordLengthTooLong"
+
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
+	// 请求并发数超过配额限制，请减少并发数或联系我们调大并发限额。
+	LIMITEXCEEDED_CONCURRENCYLIMITEXCEEDED = "LimitExceeded.ConcurrencyLimitExceeded"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
 	// 评测超时，请检查语音数据大小。
 	RESOURCEINSUFFICIENT_SERVERTIMEOUT = "ResourceInsufficient.ServerTimeout"

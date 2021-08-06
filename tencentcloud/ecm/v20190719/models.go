@@ -3394,7 +3394,7 @@ type DescribeNetworkInterfacesRequest struct {
 	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
 	// subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
 	// network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。
-	// attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。
+	// attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ein-3nqpdn3i。
 	// groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。
 	// network-interface-name - String - （过滤条件）网卡实例名称。
 	// network-interface-description - String - （过滤条件）网卡实例描述。
@@ -4825,6 +4825,9 @@ type Image struct {
 
 	// 中间态和失败时候的任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 是否支持CloudInit
+	IsSupportCloudInit *bool `json:"IsSupportCloudInit,omitempty" name:"IsSupportCloudInit"`
 }
 
 type ImageLimitConfig struct {
@@ -6882,48 +6885,51 @@ func (r *ModifyVpcAttributeResponse) FromJsonString(s string) error {
 
 type Module struct {
 
-	// 模块Id
+	// 模块Id。
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 
-	// 模块名称
+	// 模块名称。
 	ModuleName *string `json:"ModuleName,omitempty" name:"ModuleName"`
 
 	// 模块状态：
-	// NORMAL：正常
+	// NORMAL：正常。
 	// DELETING：删除中 
-	// DELETEFAILED：删除失败
+	// DELETEFAILED：删除失败。
 	ModuleState *string `json:"ModuleState,omitempty" name:"ModuleState"`
 
-	// 默认系统盘大小
+	// 默认系统盘大小。
 	DefaultSystemDiskSize *int64 `json:"DefaultSystemDiskSize,omitempty" name:"DefaultSystemDiskSize"`
 
-	// 默认数据盘大小
+	// 默认数据盘大小。
 	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitempty" name:"DefaultDataDiskSize"`
 
-	// 默认机型
+	// 默认机型。
 	InstanceTypeConfig *InstanceTypeConfig `json:"InstanceTypeConfig,omitempty" name:"InstanceTypeConfig"`
 
-	// 默认镜像
+	// 默认镜像。
 	DefaultImage *Image `json:"DefaultImage,omitempty" name:"DefaultImage"`
 
-	// 创建时间
+	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 默认出带宽
+	// 默认出带宽。
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" name:"DefaultBandwidth"`
 
-	// 标签集合
+	// 标签集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
-	// 是否关闭IP直通
+	// 是否关闭IP直通。
 	CloseIpDirect *int64 `json:"CloseIpDirect,omitempty" name:"CloseIpDirect"`
 
-	// 默认安全组id列表
+	// 默认安全组id列表。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// 默认入带宽
+	// 默认入带宽。
 	DefaultBandwidthIn *int64 `json:"DefaultBandwidthIn,omitempty" name:"DefaultBandwidthIn"`
+
+	// 自定义脚本数据
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
 }
 
 type ModuleCounter struct {

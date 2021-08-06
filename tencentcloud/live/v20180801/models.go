@@ -5204,6 +5204,74 @@ func (r *DescribeLiveTranscodeTemplatesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveTranscodeTotalInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名列表，若不填，表示查询所有域名总体数据。
+	// 指定域名时返回1小时粒度数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+
+	// 可选值：
+	// Mainland：查询中国大陆（境内）数据，
+	// Oversea：则查询国际/港澳台（境外）数据，
+	// 默认：查询全球地区（境内+境外）的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+}
+
+func (r *DescribeLiveTranscodeTotalInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTranscodeTotalInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	delete(f, "MainlandOrOversea")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeTotalInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveTranscodeTotalInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计数据列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataInfoList []*TranscodeTotalInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveTranscodeTotalInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTranscodeTotalInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
@@ -9106,6 +9174,28 @@ type TranscodeDetailInfo struct {
 	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
 
 	// 分辨率。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+}
+
+type TranscodeTotalInfo struct {
+
+	// 时间点，北京时间，
+	// 示例：2019-03-01 00:00:00。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 转码时长，单位：分钟。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 编码方式，带模块，
+	// 示例：
+	// liveprocessor_H264 =》直播转码-H264，
+	// liveprocessor_H265 =》 直播转码-H265，
+	// topspeed_H264 =》极速高清-H264，
+	// topspeed_H265 =》极速高清-H265。
+	ModuleCodec *string `json:"ModuleCodec,omitempty" name:"ModuleCodec"`
+
+	// 分辨率，
+	// 示例：540*480。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 

@@ -195,6 +195,7 @@ func NewCreateAuthDomainResponse() (response *CreateAuthDomainResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *CreateAuthDomainResponse, err error) {
     if request == nil {
@@ -294,6 +295,7 @@ func NewCreateHostingDomainResponse() (response *CreateHostingDomainResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (response *CreateHostingDomainResponse, err error) {

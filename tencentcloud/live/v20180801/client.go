@@ -3070,6 +3070,43 @@ func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTe
     return
 }
 
+func NewDescribeLiveTranscodeTotalInfoRequest() (request *DescribeLiveTranscodeTotalInfoRequest) {
+    request = &DescribeLiveTranscodeTotalInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveTranscodeTotalInfo")
+    return
+}
+
+func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscodeTotalInfoResponse) {
+    response = &DescribeLiveTranscodeTotalInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveTranscodeTotalInfo
+// 查询转码总量数据，可查询近30天内数据。
+//
+// 注意：
+//
+// 如果是查询某一天内，则返回5分钟粒度数据；
+//
+// 如果是查询跨天或指定域名， 则返回1小时粒度数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeTotalInfoRequest()
+    }
+    response = NewDescribeLiveTranscodeTotalInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveWatermarkRequest() (request *DescribeLiveWatermarkRequest) {
     request = &DescribeLiveWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
