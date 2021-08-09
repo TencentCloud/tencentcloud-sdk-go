@@ -1,49 +1,10 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
+## 物联卡(ic) 版本：2019-03-07
 
-### 第 8 次发布
+### 第 5 次发布
 
-发布时间：2021-08-06 08:00:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
-
-
-
-## 弹性伸缩(as) 版本：2018-04-19
-
-### 第 38 次发布
-
-发布时间：2021-08-06 08:03:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAutoScalingGroup](https://cloud.tencent.com/document/api/377/20440)
-
-	* 新增入参：CapacityRebalance
-
-* [ModifyAutoScalingGroup](https://cloud.tencent.com/document/api/377/20433)
-
-	* 新增入参：CapacityRebalance
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 49 次发布
-
-发布时间：2021-08-06 08:01:49
+发布时间：2021-08-09 08:00:38
 
 本次发布包含了以下内容：
 
@@ -51,22 +12,18 @@
 
 修改数据结构：
 
-* [Image](https://cloud.tencent.com/document/api/1108/42574#Image)
+* [CardInfo](https://cloud.tencent.com/document/api/636/33881#CardInfo)
 
-	* 新增成员：IsSupportCloudInit
-
-* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
-
-	* 新增成员：UserData
+	* 新增成员：OtherData
 
 
 
 
-## 云直播(live) 版本：2018-08-01
+## 前端性能监控(rum) 版本：2021-06-22
 
-### 第 68 次发布
+### 第 2 次发布
 
-发布时间：2021-08-06 08:06:31
+发布时间：2021-08-09 08:00:05
 
 本次发布包含了以下内容：
 
@@ -74,35 +31,7 @@
 
 新增接口：
 
-* [DescribeLiveTranscodeTotalInfo](https://cloud.tencent.com/document/api/267/59864)
-
-新增数据结构：
-
-* [TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 53 次发布
-
-发布时间：2021-08-06 08:07:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [VatInvoiceVerify](https://cloud.tencent.com/document/api/866/47324)
-
-	* 新增出参：VehicleInvoiceInfo, UsedVehicleInvoiceInfo
-
-
-新增数据结构：
-
-* [UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo)
-* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+* [DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)
 
 
 
@@ -801,7 +730,7 @@
 
 新增接口：
 
-* [[AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
 
 ### 第 7 次发布
 
@@ -27047,6 +26976,21 @@
 
 ## 物联卡(ic) 版本：2019-03-07
 
+### 第 5 次发布
+
+发布时间：2021-08-09 08:00:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CardInfo](https://cloud.tencent.com/document/api/636/33881#CardInfo)
+
+	* 新增成员：OtherData
+
+
 ### 第 4 次发布
 
 发布时间：2021-05-11 20:09:52
@@ -30815,11 +30759,11 @@
 
 新增接口：
 
-* [[DescribeLiveTranscodeTotalInfo](https://cloud.tencent.com/document/api/267/59864)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLiveTranscodeTotalInfo](https://cloud.tencent.com/document/api/267/59864)
 
 新增数据结构：
 
-* [[TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo)](https://cloud.tencent.com/document/api/267/20474#[TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo))
+* [TranscodeTotalInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeTotalInfo)
 
 ### 第 67 次发布
 
@@ -36042,8 +35986,8 @@
 
 新增数据结构：
 
-* [[UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo)](https://cloud.tencent.com/document/api/866/33527#[UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo))
-* [[VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)](https://cloud.tencent.com/document/api/866/33527#[VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo))
+* [UsedVehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#UsedVehicleInvoiceInfo)
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
 
 ### 第 52 次发布
 
@@ -38883,6 +38827,18 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 2 次发布
+
+发布时间：2021-08-09 08:00:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 1 次发布
 

@@ -148,6 +148,10 @@ type CardInfo struct {
 	// 实名认证 0:无 1:未实名 2:已实名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificationState *int64 `json:"CertificationState,omitempty" name:"CertificationState"`
+
+	// 其他流量信息,流量分离统计其他流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherData *float64 `json:"OtherData,omitempty" name:"OtherData"`
 }
 
 type CardList struct {

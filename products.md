@@ -83,7 +83,7 @@
 | habo | [](https://cloud.tencent.com/document/product) | 2019-05-09 19:37:22 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2021-07-02 08:05:47 |
 | iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2021-07-06 08:06:33 |
-| ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-07-02 08:00:38 |
+| ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2021-08-09 08:00:38 |
 | ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2021-08-05 08:01:46 |
 | iir | [智能识图](https://cloud.tencent.com/document/product/1217) | 2021-07-02 08:01:41 |
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-07-05 08:01:03 |
@@ -95,7 +95,7 @@
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-07-02 08:00:48 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-07-02 08:06:17 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-08-03 08:01:31 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-08-06 08:06:31 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-08-09 08:06:22 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-07-02 08:01:39 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-08-05 08:06:50 |
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-07-27 08:00:11 |
@@ -121,7 +121,7 @@
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-07-23 08:08:01 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-07-02 08:11:01 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-07-02 08:01:39 |
-| rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-08-04 08:00:04 |
+| rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-08-09 08:00:05 |
 | scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-08-03 08:08:15 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-07-02 08:11:22 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-07-02 08:02:55 |
