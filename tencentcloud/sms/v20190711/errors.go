@@ -59,6 +59,9 @@ const (
 	// 手机号在黑名单库中，通常是用户退订或者命中运营商黑名单导致的，可联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
 	FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 
+	// 签名个数达到最大值。
+	FAILEDOPERATION_SIGNNUMBERLIMIT = "FailedOperation.SignNumberLimit"
+
 	// 签名未审批或格式错误。（1）可登陆 [短信控制台](https://console.cloud.tencent.com/smsv2)，核查签名是否已审批并且审批通过；（2）核查是否符合格式规范，签名只能由中英文、数字组成，要求2 - 12个字，若存在疑问可联系 [腾讯云短信小助手](https://tccc.qcloud.com/web/im/index.html#/chat?webAppId=8fa15978f85cb41f7e2ea36920cb3ae1&title=Sms)。
 	FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = "FailedOperation.SignatureIncorrectOrUnapproved"
 

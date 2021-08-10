@@ -569,6 +569,9 @@ const (
 	// imageTags不能为空。
 	INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
 
+	// 重装系统，无效的镜像id。
+	INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"
+
 	// 参数格式异常。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
 

@@ -289,6 +289,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -367,6 +368,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
@@ -1199,6 +1201,7 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
     if request == nil {
@@ -1422,14 +1425,7 @@ func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
 // 发送cmq主题消息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
-//  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *PublishCmqMsgResponse, err error) {
     if request == nil {
         request = NewPublishCmqMsgRequest()

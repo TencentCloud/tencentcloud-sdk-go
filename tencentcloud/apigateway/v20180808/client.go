@@ -220,6 +220,7 @@ func NewBindSecretIdsResponse() (response *BindSecretIdsResponse) {
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = "UnsupportedOperation.AlreadyBindUsagePlan"
+//  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDAPIKEY = "UnsupportedOperation.UnsupportedBindApiKey"
 func (c *Client) BindSecretIds(request *BindSecretIdsRequest) (response *BindSecretIdsResponse, err error) {
     if request == nil {
@@ -560,6 +561,7 @@ func NewCreatePluginResponse() (response *CreatePluginResponse) {
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
     if request == nil {
@@ -776,6 +778,7 @@ func NewDeleteApiAppResponse() (response *DeleteApiAppResponse) {
 //  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDAPIAPP = "ResourceNotFound.InvalidApiApp"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
@@ -2336,6 +2339,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
+//  INTERNALERROR_VPCEXCEPTION = "InternalError.VpcException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDAPIBUSINESSTYPE = "InvalidParameterValue.InvalidApiBusinessType"

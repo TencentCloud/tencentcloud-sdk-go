@@ -5397,6 +5397,10 @@ type MediaAudioStreamItem struct {
 
 	// 音频流的编码格式，例如 aac。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频声道数，例如 2。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
@@ -5903,6 +5907,18 @@ type MediaVideoStreamItem struct {
 
 	// 帧率，单位：hz。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorPrimaries *string `json:"ColorPrimaries,omitempty" name:"ColorPrimaries"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorSpace *string `json:"ColorSpace,omitempty" name:"ColorSpace"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorTransfer *string `json:"ColorTransfer,omitempty" name:"ColorTransfer"`
 }
 
 type ModifyAIAnalysisTemplateRequest struct {

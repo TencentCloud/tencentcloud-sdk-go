@@ -608,6 +608,9 @@ const (
 	// 密钥不支持Windows操作系统
 	UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = "UnsupportedOperation.KeyPairUnsupportedWindows"
 
+	// 机型数据盘全为本地盘不支持跨机型调整。
+	UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = "UnsupportedOperation.LocalDataDiskChangeInstanceFamily"
+
 	// 绑定负载均衡的实例，不支持修改vpc属性。
 	UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = "UnsupportedOperation.ModifyVPCWithCLB"
 

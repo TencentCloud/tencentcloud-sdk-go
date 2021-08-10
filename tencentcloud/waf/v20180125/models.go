@@ -20,6 +20,147 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccessFullTextInfo struct {
+
+	// 是否大小写敏感
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+
+	// 全文索引的分词符，字符串中每个字符代表一个分词符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
+
+	// 是否包含中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
+}
+
+type AccessKeyValueInfo struct {
+
+	// 需要配置键值或者元字段索引的字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 字段的索引描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *AccessValueInfo `json:"Value,omitempty" name:"Value"`
+}
+
+type AccessLogInfo struct {
+
+	// 日志时间，单位ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 日志来源IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 日志文件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 日志上报请求包的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 请求包内日志的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 日志内容的Json序列化字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogJson *string `json:"LogJson,omitempty" name:"LogJson"`
+}
+
+type AccessLogItem struct {
+
+	// 日记Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 日志Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type AccessLogItems struct {
+
+	// 分析结果返回的KV数据对
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*AccessLogItem `json:"Data,omitempty" name:"Data"`
+}
+
+type AccessRuleInfo struct {
+
+	// 全文索引配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullText *AccessFullTextInfo `json:"FullText,omitempty" name:"FullText"`
+
+	// 键值索引配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyValue *AccessRuleKeyValueInfo `json:"KeyValue,omitempty" name:"KeyValue"`
+
+	// 元字段索引配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *AccessRuleTagInfo `json:"Tag,omitempty" name:"Tag"`
+}
+
+type AccessRuleKeyValueInfo struct {
+
+	// 是否大小写敏感
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+
+	// 需要建立索引的键值对信息；最大只能配置100个键值对
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
+}
+
+type AccessRuleTagInfo struct {
+
+	// 是否大小写敏感
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+
+	// 标签索引配置中的字段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
+}
+
+type AccessValueInfo struct {
+
+	// 字段类型，目前支持的类型有：long、text、double
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
+
+	// 字段是否开启分析功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlFlag *bool `json:"SqlFlag,omitempty" name:"SqlFlag"`
+
+	// 是否包含中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
+}
+
 type AddCustomRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -120,6 +261,79 @@ type BotStatPointItem struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
+type CreateAccessExportRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 日志导出检索语句
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 日志导出数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 日志导出数据格式。json，csv，默认为json
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 日志导出时间排序。desc，asc，默认为desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *CreateAccessExportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessExportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "Count")
+	delete(f, "Format")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessExportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccessExportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志导出ID。
+		ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAccessExportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessExportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAttackDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -198,6 +412,56 @@ func (r *CreateAttackDownloadTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAttackDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessExportRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志导出ID
+	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+
+	// 日志主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteAccessExportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessExportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExportId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccessExportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessExportResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAccessExportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -344,6 +608,162 @@ func (r *DeleteSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessExportsRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 分页的偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAccessExportsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessExportsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessExportsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessExportsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志导出ID。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 日志导出列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Exports []*ExportAccessInfo `json:"Exports,omitempty" name:"Exports"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccessExportsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessExportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessFastAnalysisRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAccessFastAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessFastAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessFastAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccessFastAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessFastAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessIndexRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAccessIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否生效
+		Status *bool `json:"Status,omitempty" name:"Status"`
+
+		// 索引配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Rule *AccessRuleInfo `json:"Rule,omitempty" name:"Rule"`
+
+		// 索引修改时间，初始值为索引创建时间。
+		ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccessIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessIndexResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -560,6 +980,51 @@ func (r *DescribeUserClbWafRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportAccessInfo struct {
+
+	// 日志导出任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+
+	// 日志导出查询语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 日志导出文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 日志文件大小
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 日志导出时间排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 日志导出格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 日志导出数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 日志导出起始时间
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 日志导出结束时间
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 日志导出路径
+	CosPath *string `json:"CosPath,omitempty" name:"CosPath"`
+
+	// 日志导出创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type ModifyAccessPeriodRequest struct {
 	*tchttp.BaseRequest
 
@@ -678,6 +1143,100 @@ type ResponseCode struct {
 
 	// 如果成功则返回Success，失败则返回WAF定义的二级错误码
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type SearchAccessLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 查询语句，语句长度最大为4096
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 单次查询返回的日志条数，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *SearchAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAccessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "Limit")
+	delete(f, "Context")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAccessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchAccessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 加载后续内容的Context
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 日志查询结果是否全部返回
+		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+		// 返回的是否为分析结果
+		Analysis *bool `json:"Analysis,omitempty" name:"Analysis"`
+
+		// 如果Analysis为True，则返回分析结果的列名，否则为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
+
+		// 日志查询结果；当Analysis为True时，可能返回为null
+	// 注意：此字段可能返回 null，表示取不到有效值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*AccessLogInfo `json:"Results,omitempty" name:"Results"`
+
+		// 日志分析结果；当Analysis为False时，可能返回为null
+	// 注意：此字段可能返回 null，表示取不到有效值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AnalysisResults []*AccessLogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAccessLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Strategy struct {

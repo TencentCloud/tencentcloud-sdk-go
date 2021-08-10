@@ -309,6 +309,9 @@ const (
 	RESOURCENOTFOUND_TAGSNOTFOUND = "ResourceNotFound.TagsNotFound"
 
 	// 当前资源规格不存在默认规格。
+	RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpecNotDefaultSpec"
+
+	// 当前资源规格不存在默认规格。
 	RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpec_NotDefaultSpec"
 
 	// 资源售罄。

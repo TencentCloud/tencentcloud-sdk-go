@@ -1154,6 +1154,7 @@ func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()

@@ -284,6 +284,7 @@ func NewDescribeAudioStatResponse() (response *DescribeAudioStatResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAudioStat(request *DescribeAudioStatRequest) (response *DescribeAudioStatResponse, err error) {
     if request == nil {
         request = NewDescribeAudioStatRequest()

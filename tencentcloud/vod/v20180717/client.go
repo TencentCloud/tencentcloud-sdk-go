@@ -594,6 +594,7 @@ func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplate
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"

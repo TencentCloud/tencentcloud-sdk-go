@@ -6112,6 +6112,66 @@ type QueryDeclareResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+type QueryDownloadBillURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 分配给商户的AppId。进件成功后返给商户方的AppId。
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 渠道编号。固定值：ZSB2B
+	ChannelCode *string `json:"ChannelCode,omitempty" name:"ChannelCode"`
+
+	// 对账单日期，格式yyyyMMdd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+}
+
+func (r *QueryDownloadBillURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDownloadBillURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "ChannelCode")
+	delete(f, "BillDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDownloadBillURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryDownloadBillURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给商户的AppId。进件成功后返给商户方的AppId。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 对账单下载地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryDownloadBillURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDownloadBillURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryExchangeRateRequest struct {
 	*tchttp.BaseRequest
 

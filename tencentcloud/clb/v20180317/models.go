@@ -384,6 +384,44 @@ type BatchTarget struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 }
 
+type BindDetailItem struct {
+
+	// 配置绑定的CLB ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 配置绑定的监听器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 配置绑定的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 配置绑定的规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 监听器名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 监听器协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 监听器端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// location的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UconfigId *string `json:"UconfigId,omitempty" name:"UconfigId"`
+}
+
 type BlockedIP struct {
 
 	// 黑名单IP
@@ -701,6 +739,28 @@ type ClustersZone struct {
 	// 集群所在的备可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZone []*string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+}
+
+type ConfigListItem struct {
+
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitempty" name:"UconfigId"`
+
+	// 配置类型
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// 配置名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置内容
+	ConfigContent *string `json:"ConfigContent,omitempty" name:"ConfigContent"`
+
+	// 增加配置时间
+	CreateTimestamp *string `json:"CreateTimestamp,omitempty" name:"CreateTimestamp"`
+
+	// 修改配置时间
+	UpdateTimestamp *string `json:"UpdateTimestamp,omitempty" name:"UpdateTimestamp"`
 }
 
 type CreateClsLogSetRequest struct {
@@ -2199,6 +2259,144 @@ func (r *DescribeClusterResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomizedConfigAssociateListRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitempty" name:"UconfigId"`
+
+	// 拉取绑定关系列表开始位置，默认值 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取绑定关系列表数目，默认值 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeCustomizedConfigAssociateListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomizedConfigAssociateListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UconfigId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomizedConfigAssociateListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomizedConfigAssociateListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 绑定关系列表
+		BindList []*BindDetailItem `json:"BindList,omitempty" name:"BindList"`
+
+		// 绑定关系总数目
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomizedConfigAssociateListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomizedConfigAssociateListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomizedConfigListRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// 拉取页偏移，默认值0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取数目，默认值20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 拉取指定配置名字，模糊匹配。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置ID
+	UconfigIds []*string `json:"UconfigIds,omitempty" name:"UconfigIds"`
+
+	// 过滤条件如下：
+	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
+	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCustomizedConfigListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomizedConfigListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ConfigName")
+	delete(f, "UconfigIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomizedConfigListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomizedConfigListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置列表
+		ConfigList []*ConfigListItem `json:"ConfigList,omitempty" name:"ConfigList"`
+
+		// 配置数目
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomizedConfigListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomizedConfigListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5003,6 +5201,71 @@ type RuleTargets struct {
 	// 后端服务的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets"`
+}
+
+type SetCustomizedConfigForLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+
+	// 操作类型：'ADD', 'DELETE', 'UPDATE', 'BIND', 'UNBIND'
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 除了创建个性化配置外，必传此字段，如：pz-1234abcd
+	UconfigId *string `json:"UconfigId,omitempty" name:"UconfigId"`
+
+	// 创建个性化配置或修改个性化配置的内容时，必传此字段
+	ConfigContent *string `json:"ConfigContent,omitempty" name:"ConfigContent"`
+
+	// 创建个性化配置或修改个性化配置的名字时，必传此字段
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 绑定解绑时，必传此字段
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
+}
+
+func (r *SetCustomizedConfigForLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetCustomizedConfigForLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationType")
+	delete(f, "UconfigId")
+	delete(f, "ConfigContent")
+	delete(f, "ConfigName")
+	delete(f, "LoadBalancerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetCustomizedConfigForLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetCustomizedConfigForLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 个性化配置ID，如：pz-1234abcd
+		ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetCustomizedConfigForLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetCustomizedConfigForLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetLoadBalancerClsLogRequest struct {

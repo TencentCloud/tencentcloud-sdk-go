@@ -179,6 +179,9 @@ const (
 	// AdditionalVersionWeights参数传入错误。
 	INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
 
+	// 不支持删除默认别名，请修正后重试。
+	INVALIDPARAMETERVALUE_ALIAS = "InvalidParameterValue.Alias"
+
 	// ApiGateway参数错误。
 	INVALIDPARAMETERVALUE_APIGATEWAY = "InvalidParameterValue.ApiGateway"
 
@@ -355,6 +358,9 @@ const (
 
 	// searchkey 不是 Keyword,Tag 或者 Runtime。
 	INVALIDPARAMETERVALUE_SEARCHKEY = "InvalidParameterValue.SearchKey"
+
+	// SecretInfo错误。
+	INVALIDPARAMETERVALUE_SECRETINFO = "InvalidParameterValue.SecretInfo"
 
 	// ServiceName命名不规范。
 	INVALIDPARAMETERVALUE_SERVICENAME = "InvalidParameterValue.ServiceName"

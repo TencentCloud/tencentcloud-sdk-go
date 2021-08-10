@@ -543,6 +543,7 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
 //  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
 //  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     if request == nil {

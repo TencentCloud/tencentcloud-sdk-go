@@ -808,6 +808,8 @@ func NewCreateOrderResponse() (response *CreateOrderResponse) {
 // 云鉴-消费订单发起的接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERERROR = "FailedOperation.CreateOrderError"
+//  FAILEDOPERATION_CREATEORDERUNKNOWN = "FailedOperation.CreateOrderUnknown"
 //  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -839,7 +841,12 @@ func NewCreatePayMerchantResponse() (response *CreatePayMerchantResponse) {
 // 商户新增的接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ADDMERCHANTFAILED = "FailedOperation.AddMerchantFailed"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MERCHANTCHECKFAILED = "FailedOperation.MerchantCheckFailed"
+//  FAILEDOPERATION_MERCHANTCREATEFAILED = "FailedOperation.MerchantCreateFailed"
+//  FAILEDOPERATION_MERCHANTEXIST = "FailedOperation.MerchantExist"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) CreatePayMerchant(request *CreatePayMerchantRequest) (response *CreatePayMerchantResponse, err error) {
     if request == nil {
@@ -1353,12 +1360,9 @@ func NewModifyMerchantResponse() (response *ModifyMerchantResponse) {
 // 云鉴-商户信息修改的接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
+//  FAILEDOPERATION_MODIFYMERCHANTFAILED = "FailedOperation.ModifyMerchantFailed"
 func (c *Client) ModifyMerchant(request *ModifyMerchantRequest) (response *ModifyMerchantResponse, err error) {
     if request == nil {
         request = NewModifyMerchantRequest()
@@ -1953,6 +1957,38 @@ func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) 
     return
 }
 
+func NewQueryDownloadBillURLRequest() (request *QueryDownloadBillURLRequest) {
+    request = &QueryDownloadBillURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryDownloadBillURL")
+    return
+}
+
+func NewQueryDownloadBillURLResponse() (response *QueryDownloadBillURLResponse) {
+    response = &QueryDownloadBillURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryDownloadBillURL
+// 云鉴-查询对账单下载地址的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADBILLERROR = "FailedOperation.DownloadBillError"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryDownloadBillURL(request *QueryDownloadBillURLRequest) (response *QueryDownloadBillURLResponse, err error) {
+    if request == nil {
+        request = NewQueryDownloadBillURLRequest()
+    }
+    response = NewQueryDownloadBillURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
     request = &QueryExchangeRateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2254,6 +2290,7 @@ func NewQueryMerchantOrderResponse() (response *QueryMerchantOrderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryMerchantOrder(request *QueryMerchantOrderRequest) (response *QueryMerchantOrderResponse, err error) {
     if request == nil {
@@ -2841,6 +2878,7 @@ func NewRefundOrderResponse() (response *RefundOrderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) RefundOrder(request *RefundOrderRequest) (response *RefundOrderResponse, err error) {
     if request == nil {

@@ -96,6 +96,7 @@ func NewInitOralProcessResponse() (response *InitOralProcessResponse) {
 //  INTERNALERROR_INVALIDSEQID = "InternalError.InvalidSeqId"
 //  INTERNALERROR_INVALIDWAVHEADER = "InternalError.InvalidWAVHeader"
 //  INTERNALERROR_NOCONVERSATIONFOUND = "InternalError.NoConversationFound"
+//  INTERNALERROR_REFTXTOOV = "InternalError.RefTxtOov"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
 //  INTERNALERROR_SERVEROVERLOAD = "InternalError.ServerOverload"
 //  INTERNALERROR_SERVICETIMEOUT = "InternalError.ServiceTimeout"
@@ -172,6 +173,7 @@ func NewKeywordEvaluateResponse() (response *KeywordEvaluateResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_ACCOUNTUNAVAILABLE = "AuthFailure.AccountUnavailable"
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_EVALUATETIMEOUT = "FailedOperation.EvaluateTimeout"

@@ -1174,6 +1174,89 @@ func (c *Client) DescribeClusterResources(request *DescribeClusterResourcesReque
     return
 }
 
+func NewDescribeCustomizedConfigAssociateListRequest() (request *DescribeCustomizedConfigAssociateListRequest) {
+    request = &DescribeCustomizedConfigAssociateListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeCustomizedConfigAssociateList")
+    return
+}
+
+func NewDescribeCustomizedConfigAssociateListResponse() (response *DescribeCustomizedConfigAssociateListResponse) {
+    response = &DescribeCustomizedConfigAssociateListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomizedConfigAssociateList
+// 拉取配置绑定的 server 或 location，如果 domain 存在，结果将根据 domain 过滤。或拉取配置绑定的 loadbalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCustomizedConfigAssociateList(request *DescribeCustomizedConfigAssociateListRequest) (response *DescribeCustomizedConfigAssociateListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomizedConfigAssociateListRequest()
+    }
+    response = NewDescribeCustomizedConfigAssociateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomizedConfigListRequest() (request *DescribeCustomizedConfigListRequest) {
+    request = &DescribeCustomizedConfigListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeCustomizedConfigList")
+    return
+}
+
+func NewDescribeCustomizedConfigListResponse() (response *DescribeCustomizedConfigListResponse) {
+    response = &DescribeCustomizedConfigListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomizedConfigList
+// 拉取个性化配置列表，返回用户 AppId 下指定类型的配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETER_REWRITEALREADYEXIST = "InvalidParameter.RewriteAlreadyExist"
+//  INVALIDPARAMETER_SOMEREWRITENOTFOUND = "InvalidParameter.SomeRewriteNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCustomizedConfigList(request *DescribeCustomizedConfigListRequest) (response *DescribeCustomizedConfigListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomizedConfigListRequest()
+    }
+    response = NewDescribeCustomizedConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExclusiveClustersRequest() (request *DescribeExclusiveClustersRequest) {
     request = &DescribeExclusiveClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2300,6 +2383,44 @@ func (c *Client) ReplaceCertForLoadBalancers(request *ReplaceCertForLoadBalancer
         request = NewReplaceCertForLoadBalancersRequest()
     }
     response = NewReplaceCertForLoadBalancersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetCustomizedConfigForLoadBalancerRequest() (request *SetCustomizedConfigForLoadBalancerRequest) {
+    request = &SetCustomizedConfigForLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "SetCustomizedConfigForLoadBalancer")
+    return
+}
+
+func NewSetCustomizedConfigForLoadBalancerResponse() (response *SetCustomizedConfigForLoadBalancerResponse) {
+    response = &SetCustomizedConfigForLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetCustomizedConfigForLoadBalancer
+// 负载均衡维度的个性化配置相关操作：创建、删除、修改、绑定、解绑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetCustomizedConfigForLoadBalancer(request *SetCustomizedConfigForLoadBalancerRequest) (response *SetCustomizedConfigForLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewSetCustomizedConfigForLoadBalancerRequest()
+    }
+    response = NewSetCustomizedConfigForLoadBalancerResponse()
     err = c.Send(request, response)
     return
 }

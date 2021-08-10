@@ -302,6 +302,7 @@ func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response *CheckPhoneAndNameResponse, err error) {
     if request == nil {
