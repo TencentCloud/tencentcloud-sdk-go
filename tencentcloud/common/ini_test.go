@@ -50,7 +50,6 @@ func Test_parse(t *testing.T) {
 				return
 			}
 			if err == nil {
-				t.Log(got.section("default"))
 				if got.section("default").key("key1").string() == "" {
 					t.Errorf("parse() error:not get default.key1 value")
 				}

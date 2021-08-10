@@ -275,6 +275,28 @@ SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connect
 
 则此 client 发出的每个请求头部的 Connection 字段的值为 close
 
+## 地域容灾
+
+从 `v1.0.189`开始，腾讯云 GO SDK 支持地域容灾功能：
+
+当请求满足以下条件时：
+
+1. 失败次数 >= 5 次
+2. 失败率 >= 75%
+
+SDK 会自动将您请求的地域设置为备选地域。
+
+相关设置如下：
+
+```golang
+    // 开启
+    cpf.DisableRegionBreaker = false
+    // 设置备用地域
+    cpf.BackupRegion = "ap-guangzhou"
+```
+
+此功能仅支持单个客户端的同步请求。
+
 ## 代理
 
 如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。或者自定义 Transport 指定代理，通过 client.WithHttpTransport 覆盖默认配置。

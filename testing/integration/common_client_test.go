@@ -3,7 +3,6 @@ package integration
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"testing"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -13,10 +12,13 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 )
 
-func getCredential() *common.Credential {
-	return common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+func getCredential() common.CredentialIface {
+	pr := common.DefaultProviderChain()
+	cr, err := pr.GetCredential()
+	if err != nil {
+		panic(err)
+	}
+	return cr
 }
 
 // TestCommonRequest

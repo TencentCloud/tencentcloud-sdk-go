@@ -1,4 +1,4 @@
-package common_test
+package common
 
 import (
 	"bytes"
@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
@@ -172,8 +171,8 @@ func TestBothFailuresOccurredButSucceedAfterRetry(t *testing.T) {
 }
 
 func test(t *testing.T, tc testCase) {
-	credential := common.NewCredential("", "")
-	client := common.NewCommonClient(credential, regions.Guangzhou, tc.prof)
+	credential := NewCredential("", "")
+	client := NewCommonClient(credential, regions.Guangzhou, tc.prof)
 
 	client.WithHttpTransport(&tc.specific)
 
@@ -190,5 +189,20 @@ func test(t *testing.T, tc testCase) {
 	if tc.expected.NetworkTries != tc.specific.NetworkTries {
 		t.Fatalf("unexpected network failure retry, expected %d, got %d",
 			tc.expected.NetworkTries, tc.specific.NetworkTries)
+	}
+}
+
+func TestClient_withRegionBreaker(t *testing.T) {
+	cpf := profile.NewClientProfile()
+	//cpf.Debug =true
+	cpf.DisableRegionBreaker = false
+	cpf.BackupRegion = "ap-beijing"
+	c := (&Client{}).Init("")
+	c.WithProfile(cpf)
+	if c.rb.backupRegion != "ap-beijing" {
+		t.Errorf("want %s ,got %s", "ap-beijing", c.rb.backupRegion)
+	}
+	if c.rb.maxFailNum != defaultMaxFailNum {
+		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
 	}
 }
