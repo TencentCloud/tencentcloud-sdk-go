@@ -28,7 +28,9 @@ type ClientProfile struct {
 	// Default value is zh-CN.
 	Language string
 	Debug    bool
-
+	// define Whether to enable Regional auto switch
+	DisableRegionBreaker bool
+	BackupEndPoint       string
 	// define how to retry request
 	NetworkFailureMaxRetries       int
 	NetworkFailureRetryDuration    DurationFunc
@@ -43,5 +45,8 @@ func NewClientProfile() *ClientProfile {
 		UnsignedPayload: false,
 		Language:        "zh-CN",
 		Debug:           false,
+		// now is true, will become to false in future
+		DisableRegionBreaker: true,
+		BackupEndPoint:       "",
 	}
 }

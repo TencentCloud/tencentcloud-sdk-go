@@ -6,7 +6,7 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-func NewCommonClient(cred *Credential, region string, clientProfile *profile.ClientProfile) (c *Client) {
+func NewCommonClient(cred CredentialIface, region string, clientProfile *profile.ClientProfile) (c *Client) {
 	return new(Client).Init(region).WithCredential(cred).WithProfile(clientProfile)
 }
 

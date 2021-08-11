@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
@@ -24,6 +25,7 @@ type Client struct {
 	signMethod      string
 	unsignedPayload bool
 	debug           bool
+	rb              *circuitBreaker
 }
 
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
@@ -49,11 +51,46 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
 
-	// reflect to inject client client if field exists and retry feature is enabled
+	// reflect to inject client if field ClientToken exists and retry feature is enabled
 	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
 		safeInjectClientToken(request)
 	}
 
+	if c.profile.DisableRegionBreaker == true || c.rb == nil {
+		return c.sendWithSignature(request, response)
+	} else {
+		return c.sendWithRegionBreaker(request, response)
+	}
+}
+
+func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.Response) (err error) {
+	defer func() {
+		e := recover()
+		if e != nil {
+			msg := fmt.Sprintf("%s", e)
+			err = tcerr.NewTencentCloudSDKError("ClientError.CircuitBreakerError", msg, "")
+		}
+	}()
+
+	ge, err := c.rb.beforeRequest()
+
+	if err == errOpenState {
+		newEndpoint := request.GetService() + "." + c.rb.backupEndpoint
+		request.SetDomain(newEndpoint)
+	}
+	err = c.sendWithSignature(request, response)
+	isSuccess := false
+	// Success is considered only when the server returns an effective response (have requestId and the code is not InternalError )
+	if e, ok := err.(*tcerr.TencentCloudSDKError); ok {
+		if e.GetRequestId() != "" && e.GetCode() != "InternalError" {
+			isSuccess = true
+		}
+	}
+	c.rb.afterRequest(ge, isSuccess)
+	return err
+}
+
+func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Response) (err error) {
 	if c.signMethod == "HmacSHA1" || c.signMethod == "HmacSHA256" {
 		return c.sendWithSignatureV1(request, response)
 	} else {
@@ -229,12 +266,12 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 // send http request
 func (c *Client) sendHttp(request *http.Request) (response *http.Response, err error) {
 	if c.debug {
-		outbytes, err := httputil.DumpRequest(request, true)
+		outBytes, err := httputil.DumpRequest(request, true)
 		if err != nil {
 			log.Printf("[ERROR] dump request failed because %s", err)
 			return nil, err
 		}
-		log.Printf("[DEBUG] http request = %s", outbytes)
+		log.Printf("[DEBUG] http request = %s", outBytes)
 	}
 
 	response, err = c.httpClient.Do(request)
@@ -266,6 +303,9 @@ func (c *Client) WithCredential(cred CredentialIface) *Client {
 
 func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 	c.profile = clientProfile
+	if c.profile.DisableRegionBreaker == false {
+		c.withRegionBreaker()
+	}
 	c.signMethod = clientProfile.SignMethod
 	c.unsignedPayload = clientProfile.UnsignedPayload
 	c.httpProfile = clientProfile.HttpProfile
@@ -296,6 +336,15 @@ func (c *Client) WithProvider(provider Provider) (*Client, error) {
 		return nil, err
 	}
 	return c.WithCredential(cred), nil
+}
+
+func (c *Client) withRegionBreaker() *Client {
+	rb := defaultRegionBreaker()
+	if len(c.profile.BackupEndPoint) != 0 {
+		rb.backupEndpoint = c.profile.BackupEndPoint
+	}
+	c.rb = rb
+	return c
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
