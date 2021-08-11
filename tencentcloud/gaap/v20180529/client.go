@@ -708,6 +708,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
 //  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
 //  FAILEDOPERATION_LIMITNUMOFRULES = "FailedOperation.LimitNumofRules"
 //  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
@@ -992,6 +993,7 @@ func NewDeleteDomainErrorPageInfoResponse() (response *DeleteDomainErrorPageInfo
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
 //  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
 //  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1152,6 +1154,7 @@ func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()
@@ -2388,6 +2391,7 @@ func NewDescribeSecurityPolicyDetailResponse() (response *DescribeSecurityPolicy
 // 获取安全策略详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

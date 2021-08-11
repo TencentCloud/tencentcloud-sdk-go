@@ -494,6 +494,37 @@ func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderRes
     return
 }
 
+func NewConfirmOrderRequest() (request *ConfirmOrderRequest) {
+    request = &ConfirmOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ConfirmOrder")
+    return
+}
+
+func NewConfirmOrderResponse() (response *ConfirmOrderResponse) {
+    response = &ConfirmOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ConfirmOrder
+// 云鉴-消费订单确认接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) ConfirmOrder(request *ConfirmOrderRequest) (response *ConfirmOrderResponse, err error) {
+    if request == nil {
+        request = NewConfirmOrderRequest()
+    }
+    response = NewConfirmOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewContractOrderRequest() (request *ContractOrderRequest) {
     request = &ContractOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -754,6 +785,74 @@ func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *Creat
         request = NewCreateMerchantRequest()
     }
     response = NewCreateMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOrderRequest() (request *CreateOrderRequest) {
+    request = &CreateOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOrder")
+    return
+}
+
+func NewCreateOrderResponse() (response *CreateOrderResponse) {
+    response = &CreateOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrder
+// 云鉴-消费订单发起的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERERROR = "FailedOperation.CreateOrderError"
+//  FAILEDOPERATION_CREATEORDERUNKNOWN = "FailedOperation.CreateOrderUnknown"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) CreateOrder(request *CreateOrderRequest) (response *CreateOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOrderRequest()
+    }
+    response = NewCreateOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePayMerchantRequest() (request *CreatePayMerchantRequest) {
+    request = &CreatePayMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayMerchant")
+    return
+}
+
+func NewCreatePayMerchantResponse() (response *CreatePayMerchantResponse) {
+    response = &CreatePayMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePayMerchant
+// 商户新增的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ADDMERCHANTFAILED = "FailedOperation.AddMerchantFailed"
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MERCHANTCHECKFAILED = "FailedOperation.MerchantCheckFailed"
+//  FAILEDOPERATION_MERCHANTCREATEFAILED = "FailedOperation.MerchantCreateFailed"
+//  FAILEDOPERATION_MERCHANTEXIST = "FailedOperation.MerchantExist"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) CreatePayMerchant(request *CreatePayMerchantRequest) (response *CreatePayMerchantResponse, err error) {
+    if request == nil {
+        request = NewCreatePayMerchantRequest()
+    }
+    response = NewCreatePayMerchantResponse()
     err = c.Send(request, response)
     return
 }
@@ -1238,6 +1337,37 @@ func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoReq
         request = NewModifyAgentTaxPaymentInfoRequest()
     }
     response = NewModifyAgentTaxPaymentInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
+    request = &ModifyMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ModifyMerchant")
+    return
+}
+
+func NewModifyMerchantResponse() (response *ModifyMerchantResponse) {
+    response = &ModifyMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMerchant
+// 云鉴-商户信息修改的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
+//  FAILEDOPERATION_MODIFYMERCHANTFAILED = "FailedOperation.ModifyMerchantFailed"
+func (c *Client) ModifyMerchant(request *ModifyMerchantRequest) (response *ModifyMerchantResponse, err error) {
+    if request == nil {
+        request = NewModifyMerchantRequest()
+    }
+    response = NewModifyMerchantResponse()
     err = c.Send(request, response)
     return
 }
@@ -1827,6 +1957,38 @@ func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) 
     return
 }
 
+func NewQueryDownloadBillURLRequest() (request *QueryDownloadBillURLRequest) {
+    request = &QueryDownloadBillURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryDownloadBillURL")
+    return
+}
+
+func NewQueryDownloadBillURLResponse() (response *QueryDownloadBillURLResponse) {
+    response = &QueryDownloadBillURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryDownloadBillURL
+// 云鉴-查询对账单下载地址的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADBILLERROR = "FailedOperation.DownloadBillError"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryDownloadBillURL(request *QueryDownloadBillURLRequest) (response *QueryDownloadBillURLResponse, err error) {
+    if request == nil {
+        request = NewQueryDownloadBillURLRequest()
+    }
+    response = NewQueryDownloadBillURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
     request = &QueryExchangeRateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2007,6 +2169,38 @@ func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) 
     return
 }
 
+func NewQueryMerchantRequest() (request *QueryMerchantRequest) {
+    request = &QueryMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchant")
+    return
+}
+
+func NewQueryMerchantResponse() (response *QueryMerchantResponse) {
+    response = &QueryMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMerchant
+// 云鉴-商户信息查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryMerchant(request *QueryMerchantRequest) (response *QueryMerchantResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantRequest()
+    }
+    response = NewQueryMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMerchantBalanceRequest() (request *QueryMerchantBalanceRequest) {
     request = &QueryMerchantBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2071,6 +2265,38 @@ func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForMan
         request = NewQueryMerchantInfoForManagementRequest()
     }
     response = NewQueryMerchantInfoForManagementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryMerchantOrderRequest() (request *QueryMerchantOrderRequest) {
+    request = &QueryMerchantOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantOrder")
+    return
+}
+
+func NewQueryMerchantOrderResponse() (response *QueryMerchantOrderResponse) {
+    response = &QueryMerchantOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMerchantOrder
+// 云鉴-消费订单查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryMerchantOrder(request *QueryMerchantOrderRequest) (response *QueryMerchantOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantOrderRequest()
+    }
+    response = NewQueryMerchantOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -2627,6 +2853,38 @@ func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest
         request = NewRefundMemberTransactionRequest()
     }
     response = NewRefundMemberTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRefundOrderRequest() (request *RefundOrderRequest) {
+    request = &RefundOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RefundOrder")
+    return
+}
+
+func NewRefundOrderResponse() (response *RefundOrderResponse) {
+    response = &RefundOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefundOrder
+// 云鉴-消费订单退款的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) RefundOrder(request *RefundOrderRequest) (response *RefundOrderResponse, err error) {
+    if request == nil {
+        request = NewRefundOrderRequest()
+    }
+    response = NewRefundOrderResponse()
     err = c.Send(request, response)
     return
 }

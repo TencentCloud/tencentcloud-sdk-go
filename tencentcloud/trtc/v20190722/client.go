@@ -209,7 +209,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
 // DescribeCallDetail
 // 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询实时数据时，查询起止时间不超过1个小时，每次查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
 //
-// 注意：不建议依赖接口做实时类业务逻辑处理
+// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -553,7 +553,7 @@ func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResp
 // DescribeRoomInformation
 // 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
 //
-// 注意：不建议依赖接口做实时类业务逻辑处理
+// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -566,7 +566,6 @@ func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResp
 //  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
 //  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
 //  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
@@ -685,7 +684,7 @@ func NewDescribeUserInformationResponse() (response *DescribeUserInformationResp
 // DescribeUserInformation
 // 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
 //
-// 注意：不建议依赖接口做实时类业务逻辑处理
+// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -697,12 +696,9 @@ func NewDescribeUserInformationResponse() (response *DescribeUserInformationResp
 //  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
 //  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
 //  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"

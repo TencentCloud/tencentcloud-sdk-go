@@ -74,6 +74,66 @@ func (r *BindStaffSkillGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CallInMetrics struct {
+
+	// IVR驻留数量
+	IvrCount *int64 `json:"IvrCount,omitempty" name:"IvrCount"`
+
+	// 排队中数量
+	QueueCount *int64 `json:"QueueCount,omitempty" name:"QueueCount"`
+
+	// 振铃中数量
+	RingCount *int64 `json:"RingCount,omitempty" name:"RingCount"`
+
+	// 接通中数量
+	AcceptCount *int64 `json:"AcceptCount,omitempty" name:"AcceptCount"`
+
+	// 客服转接外线中数量
+	TransferOuterCount *int64 `json:"TransferOuterCount,omitempty" name:"TransferOuterCount"`
+
+	// 最大排队时长
+	MaxQueueDuration *int64 `json:"MaxQueueDuration,omitempty" name:"MaxQueueDuration"`
+
+	// 平均排队时长
+	AvgQueueDuration *int64 `json:"AvgQueueDuration,omitempty" name:"AvgQueueDuration"`
+
+	// 最大振铃时长
+	MaxRingDuration *int64 `json:"MaxRingDuration,omitempty" name:"MaxRingDuration"`
+
+	// 平均振铃时长
+	AvgRingDuration *int64 `json:"AvgRingDuration,omitempty" name:"AvgRingDuration"`
+
+	// 最大接通时长
+	MaxAcceptDuration *int64 `json:"MaxAcceptDuration,omitempty" name:"MaxAcceptDuration"`
+
+	// 平均接通时长
+	AvgAcceptDuration *int64 `json:"AvgAcceptDuration,omitempty" name:"AvgAcceptDuration"`
+}
+
+type CallInNumberMetrics struct {
+
+	// 线路号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 线路相关指标
+	Metrics *CallInMetrics `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 所属技能组相关指标
+	SkillGroupMetrics []*CallInSkillGroupMetrics `json:"SkillGroupMetrics,omitempty" name:"SkillGroupMetrics"`
+}
+
+type CallInSkillGroupMetrics struct {
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 数据指标
+	Metrics *CallInMetrics `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 技能组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type CreateSDKLoginTokenRequest struct {
 	*tchttp.BaseRequest
 
@@ -299,6 +359,74 @@ func (r *DeleteStaffResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStaffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCallInMetricsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 是否返回技能组维度信息，默认“是”
+	EnabledSkillGroup *bool `json:"EnabledSkillGroup,omitempty" name:"EnabledSkillGroup"`
+
+	// 是否返回线路维度信息，默认“否”
+	EnabledNumber *bool `json:"EnabledNumber,omitempty" name:"EnabledNumber"`
+}
+
+func (r *DescribeCallInMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallInMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "EnabledSkillGroup")
+	delete(f, "EnabledNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallInMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCallInMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 时间戳
+		Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+		// 总体指标
+		TotalMetrics *CallInMetrics `json:"TotalMetrics,omitempty" name:"TotalMetrics"`
+
+		// 线路维度指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NumberMetrics []*CallInNumberMetrics `json:"NumberMetrics,omitempty" name:"NumberMetrics"`
+
+		// 技能组维度指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SkillGroupMetrics []*CallInSkillGroupMetrics `json:"SkillGroupMetrics,omitempty" name:"SkillGroupMetrics"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCallInMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -703,6 +831,59 @@ func (r *DescribeStaffInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStaffStatusMetricsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 筛选坐席列表，默认不传返回全部坐席信息
+	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+}
+
+func (r *DescribeStaffStatusMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStaffStatusMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StaffList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStaffStatusMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStaffStatusMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 坐席状态实时信息
+		Metrics []*StaffStatusMetrics `json:"Metrics,omitempty" name:"Metrics"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStaffStatusMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStaffStatusMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1220,6 +1401,54 @@ type StaffInfo struct {
 	// 最后修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitempty" name:"LastModifyTimestamp"`
+}
+
+type StaffStatusExtra struct {
+
+	// im - 文本 | tel - 电话 | all - 全媒体
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// in - 呼入 | out - 呼出
+	Direct *string `json:"Direct,omitempty" name:"Direct"`
+}
+
+type StaffStatusMetrics struct {
+
+	// 坐席邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 坐席状态补充信息
+	StatusExtra *StaffStatusExtra `json:"StatusExtra,omitempty" name:"StatusExtra"`
+
+	// 当天在线总时长
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" name:"OnlineDuration"`
+
+	// 当天示闲总时长
+	FreeDuration *int64 `json:"FreeDuration,omitempty" name:"FreeDuration"`
+
+	// 当天忙碌总时长
+	BusyDuration *int64 `json:"BusyDuration,omitempty" name:"BusyDuration"`
+
+	// 当天示忙总时长
+	NotReadyDuration *int64 `json:"NotReadyDuration,omitempty" name:"NotReadyDuration"`
+
+	// 当天小休总时长
+	RestDuration *int64 `json:"RestDuration,omitempty" name:"RestDuration"`
+
+	// 当天话后调整总时长
+	AfterCallWorkDuration *int64 `json:"AfterCallWorkDuration,omitempty" name:"AfterCallWorkDuration"`
+
+	// 小休原因
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 是否预约小休
+	ReserveRest *bool `json:"ReserveRest,omitempty" name:"ReserveRest"`
+
+	// 是否预约示忙
+	ReserveNotReady *bool `json:"ReserveNotReady,omitempty" name:"ReserveNotReady"`
 }
 
 type TelCdrInfo struct {

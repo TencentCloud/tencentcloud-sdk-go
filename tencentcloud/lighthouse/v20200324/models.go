@@ -815,13 +815,17 @@ type DescribeBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
-	// 取值：APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+	// 取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 	// 类型：String
 	// 必选：否
 	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
 	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 	// 类型：String
 	// 必选：否
+	// <li>blueprint-name</li>按照【镜像名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
@@ -1561,7 +1565,14 @@ type DescribeKeyPairsRequest struct {
 	// 返回数量，默认为 20，最大值为 100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，每次请求的 Filters 的上限为10， Filters.Values 的上限为5。参数不可以同时指定 KeyIds 和 Filters 。详细的过滤条件如下： key-id - String - 是否必填： 否 - （过滤条件）按照KeyID进行过滤; key-name - String - 是否必填： 否 - （过滤条件）按照KeyName进行过滤。
+	// 过滤器列表。
+	// <li>key-id</li>按照【密钥对ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>key-name</li>按照【密钥对名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 KeyIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -1750,13 +1761,17 @@ type DescribeResetInstanceBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
-	// 取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+	// 取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
 	// 类型：String
 	// 必选：否
 	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
 	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 	// 类型：String
 	// 必选：否
+	// <li>blueprint-name</li>按照【镜像名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }

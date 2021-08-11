@@ -32,6 +32,9 @@ const (
 	// 配置参数action无效。
 	FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 
+	// 商户创建失败。
+	FAILEDOPERATION_ADDMERCHANTFAILED = "FailedOperation.AddMerchantFailed"
+
 	// 订单已经存在。
 	FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
 
@@ -74,6 +77,12 @@ const (
 	// 签约状态不正确。
 	FAILEDOPERATION_CONTRACTSTATUSERROR = "FailedOperation.ContractStatusError"
 
+	// 消费订单发起失败。
+	FAILEDOPERATION_CREATEORDERERROR = "FailedOperation.CreateOrderError"
+
+	// 消费订单发起状态未知，请调用查询接口进行查询。
+	FAILEDOPERATION_CREATEORDERUNKNOWN = "FailedOperation.CreateOrderUnknown"
+
 	// 下载服务器数据库配置错误。
 	FAILEDOPERATION_DBCONFIGERROR = "FailedOperation.DBConfigError"
 
@@ -88,6 +97,9 @@ const (
 
 	// 数据更新失败。
 	FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+
+	// 对账单下载失败。
+	FAILEDOPERATION_DOWNLOADBILLERROR = "FailedOperation.DownloadBillError"
 
 	// 未查到第三方渠道合约数据。
 	FAILEDOPERATION_EXTERNALCONTRACTINDEXNOTFOUND = "FailedOperation.ExternalContractIndexNotFound"
@@ -116,6 +128,9 @@ const (
 	// 内部http方式请求下游服务错误。
 	FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
 
+	// 参数错误。
+	FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+
 	// 请求参数符合参数格式，但不符合业务规则。
 	FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 
@@ -125,8 +140,26 @@ const (
 	// 序列化出错。
 	FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
 
+	// 商户信息验证失败。
+	FAILEDOPERATION_MERCHANTCHECKFAILED = "FailedOperation.MerchantCheckFailed"
+
+	// 商户创建失败。
+	FAILEDOPERATION_MERCHANTCREATEFAILED = "FailedOperation.MerchantCreateFailed"
+
+	// 商户已存在。
+	FAILEDOPERATION_MERCHANTEXIST = "FailedOperation.MerchantExist"
+
+	// 查无此商户。
+	FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
+
 	// 商户权限错误。
 	FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+
+	// 参数缺失。
+	FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+
+	// 商户修改失败。
+	FAILEDOPERATION_MODIFYMERCHANTFAILED = "FailedOperation.ModifyMerchantFailed"
 
 	// 商户信息不合法。
 	FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
@@ -151,6 +184,9 @@ const (
 
 	// 订单状态不可用。
 	FAILEDOPERATION_ORDERNOTACTIVATED = "FailedOperation.OrderNotActivated"
+
+	// 消费订单退款失败。
+	FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
 
 	// 平安银行返回错误。
 	FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
@@ -178,6 +214,9 @@ const (
 
 	// 查询模式错误。
 	FAILEDOPERATION_QUERYMODEERROR = "FailedOperation.QueryModeError"
+
+	// 消费订单查询失败。
+	FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 
 	// 渠道查询结果为空，请传入正确参数。
 	FAILEDOPERATION_QUERYRESULTNULL = "FailedOperation.QueryResultNull"

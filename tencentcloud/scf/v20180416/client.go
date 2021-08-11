@@ -331,6 +331,7 @@ func NewCreateTriggerResponse() (response *CreateTriggerResponse) {
 //  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_SECRETINFO = "InvalidParameterValue.SecretInfo"
 //  INVALIDPARAMETERVALUE_SERVICENAME = "InvalidParameterValue.ServiceName"
 //  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
 //  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
@@ -393,6 +394,8 @@ func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEALIAS = "FailedOperation.DeleteAlias"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE_ALIAS = "InvalidParameterValue.Alias"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
@@ -1137,8 +1140,10 @@ func NewListAsyncEventsResponse() (response *ListAsyncEventsResponse) {
 // 拉取函数异步事件列表
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -1394,6 +1399,7 @@ func NewPublishLayerVersionResponse() (response *PublishLayerVersionResponse) {
 //  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
 //  INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
 //  INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = "InvalidParameterValue.TempCosObjectName"
+//  INVALIDPARAMETERVALUE_ZIPFILEBASE64BINASCIIERROR = "InvalidParameterValue.ZipFileBase64BinasciiError"
 //  LIMITEXCEEDED_LAYERVERSIONS = "LimitExceeded.LayerVersions"
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
@@ -1754,6 +1760,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  INVALIDPARAMETERVALUE_PUBLICNETCONFIG = "InvalidParameterValue.PublicNetConfig"
 //  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
 //  INVALIDPARAMETERVALUE_SYSTEMENVIRONMENT = "InvalidParameterValue.SystemEnvironment"
+//  INVALIDPARAMETERVALUE_TRACEENABLE = "InvalidParameterValue.TraceEnable"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"

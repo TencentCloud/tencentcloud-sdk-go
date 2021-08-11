@@ -254,6 +254,9 @@ const (
 	// 请确认指定的带宽包是否存在。
 	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = "InvalidParameterValue.BandwidthPackageIdNotFound"
 
+	// 找不到对应的CHC物理服务器。
+	INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+
 	// SSD云硬盘为数据盘时，购买大小不得小于100GB
 	INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = "InvalidParameterValue.CloudSsdDataDiskSizeTooSmall"
 
@@ -268,6 +271,9 @@ const (
 
 	// HostName参数值不合法
 	INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
+
+	// 传参格式不对。
+	INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 
 	// 指定机型不存在
 	INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
@@ -286,6 +292,9 @@ const (
 
 	// 镜像ID不支持指定的实例机型。
 	INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = "InvalidParameterValue.InvalidImageForGivenInstanceType"
+
+	// 当前镜像为RAW格式，无法创建CVM，建议您选择其他镜像。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
 
 	// 镜像不允许执行该操作
 	INVALIDPARAMETERVALUE_INVALIDIMAGEID = "InvalidParameterValue.InvalidImageId"
@@ -598,6 +607,9 @@ const (
 
 	// 密钥不支持Windows操作系统
 	UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = "UnsupportedOperation.KeyPairUnsupportedWindows"
+
+	// 机型数据盘全为本地盘不支持跨机型调整。
+	UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = "UnsupportedOperation.LocalDataDiskChangeInstanceFamily"
 
 	// 绑定负载均衡的实例，不支持修改vpc属性。
 	UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = "UnsupportedOperation.ModifyVPCWithCLB"

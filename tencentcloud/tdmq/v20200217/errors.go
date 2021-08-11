@@ -74,6 +74,9 @@ const (
 	// 必须先清除关联命名空间才能继续操作。
 	FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
 
+	// 接收消息出错。
+	FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+
 	// 接收消息超时，请重试。
 	FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
 

@@ -3237,6 +3237,7 @@ func NewRestoreInstanceResponse() (response *RestoreInstanceResponse) {
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  INVALIDPARAMETERVALUE_DBEXIST = "InvalidParameterValue.DBExist"
+//  LIMITEXCEEDED_TOOMANYDB = "LimitExceeded.TooManyDB"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"

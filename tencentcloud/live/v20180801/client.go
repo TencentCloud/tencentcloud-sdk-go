@@ -69,6 +69,7 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
 //  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
@@ -379,7 +380,6 @@ func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTempla
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
@@ -460,13 +460,19 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //
 // 注意：
 //
-// 1. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
+// 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
-// 2. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+// 2. 目前仅支持推流到腾讯云直播，暂不支持推到第三方。
 //
-// 3. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+// 3. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
 //
-// 4. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+// 4. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+//
+// 5. 过期不用的任务需自行清理，未清理的过期任务也会占用上限额度，如需要自动清理过期任务，可提单给售后进行配置。
+//
+// 6. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+//
+// 7. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -583,12 +589,10 @@ func NewCreateLiveRecordRuleResponse() (response *CreateLiveRecordRuleResponse) 
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -634,7 +638,6 @@ func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateRe
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -677,13 +680,11 @@ func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleRespon
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -728,7 +729,6 @@ func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTempla
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -769,7 +769,6 @@ func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
@@ -823,7 +822,6 @@ func NewCreateLiveTranscodeTemplateResponse() (response *CreateLiveTranscodeTemp
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -862,13 +860,11 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1039,13 +1035,11 @@ func NewDeleteLiveCallbackTemplateResponse() (response *DeleteLiveCallbackTempla
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
@@ -1234,13 +1228,11 @@ func NewDeleteLiveRecordRuleResponse() (response *DeleteLiveRecordRuleResponse) 
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1283,7 +1275,6 @@ func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateRe
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1362,13 +1353,11 @@ func NewDeleteLiveSnapshotTemplateResponse() (response *DeleteLiveSnapshotTempla
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1407,13 +1396,11 @@ func NewDeleteLiveTranscodeRuleResponse() (response *DeleteLiveTranscodeRuleResp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1452,13 +1439,11 @@ func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1974,13 +1959,11 @@ func NewDescribeLiveCallbackTemplatesResponse() (response *DescribeLiveCallbackT
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
@@ -2465,13 +2448,11 @@ func NewDescribeLiveRecordRulesResponse() (response *DescribeLiveRecordRulesResp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2508,13 +2489,11 @@ func NewDescribeLiveRecordTemplateResponse() (response *DescribeLiveRecordTempla
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2550,13 +2529,11 @@ func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTempl
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2592,13 +2569,11 @@ func NewDescribeLiveSnapshotRulesResponse() (response *DescribeLiveSnapshotRules
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2677,13 +2652,11 @@ func NewDescribeLiveSnapshotTemplatesResponse() (response *DescribeLiveSnapshotT
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2957,13 +2930,11 @@ func NewDescribeLiveTranscodeRulesResponse() (response *DescribeLiveTranscodeRul
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3000,13 +2971,11 @@ func NewDescribeLiveTranscodeTemplateResponse() (response *DescribeLiveTranscode
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3043,13 +3012,11 @@ func NewDescribeLiveTranscodeTemplatesResponse() (response *DescribeLiveTranscod
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3059,6 +3026,43 @@ func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTe
         request = NewDescribeLiveTranscodeTemplatesRequest()
     }
     response = NewDescribeLiveTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveTranscodeTotalInfoRequest() (request *DescribeLiveTranscodeTotalInfoRequest) {
+    request = &DescribeLiveTranscodeTotalInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveTranscodeTotalInfo")
+    return
+}
+
+func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscodeTotalInfoResponse) {
+    response = &DescribeLiveTranscodeTotalInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveTranscodeTotalInfo
+// 查询转码总量数据，可查询近30天内数据。
+//
+// 注意：
+//
+// 如果是查询某一天内，则返回5分钟粒度数据；
+//
+// 如果是查询跨天或指定域名， 则返回1小时粒度数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeTotalInfoRequest()
+    }
+    response = NewDescribeLiveTranscodeTotalInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -3087,13 +3091,11 @@ func NewDescribeLiveWatermarkResponse() (response *DescribeLiveWatermarkResponse
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3129,13 +3131,11 @@ func NewDescribeLiveWatermarkRulesResponse() (response *DescribeLiveWatermarkRul
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3171,13 +3171,11 @@ func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksRespon
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3389,6 +3387,39 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
         request = NewDescribePullStreamConfigsRequest()
     }
     response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidthAndFluxListRequest) {
+    request = &DescribePushBandwidthAndFluxListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribePushBandwidthAndFluxList")
+    return
+}
+
+func NewDescribePushBandwidthAndFluxListResponse() (response *DescribePushBandwidthAndFluxListResponse) {
+    response = &DescribePushBandwidthAndFluxListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePushBandwidthAndFluxList
+// 直播推流带宽和流量数据查询。
+//
+// 推流计费会先取全球推流用量和全球播放用量进行比较，满足计费条件后再按各地区用量出账。详情参见[计费文档](https://cloud.tencent.com/document/product/267/34175)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribePushBandwidthAndFluxListRequest()
+    }
+    response = NewDescribePushBandwidthAndFluxListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3836,13 +3867,11 @@ func NewModifyLiveCallbackTemplateResponse() (response *ModifyLiveCallbackTempla
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
@@ -4144,13 +4173,11 @@ func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateRe
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4188,13 +4215,11 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4233,13 +4258,11 @@ func NewModifyLiveTranscodeTemplateResponse() (response *ModifyLiveTranscodeTemp
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
 //  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
-//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
 //  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
 //  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
 //  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
-//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"

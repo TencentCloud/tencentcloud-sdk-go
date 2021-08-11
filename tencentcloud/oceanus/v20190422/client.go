@@ -560,6 +560,7 @@ func NewRunJobsResponse() (response *RunJobsResponse) {
 //  INVALIDPARAMETERVALUE_RUNTYPE = "InvalidParameterValue.RunType"
 //  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
 //  RESOURCEINSUFFICIENT_CU = "ResourceInsufficient.CU"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_COSBUCKET = "ResourceNotFound.COSBucket"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"

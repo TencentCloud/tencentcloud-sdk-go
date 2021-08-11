@@ -194,6 +194,90 @@ func (r *ApplyConfigToMachineGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AsyncContextTask struct {
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 创建时间，时间戳，精确到毫秒
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 异步上下文任务ID
+	AsyncContextTaskId *string `json:"AsyncContextTaskId,omitempty" name:"AsyncContextTaskId"`
+
+	// 任务失败的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 日志包序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志包内一条日志的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 日志时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 任务完成时间，时间戳，精确到毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *int64 `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 相关联的异步检索ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncSearchTaskId *string `json:"AsyncSearchTaskId,omitempty" name:"AsyncSearchTaskId"`
+}
+
+type AsyncSearchTask struct {
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 状态，0表示待开始，1表示运行中，2表示已完成，-1表示失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 异步检索任务ID
+	AsyncSearchTaskId *string `json:"AsyncSearchTaskId,omitempty" name:"AsyncSearchTaskId"`
+
+	// 查询语句
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 日志扫描顺序，可选值：asc(升序)、desc(降序)
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 任务失败的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 异步检索任务匹配的总日志条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogCount *int64 `json:"LogCount,omitempty" name:"LogCount"`
+
+	// 任务完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+}
+
 type CallBackInfo struct {
 
 	// 回调时的Body
@@ -398,6 +482,141 @@ func (r *CreateAlarmResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAlarmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAsyncContextTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志时间，单位ms
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志包序号
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志包内一条日志的序号
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 异步检索任务ID
+	AsyncSearchTaskId *string `json:"AsyncSearchTaskId,omitempty" name:"AsyncSearchTaskId"`
+}
+
+func (r *CreateAsyncContextTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsyncContextTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Time")
+	delete(f, "PkgId")
+	delete(f, "PkgLogId")
+	delete(f, "LogsetId")
+	delete(f, "AsyncSearchTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsyncContextTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAsyncContextTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步上下文任务ID
+		AsyncContextTaskId *string `json:"AsyncContextTaskId,omitempty" name:"AsyncContextTaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAsyncContextTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsyncContextTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAsyncSearchTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题ID，目前仅支持StorageType为cold的日志主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 查询语句，语句长度最大为1024
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 日志扫描顺序；可选值：asc(升序)、desc(降序)，默认为 desc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *CreateAsyncSearchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsyncSearchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogsetId")
+	delete(f, "TopicId")
+	delete(f, "Query")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsyncSearchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAsyncSearchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAsyncSearchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAsyncSearchTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -996,6 +1215,106 @@ func (r *DeleteAlarmResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAsyncContextTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 异步上下文任务ID
+	AsyncContextTaskId *string `json:"AsyncContextTaskId,omitempty" name:"AsyncContextTaskId"`
+}
+
+func (r *DeleteAsyncContextTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsyncContextTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "AsyncContextTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAsyncContextTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAsyncContextTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAsyncContextTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsyncContextTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAsyncSearchTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步检索任务ID
+	AsyncSearchTaskId *string `json:"AsyncSearchTaskId,omitempty" name:"AsyncSearchTaskId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteAsyncSearchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsyncSearchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AsyncSearchTaskId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAsyncSearchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAsyncSearchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAsyncSearchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAsyncSearchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteConfigFromMachineGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1546,6 +1865,302 @@ func (r *DescribeAlarmsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlarmsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncContextResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步检索任务ID
+	AsyncContextTaskId *string `json:"AsyncContextTaskId,omitempty" name:"AsyncContextTaskId"`
+
+	// 日志包序号
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志在日志包内的序号
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 上文日志条数，默认值10
+	PrevLogs *int64 `json:"PrevLogs,omitempty" name:"PrevLogs"`
+
+	// 下文日志条数，默认值10
+	NextLogs *int64 `json:"NextLogs,omitempty" name:"NextLogs"`
+}
+
+func (r *DescribeAsyncContextResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncContextResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AsyncContextTaskId")
+	delete(f, "PkgId")
+	delete(f, "PkgLogId")
+	delete(f, "TopicId")
+	delete(f, "PrevLogs")
+	delete(f, "NextLogs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncContextResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncContextResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 上文日志是否已经返回
+		PrevOver *bool `json:"PrevOver,omitempty" name:"PrevOver"`
+
+		// 下文日志是否已经返回
+		NextOver *bool `json:"NextOver,omitempty" name:"NextOver"`
+
+		// 日志内容
+		Results []*LogInfo `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncContextResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncContextResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncContextTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页的偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> topicId
+	// 
+	// 按照【日志主题ID】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> logsetId
+	// 
+	// 按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为5
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAsyncContextTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncContextTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncContextTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncContextTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步上下文任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncContextTasks []*AsyncContextTask `json:"AsyncContextTasks,omitempty" name:"AsyncContextTasks"`
+
+		// 异步上下文任务的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncContextTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncContextTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncSearchResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步检索任务ID
+	AsyncSearchTaskId *string `json:"AsyncSearchTaskId,omitempty" name:"AsyncSearchTaskId"`
+
+	// 日志集ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 单次调用返回的日志条数，默认为20，最大为500
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAsyncSearchResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncSearchResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AsyncSearchTaskId")
+	delete(f, "TopicId")
+	delete(f, "Context")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncSearchResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncSearchResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 加载后续内容的Context
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 日志查询结果是否全部返回
+		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+		// 日志内容
+		Results []*LogInfo `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncSearchResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncSearchResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncSearchTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页的偏移量，默认值为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> topicId
+	// 
+	// 按照【日志主题ID】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> logsetId
+	// 
+	// 按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为5
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAsyncSearchTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncSearchTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncSearchTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAsyncSearchTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步检索任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncSearchTasks []*AsyncSearchTask `json:"AsyncSearchTasks,omitempty" name:"AsyncSearchTasks"`
+
+		// 异步检索任务的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAsyncSearchTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncSearchTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3893,6 +4508,48 @@ type TopicInfo struct {
 	// 生命周期，单位为天
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+type UploadLogRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *UploadLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ValueInfo struct {

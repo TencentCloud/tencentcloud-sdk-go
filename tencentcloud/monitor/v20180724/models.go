@@ -2073,7 +2073,7 @@ func (r *DescribeAlertRulesResponse) FromJsonString(s string) error {
 type DescribeAllNamespacesRequest struct {
 	*tchttp.BaseRequest
 
-	// 根据使用场景过滤 "ST_DASHBOARD"=Dashboard类型 或 "ST_ALARM"=告警类型
+	// 根据使用场景过滤 目前仅有"ST_ALARM"=告警类型
 	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
 
 	// 固定值，为"monitor"

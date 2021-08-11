@@ -26,6 +26,9 @@ const (
 	// 应用查询失败。
 	FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
 
+	// 创建集群，开通VPC网络权限失败。
+	FAILEDOPERATION_CLUSTERCREATEVPCFAIL = "FailedOperation.ClusterCreateVpcFail"
+
 	// 查询集群失败。
 	FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 
@@ -449,6 +452,9 @@ const (
 	// 协议值非法,限定:TCP/UDP。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = "InvalidParameterValue.ContainergroupProtocolInvalid"
 
+	// 公网访问方式下，协议需要一致。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLMIXERROR = "InvalidParameterValue.ContainergroupProtocolMixError"
+
 	// 协议不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLNULL = "InvalidParameterValue.ContainergroupProtocolNull"
 
@@ -562,6 +568,9 @@ const (
 
 	// imageTags不能为空。
 	INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
+
+	// 重装系统，无效的镜像id。
+	INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"
 
 	// 参数格式异常。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"

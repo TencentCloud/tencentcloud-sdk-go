@@ -767,6 +767,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
     if request == nil {
         request = NewDetachDisksRequest()
@@ -828,6 +829,7 @@ func NewInquirePriceModifyDiskExtraPerformanceResponse() (response *InquirePrice
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
 func (c *Client) InquirePriceModifyDiskExtraPerformance(request *InquirePriceModifyDiskExtraPerformanceRequest) (response *InquirePriceModifyDiskExtraPerformanceResponse, err error) {
     if request == nil {
         request = NewInquirePriceModifyDiskExtraPerformanceRequest()

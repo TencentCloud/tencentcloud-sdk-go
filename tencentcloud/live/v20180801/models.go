@@ -552,6 +552,8 @@ type CommonMixCropParams struct {
 type CommonMixInputParam struct {
 
 	// 输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+	// 当LayoutParams.InputType=0(音视频)/4(纯音频)/5(纯视频)时，该值为需要混流的流名称。
+	// 当LayoutParams.InputType=2(图片)/3(画布)时，该值仅用作标识输入，可用类似Canvas1、Pictrue1的名称。
 	InputStreamName *string `json:"InputStreamName,omitempty" name:"InputStreamName"`
 
 	// 输入流布局参数。
@@ -577,19 +579,19 @@ type CommonMixLayoutParams struct {
 	// 5表示输入流为纯视频。
 	InputType *int64 `json:"InputType,omitempty" name:"InputType"`
 
-	// 输入画面在输出时的宽度。取值范围：
-	// 像素：[0，2000]
-	// 百分比：[0.01，0.99]
-	// 不填默认为输入流的宽度。
-	// 使用百分比时，期望输出为（百分比 * 背景宽）。
-	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
-
 	// 输入画面在输出时的高度。取值范围：
 	// 像素：[0，2000]
 	// 百分比：[0.01，0.99]
 	// 不填默认为输入流的高度。
 	// 使用百分比时，期望输出为（百分比 * 背景高）。
 	ImageHeight *float64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
+
+	// 输入画面在输出时的宽度。取值范围：
+	// 像素：[0，2000]
+	// 百分比：[0.01，0.99]
+	// 不填默认为输入流的宽度。
+	// 使用百分比时，期望输出为（百分比 * 背景宽）。
+	ImageWidth *float64 `json:"ImageWidth,omitempty" name:"ImageWidth"`
 
 	// 输入在输出画面的X偏移。取值范围：
 	// 像素：[0，2000]
@@ -968,6 +970,13 @@ type CreateLivePullStreamTaskRequest struct {
 	// SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 	// 当前支持的文件格式：flv，mp4，hls。
 	// 当前支持的拉流协议：http，https，rtmp。
+	// 注意：
+	// 1. 建议优先使用 flv 文件，对于 mp4 未交织好的文件轮播推流易产生卡顿，可通过点播转码进行重新交织后再轮播。
+	// 2. 拒绝内网域名等攻击性拉流地址，如有使用，则做账号封禁处理。
+	// 3. 源文件请保持时间戳正常交织递增，避免因源文件异常影响推流及播放。
+	// 4. 视频编码格式仅支持: H264, H265。
+	// 5. 音频编码格式仅支持: AAC。
+	// 6. 点播源请使用小文件，尽量时长保持在1小时内，较大文件打开和续播耗时较久，耗时超过15秒会有无法正常转推风险。
 	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。
@@ -1873,10 +1882,10 @@ type CreateRecordTaskRequest struct {
 	// 推流路径。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且EndTime - StartTime不能超过24小时。
+	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始6天之内的时间。
+	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 推流类型，默认0。取值：
@@ -5195,6 +5204,74 @@ func (r *DescribeLiveTranscodeTemplatesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveTranscodeTotalInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，北京时间。
+	// 格式：yyyy-mm-dd HH:MM:SS。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名列表，若不填，表示查询所有域名总体数据。
+	// 指定域名时返回1小时粒度数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+
+	// 可选值：
+	// Mainland：查询中国大陆（境内）数据，
+	// Oversea：则查询国际/港澳台（境外）数据，
+	// 默认：查询全球地区（境内+境外）的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+}
+
+func (r *DescribeLiveTranscodeTotalInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTranscodeTotalInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	delete(f, "MainlandOrOversea")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTranscodeTotalInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveTranscodeTotalInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计数据列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataInfoList []*TranscodeTotalInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveTranscodeTotalInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTranscodeTotalInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 
@@ -5832,6 +5909,93 @@ func (r *DescribePullStreamConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePullStreamConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushBandwidthAndFluxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间点，格式为 yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间点，格式为 yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 域名，可以填多个，若不填，表示总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+
+	// 可选值：
+	// Mainland：查询中国大陆（境内）数据，
+	// Oversea：则查询国际/港澳台（境外）数据，
+	// 不填则默认查询全球地区（境内+境外）的数据。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
+
+	// 数据粒度，支持如下粒度：
+	// 5：5分钟粒度，（跨度不支持超过1天），
+	// 60：1小时粒度（跨度不支持超过一个月），
+	// 1440：天粒度（跨度不支持超过一个月）。
+	// 默认值：5。
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribePushBandwidthAndFluxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePushBandwidthAndFluxListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	delete(f, "MainlandOrOversea")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePushBandwidthAndFluxListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePushBandwidthAndFluxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+		PeakBandwidthTime *string `json:"PeakBandwidthTime,omitempty" name:"PeakBandwidthTime"`
+
+		// 峰值带宽，单位是 Mbps。
+		PeakBandwidth *float64 `json:"PeakBandwidth,omitempty" name:"PeakBandwidth"`
+
+		// 95峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+		P95PeakBandwidthTime *string `json:"P95PeakBandwidthTime,omitempty" name:"P95PeakBandwidthTime"`
+
+		// 95峰值带宽，单位是 Mbps。
+		P95PeakBandwidth *float64 `json:"P95PeakBandwidth,omitempty" name:"P95PeakBandwidth"`
+
+		// 总流量，单位是 MB。
+		SumFlux *float64 `json:"SumFlux,omitempty" name:"SumFlux"`
+
+		// 明细数据信息。
+		DataInfoList []*BillDataInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePushBandwidthAndFluxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePushBandwidthAndFluxListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9010,6 +9174,28 @@ type TranscodeDetailInfo struct {
 	PushDomain *string `json:"PushDomain,omitempty" name:"PushDomain"`
 
 	// 分辨率。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+}
+
+type TranscodeTotalInfo struct {
+
+	// 时间点，北京时间，
+	// 示例：2019-03-01 00:00:00。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 转码时长，单位：分钟。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 编码方式，带模块，
+	// 示例：
+	// liveprocessor_H264 =》直播转码-H264，
+	// liveprocessor_H265 =》 直播转码-H265，
+	// topspeed_H264 =》极速高清-H264，
+	// topspeed_H265 =》极速高清-H265。
+	ModuleCodec *string `json:"ModuleCodec,omitempty" name:"ModuleCodec"`
+
+	// 分辨率，
+	// 示例：540*480。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 

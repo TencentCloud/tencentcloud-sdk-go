@@ -8629,6 +8629,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 是否急速变配。0-普通升级，1-急速变配。选择急速变配会根据资源状况校验是否可以进行急速变配，满足条件则进行急速变配，不满足条件会返回报错信息。
+	FastUpgrade *int64 `json:"FastUpgrade,omitempty" name:"FastUpgrade"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -8655,6 +8658,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceRole")
 	delete(f, "DeviceType")
 	delete(f, "Cpu")
+	delete(f, "FastUpgrade")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

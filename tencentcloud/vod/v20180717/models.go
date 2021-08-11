@@ -6791,6 +6791,7 @@ type DescribeStorageDetailsRequest struct {
 	// <li>InfrequentStorage：低频存储。</li>
 	// <li>ArchiveStorage：归档存储。</li>
 	// <li>DeepArchiveStorage：深度归档存储。</li>
+	// <li>DeletedInfrequentStorage：低频存储提前删除量。</li>
 	// <li>DeletedArchiveStorage：归档提前删除量。</li>
 	// <li>DeletedDeepArchiveStorage：深度归档提前删除量。
 	// <li>ArchiveStandardRetrieval：归档标准取回量。</li>
@@ -8319,7 +8320,7 @@ type ImageTransform struct {
 
 type ImageWatermarkInput struct {
 
-	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png 图片格式。
+	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png、gif 图片格式。
 	ImageContent *string `json:"ImageContent,omitempty" name:"ImageContent"`
 
 	// 水印的宽度。支持 %、px 两种格式：
@@ -8737,6 +8738,8 @@ type MediaBasicInfo struct {
 	// 媒体文件的存储类别：
 	// <li> STANDARD：标准存储。</li>
 	// <li> STANDARD_IA：低频存储。</li>
+	// <li> ARCHIVE：归档存储。</li>
+	// <li> DEEP_ARCHIVE：深度归档存储。</li>
 	StorageClass *string `json:"StorageClass,omitempty" name:"StorageClass"`
 }
 
@@ -12644,6 +12647,10 @@ type SearchMediaRequest struct {
 	// <li>包含所指定的头尾时间点。</li>
 	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
 
+	// 匹配过期时间在此时间段内的文件，无法检索到已过期文件。
+	// <li>包含所指定的头尾时间点。</li>
+	ExpireTime *TimeRange `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
 	// 排序方式。
 	// <li>Sort.Field 可选 CreateTime 。</li>
 	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
@@ -12677,6 +12684,13 @@ type SearchMediaRequest struct {
 
 	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 存储类型数组。可选值有：
+	// <li> STANDARD：标准存储。</li>
+	// <li> STANDARD_IA：低频存储。</li>
+	// <li> ARCHIVE：归档存储。</li>
+	// <li> DEEP_ARCHIVE：深度归档存储。</li>
+	StorageClasses []*string `json:"StorageClasses,omitempty" name:"StorageClasses"`
 
 	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
@@ -12732,12 +12746,14 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "StreamIds")
 	delete(f, "Vids")
 	delete(f, "CreateTime")
+	delete(f, "ExpireTime")
 	delete(f, "Sort")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "StorageRegions")
 	delete(f, "SubAppId")
+	delete(f, "StorageClasses")
 	delete(f, "Text")
 	delete(f, "SourceType")
 	delete(f, "StreamId")

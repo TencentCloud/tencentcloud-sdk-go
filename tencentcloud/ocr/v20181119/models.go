@@ -5148,6 +5148,81 @@ func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UsedVehicleInvoiceInfo struct {
+
+	// 所属税局
+	TaxBureau *string `json:"TaxBureau,omitempty" name:"TaxBureau"`
+
+	// 买方单位/个人
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 买方单位代码/身份证号码
+	BuyerNo *string `json:"BuyerNo,omitempty" name:"BuyerNo"`
+
+	// 买方单位/个人地址
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 买方单位电话
+	BuyerTel *string `json:"BuyerTel,omitempty" name:"BuyerTel"`
+
+	// 卖方单位/个人
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 卖方单位代码/身份证号码
+	SellerNo *string `json:"SellerNo,omitempty" name:"SellerNo"`
+
+	// 卖方单位/个人地址
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 卖方单位电话
+	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
+
+	// 车牌照号
+	VehicleLicenseNo *string `json:"VehicleLicenseNo,omitempty" name:"VehicleLicenseNo"`
+
+	// 登记证号
+	RegisterNo *string `json:"RegisterNo,omitempty" name:"RegisterNo"`
+
+	// 车架号/车辆识别代码
+	VehicleIdentifyNo *string `json:"VehicleIdentifyNo,omitempty" name:"VehicleIdentifyNo"`
+
+	// 转入地车辆管理所名称
+	ManagementOffice *string `json:"ManagementOffice,omitempty" name:"ManagementOffice"`
+
+	// 车价合计
+	VehicleTotalPrice *string `json:"VehicleTotalPrice,omitempty" name:"VehicleTotalPrice"`
+
+	// 经营、拍卖单位
+	Auctioneer *string `json:"Auctioneer,omitempty" name:"Auctioneer"`
+
+	// 经营、拍卖单位地址
+	AuctioneerAddress *string `json:"AuctioneerAddress,omitempty" name:"AuctioneerAddress"`
+
+	// 经营、拍卖单位纳税人识别号
+	AuctioneerTaxpayerNum *string `json:"AuctioneerTaxpayerNum,omitempty" name:"AuctioneerTaxpayerNum"`
+
+	// 经营、拍卖单位开户银行、账号
+	AuctioneerBankAccount *string `json:"AuctioneerBankAccount,omitempty" name:"AuctioneerBankAccount"`
+
+	// 经营、拍卖单位电话
+	AuctioneerTel *string `json:"AuctioneerTel,omitempty" name:"AuctioneerTel"`
+
+	// 二手车市场
+	Market *string `json:"Market,omitempty" name:"Market"`
+
+	// 二手车市场纳税人识别号
+	MarketTaxpayerNum *string `json:"MarketTaxpayerNum,omitempty" name:"MarketTaxpayerNum"`
+
+	// 二手车市场地址
+	MarketAddress *string `json:"MarketAddress,omitempty" name:"MarketAddress"`
+
+	// 二手车市场开户银行账号
+	MarketBankAccount *string `json:"MarketBankAccount,omitempty" name:"MarketBankAccount"`
+
+	// 二手车市场电话
+	MarketTel *string `json:"MarketTel,omitempty" name:"MarketTel"`
+}
+
 type VatInvoice struct {
 
 	// 发票代码
@@ -5430,6 +5505,12 @@ type VatInvoiceVerifyResponse struct {
 		// 增值税发票信息，详情请点击左侧链接。
 		Invoice *VatInvoice `json:"Invoice,omitempty" name:"Invoice"`
 
+		// 机动车销售统一发票信息
+		VehicleInvoiceInfo *VehicleInvoiceInfo `json:"VehicleInvoiceInfo,omitempty" name:"VehicleInvoiceInfo"`
+
+		// 二手车销售统一发票信息
+		UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitempty" name:"UsedVehicleInvoiceInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -5520,6 +5601,57 @@ func (r *VatRollInvoiceOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VehicleInvoiceInfo struct {
+
+	// 车辆类型
+	CarType *string `json:"CarType,omitempty" name:"CarType"`
+
+	// 厂牌型号
+	PlateModel *string `json:"PlateModel,omitempty" name:"PlateModel"`
+
+	// 产地
+	ProduceAddress *string `json:"ProduceAddress,omitempty" name:"ProduceAddress"`
+
+	// 合格证号
+	CertificateNo *string `json:"CertificateNo,omitempty" name:"CertificateNo"`
+
+	// 进口证明书号
+	ImportNo *string `json:"ImportNo,omitempty" name:"ImportNo"`
+
+	// LSVCA2NP9HN0xxxxx
+	VinNo *string `json:"VinNo,omitempty" name:"VinNo"`
+
+	// 完税证书号
+	PayTaxesNo *string `json:"PayTaxesNo,omitempty" name:"PayTaxesNo"`
+
+	// 吨位
+	Tonnage *string `json:"Tonnage,omitempty" name:"Tonnage"`
+
+	// 限乘人数
+	LimitCount *string `json:"LimitCount,omitempty" name:"LimitCount"`
+
+	// 发动机号码
+	EngineNo *string `json:"EngineNo,omitempty" name:"EngineNo"`
+
+	// 商检单号
+	BizCheckFormNo *string `json:"BizCheckFormNo,omitempty" name:"BizCheckFormNo"`
+
+	// 主管税务机关代码
+	TaxtationOrgCode *string `json:"TaxtationOrgCode,omitempty" name:"TaxtationOrgCode"`
+
+	// 主管税务机关名称
+	TaxtationOrgName *string `json:"TaxtationOrgName,omitempty" name:"TaxtationOrgName"`
+
+	// 税率
+	MotorTaxRate *string `json:"MotorTaxRate,omitempty" name:"MotorTaxRate"`
+
+	// 开户行
+	MotorBankName *string `json:"MotorBankName,omitempty" name:"MotorBankName"`
+
+	// 账号
+	MotorBankAccount *string `json:"MotorBankAccount,omitempty" name:"MotorBankAccount"`
 }
 
 type VehicleLicenseOCRRequest struct {

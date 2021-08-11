@@ -205,6 +205,38 @@ func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaff
     return
 }
 
+func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
+    request = &DescribeCallInMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeCallInMetrics")
+    return
+}
+
+func NewDescribeCallInMetricsResponse() (response *DescribeCallInMetricsResponse) {
+    response = &DescribeCallInMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCallInMetrics
+// 获取呼入实时数据统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+func (c *Client) DescribeCallInMetrics(request *DescribeCallInMetricsRequest) (response *DescribeCallInMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallInMetricsRequest()
+    }
+    response = NewDescribeCallInMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
     request = &DescribeChatMessagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -394,6 +426,38 @@ func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (r
         request = NewDescribeStaffInfoListRequest()
     }
     response = NewDescribeStaffInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetricsRequest) {
+    request = &DescribeStaffStatusMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffStatusMetrics")
+    return
+}
+
+func NewDescribeStaffStatusMetricsResponse() (response *DescribeStaffStatusMetricsResponse) {
+    response = &DescribeStaffStatusMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStaffStatusMetrics
+// 获取坐席实时状态统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+func (c *Client) DescribeStaffStatusMetrics(request *DescribeStaffStatusMetricsRequest) (response *DescribeStaffStatusMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaffStatusMetricsRequest()
+    }
+    response = NewDescribeStaffStatusMetricsResponse()
     err = c.Send(request, response)
     return
 }

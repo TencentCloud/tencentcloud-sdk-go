@@ -2537,6 +2537,7 @@ func NewEditTagsResponse() (response *EditTagsResponse) {
 //  INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = "InvalidParameterValue.TagNameLengthLimit"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse, err error) {
     if request == nil {

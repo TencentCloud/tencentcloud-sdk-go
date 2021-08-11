@@ -760,6 +760,7 @@ func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
 //  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
 //  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
@@ -868,6 +869,7 @@ func NewDeleteAuditRuleResponse() (response *DeleteAuditRuleResponse) {
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETEAUDITFAILERROR = "FailedOperation.DeleteAuditFailError"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -1095,6 +1097,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
 //  FAILEDOPERATION_GETPRIVILEGEERROR = "FailedOperation.GetPrivilegeError"
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  FAILEDOPERATION_PRIVILEGEDATAILLEGAL = "FailedOperation.PrivilegeDataIllegal"
 //  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
 //  FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
@@ -1829,6 +1832,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 //  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -1970,6 +1974,7 @@ func NewDescribeDBZoneConfigResponse() (response *DescribeDBZoneConfigResponse) 
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBZoneConfig(request *DescribeDBZoneConfigRequest) (response *DescribeDBZoneConfigResponse, err error) {
     if request == nil {
@@ -2183,7 +2188,9 @@ func NewDescribeErrorLogDataResponse() (response *DescribeErrorLogDataResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) DescribeErrorLogData(request *DescribeErrorLogDataRequest) (response *DescribeErrorLogDataResponse, err error) {
     if request == nil {
@@ -2517,6 +2524,8 @@ func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOTSUPPORTBASIC = "OperationDenied.NotSupportBasic"
+//  OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) DescribeSlowLogData(request *DescribeSlowLogDataRequest) (response *DescribeSlowLogDataResponse, err error) {
     if request == nil {
@@ -2902,6 +2911,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 // 本接口(IsolateDBInstance)用于隔离云数据库实例，隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDBINSTANCELOCKFAILERROR = "FailedOperation.CdbInstanceLockFailError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
@@ -2911,6 +2921,7 @@ func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
 //  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 //  OPERATIONDENIED_UNSUPPORTREFUNDERROR = "OperationDenied.UnSupportRefundError"
 //  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
@@ -2959,6 +2970,7 @@ func NewModifyAccountDescriptionResponse() (response *ModifyAccountDescriptionRe
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
 //  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
@@ -3457,6 +3469,7 @@ func NewModifyInstanceTagResponse() (response *ModifyInstanceTagResponse) {
 // 本接口(ModifyInstanceTag)用于对实例标签进行添加、修改或者删除。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
 //  CDBERROR_BACKUPERROR = "CdbError.BackupError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
@@ -4283,6 +4296,7 @@ func NewVerifyRootAccountResponse() (response *VerifyRootAccountResponse) {
 //  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
 //  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
 //  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"

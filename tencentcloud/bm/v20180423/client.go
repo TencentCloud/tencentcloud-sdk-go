@@ -1464,6 +1464,7 @@ func NewReloadDeviceOsResponse() (response *ReloadDeviceOsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTREPAIRTASK = "FailedOperation.ExistRepairTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *ReloadDeviceOsResponse, err error) {
@@ -1503,7 +1504,11 @@ func NewRepairTaskControlResponse() (response *RepairTaskControlResponse) {
 //
 // ConfirmRecovered（维修完成后，确认故障恢复）<br>
 //
-// ConfirmUnRecovered（维修完成后，确认故障未恢复）<br>
+// ConfirmUnRecovered（维修完成后，确认故障未恢复，该操作已不推荐用）<br>
+//
+// NeedRepairAgain（维修完成后，故障未恢复，需要重新维修，推荐用此操作打回）<br>
+//
+// 入参OperateRemark仅在Operate为NeedRepairAgain时有效，表示打回重修原因，建议给出打回的具体原因。<br>
 //
 // <br>
 //
@@ -1513,7 +1518,7 @@ func NewRepairTaskControlResponse() (response *RepairTaskControlResponse) {
 //
 // 暂不处理(4)->授权维修<br>
 //
-// 待确认(3)->确认故障恢复；确认故障未恢复<br>
+// 待确认(3)->确认故障恢复；确认故障未恢复；需要重新维修<br>
 //
 // 未恢复(6)->确认故障恢复<br>
 //

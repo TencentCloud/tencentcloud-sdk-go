@@ -368,7 +368,7 @@ type TrylockWorkerRequest struct {
 	// 【废弃】资源池编号
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
-	// 游戏用户IP，用于就近调度，例如125.127.178.228
+	// 【必选】用户IP，用于就近调度，不填将严重影响用户体验
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 分组ID

@@ -200,6 +200,7 @@ func NewCreateTaskTemplateResponse() (response *CreateTaskTemplateResponse) {
 // 可能返回的错误码:
 //  ALLOWEDONEATTRIBUTEINENVIDANDCOMPUTEENV = "AllowedOneAttributeInEnvIdAndComputeEnv"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLTAGAPI = "InternalError.CallTagAPI"
 //  INVALIDPARAMETER_CVMPARAMETERS = "InvalidParameter.CvmParameters"
 //  INVALIDPARAMETER_ENVIDMALFORMED = "InvalidParameter.EnvIdMalformed"
 //  INVALIDPARAMETER_TASKNAME = "InvalidParameter.TaskName"

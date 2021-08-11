@@ -89,6 +89,52 @@ func (c *Client) AssociateDDoSEipAddress(request *AssociateDDoSEipAddressRequest
     return
 }
 
+func NewAssociateDDoSEipLoadBalancerRequest() (request *AssociateDDoSEipLoadBalancerRequest) {
+    request = &AssociateDDoSEipLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "AssociateDDoSEipLoadBalancer")
+    return
+}
+
+func NewAssociateDDoSEipLoadBalancerResponse() (response *AssociateDDoSEipLoadBalancerResponse) {
+    response = &AssociateDDoSEipLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssociateDDoSEipLoadBalancer
+// 本接口 (AssociateDDoSEipLoadBalancer) 用于将高防弹性公网IP绑定到负载均衡指定内网 IP 上。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssociateDDoSEipLoadBalancer(request *AssociateDDoSEipLoadBalancerRequest) (response *AssociateDDoSEipLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewAssociateDDoSEipLoadBalancerRequest()
+    }
+    response = NewAssociateDDoSEipLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlackWhiteIpListRequest() (request *CreateBlackWhiteIpListRequest) {
     request = &CreateBlackWhiteIpListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1421,6 +1467,36 @@ func (c *Client) ModifyDomainUsrName(request *ModifyDomainUsrNameRequest) (respo
     return
 }
 
+func NewModifyL7RulesEdgeRequest() (request *ModifyL7RulesEdgeRequest) {
+    request = &ModifyL7RulesEdgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "ModifyL7RulesEdge")
+    return
+}
+
+func NewModifyL7RulesEdgeResponse() (response *ModifyL7RulesEdgeResponse) {
+    response = &ModifyL7RulesEdgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyL7RulesEdge
+// 修改边界防护L7转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyL7RulesEdge(request *ModifyL7RulesEdgeRequest) (response *ModifyL7RulesEdgeResponse, err error) {
+    if request == nil {
+        request = NewModifyL7RulesEdgeRequest()
+    }
+    response = NewModifyL7RulesEdgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPacketFilterConfigRequest() (request *ModifyPacketFilterConfigRequest) {
     request = &ModifyPacketFilterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1440,7 +1516,8 @@ func NewModifyPacketFilterConfigResponse() (response *ModifyPacketFilterConfigRe
 // 修改DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     if request == nil {
         request = NewModifyPacketFilterConfigRequest()

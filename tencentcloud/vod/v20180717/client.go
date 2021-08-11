@@ -594,6 +594,7 @@ func NewCreateImageSpriteTemplateResponse() (response *CreateImageSpriteTemplate
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
@@ -2605,7 +2606,6 @@ func NewDescribeStorageDetailsResponse() (response *DescribeStorageDetailsRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  FAILEDOPERATION_USERSTATUSINAVLID = "FailedOperation.UserStatusInavlid"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TIMEPARSEERROR = "InternalError.TimeParseError"
 //  INVALIDPARAMETER = "InvalidParameter"
