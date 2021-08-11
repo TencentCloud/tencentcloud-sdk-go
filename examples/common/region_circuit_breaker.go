@@ -19,6 +19,8 @@ func main() {
 	cpf.HttpProfile.ReqTimeout = 2
 	// 错误的域名，请求一定失败，但是会在第5次之后成功
 	cpf.HttpProfile.Endpoint = "cvm.ap-shanghai1.tencentcloudapi.com"
+	cpf.BackupEndPoint = "ap-beijing.tencentcloudapi.com"
+
 	// 开启熔断器
 	cpf.DisableRegionBreaker = false
 	client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
