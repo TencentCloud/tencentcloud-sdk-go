@@ -196,11 +196,11 @@ func TestClient_withRegionBreaker(t *testing.T) {
 	cpf := profile.NewClientProfile()
 	//cpf.Debug =true
 	cpf.DisableRegionBreaker = false
-	cpf.BackupRegion = "ap-beijing"
+	cpf.BackupEndPoint = ""
 	c := (&Client{}).Init("")
 	c.WithProfile(cpf)
-	if c.rb.backupRegion != "ap-beijing" {
-		t.Errorf("want %s ,got %s", "ap-beijing", c.rb.backupRegion)
+	if c.rb.backupEndpoint != "ap-guangzhou.tencentcloudapi.com" {
+		t.Errorf("want %s ,got %s", "ap-beijing", c.rb.backupEndpoint)
 	}
 	if c.rb.maxFailNum != defaultMaxFailNum {
 		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)

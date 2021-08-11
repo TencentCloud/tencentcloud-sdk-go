@@ -18,8 +18,8 @@ func Test_checkDomain(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checkDomain(tt.args.endpoint); got != tt.want {
-				t.Errorf("checkDomain() = %v, want %v", got, tt.want)
+			if got := checkEndpoint(tt.args.endpoint); got != tt.want {
+				t.Errorf("checkEndpoint() = %v, want %v", got, tt.want)
 			}
 		})
 	}

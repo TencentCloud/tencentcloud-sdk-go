@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultRegionBackup      = region
+	defaultBackupEndpoint    = "ap-guangzhou.tencentcloudapi.com"
 	defaultMaxFailNum        = 5
 	defaultMaxFailPercentage = 75
 	defaultWindowLength      = 1 * 60 * time.Second
@@ -70,9 +70,9 @@ const (
 )
 
 type breakerSetting struct {
-	// backupRegion region in url
-	// the default is regions.Guangzhou
-	backupRegion string
+	// backupEndpoint
+	// the default is "ap-guangzhou.tencentcloudapi.com"
+	backupEndpoint string
 	// max fail nums
 	// the default is 5
 	maxFailNum int
@@ -115,7 +115,7 @@ func newRegionBreaker(set breakerSetting) (re *circuitBreaker) {
 
 func defaultRegionBreaker() *circuitBreaker {
 	defaultSet := breakerSetting{
-		backupRegion:      defaultRegionBackup,
+		backupEndpoint:    defaultBackupEndpoint,
 		maxFailNum:        defaultMaxFailNum,
 		maxFailPercentage: defaultMaxFailPercentage,
 		windowInterval:    defaultWindowLength,
@@ -229,10 +229,10 @@ func (s *circuitBreaker) onFailure(state state, now time.Time) {
 	}
 }
 
-// checkDomain
-// valid: cvm.ap-shanghai.tencentcloudapi.com, cvm.ap-shenzhen-fsi.tencentcloudapi.com，cvm.tencentcloudapi.com
+// checkEndpoint
+// valid: cvm.ap-shanghai.tencentcloudapi.com, cvm.ap-shenzhen-fs.tencentcloudapi.com，cvm.tencentcloudapi.com
 // invalid: cvm.tencentcloud.com
-func checkDomain(endpoint string) bool {
+func checkEndpoint(endpoint string) bool {
 	ss := strings.Split(endpoint, ".")
 	if len(ss) != 4 && len(ss) != 3 {
 		return false

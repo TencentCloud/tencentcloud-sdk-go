@@ -291,8 +291,9 @@ SDK 会自动将您请求的地域设置为备选地域。
 ```golang
     // 开启
     cpf.DisableRegionBreaker = false
-    // 设置备用地域
-    cpf.BackupRegion = "ap-guangzhou"
+    // 设置备用请求地址，不需要指定服务，SDK 会自动在头部加上服务名(如cvm)
+    // 例如，设置为 ap-guangzhou.tencentcloudapi.com，则最终的请求为 cvm.ap-guangzhou.tencentcloudapi.com
+    cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
 ```
 
 此功能仅支持单个客户端的同步请求。

@@ -72,14 +72,11 @@ func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.R
 		}
 	}()
 
-	if !checkDomain(request.GetDomain()) {
-		return c.sendWithSignature(request, response)
-	}
 	ge, err := c.rb.beforeRequest()
-	log.Println(ge, err)
+
 	if err == errOpenState {
-		n := renewUrl(request.GetDomain(), c.rb.backupRegion)
-		request.SetDomain(n)
+		newEndpoint := request.GetService() + "." + c.rb.backupEndpoint
+		request.SetDomain(newEndpoint)
 	}
 	err = c.sendWithSignature(request, response)
 	isSuccess := false
@@ -343,8 +340,8 @@ func (c *Client) WithProvider(provider Provider) (*Client, error) {
 
 func (c *Client) withRegionBreaker() *Client {
 	rb := defaultRegionBreaker()
-	if len(c.profile.BackupRegion) != 0 {
-		rb.backupRegion = c.profile.BackupRegion
+	if len(c.profile.BackupEndPoint) != 0 {
+		rb.backupEndpoint = c.profile.BackupEndPoint
 	}
 	c.rb = rb
 	return c

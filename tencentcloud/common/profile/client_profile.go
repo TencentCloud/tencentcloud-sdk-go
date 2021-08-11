@@ -30,7 +30,7 @@ type ClientProfile struct {
 	Debug    bool
 	// define Whether to enable Regional auto switch
 	DisableRegionBreaker bool
-	BackupRegion         string
+	BackupEndPoint       string
 	// define how to retry request
 	NetworkFailureMaxRetries       int
 	NetworkFailureRetryDuration    DurationFunc
@@ -47,6 +47,6 @@ func NewClientProfile() *ClientProfile {
 		Debug:           false,
 		// now is true, will become to false in future
 		DisableRegionBreaker: true,
-		BackupRegion:         "",
+		BackupEndPoint:       "",
 	}
 }
