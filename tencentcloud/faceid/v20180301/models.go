@@ -530,6 +530,84 @@ func (r *CheckIdCardInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CheckIdNameDateRequest struct {
+	*tchttp.BaseRequest
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 身份证有效期开始时间，格式：YYYYMMDD。如：20210701
+	ValidityBegin *string `json:"ValidityBegin,omitempty" name:"ValidityBegin"`
+
+	// 身份证有效期到期时间，格式：YYYYMMDD，长期用“00000000”代替；如：20210701
+	ValidityEnd *string `json:"ValidityEnd,omitempty" name:"ValidityEnd"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+}
+
+func (r *CheckIdNameDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIdNameDateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "IdCard")
+	delete(f, "ValidityBegin")
+	delete(f, "ValidityEnd")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIdNameDateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckIdNameDateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 一致
+	// -1: 不一致
+	// 不收费结果码：
+	// -2: 非法身份证号（长度、校验位等不正确）
+	// -3: 非法姓名（长度、格式等不正确）
+	// -4: 非法有效期（长度、格式等不正确）
+	// -5: 身份信息无效
+	// -6: 证件库服务异常
+	// -7: 证件库中无此身份证记录
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckIdNameDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIdNameDateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CheckPhoneAndNameRequest struct {
 	*tchttp.BaseRequest
 

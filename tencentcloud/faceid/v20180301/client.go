@@ -279,6 +279,39 @@ func (c *Client) CheckIdCardInformation(request *CheckIdCardInformationRequest) 
     return
 }
 
+func NewCheckIdNameDateRequest() (request *CheckIdNameDateRequest) {
+    request = &CheckIdNameDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "CheckIdNameDate")
+    return
+}
+
+func NewCheckIdNameDateResponse() (response *CheckIdNameDateResponse) {
+    response = &CheckIdNameDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckIdNameDate
+// 本接口用于校验姓名、身份证号、身份证有效期的真实性和一致性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CheckIdNameDate(request *CheckIdNameDateRequest) (response *CheckIdNameDateResponse, err error) {
+    if request == nil {
+        request = NewCheckIdNameDateRequest()
+    }
+    response = NewCheckIdNameDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckPhoneAndNameRequest() (request *CheckPhoneAndNameRequest) {
     request = &CheckPhoneAndNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -844,7 +877,6 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
-//  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
 //  FAILEDOPERATION_IDNOEXISTSYSTEM = "FailedOperation.IdNoExistSystem"
@@ -861,11 +893,8 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
 //  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
-//  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
@@ -983,13 +1012,6 @@ func NewLivenessCompareResponse() (response *LivenessCompareResponse) {
 //  FAILEDOPERATION_COMPAREFAIL = "FailedOperation.CompareFail"
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
-//  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
-//  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
-//  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
-//  FAILEDOPERATION_IDNOEXISTSYSTEM = "FailedOperation.IdNoExistSystem"
-//  FAILEDOPERATION_IDPHOTONOEXIST = "FailedOperation.IdPhotoNoExist"
-//  FAILEDOPERATION_IDPHOTOPOORQUALITY = "FailedOperation.IdPhotoPoorQuality"
-//  FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = "FailedOperation.IdPhotoSystemNoanswer"
 //  FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
 //  FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
 //  FAILEDOPERATION_LIFEPHOTODETECTNOFACES = "FailedOperation.LifePhotoDetectNoFaces"
@@ -1009,7 +1031,6 @@ func NewLivenessCompareResponse() (response *LivenessCompareResponse) {
 //  FAILEDOPERATION_LIVESSDETECTFAKE = "FailedOperation.LivessDetectFake"
 //  FAILEDOPERATION_LIVESSSYSTEMERROR = "FailedOperation.LivessSystemError"
 //  FAILEDOPERATION_LIVESSUNKNOWNERROR = "FailedOperation.LivessUnknownError"
-//  FAILEDOPERATION_NAMEFORMATERROR = "FailedOperation.NameFormatError"
 //  FAILEDOPERATION_SILENTDETECTFAIL = "FailedOperation.SilentDetectFail"
 //  FAILEDOPERATION_SILENTEYELIVEFAIL = "FailedOperation.SilentEyeLiveFail"
 //  FAILEDOPERATION_SILENTFACEDETECTFAIL = "FailedOperation.SilentFaceDetectFail"
@@ -1070,17 +1091,14 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_COMPARELOWSIMILARITY = "FailedOperation.CompareLowSimilarity"
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
-//  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"
 //  FAILEDOPERATION_IDNOEXISTSYSTEM = "FailedOperation.IdNoExistSystem"
 //  FAILEDOPERATION_IDPHOTONOEXIST = "FailedOperation.IdPhotoNoExist"
 //  FAILEDOPERATION_IDPHOTOPOORQUALITY = "FailedOperation.IdPhotoPoorQuality"
-//  FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = "FailedOperation.IdPhotoSystemNoanswer"
 //  FAILEDOPERATION_LIFEPHOTODETECTFACES = "FailedOperation.LifePhotoDetectFaces"
 //  FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
 //  FAILEDOPERATION_LIFEPHOTODETECTNOFACES = "FailedOperation.LifePhotoDetectNoFaces"
-//  FAILEDOPERATION_LIFEPHOTOPOORQUALITY = "FailedOperation.LifePhotoPoorQuality"
 //  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
 //  FAILEDOPERATION_LIPFACEINCOMPLETE = "FailedOperation.LipFaceIncomplete"
 //  FAILEDOPERATION_LIPMOVESMALL = "FailedOperation.LipMoveSmall"
@@ -1104,11 +1122,8 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RULEID = "InvalidParameter.RuleId"
 //  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
-//  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"

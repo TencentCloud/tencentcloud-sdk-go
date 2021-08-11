@@ -178,7 +178,7 @@ type BGPIPInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaticPackRelation *StaticPackRelation `json:"StaticPackRelation,omitempty" name:"StaticPackRelation"`
 
-	// 区分高防IP海外线路
+	// 区分高防IP境外线路
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
@@ -203,11 +203,15 @@ type BGPIPInstance struct {
 	// 注意：当资产实例不是高防弹性公网IP实例时，此字段为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddressInfo *EipAddressRelation `json:"EipAddressInfo,omitempty" name:"EipAddressInfo"`
+
+	// 建议客户接入的域名，客户可使用域名接入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type BGPIPInstanceSpecification struct {
 
-	// 保底防护峰值，单位Gbps
+	// 保底防护峰值，单位Mbps
 	ProtectBandwidth *uint64 `json:"ProtectBandwidth,omitempty" name:"ProtectBandwidth"`
 
 	// CC防护峰值，单位qps
@@ -234,7 +238,7 @@ type BGPIPInstanceSpecification struct {
 	// ]
 	Line *uint64 `json:"Line,omitempty" name:"Line"`
 
-	// 弹性防护峰值，单位Gbps
+	// 弹性防护峰值，单位Mbps
 	ElasticBandwidth *uint64 `json:"ElasticBandwidth,omitempty" name:"ElasticBandwidth"`
 }
 

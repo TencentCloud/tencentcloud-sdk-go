@@ -1,74 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 15 次发布
+### 第 9 次发布
 
-发布时间：2021-08-10 08:01:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCallInMetrics](https://cloud.tencent.com/document/api/679/60006)
-* [DescribeStaffStatusMetrics](https://cloud.tencent.com/document/api/679/60007)
-
-新增数据结构：
-
-* [CallInMetrics](https://cloud.tencent.com/document/api/679/47715#CallInMetrics)
-* [CallInNumberMetrics](https://cloud.tencent.com/document/api/679/47715#CallInNumberMetrics)
-* [CallInSkillGroupMetrics](https://cloud.tencent.com/document/api/679/47715#CallInSkillGroupMetrics)
-* [StaffStatusExtra](https://cloud.tencent.com/document/api/679/47715#StaffStatusExtra)
-* [StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 52 次发布
-
-发布时间：2021-08-10 08:05:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCustomizedConfigAssociateList](https://cloud.tencent.com/document/api/214/60010)
-* [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009)
-* [SetCustomizedConfigForLoadBalancer](https://cloud.tencent.com/document/api/214/60008)
-
-新增数据结构：
-
-* [BindDetailItem](https://cloud.tencent.com/document/api/214/30694#BindDetailItem)
-* [ConfigListItem](https://cloud.tencent.com/document/api/214/30694#ConfigListItem)
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 40 次发布
-
-发布时间：2021-08-10 08:13:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryDownloadBillURL](https://cloud.tencent.com/document/api/1122/60011)
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 33 次发布
-
-发布时间：2021-08-10 08:08:43
+发布时间：2021-08-11 08:00:07
 
 本次发布包含了以下内容：
 
@@ -76,22 +12,37 @@
 
 修改数据结构：
 
-* [MediaAudioStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaAudioStreamItem)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
 
-	* 新增成员：Channel
-
-* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
-
-	* 新增成员：ColorPrimaries, ColorSpace, ColorTransfer
+	* 新增成员：Domain
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 4 次发布
+### 第 64 次发布
 
-发布时间：2021-08-10 08:14:12
+发布时间：2021-08-11 08:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：FastUpgrade
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 7 次发布
+
+发布时间：2021-08-11 08:00:16
 
 本次发布包含了以下内容：
 
@@ -99,25 +50,67 @@
 
 新增接口：
 
-* [CreateAccessExport](https://cloud.tencent.com/document/api/627/60017)
-* [DeleteAccessExport](https://cloud.tencent.com/document/api/627/60016)
-* [DescribeAccessExports](https://cloud.tencent.com/document/api/627/60015)
-* [DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)
-* [DescribeAccessIndex](https://cloud.tencent.com/document/api/627/60013)
-* [SearchAccessLog](https://cloud.tencent.com/document/api/627/60012)
+* [CreateAsyncContextTask](https://cloud.tencent.com/document/api/614/60073)
+* [CreateAsyncSearchTask](https://cloud.tencent.com/document/api/614/60072)
+* [DeleteAsyncContextTask](https://cloud.tencent.com/document/api/614/60071)
+* [DeleteAsyncSearchTask](https://cloud.tencent.com/document/api/614/60070)
+* [DescribeAsyncContextResult](https://cloud.tencent.com/document/api/614/60069)
+* [DescribeAsyncContextTasks](https://cloud.tencent.com/document/api/614/60068)
+* [DescribeAsyncSearchResult](https://cloud.tencent.com/document/api/614/60067)
+* [DescribeAsyncSearchTasks](https://cloud.tencent.com/document/api/614/60066)
 
 新增数据结构：
 
-* [AccessFullTextInfo](https://cloud.tencent.com/document/api/627/53609#AccessFullTextInfo)
-* [AccessKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessKeyValueInfo)
-* [AccessLogInfo](https://cloud.tencent.com/document/api/627/53609#AccessLogInfo)
-* [AccessLogItem](https://cloud.tencent.com/document/api/627/53609#AccessLogItem)
-* [AccessLogItems](https://cloud.tencent.com/document/api/627/53609#AccessLogItems)
-* [AccessRuleInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleInfo)
-* [AccessRuleKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleKeyValueInfo)
-* [AccessRuleTagInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleTagInfo)
-* [AccessValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessValueInfo)
-* [ExportAccessInfo](https://cloud.tencent.com/document/api/627/53609#ExportAccessInfo)
+* [AsyncContextTask](https://cloud.tencent.com/document/api/614/56471#AsyncContextTask)
+* [AsyncSearchTask](https://cloud.tencent.com/document/api/614/56471#AsyncSearchTask)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 27 次发布
+
+发布时间：2021-08-11 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyRealServerAccessStrategy](https://cloud.tencent.com/document/api/557/60074)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 29 次发布
+
+发布时间：2021-08-11 08:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckIdNameDate](https://cloud.tencent.com/document/api/1007/60075)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 24 次发布
+
+发布时间：2021-08-11 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyRealServerAccessStrategy](https://cloud.tencent.com/document/api/237/60076)
 
 
 
@@ -805,6 +798,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 9 次发布
+
+发布时间：2021-08-11 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：Domain
+
 
 ### 第 8 次发布
 
@@ -7286,16 +7294,16 @@
 
 新增接口：
 
-* [[DescribeCallInMetrics](https://cloud.tencent.com/document/api/679/60006)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStaffStatusMetrics](https://cloud.tencent.com/document/api/679/60007)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCallInMetrics](https://cloud.tencent.com/document/api/679/60006)
+* [DescribeStaffStatusMetrics](https://cloud.tencent.com/document/api/679/60007)
 
 新增数据结构：
 
-* [[CallInMetrics](https://cloud.tencent.com/document/api/679/47715#CallInMetrics)](https://cloud.tencent.com/document/api/679/47715#[CallInMetrics](https://cloud.tencent.com/document/api/679/47715#CallInMetrics))
-* [[CallInNumberMetrics](https://cloud.tencent.com/document/api/679/47715#CallInNumberMetrics)](https://cloud.tencent.com/document/api/679/47715#[CallInNumberMetrics](https://cloud.tencent.com/document/api/679/47715#CallInNumberMetrics))
-* [[CallInSkillGroupMetrics](https://cloud.tencent.com/document/api/679/47715#CallInSkillGroupMetrics)](https://cloud.tencent.com/document/api/679/47715#[CallInSkillGroupMetrics](https://cloud.tencent.com/document/api/679/47715#CallInSkillGroupMetrics))
-* [[StaffStatusExtra](https://cloud.tencent.com/document/api/679/47715#StaffStatusExtra)](https://cloud.tencent.com/document/api/679/47715#[StaffStatusExtra](https://cloud.tencent.com/document/api/679/47715#StaffStatusExtra))
-* [[StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics)](https://cloud.tencent.com/document/api/679/47715#[StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics))
+* [CallInMetrics](https://cloud.tencent.com/document/api/679/47715#CallInMetrics)
+* [CallInNumberMetrics](https://cloud.tencent.com/document/api/679/47715#CallInNumberMetrics)
+* [CallInSkillGroupMetrics](https://cloud.tencent.com/document/api/679/47715#CallInSkillGroupMetrics)
+* [StaffStatusExtra](https://cloud.tencent.com/document/api/679/47715#StaffStatusExtra)
+* [StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics)
 
 ### 第 14 次发布
 
@@ -7552,6 +7560,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 64 次发布
+
+发布时间：2021-08-11 08:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：FastUpgrade
+
 
 ### 第 63 次发布
 
@@ -11643,14 +11666,14 @@
 
 新增接口：
 
-* [[DescribeCustomizedConfigAssociateList](https://cloud.tencent.com/document/api/214/60010)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009)](https://cloud.tencent.com/document/api/#/#)
-* [[SetCustomizedConfigForLoadBalancer](https://cloud.tencent.com/document/api/214/60008)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCustomizedConfigAssociateList](https://cloud.tencent.com/document/api/214/60010)
+* [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009)
+* [SetCustomizedConfigForLoadBalancer](https://cloud.tencent.com/document/api/214/60008)
 
 新增数据结构：
 
-* [[BindDetailItem](https://cloud.tencent.com/document/api/214/30694#BindDetailItem)](https://cloud.tencent.com/document/api/214/30694#[BindDetailItem](https://cloud.tencent.com/document/api/214/30694#BindDetailItem))
-* [[ConfigListItem](https://cloud.tencent.com/document/api/214/30694#ConfigListItem)](https://cloud.tencent.com/document/api/214/30694#[ConfigListItem](https://cloud.tencent.com/document/api/214/30694#ConfigListItem))
+* [BindDetailItem](https://cloud.tencent.com/document/api/214/30694#BindDetailItem)
+* [ConfigListItem](https://cloud.tencent.com/document/api/214/30694#ConfigListItem)
 
 ### 第 51 次发布
 
@@ -13067,6 +13090,30 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 7 次发布
+
+发布时间：2021-08-11 08:00:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAsyncContextTask](https://cloud.tencent.com/document/api/614/60073)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateAsyncSearchTask](https://cloud.tencent.com/document/api/614/60072)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAsyncContextTask](https://cloud.tencent.com/document/api/614/60071)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAsyncSearchTask](https://cloud.tencent.com/document/api/614/60070)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAsyncContextResult](https://cloud.tencent.com/document/api/614/60069)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAsyncContextTasks](https://cloud.tencent.com/document/api/614/60068)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAsyncSearchResult](https://cloud.tencent.com/document/api/614/60067)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAsyncSearchTasks](https://cloud.tencent.com/document/api/614/60066)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AsyncContextTask](https://cloud.tencent.com/document/api/614/56471#AsyncContextTask)](https://cloud.tencent.com/document/api/614/56471#[AsyncContextTask](https://cloud.tencent.com/document/api/614/56471#AsyncContextTask))
+* [[AsyncSearchTask](https://cloud.tencent.com/document/api/614/56471#AsyncSearchTask)](https://cloud.tencent.com/document/api/614/56471#[AsyncSearchTask](https://cloud.tencent.com/document/api/614/56471#AsyncSearchTask))
 
 ### 第 6 次发布
 
@@ -14544,7 +14591,7 @@
 
 新增接口：
 
-* [[QueryDownloadBillURL](https://cloud.tencent.com/document/api/1122/60011)](https://cloud.tencent.com/document/api/#/#)
+* [QueryDownloadBillURL](https://cloud.tencent.com/document/api/1122/60011)
 
 ### 第 39 次发布
 
@@ -19472,6 +19519,18 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 27 次发布
+
+发布时间：2021-08-11 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyRealServerAccessStrategy](https://cloud.tencent.com/document/api/557/60074)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 26 次发布
 
 发布时间：2021-08-05 08:05:14
@@ -23836,6 +23895,18 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 29 次发布
+
+发布时间：2021-08-11 08:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckIdNameDate](https://cloud.tencent.com/document/api/1007/60075)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 28 次发布
 
@@ -32338,6 +32409,18 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 24 次发布
+
+发布时间：2021-08-11 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyRealServerAccessStrategy](https://cloud.tencent.com/document/api/237/60076)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 23 次发布
 
@@ -56115,25 +56198,25 @@
 
 新增接口：
 
-* [[CreateAccessExport](https://cloud.tencent.com/document/api/627/60017)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAccessExport](https://cloud.tencent.com/document/api/627/60016)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessExports](https://cloud.tencent.com/document/api/627/60015)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccessIndex](https://cloud.tencent.com/document/api/627/60013)](https://cloud.tencent.com/document/api/#/#)
-* [[SearchAccessLog](https://cloud.tencent.com/document/api/627/60012)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAccessExport](https://cloud.tencent.com/document/api/627/60017)
+* [DeleteAccessExport](https://cloud.tencent.com/document/api/627/60016)
+* [DescribeAccessExports](https://cloud.tencent.com/document/api/627/60015)
+* [DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)
+* [DescribeAccessIndex](https://cloud.tencent.com/document/api/627/60013)
+* [SearchAccessLog](https://cloud.tencent.com/document/api/627/60012)
 
 新增数据结构：
 
-* [[AccessFullTextInfo](https://cloud.tencent.com/document/api/627/53609#AccessFullTextInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessFullTextInfo](https://cloud.tencent.com/document/api/627/53609#AccessFullTextInfo))
-* [[AccessKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessKeyValueInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessKeyValueInfo))
-* [[AccessLogInfo](https://cloud.tencent.com/document/api/627/53609#AccessLogInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessLogInfo](https://cloud.tencent.com/document/api/627/53609#AccessLogInfo))
-* [[AccessLogItem](https://cloud.tencent.com/document/api/627/53609#AccessLogItem)](https://cloud.tencent.com/document/api/627/53609#[AccessLogItem](https://cloud.tencent.com/document/api/627/53609#AccessLogItem))
-* [[AccessLogItems](https://cloud.tencent.com/document/api/627/53609#AccessLogItems)](https://cloud.tencent.com/document/api/627/53609#[AccessLogItems](https://cloud.tencent.com/document/api/627/53609#AccessLogItems))
-* [[AccessRuleInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessRuleInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleInfo))
-* [[AccessRuleKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleKeyValueInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessRuleKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleKeyValueInfo))
-* [[AccessRuleTagInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleTagInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessRuleTagInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleTagInfo))
-* [[AccessValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessValueInfo)](https://cloud.tencent.com/document/api/627/53609#[AccessValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessValueInfo))
-* [[ExportAccessInfo](https://cloud.tencent.com/document/api/627/53609#ExportAccessInfo)](https://cloud.tencent.com/document/api/627/53609#[ExportAccessInfo](https://cloud.tencent.com/document/api/627/53609#ExportAccessInfo))
+* [AccessFullTextInfo](https://cloud.tencent.com/document/api/627/53609#AccessFullTextInfo)
+* [AccessKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessKeyValueInfo)
+* [AccessLogInfo](https://cloud.tencent.com/document/api/627/53609#AccessLogInfo)
+* [AccessLogItem](https://cloud.tencent.com/document/api/627/53609#AccessLogItem)
+* [AccessLogItems](https://cloud.tencent.com/document/api/627/53609#AccessLogItems)
+* [AccessRuleInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleInfo)
+* [AccessRuleKeyValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleKeyValueInfo)
+* [AccessRuleTagInfo](https://cloud.tencent.com/document/api/627/53609#AccessRuleTagInfo)
+* [AccessValueInfo](https://cloud.tencent.com/document/api/627/53609#AccessValueInfo)
+* [ExportAccessInfo](https://cloud.tencent.com/document/api/627/53609#ExportAccessInfo)
 
 ### 第 3 次发布
 

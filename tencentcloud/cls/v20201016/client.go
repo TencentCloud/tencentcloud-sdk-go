@@ -157,6 +157,81 @@ func (c *Client) CreateAlarmNotice(request *CreateAlarmNoticeRequest) (response 
     return
 }
 
+func NewCreateAsyncContextTaskRequest() (request *CreateAsyncContextTaskRequest) {
+    request = &CreateAsyncContextTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncContextTask")
+    return
+}
+
+func NewCreateAsyncContextTaskResponse() (response *CreateAsyncContextTaskResponse) {
+    response = &CreateAsyncContextTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAsyncContextTask
+// 本接口用于创建异步上下文任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCTASKNOTCOMPLETED = "FailedOperation.AsyncTaskNotCompleted"
+//  FAILEDOPERATION_TOPICNOTSUPPORT = "FailedOperation.TopicNotSupport"
+//  LIMITEXCEEDED_ASYNCTASK = "LimitExceeded.AsyncTask"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ASYNCTASKNOTEXIST = "ResourceNotFound.AsyncTaskNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateAsyncContextTask(request *CreateAsyncContextTaskRequest) (response *CreateAsyncContextTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAsyncContextTaskRequest()
+    }
+    response = NewCreateAsyncContextTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAsyncSearchTaskRequest() (request *CreateAsyncSearchTaskRequest) {
+    request = &CreateAsyncSearchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncSearchTask")
+    return
+}
+
+func NewCreateAsyncSearchTaskResponse() (response *CreateAsyncSearchTaskResponse) {
+    response = &CreateAsyncSearchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAsyncSearchTask
+// 本接口用于创建异步检索任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICNOTSUPPORT = "FailedOperation.TopicNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ASYNCSEARCHTASK = "LimitExceeded.AsyncSearchTask"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateAsyncSearchTask(request *CreateAsyncSearchTaskRequest) (response *CreateAsyncSearchTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAsyncSearchTaskRequest()
+    }
+    response = NewCreateAsyncSearchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConfigRequest() (request *CreateConfigRequest) {
     request = &CreateConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -511,6 +586,74 @@ func (c *Client) DeleteAlarmNotice(request *DeleteAlarmNoticeRequest) (response 
         request = NewDeleteAlarmNoticeRequest()
     }
     response = NewDeleteAlarmNoticeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAsyncContextTaskRequest() (request *DeleteAsyncContextTaskRequest) {
+    request = &DeleteAsyncContextTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncContextTask")
+    return
+}
+
+func NewDeleteAsyncContextTaskResponse() (response *DeleteAsyncContextTaskResponse) {
+    response = &DeleteAsyncContextTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAsyncContextTask
+// 本接口用于删除异步上下文任务
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteAsyncContextTask(request *DeleteAsyncContextTaskRequest) (response *DeleteAsyncContextTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteAsyncContextTaskRequest()
+    }
+    response = NewDeleteAsyncContextTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAsyncSearchTaskRequest() (request *DeleteAsyncSearchTaskRequest) {
+    request = &DeleteAsyncSearchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncSearchTask")
+    return
+}
+
+func NewDeleteAsyncSearchTaskResponse() (response *DeleteAsyncSearchTaskResponse) {
+    response = &DeleteAsyncSearchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAsyncSearchTask
+// 本接口用于删除异步检索任务
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = "ResourceNotFound.AsyncSearchTaskNotExist"
+//  RESOURCENOTFOUND_ASYNCTASKNOTEXIST = "ResourceNotFound.AsyncTaskNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteAsyncSearchTask(request *DeleteAsyncSearchTaskRequest) (response *DeleteAsyncSearchTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteAsyncSearchTaskRequest()
+    }
+    response = NewDeleteAsyncSearchTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -889,6 +1032,139 @@ func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *Descr
         request = NewDescribeAlarmsRequest()
     }
     response = NewDescribeAlarmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncContextResultRequest() (request *DescribeAsyncContextResultRequest) {
+    request = &DescribeAsyncContextResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextResult")
+    return
+}
+
+func NewDescribeAsyncContextResultResponse() (response *DescribeAsyncContextResultResponse) {
+    response = &DescribeAsyncContextResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAsyncContextResult
+// 本接口用户获取异步上下文任务的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = "FailedOperation.AsyncSearchNotCompleted"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = "ResourceNotFound.AsyncSearchTaskNotExist"
+func (c *Client) DescribeAsyncContextResult(request *DescribeAsyncContextResultRequest) (response *DescribeAsyncContextResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncContextResultRequest()
+    }
+    response = NewDescribeAsyncContextResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncContextTasksRequest() (request *DescribeAsyncContextTasksRequest) {
+    request = &DescribeAsyncContextTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextTasks")
+    return
+}
+
+func NewDescribeAsyncContextTasksResponse() (response *DescribeAsyncContextTasksResponse) {
+    response = &DescribeAsyncContextTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAsyncContextTasks
+// 本接口用于获取异步上下文任务列表
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeAsyncContextTasks(request *DescribeAsyncContextTasksRequest) (response *DescribeAsyncContextTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncContextTasksRequest()
+    }
+    response = NewDescribeAsyncContextTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncSearchResultRequest() (request *DescribeAsyncSearchResultRequest) {
+    request = &DescribeAsyncSearchResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchResult")
+    return
+}
+
+func NewDescribeAsyncSearchResultResponse() (response *DescribeAsyncSearchResultResponse) {
+    response = &DescribeAsyncSearchResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAsyncSearchResult
+// 本接口用户获取异步检索任务的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = "FailedOperation.AsyncSearchNotCompleted"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = "ResourceNotFound.AsyncSearchTaskNotExist"
+func (c *Client) DescribeAsyncSearchResult(request *DescribeAsyncSearchResultRequest) (response *DescribeAsyncSearchResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncSearchResultRequest()
+    }
+    response = NewDescribeAsyncSearchResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncSearchTasksRequest() (request *DescribeAsyncSearchTasksRequest) {
+    request = &DescribeAsyncSearchTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchTasks")
+    return
+}
+
+func NewDescribeAsyncSearchTasksResponse() (response *DescribeAsyncSearchTasksResponse) {
+    response = &DescribeAsyncSearchTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAsyncSearchTasks
+// 本接口用户获取异步检索任务列表
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+func (c *Client) DescribeAsyncSearchTasks(request *DescribeAsyncSearchTasksRequest) (response *DescribeAsyncSearchTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncSearchTasksRequest()
+    }
+    response = NewDescribeAsyncSearchTasksResponse()
     err = c.Send(request, response)
     return
 }
