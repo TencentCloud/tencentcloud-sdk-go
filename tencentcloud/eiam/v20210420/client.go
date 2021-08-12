@@ -750,6 +750,37 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
     return
 }
 
+func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
+    request = &ModifyApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ModifyApplication")
+    return
+}
+
+func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
+    response = &ModifyApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplication
+// 更新一个应用的信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationRequest()
+    }
+    response = NewModifyApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserInfoRequest() (request *ModifyUserInfoRequest) {
     request = &ModifyUserInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

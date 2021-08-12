@@ -1844,7 +1844,7 @@ type InvokeFunctionRequest struct {
 	// 函数名称
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
-	// 触发函数的版本号或别名
+	// 触发函数的版本号或别名，默认值为$DEFAULT
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 运行函数时的参数，以json格式传入，最大支持的参数长度是 1M

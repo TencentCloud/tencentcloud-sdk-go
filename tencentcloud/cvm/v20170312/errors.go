@@ -302,7 +302,7 @@ const (
 	// 当前地域不支持指定镜像所包含的操作系统。
 	INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = "InvalidParameterValue.InvalidImageOsName"
 
-	// 镜像状态不合规范
+	// 镜像被其他操作占用，请检查，并稍后重试。
 	INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = "InvalidParameterValue.InvalidImageState"
 
 	// IP地址不符合规范

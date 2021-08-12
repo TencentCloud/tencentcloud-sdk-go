@@ -1489,6 +1489,90 @@ func (r *DescribeBasicDeviceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBizTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计周期，可取值300，1800，3600，21600，86400，单位秒
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间。 例：“2020-09-22 00:00:00”
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。 例：“2020-09-22 00:00:00”
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计纬度为qps时，可选特定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
+}
+
+func (r *DescribeBizTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Statistics")
+	delete(f, "Business")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Id")
+	delete(f, "MetricName")
+	delete(f, "Domain")
+	delete(f, "ProtoInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBizTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 曲线图各个时间点的值
+		DataList []*float64 `json:"DataList,omitempty" name:"DataList"`
+
+		// 统计纬度
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBizTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1538,6 +1622,206 @@ func (r *DescribeBlackWhiteIpListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 域名，可选
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeCCTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Ip")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Domain")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+		Period *int64 `json:"Period,omitempty" name:"Period"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 值数组
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
+
+		// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源实例的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeDDoSTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Ip")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+		Business *string `json:"Business,omitempty" name:"Business"`
+
+		// 资源的IP
+		Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+		// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+		Period *int64 `json:"Period,omitempty" name:"Period"`
+
+		// 统计开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 统计结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
+
+		// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSTrendResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3291,6 +3575,15 @@ type ProtocolBlockRelation struct {
 
 	// 协议封禁配置所属的实例
 	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitempty" name:"InstanceDetailList"`
+}
+
+type ProtocolPort struct {
+
+	// 协议（tcp；udp）
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
 }
 
 type ProxyTypeInfo struct {

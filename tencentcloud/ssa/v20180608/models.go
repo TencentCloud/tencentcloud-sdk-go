@@ -1521,6 +1521,52 @@ func (r *DescribeSafetyEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSocCspmComplianceRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSocCspmComplianceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCspmComplianceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocCspmComplianceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocCspmComplianceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *SocComplianceInfoResp `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSocCspmComplianceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCspmComplianceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVulDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1867,6 +1913,82 @@ func (r *SaDivulgeDataQueryPubResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SaDivulgeDataQueryPubResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SocCheckItem struct {
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelId *string `json:"LevelId,omitempty" name:"LevelId"`
+
+	// 成功数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 失败数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailCount *int64 `json:"FailCount,omitempty" name:"FailCount"`
+}
+
+type SocComplianceInfoResp struct {
+
+	// 合格项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*SocComplianceItem `json:"Items,omitempty" name:"Items"`
+}
+
+type SocComplianceItem struct {
+
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *string `json:"Item,omitempty" name:"Item"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardItem *string `json:"StandardItem,omitempty" name:"StandardItem"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 产品字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProStr *string `json:"ProStr,omitempty" name:"ProStr"`
+
+	// 产品数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Production []*SocProductionItem `json:"Production,omitempty" name:"Production"`
+
+	// 配置项数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckItems []*SocCheckItem `json:"CheckItems,omitempty" name:"CheckItems"`
+}
+
+type SocProductionItem struct {
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitempty" name:"Index"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type Tag struct {

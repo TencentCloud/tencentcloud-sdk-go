@@ -32,6 +32,9 @@ const (
 	// 数据操作异常
 	FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
 
+	// 第三方依赖异常。
+	FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

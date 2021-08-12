@@ -2998,13 +2998,41 @@ type MediaMetaData struct {
 	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitempty" name:"AudioStreamInfoSet"`
 }
 
+type MediaPreprocessOperation struct {
+
+	// 预处理操作的类型，取值范围：
+	// <li>ImageTextMask：图片文字遮罩。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 预处理操作参数。
+	// 当 Type 取值 ImageTextMask 时，参数为要保留的文字。
+	Args []*string `json:"Args,omitempty" name:"Args"`
+}
+
 type MediaReplacementInfo struct {
 
-	// 素材 ID。
+	// 替换的媒体类型，取值有：
+	// <li>CMEMaterialId：替换的媒体类型为媒体 ID；</li>
+	// <li>ImageUrl：替换的媒体类型为图片 URL；</li>
+	// 
+	// 注：默认为 CMEMaterialId 。
+	MediaType *string `json:"MediaType,omitempty" name:"MediaType"`
+
+	// 媒体 ID。
+	// 当媒体类型取值为 CMEMaterialId 时有效。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 媒体 URL。
+	// 当媒体类型取值为 ImageUrl 时有效，
+	// 图片仅支持 jpg、png 格式，且大小不超过 2M 。
+	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
 	// 替换媒体选取的开始时间，单位为秒，默认为 0。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 预处理操作。
+	// 注：目前该功能暂不支持，请勿使用。
+	PreprocessOperation *MediaPreprocessOperation `json:"PreprocessOperation,omitempty" name:"PreprocessOperation"`
 }
 
 type MediaTrack struct {

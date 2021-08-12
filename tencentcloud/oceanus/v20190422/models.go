@@ -133,6 +133,9 @@ type CreateJobRequest struct {
 
 	// 作业的备注信息，可以随意设置
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 作业名所属文件夹ID，根目录为"root"
+	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -153,6 +156,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "CuMem")
 	delete(f, "Remark")
+	delete(f, "FolderId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}

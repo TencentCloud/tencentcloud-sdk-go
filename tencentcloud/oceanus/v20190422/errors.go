@@ -23,15 +23,6 @@ const (
 	// 未授权操作。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
-	// 找不到集群。
-	FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
-
-	// 重复的作业名。
-	FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
-
-	// 集群资源不足。
-	FAILEDOPERATION_RESOURCEINSUFFICIENT = "FailedOperation.ResourceInsufficient"
-
 	// 用户未实名验证。
 	FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
 
@@ -80,6 +71,9 @@ const (
 	// 无效集群id。
 	INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
 
+	// 名字不符合规范。
+	INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+
 	// 无效Region。
 	INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 
@@ -113,11 +107,8 @@ const (
 	// 作业id的参数无效。
 	INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
 
-	// Illegal JobName。
-	INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
-
-	// 集群模式与作业类型不匹配。
-	INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = "InvalidParameterValue.JobTypeCombineWithClusterType"
+	// 作业名称已存在。
+	INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
 
 	// SQL作业不能指定EntrypointClass，JAR作业则必须指定。
 	INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = "InvalidParameterValue.JobTypeCombineWithEntrypointClass"
@@ -131,8 +122,14 @@ const (
 	// RunType错误。
 	INVALIDPARAMETERVALUE_RUNTYPE = "InvalidParameterValue.RunType"
 
+	// 不支持的复合类型。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// Job个数超过限额。
+	LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 
 	// 作业配置超出限制。
 	LIMITEXCEEDED_JOBCONFIG = "LimitExceeded.JobConfig"
@@ -145,9 +142,6 @@ const (
 
 	// 资源名称已存在。
 	RESOURCEINUSE_RESOURCENAMEALREADYEXISTS = "ResourceInUse.ResourceNameAlreadyExists"
-
-	// 资源不足。
-	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// CU资源不足。
 	RESOURCEINSUFFICIENT_CU = "ResourceInsufficient.CU"
@@ -188,8 +182,8 @@ const (
 	// 检查资源位置是否存在错误。
 	RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = "ResourceUnavailable.CheckResourceLocExists"
 
-	// 集群处于非运行状态。
-	RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
+	// 群集组状态错误。
+	RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 
 	// 失败的目标资源。
 	RESOURCEUNAVAILABLE_FAILEDTOBESCRIBERESOURCES = "ResourceUnavailable.FailedToBescribeResources"
@@ -205,6 +199,9 @@ const (
 
 	// 不允许停止或暂停错误。
 	RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
+
+	// 共享群集只允许CuMem=4。
+	RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
 
 	// cos上的程序包不存在。
 	RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = "ResourceUnavailable.ResourceLocNotExists"

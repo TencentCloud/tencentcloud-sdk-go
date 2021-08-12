@@ -16,4 +16,7 @@ package v20210701
 
 const (
 	// 此产品的特有错误码
+
+	// 创建服务失败。
+	INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 )

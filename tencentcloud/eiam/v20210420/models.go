@@ -577,6 +577,22 @@ type DescribeApplicationResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AuthorizeUrl *string `json:"AuthorizeUrl,omitempty" name:"AuthorizeUrl"`
 
+		// 应用图标图片访问地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IconUrl *string `json:"IconUrl,omitempty" name:"IconUrl"`
+
+		// 安全等级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SecureLevel *string `json:"SecureLevel,omitempty" name:"SecureLevel"`
+
+		// 应用状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AppStatus *bool `json:"AppStatus,omitempty" name:"AppStatus"`
+
+		// 描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1505,6 +1521,72 @@ func (r *ListUsersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyApplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，是应用的全局唯一标识。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 安全级别。
+	SecureLevel *string `json:"SecureLevel,omitempty" name:"SecureLevel"`
+
+	// 应用展示名称，长度限制：32个字符。 默认与应用名字相同。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 应用状态
+	AppStatus *bool `json:"AppStatus,omitempty" name:"AppStatus"`
+
+	// 应用图标图片访问地址。
+	IconUrl *string `json:"IconUrl,omitempty" name:"IconUrl"`
+
+	// 描述。长度不超过128。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "SecureLevel")
+	delete(f, "DisplayName")
+	delete(f, "AppStatus")
+	delete(f, "IconUrl")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

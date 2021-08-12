@@ -30,6 +30,9 @@ type AccessConfiguration struct {
 
 	// 通道并发量上限，表示同时在线的连接数，单位：万。
 	Concurrent *uint64 `json:"Concurrent,omitempty" name:"Concurrent"`
+
+	// 网络类型，可取值：normal、cn2，默认值为normal
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 type AccessRegionDetial struct {
@@ -381,6 +384,9 @@ type CheckProxyCreateRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 网络类型，可取值：normal、cn2，默认值normal
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 func (r *CheckProxyCreateRequest) ToJsonString() string {
@@ -401,6 +407,7 @@ func (r *CheckProxyCreateRequest) FromJsonString(s string) error {
 	delete(f, "Concurrent")
 	delete(f, "GroupId")
 	delete(f, "IPAddressVersion")
+	delete(f, "NetworkType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckProxyCreateRequest has unknown keys!", "")
 	}
@@ -1175,6 +1182,9 @@ type CreateProxyRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 网络类型，可取值：normal、cn2，默认值normal
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -1201,6 +1211,7 @@ func (r *CreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "ClonedProxyId")
 	delete(f, "BillingType")
 	delete(f, "IPAddressVersion")
+	delete(f, "NetworkType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyRequest has unknown keys!", "")
 	}
@@ -4547,6 +4558,9 @@ type InquiryPriceCreateProxyRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 网络类型，可取值：normal、cn2，默认值normal
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
@@ -4569,6 +4583,7 @@ func (r *InquiryPriceCreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "Concurrent")
 	delete(f, "BillingType")
 	delete(f, "IPAddressVersion")
+	delete(f, "NetworkType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateProxyRequest has unknown keys!", "")
 	}
@@ -4599,6 +4614,14 @@ type InquiryPriceCreateProxyResponse struct {
 		// 通道的流量费用折扣价格，单位:元/GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DiscountFlowUnitPrice *float64 `json:"DiscountFlowUnitPrice,omitempty" name:"DiscountFlowUnitPrice"`
+
+		// 精品BGP的带宽费用价格，单位: 元/Mbps/天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cn2BandwidthPrice *float64 `json:"Cn2BandwidthPrice,omitempty" name:"Cn2BandwidthPrice"`
+
+		// 精品BGP的折后带宽费用价格，单位: 元/Mbps/天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Cn2BandwidthPriceWithDiscount *float64 `json:"Cn2BandwidthPriceWithDiscount,omitempty" name:"Cn2BandwidthPriceWithDiscount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5999,7 +6022,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyConfigTime *uint64 `json:"ModifyConfigTime,omitempty" name:"ModifyConfigTime"`
 
-	// 通道类型，104表示新的银牌质量通道类型
+	// 通道类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 
@@ -6010,6 +6033,10 @@ type ProxyInfo struct {
 	// IP版本：IPv4、IPv6
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 网络类型：normal、cn2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 type ProxySimpleInfo struct {

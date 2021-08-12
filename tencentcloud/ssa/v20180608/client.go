@@ -417,6 +417,55 @@ func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest
     return
 }
 
+func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRequest) {
+    request = &DescribeSocCspmComplianceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCspmCompliance")
+    return
+}
+
+func NewDescribeSocCspmComplianceResponse() (response *DescribeSocCspmComplianceResponse) {
+    response = &DescribeSocCspmComplianceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSocCspmCompliance
+// 合规详情项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SUBACCOUNTUNAUTHORIZED = "UnauthorizedOperation.SubAccountUnauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSocCspmCompliance(request *DescribeSocCspmComplianceRequest) (response *DescribeSocCspmComplianceResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocCspmComplianceRequest()
+    }
+    response = NewDescribeSocCspmComplianceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
     request = &DescribeVulDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

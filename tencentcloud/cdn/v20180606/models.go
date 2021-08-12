@@ -843,8 +843,8 @@ type CacheConfigNoCache struct {
 type CacheKey struct {
 
 	// 是否开启全路径缓存
-	// on：开启全路径缓存（即关闭参数过滤）
-	// off：关闭全路径缓存（即开启参数过滤）
+	// on：开启全路径缓存（即关闭参数忽略）
+	// off：关闭全路径缓存（即开启参数忽略）
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
 
 	// 是否忽略大小写缓存
@@ -1871,7 +1871,9 @@ type DescribeCdnDataRequest struct {
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 指定查询域名列表
-	// 最多可一次性查询 30 个加速域名明细
+	// 查询单域名：指定单个域名
+	// 查询多个域名：指定多个域名，最多可一次性查询 30 个
+	// 查询账号下所有域名：不传参，默认查询账号维度
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
@@ -4772,8 +4774,8 @@ type KeyRule struct {
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
 	// 是否开启全路径缓存
-	// on：开启全路径缓存（即关闭参数过滤）
-	// off：关闭全路径缓存（即开启参数过滤）
+	// on：开启全路径缓存（即关闭参数忽略）
+	// off：关闭全路径缓存（即开启参数忽略）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
 
@@ -6216,10 +6218,10 @@ type ResourceBillingData struct {
 type ResourceData struct {
 
 	// 资源名称，根据查询条件不同分为以下几类：
-	// 具体域名：表示该域名明细数据
-	// multiDomains：表示多域名汇总明细数据
-	// 项目 ID：指定项目查询时，显示为项目 ID
-	// all：账号维度明细数据
+	// 单域名：指定单域名查询，表示该域名明细数据，当传入参数 detail 指定为 true 时，显示该域名（ detail 参数默认为 false ）
+	// 多域名：指定多个域名查询，表示多域名汇总明细数据，显示 multiDomains
+	// 项目 ID：指定项目查询时，表示该项目下的域名汇总明细数据，显示该项目 ID
+	// all：账号维度明细数据，即账号下所有域名的汇总明细数据
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 资源对应的数据明细
@@ -7637,12 +7639,12 @@ type UrlRecord struct {
 
 type UrlRedirect struct {
 
-	// URL重定向配置开关
+	// 访问URL重写配置开关
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// URL重定向规则，当Switch为on时必填，规则数量最大为10个。
+	// 访问URL重写规则，当Switch为on时必填，规则数量最大为10个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathRules []*UrlRedirectRule `json:"PathRules,omitempty" name:"PathRules"`
 }

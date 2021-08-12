@@ -104,6 +104,7 @@ func NewDescribeDataPerformancePageResponse() (response *DescribeDataPerformance
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
 //  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

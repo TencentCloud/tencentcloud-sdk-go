@@ -64,19 +64,19 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
-//  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
-//  FAILEDOPERATION_RESOURCEINSUFFICIENT = "FailedOperation.ResourceInsufficient"
 //  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETERVALUE_CLUSTERID = "InvalidParameterValue.ClusterId"
 //  INVALIDPARAMETERVALUE_CUMEM = "InvalidParameterValue.CuMem"
-//  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
-//  INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = "InvalidParameterValue.JobTypeCombineWithClusterType"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
+//  LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
+//  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
+//  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
     if request == nil {
         request = NewCreateJobRequest()
