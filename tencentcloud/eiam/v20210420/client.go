@@ -337,6 +337,38 @@ func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *Des
     return
 }
 
+func NewDescribeOrgResourcesAuthorizationRequest() (request *DescribeOrgResourcesAuthorizationRequest) {
+    request = &DescribeOrgResourcesAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeOrgResourcesAuthorization")
+    return
+}
+
+func NewDescribeOrgResourcesAuthorizationResponse() (response *DescribeOrgResourcesAuthorizationResponse) {
+    response = &DescribeOrgResourcesAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrgResourcesAuthorization
+// 查询指定机构下的资源授权列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DescribeOrgResourcesAuthorization(request *DescribeOrgResourcesAuthorizationRequest) (response *DescribeOrgResourcesAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrgResourcesAuthorizationRequest()
+    }
+    response = NewDescribeOrgResourcesAuthorizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicKeyRequest() (request *DescribePublicKeyRequest) {
     request = &DescribePublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -400,6 +432,38 @@ func (c *Client) DescribeUserGroup(request *DescribeUserGroupRequest) (response 
     return
 }
 
+func NewDescribeUserGroupResourcesAuthorizationRequest() (request *DescribeUserGroupResourcesAuthorizationRequest) {
+    request = &DescribeUserGroupResourcesAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserGroupResourcesAuthorization")
+    return
+}
+
+func NewDescribeUserGroupResourcesAuthorizationResponse() (response *DescribeUserGroupResourcesAuthorizationResponse) {
+    response = &DescribeUserGroupResourcesAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserGroupResourcesAuthorization
+// 查询指定用户组下的资源授权列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DescribeUserGroupResourcesAuthorization(request *DescribeUserGroupResourcesAuthorizationRequest) (response *DescribeUserGroupResourcesAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserGroupResourcesAuthorizationRequest()
+    }
+    response = NewDescribeUserGroupResourcesAuthorizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
     request = &DescribeUserInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -427,6 +491,38 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
         request = NewDescribeUserInfoRequest()
     }
     response = NewDescribeUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserResourcesAuthorizationRequest() (request *DescribeUserResourcesAuthorizationRequest) {
+    request = &DescribeUserResourcesAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserResourcesAuthorization")
+    return
+}
+
+func NewDescribeUserResourcesAuthorizationResponse() (response *DescribeUserResourcesAuthorizationResponse) {
+    response = &DescribeUserResourcesAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserResourcesAuthorization
+// 查询指定用户下的资源授权列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourcesAuthorizationRequest) (response *DescribeUserResourcesAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserResourcesAuthorizationRequest()
+    }
+    response = NewDescribeUserResourcesAuthorizationResponse()
     err = c.Send(request, response)
     return
 }

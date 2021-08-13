@@ -5803,6 +5803,12 @@ type PathRule struct {
 	// 路径匹配时回源的头部设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestHeaders []*HttpHeaderRule `json:"RequestHeaders,omitempty" name:"RequestHeaders"`
+
+	// 当Regex为false时，Path是否开启完全匹配。
+	// false：关闭
+	// true：开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullMatch *bool `json:"FullMatch,omitempty" name:"FullMatch"`
 }
 
 type PostSize struct {

@@ -8134,6 +8134,9 @@ type RunInstancesRequest struct {
 	// 2，按月后付费，单价：xx元/实例/月，仅适用于GNR机型；
 	// 该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。
 	InstanceChargeType *int64 `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 密钥对。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -8165,6 +8168,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SystemDiskSize")
 	delete(f, "InternetMaxBandwidthIn")
 	delete(f, "InstanceChargeType")
+	delete(f, "KeyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}

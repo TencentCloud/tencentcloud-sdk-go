@@ -62,6 +62,10 @@ type AlarmInfo struct {
 	// 自定义回调模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallBack *CallBackInfo `json:"CallBack,omitempty" name:"CallBack"`
+
+	// 多维分析设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Analysis []*AnalysisDimensional `json:"Analysis,omitempty" name:"Analysis"`
 }
 
 type AlarmNotice struct {
@@ -142,6 +146,18 @@ type AlarmTargetInfo struct {
 
 	// 查询范围终止时间相对当前的历史时间，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
+type AnalysisDimensional struct {
+
+	// 分析名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分析类型：query，field
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分析内容
+	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type ApplyConfigToMachineGroupRequest struct {
@@ -434,6 +450,15 @@ type CreateAlarmRequest struct {
 
 	// 是否开启告警策略。默认值为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 用户自定义告警内容
+	MessageTemplate *string `json:"MessageTemplate,omitempty" name:"MessageTemplate"`
+
+	// 用户自定义回调
+	CallBack *CallBackInfo `json:"CallBack,omitempty" name:"CallBack"`
+
+	// 多维分析
+	Analysis []*AnalysisDimensional `json:"Analysis,omitempty" name:"Analysis"`
 }
 
 func (r *CreateAlarmRequest) ToJsonString() string {
@@ -456,6 +481,9 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "AlarmPeriod")
 	delete(f, "AlarmNoticeIds")
 	delete(f, "Status")
+	delete(f, "MessageTemplate")
+	delete(f, "CallBack")
+	delete(f, "Analysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmRequest has unknown keys!", "")
 	}
@@ -3629,6 +3657,15 @@ type ModifyAlarmRequest struct {
 
 	// 是否开启告警策略。
 	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 用户自定义告警内容
+	MessageTemplate *string `json:"MessageTemplate,omitempty" name:"MessageTemplate"`
+
+	// 用户自定义回调
+	CallBack *CallBackInfo `json:"CallBack,omitempty" name:"CallBack"`
+
+	// 多维分析
+	Analysis []*AnalysisDimensional `json:"Analysis,omitempty" name:"Analysis"`
 }
 
 func (r *ModifyAlarmRequest) ToJsonString() string {
@@ -3652,6 +3689,9 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "AlarmNoticeIds")
 	delete(f, "AlarmTargets")
 	delete(f, "Status")
+	delete(f, "MessageTemplate")
+	delete(f, "CallBack")
+	delete(f, "Analysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmRequest has unknown keys!", "")
 	}

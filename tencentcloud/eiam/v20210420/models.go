@@ -155,6 +155,44 @@ type AuthorizationInfoSearchCriteria struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
+type AuthorizationResouceEntityInfo struct {
+
+	// 授权关系的唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源授权类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 授权的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+}
+
+type AuthorizationUserResouceInfo struct {
+
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 授权资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 继承关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InheritedForm *InheritedForm `json:"InheritedForm,omitempty" name:"InheritedForm"`
+
+	// 应用账户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationAccounts []*string `json:"ApplicationAccounts,omitempty" name:"ApplicationAccounts"`
+}
+
 type CreateOrgNodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -691,6 +729,75 @@ func (r *DescribeOrgNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOrgResourcesAuthorizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 机构ID
+	OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
+}
+
+func (r *DescribeOrgResourcesAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgResourcesAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "OrgNodeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrgResourcesAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrgResourcesAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用ID
+		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+		// 授权机构ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
+
+		// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgNodeName *string `json:"OrgNodeName,omitempty" name:"OrgNodeName"`
+
+		// 机构目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgNodePath *string `json:"OrgNodePath,omitempty" name:"OrgNodePath"`
+
+		// 资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthorizationOrgResourceList []*AuthorizationResouceEntityInfo `json:"AuthorizationOrgResourceList,omitempty" name:"AuthorizationOrgResourceList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOrgResourcesAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgResourcesAuthorizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePublicKeyRequest struct {
 	*tchttp.BaseRequest
 
@@ -772,6 +879,72 @@ func (r *DescribeUserGroupRequest) FromJsonString(s string) error {
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupRequest has unknown keys!", "")
 	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupResourcesAuthorizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 用户组ID
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+}
+
+func (r *DescribeUserGroupResourcesAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupResourcesAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "UserGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupResourcesAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupResourcesAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+		// 用户组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+		// 用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserGroupName *string `json:"UserGroupName,omitempty" name:"UserGroupName"`
+
+		// 资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthorizationUserGroupResourceList []*AuthorizationResouceEntityInfo `json:"AuthorizationUserGroupResourceList,omitempty" name:"AuthorizationUserGroupResourceList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserGroupResourcesAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupResourcesAuthorizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -902,6 +1075,83 @@ func (r *DescribeUserInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserResourcesAuthorizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 用户ID。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 查询范围是否包括用户关联的用户组、组织机构的应用访问权限。默认为不查询 ，传false表示不查询该范围，传true查询该范围。
+	IncludeInheritedAuthorizations *bool `json:"IncludeInheritedAuthorizations,omitempty" name:"IncludeInheritedAuthorizations"`
+}
+
+func (r *DescribeUserResourcesAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserResourcesAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "UserId")
+	delete(f, "UserName")
+	delete(f, "IncludeInheritedAuthorizations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserResourcesAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserResourcesAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用的唯一ID。
+		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+		// 应用账户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ApplicationAccounts []*string `json:"ApplicationAccounts,omitempty" name:"ApplicationAccounts"`
+
+		// 授权用户的唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+		// 授权的用户名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+		// 返回的资源列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthorizationUserResourceList []*AuthorizationUserResouceInfo `json:"AuthorizationUserResourceList,omitempty" name:"AuthorizationUserResourceList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserResourcesAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserResourcesAuthorizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

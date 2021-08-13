@@ -818,6 +818,14 @@ type InstanceInfo struct {
 	// Kibana节点信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaNodeInfo *KibanaNodeInfo `json:"KibanaNodeInfo,omitempty" name:"KibanaNodeInfo"`
+
+	// 可视化节点配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitempty" name:"WebNodeTypeInfo"`
+
+	// JDK类型，oracle或kona
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Jdk *string `json:"Jdk,omitempty" name:"Jdk"`
 }
 
 type InstanceLog struct {
@@ -973,6 +981,9 @@ type RestartInstanceRequest struct {
 
 	// 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+
+	// 重启模式：0 滚动重启； 1 全量重启
+	RestartMode *int64 `json:"RestartMode,omitempty" name:"RestartMode"`
 }
 
 func (r *RestartInstanceRequest) ToJsonString() string {
@@ -989,6 +1000,7 @@ func (r *RestartInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ForceRestart")
+	delete(f, "RestartMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInstanceRequest has unknown keys!", "")
 	}
@@ -1300,6 +1312,9 @@ type UpdateInstanceRequest struct {
 
 	// Kibana配置项（JSON格式字符串）
 	KibanaConfig *string `json:"KibanaConfig,omitempty" name:"KibanaConfig"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitempty" name:"WebNodeTypeInfo"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -1338,6 +1353,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MultiZoneInfo")
 	delete(f, "SceneType")
 	delete(f, "KibanaConfig")
+	delete(f, "WebNodeTypeInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

@@ -2699,7 +2699,7 @@ type JoinTeamInfo struct {
 	// 团队名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 团队成员个数
+	// 团队成员个数。
 	MemberCount *uint64 `json:"MemberCount,omitempty" name:"MemberCount"`
 
 	// 成员在团队中的角色，取值有：

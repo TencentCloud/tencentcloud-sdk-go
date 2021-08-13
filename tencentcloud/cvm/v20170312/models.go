@@ -3078,7 +3078,7 @@ type Instance struct {
 	// 实例系统盘信息。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
 
-	// 实例数据盘信息。只包含随实例购买的数据盘。
+	// 实例数据盘信息。
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 
 	// 实例主网卡的内网`IP`列表。
@@ -3160,6 +3160,10 @@ type Instance struct {
 	// 高性能计算集群`IP`列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RdmaIpAddresses []*string `json:"RdmaIpAddresses,omitempty" name:"RdmaIpAddresses"`
+
+	// 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolatedSource *string `json:"IsolatedSource,omitempty" name:"IsolatedSource"`
 }
 
 type InstanceChargePrepaid struct {
