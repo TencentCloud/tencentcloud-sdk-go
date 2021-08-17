@@ -232,4 +232,7 @@ const (
 
 	// 日志主题不存在。
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -233,6 +233,39 @@ func (c *Client) ApplyWithdrawal(request *ApplyWithdrawalRequest) (response *App
     return
 }
 
+func NewBindAccountRequest() (request *BindAccountRequest) {
+    request = &BindAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "BindAccount")
+    return
+}
+
+func NewBindAccountResponse() (response *BindAccountResponse) {
+    response = &BindAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindAccount
+// 灵云-绑定账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) BindAccount(request *BindAccountRequest) (response *BindAccountResponse, err error) {
+    if request == nil {
+        request = NewBindAccountRequest()
+    }
+    response = NewBindAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindAcctRequest() (request *BindAcctRequest) {
     request = &BindAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -676,6 +709,44 @@ func (c *Client) CreateCustAcctId(request *CreateCustAcctIdRequest) (response *C
         request = NewCreateCustAcctIdRequest()
     }
     response = NewCreateCustAcctIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateExternalAnchorRequest() (request *CreateExternalAnchorRequest) {
+    request = &CreateExternalAnchorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateExternalAnchor")
+    return
+}
+
+func NewCreateExternalAnchorResponse() (response *CreateExternalAnchorResponse) {
+    response = &CreateExternalAnchorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateExternalAnchor
+// 灵云-主播入驻
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) CreateExternalAnchor(request *CreateExternalAnchorRequest) (response *CreateExternalAnchorResponse, err error) {
+    if request == nil {
+        request = NewCreateExternalAnchorRequest()
+    }
+    response = NewCreateExternalAnchorResponse()
     err = c.Send(request, response)
     return
 }
@@ -1337,6 +1408,40 @@ func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoReq
         request = NewModifyAgentTaxPaymentInfoRequest()
     }
     response = NewModifyAgentTaxPaymentInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBindedAccountRequest() (request *ModifyBindedAccountRequest) {
+    request = &ModifyBindedAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ModifyBindedAccount")
+    return
+}
+
+func NewModifyBindedAccountResponse() (response *ModifyBindedAccountResponse) {
+    response = &ModifyBindedAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBindedAccount
+// 灵云-重新绑定账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) ModifyBindedAccount(request *ModifyBindedAccountRequest) (response *ModifyBindedAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyBindedAccountRequest()
+    }
+    response = NewModifyBindedAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -3411,6 +3516,43 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
         request = NewUnifiedOrderRequest()
     }
     response = NewUnifiedOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadExternalAnchorInfoRequest() (request *UploadExternalAnchorInfoRequest) {
+    request = &UploadExternalAnchorInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadExternalAnchorInfo")
+    return
+}
+
+func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoResponse) {
+    response = &UploadExternalAnchorInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadExternalAnchorInfo
+// 灵云-上传主播信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_PARENTAPPIDERROR = "FailedOperation.ParentAppIdError"
+//  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoRequest) (response *UploadExternalAnchorInfoResponse, err error) {
+    if request == nil {
+        request = NewUploadExternalAnchorInfoRequest()
+    }
+    response = NewUploadExternalAnchorInfoResponse()
     err = c.Send(request, response)
     return
 }

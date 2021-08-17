@@ -333,7 +333,10 @@ type CreateImageRequest struct {
 	// 取值范围：<br><li>TRUE：表示关机之后制作镜像<br><li>FALSE：表示开机状态制作镜像<br><br>默认取值：FALSE。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
 	ForcePoweroff *string `json:"ForcePoweroff,omitempty" name:"ForcePoweroff"`
 
-	// 创建Windows镜像时是否启用Sysprep，关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)
+	// 创建Windows镜像时是否启用Sysprep。
+	// 取值范围：TRUE或FALSE，默认取值为FALSE。
+	// 
+	// 关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)。
 	Sysprep *string `json:"Sysprep,omitempty" name:"Sysprep"`
 
 	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘Id
@@ -1290,6 +1293,64 @@ func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesModificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 一个或多个待查询的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为20。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// <li><strong>status</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>配置规格状态</strong>】进行过滤。配置规格状态形如：SELL、UNAVAILABLE。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为2。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeInstancesModificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesModificationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesModificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesModificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例调整的机型配置的数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例支持调整的机型配置列表。
+		InstanceTypeConfigStatusSet []*InstanceTypeConfigStatus `json:"InstanceTypeConfigStatusSet,omitempty" name:"InstanceTypeConfigStatusSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesModificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesModificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3224,6 +3285,19 @@ type InstanceTypeConfig struct {
 
 	// FPGA核数，单位：核。
 	FPGA *int64 `json:"FPGA,omitempty" name:"FPGA"`
+}
+
+type InstanceTypeConfigStatus struct {
+
+	// 状态描述
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 配置信息
+	InstanceTypeConfig *InstanceTypeConfig `json:"InstanceTypeConfig,omitempty" name:"InstanceTypeConfig"`
 }
 
 type InstanceTypeQuotaItem struct {

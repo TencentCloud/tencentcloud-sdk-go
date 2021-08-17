@@ -2002,6 +2002,7 @@ func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
 // 查询API 版本
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 //  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (response *DescribeApiVersionsResponse, err error) {

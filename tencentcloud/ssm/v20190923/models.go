@@ -137,6 +137,87 @@ func (r *CreateProductSecretResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSSHKeyPairSecretRequest struct {
+	*tchttp.BaseRequest
+
+	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 密钥对创建后所属的项目ID。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 描述信息，用于详细描述用途等，最大支持2048字节。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 指定对凭据进行加密的KMS CMK。
+	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
+	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
+	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+
+	// 标签列表。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateSSHKeyPairSecretRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecretName")
+	delete(f, "ProjectId")
+	delete(f, "Description")
+	delete(f, "KmsKeyId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSSHKeyPairSecretRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSSHKeyPairSecretResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建的凭据名称。
+		SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+		// 创建的SSH密钥ID。
+		SSHKeyID *string `json:"SSHKeyID,omitempty" name:"SSHKeyID"`
+
+		// 创建的SSH密钥名称。
+		SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+
+		// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+
+		// 标签操作的返回信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSSHKeyPairSecretResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSSHKeyPairSecretResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSecretRequest struct {
 	*tchttp.BaseRequest
 
@@ -228,7 +309,13 @@ type DeleteSecretRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
 	// 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
+	// 当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
 	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitempty" name:"RecoveryWindowInDays"`
+
+	// 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
+	// True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
+	// False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+	CleanSSHKey *bool `json:"CleanSSHKey,omitempty" name:"CleanSSHKey"`
 }
 
 func (r *DeleteSecretRequest) ToJsonString() string {
@@ -245,6 +332,7 @@ func (r *DeleteSecretRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	delete(f, "RecoveryWindowInDays")
+	delete(f, "CleanSSHKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecretRequest has unknown keys!", "")
 	}
@@ -415,7 +503,7 @@ type DescribeRotationDetailResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 否允许轮转，True表示开启轮转，False表示禁止轮转。
+		// 否允许轮转，true表示开启轮转，false表示禁止轮转。
 		EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
 
 		// 轮转的频率，以天为单位，默认为1天。
@@ -549,7 +637,7 @@ type DescribeSecretResponse struct {
 		// 创建日期。
 		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 0 --  用户自定义凭据类型；1 -- 云产品凭据类型。
+		// 0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SecretType *int64 `json:"SecretType,omitempty" name:"SecretType"`
 
@@ -568,6 +656,18 @@ type DescribeSecretResponse struct {
 		// 轮转周期，默认以天为单位。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+
+		// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+		// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+		// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -776,6 +876,72 @@ func (r *GetRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetSSHKeyPairValueRequest struct {
+	*tchttp.BaseRequest
+
+	// 凭据名称，此凭据只能为SSH密钥对凭据类型。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+}
+
+func (r *GetSSHKeyPairValueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSSHKeyPairValueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecretName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSSHKeyPairValueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSSHKeyPairValueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// SSH密钥对ID。
+		SSHKeyID *string `json:"SSHKeyID,omitempty" name:"SSHKeyID"`
+
+		// 公钥明文，使用base64编码。
+		PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+		// 私钥明文，使用base64编码
+		PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+		// 此密钥对所属的项目ID。
+		ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+		// SSH密钥对的描述信息。
+	// 用户可以在CVM侧控制台对密钥对的描述信息进行修改。
+		SSHKeyDescription *string `json:"SSHKeyDescription,omitempty" name:"SSHKeyDescription"`
+
+		// SSH密钥对的名称。
+	// 用户可以在CVM侧控制台对密钥对的名称进行修改。
+		SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetSSHKeyPairValueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSSHKeyPairValueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetSecretValueRequest struct {
 	*tchttp.BaseRequest
 
@@ -972,7 +1138,7 @@ type ListSecretsRequest struct {
 
 	// 0  -- 表示用户自定义凭据，默认为0。
 	// 1  -- 表示用户云产品凭据。
-	// 这个参数只能在云产品凭据(1)和用户自定义凭据(0)中二选一。
+	// 2 -- 表示SSH密钥对凭据。
 	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
 }
 
@@ -1274,6 +1440,18 @@ type SecretMetadata struct {
 	// 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
 }
 
 type Tag struct {
@@ -1354,15 +1532,15 @@ type UpdateRotationStatusRequest struct {
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
 	// 是否开启轮转。
-	// True -- 开启轮转；
-	// False -- 禁止轮转。
+	// true -- 开启轮转；
+	// false -- 禁止轮转。
 	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
 
 	// 轮转周期，以天为单位，最小为30天，最大为365天。
 	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
 
 	// 用户设置的期望开始轮转时间，格式为：2006-01-02 15:04:05。
-	// 当EnableRotation为True时，如果不填RotationBeginTime，则默认填充为当前时间。
+	// 当EnableRotation为true时，如果不填RotationBeginTime，则默认填充为当前时间。
 	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
 }
 

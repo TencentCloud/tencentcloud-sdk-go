@@ -98,6 +98,51 @@ func (c *Client) CreateProductSecret(request *CreateProductSecretRequest) (respo
     return
 }
 
+func NewCreateSSHKeyPairSecretRequest() (request *CreateSSHKeyPairSecretRequest) {
+    request = &CreateSSHKeyPairSecretRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssm", APIVersion, "CreateSSHKeyPairSecret")
+    return
+}
+
+func NewCreateSSHKeyPairSecretResponse() (response *CreateSSHKeyPairSecretResponse) {
+    response = &CreateSSHKeyPairSecretResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSSHKeyPairSecret
+// 创建用于托管SSH密钥对的凭据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TAGKEYSDUPLICATED = "InvalidParameterValue.TagKeysDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSNOTEXISTED = "InvalidParameterValue.TagsNotExisted"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE_SECRETEXISTS = "ResourceInUse.SecretExists"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ACCESSKMSERROR = "UnauthorizedOperation.AccessKmsError"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSSHKeyPairSecret(request *CreateSSHKeyPairSecretRequest) (response *CreateSSHKeyPairSecretResponse, err error) {
+    if request == nil {
+        request = NewCreateSSHKeyPairSecretRequest()
+    }
+    response = NewCreateSSHKeyPairSecretResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSecretRequest() (request *CreateSecretRequest) {
     request = &CreateSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -569,6 +614,50 @@ func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsRes
         request = NewGetRegionsRequest()
     }
     response = NewGetRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetSSHKeyPairValueRequest() (request *GetSSHKeyPairValueRequest) {
+    request = &GetSSHKeyPairValueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssm", APIVersion, "GetSSHKeyPairValue")
+    return
+}
+
+func NewGetSSHKeyPairValueResponse() (response *GetSSHKeyPairValueResponse) {
+    response = &GetSSHKeyPairValueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetSSHKeyPairValue
+// 获取SSH密钥对凭据明文信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TAGKEYSDUPLICATED = "InvalidParameterValue.TagKeysDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSNOTEXISTED = "InvalidParameterValue.TagsNotExisted"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ACCESSKMSERROR = "UnauthorizedOperation.AccessKmsError"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetSSHKeyPairValue(request *GetSSHKeyPairValueRequest) (response *GetSSHKeyPairValueResponse, err error) {
+    if request == nil {
+        request = NewGetSSHKeyPairValueRequest()
+    }
+    response = NewGetSSHKeyPairValueResponse()
     err = c.Send(request, response)
     return
 }

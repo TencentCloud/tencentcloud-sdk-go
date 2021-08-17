@@ -224,6 +224,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
 //  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
@@ -267,6 +268,7 @@ func NewDescribeDetailEventResponse() (response *DescribeDetailEventResponse) {
 //  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
 //  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
 //  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
 //  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -302,7 +304,7 @@ func NewDescribeHistoryScaleResponse() (response *DescribeHistoryScaleResponse) 
 }
 
 // DescribeHistoryScale
-// 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近14天的数据。当天未结束，无法查到当天的房间数与用户数。
+// 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近14天的数据。当天未结束，无法查到当天的房间数与用户数。 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -350,6 +352,7 @@ func NewDescribePictureResponse() (response *DescribePictureResponse) {
 //  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribePicture(request *DescribePictureRequest) (response *DescribePictureResponse, err error) {
@@ -699,6 +702,7 @@ func NewDescribeUserInformationResponse() (response *DescribeUserInformationResp
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
 //  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"

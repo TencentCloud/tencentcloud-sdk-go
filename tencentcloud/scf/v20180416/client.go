@@ -1318,6 +1318,7 @@ func NewListTriggersResponse() (response *ListTriggersResponse) {
 //  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
+//  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 func (c *Client) ListTriggers(request *ListTriggersRequest) (response *ListTriggersResponse, err error) {
     if request == nil {
         request = NewListTriggersRequest()

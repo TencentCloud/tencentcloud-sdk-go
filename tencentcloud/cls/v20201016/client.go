@@ -1128,6 +1128,7 @@ func NewDescribeAsyncSearchResultResponse() (response *DescribeAsyncSearchResult
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = "ResourceNotFound.AsyncSearchTaskNotExist"
+//  RESOURCENOTFOUND_ASYNCTASKNOTEXIST = "ResourceNotFound.AsyncTaskNotExist"
 func (c *Client) DescribeAsyncSearchResult(request *DescribeAsyncSearchResultRequest) (response *DescribeAsyncSearchResultResponse, err error) {
     if request == nil {
         request = NewDescribeAsyncSearchResultRequest()
@@ -1755,6 +1756,7 @@ func NewMergePartitionResponse() (response *MergePartitionResponse) {
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) MergePartition(request *MergePartitionRequest) (response *MergePartitionResponse, err error) {
     if request == nil {
         request = NewMergePartitionRequest()
@@ -2206,6 +2208,7 @@ func NewSplitPartitionResponse() (response *SplitPartitionResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SplitPartition(request *SplitPartitionRequest) (response *SplitPartitionResponse, err error) {
     if request == nil {
         request = NewSplitPartitionRequest()

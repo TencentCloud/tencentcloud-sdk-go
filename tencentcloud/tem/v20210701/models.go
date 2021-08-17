@@ -662,6 +662,10 @@ type DeployServiceBatchDetail struct {
 	// 新实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewPods []*DeployServicePodDetail `json:"NewPods,omitempty" name:"NewPods"`
+
+	// =0：手动确认批次；>0：下一批次开始时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextBatchStartTime *int64 `json:"NextBatchStartTime,omitempty" name:"NextBatchStartTime"`
 }
 
 type DeployServicePodDetail struct {
@@ -1888,6 +1892,22 @@ type TemDeployApplicationDetailInfo struct {
 	// 当前批次状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentBatchStatus *string `json:"CurrentBatchStatus,omitempty" name:"CurrentBatchStatus"`
+
+	// 新版本version
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewDeployVersion *string `json:"NewDeployVersion,omitempty" name:"NewDeployVersion"`
+
+	// 旧版本version
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldDeployVersion *string `json:"OldDeployVersion,omitempty" name:"OldDeployVersion"`
+
+	// 包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewVersionPackageInfo *string `json:"NewVersionPackageInfo,omitempty" name:"NewVersionPackageInfo"`
+
+	// 下一批次开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextBatchStartTime *int64 `json:"NextBatchStartTime,omitempty" name:"NextBatchStartTime"`
 }
 
 type TemNamespaceInfo struct {

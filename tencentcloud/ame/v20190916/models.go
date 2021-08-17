@@ -448,13 +448,131 @@ func (r *DescribeKTVMusicDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeKTVPlaylistDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌单Id
+	PlaylistId *string `json:"PlaylistId,omitempty" name:"PlaylistId"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKTVPlaylistDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlaylistId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVPlaylistDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲基础信息列表
+		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+		// 歌单基础信息
+		PlaylistBaseInfo *KTVPlaylistBaseInfo `json:"PlaylistBaseInfo,omitempty" name:"PlaylistBaseInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVPlaylistDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVPlaylistDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVPlaylistsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKTVPlaylistsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVPlaylistsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 推荐歌单列表
+		PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitempty" name:"PlaylistBaseInfoSet"`
+
+		// 推荐歌单列表总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVPlaylistsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVPlaylistsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLyricRequest struct {
 	*tchttp.BaseRequest
 
 	// 歌曲ID
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
-	// 歌词格式，可选项，可不填写，目前填写只能填LRC-LRC。该字段为预留的扩展字段。后续如果不填，会返回歌曲的所有格式的歌词。如果填写某个正确的格式，则只返回该格式的歌词。
+	// 格式，可选项，可不填写，默认值为：LRC-LRC。
+	// <li>LRC-LRC：歌词；</li>
+	// <li>JSON-ST：波形图。</li>
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 }
 
@@ -482,7 +600,7 @@ type DescribeLyricResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 歌词详情
+		// 歌词或者波形图详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Lyric *Lyric `json:"Lyric,omitempty" name:"Lyric"`
 
@@ -801,6 +919,21 @@ type KTVMusicBaseInfo struct {
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
+type KTVPlaylistBaseInfo struct {
+
+	// 歌单Id
+	PlaylistId *string `json:"PlaylistId,omitempty" name:"PlaylistId"`
+
+	// 歌单标题
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 歌单介绍
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 歌曲数量
+	MusicNum *int64 `json:"MusicNum,omitempty" name:"MusicNum"`
+}
+
 type Lyric struct {
 
 	// 歌词cdn地址
@@ -963,6 +1096,10 @@ type MusicOpenDetail struct {
 	// 歌词url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LyricUrl *string `json:"LyricUrl,omitempty" name:"LyricUrl"`
+
+	// 波形图url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaveformUrl *string `json:"WaveformUrl,omitempty" name:"WaveformUrl"`
 }
 
 type Package struct {

@@ -111,6 +111,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 // 添加域名，一次只能提交一个域名。域名必须已备案。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
@@ -869,6 +870,7 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveWatermarkRuleRequest()
@@ -3756,6 +3758,7 @@ func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
@@ -4056,6 +4059,7 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"

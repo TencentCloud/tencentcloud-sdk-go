@@ -189,6 +189,7 @@ func NewDescribeSmpnMrlResponse() (response *DescribeSmpnMrlResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *DescribeSmpnMrlResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnMrlRequest()

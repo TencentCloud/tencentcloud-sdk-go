@@ -570,6 +570,7 @@ func NewInquiryPriceScaleOutInstanceResponse() (response *InquiryPriceScaleOutIn
 //  INVALIDPARAMETER_INVALIDVPCID = "InvalidParameter.InvalidVpcId"
 //  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpecNotDefaultSpec"
 //  RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpec_NotDefaultSpec"
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
 func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInstanceRequest) (response *InquiryPriceScaleOutInstanceResponse, err error) {

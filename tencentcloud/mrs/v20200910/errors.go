@@ -71,9 +71,6 @@ const (
 	// 参数Text无效。
 	INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 
-	// 图片base64编码错误。
-	INVALIDPARAMETERVALUE_IMAGECODEERROR = "InvalidParameterValue.ImageCodeError"
-
 	// 图片编码无效。
 	INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 
@@ -83,23 +80,8 @@ const (
 	// 图片URL无效。
 	INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
 
-	// 文本参数无效。
-	INVALIDPARAMETERVALUE_TEXTISNEED = "InvalidParameterValue.TextIsNeed"
-
-	// 服务流量超过限制。
-	LIMITEXCEEDED_SERVERLIMITEXCEEDED = "LimitExceeded.ServerLimitExceeded"
-
-	// 缺少图片参数。
-	MISSINGPARAMETER_IMAGEISNEED = "MissingParameter.ImageIsNeed"
-
-	// 图片大小超过限制。
-	OPERATIONDENIED_IMAGETOOLARGE = "OperationDenied.ImageTooLarge"
-
 	// 不支持的报告类型。
 	OPERATIONDENIED_UNSUPPORTTHISTYPE = "OperationDenied.UnSupportThisType"
-
-	// 请求速度超过限制。
-	REQUESTLIMITEXCEEDED_QPSLIMITEXCEEDED = "RequestLimitExceeded.QPSLimitExceeded"
 
 	// 当前无权限，请检查BisinsessId。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"

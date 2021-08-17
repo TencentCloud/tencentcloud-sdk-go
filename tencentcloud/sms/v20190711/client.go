@@ -508,6 +508,7 @@ func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
 //  FAILEDOPERATION_NOTENTERPRISECERTIFICATION = "FailedOperation.NotEnterpriseCertification"
 //  FAILEDOPERATION_OTHERERROR = "FailedOperation.OtherError"
 //  FAILEDOPERATION_TEMPLATEALREADYPASSEDCHECK = "FailedOperation.TemplateAlreadyPassedCheck"
+//  FAILEDOPERATION_TEMPLATENUMBERLIMIT = "FailedOperation.TemplateNumberLimit"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_PARSEBACKENDRESPONSEFAIL = "InternalError.ParseBackendResponseFail"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"

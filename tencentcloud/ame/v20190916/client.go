@@ -257,6 +257,81 @@ func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) 
     return
 }
 
+func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRequest) {
+    request = &DescribeKTVPlaylistDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylistDetail")
+    return
+}
+
+func NewDescribeKTVPlaylistDetailResponse() (response *DescribeKTVPlaylistDetailResponse) {
+    response = &DescribeKTVPlaylistDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVPlaylistDetail
+// 根据歌单 Id 获取歌单详情，包括歌单的基础信息以及歌曲列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVPlaylistDetail(request *DescribeKTVPlaylistDetailRequest) (response *DescribeKTVPlaylistDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVPlaylistDetailRequest()
+    }
+    response = NewDescribeKTVPlaylistDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
+    request = &DescribeKTVPlaylistsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylists")
+    return
+}
+
+func NewDescribeKTVPlaylistsResponse() (response *DescribeKTVPlaylistsResponse) {
+    response = &DescribeKTVPlaylistsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVPlaylists
+// 获取即时广播曲库推荐歌单列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVPlaylists(request *DescribeKTVPlaylistsRequest) (response *DescribeKTVPlaylistsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVPlaylistsRequest()
+    }
+    response = NewDescribeKTVPlaylistsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -273,7 +348,7 @@ func NewDescribeLyricResponse() (response *DescribeLyricResponse) {
 }
 
 // DescribeLyric
-// 根据接口的模式及歌曲ID来取得歌词信息。
+// 根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -154,10 +154,11 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  LIMITEXCEEDED_CLUSTERS = "LimitExceeded.Clusters"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()
@@ -569,6 +570,7 @@ func NewDeleteSubscriptionsResponse() (response *DeleteSubscriptionsResponse) {
 //  OPERATIONDENIED_CONSUMERRUNNING = "OperationDenied.ConsumerRunning"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteSubscriptions(request *DeleteSubscriptionsRequest) (response *DeleteSubscriptionsResponse, err error) {
@@ -1233,6 +1235,7 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
     if request == nil {
         request = NewModifyClusterRequest()
@@ -1263,6 +1266,7 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
@@ -1293,6 +1297,7 @@ func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptio
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAttributeRequest) (response *ModifyCmqSubscriptionAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
@@ -1323,6 +1328,7 @@ func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest) (response *ModifyCmqTopicAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()

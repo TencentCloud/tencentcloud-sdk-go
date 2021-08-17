@@ -883,6 +883,79 @@ type BankCardItem struct {
 	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
 }
 
+type BindAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号;
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+}
+
+func (r *BindAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "TransferType")
+	delete(f, "AccountNo")
+	delete(f, "PhoneNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BindAcctRequest struct {
 	*tchttp.BaseRequest
 
@@ -2319,6 +2392,84 @@ func (r *CreateCustAcctIdResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCustAcctIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExternalAnchorData struct {
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+}
+
+type CreateExternalAnchorRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台业务系统唯一标示的主播id
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 主播名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 身份证号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 身份证正面图片下载链接
+	IdCardFront *string `json:"IdCardFront,omitempty" name:"IdCardFront"`
+
+	// 身份证反面图片下载链接
+	IdCardReverse *string `json:"IdCardReverse,omitempty" name:"IdCardReverse"`
+}
+
+func (r *CreateExternalAnchorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalAnchorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uid")
+	delete(f, "Name")
+	delete(f, "IdNo")
+	delete(f, "IdCardFront")
+	delete(f, "IdCardReverse")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExternalAnchorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExternalAnchorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateExternalAnchorData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateExternalAnchorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalAnchorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4457,6 +4608,79 @@ func (r *ModifyAgentTaxPaymentInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAgentTaxPaymentInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindedAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号;
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+}
+
+func (r *ModifyBindedAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindedAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "TransferType")
+	delete(f, "AccountNo")
+	delete(f, "PhoneNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBindedAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindedAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBindedAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindedAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10774,6 +10998,70 @@ func (r *UnifiedOrderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnifiedOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadExternalAnchorInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 身份证正面图片下载链接
+	IdCardFront *string `json:"IdCardFront,omitempty" name:"IdCardFront"`
+
+	// 身份证反面图片下载链接
+	IdCardReverse *string `json:"IdCardReverse,omitempty" name:"IdCardReverse"`
+}
+
+func (r *UploadExternalAnchorInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadExternalAnchorInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "IdCardFront")
+	delete(f, "IdCardReverse")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadExternalAnchorInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadExternalAnchorInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadExternalAnchorInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadExternalAnchorInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

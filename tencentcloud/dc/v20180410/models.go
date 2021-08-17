@@ -101,6 +101,10 @@ type AccessPoint struct {
 	// 接入点地域名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 接入点类型。VXLAN/QCPL/QCAR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPointType *string `json:"AccessPointType,omitempty" name:"AccessPointType"`
 }
 
 type ApplyInternetAddressRequest struct {

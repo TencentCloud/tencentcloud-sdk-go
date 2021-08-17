@@ -168,6 +168,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcex"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcr"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"

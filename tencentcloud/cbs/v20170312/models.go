@@ -757,11 +757,11 @@ type DescribeDiskOperationLogsRequest struct {
 	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-
 	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 }
 
 func (r *DescribeDiskOperationLogsRequest) ToJsonString() string {
@@ -777,8 +777,8 @@ func (r *DescribeDiskOperationLogsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filters")
-	delete(f, "BeginTime")
 	delete(f, "EndTime")
+	delete(f, "BeginTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskOperationLogsRequest has unknown keys!", "")
 	}
@@ -1331,6 +1331,15 @@ type DiskConfig struct {
 
 type DiskOperationLog struct {
 
+	// 操作的状态。取值范围：
+	// SUCCESS :表示操作成功 
+	// FAILED :表示操作失败 
+	// PROCESSING :表示操作中。
+	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
 	// 操作者的UIN。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
@@ -1346,20 +1355,11 @@ type DiskOperationLog struct {
 	// ASP_OPERATION_UNBIND：取消关联定期快照策略
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// 操作的云盘ID。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
-	// 操作的状态。取值范围：
-	// SUCCESS :表示操作成功 
-	// FAILED :表示操作失败 
-	// PROCESSING :表示操作中。
-	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
-
-	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 操作的云盘ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 type Filter struct {

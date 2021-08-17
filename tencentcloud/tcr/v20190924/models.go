@@ -559,7 +559,7 @@ type CreateInstanceTokenResponse struct {
 		// 访问凭证
 		Token *string `json:"Token,omitempty" name:"Token"`
 
-		// 访问凭证过期时间戳
+		// 访问凭证过期时间戳，是一个时间戳数字，无单位
 		ExpTime *int64 `json:"ExpTime,omitempty" name:"ExpTime"`
 
 		// 长期凭证的TokenId，短期凭证没有TokenId
@@ -747,7 +747,7 @@ type CreateNamespaceRequest struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 命名空间的名称
+	// 命名空间的名称（长度2-30个字符，只能包含小写字母、数字及分隔符("."、"_"、"-")，且不能以分隔符开头、结尾或连续）
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 
 	// 是否公开，true为公开，fale为私有
@@ -1030,7 +1030,7 @@ type CreateTagRetentionExecutionRequest struct {
 	// 版本保留规则Id
 	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
 
-	// 是否模拟执行
+	// 是否模拟执行，默认值为false，即非模拟执行
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
@@ -1090,7 +1090,7 @@ type CreateTagRetentionRuleRequest struct {
 	// 执行周期，当前只能选择： manual;daily;weekly;monthly
 	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
 
-	// 是否禁用规则
+	// 是否禁用规则，默认值为false
 	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
 }
 
@@ -1140,7 +1140,7 @@ func (r *CreateTagRetentionRuleResponse) FromJsonString(s string) error {
 type CreateUserPersonalRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户密码
+	// 用户密码，密码必须为8到16位
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
@@ -1648,8 +1648,8 @@ type DeleteInternalEndpointDnsRequest struct {
 	// tcr内网访问链路ip
 	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
 
-	// true：use instance name as subdomain
-	// false: use instancename+"-vpc" as subdomain
+	// true：使用默认域名
+	// false:  使用带有vpc的域名
 	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
 }
 
@@ -1899,7 +1899,7 @@ type DeleteRepositoryRequest struct {
 	// 命名空间的名称
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
 
-	// 仓库名称的名称
+	// 镜像仓库的名称
 	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
 }
 
@@ -2455,7 +2455,7 @@ type DescribeImageFilterPersonalResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// payload
+		// 返回tag镜像内容相同的tag列表
 		Data *SameImagesResp `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3229,10 +3229,10 @@ func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
 type DescribeReplicationInstanceCreateTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 同步实例Id
+	// 同步实例Id，见实例返回列表中的同步实例ID
 	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
 
-	// 同步实例的地域ID
+	// 同步实例的地域ID，见实例返回列表中地域ID
 	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
 }
 
@@ -4553,7 +4553,7 @@ type ModifyApplicationTriggerPersonalRequest struct {
 	// 触发器关联的镜像仓库，library/test格式
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
-	// 触发器名称
+	// 触发器名称，必填参数
 	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
 
 	// 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
@@ -4706,7 +4706,7 @@ type ModifyInstanceTokenRequest struct {
 	// 访问凭证描述
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 
-	// 1为修改描述 2为启动禁用，不填写默认为修改启动禁用
+	// 1为修改描述 2为操作启动禁用，默认值为2
 	ModifyFlag *int64 `json:"ModifyFlag,omitempty" name:"ModifyFlag"`
 }
 
@@ -4813,7 +4813,7 @@ type ModifyRepositoryAccessPersonalRequest struct {
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
-	// 默认值为0
+	// 默认值为0, 1公共，0私有
 	Public *int64 `json:"Public,omitempty" name:"Public"`
 }
 
@@ -5331,7 +5331,7 @@ type RenewInstanceRequest struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 预付费自动续费标识和购买时长
+	// 预付费自动续费标识和购买时长,0：手动续费，1：自动续费，2：不续费并且不通知;单位为月
 	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitempty" name:"RegistryChargePrepaid"`
 
 	// 0 续费， 1按量转包年包月
@@ -5962,7 +5962,7 @@ type ValidateNamespaceExistPersonalResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 命名空间是否存在
+		// 验证命名空间是否存在返回信息
 		Data *NamespaceIsExistsResp `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6011,7 +6011,7 @@ type ValidateRepositoryExistPersonalResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 仓库是否存在
+		// 验证个人版仓库是否存在返回信息
 		Data *RepoIsExistResp `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

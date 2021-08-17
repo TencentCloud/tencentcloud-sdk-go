@@ -67,6 +67,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETER_DOMAINNOTREGED = "InvalidParameter.DomainNotReged"
+//  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
 //  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
 func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
     if request == nil {

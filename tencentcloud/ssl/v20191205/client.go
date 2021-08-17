@@ -626,6 +626,7 @@ func NewModifyCertificateAliasResponse() (response *ModifyCertificateAliasRespon
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyCertificateAlias(request *ModifyCertificateAliasRequest) (response *ModifyCertificateAliasResponse, err error) {
     if request == nil {
         request = NewModifyCertificateAliasRequest()

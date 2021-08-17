@@ -254,6 +254,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 // 本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAUDITLOGFILEERROR = "FailedOperation.CreateAuditLogFileError"
 //  INTERNALERROR_AUDITCREATELOGFILEERROR = "InternalError.AuditCreateLogFileError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"

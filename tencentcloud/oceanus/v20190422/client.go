@@ -64,6 +64,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 //  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"

@@ -8413,6 +8413,7 @@ func NewReplaceDirectConnectGatewayCcnRoutesResponse() (response *ReplaceDirectC
 // 本接口（ReplaceDirectConnectGatewayCcnRoutes）根据路由ID（RouteId）修改指定的路由（Route），支持批量修改。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReplaceDirectConnectGatewayCcnRoutes(request *ReplaceDirectConnectGatewayCcnRoutesRequest) (response *ReplaceDirectConnectGatewayCcnRoutesResponse, err error) {
     if request == nil {

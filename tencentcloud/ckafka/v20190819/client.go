@@ -399,6 +399,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 //  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
 //  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"

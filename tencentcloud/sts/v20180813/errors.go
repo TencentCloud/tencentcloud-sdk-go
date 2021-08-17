@@ -29,7 +29,7 @@ const (
 	// 获取角色失败。
 	INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 
-	// 获取种子token失败。
+	// 获取token失败。
 	INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
 
 	// 角色非法。

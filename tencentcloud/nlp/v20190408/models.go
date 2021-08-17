@@ -872,7 +872,7 @@ type Keyword struct {
 type KeywordsExtractionRequest struct {
 	*tchttp.BaseRequest
 
-	// 待处理的文本（仅支持UTF-8格式，不超过10000字）
+	// 待处理的文本（仅支持UTF-8格式，不超过10000字符）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 指定关键词个数上限（默认值为5）
@@ -1395,7 +1395,7 @@ type TextSimilarityRequest struct {
 	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
-	// 目标句子
+	// 目标句子（以句子数量为单位消耗资源包）
 	TargetText []*string `json:"TargetText,omitempty" name:"TargetText"`
 }
 

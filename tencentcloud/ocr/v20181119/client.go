@@ -2926,7 +2926,6 @@ func NewVerifyEnterpriseFourFactorsResponse() (response *VerifyEnterpriseFourFac
 // 此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYNORECORD = "FailedOperation.QueryNoRecord"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"

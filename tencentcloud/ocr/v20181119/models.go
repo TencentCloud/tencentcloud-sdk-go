@@ -6172,7 +6172,7 @@ type VerifyEnterpriseFourFactorsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 核验一致性（1:一致，2:不一致）
+		// 核验一致性（1:一致，2:不一致，3:查询无记录）
 		State *int64 `json:"State,omitempty" name:"State"`
 
 		// 返回不一致时，返回明细，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致

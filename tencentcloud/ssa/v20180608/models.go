@@ -804,6 +804,14 @@ type DataEvent struct {
 	// 事件Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SsaEventId *string `json:"SsaEventId,omitempty" name:"SsaEventId"`
+
+	// 是否新接入的云防事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNewCfwEvent *bool `json:"IsNewCfwEvent,omitempty" name:"IsNewCfwEvent"`
+
+	// 出入站方向
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
 }
 
 type DescribeAssetDetailRequest struct {

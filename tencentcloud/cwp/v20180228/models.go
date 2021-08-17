@@ -228,7 +228,7 @@ type BruteAttackInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
 
-	// 失败：FAILED；成功：SUCCESS
+	// SUCCESS：破解成功；FAILED：破解失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -248,7 +248,7 @@ type BruteAttackInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 阻断状态：0-未阻断；1-已阻断；2-阻断失败；3-内网攻击暂不支持阻断；4-安平暂不支持阻断
+	// 阻断状态：1-阻断成功；非1-阻断失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *uint64 `json:"BanStatus,omitempty" name:"BanStatus"`
 
@@ -279,6 +279,10 @@ type BruteAttackInfo struct {
 	// 最近攻击时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ChargePrepaid struct {
@@ -5803,7 +5807,7 @@ type Machine struct {
 	// 实例状态 TERMINATED_PRO_VERSION 已销毁
 	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
 
-	// 授权状态 1 授权 0 未授权
+	// 防篡改 授权状态 1 授权 0 未授权
 	LicenseStatus *uint64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
 
 	// 项目ID
@@ -5811,6 +5815,9 @@ type Machine struct {
 
 	// 是否有资产扫描接口，0无，1有
 	HasAssetScan *uint64 `json:"HasAssetScan,omitempty" name:"HasAssetScan"`
+
+	// 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 }
 
 type MachineTag struct {
@@ -5885,6 +5892,9 @@ type MalwareInfo struct {
 
 	// 最近扫描时间
 	LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
+
+	// 参考链接
+	Reference *string `json:"Reference,omitempty" name:"Reference"`
 }
 
 type ModifyAutoOpenProVersionConfigRequest struct {
@@ -6319,7 +6329,7 @@ type PrivilegeEscalationProcess struct {
 	// 进程树
 	ProcTree *string `json:"ProcTree,omitempty" name:"ProcTree"`
 
-	// 处理状态
+	// 处理状态：0-待处理 2-白名单
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 发生时间
@@ -6365,16 +6375,19 @@ type PrivilegeRule struct {
 type ProVersionMachine struct {
 
 	// 主机类型。
-	// <li>CVM: 虚拟主机</li>
+	// <li>CVM: 云服务器</li>
 	// <li>BM: 黑石物理机</li>
+	// <li>ECM: 边缘计算服务器</li>
+	// <li>LH: 轻量应用服务器</li>
+	// <li>Other: 混合云机器</li>
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
 	// 主机所在地域。
 	// 如：ap-guangzhou、ap-beijing
 	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
 
-	// 主机唯一标识Uuid。
-	// 黑石的InstanceId，CVM的Uuid
+	// 主机唯一标识Uuid数组。
+	// 黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
@@ -6567,7 +6580,7 @@ func (r *RescanImpactedHostResponse) FromJsonString(s string) error {
 
 type ReverseShell struct {
 
-	// ID
+	// ID 主键
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// 云镜UUID
@@ -6612,7 +6625,7 @@ type ReverseShell struct {
 	// 父进程路径
 	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
 
-	// 处理状态
+	// 处理状态：0-待处理 2-白名单
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 产生时间
@@ -6623,6 +6636,9 @@ type ReverseShell struct {
 
 	// 进程树
 	ProcTree *string `json:"ProcTree,omitempty" name:"ProcTree"`
+
+	// 检测方法
+	DetectBy *uint64 `json:"DetectBy,omitempty" name:"DetectBy"`
 }
 
 type ReverseShellRule struct {

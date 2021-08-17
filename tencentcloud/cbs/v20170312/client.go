@@ -135,6 +135,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 //  LIMITEXCEEDED_INSTANCEATTACHEDDISK = "LimitExceeded.InstanceAttachedDisk"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
@@ -525,11 +526,7 @@ func NewDescribeDiskOperationLogsResponse() (response *DescribeDiskOperationLogs
 }
 
 // DescribeDiskOperationLogs
-// 本接口（DescribeDiskOperationLogs）用于查询云盘操作日志列表。
-//
-// 
-//
-// 可根据云盘ID过滤。云盘ID形如：disk-a1kmcp13。
+// 查询云盘操作日志功能已迁移至LookUpEvents接口（https://cloud.tencent.com/document/product/629/12359），本接口（DescribeDiskOperationLogs）即将下线，后续不再提供调用，请知悉。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
@@ -1116,6 +1113,7 @@ func NewModifyDisksChargeTypeResponse() (response *ModifyDisksChargeTypeResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 func (c *Client) ModifyDisksChargeType(request *ModifyDisksChargeTypeRequest) (response *ModifyDisksChargeTypeResponse, err error) {
     if request == nil {
