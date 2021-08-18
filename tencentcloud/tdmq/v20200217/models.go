@@ -904,6 +904,9 @@ type CreateEnvironmentRequest struct {
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 消息保留策略
+	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -922,6 +925,7 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "MsgTTL")
 	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "RetentionPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -1385,6 +1389,9 @@ type DeleteSubscriptionsRequest struct {
 
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 是否强制删除，默认为false
+	Force *bool `json:"Force,omitempty" name:"Force"`
 }
 
 func (r *DeleteSubscriptionsRequest) ToJsonString() string {
@@ -1402,6 +1409,7 @@ func (r *DeleteSubscriptionsRequest) FromJsonString(s string) error {
 	delete(f, "SubscriptionTopicSets")
 	delete(f, "ClusterId")
 	delete(f, "EnvironmentId")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSubscriptionsRequest has unknown keys!", "")
 	}
@@ -1442,6 +1450,9 @@ type DeleteTopicsRequest struct {
 
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 是否强制删除，默认为false
+	Force *bool `json:"Force,omitempty" name:"Force"`
 }
 
 func (r *DeleteTopicsRequest) ToJsonString() string {
@@ -1459,6 +1470,7 @@ func (r *DeleteTopicsRequest) FromJsonString(s string) error {
 	delete(f, "TopicSets")
 	delete(f, "ClusterId")
 	delete(f, "EnvironmentId")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTopicsRequest has unknown keys!", "")
 	}
@@ -2992,6 +3004,9 @@ type ModifyEnvironmentAttributesRequest struct {
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 消息保留策略
+	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
 }
 
 func (r *ModifyEnvironmentAttributesRequest) ToJsonString() string {
@@ -3010,6 +3025,7 @@ func (r *ModifyEnvironmentAttributesRequest) FromJsonString(s string) error {
 	delete(f, "MsgTTL")
 	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "RetentionPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvironmentAttributesRequest has unknown keys!", "")
 	}
@@ -3389,6 +3405,15 @@ func (r *ResetMsgSubOffsetByTimestampResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetMsgSubOffsetByTimestampResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RetentionPolicy struct {
+
+	// 消息保留时长
+	TimeInMinutes *int64 `json:"TimeInMinutes,omitempty" name:"TimeInMinutes"`
+
+	// 消息保留大小
+	SizeInMB *int64 `json:"SizeInMB,omitempty" name:"SizeInMB"`
 }
 
 type RewindCmqQueueRequest struct {

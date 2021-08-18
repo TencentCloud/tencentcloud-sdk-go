@@ -170,9 +170,6 @@ const (
 	// 默认环境不允许操作。
 	OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 
-	// 重名，命名空间已存在。
-	RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
-
 	// 重名，订阅关系已存在。
 	RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
 

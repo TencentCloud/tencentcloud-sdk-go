@@ -2220,6 +2220,9 @@ type EnhancedService struct {
 
 	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
+
+	// 开启云自动化助手服务。若不指定该参数，则默认不开启云自动化助手服务。
+	AutomationService *RunAutomationServiceEnabled `json:"AutomationService,omitempty" name:"AutomationService"`
 }
 
 type Externals struct {
@@ -4897,6 +4900,9 @@ func (r *ResizeInstanceDisksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RunAutomationServiceEnabled struct {
 }
 
 type RunInstancesRequest struct {

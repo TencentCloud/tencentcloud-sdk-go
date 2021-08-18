@@ -2276,6 +2276,146 @@ func (r *CreateAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateBatchPaymentBatchData struct {
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+}
+
+type CreateBatchPaymentData struct {
+
+	// 批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 批次列表详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchInfoList []*CreateBatchPaymentBatchData `json:"BatchInfoList,omitempty" name:"BatchInfoList"`
+}
+
+type CreateBatchPaymentRecipient struct {
+
+	// 转账金额
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播业务ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子单请求预留字段
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+}
+
+type CreateBatchPaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 转账详情
+	RecipientList []*CreateBatchPaymentRecipient `json:"RecipientList,omitempty" name:"RecipientList"`
+
+	// 请求预留字段
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 回调Url
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *CreateBatchPaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchPaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "RecipientList")
+	delete(f, "ReqReserved")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchPaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchPaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+		Result *CreateBatchPaymentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBatchPaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchPaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateCustAcctIdRequest struct {
 	*tchttp.BaseRequest
 
@@ -3578,6 +3718,100 @@ type CreateSinglePayResult struct {
 	// 银行原始返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BankRetMsg *string `json:"BankRetMsg,omitempty" name:"BankRetMsg"`
+}
+
+type CreateSinglePaymentData struct {
+
+	// 平台交易流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+}
+
+type CreateSinglePaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 转账类型
+	TransferType *uint64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 订单流水号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 转账金额
+	TransferAmount *uint64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 请求预留字段，原样透传返回
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 主播业务ID（与主播ID不能同时为空，两者都填取主播ID）
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 转账结果回调通知URL。若不填，则不进行回调。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *CreateSinglePaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSinglePaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "OrderId")
+	delete(f, "TransferAmount")
+	delete(f, "AnchorId")
+	delete(f, "ReqReserved")
+	delete(f, "Remark")
+	delete(f, "AnchorName")
+	delete(f, "Uid")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSinglePaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSinglePaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateSinglePaymentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSinglePaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSinglePaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTransferBatchRequest struct {
@@ -5890,6 +6124,129 @@ func (r *QueryBankWithdrawCashDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryBatchPaymentResultData struct {
+
+	// 批次号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 批次总额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 批次总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 批次预留字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 批次备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 渠道类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 转账明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferInfoList []*QueryBatchPaymentResultDataInfo `json:"TransferInfoList,omitempty" name:"TransferInfoList"`
+}
+
+type QueryBatchPaymentResultDataInfo struct {
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 转账金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+}
+
+type QueryBatchPaymentResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *QueryBatchPaymentResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBatchPaymentResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBatchPaymentResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBatchPaymentResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+		Result *QueryBatchPaymentResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBatchPaymentResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBatchPaymentResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryBillDownloadURLData struct {
 
 	// 统一对账单下载链接
@@ -7875,6 +8232,107 @@ type QuerySinglePayResult struct {
 	// 支付明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items"`
+}
+
+type QuerySinglePaymentResultData struct {
+
+	// 平台交易流水号，唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeStatus *int64 `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 业务备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+}
+
+type QuerySinglePaymentResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 转账类型
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 交易流水流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号，与TradeSerialNo不能同时为空
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *QuerySinglePaymentResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySinglePaymentResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "TradeSerialNo")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySinglePaymentResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySinglePaymentResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QuerySinglePaymentResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QuerySinglePaymentResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySinglePaymentResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySingleTransactionStatusRequest struct {

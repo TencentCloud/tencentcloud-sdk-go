@@ -3087,6 +3087,41 @@ func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagReq
     return
 }
 
+func NewModifyWarningSettingRequest() (request *ModifyWarningSettingRequest) {
+    request = &ModifyWarningSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyWarningSetting")
+    return
+}
+
+func NewModifyWarningSettingResponse() (response *ModifyWarningSettingResponse) {
+    response = &ModifyWarningSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWarningSetting
+// 修改告警设置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyWarningSetting(request *ModifyWarningSettingRequest) (response *ModifyWarningSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyWarningSettingRequest()
+    }
+    response = NewModifyWarningSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWebPageProtectSettingRequest() (request *ModifyWebPageProtectSettingRequest) {
     request = &ModifyWebPageProtectSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},

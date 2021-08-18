@@ -147,6 +147,7 @@ import (
 	ocrv20181119 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr/v20181119"
 	organizationv20181225 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization/v20181225"
 	partnersv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners/v20180321"
+	pdsv20210701 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds/v20210701"
 	postgresv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres/v20170312"
 	privatednsv20201028 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns/v20201028"
 	rcev20201103 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce/v20201103"
@@ -1867,6 +1868,19 @@ func TestPartnersv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init partners_v20180321 client: %v", err))
+    }
+}
+
+func TestPdsv20210701Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := pdsv20210701.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init pds_v20210701 client: %v", err))
     }
 }
 

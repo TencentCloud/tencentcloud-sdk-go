@@ -110,9 +110,6 @@ const (
 	// 当前函数状态无法发布版本，请在状态为正常时发布。
 	FAILEDOPERATION_PUBLISHVERSION = "FailedOperation.PublishVersion"
 
-	// 角色不存在。
-	FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
-
 	// 当前函数已有保留并发设置任务处于进行中，请稍后重试。
 	FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
 
@@ -196,9 +193,6 @@ const (
 
 	// cfs配置项取值与规范不符。
 	INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
-
-	// cfs参数格式与规范不符。
-	INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = "InvalidParameterValue.CfsStructionError"
 
 	// Ckafka传入错误。
 	INVALIDPARAMETERVALUE_CKAFKA = "InvalidParameterValue.Ckafka"
@@ -487,9 +481,6 @@ const (
 
 	// Cos已被占用。
 	RESOURCEINUSE_COS = "ResourceInUse.Cos"
-
-	// 函数已存在。
-	RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
 
 	// FunctionName已存在。
 	RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"

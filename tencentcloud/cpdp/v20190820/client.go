@@ -673,6 +673,40 @@ func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosR
     return
 }
 
+func NewCreateBatchPaymentRequest() (request *CreateBatchPaymentRequest) {
+    request = &CreateBatchPaymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateBatchPayment")
+    return
+}
+
+func NewCreateBatchPaymentResponse() (response *CreateBatchPaymentResponse) {
+    response = &CreateBatchPaymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBatchPayment
+// 灵云-批量主播转账接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateBatchPayment(request *CreateBatchPaymentRequest) (response *CreateBatchPaymentResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchPaymentRequest()
+    }
+    response = NewCreateBatchPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustAcctIdRequest() (request *CreateCustAcctIdRequest) {
     request = &CreateCustAcctIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1045,6 +1079,41 @@ func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *Cre
         request = NewCreateSinglePayRequest()
     }
     response = NewCreateSinglePayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSinglePaymentRequest() (request *CreateSinglePaymentRequest) {
+    request = &CreateSinglePaymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePayment")
+    return
+}
+
+func NewCreateSinglePaymentResponse() (response *CreateSinglePaymentResponse) {
+    response = &CreateSinglePaymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSinglePayment
+// 灵云-单笔主播转账接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
+    if request == nil {
+        request = NewCreateSinglePaymentRequest()
+    }
+    response = NewCreateSinglePaymentResponse()
     err = c.Send(request, response)
     return
 }
@@ -1890,6 +1959,43 @@ func (c *Client) QueryBankWithdrawCashDetails(request *QueryBankWithdrawCashDeta
     return
 }
 
+func NewQueryBatchPaymentResultRequest() (request *QueryBatchPaymentResultRequest) {
+    request = &QueryBatchPaymentResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryBatchPaymentResult")
+    return
+}
+
+func NewQueryBatchPaymentResultResponse() (response *QueryBatchPaymentResultResponse) {
+    response = &QueryBatchPaymentResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryBatchPaymentResult
+// 灵云-批量转账结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryBatchPaymentResult(request *QueryBatchPaymentResultRequest) (response *QueryBatchPaymentResultResponse, err error) {
+    if request == nil {
+        request = NewQueryBatchPaymentResultRequest()
+    }
+    response = NewQueryBatchPaymentResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryBillDownloadURLRequest() (request *QueryBillDownloadURLRequest) {
     request = &QueryBillDownloadURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2599,6 +2705,40 @@ func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *Query
         request = NewQuerySinglePayRequest()
     }
     response = NewQuerySinglePayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQuerySinglePaymentResultRequest() (request *QuerySinglePaymentResultRequest) {
+    request = &QuerySinglePaymentResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePaymentResult")
+    return
+}
+
+func NewQuerySinglePaymentResultResponse() (response *QuerySinglePaymentResultResponse) {
+    response = &QuerySinglePaymentResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QuerySinglePaymentResult
+// 灵云-单笔转账结果查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) QuerySinglePaymentResult(request *QuerySinglePaymentResultRequest) (response *QuerySinglePaymentResultResponse, err error) {
+    if request == nil {
+        request = NewQuerySinglePaymentResultRequest()
+    }
+    response = NewQuerySinglePaymentResultResponse()
     err = c.Send(request, response)
     return
 }

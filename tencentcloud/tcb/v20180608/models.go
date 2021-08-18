@@ -765,6 +765,10 @@ type CodeSource struct {
 	// 代码分支
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitempty" name:"Branch"`
+
+	// coding项目ID，type为coding时需要填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type CommonServiceAPIRequest struct {

@@ -7731,7 +7731,7 @@ type RollbackInstancesInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 回档策略。可选值为：table、db、full；默认值为full。table - 急速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+	// 回档策略。可选值为：table、db、full；默认值为full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
 	Strategy *string `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
@@ -8630,7 +8630,7 @@ type UpgradeDBInstanceRequest struct {
 	// 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 是否急速变配。0-普通升级，1-急速变配。选择急速变配会根据资源状况校验是否可以进行急速变配，满足条件则进行急速变配，不满足条件会返回报错信息。
+	// 是否极速变配。0-普通升级，1-极速变配。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
 	FastUpgrade *int64 `json:"FastUpgrade,omitempty" name:"FastUpgrade"`
 }
 

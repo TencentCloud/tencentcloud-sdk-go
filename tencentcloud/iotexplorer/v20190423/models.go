@@ -249,6 +249,9 @@ type CreateDeviceRequest struct {
 
 	// LoRaWAN 网络会话密钥
 	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
+
+	// 手动指定设备的PSK密钥
+	DefinedPsk *string `json:"DefinedPsk,omitempty" name:"DefinedPsk"`
 }
 
 func (r *CreateDeviceRequest) ToJsonString() string {
@@ -270,6 +273,7 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 	delete(f, "DevEUI")
 	delete(f, "AppSKey")
 	delete(f, "NwkSKey")
+	delete(f, "DefinedPsk")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceRequest has unknown keys!", "")
 	}

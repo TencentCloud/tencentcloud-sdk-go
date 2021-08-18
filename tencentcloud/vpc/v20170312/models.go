@@ -2069,16 +2069,21 @@ func (r *CreateAssistantCidrResponse) FromJsonString(s string) error {
 type CreateBandwidthPackageRequest struct {
 	*tchttp.BaseRequest
 
-	// 带宽包类型，包括'HIGH_QUALITY_BGP', 'BGP'，'SINGLEISP'，'ANYCAST'
+	// 带宽包类型, 默认值: BGP, 可选值:
+	// <li>BGP: 普通BGP共享带宽包</li>
+	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
+	// 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
+	// <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
+	// <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
-	// 带宽包名字
+	// 带宽包名称。
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包数量(传统账户类型只能填1)
+	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitempty" name:"BandwidthPackageCount"`
 
 	// 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
@@ -2120,10 +2125,10 @@ type CreateBandwidthPackageResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 带宽包唯一ID
+		// 带宽包唯一ID。
 		BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 
-		// 带宽包唯一ID列表(申请数量大于1时有效)
+		// 带宽包唯一ID列表(申请数量大于1时有效)。
 		BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitempty" name:"BandwidthPackageIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

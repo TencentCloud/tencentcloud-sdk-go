@@ -289,7 +289,6 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
-//  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {

@@ -3071,6 +3071,9 @@ type L7RuleEntry struct {
 
 	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
 	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 同ruleId
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type Layer4Rule struct {

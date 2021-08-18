@@ -120,6 +120,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce v0.0.0
@@ -303,6 +304,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr => ../tencentcloud/ocr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization => ../tencentcloud/organization
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners => ../tencentcloud/partners
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds => ../tencentcloud/pds
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres => ../tencentcloud/postgres
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns => ../tencentcloud/privatedns
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce => ../tencentcloud/rce
