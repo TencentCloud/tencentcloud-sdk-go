@@ -25,6 +25,12 @@ type DescribeSREInstanceAccessAddressRequest struct {
 
 	// 注册引擎实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *DescribeSREInstanceAccessAddressRequest) ToJsonString() string {
@@ -40,6 +46,8 @@ func (r *DescribeSREInstanceAccessAddressRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSREInstanceAccessAddressRequest has unknown keys!", "")
 	}
@@ -252,6 +260,10 @@ type SREInstance struct {
 	// 注册引擎是否开启公网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
+
+	// 私有网络列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
 }
 
 type VpcInfo struct {
@@ -261,4 +273,8 @@ type VpcInfo struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetAddress *string `json:"IntranetAddress,omitempty" name:"IntranetAddress"`
 }

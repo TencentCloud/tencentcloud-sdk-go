@@ -2153,6 +2153,12 @@ type DescribeEnvironmentRolesRequest struct {
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// * RoleName
+	// 按照角色名进行过滤，精确查询。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeEnvironmentRolesRequest) ToJsonString() string {
@@ -2172,6 +2178,7 @@ func (r *DescribeEnvironmentRolesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ClusterId")
 	delete(f, "RoleName")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentRolesRequest has unknown keys!", "")
 	}

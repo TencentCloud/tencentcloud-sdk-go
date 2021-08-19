@@ -3235,6 +3235,9 @@ type DeleteImageTagsRequest struct {
 
 	// 镜像版本数组
 	ImageTags []*DeleteImageTag `json:"ImageTags,omitempty" name:"ImageTags"`
+
+	// 企业: tcr ；个人: personal或者不填
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 }
 
 func (r *DeleteImageTagsRequest) ToJsonString() string {
@@ -3250,6 +3253,7 @@ func (r *DeleteImageTagsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ImageTags")
+	delete(f, "RepoType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImageTagsRequest has unknown keys!", "")
 	}
@@ -3872,10 +3876,10 @@ type DeployContainerGroupRequest struct {
 	// jvm参数
 	JvmOpts *string `json:"JvmOpts,omitempty" name:"JvmOpts"`
 
-	// 业务容器分配的 CPU 核数，对应 K8S 的 request
+	// 业务容器分配的 CPU 核数，对应 K8S 的 request，默认0.25
 	CpuRequest *string `json:"CpuRequest,omitempty" name:"CpuRequest"`
 
-	// 业务容器分配的内存 MiB 数，对应 K8S 的 request
+	// 业务容器分配的内存 MiB 数，对应 K8S 的 request，默认640 MiB
 	MemRequest *string `json:"MemRequest,omitempty" name:"MemRequest"`
 
 	// 是否不立即启动
@@ -3934,6 +3938,12 @@ type DeployContainerGroupRequest struct {
 
 	// 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
 	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitempty" name:"SchedulingStrategy"`
+
+	// 是否进行增量部署，默认为false，全量更新
+	IncrementalDeployment *bool `json:"IncrementalDeployment,omitempty" name:"IncrementalDeployment"`
+
+	// tcr或者不填
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -3977,6 +3987,8 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "ServiceSetting")
 	delete(f, "DeployAgent")
 	delete(f, "SchedulingStrategy")
+	delete(f, "IncrementalDeployment")
+	delete(f, "RepoType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}
@@ -4052,6 +4064,9 @@ type DeployGroupRequest struct {
 
 	// 停止脚本 base64编码
 	StopScript *string `json:"StopScript,omitempty" name:"StopScript"`
+
+	// 是否进行增量部署，默认为false，全量更新
+	IncrementalDeployment *bool `json:"IncrementalDeployment,omitempty" name:"IncrementalDeployment"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -4080,6 +4095,7 @@ func (r *DeployGroupRequest) FromJsonString(s string) error {
 	delete(f, "DeployWaitTime")
 	delete(f, "StartScript")
 	delete(f, "StopScript")
+	delete(f, "IncrementalDeployment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployGroupRequest has unknown keys!", "")
 	}
@@ -5948,6 +5964,56 @@ func (r *DescribeGroupInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGroupReleaseRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeGroupReleaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupReleaseResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 部署组发布的相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *GroupRelease `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupReleaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -6229,6 +6295,15 @@ type DescribeImageRepositoryRequest struct {
 
 	// 分页个数，默认为20， 取值应为1~100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 企业: tcr ；个人: personal或者不填
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 应用id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// TcrRepoInfo值
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
 }
 
 func (r *DescribeImageRepositoryRequest) ToJsonString() string {
@@ -6246,6 +6321,9 @@ func (r *DescribeImageRepositoryRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "RepoType")
+	delete(f, "ApplicationId")
+	delete(f, "TcrRepoInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageRepositoryRequest has unknown keys!", "")
 	}
@@ -6292,6 +6370,12 @@ type DescribeImageTagsRequest struct {
 
 	// 可用于搜索的 tag 名字
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 企业: tcr ；个人: personal或者不填
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// TcrRepoInfo值
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
 }
 
 func (r *DescribeImageTagsRequest) ToJsonString() string {
@@ -6311,6 +6395,8 @@ func (r *DescribeImageTagsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "QueryImageIdFlag")
 	delete(f, "SearchWord")
+	delete(f, "RepoType")
+	delete(f, "TcrRepoInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTagsRequest has unknown keys!", "")
 	}
@@ -9138,6 +9224,57 @@ type FileConfig struct {
 	ConfigFileValueLength *uint64 `json:"ConfigFileValueLength,omitempty" name:"ConfigFileValueLength"`
 }
 
+type FileConfigRelease struct {
+
+	// 配置项发布ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigReleaseId *string `json:"ConfigReleaseId,omitempty" name:"ConfigReleaseId"`
+
+	// 配置项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 发布描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+
+	// 发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
 type GatewayApiGroupVo struct {
 
 	// 分组ID
@@ -9384,6 +9521,41 @@ type GroupPodResult struct {
 	Content []*GroupPod `json:"Content,omitempty" name:"Content"`
 }
 
+type GroupRelease struct {
+
+	// 程序包ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 程序包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 程序包版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 镜像名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 镜像版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 已发布的全局配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicConfigReleaseList []*ConfigRelease `json:"PublicConfigReleaseList,omitempty" name:"PublicConfigReleaseList"`
+
+	// 已发布的应用配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigReleaseList []*ConfigRelease `json:"ConfigReleaseList,omitempty" name:"ConfigReleaseList"`
+
+	// 已发布的文件配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileConfigReleaseList []*FileConfigRelease `json:"FileConfigReleaseList,omitempty" name:"FileConfigReleaseList"`
+}
+
 type GroupUnitApiDailyUseStatistics struct {
 
 	// 命名空间ID
@@ -9552,6 +9724,22 @@ type ImageRepository struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// TcrRepoInfo值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
+
+	// TcrBindingId值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrBindingId *int64 `json:"TcrBindingId,omitempty" name:"TcrBindingId"`
+
+	// applicationid值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// ApplicationName值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *ScalableRule `json:"ApplicationName,omitempty" name:"ApplicationName"`
 }
 
 type ImageRepositoryResult struct {
@@ -9610,6 +9798,10 @@ type ImageTag struct {
 
 	// 单位为字节
 	SizeByte *int64 `json:"SizeByte,omitempty" name:"SizeByte"`
+
+	// TcrRepoInfo值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
 }
 
 type ImageTagsResult struct {
@@ -10801,6 +10993,63 @@ type Namespace struct {
 	IsHaEnable *string `json:"IsHaEnable,omitempty" name:"IsHaEnable"`
 }
 
+type OperateApplicationTcrBindingRequest struct {
+	*tchttp.BaseRequest
+
+	// bind 或 unbind
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 应用id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// TcrRepoInfo值
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
+}
+
+func (r *OperateApplicationTcrBindingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateApplicationTcrBindingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Command")
+	delete(f, "ApplicationId")
+	delete(f, "TcrRepoInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateApplicationTcrBindingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperateApplicationTcrBindingResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OperateApplicationTcrBindingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateApplicationTcrBindingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OperationInfo struct {
 
 	// 初始化按钮的控制信息
@@ -11720,6 +11969,33 @@ func (r *RollbackConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RollbackConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScalableRule struct {
+
+	// RuleId值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// Name值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// ExpandVmCountLimit值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpandVmCountLimit *int64 `json:"ExpandVmCountLimit,omitempty" name:"ExpandVmCountLimit"`
+
+	// ShrinkVmCountLimit值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShrinkVmCountLimit *int64 `json:"ShrinkVmCountLimit,omitempty" name:"ShrinkVmCountLimit"`
+
+	// GroupCount值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupCount *int64 `json:"GroupCount,omitempty" name:"GroupCount"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 type SchedulingStrategy struct {
@@ -12782,6 +13058,29 @@ type TaskRule struct {
 	// 时间间隔， 单位毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepeatInterval *uint64 `json:"RepeatInterval,omitempty" name:"RepeatInterval"`
+}
+
+type TcrRepoInfo struct {
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 实例名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
+
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 仓库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
 
 type TerminateTaskFlowBatchRequest struct {

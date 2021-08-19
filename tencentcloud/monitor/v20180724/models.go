@@ -1875,6 +1875,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 传 1 查询未配置通知规则的告警策略；不传或传其他数值，查询所有策略。
 	NotBindingNoticeRule *int64 `json:"NotBindingNoticeRule,omitempty" name:"NotBindingNoticeRule"`
+
+	// 实例分组id
+	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -1906,6 +1909,7 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "RuleTypes")
 	delete(f, "Enable")
 	delete(f, "NotBindingNoticeRule")
+	delete(f, "InstanceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}

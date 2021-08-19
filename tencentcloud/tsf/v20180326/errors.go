@@ -185,9 +185,6 @@ const (
 	// 命令下放失败。
 	INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
 
-	// TSF MASTER 内部执行错误。
-	INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
-
 	// MASTER通道查询失败。
 	INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 
@@ -446,41 +443,17 @@ const (
 	// 服务端口值非法。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPORTINVALID = "InvalidParameterValue.ContainergroupPortInvalid"
 
-	// 服务端口不允许重复映射。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPPORTSREPEAT = "InvalidParameterValue.ContainergroupPortsRepeat"
-
 	// 协议值非法,限定:TCP/UDP。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = "InvalidParameterValue.ContainergroupProtocolInvalid"
 
-	// 公网访问方式下，协议需要一致。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLMIXERROR = "InvalidParameterValue.ContainergroupProtocolMixError"
-
-	// 协议不能为空。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLNULL = "InvalidParameterValue.ContainergroupProtocolNull"
-
 	// 协议端口不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = "InvalidParameterValue.ContainergroupProtocolPortsNull"
-
-	// 镜像仓库名与应用名不匹配。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = "InvalidParameterValue.ContainergroupReponameInvalid"
-
-	// agent 容器资源值非法 , %s。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
-
-	// istioProxy 容器资源值非法 , %s。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEISTIOVALUEINVALID = "InvalidParameterValue.ContainergroupResourceIstioValueInvalid"
-
-	// 容器端口不允许重复映射。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = "InvalidParameterValue.ContainergroupTargetPortsRepeat"
 
 	// 容器端口不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = "InvalidParameterValue.ContainergroupTargetportNull"
 
 	// 更新间隔不能为空或者数值非法。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = "InvalidParameterValue.ContainergroupUpdateivlInvalid"
-
-	// 找不到业务容器。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = "InvalidParameterValue.ContainergroupYamlUserContainerNotFound"
 
 	// TSF MASTER 正在执行任务，请等待任务执行完成再下发新任务。
 	INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
@@ -559,15 +532,6 @@ const (
 
 	// 分组操作，无有效机器。
 	INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
-
-	// 镜像仓库名不合法,示例:tsf-repo/nginx。
-	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
-
-	// 镜像仓库名不能为空。
-	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoReponameNull"
-
-	// imageTags不能为空。
-	INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"
 
 	// 重装系统，无效的镜像id。
 	INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"

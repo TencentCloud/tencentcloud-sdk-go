@@ -61,6 +61,18 @@ type AllDeviceInfo struct {
 	// 该设备是否可录制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
+
+	// 设备接入协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
 type BindGroupDevicesRequest struct {
@@ -136,6 +148,9 @@ type ControlDevicePTZRequest struct {
 	// focusIn - 焦距变近
 	// focusOut - 焦距变远
 	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *ControlDevicePTZRequest) ToJsonString() string {
@@ -152,6 +167,7 @@ func (r *ControlDevicePTZRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DeviceId")
 	delete(f, "Command")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlDevicePTZRequest has unknown keys!", "")
 	}
@@ -175,6 +191,65 @@ func (r *ControlDevicePTZResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ControlDevicePTZResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlRecordStreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备Id，设备的唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 流Id，流的唯一标识
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// |控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
+	// | Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+func (r *ControlRecordStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlRecordStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "StreamId")
+	delete(f, "Command")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlRecordStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlRecordStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlRecordStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlRecordStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -324,6 +399,9 @@ type CreateRecordPlanRequest struct {
 
 	// 该录制计划绑定的设备列表
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
+
+	// 存储周期
+	RecordStorageTime *int64 `json:"RecordStorageTime,omitempty" name:"RecordStorageTime"`
 }
 
 func (r *CreateRecordPlanRequest) ToJsonString() string {
@@ -342,6 +420,7 @@ func (r *CreateRecordPlanRequest) FromJsonString(s string) error {
 	delete(f, "TimeTemplateId")
 	delete(f, "EventId")
 	delete(f, "Devices")
+	delete(f, "RecordStorageTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordPlanRequest has unknown keys!", "")
 	}
@@ -641,6 +720,9 @@ type DescribeAllDeviceListRequest struct {
 
 	// DeviceId列表，需要精确查找设备时为必填
 	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 设备类型过滤
+	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 }
 
 func (r *DescribeAllDeviceListRequest) ToJsonString() string {
@@ -659,6 +741,7 @@ func (r *DescribeAllDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "NickName")
 	delete(f, "DeviceIds")
+	delete(f, "DeviceTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllDeviceListRequest has unknown keys!", "")
 	}
@@ -815,6 +898,9 @@ type DescribeDeviceStreamsRequest struct {
 
 	// 流地址失效时间
 	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeDeviceStreamsRequest) ToJsonString() string {
@@ -831,6 +917,7 @@ func (r *DescribeDeviceStreamsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DeviceId")
 	delete(f, "ExpireTime")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceStreamsRequest has unknown keys!", "")
 	}
@@ -977,6 +1064,9 @@ type DescribeGroupDevicesRequest struct {
 
 	// 过滤不可录制设备
 	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
+
+	// 当Group是普通组的时候，支持根据deviceTypes筛选类型
+	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 }
 
 func (r *DescribeGroupDevicesRequest) ToJsonString() string {
@@ -996,6 +1086,7 @@ func (r *DescribeGroupDevicesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "NickName")
 	delete(f, "Recordable")
+	delete(f, "DeviceTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupDevicesRequest has unknown keys!", "")
 	}
@@ -1115,6 +1206,9 @@ type DescribeRecordStreamRequest struct {
 
 	// 录像流结束时间，当录像文件Id为空时有效
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeRecordStreamRequest) ToJsonString() string {
@@ -1134,6 +1228,7 @@ func (r *DescribeRecordStreamRequest) FromJsonString(s string) error {
 	delete(f, "RecordId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordStreamRequest has unknown keys!", "")
 	}
@@ -1222,6 +1317,8 @@ type DescribeStatisticDetailsRequest struct {
 	// 2.非录制设备数：NonRecordingDevice
 	// 3.观看流量总数：WatchFlux
 	// 4.已用存储容量总数：StorageUsage
+	// 5. X-P2P分享流量: P2PFluxTotal
+	// 6. X-P2P峰值带宽: P2PPeakValue
 	StatisticField *string `json:"StatisticField,omitempty" name:"StatisticField"`
 }
 
@@ -1315,6 +1412,14 @@ type DescribeStatisticSummaryResponse struct {
 		// 累计有效存储容量总数。单位：GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StorageUsage *float64 `json:"StorageUsage,omitempty" name:"StorageUsage"`
+
+		// X-P2P分享流量。单位 Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		P2PFluxTotal *float64 `json:"P2PFluxTotal,omitempty" name:"P2PFluxTotal"`
+
+		// X-P2P峰值带宽。 单位bps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		P2PPeakValue *float64 `json:"P2PPeakValue,omitempty" name:"P2PPeakValue"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1496,6 +1601,10 @@ type DeviceItem struct {
 	// 设备唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 type GetRecordDatesByDevRequest struct {
@@ -1509,6 +1618,12 @@ type GetRecordDatesByDevRequest struct {
 
 	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 1: 云端录制 2: 本地录制
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *GetRecordDatesByDevRequest) ToJsonString() string {
@@ -1526,6 +1641,8 @@ func (r *GetRecordDatesByDevRequest) FromJsonString(s string) error {
 	delete(f, "DeviceId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ChannelId")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRecordDatesByDevRequest has unknown keys!", "")
 	}
@@ -1823,6 +1940,12 @@ type GetVideoListByConRequest struct {
 	// 指定某天。取值【YYYY-MM-DD】
 	// 当LatestDay为空或为0时，本参数不允许为空。
 	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 1: 云端录制 2: 本地录制
+	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *GetVideoListByConRequest) ToJsonString() string {
@@ -1842,6 +1965,8 @@ func (r *GetVideoListByConRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "LatestDay")
 	delete(f, "Date")
+	delete(f, "ChannelId")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVideoListByConRequest has unknown keys!", "")
 	}
@@ -1913,6 +2038,10 @@ type GroupDeviceItem struct {
 	// 该设备是否可录制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
+
+	// 设备接入协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 type GroupInfo struct {

@@ -851,13 +851,13 @@ type DescribeBackupUrlResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 外网下载地址（6小时）
+		// 外网下载地址（6小时内链接有效），该字段正在逐步废弃中。
 		DownloadUrl []*string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-		// 内网下载地址（6小时）
+		// 内网下载地址（6小时内链接有效），该字段正在逐步废弃中。
 		InnerDownloadUrl []*string `json:"InnerDownloadUrl,omitempty" name:"InnerDownloadUrl"`
 
-		// 文件名称（仅tendis实例有值）
+		// 文件名称，该字段正在逐步废弃中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Filenames []*string `json:"Filenames,omitempty" name:"Filenames"`
 
@@ -2006,7 +2006,7 @@ func (r *DescribeInstanceSecurityGroupResponse) FromJsonString(s string) error {
 type DescribeInstanceShardsRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例id
+	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 是否过滤掉从节信息
@@ -2893,7 +2893,7 @@ type DescribeTendisSlowLogRequest struct {
 	// 慢查询阈值（毫秒）
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 页面大小：20
+	// 页面大小：默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
@@ -3265,13 +3265,13 @@ type InquiryPriceCreateInstanceRequest struct {
 	// 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写。
+	// 实例分片数量，Redis2.8标准架构、CKV标准架构和Redis2.8单机版、Redis4.0标准架构不需要填写。
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
+	// 实例副本数量，Redis2.8标准架构、CKV标准架构和Redis2.8单机版不需要填写。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
+	// 是否支持副本只读，Redis2.8标准架构、CKV标准架构和Redis2.8单机版不需要填写。
 	ReplicasReadonly *bool `json:"ReplicasReadonly,omitempty" name:"ReplicasReadonly"`
 
 	// 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
@@ -3310,7 +3310,7 @@ type InquiryPriceCreateInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 价格，单位：分
+		// 价格，单位：元
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Price *float64 `json:"Price,omitempty" name:"Price"`
 
@@ -4067,7 +4067,7 @@ type ModifyAutoBackupConfigRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday
+	// 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday，该参数暂不支持修改。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
 	// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
@@ -4581,13 +4581,13 @@ type ModifyParamTemplateRequest struct {
 	// 源参数模板 ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 参数模板名称。
+	// 参数模板修改后的新名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参数模板描述。
+	// 参数模板修改后的新描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 参数列表。
+	// 修改后的新参数列表。
 	ParamList []*InstanceParam `json:"ParamList,omitempty" name:"ParamList"`
 }
 
@@ -5392,13 +5392,13 @@ type UpgradeInstanceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分片大小 单位 MB
+	// 分片大小 单位 MB。该参数不支持与RedisShardNum或RedisReplicasNum同时输入。
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	// 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
 	RedisShardNum *uint64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+	// 副本数量，标准架构不需要填写，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
 	// 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）

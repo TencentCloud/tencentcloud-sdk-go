@@ -228,3 +228,62 @@ func (r *DescribeDataPerformancePageResponse) ToJsonString() string {
 func (r *DescribeDataPerformancePageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeErrorRequest struct {
+	*tchttp.BaseRequest
+
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeErrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeErrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Date")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeErrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeErrorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内容
+		Content *string `json:"Content,omitempty" name:"Content"`
+
+		// 项目ID
+		ID *int64 `json:"ID,omitempty" name:"ID"`
+
+		// 时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeErrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeErrorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

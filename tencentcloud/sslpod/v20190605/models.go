@@ -502,7 +502,7 @@ func (r *DescribeNoticeInfoResponse) FromJsonString(s string) error {
 
 type DomainSiteInfo struct {
 
-	// ID
+	// ID标识
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 域名
@@ -511,22 +511,45 @@ type DomainSiteInfo struct {
 	// IP地址
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 是否自动获取IP
+	// 是否自动获取IP：true：是，false:否
 	AutoIP *bool `json:"AutoIP,omitempty" name:"AutoIP"`
 
-	// 监控服务类型
-	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
+	// 评级
+	// "A+"，
+	//  "A"，
+	// "A-"，
+	// "B"，
+	// "C"，
+	// "D"，
+	//  "E"，
+	//  "F"，
+	// "T"，
+	Grade *string `json:"Grade,omitempty" name:"Grade"`
 
 	// 证书品牌
 	Brand *string `json:"Brand,omitempty" name:"Brand"`
 
-	// 评级
-	Grade *string `json:"Grade,omitempty" name:"Grade"`
+	// 监控服务类型
+	// 0 :Web
+	// 1: SMTP
+	// 2: IMAP
+	// 3: POP3
+	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
 	// 评级Code
+	// 0："unknown"，
+	// 1："A+"，
+	// 2： "A"，
+	// 3："A-"，
+	// 4："B"，
+	// 5："C"，
+	// 6："D"，
+	// 7： "E"，
+	// 8： "F"，
+	// 9："T"，
 	GradeCode *int64 `json:"GradeCode,omitempty" name:"GradeCode"`
 
-	// 是否监控告警
+	// 是否监控告警；true：是，false:否
 	Notice *bool `json:"Notice,omitempty" name:"Notice"`
 
 	// 账号域名关系ID
@@ -536,7 +559,18 @@ type DomainSiteInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
-	// 域名状态
+	// 域名状态:
+	// 连接异常，
+	// 证书已过期，
+	// 证书已吊销，
+	// 证书黑名单，
+	// 证书域名不匹配，
+	// 证书不可信，
+	// 证书密钥弱，
+	// 证书即将过期，少于7天，
+	// 证书即将过期，少于30天，
+	// 正常，
+	// 部分异常
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 域名端口
@@ -545,7 +579,10 @@ type DomainSiteInfo struct {
 
 type LimitInfo struct {
 
-	// 通知类型
+	// 通知类型：
+	// limit_emai：邮件
+	// limit_wechat：微信
+	// limit_phone：手机
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 总量
@@ -610,7 +647,7 @@ type NoticeInfoResult struct {
 	// 通知ID
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
-	// 通知开关信息
+	// 通知开关信息；0：关闭；15开启
 	NoticeType *int64 `json:"NoticeType,omitempty" name:"NoticeType"`
 
 	// 额度信息
