@@ -6,7 +6,7 @@
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2021-07-02 08:01:37 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2021-08-17 08:10:54 |
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-07-26 08:19:35 |
-| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2021-08-18 08:00:08 |
+| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2021-08-20 08:00:11 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-07-02 08:00:52 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-07-02 08:01:08 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
@@ -30,11 +30,11 @@
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-07-02 08:02:41 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-08-16 08:03:53 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-08-10 08:01:44 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-08-18 08:04:00 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-08-20 08:04:01 |
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-08-13 08:04:13 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-07-02 08:04:13 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-07-29 08:04:50 |
-| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-08-19 08:12:00 |
+| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-08-20 08:11:35 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2021-07-02 08:04:17 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-08-03 08:12:34 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
@@ -67,7 +67,7 @@
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-07-02 08:05:22 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-07-02 08:02:09 |
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-08-13 08:01:53 |
-| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-08-13 08:12:10 |
+| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-08-20 08:12:02 |
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-07-02 08:00:25 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-08-04 08:05:32 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-08-13 08:05:41 |
@@ -95,7 +95,7 @@
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-08-19 08:01:00 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-08-18 08:06:30 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-08-19 08:01:48 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-08-17 08:06:58 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-08-20 08:06:35 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-07-02 08:01:39 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-08-11 08:06:54 |
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-08-17 08:00:13 |
@@ -115,15 +115,15 @@
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-08-17 08:07:54 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-07-02 08:07:22 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-07-08 08:07:39 |
-| pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-08-18 08:00:05 |
+| pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-08-20 08:00:05 |
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-08-04 08:07:38 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2021-07-02 08:00:35 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2021-07-02 08:11:25 |
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-08-19 08:07:56 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-07-02 08:11:01 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-07-02 08:01:39 |
-| rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-08-19 08:00:11 |
-| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-08-18 08:07:56 |
+| rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-08-20 08:00:08 |
+| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-08-20 08:07:56 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-07-02 08:11:22 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-07-02 08:02:55 |
 | sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-08-17 08:00:34 |
@@ -172,7 +172,7 @@
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2021-07-02 08:00:58 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2021-08-06 08:09:52 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-08-18 08:09:24 |
-| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-08-19 08:12:16 |
+| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-08-20 08:11:51 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2021-07-29 08:00:14 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | youmall | [](https://cloud.tencent.com/document/product) | 2019-01-11 11:24:15 |

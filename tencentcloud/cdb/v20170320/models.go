@@ -753,6 +753,7 @@ type CreateAuditPolicyRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 审计日志保存时长。支持值包括：
+	// 7 - 一周
 	// 30 - 一个月；
 	// 180 - 六个月；
 	// 365 - 一年；
@@ -2315,7 +2316,7 @@ type DescribeAuditConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 审计日志保存时长。目前支持的值包括：[0，30，180，365，1095，1825]。
+		// 审计日志保存时长。目前支持的值包括：[0，7，30，180，365，1095，1825]。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
 
@@ -2324,6 +2325,10 @@ type DescribeAuditConfigResponse struct {
 
 		// 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
 		IsClosing *string `json:"IsClosing,omitempty" name:"IsClosing"`
+
+		// 审计服务开通时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6208,6 +6213,7 @@ type ModifyAuditConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 审计日志保存时长。支持值包括：
+	// 7 - 一周
 	// 30 - 一个月；
 	// 180 - 六个月；
 	// 365 - 一年；

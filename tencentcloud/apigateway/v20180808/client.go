@@ -266,6 +266,7 @@ func NewBindSubDomainResponse() (response *BindSubDomainResponse) {
 //  FAILEDOPERATION_DEFINEMAPPINGPATHERROR = "FailedOperation.DefineMappingPathError"
 //  FAILEDOPERATION_DOMAINALREADYBINDOTHERSERVICE = "FailedOperation.DomainAlreadyBindOtherService"
 //  FAILEDOPERATION_DOMAINALREADYBINDSERVICE = "FailedOperation.DomainAlreadyBindService"
+//  FAILEDOPERATION_DOMAININBLACKLIST = "FailedOperation.DomainInBlackList"
 //  FAILEDOPERATION_DOMAINNEEDBEIAN = "FailedOperation.DomainNeedBeian"
 //  FAILEDOPERATION_DOMAINRESOLVEERROR = "FailedOperation.DomainResolveError"
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"

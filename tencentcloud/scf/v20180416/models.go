@@ -2404,6 +2404,9 @@ type ListNamespacesRequest struct {
 
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 关键字匹配搜索，Key 可选值为 Namespace 和 Description，多个搜索条件之间是与的关系
+	SearchKey []*SearchKey `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *ListNamespacesRequest) ToJsonString() string {
@@ -2422,6 +2425,7 @@ func (r *ListNamespacesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Orderby")
 	delete(f, "Order")
+	delete(f, "SearchKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListNamespacesRequest has unknown keys!", "")
 	}
@@ -3062,6 +3066,15 @@ type RoutingConfig struct {
 
 	// 规则路由附加版本
 	AddtionVersionMatchs []*VersionMatch `json:"AddtionVersionMatchs,omitempty" name:"AddtionVersionMatchs"`
+}
+
+type SearchKey struct {
+
+	// 搜索关键字
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 搜索内容
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type StatusReason struct {

@@ -50,7 +50,7 @@ type DescribeNewUserAcquisitionResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 用户信誉值
+		// 用户信誉分，1-5从低到高
 		ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -99,7 +99,7 @@ type DescribeStockEstimationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 用户信誉值
+		// 用户信誉分，1-5从低到高
 		ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -120,7 +120,7 @@ func (r *DescribeStockEstimationResponse) FromJsonString(s string) error {
 
 type Score struct {
 
-	// 用户信誉分
+	// 信誉分，1-5从低到高
 	Star *int64 `json:"Star,omitempty" name:"Star"`
 }
 

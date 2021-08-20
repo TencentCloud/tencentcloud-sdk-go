@@ -1437,9 +1437,11 @@ type CreateLiveSnapshotTemplateRequest struct {
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。
+	// 范围：0-3000 。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 截图高度。默认：0（原始高）。
+	// 范围：0-2000 。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 是否开启鉴黄，0：不开启，1：开启。默认：0。

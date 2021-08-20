@@ -4076,6 +4076,9 @@ type SecurityGroupBothWayInfo struct {
 	// 端口协议类型参数模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
+
+	// 是否使用端口协议模板，0：否，1：是
+	ProtocolPortType *uint64 `json:"ProtocolPortType,omitempty" name:"ProtocolPortType"`
 }
 
 type SecurityGroupListData struct {
@@ -4153,6 +4156,9 @@ type SecurityGroupListData struct {
 
 	// 方向，0：出站，1：入站，默认1
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 是否使用端口协议模板，0：否，1：是
+	ProtocolPortType *uint64 `json:"ProtocolPortType,omitempty" name:"ProtocolPortType"`
 }
 
 type SecurityGroupOrderIndexData struct {
