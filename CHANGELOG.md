@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
 
-### 第 65 次发布
+### 第 8 次发布
 
-发布时间：2021-08-20 08:04:01
+发布时间：2021-08-21 15:18:03
 
 本次发布包含了以下内容：
 
@@ -12,41 +12,18 @@
 
 修改接口：
 
-* [DescribeAuditConfig](https://cloud.tencent.com/document/api/236/45455)
+* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60257)
 
-	* 新增出参：CreateTime
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 8 次发布
-
-发布时间：2021-08-20 08:11:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SecurityGroupBothWayInfo](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupBothWayInfo)
-
-	* 新增成员：ProtocolPortType
-
-* [SecurityGroupListData](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupListData)
-
-	* 新增成员：ProtocolPortType
+	* <font color="#dd0000">**修改入参**：</font>UserId
 
 
 
 
-## 前端性能监控(rum) 版本：2021-06-22
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 4 次发布
+### 第 17 次发布
 
-发布时间：2021-08-20 08:00:08
+发布时间：2021-08-23 08:07:32
 
 本次发布包含了以下内容：
 
@@ -54,30 +31,15 @@
 
 新增接口：
 
-* [DescribeDataLogUrlStatistics](https://cloud.tencent.com/document/api/1464/60495)
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 32 次发布
-
-发布时间：2021-08-20 08:07:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ListNamespaces](https://cloud.tencent.com/document/api/583/37158)
-
-	* 新增入参：SearchKey
-
+* [DescribeSlowQueryAnalysis](https://cloud.tencent.com/document/api/409/60541)
+* [DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)
 
 新增数据结构：
 
-* [SearchKey](https://cloud.tencent.com/document/api/583/17244#SearchKey)
+* [AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems)
+* [Detail](https://cloud.tencent.com/document/api/409/16778#Detail)
+* [DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis)
+* [RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery)
 
 
 
@@ -22972,6 +22934,21 @@
 
 ## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
 
+### 第 8 次发布
+
+发布时间：2021-08-21 15:18:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60257)
+
+	* <font color="#dd0000">**修改入参**：</font>UserId
+
+
 ### 第 7 次发布
 
 发布时间：2021-08-13 08:12:10
@@ -38470,6 +38447,26 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 17 次发布
+
+发布时间：2021-08-23 08:07:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSlowQueryAnalysis](https://cloud.tencent.com/document/api/409/60541)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems)](https://cloud.tencent.com/document/api/409/16778#[AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems))
+* [[Detail](https://cloud.tencent.com/document/api/409/16778#Detail)](https://cloud.tencent.com/document/api/409/16778#[Detail](https://cloud.tencent.com/document/api/409/16778#Detail))
+* [[DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis)](https://cloud.tencent.com/document/api/409/16778#[DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis))
+* [[RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery)](https://cloud.tencent.com/document/api/409/16778#[RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery))
+
 ### 第 16 次发布
 
 发布时间：2021-07-22 08:07:32
@@ -39769,7 +39766,7 @@
 
 新增接口：
 
-* [[DescribeDataLogUrlStatistics](https://cloud.tencent.com/document/api/1464/60495)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDataLogUrlStatistics](https://cloud.tencent.com/document/api/1464/60495)
 
 ### 第 3 次发布
 
@@ -39829,7 +39826,7 @@
 
 新增数据结构：
 
-* [[SearchKey](https://cloud.tencent.com/document/api/583/17244#SearchKey)](https://cloud.tencent.com/document/api/583/17244#[SearchKey](https://cloud.tencent.com/document/api/583/17244#SearchKey))
+* [SearchKey](https://cloud.tencent.com/document/api/583/17244#SearchKey)
 
 ### 第 31 次发布
 

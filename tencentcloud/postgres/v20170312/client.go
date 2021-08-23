@@ -1276,6 +1276,67 @@ func (c *Client) DescribeServerlessDBInstances(request *DescribeServerlessDBInst
     return
 }
 
+func NewDescribeSlowQueryAnalysisRequest() (request *DescribeSlowQueryAnalysisRequest) {
+    request = &DescribeSlowQueryAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeSlowQueryAnalysis")
+    return
+}
+
+func NewDescribeSlowQueryAnalysisResponse() (response *DescribeSlowQueryAnalysisResponse) {
+    response = &DescribeSlowQueryAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSlowQueryAnalysis
+// 慢查询统计分析接口，根据SQL语句抽象参数之后，进行聚合分析，并返回对应结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
+func (c *Client) DescribeSlowQueryAnalysis(request *DescribeSlowQueryAnalysisRequest) (response *DescribeSlowQueryAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowQueryAnalysisRequest()
+    }
+    response = NewDescribeSlowQueryAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowQueryListRequest() (request *DescribeSlowQueryListRequest) {
+    request = &DescribeSlowQueryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeSlowQueryList")
+    return
+}
+
+func NewDescribeSlowQueryListResponse() (response *DescribeSlowQueryListResponse) {
+    response = &DescribeSlowQueryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSlowQueryList
+// 获取慢查询列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
+func (c *Client) DescribeSlowQueryList(request *DescribeSlowQueryListRequest) (response *DescribeSlowQueryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowQueryListRequest()
+    }
+    response = NewDescribeSlowQueryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
     request = &DescribeZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},

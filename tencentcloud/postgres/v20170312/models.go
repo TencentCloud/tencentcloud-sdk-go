@@ -94,6 +94,48 @@ func (r *AddDBInstanceToReadOnlyGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AnalysisItems struct {
+
+	// 慢SQL查询的数据库名
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 慢SQL执行的用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 抽象参数之后的慢SQL
+	NormalQuery *string `json:"NormalQuery,omitempty" name:"NormalQuery"`
+
+	// 慢SQL执行的客户端地址
+	ClientAddr *string `json:"ClientAddr,omitempty" name:"ClientAddr"`
+
+	// 在选定时间范围内慢SQL语句执行的次数
+	CallNum *uint64 `json:"CallNum,omitempty" name:"CallNum"`
+
+	// 在选定时间范围内，慢SQL语句执行的次数占所有慢SQL的比例（小数返回）
+	CallPercent *float64 `json:"CallPercent,omitempty" name:"CallPercent"`
+
+	// 在选定时间范围内，慢SQL执行的总时间
+	CostTime *float64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 在选定时间范围内，慢SQL语句执行的总时间占所有慢SQL的比例（小数返回）
+	CostPercent *float64 `json:"CostPercent,omitempty" name:"CostPercent"`
+
+	// 在选定时间范围内，慢SQL语句执行的耗时最短的时间（单位：ms）
+	MinCostTime *float64 `json:"MinCostTime,omitempty" name:"MinCostTime"`
+
+	// 在选定时间范围内，慢SQL语句执行的耗时最长的时间（单位：ms）
+	MaxCostTime *float64 `json:"MaxCostTime,omitempty" name:"MaxCostTime"`
+
+	// 在选定时间范围内，慢SQL语句执行的耗时平均时间（单位：ms）
+	AvgCostTime *float64 `json:"AvgCostTime,omitempty" name:"AvgCostTime"`
+
+	// 在选定时间范围内，慢SQL第一条开始执行的时间戳
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 在选定时间范围内，慢SQL最后一条开始执行的时间戳
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+}
+
 type CloseDBExtranetAccessRequest struct {
 	*tchttp.BaseRequest
 
@@ -1832,6 +1874,171 @@ func (r *DescribeServerlessDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSlowQueryAnalysisRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 根据数据库名进行筛选，可以为空。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型。升序asc、降序desc。
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 分页大小。取值范围[1,100]。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移。取值范围[0,INF)。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeSlowQueryAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DatabaseName")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowQueryAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询总条数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 慢SQL统计分析接口返回详情。
+		Detail *Detail `json:"Detail,omitempty" name:"Detail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSlowQueryAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowQueryListRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 根据数据库名进行筛选，可以为空。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 排序类型。升序asc、降序desc。默认为desc。
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 排序维度。 可选参数，取值范围[SessionStartTime,Duration]，默认为SessionStartTime。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 分页大小。取值范围[1,100],默认为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移。取值范围[0,INF)，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeSlowQueryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DatabaseName")
+	delete(f, "OrderByType")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSlowQueryListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 选定时间范围内慢SQL总条数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 指定时间范围内，慢SQL耗时分段分析。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DurationAnalysis []*DurationAnalysis `json:"DurationAnalysis,omitempty" name:"DurationAnalysis"`
+
+		// 指定时间范围内 慢SQL流水。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RawSlowQueryList []*RawSlowQuery `json:"RawSlowQueryList,omitempty" name:"RawSlowQueryList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSlowQueryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowQueryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1926,6 +2133,19 @@ func (r *DestroyDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Detail struct {
+
+	// 输入时间范围内所有慢sql执行的总时间，单位毫秒（ms）
+	TotalTime *float64 `json:"TotalTime,omitempty" name:"TotalTime"`
+
+	// 输入时间范围内所有慢sql总条数
+	TotalCallNum *uint64 `json:"TotalCallNum,omitempty" name:"TotalCallNum"`
+
+	// 慢SQL统计分析列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisItems []*AnalysisItems `json:"AnalysisItems,omitempty" name:"AnalysisItems"`
+}
+
 type DisIsolateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1982,6 +2202,15 @@ func (r *DisIsolateDBInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DisIsolateDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DurationAnalysis struct {
+
+	// 慢SQL耗时，时段
+	TimeSegment *string `json:"TimeSegment,omitempty" name:"TimeSegment"`
+
+	// 对应时段区间慢SQL 条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type ErrLogDetail struct {
@@ -2819,6 +3048,27 @@ type PgDeal struct {
 
 	// 实例ID数组
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
+}
+
+type RawSlowQuery struct {
+
+	// 慢SQL 语句
+	RawQuery *string `json:"RawQuery,omitempty" name:"RawQuery"`
+
+	// 慢SQL 查询的数据库
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 慢SQL执行 耗时
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 执行慢SQL的客户端
+	ClientAddr *string `json:"ClientAddr,omitempty" name:"ClientAddr"`
+
+	// 执行慢SQL的用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 慢SQL执行的开始时间
+	SessionStartTime *string `json:"SessionStartTime,omitempty" name:"SessionStartTime"`
 }
 
 type ReadOnlyGroup struct {

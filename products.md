@@ -67,7 +67,7 @@
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-07-02 08:05:22 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-07-02 08:02:09 |
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-08-13 08:01:53 |
-| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-08-20 08:12:02 |
+| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-08-21 15:18:03 |
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-07-02 08:00:25 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-08-04 08:05:32 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-08-13 08:05:41 |
@@ -94,7 +94,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-08-06 08:02:16 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-08-19 08:01:00 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-08-18 08:06:30 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-08-19 08:01:48 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-08-23 08:01:33 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-08-20 08:06:35 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-07-02 08:01:39 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-08-11 08:06:54 |
@@ -116,14 +116,14 @@
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-07-02 08:07:22 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-07-08 08:07:39 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-08-20 08:00:05 |
-| postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-08-04 08:07:38 |
+| postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-08-23 08:07:32 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2021-07-02 08:00:35 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2021-07-02 08:11:25 |
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-08-19 08:07:56 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-07-02 08:11:01 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-07-02 08:01:39 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-08-20 08:00:08 |
-| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-08-20 08:07:56 |
+| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-08-23 08:07:51 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-07-02 08:11:22 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-07-02 08:02:55 |
 | sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-08-17 08:00:34 |
